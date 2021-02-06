@@ -1,0 +1,342 @@
+operations = {
+	ITA_DOW_FRA = {
+		icon = generic_operation
+		allowed = {
+			original_tag = ITA			
+		}
+		
+		available = {
+			GER = { 
+				has_war_with = FRA 
+				controls_state = 29 #NPDC
+				controls_state = 785 #Picardy, Paris threahtened
+				OR = {
+					controls_state = 16 #Paris
+					controls_state = 15
+					controls_state = 24 #Normandy and Orlean, Paris encircled
+				}
+			}
+			NOT = {
+				is_in_faction_with = FRA
+				has_war_with = FRA
+			}
+		}
+		
+		visible = {
+			GER = { has_war_with = FRA }
+			NOT = {
+				is_in_faction_with = FRA
+				has_war_with = FRA
+			}
+			original_tag = ITA
+		}
+		
+		ai_will_do = {
+			factor = 5000
+		}
+		
+		complete_effect = {
+		
+			ITA = {
+				declare_war_on = { target = FRA type = annex_everything }
+				remove_ideas = ITA_neutrality_idea
+			}		
+		}
+	}
+	
+	ITA_DOW_YUG = { #for player only
+		icon = generic_operation
+		allowed = {
+			original_tag = ITA
+			
+		}
+		
+		available = {
+			NOT = {
+				is_in_faction_with = YUG
+				has_war_with = YUG
+			}
+			has_completed_focus = ITA_slovenia_dalmatia_claims
+		}
+		
+		visible = {
+			is_ai = no 
+			YUG = { exists = yes }
+			YUG = {
+				NOT = {
+					is_guaranteed_by = ROM
+				}
+				NOT = {
+					is_guaranteed_by = FRA
+				}
+				NOT = {
+					is_guaranteed_by = CZE
+				}
+			}
+			OR = {
+				GER = {
+					has_war_with = FRA
+				}
+				GER = {
+					has_war_with = ENG
+				}
+			}
+		}
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 0
+		}
+		
+		complete_effect = {
+		
+			ITA = {
+				declare_war_on = { target = YUG type = annex_everything }
+				remove_ideas = ITA_neutrality_idea
+			}		
+		}
+	}
+}
+
+foreign_politics = {
+
+	ITA_puppet_bul = { 
+		allowed = {
+			original_tag = ITA
+		}
+		
+		visible = {
+			BUL = {
+				is_ai = yes
+			}
+			is_in_faction_with = BUL
+		}
+		
+		available = {
+			ITA = {
+				is_ai = no
+				is_in_faction_with = BUL				
+			}
+			BUL = {
+				is_ai = yes
+				is_subject = no
+			}
+			OR = {
+				YUG = {
+					has_war_with = ITA
+					has_capitulated = yes
+				}
+				YUG = {
+					exists = no 
+				}
+				YUG = {
+					NOT = {
+						owns_state = 106 #dismembered yugo
+					}
+				}
+			}
+		}
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 0
+		}
+		
+		complete_effect = {
+			ITA = {
+				set_autonomy = {
+					target = BUL
+					autonomy_state = autonomy_satellite
+				}
+			}
+		}
+		
+	}
+	
+	ITA_puppet_middle_east = { 
+		allowed = {
+			original_tag = ITA
+			
+		}		
+		visible = {
+			IRQ = {
+				is_ai = yes
+			}
+			
+			#is_in_faction_with = LEB
+			#is_in_faction_with = SYR
+			is_in_faction_with = IRQ
+		}
+		
+		available = {
+			ITA = {
+				is_ai = no
+				#is_in_faction_with = LEB
+				#is_in_faction_with = SYR
+				is_in_faction_with = IRQ
+				
+				IRQ = {
+					NOT = {
+						is_subject_of = ITA 
+					}
+				}
+			}
+			any_country = {
+				OR = {
+					is_in_faction_with = ITA
+					original_tag = ITA
+				}
+				controls_state = 454 #palestine
+			}
+		}
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 0
+		}
+		
+		complete_effect = {
+			GER = {
+				end_puppet = LEB
+				end_puppet = SYR 
+				end_puppet = IRQ
+			}
+			ITA = {
+			
+				IF = {
+					limit = {
+						LEB = {exists = yes}
+					}
+					set_autonomy = {
+						target = LEB
+						autonomy_state = autonomy_satellite
+					}
+				}
+				IF = {
+					limit = {
+						554 = { 
+							CONTROLLER = { 
+								original_tag = FRA 
+								has_government = fascism
+							} 
+						}
+					}
+					transfer_state = 554
+					transfer_state = 553
+					transfer_state = 677
+					transfer_state = 680
+				}
+				IF = {
+					limit = {
+						SYR = {exists = yes}
+					}
+					set_autonomy = {
+						target = SYR
+						autonomy_state = autonomy_satellite
+					}
+				}
+				IF = {
+					limit = {
+						IRQ = {exists = yes}
+					}
+					set_autonomy = {
+						target = IRQ
+						autonomy_state = autonomy_satellite
+					}
+				}
+			}
+		}
+		
+	}
+	
+	
+}
+
+political_actions = {
+	
+	
+	ITA_triumph_in_egypt = {
+		
+		icon = generic_operation
+		allowed = {
+			tag = ITA
+		}
+		visible = {
+			has_full_control_of_state = 451 #Tobruk
+			OR = {
+				has_war_with = ENG 
+				owns_state = 816
+			}
+		}
+		available = {
+			has_full_control_of_state = 816
+			has_full_control_of_state = 447
+		}
+		highlight_states = {
+			state = 816
+		}
+		
+		ai_will_do = {
+			factor = 100
+		}
+		
+		fire_only_once = yes
+		
+		complete_effect = {
+			add_political_power = 150
+		}
+		
+	}
+	
+	ITA_army_reform = {
+
+		icon = generic_prepare_civil_war
+
+		available = {
+			has_army_experience > 299
+			has_completed_focus = ITA_modernized_army
+		}
+
+		cost = 25
+		ai_will_do = {
+			factor = 500
+		}
+		days_remove = 120
+
+		visible = {
+			OR = {
+				has_idea = ITA_army_corruption_1
+				has_idea = ITA_army_corruption_2
+				has_idea = ITA_army_corruption_3
+			}
+		}
+		remove_effect = {
+			if = {
+				limit = { has_idea = ITA_army_corruption_1 }
+				swap_ideas = {
+					remove_idea = ITA_army_corruption_1
+					add_idea = ITA_army_corruption_2
+				}
+			}
+			else_if = {
+				limit = { has_idea = ITA_army_corruption_2 }
+				swap_ideas = {
+					remove_idea = ITA_army_corruption_2
+					add_idea = ITA_army_corruption_3
+				}
+			}
+			else_if = {
+				limit = { has_idea = ITA_army_corruption_3 }
+				remove_ideas = ITA_army_corruption_3
+			}
+		}
+		complete_effect = {
+			army_experience = -200
+		}		
+	}
+	
+	
+}

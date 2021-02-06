@@ -1,0 +1,72 @@
+labour_management = {
+	women_in_the_workforce = {
+
+		icon = generic_industry
+
+        allowed = {
+            always = yes
+        }
+
+        available = {
+            has_war = yes
+            has_idea = tot_economic_mobilisation
+        }
+        visible = {
+			if = {
+				LIMIT = {
+					NOT = { tag = GER }
+					NOT = { tag = SOV }
+				}
+			}
+        }
+        cost = 100
+        days_remove = -1
+
+        modifier = {
+            stability_factor = -0.05
+        }
+        ai_will_do = {
+			factor = 100
+
+		}
+		complete_effect = {
+			add_to_variable = { female_participation_rate = 0.1 }
+			custom_effect_tooltip = increase_female_participation_10
+        }
+   }
+   reduce_agricultural_exports = {
+		cost = 100
+		fire_only_once = yes
+		
+		allowed = {
+            always = yes
+        }
+		
+		ai_will_do = {
+			base = 100
+		}
+		
+		visible = {
+			check_variable = { agriculture_trade < 0 }
+		}
+		
+		available = {
+			check_variable = { agriculture_trade < 0 }
+			has_war = yes
+		}
+		
+		complete_effect = {
+			if = {
+				LIMIT = {
+					check_variable = { agriculture_trade < -0.05 }
+				}
+				add_to_variable = { agriculture_trade = 0.05 }
+				custom_effect_tooltip = reduce_agricultural_exports_5
+			}
+			else = {
+				set_variable = { agriculture_trade = 0 }
+				custom_effect_tooltip = reduce_agricultural_exports_0
+			}
+		}
+	}
+}

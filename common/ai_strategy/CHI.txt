@@ -1,0 +1,859 @@
+# befriend
+# conquer
+# antagonize
+# build_ship
+# build_army
+# unit_ratio
+# build_building
+# research_tech
+# garrison
+# protect
+# influence
+CHI_prio_military_even_at_peace = {
+	enable = {
+		original_tag = CHI
+	}
+	
+	ai_strategy = {
+		type = added_military_to_civilian_factory_ratio
+		value = 50
+	}
+	ai_strategy = {
+		type = building_target
+		id = arms_factory
+		value = 100
+	}
+	
+}
+	
+CHI_dont_mess_with_the_soviets = {
+
+	enable = {
+		original_tag = CHI
+		
+		NOT = { has_war_with = SOV }
+	}
+	
+	abort = {
+		has_war_with = SOV
+	}
+
+	ai_strategy = {
+		type = contain
+		id = "SOV"			
+		value = -200
+	}
+}
+
+CHI_ignore_neighbours = {
+
+	enable = {
+		original_tag = CHI
+		
+	}
+	
+	abort = {
+		has_war_with = TIB
+		has_war_with = RAJ
+		has_war_with = FRA
+		has_war_with = ENG
+		has_war_with = SIK
+	}
+
+	ai_strategy = {
+		type = contain
+		id = "TIB"			
+		value = -9999
+	}
+
+	ai_strategy = {
+		type = contain
+		id = "RAJ"			
+		value = -9999
+	}
+
+	ai_strategy = {
+		type = contain
+		id = "FRA"			
+		value = -9999
+	}
+
+	ai_strategy = {
+		type = ignore
+		id = "TIB"
+		value = 9999
+	}
+
+	ai_strategy = {
+		type = ignore
+		id = "RAJ"
+		value = 9999
+	}
+
+	ai_strategy = {
+		type = ignore
+		id = "FRA"
+		value = 9999
+	}
+	ai_strategy = {
+		type = ignore
+		id = "SIK"
+		value = 9999
+	}
+	ai_strategy = {
+		type = contain
+		id = "SIK"
+		value = -9999
+	}
+
+	ai_strategy = {
+		type = ignore
+		id = "TIB"
+		value = 9999
+	}
+
+	ai_strategy = {
+		type = ignore
+		id = "RAJ"
+		value = 9999
+	}
+
+	ai_strategy = {
+		type = ignore
+		id = "FRA"
+		value = 9999
+	}
+	ai_strategy = {
+		type = ignore
+		id = "SIK"
+		value = 9999
+	}
+
+	ai_strategy = {
+		type = front_unit_request
+		id = "RAJ"			
+		value = -9999
+	}
+	ai_strategy = {
+		type = front_unit_request
+		id = "FRA"			
+		value = -9999
+	}
+	ai_strategy = {
+		type = front_unit_request
+		id = "ENG"			
+		value = -9999
+	}
+	ai_strategy = {
+		type = front_unit_request
+		id = "TIB"			
+		value = -9999
+	}
+	ai_strategy = {
+		type = front_unit_request
+		id = "SIK"			
+		value = -9999
+	}
+
+}
+
+CHI_some_safer_places_to_build = {
+	enable = {
+		original_tag = CHI
+	}
+
+	abort = {
+		date > 1941.1.1
+	}
+
+	ai_strategy = {
+        type = factory_build_score_factor
+        target =  748
+        value = 300
+    }
+
+    ai_strategy = {
+        type = factory_build_score_factor
+        target =  750
+        value = 300
+    }
+
+	ai_strategy = {
+        type = factory_build_score_factor
+        target =  605
+        value = 300
+    }
+}
+
+CHI_you_should_be_prepared_for_war = {
+
+	enable = {
+		is_literally_china = yes
+	}
+	abort_when_not_enabled = yes
+	
+	ai_strategy = {
+        type = force_build_armies
+        value = 9999
+    }
+}
+
+CHI_dont_upgrade_to_weapons_1_too_early = {
+	enable = {
+		original_tag = CHI
+		OR = {
+			date < "1941.1.1" # stock up on lots of rifles, we got the manpower
+			AND = {
+				date > "1939.8.1"
+				surrender_progress < 0.1 # if we arent losing badly its ok now
+			}
+		}
+	}
+	
+	abort_when_not_enabled = yes
+	
+	ai_strategy = {
+		type = production_upgrade_desire_offset
+		id = infantry_equipment_1
+		value = -100
+	}
+
+	
+}
+
+CHI_dont_upgrade_to_weapons_2_too_early = {
+	enable = {
+		original_tag = CHI
+		OR = {
+			date < "1943.1.1" # stock up on lots of rifles, we got the manpower
+			AND = {
+				date > "1943.8.1"
+				surrender_progress < 0.1 # if we arent losing badly its ok now
+			}
+		}
+	}
+	
+	abort_when_not_enabled = yes
+	
+	ai_strategy = {
+		type = production_upgrade_desire_offset
+		id = infantry_equipment_2
+		value = -100
+	}
+
+	
+}
+
+CHI_dont_upgrade_to_heavy_weapons_2_too_early = {
+	enable = {
+		original_tag = CHI
+		OR = {
+			date < "1943.1.1" # stock up on lots of rifles, we got the manpower
+			AND = {
+				date > "1943.8.1"
+				surrender_progress < 0.1 # if we arent losing badly its ok now
+			}
+		}
+	}
+	
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = production_upgrade_desire_offset
+		id = heavy_infantry_equipment_2
+		value = -9999
+	}
+}
+
+CHI_you_should_not_defend_the_chinas = {
+
+	enable = {
+		original_tag = CHI
+	}
+	abort_when_not_enabled = yes
+	
+	ai_strategy = { 
+		type = dont_defend_ally_borders      
+		id = PRC			      
+		value = 9999
+	}
+	ai_strategy = { 
+		type = dont_defend_ally_borders      
+		id = SHX			      
+		value = 9999
+	}
+}
+
+
+PRC_dont_upgrade_to_weapons_2_too_early = {
+	enable = {
+		original_tag = PRC
+		OR = {
+			date < "1943.1.1" # stock up on lots of rifles, we got the manpower
+			AND = {
+				date > "1943.8.1"
+				surrender_progress < 0.1 # if we arent losing badly its ok now
+			}
+		}
+	}
+	
+	abort_when_not_enabled = yes
+	
+	ai_strategy = {
+		type = production_upgrade_desire_offset
+		id = infantry_equipment_2
+		value = -100
+	}
+	
+	ai_strategy = {
+		type = added_military_to_civilian_factory_ratio
+		value = 50
+	}
+	ai_strategy = {
+		type = building_target
+		id = arms_factory
+		value = 100
+	}
+
+	
+}
+
+
+PRC_dont_join_the_comintern = {
+	enable = {
+		original_tag = PRC
+		country_exists = CHI
+	}
+
+	abort = {
+		NOT = { country_exists = CHI }
+	}
+
+	ai_strategy = {
+		type = alliance
+		id = "SOV"			
+		value = -200
+	}
+}
+
+PRC_CHI_ignore_these_countries = {
+	enable = {
+		OR = {
+			original_tag = PRC
+			original_tag = CHI
+		}
+	}
+
+	abort = {
+		OR = {
+			has_war_with = TIB
+			has_war_with = RAJ
+			has_war_with = MON
+			has_war_with = SOV
+			has_war_with = YUN
+			has_war_with = GXC
+			has_war_with = XSM
+			has_war_with = SIK
+		}
+	}
+	
+	ai_strategy = {
+		type = antagonize
+		id = "SIK"
+		value = -9999
+	}
+
+	ai_strategy = {
+		type = ignore
+		id = "SIK"
+		value = 9999
+	}
+
+	ai_strategy = {
+		type = antagonize
+		id = "TIB"
+		value = -9999
+	}
+
+	ai_strategy = {
+		type = ignore
+		id = "TIB"
+		value = 9999
+	}
+
+	ai_strategy = {
+		type = antagonize
+		id = "RAJ"
+		value = -9999
+	}
+
+	ai_strategy = {
+		type = ignore
+		id = "RAJ"
+		value = 9999
+	}
+
+	ai_strategy = {
+		type = antagonize
+		id = "MON"
+		value = -9999
+	}
+
+	ai_strategy = {
+		type = ignore
+		id = "MON"
+		value = 9999
+	}
+
+	ai_strategy = {
+		type = antagonize
+		id = "SOV"
+		value = -9999
+	}
+
+	ai_strategy = {
+		type = ignore
+		id = "SOV"
+		value = 9999
+	}
+	ai_strategy = {
+		type = antagonize
+		id = "GXC"
+		value = -9999
+	}
+
+	ai_strategy = {
+		type = ignore
+		id = "GXC"
+		value = 9999
+	}
+	ai_strategy = {
+		type = antagonize
+		id = "YUN"
+		value = -9999
+	}
+
+	ai_strategy = {
+		type = ignore
+		id = "YUN"
+		value = 9999
+	}
+	ai_strategy = {
+		type = front_unit_request
+		id = "GXC"
+		value = -9999
+	}
+	ai_strategy = {
+		type = front_unit_request
+		id = "YUN"
+		value = -9999
+	}
+	ai_strategy = {
+		type = front_unit_request
+		id = "RAJ"
+		value = -9999
+	}
+	ai_strategy = {
+		type = front_unit_request
+		id = "SOV"
+		value = -9999
+	}
+	ai_strategy = {
+		type = front_unit_request
+		id = "TIB"
+		value = -9999
+	}
+	ai_strategy = {
+		type = front_unit_request
+		id = "SIK"
+		value = -9999
+	}
+	ai_strategy = {
+		type = front_unit_request
+		id = "XSM"
+		value = -9999
+	}
+}
+
+CHI_defend_against_JAP_proper = {
+	enable = {
+		original_tag = CHI
+	}
+	abort = {
+		OR = {
+			has_war_with = FRA
+			has_war_with = RAJ
+                        has_war_with = TIB
+
+		}
+	}
+
+	
+	ai_strategy = {
+		type = antagonize
+		id = "JAP"
+		value = 100
+	}
+	ai_strategy = {
+		type = conquer
+		id = "JAP"
+		value = 100
+	}
+	ai_strategy = {
+		type = front_unit_request
+		id = FRA
+		value = -9999
+	}
+	ai_strategy = {
+		type = front_unit_request
+		id = ENG
+		value = -9999
+	}
+	ai_strategy = {
+		type = front_unit_request
+		id = RAJ
+		value = -9999
+	}
+	ai_strategy = {
+		type = front_unit_request
+		id = TIB
+		value = -9999
+	}
+
+}
+
+CHI_defend_ports_not_borders_before_war_for_attrition_reasons = {
+	enable = {
+				original_tag = CHI
+		
+	                  	NOT = { has_war_with = JAP }
+	}
+	
+	abort = {
+		OR = {
+			has_war_with = JAP
+			has_war_with = MAN
+
+		}
+	}
+
+	ai_strategy = { type = garrison value = 500 }
+}
+
+
+CHI_defend = {
+	enable = {
+		original_tag = CHI
+	}
+	abort = {
+		always = no
+	}
+	
+
+	ai_strategy = { type = garrison value = 200 }
+}
+
+dont_waste_equipment1 = {
+	allowed = { 
+		tag = CHI 
+	}
+	enable = {
+	        has_war_with = JAP
+		is_historical_focus_on = yes
+	}
+		abort = {
+                CHI = { surrender_progress > 0.19 }
+
+		
+	}
+
+	ai_strategy = {
+		type = front_control
+		priority = 999
+                country_trigger = {
+			OR = {
+				tag = JAP
+				is_in_faction_with = JAP
+			}
+		}
+		
+
+		execution_type = careful
+		execute_order = yes
+		manual_attack = yes
+	}
+}
+
+
+
+dont_waste_equipment2 = {
+	allowed = { 
+		tag = CHI 
+	}
+	enable = {
+	        has_war_with = JAP
+		CHI = { surrender_progress > 0.20 }
+		is_historical_focus_on = yes
+	}
+		abort = {
+                CHI = { surrender_progress < 0.20 }
+
+		
+	}
+
+	ai_strategy = {
+		type = front_control
+		priority = 999
+  country_trigger = {
+			OR = {
+				tag = JAP
+				is_in_faction_with = JAP
+			}
+		}
+		
+
+		execution_type = careful
+		execute_order = yes
+		manual_attack = yes
+	}
+}
+
+counter_attack = {
+	allowed = { 
+		tag = CHI 
+	}
+	enable = {
+	        has_war_with = JAP
+		date > 1941.12.1
+		is_historical_focus_on = yes
+		JAP = { is_ai = yes }
+	}
+	abort = {
+		always = no
+	}
+	
+
+	ai_strategy = {
+		type = front_control
+		priority = 999
+  country_trigger = {
+			OR = {
+				tag = JAP
+				is_in_faction_with = JAP
+			}
+		}
+		
+
+		execution_type = careful
+		execute_order = yes
+		manual_attack = yes
+	}
+}
+
+counter_attackplayer = {
+	allowed = { 
+		tag = CHI 
+	}
+	enable = {
+	        has_war_with = JAP
+		is_historical_focus_on = yes
+		JAP = { is_ai = no }
+	}
+	abort = {
+		always = no
+	}
+	
+
+	ai_strategy = {
+		type = front_control
+		priority = 999
+  country_trigger = {
+			OR = {
+				tag = JAP
+				is_in_faction_with = JAP
+			}
+		}
+		
+
+		execution_type = careful
+		execute_order = yes
+		manual_attack = yes
+	}
+}
+
+ignore_raj = {
+	allowed = { 
+		tag = CHI 
+	}
+	enable = {
+	        has_war_with = JAP
+	}
+	abort = {
+		has_war_with = RAJ
+	}
+	
+
+	ai_strategy = {
+		type = front_unit_request
+		id = RAJ
+		value = -9999
+	}
+	ai_strategy = {
+		type = ignore
+		id = "RAJ"
+		value = 9999
+	}
+	ai_strategy = {
+		type = front_unit_request
+		area = east_asia
+		value = -9999
+	}
+}
+
+
+increase_relation = {
+	enable = {
+		always = yes
+                original_tag = CHI 
+	}
+	
+	ai_strategy = {
+		type = pp_spend_amount
+		id = idea
+		value = 100
+	}
+	
+	ai_strategy = {
+		type = pp_spend_amount
+		id = decision
+		value = 100
+	}
+	
+	ai_strategy = { #waste
+		type = pp_spend_priority
+		id = relation
+		value = -100
+	}
+}
+
+china_befriend = {
+	enable = {
+		tag = CHI
+		date > 1937.6.1
+	}
+	abort = {
+		date > 1938.4.1
+	}
+
+	ai_strategy = { #waste
+		type = pp_spend_priority
+		id = relation
+		value = 200
+	}
+	
+	ai_strategy = {
+		type = befriend
+		id = "USA"			
+		value = 500
+	}
+	ai_strategy = {
+		type = befriend
+		id = "ENG"			
+		value = 500
+	}
+	ai_strategy = {
+		type = befriend
+		id = "GER"			
+		value = 500
+	}
+	ai_strategy = {
+		type = befriend
+		id = "SOV"			
+		value = 500
+	}
+	ai_strategy = {
+		type = befriend
+		id = "FRA"			
+		value = 500
+	}
+}
+
+
+china_befriend2 = {
+	enable = {
+		tag = CHI
+		date > 1937.6.1
+	}
+	abort = {
+		date > 1941.1.1
+	}
+
+	ai_strategy = { #waste
+		type = pp_spend_priority
+		id = relation
+		value = 200
+	}
+	
+	ai_strategy = {
+		type = befriend
+		id = "USA"			
+		value = 500
+	}
+}
+
+CHI_dont_mess_with_the_soviets = {
+
+	enable = {
+		original_tag = CHI
+		
+		NOT = { has_war_with = SOV }
+	}
+	
+	abort = {
+		has_war_with = SOV
+	}
+
+	ai_strategy = {
+		type = contain
+		id = "SOV"			
+		value = -200
+	}
+}
+
+CHI_some_safer_places_to_build = {
+	enable = {
+		original_tag = CHI
+	}
+
+	abort = {
+		date > 1941.1.1
+	}
+
+	ai_strategy = {
+        type = factory_build_score_factor
+        target =  602
+        value = 300
+    }
+
+	ai_strategy = {
+        type = factory_build_score_factor
+        target =  605
+        value = 300
+    }
+}
+
+CHI_you_should_be_prepared_for_war = {
+
+	allowed = { is_literally_china = yes }
+
+	enable = {
+		is_literally_china = yes
+	}
+	abort_when_not_enabled = yes
+	
+	ai_strategy = {
+        type = force_build_armies
+        value = 100
+    }
+}
+

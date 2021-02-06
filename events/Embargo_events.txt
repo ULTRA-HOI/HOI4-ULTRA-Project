@@ -1,0 +1,59 @@
+###########################
+# Forced Embargo Events
+###########################
+
+add_namespace = embargo
+
+# Narvik hostile 
+
+country_event = {
+	id = embargo.1
+	title = embargo.1.t
+	desc = embargo.1.d
+	picture = GFX_report_event_merchant_ship_01
+	
+	trigger = {
+		original_tag = GER
+		
+		any_country = {		
+			has_war_with = ROOT	
+			controls_state = 144			
+		}
+		SWE = {
+			NOT = {
+				has_country_flag = allied_narvik
+			}
+		}
+
+		
+	}
+	
+	mean_time_to_happen = {
+		days = 7
+	}
+	
+	immediate = {
+		hidden_effect = {
+			SWE = {
+				add_opinion_modifier = {
+					target = GER
+					modifier = cw_embargo
+				}
+				set_country_flag = allied_narvik
+				remove_opinion_modifier = {
+					target = GER 
+					modifier = Reichmark_block
+				}
+				remove_opinion_modifier = {
+					target = GER 
+					modifier = Reichmark_block_rel
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = embargo.1.a
+	}
+	
+}

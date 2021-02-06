@@ -1,0 +1,437 @@
+﻿##### ITA surrender Events
+
+add_namespace = hip_italy
+
+
+# Mussolini Arrested
+country_event = {
+	id = hip_italy.1
+	title = hip_italy.1.t
+	desc = hip_italy.1.d
+	picture = GFX_report_event_generic_rally2
+	major = yes
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = ITA		
+		enemies_strength_ratio > 1
+		#has_war_with = USA
+		NOT = {
+			controls_state = 448 #tripoli
+			controls_state = 458 #Tunisia
+		}
+		
+		OR = {
+			any_country {
+				is_in_faction_with = ENG
+				controls_state = 2			#Latium(Rome)
+			}
+			any_owned_state = {
+				is_core_of = ITA
+				is_on_continent = europe
+				is_controlled_by = ENG
+				NOT = {state = 114} ###Sardinia
+			}
+			any_owned_state = {
+				is_core_of = ITA
+				is_on_continent = europe
+				is_controlled_by = CAN
+				NOT = {state = 114}
+			}			
+			any_owned_state = {
+				is_core_of = ITA
+				is_on_continent = europe				
+				is_controlled_by = USA
+				NOT = {state = 114}
+			}
+			any_owned_state = {
+				is_core_of = ITA
+				is_on_continent = europe				
+				is_controlled_by = FRA
+				NOT = {state = 114}
+			}			
+		}
+	}
+		
+	mean_time_to_happen = {
+		days = 14
+	}	
+	
+	immediate = {
+		kill_country_leader = yes
+	}
+	
+	option = {
+		name = hip_italy.1.a
+		ai_chance = { factor = 100 }
+		create_country_leader = {
+			name = "Pietro Badoglio"
+			desc = "POLITICS_PIETRO_BADOGLIO_DESC"
+			picture = "Portrait_Italy_Pietro_Badoglio.dds"
+			expire = "1965.1.1"
+			ideology = conservatism
+			traits = {
+			}
+		}
+		set_politics = {
+			ruling_party = democratic 
+			elections_allowed = yes
+		}
+		add_popularity = {
+			ideology = democratic 
+			popularity = 0.35
+		}
+		add_popularity = {  
+			ideology = communism
+			popularity = 0.15
+		}
+		add_popularity = {
+			ideology = fascism
+			popularity = -0.10
+		}			
+		if = {
+			limit = {
+				ENG = { exists = yes }
+				ENG = { is_faction_leader = yes }
+			}			
+			ENG = { country_event = { id = hip_italy.2 days = 21 } }
+		}
+		if = {
+			limit = {
+				USA = { exists = yes }
+				USA = { is_faction_leader = yes }
+			}			
+			USA = { country_event = { id = hip_italy.2 days = 21 } }
+		}		
+	}
+}
+
+country_event = {               # Secret negociations with Allies (UK or USA)
+	id = hip_italy.2
+	title = hip_italy.2.t
+	desc = hip_italy.2.d
+	picture = GFX_report_event_generic_peaceful_annexation
+
+	fire_only_once = yes
+
+	is_triggered_only = yes
+			
+	option = {
+		name = hip_italy.2.a
+		ai_chance = { factor = 100 }
+		set_global_flag = ita_sue_for_peace
+		ITA = { 
+			add_war_support = -1
+			country_event = { id = hip_italy.3 days = 14 }
+		}			
+	}
+}
+
+country_event = {
+	id = hip_italy.3
+	title = hip_italy.3.t
+	desc = hip_italy.3.d
+	picture = GFX_report_event_generic_rally2
+
+	fire_only_once = yes
+								
+	is_triggered_only = yes							# On_actions trigger
+
+	immediate = {
+		GER = { remove_from_faction = ITA }	
+		if = {
+			limit = {
+				ENG = { is_faction_leader = yes }
+			}	
+			ENG = { release = ITA }
+			else = { USA = { release = ITA } }
+		}
+	}
+	
+	option = {
+		name = hip_italy.3.a
+		ai_chance = { factor = 100 }
+		ENG = { add_to_faction = ITA }	
+		create_country_leader = {
+			name = "Pietro Badoglio"
+			desc = "POLITICS_PIETRO_BADOGLIO_DESC"
+			picture = "Portrait_Italy_Pietro_Badoglio.dds"
+			expire = "1965.1.1"
+			ideology = conservatism
+			traits = {
+			}
+		}	
+		set_politics = {
+			ruling_party = democratic 
+			elections_allowed = yes
+		}
+		set_popularities = {
+			democratic = 70
+			fascism = 1
+			communism = 29
+		}
+		every_owned_state = {
+			limit = { 
+				is_core_of = CRO 
+			}
+			CRO = { transfer_state = PREV }
+		}
+		every_owned_state = {
+			limit = { 
+				is_core_of = ALB 
+			}
+			GER = { transfer_state = PREV }
+		}
+		every_state = {
+			limit = { 
+				is_core_of = CRO
+				is_controlled_by = ITA
+			}
+			CRO = { transfer_state = PREV }
+		}
+		GER = {
+			set_autonomy = {
+				target = CRO
+				autonomy_state = autonomy_satellite
+			}
+		}
+		every_owned_state = {
+			limit = { 
+				is_core_of = YUG 
+				NOT = {is_core_of = CRO}
+			}
+			GER = { transfer_state = PREV }
+		}
+		every_state = {
+			limit = { 
+				NOT = { is_core_of = ITA }
+				is_core_of = GRE
+				is_controlled_by = ITA
+			}
+			GER = { set_state_controller = PREV }
+		}
+		every_state = {
+			limit = { 
+				NOT = { is_core_of = ITA }
+				is_core_of = TUR
+				is_controlled_by = ITA
+			}
+			GER = { set_state_controller = PREV }
+		}
+		every_owned_state = {
+			limit = { 
+				is_core_of = GRE
+			}
+			GER = { transfer_state = PREV }
+		}
+		every_owned_state = {
+			limit = { 
+				NOT = { is_core_of = ITA }
+				NOT = { is_core_of = YUG}
+				NOT = { is_core_of = ALB}
+				NOT = { is_core_of = FRA}
+			}
+			ENG = { transfer_state = PREV }
+		}
+		every_state = {
+			limit = { 
+				NOT = { is_core_of = ITA }
+				NOT = { is_core_of = YUG}
+				NOT = { is_core_of = FRA}
+				is_controlled_by = ITA
+			}
+			ENG = { transfer_state = PREV }
+		}
+		if = {
+			limit = {
+				1 = { 
+					is_owned_by = ITA
+				}
+			}
+			FRA = { transfer_state = 1 }
+		}		
+		if = {
+			limit = {
+				735 = { 
+					is_controlled_by = FRA
+					NOT = { any_neighbor_state = { is_controlled_by = GER } }
+				}
+			}
+			FRA = { transfer_state = 735 }
+			else = { 
+				GER = { set_state_controller = 735 }
+				FRA = { set_state_owner = 735 }
+			}
+		}
+		
+		if = {
+			limit = {
+				798 = { 
+					is_controlled_by = FRA
+					NOT = { any_neighbor_state = { is_controlled_by = GER } }
+				}
+			}
+			FRA = { transfer_state = 798 }
+			else = { 
+				GER = { set_state_controller = 798 } 
+				FRA = { set_state_owner = 798 }
+			}
+		}
+		
+		if = {
+			limit = {
+				21 = { 
+					is_controlled_by = FRA
+					NOT = { any_neighbor_state = { is_controlled_by = GER } }
+				}
+			}
+			FRA = { transfer_state = 21 }
+			else = { 
+				GER = { set_state_controller = 21 } 
+				FRA = { set_state_owner = 21 }
+			}
+		}
+		
+		if = {
+			limit = {
+				32 = { 
+					is_controlled_by = FRA
+					NOT = { any_neighbor_state = { is_controlled_by = GER } }
+				}
+			}
+			FRA = { transfer_state = 32 }
+			else = { 
+				GER = { set_state_controller = 32 } 
+				FRA = { set_state_owner = 32 }
+			}
+		}
+		ai_chance = { factor = 100 }
+		add_to_war = { targeted_alliance = ENG enemy = GER }
+		ENG = {
+			set_autonomy = {
+				target = ITA
+				autonomy_state = autonomy_supervised_state
+			}
+		}
+		add_ideas = { 
+			ITA_army_corruption_1
+		}
+		add_ideas = {
+			puppet_surr_limit
+		}
+		set_capital = 156
+		start_civil_war = {
+			ideology = fascism
+			size = 0.9
+			capital = 159
+			states = all
+			states_filter = {
+				every_owned_state = { #### Game see this line as error, but the code still seems to work
+					limit = {
+						is_controlled_by = ITA ###
+					}
+				}
+			}		
+		}
+		
+		add_ideas = {victor_emmanuel}
+		
+		every_owned_state = {
+			ITA = { transfer_state = PREV }
+		}
+		random_other_country = {
+			limit = {
+				original_tag = ITA
+				has_government = fascism
+			}
+			transfer_navy = {
+				target = ITA
+			}
+			
+			delete_unit = {          
+				disband = yes
+			}
+			country_event = { id = hip_italy.4 days = 2}
+		}
+	}
+}
+
+country_event = {											# RSI
+	id = hip_italy.4
+	title = hip_italy.4.t
+	desc = hip_italy.4.d
+	picture = GFX_report_event_generic_rally2
+
+	is_triggered_only = yes
+
+	option = {
+		name = hip_italy.4.a
+		ai_chance = { factor = 100 }
+		
+		transfer_units_fraction = {
+			target = GER
+			size = 0.9
+			stockpile_ratio = 0.9
+			army_ratio = 0.9
+			navy_ratio = 0.85
+			air_ratio = 1.0
+		}
+		
+		add_ideas = {
+			puppet_surr_limit
+		}
+		remove_ideas = {victor_emmanuel}
+		create_country_leader = {
+			name = "Benito Mussolini"
+			desc = "POLITICS_BENITO_MUSSOLINI_DESC"
+			picture = "Portrait_Italy_Benito_Mussolini.dds"
+			expire = "1965.1.1"
+			ideology = fascism_ideology
+		}
+		GER = { 
+			puppet = ROOT
+			add_to_faction = ROOT
+			transfer_state = 736
+			transfer_state = 39
+			transfer_state = 160
+		}
+		IF = {
+			limit = {
+				AUS = {
+					exists = yes
+					is_in_faction_with = GER
+				}					
+			}
+			AUS = {
+				transfer_state = 736
+				transfer_state = 39
+				transfer_state = 160
+			}
+		}
+		add_to_war = { targeted_alliance = GER enemy = ENG }
+	}
+	
+#	option = {
+#		name = hip_italy.4.b
+#		ai_chance = { factor = 0 }
+#	}
+}
+
+##French intervention in Spain event
+country_event = { 
+	id = hip_italy.5
+	title = hip_italy.5.t
+	desc = hip_italy.5.d
+	picture = GFX_report_event_worried_french
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = hip_italy.5.a
+		ITA = { 
+			add_war_support = 0.10
+		}
+	}
+}
+	

@@ -1,0 +1,790 @@
+﻿capital = 41
+
+oob = "SPR_1936"
+if = {
+	limit = { has_dlc = "Man the Guns" }
+		set_naval_oob = "SPR_1936_naval_mtg"
+	else = {
+		set_naval_oob = "SPR_1936_naval_legacy"
+	}	 
+}
+
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "La Resistance"
+		}
+	}
+	set_popularities = {
+		democratic = 47
+		fascism = 46
+		communism = 7
+	}
+}
+
+if = {
+	limit = {
+		has_dlc = "Battle for the Bosporus"
+	}
+	set_technology = { camelry = 1 }
+}
+
+if = {
+	limit = {
+		has_dlc = "La Resistance"
+	}
+	every_owned_state = {
+		limit = {
+			NOT = {
+				state = 177
+				state = 178
+				state = 290
+				state = 699
+				state = 783
+				state = 297
+			}
+		}
+		set_variable = { var = SPA_garrison_control value = 1 }
+		SPA_garrison_control_cost_calculation = yes
+	}
+	set_popularities = {
+		democratic = 41
+		fascism = 22
+		communism = 17
+		neutrality = 20
+	}
+	create_dynamic_country = {
+	    original_tag = SPR
+	    set_country_flag = SPR_nationalist_spain_flag
+		set_politics = {
+			ruling_party = neutrality
+		}
+		set_cosmetic_tag = SPR_nationalist_spain
+		set_research_slots = 3
+	    reserve_dynamic_country = yes
+	}
+	create_dynamic_country = {
+	    original_tag = SPR
+	    set_country_flag = SPR_carlist_spain_flag
+	    set_politics = {
+			ruling_party = neutrality
+		}
+		set_cosmetic_tag = SPR_carlist_spain
+		set_research_slots = 3
+	    reserve_dynamic_country = yes
+	}
+	create_dynamic_country = {
+	    original_tag = SPR
+	    set_country_flag = SPR_anarchist_spain_flag
+	    set_politics = {
+			ruling_party = neutrality
+		}
+		set_cosmetic_tag = SPR_anarchist_spain
+		set_research_slots = 3
+	    reserve_dynamic_country = yes
+	}
+	SPR = {
+		set_variable = { var = spa_civil_war_divisions_counter_var value = 17 }
+		set_variable = { var = spr_civil_war_divisions_counter_var value = 66 }
+	}
+	for_each_scope_loop = {
+	    array = core_states
+	    
+	    set_state_flag = SPR_original_core
+	}
+	add_ideas = {
+		SPA_carlism_1
+		SPR_military_disloyalty
+		SPR_political_violence
+		SPR_national_strikes_3
+	}
+	165 = {
+		add_dynamic_modifier = { modifier = autonomous_state }
+	}
+	171 = {
+		add_dynamic_modifier = { modifier = autonomous_state }
+	}
+	890 = {
+		add_dynamic_modifier = { modifier = autonomous_state }
+	}
+}
+
+set_research_slots = 2
+
+set_technology = {
+	infantry_weapons = 1
+	infantry_weapons1 = 1
+	heavy_infantry_weapons = 1
+	tech_recon = 1
+	tech_support = 1		
+	tech_engineers = 1
+	tech_mountaineers = 1
+	artillery_1 = 1
+	anti_air_1 = 1
+	anti_tank_1 = 1
+	early_fighter = 1
+	early_bomber = 1
+	naval_bomber1 = 1
+	scout_plane1 = 1
+	motorised_infantry = 1
+}
+
+if = {
+	limit = { has_dlc = "Man the Guns" }
+	set_technology = {
+		basic_naval_mines = 1
+		submarine_mine_laying = 1
+		early_ship_hull_light = 1
+		basic_ship_hull_light = 1
+		early_ship_hull_submarine = 1
+		basic_ship_hull_submarine = 1
+		early_ship_hull_cruiser = 1
+		basic_ship_hull_cruiser = 1
+		basic_cruiser_armor_scheme = 1
+		early_ship_hull_heavy = 1
+		basic_battery = 1
+		basic_medium_battery_2 = 1
+		basic_torpedo = 1
+		airplane_launcher = 1
+		improved_ship_torpedo_launcher = 1
+		sonar = 1
+		improved_sonar = 1
+		early_engine = 1
+		smoke_generator = 1
+		basic_depth_charges = 1
+		mtg_transport = 1
+		damage_control_1 = 1
+	}
+}
+
+
+
+
+set_politics = {
+
+	ruling_party = democratic
+	last_election = "1933.2.16"
+	election_frequency = 36
+	elections_allowed = yes
+}
+
+
+set_convoys = 600
+set_stability = 0.5
+
+
+if = {
+	limit = {
+		NOT = { has_dlc = "La Resistance" }
+	}
+	create_country_leader = {
+		name = "Niceto Alcalá-Zamora"
+		desc = "POLITICS_NICETO_ALCALA_ZAMORA_DESC"
+		picture = "GFX_portrait_SPR_niceto_alcala_zamora"
+		expire = "1965.1.1"
+		ideology = conservatism
+		traits = {
+
+		}
+	}
+	
+	create_country_leader = {
+		name = "José Díaz"
+		desc = "POLITICS_JOSE_DIAZ_DESC"
+		picture = "portrait_spr_jose_diaz.dds"
+		expire = "1965.1.1"
+		ideology = stalinism
+		traits = {
+
+		}
+	}
+	create_country_leader = {
+		name = "Alejandro Lerroux"
+		id = 1100
+		desc = "POLITICS_ALEJANDRO_LERROUX_DESC"
+		picture = "gfx/leaders/Europe/Portrait_Europe_Generic_land_5.dds"
+		expire = "1965.1.1"
+		ideology = centrism
+		traits = {
+			#
+		}
+	}
+	create_country_leader = {
+		name = "Francisco Franco"
+		desc = "POLITICS_FRANCISCO_FRANCO_DESC"
+		picture = "GFX_portrait_spain_francisco_franco"
+		expire = "1965.1.1"
+		ideology = fascism_ideology
+		traits = {
+
+		}
+	}
+}
+
+if = {
+	limit = {
+		has_dlc = "La Resistance"
+	}
+	create_country_leader = {
+		name = "Niceto Alcalá-Zamora"
+		desc = "POLITICS_NICETO_ALCALA_ZAMORA_DESC"
+		picture = "GFX_portrait_SPR_niceto_alcala_zamora"
+		expire = "1965.1.1"
+		ideology = conservatism
+		traits = {
+			indecisive
+		}
+	}
+	
+	create_country_leader = {
+		name = "José Díaz"
+		desc = "POLITICS_JOSE_DIAZ_DESC"
+		picture = "portrait_spr_jose_diaz.dds"
+		expire = "1965.1.1"
+		ideology = stalinism
+		traits = {
+			veteran_communist
+		}
+	}
+	create_country_leader = {
+		name = "José Antonio Primo de Rivera"
+		desc = "POLITICS_JOSE_ANTONIO_PRIMO_DE_RIVERA_DESC"
+		picture = "GFX_portrait_SPA_jose_antonio_primo_de_rivera"
+		expire = "1965.1.1"
+		ideology = falangism
+		traits = {
+			sins_of_the_father
+		}
+	}
+	create_country_leader = {
+		name = "Manuel Fal Conde"
+		desc = "POLITICS_MANUEL_FAL_CONDE_DESC"
+		picture = "GFX_portrait_SPA_manuel_fal_conde"
+		expire = "1965.1.1"
+		ideology = despotism
+		traits = {
+			jefe
+		}
+	}
+}
+
+
+
+# Republican leaders - Democrats
+
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "La Resistance"
+		}
+	}
+	create_field_marshal = {
+		name = "José Asensio Torrado"
+		id = 1101
+		gfx = "GFX_portrait_SPR_jose_asensio_torrado"
+		traits = { organisational_leader defensive_doctrine }
+		skill = 2
+	    attack_skill = 1
+	    defense_skill = 3
+	    planning_skill = 2
+	    logistics_skill = 1
+	}
+}
+
+if = {
+	limit = {
+		has_dlc = "La Resistance"
+	}
+	create_corps_commander = {
+		name = "Vicente Rojo Lluch"
+		id = 1102
+		gfx = "GFX_portrait_SPR_vicente_rojo_lluch"
+		traits = { brilliant_strategist }
+		skill = 3
+		attack_skill = 3
+		defense_skill = 2
+		planning_skill = 2
+		logistics_skill = 3
+	}
+	
+	create_corps_commander = {
+		name = "José Miaja"
+		id = 1103
+		gfx = "GFX_portrait_SPR_jose_miaja"
+		traits = { infantry_leader }
+		skill = 2
+		attack_skill = 2
+		defense_skill = 2
+		planning_skill = 2
+		logistics_skill = 1
+	}
+	
+	create_corps_commander = {
+		name = "José Asensio Torrado"
+		id = 1101
+		gfx = "GFX_portrait_SPR_jose_asensio_torrado"
+		traits = { career_officer infantry_leader }
+		skill = 2
+	    attack_skill = 1
+	    defense_skill = 3
+	    planning_skill = 2
+	    logistics_skill = 1
+	}
+	
+	# Republican leaders - Stalinist Communist
+	
+	create_corps_commander = { # Becomes Field Marshal at SCW start
+		name = "Valentín González"
+		id = 1104
+		gfx = "GFX_portrait_SPR_valentin_gonzalez"
+		traits = { harsh_leader }
+		skill = 3
+	    attack_skill = 2
+	    defense_skill = 2
+	    planning_skill = 3
+	    logistics_skill = 3
+	}
+	
+	create_corps_commander = {
+		name = "Juan Modesto"
+		id = 1105
+		gfx = "GFX_portrait_SPR_juan_modesto"
+		traits = { trait_mountaineer }
+		skill = 2
+	    attack_skill = 1
+	    defense_skill = 1
+	    planning_skill = 2
+	    logistics_skill = 3
+	}
+	
+	create_corps_commander = {
+		name = "Antonio Cordón García"
+		id = 1106
+		gfx = "GFX_portrait_SPR_antonio_cordon_garcia"
+		traits = { infantry_leader }
+		skill = 2
+	    attack_skill = 2
+	    defense_skill = 1
+	    planning_skill = 3
+	    logistics_skill = 1
+	}
+	
+	# Republican leaders - Independent Communist
+	
+	create_corps_commander = {
+		name = "János Gálicz"
+		id = 1107
+		gfx = "GFX_portrait_SPR_janos_galicz"
+		traits = { trait_reckless }
+		skill = 1
+	    attack_skill = 1
+	    defense_skill = 1
+	    planning_skill = 1
+	    logistics_skill = 1
+	}
+	
+	# Nationalists leaders - Francoists
+	
+	create_field_marshal = {
+		name = "Francisco Franco"
+		id = 1108
+		gfx = "GFX_portrait_spain_francisco_franco"
+		traits = { organisational_leader logistics_wizard expert_delegator }
+		skill = 3
+	    attack_skill = 3
+	    defense_skill = 2
+	    planning_skill = 3
+	    logistics_skill = 2
+	}
+	
+	create_corps_commander = {
+		name = "Mohamed Meziane"
+		id = 1109
+		gfx = "GFX_portrait_SPA_mohamed_meziane"
+		traits = { harsh_leader career_officer trait_SPA_nationalist_sympathies }
+		skill = 4
+	    attack_skill = 5
+	    defense_skill = 2
+	    planning_skill = 3
+	    logistics_skill = 3
+	}
+	
+	create_corps_commander = { # Could fit for all 3 factions
+		name = "Gonzalo Queipo de Llano"
+		id = 1110
+		gfx = "GFX_portrait_SPA_gonzalo_queipo_de_llano"
+		traits = { infantry_officer trait_SPA_nationalist_sympathies }
+		skill = 3
+	    attack_skill = 3
+	    defense_skill = 3
+	    planning_skill = 2
+	    logistics_skill = 2
+	}
+	
+	# Nationalists leaders - Fascists
+	
+	create_field_marshal = {
+		name = "Emilio Mola"
+		id = 1111
+		gfx = "GFX_portrait_SPA_emilio_mola"
+		traits = { organisational_leader trait_cautious thorough_planner trait_SPA_nationalist_sympathies }
+		skill = 3
+	    attack_skill = 2
+	    defense_skill = 2
+	    planning_skill = 4
+	    logistics_skill = 2
+	}
+	
+	create_corps_commander = {
+		name = "Juan Yagüe"
+		id = 1112
+		gfx = "GFX_portrait_SPA_juan_yague"
+		traits = { brilliant_strategist trait_reckless trait_SPA_nationalist_sympathies }
+		skill = 3
+	    attack_skill = 4
+	    defense_skill = 2
+	    planning_skill = 2
+	    logistics_skill = 2
+	}
+	
+	create_corps_commander = {
+		name = "Agustín Muñoz Grandes"
+		id = 1113
+		gfx = "GFX_portrait_SPA_augustin_muynoz_grandes"
+		traits = { infantry_officer trait_SPA_nationalist_sympathies }
+		skill = 3
+	    attack_skill = 2
+	    defense_skill = 3
+	    planning_skill = 3
+	    logistics_skill = 2
+	}
+	
+	# Nationalists leaders - Carlists
+	
+	create_corps_commander = {
+		name = "José Enrique Varela"
+		id = 1114
+		gfx = "GFX_portrait_SPA_jose_enrique_varela"
+		traits = { organizer infantry_leader trait_SPA_nationalist_sympathies }
+		skill = 3
+	    attack_skill = 3
+	    defense_skill = 2
+	    planning_skill = 3
+	    logistics_skill = 2
+	}
+	
+	create_corps_commander = {
+		name = "Miguel Cabanellas"
+		id = 1115
+		gfx = "GFX_portrait_SPA_miguel_cabanellas"
+		traits = { cavalry_officer old_guard trait_SPA_nationalist_sympathies }
+		skill = 3
+	    attack_skill = 2
+	    defense_skill = 2
+	    planning_skill = 3
+	    logistics_skill = 3
+	}
+	
+	create_corps_commander = {
+		name = "José Millán Astray"
+		id = 1116
+		gfx = "GFX_portrait_SPA_jose_millan_astray"
+		traits = { war_hero trait_reckless trait_SPA_nationalist_sympathies }
+		skill = 3
+	    attack_skill = 3
+	    defense_skill = 3
+	    planning_skill = 2
+	    logistics_skill = 2
+	}
+	
+	# Naval Leaders - Republicans
+	
+	create_navy_leader = {
+		name = "Miguel Buiza Fernández-Palacios"
+		id = 1117
+		gfx = "GFX_portrait_SPR_miguel_buiza_fernandez_palacios"
+		traits = { craven }
+		skill = 1
+		attack_skill = 1
+		defense_skill = 1
+		maneuvering_skill = 1
+		coordination_skill = 1
+	}
+	
+	# Naval Leaders - Nationalists
+	
+	create_navy_leader = {
+		name = "Luis Carrero Blanco"
+		id = 1118
+		gfx = "GFX_portrait_SPA_luis_carrero_blanco"
+		traits = { seawolf trait_SPA_nationalist_sympathies }
+		skill = 2
+		attack_skill = 2
+		defense_skill = 2
+		maneuvering_skill = 2
+		coordination_skill = 1
+	}
+}
+
+
+### VARIANTS ###
+# 1936 Start #
+if = {
+	limit = { has_dlc = "Man the Guns" }
+	# Submarines #
+	create_equipment_variant = {
+		name = "B Class"				
+		type = nrm_ship_hull_submarine_1
+		parent_version = 0
+		name_group = SPR_SS_HISTORICAL
+		role_icon_index = 6
+		modules = {
+			fixed_ship_sub_hull_slot = nrm_submarine_hull_1
+			fixed_ship_engine_slot = nrm_submarine_engine_D0_16
+			fixed_ship_sonar_slot = nrm_submarine_sonar_1
+			fixed_ship_noise_slot = nrm_submarine_noise_0
+			fixed_ship_damagecontrol_slot = nrm_damagecontrol_1
+			fixed_ship_range_slot = nrm_range_submarine_1
+			fixed_ship_radar_slot = empty
+			fixed_ship_battery_slot = empty
+			fixed_ship_anti_air_slot = empty
+			fixed_ship_torpedo_slot = nrm_submarine_TRP_18_1_x2
+			fixed_ship_torpedo_2_slot = nrm_submarine_TRP_18_1_x2
+			custom_slot_1 = empty
+			custom_slot_2 = empty
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "C Class"				
+		type = nrm_ship_hull_submarine_1
+		name_group = SPR_SS_HISTORICAL
+		parent_version = 0
+		role_icon_index = 6
+		modules = {
+			fixed_ship_sub_hull_slot = nrm_submarine_hull_1
+			fixed_ship_engine_slot = nrm_submarine_engine_D0_20
+			fixed_ship_sonar_slot = nrm_submarine_sonar_1
+			fixed_ship_noise_slot = nrm_submarine_noise_0
+			fixed_ship_damagecontrol_slot = nrm_damagecontrol_1
+			fixed_ship_range_slot = nrm_range_submarine_2
+			fixed_ship_radar_slot = empty
+			fixed_ship_battery_slot = empty
+			fixed_ship_anti_air_slot = empty
+			fixed_ship_torpedo_slot = nrm_submarine_TRP_21_1_x4
+			fixed_ship_torpedo_2_slot = nrm_submarine_TRP_21_1_x2
+			custom_slot_1 = empty
+			custom_slot_2 = empty
+		}
+	}
+	# Destroyers #
+	create_equipment_variant = {
+		name = "Alsedo Class"				
+		type = nrm_ship_hull_destroyer_1
+		name_group = SPR_DD_HISTORICAL
+		parent_version = 0
+		role_icon_index = 2
+		modules = {
+			fixed_ship_hullform_slot = nrm_ship_hullform_destroyer_1
+			fixed_ship_engine_slot = nrm_destroyer_engine_S1_035
+			fixed_ship_sonar_slot = nrm_sonar_1
+			fixed_ship_battery_slot = nrm_destroyer_battery_4_1_x3
+			fixed_ship_damagecontrol_slot = nrm_damagecontrol_1
+			fixed_ship_range_slot = nrm_range_destroyer_1
+			fixed_ship_radar_slot = empty
+			fixed_ship_fire_control_system_slot = nrm_fire_control_2
+			fixed_ship_fire_control_system_aa_slot = empty
+			custom_slot_1 = nrm_support_destroyer_ML_1
+			custom_slot_2 = nrm_support_destroyer_ASW_1
+			custom_slot_3 = nrm_support_destroyer_TRP_21_C_1_x2
+			custom_slot_4 = nrm_support_destroyer_TRP_21_C_1_x2
+			custom_slot_5 = nrm_support_destroyer_AA_1
+			custom_slot_6 = empty
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "Churucca Class"	
+		type = nrm_ship_hull_destroyer_2
+		name_group = SPR_DD_HISTORICAL
+		parent_version = 0
+		role_icon_index = 1
+		modules = {
+			fixed_ship_hullform_slot = nrm_ship_hullform_destroyer_2
+			fixed_ship_engine_slot = nrm_destroyer_engine_S1_040
+			fixed_ship_sonar_slot = nrm_sonar_2
+			fixed_ship_battery_slot = nrm_destroyer_battery_5_1_x5
+			fixed_ship_damagecontrol_slot = nrm_damagecontrol_1
+			fixed_ship_range_slot = nrm_range_destroyer_2
+			fixed_ship_radar_slot = empty
+			fixed_ship_fire_control_system_slot = nrm_fire_control_3
+			fixed_ship_fire_control_system_aa_slot = empty
+			custom_slot_1 = nrm_support_destroyer_ASW_1
+			custom_slot_2 = empty
+			custom_slot_3 = nrm_support_destroyer_TRP_21_C_2_x3
+			custom_slot_4 = nrm_support_destroyer_TRP_21_C_2_x3
+			custom_slot_5 = nrm_support_destroyer_AA_1
+			custom_slot_6 = empty
+		}
+	}
+	create_equipment_variant = {
+		name = "Júpiter Class"					# minelayers
+		type = nrm_ship_hull_destroyer_2
+		name_group = SPR_DD_HISTORICAL
+		parent_version = 0
+		role_icon_index = 4
+		modules = {
+			fixed_ship_hullform_slot = nrm_ship_hullform_destroyer_2
+			fixed_ship_engine_slot = nrm_destroyer_engine_S1_010
+			fixed_ship_sonar_slot = empty
+			fixed_ship_battery_slot = nrm_destroyer_battery_5_1_x4
+			fixed_ship_damagecontrol_slot = nrm_damagecontrol_1
+			fixed_ship_range_slot = nrm_range_destroyer_1
+			fixed_ship_radar_slot = empty
+			fixed_ship_fire_control_system_slot = nrm_fire_control_2
+			fixed_ship_fire_control_system_aa_slot = empty
+			custom_slot_1 = nrm_support_destroyer_ML_1
+			custom_slot_2 = nrm_support_destroyer_ML_1
+			custom_slot_3 = nrm_support_destroyer_ML_1
+			custom_slot_4 = empty
+			custom_slot_5 = nrm_support_destroyer_AA_1
+			custom_slot_6 = empty
+		}
+	}
+	# Light Cruisers #
+	create_equipment_variant = {
+		name = "República Class"
+		type = nrm_ship_hull_cruiser_1
+		name_group = SPR_CL_HISTORICAL
+		parent_version = 0
+		role_icon_index = 2
+		modules = {
+			fixed_ship_hullform_slot = nrm_ship_hullform_cruiser_1
+			fixed_ship_engine_slot = nrm_cruiser_engine_S1_025
+			fixed_ship_armor_layout_slot = nrm_armour_layout_1
+			fixed_ship_armor_slot = nrm_cruiser_armour_02_1
+			fixed_ship_damagecontrol_slot = nrm_damagecontrol_1
+			fixed_ship_range_slot = nrm_range_cruiser_1
+			fixed_ship_radar_slot = empty
+			fixed_ship_fire_control_system_slot = nrm_fire_control_2
+			fixed_ship_fire_control_system_aa_slot = empty
+			fixed_ship_battery_slot = nrm_cruiser_battery_6_1_x09
+			fixed_ship_tertiary_slot = empty
+			custom_slot_1 = empty
+			custom_slot_2 = empty
+			custom_slot_3 = nrm_support_cruiser_TRP_21_1_x04
+			custom_slot_4 = nrm_support_cruiser_AA_1
+			custom_slot_5 = empty
+			custom_slot_6 = empty
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "Méndez Núñes Class"
+		type = nrm_ship_hull_cruiser_1
+		name_group = SPR_CL_HISTORICAL
+		parent_version = 0
+		role_icon_index = 2
+		modules = {
+			fixed_ship_hullform_slot = nrm_ship_hullform_cruiser_1
+			fixed_ship_engine_slot = nrm_cruiser_engine_S1_045
+			fixed_ship_armor_layout_slot = nrm_armour_layout_1
+			fixed_ship_armor_slot = nrm_cruiser_armour_02h_1
+			fixed_ship_damagecontrol_slot = nrm_damagecontrol_1
+			fixed_ship_range_slot = nrm_range_cruiser_2
+			fixed_ship_radar_slot = empty
+			fixed_ship_fire_control_system_slot = nrm_fire_control_3
+			fixed_ship_fire_control_system_aa_slot = empty
+			fixed_ship_battery_slot = nrm_cruiser_battery_6_1_x06
+			fixed_ship_tertiary_slot = empty
+			custom_slot_1 = empty
+			custom_slot_2 = empty
+			custom_slot_3 = nrm_support_cruiser_TRP_21_2_x06
+			custom_slot_4 = nrm_support_cruiser_TRP_21_2_x06
+			custom_slot_5 = nrm_support_cruiser_AA_1
+			custom_slot_6 = empty
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "Príncipe Alfonso Class"
+		type = nrm_ship_hull_cruiser_2
+		name_group = SPR_CL_HISTORICAL
+		parent_version = 0
+		role_icon_index = 2
+		modules = {
+			fixed_ship_hullform_slot = nrm_ship_hullform_cruiser_2
+			fixed_ship_engine_slot = nrm_cruiser_engine_S1_080
+			fixed_ship_armor_layout_slot = nrm_armour_layout_1
+			fixed_ship_armor_slot = nrm_cruiser_armour_02h_2
+			fixed_ship_damagecontrol_slot = nrm_damagecontrol_1
+			fixed_ship_range_slot = nrm_range_cruiser_2
+			fixed_ship_radar_slot = empty
+			fixed_ship_fire_control_system_slot = nrm_fire_control_3
+			fixed_ship_fire_control_system_aa_slot = empty
+			fixed_ship_battery_slot = nrm_cruiser_battery_6_1_x08
+			fixed_ship_tertiary_slot = nrm_cruiser_tertiary_HA_4_1_x04
+			custom_slot_1 = empty
+			custom_slot_2 = empty
+			custom_slot_3 = nrm_support_cruiser_TRP_21_2_x06
+			custom_slot_4 = nrm_support_cruiser_TRP_21_2_x06
+			custom_slot_5 = nrm_support_cruiser_AA_1
+			custom_slot_6 = empty
+		}
+	}
+	# Heavy Cruisers #
+	create_equipment_variant = {
+		name = "Canarias Class"				
+		type = nrm_ship_hull_cruiser_2
+		name_group = SPR_CA_HISTORICAL
+		parent_version = 0
+		role_icon_index = 1
+		modules = {
+			fixed_ship_hullform_slot = nrm_ship_hullform_cruiser_2
+			fixed_ship_engine_slot = nrm_cruiser_engine_S1_090
+			fixed_ship_armor_layout_slot = nrm_armour_layout_2
+			fixed_ship_armor_slot = nrm_cruiser_armour_02_2
+			fixed_ship_damagecontrol_slot = nrm_damagecontrol_2
+			fixed_ship_range_slot = nrm_range_cruiser_2
+			fixed_ship_radar_slot = empty
+			fixed_ship_fire_control_system_slot = nrm_fire_control_3
+			fixed_ship_fire_control_system_aa_slot = empty
+			fixed_ship_battery_slot = nrm_cruiser_battery_8_1_x08
+			fixed_ship_tertiary_slot = nrm_cruiser_tertiary_HA_5_1_x04
+			custom_slot_1 = nrm_support_cruiser_ASW_1
+			custom_slot_2 = nrm_support_cruiser_FP_1
+			custom_slot_3 = nrm_support_cruiser_TRP_21_2_x06
+			custom_slot_4 = nrm_support_cruiser_TRP_21_2_x06
+			custom_slot_5 = nrm_support_cruiser_AA_1
+			custom_slot_6 = empty
+		}
+	}
+	# Battleships #
+	create_equipment_variant = {
+		name = "España Class"	
+		type = nrm_ship_hull_capital_1
+		name_group = SPR_BB_HISTORICAL
+		parent_version = 0
+		role_icon_index = 1
+		modules = {
+			fixed_ship_hullform_slot = nrm_ship_hullform_capital_1
+			fixed_ship_engine_slot = nrm_capital_engine_S1_015
+			fixed_ship_armor_layout_slot = nrm_armour_layout_BB_1
+			fixed_ship_armor_slot = nrm_capital_armour_09_1
+			fixed_ship_damagecontrol_slot = nrm_damagecontrol_1
+			fixed_ship_range_slot = nrm_range_capital_1
+			fixed_ship_radar_slot = empty
+			fixed_ship_fire_control_system_slot = nrm_fire_control_3
+			fixed_ship_fire_control_system_aa_slot = empty
+			fixed_ship_battery_slot = nrm_capital_battery_12_1_2x4
+			fixed_ship_secondary_slot = nrm_capital_secondary_SB_5_1_x20
+			fixed_ship_tertiary_slot = empty
+			custom_slot_1 = empty
+			custom_slot_2 = empty
+			custom_slot_3 = empty
+			custom_slot_4 = nrm_support_capital_AA_1
+			custom_slot_5 = empty
+			custom_slot_6 = empty
+		}
+	}
+}

@@ -1,0 +1,145 @@
+﻿capital = 289
+set_research_slots = 1
+add_ideas = agrarian_society
+add_ideas = hot_nation
+oob = "SIA_1936"
+if = {
+	limit = { has_dlc = "Man the Guns" }
+		set_naval_oob = "SIA_1936_naval_mtg"
+}
+
+# Starting tech
+set_technology = {
+	infantry_weapons = 1
+	heavy_infantry_weapons = 1
+	artillery_1 = 1
+	anti_air_1 = 1
+	early_fighter = 1
+	CAS1 = 1
+	tech_support = 1
+}
+if = {
+	limit = { has_dlc = "Man the Guns" }
+	set_technology = {
+		basic_naval_mines = 1
+		early_ship_hull_light = 1
+		early_ship_hull_cruiser = 1
+		early_ship_hull_submarine = 1
+		basic_battery = 1
+		basic_medium_battery_2 = 1
+		basic_torpedo = 1
+		improved_ship_torpedo_launcher = 1
+		sonar = 1
+		early_engine = 1
+		basic_depth_charges = 1
+		coastal_defense_ships = 1
+	}
+}
+set_convoys = 15
+
+set_politics = {
+
+	
+	ruling_party = neutrality
+	last_election = "1936.1.1"
+	election_frequency = 48
+	elections_allowed = no
+}
+set_popularities = {
+	fascism = 20
+	neutrality = 80
+}
+
+create_country_leader = {
+	name = "Phraya Phahon"
+	desc = "POLITICS_PHRAYA_PHAHON_DESC"
+	picture = "Portrait_Siam_Phraya_Phahon.dds"
+	expire = "1965.1.1"
+	ideology = despotism
+	traits = {
+		#
+	}
+}
+
+### VARIANTS ###
+# 1936 Start #
+if = {
+	limit = { not = { has_dlc = "Man the Guns" } }
+	### Ship Variants ###
+}
+if = {
+	limit = { has_dlc = "Man the Guns" }
+	# Destroyers #
+	create_equipment_variant = {
+		name = "Phra Ruang Class"				
+		type = nrm_ship_hull_destroyer_1
+		name_group = SIA_DD_HISTORICAL
+		parent_version = 0
+		role_icon_index = 2
+		modules = {
+			fixed_ship_hullform_slot = nrm_ship_hullform_destroyer_1
+			fixed_ship_engine_slot = nrm_destroyer_engine_S1_025
+			fixed_ship_sonar_slot = nrm_sonar_1
+			fixed_ship_battery_slot = nrm_destroyer_battery_4_1_x3
+			fixed_ship_damagecontrol_slot = nrm_damagecontrol_1
+			fixed_ship_range_slot = nrm_range_destroyer_1
+			fixed_ship_radar_slot = empty
+			fixed_ship_fire_control_system_slot = nrm_fire_control_2
+			fixed_ship_fire_control_system_aa_slot = empty
+			custom_slot_1 = empty
+			custom_slot_2 = empty
+			custom_slot_3 = nrm_support_destroyer_TRP_21_C_1_x2
+			custom_slot_4 = nrm_support_destroyer_TRP_21_C_1_x2
+			custom_slot_5 = empty
+			custom_slot_6 = empty
+		}
+	}
+	create_equipment_variant = {
+		name = "Vilun Class"				
+		type = nrm_ship_hull_submarine_small_1
+		name_group = SIA_SS_HISTORICAL
+		parent_version = 0
+		role_icon_index = 6
+		modules = {
+			fixed_ship_sub_hull_slot = nrm_submarine_hull_1
+			fixed_ship_engine_slot = nrm_submarine_engine_D0_10
+			fixed_ship_sonar_slot = nrm_submarine_sonar_1
+			fixed_ship_noise_slot = nrm_submarine_noise_0
+			fixed_ship_damagecontrol_slot = nrm_damagecontrol_1
+			fixed_ship_range_slot = nrm_range_submarine_small_2
+			fixed_ship_radar_slot = empty
+			fixed_ship_battery_slot = empty
+			fixed_ship_anti_air_slot = empty
+			fixed_ship_torpedo_slot = nrm_submarine_TRP_21_1_x4
+			fixed_ship_torpedo_2_slot = nrm_submarine_TRP_21_1_x1
+			custom_slot_1 = empty
+		}
+	}
+	# Cruisers #
+	create_equipment_variant = {
+		name = "Sri Ayuthia Class"
+		type = nrm_ship_hull_cruiser_coastal
+		name_group = SIA_CA_HISTORICAL
+		parent_version = 0
+		role_icon_index = 8
+		modules = {
+			fixed_ship_hullform_slot = nrm_ship_hullform_cruiser_1
+			fixed_ship_engine_slot = nrm_cruiser_engine_S1_005
+			fixed_ship_armor_layout_slot = nrm_armour_layout_1
+			fixed_ship_armor_slot = nrm_cruiser_armour_02h_1
+			fixed_ship_damagecontrol_slot = nrm_damagecontrol_1
+			fixed_ship_range_slot = nrm_range_cruiser_2
+			fixed_ship_radar_slot = empty
+			fixed_ship_fire_control_system_slot = nrm_fire_control_3
+			fixed_ship_fire_control_system_aa_slot = empty
+			fixed_ship_battery_slot = nrm_cruiser_battery_8_1_x04
+			fixed_ship_tertiary_slot = nrm_cruiser_tertiary_HA_3_1_x04
+			custom_slot_1 = empty
+			custom_slot_2 = empty
+			custom_slot_3 = empty
+			custom_slot_4 = nrm_support_cruiser_AA_1
+			custom_slot_5 = empty
+			custom_slot_6 = empty
+		}
+	}
+}

@@ -1,0 +1,323 @@
+buildings = {
+
+	# show_on_map:
+	#    if provincial = yes, then show_on_map = X is amount per each province
+	#    if provincial = no, then show_on_map = X is amount per state
+
+
+	infrastructure = {
+		base_cost = 1000
+		per_level_extra_cost = 1000
+		icon_frame = 3
+		infrastructure = yes
+		max_level = 10
+		value = 5 ### Used to be 1
+		damage_factor = 5 #### To make sure infra is still easy to bomb
+		show_modifier = yes
+		max_fuel_building = 0.75 #k
+		infrastructure_construction_effect = yes
+	}
+
+	arms_factory = {
+		show_on_map = 6
+		base_cost = 18000
+		per_level_extra_cost = -200
+		base_cost_conversion = 5000
+		military_production = 1
+		icon_frame = 2
+		country_resource_cost_coal = 1
+		max_level = 50
+		shares_slots = yes
+		value = 8
+		infrastructure_construction_effect = yes
+	}
+
+	industrial_complex = {
+		show_on_map = 6
+		base_cost = 20000
+		per_level_extra_cost = -200
+		base_cost_conversion = 10000
+		general_production = 1
+		icon_frame = 1
+		country_resource_cost_coal = 2
+		country_resource_cost_steel = 1			
+		max_level = 50
+		shares_slots = yes
+		value = 5
+		infrastructure_construction_effect = yes
+	}
+
+	air_base = {
+		show_on_map = 1
+		base_cost = 500	
+		per_level_extra_cost = 250
+		icon_frame = 5
+		air_base = yes
+		max_level = 20
+		value = 1
+		damage_factor = 0.5	
+		infrastructure_construction_effect = yes
+	}
+
+	naval_base = {
+		show_on_map = 1
+		show_on_map_meshes = 3
+		always_shown = yes
+		base_cost = 4000
+		provincial = yes
+		only_costal = yes
+		is_port = yes
+		icon_frame = 6
+		max_level = 20
+		value = 1
+		damage_factor = 0.25
+		infrastructure_construction_effect = yes
+	}
+
+	bunker = {
+		show_on_map = 1
+		has_destroyed_mesh = yes
+		base_cost = 500
+		per_level_extra_cost = 1000
+		provincial = yes
+		disabled_in_dmz = yes
+		icon_frame = 7
+		land_fort = 1
+		max_level = 10
+		damage_factor = 0.25
+		value = 1
+	}
+
+	coastal_bunker = {
+		show_on_map = 1
+		has_destroyed_mesh = yes
+		base_cost = 1000
+		per_level_extra_cost = 1000
+		provincial = yes
+		disabled_in_dmz = yes
+		only_costal = yes
+		icon_frame = 8
+		naval_fort = 1
+		max_level = 6
+		damage_factor = 0.25
+		value = 1
+	}
+
+	dockyard = {
+		show_on_map = 1
+		show_on_map_meshes = 3
+		base_cost = 18000
+		per_level_extra_cost = -200
+		only_costal = yes
+		naval_production = 1
+		icon_frame = 4
+		country_resource_cost_coal = 1
+		only_costal = yes
+		max_level = 50
+		shares_slots = yes
+		value = 5
+		infrastructure_construction_effect = yes
+	}
+
+	
+	anti_air_building = {
+		show_on_map = 3
+		base_cost = 1500
+		icon_frame = 9
+		anti_air = yes
+		disabled_in_dmz = yes
+		air_defence = 1
+		max_level = 5 # This is the max unlock level
+		damage_factor = 0.1
+		value = 1
+		infrastructure_construction_effect = yes
+	}
+
+	synthetic_refinery = {
+		show_on_map = 1
+		base_cost = 24000
+		per_level_extra_cost = -500
+		icon_frame = 10
+		#local_resources_oil = 2 # May use local_resources_ + any resource name
+		country_resource_cost_coal = 100				   
+		#local_resources_rubber = 4 # May use local_resources_ + any resource name
+		refinery = yes
+		max_level = 50 # This is the max unlock level
+		shares_slots = yes
+		value = 5
+		infrastructure_construction_effect = yes
+		damage_factor = 1		
+		show_modifier = yes
+		fuel_gain_from_states = 6.0 #per hour
+	}
+	
+	synthetic_rubber_refinery = {
+		show_on_map = 1
+		base_cost = 4000 #### 1 CIV buys 80 rubber. At maximum (US efficiency), 1 refinery makes 20 rubber, which is supposed to be more efficient then natural rubber
+		per_level_extra_cost = -100
+		icon_frame = 14
+		local_resources_rubber = 3
+		country_resource_cost_coal = 100
+		country_resource_cost_oil = 1
+		refinery = yes
+		#max_level = 0 # max: 5
+		max_level = 50 # This is the max unlock level
+		shares_slots = yes
+		value = 5
+		infrastructure_construction_effect = yes
+		damage_factor = 1
+	}
+	
+	fuel_silo = {
+		show_on_map = 1
+		base_cost = 12000
+		icon_frame = 19
+		#max_level = 1
+		shares_slots = yes
+		value = 5
+		infrastructure_construction_effect = yes
+		fuel_silo = yes
+		max_level = 4
+		show_modifier = yes
+		max_fuel_building = 250.0 #k
+		damage_factor = 0.2
+	}
+	
+	steel_refinery = {
+		show_on_map = 1
+		base_cost = 25000 # 1 CIV buys 30 Steel, this factory makes 50 => Should cost slightly more than 1 CIV
+		per_level_extra_cost = -500
+		icon_frame = 15
+		local_resources_steel = 50
+		country_resource_cost_iron = 60 ### Should be 80-100, but reduce for now to take into account recycled steel
+		country_resource_cost_coal = 50
+		country_resource_cost_tungsten = 1
+		refinery = yes
+		#max_level = 0 # max: 5
+		max_level = 50 # This is the max unlock level
+		shares_slots = yes
+		value = 5
+		infrastructure_construction_effect = yes
+	}
+	
+	
+	
+	aluminium_refinery = {
+		show_on_map = 1
+		base_cost = 4000 ###1 CIV buys 200 aluminium; this building produce 50
+		per_level_extra_cost = -100
+		icon_frame = 16
+		local_resources_aluminium = 50
+		country_resource_cost_bauxite = 75 ### Should be 100, -25 for recycled aluminum.
+		country_resource_cost_coal = 50
+		refinery = yes
+		#max_level = 0 # max: 5
+		max_level = 50 # This is the max unlock level
+		shares_slots = yes
+		value = 5
+		infrastructure_construction_effect = yes
+	}
+	
+	
+	
+	hydro_aluminium_refinery = {
+		show_on_map = 1
+		base_cost = 6000 
+		per_level_extra_cost = -100
+		icon_frame = 18
+		local_resources_aluminium = 50
+		country_resource_cost_bauxite = 75
+		refinery = yes
+		#max_level = 0 # max: 5
+		max_level = 50 # This is the max unlock level
+		shares_slots = yes
+		value = 5
+		infrastructure_construction_effect = yes
+	}
+	
+	
+
+	radar_station = {
+		show_on_map = 1
+		base_cost = 1150
+		icon_frame = 11
+		radar = yes
+		#max_level = 0 # max: 5
+		max_level = 6 # This is the max unlock level
+		damage_factor = 0.25
+		value = 4
+		infrastructure_construction_effect = yes
+	}
+
+	rocket_site = {
+		show_on_map = 1
+		base_cost = 3200
+		icon_frame = 12
+		rocket_production = 5
+		rocket_launch_capacity = 1
+		max_level = 5
+		shares_slots = yes
+		value = 1
+		infrastructure_construction_effect = yes
+	}
+
+	nuclear_reactor = {
+		show_on_map = 1
+		base_cost = 60000
+		icon_frame = 13
+		nuclear_reactor = yes
+		nuclear_production_factor = 1
+		max_level = 1 # This is the max unlock level
+		country_resource_cost_tungsten = 100
+		shares_slots = yes
+		value = 10
+		infrastructure_construction_effect = yes
+	}
+	
+	
+	
+	steel_refinery_inactive = {
+		show_on_map = 0
+		base_cost = 200000
+		icon_frame = 15
+		refinery = yes
+		max_level = 50 # This is the max unlock level
+		shares_slots = yes
+		value = 5
+		infrastructure_construction_effect = yes
+	}
+	
+	aluminium_refinery_inactive = {
+		show_on_map = 0
+		base_cost = 200000
+		icon_frame = 16
+		refinery = yes
+		max_level = 50 # This is the max unlock level
+		shares_slots = yes
+		value = 5
+		infrastructure_construction_effect = yes
+	}
+	
+	synthetic_rubber_refinery_inactive = {
+		show_on_map = 0
+		base_cost = 200000
+		icon_frame = 14
+		refinery = yes
+		max_level = 50 # This is the max unlock level
+		shares_slots = yes
+		value = 5
+		infrastructure_construction_effect = yes
+	}
+	
+	synthetic_refinery_inactive = {
+		show_on_map = 0
+		base_cost = 200000
+		icon_frame = 10
+		refinery = yes
+		max_level = 50 # This is the max unlock level
+		shares_slots = yes
+		value = 5
+		infrastructure_construction_effect = yes
+	}
+	
+}

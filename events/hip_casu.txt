@@ -1,0 +1,114 @@
+﻿### Casualties events - will add national spirit decreasing war support and stability when taking too much loses. Will be used for peace events.
+
+
+add_namespace = hip_casu
+
+country_event = {				# Casualties events							
+	id = hip_casu.1
+	title = hip_casu.1.title
+	desc = hip_casu.1.desc
+	picture = GFX_report_event_worker_protests
+
+	
+	trigger = {
+		has_war = yes
+		NOT = { has_civil_war = yes }
+		NOT = { 
+			has_idea = heavy_casualties
+			has_idea = terrible_casualties
+			has_idea = terrific_casualties			
+		}		
+		NOT = {
+			tag = SOV
+			tag = CHI
+			tag = PRC
+			tag = GER
+			tag = JAP
+		}
+		casualties > 1000000
+	}
+	
+	mean_time_to_happen = {
+		days = 10
+	}
+
+		
+	option = {
+		name = hip_casu.1.a
+		ai_chance = { factor = 100 }
+		add_ideas = heavy_casualties
+	}
+}
+
+
+country_event = {				# Casualties events							
+	id = hip_casu.2
+	title = hip_casu.2.title
+	desc = hip_casu.2.desc
+	picture = GFX_report_event_worker_protests
+
+	
+	trigger = {
+		has_war = yes
+		NOT = { has_civil_war = yes }		
+		NOT = { 
+			has_idea = terrible_casualties
+			has_idea = terrific_casualties			
+		}		
+		NOT = {
+			tag = SOV
+			tag = CHI
+			tag = PRC
+			tag = GER
+			tag = JAP
+		}
+		casualties > 3000000
+	}
+	
+	mean_time_to_happen = {
+		days = 10
+	}
+
+		
+	option = {
+		name = hip_casu.2.a
+		ai_chance = { factor = 100 }
+		remove_ideas = heavy_casualties
+		add_ideas = terrible_casualties
+	}
+}
+
+country_event = {				# Casualties events							
+	id = hip_casu.3
+	title = hip_casu.3.title
+	desc = hip_casu.3.desc
+	picture = GFX_report_event_worker_protests
+	
+	trigger = {
+		has_war = yes
+		NOT = { has_civil_war = yes }		
+		NOT = { 
+			has_idea = terrific_casualties			
+		}
+		NOT = {
+			tag = SOV
+			tag = CHI
+			tag = PRC
+			tag = GER
+			tag = JAP
+		}
+		casualties > 6000000
+	}
+	
+	mean_time_to_happen = {
+		days = 10
+	}
+
+		
+	option = {
+		name = hip_casu.3.a
+		ai_chance = { factor = 100 }
+		remove_ideas = terrible_casualties
+		add_ideas = terrific_casualties
+	}
+}

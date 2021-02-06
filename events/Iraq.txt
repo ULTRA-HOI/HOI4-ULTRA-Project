@@ -1,0 +1,103 @@
+﻿add_namespace = iraq
+
+country_event = {
+	id = iraq.1
+	title = iraq.1.t 
+	desc = iraq.1.d
+	
+	picture = GFX_news_event_generic_rally.dds
+	
+	trigger = {
+		IRQ = {
+			exists = yes
+		}
+		
+		ENG = {
+			has_war_with = ITA
+			has_war_with = GER
+		}
+		
+		OR = {
+			FRA = { is_in_faction_with = GER}
+			FRA = { has_capitulated = yes}
+			FRA = {exists = no}
+		}
+		
+		date > 1941.1.1
+		
+		any_country = {
+			OR = {
+				original_tag = ITA 
+				is_subject_of = ITA
+			}
+			has_full_control_of_state = 450
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 300
+	}
+	
+	fire_only_once = yes
+	
+	option = { # pro axis government
+		name = iraq.1.a
+		
+		
+		
+		
+		IRQ = {
+			set_popularities = {
+				fascism = 70
+				neutrality = 30
+				
+			}
+			set_politics = { ruling_party = fascism elections_allowed = no }
+			
+		}
+		GER = {
+			puppet = IRQ
+		}
+		
+		news_event = {id = iraq.2 days = 1}
+		country_event = {id = iraq.3 days = 1}
+		
+		
+	}
+	
+	
+}
+
+news_event = {
+	id = iraq.2
+	title = iraq.2.t 
+	desc = iraq.2.d
+	
+	picture = GFX_news_event_desertion_poster.dds
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = iraq.2.a
+	}
+}
+
+country_event = {
+	id = iraq.3
+	title = iraq.3.t 
+	desc = iraq.3.d
+	
+	picture = GFX_news_event_desertion_poster.dds
+	
+	is_triggered_only = yes
+	hidden = yes
+	fire_only_once = yes
+	
+	option = {
+		name = iraq.2.a
+		GER = {
+			add_to_faction = IRQ
+		}
+		
+	}
+}

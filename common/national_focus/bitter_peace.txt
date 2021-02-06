@@ -1,0 +1,546 @@
+focus_tree = {
+	id = bitter_peace_focus
+
+	country = {
+		factor = 0
+		
+		modifier = {
+			add = 5
+			tag = SOV
+		}
+		
+		
+	}
+	
+	default = no
+	
+	focus = {
+		id = sov_emergency_demobilization
+		icon = GFX_goal_generic_war_with_comintern
+		x = 9
+		y = 0
+		cost = 10
+		ai_will_do = {
+			factor = 12
+		}
+		
+		completion_reward = {
+		
+			add_ideas = limited_conscription
+			add_ideas = closed_economy
+			add_ideas = civilian_economy
+			add_political_power = 150
+			add_stability = 0.3
+			remove_ideas = SOV_starvation
+		}
+	}
+	
+	focus = {
+		id = sov_keep_communism
+		icon = GFX_goal_support_communism
+		prerequisite = {focus = sov_emergency_demobilization}
+		mutually_exclusive = {focus = sov_reform_communism}
+		x = -7
+		y = 1
+		relative_position_id = sov_emergency_demobilization
+		
+		ai_will_do = {
+			factor = 6
+		}
+		cost = 10
+		
+		completion_reward = {
+			add_political_power = 100
+			add_stability = -0.3
+			add_war_support = 0.3
+			add_popularity = {
+				ideology = communism
+				popularity = 0.2
+			}
+			retire_country_leader = yes
+			create_country_leader = {
+				name = "Mikhail Kalinine"
+				picture = "GFX_SOV_Kalinine"
+				expire = "1949.1.18"
+				ideology = stalinism
+			}
+		}
+	}
+	
+	focus = {
+		id = sov_isolationism
+		icon = GFX_goal_generic_defence
+		prerequisite = {focus = sov_keep_communism}
+		mutually_exclusive = {focus = sov_internationalism}
+		x = -2
+		y = 1
+		relative_position_id = sov_keep_communism
+		
+		ai_will_do = {
+			factor = 6
+		}
+		cost = 10
+		
+		completion_reward = {
+			add_popularity = {
+				ideology = communism
+				popularity = 0.2
+			}
+			add_political_power = 200
+			add_stability = 0.3
+			add_war_support = -0.5
+			add_ideas = neutrality_idea
+		}
+	}
+	
+	focus = {
+		id = sov_build_the_wall
+		icon = GFX_goal_generic_fortify_city
+		prerequisite = { focus = sov_isolationism}
+		x = 0
+		y = 1
+		relative_position_id = sov_isolationism
+		
+		ai_will_do = {
+			factor = 6
+		}
+		cost = 10
+		
+		completion_reward = {
+			add_ideas = sov_build_the_wall
+		}
+		
+	}
+	
+	focus = {
+		id = sov_internationalism
+		icon = GFX_focus_ger_great_red_menace
+		prerequisite = {focus = sov_keep_communism}
+		mutually_exclusive = {focus = sov_isolationism}
+		x = 2
+		y = 1
+		relative_position_id = sov_keep_communism
+		
+		ai_will_do = {
+			factor = 6
+		}
+		cost = 10
+		
+		completion_reward = {
+			add_popularity = {
+				ideology = communism
+				popularity = 0.2
+			}
+			add_political_power = 100
+			add_stability = 0.1
+			add_war_support = 0.3
+		}
+	}
+	
+	focus = {
+		id = sov_revenge
+		icon = GFX_goal_generic_forceful_treaty
+		prerequisite = {focus = sov_internationalism}
+		x = 0
+		y = 1
+		relative_position_id = sov_internationalism
+		
+		ai_will_do = {
+			factor = 12
+		}
+		cost = 10
+		
+		completion_reward = {
+			add_ideas = sov_revanchism
+		}
+	}
+	
+	focus = {
+		id = sov_reform_communism
+		icon = GFX_goal_anschluss
+		prerequisite = {focus = sov_emergency_demobilization}
+		mutually_exclusive = {focus = sov_keep_communism}
+		x = 7
+		y = 1
+		relative_position_id = sov_emergency_demobilization
+		
+		ai_will_do = {
+			factor = 12
+		}
+		cost = 10
+		
+		completion_reward = {
+			set_politics = {
+				ruling_party = democratic
+			}
+			set_popularities = {
+				democratic = 30
+				fascism = 20
+				communism = 30
+				neutrality = 20
+			}
+			add_stability = 0.2
+			dismantle_faction = yes
+			country_event = {id = hip_sov.8}
+			set_cosmetic_tag = SOV_RUSSIA
+		}
+	}
+	
+	focus = {
+		id = sov_autoritarian
+		icon = GFX_goal_demand_sudetenland
+		prerequisite = {focus = sov_reform_communism}
+		mutually_exclusive = {focus = sov_democratic}
+		x = 2
+		y = 1
+		relative_position_id = sov_reform_communism
+		
+		available = {
+			has_war = no
+		}
+		
+		ai_will_do = {
+			factor = 12
+		}
+		cost = 10
+		
+		completion_reward = {
+			set_politics = {
+	
+				ruling_party = neutrality
+			}
+			set_popularities = {
+				democratic = 20
+				fascism = 20
+				communism = 30
+				neutrality = 30
+			}
+		}
+	}
+	
+	
+	
+	focus = {
+		id = sov_ger_alliance
+		icon = GFX_focus_chi_mission_to_germany
+		prerequisite = {focus = sov_autoritarian}
+		mutually_exclusive = {focus = sov_kaiser}
+		x = 1
+		y = 1
+		relative_position_id = sov_autoritarian
+		
+		available = {
+			has_war = no
+			GER = {
+				has_government = fascism
+			}
+		}
+		
+		ai_will_do = {
+			factor = 12
+		}
+		cost = 10
+		
+		completion_reward = {
+			set_politics = {
+				ruling_party = fascism
+			}
+			set_popularities = {
+				democratic = 20
+				fascism = 40
+				communism = 10
+				neutrality = 30
+			}
+			GER = {
+				country_event = { id = hip_sov.11 }
+			}
+		}			
+	}
+	
+	focus = {
+		id = sov_democratic
+		icon = GFX_goal_support_democracy
+		prerequisite = {focus = sov_reform_communism}
+		mutually_exclusive = {focus = sov_autoritarian}
+		x = -2
+		y = 1
+		relative_position_id = sov_reform_communism
+		
+		ai_will_do = {
+			factor = 12
+		}
+		cost = 10
+		
+		available = {
+			has_war = no
+		}
+		
+		completion_reward = {
+			set_politics = {
+				ruling_party = democratic
+			}
+			set_popularities = {
+				democratic = 40
+				fascism = 20
+				communism = 20
+				neutrality = 20
+			}
+		}
+	}
+	
+	focus = {
+		id = sov_mission_to_the_us
+		icon = GFX_focus_chi_mission_to_the_us
+		prerequisite = {focus = sov_democratic}
+		x = 0
+		y = 1
+		relative_position_id = sov_democratic
+		
+		ai_will_do = {
+			factor = 12
+		}
+		cost = 10
+		
+		available = {
+			has_war = no
+			USA = {
+				has_war_with = GER
+			}
+		}
+		
+		completion_reward = {
+			USA = {
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = CHI_mission_to_the_us
+				}
+				add_ai_strategy = {
+					type = alliance
+					id = ROOT
+					value = 100
+				}
+				add_ai_strategy = {
+					type = protect
+					id = ROOT
+					value = 100
+				}
+				add_ai_strategy = {
+					type = send_volunteers_desire
+					id = ROOT
+					value = 100
+				}
+				add_ai_strategy = {
+					type = support
+					id = ROOT
+					value = 100
+				}
+			}
+		}
+		
+	}
+	
+	focus = {
+		id = sov_state_of_economy
+		icon = GFX_goal_generic_construct_civ_factory
+		prerequisite = {focus = sov_emergency_demobilization}
+		x = 0
+		y = 2
+		relative_position_id = sov_emergency_demobilization
+		
+		available = {
+			OR = {
+				has_completed_focus = sov_keep_communism
+				has_completed_focus = sov_reform_communism
+			}
+			has_war = no
+		}
+		
+		ai_will_do = {
+			factor = 12
+		}
+		cost = 10
+		
+		completion_reward = {
+			add_ideas = sov_demilitarization
+		}
+		
+		
+	}
+	
+	focus = {
+		id = sov_new_ressources
+		icon = GFX_goal_generic_construction2
+		prerequisite = { focus = sov_state_of_economy}
+		x = -2
+		y = 1
+		relative_position_id = sov_state_of_economy
+		available = {
+			num_of_civilian_factories > 150
+			has_war = no
+			controls_state = 569
+			controls_state = 566
+			controls_state = 577
+			controls_state = 651
+		}
+	
+	
+		ai_will_do = {
+				factor = 12
+			}
+		cost = 20
+	
+		completion_reward = {
+			add_resource = {
+				type = coal
+				amount = 250
+				state = 569
+			}
+			add_resource = {
+				type = coal
+				amount = 125
+				state = 566
+			}
+		
+			add_resource = {
+				type = oil
+				amount = 35
+				state = 577
+			}
+			add_resource = {
+				type = oil
+				amount = 52
+				state = 651
+			}
+		}
+	}
+	
+	focus = {
+		id = sov_synthetic_rubber
+		icon = GFX_focus_generic_rubber
+		prerequisite = { focus = sov_state_of_economy}
+		x = 2
+		y = 1
+		relative_position_id = sov_state_of_economy
+		available = {
+			num_of_civilian_factories > 150
+			has_war = no
+		}
+		ai_will_do = {
+				factor = 12
+			}
+		cost = 10
+		
+		completion_reward = {
+			653 = {
+				add_building_construction = {
+					type = synthetic_rubber_refinery
+					level = 3
+					instant_build = yes
+				}
+			}
+			add_tech_bonus = {
+				bonus = 0.5
+				uses = 1
+				category = synth_resources
+			}
+		}
+	}
+	
+	focus = {
+		id = sov_new_facilities
+		icon = GFX_focus_research
+		prerequisite = { focus = sov_synthetic_rubber }
+		prerequisite = { focus = sov_new_ressources }
+		x = -2
+		y = 1
+		relative_position_id = sov_synthetic_rubber
+		available = {
+			num_of_civilian_factories > 150
+			has_war = no
+		}
+		ai_will_do = {
+				factor = 12
+			}
+		cost = 10
+		completion_reward = {
+			add_research_slot = 1
+		}
+	}
+	
+	focus = {
+		id = sov_prepare_next_war
+		icon = GFX_goal_generic_attack_allies
+		prerequisite = {focus = sov_new_facilities}
+		prerequisite = {focus = sov_mission_to_the_us focus = sov_revenge}
+		x = 0
+		y = 1
+		relative_position_id = sov_new_facilities
+		available = {
+			has_war = no
+		}
+		ai_will_do = {
+				factor = 12
+			}
+		cost = 10
+		completion_reward = {
+			add_ideas = war_economy
+			add_ideas = great_patriotic_war
+			remove_ideas = sov_demilitarization
+		}
+	}
+	
+	focus = {
+		id = sov_russian_far_east
+		icon = GFX_goal_generic_major_war
+		prerequisite = {focus = sov_prepare_next_war}
+		x = -1
+		y = 1
+		relative_position_id = sov_prepare_next_war
+		available = {
+			SOV = {
+				NOT = {
+					controls_state = 408
+				}
+			}
+		}
+		ai_will_do = {
+				factor = 12
+			}
+		cost = 10
+		completion_reward = {
+			create_wargoal = {
+				type = take_state
+				generator = { 408 }
+				target = JAP
+			}
+		} 
+	}
+	
+	focus = {
+		id = reclaim_moscow
+		icon = GFX_focus_ger_strike_at_the_source
+		prerequisite = {focus = sov_prepare_next_war}
+		x = 1
+		y = 1
+		relative_position_id = sov_prepare_next_war
+		available = {
+			SOV = {
+				NOT = {
+					controls_state = 219
+				}
+			}
+		}
+		ai_will_do = {
+				factor = 3
+			}
+		cost = 10
+		completion_reward = {
+			create_wargoal = {
+				type = take_state
+				generator = { 219 }
+				target = GER
+			}
+		} 
+	}
+	
+}

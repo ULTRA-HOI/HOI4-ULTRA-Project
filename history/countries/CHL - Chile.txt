@@ -1,0 +1,305 @@
+﻿capital = 279
+set_research_slots = 2
+add_ideas = agrarian_society
+add_ideas = hot_nation
+add_ideas = irrelevant_nation
+#oob = "CHL_1936"
+if = {
+	limit = { has_dlc = "Man the Guns" }
+		set_naval_oob = "CHL_1936_naval_mtg"
+}
+
+# Starting tech
+set_technology = {
+	infantry_weapons = 1
+	artillery_1 = 1
+	anti_air_1 = 1
+	early_fighter = 1
+	cv_early_fighter = 1
+	early_bomber = 1
+}
+if = {
+	limit = { has_dlc = "Man the Guns" }
+	set_technology = {
+		basic_naval_mines = 1
+		early_ship_hull_light = 1
+		early_ship_hull_submarine = 1
+		basic_ship_hull_submarine = 1
+		early_ship_hull_cruiser = 1
+		basic_cruiser_armor_scheme = 1
+		early_ship_hull_heavy = 1
+		basic_battery = 1
+		basic_medium_battery_2 = 1
+		basic_torpedo = 1
+		improved_ship_torpedo_launcher = 1
+		sonar = 1
+		basic_depth_charges = 1
+		improved_depth_charges = 1
+		early_engine = 1
+		old_cruiser = 1
+		mtg_transport = 1
+	}
+}
+
+set_country_flag = monroe_doctrine
+
+set_convoys = 20
+
+set_politics = {
+	
+	ruling_party = democratic
+	last_election = "1932.10.30"
+	election_frequency = 72  #but 4 years after this one in 1938.
+	elections_allowed = yes
+}
+set_popularities = {
+	democratic = 98
+	communism = 2
+}
+
+create_country_leader = {
+	name = "Arturo Alessandri"
+	desc = "POLITICS_ARTURO_ALESSANDRI_DESC"
+	picture = "GFX_Portrait_chile_arturo_alessandri"
+	expire = "1965.1.1"
+	ideology = liberalism
+	traits = {
+		#
+	}
+}
+
+create_country_leader = {
+	name = "Jorge González von Marées"
+	desc = "POLITICS_JORGE_GONZÁLEZ_VON_MARÉES_DESC"
+	picture = "gfx/leaders/South America/Portrait_South_America_Generic_land_5.dds"
+	expire = "1965.1.1"
+	ideology = nazism
+	traits = {
+		#
+	}
+}
+
+create_country_leader = {
+	name = "Carlos Contreras Labarca"
+	desc = "POLITICS_CARLOS_CONTRERAS_LABARCA_DESC"
+	picture = "gfx/leaders/South America/Portrait_South_America_Generic_navy_1.dds"
+	expire = "1965.1.1"
+	ideology = marxism
+	traits = {
+		#
+	}
+}
+
+create_corps_commander = {
+	name = "Escudero Oscar Otárola"
+	portrait_path = "gfx/leaders/South America/Portrait_South_America_Generic_land_5.dds"
+	traits = { trait_mountaineer }
+	skill = 4
+	attack_skill = 4
+	defense_skill = 2
+	planning_skill = 4
+	logistics_skill = 3
+}
+
+### VARIANTS ###
+# 1936 Start #
+if = {
+	limit = { has_dlc = "Man the Guns" }
+	# Submarines #
+	create_equipment_variant = {
+		name = "H1 Class"				
+		type = nrm_ship_hull_submarine_small_1
+		name_group = CHL_SS_HISTORICAL
+		parent_version = 0
+		role_icon_index = 8
+		modules = {
+			fixed_ship_sub_hull_slot = nrm_submarine_hull_1
+			fixed_ship_engine_slot = nrm_submarine_engine_D0_04
+			fixed_ship_sonar_slot = nrm_submarine_sonar_1
+			fixed_ship_noise_slot = nrm_submarine_noise_0
+			fixed_ship_damagecontrol_slot = nrm_damagecontrol_1
+			fixed_ship_range_slot = nrm_range_submarine_small_1
+			fixed_ship_radar_slot = empty
+			fixed_ship_battery_slot = empty
+			fixed_ship_anti_air_slot = empty
+			fixed_ship_torpedo_slot = nrm_submarine_TRP_18_1_x4
+			fixed_ship_torpedo_2_slot = empty
+			custom_slot_1 = empty
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "Capitán O'Brien Class"				
+		type = nrm_ship_hull_submarine_2
+		name_group = CHL_SS_HISTORICAL
+		parent_version = 0
+		role_icon_index = 6
+		modules = {
+			fixed_ship_sub_hull_slot = nrm_submarine_hull_2
+			fixed_ship_engine_slot = nrm_submarine_engine_D0_30
+			fixed_ship_sonar_slot = nrm_submarine_sonar_1
+			fixed_ship_noise_slot = nrm_submarine_noise_0
+			fixed_ship_damagecontrol_slot = nrm_damagecontrol_1
+			fixed_ship_range_slot = nrm_range_submarine_2
+			fixed_ship_radar_slot = empty
+			fixed_ship_battery_slot = nrm_submarine_deckgun_5
+			fixed_ship_anti_air_slot = empty
+			fixed_ship_torpedo_slot = nrm_submarine_TRP_21_1_x6
+			fixed_ship_torpedo_2_slot = nrm_submarine_TRP_21_1_x2
+			custom_slot_1 = empty
+			custom_slot_2 = empty
+		}
+	}
+	# Destroyers #
+	create_equipment_variant = {
+		name = "Almirante Lynch Class"				
+		type = nrm_ship_hull_destroyer_1
+		name_group = CHL_DD_HISTORICAL
+		parent_version = 0
+		role_icon_index = 1
+		modules = {
+			fixed_ship_hullform_slot = nrm_ship_hullform_destroyer_1
+			fixed_ship_engine_slot = nrm_destroyer_engine_S1_030
+			fixed_ship_sonar_slot = nrm_sonar_1
+			fixed_ship_battery_slot = nrm_destroyer_battery_4_1_x6
+			fixed_ship_damagecontrol_slot = nrm_damagecontrol_1
+			fixed_ship_range_slot = nrm_range_destroyer_2
+			fixed_ship_radar_slot = empty
+			fixed_ship_fire_control_system_slot = nrm_fire_control_1
+			fixed_ship_fire_control_system_aa_slot = empty
+			custom_slot_1 = empty
+			custom_slot_2 = empty
+			custom_slot_3 = nrm_support_destroyer_TRP_21_C_1_x2
+			custom_slot_4 = nrm_support_destroyer_TRP_21_C_1_x2
+			custom_slot_5 = empty
+			custom_slot_6 = empty
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "Serrano Class"	
+		type = nrm_ship_hull_destroyer_2
+		name_group = CHL_DD_HISTORICAL
+		parent_version = 0
+		role_icon_index = 2
+		modules = {
+			fixed_ship_hullform_slot = nrm_ship_hullform_destroyer_2
+			fixed_ship_engine_slot = nrm_destroyer_engine_S1_030
+			fixed_ship_sonar_slot = nrm_sonar_1
+			fixed_ship_battery_slot = nrm_destroyer_battery_5_1_x3
+			fixed_ship_damagecontrol_slot = nrm_damagecontrol_1
+			fixed_ship_range_slot = nrm_range_destroyer_2
+			fixed_ship_radar_slot = empty
+			fixed_ship_fire_control_system_slot = nrm_fire_control_2
+			fixed_ship_fire_control_system_aa_slot = empty
+			custom_slot_1 = nrm_support_destroyer_ML_1
+			custom_slot_2 = nrm_support_destroyer_ASW_2
+			custom_slot_3 = nrm_support_destroyer_TRP_21_C_1_x3
+			custom_slot_4 = nrm_support_destroyer_TRP_21_C_1_x3
+			custom_slot_5 = empty
+			custom_slot_6 = empty
+		}
+	}
+	create_equipment_variant = {
+		name = "Aldea Class"	
+		type = nrm_ship_hull_destroyer_2
+		name_group = CHL_DD_HISTORICAL
+		parent_version = 0
+		role_icon_index = 2
+		modules = {
+			fixed_ship_hullform_slot = nrm_ship_hullform_destroyer_2
+			fixed_ship_engine_slot = nrm_destroyer_engine_S1_030
+			fixed_ship_sonar_slot = nrm_sonar_1
+			fixed_ship_battery_slot = nrm_destroyer_battery_5_1_x3
+			fixed_ship_damagecontrol_slot = nrm_damagecontrol_1
+			fixed_ship_range_slot = nrm_range_destroyer_2
+			fixed_ship_radar_slot = empty
+			fixed_ship_fire_control_system_slot = nrm_fire_control_2
+			fixed_ship_fire_control_system_aa_slot = empty
+			custom_slot_1 = nrm_support_destroyer_MS_1
+			custom_slot_2 = nrm_support_destroyer_ASW_2
+			custom_slot_3 = nrm_support_destroyer_TRP_21_C_1_x3
+			custom_slot_4 = nrm_support_destroyer_TRP_21_C_1_x3
+			custom_slot_5 = empty
+			custom_slot_6 = empty
+		}
+	}
+	# Cruisers #
+	create_equipment_variant = {
+		name = "O'Higgins Class"				
+		type = nrm_ship_hull_cruiser_0
+		name_group = CHL_CA_HISTORICAL
+		parent_version = 0
+		role_icon_index = 8
+		modules = {
+			fixed_ship_hullform_slot = nrm_ship_hullform_cruiser_0
+			fixed_ship_engine_slot = nrm_cruiser_engine_S0_015
+			fixed_ship_armor_layout_slot = nrm_armour_layout_0
+			fixed_ship_armor_slot = nrm_cruiser_armour_04_1
+			fixed_ship_damagecontrol_slot = nrm_damagecontrol_1
+			fixed_ship_range_slot = nrm_range_cruiser_1
+			fixed_ship_radar_slot = empty
+			fixed_ship_fire_control_system_slot = nrm_fire_control_2
+			fixed_ship_fire_control_system_aa_slot = empty
+			fixed_ship_battery_slot = nrm_cruiser_battery_8_1_x04
+			fixed_ship_tertiary_slot = nrm_cruiser_tertiary_SB_6_1_x08
+			custom_slot_1 = empty
+			custom_slot_2 = empty
+			custom_slot_5 = empty
+			custom_slot_6 = empty
+		}
+	}
+	create_equipment_variant = {
+		name = "Chacabuco Class"				
+		type = nrm_ship_hull_cruiser_0
+		name_group = CHL_CL_HISTORICAL
+		parent_version = 0
+		role_icon_index = 8
+		modules = {
+			fixed_ship_hullform_slot = nrm_ship_hullform_cruiser_0
+			fixed_ship_engine_slot = nrm_cruiser_engine_S0_015
+			fixed_ship_armor_layout_slot = nrm_armour_layout_0
+			fixed_ship_armor_slot = nrm_cruiser_armour_02_1
+			fixed_ship_damagecontrol_slot = nrm_damagecontrol_1
+			fixed_ship_range_slot = nrm_range_cruiser_2
+			fixed_ship_radar_slot = empty
+			fixed_ship_fire_control_system_slot = nrm_fire_control_2
+			fixed_ship_fire_control_system_aa_slot = empty
+			fixed_ship_battery_slot = nrm_cruiser_battery_8_1_x02
+			fixed_ship_tertiary_slot = nrm_cruiser_tertiary_SB_5_1_x12
+			custom_slot_1 = empty
+			custom_slot_2 = empty
+			custom_slot_5 = empty
+			custom_slot_6 = empty
+		}
+	}
+	# Battleships #
+	create_equipment_variant = {
+		name = "Almirante Latorre Class"	
+		type = nrm_ship_hull_capital_1
+		name_group = CHL_BB_HISTORICAL
+		parent_version = 0
+		role_icon_index = 1
+		modules = {
+			fixed_ship_hullform_slot = nrm_ship_hullform_capital_1
+			fixed_ship_engine_slot = nrm_capital_engine_S1_055
+			fixed_ship_armor_layout_slot = nrm_armour_layout_BB_1
+			fixed_ship_armor_slot = nrm_capital_armour_09_2
+			fixed_ship_damagecontrol_slot = nrm_damagecontrol_1
+			fixed_ship_range_slot = nrm_range_capital_1
+			fixed_ship_radar_slot = empty
+			fixed_ship_fire_control_system_slot = nrm_fire_control_3
+			fixed_ship_fire_control_system_aa_slot = empty
+			fixed_ship_battery_slot = nrm_capital_battery_14_1_2x5
+			fixed_ship_secondary_slot = nrm_capital_secondary_SB_6_1_x12
+			fixed_ship_tertiary_slot = nrm_capital_tertiary_HA_4_1_x04
+			custom_slot_1 = empty
+			custom_slot_2 = empty
+			custom_slot_3 = nrm_support_capital_FP_1
+			custom_slot_4 = nrm_support_capital_AA_1
+			custom_slot_5 = empty
+			custom_slot_6 = empty
+		}
+	}
+}
+

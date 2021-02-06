@@ -1,0 +1,1004 @@
+﻿####peace event involving USA
+
+
+
+add_namespace = hip_usa
+
+
+### Peace event in case of stalemate in Europe/mediterranean area
+
+
+Country_event = {
+	id = hip_usa.1
+	title = hip_usa.1.t
+	desc = hip_usa.1.d
+	picture = GFX_report_event_german_troops_paris
+	
+	fire_only_once = yes
+	
+	mean_time_to_happen = {
+		days = 7
+	}
+
+	trigger = {  #The axis needs to have defeated SOV and ENG and control the med
+		tag = USA
+		has_war_with = GER
+		is_in_faction = yes
+        NOT = {
+            has_civil_war = yes
+        }
+		AND = {
+			any_country = {
+				AND = {
+					OR = {
+						is_in_faction_with = GER
+						tag = GER
+					}
+					controls_state = 64 #Berlin
+				}
+			}
+			any_country = {
+				AND = {
+					OR = {
+						is_in_faction_with = GER
+						tag = GER
+					}
+					controls_state = 2 #Rome
+				}
+			}
+			any_country = {
+				AND = {
+					OR = {
+						is_in_faction_with = GER
+						tag = GER
+					}
+					controls_state = 16 #Paris
+				}
+			}
+			OR = {
+				has_global_flag = fall_of_britain
+				has_global_flag = britain_out
+			}
+			any_country = {
+				AND = {
+					OR = {
+						is_in_faction_with = GER
+						tag = GER
+					}
+					controls_state = 10 #Warsaw
+				}
+			}
+			any_country = {
+				AND = {
+					OR = {
+						is_in_faction_with = GER
+						tag = GER
+					}
+					controls_state = 195 #St Petersburg
+				}
+			}
+			any_country = {
+				AND = {
+					OR = {
+						is_in_faction_with = GER
+						tag = GER
+					}
+					controls_state = 219 #Moscow
+				}
+			}
+			any_country = {
+				AND = {
+					OR = {
+						is_in_faction_with = GER
+						tag = GER
+					}
+					controls_state = 217 #Tsaritsyn
+				}
+			}
+			any_country = {
+				AND = {
+					OR = {
+						is_in_faction_with = GER
+						tag = GER
+					}
+					controls_state = 816 #Suez
+				}
+			}
+			any_country = {
+				AND = {
+					OR = {
+						is_in_faction_with = GER
+						tag = GER
+					}
+					controls_state = 118 #Gibraltar
+				}
+			}
+		}
+	}
+	
+	Option = {
+		name = hip_usa.1.a #offer peace
+		ai_chance = { factor = 10 }
+		GER = { country_event = { id = hip_usa.2 } }
+	}
+	
+	option = {
+		name = hip_usa.1.b  #continue the war
+		ai_chance = { factor = 0 }
+		add_war_support = -0.5
+		add_stability = -0.5
+	}
+
+}
+
+country_event = {
+	id = hip_usa.2
+	title = hip_usa.2.t
+	desc = hip_usa.2.d
+	picture = GFX_report_event_german_troops_paris
+	
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = hip_usa.2.a #accept peace
+		ai_chance = { factor = 10 }
+		USA = {country_event = { id = hip_usa.3 } }
+	}
+	option = {
+		name = hip_usa.2.b #continue the war
+		ai_chance = { factor = 0 }
+	}
+
+}	
+
+country_event = {
+	id = hip_usa.3
+	title = hip_usa.3.t
+	desc = hip_usa.3.d
+	picture = GFX_report_event_german_troops_paris
+	
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = hip_usa.3.a #the Old World is lost
+		ai_chance = { factor = 10 }
+		
+		set_global_flag = treaty_of_paris
+		GER = {
+			remove_ideas = sour_loser
+			add_ideas = triumphant_will
+		}
+		#### territorial changes ####
+		
+		## Annexation of all european belligerants (RK and collaborationist governments will be setup in an other event) ##
+		
+		# Poland
+		
+		if = {
+			limit = {
+				POL = {
+					has_war_with = GER
+					has_capitulated = yes
+				}
+			}
+			GER = { 
+				annex_country = { target = POL }
+			}
+		
+		}
+		
+		# Czechoslovakia
+		
+		if = {
+			limit = {
+				CZE = {
+					has_war_with = GER
+					has_capitulated = yes
+				}
+			}
+			GER = { 
+				annex_country = { target = CZE }
+			}
+		
+		}
+		
+		# Hungary
+		
+		if = {
+			limit = {
+				HUN = {
+					has_war_with = GER
+					has_capitulated = yes
+				}
+			}
+			GER = { 
+				annex_country = { target = HUN }
+			}
+		
+		}
+		
+		# Romania
+		
+		if = {
+			limit = {
+				ROM = {
+					has_war_with = GER
+					has_capitulated = yes
+				}
+			}
+			GER = { 
+				annex_country = { target = ROM }
+			}
+		
+		}
+		
+		#Bulgaria 
+		
+		if = {
+			limit = {
+				ROM = {
+					has_war_with = GER
+					has_capitulated = yes
+				}
+			}
+			GER = { 
+				annex_country = { target = ROM }
+			}
+		
+		}
+		
+		#Yugoslavia
+		
+		if = {
+			limit = {
+				YUG = {
+					has_war_with = GER
+					has_capitulated = yes
+				}
+			}
+			GER = { 
+				annex_country = { target = YUG }
+			}
+			IF = {
+				Limit = {
+					ITA = { is_in_faction_with = GER }
+				}
+				ITA = {
+					transfer_state = 912
+					transfer_state = 105
+				}	
+			}
+			IF = {
+				Limit = {
+					BUL = { is_in_faction_with = GER }
+				}
+				BUL = {
+					transfer_state = 108
+					transfer_state = 106
+				}	
+			}
+			IF = {
+				Limit = {
+					HUN = { is_in_faction_with = GER }
+				}
+				HUN = {
+					transfer_state = 45
+				}	
+			}
+		}
+		
+		
+		
+		# Greece
+		
+		if = {
+			limit = {
+				GRE = {
+					has_war_with = GER
+					has_capitulated = yes
+				}
+			}
+			GER = { 
+				annex_country = { target = GRE }
+			}
+			IF = {
+				Limit = {
+					BUL = { is_in_faction_with = GER }
+				}
+				BUL = {
+					transfer_state = 184
+					transfer_state = 731
+				}	
+			}
+			IF = {
+				Limit = {
+					ITA = { is_in_faction_with = GER }
+				}
+				ITA = {
+					transfer_state = 185
+					transfer_state = 186
+					transfer_state = 47
+					transfer_state = 182
+					transfer_state = 187
+					transfer_state = 183
+				}	
+			}
+		}
+		
+				
+		# Turkey
+		
+		if = {
+			limit = {
+				TUR = {
+					has_war_with = GER
+					has_capitulated = yes
+				}
+			}
+			GER = { 
+				annex_country = { target = TUR }
+			}
+			IF = {
+				Limit = {
+					ITA = { is_in_faction_with = GER }
+				}
+				ITA = {
+					transfer_state = 340
+					transfer_state = 339
+					transfer_state = 342
+					transfer_state = 343
+					transfer_state = 346
+					transfer_state = 345
+					transfer_state = 344
+				}	
+			}
+			IF = {
+				Limit = {
+					BUL = { is_in_faction_with = GER }
+				}
+				BUL = {
+					transfer_state = 341
+				}	
+			}
+		
+		}
+		
+		# Austria
+		
+		if = {
+			limit = {
+				AUS = {
+					has_war_with = GER
+					has_capitulated = yes
+				}
+			}
+			GER = { 
+				annex_country = { target = AUS }
+			}
+		
+		}
+		
+		# Baltic States
+		
+		if = {
+			limit = {
+				LIT = {
+					has_war_with = GER
+					has_capitulated = yes
+				}
+			}
+			GER = { 
+				annex_country = { target = LIT }
+			}
+		
+		}
+		if = {
+			limit = {
+				LAT = {
+					has_war_with = GER
+					has_capitulated = yes
+				}
+			}
+			GER = { 
+				annex_country = { target = LAT }
+			}
+		
+		}
+		if = {
+			limit = {
+				EST = {
+					has_war_with = GER
+					has_capitulated = yes
+				}
+			}
+			GER = { 
+				annex_country = { target = EST }
+			}
+		
+		}
+		
+		# Scandinavia
+		
+		if = {
+			limit = {
+				FIN = {
+					has_war_with = GER
+					has_capitulated = yes
+				}
+			}
+			GER = { 
+				annex_country = { target = FIN }
+			}
+		
+		}
+		if = {
+			limit = {
+				SWE = {
+					has_war_with = GER
+					has_capitulated = yes
+				}
+			}
+			GER = { 
+				annex_country = { target = SWE }
+			}
+		
+		}
+		if = {
+			limit = {
+				NOR = {
+					has_war_with = GER
+					has_capitulated = yes
+				}
+			}
+			GER = { 
+				annex_country = { target = NOR }
+			}
+		
+		}
+		if = {
+			limit = {
+				DEN = {
+					has_war_with = GER
+					has_capitulated = yes
+				}
+			}
+			GER = { 
+				annex_country = { target = DEN }
+			}
+		
+		}
+		
+		# Benelux
+		
+		if = {
+			limit = {
+				HOL = {
+					has_war_with = GER
+					has_capitulated = yes
+				}
+			}
+			GER = { 
+				transfer_state = 36
+				transfer_state = 7
+				transfer_state = 35
+			}
+		
+		}
+		if = {
+			limit = {
+				HOL = {
+					has_war_with = JAP
+					has_war_with = GER
+					has_capitulated = yes
+				}
+			}
+			JAP = { 
+				annex_country = { target = HOL }
+			}
+		
+		}
+		if = {
+			limit = {
+				BEL = {
+					has_war_with = GER
+					has_capitulated = yes
+				}
+			}
+			GER = { 
+				annex_country = { target = BEL }
+			}
+			IF = {
+				Limit = {
+					FRA = { is_in_faction_with = GER }
+				}
+				FRA = {
+					transfer_state = 34
+					transfer_state = 797
+				}	
+			}
+		
+		}
+		if = {
+			limit = {
+				LUX = {
+					has_war_with = GER
+					has_capitulated = yes
+				}
+			}
+			GER = { 
+				annex_country = { target = LUX }
+			}
+		
+		}
+		
+		# Switzerland
+		
+		if = {
+			limit = {
+				SWI = {
+					has_war_with = GER
+					has_capitulated = yes
+				}
+			}
+			GER = { 
+				annex_country = { target = SWI }
+			}
+			IF = {
+				Limit = {
+					FRA = { is_in_faction_with = GER }
+				}
+				FRA = {
+					transfer_state = 3
+				}	
+			}
+			IF = {
+				Limit = {
+					ITA = { is_in_faction_with = GER }
+				}
+				ITA = {
+					transfer_state = 800
+				}	
+			}
+		
+		}
+		
+		# Middle East
+		
+		if = {
+			limit = {
+				SYR = {
+					has_war_with = GER
+					has_capitulated = yes
+				}
+			}
+			GER = { 
+				annex_country = { target = SYR }
+			}
+		
+		}
+		if = {
+			limit = {
+				LEB = {
+					has_war_with = GER
+					has_capitulated = yes
+				}
+			}
+			GER = { 
+				annex_country = { target = LEB }
+			}
+		
+		}
+		if = {
+			limit = {
+				JOR = {
+					has_war_with = GER
+					has_capitulated = yes
+				}
+			}
+			GER = { 
+				annex_country = { target = JOR }
+			}
+		
+		}
+		if = {
+			limit = {
+				IRQ = {
+					has_war_with = GER
+					has_capitulated = yes
+				}
+			}
+			GER = { 
+				annex_country = { target = IRQ }
+			}
+		
+		}
+		
+		# Persia
+		
+		if = {
+			limit = {
+				PER = {
+					has_war_with = GER
+					has_capitulated = yes
+				}
+			}
+			GER = { 
+				annex_country = { target = PER }
+			}
+		
+		}
+		
+		# Iberia
+		
+		if = {
+			limit = {
+				POR = {
+					has_war_with = GER
+					has_capitulated = yes
+				}
+			}
+			GER = { 
+				annex_country = { target = POR }
+			}
+		
+		}
+		if = {
+			limit = {
+				SPR = {
+					has_war_with = GER
+					has_capitulated = yes
+				}
+			}
+			GER = { 
+				annex_country = { target = SPR }
+			}
+		
+		}
+		
+		# Italia
+		
+		if = {
+			limit = {
+				ITA = {
+					has_war_with = GER
+					has_capitulated = yes
+				}
+			}
+			GER = { 
+				annex_country = { target = ITA }
+			}
+		
+		}
+		
+		# Albania
+		
+		if = {
+			limit = {
+				ALB = {
+					has_war_with = GER
+					has_capitulated = yes
+				}
+			}
+			GER = { 
+				annex_country = { target = ALB }
+			}
+			IF = {
+				Limit = {
+					ITA = { is_in_faction_with = GER }
+				}
+				ITA = {
+					transfer_state = 44
+				}	
+			}
+		
+		}
+		
+		# IRE
+		
+		if = {
+			limit = {
+				IRE = {
+					has_war_with = GER
+					has_capitulated = yes
+				}
+			}
+			GER = { 
+				annex_country = { target = IRE }
+			}
+		
+		}
+		
+		## case of France ##
+		
+		# With Vichy
+		
+		if = {
+			limit = {
+				FRA = {
+					has_war_with = GER
+				VIC = {
+					exists = yes
+					}
+				}
+			}
+			VIC = { 
+				annex_country = { target = FRA }
+				every_owned_state = {
+					limit = {
+						is_core_of = FRA
+					}
+					add_core_of = VIC
+					remove_core_of = FRA
+				}
+				
+			}				
+			
+			GER = { 
+				transfer_state = 28 #Alsace-Moselle
+				transfer_state = 29 # Nord
+				puppet = VIC
+			}
+			IF = {
+				Limit = {
+					ITA = { is_in_faction_with = GER }
+					NOT = {
+						FRA = { is_in_faction_with = GER }
+					}
+				}
+				ITA = {
+					transfer_state = 1
+					transfer_state = 798
+					transfer_state = 735
+				}	
+			}
+		
+		}
+		
+		# Without Vichy
+		
+		if = {
+			limit = {
+				FRA = {
+					has_war_with = GER
+				}
+				VIC = {
+					exists = no
+				}
+			}
+			GER = { 
+				annex_country = { target = FRA }
+			}
+			IF = {
+				Limit = {
+					ITA = { is_in_faction_with = GER }
+					NOT = {
+						FRA = { is_in_faction_with = GER }
+					}
+				}
+				ITA = {
+					transfer_state = 1
+					transfer_state = 798
+					transfer_state = 735
+				}	
+			}
+		
+		}
+		
+		## Africa ##
+		
+		# Suez
+		
+		# Gibraltar
+		
+		IF = {
+			Limit = {
+				SPR = { is_in_faction_with = GER }
+			}
+			SPR = { transfer_state = 118 }
+		}
+		ELSE_IF = {
+			Limit = {
+				ITA = { is_in_faction_with = GER }
+			}
+			ITA = { transfer_state = 118 }	
+		}
+		Else = { 
+			GER = { transfer_state = 118 }
+		}
+		
+		
+		# North Africa
+		
+		IF = {
+			Limit = {
+				ITA = { is_in_faction_with = GER }
+			}
+			ITA = { #Egypt - Sudan 
+				transfer_state = 452
+				transfer_state = 552
+				transfer_state = 447
+				transfer_state = 446
+				transfer_state = 453
+				transfer_state = 457
+				transfer_state = 456
+				transfer_state = 549
+				transfer_state = 268
+				transfer_state = 269
+				transfer_state = 551
+				
+			
+			}
+			Else = { 
+				GER = { 
+					transfer_state = 452
+					transfer_state = 552
+					transfer_state = 447
+					transfer_state = 446
+					transfer_state = 453
+					transfer_state = 457
+					transfer_state = 456
+					transfer_state = 549
+					transfer_state = 268
+					transfer_state = 269
+					transfer_state = 551
+				}
+			}
+		}
+		
+		# Sub Saharian Africa
+		
+		GER = {
+			transfer_state = 541 # Deutsche Sud-West
+			transfer_state = 548
+			transfer_state = 547
+			transfer_state = 546 # Deutsch-Ost
+			transfer_state = 545
+			transfer_state = 542
+			transfer_state = 539
+			transfer_state = 660
+			transfer_state = 558
+			transfer_state = 556
+			transfer_state = 274
+			transfer_state = 298
+			transfer_state = 700
+			transfer_state = 768
+			transfer_state = 769
+			transfer_state = 272
+			transfer_state = 701
+			transfer_state = 708
+			transfer_state = 543
+			transfer_state = 706
+			transfer_state = 707
+			transfer_state = 709
+			transfer_state = 703
+			transfer_state = 704					
+		}
+		
+		IF = {
+			Limit = {
+				SAF = {
+					is_in_faction_with = USA
+				}
+			}
+			USA = { remove_from_faction = SAF}
+			SAF = { 
+				white_peace = GER 
+				white_peace = JAP
+				add_ideas = fascist_influence
+			} 
+		
+		}
+		
+		## Middle East ##
+
+		
+		IF = {
+			Limit = {
+				RAJ = {
+					is_in_faction_with = USA
+				}
+			}
+			USA = { remove_from_faction = RAJ}
+			RAJ = { 
+				white_peace = GER 
+				add_ideas = fascist_influence
+			} 
+		
+		}
+		
+		## If GB was NOT divided into collaborationist states ##
+		
+		IF = {
+			limit = {
+				BRI = { exists = no }
+				SCO = { exists = no }
+				WLS = { exists = no }
+				GER = {
+					has_war_with = ENG
+				}
+			}
+			GER = {
+				transfer_state = 119
+				transfer_state = 136
+				transfer_state = 121
+				transfer_state = 133
+				transfer_state = 131
+				transfer_state = 130
+				transfer_state = 132
+				transfer_state = 122
+				transfer_state = 128
+				transfer_state = 129
+				transfer_state = 125
+				transfer_state = 126
+				transfer_state = 338
+				transfer_state = 127
+				transfer_state = 123
+				transfer_state = 120
+			}
+		}
+		
+				
+		
+		#### Peace ####
+		
+		IF = {
+			Limit = {
+				JAP = {
+					has_war_with = USA
+					is_in_faction_with = GER
+				}
+			}
+			GER = {
+				remove_from_faction = JAP # The Pacific War is independant from the european war and thus should have its own peace event
+				remove_from_faction = MAN
+				remove_from_faction = MEN
+				remove_from_faction = CHI
+				remove_from_faction = GXC
+				remove_from_faction = SIA
+				remove_from_faction = YUN
+				remove_from_faction = XSM
+			} 
+			JAP = {
+				create_faction = "Daitoa Kyoeiken"
+			}
+		
+		}
+		
+		USA = {
+			white_peace = GER
+		}
+		
+		GER = {
+			white_peace = USA
+		}
+		
+		every_country = {
+			limit = {
+				is_in_faction_with = GER
+			}
+			white_peace = USA
+		}
+		every_country = {
+			limit = {
+				is_in_faction_with = USA
+			}
+			white_peace = GER
+		}
+		
+		USA = {
+			diplomatic_relation = { country = GER relation = non_aggression_pact }
+		}
+		
+		
+		
+		#### World Tension ####
+		
+		add_named_threat = { threat = -50 name = hip_usa.1.t } # WWII is over on Europe but tension still high
+	
+	}
+	
+}

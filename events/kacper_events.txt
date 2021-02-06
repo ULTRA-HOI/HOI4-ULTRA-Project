@@ -1,0 +1,252 @@
+﻿add_namespace = ship
+
+
+
+country_event = {
+	id = ship.14
+	title = ship.14.t
+	desc = ship.14.d
+
+	is_triggered_only = yes
+
+	fire_only_once = no
+
+	option = {
+		name = ship.14.a
+		ai_chance = { factor = 100 }
+		add_political_power = 50
+		USA = {
+			random_owned_state = {
+				limit = {
+					is_coastal = yes
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { 
+				type = dockyard 
+				level = 1
+				instant_build = yes
+				}
+			}
+			random_owned_state = {
+				limit = {
+					is_coastal = yes
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { 
+				type = dockyard 
+				level = 1
+				instant_build = yes
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = ship.15
+	title = ship.15.t
+	desc = ship.15.d
+
+	fire_only_once = no
+
+	is_triggered_only = yes
+
+	option = {
+		name = ship.15.a
+		trigger = {
+			USA = {
+				num_of_civilian_factories_available_for_projects > 10
+			}
+		}
+		ai_chance = { factor = 100 }
+		add_political_power = 10
+
+		ENG = { country_event = { days = 1 id = ship.17 } }
+			
+		USA = {
+			add_ideas = USA_ships_for_UK_idea
+		}
+	}
+
+	option = {
+		name = ship.15.b
+		ai_chance = { factor = 0 }
+
+		ENG = { country_event = { days = 1 id = ship.16 } }
+		}
+}
+
+country_event = {
+	id = ship.16
+	title = ship.16.t
+	desc = ship.16.d
+
+	fire_only_once = no
+
+	is_triggered_only = yes
+
+	option = {
+		name = ship.16.a
+		ai_chance = { factor = 100 }
+		add_political_power = 30
+	}
+}
+
+country_event = {
+	id = ship.17
+	title = ship.17.t
+	desc = ship.17.d
+
+	fire_only_once = no
+
+	is_triggered_only = yes
+
+	option = {
+		name = ship.17.a
+		ai_chance = { factor = 100 }
+		
+	}
+}
+
+country_event = {
+	id = ship.18
+	title = ship.18.t
+	desc = ship.18.d
+
+	fire_only_once = no
+
+	is_triggered_only = yes
+
+	option = {
+		name = ship.18.a
+		ai_chance = { factor = 100 }
+		USA = { country_event = { days = 1 id = ship.14 } }
+		ENG = {
+			add_equipment_to_stockpile = { type = convoy_1 amount = 150 producer = USA }
+		}
+	}
+}
+
+add_namespace = air
+
+country_event = {
+	id = air.1
+	title = air.1.t
+	desc = air.1.d
+
+	fire_only_once = no
+
+	is_triggered_only = yes
+
+	option = {
+		name = air.1.a
+		trigger = {
+			USA = {
+				num_of_civilian_factories_available_for_projects > 10
+			}
+		}
+		ai_chance = { factor = 95 }
+		FRA = { country_event = { days = 1 id = air.3 } }
+		add_ideas = USA_planes_for_FRA_idea
+		
+	}
+
+	option = {
+		name = air.1.b
+		ai_chance = { factor = 5 }
+		FRA = { country_event = { days = 1 id = air.2 } }
+	}
+}
+
+country_event = {
+	id = air.2
+	title = air.2.t
+	desc = air.2.d
+
+	fire_only_once = no
+
+	is_triggered_only = yes
+
+	option = {
+		name = air.2.a
+		ai_chance = { factor = 100 }
+		add_political_power = 80
+	}
+}
+
+country_event = {
+	id = air.3
+	title = air.3.t
+	desc = air.3.d
+
+	fire_only_once = no
+
+	is_triggered_only = yes
+
+	option = {
+		name = air.3.a
+		ai_chance = { factor = 100 }
+		
+	}
+}
+
+country_event = {
+	id = air.4
+	title = air.4.t
+	desc = air.4.d
+
+	fire_only_once = no
+
+	is_triggered_only = yes
+
+	option = {
+		name = air.4.a
+		ai_chance = { factor = 100 }
+		USA = { country_event = { days = 1 id = air.5 } }
+		FRA = {
+			add_equipment_to_stockpile = { type = fighter_equipment_1 amount = 150 producer = USA } }
+		
+	}
+}
+
+country_event = {
+	id = air.5
+	title = air.5.t
+	desc = air.5.d
+
+	is_triggered_only = yes
+
+	fire_only_once = no
+
+	option = {
+		name = air.5.a
+		ai_chance = { factor = 100 }
+		add_political_power = 30
+		USA = {
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { 
+				type = arms_factory 
+				level = 1
+				instant_build = yes
+				}
+			}
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { 
+				type = arms_factory 
+				level = 1
+				instant_build = yes
+				}
+			}
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { 
+				type = arms_factory 
+				level = 1
+				instant_build = yes
+				}
+			}
+		}
+	}
+}

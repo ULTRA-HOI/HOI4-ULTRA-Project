@@ -1,0 +1,169 @@
+scripted_diplomatic_actions = {
+	cw_embargo = {
+		icon = 25
+		allowed = {		#The country making the diplomatic request
+			always = yes
+		}
+		visible = {		#The target country
+			NOT = { ROOT = { is_puppet_of = PREV } }
+			NOT = { is_puppet_of = ROOT }
+			NOT = { tag = UNN }
+			NOT = { ROOT = { is_puppet_of = FROM } }
+			NOT = {
+				is_in_array = {
+					array = ROOT.embargoed_countries
+					value = FROM.id
+				}			
+			}
+			
+			NOT = {
+				FROM = {has_war_with = ROOT}
+			}
+		}
+		selectable = {
+			NOT = { is_puppet_of = ROOT }
+			NOT = { is_in_faction_with = ROOT }
+			ROOT = { has_opinion = { target = PREV value < -24 } }
+			NOT = {
+				is_ai = yes
+			}
+			#NOT = { has_idea = closed_economy }
+			hidden_trigger = { ROOT = { NOT = { has_country_flag = did_diplomatic_action } } }		#Used to suspend request spam by AI 
+			
+		}
+		can_be_accepted = {
+			always = yes
+		}
+		can_be_sent = {
+			always = yes
+		}
+
+		send_description = CW_EMBARGO_LOC
+		accept_title = CW_EMBARGO_INITIATED_TITLE
+		accept_description = CW_EMBARGO_INITIATED_DESC
+		
+		cost = 150
+
+		requires_acceptance = no
+
+		on_sent_effect = {		
+		}
+		complete_effect = {
+			if = {
+				limit = {
+					ROOT = { is_ai = yes }
+				}
+				ROOT = { set_country_flag = { flag = did_diplomatic_action value = 1 days = 45 } }
+			}
+			add_to_array = { ROOT.embargoed_countries = FROM.id }
+			reverse_add_opinion_modifier = { target = ROOT modifier = cw_embargo }
+			reverse_add_opinion_modifier = { target = ROOT modifier = cw_embargo_relations_target }
+			add_opinion_modifier = { target = ROOT modifier = cw_embargo_relations_initiator }
+		}
+		ai_desire = {
+			base = 0
+			modifier = {
+				ROOT = { has_opinion = { target = PREV value < -100 } }
+				add = 100
+			}			
+			modifier = {		#We dont trade with our enemies
+				has_war_with = ROOT
+				add = 100
+			}			
+			modifier = {		#Retaliate with a counter embargo
+				ROOT = { is_in_array = { array = FROM.embargoed_countries value = ROOT.id } }
+				add = 50
+			}
+#			modifier = {		#They are at war with our master so we embargo too
+#				ROOT = { OVERLORD = { has_war_with = FROM } }
+#				add = 50
+#			}
+			modifier = {		#Join the faction in embargo
+				ROOT = { all_allied_country = { has_war_with = FROM } }
+				add = 50
+			}			
+		}
+	}
+	cw_cancel_embargo = {
+		icon = 25
+		allowed = {		#The country making the diplomatic request
+			always = yes
+		}
+		visible = {		#The target country
+			is_in_array = {
+				array = ROOT.embargoed_countries
+				value = FROM.id
+			}
+		}
+		selectable = {
+			OR = {
+				is_ai = no
+				always = yes 
+				AND = {
+					is_ai = yes
+					NOT = {  ROOT = { has_opinion = { target = FROM value > 0 } } }
+				}
+			}
+		}
+		can_be_accepted = {
+			always = yes
+		}
+		can_be_sent = {
+			always = yes
+		}
+
+		send_description = CW_CANCEL_EMBARGO_LOC
+		accept_title = CW_CANCEL_EMBARGO_INITIATED_TITLE
+		accept_description = CW_CANCEL_EMBARGO_INITIATED_DESC
+		
+		cost = 50
+
+		requires_acceptance = no
+
+		on_sent_effect = {
+		}
+		complete_effect = {
+			if = {
+				limit = {
+					ROOT = { is_ai = yes }
+				}
+				ROOT = { set_country_flag = { flag = did_diplomatic_action value = 1 days = 45 } }
+			}		
+			set_country_flag = this_remove_embargo
+			ROOT = { remove_opinion_modifier = { target = EMB modifier = cw_embargo } }
+			ROOT = { remove_opinion_modifier = { target = EMB modifier = cw_embargo_relations_target } }
+			remove_opinion_modifier = { target = ROOT modifier = cw_embargo_relations_initiator }
+			remove_from_array = { ROOT.embargoed_countries = FROM.id }
+			clr_country_flag = this_remove_embargo
+		}
+		ai_desire = {
+			modifier = {
+				NOT = { ROOT = { has_opinion = { target = PREV value < -50 } } }
+				add = 100
+			}
+			modifier = {	#If relations are really low dont remove the embargo
+				ROOT = { NOT = { has_opinion = { target = PREV value > -50 } } }
+				add = -1000
+			}
+			modifier = {		#We dont trade with our enemies
+				ROOT = { has_war_with = PREV }
+				add = -1000
+			}			
+			modifier = {		#Retaliate with a counter embargo
+				THIS = {
+					NOT = {
+						is_in_array = {
+							array = FROM.embargoed_countries
+							value = ROOT.id
+						}
+					}
+				}
+				add = 50
+			}
+#			modifier = {		#They are no longer at war with master so no need to embargo
+#				ROOT = { OVERLORD = { NOT = { has_war_with = FROM } } }
+#				add = 50
+#			}			
+		}
+	}	
+}

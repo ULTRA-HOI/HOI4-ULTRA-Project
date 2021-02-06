@@ -1,0 +1,1075 @@
+ideas = {
+
+	mobilization_laws = { 
+		law = yes
+		use_list_view = yes
+		
+		disarmed_nation = {
+						
+			cost = 150
+			removal_cost = -1
+			level = 8
+			
+			available = {
+				#has_manpower_for_recruit_change_to = { value = 0.005 group = mobilization_laws }
+			}
+
+			modifier = {
+				conscription = 0.01
+				training_time_factor = -0.1
+			}
+			
+			cancel_if_invalid = no
+		}
+		
+		volunteer_only = {
+						
+			cost = 150
+			removal_cost = -1
+			level = 7
+			
+			available = {
+				#has_manpower_for_recruit_change_to =  { value = 0.015 group = mobilization_laws }
+				if = {
+					limit = {
+						original_tag = HUN
+						has_dlc = "Death or Dishonor"
+					}
+					NOT = { has_idea = HUN_treaty_of_triannon }
+				}
+				NOT = { has_idea = undisturbed_isolation }
+				NOT = { has_idea = isolation }
+				
+				IF = {
+					limit = {
+						original_tag = USA
+						has_defensive_war = no
+					}
+					congress_high_support_trigger = yes 
+				}
+			}
+
+			ai_will_do = {
+   				factor = 1
+
+   				modifier = {
+					factor = 60 # being disarmed is bad in a wargame yo
+					has_idea = disarmed_nation 
+				}
+			}
+
+			modifier = {
+				conscription = 0.05
+				training_time_factor = -0.05
+			}
+			
+			default = yes
+			
+			cancel_if_invalid = no
+			
+			on_add = {
+				IF = {
+					limit = {
+						original_tag = USA
+						has_defensive_war = no
+					}
+					USA_congress_large_opposition = yes
+				}
+			}
+		}
+		
+		limited_conscription = {
+					
+			cost = 150
+			removal_cost = -1
+			level = 6
+
+			available = {
+				#has_manpower_for_recruit_change_to =  { value = 0.025 group = mobilization_laws }
+				has_war_support > 0.1
+				NOT = { has_idea = undisturbed_isolation }
+				NOT = { has_idea = isolation }
+				NOT = { has_idea = reichskommissariats}
+				
+				if = {
+					limit = {
+						original_tag = AST
+						has_dlc = "Together for Victory"
+					}
+					has_completed_focus = AST_citizen_military_forces
+				}
+				if = {
+					limit = {
+						original_tag = CAN
+						has_dlc = "Together for Victory"
+					}
+					has_completed_focus = CAN_commit_to_the_war
+				}
+				if = {
+					limit = {
+						original_tag = RAJ
+						has_dlc = "Together for Victory"
+					}
+					is_subject = no
+				}
+
+				if = {
+					limit = {
+						original_tag = HUN
+						has_dlc = "Death or Dishonor"
+					}
+					NOT = { has_idea = HUN_treaty_of_triannon }
+				}
+				if = {
+					limit = {
+						original_tag = ENG
+						has_dlc = "Man the Guns"
+						has_completed_focus = ENG_concessions_to_the_trade_unions
+					}
+					NOT = { has_country_flag = ENG_cannot_increase_conscription_law }
+				}
+				IF = {
+					limit = {
+						original_tag = USA
+						has_defensive_war = no
+					}
+					congress_high_support_trigger = yes 
+				}
+				if = {
+					limit = {
+						original_tag = SPR
+						has_dlc = "La Resistance"
+					}
+					NOT = { has_completed_focus = SPR_all_must_bear_the_torch }
+				}
+				
+				IF = {
+					limit = {
+						original_tag = SAF
+					}
+					has_completed_focus = SAF_reconstitute_the_cape_corps
+				}
+				
+				if = {
+					limit = {
+						original_tag = BUL
+						has_dlc = "Battle for the Bosporus"
+					}
+					NOT = { has_idea = BUL_army_restrictions }
+				}
+				
+				IF = {
+					limit = {
+						original_tag = SOV
+						is_ai = no
+					}
+					has_war = yes
+					any_enemy_country = {
+						is_major = yes
+					}
+				}
+			}
+
+			modifier = {
+				conscription = 0.1
+			}
+
+			ai_will_do = {
+   				factor = 1
+				modifier = {
+					#Prio if low on manpower
+					factor = 200
+					manpower_per_military_factory <  2000
+				}
+				modifier = {
+					tag = ENG
+					has_idea_with_trait = military_theorist
+					factor = 20
+				}
+			}
+			
+			cancel_if_invalid = no
+			
+			on_add = {
+				IF = {
+					limit = {
+						original_tag = USA
+						has_defensive_war = no
+					}
+					USA_congress_large_opposition = yes
+				}
+			}
+		}
+		
+		extensive_conscription = {
+			
+			available = {
+				#has_manpower_for_recruit_change_to = { value = 0.05 group = mobilization_laws }
+				NOT = { has_idea = reichskommissariats}
+				OR = {
+					has_government = fascism
+					has_government = communism
+					original_tag = FRA
+					AND = {
+						has_war = yes
+						enemies_strength_ratio > 0.25
+						#any_enemy_country = {
+						#	strength_ratio = {
+						#		tag = ROOT 
+						#		ratio > 0.5
+						#	}
+						#}
+					}					
+				}
+				has_war_support > 0.2
+				#Special rules AST in TFV
+				if = {
+					limit = {
+						original_tag = AST
+						has_dlc = "Together for Victory"
+					}
+					has_completed_focus = AST_citizen_military_forces
+					has_completed_focus = AST_fight_work_or_perish
+				}				
+				if = {
+					limit = {
+						original_tag = CAN
+						has_dlc = "Together for Victory"
+					}
+					has_completed_focus = CAN_commit_to_the_war
+					has_completed_focus = CAN_if_day
+				}
+				if = {
+					limit = {
+						original_tag = RAJ
+						has_dlc = "Together for Victory"
+					}
+					is_subject = no
+				}
+
+				if = {
+					limit = {
+						original_tag = HUN
+						has_dlc = "Death or Dishonor"
+					}
+					NOT = { has_idea = HUN_treaty_of_triannon }
+				}
+				if = {
+					limit = {
+						original_tag = ENG
+						has_dlc = "Man the Guns"
+						has_completed_focus = ENG_concessions_to_the_trade_unions
+					}
+					NOT = { has_country_flag = ENG_cannot_increase_conscription_law }
+				}
+				
+				IF = {
+					limit = {
+						original_tag = USA
+						has_defensive_war = no
+					}
+					congress_high_support_trigger = yes 
+				}
+				if = {
+					limit = {
+						original_tag = SPR
+						has_dlc = "La Resistance"
+					}
+					NOT = { has_completed_focus = SPR_all_must_bear_the_torch }
+				}
+				
+				IF = {
+					limit = {
+						original_tag = SAF
+					}
+					has_completed_focus = SAF_reconstitute_the_cape_corps
+				}
+				
+				if = {
+					limit = {
+						original_tag = BUL
+						has_dlc = "Battle for the Bosporus"
+					}
+					NOT = { has_idea = BUL_army_restrictions }
+				}
+				
+				IF = {
+					limit = {
+						original_tag = SOV
+						is_ai = no
+					}
+					has_war = yes
+					any_enemy_country = {
+						is_major = yes
+					}
+				}
+			}
+
+			ai_will_do = {
+   				factor = 1
+				modifier = {
+					#Prio if low on manpower
+					factor = 200
+					manpower_per_military_factory <  800
+				}
+				
+				modifier = {
+					tag = TUR
+					has_dlc = "Battle for the Bosporus"
+					factor = 50
+				}
+
+				modifier = { # china relies a lot on throwing bodies at the enemy
+					factor = 3
+
+					tag = CHI
+					has_manpower < 200000
+				}
+				
+			}
+			
+			cost = 150
+			removal_cost = -1
+			level = 5
+			
+			modifier = {
+				conscription = 0.15		
+				training_time_factor = 0.1
+			}
+			
+			cancel_if_invalid = no
+			
+			on_add = {
+				IF = {
+					limit = {
+						original_tag = USA
+						has_defensive_war = no
+					}
+					USA_congress_large_opposition = yes
+				}
+			}
+		}
+		
+		service_by_requirement = {
+			
+			
+			available = {
+				#has_manpower_for_recruit_change_to =  { value = 0.1 group = mobilization_laws }
+				NOT = { has_idea = reichskommissariats}
+				AND = {
+					has_war = yes
+					enemies_strength_ratio > 0.25
+				}
+				OR = {
+					has_war_support > 0.6
+					surrender_progress > 0
+				}
+
+				if = {
+					limit = {
+						original_tag = AST
+						has_dlc = "Together for Victory"
+					}
+					has_completed_focus = AST_citizen_military_forces
+					has_completed_focus = AST_fight_work_or_perish
+				}
+
+				if = {
+					limit = {
+						original_tag = CAN
+						has_dlc = "Together for Victory"
+					}
+					OR = {
+						has_completed_focus = CAN_compromise_with_quebec
+						has_completed_focus = CAN_forced_quebec_conscription
+					}
+				}
+				if = {
+					limit = {
+						original_tag = RAJ
+						has_dlc = "Together for Victory"
+					}
+					is_subject = no
+				}
+
+				if = {
+					limit = {
+						original_tag = HUN
+						has_dlc = "Death or Dishonor"
+					}
+					NOT = { has_idea = HUN_treaty_of_triannon }
+				}
+				
+				
+				
+				if = {
+					limit = {
+						original_tag = ENG
+						has_dlc = "Man the Guns"
+						has_completed_focus = ENG_concessions_to_the_trade_unions
+					}
+					NOT = { has_country_flag = ENG_cannot_increase_conscription_law }
+				}
+				IF = {
+					limit = {
+						original_tag = USA
+						has_defensive_war = no
+					}
+					congress_high_support_trigger = yes 
+				}
+				if = {
+					limit = {
+						original_tag = SPR
+						has_dlc = "La Resistance"
+					}
+					NOT = { has_completed_focus = SPR_all_must_bear_the_torch }
+				}
+				
+				IF = {
+					limit = {
+						original_tag = SAF
+					}
+					has_completed_focus = SAF_expand_the_cape_corps
+				}
+				
+				if = {
+					limit = {
+						original_tag = BUL
+						has_dlc = "Battle for the Bosporus"
+					}
+					NOT = { has_idea = BUL_army_restrictions }
+				}
+				
+				IF = {
+					limit = {
+						original_tag = SOV
+						is_ai = no
+					}
+					has_war = yes
+					any_enemy_country = {
+						is_major = yes
+					}
+				}
+			}
+
+			ai_will_do = {
+   				factor = 1
+				modifier = {
+					#Prio if low on manpower
+					factor = 200
+					manpower_per_military_factory <  600
+				}
+				modifier = {
+					#Lower chance if has decent amount
+					factor = 0.5
+					manpower_per_military_factory >  1000
+				}
+				modifier = {
+					#Block has plenty manpower
+					factor = 0
+					NOT = { tag = CHI }
+					NOT = { tag = SOV }
+					manpower_per_military_factory >  4000
+				}
+
+				modifier = { # china relies a lot on throwing bodies at the enemy
+					factor = 3
+
+					tag = CHI
+					has_manpower < 200000
+				}
+
+				modifier = { # germany needs this before russia, badly
+					factor = 10
+
+					original_tag = GER
+					has_manpower < 1000000
+				}
+				modifier = {
+					factor = 1000
+					original_tag = SOV
+					check_variable = { manpower_k < 3000 }
+				}
+
+			}
+			
+			cost = 150
+			removal_cost = -1
+			level = 4
+
+			modifier = {
+				conscription = 0.25
+				training_time_factor = 0.2		  
+			}
+			
+			cancel_if_invalid = no
+			
+			on_add = {
+				IF = {
+					limit = {
+						original_tag = USA
+						has_defensive_war = no
+					}
+					USA_congress_large_opposition = yes
+				}
+			}
+		}
+		
+		massive_conscription = {
+			
+			
+			available = {
+				#has_manpower_for_recruit_change_to =  { value = 0.1 group = mobilization_laws }
+				NOT = { has_idea = reichskommissariats}
+				AND = {
+					has_war = yes
+					enemies_strength_ratio > 0.25
+				}
+				OR = {
+					has_war_support > 0.6
+					surrender_progress > 0
+				}
+
+				if = {
+					limit = {
+						original_tag = AST
+						has_dlc = "Together for Victory"
+					}
+					has_completed_focus = AST_citizen_military_forces
+					has_completed_focus = AST_fight_work_or_perish
+				}
+
+				if = {
+					limit = {
+						original_tag = CAN
+						has_dlc = "Together for Victory"
+					}
+					OR = {
+						has_completed_focus = CAN_compromise_with_quebec
+						has_completed_focus = CAN_forced_quebec_conscription
+					}
+				}
+				if = {
+					limit = {
+						original_tag = RAJ
+						has_dlc = "Together for Victory"
+					}
+					is_subject = no
+				}
+
+				if = {
+					limit = {
+						original_tag = HUN
+						has_dlc = "Death or Dishonor"
+					}
+					NOT = { has_idea = HUN_treaty_of_triannon }
+				}
+				
+				
+				
+				if = {
+					limit = {
+						original_tag = ENG
+						has_dlc = "Man the Guns"
+						has_completed_focus = ENG_concessions_to_the_trade_unions
+					}
+					NOT = { has_country_flag = ENG_cannot_increase_conscription_law }
+				}
+				IF = {
+					limit = {
+						original_tag = USA
+						has_defensive_war = no
+					}
+					congress_high_support_trigger = yes 
+				}
+				if = {
+					limit = {
+						original_tag = SPR
+						has_dlc = "La Resistance"
+					}
+					NOT = { has_completed_focus = SPR_all_must_bear_the_torch }
+				}
+				
+				IF = {
+					limit = {
+						original_tag = SAF
+					}
+					has_completed_focus = SAF_expand_the_cape_corps
+				}
+				
+				if = {
+					limit = {
+						original_tag = BUL
+						has_dlc = "Battle for the Bosporus"
+					}
+					NOT = { has_idea = BUL_army_restrictions }
+				}
+				
+				IF = {
+					limit = {
+						original_tag = SOV
+						is_ai = no
+					}
+					has_war = yes
+					any_enemy_country = {
+						is_major = yes
+					}
+				}
+			}
+
+			ai_will_do = {
+   				factor = 1
+				modifier = {
+					#Prio if low on manpower
+					factor = 200
+					manpower_per_military_factory <  600
+				}
+				modifier = {
+					#Lower chance if has decent amount
+					factor = 0.5
+					manpower_per_military_factory >  1000
+				}
+				modifier = {
+					#Block has plenty manpower
+					factor = 0
+					NOT = { tag = CHI }
+					NOT = { tag = SOV }
+					manpower_per_military_factory >  4000
+				}
+
+				modifier = { # china relies a lot on throwing bodies at the enemy
+					factor = 3
+
+					tag = CHI
+					has_manpower < 200000
+				}
+
+				modifier = { # germany needs this before russia, badly
+					factor = 10
+
+					original_tag = GER
+					has_manpower < 1000000
+				}
+				modifier = {
+					factor = 1000
+					original_tag = SOV
+					check_variable = { manpower_k < 3000 }
+				}
+
+			}
+			
+			cost = 150
+			removal_cost = -1
+			level = 4
+
+			modifier = {
+				conscription = 0.45
+				training_time_factor = 0.2	  
+			}
+			
+			cancel_if_invalid = no
+			
+			on_add = {
+				IF = {
+					limit = {
+						original_tag = USA
+						has_defensive_war = no
+					}
+					USA_congress_large_opposition = yes
+				}
+			}
+		}
+		
+		massive_draft = {			
+			
+			available = {
+				#has_manpower_for_recruit_change_to =  { value = 0.1 group = mobilization_laws }
+				NOT = { has_idea = reichskommissariats}
+				AND = {
+					has_war = yes
+					enemies_strength_ratio > 0.25
+				}
+				OR = {
+					has_war_support > 0.65
+					surrender_progress > 0
+				}
+
+				if = {
+					limit = {
+						original_tag = AST
+						has_dlc = "Together for Victory"
+					}
+					has_completed_focus = AST_citizen_military_forces
+					has_completed_focus = AST_fight_work_or_perish
+				}
+
+				if = {
+					limit = {
+						original_tag = CAN
+						has_dlc = "Together for Victory"
+					}
+					OR = {
+						has_completed_focus = CAN_compromise_with_quebec
+						has_completed_focus = CAN_forced_quebec_conscription
+					}
+				}
+				if = {
+					limit = {
+						original_tag = RAJ
+						has_dlc = "Together for Victory"
+					}
+					is_subject = no
+				}
+
+				if = {
+					limit = {
+						original_tag = HUN
+						has_dlc = "Death or Dishonor"
+					}
+					NOT = { has_idea = HUN_treaty_of_triannon }
+				}
+				IF = {
+					limit = {
+						original_tag = USA
+						has_defensive_war = no
+					}
+					congress_high_support_trigger = yes 
+				}
+				if = {
+					limit = {
+						original_tag = SPR
+						has_dlc = "La Resistance"
+					}
+					NOT = { has_completed_focus = SPR_all_must_bear_the_torch }
+				}
+				
+				NOT = {
+					original_tag = SAF
+				}
+			}
+
+			ai_will_do = {
+   				factor = 1
+				modifier = {
+					#Prio if low on manpower
+					factor = 200
+					manpower_per_military_factory <  600
+				}
+				modifier = {
+					#Lower chance if has decent amount
+					factor = 0.5
+					manpower_per_military_factory >  800
+				}
+				modifier = {
+					#Block has plenty manpower
+					factor = 0
+					NOT = { tag = CHI }
+					manpower_per_military_factory >  4000
+				}
+
+				modifier = { # china relies a lot on throwing bodies at the enemy
+					factor = 3
+
+					tag = CHI
+					has_manpower < 200000
+				}
+			}
+			
+			cost = 150
+			removal_cost = -1
+			level = 3
+			
+			picture = "GFX_idea_massive_draft"
+
+			modifier = {
+				conscription = 0.6
+				training_time_factor = 0.3
+			}
+			
+			cancel_if_invalid = no	
+
+			on_add = {
+				IF = {
+					limit = {
+						original_tag = USA
+						has_defensive_war = no
+					}
+					USA_congress_large_opposition = yes
+				}
+			}
+		}
+		
+		all_adults_serve = {
+			
+			
+			available = {
+				#has_manpower_for_recruit_change_to =  { value = 0.2 group = mobilization_laws }
+				NOT = { has_idea = reichskommissariats}
+				AND = {
+					has_war = yes
+					enemies_strength_ratio > 0.25
+				}
+				
+				surrender_progress > 0.05
+				
+				enemies_strength_ratio > 0.75
+				#any_enemy_country = {
+				#	strength_ratio = {
+				#		tag = ROOT 
+				#		ratio > 0.75
+				#	}
+				#}
+
+				if = {
+					limit = {
+						original_tag = AST
+						has_dlc = "Together for Victory"
+					}
+					has_completed_focus = AST_citizen_military_forces
+					has_completed_focus = AST_fight_work_or_perish
+				}
+
+				if = {
+					limit = {
+						original_tag = CAN
+						has_dlc = "Together for Victory"
+					}
+					OR = {
+						has_completed_focus = CAN_compromise_with_quebec
+						has_completed_focus = CAN_forced_quebec_conscription
+					}					
+				}
+				if = {
+					limit = {
+						original_tag = RAJ
+						has_dlc = "Together for Victory"
+					}
+					is_subject = no
+				}
+
+				if = {
+					limit = {
+						original_tag = HUN
+						has_dlc = "Death or Dishonor"
+					}
+					NOT = { has_idea = HUN_treaty_of_triannon }
+				}
+				
+				if = {
+					limit = {
+						original_tag = ENG
+						has_dlc = "Man the Guns"
+						has_completed_focus = ENG_concessions_to_the_trade_unions
+					}
+					NOT = { has_country_flag = ENG_cannot_increase_conscription_law }
+				}
+				IF = {
+					limit = {
+						original_tag = USA
+						has_defensive_war = no
+					}
+					congress_high_support_trigger = yes 
+				}
+				if = {
+					limit = {
+						original_tag = SPR
+						has_dlc = "La Resistance"
+					}
+					NOT = { has_completed_focus = SPR_all_must_bear_the_torch }
+				}
+				
+				NOT = {
+					original_tag = SAF
+				}
+				
+				if = {
+					limit = {
+						original_tag = BUL
+						has_dlc = "Battle for the Bosporus"
+					}
+					NOT = { has_idea = BUL_army_restrictions }
+				}
+			}
+
+			ai_will_do = {
+   				factor = 1
+				modifier = {
+					#Prio if low on manpower
+					factor = 200
+					manpower_per_military_factory <  500
+				}
+				modifier = {
+					#Lower chance if has decent amount
+					factor = 0.5
+					manpower_per_military_factory >  800
+				}
+				modifier = {
+					#Block has plenty manpower
+					factor = 0
+					NOT = { tag = CHI }
+					manpower_per_military_factory >  4000
+				}
+
+				modifier = { # china relies a lot on throwing bodies at the enemy
+					factor = 3
+
+					tag = CHI
+					has_manpower < 200000
+				}
+				modifier = {
+					factor = 10
+					original_tag = SOV
+					date > 1943.1.1
+					has_manpower < 2000000	
+				}
+			}
+		
+			cost = 150
+			removal_cost = -1
+			level = 2
+			
+			modifier = {
+				conscription = 0.8
+				training_time_factor = 0.4			 
+			}
+			
+			cancel_if_invalid = no
+			
+			on_add = {
+				IF = {
+					limit = {
+						original_tag = USA
+						has_defensive_war = no
+					}
+					USA_congress_large_opposition = yes
+				}
+			}
+		}
+		
+		scraping_the_barrel = {
+			
+			
+			available = {
+				#has_manpower_for_recruit_change_to =  { value = 0.25 group = mobilization_laws }
+				NOT = { has_idea = reichskommissariats}
+				AND = {
+					has_war = yes
+					enemies_strength_ratio > 0.25
+				}
+				surrender_progress > 0.25
+				
+				enemies_strength_ratio > 1
+				
+				#any_enemy_country = {
+				#	strength_ratio = {
+				#		tag = ROOT 
+				#		ratio > 1
+				#	}
+				#}
+				if = {
+					limit = {
+						original_tag = AST
+						has_dlc = "Together for Victory"
+					}
+					has_completed_focus = AST_citizen_military_forces
+					has_completed_focus = AST_fight_work_or_perish
+				}
+
+				if = {
+					limit = {
+						original_tag = CAN
+						has_dlc = "Together for Victory"
+					}
+					OR = {
+						has_completed_focus = CAN_compromise_with_quebec
+						has_completed_focus = CAN_forced_quebec_conscription
+					}
+				}
+				if = {
+					limit = {
+						original_tag = RAJ
+						has_dlc = "Together for Victory"
+					}
+					is_subject = no
+				}
+
+				if = {
+					limit = {
+						original_tag = HUN
+						has_dlc = "Death or Dishonor"
+					}
+					NOT = { has_idea = HUN_treaty_of_triannon }
+				}
+				
+				if = {
+					limit = {
+						original_tag = ENG
+						has_dlc = "Man the Guns"
+						has_completed_focus = ENG_concessions_to_the_trade_unions
+					}
+					NOT = { has_country_flag = ENG_cannot_increase_conscription_law }
+				}
+				IF = {
+					limit = {
+						original_tag = USA
+						has_defensive_war = no
+					}
+					congress_high_support_trigger = yes 
+				}
+				
+				NOT = {
+					original_tag = SAF
+				}
+				
+				if = {
+					limit = {
+						original_tag = BUL
+						has_dlc = "Battle for the Bosporus"
+					}
+					NOT = { has_idea = BUL_army_restrictions }
+				}
+			}
+
+			ai_will_do = {
+   				factor = 1
+				modifier = {
+					#Prio if low on manpower
+					factor = 200
+					manpower_per_military_factory <  400
+				}				
+				modifier = {
+					#Lower chance if has decent amount
+					factor = 0.5
+					manpower_per_military_factory >  600
+				}
+				modifier = {
+					#Block has plenty manpower
+					factor = 0
+					manpower_per_military_factory >  4000
+				}
+			}
+
+			cost = 150
+			removal_cost = -1
+			level = 1
+
+			modifier = {
+				conscription = 1
+				training_time_factor = 0.5				 
+			}
+			
+			cancel_if_invalid = no
+			
+			on_add = {
+				IF = {
+					limit = {
+						original_tag = USA
+						has_defensive_war = no
+					}
+					USA_congress_large_opposition = yes
+				}
+
+			}
+		}
+	}
+}

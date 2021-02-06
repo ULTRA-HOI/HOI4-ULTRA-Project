@@ -1,0 +1,2272 @@
+﻿add_namespace = hip_germany
+
+### this files manage every peace event related to a german defeat ###
+
+### Historical - The Yalta Conference. Case when both allies and soviet "liberate" europe together  ###
+
+#yalta trigger
+
+country_event = {
+	id = hip_germany.1
+	title = hip_germany.1.t
+	desc = hip_germany.1.d
+	picture = GFX_report_event_generic_sign_treaty2
+
+	fire_only_once = yes
+	
+	is_triggered_only = yes #Yalta decision
+	
+	immediate = {
+		SOV = {
+			save_event_target_as = yalta_partner
+		}
+		ROOT = {
+			save_event_target_as = yalta_origin
+		}
+	}
+	
+	option = {
+		name = hip_germany.1.a
+		hidden_effect = {
+			event_target:yalta_partner = {
+				country_event = { days = 1 id = hip_germany.2 }
+			}
+		}
+		ai_chance = {
+			factor = 100
+		}
+		
+		event_target:yalta_partner = {
+			custom_effect_tooltip = needs_approval
+		}
+	}
+
+}
+
+#Yalta Conference Follow-up
+country_event = {
+	id = hip_germany.2
+	title = hip_germany.2.t
+	desc = hip_germany.2.d
+	picture = GFX_report_event_generic_sign_treaty2
+
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+	option = {
+		name = hip_germany.2.a
+		
+		hidden_effect = {
+			news_event = { days = 1 id = news.236 }
+			set_global_flag = had_yalta_conference
+		}
+	}
+	
+	option = {
+		name = hip_germany.2.b
+		ai_chance = {
+			factor = 0
+		}
+	}
+}
+
+#Yalta application
+
+country_event = {
+	id = hip_germany.3
+	title = hip_germany.3.t
+	desc = hip_germany.3.d
+	picture = GFX_report_event_generic_sign_treaty2
+
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = hip_germany.3.a
+		
+		custom_effect_tooltip = GAME_OVER_TT
+		
+		#cleanup potential axis conquest in the west
+		
+		GER = {
+			add_named_threat = { threat = -80 name = hip_germany.3.t }
+		}
+		IF = {
+			limit = {
+				FRA = {
+					NOT = {
+						has_government = neutrality
+					}
+				}
+			}
+			FRA = {
+				transfer_state = 28 #Alsace
+				transfer_state = 29 #Nord
+			}
+			else = {
+				BEL = {
+					transfer_state = 29
+				}
+				29 = {
+					add_core_of = BEL
+				}
+				LUX = {
+					transfer_state = 28
+				}
+				28 = {
+					add_core_of = LUX
+				}
+			}
+		}
+		FRA = {
+			transfer_state = 735 # Savoy
+			transfer_state = 798 # Nice
+			transfer_state = 1 #corsica
+			transfer_state = 458
+			transfer_state = 665
+		} 
+		LUX = { transfer_state = 8 }
+		BEL = { transfer_state = 796 }
+		ITA = { transfer_state = 39 }
+		SWI = {
+			transfer_state = 3
+			transfer_state = 151
+			transfer_state = 800
+		}
+		GRE = {
+			transfer_state = 184
+			transfer_state = 731
+			transfer_state = 185
+			transfer_state = 47
+			transfer_state = 186
+			transfer_state = 187
+			transfer_state = 182
+			transfer_state = 164
+		}
+		
+		ALB = {
+			transfer_state = 44
+		}
+		
+		YUG = {
+			transfer_state = 102
+			transfer_state = 103
+			transfer_state = 736
+			transfer_state = 163
+			transfer_state = 109
+			transfer_state = 104
+			transfer_state = 45
+			transfer_state = 107
+			transfer_state = 105
+			transfer_state = 108
+			transfer_state = 106
+			transfer_state = 912
+			transfer_state = 764
+		}
+		
+		DEN = {
+			transfer_state = 801
+			transfer_state = 99
+			transfer_state = 37
+			transfer_state = 101
+		}
+		
+		ICE = {
+			transfer_state = 100
+		}
+		
+		ENG = {
+			annex_country = { target = ITA }
+			release = ITA
+			annex_country = { target = IRQ }
+		}
+		
+		#French occupation zone
+		IF = {
+			limit = {
+				FRA = {
+					NOT = {
+						has_government = neutrality
+					}
+				}
+			}
+			FRA = {
+				transfer_state = 793
+				transfer_state = 42
+				transfer_state = 50
+				transfer_state = 794
+				transfer_state = 153
+			}
+			else = {
+				ENG = {
+					transfer_state = 793
+					transfer_state = 42
+					transfer_state = 50
+					transfer_state = 794
+					transfer_state = 153
+				}
+			}
+		}
+		# British occupation zone
+		
+		ENG = {
+			transfer_state = 51
+			transfer_state = 790
+			transfer_state = 57
+			transfer_state = 56
+			transfer_state = 789
+			transfer_state = 792
+			transfer_state = 58
+			transfer_state = 59
+			transfer_state = 799
+		}
+		
+		# US occupation zone
+		
+		USA = {
+			transfer_state = 55
+			transfer_state = 54
+			transfer_state = 53
+			transfer_state = 52
+			transfer_state = 152
+			transfer_state = 791	# West-Berlin transfered to	US, can't have the 3 allied occupation zones	
+		}
+		
+		set_province_name = { id = 3499 name = "West-Berlin" }
+		791 = { set_state_name = "West-Berlin" }
+		
+		# Soviet occupation zone
+		
+		SOV = {
+			annex_country = { target = GER }
+			annex_country = { target = POL }
+			annex_country = { target = CZE }
+			annex_country = { target = HUN }
+			annex_country = { target = YUG }
+			annex_country = { target = ROM }
+			annex_country = { target = BUL }
+			annex_country = { target = ALB }
+			annex_country = { target = CRO }
+			annex_country = { target = SER }
+			
+			transfer_state = 44
+			transfer_state = 4
+		}
+		
+		#sov release puppets 
+		
+		ROM = { 
+			transfer_state = 46
+			transfer_state = 81
+			transfer_state = 82
+			transfer_state = 83
+			transfer_state = 84
+			transfer_state = 76
+			transfer_state = 79
+		}
+		
+		SOV = { puppet = ROM} 
+		
+		SOV = {	release_puppet = BUL }
+		BUL = {
+			transfer_state = 77
+		}
+		SOV = {	release_puppet = ALB }
+		SOV = {	release_puppet = YUG }
+		
+		YUG = {
+			transfer_state = 102
+			transfer_state = 736
+			transfer_state = 163
+			transfer_state = 109
+			transfer_state = 103
+			transfer_state = 104
+			transfer_state = 105
+			transfer_state = 106
+			transfer_state = 108
+			transfer_state = 107
+			transfer_state = 912
+			transfer_state = 45
+		}
+		
+		SOV = { puppet = YUG}
+		
+		CZE = {
+			transfer_state = 9
+			transfer_state = 69
+			transfer_state = 75
+			transfer_state = 74
+			transfer_state = 72
+			transfer_state = 70
+			transfer_state = 71
+			transfer_state = 664
+		}
+		
+		
+		
+		SOV = { puppet = CZE}
+		
+		HUN = {
+			transfer_state = 43
+			transfer_state = 155
+			transfer_state = 154
+		}
+		
+		SOV = { puppet = HUN}
+		
+		POL = { 
+			transfer_state = 10
+			transfer_state = 97
+			transfer_state = 92
+			
+			transfer_state = 98
+			transfer_state = 90
+			transfer_state = 88
+			transfer_state = 762
+			transfer_state = 87
+			transfer_state = 86
+			transfer_state = 85
+			transfer_state = 817
+			
+			
+			#Polish occupation zone on GER
+			
+			
+			transfer_state = 63
+			transfer_state = 67
+			transfer_state = 66
+			transfer_state = 68
+			
+			transfer_state = 5
+			transfer_state = 795
+			
+		}
+		
+		SOV = { puppet = POL}
+		
+		# SOV cores on UKR/BLR cores
+		
+		SOV = {
+			add_state_core = 766
+			add_state_core = 95
+			add_state_core = 96
+			add_state_core = 94
+			add_state_core = 93
+			add_state_core = 91
+			add_state_core = 89
+			add_state_core = 73
+		}
+		
+		UKR = {
+			add_state_core = 73
+		}
+		
+		USA = {
+			white_peace = GER
+		}
+		
+		GER = {
+			white_peace = USA
+		}
+		
+		every_country = {
+			limit = {
+				is_in_faction_with = GER
+			}
+			white_peace = USA
+		}
+		every_country = {
+			limit = {
+				is_in_faction_with = USA
+			}
+			white_peace = GER
+		}
+		
+		SOV = {
+			white_peace = GER
+		}
+		
+		SOV = {
+			white_peace = FIN
+			transfer_state = 722
+		}
+		
+		GER = {
+			white_peace = SOV
+		}
+		
+		every_country = {
+			limit = {
+				is_in_faction_with = GER
+			}
+			white_peace = SOV
+		}
+		every_country = {
+			limit = {
+				is_in_faction_with = SOV
+			}
+			white_peace = GER
+		}
+	}
+
+}
+
+country_event = {
+	id = hip_germany.4
+	title = hip_germany.4.t
+	desc = hip_germany.4.d
+	picture = GFX_report_event_generic_sign_treaty2
+
+	fire_only_once = yes
+	
+	is_triggered_only = yes # USA decision to free austria
+	
+	option = { #yes
+		name = hip_germany.4.a
+		ai_chance = {
+			factor = 100
+		}
+		USA = { country_event = {id = hip_germany.5 days = 1 }}
+	}
+	
+	option = { #no
+		name = hip_germany.4.b
+		ai_chance = {
+			factor = 0
+		}
+		USA = {country_event = {id = hip_germany.6 days = 1 } }
+	}
+	
+}
+
+country_event = {
+	id = hip_germany.5
+	title = hip_germany.5.t
+	desc = hip_germany.5.d
+	picture = GFX_report_event_generic_sign_treaty2
+
+	fire_only_once = yes
+	
+	is_triggered_only = yes # USA decision to free austria
+
+	option = {
+		name = hip_germany.5.a
+		
+		AUS = {
+			transfer_state = 4
+			transfer_state = 775
+			transfer_state = 152
+			transfer_state = 153
+			set_politics = { ruling_party = neutrality elections_allowed = yes }
+			set_political_party = { ideology = democratic popularity = 0.3 }
+			set_political_party = { ideology = neutrality popularity = 0.6 }
+			set_political_party = { ideology = fascism popularity = 0.05 }
+			set_political_party = { ideology = communism popularity = 0.05 }
+			add_ideas = neutrality_idea
+		}
+		
+	}
+}
+
+country_event = {
+	id = hip_germany.6
+	title = hip_germany.6.t
+	desc = hip_germany.6.d
+	picture = GFX_report_event_generic_sign_treaty2
+
+	fire_only_once = yes
+	
+	is_triggered_only = yes # USA decision to free austria
+
+	option = {
+		name = hip_germany.6.a
+		
+		WGR = {
+			transfer_state = 775
+			transfer_state = 152
+			transfer_state = 153
+		}
+		
+		USA = {
+			add_named_threat = { threat = 5 name = hip_germany.6.t }
+		}
+		
+	}
+}
+
+country_event = { #soviet decides the eastern border of Germany
+	id = hip_germany.7
+	title = hip_germany.7.t
+	desc = hip_germany.7.d
+	picture = GFX_report_event_generic_sign_treaty2
+
+	fire_only_once = yes
+	
+	is_triggered_only = yes # USA decision to free WGR
+	
+	immediate = {
+		every_state = {
+			limit = {
+				is_core_of = GER
+			}
+			add_core_of = DDR
+		}
+		
+		every_state = {
+			limit = {
+				is_core_of = GER
+			}
+			add_core_of = WGR
+		}
+	}
+	
+	option = {
+		name = hip_germany.7.a #Historical - humiliation
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 10
+				is_historical_focus_on = yes
+			}
+		}
+		DDR = {
+			transfer_state = 64
+			set_capital = 64
+			transfer_state = 788
+			transfer_state = 61
+			transfer_state = 62
+			transfer_state = 60
+			transfer_state = 65
+			inherit_technology = GER
+		}
+		
+		SOV = { puppet = DDR }
+	}
+	
+	option = {
+		name = hip_germany.7.b # Balanced solution
+		ai_chance = {
+			factor = 25
+		}
+		
+		DDR = {
+			transfer_state = 64
+			set_capital = 64
+			transfer_state = 795
+			transfer_state = 61
+			transfer_state = 788
+			transfer_state = 60
+			transfer_state = 65
+			transfer_state = 62
+			transfer_state = 63
+			transfer_state = 68
+			transfer_state = 66
+			inherit_technology = GER
+		}
+		
+		SOV = { puppet = DDR }
+		
+	}
+	
+	option = {
+		name = hip_germany.7.c # Strong Germany
+		ai_chance = {
+			factor = 25
+		}
+		
+		DDR = {
+			transfer_state = 64
+			set_capital = 64
+			transfer_state = 795
+			transfer_state = 61
+			transfer_state = 788
+			transfer_state = 60
+			transfer_state = 65
+			transfer_state = 62
+			transfer_state = 63
+			transfer_state = 68
+			transfer_state = 66
+			transfer_state = 67
+			transfer_state = 762
+			transfer_state = 74
+			transfer_state = 85
+			transfer_state = 817
+			transfer_state = 763
+			
+			transfer_state = 5
+			transfer_state = 188
+			inherit_technology = GER
+		}
+		
+		SOV = { puppet = DDR }
+	}
+	
+}
+
+country_event = {
+	id = hip_germany.8
+	title = hip_germany.8.t
+	desc = hip_germany.8.d
+	picture = GFX_report_event_generic_sign_treaty2
+
+	fire_only_once = yes
+	
+	is_triggered_only = yes # SOV decision to neutral Germany
+	
+	option = { #yes
+		name = hip_germany.8.a
+		ai_chance = {
+			factor = 25
+		}
+		SOV = { country_event = {id = hip_germany.9 days = 1 }}
+	}
+	
+	option = { #no
+		name = hip_germany.8.b
+		ai_chance = {
+			factor = 75
+		}
+		SOV = {country_event = {id = hip_germany.10 days = 1 } }
+	}
+	
+}
+
+country_event = {
+	id = hip_germany.9
+	title = hip_germany.9.t
+	desc = hip_germany.9.d
+	picture = GFX_report_event_generic_sign_treaty2
+
+	fire_only_once = yes
+	
+	is_triggered_only = yes # USA decision to free austria
+
+	option = {
+		name = hip_germany.9.a
+		
+		GER = {
+			transfer_state = 771 # Berlin 
+			set_capital = 771
+			annex_country = { target = DDR }
+			annex_country = { target = WGR }
+			set_politics = { ruling_party = neutrality elections_allowed = yes }
+			set_political_party = { ideology = democratic popularity = 0.15 }
+			set_political_party = { ideology = neutrality popularity = 0.6 }
+			set_political_party = { ideology = fascism popularity = 0.05 }
+			set_political_party = { ideology = communism popularity = 0.2 }
+			add_ideas = neutrality_idea
+		}
+		every_state = {
+			limit = {
+				is_core_of = GER
+			}
+			remove_core_of = DDR
+		}
+		every_state = {
+			limit = {
+				is_core_of = GER
+			}
+			remove_core_of = WGR
+		}
+		
+		set_province_name = { id = 3499 name = "Berlin" }
+		771 = { set_state_name = "Berlin" }
+		
+		
+		
+	}
+}
+
+country_event = {
+	id = hip_germany.10
+	title = hip_germany.10.t
+	desc = hip_germany.10.d
+	picture = GFX_report_event_generic_sign_treaty2
+
+	fire_only_once = yes
+	
+	is_triggered_only = yes 
+
+	option = {
+		name = hip_germany.10.a
+		
+		every_state = {
+			limit = {
+				is_core_of = DDR
+			}
+			remove_core_of = GER
+		}
+		
+	}
+}
+
+### a-historical - Case when soviet alones "liberate" europe.  ###
+
+# Red Europe
+
+country_event = {
+	id = hip_germany.11
+	title = hip_germany.11.t
+	desc = hip_germany.11.d
+	picture = GFX_report_event_generic_sign_treaty2
+
+	fire_only_once = yes
+	
+	is_triggered_only = yes #Decision
+	
+	option = {
+		name = hip_germany.11.a #surrender to the soviet
+		
+		custom_effect_tooltip = GAME_OVER_TT
+		
+		#cleanup potential axis conquest in the west
+		
+		GER = {
+			add_named_threat = { threat = -80 name = hip_germany.3.t }
+		}
+		IF = {
+			limit = {
+				FRA = {
+					NOT = {
+						has_government = neutrality
+					}
+				}
+			}
+			FRA = {
+				transfer_state = 28 #Alsace
+				transfer_state = 29 #Nord
+			}
+			else = {
+				BEL = {
+					transfer_state = 29
+				}
+				29 = {
+					add_core_of = BEL
+				}
+				LUX = {
+					transfer_state = 28
+				}
+				28 = {
+					add_core_of = LUX
+				}
+			}
+		}
+		FRA = {
+			transfer_state = 735 # Savoy
+			transfer_state = 798 # Nice
+			transfer_state = 1 #corsica
+		} 
+		LUX = { transfer_state = 8 }
+		BEL = { transfer_state = 796 }
+		ITA = { transfer_state = 39 }
+		SWI = {
+			transfer_state = 3
+			transfer_state = 151
+			transfer_state = 800
+		}
+		GRE = {
+			transfer_state = 184
+			transfer_state = 731
+			transfer_state = 185
+			transfer_state = 47
+			transfer_state = 186
+			transfer_state = 187
+			transfer_state = 182
+			transfer_state = 164
+		}
+		
+		ENG = {
+			transfer_state = 273
+			transfer_state = 663
+			transfer_state = 451
+			transfer_state = 450
+			transfer_state = 662
+			transfer_state = 449
+			transfer_state = 661
+			transfer_state = 448
+			annex_country = { target = IRQ }
+		}
+		
+		# Soviet occupation zone
+		
+		SOV = {
+			annex_country = { target = GER }
+			annex_country = { target = POL }
+			annex_country = { target = CZE }
+			annex_country = { target = HUN }
+			annex_country = { target = YUG }
+			annex_country = { target = ROM }
+			annex_country = { target = BUL }
+			annex_country = { target = ALB }
+			annex_country = { target = CRO }
+			annex_country = { target = SER }
+			annex_country = { target = DEN }
+			annex_country = { target = NOR }
+			annex_country = { target = HOL }
+			annex_country = { target = BEL }
+			annex_country = { target = LUX }
+			annex_country = { target = FRA }
+			annex_country = { target = VIC }
+			annex_country = { target = ITA }
+			annex_country = { target = AUS }
+			annex_country = { target = FIN }
+			
+			transfer_state = 44
+			transfer_state = 4
+			
+		}
+		
+		#sov release puppets 
+		
+		SOV = {
+			release_puppet = ALG
+			release_puppet = NOR
+			release_puppet = DEN
+			release_puppet = BEL
+			release_puppet = HOL
+			release_puppet = LUX
+			release_puppet = FRA
+			release_puppet = ITA
+			release_puppet = GRE
+			
+			release_puppet = TAH
+			release_puppet = INS
+			release_puppet = LAO
+			release_puppet = VET
+			release_puppet = CAM
+			release_puppet = DJI
+			
+			release_puppet = TUN
+			release_puppet = MOR
+			release_puppet = MRT
+			release_puppet = SEN
+			release_puppet = GNA
+			release_puppet = MLI
+			release_puppet = VOL
+			release_puppet = NGR
+			
+			release_puppet = IVO
+			release_puppet = DAH
+			release_puppet = TOG
+			release_puppet = CHA
+			release_puppet = CMR
+			release_puppet = CAR
+			release_puppet = GAB
+			release_puppet = RCG
+			release_puppet = COG
+			release_puppet = RWA
+			release_puppet = BRD
+			release_puppet = MAD
+			release_puppet = SUR
+			release_puppet = SYR
+			release_puppet = LEB
+			release_puppet = PER
+			release_puppet = FIN
+			release_puppet = CRC
+			transfer_state = 146
+			transfer_state = 147
+			transfer_state = 722
+		}
+		
+		ROM = { 
+			transfer_state = 46
+			transfer_state = 81
+			transfer_state = 82
+			transfer_state = 83
+			transfer_state = 84
+			transfer_state = 76
+			transfer_state = 79
+		}
+		
+		SOV = { puppet = ROM} 
+		
+		SOV = {	release_puppet = BUL }
+		BUL = {
+			transfer_state = 77
+		}
+		SOV = {	release_puppet = ALB }
+		SOV = {	release_puppet = YUG }
+		
+		YUG = {
+			transfer_state = 102
+			transfer_state = 736
+			transfer_state = 163
+			transfer_state = 109
+			transfer_state = 103
+			transfer_state = 104
+			transfer_state = 105
+			transfer_state = 106
+			transfer_state = 108
+			transfer_state = 107
+			transfer_state = 45
+			transfer_state = 912
+		}
+		
+		SOV = { puppet = YUG}
+		
+		CZE = {
+			transfer_state = 9
+			transfer_state = 69
+			transfer_state = 75
+			transfer_state = 74
+			transfer_state = 72
+			transfer_state = 70
+			transfer_state = 71
+			transfer_state = 664
+		}
+		
+		SOV = { puppet = CZE}
+		
+		HUN = {
+			transfer_state = 43
+			transfer_state = 155
+			transfer_state = 154
+		}
+		
+		SOV = { puppet = HUN}
+		
+		POL = { 
+			transfer_state = 10
+			transfer_state = 97
+			transfer_state = 92
+			
+			transfer_state = 98
+			transfer_state = 90
+			transfer_state = 88
+			transfer_state = 762
+			transfer_state = 87
+			transfer_state = 86
+			transfer_state = 85
+			transfer_state = 817
+			
+			
+			#Polish occupation zone on GER
+			
+			
+			transfer_state = 63
+			transfer_state = 67
+			transfer_state = 66
+			transfer_state = 68
+			
+			transfer_state = 5
+			transfer_state = 795
+			
+		}
+		
+		SOV = { puppet = POL}
+		
+		# SOV cores on UKR/BLR cores
+		
+		SOV = {
+			add_state_core = 766
+			add_state_core = 95
+			add_state_core = 96
+			add_state_core = 94
+			add_state_core = 93
+			add_state_core = 91
+			add_state_core = 89
+			add_state_core = 73
+		}
+		
+		UKR = {
+			add_state_core = 73
+		}
+		
+		ENG = {
+			white_peace = GER
+		}
+		
+		GER = {
+			white_peace = ENG
+		}
+		
+		every_country = {
+			limit = {
+				is_in_faction_with = GER
+			}
+			white_peace = ENG
+		}
+		every_country = {
+			limit = {
+				is_in_faction_with = ENG
+			}
+			white_peace = GER
+		}
+		SOV = {
+			white_peace = GER
+		}
+		
+		GER = {
+			white_peace = SOV
+		}
+		
+		every_country = {
+			limit = {
+				is_in_faction_with = GER
+			}
+			white_peace = SOV
+		}
+		every_country = {
+			limit = {
+				is_in_faction_with = SOV
+			}
+			white_peace = GER
+		}
+		
+		
+		SOV = {
+			add_named_threat = { threat = 50 name = hip_germany.11.t }
+		}
+	}
+}
+
+country_event = {
+	id = hip_germany.12
+	title = hip_germany.12.t
+	desc = hip_germany.12.d
+	picture = GFX_report_event_generic_sign_treaty2
+
+	fire_only_once = yes
+	
+	is_triggered_only = yes 
+	
+	immediate = {
+		every_state = {
+			limit = {
+				is_core_of = AUS
+			}
+			add_core_of = GER
+		}
+	}
+	
+	option = { # weaker - Austria free
+		name = hip_germany.12.a
+		ai_chance = {
+			factor = 25
+		}
+		release_puppet = AUS
+		release_puppet = GER
+		SOV = {
+			transfer_state = 763
+			transfer_state = 188
+		}
+	}
+	
+	option = { # weaker with austria
+		name = hip_germany.12.b
+		ai_chance = {
+			factor = 25
+		}
+		release_puppet = GER
+		SOV = {
+			transfer_state = 763
+			transfer_state = 188
+		}
+	}
+	
+	
+	option = { # balanced with austria
+		name = hip_germany.12.e
+		ai_chance = {
+			factor = 25
+		}
+		release_puppet = GER
+		GER = {
+			transfer_state = 795
+			transfer_state = 63
+			transfer_state = 68
+			transfer_state = 66
+		}
+		SOV = {
+			transfer_state = 763
+			transfer_state = 188
+		}
+	}
+	
+	option = { # the strongest - Litterally GrossDeutschland with all german cores
+		name = hip_germany.12.f
+		ai_chance = {
+			factor = 25
+		}
+		release_puppet = GER
+		GER = {
+			transfer_state = 64
+			
+			transfer_state = 795
+			transfer_state = 61
+			transfer_state = 788
+			transfer_state = 60
+			transfer_state = 65
+			transfer_state = 62
+			transfer_state = 63
+			transfer_state = 68
+			transfer_state = 66
+			transfer_state = 67
+			transfer_state = 762
+			
+			transfer_state = 85
+			transfer_state = 817
+			transfer_state = 763
+			
+			transfer_state = 5
+			transfer_state = 188
+			transfer_state = 69
+			transfer_state = 74
+			IF = {
+				limit = {
+					FRA = {
+						is_subject_of = SOV
+					}
+				}
+				transfer_state = 28
+				transfer_state = 8
+				transfer_state = 796
+				transfer_state = 39
+				transfer_state = 801
+			}
+		}
+		
+		SOV = {
+			add_named_threat = { threat = 30 name = hip_germany.12.t }
+		}
+	}
+}
+
+### a-historical - Case when allies alones "liberate" europe.  ###
+
+country_event = {
+	id = hip_germany.13
+	title = hip_germany.13.t
+	desc = hip_germany.13.d
+	picture = GFX_report_event_generic_sign_treaty2
+
+	fire_only_once = yes
+	
+	is_triggered_only = yes  #decision
+	
+	option = {
+		name = hip_germany.13.a #surrender to the allies
+		
+		custom_effect_tooltip = GAME_OVER_TT
+		
+		#cleanup potential axis conquest in the west
+		
+		GER = {
+			add_named_threat = { threat = -80 name = hip_germany.3.t }
+		}
+		IF = {
+			limit = {
+				FRA = {
+					NOT = {
+						has_government = neutrality
+					}
+				}
+			}
+			FRA = {
+				transfer_state = 28 #Alsace
+				transfer_state = 29 #Nord
+			}
+			else = {
+				BEL = {
+					transfer_state = 29
+				}
+				29 = {
+					add_core_of = BEL
+				}
+				LUX = {
+					transfer_state = 28
+				}
+				28 = {
+					add_core_of = LUX
+				}
+			}
+		}
+		FRA = {
+			transfer_state = 735 # Savoy
+			transfer_state = 798 # Nice
+			transfer_state = 1 #corsica
+			transfer_state = 458
+			transfer_state = 665
+		} 
+		LUX = { transfer_state = 8 }
+		BEL = { transfer_state = 796 }
+		ITA = { transfer_state = 39 }
+		SWI = {
+			transfer_state = 3
+			transfer_state = 151
+			transfer_state = 800
+		}
+		GRE = {
+			transfer_state = 184
+			transfer_state = 731
+			transfer_state = 185
+			transfer_state = 47
+			transfer_state = 186
+			transfer_state = 187
+			transfer_state = 182
+			transfer_state = 164
+		}
+		
+		ALB = {
+			transfer_state = 44
+		}
+		
+		YUG = {
+			transfer_state = 102
+			transfer_state = 103
+			transfer_state = 736
+			transfer_state = 163
+			transfer_state = 109
+			transfer_state = 104
+			transfer_state = 45
+			transfer_state = 107
+			transfer_state = 105
+			transfer_state = 108
+			transfer_state = 106
+			transfer_state = 912
+			transfer_state = 764
+		}
+		
+		DEN = {
+			transfer_state = 801
+			transfer_state = 99
+			transfer_state = 37
+			transfer_state = 101
+		}
+		
+		ICE = {
+			transfer_state = 100
+		}
+		
+		ENG = {
+			annex_country = {target = ROM }
+			annex_country = {target = HUN }
+			annex_country = {target = BUL }
+		}
+		
+		
+		
+		IF = {
+			limit = {
+				SOV = {
+					NOT = {
+						controls_state = 784
+					}
+				}
+			}
+			POL = {
+				transfer_state = 784
+			}
+		}
+		IF = {
+			limit = {
+				SOV = {
+					NOT = {
+						controls_state = 96
+					}
+				}
+			}
+			POL = {
+				transfer_state = 96
+			}
+		}
+		IF = {
+			limit = {
+				SOV = {
+					NOT = {
+						controls_state = 95
+					}
+				}
+			}
+			POL = {
+				transfer_state = 95
+			}
+		}
+		IF = {
+			limit = {
+				SOV = {
+					NOT = {
+						controls_state = 94
+					}
+				}
+			}
+			POL = {
+				transfer_state = 94
+			}
+		}
+		IF = {
+			limit = {
+				SOV = {
+					NOT = {
+						controls_state = 93
+					}
+				}
+			}
+			POL = {
+				transfer_state = 93
+			}
+		}
+		IF = {
+			limit = {
+				SOV = {
+					NOT = {
+						controls_state = 91
+					}
+				}
+			}
+			POL = {
+				transfer_state = 91
+			}
+		}
+		IF = {
+			limit = {
+				SOV = {
+					NOT = {
+						controls_state = 89
+					}
+				}
+			}
+			POL = {
+				transfer_state = 89
+			}
+		}
+		
+		IF = {
+			limit = {
+				SOV = {
+					NOT = {
+						controls_state = 80
+					}
+				}
+			}
+			ROM = {
+				transfer_state = 80
+			}
+		}
+		
+		IF = {
+			limit = {
+				SOV = {
+					NOT = {
+						controls_state = 78
+					}
+				}
+			}
+			ROM = {
+				transfer_state = 78
+			}
+		}
+		
+		IF = {
+			limit = {
+				SOV = {
+					NOT = {
+						controls_state = 766
+					}
+				}
+			}
+			ROM = {
+				transfer_state = 766
+			}
+		}
+		
+		IF = {
+			limit = {
+				SOV = {
+					NOT = {
+						controls_state = 146
+					}
+				}
+			}
+			FIN = {
+				transfer_state = 146
+			}
+		}
+		
+		IF = {
+			limit = {
+				SOV = {
+					NOT = {
+						controls_state = 13
+					}
+				}
+			}
+			EST = {
+				transfer_state = 13
+			}
+		}
+		
+		IF = {
+			limit = {
+				SOV = {
+					NOT = {
+						controls_state = 191
+					}
+				}
+			}
+			EST = {
+				transfer_state = 191
+			}
+		}
+		
+		IF = {
+			limit = {
+				SOV = {
+					NOT = {
+						controls_state = 12
+					}
+				}
+			}
+			LAT = {
+				transfer_state = 12
+			}
+		}
+		IF = {
+			limit = {
+				SOV = {
+					NOT = {
+						controls_state = 190
+					}
+				}
+			}
+			LAT = {
+				transfer_state = 190
+			}
+		}
+		IF = {
+			limit = {
+				SOV = {
+					NOT = {
+						controls_state = 11
+					}
+				}
+			}
+			LIT = {
+				transfer_state = 11
+			}
+		}
+		IF = {
+			limit = {
+				SOV = {
+					NOT = {
+						controls_state = 189
+					}
+				}
+			}
+			LIT = {
+				transfer_state = 189
+			}
+		}
+		IF = {
+			limit = {
+				SOV = {
+					NOT = {
+						controls_state = 188
+					}
+				}
+			}
+			LIT = {
+				transfer_state = 188
+			}
+		}
+		
+		IF = {
+			limit = {
+				LIT = {
+					exists = yes
+				}
+			}
+			LIT = {
+				transfer_state = 188
+			}
+		}
+		ELSE = {
+			SOV = {
+				transfer_state = 188
+			}
+		}
+		
+		ROM = {
+			transfer_state = 46
+			transfer_state = 81
+			transfer_state = 82
+			transfer_state = 83
+			transfer_state = 76
+			transfer_state = 84
+			transfer_state = 79
+			
+			transfer_state = 77
+			
+			
+			set_politics = { ruling_party = neutrality elections_allowed = yes }
+			set_political_party = { ideology = democratic popularity = 0.6 }
+			set_political_party = { ideology = neutrality popularity = 0.3 }
+			set_political_party = { ideology = fascism popularity = 0.05 }
+			set_political_party = { ideology = communism popularity = 0.05 }
+			set_stability = 0.5
+			set_war_support = 0
+			add_ideas = undisturbed_isolation
+			add_ideas = disarmed_nation
+			add_political_power = -2000
+		}
+		
+		BUL = {
+			transfer_state = 48
+			transfer_state = 212
+			transfer_state = 211
+			
+			set_politics = { ruling_party = neutrality elections_allowed = yes }
+			set_political_party = { ideology = democratic popularity = 0.6 }
+			set_political_party = { ideology = neutrality popularity = 0.3 }
+			set_political_party = { ideology = fascism popularity = 0.05 }
+			set_political_party = { ideology = communism popularity = 0.05 }
+			set_stability = 0.5
+			set_war_support = 0
+			add_ideas = undisturbed_isolation
+			add_ideas = disarmed_nation
+			add_political_power = -2000
+		}
+		
+		HUN = {
+			transfer_state = 154
+			transfer_state = 43
+			transfer_state = 155
+			
+			set_politics = { ruling_party = neutrality elections_allowed = yes }
+			set_political_party = { ideology = democratic popularity = 0.6 }
+			set_political_party = { ideology = neutrality popularity = 0.3 }
+			set_political_party = { ideology = fascism popularity = 0.05 }
+			set_political_party = { ideology = communism popularity = 0.05 }
+			set_stability = 0.5
+			set_war_support = 0
+			add_ideas = undisturbed_isolation
+			add_ideas = disarmed_nation
+			add_political_power = -2000
+		}
+		# case of beaten USSR
+		IF = {
+			limit = {
+				SOV = {
+					NOT = {
+						controls_state = 219 #Moscow
+					}
+				}
+				has_global_flag = sov_sue_for_peace
+			}
+			RUS = {
+				transfer_state = 213
+				transfer_state = 215
+				transfer_state = 216
+				transfer_state = 214
+				transfer_state = 351
+				transfer_state = 248
+				transfer_state = 253
+				transfer_state = 252
+				transfer_state = 256
+				transfer_state = 250
+				transfer_state = 239
+				transfer_state = 265
+				transfer_state = 217
+				transfer_state = 236
+				transfer_state = 232
+				transfer_state = 233
+				transfer_state = 234
+				transfer_state = 137
+				transfer_state = 218
+				transfer_state = 245
+				transfer_state = 260
+				transfer_state = 240
+				transfer_state = 220
+				transfer_state = 224
+				transfer_state = 243
+				transfer_state = 242
+				transfer_state = 210
+				transfer_state = 209
+				transfer_state = 208
+				transfer_state = 195
+				transfer_state = 244
+				transfer_state = 264
+				transfer_state = 263
+				transfer_state = 246
+				transfer_state = 247
+				transfer_state = 242
+				transfer_state = 219
+				transfer_state = 243
+				transfer_state = 205
+				transfer_state = 223
+				transfer_state = 254
+				transfer_state = 224
+				transfer_state = 222
+				transfer_state = 258
+				transfer_state = 257
+				transfer_state = 255
+				transfer_state = 220
+				transfer_state = 240
+				transfer_state = 260
+				transfer_state = 245
+				transfer_state = 238
+				transfer_state = 237
+				transfer_state = 235
+			}
+			
+			ENG = {
+				annex_country = {target = UKR}
+			}
+			
+			UKR = {
+				transfer_state = 199
+				transfer_state = 201
+				transfer_state = 198
+				transfer_state = 192
+				transfer_state = 202
+				transfer_state = 203
+				transfer_state = 197
+				transfer_state = 193
+				transfer_state = 225
+				transfer_state = 259
+				transfer_state = 226
+				transfer_state = 200
+				transfer_state = 221
+				transfer_state = 227
+				transfer_state = 228
+			}
+			
+			ENG = {
+				annex_country = { target = BLR }
+			}
+			
+			BLR = {
+				transfer_state = 207
+				transfer_state = 206
+				transfer_state = 241
+				transfer_state = 204
+				transfer_state = 194
+			}
+			
+			POL = {
+				transfer_state = 762
+				transfer_state = 96
+				transfer_state = 95
+				transfer_state = 97
+				transfer_state = 94
+				transfer_state = 93
+				transfer_state = 91
+				transfer_state = 89
+				transfer_state = 10
+			}
+			
+			EST = {
+				transfer_state = 13
+				transfer_state = 191
+			}
+			
+			LAT = {
+				transfer_state = 12
+				transfer_state = 190
+			}
+			
+			LIT = {
+				transfer_state = 11
+				transfer_state = 189
+				transfer_state = 188
+			}
+			
+			FIN = {
+				transfer_state = 146
+				transfer_state = 147
+				transfer_state = 722
+			}
+			ROM = {
+				transfer_state = 80
+				transfer_state = 78
+				transfer_state = 766
+			}
+		}
+		
+		IF = {
+			limit = {
+				SOV = {
+					NOT = {
+						controls_state = 206 # Minsk
+					}
+				}				
+			}
+			SOV = {
+				release = LIT
+				release = LAT
+				release = EST
+				release = BLR
+				release = POL
+			}
+			POL = {
+				transfer_state = 89
+				transfer_state = 91
+				transfer_state = 93
+				transfer_state = 94
+				transfer_state = 95
+				transfer_state = 784
+				transfer_state = 96
+			}
+			
+			LIT = {
+				transfer_state = 11
+				transfer_state = 189
+				transfer_state = 188
+			}
+		}
+		
+		IF = {
+			limit = {
+				SOV = {
+					NOT = {
+						controls_state = 202 # Kiev
+					}
+				}				
+			}
+			SOV = {
+				release = UKR
+			}
+			ROM = {
+				transfer_state = 80
+				transfer_state = 78
+				transfer_state = 766
+			}
+		}
+		
+		IF = {
+			limit = {
+				SOV = {
+					NOT = {
+						controls_state = 12 #Riga
+						controls_state = 206 # Minsk
+						controls_state = 202 # Kiev
+					}
+				}				
+			}
+			ENG = {
+				annex_country = {target = UKR }
+			}
+			SOV = {
+				release = LIT
+				release = LAT
+				release = EST
+				release = BLR
+				release = UKR
+			}
+			UKR = {
+				transfer_state = 199
+				transfer_state = 201
+				transfer_state = 198
+				transfer_state = 192
+				transfer_state = 202
+				transfer_state = 203
+				transfer_state = 197
+				transfer_state = 193
+				transfer_state = 225
+				transfer_state = 259
+				transfer_state = 226
+				transfer_state = 200
+				transfer_state = 221
+				transfer_state = 227
+				transfer_state = 228
+			}
+			
+			ENG = {
+				annex_country = {target = BLR }
+			}
+			
+			BLR = {
+				transfer_state = 207
+				transfer_state = 206
+				transfer_state = 241
+				transfer_state = 204
+				transfer_state = 194
+			}
+			
+			POL = {
+				transfer_state = 784
+				transfer_state = 96
+				transfer_state = 95
+				transfer_state = 97
+				transfer_state = 94
+				transfer_state = 93
+				transfer_state = 91
+				transfer_state = 89
+				transfer_state = 762
+				transfer_state = 817
+			}
+			
+			EST = {
+				transfer_state = 13
+				transfer_state = 191
+			}
+			
+			LAT = {
+				transfer_state = 12
+				transfer_state = 190
+			}
+			
+			LIT = {
+				transfer_state = 11
+				transfer_state = 189
+				transfer_state = 188
+			}
+		}
+		
+		ENG = {
+			annex_country = { target = SLO }
+			annex_country = { target = CZE }
+			
+			annex_country = { target = AUS }
+		}
+		
+		CZE = {
+			transfer_state = 9
+			transfer_state = 69
+			transfer_state = 75
+			transfer_state = 74
+			transfer_state = 70
+			transfer_state = 72
+			transfer_state = 664
+			transfer_state = 71
+			transfer_state = 73
+		}
+		
+		
+		
+		AUS = {
+			transfer_state = 4
+			transfer_state = 799
+			transfer_state = 152
+			transfer_state = 153
+			
+			set_politics = { ruling_party = democratic elections_allowed = yes }
+			set_political_party = { ideology = democratic popularity = 0.6 }
+			set_political_party = { ideology = neutrality popularity = 0.3 }
+			set_political_party = { ideology = fascism popularity = 0.05 }
+			set_political_party = { ideology = communism popularity = 0.05 }
+			set_stability = 0.5
+			set_war_support = 0
+			add_ideas = undisturbed_isolation
+			add_ideas = disarmed_nation
+			add_political_power = -2000
+		}
+		
+		IF = {
+			limit = {
+				FRA = {has_war_with = GER}
+			}
+			FRA = {
+			country_event = {id = hip_germany.14 days = 1 }
+			}
+		}
+		
+		IF = {
+			limit = {
+				FIN = {has_war_with = ENG}
+			}
+			ENG = {
+				annex_country = { target = FIN }
+				release = FIN
+			}
+			
+		}
+		
+		ENG = {
+			annex_country = { target = GER }
+			release = GER
+		}
+		
+		ENG = {
+			annex_country = { target = ITA }
+			release = ITA
+		}
+		
+		ENG = {
+			annex_country = { target = IRQ }
+			release = IRQ
+		}
+		
+		GER = {
+			transfer_state = 51
+			transfer_state = 795
+			transfer_state = 42
+			transfer_state = 789
+			transfer_state = 788
+			transfer_state = 50
+			transfer_state = 52
+			transfer_state = 53
+			transfer_state = 54
+			transfer_state = 55
+			transfer_state = 57
+			transfer_state = 56
+			transfer_state = 59
+			transfer_state = 792
+			transfer_state = 790
+			transfer_state = 58
+			transfer_state = 61
+			transfer_state = 64
+			transfer_state = 65
+			transfer_state = 791
+			transfer_state = 793
+			transfer_state = 68
+			transfer_state = 62
+			transfer_state = 63
+			transfer_state = 66
+			transfer_state = 67
+			transfer_state = 60
+			transfer_state = 794
+			transfer_state = 5
+			transfer_state = 763
+			
+			set_politics = { ruling_party = democratic elections_allowed = yes }
+			set_political_party = { ideology = democratic popularity = 0.6 }
+			set_political_party = { ideology = neutrality popularity = 0.3 }
+			set_political_party = { ideology = fascism popularity = 0.05 }
+			set_political_party = { ideology = communism popularity = 0.05 }
+			set_stability = 0.5
+			set_war_support = 0
+			add_ideas = undisturbed_isolation
+			add_ideas = disarmed_nation
+			add_political_power = -2000
+		}
+		
+		POL = {
+			transfer_state = 98
+			transfer_state = 87
+			transfer_state = 86
+			transfer_state = 762
+			transfer_state = 85
+			transfer_state = 817
+			transfer_state = 97
+		}
+		
+		ENG = {
+			white_peace = GER
+		}
+		
+		GER = {
+			white_peace = ENG
+		}
+		
+		GER = {
+			white_peace = FRA
+		}
+		
+		GER = {
+			white_peace = USA
+		}
+		
+		GER = {
+			white_peace = SOV
+		}
+		
+		every_country = {
+			limit = {
+				is_in_faction_with = GER
+			}
+			white_peace = ENG
+		}
+		every_country = {
+			limit = {
+				is_in_faction_with = ENG
+			}
+			white_peace = GER
+		}
+		SOV = {
+			white_peace = GER
+		}
+		
+		GER = {
+			white_peace = SOV
+		}
+		
+		every_country = {
+			limit = {
+				is_in_faction_with = GER
+			}
+			white_peace = SOV
+		}
+		every_country = {
+			limit = {
+				is_in_faction_with = SOV
+			}
+			white_peace = GER
+		}
+		
+		IF = {
+			limit = {
+				USA = {	
+					is_in_faction_with = ENG
+				}
+			}
+			USA = {
+				set_autonomy = {
+					target = GER
+					autonomy_state = autonomy_supervised_state
+				}
+				set_autonomy = {
+					target = AUS
+					autonomy_state = autonomy_supervised_state
+				}
+				set_autonomy = {
+					target = HUN
+					autonomy_state = autonomy_supervised_state
+				}
+				set_autonomy = {
+					target = ROM
+					autonomy_state = autonomy_supervised_state
+				}
+				set_autonomy = {
+					target = BUL
+					autonomy_state = autonomy_supervised_state
+				}
+			}
+		}
+		ELSE = {
+			ENG = {
+				set_autonomy = {
+					target = GER
+					autonomy_state = autonomy_supervised_state
+				}
+				set_autonomy = {
+					target = AUS
+					autonomy_state = autonomy_supervised_state
+				}
+				set_autonomy = {
+					target = HUN
+					autonomy_state = autonomy_supervised_state
+				}
+				set_autonomy = {
+					target = ROM
+					autonomy_state = autonomy_supervised_state
+				}
+				set_autonomy = {
+					target = BUL
+					autonomy_state = autonomy_supervised_state
+				}
+			}
+		}
+		ENG = {
+			set_autonomy = {
+				target = IRQ
+				autonomy_state = autonomy_supervised_state
+			}
+		}
+	}
+}
+
+country_event = { # Fate of Germany
+	id = hip_germany.14
+	title = hip_germany.14.t
+	desc = hip_germany.14.d
+	picture = GFX_report_event_generic_sign_treaty2
+
+	fire_only_once = yes
+	
+	is_triggered_only = yes 
+	
+	option = { #ante-bellum situation
+		name = hip_germany.14.a
+		ai_chance = {
+			factor = 25
+		}
+	}
+	
+	option = { #Territorial concessions to Poland
+		name = hip_germany.14.b
+		ai_chance = {
+			factor = 50
+		}
+		
+		POL = {
+			transfer_state = 763
+			transfer_state = 67
+			transfer_state = 5 
+		} 
+	}
+	
+	option = { # Dismantle Germany
+		name = hip_germany.14.c
+		ai_chance = {
+			factor = 25
+			modifier = {
+				factor = 0
+				USA = { is_in_faction_with = FRA }
+			}
+		}
+		
+		FRA = { #Rheinland direct occupation
+			transfer_state = 42
+			transfer_state = 793
+			transfer_state = 792
+			transfer_state = 794
+			transfer_state = 51
+		}
+			
+		WUR = {
+			transfer_state = 50
+			add_state_core = 50
+			add_state_core = 794
+		}
+		puppet = WUR
+		SAX = {
+			transfer_state = 65
+			add_state_core = 65
+		}
+		#puppet = SAX
+		MEK = {
+			transfer_state = 61
+			add_state_core = 61
+		}
+		#puppet = MEK
+		SHL = {
+			transfer_state = 58
+			transfer_state = 790
+			add_state_core = 58
+			add_state_core = 790
+		}
+		DEN = {
+			puppet = SHL
+		}
+		BAY = {
+			transfer_state = 52
+			transfer_state = 53
+			transfer_state = 54
+			add_state_core = 52
+			add_state_core = 53
+			add_state_core = 54
+		}
+		puppet = BAY
+		HAN = {
+			transfer_state = 59
+			transfer_state = 56
+			transfer_state = 57
+			transfer_state = 789
+			add_state_core = 59
+			add_state_core = 56
+			add_state_core = 57
+			add_state_core = 789
+		}
+		ENG = {puppet = HAN}
+			
+		every_state = {
+			limit = { 
+				is_core_of = GER 
+				CONTROLLER = {
+					NOT = {
+						OR = {
+							tag = BAY
+							tag = MEK
+							tag = SAX
+							tag = HAN
+							tag = SHL
+							tag = WUR
+							tag = AUS
+							tag = CZE
+							tag = POL
+							tag = FRA
+							tag = LUX 
+							tag = BEL
+							tag = ITA
+							tag = LIT
+							tag = SOV
+						}
+					}
+				}
+				NOT = {
+					state = 28
+					state = 794
+				}
+			}
+			PRE = {
+				transfer_state = PREV
+				add_state_core = PREV
+			}
+		}
+		
+		
+		#Prussia stays Independant but loses some parts to Poland
+		POL = {
+			transfer_state = 5
+			add_state_core = 5
+			transfer_state = 67
+		}
+		
+		country_event = {
+			id = hip_germany.15
+			days = 1
+		}
+	}
+}
+
+country_event = { # Fate of Germany
+	id = hip_germany.15
+	title = hip_germany.15.t
+	desc = hip_germany.15.d
+	picture = GFX_report_event_generic_sign_treaty2
+
+	fire_only_once = yes
+	
+	is_triggered_only = yes 
+	hidden = yes
+	
+	immediate = {
+		WUR = {
+			add_state_core = 50
+			add_state_core = 794
+		}
+		SAX = {
+			add_state_core = 65
+		}
+		MEK = {
+			add_state_core = 61
+		}
+		SHL = {
+			add_state_core = 58
+			add_state_core = 790
+		}
+		BAY = {
+			add_state_core = 52
+			add_state_core = 53
+			add_state_core = 54
+			add_state_core = 42
+		}
+		HAN = {
+			add_state_core = 59
+			add_state_core = 56
+			add_state_core = 57
+			add_state_core = 789
+		}
+		PRE = {
+			add_state_core = 188
+			add_state_core = 763
+			add_state_core = 5
+			add_state_core = 817
+			add_state_core = 85
+			add_state_core = 63
+			add_state_core = 795
+			add_state_core = 68
+			add_state_core = 66
+			add_state_core = 67
+			add_state_core = 762
+			add_state_core = 62
+			add_state_core = 64
+			add_state_core = 791
+			add_state_core = 788
+			add_state_core = 60
+			add_state_core = 55
+			add_state_core = 792
+			add_state_core = 51
+			add_state_core = 796
+			add_state_core = 793
+		}
+	}
+	
+	option = {
+	
+	}
+	
+}

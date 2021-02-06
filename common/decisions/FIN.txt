@@ -1,0 +1,84 @@
+
+
+foreign_politics = {
+	fin_stabintheback = {
+		
+		allowed = {
+			original_tag = FIN
+		}
+		visible = {
+			NOT = {
+				owns_state = 146
+			}
+			has_war_with = SOV
+		}
+		available = {
+			has_war_with = SOV
+			surrender_progress > 0.25
+			is_puppet = no
+		}
+		
+		ai_will_do = {
+			factor = 30
+		}
+		
+		cost = 100
+		
+		fire_only_once = yes
+		
+		complete_effect = {
+			custom_effect_tooltip = FIN_stabinthebackev
+		
+			hidden_effect = {
+				remove_ideas = FIN_stopai
+				set_rule = { can_join_factions = yes }
+				SOV = {
+					country_event = { id = finland.12 days = 1 }
+				}
+
+			}
+		}
+		
+		
+	}
+	
+	fin_sue_for_peace_with_SOV = {
+		
+		
+		allowed = {
+			original_tag = FIN
+		}
+		visible = {
+			
+			owns_state = 146
+			
+			has_war_with = SOV
+		}
+		available = {
+			has_war_with = SOV
+			OR = {
+				surrender_progress > 0.25
+				NOT = {
+					controls_state = 146
+				}
+			}
+			is_puppet = no
+		}
+		
+		ai_will_do = {
+			factor = 30
+		}
+		
+		
+		
+		fire_only_once = yes
+		
+		complete_effect = {
+			SOV = {
+				country_event = { id = finland.8 }
+			}
+		}
+		
+	}
+
+}

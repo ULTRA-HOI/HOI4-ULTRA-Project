@@ -1,0 +1,195 @@
+add_namespace = hip_purchases_sup
+
+
+###### support Purchase #######
+
+country_event = { # offer to buy 180 support, cost 2 civs during 90 days
+
+	id = hip_purchases_sup.1
+	title = hip_purchases_sup.1.t
+	desc = hip_purchases_sup.1.d
+	picture = GFX_report_event_generic_rifles
+
+	fire_only_once = no
+	
+	is_triggered_only = yes 
+	
+	option = { #Yay
+		name = hip_purchases_sup.1.a
+		ai_chance = {
+			base = 10
+		}
+		custom_effect_tooltip = 180_support_equipment_sold_tt
+		FROM = {
+			country_event = {
+				id = hip_purchases_sup.2
+			}
+		}
+	}
+	
+	option = { #Nay
+		name = hip_purchases_sup.1.b
+		ai_chance = {
+			base = 0
+		}
+		FROM = {
+			country_event = {
+				id = hip_purchases_sup.5
+			}
+		}
+	}
+}
+
+country_event = { # accept
+
+	id = hip_purchases_sup.2
+	title = hip_purchases_sup.2.t
+	desc = hip_purchases_sup.2.d
+	picture = GFX_report_event_generic_rifles
+
+	fire_only_once = no
+	
+	is_triggered_only = yes 
+	
+	option = { #cool
+		name = hip_purchases_sup.2.a
+		ai_chance = {
+			base = 10
+		}
+		
+		FROM = {
+			send_equipment = {
+				equipment = support_equipment
+				amount = 180
+				target = ROOT
+			}
+			add_offsite_building = { 
+				type = industrial_complex level = 2
+			}
+		}
+		ROOT = {
+			
+			hidden_effect = {
+				clr_country_flag = purchase_pending
+			}
+		}
+	}
+	
+}
+
+
+
+country_event = { # refuse
+
+	id = hip_purchases_sup.5
+	title = hip_purchases_sup.5.t
+	desc = hip_purchases_sup.5.d
+	picture = GFX_report_event_generic_rifles
+
+	fire_only_once = no
+	
+	is_triggered_only = yes 
+	
+	option = { #damn
+		name = hip_purchases_sup.5.a
+		ai_chance = {
+			base = 10
+		}
+		ROOT = { 
+			add_political_power = 20 #refund PP partialy
+			hidden_effect = {
+				clr_country_flag = purchase_pending
+				IF = {
+					limit = {
+						FROM = {
+							original_tag = FRA
+						}
+					}
+					set_country_flag = FRA_refuse_to_sell_sup
+				}
+				ELSE_IF = {
+					limit = {
+						FROM = {
+							original_tag = ENG
+						}
+					}
+					set_country_flag = ENG_refuse_to_sell_sup
+				}
+				ELSE_IF = {
+					limit = {
+						FROM = {
+							original_tag = USA
+						}
+					}
+					set_country_flag = USA_refuse_to_sell_sup
+				}
+				ELSE_IF = {
+					limit = {
+						FROM = {
+							original_tag = ITA
+						}
+					}
+					set_country_flag = ITA_refuse_to_sell_sup
+				}
+				ELSE_IF = {
+					limit = {
+						FROM = {
+							original_tag = GER
+						}
+					}
+					set_country_flag = GER_refuse_to_sell_sup
+				}
+				ELSE_IF = {
+					limit = {
+						FROM = {
+							original_tag = CZE
+						}
+					}
+					set_country_flag = CZE_refuse_to_sell_sup
+				}
+				ELSE_IF = {
+					limit = {
+						FROM = {
+							original_tag = BEL
+						}
+					}
+					set_country_flag = BEL_refuse_to_sell_sup
+				}
+				country_event = {
+					id = hip_purchases_sup.6
+					days = 1
+				}
+			}
+		}
+	}
+	
+}
+
+country_event = { # hidden effect clears flags
+
+	id = hip_purchases_sup.6
+	title = hip_purchases_sup.6.t
+	desc = hip_purchases_sup.6.d
+	picture = GFX_report_event_generic_rifles
+
+	fire_only_once = no
+	hidden = yes
+	is_triggered_only = yes 
+	
+	option = { #cool
+		name = hip_purchases_sup.6.a
+		ai_chance = {
+			base = 10
+		}
+		ROOT = {
+			clr_country_flag = FRA_refuse_to_sell_sup
+			clr_country_flag = ENG_refuse_to_sell_sup
+			clr_country_flag = USA_refuse_to_sell_sup
+			clr_country_flag = ITA_refuse_to_sell_sup
+			clr_country_flag = GER_refuse_to_sell_sup
+			clr_country_flag = CZE_refuse_to_sell_sup
+			clr_country_flag = BEL_refuse_to_sell_sup
+		}
+	}
+	
+}

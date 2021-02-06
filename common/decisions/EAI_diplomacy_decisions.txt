@@ -1,0 +1,143 @@
+############################################################################################################
+#	Expert AI mod - decisions
+############################################################################################################
+
+
+
+
+
+
+operations = {
+
+	EAI_operation_countenance = {
+	    allowed = {}
+
+	    visible = {
+
+			always = no
+	    }
+
+	    available = {
+
+	    	always = no
+	    }
+
+		days_remove = 35
+
+		complete_effect = {
+
+			if = { limit = { is_ai = yes } 
+
+				PER = { set_country_flag = { flag = EAI_prepare_for_war_from_@ROOT value = 1 days = 35 } }
+			}
+			if = { limit = { RAJ = { is_in_faction_with = ENG is_ai = yes } } 
+
+				PER = { set_country_flag = { flag = EAI_prepare_for_war_from_RAJ value = 1 days = 35 } }
+			}
+		}
+
+	    remove_effect = {
+
+			SOV = {
+			
+				transfer_state = 416
+				transfer_state = 418
+				transfer_state = 419
+				transfer_state = 420
+				transfer_state = 266			
+			}
+			ENG = {
+				transfer_state = 414
+				transfer_state = 413
+				transfer_state = 412
+				transfer_state = 411
+				transfer_state = 410
+				transfer_state = 417			
+				transfer_state = 421
+				transfer_state = 413			
+			}		
+		}
+	}
+
+	EAI_propose_operation_countenance = {
+		allowed = {}
+
+	    visible = {
+
+			NOT = { has_global_flag = EAI_operation_countenance_proposed }
+			NOT = { has_global_flag = sov_countenance_flag }
+
+			any_enemy_country = {
+	            is_faction_leader = yes
+	            is_major = yes
+	        }
+
+	        OR = {
+	            AND = {
+	                original_tag = ENG
+	                has_war_together_with = SOV
+	            }
+	            AND = {
+	                original_tag = SOV
+	                is_faction_leader = yes
+	                has_war_together_with = ENG
+	            }
+	        }
+
+	        PER = {
+				exists = yes
+	        }
+	    }
+
+	    available = {
+
+	    	threat > 0.9
+
+			ENG = { any_allied_country = { any_neighbor_country = { tag = PER } } }
+			SOV = { any_neighbor_country = { tag = PER } }
+
+			PER = {
+				NOT = { 
+	                EAI_is_not_independent = yes 
+	                is_in_faction = yes
+	                has_war = yes
+	            }
+			}
+
+			NOT = {
+				ENG = { PER = { EAI_PREV_has_same_ideology_with_THIS = yes } }
+	            SOV = { PER = { EAI_PREV_has_same_ideology_with_THIS = yes } }
+			}
+	    }
+
+	    cost = 50
+
+	    remove_effect = {
+
+			set_global_flag = EAI_operation_countenance_proposed
+
+			if = { limit = { original_tag = ENG }
+				SOV = { country_event = EAI_DM.1300 }
+			}
+			else = {
+				ENG = { country_event = EAI_DM.1300 }
+			}
+		}
+	
+		ai_will_do = {
+			base = 0
+
+			modifier = {
+				add = 10
+
+				is_historical_focus_on = yes
+				is_major = yes
+				date > 1941.4.1
+				has_army_manpower = { size > 1000000 }
+			}
+			modifier = { factor = 2 date > 1941.8.1 }
+			modifier = { factor = 2 date > 1942.1.1 }
+			modifier = { factor = 2 date > 1942.6.1 }
+		}
+	}
+}
