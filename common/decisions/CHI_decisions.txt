@@ -44,54 +44,12 @@ CHI_anti_imperialism = {
 #Category allowed for all potential nationalist china
 #Category visible when CHI_army_reform focus is completed
 CHI_army_reform = {
-	chi_holdfast_ai = {
-
-		icon = generic_army_support
-
-		available = { 
-                        is_ai = yes
-			has_war = yes
-			any_enemy_country = {
-				is_major = yes
-			}
-			has_civil_war = no
-			surrender_progress > 0.50
-		}
-
-		cost = 0
-		fire_only_once = yes
-		visible = {
-                        is_ai = yes
-			has_war = yes
-			any_enemy_country = {
-				is_major = yes
-			}
-			#surrender_progress > 0.1
-		}
-
-		days_remove = 1080
-
-		modifier = {
-                        dig_in_speed_factor = 0.20
-			army_org_regain = 0.10
-			army_core_defence_factor = 0.10
-
-		}
-
-		ai_will_do = {
-			factor = 1
-			modifier = {
-				surrender_progress > 0.50
-				factor = 1000
-			}
-		}
-	}
 	CHI_army_reform = {
 
 		icon = generic_prepare_civil_war
 
 		available = {
-			has_army_experience > 299
+			has_army_experience > 199
 			has_completed_focus = CHI_army_reform
 		}
 
@@ -99,7 +57,7 @@ CHI_army_reform = {
 		ai_will_do = {
 			factor = 500
 		}
-		days_remove = 365
+		days_remove = 180
 
 		visible = {
 			OR = {
@@ -129,14 +87,14 @@ CHI_army_reform = {
 			}
 		}
 		complete_effect = {
-			army_experience = -300			 
+			army_experience = -200			 
 		}		
 	}
 
 	CHI_lessons_of_war = {
 		icon = generic_army_support
 		available = {
-			has_army_experience > 299
+			has_army_experience > 199
 			has_idea = CHI_incompetent_officers
 			if = {
 				limit = { has_idea = CHI_army_corruption_1 }
@@ -175,7 +133,7 @@ CHI_army_reform = {
 		}
 
 		complete_effect = {
-			army_experience = -300
+			army_experience = -200
 			remove_ideas = CHI_incompetent_officers
 			set_country_flag = CHI_lessons_of_war_completed
 		}		

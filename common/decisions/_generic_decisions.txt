@@ -704,6 +704,7 @@ economy_decisions = {
 		icon = generic_political_discourse
 
 		available = {
+		         is_ai = no
 			OR = {
 				custom_trigger_tooltip = {
 					tooltip = trigger_has_0_iron
@@ -721,6 +722,7 @@ economy_decisions = {
 		}
 
 		visible = {
+		         is_ai = no
 			any_state={
 				steel_refinery > 0
 				is_owned_and_controlled_by = ROOT
@@ -762,6 +764,7 @@ economy_decisions = {
 		icon = generic_political_discourse
 
 		available = {
+		         is_ai = no
 			OR = {
 				custom_trigger_tooltip = {
 					tooltip = trigger_has_0_iron
@@ -779,6 +782,7 @@ economy_decisions = {
 		}
 
 		visible = {
+		         is_ai = no
 			any_state={
 				steel_refinery > 0
 				is_controlled_by = ROOT
@@ -827,6 +831,7 @@ economy_decisions = {
 		icon = generic_political_discourse
 
 		available = {
+		         is_ai = no
 			custom_trigger_tooltip = {
 				tooltip = trigger_has_30_iron
 				hidden_trigger = {
@@ -843,6 +848,7 @@ economy_decisions = {
 		}
 
 		visible = {
+		         is_ai = no
 			any_state ={
 				steel_refinery_inactive > 0
 				is_controlled_by = ROOT
@@ -885,6 +891,220 @@ economy_decisions = {
 
 		ai_will_do = {
 			base = 1000
+		}
+	}
+	#close steel mill
+	close_steel_mill_ai = {
+
+		icon = generic_political_discourse
+
+		available = {
+		         is_ai = yes
+			OR = {
+				custom_trigger_tooltip = {
+					tooltip = trigger_has_150_steel
+					hidden_trigger = {
+						check_variable = { resource@steel > 150}
+					}
+				}
+				custom_trigger_tooltip = {
+					tooltip = trigger_has_0_iron
+					hidden_trigger = {
+						check_variable = { resource@iron < 60}
+					}
+				}
+				custom_trigger_tooltip = {
+					tooltip = trigger_has_0_coal
+					hidden_trigger = {
+						check_variable = { resource@coal < 60}
+					}
+				}
+			}
+		}
+
+		visible = {
+		         is_ai = yes
+			any_state={
+				steel_refinery > 0
+				is_owned_and_controlled_by = ROOT
+			}
+		}
+
+		fire_only_once = no
+                days_remove = 10
+
+		cost = 0
+
+		complete_effect = {
+			random_state={
+				limit={
+					steel_refinery > 0
+					is_owned_and_controlled_by = ROOT
+				}
+				custom_effect_tooltip=steel_mill_close
+				hidden_effect={
+					remove_building = {
+						type = steel_refinery
+						level = 1
+					}
+					add_building_construction = {
+						type = steel_refinery_inactive
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+		}
+
+		ai_will_do = {
+			base = 1000
+		}
+	}
+	
+	close_foreign_steel_mill_ai = {
+
+		icon = generic_political_discourse
+
+		available = {
+		         is_ai = yes
+			OR = {
+				custom_trigger_tooltip = {
+					tooltip = trigger_has_100_steel
+					hidden_trigger = {
+						check_variable = { resource@steel > 100}
+					}
+				}
+				custom_trigger_tooltip = {
+					tooltip = trigger_has_0_iron
+					hidden_trigger = {
+						check_variable = { resource@iron < 60}
+					}
+				}
+				custom_trigger_tooltip = {
+					tooltip = trigger_has_0_coal
+					hidden_trigger = {
+						check_variable = { resource@coal < 60}
+					}
+				}
+			}
+		}
+
+		visible = {
+		         is_ai = yes
+			any_state={
+				steel_refinery > 0
+				is_controlled_by = ROOT
+				NOT = {
+					is_owned_by = ROOT
+				}
+			}
+		}
+
+		fire_only_once = no
+
+		cost = 0
+                days_remove = 10
+		complete_effect = {
+			random_state={
+				limit={
+					steel_refinery > 0
+					is_controlled_by = ROOT
+					NOT = {
+						is_owned_by = ROOT
+					}
+				}
+				custom_effect_tooltip=steel_mill_close
+				hidden_effect={
+					remove_building = {
+						type = steel_refinery
+						level = 1
+					}
+					add_building_construction = {
+						type = steel_refinery_inactive
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+		}
+
+		ai_will_do = {
+			base = 1
+		}
+	}
+	
+	#reopen steel mill after being closed
+	reopen_steel_mill_ai = {
+
+		icon = generic_political_discourse
+
+		available = {
+		         is_ai = yes
+				custom_trigger_tooltip = {
+					tooltip = trigger_has_50_steel
+					hidden_trigger = {
+						check_variable = { resource@steel < 50}
+					}
+				}
+			custom_trigger_tooltip = {
+				tooltip = trigger_has_30_iron
+				hidden_trigger = {
+					check_variable = { resource@iron > 100}
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = trigger_has_30_coal
+				hidden_trigger = {
+					check_variable = { resource@coal > 100}
+				}
+			}
+			
+		}
+
+		visible = {
+		         is_ai = yes
+			any_state ={
+				steel_refinery_inactive > 0
+				is_controlled_by = ROOT
+			}
+			NOT = {
+				has_idea = new_recession
+			}
+		}
+
+		fire_only_once = no
+		
+		days_remove = 10
+
+		cost = 0
+		
+		complete_effect = {
+			
+		}
+
+		remove_effect = {
+			random_state={
+				limit={
+					steel_refinery_inactive > 0
+					is_controlled_by = ROOT
+				}
+				custom_effect_tooltip=closed_steel_mill_reopens
+				hidden_effect={
+					remove_building = {
+						type = steel_refinery_inactive
+						level = 1
+					}
+					add_building_construction = {
+						type = steel_refinery
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+		}
+
+		ai_will_do = {
+			base = 1
 		}
 	}
 	
