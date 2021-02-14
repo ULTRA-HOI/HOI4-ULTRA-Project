@@ -1,6 +1,12 @@
 on_actions = {
 	on_startup = {
 		effect = {
+			#Calculate deployed manpower to remove
+			every_country = {
+				set_variable = { manpower_to_remove = 0  }
+				add_to_variable = { manpower_to_remove = num_battalions@infantry }
+				multiply_variable = { manpower_to_remove = -1000 }
+			}
 			# Adds agriculture mechanisation to every relevant countries
 			every_state = {
 				set_variable = { state_level_agriculture_penalty = 0.75 }
@@ -232,6 +238,7 @@ on_actions = {
 				
 				on_daily_labour_calculations = yes
 				add_dynamic_modifier = { modifier = agricultural_trade }
+				add_manpower = { manpower_to_remove }
 			}
 			
 			#Adds Trade balance modifiers (Positive for imports, negative for exports)
