@@ -200,20 +200,8 @@ on_daily_labour_calculations = {
 	divide_variable = { labour_penalty_percentage = total_population_with_foreign_workers }
 	multiply_variable = { labour_penalty_percentage = -1 }
 	
-	#Apply variable to all controlled states 
-	every_state = {
-		LIMIT = { is_controlled_by = ROOT }
-		
-		#Sets labour_penalty_percentage
-		set_variable = { labour_penalty = ROOT.labour_penalty_percentage }
-		
-		#Stops Negative Values
-		set_variable = { overflow = labour_penalty }
-		add_to_variable = { overflow = agriculture_needs }
-		IF = {
-			LIMIT = { check_variable = { overflow > 1 } }
-			subtract_from_variable = { overflow = 1 }
-			subtract_from_variable = { labour_penalty = overflow }
-		}
-	}
+	#Calculates total agricultural burden
+	set_variable = { pleasefuckingworkstupidfuckingshit = total_agricultural_labour }
+	divide_variable = { total_agricultural_labour = total_population_with_foreign_workers }
+	multiply_variable = { total_agricultural_labour = -1 }
 }
