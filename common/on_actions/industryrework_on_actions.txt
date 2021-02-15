@@ -3,7 +3,8 @@ on_actions = {
 		effect = {
 			#Calculate deployed manpower to remove
 			every_country = {
-				set_variable = { manpower_to_remove = 0  }
+				set_variable = { previous_manpower = manpower_k }
+				set_variable = { manpower_to_remove = has_army_manpower  }
 				add_to_variable = { manpower_to_remove = num_battalions@infantry }
 				multiply_variable = { manpower_to_remove = -1000 }
 			}
@@ -238,7 +239,12 @@ on_actions = {
 				
 				on_daily_labour_calculations = yes
 				add_dynamic_modifier = { modifier = agricultural_trade }
+				add_dynamic_modifier = { modifier = agriculture_needs }
+				add_dynamic_modifier = { modifier = labour_requirements }
+				add_dynamic_modifier = { modifier = female_labour_penalty }
+				add_dynamic_modifier = { modifier = not_of_working_age_penalty }
 				add_manpower = { manpower_to_remove }
+				remove_ideas = idea_startup_manpower_offset
 			}
 			
 			#Adds Trade balance modifiers (Positive for imports, negative for exports)
@@ -286,76 +292,72 @@ on_actions = {
 			HUN = { set_variable = { agriculture_trade = -0.05 } }
 			SLO = { set_variable = { agriculture_trade = -0.05 } }
 			
-			every_state = {
-				#Set Default Values (Average of all 7 major powers)
-				set_variable = { labour_penalty = -0.31 }
-				set_variable = { agriculture_requirements = -0.16 }
-				set_variable = { female_penalty_applied = -0.13 }
-				
-				#Adjust for all majors
-				IF = {
-					LIMIT = {
-						is_core_of = FRA
-					}
-					set_variable = { labour_penalty = -0.14 }
-					set_variable = { agriculture_requirements = -0.17 }
-					set_variable = { female_penalty_applied = -0.15 }
-				}
-				IF = {
-					LIMIT = {
-						is_core_of = USA
-					}
-					set_variable = { labour_penalty = -0.26 }
-					set_variable = { agriculture_requirements = -0.08 }
-					set_variable = { female_penalty_applied = -0.15 }
-				}
-				IF = {
-					LIMIT = {
-						is_core_of = ENG
-					}
-					set_variable = { labour_penalty = -0.23 }
-					set_variable = { agriculture_requirements = -0.03 }
-					set_variable = { female_penalty_applied = -0.15 }
-				}
-				IF = {
-					LIMIT = {
-						is_core_of = GER
-					}
-					set_variable = { labour_penalty = -0.17 }
-					set_variable = { agriculture_requirements = -0.12 }
-					set_variable = { female_penalty_applied = -0.12 }
-				}
-				IF = {
-					LIMIT = {
-						is_core_of = ITA
-					}
-					set_variable = { labour_penalty = -0.08 }
-					set_variable = { agriculture_requirements = -0.19 }
-					set_variable = { female_penalty_applied = -0.15 }
-				}
-				IF = {
-					LIMIT = {
-						is_core_of = JAP
-					}
-					set_variable = { labour_penalty = -0.07 }
-					set_variable = { agriculture_requirements = -0.23 }
-					set_variable = { female_penalty_applied = -0.15 }
-				}
-				IF = {
-					LIMIT = {
-						is_core_of = SOV
-					}
-					set_variable = { labour_penalty = -0.10 }
-					set_variable = { agriculture_requirements = -0.31 }
-					set_variable = { female_penalty_applied = -0.06 }
-				}
-				
-				#Add Dynamic Modifiers
-				add_dynamic_modifier = { modifier = labour_requirements }
-				add_dynamic_modifier = { modifier = agriculture_needs }
-				add_dynamic_modifier = { modifier = female_labour_penalty }
-				add_dynamic_modifier = { modifier = not_of_working_age_penalty }
-			}
+			#every_state = {
+			#	#Set Default Values (Average of all 7 major powers (other than labour penalty))
+			#	set_variable = { labour_penalty = -0 }
+			#	set_variable = { agriculture_requirements = -0.16 }
+			#	set_variable = { female_penalty_applied = -0.13 }
+			#	
+			#	#Adjust for all majors
+			#	IF = {
+			#		LIMIT = {
+			#			is_core_of = FRA
+			#		}
+			#		set_variable = { labour_penalty = -0.14 }
+			#		set_variable = { agriculture_requirements = -0.17 }
+			#		set_variable = { female_penalty_applied = -0.15 }
+			#	}
+			#	IF = {
+			#		LIMIT = {
+			#			is_core_of = USA
+			#		}
+			#		set_variable = { labour_penalty = -0.26 }
+			#		set_variable = { agriculture_requirements = -0.08 }
+			#		set_variable = { female_penalty_applied = -0.15 }
+			#	}
+			#	IF = {
+			#		LIMIT = {
+			#			is_core_of = ENG
+			#		}
+			#		set_variable = { labour_penalty = -0.23 }
+			#		set_variable = { agriculture_requirements = -0.03 }
+			#		set_variable = { female_penalty_applied = -0.15 }
+			#	}
+			#	IF = {
+			#		LIMIT = {
+			#			is_core_of = GER
+			#		}
+			#		set_variable = { labour_penalty = -0.17 }
+			#		set_variable = { agriculture_requirements = -0.12 }
+			#		set_variable = { female_penalty_applied = -0.12 }
+			#	}
+			#	IF = {
+			#		LIMIT = {
+			#			is_core_of = ITA
+			#		}
+			#		set_variable = { labour_penalty = -0.08 }
+			#		set_variable = { agriculture_requirements = -0.19 }
+			#		set_variable = { female_penalty_applied = -0.15 }
+			#	}
+			#	IF = {
+			#		LIMIT = {
+			#			is_core_of = JAP
+			#		}
+			#		set_variable = { labour_penalty = -0.07 }
+			#		set_variable = { agriculture_requirements = -0.23 }
+			#		set_variable = { female_penalty_applied = -0.15 }
+			#	}
+			#	IF = {
+			#		LIMIT = {
+			#			is_core_of = SOV
+			#		}
+			#		set_variable = { labour_penalty = -0.10 }
+			#		set_variable = { agriculture_requirements = -0.31 }
+			#		set_variable = { female_penalty_applied = -0.06 }
+			#	}
+			#	
+			#	
+			#}
 		}
 	}
 	on_daily = {
