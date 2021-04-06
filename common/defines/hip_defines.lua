@@ -327,7 +327,7 @@ NDefines.NMilitary.PLAN_SUPPLY_FACTOR = 0.2						-- Factor applied to available 
 NDefines.NMilitary.DISBAND_MANPOWER_LOSS = 0.0
 NDefines.NMilitary.MIN_DIVISION_DEPLOYMENT_TRAINING = 0.4			-- Min level of division training
 NDefines.NMilitary.FRONT_MIN_PATH_TO_REDEPLOY = 4					-- If a units path is at least this long to reach its front location, it will strategically redeploy.
-NDefines.NMilitary.BASE_CAPTURE_EQUIPMENT_RATIO = 0.05				-- after a successful land combat, ratio of the equipments that are being captured/salvaged from enemy's lost equipment
+NDefines.NMilitary.BASE_CAPTURE_EQUIPMENT_RATIO = 0.00				-- after a successful land combat, ratio of the equipments that are being captured/salvaged from enemy's lost equipment
 
 
 NDefines.NMilitary.LEND_LEASE_FIELD_EXPERIENCE_SCALE = 0		-- was 0.005 Experience scale for lend leased equipment used in combat.
