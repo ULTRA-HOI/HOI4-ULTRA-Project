@@ -147,7 +147,7 @@ careful_with_early_invasions = {
 				has_war_with = GER 
 				surrender_progress > 0.6
 			}
-			date > 1943.1.1			   
+			date > 1942.6.1			   
 		}
 	}
 
@@ -772,21 +772,8 @@ ENG_ignore_east_asia_until_invasion = {
 		is_in_faction_with = RAJ
 	}
 	abort = {
-		RAJ = { surrender_progress > 0.8 }
+		RAJ = { surrender_progress > 0.36 }
 	}
-
-	ai_strategy = {
-		type = area_priority
-		id = east_asia
-		value = -120 # dont suicide in the east
-	}
-
-	ai_strategy = {
-		type = conquer
-		id = "JAP"
-		value = -2000
-	}
-
 	ai_strategy = {
 		type = conquer
 		id = "SIK"
@@ -796,19 +783,19 @@ ENG_ignore_east_asia_until_invasion = {
 	ai_strategy = {
 		type = invade
 		id = "JAP"
-		value = -2000
+		value = -200
 	}
 
 	ai_strategy = {
 		type = invade
 		id = "SIK"
-		value = -2000
+		value = -200
 	}
 
 	ai_strategy = {
 		type = dont_defend_ally_borders
 		id = "RAJ"
-		value = 2000
+		value = 200
 	}
 }
 
@@ -1118,7 +1105,7 @@ ENG_war_against_ITA_2 = {
 	ai_strategy = {
 		type = invade
 		id = "ITA"
-		value = 100
+		value = 1000
 	}
 
 	ai_strategy = {
@@ -1311,7 +1298,7 @@ ENG_invade_the_axis_avoid_regions_norway = {
 ENG_invade_the_axis = {
 	enable = {
 		tag = ENG
-		date > 1944.5.20
+		date > 1942.9.1
 		GER = { has_war_with = ENG }
 		OR = { 
 			15 = { is_controlled_by = GER }
@@ -1319,13 +1306,7 @@ ENG_invade_the_axis = {
 		}
 	}
 	abort = {
-		tag = ENG
-		OR = { 
-			15 = { is_controlled_by = FRA }
-			15 = { is_controlled_by = USA }
-			NOT = { GER = { has_war_with = ENG } }
-			date < 1944.5.20
-		}
+		GER = { has_capitulated = yes }
 	}
 
 	ai_strategy = {
@@ -1355,7 +1336,7 @@ ENG_invade_the_axis = {
 	ai_strategy = {
 		type = invade
 		id = "GRE"
-		value = -2000
+		value = 5000
 	}
 	
 	ai_strategy = {
@@ -1366,8 +1347,8 @@ ENG_invade_the_axis = {
 
 	ai_strategy = {
 		type = invade
-		id = "JAP"
-		value = -2000
+		id = "ITA"
+		value = 5000
 	}
 
 	
@@ -1376,7 +1357,7 @@ ENG_invade_the_axis = {
 ENG_invade_the_axis_2 = {
 	enable = {
 		tag = ENG
-		date > 1944.5.25
+		date > 1942.10.1
 		GER = { has_war_with = ENG }
 		OR = { 
 			15 = { is_controlled_by = FRA }
@@ -1385,41 +1366,10 @@ ENG_invade_the_axis_2 = {
 		}
 	}
 	abort = {
-		tag = ENG
-		OR = { 
-			15 = { is_controlled_by = GER }
-			15 = { is_controlled_by = VIC }
-			NOT = { GER = { has_war_with = ENG } }
-			date < 1944.5.25
+		GER = {
+			has_capitulated = yes
 		}
 	}
-
-	ai_strategy = {
-		type = invade
-		id = "GER"			
-		value = -2000
-	}
-
-	
-
-	ai_strategy = {
-		type = invade
-		id = "CRO"
-		value = -2000
-	}
-
-	ai_strategy = {
-		type = invade
-		id = "BUL"
-		value = -2000
-	}
-	
-	ai_strategy = {
-		type = invade
-		id = "JAP"
-		value = -2000
-	}
-
 	ai_strategy = {
 		type = garrison
 		id = "ENG"
@@ -1722,10 +1672,10 @@ focus_on_land_War_in_north_africa = {
 			is_in_faction_with = ENG # anyone in allies
 			tag = FRA
 		}
-		date < 1943.8.1
+		date < 1942.6.1
 	}
 	abort = {
-		date > 1943.8.1
+		date > 1942.6.1
 	}
 
 	ai_strategy = {
@@ -1762,10 +1712,10 @@ prepare_for_land_War_in_europe = {
 			is_in_faction_with = ENG # anyone in allies
 			tag = FRA
 		}
-		date < 1944.5.25
+		date < 1942.3.25
 	}
 	abort = {
-		date > 1944.5.25
+		date > 1942.3.25
 	}
 
 	ai_strategy = {
@@ -1789,7 +1739,8 @@ ENG_commonwealth_trying_to_save_europe_is_deathtrap = {
 		has_war_with = GER
 	}
 	
-	abort = {
+	abort = { 
+       date > 1942.1.1
 	}
 
 	ai_strategy = {
@@ -2299,36 +2250,23 @@ ENG_allies_dont_ask_for_diplo_access_to_SOV = {
 
 invade_ger_late = {
 	enable = {
-                 date > 1943.1.1
+                 date > 1943.6.1
 		original_tag = ENG
 	}
 
 	ai_strategy = {
 		type = invade
 		id = "GER"
-		value = 500
+		value = 999
+	}
+	ai_strategy = {
+		type = invade
+		id = "ITA"
+		value = 999
 	}
 
 }
 
-
-protect_england = {
-	enable = {
-		original_tag = ENG
-	}
-
-	ai_strategy = {
-		type = area_priority
-		id = "britain"
-		value = 120
-	}
-	ai_strategy = {
-		type = front_unit_request
-		area = britain
-		value = 80
-	}
-
-}
 
 ENG_allies_dont_ask_for_diplo_access_to_SOV = {
 	enable = {
@@ -2767,5 +2705,24 @@ ENG_DONT_LEND_LEASE = {
 	}
 
 }
+
+protect_england = {
+	enable = {
+		original_tag = ENG
+	}
+
+	ai_strategy = {
+		type = area_priority
+		id = "britain"
+		value = 120
+	}
+	ai_strategy = {
+		type = front_unit_request
+		area = britain
+		value = 80
+	}
+
+}
+
 
 
