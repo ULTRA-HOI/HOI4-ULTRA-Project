@@ -30,7 +30,7 @@ on_daily_labour_calculations = {
 	set_variable = { avaliable_non_core_population = 0 }
 	
 	every_state = {
-		LIMIT = {
+		limit = {
 			is_controlled_by = PREV
 			NOT = { is_core_of = PREV }
 		}
@@ -78,7 +78,7 @@ on_daily_labour_calculations = {
 	set_variable = { total_agricultural_labour = 0 }
 	
 	every_state = {
-		LIMIT = { is_controlled_by = PREV }
+		limit = { is_controlled_by = PREV }
 		
 		#Calculates agricultural burden
 		set_variable = { agriculture_burden = state_level_agriculture_penalty }
@@ -91,7 +91,7 @@ on_daily_labour_calculations = {
 		
 		#Factors in trade for core states
 		if = {
-			LIMIT = { is_core_of = PREV }
+			limit = { is_core_of = PREV }
 			set_variable = { agriculture_trade = PREV.agriculture_trade }
 			multiply_variable = { agriculture_trade = PREV.total_core_labour_population }
 			divide_variable = { agriculture_trade = PREV.total_population }
@@ -129,16 +129,21 @@ on_daily_labour_calculations = {
 	
 	#Estimate building amounts of aluminum smelteries/steel refineries
 	set_variable = { num_of_steel_refineries = labour_steel }
-	divide_variable = { num_of_steel_refineries = 50 }
+	divide_variable = { num_of_steel_refineries = 25 }
+	set_variable = { steel_capital = num_of_steel_refineries }
 	set_variable = { num_of_aluminum_refineries = labour_aluminum}
-	divide_variable = { num_of_aluminum_refineries = 50 }
+	divide_variable = { num_of_aluminum_refineries = 25 }
+	set_variable = { aluminum_capital = num_of_aluminum_refineries }
+	
+	#Calculate total capital impact
+	capital_impact_calculator = yes
 	
 	#Add appopriate costs
 	add_to_variable = { labour_tungsten = num_of_steel_refineries  }
 	
 	#Increase by 50 to add relevant costs
-	multiply_variable = { num_of_steel_refineries = 50 }
-	multiply_variable = { num_of_aluminum_refineries = 50 }
+	multiply_variable = { num_of_steel_refineries = 25 }
+	multiply_variable = { num_of_aluminum_refineries = 25 }
 	add_to_variable = { labour_coal = num_of_steel_refineries  }
 	add_to_variable = { labour_bauxite = num_of_aluminum_refineries }
 	add_to_variable = { labour_bauxite = num_of_aluminum_refineries }
@@ -157,36 +162,35 @@ on_daily_labour_calculations = {
 	multiply_variable = { labour_oil = 0.02 }
 	multiply_variable = { labour_aluminium = 0.02 }
 	multiply_variable = { labour_tungsten = 0.02 }
-	multiply_variable = { labour_steel = 1 }
+	multiply_variable = { labour_steel = 0.25 }
 	multiply_variable = { labour_chromium = 0.02 }
-	multiply_variable = { labour_coal = 0.55 }
+	multiply_variable = { labour_coal = 0.150 }
 	multiply_variable = { labour_bauxite = 0.005 }
-	multiply_variable = { labour_iron = 0.5 }
+	multiply_variable = { labour_iron = 0.125 }
 	
 	#Adds up total labour needed for resources
 	set_variable = { labour_total_resource = labour_oil }
-	add_to_variable = { labour_total_resource = labour_aluminium } 
+	#add_to_variable = { labour_total_resource = labour_aluminium } 
 	add_to_variable = { labour_total_resource = labour_tungsten } 
-	add_to_variable = { labour_total_resource = labour_steel } 
+	#add_to_variable = { labour_total_resource = labour_steel } 
 	add_to_variable = { labour_total_resource = labour_chromium } 
 	add_to_variable = { labour_total_resource = labour_coal } 
 	add_to_variable = { labour_total_resource = labour_bauxite } 
 	add_to_variable = { labour_total_resource = labour_iron } 
 	
-	#Calculate number of labour needed for factories
-
-	#Sets variable equal to number of factories
-	set_variable = { labour_total_factories = num_of_factories }
-	#Multiplies number of factory by labour requirements per factory (divided by 1000 to stop overflows)
-	multiply_variable = { labour_total_factories = 10 }
-	
 	#Calculate total labour needs
+	if = {
+		limit = { NOT = { has_variable = labour_total_factories } }
+		set_variable = { labour_total_factories = total_capital }
+		multiply_variable = { labour_total_factories = 10 }
+	}
 	set_variable = { total_labour_needs = labour_total_factories }
 	add_to_variable = { total_labour_needs = labour_total_resource }
+	labour_impact_calculator = yes
 	
 	#Calculate Civilian Needs
-	IF = {
-		LIMIT = { NOT = { tag = ENG } }
+	if = {
+		limit = { NOT = { tag = ENG } }
 		set_variable = { civilian_needs = 0.1 }
 		ELSE = { set_variable = { civilian_needs = 0.2 } }
 	}
@@ -195,25 +199,63 @@ on_daily_labour_calculations = {
 	#Adds civilian needs to total labour needs.
 	add_to_variable = { total_labour_needs = civilian_needs }
 	
+	#Calculates Division Slice
+	set_variable = { division_slice = num_battalions@infantry }
+	multiply_variable= { division_slice = 500 }
+	set_variable = { division_slice_thousands = division_slice }
+	divide_variable = { division_slice_thousands = 1000 }
+	divide_variable = { division_slice = 1000 }
+	divide_variable = { division_slice = total_population_with_foreign_workers }
+	multiply_variable = { division_slice = -1 }
+	
 	#Calculates penalty to apply to total population
 	set_variable = { labour_penalty_percentage = total_labour_needs }
 	divide_variable = { labour_penalty_percentage = total_population_with_foreign_workers }
 	multiply_variable = { labour_penalty_percentage = -1 }
 	
-	#Apply variable to all controlled states 
-	every_state = {
-		LIMIT = { is_controlled_by = ROOT }
-		
-		#Sets labour_penalty_percentage
-		set_variable = { labour_penalty = ROOT.labour_penalty_percentage }
-		
-		#Stops Negative Values
-		set_variable = { overflow = labour_penalty }
-		add_to_variable = { overflow = agriculture_needs }
-		IF = {
-			LIMIT = { check_variable = { overflow > 1 } }
-			subtract_from_variable = { overflow = 1 }
-			subtract_from_variable = { labour_penalty = overflow }
-		}
+	#Calculates total agricultural burden
+	set_variable = { pleasefuckingworkstupidfuckingshit = total_agricultural_labour }
+	divide_variable = { total_agricultural_labour = total_population_with_foreign_workers }
+	multiply_variable = { total_agricultural_labour = -1 }
+	
+	#Calculates total economic bonus
+	if = {
+		limit = { NOT = { has_variable = total_factor_productivity } }
+		set_variable = { total_factor_productivity = 1 }
 	}
+	set_variable = { factory_output_multiplier = total_factor_productivity }
+	multiply_variable = { factory_output_multiplier = capital_multiplier }
+	multiply_variable = { factory_output_multiplier = labour_multiplier }
+	
+	#Gets Output/K
+	divide_variable = { factory_output_multiplier = total_capital }
+	
+	#calculate civ output
+	set_variable = { civ_output = factory_output_multiplier }
+	multiply_variable = { civ_output = num_of_civilian_factories }
+	
+	#calculate total output
+	set_variable = { total_output = factory_output_multiplier }
+	multiply_variable = { total_output = total_capital }
+	
+	#Calculate Upkeep Costs
+	set_variable = { upkeep = total_capital }
+	multiply_variable = { upkeep = 5 }
+	set_variable = { upkeep_needs = upkeep }
+	multiply_variable = { upkeep = upkeep_modifier }
+	divide_variable = { upkeep = total_output }
+	
+	#Sets military factory output modifier
+	set_variable = { mil_bonus = factory_output_multiplier }
+	multiply_variable = { mil_bonus = 1.136 }
+	
+	set_variable = { civ_bonus = mil_bonus }
+	divide_variable = { civ_bonus = 41 }
+	divide_variable = { civ_bonus = 10 }
+	
+	divide_variable = { mil_bonus = 100 }
+	
+	subtract_from_variable = { mil_bonus = 1 }
+	subtract_from_variable = { civ_bonus = 1 }
+	
 }
