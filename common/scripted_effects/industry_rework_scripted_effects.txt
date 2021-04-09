@@ -179,11 +179,13 @@ on_daily_labour_calculations = {
 	add_to_variable = { labour_total_resource = labour_iron } 
 	
 	#Calculate total labour needs
-	if = {
-		limit = { NOT = { has_variable = labour_total_factories } }
-		set_variable = { labour_total_factories = total_capital }
-		multiply_variable = { labour_total_factories = 10 }
-	}
+	
+	#Sets variable equal to number of factories
+	set_variable = { labour_total_factories = num_of_factories }
+	#Multiplies number of factory by labour requirements per factory (divided by 1000 to stop overflows)
+	multiply_variable = { labour_total_factories = 10 }
+	
+	
 	set_variable = { total_labour_needs = labour_total_factories }
 	add_to_variable = { total_labour_needs = labour_total_resource }
 	# labour_impact_calculator = yes
