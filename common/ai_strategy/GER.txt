@@ -3261,3 +3261,48 @@ GER_LEND_LEASE = {
 	ai_strategy = { type = support id = "FIN" value = 500 }
 
 }
+
+GER_chill_out_FRA  = {
+	allowed = {
+		OR = {
+			tag = GER
+		}				 
+	}
+	
+	enable = {
+		date < 1941.3.3
+		has_war_with = FRA
+	}
+	abort = {
+                date > 1941.3.1
+
+	}
+	ai_strategy = {
+		type = front_control
+		state = 28 # close up maginot line
+		ratio = 0.6
+		priority = 100
+		ordertype = front
+		execution_type = careful
+		execute_order = no
+		manual_attack = no
+	}
+}
+
+avoid_swiss_ger = {
+	enable = {
+		tag = GER
+	}
+	abort = {
+	SWI = { is_ai = no }
+
+	}
+
+	ai_strategy = {
+		type = ignore
+		id = "SWI"
+		value = 9999
+	}
+	
+}
+
