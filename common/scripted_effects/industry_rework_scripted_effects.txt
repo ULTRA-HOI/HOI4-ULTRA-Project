@@ -75,7 +75,7 @@ on_daily_labour_calculations = {
 	multiply_variable = { female_penalty_calculation = 0.6 }
 	
 	#Apply Agricultural Burden to States / Record it
-	set_variable = { total_agricultural_labour = 0 }
+	set_variable = { agricultural_penalty_percentage = 0 }
 	
 	every_state = {
 		limit = { is_controlled_by = PREV }
@@ -101,7 +101,7 @@ on_daily_labour_calculations = {
 			multiply_variable = { agriculture_burden = state_population_k }
 			
 			#Agricultural burden
-			add_to_variable = { PREV.total_agricultural_labour = THIS.agriculture_burden }
+			add_to_variable = { PREV.agricultural_penalty_percentage = THIS.agriculture_burden }
 		}
 		
 		#Adds female penalty
@@ -214,9 +214,9 @@ on_daily_labour_calculations = {
 	multiply_variable = { labour_penalty_percentage = -1 }
 	
 	#Calculates total agricultural burden
-	set_variable = { pleasefuckingworkstupidfuckingshit = total_agricultural_labour }
-	divide_variable = { total_agricultural_labour = total_population_with_foreign_workers }
-	multiply_variable = { total_agricultural_labour = -1 }
+	set_variable = { labour_total_agriculture = agricultural_penalty_percentage }
+	divide_variable = { agricultural_penalty_percentage = total_population_with_foreign_workers }
+	multiply_variable = { agricultural_penalty_percentage = -1 }
 	
 	#Calculates total economic bonus
 	if = {
