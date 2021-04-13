@@ -1,0 +1,593 @@
+political_actions = {
+
+	limited_mob_ai = {
+		icon = generic_industry
+	
+
+
+	        fire_only_once = yes
+		visible = {
+			has_idea = civilian_economy
+			has_war = no
+		        is_ai = yes
+		}
+		
+		available = {
+			has_idea = civilian_economy
+			has_war = no
+		        is_ai = yes
+			has_war_support > 0.25
+		}
+		
+		ai_will_do = {
+			base = 100
+		}
+		fire_only_once = yes
+		
+		cost = 0
+		
+		complete_effect = {
+			IF = {
+				limit = {
+					has_idea = civilian_economy
+				}
+				add_ideas = low_economic_mobilisation
+			}
+			
+		}
+	}
+	partial_economic_mobilisation_ai = {
+		icon = generic_industry
+	
+	        fire_only_once = yes
+		visible = {
+			has_idea = low_economic_mobilisation
+			has_war = no
+		        is_ai = yes
+		}
+		
+		available = {
+			has_idea = low_economic_mobilisation
+			has_war = no
+		        is_ai = yes
+			has_war_support > 0.35
+		}
+		
+		ai_will_do = {
+			base = 100
+		}
+		fire_only_once = yes
+		
+		cost = 0
+		
+		complete_effect = {
+			IF = {
+				limit = {
+					has_idea = low_economic_mobilisation
+				}
+				add_ideas = partial_economic_mobilisation
+			}
+			
+		}
+	}
+	war_economy_ai = {
+		icon = generic_industry
+	
+		
+	        fire_only_once = yes
+		visible = {
+			has_idea = partial_economic_mobilisation
+			has_war = no
+		        is_ai = yes
+		}
+		
+		available = {
+			has_idea = partial_economic_mobilisation
+		        is_ai = yes
+			has_war_support > 0.5
+				OR = {
+					AND = {
+						has_government = fascism
+						threat > 0.50
+					}
+					AND = {
+						has_government = communism
+						threat > 0.50
+					}
+					AND = {
+						has_war = yes
+						any_enemy_country = {
+							ic_ratio = { 
+								tag = ROOT 
+								ratio > 0.05
+							}
+						}
+					}
+		}
+}
+		
+		ai_will_do = {
+			base = 100
+		}
+		fire_only_once = yes
+		
+		cost = 0
+		
+		complete_effect = {
+			IF = {
+				limit = {
+					has_idea = partial_economic_mobilisation
+				}
+				add_ideas = war_economy
+			}
+			
+		}
+	}
+
+	tot_economic_mobilisation_ai = {
+		icon = generic_industry
+	
+		
+	        fire_only_once = yes
+		visible = {
+			has_idea = war_economy
+			has_war = no
+		        is_ai = yes
+		}
+		
+		available = {
+			has_idea = war_economy
+			has_war = yes
+		        is_ai = yes
+			has_war_support > 0.8
+
+		}
+		
+		ai_will_do = {
+			base = 100
+		}
+		fire_only_once = yes
+		
+		cost = 0
+		
+		complete_effect = {
+			IF = {
+				limit = {
+					has_idea = war_economy
+				}
+				add_ideas = tot_economic_mobilisation
+			}
+			
+		}
+	}
+	limited_conscription_ai = {
+		icon = generic_industry
+	
+		
+	        fire_only_once = yes
+		visible = {
+			has_idea = volunteer_only
+		        is_ai = yes
+		}
+		
+		available = {
+			has_idea = volunteer_only
+		        is_ai = yes
+				has_war_support > 0.1
+				IF = {
+					limit = {
+						original_tag = USA
+						has_defensive_war = no
+					}
+					congress_high_support_trigger = yes 
+				}
+
+
+		}
+		
+		ai_will_do = {
+			base = 100
+		}
+		fire_only_once = yes
+		
+		cost = 0
+		
+		complete_effect = {
+			IF = {
+				limit = {
+					has_idea = volunteer_only
+				}
+				add_ideas = limited_conscription
+			}
+			
+		}
+	}
+	extensive_conscription_ai = {
+		icon = generic_industry
+	        fire_only_once = yes
+		visible = {
+			has_idea = limited_conscription
+		        is_ai = yes
+		}
+		
+		available = {
+			has_idea = limited_conscription
+		        is_ai = yes
+				OR = {
+					has_government = fascism
+					has_government = communism
+					original_tag = FRA
+					AND = {
+						has_war = yes
+						enemies_strength_ratio > 0.25
+						#any_enemy_country = {
+						#	strength_ratio = {
+						#		tag = ROOT 
+						#		ratio > 0.5
+						#	}
+						#}
+					}					
+				}
+				has_war_support > 0.2
+				#Special rules AST in TFV
+				if = {
+					limit = {
+						original_tag = AST
+						has_dlc = "Together for Victory"
+					}
+					has_completed_focus = AST_citizen_military_forces
+					has_completed_focus = AST_fight_work_or_perish
+				}				
+				if = {
+					limit = {
+						original_tag = CAN
+						has_dlc = "Together for Victory"
+					}
+					has_completed_focus = CAN_commit_to_the_war
+					has_completed_focus = CAN_if_day
+				}
+				if = {
+					limit = {
+						original_tag = RAJ
+						has_dlc = "Together for Victory"
+					}
+					is_subject = no
+				}
+
+				if = {
+					limit = {
+						original_tag = HUN
+						has_dlc = "Death or Dishonor"
+					}
+					NOT = { has_idea = HUN_treaty_of_triannon }
+				}
+				if = {
+					limit = {
+						original_tag = ENG
+						has_dlc = "Man the Guns"
+						has_completed_focus = ENG_concessions_to_the_trade_unions
+					}
+					NOT = { has_country_flag = ENG_cannot_increase_conscription_law }
+				}
+				
+				IF = {
+					limit = {
+						original_tag = USA
+						has_defensive_war = no
+					}
+					congress_high_support_trigger = yes 
+				}
+				if = {
+					limit = {
+						original_tag = SPR
+						has_dlc = "La Resistance"
+					}
+					NOT = { has_completed_focus = SPR_all_must_bear_the_torch }
+				}
+				
+				IF = {
+					limit = {
+						original_tag = SAF
+					}
+					has_completed_focus = SAF_reconstitute_the_cape_corps
+				}
+				IF = {
+					limit = {
+						original_tag = FIN
+					}
+				}
+				
+				if = {
+					limit = {
+						original_tag = BUL
+						has_dlc = "Battle for the Bosporus"
+					}
+					NOT = { has_idea = BUL_army_restrictions }
+				}
+				
+				IF = {
+					limit = {
+						original_tag = SOV
+						is_ai = no
+					}
+					has_war = yes
+					any_enemy_country = {
+						is_major = yes
+					}
+				}
+			}
+		
+		ai_will_do = {
+			base = 100
+		}
+		fire_only_once = yes
+		
+		cost = 0
+		
+		complete_effect = {
+			IF = {
+				limit = {
+					has_idea = limited_conscription
+				}
+				add_ideas = extensive_conscription
+			}
+			
+		}
+	}
+
+	service_by_requirement_ai = {
+		icon = generic_industry
+	
+
+	        fire_only_once = yes
+		visible = {
+			has_idea = extensive_conscription
+		        is_ai = yes
+		}
+		
+		available = {
+			has_idea = extensive_conscription
+		        is_ai = yes
+				NOT = { has_idea = reichskommissariats}
+				OR = {
+					has_war_support > 0.6
+					surrender_progress > 0
+				}
+
+				if = {
+					limit = {
+						original_tag = AST
+						has_dlc = "Together for Victory"
+					}
+					has_completed_focus = AST_citizen_military_forces
+					has_completed_focus = AST_fight_work_or_perish
+				}
+
+				if = {
+					limit = {
+						original_tag = CAN
+						has_dlc = "Together for Victory"
+					}
+					OR = {
+						has_completed_focus = CAN_compromise_with_quebec
+						has_completed_focus = CAN_forced_quebec_conscription
+					}
+				}
+				if = {
+					limit = {
+						original_tag = RAJ
+						has_dlc = "Together for Victory"
+					}
+					is_subject = no
+				}
+
+				if = {
+					limit = {
+						original_tag = HUN
+						has_dlc = "Death or Dishonor"
+					}
+					NOT = { has_idea = HUN_treaty_of_triannon }
+				}
+				
+				
+				
+				if = {
+					limit = {
+						original_tag = ENG
+						has_dlc = "Man the Guns"
+						has_completed_focus = ENG_concessions_to_the_trade_unions
+					}
+					NOT = { has_country_flag = ENG_cannot_increase_conscription_law }
+				}
+				IF = {
+					limit = {
+						original_tag = USA
+						has_defensive_war = no
+					}
+					congress_high_support_trigger = yes 
+				}
+				if = {
+					limit = {
+						original_tag = SPR
+						has_dlc = "La Resistance"
+					}
+					NOT = { has_completed_focus = SPR_all_must_bear_the_torch }
+				}
+				
+				IF = {
+					limit = {
+						original_tag = SAF
+					}
+					has_completed_focus = SAF_expand_the_cape_corps
+				}
+				IF = {
+					limit = {
+						original_tag = FIN
+					}
+					has_completed_focus = fin_the_civil_guard
+				}
+				
+				if = {
+					limit = {
+						original_tag = BUL
+						has_dlc = "Battle for the Bosporus"
+					}
+					NOT = { has_idea = BUL_army_restrictions }
+				}
+				
+				IF = {
+					limit = {
+						original_tag = SOV
+						is_ai = no
+					}
+					has_war = yes
+					any_enemy_country = {
+						is_major = yes
+					}
+				}
+			}
+		
+		ai_will_do = {
+			base = 100
+		}
+		fire_only_once = yes
+		
+		cost = 0
+		
+		complete_effect = {
+			IF = {
+				limit = {
+					has_idea = extensive_conscription
+				}
+				add_ideas = service_by_requirement
+			}
+			
+		}
+	}
+
+	all_adults_serve_ai = {
+		icon = generic_industry
+	
+
+		
+	        fire_only_once = yes
+		visible = {
+			has_idea = service_by_requirement
+		        is_ai = yes
+		}
+		
+		available = {
+			has_idea = service_by_requirement
+		        is_ai = yes
+			#has_manpower_for_recruit_change_to =  { value = 0.2 group = mobilization_laws }
+				NOT = { has_idea = reichskommissariats}
+				AND = {
+					has_war = yes
+					enemies_strength_ratio > 0.25
+				}
+				
+				surrender_progress > 0.05
+				
+				enemies_strength_ratio > 0.75
+				#any_enemy_country = {
+				#	strength_ratio = {
+				#		tag = ROOT 
+				#		ratio > 0.75
+				#	}
+				#}
+
+				if = {
+					limit = {
+						original_tag = AST
+						has_dlc = "Together for Victory"
+					}
+					has_completed_focus = AST_citizen_military_forces
+					has_completed_focus = AST_fight_work_or_perish
+				}
+
+				if = {
+					limit = {
+						original_tag = CAN
+						has_dlc = "Together for Victory"
+					}
+					OR = {
+						has_completed_focus = CAN_compromise_with_quebec
+						has_completed_focus = CAN_forced_quebec_conscription
+					}					
+				}
+				if = {
+					limit = {
+						original_tag = RAJ
+						has_dlc = "Together for Victory"
+					}
+					is_subject = no
+				}
+				IF = {
+					limit = {
+						original_tag = FIN
+					}
+					has_completed_focus = fin_lotta_svard
+				}
+
+				if = {
+					limit = {
+						original_tag = HUN
+						has_dlc = "Death or Dishonor"
+					}
+					NOT = { has_idea = HUN_treaty_of_triannon }
+				}
+				
+				if = {
+					limit = {
+						original_tag = ENG
+						has_dlc = "Man the Guns"
+						has_completed_focus = ENG_concessions_to_the_trade_unions
+					}
+					NOT = { has_country_flag = ENG_cannot_increase_conscription_law }
+				}
+				IF = {
+					limit = {
+						original_tag = USA
+						has_defensive_war = no
+					}
+					congress_high_support_trigger = yes 
+				}
+				if = {
+					limit = {
+						original_tag = SPR
+						has_dlc = "La Resistance"
+					}
+					NOT = { has_completed_focus = SPR_all_must_bear_the_torch }
+				}
+				
+				NOT = {
+					original_tag = SAF
+				}
+				
+				if = {
+					limit = {
+						original_tag = BUL
+						has_dlc = "Battle for the Bosporus"
+					}
+					NOT = { has_idea = BUL_army_restrictions }
+				}
+			}
+		
+		ai_will_do = {
+			base = 100
+		}
+		fire_only_once = yes
+		
+		cost = 0
+		
+		complete_effect = {
+			IF = {
+				limit = {
+					has_idea = service_by_requirement
+				}
+				add_ideas = all_adults_serve
+			}
+			
+		}
+	}
+}
