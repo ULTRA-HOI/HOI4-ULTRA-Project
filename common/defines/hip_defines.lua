@@ -421,20 +421,20 @@ NDefines.NMilitary.PLAN_SPREAD_ATTACK_WEIGHT = 3
 NDefines.NMilitary.PLAYER_ORDER_PLANNING_DECAY = 0.02
 NDefines.NMilitary.PLANNING_MAX = 0.25 --0.3                           	-- can get more from techs
 NDefines.NAI.RESERVE_TO_COMMITTED_BALANCE = 0.3
-NDefines.NAI.ORG_UNIT_WEAK = 0.32
-NDefines.NAI.STR_UNIT_WEAK = 0.65
+NDefines.NAI.ORG_UNIT_WEAK = 0.35
+NDefines.NAI.STR_UNIT_WEAK = 0.60
 NDefines.NAI.ORG_UNIT_NORMAL = 0.65
 NDefines.NAI.STR_UNIT_NORMAL = 0.72
 NDefines.NAI.ORG_UNIT_STRONG = 0.85						
 NDefines.NAI.STR_UNIT_STRONG = 0.86	
 
 
-NDefines.NAI.PLAN_ATTACK_MIN_ORG_FACTOR_LOW = 0.85				            
+NDefines.NAI.PLAN_ATTACK_MIN_ORG_FACTOR_LOW = 0.82				            
 NDefines.NAI.PLAN_ATTACK_MIN_STRENGTH_FACTOR_LOW = 0.87			
 NDefines.NAI.PLAN_ATTACK_MIN_ORG_FACTOR_MED = 0.50 		 		    
-NDefines.NAI.PLAN_ATTACK_MIN_STRENGTH_FACTOR_MED = 0.81
+NDefines.NAI.PLAN_ATTACK_MIN_STRENGTH_FACTOR_MED = 0.80 
 NDefines.NAI.PLAN_ATTACK_MIN_ORG_FACTOR_HIGH = 0.30
-NDefines.NAI.PLAN_ATTACK_MIN_STRENGTH_FACTOR_HIGH = 0.72	
+NDefines.NAI.PLAN_ATTACK_MIN_STRENGTH_FACTOR_HIGH = 0.70	
 
 -- LAND/ARMY FUEL
 NDefines.NMilitary.ARMY_FUEL_COST_MULT = 0.7						-- was 0.5 -- fuel cost multiplier for all army related stuff
@@ -678,7 +678,7 @@ NDefines.NAI.RESEARCH_MULTI_DOCTRINE_SCORE = 0.1
 NDefines.NAI.XP_RATIO_REQUIRED_TO_RESEARCH_WITH_XP = 3.0		-- AI will at least need this amount of xp compared to cost of a tech to reserch it with XP			
 NDefines.NAI.RESEARCH_WITH_XP_AI_WEIGHT_MULT = 1.5 				-- AI will bump score of a research with this mult if it can use XP
 NDefines.NAI.RESEARCH_AHEAD_OF_TIME_FACTOR = 3.5 		-- To which extent AI should care about ahead of time penalties to research
-NDefines.NAI.MINIMUM_CONVOY_TO_ASK_LEND_LEASE = 300
+
 
 -- Design
 
@@ -885,16 +885,17 @@ NDefines.NAI.DIPLOMACY_IMPROVE_RELATION_COST_FACTOR = 7.0                       
 --NDefines.NMilitary.PLAN_EXECUTE_BALANCED_LIMIT = -1								-- When looking for an attach target, this score limit is required in the battle plan to consider province for attack
 NDefines.NMilitary.PLAN_EXECUTE_RUSH = -10									-- When looking for an attach target, this score limit is required in the battle plan to consider province for attack
 --NDefines.NMilitary.PLAN_EXECUTE_CAREFUL_MAX_FORT = 5							-- If execution mode is set to careful, units will not attack provinces with fort levels greater than or equal to this
-NDefines.NAI.FRONT_UNITS_CAP_FACTOR = 10									-- A factor applied to total front size and supply use. Primarily effects small fronts
+--NDefines.NAI.FRONT_UNITS_CAP_FACTOR = 15.0									-- A factor applied to total front size and supply use. Primarily effects small fronts
 
-NDefines.NAI.MAX_UNITS_FACTOR_AREA_ORDER = 1.2 --1.0								-- Factor for max number of units to assign to area defense orders
-NDefines.NAI.DESIRED_UNITS_FACTOR_AREA_ORDER = 1.1 --1.0							-- Factor for desired number of units to assign to area defense orders
-NDefines.NAI.MIN_UNITS_FACTOR_AREA_ORDER = 0.75									-- Factor for min number of units to assign to area defense orders									-- Factor for max number of units to assign to area front orders
-NDefines.NAI.DESIRED_UNITS_FACTOR_FRONT_ORDER = 1.5								-- Factor for desired number of units to assign to area front orders
-NDefines.NAI.MIN_UNITS_FACTOR_FRONT_ORDER = 1								-- Factor for min number of units to assign to area front orders
-NDefines.NAI.MAX_UNITS_FACTOR_INVASION_ORDER = 1								-- Factor for max number of units to assign to naval invasion orders
-NDefines.NAI.DESIRED_UNITS_FACTOR_INVASION_ORDER = 0.7							-- Factor for desired number of units to assign to naval invasion orders
-NDefines.NAI.MIN_UNITS_FACTOR_INVASION_ORDER = 0.55								-- Factor for min number of units to assign to naval invasion orders
+--NDefines.NAI.MAX_UNITS_FACTOR_AREA_ORDER = 1.5 --1.0								-- Factor for max number of units to assign to area defense orders
+--NDefines.NAI.DESIRED_UNITS_FACTOR_AREA_ORDER = 1.5 --1.0							-- Factor for desired number of units to assign to area defense orders
+--NDefines.NAI.MIN_UNITS_FACTOR_AREA_ORDER = 1.5									-- Factor for min number of units to assign to area defense orders
+--NDefines.NAI.MAX_UNITS_FACTOR_FRONT_ORDER = 1.5									-- Factor for max number of units to assign to area front orders
+--NDefines.NAI.DESIRED_UNITS_FACTOR_FRONT_ORDER = 1.5								-- Factor for desired number of units to assign to area front orders
+--NDefines.NAI.MIN_UNITS_FACTOR_FRONT_ORDER = 1.0									-- Factor for min number of units to assign to area front orders
+--NDefines.NAI.MAX_UNITS_FACTOR_INVASION_ORDER = 1.0								-- Factor for max number of units to assign to naval invasion orders
+--NDefines.NAI.DESIRED_UNITS_FACTOR_INVASION_ORDER = 1.0							-- Factor for desired number of units to assign to naval invasion orders
+--NDefines.NAI.MIN_UNITS_FACTOR_INVASION_ORDER = 1.0								-- Factor for min number of units to assign to naval invasion orders
 
 --NDefines.NAI.STATE_CONTROL_FOR_AREA_DEFENSE = 0.4 			                    -- To avoid AI sending area defense to area with very little foothold
 --NDefines.NAI.AREA_DEFENSE_BASE_IMPORTANCE = 3 				                -- Area defense order base importance value (used for determining order of troop selections)
@@ -905,7 +906,7 @@ NDefines.NAI.MIN_UNITS_FACTOR_INVASION_ORDER = 0.55								-- Factor for min num
 --NDefines.NAI.VP_LEVEL_IMPORTANCE_MEDIUM = 1 --10				                -- Victory points with values higher than or equal to this are considered to be of medium importance.
 --NDefines.NAI.VP_GARRISON_VALUE_FACTOR = 0 				                    -- Extent to which VP garrisons are prioritized  based on VP value and compared to other priority values.
 
-NDefines.NAI.FALLBACK_LOSING_FACTOR = 0.5					                    -- The lower this number  the longer the AI will hold the line before sending them to the fallback line
+NDefines.NAI.FALLBACK_LOSING_FACTOR = 0.0 					                    -- The lower this number  the longer the AI will hold the line before sending them to the fallback line
 --NDefines.NAI.SCARY_LEVEL_AVERAGE_DEFENSE = -0.7                               -- average front defense modifier to make it consider it as a PITA to go for
 NDefines.NAI.ATTACK_HEAVILY_DEFENDED_LIMIT = 0.66 			                -- AI will not launch attacks against heavily defended fronts unless they consider to have this level of advantage (1.0 = 100%)
 NDefines.NAI.HOUR_BAD_COMBAT_REEVALUATE = 12                                 	-- if we are in combat for this amount and it goes shitty then try skipping it
@@ -920,13 +921,13 @@ NDefines.NAI.MICRO_POCKET_SIZE = 6 						                    -- Pockets with a s
 --NDefines.NAI.UNIT_ASSIGNMENT_TERRAIN_IMPORTANCE = 5.0 		                -- Terrain score for units are multiplied by this when the AI is deciding which front they should be assigned to
 --NDefines.NAI.FRONT_REASSIGN_DISTANCE = 120.0 					                -- If a unit is this far away from a front it is not considered to be assigned to it unless the new front is much more important
 --NDefines.NAI.OLD_FRONT_IMPORTANCE_FACTOR = 1.50 				                -- If a unit is considered for reassignment  the importance of both new and old front is considered with a weight applied to the old ones score
-NDefines.NAI.ENTRENCHMENT_WEIGHT = 2						                -- AI should favour units with less entrenchment when assigning units around.
-NDefines.NAI.MAIN_ENEMY_FRONT_IMPORTANCE = 7.5				                -- How much extra focus the AI should put on who it considers to be its current main enemy.
+--NDefines.NAI.ENTRENCHMENT_WEIGHT = 100.0						                -- AI should favour units with less entrenchment when assigning units around.
+--NDefines.NAI.MAIN_ENEMY_FRONT_IMPORTANCE = 7.5				                -- How much extra focus the AI should put on who it considers to be its current main enemy.
 
-NDefines.NAI.PLAN_ACTIVATION_SUPERIORITY_AGGRO = 0.25	                        -- How aggressive a country is in activating a plan based on how superiour their force is.
-NDefines.NAI.PLAN_FACTION_STRONG_TO_EXECUTE = 0.61 --0.80	0.60		        -- % or more of units in an order to consider ececuting the plan
-NDefines.NAI.PLAN_FACTION_NORMAL_TO_EXECUTE = 0.69
-NDefines.NAI.PLAN_FACTION_WEAK_TO_ABORT = 0.4 --0.50		0.65		        -- % or more of units in an order to consider ececuting the plan
+--NDefines.NAI.PLAN_ACTIVATION_SUPERIORITY_AGGRO = 1	                        -- How aggressive a country is in activating a plan based on how superiour their force is.
+NDefines.NAI.PLAN_FACTION_STRONG_TO_EXECUTE = 0.65 --0.80	0.60		        -- % or more of units in an order to consider ececuting the plan
+NDefines.NAI.PLAN_FACTION_NORMAL_TO_EXECUTE = 0.65
+NDefines.NAI.PLAN_FACTION_WEAK_TO_ABORT = 0.5 --0.50		0.65		        -- % or more of units in an order to consider ececuting the plan
 NDefines.NAI.PLAN_AVG_PREPARATION_TO_EXECUTE = 0.75				            -- % or more average plan preparation before executing
 NDefines.NAI.AI_FRONT_MOVEMENT_FACTOR_FOR_READY = 0.5			                -- If less than this fraction of units on a front is moving  AI sees it as ready for action
 --NDefines.NAI.PLAN_VALUE_TO_EXECUTE = -1.1                                     -- AI will typically avoid carrying out a plan it below this value (0.0 is considered balanced).
@@ -938,23 +939,9 @@ NDefines.NAI.PLAN_ACTIVATION_PLAYER_WEIGHT_FACTOR = 1 		                -- AI co
 --NDefines.NAI.FRONT_TERRAIN_ATTACK_FACTOR = 5.0 				                -- Multiplier applied to unit attack modifier for terrain on enemy front province multiplied by terrain importance
 NDefines.NAI.PLAN_MIN_SIZE_FOR_FALLBACK = 5000					                -- A country with less provinces than this will not draw fallback plans  but rather station their troops along the front
 
-NDefines.NAI.FRONT_BULGE_RATIO_UPPER_CUTOFF = 1.5								-- If total bulginess is lower than this, the front is ignored.
-NDefines.NAI.FRONT_BULGE_RATIO_LOWER_CUTOFF = 0.95							-- If local bulginess drops below this, a point of interest is found
-NDefines.NAI.FRONT_CUTOFF_MIN_EDGE_PROXIMITY = 2								-- Minimum number of provinces to the front edge to determine for cutoff oportunity.
-
-NDefines.NAI.AGGRESSIVENESS_BONUS_FOR_FRONTS_THAT_ARE_ON_HIGH_AGGRESSIVENESS	= -0.4								-- If total bulginess is lower than this, the front is ignored.
-NDefines.NAI.AGGRESSIVENESS_CHECK_BASE = 2.0							-- If local bulginess drops below this, a point of interest is found
-NDefines.NAI.AGGRESSIVENESS_CHECK_EASY_TARGET = -0.4	
-NDefines.NAI.AGGRESSIVENESS_CHECK_CAREFUL = 0.6							-- If total bulginess is lower than this, the front is ignored.
-NDefines.NAI.AGGRESSIVENESS_CHECK_PARTLY_FORTIFIED = 2.0						-- If local bulginess drops below this, a point of interest is found
-NDefines.NAI.AGGRESSIVENESS_CHECK_PARTLY_FORTIFIED_WEAK_POINTS = 0.75
-
-NDefines.NAI.AGGRESSIVENESS_CHECK_FULLY_FORTIFIED = 10	
-NDefines.NAI.AGGRESSIVENESS_CHECK_FULLY_FORTIFIED_POCKET = 6						-- If total bulginess is lower than this, the front is ignored.
-NDefines.NAI.FRONT_EVAL_UNIT_ACCURACY = 0.8						-- If local bulginess drops below this, a point of interest is found
-NDefines.NAI.FRONT_EVAL_UNIT_SUPPLY_AND_ORG_LACK_IMPACT = 0.3
-NDefines.NAI.MIN_FRONT_SCORE_FOR_AFTER_INVASION_AREAS = 50
-NDefines.NAI.MAX_INVASION_FRONT_SCORE = 100
+--NDefines.NAI.FRONT_BULGE_RATIO_UPPER_CUTOFF = 1.5								-- If total bulginess is lower than this, the front is ignored.
+--NDefines.NAI.FRONT_BULGE_RATIO_LOWER_CUTOFF = 0.95							-- If local bulginess drops below this, a point of interest is found
+--NDefines.NAI.FRONT_CUTOFF_MIN_EDGE_PROXIMITY = 2								-- Minimum number of provinces to the front edge to determine for cutoff oportunity.
 
 --------------------------------------------------------------------------------------------------------------
 -- NAVY AI
