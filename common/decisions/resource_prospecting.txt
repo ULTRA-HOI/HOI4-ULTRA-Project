@@ -5008,7 +5008,7 @@ prospect_for_resources = {
 
 		available = {
 			has_tech = excavation1			
-			num_of_civilian_factories_available_for_projects > 9
+			num_of_civilian_factories_available_for_projects > 11
 			owns_state = 59
 			controls_state = 59
 		}
@@ -5019,137 +5019,48 @@ prospect_for_resources = {
 			has_completed_focus = GER_autarky
 			59 = {
 				NOT = {
-					has_state_flag = salzgitter_developed
+					has_state_flag = {
+						flag = salzgitter_developed
+						value = 10
+					}
 				}
 			}
 		}
 
-		fire_only_once = yes
-
-		
-		days_remove = 180
-		cost = 5
-
-		modifier = {
-			civilian_factory_use = 10
-		}
-
-		remove_effect = {
-			59 = { set_state_flag = salzgitter_developed }
-			59 = {
-				add_resource = {
-					type = iron
-					amount = 73
-				}
-			}
-		}
-
-		ai_will_do = {
-			factor = 1000
-		}
-	}
-	
-	develop_Salzgitter_iron_ore_deposits_2 = { #59
-		
-		icon = steel
-
-		allowed = {
-			original_tag = GER
-		}
-
-		highlight_state_targets = {
-			state = 59
-		}
-
-		available = {
-			has_tech = excavation2			
-			num_of_civilian_factories_available_for_projects > 7
-			owns_state = 59
-			controls_state = 59
-		}
-
-		visible = {
-			owns_state = 59
-			controls_state = 59
-			has_completed_focus = GER_autarky
-			59 = {
-				NOT = {
-					has_state_flag = salzgitter_2_developed
-				}
-			}
-		}
-
-		fire_only_once = yes
+		fire_only_once = no
 
 		
 		days_remove = 120
 		cost = 5
 
 		modifier = {
-			civilian_factory_use = 8
+			civilian_factory_use = 16
 		}
 
 		remove_effect = {
-			59 = { set_state_flag = salzgitter_2_developed }
+			59 = {
+				if = {
+					limit = {
+						NOT = {
+							has_state_flag = salzgitter_developed
+						}
+					}
+					set_state_flag = {
+						flag = salzgitter_developed
+						value = 1
+					}
+				}
+				else = {
+					modify_state_flag = {
+						flag = salzgitter_developed
+						value = 1
+					}
+				}
+			}
 			59 = {
 				add_resource = {
 					type = iron
-					amount = 47
-				}
-			}
-		}
-
-		ai_will_do = {
-			factor = 1000
-		}
-	}
-	
-	develop_Salzgitter_iron_ore_deposits_3 = { #59
-		
-		icon = steel
-
-		allowed = {
-			original_tag = GER
-		}
-
-		highlight_state_targets = {
-			state = 59
-		}
-
-		available = {
-			has_tech = excavation3		
-			num_of_civilian_factories_available_for_projects > 7
-			owns_state = 59
-			controls_state = 59
-		}
-
-		visible = {
-			owns_state = 59
-			controls_state = 59
-			has_completed_focus = GER_autarky
-			59 = {
-				NOT = {
-					has_state_flag = salzgitter_3_developed
-				}
-			}
-		}
-
-		fire_only_once = yes
-
-		
-		days_remove = 120
-		cost = 5
-
-		modifier = {
-			civilian_factory_use = 8
-		}
-
-		remove_effect = {
-			59 = { set_state_flag = salzgitter_3_developed }
-			59 = {
-				add_resource = {
-					type = iron
-					amount = 47
+					amount = 40
 				}
 			}
 		}
