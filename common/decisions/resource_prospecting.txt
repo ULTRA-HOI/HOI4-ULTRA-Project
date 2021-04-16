@@ -1115,7 +1115,7 @@ prospect_for_resources = {
 			}
 		}
 	}
-	develop_ems_oil_fields = { #56
+	develop_ems_oil_fields = { #790 Hamburg
 		
 		icon = oil
 
@@ -1124,21 +1124,20 @@ prospect_for_resources = {
 		}
 
 		highlight_state_targets = {
-			state = 56
+			state = 790
 		}
 
 		available = {
-			has_tech = excavation3
-			num_of_civilian_factories_available_for_projects > 2
-			owns_state = 56
-			controls_state = 56
+			num_of_civilian_factories_available_for_projects > 4
+			owns_state = 790
+			controls_state = 790
 		}
 
 		visible = {
-			owns_state = 56
-			controls_state = 56
-			has_tech = excavation3
-			56 = {
+			date > 1938.1.1
+			owns_state = 790
+			controls_state = 790
+			790 = {
 				NOT = {
 					has_state_flag = ems_oil_developed
 				}
@@ -1151,7 +1150,7 @@ prospect_for_resources = {
 		days_remove = 120
 
 		modifier = {
-			civilian_factory_use = 3
+			civilian_factory_use = 5
 		}
 
 		ai_will_do = {
@@ -1159,13 +1158,13 @@ prospect_for_resources = {
 		}
 
 		remove_effect = {
-			56 = {
+			790 = {
 				set_state_flag = ems_oil_developed
 			}
-			56 = {
+			790 = {
 				add_resource = {
 					type = oil
-					amount = 9
+					amount = 6
 				}
 			}
 		}
@@ -1180,8 +1179,8 @@ prospect_for_resources = {
 		}
 
 		available = {
-			has_tech = excavation4
-			num_of_civilian_factories_available_for_projects > 2
+			
+			num_of_civilian_factories_available_for_projects > 4
 			owns_state = 4
 			controls_state = 4
 		}
@@ -1193,10 +1192,10 @@ prospect_for_resources = {
 		visible = {
 			owns_state = 4
 			controls_state = 4
-			has_tech = excavation3
+			date > 1939.1.1
 			4 = {
 				NOT = {
-					has_state_flag = ems_oil_developed
+					has_state_flag = matzen_oil_developed
 				}
 			}
 		}
@@ -1207,7 +1206,7 @@ prospect_for_resources = {
 		days_remove = 120
 
 		modifier = {
-			civilian_factory_use = 3
+			civilian_factory_use = 5
 		}
 
 		ai_will_do = {
@@ -1216,16 +1215,132 @@ prospect_for_resources = {
 
 		remove_effect = {
 			4 = {
-				set_state_flag = ems_oil_developed
+				set_state_flag = matzen_oil_developed
 			}
 			4 = {
 				add_resource = {
 					type = oil
-					amount = 9
+					amount = 5
 				}
 			}
 		}
 	}
+	
+	expand_matzen_oil_fields = { #4
+		
+		icon = oil
+
+		allowed = {
+
+		}
+
+		available = {
+			
+			num_of_civilian_factories_available_for_projects > 4
+			owns_state = 4
+			controls_state = 4
+		}
+
+		highlight_state_targets = {
+			state = 4
+		}
+
+		visible = {
+			owns_state = 4
+			controls_state = 4
+			date > 1941.1.1
+			4 = {
+				has_state_flag = matzen_oil_developed
+				NOT = {
+					has_state_flag = matzen_oil_expended
+				}
+			}
+		}
+
+		fire_only_once = yes
+
+		cost = 5
+		days_remove = 120
+
+		modifier = {
+			civilian_factory_use = 5
+		}
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		remove_effect = {
+			4 = {
+				set_state_flag = matzen_oil_expended
+			}
+			4 = {
+				add_resource = {
+					type = oil
+					amount = 5
+				}
+			}
+		}
+	}
+	
+	expand_matzen_oil_fields_2 = { #4
+		
+		icon = oil
+
+		allowed = {
+
+		}
+
+		available = {
+			
+			num_of_civilian_factories_available_for_projects > 4
+			owns_state = 4
+			controls_state = 4
+		}
+
+		highlight_state_targets = {
+			state = 4
+		}
+
+		visible = {
+			owns_state = 4
+			controls_state = 4
+			date > 1943.1.1
+			4 = {
+				has_state_flag = matzen_oil_expended
+				NOT = {
+					has_state_flag = matzen_oil_expended2
+				}
+			}
+		}
+
+		fire_only_once = yes
+
+		cost = 5
+		days_remove = 120
+
+		modifier = {
+			civilian_factory_use = 5
+		}
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		remove_effect = {
+			4 = {
+				set_state_flag = matzen_oil_expended2
+			}
+			4 = {
+				add_resource = {
+					type = oil
+					amount = 5
+				}
+			}
+		}
+	}
+	
+	
 	develop_friesland_oil_fields = { #36
 		
 		icon = oil
@@ -1262,7 +1377,7 @@ prospect_for_resources = {
 		days_remove = 120
 
 		modifier = {
-			civilian_factory_use = 3
+			civilian_factory_use = 2
 		}
 
 		ai_will_do = {
@@ -1273,7 +1388,7 @@ prospect_for_resources = {
 			36 = {
 				add_resource = {
 					type = oil
-					amount = 9
+					amount = 2
 				}
 				
 			}
@@ -5008,7 +5123,7 @@ prospect_for_resources = {
 
 		available = {
 			has_tech = excavation1			
-			num_of_civilian_factories_available_for_projects > 9
+			num_of_civilian_factories_available_for_projects > 11
 			owns_state = 59
 			controls_state = 59
 		}
@@ -5019,137 +5134,48 @@ prospect_for_resources = {
 			has_completed_focus = GER_autarky
 			59 = {
 				NOT = {
-					has_state_flag = salzgitter_developed
+					has_state_flag = {
+						flag = salzgitter_developed
+						value = 10
+					}
 				}
 			}
 		}
 
-		fire_only_once = yes
-
-		
-		days_remove = 180
-		cost = 5
-
-		modifier = {
-			civilian_factory_use = 10
-		}
-
-		remove_effect = {
-			59 = { set_state_flag = salzgitter_developed }
-			59 = {
-				add_resource = {
-					type = iron
-					amount = 73
-				}
-			}
-		}
-
-		ai_will_do = {
-			factor = 1000
-		}
-	}
-	
-	develop_Salzgitter_iron_ore_deposits_2 = { #59
-		
-		icon = steel
-
-		allowed = {
-			original_tag = GER
-		}
-
-		highlight_state_targets = {
-			state = 59
-		}
-
-		available = {
-			has_tech = excavation2			
-			num_of_civilian_factories_available_for_projects > 7
-			owns_state = 59
-			controls_state = 59
-		}
-
-		visible = {
-			owns_state = 59
-			controls_state = 59
-			has_completed_focus = GER_autarky
-			59 = {
-				NOT = {
-					has_state_flag = salzgitter_2_developed
-				}
-			}
-		}
-
-		fire_only_once = yes
+		fire_only_once = no
 
 		
 		days_remove = 120
 		cost = 5
 
 		modifier = {
-			civilian_factory_use = 8
+			civilian_factory_use = 16
 		}
 
 		remove_effect = {
-			59 = { set_state_flag = salzgitter_2_developed }
+			59 = {
+				if = {
+					limit = {
+						NOT = {
+							has_state_flag = salzgitter_developed
+						}
+					}
+					set_state_flag = {
+						flag = salzgitter_developed
+						value = 1
+					}
+				}
+				else = {
+					modify_state_flag = {
+						flag = salzgitter_developed
+						value = 1
+					}
+				}
+			}
 			59 = {
 				add_resource = {
 					type = iron
-					amount = 47
-				}
-			}
-		}
-
-		ai_will_do = {
-			factor = 1000
-		}
-	}
-	
-	develop_Salzgitter_iron_ore_deposits_3 = { #59
-		
-		icon = steel
-
-		allowed = {
-			original_tag = GER
-		}
-
-		highlight_state_targets = {
-			state = 59
-		}
-
-		available = {
-			has_tech = excavation3		
-			num_of_civilian_factories_available_for_projects > 7
-			owns_state = 59
-			controls_state = 59
-		}
-
-		visible = {
-			owns_state = 59
-			controls_state = 59
-			has_completed_focus = GER_autarky
-			59 = {
-				NOT = {
-					has_state_flag = salzgitter_3_developed
-				}
-			}
-		}
-
-		fire_only_once = yes
-
-		
-		days_remove = 120
-		cost = 5
-
-		modifier = {
-			civilian_factory_use = 8
-		}
-
-		remove_effect = {
-			59 = { set_state_flag = salzgitter_3_developed }
-			59 = {
-				add_resource = {
-					type = iron
-					amount = 47
+					amount = 40
 				}
 			}
 		}

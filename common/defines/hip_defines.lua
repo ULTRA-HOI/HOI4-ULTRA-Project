@@ -281,8 +281,8 @@ NDefines.NMilitary.PARACHUTE_ORG_REGAIN_PENALTY_DURATION = 12   -- penalty in or
 NDefines.NMilitary.PARACHUTE_ORG_REGAIN_PENALTY_MULT = -0.5	   -- penalty to org regain after being parachuted.
 
 
-NDefines.NMilitary.BASE_COMBAT_WIDTH = 96                     -- base combat width
-NDefines.NMilitary.ADDITIONAL_COMBAT_WIDTH = 48                  -- more opened up by support attack
+NDefines.NMilitary.BASE_COMBAT_WIDTH = 144                     -- base combat width
+NDefines.NMilitary.ADDITIONAL_COMBAT_WIDTH = 72                  -- more opened up by support attack
 NDefines.NMilitary.ENEMY_AIR_SUPERIORITY_IMPACT = -0.35 ---0.35        -- effect on defense due to enemy air superiorty
 NDefines.NMilitary.ENEMY_AIR_SUPERIORITY_SPEED_IMPACT = -0.4     -- was -0.3 - effect on speed due to enemy air superiority
 
@@ -517,7 +517,7 @@ NDefines.NAir.HOURS_DELAY_AFTER_EACH_COMBAT = 4					-- How many hours needs the 
 
 -- Naval strikes
 
-NDefines.NAir.NAVAL_STRIKE_TARGETTING_TO_AMOUNT = 0.3 -- 0.3			-- Balancing value to convert the naval_strike_targetting equipment stats to chances of how many airplanes managed to do successfull strike.
+NDefines.NAir.NAVAL_STRIKE_TARGETTING_TO_AMOUNT = 0.2 -- 0.3			-- Balancing value to convert the naval_strike_targetting equipment stats to chances of how many airplanes managed to do successfull strike.
 NDefines.NAir.NAVAL_STRIKE_DAMAGE_TO_STR = 3.0 --2.0					-- Balancing value to convert damage ( naval_strike_attack * hits ) to Strength reduction.
 NDefines.NAir.NAVAL_STRIKE_DAMAGE_TO_ORG = 0.75					-- Balancing value to convert damage ( naval_strike_attack * hits ) to Organisation reduction.
 NDefines.NAir.NAVAL_STRIKE_DETECTION_BALANCE_FACTOR = 0.7 --0.7		-- Value used to scale the surface_visibility stats to balance the gameplay, so 100% detection chance still won't spam the strikes.
