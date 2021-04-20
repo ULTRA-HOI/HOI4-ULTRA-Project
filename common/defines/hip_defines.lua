@@ -412,7 +412,7 @@ NDefines.NMilitary.MAX_OUT_OF_SUPPLY_DAYS = 14 				   -- how many days of shitty
 NDefines.NMilitary.OUT_OF_SUPPLY_ATTRITION = 0.1                 -- max attrition when out of supply
 NDefines.NMilitary.OUT_OF_SUPPLY_SPEED = -0.5                    -- max speed reduction from supply
 NDefines.NMilitary.NON_CORE_SUPPLY_SPEED = -0.7				   -- we are not running on our own VP supply so need to steal stuff along the way
-NDefines.NMilitary.OUT_OF_SUPPLY_MORALE = -0.3                   -- max org regain reduction from supply
+NDefines.NMilitary.OUT_OF_SUPPLY_MORALE = -0.25                   -- max org regain reduction from supply
 
 
 -- Battleplan Execution Adjustments
@@ -875,7 +875,7 @@ NDefines.NAI.DIPLOMACY_IMPROVE_RELATION_COST_FACTOR = 7.0                       
 -- LAND AI
 --------------------------------------------------------------------------------------------------------------
 
---NDefines.NAI.SUPPLY_CRISIS_LIMIT = 1.0
+NDefines.NAI.SUPPLY_CRISIS_LIMIT = 1.0
 
 --NDefines.NAI.PLAN_ATTACK_DEPTH_FACTOR = 0.5									-- Factor applied to size or enemy being attacked.
 --NDefines.NAI.PLAN_STEP_COST_LIMIT = 1											-- When stepping to draw a plan this cost makes it break if it hits hard terrain (multiplied by number of desired steps)
@@ -890,9 +890,9 @@ NDefines.NMilitary.PLAN_EXECUTE_RUSH = -10									-- When looking for an attach
 --NDefines.NAI.MAX_UNITS_FACTOR_AREA_ORDER = 1.5 --1.0								-- Factor for max number of units to assign to area defense orders
 --NDefines.NAI.DESIRED_UNITS_FACTOR_AREA_ORDER = 1.5 --1.0							-- Factor for desired number of units to assign to area defense orders
 --NDefines.NAI.MIN_UNITS_FACTOR_AREA_ORDER = 1.5									-- Factor for min number of units to assign to area defense orders
---NDefines.NAI.MAX_UNITS_FACTOR_FRONT_ORDER = 1.5									-- Factor for max number of units to assign to area front orders
---NDefines.NAI.DESIRED_UNITS_FACTOR_FRONT_ORDER = 1.5								-- Factor for desired number of units to assign to area front orders
---NDefines.NAI.MIN_UNITS_FACTOR_FRONT_ORDER = 1.0									-- Factor for min number of units to assign to area front orders
+NDefines.NAI.MAX_UNITS_FACTOR_FRONT_ORDER = 1.5									-- Factor for max number of units to assign to area front orders
+NDefines.NAI.DESIRED_UNITS_FACTOR_FRONT_ORDER = 1.0								-- Factor for desired number of units to assign to area front orders
+NDefines.NAI.MIN_UNITS_FACTOR_FRONT_ORDER = 0.75									-- Factor for min number of units to assign to area front orders
 --NDefines.NAI.MAX_UNITS_FACTOR_INVASION_ORDER = 1.0								-- Factor for max number of units to assign to naval invasion orders
 --NDefines.NAI.DESIRED_UNITS_FACTOR_INVASION_ORDER = 1.0							-- Factor for desired number of units to assign to naval invasion orders
 --NDefines.NAI.MIN_UNITS_FACTOR_INVASION_ORDER = 1.0								-- Factor for min number of units to assign to naval invasion orders
@@ -906,7 +906,7 @@ NDefines.NMilitary.PLAN_EXECUTE_RUSH = -10									-- When looking for an attach
 --NDefines.NAI.VP_LEVEL_IMPORTANCE_MEDIUM = 1 --10				                -- Victory points with values higher than or equal to this are considered to be of medium importance.
 --NDefines.NAI.VP_GARRISON_VALUE_FACTOR = 0 				                    -- Extent to which VP garrisons are prioritized  based on VP value and compared to other priority values.
 
-NDefines.NAI.FALLBACK_LOSING_FACTOR = 0.0 					                    -- The lower this number  the longer the AI will hold the line before sending them to the fallback line
+NDefines.NAI.FALLBACK_LOSING_FACTOR = 0.1 					                    -- The lower this number  the longer the AI will hold the line before sending them to the fallback line
 --NDefines.NAI.SCARY_LEVEL_AVERAGE_DEFENSE = -0.7                               -- average front defense modifier to make it consider it as a PITA to go for
 NDefines.NAI.ATTACK_HEAVILY_DEFENDED_LIMIT = 0.66 			                -- AI will not launch attacks against heavily defended fronts unless they consider to have this level of advantage (1.0 = 100%)
 NDefines.NAI.HOUR_BAD_COMBAT_REEVALUATE = 12                                 	-- if we are in combat for this amount and it goes shitty then try skipping it
