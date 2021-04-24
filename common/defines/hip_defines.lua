@@ -393,9 +393,9 @@ NDefines.NMilitary.ANTI_AIR_ATTACK_TO_AMOUNT = 0.01 --0.015 --0.005				-- Balanc
 -- Supply 
 
 
-NDefines.NCountry.VP_TO_SUPPLY_BASE = 0.3					-- Bonus to supply from a VP, no matter the level
-NDefines.NCountry.VP_TO_SUPPLY_BONUS_CONVERSION = 0.2 -- 0.1		 -- Bonus to supply local supplies from Victory Points, multiplied by this aspect and rounded to closest integer
-NDefines.NCountry.SUPPLY_FROM_DAMAGED_INFRA = 0.5                -- damaged infrastructure counts as this in supply calcs
+NDefines.NCountry.VP_TO_SUPPLY_BASE = 0.5 --0.3					-- Bonus to supply from a VP, no matter the level
+NDefines.NCountry.VP_TO_SUPPLY_BONUS_CONVERSION = 0.25 -- 0.1		 -- Bonus to supply local supplies from Victory Points, multiplied by this aspect and rounded to closest integer
+NDefines.NCountry.SUPPLY_FROM_DAMAGED_INFRA = 0.25 --0.5                -- damaged infrastructure counts as this in supply calcs
 NDefines.NCountry.SUPPLY_BASE_MULT = 0.3							-- multiplier on supply base values
 NDefines.NCountry.SUPPLY_BONUS_FROM_INPUT = 0.35					-- % of supply bonus from input area.
 NDefines.NCountry.SUPPLY_PATH_MAX_DISTANCE = 10						-- When supply route reach more than X nodes, the manpower+equipment delivery speed reach 100% penalty.
@@ -579,9 +579,9 @@ NDefines.NNavy.TRAINING_ACCIDENT_STRENGTH_LOSS_FACTOR = 0.01 --0.05						-- Amou
 
 -- Convoys stuff
 
-NDefines.NNavy.CONVOY_EFFICIENCY_LOSS_MODIFIER = 1.0 --1.25							-- How much efficiency drops when losing convoys. If modifier is 0.5, then losing 100% of convoys in short period, the efficiency will drop by 50%.
-NDefines.NNavy.CONVOY_EFFICIENCY_REGAIN_AFTER_DAYS = 5 --7						-- Convoy starts regaining it's efficiency after X days without any convoys being sink.
-NDefines.NNavy.CONVOY_EFFICIENCY_REGAIN_BASE_SPEED = 0.04 --0.04						-- How much efficiency regains every day.
+NDefines.NNavy.CONVOY_EFFICIENCY_LOSS_MODIFIER = 0.75 --1.0 --1.25							-- How much efficiency drops when losing convoys. If modifier is 0.5, then losing 100% of convoys in short period, the efficiency will drop by 50%.
+NDefines.NNavy.CONVOY_EFFICIENCY_REGAIN_AFTER_DAYS = 3 --7						-- Convoy starts regaining it's efficiency after X days without any convoys being sink.
+NDefines.NNavy.CONVOY_EFFICIENCY_REGAIN_BASE_SPEED = 0.05 --0.04						-- How much efficiency regains every day.
 NDefines.NNavy.COMBAT_DETECTED_CONVOYS_FROM_SURFACE_DETECTION_STAT = 0.1 --0.1		-- Each 1.0 of surface_detection that ship has (equipment stat), gives x% of convoys discovered from total travelling along the route.
 
 -- Carrier Stuff 
