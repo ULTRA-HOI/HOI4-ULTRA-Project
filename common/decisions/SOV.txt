@@ -4408,28 +4408,76 @@ political_actions = {
 		
 	}
 	
-	SOV_increase_conscription = {
+	SOV_increase_conscription_1 = {
 		fire_only_once = yes
-		cost = 10
+		cost = 50
+		icon = generic_civil_support
+		allowed = {
+			original_tag = SOV
+		}
+		visible = {
+			OR = {
+				has_idea = limited_conscription
+			}
+		}
+	
+		available = {
+			OR = {
+				AND = {
+					has_war = yes
+					any_enemy_country = {
+						is_major = yes
+					}
+				}
+				GER = {
+					has_war_with = FRA
+				}
+				GER = {
+					has_war_with = ENG
+				}
+				ENG = {
+					has_war_with = FRA
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 5000
+		}
+		
+		complete_effect = {
+			
+			add_ideas = extensive_conscription
+		}
+		
+	}
+	
+	SOV_increase_conscription_2 = {
+		fire_only_once = yes
+		cost = 50
 		icon = generic_civil_support
 		allowed = {
 			original_tag = SOV
 		}
 		visible = {
 			has_war = no 
-			has_idea = limited_conscription
-	
+			OR = {
+				has_idea = service_by_requirement
+				has_idea = extensive_conscription
+			}	
 		}
 		
 		available = {
 			OR = {
-				date > 1941.1.1
+				AND = {
+					has_war = yes
+					any_enemy_country = {
+						is_major = yes
+					}
+				}
 				any_country = {
 					is_major = yes 
 					has_capitulated = yes
-				}
-				GER = {
-					is_in_faction_with = FRA
 				}
 			}
 		}

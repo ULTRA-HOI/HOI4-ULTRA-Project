@@ -393,9 +393,9 @@ NDefines.NMilitary.ANTI_AIR_ATTACK_TO_AMOUNT = 0.01 --0.015 --0.005				-- Balanc
 -- Supply 
 
 
-NDefines.NCountry.VP_TO_SUPPLY_BASE = 0.3					-- Bonus to supply from a VP, no matter the level
-NDefines.NCountry.VP_TO_SUPPLY_BONUS_CONVERSION = 0.2 -- 0.1		 -- Bonus to supply local supplies from Victory Points, multiplied by this aspect and rounded to closest integer
-NDefines.NCountry.SUPPLY_FROM_DAMAGED_INFRA = 0.5                -- damaged infrastructure counts as this in supply calcs
+NDefines.NCountry.VP_TO_SUPPLY_BASE = 0.5 --0.3					-- Bonus to supply from a VP, no matter the level
+NDefines.NCountry.VP_TO_SUPPLY_BONUS_CONVERSION = 0.25 -- 0.1		 -- Bonus to supply local supplies from Victory Points, multiplied by this aspect and rounded to closest integer
+NDefines.NCountry.SUPPLY_FROM_DAMAGED_INFRA = 0.25 --0.5                -- damaged infrastructure counts as this in supply calcs
 NDefines.NCountry.SUPPLY_BASE_MULT = 0.3							-- multiplier on supply base values
 NDefines.NCountry.SUPPLY_BONUS_FROM_INPUT = 0.35					-- % of supply bonus from input area.
 NDefines.NCountry.SUPPLY_PATH_MAX_DISTANCE = 10						-- When supply route reach more than X nodes, the manpower+equipment delivery speed reach 100% penalty.
@@ -412,7 +412,7 @@ NDefines.NMilitary.MAX_OUT_OF_SUPPLY_DAYS = 14 				   -- how many days of shitty
 NDefines.NMilitary.OUT_OF_SUPPLY_ATTRITION = 0.1                 -- max attrition when out of supply
 NDefines.NMilitary.OUT_OF_SUPPLY_SPEED = -0.5                    -- max speed reduction from supply
 NDefines.NMilitary.NON_CORE_SUPPLY_SPEED = -0.7				   -- we are not running on our own VP supply so need to steal stuff along the way
-NDefines.NMilitary.OUT_OF_SUPPLY_MORALE = -0.3                   -- max org regain reduction from supply
+NDefines.NMilitary.OUT_OF_SUPPLY_MORALE = -0.25                   -- max org regain reduction from supply
 
 
 -- Battleplan Execution Adjustments
@@ -579,9 +579,9 @@ NDefines.NNavy.TRAINING_ACCIDENT_STRENGTH_LOSS_FACTOR = 0.01 --0.05						-- Amou
 
 -- Convoys stuff
 
-NDefines.NNavy.CONVOY_EFFICIENCY_LOSS_MODIFIER = 1.0 --1.25							-- How much efficiency drops when losing convoys. If modifier is 0.5, then losing 100% of convoys in short period, the efficiency will drop by 50%.
-NDefines.NNavy.CONVOY_EFFICIENCY_REGAIN_AFTER_DAYS = 5 --7						-- Convoy starts regaining it's efficiency after X days without any convoys being sink.
-NDefines.NNavy.CONVOY_EFFICIENCY_REGAIN_BASE_SPEED = 0.04 --0.04						-- How much efficiency regains every day.
+NDefines.NNavy.CONVOY_EFFICIENCY_LOSS_MODIFIER = 0.75 --1.0 --1.25							-- How much efficiency drops when losing convoys. If modifier is 0.5, then losing 100% of convoys in short period, the efficiency will drop by 50%.
+NDefines.NNavy.CONVOY_EFFICIENCY_REGAIN_AFTER_DAYS = 3 --7						-- Convoy starts regaining it's efficiency after X days without any convoys being sink.
+NDefines.NNavy.CONVOY_EFFICIENCY_REGAIN_BASE_SPEED = 0.05 --0.04						-- How much efficiency regains every day.
 NDefines.NNavy.COMBAT_DETECTED_CONVOYS_FROM_SURFACE_DETECTION_STAT = 0.1 --0.1		-- Each 1.0 of surface_detection that ship has (equipment stat), gives x% of convoys discovered from total travelling along the route.
 
 -- Carrier Stuff 
@@ -875,7 +875,7 @@ NDefines.NAI.DIPLOMACY_IMPROVE_RELATION_COST_FACTOR = 7.0                       
 -- LAND AI
 --------------------------------------------------------------------------------------------------------------
 
---NDefines.NAI.SUPPLY_CRISIS_LIMIT = 1.0
+NDefines.NAI.SUPPLY_CRISIS_LIMIT = 1.0
 
 --NDefines.NAI.PLAN_ATTACK_DEPTH_FACTOR = 0.5									-- Factor applied to size or enemy being attacked.
 --NDefines.NAI.PLAN_STEP_COST_LIMIT = 1											-- When stepping to draw a plan this cost makes it break if it hits hard terrain (multiplied by number of desired steps)
@@ -890,9 +890,9 @@ NDefines.NMilitary.PLAN_EXECUTE_RUSH = -10									-- When looking for an attach
 --NDefines.NAI.MAX_UNITS_FACTOR_AREA_ORDER = 1.5 --1.0								-- Factor for max number of units to assign to area defense orders
 --NDefines.NAI.DESIRED_UNITS_FACTOR_AREA_ORDER = 1.5 --1.0							-- Factor for desired number of units to assign to area defense orders
 --NDefines.NAI.MIN_UNITS_FACTOR_AREA_ORDER = 1.5									-- Factor for min number of units to assign to area defense orders
---NDefines.NAI.MAX_UNITS_FACTOR_FRONT_ORDER = 1.5									-- Factor for max number of units to assign to area front orders
---NDefines.NAI.DESIRED_UNITS_FACTOR_FRONT_ORDER = 1.5								-- Factor for desired number of units to assign to area front orders
---NDefines.NAI.MIN_UNITS_FACTOR_FRONT_ORDER = 1.0									-- Factor for min number of units to assign to area front orders
+NDefines.NAI.MAX_UNITS_FACTOR_FRONT_ORDER = 1.5									-- Factor for max number of units to assign to area front orders
+NDefines.NAI.DESIRED_UNITS_FACTOR_FRONT_ORDER = 1.0								-- Factor for desired number of units to assign to area front orders
+NDefines.NAI.MIN_UNITS_FACTOR_FRONT_ORDER = 0.75									-- Factor for min number of units to assign to area front orders
 --NDefines.NAI.MAX_UNITS_FACTOR_INVASION_ORDER = 1.0								-- Factor for max number of units to assign to naval invasion orders
 --NDefines.NAI.DESIRED_UNITS_FACTOR_INVASION_ORDER = 1.0							-- Factor for desired number of units to assign to naval invasion orders
 --NDefines.NAI.MIN_UNITS_FACTOR_INVASION_ORDER = 1.0								-- Factor for min number of units to assign to naval invasion orders
@@ -906,7 +906,7 @@ NDefines.NMilitary.PLAN_EXECUTE_RUSH = -10									-- When looking for an attach
 --NDefines.NAI.VP_LEVEL_IMPORTANCE_MEDIUM = 1 --10				                -- Victory points with values higher than or equal to this are considered to be of medium importance.
 --NDefines.NAI.VP_GARRISON_VALUE_FACTOR = 0 				                    -- Extent to which VP garrisons are prioritized  based on VP value and compared to other priority values.
 
-NDefines.NAI.FALLBACK_LOSING_FACTOR = 0.0 					                    -- The lower this number  the longer the AI will hold the line before sending them to the fallback line
+NDefines.NAI.FALLBACK_LOSING_FACTOR = 0.1 					                    -- The lower this number  the longer the AI will hold the line before sending them to the fallback line
 --NDefines.NAI.SCARY_LEVEL_AVERAGE_DEFENSE = -0.7                               -- average front defense modifier to make it consider it as a PITA to go for
 NDefines.NAI.ATTACK_HEAVILY_DEFENDED_LIMIT = 0.66 			                -- AI will not launch attacks against heavily defended fronts unless they consider to have this level of advantage (1.0 = 100%)
 NDefines.NAI.HOUR_BAD_COMBAT_REEVALUATE = 12                                 	-- if we are in combat for this amount and it goes shitty then try skipping it
