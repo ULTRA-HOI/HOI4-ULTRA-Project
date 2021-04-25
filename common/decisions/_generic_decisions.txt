@@ -409,14 +409,17 @@ political_actions = {
 			OR = {
 				AND = {
 					has_army_manpower = {
-						size > 999999
+						size > 749999
 					}
 					GER = {
 						strength_ratio = {
 							tag = FRA
-							ratio > 1
+							ratio > 0.8
 						}
 					}
+				}
+				GER = {
+					has_idea = huge_air_force
 				}
 				GER = {
 					any_owned_state = {
@@ -470,15 +473,24 @@ political_actions = {
 					is_in_faction_with = FRA
 					FRA = {
 						has_army_manpower = {
-							size > 999999
+							size > 749999
 						}
 					}
 					GER = {
 						strength_ratio = {
 							tag = FRA
-							ratio > 1
+							ratio > 0.8
 						}
 					}
+				}
+				GER = {
+					naval_strength_ratio = {
+						tag = ENG
+						ratio = 0.5
+					}
+				}
+				GER = {
+					has_idea = huge_air_force
 				}
 				GER = {
 					any_owned_state = {
@@ -3085,6 +3097,12 @@ war_measures = {
 					is_coastal = yes			
 				}
 			}
+			IF = {	
+				limit = {
+					is_ai = yes
+				}
+				num_of_civilian_factories > 100
+			}
 		}
 		
 		fire_only_once = no
@@ -3100,10 +3118,15 @@ war_measures = {
 		cost = 0
 		
 		ai_will_do = {
+			
 			factor = 10
 			modifier = {
-				num_of_naval_factories > 150 
-				factor = 0
+				num_of_naval_factories > 50 
+				factor = -9999
+			}
+			modifier = {
+			num_of_civilian_factories < 100
+				factor = -9999
 			}
 			modifier = {
 				original_tag = SOV
@@ -3131,6 +3154,7 @@ war_measures = {
 		}
 		
 		visible = {
+					is_ai = no
 			OR = {
 				has_war_with = GER
 				has_war_with = SOV 
@@ -3155,6 +3179,7 @@ war_measures = {
 		}
 		
 		available = {
+					is_ai = no
 			num_of_civilian_factories_available_for_projects > 53
 			has_idea = tot_economic_mobilisation
 			AND = {
@@ -3214,6 +3239,7 @@ war_measures = {
 		}
 		
 		visible = {
+					is_ai = no
 			OR = {
 				has_war_with = GER
 				has_war_with = SOV 
@@ -3238,6 +3264,7 @@ war_measures = {
 		}
 		
 		available = {
+					is_ai = no
 			num_of_civilian_factories_available_for_projects > 53
 			has_idea = tot_economic_mobilisation
 			AND = {
@@ -3297,6 +3324,7 @@ war_measures = {
 		}
 		
 		visible = {
+					is_ai = no
 			OR = {
 				has_war_with = GER
 				has_war_with = SOV 
@@ -3321,6 +3349,7 @@ war_measures = {
 		}
 		
 		available = {
+					is_ai = no
 			num_of_civilian_factories_available_for_projects > 53
 			has_idea = tot_economic_mobilisation
 			AND = {
@@ -3353,7 +3382,7 @@ war_measures = {
 			factor = 10
 			modifier = {
 				num_of_naval_factories > 150 
-				factor = 0
+				factor = -9999
 			}
 			modifier = {
 				original_tag = SOV
@@ -3419,6 +3448,12 @@ war_measures = {
 							
 				}
 			}
+			IF = {	
+				limit = {
+					is_ai = yes
+				}
+				num_of_civilian_factories > 100
+			}
 		}
 		
 		fire_only_once = no
@@ -3434,10 +3469,15 @@ war_measures = {
 		cost = 0
 		
 		ai_will_do = {
-			factor = 20
+			
+			factor = 10
 			modifier = {
 				num_of_military_factories > 400 
-				factor = 0
+				factor = -9999
+			}
+			modifier = {
+			num_of_civilian_factories < 100
+				factor = -9999
 			}
 		}
 		
@@ -3456,6 +3496,7 @@ war_measures = {
 		}
 		
 		visible = {
+					is_ai = no
 			OR = {
 				has_war_with = GER
 				has_war_with = SOV 
@@ -3478,6 +3519,7 @@ war_measures = {
 		}
 		
 		available = {
+					is_ai = no
 			num_of_civilian_factories_available_for_projects > 53
 			has_idea = tot_economic_mobilisation
 			AND = {
@@ -3529,6 +3571,7 @@ war_measures = {
 		}
 		
 		visible = {
+					is_ai = no
 			OR = {
 				has_war_with = GER
 				has_war_with = SOV 
@@ -3551,6 +3594,7 @@ war_measures = {
 		}
 		
 		available = {
+					is_ai = no
 			num_of_civilian_factories_available_for_projects > 53
 			has_idea = tot_economic_mobilisation
 			AND = {
@@ -3602,6 +3646,7 @@ war_measures = {
 		}
 		
 		visible = {
+					is_ai = no
 			OR = {
 				has_war_with = GER
 				has_war_with = SOV 
@@ -3624,6 +3669,7 @@ war_measures = {
 		}
 		
 		available = {
+					is_ai = no
 			num_of_civilian_factories_available_for_projects > 53
 			has_idea = tot_economic_mobilisation
 			AND = {
@@ -3821,6 +3867,55 @@ war_measures = {
 		}
     }
 	
+	civilian_truck_requisition = {
+
+    	icon = generic_industry
+
+    	allowed = {
+            always = yes
+        }
+
+        available = {
+           has_war = yes
+           has_idea = tot_economic_mobilisation
+        }
+        visible = {
+            has_war = yes
+        }
+
+        fire_only_once = no
+
+		days_remove = 30
+		days_re_enable = 180
+		
+		cost = 50
+
+		modifier = {
+			
+		}
+
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				
+			}
+
+			
+		}
+
+		remove_effect = {
+			add_equipment_to_stockpile = {
+				type = motorized_equipment
+				amount = var:civilian_truck_production
+				producer = THIS
+			}
+		}
+
+		complete_effect = {
+			
+		}
+    }
+	
 	mobilisation_decision = {
 		icon = generic_prepare_civil_war
 		fire_only_once = yes
@@ -3836,6 +3931,10 @@ war_measures = {
 					has_idea = scraping_the_barrel
 				}
 			}
+			OR = {
+				has_idea = extensive_conscription
+				has_idea = service_by_requirement
+			}
         }
 		
 		available = {
@@ -3847,7 +3946,7 @@ war_measures = {
 			}
 		}
 		
-        cost = 75
+        cost = 25
 		
 		ai_will_do = {
 			factor = 1000
@@ -3857,14 +3956,7 @@ war_measures = {
 			
 			IF = {
 				limit = {
-					OR = {
-						has_idea = disarmed_nation
-						has_idea = volunteer_only
-						has_idea = limited_conscription
-					}
-				}
-				add_ideas = {
-					extensive_conscription
+					has_idea = extensive_conscription
 				}
 				add_timed_idea = {
 					idea = reservists_mobilisation
@@ -3873,10 +3965,7 @@ war_measures = {
 			}
 			ELSE_IF = {
 				limit = {
-					has_idea = extensive_conscription
-				}
-				add_ideas = {
-					service_by_requirement
+					has_idea = service_by_requirement
 				}
 				add_timed_idea = {
 					idea = reservists_mobilisation_2
@@ -4447,6 +4536,10 @@ foreign_support = {
 
 		cost = 0
 
+		modifier = {
+
+		}
+
 		ai_will_do = {
 			factor = 1
 			modifier = {
@@ -4619,6 +4712,10 @@ foreign_support = {
 
 		cost = 0
 
+		modifier = {
+
+		}
+
 		ai_will_do = {
 			factor = 1
 			modifier = {
@@ -4790,6 +4887,10 @@ foreign_support = {
 		fire_only_once = no
 
 		cost = 0
+
+		modifier = {
+
+		}
 
 		ai_will_do = {
 			factor = 1
@@ -4970,6 +5071,10 @@ foreign_support = {
 
 		cost = 0
 
+		modifier = {
+
+		}
+
 		ai_will_do = {
 			factor = 1
 			modifier = {
@@ -5122,6 +5227,10 @@ foreign_support = {
 
  		cost = 0
 
+ 		modifier = {
+
+ 		}
+
  		ai_will_do = {
  			factor = 1
 			modifier = {
@@ -5259,6 +5368,10 @@ foreign_support = {
  		fire_only_once = no
 
  		cost = 0
+
+ 		modifier = {
+
+ 		}
 
  		ai_will_do = {
  			factor = 1
@@ -5413,6 +5526,10 @@ foreign_support = {
 		fire_only_once = no
 
 		cost = 0
+
+		modifier = {
+
+		}
 
 		ai_will_do = {
 			factor = 1
