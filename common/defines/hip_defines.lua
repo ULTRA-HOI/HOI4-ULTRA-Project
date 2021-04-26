@@ -437,17 +437,18 @@ NDefines.NAI.PLAN_ATTACK_MIN_ORG_FACTOR_HIGH = 0.30
 NDefines.NAI.PLAN_ATTACK_MIN_STRENGTH_FACTOR_HIGH = 0.70	
 
 -- LAND/ARMY FUEL
-NDefines.NMilitary.ARMY_FUEL_COST_MULT = 0.7						-- was 0.5 -- fuel cost multiplier for all army related stuff
+NDefines.NMilitary.ARMY_FUEL_COST_MULT = 1.0 --0.7						-- was 0.5 -- fuel cost multiplier for all army related stuff
 NDefines.NMilitary.FUEL_PENALTY_START_RATIO = 0.33								-- was 0.25 -- ratio of fuel in an army to start getting penalties
 --NDefines.NMilitary.SURPLUS_SUPPLY_RATIO_FOR_ZERO_FUEL_FLOW = 1.5		-- was 0.5 -- if a supply chunk has more supply needed than this ratio + 1 compared to its max supply flow, the units inside the chiunk will get no fuel 
 --NDefines.NMilitary.ARMY_MAX_FUEL_FLOW_MULT = 0.6					-- was 2.0 -- max fuel ratio that an army can get per hour, multiplied by supply situation
 NDefines.NMilitary.ARMY_COMBAT_FUEL_MULT =   0.4				-- was 1.0	-- fuel consumption ratio in combat (plus ARMY_MOVEMENT_FUEL_MULT if you are also moving. ie offensive combat)
+NDefines.NMilitary.ARMY_MOVEMENT_FUEL_MULT = 0.7 -- 1.0
 NDefines.NMilitary.ARMY_TRAINING_FUEL_MULT = 0.67				-- was 1.0	-- fuel consumption ratio while training
-NDefines.NMilitary.ARMY_IDLE_FUEL_MULT = 0.02					-- was 0.0	-- fuel consumption ratio while just existing
+NDefines.NMilitary.ARMY_IDLE_FUEL_MULT = 0.15					-- was 0.0	-- fuel consumption ratio while just existing
 NDefines.NMilitary.ARMY_NAVAL_TRANSFER_FUEL_MULT = 0.05			-- was 0.0 -- fuel consumption ratio while naval transferring
 NDefines.NMilitary.ARMY_STRATEGIC_DEPLOYMENT_FUEL_MULT = 0.05		-- was 0.0 -- fuel consumption ratio while doing strategic deployment
-NDefines.NMilitary.OUT_OF_FUEL_EQUIPMENT_MULT = 0.25				-- was 0.1 -- ratio of the stats that you get from equipments that uses fuel and you lack it
-NDefines.NMilitary.FUEL_CAPACITY_DEFAULT_HOURS = 216              -- was 96 -- default capacity if not specified
+NDefines.NMilitary.OUT_OF_FUEL_EQUIPMENT_MULT = 0.1			-- was 0.1 -- ratio of the stats that you get from equipments that uses fuel and you lack it
+NDefines.NMilitary.FUEL_CAPACITY_DEFAULT_HOURS = 120 --216              -- was 96 -- default capacity if not specified
 
 
 
