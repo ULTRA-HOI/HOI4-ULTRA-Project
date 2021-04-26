@@ -94,7 +94,7 @@ NDefines.NNavy.GUN_HIT_PROFILES = { -- hit profiles for guns, if target ih profi
 		55.0,	-- small guns
 	}
 NDefines.NNavy.NAVAL_COMBAT_SUB_DETECTION_FACTOR = 0.8      -- balance value for sub detection in combat by ships
-NDefines.NNavy.DEPTH_CHARGES_HIT_CHANCE_MULT = 0.4
+NDefines.NNavy.DEPTH_CHARGES_HIT_CHANCE_MULT = 0.1
 NDefines.NNavy.DEPTH_CHARGES_DAMAGE_MULT = 1.0
 NDefines.NNavy.DEPTH_CHARGE_STAT_FOR_SHIP_TO_BE_SUB_HUNTER = 10
 NDefines.NNavy.SUB_DETECTION_STAT_FOR_SHIP_TO_BE_SUB_HUNTER = 4
