@@ -1,0 +1,326 @@
+guiTypes = {
+	containerWindowType = {
+		name = army_designer_window
+	
+		buttonType = {
+				name = "open_army_designer_button"
+				position = { x = 102 y = 55 }
+				quadTextureSprite ="GFX_army_designer_button"
+				buttonFont = "hoi_18mbs"
+				buttonText = "Army Designer"
+				clicksound = click_default
+		}
+	}
+	containerWindowType = {
+		name = army_designer_details_window
+		position = { x = 0 y = 0 }
+		size = { width = 1092 height = 789 } # uses max_window_size for clamping
+		moveable = yes
+		fade_time = 500
+		fade_type = linear
+		orientation = CENTER
+		origo = center
+		show_sound = Spy_Agency_Branch_Upgrade_Window_Show_Sound
+		
+		positionType = {
+			name = "max_window_size"
+			position = { x = 1092 y = 789 }
+		}
+		
+		background = {
+			name = "army_designer_header_bg"
+			spriteType = "GFX_army_designer_popup_bg"
+			position = { x = 0 y = 0 }
+		}
+		instantTextboxType = {
+			name = "designer_upgrades_title"
+			position = { x = 265 y = 6 }
+			textureFile = ""
+			font = "hoi_36header"
+			borderSize = {x = 0 y = 0}
+			text = "Army Designer"
+			maxWidth = 560
+			maxHeight = 36
+			format = centre
+			truncate = yes
+			fixedsize = yes
+		}
+		instantTextboxType = {
+			name = "upgrade_duration_title"
+			position = { x = 146 y = 54 }
+			font = "hoi_18mbs"
+			maxWidth = 800
+			text = "Modifications cost 25 Command Power"
+			format = center
+		}
+		buttonType = {
+			name = "btn_close"
+			position = { x = -44 y = 6 }
+			quadTextureSprite ="GFX_closebutton"
+			buttonFont = "Main_14_black"
+			shortcut = "ESCAPE"
+			Orientation = "UPPER_RIGHT"
+			clicksound = click_close
+			pdx_tooltip = "CLOSE"
+		}
+		containerWindowType = {
+			name = "branches"
+			position = { x = 4 y = 75 }	
+			size = { width = 1084 height = 500 }
+			margin = { top = 8 bottom = 8 }
+			verticalScrollbar = "right_vertical_slider"
+
+			background = {
+				name = "Background"
+				spriteType ="GFX_tiled_window_1b_thin_border"
+			}
+
+			gridboxtype = {
+				name = "branches_grid"
+				position = { x = 12 y = 5 }
+				size = { width = 100%% height = 100%% }
+				slotsize = { width = 100%% height = 137 }
+				max_slots_horizontal = 1
+				format = "UPPER_LEFT"
+			}
+		}
+	}
+	containerWindowType = {
+		name = "upgrade_army_department_logistics_window"
+		position = { x = 15 y = 86 }	
+		size = { width = 1040 height = 340 }
+	
+		background = {
+			name = "Background"
+			spriteType = "GFX_army_designer_department_logistics_bg"
+		}
+		
+		iconType = {
+			name = "Logistics Icon"
+			spriteType = "GFX_army_designer_logistics"
+			position = { x = 165 y = -18 }
+		}
+		
+		buttonType = {
+				name = "increase_logistics_button"
+				position = { x = 25 y = 116 }
+				quadTextureSprite ="GFX_army_designer_button_modify"
+				buttonFont = "hoi_18mbs"
+				buttonText = "Increase Logistics"
+				clicksound = click_default
+				pdx_tooltip  = "Command Power Cost: 25"
+		}
+		
+		buttonType = {
+				name = "decrease_logistics_button"
+				position = { x = 25 y = 166 }
+				quadTextureSprite ="GFX_army_designer_button_modify"
+				buttonFont = "hoi_18mbs"
+				buttonText = "Decrease Logistics"
+				clicksound = click_default
+				pdx_tooltip  = "Command Power Cost: 25"
+		}
+		
+		instantTextboxType = {
+			name = "upgrade_branch_name"
+			position = { x = 35 y = 8 }
+			font = "hoi_18mbs"
+			text = "Logistics and Supply"
+			format = left
+			maxWidth = 900	
+		}
+		instantTextboxType = {
+			name = "upgrade_branch_desc_1"
+			position = { x = 15 y = 32 }
+			font = "hoi_16mbs"
+			text = "In order to supply and equip our forces - we'll need to use either horses, trucks or a combination of both to bring material and supply to the frontline."
+			format = left
+			maxWidth = 900	
+		}
+		instantTextboxType = {
+			name = "upgrade_branch_desc_2"
+			position = { x = 15 y = 48 }
+			font = "hoi_16mbs"
+			text = "Higher allocations of trucks will allow us to support more troops in the field - at the cost of more manpower, trucks and fuel. Different battalions will use different amount of trucks relatively versus one another. "
+			format = left
+			maxWidth = 900	
+		}
+		instantTextboxType = {
+			name = "upgrade_branch_desc_3"
+			position = { x = 15 y = 80 }
+			font = "hoi_16mbs"
+			text = "We can mechanize and de-mechanize our troops as needed - at the cost of command power."
+			format = left
+			maxWidth = 900	
+		}
+		instantTextboxType = {
+			name = "upgrade_branch_info"
+			position = { x = 200 y = 112 }
+			font = "hoi_22typewriter"
+			text = "Logistical Level: [?logistical_level]"
+			format = left
+			maxWidth = 900	
+		}
+		instantTextboxType = {
+			name = "upgrade_branch_stat_1"
+			position = { x = 200 y = 134 }
+			font = "hoi_16mbs"
+			text = "Trucks Needed Per Heavy Battalion: [?trucks_needed]"
+			format = left
+			maxWidth = 900	
+		}
+		instantTextboxType = {
+			name = "upgrade_branch_stat_2"
+			position = { x = 200 y = 150 }
+			font = "hoi_16mbs"
+			text = "Trucks Needed Per Light Battalion: [?light_trucks_needed]"
+			format = left
+			maxWidth = 900	
+		}
+		instantTextboxType = {
+			name = "upgrade_branch_stat_3"
+			position = { x =200 y = 166 }
+			font = "hoi_16mbs"
+			text = "Supply Consumption Reduction: [?logistical_bonus|%]"
+			format = left
+			maxWidth = 900	
+		}
+		containerWindowType = {
+			name = "upgrades"
+			position = { x = 5 y = 45 }	
+			size = { width = 100%% height = 125 }
+			horizontalScrollbar = "bottom_horizontal_slider"
+	
+			gridboxtype = {
+				name = "upgrades_grid"
+				position = { x = 0 y = 0 }
+				size = { width = 100%% height = 100%% }
+				slotsize = { width = 205 height = 150 }
+				format = "UPPER_LEFT"
+			}
+		}
+	}
+	containerWindowType = {
+		name = "upgrade_army_department_signal_window"
+		position = { x = 15 y = 322 }
+		size = { width = 1040 height = 280 }
+	
+		background = {
+			name = "Background"
+			spriteType = "GFX_army_designer_department_signal_bg"
+		}
+		
+		iconType = {
+			name = "Signals Icon"
+			spriteType = "GFX_army_designer_signal"
+			position = { x = 200 y = -21 }
+		}
+		
+		buttonType = {
+				name = "increase_communications_button"
+				position = { x = 25 y = 116 }
+				quadTextureSprite ="GFX_army_designer_button_modify"
+				buttonFont = "hoi_18mbs"
+				buttonText = "Increase Signals"
+				clicksound = click_default
+				pdx_tooltip = "Command Power Cost: 25"
+		}
+		
+		buttonType = {
+				name = "decrease_communications_button"
+				position = { x = 25 y = 166 }
+				quadTextureSprite ="GFX_army_designer_button_modify"
+				buttonFont = "hoi_18mbs"
+				buttonText = "Decrease Signals"
+				clicksound = click_default
+				pdx_tooltip = "Command Power Cost: 25"
+		}
+		
+		instantTextboxType = {
+			name = "upgrade_branch_name"
+			position = { x = 20 y = 8 }
+			font = "hoi_18mbs"
+			text = "Signals and Communication"
+			format = left
+			maxWidth = 900	
+		}
+		instantTextboxType = {
+			name = "upgrade_branch_desc_1"
+			position = { x = 15 y = 32 }
+			font = "hoi_16mbs"
+			text = "In order to effectively coordinate and command our forces, we can dedicate more support equipment to improve combat performance."
+			format = left
+			maxWidth = 900	
+		}
+		instantTextboxType = {
+			name = "upgrade_branch_desc_2"
+			position = { x = 15 y = 48 }
+			font = "hoi_16mbs"
+			text = "Larger allocations of support equipment and manpower will result in higher planning speed, iniative and recovery for certain support companies."
+			format = left
+			maxWidth = 900	
+		}
+		instantTextboxType = {
+			name = "upgrade_branch_desc_3"
+			position = { x = 15 y = 64 }
+			font = "hoi_16mbs"
+			text = "These support companies include field hospitals, HQs and Signal companies. We can allocate and deallocate support equipment as needed - at the cost of command power."
+			format = left
+			maxWidth = 900	
+		}
+		instantTextboxType = {
+			name = "upgrade_branch_info"
+			position = { x = 200 y = 112 }
+			font = "hoi_22typewriter"
+			text = "Signals Level: [?signal_level]"
+			format = left
+			maxWidth = 900	
+		}
+		instantTextboxType = {
+			name = "upgrade_branch_stat_1"
+			position = { x = 200 y = 134 }
+			font = "hoi_16mbs"
+			text = "Support Needed Per HQ Company: [?support_needed]"
+			format = left
+			maxWidth = 900	
+		}
+		instantTextboxType = {
+			name = "upgrade_branch_stat_2"
+			position = { x =200 y = 150 }
+			font = "hoi_16mbs"
+			text = "Recovery Rate Modifier: [?signal_bonus|%]"
+			format = left
+			maxWidth = 900	
+		}
+		instantTextboxType = {
+			name = "upgrade_branch_stat_3"
+			position = { x =200 y = 166 }
+			font = "hoi_16mbs"
+			text = "Planning Speed Modifier: [?signal_bonus|%]"
+			format = left
+			maxWidth = 900	
+		}
+		instantTextboxType = {
+			name = "upgrade_branch_stat_4"
+			position = { x =200 y = 182 }
+			font = "hoi_16mbs"
+			text = "Recon Modifier: [?signal_bonus|%]"
+			format = left
+			maxWidth = 900	
+		}
+		containerWindowType = {
+			name = "upgrades"
+			position = { x = 5 y = 45 }	
+			size = { width = 100%% height = 125 }
+			horizontalScrollbar = "bottom_horizontal_slider"
+	
+			gridboxtype = {
+				name = "upgrades_grid"
+				position = { x = 0 y = 0 }
+				size = { width = 100%% height = 100%% }
+				slotsize = { width = 205 height = 150 }
+				format = "UPPER_LEFT"
+			}
+		}
+	}
+}
