@@ -2335,7 +2335,47 @@ technologies = {
 		
 	}
 
-	ger_assault_3_spg { #STUG C
+	ger_assault_3_spg { #sIG 33B
+		enable_equipments = {
+			ger_assault_artillery_equipment_3
+		}
+
+		research_cost = 1.5
+		start_year = 1942
+
+		ai_will_do = {
+			factor = 400
+			
+			modifier = {
+				factor = 4000
+				date < "1943.1.1"
+			}
+			
+			modifier = {
+				factor = 400
+				date > "1944.1.1"
+			}
+			
+			modifier = {
+				factor = 400
+				date > "1945.1.1"
+			}
+			
+			modifier = {
+				factor = 0
+				NOT = {
+					OR = {
+						original_tag = GER
+						has_country_flag = german_technologies_tree_flag
+					}
+				}
+			}
+		}
+
+		categories = {
+			major_technologies
+			armor_variant
+		}
 		
 	}
 
@@ -2407,6 +2447,50 @@ technologies = {
 
 		research_cost = 1.5
 		start_year = 1942
+
+		ai_will_do = {
+			factor = 4
+			
+			modifier = {
+				factor = 40
+				date > "1942.1.1"
+			}
+			
+			modifier = {
+				factor = 40
+				date > "1943.1.1"
+			}
+			
+			modifier = {
+				factor = 40
+				date > "1944.1.1"
+			}
+			
+			modifier = {
+				factor = 0
+				NOT = {
+					OR = {
+						original_tag = GER
+						has_country_flag = german_technologies_tree_flag
+					}
+				}
+			}
+		}
+
+		categories = {
+			major_technologies
+			armor_variant
+		}
+	}
+	
+	ger_medium_3_5_td { #Stug III G
+
+		enable_equipments = {
+			ger_medium_td_equipment_3_5
+		}
+
+		research_cost = 1.5
+		start_year = 1943
 
 		ai_will_do = {
 			factor = 4
@@ -2568,7 +2652,7 @@ technologies = {
 		sub_technologies = {
 			
 			ger_medium_3_td
-			
+			ger_assault_3_spg
 		}
 		
 		
@@ -2677,6 +2761,7 @@ technologies = {
 		
 		sub_technologies = {
 			ger_assault_4_spg
+			ger_medium_3_5_td
 		}
 		
 		path = {
