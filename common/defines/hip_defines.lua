@@ -91,6 +91,8 @@ NDefines.NCountry.BASE_FUEL_LAND_LEASE_SPEED = 50				-- base value for maximum f
 NDefines.NCountry.FUEL_LAND_LEASE_RATIO = 1.0					-- multiplier for guel gain that is added to maximum fuel that can be land leased per hour
 NDefines.NCountry.FUEL_LEASE_CONVOY_RATIO = 0.0015				-- was 0.0005 -- num convoys needed per fuel land lease 
 
+NDefines.NCountry.CONVOY_RANGE_FACTOR = 1.5 --1                        -- how much range affects convoy need
+
 --Non_core manpower:
 NDefines.NCountry.LOCAL_MANPOWER_ACCESSIBLE_NON_CORE_FACTOR = 0.20 --- Was 0.02 -- Number of manpower from colonies
 
