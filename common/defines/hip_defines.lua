@@ -102,14 +102,14 @@ NDefines.NCountry.SURRENDER_LIMIT_REDUCTION_PER_COLLABORATION = 0.0 --0.3 	--eac
 
 -- resistance Stuff 
 
-NDefines.NResistance.GARRISON_MANPOWER_LOST_BY_ATTACK = 0.005 	--0.018 -- Ratio of manpower lost by garrison at each attack on garrison (this number will be reduced by the hardness of garrison template)
-NDefines.NResistance.GARRISON_EQUIPMENT_LOST_BY_ATTACK = 0.01 	-- 0.02 -- Ratio of equipment lost by garrison at each attack on garrison (this number will be reduced by the hardness of garrison template)
+NDefines.NResistance.GARRISON_MANPOWER_LOST_BY_ATTACK = 0.0025 	--0.018 -- Ratio of manpower lost by garrison at each attack on garrison (this number will be reduced by the hardness of garrison template)
+NDefines.NResistance.GARRISON_EQUIPMENT_LOST_BY_ATTACK = 0.005 	-- 0.02 -- Ratio of equipment lost by garrison at each attack on garrison (this number will be reduced by the hardness of garrison template)
 
 NDefines.NResistance.RESISTANCE_TARGET_MODIFIER_OCCUPIED_CAPITULATED = -10.0 -- resistance target modifier when the enemy is capitulated
 
 NDefines.NResistance.MAX_GARRISON_RATIO_WE_AGREE_TO_SUPPORT = 0.3 --3.0	-- The part of the manpower needed by the foreign garrison, that AI will agree to support with our manpower. If negative number, AI will not take into consideration the need, and just calculate how much they can give.
 
-NDefines.NResistance.SUPPRESSION_NEEDED_BY_RESISTANCE_POINT = 1.0 --0.75 -- Number of suppression point we need for each 1% of resistance
+NDefines.NResistance.SUPPRESSION_NEEDED_BY_RESISTANCE_POINT = 0.5 --0.75 -- Number of suppression point we need for each 1% of resistance
 
 NDefines.NResistance.RESISTANCE_TARGET_BASE = 50 --35.0							-- base resistance target percentage
 
