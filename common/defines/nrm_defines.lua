@@ -20,14 +20,6 @@ NDefines.NNavy.TRAINING_EXPERIENCE_FACTOR = 0.15 --0.3								-- Amount of exp e
 NDefines.NNavy.TRAINING_ACCIDENT_CHANCES = 0.01 --0.02						-- Chances one ship get damage each hour while on training
 NDefines.NNavy.TRAINING_ACCIDENT_STRENGTH_LOSS_FACTOR = 0.01 --0.05						-- Amount of strength loss in a training accident, propotional to the maximum strength of the ship
 
---------------------------------------------------------------------------------------------------------------
--- CONVOY STUFF
---------------------------------------------------------------------------------------------------------------
-
-NDefines.NNavy.CONVOY_EFFICIENCY_LOSS_MODIFIER = 0.75 --1.0 --1.25							-- How much efficiency drops when losing convoys. If modifier is 0.5, then losing 100% of convoys in short period, the efficiency will drop by 50%.
-NDefines.NNavy.CONVOY_EFFICIENCY_REGAIN_AFTER_DAYS = 3 --7						-- Convoy starts regaining it's efficiency after X days without any convoys being sink.
-NDefines.NNavy.CONVOY_EFFICIENCY_REGAIN_BASE_SPEED = 0.05 --0.04						-- How much efficiency regains every day.
-NDefines.NNavy.COMBAT_DETECTED_CONVOYS_FROM_SURFACE_DETECTION_STAT = 0.1 --0.1		-- Each 1.0 of surface_detection that ship has (equipment stat), gives x% of convoys discovered from total travelling along the route.
 
 --------------------------------------------------------------------------------------------------------------
 -- CARRIER STUFF
@@ -67,7 +59,12 @@ NDefines.NNavy.NAVAL_MINES_SWEEPING_SPEED_MULT = 0.009 -- 0.00009						-- Value 
 NDefines.NNavy.NAVAL_MINES_DECAY_AT_PEACE_TIME = 0.25 -- 0.25							-- How fast mines are decaying in peace time. Planting mines in peace time may be exploitable, so it's blocked atm. That's why after war we should decay them too.
 NDefines.NNavy.NAVAL_MINES_SWEEPERS_REDUCTION_ON_PENALTY_EFFECT = 3.3			-- How much is the task force's sweeping attribute reducing the penalty effect.
 NDefines.NNavy.NAVAL_MINES_NAVAL_SUPREMACY_FACTOR = 0.5						-- Factor for max amount of mines increasing naval supremacy
-
+NDefines.NNavy.NAVAL_MINES_SWEEPERS_REDUCTION_ON_PENALTY_EFFECT = 2.5
+NDefines.NNavy.NAVAL_MINES_INTEL_DIFF_FACTOR = 0.2														
+NDefines.NNavy.NAVAL_MINES_NAVAL_SUPREMACY_FACTOR = 0.5
+NDefines.NNavy.NAVAL_MINES_ACCIDENT_CRITICAL_HIT_CHANCES = 0.1
+NDefines.NNavy.NAVAL_MINES_ACCIDENT_STRENGTH_LOSS = 20.0
+NDefines.NNavy.NAVAL_MINES_ACCIDENT_ORG_LOSS_FACTOR = 0.8
 
 --------------------------------------------------------------------------------------------------------------
 -- COMBAT AND GUN STUFF
@@ -171,21 +168,14 @@ NDefines.NNavy.AGGRESSION_TORPEDO_EFFICIENCY_ON_LIGHT_SHIPS = 0.2
 NDefines.NNavy.AGGRESSION_LIGHT_GUN_EFFICIENCY_ON_HEAVY_SHIPS = 0.15
 NDefines.NNavy.AGGRESSION_TORPEDO_EFFICIENCY_ON_HEAVY_SHIPS = 1.0
 NDefines.NNavy.SUPREMACY_PER_SHIP_BASE = 10.0
-NDefines.NNavy.NAVAL_MINES_SWEEPERS_REDUCTION_ON_PENALTY_EFFECT = 2.5
-NDefines.NNavy.NAVAL_MINES_INTEL_DIFF_FACTOR = 0.2														
-NDefines.NNavy.NAVAL_MINES_NAVAL_SUPREMACY_FACTOR = 0.5
-NDefines.NNavy.NAVAL_MINES_ACCIDENT_CRITICAL_HIT_CHANCES = 0.1
-NDefines.NNavy.NAVAL_MINES_ACCIDENT_STRENGTH_LOSS = 20.0
-NDefines.NNavy.NAVAL_MINES_ACCIDENT_ORG_LOSS_FACTOR = 0.8
 NDefines.NNavy.SPOTTING_ENEMY_SPOTTING_MULTIPLIER_FOR_RUNNING_AWAY = 0.8
 NDefines.NNavy.SPOTTING_SPEED_MULT_FOR_CATCHING_UP = 0.25
+
 NDefines.NNavy.BASE_ESCAPE_SPEED = 0.01
 NDefines.NNavy.SPEED_TO_ESCAPE_SPEED = 1.5
 NDefines.NNavy.ESCAPE_SPEED_PER_COMBAT_DAY = 0.2
+
 NDefines.NNavy.MAX_ESCAPE_SPEED_FROM_COMBAT_DURATION = 0.3
-NDefines.NNavy.ESCAPE_SPEED_SUB_BASE = 0.12
-NDefines.NNavy.ESCAPE_SPEED_HIDDEN_SUB = 0.35
-NDefines.NNavy.CONVOY_DETECTION_CHANCE_BASE = 4.17
 NDefines.NNavy.BASE_SPOTTING_EFFECT_FOR_INITIAL_CONVOY_SPOTTING = 0.35
 NDefines.NNavy.SPOTTING_SPEED_EFFECT_FOR_INITIAL_CONVOY_SPOTTING = 1.20
 NDefines.NNavy.UNIT_TRANSFER_DETECTION_CHANCE_BASE = 25.02
@@ -212,17 +202,7 @@ NDefines.NNavy.GUN_HIT_PROFILES = { -- hit profiles for guns, if target ih profi
 		140.0,	-- torpedos
 		55.0,	-- small guns
 	}
-NDefines.NNavy.DEPTH_CHARGES_HIT_PROFILE = 400.0	-- hit profile for depth charges. Subs have hit profiles close to 100 so makes 25% effective chance to hit
-NDefines.NNavy.DEPTH_CHARGES_HIT_CHANCE_MULT = 1
-NDefines.NNavy.DEPTH_CHARGES_DAMAGE_MULT = 1
 
-NDefines.NNavy.NAVAL_COMBAT_SUB_DETECTION_FACTOR = 0.8      -- balance value for sub detection in combat by ships
-NDefines.NNavy.DEPTH_CHARGE_STAT_FOR_SHIP_TO_BE_SUB_HUNTER = 10
-NDefines.NNavy.SUB_DETECTION_STAT_FOR_SHIP_TO_BE_SUB_HUNTER = 4
-NDefines.NNavy.CONVOY_DEFENSE_MAX_CONVOY_TO_SHIP_RATIO = 24.0
-NDefines.NNavy.CONVOY_DEFENSE_MAX_REGION_TO_TASKFORCE_RATIO	= 3.0
-NDefines.NNavy.SUBMARINE_REVEAL_BASE_CHANCE = 8
-NDefines.NNavy.SUBMARINE_BASE_TORPEDO_REVEAL_CHANCE = 0.1
 NDefines.NNavy.COMBAT_RESULT_PRIORITY_DAY_TO_LIVE = { 										-- the game will delete the combat results after some duration depending on its importance
 		14, 
 		60, 
@@ -238,13 +218,13 @@ NDefines.NAI.MAX_FULLY_TRAINED_SHIP_RATIO_FOR_TRAINING = 1.0
 NDefines.NAI.REFIT_SHIP_RELUCTANCE = 500
 NDefines.NAI.REFIT_SHIP_PERCENTAGE_OF_FORCES = 0.0
 NDefines.NAI.MAX_CARRIER_OVERFILL = 1.50
-NDefines.NAI.SUB_TASKFORCE_MAX_SHIP_COUNT = 8
 NDefines.NAI.SCREEN_TASKFORCE_MAX_SHIP_COUNT = 16
 NDefines.NAI.MIN_CAPITALS_FOR_CARRIER_TASKFORCE = 4
 NDefines.NAI.CAPITALS_TO_CARRIER_RATIO = 1.5
 NDefines.NAI.SCREENS_TO_CAPITAL_RATIO = 4.0
 NDefines.NAI.CARRIER_TASKFORCE_MAX_CARRIER_COUNT = 4
-NDefines.NAI.CAPITAL_TASKFORCE_MAX_CAPITAL_COUNT = 8		
+NDefines.NAI.CAPITAL_TASKFORCE_MAX_CAPITAL_COUNT = 8
+NDefines.NAI.SUB_TASKFORCE_MAX_SHIP_COUNT = 8		
 NDefines.NAI.MAX_SCREEN_TASKFORCES_FOR_MINE_SWEEPING = 0.10 -- maximum ratio of screens forces to be used in mine sweeping
 -- NDefines.NAI.MAX_SCREEN_TASKFORCES_FOR_MINE_SWEEPING_PRIO = 0.8 -- if you have mines near your owned states, you will start priotize mine missions and will assign this ratio of screens
 -- NDefines.NAI.MAX_SCREEN_TASKFORCES_FOR_MINE_SWEEPING_PRIO_MIN_MINES = 10 -- lowest mine for prioing mine missions
@@ -315,11 +295,22 @@ NDefines.NAI.MAX_MISSION_PER_TASKFORCE = {  -- max mission region/taskforce rati
 	10, -- NAVAL INVASION SUPPORT
 }
 
+--------------------------------------------------------------------------------------------------------------
+-- CONVOY STUFF
+--------------------------------------------------------------------------------------------------------------
+
+NDefines.NNavy.CONVOY_EFFICIENCY_LOSS_MODIFIER = 0.75 --1.0 --1.25							-- How much efficiency drops when losing convoys. If modifier is 0.5, then losing 100% of convoys in short period, the efficiency will drop by 50%.
+NDefines.NNavy.CONVOY_EFFICIENCY_REGAIN_AFTER_DAYS = 3 --7						-- Convoy starts regaining it's efficiency after X days without any convoys being sink.
+NDefines.NNavy.CONVOY_EFFICIENCY_REGAIN_BASE_SPEED = 0.05 --0.04						-- How much efficiency regains every day.
+NDefines.NNavy.COMBAT_DETECTED_CONVOYS_FROM_SURFACE_DETECTION_STAT = 0.1 --0.1		-- Each 1.0 of surface_detection that ship has (equipment stat), gives x% of convoys discovered from total travelling along the route.
+
 -------------------------
 -- convoy escorts
 -------------------------
-
--- NDefines.NAI.REGION_THREAT_LEVEL_TO_BLOCK_REGION = 9999 * 200
+NDefines.NNavy.CONVOY_DEFENSE_MAX_CONVOY_TO_SHIP_RATIO = 24.0
+NDefines.NNavy.CONVOY_DEFENSE_MAX_REGION_TO_TASKFORCE_RATIO	= 3.0
+NDefines.NAI.REGION_THREAT_LEVEL_TO_AVOID_REGION = 25 * 100
+NDefines.NAI.REGION_THREAT_LEVEL_TO_BLOCK_REGION = 25 * 1000
 NDefines.NAI.REGION_CONVOY_DANGER_DAILY_DECAY = 4
 
 -- NDefines.NAI.CONVOY_ESCORT_SCORE_FROM_CONVOYS = 15 -- score for each convoy you have in area
@@ -343,3 +334,50 @@ NDefines.NAI.MAX_SCREEN_TASKFORCES_FOR_CONVOY_DEFENSE_MAX_CONVOY_THREAT = 500 --
 -- NDefines.NAI.NAVAL_CONVOY_COUNT_INTEL_DROPOFF_DUE_TO_LOW_DECYPTION = 200 -- in decyrption at lowest ai will fail to notice this many convoys
 -- NDefines.NAI.CONVOY_RAID_SCORE_FROM_CONVOY_INTELLIGENCE = 2.5			 -- each convoy intelligenge will incease raid score by this	
 
+-------------------------
+-- SUBS
+-------------------------
+NDefines.NNavy.ESCAPE_SPEED_SUB_BASE = 0.12
+NDefines.NNavy.ESCAPE_SPEED_HIDDEN_SUB = 0.35
+NDefines.NNavy.CONVOY_DETECTION_CHANCE_BASE = 4.17
+
+NDefines.NNavy.SUB_DETECTION_CHANCE_BASE = 5									-- to start spotting a submarine, a dice is rolled and checked if it succeeds this percentage. if not, that enemy sub force won't be spotted on this tick
+NDefines.NNavy.SUB_DETECTION_CHANCE_BASE_SPOTTING_EFFECT = 0.5				-- effect of base spotting for initial spotting of pure submarine forces. this along with next value is added together and rolled against a random to start spotting
+NDefines.NNavy.SUB_DETECTION_CHANCE_SPOTTING_SPEED_EFFECT = 2.0				-- effect of spotting speed for initial spotting of pure submarine forces. this along with prev value is added together and rolled against a random to start spotting
+NDefines.NNavy.SUB_DETECTION_CHANCE_BASE_SPOTTING_POW_EFFECT = 1.5			-- effect of spotting speed will be powered by this for initial spotting of pure submarine forces. this along with prev value is added together and rolled against a random to start spotting
+NDefines.NNavy.DEPTH_CHARGES_HIT_PROFILE = 400.0	-- hit profile for depth charges. Subs have hit profiles close to 100 so makes 25% effective chance to hit
+NDefines.NNavy.DEPTH_CHARGES_HIT_CHANCE_MULT = 1
+NDefines.NNavy.DEPTH_CHARGES_DAMAGE_MULT = 1
+
+NDefines.NNavy.NAVAL_COMBAT_SUB_DETECTION_FACTOR = 0.8      -- balance value for sub detection in combat by ships
+NDefines.NNavy.DEPTH_CHARGE_STAT_FOR_SHIP_TO_BE_SUB_HUNTER = 10
+NDefines.NNavy.SUB_DETECTION_STAT_FOR_SHIP_TO_BE_SUB_HUNTER = 4
+
+NDefines.NNavy.SUBMARINE_REVEAL_BASE_CHANCE = 8
+NDefines.NNavy.SUBMARINE_BASE_TORPEDO_REVEAL_CHANCE = 0.1
+
+-------------------------
+-- SUBS AND PLANES
+-------------------------
+
+
+-- those two work together in the formula f(x) = Y(x/(x+X)) where Y is MAX and X is SLOPE
+NDefines.NNavy.NAVAL_COMBAT_AIR_SUB_DETECTION_MAX = 10.0
+NDefines.NNavy.NAVAL_COMBAT_AIR_SUB_DETECTION_SLOPE = 10.0						-- lower means sharper curve (ramps up very fast, then flatten out very fast). Must be >0
+
+NDefines.NNavy.NAVAL_COMBAT_AIR_SUB_DETECTION_EXTERNAL_FACTOR = 1.0					-- Factor applied to the stats of external air planes
+NDefines.NNavy.NAVAL_COMBAT_AIR_SUB_DETECTION_INTERNAL_EFFICIENCY_FACTOR = 1.0			-- Factor of Carrier's sortie efficiency on the stats bellow
+NDefines.NNavy.NAVAL_COMBAT_AIR_AGILITY_TO_SUB_DETECTION = 0.0					-- Factor to apply to the agility of air planes active in a naval combat to deduce their contibution to sub detection
+NDefines.NNavy.NAVAL_COMBAT_AIR_STRIKE_ATTACK_TO_SUB_DETECTION = 0.0					-- Same, but for strike attack (aka naval attack)
+NDefines.NNavy.NAVAL_COMBAT_AIR_STRIKE_TARGETING_TO_SUB_DETECTION = 0.0				-- Same, but for strike targeting (aka naval targeting)
+NDefines.NNavy.NAVAL_COMBAT_AIR_MAX_SPEED_TO_SUB_DETECTION = 0.0					-- Same, but for Max Speed
+NDefines.NNavy.NAVAL_COMBAT_AIR_PLANE_COUNT_TO_SUB_DETECTION = 1.0					-- Factor applied to the number of active plane in a naval combat to deduce their contribution to sub detection
+NDefines.NNavy.NAVAL_COMBAT_AIR_SUB_DETECTION_DECAY_RATE = 1.0					-- Factor to decay the value of sub detection contributed by planes on the last hour. Note: the maximum value between the decayed value and the newly computed one is taken into account. A decay rate of 1 means that nothing is carried over, the previous value is zerod out. A decay rate of 0 means that the previous value is carried over as is.
+NDefines.NNavy.NAVAL_COMBAT_AIR_SUB_DETECTION_FACTOR = 0.0						-- A global factor that applies after all others, right before the sub detection contributed by plane is added to the global sub detection of a combatant
+
+NDefines.NNavy.NAVAL_COMBAT_AIR_SUB_TARGET_SCORE = 10                             -- scoring for target picking for planes inside naval combat, one define per ship typ
+NDefines.NNavy.NAVAL_COMBAT_AIR_CAPITAL_TARGET_SCORE = 50
+NDefines.NNavy.NAVAL_COMBAT_AIR_CARRIER_TARGET_SCORE = 200
+NDefines.NNavy.NAVAL_COMBAT_AIR_CONVOY_TARGET_SCORE = 1.0
+NDefines.NNavy.NAVAL_COMBAT_AIR_STRENGTH_TARGET_SCORE = 5                        -- how much score factor from low health (scales between 0->this number)
+NDefines.NNavy.NAVAL_COMBAT_AIR_LOW_AA_TARGET_SCORE = 5                           -- how much score factor from low AA guns (scales between 0->this number)
