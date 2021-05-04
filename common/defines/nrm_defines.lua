@@ -93,7 +93,7 @@ NDefines.NNavy.GUN_HIT_PROFILES = { -- hit profiles for guns, if target ih profi
 		140.0,	-- torpedos
 		55.0,	-- small guns
 	}
-NDefines.NNavy.DEPTH_CHARGES_HIT_PROFILE = 400.0	-- hit profile for depth charges
+NDefines.NNavy.DEPTH_CHARGES_HIT_PROFILE = 400.0	-- hit profile for depth charges. Subs have hit profiles close to 100 so makes 25% effective chance to hit
 NDefines.NNavy.DEPTH_CHARGES_HIT_CHANCE_MULT = 1
 NDefines.NNavy.DEPTH_CHARGES_DAMAGE_MULT = 1
 
