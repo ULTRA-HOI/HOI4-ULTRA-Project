@@ -89,7 +89,7 @@ NDefines.NNavy.CHANCE_TO_DAMAGE_PART_ON_CRITICAL_HIT_FROM_AIR	 = 0.25
 
 
 NDefines.NNavy.GUN_HIT_PROFILES = { -- hit profiles for guns, if target ih profile is lower the gun will have lower accuracy
-		75.0,	-- big guns
+		70.0,	-- big guns
 		140.0,	-- torpedos
 		55.0,	-- small guns
 	}
