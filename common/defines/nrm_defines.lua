@@ -93,15 +93,17 @@ NDefines.NNavy.GUN_HIT_PROFILES = { -- hit profiles for guns, if target ih profi
 		140.0,	-- torpedos
 		55.0,	-- small guns
 	}
-NDefines.NNavy.NAVAL_COMBAT_SUB_DETECTION_FACTOR = 0.8      -- balance value for sub detection in combat by ships
-NDefines.NNavy.DEPTH_CHARGES_HIT_CHANCE_MULT = 0.05
+NDefines.NNavy.DEPTH_CHARGES_HIT_PROFILE = 400.0	-- hit profile for depth charges
+NDefines.NNavy.DEPTH_CHARGES_HIT_CHANCE_MULT = 1
 NDefines.NNavy.DEPTH_CHARGES_DAMAGE_MULT = 1
+
+NDefines.NNavy.NAVAL_COMBAT_SUB_DETECTION_FACTOR = 0.8      -- balance value for sub detection in combat by ships
 NDefines.NNavy.DEPTH_CHARGE_STAT_FOR_SHIP_TO_BE_SUB_HUNTER = 10
 NDefines.NNavy.SUB_DETECTION_STAT_FOR_SHIP_TO_BE_SUB_HUNTER = 4
 NDefines.NNavy.CONVOY_DEFENSE_MAX_CONVOY_TO_SHIP_RATIO = 24.0
 NDefines.NNavy.CONVOY_DEFENSE_MAX_REGION_TO_TASKFORCE_RATIO	= 3.0
 NDefines.NNavy.SUBMARINE_REVEAL_BASE_CHANCE = 8
-NDefines.NNavy.SUBMARINE_BASE_TORPEDO_REVEAL_CHANCE = 0.3
+NDefines.NNavy.SUBMARINE_BASE_TORPEDO_REVEAL_CHANCE = 0.1
 NDefines.NNavy.COMBAT_RESULT_PRIORITY_DAY_TO_LIVE = { 										-- the game will delete the combat results after some duration depending on its importance
 		14, 
 		60, 
