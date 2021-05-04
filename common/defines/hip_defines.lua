@@ -618,9 +618,9 @@ NDefines.NNavy.NAVAL_MINES_SWEEPERS_REDUCTION_ON_PENALTY_EFFECT = 3.3			-- How m
 NDefines.NNavy.NAVAL_MINES_NAVAL_SUPREMACY_FACTOR = 0.5						-- Factor for max amount of mines increasing naval supremacy
 
 NDefines.NNavy.NAVAL_INVASION_SPOTTING_SPEED_MULT = 3.0
-NDefines.NNavy.SUBMARINE_REVEALED_TIMEOUT = 24
-NDefines.NNavy.COMBAT_MIN_DURATION = 24
-NDefines.NNavy.SUBMARINE_HIDE_TIMEOUT = 24						-- Amount of in-game-hours that takes the submarine (with position unrevealed), to hide.
+NDefines.NNavy.SUBMARINE_REVEALED_TIMEOUT = 12              --Amount of in-game-hours that makes the submarine visible if it is on the defender side.
+NDefines.NNavy.COMBAT_MIN_DURATION = 12                          -- Min combat duration before we can retreat. It's a balancing variable so it's not possible to always run with our weak ships agains big flotillas.
+NDefines.NNavy.SUBMARINE_HIDE_TIMEOUT = 12						-- Amount of in-game-hours that takes the submarine (with position unrevealed), to hide.
 NDefines.NNavy.AGGRESSION_LIGHT_GUN_EFFICIENCY_ON_LIGHT_SHIPS = 0.5 -- ratio for scoring for different gun types against light ships
 NDefines.NNavy.AGGRESSION_HEAVY_GUN_EFFICIENCY_ON_LIGHT_SHIPS = 0.25 -- ratio for scoring for different gun types against light ships
 NDefines.NNavy.AGGRESSION_TORPEDO_EFFICIENCY_ON_LIGHT_SHIPS = 0.8	-- ratio for scoring for different gun types against light ships
