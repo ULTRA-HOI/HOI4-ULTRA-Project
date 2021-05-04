@@ -349,12 +349,12 @@ NDefines.NNavy.DEPTH_CHARGES_HIT_PROFILE = 400.0	-- hit profile for depth charge
 NDefines.NNavy.DEPTH_CHARGES_HIT_CHANCE_MULT = 1
 NDefines.NNavy.DEPTH_CHARGES_DAMAGE_MULT = 1
 
-NDefines.NNavy.NAVAL_COMBAT_SUB_DETECTION_FACTOR = 0.8      -- balance value for sub detection in combat by ships
+NDefines.NNavy.NAVAL_COMBAT_SUB_DETECTION_FACTOR = 1.0      -- balance value for sub detection in combat by ships
 NDefines.NNavy.DEPTH_CHARGE_STAT_FOR_SHIP_TO_BE_SUB_HUNTER = 10
 NDefines.NNavy.SUB_DETECTION_STAT_FOR_SHIP_TO_BE_SUB_HUNTER = 4
 
-NDefines.NNavy.SUBMARINE_REVEAL_BASE_CHANCE = 8
-NDefines.NNavy.SUBMARINE_BASE_TORPEDO_REVEAL_CHANCE = 0.1
+NDefines.NNavy.SUBMARINE_REVEAL_BASE_CHANCE = 10
+NDefines.NNavy.SUBMARINE_BASE_TORPEDO_REVEAL_CHANCE = 0.2
 
 -------------------------
 -- SUBS AND PLANES
