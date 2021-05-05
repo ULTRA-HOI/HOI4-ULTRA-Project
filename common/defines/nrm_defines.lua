@@ -89,8 +89,7 @@ NDefines.NNavy.NAVAL_SUPREMACY_CAN_INVADE = 0.6								-- required naval suprema
 NDefines.NNavy.NAVAL_COMBAT_RESULT_TIMEOUT_YEARS = 0.5							-- WAS 2 | after that many years, we clear the naval combat results, so they don't get stuck forever in the memory.
 NDefines.NNavy.CONVOY_LOSS_HISTORY_TIMEOUT_MONTHS = 1						-- WAS 24 | after this many months remove the history of lost convoys to not bloat savegames and memory since there is no way to see them anyway
 NDefines.NNavy.NAVAL_INVASION_SPOTTING_SPEED_MULT = 3.0
-NDefines.NNavy.SUBMARINE_REVEALED_TIMEOUT = 12              --Amount of in-game-hours that makes the submarine visible if it is on the defender side.
-NDefines.NNavy.SUBMARINE_HIDE_TIMEOUT = 12						-- Amount of in-game-hours that takes the submarine (with position unrevealed), to hide.
+
 NDefines.NNavy.COMBAT_MIN_DURATION = 12                          -- Min combat duration before we can retreat. It's a balancing variable so it's not possible to always run with our weak ships agains big flotillas.
 NDefines.NNavy.AGGRESSION_LIGHT_GUN_EFFICIENCY_ON_LIGHT_SHIPS = 0.5 -- ratio for scoring for different gun types against light ships
 NDefines.NNavy.AGGRESSION_HEAVY_GUN_EFFICIENCY_ON_LIGHT_SHIPS = 0.25 -- ratio for scoring for different gun types against light ships
@@ -102,7 +101,7 @@ NDefines.NNavy.AGGRESSION_TORPEDO_EFFICIENCY_ON_HEAVY_SHIPS = 1.0   -- ratio for
 NDefines.NNavy.BASE_GUN_COOLDOWNS = { -- number of hours for a gun to be ready after shooting
 		1.0,	-- big guns
 		4.0,	-- torpedos
-		1.5	-- small guns	
+		1.0	-- small guns	
 }
 NDefines.NNavy.MISSION_SUPREMACY_RATIOS = { -- supremacy multipliers for different mission types
 		0.0, -- HOLD
@@ -345,8 +344,8 @@ NDefines.NNavy.SUB_DETECTION_CHANCE_BASE = 5									-- to start spotting a subm
 NDefines.NNavy.SUB_DETECTION_CHANCE_BASE_SPOTTING_EFFECT = 0.5				-- effect of base spotting for initial spotting of pure submarine forces. this along with next value is added together and rolled against a random to start spotting
 NDefines.NNavy.SUB_DETECTION_CHANCE_SPOTTING_SPEED_EFFECT = 2.0				-- effect of spotting speed for initial spotting of pure submarine forces. this along with prev value is added together and rolled against a random to start spotting
 NDefines.NNavy.SUB_DETECTION_CHANCE_BASE_SPOTTING_POW_EFFECT = 1.5			-- effect of spotting speed will be powered by this for initial spotting of pure submarine forces. this along with prev value is added together and rolled against a random to start spotting
-NDefines.NNavy.DEPTH_CHARGES_HIT_PROFILE = 400.0	-- hit profile for depth charges. Subs have hit profiles close to 100 so makes 25% effective chance to hit
-NDefines.NNavy.DEPTH_CHARGES_HIT_CHANCE_MULT = 1
+NDefines.NNavy.DEPTH_CHARGES_HIT_PROFILE = 120.0	-- hit profile for depth charges. Stealthier and faster subs should be hit less
+NDefines.NNavy.DEPTH_CHARGES_HIT_CHANCE_MULT = 2 --1   -- Base hit chance is 10% for every guns. 20% for DC in late war, but early war DC should hit enough to deal constant minor damages to subs.
 NDefines.NNavy.DEPTH_CHARGES_DAMAGE_MULT = 1
 
 NDefines.NNavy.NAVAL_COMBAT_SUB_DETECTION_FACTOR = 1.0      -- balance value for sub detection in combat by ships
@@ -355,6 +354,9 @@ NDefines.NNavy.SUB_DETECTION_STAT_FOR_SHIP_TO_BE_SUB_HUNTER = 4
 
 NDefines.NNavy.SUBMARINE_REVEAL_BASE_CHANCE = 10
 NDefines.NNavy.SUBMARINE_BASE_TORPEDO_REVEAL_CHANCE = 0.2
+
+NDefines.NNavy.SUBMARINE_REVEALED_TIMEOUT = 5              --Amount of in-game-hours that makes the submarine visible if it is on the defender side.
+NDefines.NNavy.SUBMARINE_HIDE_TIMEOUT = 5						-- Amount of in-game-hours that takes the submarine (with position unrevealed), to hide.
 
 -------------------------
 -- SUBS AND PLANES
