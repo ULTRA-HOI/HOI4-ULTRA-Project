@@ -171,7 +171,7 @@ NDefines.NProduction.ANNEX_FIELD_EQUIPMENT_RATIO = 0.9	--How much equipment from
 -- Oil Suff 
 
 NDefines.NCountry.STARTING_FUEL_RATIO = 0.5						-- starting fuel ratio compared to max fuel for countries
-NDefines.NCountry.BASE_FUEL_GAIN_PER_OIL = 11						-- base amount of fuel gained hourly per excess oil
+NDefines.NCountry.BASE_FUEL_GAIN_PER_OIL = 7 --11						-- base amount of fuel gained hourly per excess oil
 NDefines.NCountry.BASE_FUEL_GAIN = 2.0							-- base amount of fuel gained hourly, independent of excess oil
 NDefines.NCountry.BASE_FUEL_CAPACITY = 50000						-- base amount of fuel capacity
 
@@ -446,7 +446,7 @@ NDefines.NMilitary.FUEL_PENALTY_START_RATIO = 0.33								-- was 0.25 -- ratio o
 NDefines.NMilitary.ARMY_COMBAT_FUEL_MULT =   0.4				-- was 1.0	-- fuel consumption ratio in combat (plus ARMY_MOVEMENT_FUEL_MULT if you are also moving. ie offensive combat)
 NDefines.NMilitary.ARMY_MOVEMENT_FUEL_MULT = 0.7 -- 1.0
 NDefines.NMilitary.ARMY_TRAINING_FUEL_MULT = 0.67				-- was 1.0	-- fuel consumption ratio while training
-NDefines.NMilitary.ARMY_IDLE_FUEL_MULT = 0.15					-- was 0.0	-- fuel consumption ratio while just existing
+NDefines.NMilitary.ARMY_IDLE_FUEL_MULT = 0.05					-- was 0.0	-- fuel consumption ratio while just existing
 NDefines.NMilitary.ARMY_NAVAL_TRANSFER_FUEL_MULT = 0.05			-- was 0.0 -- fuel consumption ratio while naval transferring
 NDefines.NMilitary.ARMY_STRATEGIC_DEPLOYMENT_FUEL_MULT = 0.05		-- was 0.0 -- fuel consumption ratio while doing strategic deployment
 NDefines.NMilitary.OUT_OF_FUEL_EQUIPMENT_MULT = 0.1			-- was 0.1 -- ratio of the stats that you get from equipments that uses fuel and you lack it
