@@ -5557,6 +5557,115 @@ foreign_politics = {
 		}
 	}
 	
+	GER_stop_spanish_resources = {
+	
+		icon = tungsten
+		
+		allowed = {
+			original_tag = GER
+		}
+		
+		visible = {
+			has_country_flag = spanish_resource_concessions
+			NOT = {
+				has_country_flag = spanish_resources_stopped
+			}
+		}
+		
+		available = {
+			has_war_with = FRA 
+			OR = { #France does not control South-West 
+				FRA = {
+					has_capitulated = no
+				}
+				FRA = {
+					controls_state = 19 #aquitaine
+				}
+				FRA = {
+					controls_state = 23 #Poitou
+				}
+				FRA = {
+					controls_state = 24 #Centre
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 100
+		}
+		
+		complete_effect = {
+		
+			hidden_effect = {
+				set_country_flag = spanish_resources_stopped
+			}
+			
+			GER = { remove_resource_rights = 171 }
+			GER = { remove_resource_rights = 176 }
+		
+		}
+		
+	}
+	
+	GER_resume_spanish_resources = {
+	
+		icon = tungsten
+		
+		allowed = {
+			original_tag = GER
+		}
+		
+		visible = {
+			has_country_flag = spanish_resources_stopped
+		}
+		
+		available = {
+			OR = {
+				NOT = {
+					has_war_with = FRA
+				}
+				AND = {
+					FRA = {
+						has_capitulated = yes
+					}
+					FRA = {
+						NOT = {
+							controls_state = 19
+						}
+					}
+					FRA = {
+						NOT = {
+							controls_state = 23
+						}
+					}
+					FRA = {
+						NOT = {
+							controls_state = 24
+						}
+					}
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 100
+		}
+		
+		complete_effect = {
+		
+			hidden_effect = {
+				clr_country_flag = spanish_resources_stopped
+			}
+			
+			SPA = {
+				give_resource_rights = { receiver = GER state = 171 }
+				give_resource_rights = { receiver = GER state = 176 }
+			}
+		
+		}
+		
+	}
+	
 	GER_danubian_membership = {
 		allowed = {
 			original_tag = GER
