@@ -1338,7 +1338,7 @@
 			is_subject = no
 			communism < 0.5
 			fascism < 0.5
-			democratic < 0.5
+			neutrality < 0.5
 		}
 
 		bypass = {
@@ -1350,7 +1350,7 @@
 		available_if_capitulated = yes
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
-			add_political_power = 150
+			add_political_power = 120
 			create_country_leader = {
 				name = "Carol II"
 				desc = "POLITICS_CAROL_II_DESC"
@@ -1716,13 +1716,27 @@
 						TUR = { is_faction_leader = yes }
 					}
 				}
-				every_country = {
+				every_other_country = {
 					limit = {
 						has_opinion_modifier = BFTB_balkan_pact_ally
 					}
 					remove_opinion_modifier = {
 						target = ROM
 						modifier = BFTB_balkan_pact_ally
+					}
+					if = {
+						limit = {
+							NOT = {	is_in_faction_with = TUR }
+							TUR = { is_faction_leader = no }
+						}
+						hidden_effect = {
+							ROOT = {
+								remove_opinion_modifier = {
+									target = PREV
+									modifier = BFTB_balkan_pact_ally
+								}
+							}
+						}
 					}
 				}
 			}
@@ -1742,7 +1756,7 @@
 					}
 					remove_opinion_modifier = {
 						target = HUN
-						modifier = BFTB_incongruous_neighbors
+						modifier = BFTB_balkan_pact_enemy
 					}
 					add_opinion_modifier = {
 						target = BUL
@@ -1751,66 +1765,6 @@
 					add_opinion_modifier = {
 						target = HUN
 						modifier = BFTB_incongruous_neighbors
-					}
-				}
-				if = {
-					limit = {
-						GRE = {
-							has_opinion_modifier = BFTB_balkan_pact_ally
-						}
-						NOT = {
-							is_in_faction_with = TUR
-							TUR = { is_faction_leader = yes }
-						}
-					}
-					remove_opinion_modifier = {
-						target = GRE
-						modifier = BFTB_balkan_pact_ally
-					}
-				}
-				if = {
-					limit = {
-						HUN = {
-							has_opinion_modifier = BFTB_balkan_pact_ally
-						}
-						NOT = {
-							is_in_faction_with = TUR
-							TUR = { is_faction_leader = yes }
-						}
-					}
-					remove_opinion_modifier = {
-						target = HUN
-						modifier = BFTB_balkan_pact_ally
-					}
-				}
-				if = {
-					limit = {
-						TUR = {
-							has_opinion_modifier = BFTB_balkan_pact_ally
-						}
-						NOT = {
-							is_in_faction_with = TUR
-							TUR = { is_faction_leader = yes }
-						}
-					}
-					remove_opinion_modifier = {
-						target = TUR
-						modifier = BFTB_balkan_pact_ally
-					}
-				}
-				if = {
-					limit = {
-						YUG = {
-							has_opinion_modifier = BFTB_balkan_pact_ally
-						}
-						NOT = {
-							is_in_faction_with = TUR
-							TUR = { is_faction_leader = yes }
-						}
-					}
-					remove_opinion_modifier = {
-						target = YUG
-						modifier = BFTB_balkan_pact_ally
 					}
 				}
 			}
@@ -1939,13 +1893,13 @@
 			GER = { add_opinion_modifier = { modifier = ROM_appoint_german_friendly_government target = ROOT } }
 			if = {
 				limit = { 
-					#has_dlc = "Battle for the Bosporus" #TODO
+					has_dlc = "Battle for the Bosporus"
 					NOT = {
 						is_in_faction_with = TUR
 						TUR = { is_faction_leader = yes }
 					}
 				}
-				every_country = {
+				every_other_country = {
 					limit = {
 						has_opinion_modifier = BFTB_balkan_pact_ally
 					}
@@ -1953,13 +1907,27 @@
 						target = ROM
 						modifier = BFTB_balkan_pact_ally
 					}
+					if = {
+						limit = {
+							is_in_faction_with = TUR
+							TUR = { is_faction_leader = no }
+						}
+						hidden_effect = {
+							ROOT = {
+								remove_opinion_modifier = {
+									target = PREV
+									modifier = BFTB_balkan_pact_ally
+								}
+							}
+						}
+					}
 				}
 			}
 			hidden_effect = { 
 				set_country_flag = can_change_sides_fas
 				if = { 
 					limit = {
-						#has_dlc = "Battle for the Bosporus" #TODO
+						has_dlc = "Battle for the Bosporus"
 						NOT = {
 							is_in_faction_with = TUR
 							TUR = { is_faction_leader = yes }
@@ -1971,7 +1939,7 @@
 					}
 					remove_opinion_modifier = {
 						target = HUN
-						modifier = BFTB_incongruous_neighbors
+						modifier = BFTB_balkan_pact_enemy
 					}
 					add_opinion_modifier = {
 						target = BUL
@@ -1982,66 +1950,7 @@
 						modifier = BFTB_incongruous_neighbors
 					}
 				}
-				if = {
-					limit = {
-						GRE = {
-							has_opinion_modifier = BFTB_balkan_pact_ally
-						}
-						NOT = {
-							is_in_faction_with = TUR
-							TUR = { is_faction_leader = yes }
-						}
-					}
-					remove_opinion_modifier = {
-						target = GRE
-						modifier = BFTB_balkan_pact_ally
-					}
-				}
-				if = {
-					limit = {
-						HUN = {
-							has_opinion_modifier = BFTB_balkan_pact_ally
-						}
-						NOT = {
-							is_in_faction_with = TUR
-							TUR = { is_faction_leader = yes }
-						}
-					}
-					remove_opinion_modifier = {
-						target = HUN
-						modifier = BFTB_balkan_pact_ally
-					}
-				}
-				if = {
-					limit = {
-						TUR = {
-							has_opinion_modifier = BFTB_balkan_pact_ally
-						}
-						NOT = {
-							is_in_faction_with = TUR
-							TUR = { is_faction_leader = yes }
-						}
-					}
-					remove_opinion_modifier = {
-						target = TUR
-						modifier = BFTB_balkan_pact_ally
-					}
-				}
-				if = {
-					limit = {
-						YUG = {
-							has_opinion_modifier = BFTB_balkan_pact_ally
-						}
-						NOT = {
-							is_in_faction_with = TUR
-							TUR = { is_faction_leader = yes }
-						}
-					}
-					remove_opinion_modifier = {
-						target = YUG
-						modifier = BFTB_balkan_pact_ally
-					}
-				}
+				
 			}
 			unlock_decision_category_tooltip = ROM_change_sides
 			unlock_decision_tooltip = ROM_change_sides_to_allies
@@ -2253,12 +2162,17 @@
 		completion_reward = {
 			#Removes king carol and makes the most popular party the ruling one
 			if = {
-				limit = { has_country_leader = { id = 550 } }
+				limit = { 
+					has_country_leader = { 
+						id = 550 
+					} 
+				}
 				retire_country_leader = yes
 			}
 			if = {
 				limit = {
-					democratic > 0.35
+					democratic > party_popularity@communism
+					democratic > party_popularity@fascism
 				}
 				set_politics = {
 					ruling_party = democratic
@@ -2267,7 +2181,8 @@
 			}
 			else_if = {
 				limit = {
-					communism > 0.35
+					communism > party_popularity@fascism
+					communism > party_popularity@democratic
 				}
 				set_politics = {
 					ruling_party = communism
@@ -2276,23 +2191,12 @@
 			}
 			else_if = {
 				limit = {
-					fascism > 0.35
+					fascism > party_popularity@democratic
+					fascism > party_popularity@communism
 				}
 				set_politics = {
 					ruling_party = fascism
 					elections_allowed = no
-				}
-			}
-			if = {
-				limit = {
-					has_idea = ROM_constitutional_guarantees
-				}				
-				else = {
-					if = {
-						limit = {
-							has_idea = ROM_securitate
-						}
-					}
 				}
 			}
 			swap_ideas = {
@@ -3103,7 +3007,7 @@
 			army_experience = 25
 			add_tech_bonus = {
 				name = land_doc_bonus
-				bonus = 1.5
+				bonus = 0.5
 				uses = 1
 				category = land_doctrine
 			}
