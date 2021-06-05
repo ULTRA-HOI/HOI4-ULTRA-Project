@@ -133,6 +133,7 @@ NDefines.NIntel.ARMY_INTEL_COMBAT_BONUS_MAX_INTEL_FOR_BONUS = 100 --50 -- intel 
 NDefines.NOperatives.AGENCY_CREATION_DAYS = 30 --30						-- Number of days needed to create an intelligence agency
 NDefines.NOperatives.AGENCY_UPGRADE_DAYS = 75 --30						-- Number of days needed to upgrade an intelligence agency
 
+NDefines.NOperatives.COUNTER_INTELLIGENCE_STACKING_FACTOR = 1.0		-- was 0.5				-- Multiplier applied to each operative after the first one. So if we have the following counter intelligence rating values [ 0.1, 0.3, 0.2 ], the factor is applied twice for the lowest value and once for the 2nd lowest one as such : [ 0.3, 0.2 * D, 0.1 * D * D ] and then the result is summed up to give the final rating value
 -- Production Stuff
 
 NDefines.NProduction.MAX_EQUIPMENT_RESOURCES_NEED = 4 	-- Max number of different strategic resources an equipment can be dependent on.
