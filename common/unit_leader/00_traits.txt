@@ -645,11 +645,25 @@ leader_traits = {
 	skilled_staffer = { 
 		type = corps_commander
 		gain_xp = {
-			check_variable = { num_units > 23 }
+			set_temp_variable = { temp = num_units }
+
+			set_temp_variable = { limit = 23 }
+
+			if = { limit = { has_trait = panzer_expert } subtract_from_temp_variable = { var = limit value = 9 } }
+			if = { limit = { has_trait = combined_arms_expert } subtract_from_temp_variable = { var = limit value = 9 } }
+			if = { limit = { has_trait = invader_ii } subtract_from_temp_variable = { var = limit value = 6 } }
+			if = { limit = { has_trait = skirmisher } subtract_from_temp_variable = { var = limit value = 3 } }
+			if = { limit = { has_trait = paratrooper } subtract_from_temp_variable = { var = limit value = 12 } }
+			if = { limit = { has_trait = camouflage_expert } subtract_from_temp_variable = { var = limit value = 6 } }
+			if = { limit = { has_trait = expert_improviser } subtract_from_temp_variable = { var = limit value = 3 } }
+
+			clamp_temp_variable = { var = limit max = 23 min = 0 }
+
+			check_variable = { temp > limit }
 		}
-		custom_gain_xp_trigger_tooltip = fighting_with_at_least_23_units
+		custom_gain_xp_trigger_tooltip = fighting_with_max_capacity
 		
-		cost = 2000
+		cost = 1000
 		
 		corps_commander_modifier = {
 			max_commander_army_size = 6
