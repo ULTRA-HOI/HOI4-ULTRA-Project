@@ -585,49 +585,6 @@ gank_everyone = {
 	}
 }
 
-gank_france = {
-	enable = {
-		tag = GER
-		has_war_with = HOL
-		has_war_with = BEL
-		has_war_with = FRA
-		HOL = { has_capitulated = yes }
-		BEL = { has_capitulated = yes }
-	}
-	abort = {
-		OR = {
-			FRA = { has_capitulated = yes }
-			date > 1942.1.1
-		}
-	}
-
-	ai_strategy = {
-		type = conquer
-		id = "FRA"
-		value = 2000 
-	}
-	ai_strategy = {
-		type = consider_weak
-		id = "FRA"
-		value = 9999 
-	}
-	ai_strategy = {								
-		type = area_priority
-		id = france
-		value = 200
-	}
-	ai_strategy = {								
-		type = area_priority
-		id = benelux
-		value = 200
-	}
-	ai_strategy = {
-		type = area_priority
-		id = scandinavia
-		value = -200	
-	}
-}
-
 ignore_soviet_union = {
 	enable = {
 		tag = GER
@@ -1182,18 +1139,8 @@ axis_stay_away_from_the_royal_navy = {
 
 	ai_strategy = {
 		type = naval_avoid_region
-		id = 16 #noth sea
-		value = 100
-	}
-	ai_strategy = {
-		type = naval_avoid_region
 		id = 18 #english channel
 		value = 1000
-	}
-	ai_strategy = {
-		type = naval_avoid_region
-		id = 174 #norwegian coast
-		value = 100
 	}
 	ai_strategy = {
 		type = naval_avoid_region
@@ -1246,12 +1193,6 @@ axis_dont_step_into_the_sea = {
 	abort = {
 		date > 1942.1.1	
 		NOT = { has_war_with = ENG }
-	}
-
-	ai_strategy = {
-		type = naval_avoid_region
-		id = 16 #noth sea
-		value = 100
 	}
 	ai_strategy = {
 		type = naval_avoid_region
@@ -2121,81 +2062,7 @@ play_nice_with_benelux_2 = {
 		value = -5000
 	}
 }
-kill_benelux = {
-	enable = {
-		tag = GER
-		date > 1940.1.1	
-		HOL = {	has_capitulated = no }
-		BEL = {	has_capitulated = no }
-		FRA = {	has_capitulated = no }						
-	}
-	abort = {
-	    tag = GER
-		FRA = {	has_capitulated = yes }						 
-	}
-	
-	# kill britney
-	ai_strategy = {
-		type = antagonize
-		id = "BEL"
-		value = 400
-	}
 
-	ai_strategy = {
-		type = antagonize
-		id = "HOL"
-		value = 400
-	}
-
-	
-	ai_strategy = {
-		type = conquer
-		id = "BEL"
-		value = 400
-	}
-
-	ai_strategy = {
-		type = conquer
-		id = "HOL"
-		value = 400
-	}
-
-	
-    ai_strategy = {
-		type = prepare_for_war
-		id = "HOL"
-		value = 500
-	}
-	ai_strategy = {
-		type = prepare_for_war
-		id = "BEL"
-		value = 500
-	}
-	ai_strategy = {
-		type = front_control
-		state_trigger = {
-			state = 8
-			state = 797
-			state = 34
-			state = 796
-			state = 6
-			state = 29
-			state = 785
-			state = 18
-			state = 16
-			state = 15
-			state = 30
-			state = 14
-			state = 23
-			state = 33
-		}
-		ordertype = front
-		execution_type = rush_weak
-		execute_order = yes
-		manual_attack = yes
-	}
-	
-}
 
 GER_focus_on_north_africa = {
 	enable = {
@@ -2816,42 +2683,6 @@ GER_let_italy_handle_french_front_alone = {
 	}
 }
 
-GER_ITA_close_up_maginot_line_after_FRA_falls  = {
-	allowed = {
-		OR = {
-			tag = GER
-			tag = FRA
-		}				 
-	}
-	
-	enable = {
-		date < 1941.3.3
-		has_war_with = FRA
-		FRA = {
-			has_capitulated = yes
-			days_since_capitulated > 7 # let's give a week before things settle	  
-			days_since_capitulated < 90
-		}
-		NOT = { has_full_control_of_state = 28 }
-	}
-	abort_when_not_enabled = yes
-
-	ai_strategy = {
-		type = front_control
-		state = 28 # close up maginot line
-	
-		ordertype = front
-		execution_type = rush
-		execute_order = yes
-	}
-	
-	ai_strategy = {
-		type = front_unit_request
-		state = 28 
-		value = 50 # lets put more units, should be safe		
-	}
-}
-
 leave_romania_alone = {
 	enable = {
 		OR = {
@@ -2873,47 +2704,7 @@ leave_romania_alone = {
 		value = -2000 
 	}
 }
-ignore_the_Swiss = {
-	enable = {
-		tag = GER
-		country_exists = SWI
-		OR = {
-			has_war_with = SOV
-			AND = {
-				has_war_with = ENG
-				ENG = { has_capitulated = no }
-			}
-		}
-	}
-	abort = {
-		OR = { 
-			SOV = { has_capitulated = yes }
-			ENG = { has_capitulated = yes }
-			SOV = { exists = no }
-			SOV = { is_puppet = yes }
-			has_war_with = SWI
-			is_in_faction_with = SOV
-		}
-	}
-	
-	ai_strategy = {
-		type = ignore
-		id = "SWI"
-		value = 1000
-	}
 
-	ai_strategy = {
-		type = invade
-		id = "DEN"
-		value = -1000
-	}
-
-	ai_strategy = {
-		type = declare_war
-		id = "SWI"
-		value = -2000 
-	}
-}
 
 # AI are not willing to invade if it is at war at its home against another country's home location
 # lets force invade NOR for GER
@@ -2948,124 +2739,6 @@ GER_enable_invasion_of_NOR = {
 	}
 }
 
-# focus armor units on low countries
-# and ignore mighty lux until they fall
-GER_around_the_maginot = {
-	allowed = {
-		original_tag = GER
-		is_historical_focus_on = yes
-	}
-	
-	enable = {
-		date < 1941.4.1
-		FRA = {
-			is_ai = yes
-		}
-		
-		#uh oh, they are pushing
-		42 = {
-			is_controlled_by = GER
-		}
-		50 = {
-			is_controlled_by = GER
-		}
-		
-		# both low countries fell
-		OR = {
-			HOL = {
-				has_capitulated = no
-			}
-			BEL = {
-				has_capitulated = no
-			}
-		}
-		
-		# lux somehow joined the fun
-		NOT = { has_war_with = LUX }
-		LUX = {
-			has_capitulated = no
-			NOT = { is_in_faction_with = FRA }
-		}
-		
-		# we are ready to declare war on low countries
-		OR = {
-			focus_progress = {
-				focus = GER_around_maginot
-				progress > 0
-			}
-			AND = {
-				is_in_array = { potential_and_current_enemies = HOL }
-				is_in_array = { potential_and_current_enemies = BEL }
-			}
-		}
-		is_in_array = { potential_and_current_enemies = FRA }
-	}
-	
-	abort_when_not_enabled = yes
-	
-	# leave LUX for later
-	ai_strategy = {
-		type = declare_war
-		id = "LUX"			
-		value = -2000 
-	}
-	
-	ai_strategy = {
-		type = diplo_action_desire
-		id = "LUX"		
-		target = declare_war		
-		value = -50000 
-	}
-	
-	ai_strategy = {
-		type = front_armor_score
-		id = "FRA"
-		value = 100
-	}
-	
-	ai_strategy = {
-		type = front_armor_score
-		id = "HOL"			
-		value = 100
-	}
-	
-	ai_strategy = {
-		type = front_armor_score
-		id = "BEL"			
-		value = 100
-	}
-	
-	ai_strategy = {
-		type = front_armor_score
-		id = "POL"			
-		value = 100
-	}
-}
-
-
-# lets not invade until we have europe
-GER_around_the_maginot2 = {							  
-	allowed = {
-		original_tag = GER
-		is_historical_focus_on = yes				 
-	}
-	
-	enable = {
-		date < 1941.3.1
-		FRA = {
-			has_capitulated = no																				
-		}
-	}
-	
-	abort_when_not_enabled = yes
-	
-	ai_strategy = {
-		type = invasion_unit_request
-		country_trigger = { always = yes }
-		
-		value = -100
-	}
-}
 
 # lets not invade until we have europe
 GER_dont_invade_until_FRA_falls = {
@@ -3103,6 +2776,7 @@ GER_dont_invade_until_FRA_falls = {
 	}
 }
 
+
 # lets not invade until we have europe
 ITA_dont_invade_NOR_until_FRA_falls = {
 	allowed = {
@@ -3125,6 +2799,30 @@ ITA_dont_invade_NOR_until_FRA_falls = {
 		
 		tag = NOR
 
+		value = -100
+	}
+}
+
+# lets not invade until we have europe
+GER_dont_invade_fra = {							  
+	allowed = {
+		original_tag = GER
+		is_historical_focus_on = yes				 
+	}
+	
+	enable = {
+		date < 1941.3.1
+		FRA = {
+			has_capitulated = no																				
+		}
+	}
+	
+	abort_when_not_enabled = yes
+	
+	ai_strategy = {
+		type = invasion_unit_request
+		country_trigger = { always = yes }
+		
 		value = -100
 	}
 }
@@ -3260,8 +2958,237 @@ GER_LEND_LEASE = {
 	ai_strategy = { type = support id = "FIN" value = 500 }
 
 }
+ignore_the_Swiss = {
+	enable = {
+		tag = GER
+		country_exists = SWI
+		OR = {
+			has_war_with = SOV
+			AND = {
+				has_war_with = ENG
+				ENG = { has_capitulated = no }
+			}
+		}
+	}
+	abort = {
+		OR = { 
+			SOV = { has_capitulated = yes }
+			ENG = { has_capitulated = yes }
+			SOV = { exists = no }
+			SOV = { is_puppet = yes }
+			has_war_with = SWI
+			is_in_faction_with = SOV
+		}
+	}
+	
+	ai_strategy = {
+		type = ignore
+		id = "SWI"
+		value = 1000
+	}
 
-GER_chill_out_FRA  = {
+	ai_strategy = {
+		type = invade
+		id = "DEN"
+		value = -1000
+	}
+
+	ai_strategy = {
+		type = declare_war
+		id = "SWI"
+		value = -2000 
+	}
+}
+
+GER_ITA_close_up_maginot_line_after_FRA_falls  = {
+	allowed = {
+		OR = {
+			tag = GER
+			tag = FRA
+		}				 
+	}
+	
+	enable = {
+		date < 1941.3.3
+		has_war_with = FRA
+		FRA = {
+			has_capitulated = yes
+			days_since_capitulated > 7 # let's give a week before things settle	  
+			days_since_capitulated < 90
+		}
+		NOT = { has_full_control_of_state = 28 }
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = front_control
+		state = 28 # close up maginot line
+	
+		ordertype = front
+		execution_type = rush
+		execute_order = yes
+	}
+}
+
+kill_benelux = {
+	enable = {
+		tag = GER
+		date > 1940.1.1	
+		has_war_with = HOL
+		has_war_with = BEL
+		has_war_with = FRA
+		HOL = {	has_capitulated = no }
+		BEL = {	has_capitulated = no }
+		FRA = {	has_capitulated = no }						
+	}
+	abort = {
+		FRA = {	has_capitulated = yes }						 
+	}
+
+	ai_strategy = {
+		type = conquer
+		id = "FRA"
+		value = 2000 
+	}
+		ai_strategy = {								
+		type = area_priority
+		id = france
+		value = 200
+	}
+	ai_strategy = {								
+		type = area_priority
+		id = benelux
+		value = 200
+	}
+	ai_strategy = {
+		type = area_priority
+		id = scandinavia
+		value = -200	
+	}
+	ai_strategy = {
+		type = consider_weak
+		id = "FRA"
+		value = 9999 
+	}
+	ai_strategy = {
+		type = consider_weak
+		id = "HOL"
+		value = 9999 
+	}
+	ai_strategy = {
+		type = consider_weak
+		id = "BEL"
+		value = 9999 
+	}
+	ai_strategy = {
+		type = antagonize
+		id = "BEL"
+		value = 400
+	}
+
+	ai_strategy = {
+		type = antagonize
+		id = "HOL"
+		value = 400
+	}
+	ai_strategy = {
+		type = conquer
+		id = "BEL"
+		value = 400
+	}
+	ai_strategy = {
+		type = antagonize
+		id = "LUX"
+		value = 400
+	}
+	ai_strategy = {
+		type = conquer
+		id = "LUX"
+		value = 400
+	}
+	ai_strategy = {
+		type = conquer
+		id = "HOL"
+		value = 400
+	}	
+    ai_strategy = {
+		type = prepare_for_war
+		id = "HOL"
+		value = 500
+	}
+	ai_strategy = {
+		type = prepare_for_war
+		id = "BEL"
+		value = 500
+	}
+	ai_strategy = {
+		type = front_control
+		state_trigger = {
+			state = 8
+			state = 797
+			state = 34
+			state = 796
+			state = 6
+			state = 29
+			state = 785
+			state = 18
+			state = 16
+			state = 15
+			state = 30
+			state = 14
+			state = 23
+			state = 33
+		}
+		ordertype = front
+		execution_type = rush_weak
+		execute_order = yes
+		manual_attack = yes
+	}
+	ai_strategy = {
+		type = front_control
+		state_trigger = {
+			state = 28
+
+		}
+		ordertype = front
+		execution_type = careful
+		execute_order = no
+		manual_attack = no
+	}
+	ai_strategy = {
+		type = front_control
+		country_trigger = {
+			original_tag = FRA
+		}
+		ordertype = front
+		execution_type = rush_weak
+		execute_order = yes
+		manual_attack = yes
+	}
+	ai_strategy = {
+		type = front_control
+		country_trigger = {
+			original_tag = HOL
+		}
+		ordertype = front
+		execution_type = rush_weak
+		execute_order = yes
+		manual_attack = yes
+	}
+	ai_strategy = {
+		type = front_control
+		country_trigger = {
+			original_tag = BEL
+		}
+		ordertype = front
+		execution_type = rush_weak
+		execute_order = yes
+		manual_attack = yes
+	}
+	
+}
+
+GER_blitz_yug  = {
 	allowed = {
 		OR = {
 			tag = GER
@@ -3269,38 +3196,52 @@ GER_chill_out_FRA  = {
 	}
 	
 	enable = {
-		date < 1941.3.3
-		has_war_with = FRA
+		has_war_with = YUG
 	}
 	abort = {
-                date > 1941.3.1
+		YUG = {	has_capitulated = yes }	
 
 	}
 	ai_strategy = {
 		type = front_control
-		state = 28 # close up maginot line
-		
+		country_trigger = {
+			original_tag = YUG
+		}
 		ordertype = front
-		execution_type = careful
-		execute_order = no
-		manual_attack = no
+		execution_type = rush_weak
+		execute_order = yes
+		manual_attack = yes
 	}
 }
-
-avoid_swiss_ger = {
-	enable = {
-		tag = GER
-	}
-	abort = {
-	SWI = { is_ai = no }
-
-	}
-
-	ai_strategy = {
-		type = ignore
-		id = "SWI"
-		value = 9999
+GER_blitz_gre  = {
+	allowed = {
+		OR = {
+			tag = GER
+		}				 
 	}
 	
+	enable = {
+		has_war_with = GRE
+	}
+	abort = {
+		GRE = {	has_capitulated = yes }	
+
+	}
+	ai_strategy = {
+		type = front_control
+		country_trigger = {
+			original_tag = GRE
+		}
+		ordertype = front
+		execution_type = rush_weak
+		execute_order = yes
+		manual_attack = yes
+	}
 }
+
+
+
+
+
+
 

@@ -1,3 +1,135 @@
+FRA_civil_unrest_category = {
+
+	FRA_communist_civil_war_decision = {
+
+		icon = generic_civil_support
+
+		available = {
+			OR = {
+				has_stability > 0.25	
+				communism < 0.01
+				has_government = communism
+				has_completed_focus = FRA_form_the_popular_front
+				custom_trigger_tooltip = {
+					tooltip = french_communist_civil_war_intervention_tt 
+					AND = {
+						has_war = yes
+						NOT = {
+							AND = {
+								SPR_scw_in_progress = yes
+								any_enemy_country = {
+									original_tag = SPR #civil war still fires if in intervention in Spain
+								}
+							}
+						}
+					}
+				}	
+			}
+		}
+
+		days_mission_timeout = 90
+		days_remove = 0
+
+		activation = {
+			has_stability < 0.25
+			communism > 0.00
+			OR = {
+				has_war = no
+				AND = {
+					has_war = yes
+					AND = {
+						SPR_scw_in_progress = yes
+						any_enemy_country = {
+							original_tag = SPR #civil war still fires if in intervention in Spain
+						}
+					}
+				}
+			}
+			not = { has_completed_focus = FRA_form_the_popular_front }
+			not = { has_global_flag = flag_french_communist_civil_war }
+		}
+
+		allowed = {
+			original_tag = FRA
+		}
+
+		fixed_random_seed = no
+
+		fire_only_once = no
+
+		is_good = no
+		
+		timeout_effect = {
+			set_global_flag = flag_french_communist_civil_war
+			country_event = { id = lar_low_stability_civil_war.1 }
+		}
+	}
+	
+	FRA_fascist_civil_war_decision = {
+
+		icon = generic_civil_support
+ 
+		available = {
+			OR = {
+				has_stability > 0.25	
+				has_government = fascism
+				has_completed_focus = FRA_destroy_the_counter_revolution
+				custom_trigger_tooltip = {
+					tooltip = french_communist_civil_war_intervention_tt 
+					AND = {
+						has_war = yes
+						NOT = {
+							AND = {
+								SPR_scw_in_progress = yes
+								any_enemy_country = {
+									original_tag = SPR #civil war still fires if in intervention in Spain
+								}
+							}
+						}
+					}
+				}	
+			}
+		}
+
+		days_mission_timeout = 90
+		days_remove = 0
+
+		activation = {
+			has_stability < 0.25
+			OR = {
+				has_war = no
+				AND = {
+					has_war = yes
+					AND = {
+						SPR_scw_in_progress = yes
+						any_enemy_country = {
+							original_tag = SPR #civil war still fires if in intervention in Spain
+						}
+					}
+				}
+			}
+			has_completed_focus = FRA_form_the_popular_front
+			NOT = { has_completed_focus = FRA_destroy_the_counter_revolution }
+			not = { has_global_flag = flag_french_fascist_civil_war }
+		}
+
+		allowed = {
+			original_tag = FRA
+		}
+
+		fixed_random_seed = no
+
+		fire_only_once = no
+
+		is_good = no
+		
+		timeout_effect = {
+			set_global_flag = flag_french_fascist_civil_war
+			country_event = { id = lar_low_stability_civil_war.2 }
+		}
+	}
+	
+}							 
 FRA_vichy_france = {
 
 	FRA_scuttle_the_fleet = {
@@ -1105,7 +1237,7 @@ economy_decisions = {
 	}
 
 	FRA_reorganize_aviation_industry_north = {
-	
+		
 
 		visible = { has_completed_focus = FRA_reorganize_the_aviation_industry }
 		

@@ -2966,7 +2966,8 @@ country_event = {
 
 	immediate = {
 		hidden_effect = {
-			set_global_flag = BUL_fatherland_front_coup_flag								   
+			set_global_flag = BUL_fatherland_front_coup_flag
+			set_country_flag = BUL_ff_civil_war_flag
 			BUL_start_ff_civil_war = yes
 		}
 	}
@@ -4976,7 +4977,7 @@ country_event = {
 		}
 
 		trigger = {
-			FROM.FROM = {
+			var:BUL_artillery_seller = {
 				has_tech = interwar_antiair
 			}
 		}
@@ -5000,7 +5001,7 @@ country_event = {
 		}
 
 		trigger = {
-			FROM.FROM = {
+			var:BUL_artillery_seller = {
 				has_tech = interwar_antitank
 			}
 		}
@@ -5034,7 +5035,7 @@ country_event = {
 		}
 
 		set_variable = { BUL_vehicle_type = token:motorized_equipment }
-		FROM.FROM = { set_country_flag = BUL_producing_motorized_for_bulgaria_flag }
+		var:BUL_military_vehicles_seller = { set_country_flag = BUL_producing_motorized_for_bulgaria_flag } #Used for different amounts of equipment based on type
 		custom_effect_tooltip = bftb_bulgaria_equipment_purchases.2.a_tt
 	}
 
@@ -5067,7 +5068,7 @@ country_event = {
 		}
 
 		set_variable = { BUL_armor_type = token:light_tank_equipment }
-		FROM.FROM = { set_country_flag = BUL_producing_light_armor_for_bulgaria_flag }
+		var:BUL_armor_seller = { set_country_flag = BUL_producing_light_armor_for_bulgaria_flag }
 		custom_effect_tooltip = bftb_bulgaria_equipment_purchases.3.a_tt
 	}
 
@@ -5086,13 +5087,13 @@ country_event = {
 		}
 
 		trigger = {
-			FROM.FROM = {
+			var:BUL_armor_seller = {
 				has_tech = basic_medium_tank
 			}
 		}
 
 		set_variable = { BUL_armor_type = token:medium_tank_equipment }
-		FROM.FROM = { set_country_flag = BUL_producing_medium_armor_for_bulgaria_flag }
+		var:BUL_armor_seller = { set_country_flag = BUL_producing_medium_armor_for_bulgaria_flag }
 		custom_effect_tooltip = bftb_bulgaria_equipment_purchases.3.b_tt
 	}
 
@@ -5111,13 +5112,13 @@ country_event = {
 		}
 
 		trigger = {
-			FROM.FROM = {
+			var:BUL_armor_seller = {
 				has_tech = basic_heavy_tank
 			}
 		}
 
 		set_variable = { BUL_armor_type = token:heavy_tank_equipment }
-		FROM.FROM = { set_country_flag = BUL_producing_heavy_armor_for_bulgaria_flag }
+		var:BUL_armor_seller = { set_country_flag = BUL_producing_heavy_armor_for_bulgaria_flag }
 		custom_effect_tooltip = bftb_bulgaria_equipment_purchases.3.c_tt
 	}
 }
@@ -5146,7 +5147,7 @@ country_event = {
 		}
 
 		set_variable = { BUL_aircraft_type = token:fighter_equipment }
-		FROM.FROM = { set_country_flag = BUL_producing_fighters_for_bulgaria_flag }
+		var:BUL_aircraft_seller = { set_country_flag = BUL_producing_fighters_for_bulgaria_flag }
 		custom_effect_tooltip = bftb_bulgaria_equipment_purchases.4.a_tt
 	}
 
@@ -5165,13 +5166,13 @@ country_event = {
 		}
 
 		trigger = {
-			FROM.FROM = {
+			var:BUL_aircraft_seller = {
 				has_tech = naval_bomber1
 			}
 		}
 
 		set_variable = { BUL_aircraft_type = token:nav_bomber_equipment }
-		FROM.FROM = { set_country_flag = BUL_producing_naval_bombers_for_bulgaria_flag }
+		var:BUL_aircraft_seller = { set_country_flag = BUL_producing_naval_bombers_for_bulgaria_flag }
 		custom_effect_tooltip = bftb_bulgaria_equipment_purchases.4.b_tt
 	}
 
@@ -5190,13 +5191,13 @@ country_event = {
 		}
 
 		trigger = {
-			FROM.FROM = {
+			var:BUL_aircraft_seller = {
 				has_tech = early_bomber
 			}
 		}
 
 		set_variable = { BUL_aircraft_type = token:tac_bomber_equipment }
-		FROM.FROM = { set_country_flag = BUL_producing_tactical_bombers_for_bulgaria_flag }
+		var:BUL_aircraft_seller = { set_country_flag = BUL_producing_tactical_bombers_for_bulgaria_flag }
 		custom_effect_tooltip = bftb_bulgaria_equipment_purchases.4.c_tt
 	}
 }
@@ -5522,14 +5523,12 @@ country_event = {
 		if = {
 			limit = {
 				any_unit_leader = {
-					is_field_marshal = no
-					is_assigned = no
+					has_unit_leader_flag = BUL_scw_promotion_flag
 				}
 			}
 			random_unit_leader = {
 				limit = {
-					is_field_marshal = no
-					is_assigned = no
+					has_unit_leader_flag = BUL_scw_promotion_flag
 				}
 				promote_leader = yes
 				add_skill_level = 1
@@ -6119,9 +6118,10 @@ country_event = {
 					target = ROOT
 					modifier = BUL_balkan_communism_trade
 				}
-				country_event = { id = bftb_bulgaria_soviet_influence.5 hours = 24 random_hours = 24 }
+				country_event = { id = bftb_bulgaria_soviet_influence.5 hours = 2 }
 			}
 		}
+		BUL_remove_balkan_opinion_modifiers = yes								   
 		random_country = {
 			limit = {
 				is_in_faction_with = FROM
@@ -6174,6 +6174,11 @@ country_event = {
 				expire = 180
 			}
 		}
+		hidden_effect = {
+			FROM = {
+				country_event = { id = bftb_bulgaria_soviet_influence.6 hours = 2 }
+			}
+		}
 	}
 }
 
@@ -6185,8 +6190,6 @@ country_event = {
 	picture = GFX_report_event_communists_cheer
 
 	is_triggered_only = yes
-
-	fire_only_once = yes
 
 	option = { #Ok
 		name = bftb_bulgaria_soviet_influence.5.a
@@ -6233,8 +6236,6 @@ country_event = {
 	picture = GFX_report_event_generic_read_write
 
 	is_triggered_only = yes
-
-	fire_only_once = yes
 
 	option = { #Ok
 		name = bftb_bulgaria_soviet_influence.6.a
@@ -6348,6 +6349,7 @@ country_event = {
 				modifier = BUL_strengthened_relations_with_us
 			}
 		}
+		BUL_remove_balkan_opinion_modifiers = yes								   
 
 		add_ideas = BUL_balkan_federation_project_propaganda
 		FROM = { add_ideas = BUL_balkan_federation_project_propaganda }
@@ -6945,6 +6947,7 @@ country_event = {
 		BUL_join_wars_of_from = yes
 
 		puppet = FROM
+		BUL_remove_balkan_opinion_modifiers = yes								   
 		set_autonomy = { target = FROM autonomy_state = autonomy_dominion }
 		if = {
 			limit = {
@@ -7050,6 +7053,33 @@ country_event = {
 				modifier = BUL_kicked_us_from_faction
 			}
 		}
+			
+		hidden_effect = { #ROOT & FROM are not happy with each other's actions
+			add_ai_strategy = {
+				type = alliance
+				id = FROM			
+				value = -100
+			}
+
+			add_ai_strategy = {
+				type = befriend
+				id = FROM			
+				value = -100
+			}
+			FROM = {
+				add_ai_strategy = {
+					type = alliance
+					id = ROOT			
+					value = -100
+				}
+
+				add_ai_strategy = {
+					type = befriend
+					id = ROOT			
+					value = -100
+				}
+			}
+		}
 	}
 
 	option = { #Kick and Wargoal
@@ -7098,6 +7128,33 @@ country_event = {
 			add_opinion_modifier = {
 				target = ROOT
 				modifier = BUL_kicked_us_from_faction
+			}
+		}
+		
+		hidden_effect = { #ROOT & FROM are mad at each other
+			add_ai_strategy = {
+				type = alliance
+				id = FROM			
+				value = -200
+			}
+
+			add_ai_strategy = {
+				type = befriend
+				id = FROM			
+				value = -200
+			}
+			FROM = {
+				add_ai_strategy = {
+					type = alliance
+					id = ROOT			
+					value = -200
+				}
+
+				add_ai_strategy = {
+					type = befriend
+					id = ROOT			
+					value = -200
+				}
 			}
 		}
 	}
@@ -7831,6 +7888,7 @@ country_event = {
 		name = bftb_bulgaria_fate_of_the_balkans.2.a
 
 		add_to_faction = FROM
+		FROM = { BUL_remove_balkan_opinion_modifiers = yes }											  
 	}
 }
 
@@ -7956,7 +8014,13 @@ country_event = {
 		add_political_power = 150
 		add_stability = 0.1
 		effect_tooltip = {
-			FROM = { puppet = ROOT }
+			FROM = {
+				puppet = ROOT
+				remove_wargoal = {
+					target = ROOT
+					type = all
+				}
+			}
 		}
 		hidden_effect = {
 			FROM = { country_event = bftb_bulgaria_fate_of_the_balkans.8 }
@@ -8007,6 +8071,12 @@ country_event = {
 		BUL_join_wars_of_from = yes
 
 		puppet = FROM
+		remove_wargoal = {
+			target = FROM
+			type = all
+		}
+
+		FROM = { BUL_remove_balkan_opinion_modifiers = yes }
 
 		custom_effect_tooltip = germany.126.warning
 	}
@@ -8331,6 +8401,7 @@ country_event = {
 				modifier = BUL_strengthened_relations_with_us
 			}
 		}
+		BUL_remove_balkan_opinion_modifiers = yes							   
 		every_country = {
 			limit = {
 				BUL_country_can_influence_bulgaria = yes
@@ -8576,12 +8647,7 @@ country_event = {
 			}
 			modifier = {
 				factor = 10
-				BUL = { 
-					OR = {
-						has_idea = BUL_bogdan_filov
-						has_idea = BUL_bogdan_filov_fascism
-					}
-				}
+				BUL_has_some_sort_of_bogdan_filov = yes
 			}
 		}
 

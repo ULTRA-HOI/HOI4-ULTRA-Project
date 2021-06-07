@@ -872,7 +872,7 @@ economy_decisions = {
 
 		fire_only_once = no
 		
-		days_remove = 10
+		days_remove = 5
 
 		cost = 0
 		
@@ -1062,7 +1062,7 @@ economy_decisions = {
 
 		fire_only_once = no
 		
-		days_remove = 10
+		days_remove = 5
 
 		cost = 0
 		
@@ -1247,7 +1247,7 @@ economy_decisions = {
 
 		fire_only_once = no
 
-		days_remove = 10
+		days_remove = 5
 
 		cost = 0
 		
@@ -1417,7 +1417,7 @@ economy_decisions = {
 
 		fire_only_once = no
 
-		days_remove = 10
+		days_remove = 5
 
 		cost = 0
 		
@@ -1586,7 +1586,7 @@ economy_decisions = {
 
 		fire_only_once = no
 
-		days_remove = 10
+		days_remove = 5
 
 		cost = 0
 		
@@ -3863,6 +3863,61 @@ war_measures = {
 					value = -0.025
 				}
 				add_war_support = GER_war_bonds_war_support_var
+			}
+		}
+    }
+	
+	civilian_truck_requisition = {
+
+    	icon = generic_industry
+
+    	allowed = {
+            always = yes
+        }
+
+        available = {
+           has_war = yes
+           has_idea = tot_economic_mobilisation
+        }
+        visible = {
+            has_war = yes
+        }
+
+        fire_only_once = no
+
+		days_remove = 30
+		days_re_enable = 180
+		
+		cost = 50
+
+		modifier = {
+			
+		}
+
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				factor = 0
+				has_equipment = {
+					motorized_equipment > 1000
+				}
+			}
+
+			
+		}
+
+		remove_effect = {
+			add_equipment_to_stockpile = {
+				type = motorized_equipment
+				amount = var:civilian_truck_production
+				producer = THIS
+			}
+		}
+
+		complete_effect = {
+			add_timed_idea = {
+				idea = weakened_civilian_industry
+				days = 180
 			}
 		}
     }

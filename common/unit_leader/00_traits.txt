@@ -121,7 +121,6 @@ leader_traits = {
 			
 			recon_factor = 0.15
 			planning_speed = 0.15
-			experience_gain_factor = 0.375
 		}
 		
 		new_commander_weight = {
@@ -140,7 +139,6 @@ leader_traits = {
 			
 			recon_factor = 0.075
 			planning_speed = 0.075
-			experience_gain_factor = 0.19
 		}
 		
 		new_commander_weight = {
@@ -159,7 +157,6 @@ leader_traits = {
 			
 			recon_factor = 0.04
 			planning_speed = 0.04
-			experience_gain_factor = 0.075
 		}
 		
 		new_commander_weight = {
@@ -615,7 +612,6 @@ leader_traits = {
 			mechanized_attack_factor = 0.03
 			motorized_defence_factor = 0.05
 			mechanized_defence_factor = 0.05
-			experience_gain_factor = 0.19
 		}
 		
 		ai_will_do = {
@@ -649,14 +645,27 @@ leader_traits = {
 	skilled_staffer = { 
 		type = corps_commander
 		gain_xp = {
-			check_variable = { num_units > 23 }
+			set_temp_variable = { temp = num_units }
+
+			set_temp_variable = { limit = 23 }
+
+			if = { limit = { has_trait = panzer_expert } subtract_from_temp_variable = { var = limit value = 6 } }
+			if = { limit = { has_trait = combined_arms_expert } subtract_from_temp_variable = { var = limit value = 6 } }
+			if = { limit = { has_trait = invader_ii } subtract_from_temp_variable = { var = limit value = 3 } }
+			if = { limit = { has_trait = skirmisher } subtract_from_temp_variable = { var = limit value = 3 } }
+			if = { limit = { has_trait = paratrooper } subtract_from_temp_variable = { var = limit value = 6 } }
+			if = { limit = { has_trait = camouflage_expert } subtract_from_temp_variable = { var = limit value = 3 } }
+
+			clamp_temp_variable = { var = limit max = 23 min = 0 }
+
+			check_variable = { temp > limit }
 		}
-		custom_gain_xp_trigger_tooltip = fighting_with_at_least_23_units
+		custom_gain_xp_trigger_tooltip = fighting_with_max_capacity
 		
-		cost = 2000
+		cost = 1000
 		
 		corps_commander_modifier = {
-			max_commander_army_size = 6
+			max_commander_army_size = 3
 		}
 		
 		ai_will_do = {
@@ -807,7 +816,6 @@ leader_traits = {
 			army_armor_speed_factor = 0.03
 			army_armor_attack_factor = 0.03
 			army_armor_defence_factor = 0.03
-			experience_gain_factor = 0.19
 		}
 		
 		ai_will_do = {
@@ -835,7 +843,6 @@ leader_traits = {
 			out_of_supply_factor = -0.19
 			special_forces_attack_factor = 0.03
 	    	special_forces_defence_factor = 0.03
-			experience_gain_factor = 0.375
 		}
 		
 		
@@ -1026,10 +1033,9 @@ leader_traits = {
 		modifier = {
 			army_armor_attack_factor = 0.03
 			army_armor_defence_factor = 0.075
-			experience_gain_factor = 0.5
 		}
 		corps_commander_modifier = {
-			max_commander_army_size = -9
+			max_commander_army_size = -6
 		}
 		custom_effect_tooltip = INCREASED_BLITZ_AND_ENCIRCLEMENT_CHANCE
 		
@@ -1058,10 +1064,9 @@ leader_traits = {
 			mechanized_attack_factor = 0.075
 			motorized_defence_factor = 0.03
 			mechanized_defence_factor = 0.03
-			experience_gain_factor = 0.5
 		}
 		corps_commander_modifier = {
-			max_commander_army_size = -9
+			max_commander_army_size = -6
 		}
 		custom_effect_tooltip = INCREASED_BLITZ_AND_ENCIRCLEMENT_CHANCE
 		
@@ -1090,10 +1095,6 @@ leader_traits = {
 			cavalry_attack_factor = 0.075
 			cavalry_defence_factor = 0.075
 			recon_factor = 0.15
-			experience_gain_factor = 0.5
-		}
-		corps_commander_modifier = {
-			max_commander_army_size = -9
 		}
 		ai_will_do = {
 			factor = 1
@@ -1246,10 +1247,9 @@ leader_traits = {
 		cost = 500
 		modifier = {
 			extra_marine_supply_grace = 240		
-			experience_gain_factor = 0.50
 		}
 		corps_commander_modifier = {
-			max_commander_army_size = -6
+			max_commander_army_size = -3
 		}
 		enable_ability = faster_naval_invasion_planning
 		
@@ -1300,7 +1300,7 @@ leader_traits = {
 		}
 		
 		corps_commander_modifier = {
-			max_commander_army_size = -6
+			max_commander_army_size = -3
 		}
 		
 		enable_ability = probing_attack
@@ -1321,7 +1321,6 @@ leader_traits = {
 			air_paradrop_attack_factor = 0.15
 			air_paradrop_defence_factor = 0.15
 			extra_paratrooper_supply_grace = 240
-			experience_gain_factor = 0.50
 		}
 		
 		enable_ability = glider_planes
@@ -1330,7 +1329,7 @@ leader_traits = {
 			factor = 1
 		}
 		corps_commander_modifier = {
-			max_commander_army_size = -12
+			max_commander_army_size = -6
 		}
 		trait_type = assignable_trait
 		parent = commando
@@ -1358,7 +1357,7 @@ leader_traits = {
 		}
 		
 		corps_commander_modifier = {
-			max_commander_army_size = -6
+			max_commander_army_size = -3
 		}
 		
 		ai_will_do = {
@@ -1412,11 +1411,7 @@ leader_traits = {
 			motorized_defence_factor = 0.03
 			mechanized_defence_factor = 0.03
 			army_artillery_attack_factor = 0.03
-			experience_gain_factor = 0.25
 	
-		}
-		corps_commander_modifier = {
-			max_commander_army_size = -3
 		}
 		ai_will_do = {
 			factor = 1
@@ -1534,7 +1529,6 @@ leader_traits = {
 			naval_coordination = 0.15
 			navy_org_factor = 0.1
 			naval_morale_factor = 0.1
-			experience_gain_factor = 0.1
 			naval_hit_chance = 0.1
 			positioning = 0.05
 		}
@@ -2819,233 +2813,233 @@ leader_traits = {
 # operative traits
 ##################################
 
-	operative_commando = {
-		type = operative
-		trait_type = basic_trait
+operative_commando = {
+	type = operative
+	trait_type = basic_trait
 
-		new_commander_weight = {
-			base = 1
-			modifier = {
-				set_temp_variable = {
-					trait_chance = FROM.modifier@commando_trait_chance_factor
-				}
-				add_to_temp_variable = {
-					var = trait_chance
-					value = 1
-				}
-				factor = trait_chance
+	new_commander_weight = {
+		base = 1
+		modifier = {
+			set_temp_variable = {
+				trait_chance = FROM.modifier@commando_trait_chance_factor
 			}
-
-			modifier = {
-				factor = 0.2
-				FROM = {
-					NOT = { has_done_agency_upgrade = upgrade_commando_training }
-				}
+			add_to_temp_variable = {
+				var = trait_chance
+				value = 1
 			}
+			factor = trait_chance
 		}
 
-		cost = 600
-		gain_xp_leader = {
-			ROOT = {
-				has_done_agency_upgrade = upgrade_commando_training
+		modifier = {
+			factor = 0.2
+			FROM = {
+				NOT = { has_done_agency_upgrade = upgrade_commando_training }
 			}
 		}
+	}
 
-		modifier = {
-			own_operative_detection_chance_factor = -0.1
-			target_sabotage_factor = 0.25
-			target_sabotage_risk = -0.25
-			operation_capture_cipher_outcome = 0.25
-			operation_capture_cipher_risk = -0.25
+	cost = 600
+	gain_xp_leader = {
+		ROOT = {
+			has_done_agency_upgrade = upgrade_commando_training
 		}
 	}
 
-	operative_seducer = {
-		type = operative
-		trait_type = personality_trait
+	modifier = {
+		own_operative_detection_chance_factor = -0.1
+		target_sabotage_factor = 0.25
+		target_sabotage_risk = -0.25
+		operation_capture_cipher_outcome = 0.25
+		operation_capture_cipher_risk = -0.25
+	}
+}
 
-		#new_commander_weight = {
-		#}
+operative_seducer = {
+	type = operative
+	trait_type = personality_trait
 
-		modifier = { 
-			operation_infiltrate_outcome = 0.25
-			operation_infiltrate_risk = -0.25
-			own_operative_detection_chance_factor = -0.2
+	#new_commander_weight = {
+	#}
+
+	modifier = { 
+		operation_infiltrate_outcome = 0.10
+		operation_infiltrate_risk = -0.10
+		own_operative_detection_chance_factor = -0.2
+	}
+}
+
+operative_infiltrator = {
+	type = operative
+	trait_type = basic_trait
+
+	new_commander_weight = {
+		factor = 0.5
+	}
+
+	cost = 400
+	gain_xp_leader = {
+		OR = {
+			operative_leader_operation = operation_rescue_operative
+			operative_leader_operation = operation_infiltrate_civilian
+			operative_leader_operation = operation_infiltrate_armed_forces_army
+			operative_leader_operation = operation_infiltrate_armed_forces_navy
+			operative_leader_operation = operation_infiltrate_armed_forces_airforce
+			operative_leader_operation = operation_make_resistance_contacts
 		}
 	}
 
-	operative_infiltrator = {
-		type = operative
-		trait_type = basic_trait
+	modifier = { 
+		operation_infiltrate_outcome = 0.25
+		operation_infiltrate_risk = -0.25
+	}
+}
 
-		new_commander_weight = {
-			factor = 0.5
-		}
+operative_master_interrogator = {
+	type = operative
+	trait_type = basic_trait
 
-		cost = 400
-		gain_xp_leader = {
-			OR = {
-				operative_leader_operation = operation_rescue_operative
-				operative_leader_operation = operation_infiltrate_civilian
-				operative_leader_operation = operation_infiltrate_armed_forces_army
-				operative_leader_operation = operation_infiltrate_armed_forces_navy
-				operative_leader_operation = operation_infiltrate_armed_forces_airforce
-				operative_leader_operation = operation_make_resistance_contacts
-			}
-		}
+	#new_commander_weight = {
+	#}
 
-		modifier = { 
-			operation_infiltrate_outcome = 0.25
-			operation_infiltrate_risk = -0.25
+	cost = 400
+	gain_xp_leader = {
+		OR = {
+			operative_leader_mission = root_out_resistance
+			operative_leader_mission = counter_intelligence
 		}
 	}
 
-	operative_master_interrogator = {
-		type = operative
-		trait_type = basic_trait
+	modifier = {
+		intelligence_agency_defense = 0.5
+		enemy_operative_intel_extraction_rate = 0.25
+	}
+}
 
-		#new_commander_weight = {
-		#}
+operative_linguist = {
+	type = operative
+	trait_type = basic_trait
 
-		cost = 400
-		gain_xp_leader = {
-			OR = {
-				operative_leader_mission = root_out_resistance
-				operative_leader_mission = counter_intelligence
-			}
-		}
+	#new_commander_weight = {
+	#}
 
-		modifier = {
-			intelligence_agency_defense = 0.2
+	cost = 400
+	gain_xp_leader = {
+		NOT = { operative_leader_mission = no_mission }
+		NOT = { has_nationality = FROM }
+	}
+
+	modifier = {
+		# something good
+	}
+}
+
+operative_double_agent = {
+	type = operative
+	trait_type = personality_trait
+
+	new_commander_weight = {
+		factor = 0 # only from events
+	}
+
+	modifier = {
+		# something good
+	}
+}
+
+operative_tough = {
+	type = operative
+	trait_type = personality_trait
+
+	#new_commander_weight = {
+	#}
+
+	modifier = {
+		enemy_operative_intel_extraction_rate = -0.5
+	}
+}
+
+operative_safe_cracker = {
+	type = operative
+	trait_type = personality_trait
+
+	new_commander_weight = {
+		factor = 0.5
+	}
+
+	modifier = {
+		operation_capture_cipher_outcome = 0.25
+		operation_steal_tech_risk = -0.25
+		operation_steal_tech_outcome = 0.25
+	}
+}
+
+operative_well_groomed = {
+	type = operative
+	trait_type = basic_trait
+
+	#new_commander_weight = {
+	#}
+
+	cost = 400
+	gain_xp_leader = {
+		OR = {
+			operative_leader_mission = diplomatic_pressure
+			operative_leader_mission = control_trade
 		}
 	}
 
-	operative_linguist = {
-		type = operative
-		trait_type = basic_trait
+	modifier = {
+		control_trade_mission_factor = 0.2
+		diplomatic_pressure_mission_factor = 0.2
+	}
+}
 
-		#new_commander_weight = {
-		#}
+operative_natural_orator = {
+	type = operative
+	trait_type = basic_trait
 
-		cost = 400
-		gain_xp_leader = {
-			NOT = { operative_leader_mission = no_mission }
-			NOT = { has_nationality = FROM }
+	gain_xp_leader = {
+		OR = {
+			operative_leader_mission = propaganda
+			operative_leader_mission = boost_ideology
 		}
+	}
+	
+	cost = 400
+	modifier = {
+		operation_coup_government_risk = -0.25
+		operation_coup_government_cost = -0.25
+		boost_ideology_mission_factor = 0.2
+	}
+}
 
-		modifier = {
-			# something good
+operative_escape_artist = {
+	type = operative
+	trait_type = basic_trait
+	#gained through script when successfully executing an escape operation
+	modifier = {
+		operation_rescue_operative_risk = -0.1
+		operation_rescue_operative_cost = -0.1
+	}
+}
+
+operative_demolition_expert = {
+	type = operative
+	trait_type = basic_trait
+
+	cost = 400
+	gain_xp_leader = {
+		OR = {
+			operative_leader_operation = operation_targeted_sabotage_industry
+			operative_leader_operation = operation_targeted_sabotage_infrastructure
+			operative_leader_operation = operation_targeted_sabotage_resources
 		}
 	}
 
-	operative_double_agent = {
-		type = operative
-		trait_type = personality_trait
-
-		new_commander_weight = {
-			factor = 0 # only from events
-		}
-
-		modifier = {
-			# something good
-			intelligence_agency_defense = 0.5
-		}
+	modifier = {
+		target_sabotage_factor = 0.25
+		target_sabotage_cost = -0.25
+		boost_resistance_factor = 0.25
 	}
-
-	operative_tough = {
-		type = operative
-		trait_type = personality_trait
-
-		#new_commander_weight = {
-		#}
-
-		modifier = {
-			enemy_operative_intel_extraction_rate = -0.5
-		}
-	}
-
-	operative_safe_cracker = {
-		type = operative
-		trait_type = personality_trait
-
-		new_commander_weight = {
-			factor = 0.5
-		}
-
-		modifier = {
-			operation_capture_cipher_outcome = 0.25
-			operation_steal_tech_risk = -0.25
-			operation_steal_tech_outcome = 0.25
-		}
-	}
-
-	operative_well_groomed = {
-		type = operative
-		trait_type = basic_trait
-
-		#new_commander_weight = {
-		#}
-
-		cost = 400
-		gain_xp_leader = {
-			OR = {
-				operative_leader_mission = diplomatic_pressure
-				operative_leader_mission = control_trade
-			}
-		}
-
-		modifier = {
-			control_trade_mission_factor = 0.2
-			diplomatic_pressure_mission_factor = 0.2
-		}
-	}
-
-	operative_natural_orator = {
-		type = operative
-		trait_type = basic_trait
-
-		gain_xp_leader = {
-			OR = {
-				operative_leader_mission = propaganda
-				operative_leader_mission = boost_ideology
-			}
-		}
-		
-		cost = 400
-		modifier = {
-			operation_coup_government_risk = -0.25
-			operation_coup_government_cost = -0.25
-			boost_ideology_mission_factor = 0.2
-		}
-	}
-
-	operative_escape_artist = {
-		type = operative
-		trait_type = basic_trait
-		#gained through script when successfully executing an escape operation
-		modifier = {
-			operation_rescue_operative_risk = -0.1
-			operation_rescue_operative_cost = -0.1
-		}
-	}
-
-	operative_demolition_expert = {
-		type = operative
-		trait_type = basic_trait
-
-		cost = 400
-		gain_xp_leader = {
-			OR = {
-				operative_leader_operation = operation_targeted_sabotage_industry
-				operative_leader_operation = operation_targeted_sabotage_infrastructure
-				operative_leader_operation = operation_targeted_sabotage_resources
-			}
-		}
-
-		modifier = {
-			target_sabotage_factor = 0.25
-			target_sabotage_cost = -0.25
-			boost_resistance_factor = 0.25
-		}
-	}
+}
 }

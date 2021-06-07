@@ -1,11 +1,84 @@
 purchase_foreign_equipment_category = {
 
 	#### Infantry Equipment ####
+	purchases_show = {
 
+		icon = GFX_decision_generic_prepare_civil_war
+		ai_will_do = {
+			factor = 9999
+			}
+		visible = { 
+			hidden_trigger = {
+				NOT = { has_country_flag = purchases_show }
+			}
+			OR = {
+				original_tag = FIN
+				original_tag = POL
+				original_tag = HUN
+				original_tag = ROM
+				original_tag = BUL
+				original_tag = YUG
+				original_tag = GRE
+				original_tag = TUR
+				original_tag = SIA
+				original_tag = IRQ
+				original_tag = PER
+				original_tag = CHI
+				original_tag = SWI
+				original_tag = AUS
+				original_tag = HOL
+				original_tag = SPR
+				original_tag = SPA
+				original_tag = SWE
+				original_tag = DEN
+				original_tag = NOR
+			}
+		}
+
+		complete_effect = {
+			set_country_flag = purchases_show
+		}
+	}
+
+	purchases_hide = {
+
+		icon = GFX_decision_generic_prepare_civil_war
+		ai_will_do = {
+			factor = -9999
+			}
+		visible = { has_country_flag = purchases_show
+			OR = {
+				original_tag = FIN
+				original_tag = POL
+				original_tag = HUN
+				original_tag = ROM
+				original_tag = BUL
+				original_tag = YUG
+				original_tag = GRE
+				original_tag = TUR
+				original_tag = SIA
+				original_tag = IRQ
+				original_tag = PER
+				original_tag = CHI
+				original_tag = SWI
+				original_tag = AUS
+				original_tag = HOL
+				original_tag = SPR
+				original_tag = SPA
+				original_tag = SWE
+				original_tag = DEN
+				original_tag = NOR
+			}
+		}
+
+		complete_effect = {
+			clr_country_flag = purchases_show
+		}
+	}
 	purchase_french_infantry_equipment = {
 		icon = generic_industry
 	
-		allowed = {
+		allowed = { 
 			OR = {
 				original_tag = FIN
 				original_tag = POL
@@ -30,7 +103,7 @@ purchase_foreign_equipment_category = {
 			}
 		}
 		
-		visible = {
+		visible = { has_country_flag = purchases_show
 			country_exists = FRA
 			has_war = no
 			NOT = {
@@ -38,8 +111,11 @@ purchase_foreign_equipment_category = {
 			}
 			FRA = {
 				has_capitulated = no
-				has_equipment = {
-					infantry_equipment > 2000
+				NOT = {
+					has_idea = war_economy
+				}
+				NOT = {
+					has_idea = tot_economic_mobilisation
 				}
 			}
 			
@@ -49,6 +125,10 @@ purchase_foreign_equipment_category = {
 			NOT = {
 				has_idea = BUL_army_restrictions
 			}
+			has_opinion = {
+				target = FRA
+				value > -16
+			}
 		}
 		
 		available = {
@@ -56,11 +136,16 @@ purchase_foreign_equipment_category = {
 				is_in_faction_with = FRA
 				is_in_faction = no
 			}
+			FRA = {
+				has_opinion = {
+					target = ROOT
+					value > -16
+				}
+			}
 			num_of_civilian_factories_available_for_projects > 1
-			
 		}
 		
-		cost = 25
+		cost = 50
 		
 		days_re_enable = 90
 		fire_only_once = no
@@ -120,6 +205,13 @@ purchase_foreign_equipment_category = {
 					type = industrial_complex level = -1
 				}
 			}
+			ROOT = {
+				add_equipment_to_stockpile = {
+					type =  infantry_equipment
+					amount = 900
+					producer = FRA
+				}
+			}
 		}
 	
 	}
@@ -127,7 +219,7 @@ purchase_foreign_equipment_category = {
 	purchase_british_infantry_equipment = {
 		icon = generic_industry
 	
-		allowed = {
+		allowed = { 
 			OR = {
 				original_tag = FIN
 				original_tag = POL
@@ -152,7 +244,7 @@ purchase_foreign_equipment_category = {
 			}
 		}
 		
-		visible = {
+		visible = { has_country_flag = purchases_show
 			country_exists = ENG
 			has_war = no
 			NOT = {
@@ -160,8 +252,11 @@ purchase_foreign_equipment_category = {
 			}
 			ENG = {
 				has_capitulated = no
-				has_equipment = {
-					infantry_equipment > 2000
+				NOT = {
+					has_idea = war_economy
+				}
+				NOT = {
+					has_idea = tot_economic_mobilisation
 				}
 			}
 			NOT = {
@@ -169,6 +264,10 @@ purchase_foreign_equipment_category = {
 			}
 			NOT = {
 				has_idea = BUL_army_restrictions
+			}
+			has_opinion = {
+				target = ENG
+				value > -16
 			}
 		}
 		
@@ -178,10 +277,15 @@ purchase_foreign_equipment_category = {
 				is_in_faction = no
 			}
 			num_of_civilian_factories_available_for_projects > 1
-			
+			ENG = {
+				has_opinion = {
+					target = ROOT
+					value > -16
+				}
+			}
 		}
 		
-		cost = 25
+		cost = 50
 		
 		days_re_enable = 90
 		fire_only_once = no
@@ -241,6 +345,13 @@ purchase_foreign_equipment_category = {
 					type = industrial_complex level = -1
 				}
 			}
+			ROOT = {
+				add_equipment_to_stockpile = {
+					type =  infantry_equipment
+					amount = 900
+					producer = ENG
+				}
+			}
 		}
 	
 	}
@@ -248,7 +359,7 @@ purchase_foreign_equipment_category = {
 	purchase_american_infantry_equipment = {
 		icon = generic_industry
 	
-		allowed = {
+		allowed = { 
 			OR = {
 				original_tag = FIN
 				original_tag = POL
@@ -273,7 +384,7 @@ purchase_foreign_equipment_category = {
 			}
 		}
 		
-		visible = {
+		visible = { has_country_flag = purchases_show
 			country_exists = USA
 			has_war = no
 			NOT = {
@@ -281,8 +392,11 @@ purchase_foreign_equipment_category = {
 			}
 			USA = {
 				has_capitulated = no
-				has_equipment = {
-					infantry_equipment > 2000
+				NOT = {
+					has_idea = war_economy
+				}
+				NOT = {
+					has_idea = tot_economic_mobilisation
 				}
 			}
 			NOT = {
@@ -290,6 +404,10 @@ purchase_foreign_equipment_category = {
 			}
 			NOT = {
 				has_idea = BUL_army_restrictions
+			}
+			has_opinion = {
+				target = USA
+				value > -16
 			}
 		}
 		
@@ -299,10 +417,15 @@ purchase_foreign_equipment_category = {
 				is_in_faction = no
 			}
 			num_of_civilian_factories_available_for_projects > 1
-			
+			USA = {
+				has_opinion = {
+					target = ROOT
+					value > -16
+				}
+			}
 		}
 		
-		cost = 25
+		cost = 50
 		
 		days_re_enable = 90
 		fire_only_once = no
@@ -362,6 +485,13 @@ purchase_foreign_equipment_category = {
 					type = industrial_complex level = -1
 				}
 			}
+			ROOT = {
+				add_equipment_to_stockpile = {
+					type =  infantry_equipment
+					amount = 900
+					producer = USA
+				}
+			}
 		}
 	
 	}
@@ -369,7 +499,7 @@ purchase_foreign_equipment_category = {
 	purchase_italian_infantry_equipment = {
 		icon = generic_industry
 	
-		allowed = {
+		allowed = { 
 			OR = {
 				original_tag = FIN
 				original_tag = POL
@@ -394,7 +524,7 @@ purchase_foreign_equipment_category = {
 			}
 		}
 		
-		visible = {
+		visible = { has_country_flag = purchases_show
 			country_exists = ITA
 			has_war = no
 			NOT = {
@@ -402,8 +532,11 @@ purchase_foreign_equipment_category = {
 			}
 			ITA = {
 				has_capitulated = no
-				has_equipment = {
-					infantry_equipment > 2000
+				NOT = {
+					has_idea = war_economy
+				}
+				NOT = {
+					has_idea = tot_economic_mobilisation
 				}
 			}
 			NOT = {
@@ -411,6 +544,10 @@ purchase_foreign_equipment_category = {
 			}
 			NOT = {
 				has_idea = BUL_army_restrictions
+			}
+			has_opinion = {
+				target = ITA
+				value > -16
 			}
 		}
 		
@@ -420,10 +557,15 @@ purchase_foreign_equipment_category = {
 				is_in_faction = no
 			}
 			num_of_civilian_factories_available_for_projects > 1
-			
+			ITA = {
+				has_opinion = {
+					target = ROOT
+					value > -16
+				}
+			}
 		}
 		
-		cost = 25
+		cost = 50
 		
 		days_re_enable = 90
 		fire_only_once = no
@@ -483,6 +625,13 @@ purchase_foreign_equipment_category = {
 					type = industrial_complex level = -1
 				}
 			}
+			ROOT = {
+				add_equipment_to_stockpile = {
+					type =  infantry_equipment
+					amount = 900
+					producer = ITA
+				}
+			}
 		}
 	
 	}
@@ -490,7 +639,7 @@ purchase_foreign_equipment_category = {
 	purchase_german_infantry_equipment = {
 		icon = generic_industry
 	
-		allowed = {
+		allowed = { 
 			OR = {
 				original_tag = FIN
 				original_tag = POL
@@ -515,7 +664,7 @@ purchase_foreign_equipment_category = {
 			}
 		}
 		
-		visible = {
+		visible = { has_country_flag = purchases_show
 			country_exists = GER
 			has_war = no
 			NOT = {
@@ -523,8 +672,11 @@ purchase_foreign_equipment_category = {
 			}
 			GER = {
 				has_capitulated = no
-				has_equipment = {
-					infantry_equipment > 2000
+				NOT = {
+					has_idea = war_economy
+				}
+				NOT = {
+					has_idea = tot_economic_mobilisation
 				}
 			}
 			NOT = {
@@ -532,6 +684,10 @@ purchase_foreign_equipment_category = {
 			}
 			NOT = {
 				has_idea = BUL_army_restrictions
+			}
+			has_opinion = {
+				target = GER
+				value > -16
 			}
 		}
 		
@@ -541,10 +697,15 @@ purchase_foreign_equipment_category = {
 				is_in_faction = no
 			}
 			num_of_civilian_factories_available_for_projects > 1
-			
+			GER = {
+				has_opinion = {
+					target = ROOT
+					value > -16
+				}
+			}
 		}
 		
-		cost = 25
+		cost = 50
 		
 		days_re_enable = 90
 		fire_only_once = no
@@ -604,6 +765,13 @@ purchase_foreign_equipment_category = {
 					type = industrial_complex level = -1
 				}
 			}
+			ROOT = {
+				add_equipment_to_stockpile = {
+					type =  infantry_equipment
+					amount = 900
+					producer = GER
+				}
+			}
 		}
 	
 	}
@@ -611,7 +779,7 @@ purchase_foreign_equipment_category = {
 	purchase_czech_infantry_equipment = {
 		icon = generic_industry
 	
-		allowed = {
+		allowed = { 
 			OR = {
 				original_tag = FIN
 				original_tag = POL
@@ -636,7 +804,7 @@ purchase_foreign_equipment_category = {
 			}
 		}
 		
-		visible = {
+		visible = { has_country_flag = purchases_show
 			country_exists = CZE
 			has_war = no
 			NOT = {
@@ -644,8 +812,11 @@ purchase_foreign_equipment_category = {
 			}
 			CZE = {
 				has_capitulated = no
-				has_equipment = {
-					infantry_equipment > 2000
+				NOT = {
+					has_idea = war_economy
+				}
+				NOT = {
+					has_idea = tot_economic_mobilisation
 				}
 			}
 			NOT = {
@@ -653,6 +824,10 @@ purchase_foreign_equipment_category = {
 			}
 			NOT = {
 				has_idea = BUL_army_restrictions
+			}
+			has_opinion = {
+				target = CZE
+				value > -16
 			}
 		}
 		
@@ -662,10 +837,15 @@ purchase_foreign_equipment_category = {
 				is_in_faction = no
 			}
 			num_of_civilian_factories_available_for_projects > 1
-			
+			CZE = {
+				has_opinion = {
+					target = ROOT
+					value > -16
+				}
+			}
 		}
 		
-		cost = 25
+		cost = 50
 		
 		days_re_enable = 90
 		fire_only_once = no
@@ -725,6 +905,13 @@ purchase_foreign_equipment_category = {
 					type = industrial_complex level = -1
 				}
 			}
+			ROOT = {
+				add_equipment_to_stockpile = {
+					type =  infantry_equipment
+					amount = 900
+					producer = CZE
+				}
+			}
 		}
 	
 	}
@@ -732,7 +919,7 @@ purchase_foreign_equipment_category = {
 	purchase_belgian_infantry_equipment = {
 		icon = generic_industry
 	
-		allowed = {
+		allowed = { 
 			OR = {
 				original_tag = FIN
 				original_tag = POL
@@ -757,7 +944,7 @@ purchase_foreign_equipment_category = {
 			}
 		}
 		
-		visible = {
+		visible = { has_country_flag = purchases_show
 			country_exists = BEL
 			has_war = no
 			NOT = {
@@ -765,8 +952,11 @@ purchase_foreign_equipment_category = {
 			}
 			BEL = {
 				has_capitulated = no
-				has_equipment = {
-					infantry_equipment > 2000
+				NOT = {
+					has_idea = war_economy
+				}
+				NOT = {
+					has_idea = tot_economic_mobilisation
 				}
 			}
 			NOT = {
@@ -774,6 +964,10 @@ purchase_foreign_equipment_category = {
 			}
 			NOT = {
 				has_idea = BUL_army_restrictions
+			}
+			has_opinion = {
+				target = BEL
+				value > -16
 			}
 		}
 		
@@ -783,10 +977,15 @@ purchase_foreign_equipment_category = {
 				is_in_faction = no
 			}
 			num_of_civilian_factories_available_for_projects > 1
-			
+			BEL = {
+				has_opinion = {
+					target = ROOT
+					value > -16
+				}
+			}
 		}
 		
-		cost = 25
+		cost = 50
 		
 		days_re_enable = 90
 		fire_only_once = no
@@ -846,6 +1045,13 @@ purchase_foreign_equipment_category = {
 					type = industrial_complex level = -1
 				}
 			}
+			ROOT = {
+				add_equipment_to_stockpile = {
+					type =  infantry_equipment
+					amount = 900
+					producer = BEL
+				}
+			}
 		}
 	
 	}
@@ -855,7 +1061,7 @@ purchase_foreign_equipment_category = {
 	purchase_french_heavy_infantry_equipment = {
 		icon = generic_industry
 	
-		allowed = {
+		allowed = { 
 			OR = {
 				original_tag = FIN
 				original_tag = POL
@@ -880,7 +1086,7 @@ purchase_foreign_equipment_category = {
 			}
 		}
 		
-		visible = {
+		visible = { has_country_flag = purchases_show
 			country_exists = FRA
 			has_war = no
 			NOT = {
@@ -888,8 +1094,11 @@ purchase_foreign_equipment_category = {
 			}
 			FRA = {
 				has_capitulated = no
-				has_equipment = {
-					heavy_infantry_equipment > 1000
+				NOT = {
+					has_idea = war_economy
+				}
+				NOT = {
+					has_idea = tot_economic_mobilisation
 				}
 			}
 			
@@ -899,6 +1108,10 @@ purchase_foreign_equipment_category = {
 			NOT = {
 				has_idea = BUL_army_restrictions
 			}
+			has_opinion = {
+				target = FRA
+				value > -16
+			}
 		}
 		
 		available = {
@@ -907,10 +1120,15 @@ purchase_foreign_equipment_category = {
 				is_in_faction = no
 			}
 			num_of_civilian_factories_available_for_projects > 1
-			
+			FRA = {
+				has_opinion = {
+					target = ROOT
+					value > -16
+				}
+			}
 		}
 		
-		cost = 25
+		cost = 50
 		
 		days_re_enable = 90
 		fire_only_once = no
@@ -966,6 +1184,14 @@ purchase_foreign_equipment_category = {
 					type = industrial_complex level = -1
 				}
 			}
+			ROOT = {
+				add_equipment_to_stockpile = {
+					type =  heavy_infantry_equipment
+					amount = 400
+					producer = FRA
+				}
+			}
+			
 		}
 	
 	}
@@ -973,7 +1199,7 @@ purchase_foreign_equipment_category = {
 	purchase_british_heavy_infantry_equipment = {
 		icon = generic_industry
 	
-		allowed = {
+		allowed = { 
 			OR = {
 				original_tag = FIN
 				original_tag = POL
@@ -998,7 +1224,7 @@ purchase_foreign_equipment_category = {
 			}
 		}
 		
-		visible = {
+		visible = { has_country_flag = purchases_show
 			country_exists = ENG
 			has_war = no
 			NOT = {
@@ -1006,8 +1232,11 @@ purchase_foreign_equipment_category = {
 			}
 			ENG = {
 				has_capitulated = no
-				has_equipment = {
-					heavy_infantry_equipment > 1000
+				NOT = {
+					has_idea = war_economy
+				}
+				NOT = {
+					has_idea = tot_economic_mobilisation
 				}
 			}
 			
@@ -1017,6 +1246,10 @@ purchase_foreign_equipment_category = {
 			NOT = {
 				has_idea = BUL_army_restrictions
 			}
+			has_opinion = {
+				target = ENG
+				value > -16
+			}
 		}
 		
 		available = {
@@ -1025,10 +1258,15 @@ purchase_foreign_equipment_category = {
 				is_in_faction = no
 			}
 			num_of_civilian_factories_available_for_projects > 1
-			
+			ENG = {
+				has_opinion = {
+					target = ROOT
+					value > -16
+				}
+			}
 		}
 		
-		cost = 25
+		cost = 50
 		
 		days_re_enable = 90
 		fire_only_once = no
@@ -1084,6 +1322,13 @@ purchase_foreign_equipment_category = {
 					type = industrial_complex level = -1
 				}
 			}
+			ROOT = {
+				add_equipment_to_stockpile = {
+					type =  heavy_infantry_equipment
+					amount = 400
+					producer = ENG
+				}
+			}
 		}
 	
 	}
@@ -1091,7 +1336,7 @@ purchase_foreign_equipment_category = {
 	purchase_american_heavy_infantry_equipment = {
 		icon = generic_industry
 	
-		allowed = {
+		allowed = { 
 			OR = {
 				original_tag = FIN
 				original_tag = POL
@@ -1116,7 +1361,7 @@ purchase_foreign_equipment_category = {
 			}
 		}
 		
-		visible = {
+		visible = { has_country_flag = purchases_show
 			country_exists = USA
 			has_war = no
 			NOT = {
@@ -1124,8 +1369,11 @@ purchase_foreign_equipment_category = {
 			}
 			USA = {
 				has_capitulated = no
-				has_equipment = {
-					heavy_infantry_equipment > 1000
+				NOT = {
+					has_idea = war_economy
+				}
+				NOT = {
+					has_idea = tot_economic_mobilisation
 				}
 			}
 			
@@ -1135,6 +1383,10 @@ purchase_foreign_equipment_category = {
 			NOT = {
 				has_idea = BUL_army_restrictions
 			}
+			has_opinion = {
+				target = USA
+				value > -16
+			}
 		}
 		
 		available = {
@@ -1143,10 +1395,15 @@ purchase_foreign_equipment_category = {
 				is_in_faction = no
 			}
 			num_of_civilian_factories_available_for_projects > 1
-			
+			USA = {
+				has_opinion = {
+					target = ROOT
+					value > -16
+				}
+			}
 		}
 		
-		cost = 25
+		cost = 50
 		
 		days_re_enable = 90
 		fire_only_once = no
@@ -1202,6 +1459,13 @@ purchase_foreign_equipment_category = {
 					type = industrial_complex level = -1
 				}
 			}
+			ROOT = {
+				add_equipment_to_stockpile = {
+					type =  heavy_infantry_equipment
+					amount = 400
+					producer = USA
+				}
+			}
 		}
 	
 	}
@@ -1209,7 +1473,7 @@ purchase_foreign_equipment_category = {
 	purchase_italian_heavy_infantry_equipment = {
 		icon = generic_industry
 	
-		allowed = {
+		allowed = { 
 			OR = {
 				original_tag = FIN
 				original_tag = POL
@@ -1234,7 +1498,7 @@ purchase_foreign_equipment_category = {
 			}
 		}
 		
-		visible = {
+		visible = { has_country_flag = purchases_show
 			country_exists = ITA
 			has_war = no
 			NOT = {
@@ -1242,8 +1506,11 @@ purchase_foreign_equipment_category = {
 			}
 			ITA = {
 				has_capitulated = no
-				has_equipment = {
-					heavy_infantry_equipment > 1000
+				NOT = {
+					has_idea = war_economy
+				}
+				NOT = {
+					has_idea = tot_economic_mobilisation
 				}
 			}
 			
@@ -1253,6 +1520,10 @@ purchase_foreign_equipment_category = {
 			NOT = {
 				has_idea = BUL_army_restrictions
 			}
+			has_opinion = {
+				target = ITA
+				value > -16
+			}
 		}
 		
 		available = {
@@ -1261,10 +1532,15 @@ purchase_foreign_equipment_category = {
 				is_in_faction = no
 			}
 			num_of_civilian_factories_available_for_projects > 1
-			
+			ITA = {
+				has_opinion = {
+					target = ROOT
+					value > -16
+				}
+			}
 		}
 		
-		cost = 25
+		cost = 50
 		
 		days_re_enable = 90
 		fire_only_once = no
@@ -1320,14 +1596,20 @@ purchase_foreign_equipment_category = {
 					type = industrial_complex level = -1
 				}
 			}
+			ROOT = {
+				add_equipment_to_stockpile = {
+					type =  heavy_infantry_equipment
+					amount = 400
+					producer = ITA
+				}
+			}
 		}
-	
 	}
 	
 	purchase_german_heavy_infantry_equipment = {
 		icon = generic_industry
 	
-		allowed = {
+		allowed = { 
 			OR = {
 				original_tag = FIN
 				original_tag = POL
@@ -1352,7 +1634,7 @@ purchase_foreign_equipment_category = {
 			}
 		}
 		
-		visible = {
+		visible = { has_country_flag = purchases_show
 			country_exists = GER
 			has_war = no
 			NOT = {
@@ -1360,8 +1642,11 @@ purchase_foreign_equipment_category = {
 			}
 			GER = {
 				has_capitulated = no
-				has_equipment = {
-					heavy_infantry_equipment > 1000
+				NOT = {
+					has_idea = war_economy
+				}
+				NOT = {
+					has_idea = tot_economic_mobilisation
 				}
 			}
 			
@@ -1371,6 +1656,10 @@ purchase_foreign_equipment_category = {
 			NOT = {
 				has_idea = BUL_army_restrictions
 			}
+			has_opinion = {
+				target = GER
+				value > -16
+			}
 		}
 		
 		available = {
@@ -1379,10 +1668,15 @@ purchase_foreign_equipment_category = {
 				is_in_faction = no
 			}
 			num_of_civilian_factories_available_for_projects > 1
-			
+			GER = {
+				has_opinion = {
+					target = ROOT
+					value > -16
+				}
+			}
 		}
 		
-		cost = 25
+		cost = 50
 		
 		days_re_enable = 90
 		fire_only_once = no
@@ -1438,6 +1732,13 @@ purchase_foreign_equipment_category = {
 					type = industrial_complex level = -1
 				}
 			}
+			ROOT = {
+				add_equipment_to_stockpile = {
+					type =  heavy_infantry_equipment
+					amount = 400
+					producer = GER
+				}
+			}
 		}
 	
 	}
@@ -1445,7 +1746,7 @@ purchase_foreign_equipment_category = {
 	purchase_czech_heavy_infantry_equipment = {
 		icon = generic_industry
 	
-		allowed = {
+		allowed = { 
 			OR = {
 				original_tag = FIN
 				original_tag = POL
@@ -1470,7 +1771,7 @@ purchase_foreign_equipment_category = {
 			}
 		}
 		
-		visible = {
+		visible = { has_country_flag = purchases_show
 			country_exists = CZE
 			has_war = no
 			NOT = {
@@ -1478,8 +1779,11 @@ purchase_foreign_equipment_category = {
 			}
 			CZE = {
 				has_capitulated = no
-				has_equipment = {
-					heavy_infantry_equipment > 1000
+				NOT = {
+					has_idea = war_economy
+				}
+				NOT = {
+					has_idea = tot_economic_mobilisation
 				}
 			}
 			
@@ -1489,6 +1793,10 @@ purchase_foreign_equipment_category = {
 			NOT = {
 				has_idea = BUL_army_restrictions
 			}
+			has_opinion = {
+				target = CZE
+				value > -16
+			}
 		}
 		
 		available = {
@@ -1497,10 +1805,15 @@ purchase_foreign_equipment_category = {
 				is_in_faction = no
 			}
 			num_of_civilian_factories_available_for_projects > 1
-			
+			CZE = {
+				has_opinion = {
+					target = ROOT
+					value > -16
+				}
+			}
 		}
 		
-		cost = 25
+		cost = 50
 		
 		days_re_enable = 90
 		fire_only_once = no
@@ -1556,6 +1869,13 @@ purchase_foreign_equipment_category = {
 					type = industrial_complex level = -1
 				}
 			}
+			ROOT = {
+				add_equipment_to_stockpile = {
+					type =  heavy_infantry_equipment
+					amount = 400
+					producer = CZE
+				}
+			}
 		}
 	
 	}
@@ -1563,7 +1883,7 @@ purchase_foreign_equipment_category = {
 	purchase_belgian_heavy_infantry_equipment = {
 		icon = generic_industry
 	
-		allowed = {
+		allowed = { 
 			OR = {
 				original_tag = FIN
 				original_tag = POL
@@ -1588,7 +1908,7 @@ purchase_foreign_equipment_category = {
 			}
 		}
 		
-		visible = {
+		visible = { has_country_flag = purchases_show
 			country_exists = BEL
 			has_war = no
 			NOT = {
@@ -1596,8 +1916,11 @@ purchase_foreign_equipment_category = {
 			}
 			BEL = {
 				has_capitulated = no
-				has_equipment = {
-					heavy_infantry_equipment > 1000
+				NOT = {
+					has_idea = war_economy
+				}
+				NOT = {
+					has_idea = tot_economic_mobilisation
 				}
 			}
 			
@@ -1607,6 +1930,10 @@ purchase_foreign_equipment_category = {
 			NOT = {
 				has_idea = BUL_army_restrictions
 			}
+			has_opinion = {
+				target = BEL
+				value > -16
+			}
 		}
 		
 		available = {
@@ -1615,10 +1942,15 @@ purchase_foreign_equipment_category = {
 				is_in_faction = no
 			}
 			num_of_civilian_factories_available_for_projects > 1
-			
+			BEL = {
+				has_opinion = {
+					target = ROOT
+					value > -16
+				}
+			}
 		}
 		
-		cost = 25
+		cost = 50
 		
 		days_re_enable = 90
 		fire_only_once = no
@@ -1674,6 +2006,13 @@ purchase_foreign_equipment_category = {
 					type = industrial_complex level = -1
 				}
 			}
+			ROOT = {
+				add_equipment_to_stockpile = {
+					type =  heavy_infantry_equipment
+					amount = 400
+					producer = BEL
+				}
+			}
 		}
 	
 	}
@@ -1685,7 +2024,7 @@ purchase_foreign_equipment_category = {
 	purchase_french_anti_air_equipment = {
 		icon = generic_industry
 	
-		allowed = {
+		allowed = { 
 			OR = {
 				original_tag = FIN
 				original_tag = POL
@@ -1710,7 +2049,7 @@ purchase_foreign_equipment_category = {
 			}
 		}
 		
-		visible = {
+		visible = { has_country_flag = purchases_show
 			country_exists = FRA
 			has_war = no
 			NOT = {
@@ -1718,8 +2057,11 @@ purchase_foreign_equipment_category = {
 			}
 			FRA = {
 				has_capitulated = no
-				has_equipment = {
-					anti_air_equipment > 299
+				NOT = {
+					has_idea = war_economy
+				}
+				NOT = {
+					has_idea = tot_economic_mobilisation
 				}
 			}
 			
@@ -1729,6 +2071,10 @@ purchase_foreign_equipment_category = {
 			NOT = {
 				has_idea = BUL_army_restrictions
 			}
+			has_opinion = {
+				target = FRA
+				value > -16
+			}
 		}
 		
 		available = {
@@ -1737,10 +2083,15 @@ purchase_foreign_equipment_category = {
 				is_in_faction = no
 			}
 			num_of_civilian_factories_available_for_projects > 1
-			
+			FRA = {
+				has_opinion = {
+					target = ROOT
+					value > -16
+				}
+			}
 		}
 		
-		cost = 25
+		cost = 50
 		
 		days_re_enable = 90
 		fire_only_once = no
@@ -1797,6 +2148,13 @@ purchase_foreign_equipment_category = {
 					type = industrial_complex level = -1
 				}
 			}
+			ROOT = {
+				add_equipment_to_stockpile = {
+					type =  anti_air_equipment
+					amount = 60
+					producer = FRA
+				}
+			}
 		}
 	
 	}
@@ -1804,7 +2162,7 @@ purchase_foreign_equipment_category = {
 	purchase_british_anti_air_equipment = {
 		icon = generic_industry
 	
-		allowed = {
+		allowed = { 
 			OR = {
 				original_tag = FIN
 				original_tag = POL
@@ -1829,7 +2187,7 @@ purchase_foreign_equipment_category = {
 			}
 		}
 		
-		visible = {
+		visible = { has_country_flag = purchases_show
 			country_exists = ENG
 			has_war = no
 			NOT = {
@@ -1837,8 +2195,11 @@ purchase_foreign_equipment_category = {
 			}
 			ENG = {
 				has_capitulated = no
-				has_equipment = {
-					anti_air_equipment > 299
+				NOT = {
+					has_idea = war_economy
+				}
+				NOT = {
+					has_idea = tot_economic_mobilisation
 				}
 			}
 			NOT = {
@@ -1846,6 +2207,10 @@ purchase_foreign_equipment_category = {
 			}
 			NOT = {
 				has_idea = BUL_army_restrictions
+			}
+			has_opinion = {
+				target = ENG
+				value > -16
 			}
 		}
 		
@@ -1855,10 +2220,15 @@ purchase_foreign_equipment_category = {
 				is_in_faction = no
 			}
 			num_of_civilian_factories_available_for_projects > 1
-			
+			ENG = {
+				has_opinion = {
+					target = ROOT
+					value > -16
+				}
+			}
 		}
 		
-		cost = 25
+		cost = 50
 		
 		days_re_enable = 90
 		fire_only_once = no
@@ -1915,6 +2285,13 @@ purchase_foreign_equipment_category = {
 					type = industrial_complex level = -1
 				}
 			}
+			ROOT = {
+				add_equipment_to_stockpile = {
+					type =  anti_air_equipment
+					amount = 60
+					producer = ENG
+				}
+			}
 		}
 	
 	}
@@ -1947,7 +2324,7 @@ purchase_foreign_equipment_category = {
 			}
 		}
 		
-		visible = {
+		visible = { has_country_flag = purchases_show
 			country_exists = USA
 			has_war = no
 			NOT = {
@@ -1955,8 +2332,11 @@ purchase_foreign_equipment_category = {
 			}
 			USA = {
 				has_capitulated = no
-				has_equipment = {
-					anti_air_equipment > 299
+				NOT = {
+					has_idea = war_economy
+				}
+				NOT = {
+					has_idea = tot_economic_mobilisation
 				}
 			}
 			NOT = {
@@ -1964,6 +2344,10 @@ purchase_foreign_equipment_category = {
 			}
 			NOT = {
 				has_idea = BUL_army_restrictions
+			}
+			has_opinion = {
+				target = USA
+				value > -16
 			}
 		}
 		
@@ -1973,10 +2357,15 @@ purchase_foreign_equipment_category = {
 				is_in_faction = no
 			}
 			num_of_civilian_factories_available_for_projects > 1
-			
+			USA = {
+				has_opinion = {
+					target = ROOT
+					value > -16
+				}
+			}
 		}
 		
-		cost = 25
+		cost = 50
 		
 		days_re_enable = 90
 		fire_only_once = no
@@ -2033,6 +2422,13 @@ purchase_foreign_equipment_category = {
 					type = industrial_complex level = -1
 				}
 			}
+			ROOT = {
+				add_equipment_to_stockpile = {
+					type =  anti_air_equipment
+					amount = 60
+					producer = USA
+				}
+			}
 		}
 	
 	}
@@ -2040,7 +2436,7 @@ purchase_foreign_equipment_category = {
 	purchase_italian_anti_air_equipment = {
 		icon = generic_industry
 	
-		allowed = {
+		allowed = { 
 			OR = {
 				original_tag = FIN
 				original_tag = POL
@@ -2065,7 +2461,7 @@ purchase_foreign_equipment_category = {
 			}
 		}
 		
-		visible = {
+		visible = { has_country_flag = purchases_show
 			country_exists = ITA
 			has_war = no
 			NOT = {
@@ -2073,8 +2469,11 @@ purchase_foreign_equipment_category = {
 			}
 			ITA = {
 				has_capitulated = no
-				has_equipment = {
-					anti_air_equipment > 299
+				NOT = {
+					has_idea = war_economy
+				}
+				NOT = {
+					has_idea = tot_economic_mobilisation
 				}
 			}
 			NOT = {
@@ -2082,6 +2481,10 @@ purchase_foreign_equipment_category = {
 			}
 			NOT = {
 				has_idea = BUL_army_restrictions
+			}
+			has_opinion = {
+				target = ITA
+				value > -16
 			}
 		}
 		
@@ -2091,10 +2494,15 @@ purchase_foreign_equipment_category = {
 				is_in_faction = no
 			}
 			num_of_civilian_factories_available_for_projects > 1
-			
+			ITA = {
+				has_opinion = {
+					target = ROOT
+					value > -16
+				}
+			}
 		}
 		
-		cost = 25
+		cost = 50
 		
 		days_re_enable = 90
 		fire_only_once = no
@@ -2151,6 +2559,13 @@ purchase_foreign_equipment_category = {
 					type = industrial_complex level = -1
 				}
 			}
+			ROOT = {
+				add_equipment_to_stockpile = {
+					type =  anti_air_equipment
+					amount = 60
+					producer = ITA
+				}
+			}
 		}
 	
 	}
@@ -2158,7 +2573,7 @@ purchase_foreign_equipment_category = {
 	purchase_german_anti_air_equipment = {
 		icon = generic_industry
 	
-		allowed = {
+		allowed = { 
 			OR = {
 				original_tag = FIN
 				original_tag = POL
@@ -2183,7 +2598,7 @@ purchase_foreign_equipment_category = {
 			}
 		}
 		
-		visible = {
+		visible = { has_country_flag = purchases_show
 			country_exists = GER
 			has_war = no
 			NOT = {
@@ -2191,8 +2606,11 @@ purchase_foreign_equipment_category = {
 			}
 			GER = {
 				has_capitulated = no
-				has_equipment = {
-					anti_air_equipment > 299
+				NOT = {
+					has_idea = war_economy
+				}
+				NOT = {
+					has_idea = tot_economic_mobilisation
 				}
 			}
 			NOT = {
@@ -2200,6 +2618,10 @@ purchase_foreign_equipment_category = {
 			}
 			NOT = {
 				has_idea = BUL_army_restrictions
+			}
+			has_opinion = {
+				target = GER
+				value > -16
 			}
 		}
 		
@@ -2209,10 +2631,15 @@ purchase_foreign_equipment_category = {
 				is_in_faction = no
 			}
 			num_of_civilian_factories_available_for_projects > 1
-			
+			GER = {
+				has_opinion = {
+					target = ROOT
+					value > -16
+				}
+			}
 		}
 		
-		cost = 25
+		cost = 50
 		
 		days_re_enable = 90
 		fire_only_once = no
@@ -2269,6 +2696,13 @@ purchase_foreign_equipment_category = {
 					type = industrial_complex level = -1
 				}
 			}
+			ROOT = {
+				add_equipment_to_stockpile = {
+					type =  anti_air_equipment
+					amount = 60
+					producer = GER
+				}
+			}
 		}
 	
 	}
@@ -2276,7 +2710,7 @@ purchase_foreign_equipment_category = {
 	purchase_czech_anti_air_equipment = {
 		icon = generic_industry
 	
-		allowed = {
+		allowed = { 
 			OR = {
 				original_tag = FIN
 				original_tag = POL
@@ -2301,7 +2735,7 @@ purchase_foreign_equipment_category = {
 			}
 		}
 		
-		visible = {
+		visible = { has_country_flag = purchases_show
 			country_exists = CZE
 			has_war = no
 			NOT = {
@@ -2309,8 +2743,11 @@ purchase_foreign_equipment_category = {
 			}
 			CZE = {
 				has_capitulated = no
-				has_equipment = {
-					anti_air_equipment > 299
+				NOT = {
+					has_idea = war_economy
+				}
+				NOT = {
+					has_idea = tot_economic_mobilisation
 				}
 			}
 			NOT = {
@@ -2318,6 +2755,10 @@ purchase_foreign_equipment_category = {
 			}
 			NOT = {
 				has_idea = BUL_army_restrictions
+			}
+			has_opinion = {
+				target = CZE
+				value > -16
 			}
 		}
 		
@@ -2327,10 +2768,15 @@ purchase_foreign_equipment_category = {
 				is_in_faction = no
 			}
 			num_of_civilian_factories_available_for_projects > 1
-			
+			CZE = {
+				has_opinion = {
+					target = ROOT
+					value > -16
+				}
+			}
 		}
 		
-		cost = 25
+		cost = 50
 		
 		days_re_enable = 90
 		fire_only_once = no
@@ -2387,6 +2833,13 @@ purchase_foreign_equipment_category = {
 					type = industrial_complex level = -1
 				}
 			}
+			ROOT = {
+				add_equipment_to_stockpile = {
+					type =  anti_air_equipment
+					amount = 60
+					producer = CZE
+				}
+			}
 		}
 	
 	}
@@ -2394,7 +2847,7 @@ purchase_foreign_equipment_category = {
 	purchase_belgian_anti_air_equipment = {
 		icon = generic_industry
 	
-		allowed = {
+		allowed = { 
 			OR = {
 				original_tag = FIN
 				original_tag = POL
@@ -2419,7 +2872,7 @@ purchase_foreign_equipment_category = {
 			}
 		}
 		
-		visible = {
+		visible = { has_country_flag = purchases_show
 			country_exists = BEL
 			has_war = no
 			NOT = {
@@ -2427,8 +2880,11 @@ purchase_foreign_equipment_category = {
 			}
 			BEL = {
 				has_capitulated = no
-				has_equipment = {
-					anti_air_equipment > 299
+				NOT = {
+					has_idea = war_economy
+				}
+				NOT = {
+					has_idea = tot_economic_mobilisation
 				}
 			}
 			NOT = {
@@ -2436,6 +2892,10 @@ purchase_foreign_equipment_category = {
 			}
 			NOT = {
 				has_idea = BUL_army_restrictions
+			}
+			has_opinion = {
+				target = BEL
+				value > -16
 			}
 		}
 		
@@ -2445,10 +2905,15 @@ purchase_foreign_equipment_category = {
 				is_in_faction = no
 			}
 			num_of_civilian_factories_available_for_projects > 1
-			
+			BEL = {
+				has_opinion = {
+					target = ROOT
+					value > -16
+				}
+			}
 		}
 		
-		cost = 25
+		cost = 50
 		
 		days_re_enable = 90
 		fire_only_once = no
@@ -2505,6 +2970,13 @@ purchase_foreign_equipment_category = {
 					type = industrial_complex level = -1
 				}
 			}
+			ROOT = {
+				add_equipment_to_stockpile = {
+					type =  anti_air_equipment
+					amount = 60
+					producer = BEL
+				}
+			}
 		}
 	
 	}
@@ -2517,7 +2989,7 @@ purchase_foreign_equipment_category = {
 	purchase_french_support_equipment = {
 		icon = generic_industry
 	
-		allowed = {
+		allowed = { 
 			OR = {
 				original_tag = FIN
 				original_tag = POL
@@ -2542,7 +3014,7 @@ purchase_foreign_equipment_category = {
 			}
 		}
 		
-		visible = {
+		visible = { has_country_flag = purchases_show
 			country_exists = FRA
 			has_war = no
 			NOT = {
@@ -2550,8 +3022,11 @@ purchase_foreign_equipment_category = {
 			}
 			FRA = {
 				has_capitulated = no
-				has_equipment = {
-					support_equipment > 999
+				NOT = {
+					has_idea = war_economy
+				}
+				NOT = {
+					has_idea = tot_economic_mobilisation
 				}
 			}
 			
@@ -2561,6 +3036,10 @@ purchase_foreign_equipment_category = {
 			NOT = {
 				has_idea = BUL_army_restrictions
 			}
+			has_opinion = {
+				target = FRA
+				value > -16
+			}
 		}
 		
 		available = {
@@ -2569,10 +3048,15 @@ purchase_foreign_equipment_category = {
 				is_in_faction = no
 			}
 			num_of_civilian_factories_available_for_projects > 1
-			
+			FRA = {
+				has_opinion = {
+					target = ROOT
+					value > -16
+				}
+			}
 		}
 		
-		cost = 25
+		cost = 50
 		
 		days_re_enable = 90
 		fire_only_once = no
@@ -2628,6 +3112,13 @@ purchase_foreign_equipment_category = {
 					type = industrial_complex level = -1
 				}
 			}
+			ROOT = {
+				add_equipment_to_stockpile = {
+					type =  support_equipment
+					amount = 180
+					producer = FRA
+				}
+			}
 		}
 	
 	}
@@ -2635,7 +3126,7 @@ purchase_foreign_equipment_category = {
 	purchase_british_support_equipment = {
 		icon = generic_industry
 	
-		allowed = {
+		allowed = { 
 			OR = {
 				original_tag = FIN
 				original_tag = POL
@@ -2660,7 +3151,7 @@ purchase_foreign_equipment_category = {
 			}
 		}
 		
-		visible = {
+		visible = { has_country_flag = purchases_show
 			country_exists = ENG
 			has_war = no
 			NOT = {
@@ -2668,8 +3159,11 @@ purchase_foreign_equipment_category = {
 			}
 			ENG = {
 				has_capitulated = no
-				has_equipment = {
-					support_equipment > 999
+				NOT = {
+					has_idea = war_economy
+				}
+				NOT = {
+					has_idea = tot_economic_mobilisation
 				}
 			}
 			NOT = {
@@ -2677,6 +3171,10 @@ purchase_foreign_equipment_category = {
 			}
 			NOT = {
 				has_idea = BUL_army_restrictions
+			}
+			has_opinion = {
+				target = ENG
+				value > -16
 			}
 		}
 		
@@ -2686,10 +3184,15 @@ purchase_foreign_equipment_category = {
 				is_in_faction = no
 			}
 			num_of_civilian_factories_available_for_projects > 1
-			
+			ENG = {
+				has_opinion = {
+					target = ROOT
+					value > -16
+				}
+			}
 		}
 		
-		cost = 25
+		cost = 50
 		
 		days_re_enable = 90
 		fire_only_once = no
@@ -2745,6 +3248,13 @@ purchase_foreign_equipment_category = {
 					type = industrial_complex level = -1
 				}
 			}
+			ROOT = {
+				add_equipment_to_stockpile = {
+					type =  support_equipment
+					amount = 180
+					producer = ENG
+				}
+			}
 		}
 	
 	}
@@ -2752,7 +3262,7 @@ purchase_foreign_equipment_category = {
 	purchase_american_support_equipment = {
 		icon = generic_industry
 	
-		allowed = {
+		allowed = { 
 			OR = {
 				original_tag = FIN
 				original_tag = POL
@@ -2777,7 +3287,7 @@ purchase_foreign_equipment_category = {
 			}
 		}
 		
-		visible = {
+		visible = { has_country_flag = purchases_show
 			country_exists = USA
 			has_war = no
 			NOT = {
@@ -2785,8 +3295,11 @@ purchase_foreign_equipment_category = {
 			}
 			USA = {
 				has_capitulated = no
-				has_equipment = {
-					support_equipment > 999
+				NOT = {
+					has_idea = war_economy
+				}
+				NOT = {
+					has_idea = tot_economic_mobilisation
 				}
 			}
 			NOT = {
@@ -2794,6 +3307,10 @@ purchase_foreign_equipment_category = {
 			}
 			NOT = {
 				has_idea = BUL_army_restrictions
+			}
+			has_opinion = {
+				target = USA
+				value > -16
 			}
 		}
 		
@@ -2803,10 +3320,15 @@ purchase_foreign_equipment_category = {
 				is_in_faction = no
 			}
 			num_of_civilian_factories_available_for_projects > 1
-			
+			USA = {
+				has_opinion = {
+					target = ROOT
+					value > -16
+				}
+			}
 		}
 		
-		cost = 25
+		cost = 50
 		
 		days_re_enable = 90
 		fire_only_once = no
@@ -2862,6 +3384,13 @@ purchase_foreign_equipment_category = {
 					type = industrial_complex level = -1
 				}
 			}
+			ROOT = {
+				add_equipment_to_stockpile = {
+					type =  support_equipment
+					amount = 180
+					producer = USA
+				}
+			}
 		}
 	
 	}
@@ -2869,7 +3398,7 @@ purchase_foreign_equipment_category = {
 	purchase_italian_support_equipment = {
 		icon = generic_industry
 	
-		allowed = {
+		allowed = { 
 			OR = {
 				original_tag = FIN
 				original_tag = POL
@@ -2894,7 +3423,7 @@ purchase_foreign_equipment_category = {
 			}
 		}
 		
-		visible = {
+		visible = { has_country_flag = purchases_show
 			country_exists = ITA
 			has_war = no
 			NOT = {
@@ -2902,8 +3431,11 @@ purchase_foreign_equipment_category = {
 			}
 			ITA = {
 				has_capitulated = no
-				has_equipment = {
-					support_equipment > 999
+				NOT = {
+					has_idea = war_economy
+				}
+				NOT = {
+					has_idea = tot_economic_mobilisation
 				}
 			}
 			NOT = {
@@ -2911,6 +3443,10 @@ purchase_foreign_equipment_category = {
 			}
 			NOT = {
 				has_idea = BUL_army_restrictions
+			}
+			has_opinion = {
+				target = ITA
+				value > -16
 			}
 		}
 		
@@ -2920,10 +3456,15 @@ purchase_foreign_equipment_category = {
 				is_in_faction = no
 			}
 			num_of_civilian_factories_available_for_projects > 1
-			
+			ITA = {
+				has_opinion = {
+					target = ROOT
+					value > -16
+				}
+			}
 		}
 		
-		cost = 25
+		cost = 50
 		
 		days_re_enable = 90
 		fire_only_once = no
@@ -2979,6 +3520,13 @@ purchase_foreign_equipment_category = {
 					type = industrial_complex level = -1
 				}
 			}
+			ROOT = {
+				add_equipment_to_stockpile = {
+					type =  support_equipment
+					amount = 180
+					producer = ITA
+				}
+			}
 		}
 	
 	}
@@ -2986,7 +3534,7 @@ purchase_foreign_equipment_category = {
 	purchase_german_support_equipment = {
 		icon = generic_industry
 	
-		allowed = {
+		allowed = { 
 			OR = {
 				original_tag = FIN
 				original_tag = POL
@@ -3011,7 +3559,7 @@ purchase_foreign_equipment_category = {
 			}
 		}
 		
-		visible = {
+		visible = { has_country_flag = purchases_show
 			country_exists = GER
 			has_war = no
 			NOT = {
@@ -3019,8 +3567,11 @@ purchase_foreign_equipment_category = {
 			}
 			GER = {
 				has_capitulated = no
-				has_equipment = {
-					support_equipment > 999
+				NOT = {
+					has_idea = war_economy
+				}
+				NOT = {
+					has_idea = tot_economic_mobilisation
 				}
 			}
 			NOT = {
@@ -3028,6 +3579,10 @@ purchase_foreign_equipment_category = {
 			}
 			NOT = {
 				has_idea = BUL_army_restrictions
+			}
+			has_opinion = {
+				target = GER
+				value > -16
 			}
 		}
 		
@@ -3037,10 +3592,15 @@ purchase_foreign_equipment_category = {
 				is_in_faction = no
 			}
 			num_of_civilian_factories_available_for_projects > 1
-			
+			GER = {
+				has_opinion = {
+					target = ROOT
+					value > -16
+				}
+			}
 		}
 		
-		cost = 25
+		cost = 50
 		
 		days_re_enable = 90
 		fire_only_once = no
@@ -3096,6 +3656,13 @@ purchase_foreign_equipment_category = {
 					type = industrial_complex level = -1
 				}
 			}
+			ROOT = {
+				add_equipment_to_stockpile = {
+					type =  support_equipment
+					amount = 180
+					producer = GER
+				}
+			}
 		}
 	
 	}
@@ -3103,7 +3670,7 @@ purchase_foreign_equipment_category = {
 	purchase_czech_support_equipment = {
 		icon = generic_industry
 	
-		allowed = {
+		allowed = { 
 			OR = {
 				original_tag = FIN
 				original_tag = POL
@@ -3128,7 +3695,7 @@ purchase_foreign_equipment_category = {
 			}
 		}
 		
-		visible = {
+		visible = { has_country_flag = purchases_show
 			country_exists = CZE
 			has_war = no
 			NOT = {
@@ -3136,8 +3703,11 @@ purchase_foreign_equipment_category = {
 			}
 			CZE = {
 				has_capitulated = no
-				has_equipment = {
-					support_equipment > 999
+				NOT = {
+					has_idea = war_economy
+				}
+				NOT = {
+					has_idea = tot_economic_mobilisation
 				}
 			}
 			NOT = {
@@ -3145,6 +3715,10 @@ purchase_foreign_equipment_category = {
 			}
 			NOT = {
 				has_idea = BUL_army_restrictions
+			}
+			has_opinion = {
+				target = CZE
+				value > -16
 			}
 		}
 		
@@ -3154,10 +3728,15 @@ purchase_foreign_equipment_category = {
 				is_in_faction = no
 			}
 			num_of_civilian_factories_available_for_projects > 1
-			
+			CZE = {
+				has_opinion = {
+					target = ROOT
+					value > -16
+				}
+			}
 		}
 		
-		cost = 25
+		cost = 50
 		
 		days_re_enable = 90
 		fire_only_once = no
@@ -3213,6 +3792,13 @@ purchase_foreign_equipment_category = {
 					type = industrial_complex level = -1
 				}
 			}
+			ROOT = {
+				add_equipment_to_stockpile = {
+					type =  support_equipment
+					amount = 180
+					producer = CZE
+				}
+			}
 		}
 	
 	}
@@ -3220,7 +3806,7 @@ purchase_foreign_equipment_category = {
 	purchase_belgian_support_equipment = {
 		icon = generic_industry
 	
-		allowed = {
+		allowed = { 
 			OR = {
 				original_tag = FIN
 				original_tag = POL
@@ -3245,7 +3831,7 @@ purchase_foreign_equipment_category = {
 			}
 		}
 		
-		visible = {
+		visible = { has_country_flag = purchases_show
 			country_exists = BEL
 			has_war = no
 			NOT = {
@@ -3253,8 +3839,11 @@ purchase_foreign_equipment_category = {
 			}
 			BEL = {
 				has_capitulated = no
-				has_equipment = {
-					support_equipment > 999
+				NOT = {
+					has_idea = war_economy
+				}
+				NOT = {
+					has_idea = tot_economic_mobilisation
 				}
 			}
 			NOT = {
@@ -3262,6 +3851,10 @@ purchase_foreign_equipment_category = {
 			}
 			NOT = {
 				has_idea = BUL_army_restrictions
+			}
+			has_opinion = {
+				target = BEL
+				value > -16
 			}
 		}
 		
@@ -3271,10 +3864,15 @@ purchase_foreign_equipment_category = {
 				is_in_faction = no
 			}
 			num_of_civilian_factories_available_for_projects > 1
-			
+			BEL = {
+				has_opinion = {
+					target = ROOT
+					value > -16
+				}
+			}
 		}
 		
-		cost = 25
+		cost = 50
 		
 		days_re_enable = 90
 		fire_only_once = no
@@ -3330,6 +3928,13 @@ purchase_foreign_equipment_category = {
 					type = industrial_complex level = -1
 				}
 			}
+			ROOT = {
+				add_equipment_to_stockpile = {
+					type =  support_equipment
+					amount = 180
+					producer = BEL
+				}
+			}
 		}
 	
 	}
@@ -3342,7 +3947,7 @@ purchase_foreign_equipment_category = {
 	purchase_french_anti_tank_equipment = {
 		icon = generic_industry
 	
-		allowed = {
+		allowed = { 
 			OR = {
 				original_tag = FIN
 				original_tag = POL
@@ -3367,7 +3972,7 @@ purchase_foreign_equipment_category = {
 			}
 		}
 		
-		visible = {
+		visible = { has_country_flag = purchases_show
 			country_exists = FRA
 			has_war = no
 			NOT = {
@@ -3375,8 +3980,11 @@ purchase_foreign_equipment_category = {
 			}
 			FRA = {
 				has_capitulated = no
-				has_equipment = {
-					anti_tank_equipment > 299
+				NOT = {
+					has_idea = war_economy
+				}
+				NOT = {
+					has_idea = tot_economic_mobilisation
 				}
 			}
 			
@@ -3386,6 +3994,10 @@ purchase_foreign_equipment_category = {
 			NOT = {
 				has_idea = BUL_army_restrictions
 			}
+			has_opinion = {
+				target = FRA
+				value > -16
+			}
 		}
 		
 		available = {
@@ -3394,10 +4006,15 @@ purchase_foreign_equipment_category = {
 				is_in_faction = no
 			}
 			num_of_civilian_factories_available_for_projects > 1
-			
+			FRA = {
+				has_opinion = {
+					target = ROOT
+					value > -16
+				}
+			}
 		}
 		
-		cost = 25
+		cost = 50
 		
 		days_re_enable = 90
 		fire_only_once = no
@@ -3456,6 +4073,13 @@ purchase_foreign_equipment_category = {
 					type = industrial_complex level = -1
 				}
 			}
+			ROOT = {
+				add_equipment_to_stockpile = {
+					type =  Anti_tank_equipment
+					amount = 40
+					producer = FRA
+				}
+			}
 		}
 	
 	}
@@ -3463,7 +4087,7 @@ purchase_foreign_equipment_category = {
 	purchase_british_anti_tank_equipment = {
 		icon = generic_industry
 	
-		allowed = {
+		allowed = { 
 			OR = {
 				original_tag = FIN
 				original_tag = POL
@@ -3488,7 +4112,7 @@ purchase_foreign_equipment_category = {
 			}
 		}
 		
-		visible = {
+		visible = { has_country_flag = purchases_show
 			country_exists = ENG
 			has_war = no
 			NOT = {
@@ -3496,8 +4120,11 @@ purchase_foreign_equipment_category = {
 			}
 			ENG = {
 				has_capitulated = no
-				has_equipment = {
-					anti_tank_equipment > 299
+				NOT = {
+					has_idea = war_economy
+				}
+				NOT = {
+					has_idea = tot_economic_mobilisation
 				}
 			}
 			NOT = {
@@ -3505,6 +4132,10 @@ purchase_foreign_equipment_category = {
 			}
 			NOT = {
 				has_idea = BUL_army_restrictions
+			}
+			has_opinion = {
+				target = ENG
+				value > -16
 			}
 		}
 		
@@ -3514,10 +4145,15 @@ purchase_foreign_equipment_category = {
 				is_in_faction = no
 			}
 			num_of_civilian_factories_available_for_projects > 1
-			
+			ENG = {
+				has_opinion = {
+					target = ROOT
+					value > -16
+				}
+			}
 		}
 		
-		cost = 25
+		cost = 50
 		
 		days_re_enable = 90
 		fire_only_once = no
@@ -3574,6 +4210,13 @@ purchase_foreign_equipment_category = {
 					type = industrial_complex level = -1
 				}
 			}
+			ROOT = {
+				add_equipment_to_stockpile = {
+					type =  Anti_tank_equipment
+					amount = 40
+					producer = ENG
+				}
+			}
 		}
 	
 	}
@@ -3581,7 +4224,7 @@ purchase_foreign_equipment_category = {
 	purchase_american_anti_tank_equipment = {
 		icon = generic_industry
 	
-		allowed = {
+		allowed = { 
 			OR = {
 				original_tag = FIN
 				original_tag = POL
@@ -3606,7 +4249,7 @@ purchase_foreign_equipment_category = {
 			}
 		}
 		
-		visible = {
+		visible = { has_country_flag = purchases_show
 			country_exists = USA
 			has_war = no
 			NOT = {
@@ -3614,8 +4257,11 @@ purchase_foreign_equipment_category = {
 			}
 			USA = {
 				has_capitulated = no
-				has_equipment = {
-					anti_tank_equipment > 299
+				NOT = {
+					has_idea = war_economy
+				}
+				NOT = {
+					has_idea = tot_economic_mobilisation
 				}
 			}
 			NOT = {
@@ -3623,6 +4269,10 @@ purchase_foreign_equipment_category = {
 			}
 			NOT = {
 				has_idea = BUL_army_restrictions
+			}
+			has_opinion = {
+				target = USA
+				value > -16
 			}
 		}
 		
@@ -3632,10 +4282,15 @@ purchase_foreign_equipment_category = {
 				is_in_faction = no
 			}
 			num_of_civilian_factories_available_for_projects > 1
-			
+			USA = {
+				has_opinion = {
+					target = ROOT
+					value > -16
+				}
+			}
 		}
 		
-		cost = 25
+		cost = 50
 		
 		days_re_enable = 90
 		fire_only_once = no
@@ -3692,6 +4347,13 @@ purchase_foreign_equipment_category = {
 					type = industrial_complex level = -1
 				}
 			}
+			ROOT = {
+				add_equipment_to_stockpile = {
+					type =  Anti_tank_equipment
+					amount = 40
+					producer = USA
+				}
+			}
 		}
 	
 	}
@@ -3699,7 +4361,7 @@ purchase_foreign_equipment_category = {
 	purchase_italian_anti_tank_equipment = {
 		icon = generic_industry
 	
-		allowed = {
+		allowed = { 
 			OR = {
 				original_tag = FIN
 				original_tag = POL
@@ -3724,7 +4386,7 @@ purchase_foreign_equipment_category = {
 			}
 		}
 		
-		visible = {
+		visible = { has_country_flag = purchases_show
 			country_exists = ITA
 			has_war = no
 			NOT = {
@@ -3732,8 +4394,11 @@ purchase_foreign_equipment_category = {
 			}
 			ITA = {
 				has_capitulated = no
-				has_equipment = {
-					anti_tank_equipment > 299
+				NOT = {
+					has_idea = war_economy
+				}
+				NOT = {
+					has_idea = tot_economic_mobilisation
 				}
 			}
 			NOT = {
@@ -3741,6 +4406,10 @@ purchase_foreign_equipment_category = {
 			}
 			NOT = {
 				has_idea = BUL_army_restrictions
+			}
+			has_opinion = {
+				target = ITA
+				value > -16
 			}
 		}
 		
@@ -3750,10 +4419,15 @@ purchase_foreign_equipment_category = {
 				is_in_faction = no
 			}
 			num_of_civilian_factories_available_for_projects > 1
-			
+			ITA = {
+				has_opinion = {
+					target = ROOT
+					value > -16
+				}
+			}
 		}
 		
-		cost = 25
+		cost = 50
 		
 		days_re_enable = 90
 		fire_only_once = no
@@ -3810,6 +4484,13 @@ purchase_foreign_equipment_category = {
 					type = industrial_complex level = -1
 				}
 			}
+			ROOT = {
+				add_equipment_to_stockpile = {
+					type =  Anti_tank_equipment
+					amount = 40
+					producer = ITA
+				}
+			}
 		}
 	
 	}
@@ -3817,7 +4498,7 @@ purchase_foreign_equipment_category = {
 	purchase_german_anti_tank_equipment = {
 		icon = generic_industry
 	
-		allowed = {
+		allowed = { 
 			OR = {
 				original_tag = FIN
 				original_tag = POL
@@ -3842,7 +4523,7 @@ purchase_foreign_equipment_category = {
 			}
 		}
 		
-		visible = {
+		visible = { has_country_flag = purchases_show
 			country_exists = GER
 			has_war = no
 			NOT = {
@@ -3850,8 +4531,11 @@ purchase_foreign_equipment_category = {
 			}
 			GER = {
 				has_capitulated = no
-				has_equipment = {
-					anti_tank_equipment > 299
+				NOT = {
+					has_idea = war_economy
+				}
+				NOT = {
+					has_idea = tot_economic_mobilisation
 				}
 			}
 			NOT = {
@@ -3859,6 +4543,10 @@ purchase_foreign_equipment_category = {
 			}
 			NOT = {
 				has_idea = BUL_army_restrictions
+			}
+			has_opinion = {
+				target = GER
+				value > -16
 			}
 		}
 		
@@ -3868,10 +4556,15 @@ purchase_foreign_equipment_category = {
 				is_in_faction = no
 			}
 			num_of_civilian_factories_available_for_projects > 1
-			
+			GER = {
+				has_opinion = {
+					target = ROOT
+					value > -16
+				}
+			}
 		}
 		
-		cost = 25
+		cost = 50
 		
 		days_re_enable = 90
 		fire_only_once = no
@@ -3928,6 +4621,13 @@ purchase_foreign_equipment_category = {
 					type = industrial_complex level = -1
 				}
 			}
+			ROOT = {
+				add_equipment_to_stockpile = {
+					type =  Anti_tank_equipment
+					amount = 40
+					producer = GER
+				}
+			}
 		}
 	
 	}
@@ -3935,7 +4635,7 @@ purchase_foreign_equipment_category = {
 	purchase_czech_anti_tank_equipment = {
 		icon = generic_industry
 	
-		allowed = {
+		allowed = { 
 			OR = {
 				original_tag = FIN
 				original_tag = POL
@@ -3960,7 +4660,7 @@ purchase_foreign_equipment_category = {
 			}
 		}
 		
-		visible = {
+		visible = { has_country_flag = purchases_show
 			country_exists = CZE
 			has_war = no
 			NOT = {
@@ -3968,8 +4668,11 @@ purchase_foreign_equipment_category = {
 			}
 			CZE = {
 				has_capitulated = no
-				has_equipment = {
-					anti_tank_equipment > 299
+				NOT = {
+					has_idea = war_economy
+				}
+				NOT = {
+					has_idea = tot_economic_mobilisation
 				}
 			}
 			NOT = {
@@ -3977,6 +4680,10 @@ purchase_foreign_equipment_category = {
 			}
 			NOT = {
 				has_idea = BUL_army_restrictions
+			}
+			has_opinion = {
+				target = CZE
+				value > -16
 			}
 		}
 		
@@ -3986,10 +4693,15 @@ purchase_foreign_equipment_category = {
 				is_in_faction = no
 			}
 			num_of_civilian_factories_available_for_projects > 1
-			
+			CZE = {
+				has_opinion = {
+					target = ROOT
+					value > -16
+				}
+			}
 		}
 		
-		cost = 25
+		cost = 50
 		
 		days_re_enable = 90
 		fire_only_once = no
@@ -4046,6 +4758,13 @@ purchase_foreign_equipment_category = {
 					type = industrial_complex level = -1
 				}
 			}
+			ROOT = {
+				add_equipment_to_stockpile = {
+					type =  Anti_tank_equipment
+					amount = 40
+					producer = CZE
+				}
+			}
 		}
 	
 	}
@@ -4053,7 +4772,7 @@ purchase_foreign_equipment_category = {
 	purchase_belgian_anti_tank_equipment = {
 		icon = generic_industry
 	
-		allowed = {
+		allowed = { 
 			OR = {
 				original_tag = FIN
 				original_tag = POL
@@ -4078,7 +4797,7 @@ purchase_foreign_equipment_category = {
 			}
 		}
 		
-		visible = {
+		visible = { has_country_flag = purchases_show
 			country_exists = BEL
 			has_war = no
 			NOT = {
@@ -4086,8 +4805,11 @@ purchase_foreign_equipment_category = {
 			}
 			BEL = {
 				has_capitulated = no
-				has_equipment = {
-					anti_tank_equipment > 299
+				NOT = {
+					has_idea = war_economy
+				}
+				NOT = {
+					has_idea = tot_economic_mobilisation
 				}
 			}
 			NOT = {
@@ -4095,6 +4817,10 @@ purchase_foreign_equipment_category = {
 			}
 			NOT = {
 				has_idea = BUL_army_restrictions
+			}
+			has_opinion = {
+				target = BEL
+				value > -16
 			}
 		}
 		
@@ -4104,10 +4830,15 @@ purchase_foreign_equipment_category = {
 				is_in_faction = no
 			}
 			num_of_civilian_factories_available_for_projects > 1
-			
+			BEL = {
+				has_opinion = {
+					target = ROOT
+					value > -16
+				}
+			}
 		}
 		
-		cost = 25
+		cost = 50
 		
 		days_re_enable = 90
 		fire_only_once = no
@@ -4164,6 +4895,13 @@ purchase_foreign_equipment_category = {
 					type = industrial_complex level = -1
 				}
 			}
+			ROOT = {
+				add_equipment_to_stockpile = {
+					type =  Anti_tank_equipment
+					amount = 40
+					producer = BEL
+				}
+			}
 		}
 	
 	}
@@ -4176,7 +4914,7 @@ purchase_foreign_equipment_category = {
 	purchase_french_artillery_equipment = {
 		icon = generic_industry
 	
-		allowed = {
+		allowed = { 
 			OR = {
 				original_tag = FIN
 				original_tag = POL
@@ -4201,7 +4939,7 @@ purchase_foreign_equipment_category = {
 			}
 		}
 		
-		visible = {
+		visible = { has_country_flag = purchases_show
 			country_exists = FRA
 			has_war = no
 			NOT = {
@@ -4209,8 +4947,11 @@ purchase_foreign_equipment_category = {
 			}
 			FRA = {
 				has_capitulated = no
-				has_equipment = {
-					artillery_equipment > 299
+				NOT = {
+					has_idea = war_economy
+				}
+				NOT = {
+					has_idea = tot_economic_mobilisation
 				}
 			}
 			
@@ -4220,6 +4961,10 @@ purchase_foreign_equipment_category = {
 			NOT = {
 				has_idea = BUL_army_restrictions
 			}
+			has_opinion = {
+				target = FRA
+				value > -16
+			}
 		}
 		
 		available = {
@@ -4228,10 +4973,15 @@ purchase_foreign_equipment_category = {
 				is_in_faction = no
 			}
 			num_of_civilian_factories_available_for_projects > 1
-			
+			FRA = {
+				has_opinion = {
+					target = ROOT
+					value > -16
+				}
+			}
 		}
 		
-		cost = 25
+		cost = 50
 		
 		days_re_enable = 90
 		fire_only_once = no
@@ -4287,6 +5037,13 @@ purchase_foreign_equipment_category = {
 					type = industrial_complex level = -1
 				}
 			}
+			ROOT = {
+				add_equipment_to_stockpile = {
+					type =  artillery_equipment
+					amount = 24
+					producer = FRA
+				}
+			}
 		}
 	
 	}
@@ -4294,7 +5051,7 @@ purchase_foreign_equipment_category = {
 	purchase_british_artillery_equipment = {
 		icon = generic_industry
 	
-		allowed = {
+		allowed = { 
 			OR = {
 				original_tag = FIN
 				original_tag = POL
@@ -4319,7 +5076,7 @@ purchase_foreign_equipment_category = {
 			}
 		}
 		
-		visible = {
+		visible = { has_country_flag = purchases_show
 			country_exists = ENG
 			has_war = no
 			NOT = {
@@ -4327,8 +5084,11 @@ purchase_foreign_equipment_category = {
 			}
 			ENG = {
 				has_capitulated = no
-				has_equipment = {
-					artillery_equipment > 299
+				NOT = {
+					has_idea = war_economy
+				}
+				NOT = {
+					has_idea = tot_economic_mobilisation
 				}
 			}
 			NOT = {
@@ -4336,6 +5096,10 @@ purchase_foreign_equipment_category = {
 			}
 			NOT = {
 				has_idea = BUL_army_restrictions
+			}
+			has_opinion = {
+				target = ENG
+				value > -16
 			}
 		}
 		
@@ -4345,10 +5109,15 @@ purchase_foreign_equipment_category = {
 				is_in_faction = no
 			}
 			num_of_civilian_factories_available_for_projects > 1
-			
+			ENG = {
+				has_opinion = {
+					target = ROOT
+					value > -16
+				}
+			}
 		}
 		
-		cost = 25
+		cost = 50
 		
 		days_re_enable = 90
 		fire_only_once = no
@@ -4404,6 +5173,13 @@ purchase_foreign_equipment_category = {
 					type = industrial_complex level = -1
 				}
 			}
+			ROOT = {
+				add_equipment_to_stockpile = {
+					type =  artillery_equipment
+					amount = 24
+					producer = ENG
+				}
+			}
 		}
 	
 	}
@@ -4411,7 +5187,7 @@ purchase_foreign_equipment_category = {
 	purchase_american_artillery_equipment = {
 		icon = generic_industry
 	
-		allowed = {
+		allowed = { 
 			OR = {
 				original_tag = FIN
 				original_tag = POL
@@ -4436,7 +5212,7 @@ purchase_foreign_equipment_category = {
 			}
 		}
 		
-		visible = {
+		visible = { has_country_flag = purchases_show
 			country_exists = USA
 			has_war = no
 			NOT = {
@@ -4444,8 +5220,11 @@ purchase_foreign_equipment_category = {
 			}
 			USA = {
 				has_capitulated = no
-				has_equipment = {
-					artillery_equipment > 299
+				NOT = {
+					has_idea = war_economy
+				}
+				NOT = {
+					has_idea = tot_economic_mobilisation
 				}
 			}
 			NOT = {
@@ -4453,6 +5232,10 @@ purchase_foreign_equipment_category = {
 			}
 			NOT = {
 				has_idea = BUL_army_restrictions
+			}
+			has_opinion = {
+				target = USA
+				value > -16
 			}
 		}
 		
@@ -4462,10 +5245,15 @@ purchase_foreign_equipment_category = {
 				is_in_faction = no
 			}
 			num_of_civilian_factories_available_for_projects > 1
-			
+			USA = {
+				has_opinion = {
+					target = ROOT
+					value > -16
+				}
+			}
 		}
 		
-		cost = 25
+		cost = 50
 		
 		days_re_enable = 90
 		fire_only_once = no
@@ -4521,6 +5309,13 @@ purchase_foreign_equipment_category = {
 					type = industrial_complex level = -1
 				}
 			}
+			ROOT = {
+				add_equipment_to_stockpile = {
+					type =  artillery_equipment
+					amount = 24
+					producer = USA
+				}
+			}
 		}
 	
 	}
@@ -4528,7 +5323,7 @@ purchase_foreign_equipment_category = {
 	purchase_italian_artillery_equipment = {
 		icon = generic_industry
 	
-		allowed = {
+		allowed = { 
 			OR = {
 				original_tag = FIN
 				original_tag = POL
@@ -4553,7 +5348,7 @@ purchase_foreign_equipment_category = {
 			}
 		}
 		
-		visible = {
+		visible = { has_country_flag = purchases_show
 			country_exists = ITA
 			has_war = no
 			NOT = {
@@ -4561,8 +5356,11 @@ purchase_foreign_equipment_category = {
 			}
 			ITA = {
 				has_capitulated = no
-				has_equipment = {
-					artillery_equipment > 299
+				NOT = {
+					has_idea = war_economy
+				}
+				NOT = {
+					has_idea = tot_economic_mobilisation
 				}
 			}
 			NOT = {
@@ -4570,6 +5368,10 @@ purchase_foreign_equipment_category = {
 			}
 			NOT = {
 				has_idea = BUL_army_restrictions
+			}
+			has_opinion = {
+				target = ITA
+				value > -16
 			}
 		}
 		
@@ -4579,10 +5381,15 @@ purchase_foreign_equipment_category = {
 				is_in_faction = no
 			}
 			num_of_civilian_factories_available_for_projects > 1
-			
+			ITA = {
+				has_opinion = {
+					target = ROOT
+					value > -16
+				}
+			}
 		}
 		
-		cost = 25
+		cost = 50
 		
 		days_re_enable = 90
 		fire_only_once = no
@@ -4638,6 +5445,13 @@ purchase_foreign_equipment_category = {
 					type = industrial_complex level = -1
 				}
 			}
+			ROOT = {
+				add_equipment_to_stockpile = {
+					type =  artillery_equipment
+					amount = 24
+					producer = ITA
+				}
+			}
 		}
 	
 	}
@@ -4645,7 +5459,7 @@ purchase_foreign_equipment_category = {
 	purchase_german_artillery_equipment = {
 		icon = generic_industry
 	
-		allowed = {
+		allowed = { 
 			OR = {
 				original_tag = FIN
 				original_tag = POL
@@ -4670,7 +5484,7 @@ purchase_foreign_equipment_category = {
 			}
 		}
 		
-		visible = {
+		visible = { has_country_flag = purchases_show
 			country_exists = GER
 			has_war = no
 			NOT = {
@@ -4678,8 +5492,11 @@ purchase_foreign_equipment_category = {
 			}
 			GER = {
 				has_capitulated = no
-				has_equipment = {
-					artillery_equipment > 299
+				NOT = {
+					has_idea = war_economy
+				}
+				NOT = {
+					has_idea = tot_economic_mobilisation
 				}
 			}
 			NOT = {
@@ -4687,6 +5504,10 @@ purchase_foreign_equipment_category = {
 			}
 			NOT = {
 				has_idea = BUL_army_restrictions
+			}
+			has_opinion = {
+				target = GER
+				value > -16
 			}
 		}
 		
@@ -4696,10 +5517,15 @@ purchase_foreign_equipment_category = {
 				is_in_faction = no
 			}
 			num_of_civilian_factories_available_for_projects > 1
-			
+			GER = {
+				has_opinion = {
+					target = ROOT
+					value > -16
+				}
+			}
 		}
 		
-		cost = 25
+		cost = 50
 		
 		days_re_enable = 90
 		fire_only_once = no
@@ -4755,6 +5581,13 @@ purchase_foreign_equipment_category = {
 					type = industrial_complex level = -1
 				}
 			}
+			ROOT = {
+				add_equipment_to_stockpile = {
+					type =  artillery_equipment
+					amount = 24
+					producer = GER
+				}
+			}
 		}
 	
 	}
@@ -4762,7 +5595,7 @@ purchase_foreign_equipment_category = {
 	purchase_czech_artillery_equipment = {
 		icon = generic_industry
 	
-		allowed = {
+		allowed = { 
 			OR = {
 				original_tag = FIN
 				original_tag = POL
@@ -4787,7 +5620,7 @@ purchase_foreign_equipment_category = {
 			}
 		}
 		
-		visible = {
+		visible = { has_country_flag = purchases_show
 			country_exists = CZE
 			has_war = no
 			NOT = {
@@ -4795,8 +5628,11 @@ purchase_foreign_equipment_category = {
 			}
 			CZE = {
 				has_capitulated = no
-				has_equipment = {
-					artillery_equipment > 299
+				NOT = {
+					has_idea = war_economy
+				}
+				NOT = {
+					has_idea = tot_economic_mobilisation
 				}
 			}
 			NOT = {
@@ -4804,6 +5640,10 @@ purchase_foreign_equipment_category = {
 			}
 			NOT = {
 				has_idea = BUL_army_restrictions
+			}
+			has_opinion = {
+				target = CZE
+				value > -16
 			}
 		}
 		
@@ -4813,10 +5653,15 @@ purchase_foreign_equipment_category = {
 				is_in_faction = no
 			}
 			num_of_civilian_factories_available_for_projects > 1
-			
+			CZE = {
+				has_opinion = {
+					target = ROOT
+					value > -16
+				}
+			}
 		}
 		
-		cost = 25
+		cost = 50
 		
 		days_re_enable = 90
 		fire_only_once = no
@@ -4872,6 +5717,13 @@ purchase_foreign_equipment_category = {
 					type = industrial_complex level = -1
 				}
 			}
+			ROOT = {
+				add_equipment_to_stockpile = {
+					type =  artillery_equipment
+					amount = 24
+					producer = CZE
+				}
+			}
 		}
 	
 	}
@@ -4879,7 +5731,7 @@ purchase_foreign_equipment_category = {
 	purchase_belgian_artillery_equipment = {
 		icon = generic_industry
 	
-		allowed = {
+		allowed = { 
 			OR = {
 				original_tag = FIN
 				original_tag = POL
@@ -4904,7 +5756,7 @@ purchase_foreign_equipment_category = {
 			}
 		}
 		
-		visible = {
+		visible = { has_country_flag = purchases_show
 			country_exists = BEL
 			has_war = no
 			NOT = {
@@ -4912,8 +5764,11 @@ purchase_foreign_equipment_category = {
 			}
 			BEL = {
 				has_capitulated = no
-				has_equipment = {
-					artillery_equipment > 299
+				NOT = {
+					has_idea = war_economy
+				}
+				NOT = {
+					has_idea = tot_economic_mobilisation
 				}
 			}
 			NOT = {
@@ -4921,6 +5776,10 @@ purchase_foreign_equipment_category = {
 			}
 			NOT = {
 				has_idea = BUL_army_restrictions
+			}
+			has_opinion = {
+				target = BEL
+				value > -16
 			}
 		}
 		
@@ -4930,10 +5789,15 @@ purchase_foreign_equipment_category = {
 				is_in_faction = no
 			}
 			num_of_civilian_factories_available_for_projects > 1
-			
+			BEL = {
+				has_opinion = {
+					target = ROOT
+					value > -16
+				}
+			}
 		}
 		
-		cost = 25
+		cost = 50
 		
 		days_re_enable = 90
 		fire_only_once = no
@@ -4989,6 +5853,13 @@ purchase_foreign_equipment_category = {
 					type = industrial_complex level = -1
 				}
 			}
+			ROOT = {
+				add_equipment_to_stockpile = {
+					type =  artillery_equipment
+					amount = 24
+					producer = BEL
+				}
+			}
 		}
 	
 	}
@@ -5001,7 +5872,7 @@ purchase_foreign_equipment_category = {
 	purchase_french_motorized_equipment = {
 		icon = generic_industry
 	
-		allowed = {
+		allowed = { 
 			OR = {
 				original_tag = FIN
 				original_tag = POL
@@ -5026,7 +5897,7 @@ purchase_foreign_equipment_category = {
 			}
 		}
 		
-		visible = {
+		visible = { has_country_flag = purchases_show
 			country_exists = FRA
 			has_war = no
 			NOT = {
@@ -5034,8 +5905,11 @@ purchase_foreign_equipment_category = {
 			}
 			FRA = {
 				has_capitulated = no
-				has_equipment = {
-					motorized_equipment > 99
+				NOT = {
+					has_idea = war_economy
+				}
+				NOT = {
+					has_idea = tot_economic_mobilisation
 				}
 			}
 			
@@ -5045,6 +5919,10 @@ purchase_foreign_equipment_category = {
 			NOT = {
 				has_idea = BUL_army_restrictions
 			}
+			has_opinion = {
+				target = FRA
+				value > -16
+			}
 		}
 		
 		available = {
@@ -5053,10 +5931,15 @@ purchase_foreign_equipment_category = {
 				is_in_faction = no
 			}
 			num_of_civilian_factories_available_for_projects > 1
-			
+			FRA = {
+				has_opinion = {
+					target = ROOT
+					value > -16
+				}
+			}
 		}
 		
-		cost = 25
+		cost = 50
 		
 		days_re_enable = 90
 		fire_only_once = no
@@ -5113,6 +5996,13 @@ purchase_foreign_equipment_category = {
 					type = industrial_complex level = -1
 				}
 			}
+			ROOT = {
+				add_equipment_to_stockpile = {
+					type =  motorized_equipment
+					amount = 70
+					producer = FRA
+				}
+			}
 		}
 	
 	}
@@ -5120,7 +6010,7 @@ purchase_foreign_equipment_category = {
 	purchase_british_motorized_equipment = {
 		icon = generic_industry
 	
-		allowed = {
+		allowed = { 
 			OR = {
 				original_tag = FIN
 				original_tag = POL
@@ -5145,7 +6035,7 @@ purchase_foreign_equipment_category = {
 			}
 		}
 		
-		visible = {
+		visible = { has_country_flag = purchases_show
 			country_exists = ENG
 			has_war = no
 			NOT = {
@@ -5153,8 +6043,11 @@ purchase_foreign_equipment_category = {
 			}
 			ENG = {
 				has_capitulated = no
-				has_equipment = {
-					motorized_equipment > 99
+				NOT = {
+					has_idea = war_economy
+				}
+				NOT = {
+					has_idea = tot_economic_mobilisation
 				}
 			}
 			
@@ -5164,6 +6057,10 @@ purchase_foreign_equipment_category = {
 			NOT = {
 				has_idea = BUL_army_restrictions
 			}
+			has_opinion = {
+				target = ENG
+				value > -16
+			}
 		}
 		
 		available = {
@@ -5172,10 +6069,15 @@ purchase_foreign_equipment_category = {
 				is_in_faction = no
 			}
 			num_of_civilian_factories_available_for_projects > 1
-			
+			ENG = {
+				has_opinion = {
+					target = ROOT
+					value > -16
+				}
+			}
 		}
 		
-		cost = 25
+		cost = 50
 		
 		days_re_enable = 90
 		fire_only_once = no
@@ -5232,6 +6134,13 @@ purchase_foreign_equipment_category = {
 					type = industrial_complex level = -1
 				}
 			}
+			ROOT = {
+				add_equipment_to_stockpile = {
+					type =  motorized_equipment
+					amount = 70
+					producer = ENG
+				}
+			}
 		}
 	
 	}
@@ -5239,7 +6148,7 @@ purchase_foreign_equipment_category = {
 	purchase_american_motorized_equipment = {
 		icon = generic_industry
 	
-		allowed = {
+		allowed = { 
 			OR = {
 				original_tag = FIN
 				original_tag = POL
@@ -5264,7 +6173,7 @@ purchase_foreign_equipment_category = {
 			}
 		}
 		
-		visible = {
+		visible = { has_country_flag = purchases_show
 			country_exists = USA
 			has_war = no
 			NOT = {
@@ -5272,8 +6181,11 @@ purchase_foreign_equipment_category = {
 			}
 			USA = {
 				has_capitulated = no
-				has_equipment = {
-					motorized_equipment > 99
+				NOT = {
+					has_idea = war_economy
+				}
+				NOT = {
+					has_idea = tot_economic_mobilisation
 				}
 			}
 			
@@ -5283,6 +6195,10 @@ purchase_foreign_equipment_category = {
 			NOT = {
 				has_idea = BUL_army_restrictions
 			}
+			has_opinion = {
+				target = USA
+				value > -16
+			}
 		}
 		
 		available = {
@@ -5291,10 +6207,15 @@ purchase_foreign_equipment_category = {
 				is_in_faction = no
 			}
 			num_of_civilian_factories_available_for_projects > 1
-			
+			USA = {
+				has_opinion = {
+					target = ROOT
+					value > -16
+				}
+			}
 		}
 		
-		cost = 25
+		cost = 50
 		
 		days_re_enable = 90
 		fire_only_once = no
@@ -5351,6 +6272,13 @@ purchase_foreign_equipment_category = {
 					type = industrial_complex level = -1
 				}
 			}
+			ROOT = {
+				add_equipment_to_stockpile = {
+					type =  motorized_equipment
+					amount = 70
+					producer = USA
+				}
+			}
 		}
 	
 	}
@@ -5358,7 +6286,7 @@ purchase_foreign_equipment_category = {
 	purchase_italian_motorized_equipment = {
 		icon = generic_industry
 	
-		allowed = {
+		allowed = { 
 			OR = {
 				original_tag = FIN
 				original_tag = POL
@@ -5383,7 +6311,7 @@ purchase_foreign_equipment_category = {
 			}
 		}
 		
-		visible = {
+		visible = { has_country_flag = purchases_show
 			country_exists = ITA
 			has_war = no
 			NOT = {
@@ -5391,8 +6319,11 @@ purchase_foreign_equipment_category = {
 			}
 			ITA = {
 				has_capitulated = no
-				has_equipment = {
-					motorized_equipment > 99
+				NOT = {
+					has_idea = war_economy
+				}
+				NOT = {
+					has_idea = tot_economic_mobilisation
 				}
 			}
 			
@@ -5402,6 +6333,10 @@ purchase_foreign_equipment_category = {
 			NOT = {
 				has_idea = BUL_army_restrictions
 			}
+			has_opinion = {
+				target = ITA
+				value > -16
+			}
 		}
 		
 		available = {
@@ -5410,10 +6345,15 @@ purchase_foreign_equipment_category = {
 				is_in_faction = no
 			}
 			num_of_civilian_factories_available_for_projects > 1
-			
+			ITA = {
+				has_opinion = {
+					target = ROOT
+					value > -16
+				}
+			}
 		}
 		
-		cost = 25
+		cost = 50
 		
 		days_re_enable = 90
 		fire_only_once = no
@@ -5470,6 +6410,13 @@ purchase_foreign_equipment_category = {
 					type = industrial_complex level = -1
 				}
 			}
+			ROOT = {
+				add_equipment_to_stockpile = {
+					type =  motorized_equipment
+					amount = 70
+					producer = ITA
+				}
+			}
 		}
 	
 	}
@@ -5477,7 +6424,7 @@ purchase_foreign_equipment_category = {
 	purchase_german_motorized_equipment = {
 		icon = generic_industry
 	
-		allowed = {
+		allowed = { 
 			OR = {
 				original_tag = FIN
 				original_tag = POL
@@ -5502,7 +6449,7 @@ purchase_foreign_equipment_category = {
 			}
 		}
 		
-		visible = {
+		visible = { has_country_flag = purchases_show
 			country_exists = GER
 			has_war = no
 			NOT = {
@@ -5510,8 +6457,11 @@ purchase_foreign_equipment_category = {
 			}
 			GER = {
 				has_capitulated = no
-				has_equipment = {
-					motorized_equipment > 99
+				NOT = {
+					has_idea = war_economy
+				}
+				NOT = {
+					has_idea = tot_economic_mobilisation
 				}
 			}
 			
@@ -5521,6 +6471,10 @@ purchase_foreign_equipment_category = {
 			NOT = {
 				has_idea = BUL_army_restrictions
 			}
+			has_opinion = {
+				target = GER
+				value > -16
+			}
 		}
 		
 		available = {
@@ -5529,10 +6483,15 @@ purchase_foreign_equipment_category = {
 				is_in_faction = no
 			}
 			num_of_civilian_factories_available_for_projects > 1
-			
+			GER = {
+				has_opinion = {
+					target = ROOT
+					value > -16
+				}
+			}
 		}
 		
-		cost = 25
+		cost = 50
 		
 		days_re_enable = 90
 		fire_only_once = no
@@ -5589,6 +6548,13 @@ purchase_foreign_equipment_category = {
 					type = industrial_complex level = -1
 				}
 			}
+			ROOT = {
+				add_equipment_to_stockpile = {
+					type =  motorized_equipment
+					amount = 70
+					producer = GER
+				}
+			}
 		}
 	
 	}
@@ -5596,7 +6562,7 @@ purchase_foreign_equipment_category = {
 	purchase_czech_motorized_equipment = {
 		icon = generic_industry
 	
-		allowed = {
+		allowed = { 
 			OR = {
 				original_tag = FIN
 				original_tag = POL
@@ -5621,7 +6587,7 @@ purchase_foreign_equipment_category = {
 			}
 		}
 		
-		visible = {
+		visible = { has_country_flag = purchases_show
 			country_exists = CZE
 			has_war = no
 			NOT = {
@@ -5629,8 +6595,11 @@ purchase_foreign_equipment_category = {
 			}
 			CZE = {
 				has_capitulated = no
-				has_equipment = {
-					motorized_equipment > 99
+				NOT = {
+					has_idea = war_economy
+				}
+				NOT = {
+					has_idea = tot_economic_mobilisation
 				}
 			}
 			
@@ -5640,6 +6609,10 @@ purchase_foreign_equipment_category = {
 			NOT = {
 				has_idea = BUL_army_restrictions
 			}
+			has_opinion = {
+				target = CZE
+				value > -16
+			}
 		}
 		
 		available = {
@@ -5648,10 +6621,15 @@ purchase_foreign_equipment_category = {
 				is_in_faction = no
 			}
 			num_of_civilian_factories_available_for_projects > 1
-			
+			CZE = {
+				has_opinion = {
+					target = ROOT
+					value > -16
+				}
+			}
 		}
 		
-		cost = 25
+		cost = 50
 		
 		days_re_enable = 90
 		fire_only_once = no
@@ -5708,6 +6686,13 @@ purchase_foreign_equipment_category = {
 					type = industrial_complex level = -1
 				}
 			}
+			ROOT = {
+				add_equipment_to_stockpile = {
+					type =  motorized_equipment
+					amount = 70
+					producer = CZE
+				}
+			}
 		}
 	
 	}
@@ -5715,7 +6700,7 @@ purchase_foreign_equipment_category = {
 	purchase_belgian_motorized_equipment = {
 		icon = generic_industry
 	
-		allowed = {
+		allowed = { 
 			OR = {
 				original_tag = FIN
 				original_tag = POL
@@ -5740,7 +6725,7 @@ purchase_foreign_equipment_category = {
 			}
 		}
 		
-		visible = {
+		visible = { has_country_flag = purchases_show
 			country_exists = BEL
 			has_war = no
 			NOT = {
@@ -5748,8 +6733,11 @@ purchase_foreign_equipment_category = {
 			}
 			BEL = {
 				has_capitulated = no
-				has_equipment = {
-					motorized_equipment > 99
+				NOT = {
+					has_idea = war_economy
+				}
+				NOT = {
+					has_idea = tot_economic_mobilisation
 				}
 			}
 			
@@ -5759,6 +6747,10 @@ purchase_foreign_equipment_category = {
 			NOT = {
 				has_idea = BUL_army_restrictions
 			}
+			has_opinion = {
+				target = BEL
+				value > -16
+			}
 		}
 		
 		available = {
@@ -5767,10 +6759,15 @@ purchase_foreign_equipment_category = {
 				is_in_faction = no
 			}
 			num_of_civilian_factories_available_for_projects > 1
-			
+			BEL = {
+				has_opinion = {
+					target = ROOT
+					value > -16
+				}
+			}
 		}
 		
-		cost = 25
+		cost = 50
 		
 		days_re_enable = 90
 		fire_only_once = no
@@ -5827,6 +6824,13 @@ purchase_foreign_equipment_category = {
 					type = industrial_complex level = -1
 				}
 			}
+			ROOT = {
+				add_equipment_to_stockpile = {
+					type =  motorized_equipment
+					amount = 70
+					producer = BEL
+				}
+			}
 		}
 	
 	}
@@ -5838,7 +6842,7 @@ purchase_foreign_equipment_category = {
 	purchase_french_fighter_equipment = {
 		icon = generic_industry
 	
-		allowed = {
+		allowed = { 
 			OR = {
 				original_tag = FIN
 				original_tag = POL
@@ -5863,7 +6867,7 @@ purchase_foreign_equipment_category = {
 			}
 		}
 		
-		visible = {
+		visible = { has_country_flag = purchases_show
 			country_exists = FRA
 			has_war = no
 			NOT = {
@@ -5871,8 +6875,11 @@ purchase_foreign_equipment_category = {
 			}
 			FRA = {
 				has_capitulated = no
-				has_equipment = {
-					fighter_equipment > 24
+				NOT = {
+					has_idea = war_economy
+				}
+				NOT = {
+					has_idea = tot_economic_mobilisation
 				}
 			}
 			
@@ -5882,6 +6889,10 @@ purchase_foreign_equipment_category = {
 			NOT = {
 				has_idea = BUL_army_restrictions
 			}
+			has_opinion = {
+				target = FRA
+				value > -16
+			}
 		}
 		
 		available = {
@@ -5890,10 +6901,15 @@ purchase_foreign_equipment_category = {
 				is_in_faction = no
 			}
 			num_of_civilian_factories_available_for_projects > 2
-			
+			FRA = {
+				has_opinion = {
+					target = ROOT
+					value > -16
+				}
+			}
 		}
 		
-		cost = 25
+		cost = 50
 		
 		days_re_enable = 90
 		fire_only_once = no
@@ -5950,6 +6966,13 @@ purchase_foreign_equipment_category = {
 					type = industrial_complex level = -2
 				}
 			}
+			ROOT = {
+				add_equipment_to_stockpile = {
+					type =  fighter_equipment
+					amount = 24
+					producer = FRA
+				}
+			}
 		}
 	
 	}
@@ -5957,7 +6980,7 @@ purchase_foreign_equipment_category = {
 	purchase_british_fighter_equipment = {
 		icon = generic_industry
 	
-		allowed = {
+		allowed = { 
 			OR = {
 				original_tag = FIN
 				original_tag = POL
@@ -5982,7 +7005,7 @@ purchase_foreign_equipment_category = {
 			}
 		}
 		
-		visible = {
+		visible = { has_country_flag = purchases_show
 			country_exists = ENG
 			has_war = no
 			NOT = {
@@ -5990,8 +7013,11 @@ purchase_foreign_equipment_category = {
 			}
 			ENG = {
 				has_capitulated = no
-				has_equipment = {
-					fighter_equipment > 24
+				NOT = {
+					has_idea = war_economy
+				}
+				NOT = {
+					has_idea = tot_economic_mobilisation
 				}
 			}
 			
@@ -6001,6 +7027,10 @@ purchase_foreign_equipment_category = {
 			NOT = {
 				has_idea = BUL_army_restrictions
 			}
+			has_opinion = {
+				target = ENG
+				value > -16
+			}
 		}
 		
 		available = {
@@ -6009,10 +7039,15 @@ purchase_foreign_equipment_category = {
 				is_in_faction = no
 			}
 			num_of_civilian_factories_available_for_projects > 2
-			
+			ENG = {
+				has_opinion = {
+					target = ROOT
+					value > -16
+				}
+			}
 		}
 		
-		cost = 25
+		cost = 50
 		
 		days_re_enable = 90
 		fire_only_once = no
@@ -6069,6 +7104,13 @@ purchase_foreign_equipment_category = {
 					type = industrial_complex level = -2
 				}
 			}
+			ROOT = {
+				add_equipment_to_stockpile = {
+					type =  fighter_equipment
+					amount = 24
+					producer = ENG
+				}
+			}
 		}
 	
 	}
@@ -6076,7 +7118,7 @@ purchase_foreign_equipment_category = {
 	purchase_american_fighter_equipment = {
 		icon = generic_industry
 	
-		allowed = {
+		allowed = { 
 			OR = {
 				original_tag = FIN
 				original_tag = POL
@@ -6101,7 +7143,7 @@ purchase_foreign_equipment_category = {
 			}
 		}
 		
-		visible = {
+		visible = { has_country_flag = purchases_show
 			country_exists = USA
 			has_war = no
 			NOT = {
@@ -6109,8 +7151,11 @@ purchase_foreign_equipment_category = {
 			}
 			USA = {
 				has_capitulated = no
-				has_equipment = {
-					fighter_equipment > 24
+				NOT = {
+					has_idea = war_economy
+				}
+				NOT = {
+					has_idea = tot_economic_mobilisation
 				}
 			}
 			
@@ -6120,6 +7165,10 @@ purchase_foreign_equipment_category = {
 			NOT = {
 				has_idea = BUL_army_restrictions
 			}
+			has_opinion = {
+				target = USA
+				value > -16
+			}
 		}
 		
 		available = {
@@ -6128,10 +7177,15 @@ purchase_foreign_equipment_category = {
 				is_in_faction = no
 			}
 			num_of_civilian_factories_available_for_projects > 2
-			
+			USA = {
+				has_opinion = {
+					target = ROOT
+					value > -16
+				}
+			}
 		}
 		
-		cost = 25
+		cost = 50
 		
 		days_re_enable = 90
 		fire_only_once = no
@@ -6188,6 +7242,13 @@ purchase_foreign_equipment_category = {
 					type = industrial_complex level = -2
 				}
 			}
+			ROOT = {
+				add_equipment_to_stockpile = {
+					type =  fighter_equipment
+					amount = 24
+					producer = USA
+				}
+			}
 		}
 	
 	}
@@ -6195,7 +7256,7 @@ purchase_foreign_equipment_category = {
 	purchase_italian_fighter_equipment = {
 		icon = generic_industry
 	
-		allowed = {
+		allowed = { 
 			OR = {
 				original_tag = FIN
 				original_tag = POL
@@ -6220,7 +7281,7 @@ purchase_foreign_equipment_category = {
 			}
 		}
 		
-		visible = {
+		visible = { has_country_flag = purchases_show
 			country_exists = ITA
 			has_war = no
 			NOT = {
@@ -6228,8 +7289,11 @@ purchase_foreign_equipment_category = {
 			}
 			ITA = {
 				has_capitulated = no
-				has_equipment = {
-					fighter_equipment > 24
+				NOT = {
+					has_idea = war_economy
+				}
+				NOT = {
+					has_idea = tot_economic_mobilisation
 				}
 			}
 			
@@ -6239,6 +7303,10 @@ purchase_foreign_equipment_category = {
 			NOT = {
 				has_idea = BUL_army_restrictions
 			}
+			has_opinion = {
+				target = ITA
+				value > -16
+			}
 		}
 		
 		available = {
@@ -6247,10 +7315,15 @@ purchase_foreign_equipment_category = {
 				is_in_faction = no
 			}
 			num_of_civilian_factories_available_for_projects > 2
-			
+			ITA = {
+				has_opinion = {
+					target = ROOT
+					value > -16
+				}
+			}
 		}
 		
-		cost = 25
+		cost = 50
 		
 		days_re_enable = 90
 		fire_only_once = no
@@ -6307,6 +7380,13 @@ purchase_foreign_equipment_category = {
 					type = industrial_complex level = -2
 				}
 			}
+			ROOT = {
+				add_equipment_to_stockpile = {
+					type =  fighter_equipment
+					amount = 24
+					producer = ITA
+				}
+			}
 		}
 	
 	}
@@ -6314,7 +7394,7 @@ purchase_foreign_equipment_category = {
 	purchase_german_fighter_equipment = {
 		icon = generic_industry
 	
-		allowed = {
+		allowed = { 
 			OR = {
 				original_tag = FIN
 				original_tag = POL
@@ -6339,7 +7419,7 @@ purchase_foreign_equipment_category = {
 			}
 		}
 		
-		visible = {
+		visible = { has_country_flag = purchases_show
 			country_exists = GER
 			has_war = no
 			NOT = {
@@ -6347,8 +7427,11 @@ purchase_foreign_equipment_category = {
 			}
 			GER = {
 				has_capitulated = no
-				has_equipment = {
-					fighter_equipment > 24
+				NOT = {
+					has_idea = war_economy
+				}
+				NOT = {
+					has_idea = tot_economic_mobilisation
 				}
 			}
 			
@@ -6358,6 +7441,10 @@ purchase_foreign_equipment_category = {
 			NOT = {
 				has_idea = BUL_army_restrictions
 			}
+			has_opinion = {
+				target = GER
+				value > -16
+			}
 		}
 		
 		available = {
@@ -6366,10 +7453,15 @@ purchase_foreign_equipment_category = {
 				is_in_faction = no
 			}
 			num_of_civilian_factories_available_for_projects > 2
-			
+			GER = {
+				has_opinion = {
+					target = ROOT
+					value > -16
+				}
+			}
 		}
 		
-		cost = 25
+		cost = 50
 		
 		days_re_enable = 90
 		fire_only_once = no
@@ -6426,6 +7518,13 @@ purchase_foreign_equipment_category = {
 					type = industrial_complex level = -2
 				}
 			}
+			ROOT = {
+				add_equipment_to_stockpile = {
+					type =  fighter_equipment
+					amount = 24
+					producer = GER
+				}
+			}
 		}
 	
 	}
@@ -6433,7 +7532,7 @@ purchase_foreign_equipment_category = {
 	purchase_czech_fighter_equipment = {
 		icon = generic_industry
 	
-		allowed = {
+		allowed = { 
 			OR = {
 				original_tag = FIN
 				original_tag = POL
@@ -6458,7 +7557,7 @@ purchase_foreign_equipment_category = {
 			}
 		}
 		
-		visible = {
+		visible = { has_country_flag = purchases_show
 			country_exists = CZE
 			has_war = no
 			NOT = {
@@ -6466,8 +7565,11 @@ purchase_foreign_equipment_category = {
 			}
 			CZE = {
 				has_capitulated = no
-				has_equipment = {
-					fighter_equipment > 24
+				NOT = {
+					has_idea = war_economy
+				}
+				NOT = {
+					has_idea = tot_economic_mobilisation
 				}
 			}
 			
@@ -6477,6 +7579,10 @@ purchase_foreign_equipment_category = {
 			NOT = {
 				has_idea = BUL_army_restrictions
 			}
+			has_opinion = {
+				target = CZE
+				value > -16
+			}
 		}
 		
 		available = {
@@ -6485,10 +7591,15 @@ purchase_foreign_equipment_category = {
 				is_in_faction = no
 			}
 			num_of_civilian_factories_available_for_projects > 2
-			
+			CZE = {
+				has_opinion = {
+					target = ROOT
+					value > -16
+				}
+			}
 		}
 		
-		cost = 25
+		cost = 50
 		
 		days_re_enable = 90
 		fire_only_once = no
@@ -6545,8 +7656,14 @@ purchase_foreign_equipment_category = {
 					type = industrial_complex level = -2
 				}
 			}
-		}
-	
+			ROOT = {
+				add_equipment_to_stockpile = {
+					type =  fighter_equipment
+					amount = 24
+					producer = CZE
+				}
+			}
+		}	
 	}
 }
 purchase_foreign_equipment_category = {
@@ -6555,7 +7672,7 @@ purchase_foreign_equipment_category = {
 	purchase_french_tac_bomber_equipment = {
 		icon = generic_industry
 	
-		allowed = {
+		allowed = { 
 			OR = {
 				original_tag = FIN
 				original_tag = POL
@@ -6580,7 +7697,7 @@ purchase_foreign_equipment_category = {
 			}
 		}
 		
-		visible = {
+		visible = { has_country_flag = purchases_show
 			country_exists = FRA
 			has_war = no
 			NOT = {
@@ -6588,8 +7705,11 @@ purchase_foreign_equipment_category = {
 			}
 			FRA = {
 				has_capitulated = no
-				has_equipment = {
-					tac_bomber_equipment > 12
+				NOT = {
+					has_idea = war_economy
+				}
+				NOT = {
+					has_idea = tot_economic_mobilisation
 				}
 			}
 			
@@ -6599,6 +7719,10 @@ purchase_foreign_equipment_category = {
 			NOT = {
 				has_idea = BUL_army_restrictions
 			}
+			has_opinion = {
+				target = FRA
+				value > -16
+			}
 		}
 		
 		available = {
@@ -6607,10 +7731,15 @@ purchase_foreign_equipment_category = {
 				is_in_faction = no
 			}
 			num_of_civilian_factories_available_for_projects > 2
-			
+			FRA = {
+				has_opinion = {
+					target = ROOT
+					value > -16
+				}
+			}
 		}
 		
-		cost = 25
+		cost = 50
 		
 		days_re_enable = 90
 		fire_only_once = no
@@ -6667,6 +7796,13 @@ purchase_foreign_equipment_category = {
 					type = industrial_complex level = -2
 				}
 			}
+			ROOT = {
+				add_equipment_to_stockpile = {
+					type =  tac_bomber_equipment
+					amount = 12
+					producer = FRA
+				}
+			}
 		}
 	
 	}
@@ -6674,7 +7810,7 @@ purchase_foreign_equipment_category = {
 	purchase_british_tac_bomber_equipment = {
 		icon = generic_industry
 	
-		allowed = {
+		allowed = { 
 			OR = {
 				original_tag = FIN
 				original_tag = POL
@@ -6699,7 +7835,7 @@ purchase_foreign_equipment_category = {
 			}
 		}
 		
-		visible = {
+		visible = { has_country_flag = purchases_show
 			country_exists = ENG
 			has_war = no
 			NOT = {
@@ -6707,8 +7843,11 @@ purchase_foreign_equipment_category = {
 			}
 			ENG = {
 				has_capitulated = no
-				has_equipment = {
-					tac_bomber_equipment > 12
+				NOT = {
+					has_idea = war_economy
+				}
+				NOT = {
+					has_idea = tot_economic_mobilisation
 				}
 			}
 			
@@ -6718,6 +7857,10 @@ purchase_foreign_equipment_category = {
 			NOT = {
 				has_idea = BUL_army_restrictions
 			}
+			has_opinion = {
+				target = ENG
+				value > -16
+			}
 		}
 		
 		available = {
@@ -6726,10 +7869,15 @@ purchase_foreign_equipment_category = {
 				is_in_faction = no
 			}
 			num_of_civilian_factories_available_for_projects > 2
-			
+			ENG = {
+				has_opinion = {
+					target = ROOT
+					value > -16
+				}
+			}
 		}
 		
-		cost = 25
+		cost = 50
 		
 		days_re_enable = 90
 		fire_only_once = no
@@ -6786,6 +7934,13 @@ purchase_foreign_equipment_category = {
 					type = industrial_complex level = -2
 				}
 			}
+			ROOT = {
+				add_equipment_to_stockpile = {
+					type =  tac_bomber_equipment
+					amount = 12
+					producer = ENG
+				}
+			}
 		}
 	
 	}
@@ -6793,7 +7948,7 @@ purchase_foreign_equipment_category = {
 	purchase_american_tac_bomber_equipment = {
 		icon = generic_industry
 	
-		allowed = {
+		allowed = { 
 			OR = {
 				original_tag = FIN
 				original_tag = POL
@@ -6818,7 +7973,7 @@ purchase_foreign_equipment_category = {
 			}
 		}
 		
-		visible = {
+		visible = { has_country_flag = purchases_show
 			country_exists = USA
 			has_war = no
 			NOT = {
@@ -6826,8 +7981,11 @@ purchase_foreign_equipment_category = {
 			}
 			USA = {
 				has_capitulated = no
-				has_equipment = {
-					tac_bomber_equipment > 12
+				NOT = {
+					has_idea = war_economy
+				}
+				NOT = {
+					has_idea = tot_economic_mobilisation
 				}
 			}
 			
@@ -6837,6 +7995,10 @@ purchase_foreign_equipment_category = {
 			NOT = {
 				has_idea = BUL_army_restrictions
 			}
+			has_opinion = {
+				target = USA
+				value > -16
+			}
 		}
 		
 		available = {
@@ -6845,10 +8007,15 @@ purchase_foreign_equipment_category = {
 				is_in_faction = no
 			}
 			num_of_civilian_factories_available_for_projects > 2
-			
+			USA = {
+				has_opinion = {
+					target = ROOT
+					value > -16
+				}
+			}
 		}
 		
-		cost = 25
+		cost = 50
 		
 		days_re_enable = 90
 		fire_only_once = no
@@ -6905,6 +8072,13 @@ purchase_foreign_equipment_category = {
 					type = industrial_complex level = -2
 				}
 			}
+			ROOT = {
+				add_equipment_to_stockpile = {
+					type =  tac_bomber_equipment
+					amount = 12
+					producer = USA
+				}
+			}
 		}
 	
 	}
@@ -6912,7 +8086,7 @@ purchase_foreign_equipment_category = {
 	purchase_italian_tac_bomber_equipment = {
 		icon = generic_industry
 	
-		allowed = {
+		allowed = { 
 			OR = {
 				original_tag = FIN
 				original_tag = POL
@@ -6937,7 +8111,7 @@ purchase_foreign_equipment_category = {
 			}
 		}
 		
-		visible = {
+		visible = { has_country_flag = purchases_show
 			country_exists = ITA
 			has_war = no
 			NOT = {
@@ -6945,8 +8119,11 @@ purchase_foreign_equipment_category = {
 			}
 			ITA = {
 				has_capitulated = no
-				has_equipment = {
-					tac_bomber_equipment > 12
+				NOT = {
+					has_idea = war_economy
+				}
+				NOT = {
+					has_idea = tot_economic_mobilisation
 				}
 			}
 			
@@ -6956,6 +8133,10 @@ purchase_foreign_equipment_category = {
 			NOT = {
 				has_idea = BUL_army_restrictions
 			}
+			has_opinion = {
+				target = ITA
+				value > -16
+			}
 		}
 		
 		available = {
@@ -6964,10 +8145,15 @@ purchase_foreign_equipment_category = {
 				is_in_faction = no
 			}
 			num_of_civilian_factories_available_for_projects > 2
-			
+			ITA = {
+				has_opinion = {
+					target = ROOT
+					value > -16
+				}
+			}
 		}
 		
-		cost = 25
+		cost = 50
 		
 		days_re_enable = 90
 		fire_only_once = no
@@ -7024,6 +8210,13 @@ purchase_foreign_equipment_category = {
 					type = industrial_complex level = -2
 				}
 			}
+			ROOT = {
+				add_equipment_to_stockpile = {
+					type =  tac_bomber_equipment
+					amount = 12
+					producer = ITA
+				}
+			}
 		}
 	
 	}
@@ -7031,7 +8224,7 @@ purchase_foreign_equipment_category = {
 	purchase_german_tac_bomber_equipment = {
 		icon = generic_industry
 	
-		allowed = {
+		allowed = { 
 			OR = {
 				original_tag = FIN
 				original_tag = POL
@@ -7056,7 +8249,7 @@ purchase_foreign_equipment_category = {
 			}
 		}
 		
-		visible = {
+		visible = { has_country_flag = purchases_show
 			country_exists = GER
 			has_war = no
 			NOT = {
@@ -7064,8 +8257,11 @@ purchase_foreign_equipment_category = {
 			}
 			GER = {
 				has_capitulated = no
-				has_equipment = {
-					tac_bomber_equipment > 12
+				NOT = {
+					has_idea = war_economy
+				}
+				NOT = {
+					has_idea = tot_economic_mobilisation
 				}
 			}
 			
@@ -7075,6 +8271,10 @@ purchase_foreign_equipment_category = {
 			NOT = {
 				has_idea = BUL_army_restrictions
 			}
+			has_opinion = {
+				target = GER
+				value > -16
+			}
 		}
 		
 		available = {
@@ -7083,10 +8283,15 @@ purchase_foreign_equipment_category = {
 				is_in_faction = no
 			}
 			num_of_civilian_factories_available_for_projects > 2
-			
+			GER = {
+				has_opinion = {
+					target = ROOT
+					value > -16
+				}
+			}
 		}
 		
-		cost = 25
+		cost = 50
 		
 		days_re_enable = 90
 		fire_only_once = no
@@ -7143,6 +8348,13 @@ purchase_foreign_equipment_category = {
 					type = industrial_complex level = -2
 				}
 			}
+			ROOT = {
+				add_equipment_to_stockpile = {
+					type =  tac_bomber_equipment
+					amount = 12
+					producer = GER
+				}
+			}
 		}
 	
 	}
@@ -7153,7 +8365,7 @@ purchase_foreign_equipment_category = {
 	purchase_french_light_tank_equipment = {
 		icon = generic_industry
 	
-		allowed = {
+		allowed = { 
 			OR = {
 				original_tag = FIN
 				original_tag = POL
@@ -7178,7 +8390,7 @@ purchase_foreign_equipment_category = {
 			}
 		}
 		
-		visible = {
+		visible = { has_country_flag = purchases_show
 			country_exists = FRA
 			has_war = no
 			NOT = {
@@ -7186,8 +8398,11 @@ purchase_foreign_equipment_category = {
 			}
 			FRA = {
 				has_capitulated = no
-				has_equipment = {
-					light_tank_equipment > 24
+				NOT = {
+					has_idea = war_economy
+				}
+				NOT = {
+					has_idea = tot_economic_mobilisation
 				}
 			}
 			
@@ -7197,6 +8412,10 @@ purchase_foreign_equipment_category = {
 			NOT = {
 				has_idea = BUL_army_restrictions
 			}
+			has_opinion = {
+				target = FRA
+				value > -16
+			}
 		}
 		
 		available = {
@@ -7205,10 +8424,15 @@ purchase_foreign_equipment_category = {
 				is_in_faction = no
 			}
 			num_of_civilian_factories_available_for_projects > 1
-			
+			FRA = {
+				has_opinion = {
+					target = ROOT
+					value > -16
+				}
+			}
 		}
 		
-		cost = 25
+		cost = 50
 		
 		days_re_enable = 90
 		fire_only_once = no
@@ -7265,6 +8489,13 @@ purchase_foreign_equipment_category = {
 					type = industrial_complex level = -1
 				}
 			}
+			ROOT = {
+				add_equipment_to_stockpile = {
+					type =  light_tank_equipment
+					amount = 20
+					producer = FRA
+				}
+			}
 		}
 	
 	}
@@ -7272,7 +8503,7 @@ purchase_foreign_equipment_category = {
 	purchase_british_light_tank_equipment = {
 		icon = generic_industry
 	
-		allowed = {
+		allowed = { 
 			OR = {
 				original_tag = FIN
 				original_tag = POL
@@ -7297,7 +8528,7 @@ purchase_foreign_equipment_category = {
 			}
 		}
 		
-		visible = {
+		visible = { has_country_flag = purchases_show
 			country_exists = ENG
 			has_war = no
 			NOT = {
@@ -7305,8 +8536,11 @@ purchase_foreign_equipment_category = {
 			}
 			ENG = {
 				has_capitulated = no
-				has_equipment = {
-					light_tank_equipment > 24
+				NOT = {
+					has_idea = war_economy
+				}
+				NOT = {
+					has_idea = tot_economic_mobilisation
 				}
 			}
 			
@@ -7316,6 +8550,10 @@ purchase_foreign_equipment_category = {
 			NOT = {
 				has_idea = BUL_army_restrictions
 			}
+			has_opinion = {
+				target = ENG
+				value > -16
+			}
 		}
 		
 		available = {
@@ -7324,10 +8562,15 @@ purchase_foreign_equipment_category = {
 				is_in_faction = no
 			}
 			num_of_civilian_factories_available_for_projects > 1
-			
+			ENG = {
+				has_opinion = {
+					target = ROOT
+					value > -16
+				}
+			}
 		}
 		
-		cost = 25
+		cost = 50
 		
 		days_re_enable = 90
 		fire_only_once = no
@@ -7384,6 +8627,13 @@ purchase_foreign_equipment_category = {
 					type = industrial_complex level = -1
 				}
 			}
+			ROOT = {
+				add_equipment_to_stockpile = {
+					type =  light_tank_equipment
+					amount = 20
+					producer = ENG
+				}
+			}
 		}
 	
 	}
@@ -7391,7 +8641,7 @@ purchase_foreign_equipment_category = {
 	purchase_american_light_tank_equipment = {
 		icon = generic_industry
 	
-		allowed = {
+		allowed = { 
 			OR = {
 				original_tag = FIN
 				original_tag = POL
@@ -7416,7 +8666,7 @@ purchase_foreign_equipment_category = {
 			}
 		}
 		
-		visible = {
+		visible = { has_country_flag = purchases_show
 			country_exists = USA
 			has_war = no
 			NOT = {
@@ -7424,8 +8674,11 @@ purchase_foreign_equipment_category = {
 			}
 			USA = {
 				has_capitulated = no
-				has_equipment = {
-					light_tank_equipment > 24
+				NOT = {
+					has_idea = war_economy
+				}
+				NOT = {
+					has_idea = tot_economic_mobilisation
 				}
 			}
 			
@@ -7435,6 +8688,10 @@ purchase_foreign_equipment_category = {
 			NOT = {
 				has_idea = BUL_army_restrictions
 			}
+			has_opinion = {
+				target = USA
+				value > -16
+			}
 		}
 		
 		available = {
@@ -7443,10 +8700,15 @@ purchase_foreign_equipment_category = {
 				is_in_faction = no
 			}
 			num_of_civilian_factories_available_for_projects > 1
-			
+			USA = {
+				has_opinion = {
+					target = ROOT
+					value > -16
+				}
+			}
 		}
 		
-		cost = 25
+		cost = 50
 		
 		days_re_enable = 90
 		fire_only_once = no
@@ -7503,6 +8765,13 @@ purchase_foreign_equipment_category = {
 					type = industrial_complex level = -1
 				}
 			}
+			ROOT = {
+				add_equipment_to_stockpile = {
+					type =  light_tank_equipment
+					amount = 20
+					producer = USA
+				}
+			}
 		}
 	
 	}
@@ -7510,7 +8779,7 @@ purchase_foreign_equipment_category = {
 	purchase_italian_light_tank_equipment = {
 		icon = generic_industry
 	
-		allowed = {
+		allowed = { 
 			OR = {
 				original_tag = FIN
 				original_tag = POL
@@ -7535,7 +8804,7 @@ purchase_foreign_equipment_category = {
 			}
 		}
 		
-		visible = {
+		visible = { has_country_flag = purchases_show
 			country_exists = ITA
 			has_war = no
 			NOT = {
@@ -7543,8 +8812,11 @@ purchase_foreign_equipment_category = {
 			}
 			ITA = {
 				has_capitulated = no
-				has_equipment = {
-					light_tank_equipment > 24
+				NOT = {
+					has_idea = war_economy
+				}
+				NOT = {
+					has_idea = tot_economic_mobilisation
 				}
 			}
 			
@@ -7554,6 +8826,10 @@ purchase_foreign_equipment_category = {
 			NOT = {
 				has_idea = BUL_army_restrictions
 			}
+			has_opinion = {
+				target = ITA
+				value > -16
+			}
 		}
 		
 		available = {
@@ -7562,10 +8838,15 @@ purchase_foreign_equipment_category = {
 				is_in_faction = no
 			}
 			num_of_civilian_factories_available_for_projects > 1
-			
+			ITA = {
+				has_opinion = {
+					target = ROOT
+					value > -16
+				}
+			}
 		}
 		
-		cost = 25
+		cost = 50
 		
 		days_re_enable = 90
 		fire_only_once = no
@@ -7622,6 +8903,13 @@ purchase_foreign_equipment_category = {
 					type = industrial_complex level = -1
 				}
 			}
+			ROOT = {
+				add_equipment_to_stockpile = {
+					type =  light_tank_equipment
+					amount = 20
+					producer = ITA
+				}
+			}
 		}
 	
 	}
@@ -7629,7 +8917,7 @@ purchase_foreign_equipment_category = {
 	purchase_german_light_tank_equipment = {
 		icon = generic_industry
 	
-		allowed = {
+		allowed = { 
 			OR = {
 				original_tag = FIN
 				original_tag = POL
@@ -7654,7 +8942,7 @@ purchase_foreign_equipment_category = {
 			}
 		}
 		
-		visible = {
+		visible = { has_country_flag = purchases_show
 			country_exists = GER
 			has_war = no
 			NOT = {
@@ -7662,8 +8950,11 @@ purchase_foreign_equipment_category = {
 			}
 			GER = {
 				has_capitulated = no
-				has_equipment = {
-					light_tank_equipment > 24
+				NOT = {
+					has_idea = war_economy
+				}
+				NOT = {
+					has_idea = tot_economic_mobilisation
 				}
 			}
 			
@@ -7673,6 +8964,10 @@ purchase_foreign_equipment_category = {
 			NOT = {
 				has_idea = BUL_army_restrictions
 			}
+			has_opinion = {
+				target = GER
+				value > -16
+			}
 		}
 		
 		available = {
@@ -7681,10 +8976,15 @@ purchase_foreign_equipment_category = {
 				is_in_faction = no
 			}
 			num_of_civilian_factories_available_for_projects > 1
-			
+			GER = {
+				has_opinion = {
+					target = ROOT
+					value > -16
+				}
+			}
 		}
 		
-		cost = 25
+		cost = 50
 		
 		days_re_enable = 90
 		fire_only_once = no
@@ -7739,6 +9039,13 @@ purchase_foreign_equipment_category = {
 			GER = {	
 				add_offsite_building = { 
 					type = industrial_complex level = -1
+				}
+			}
+			ROOT = {
+				add_equipment_to_stockpile = {
+					type =  light_tank_equipment
+					amount = 20
+					producer = GER
 				}
 			}
 		}

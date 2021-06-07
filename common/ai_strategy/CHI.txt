@@ -131,27 +131,27 @@ CHI_ignore_neighbours = {
 
 	ai_strategy = {
 		type = front_unit_request
-		id = "RAJ"			
+		tag = "RAJ"			
 		value = -9999
 	}
 	ai_strategy = {
 		type = front_unit_request
-		id = "FRA"			
+		tag = "FRA"			
 		value = -9999
 	}
 	ai_strategy = {
 		type = front_unit_request
-		id = "ENG"			
+		tag = "ENG"			
 		value = -9999
 	}
 	ai_strategy = {
 		type = front_unit_request
-		id = "TIB"			
+		tag = "TIB"			
 		value = -9999
 	}
 	ai_strategy = {
 		type = front_unit_request
-		id = "SIK"			
+		tag = "SIK"			
 		value = -9999
 	}
 
@@ -440,37 +440,37 @@ PRC_CHI_ignore_these_countries = {
 	}
 	ai_strategy = {
 		type = front_unit_request
-		id = "GXC"
+		tag = "GXC"
 		value = -9999
 	}
 	ai_strategy = {
 		type = front_unit_request
-		id = "YUN"
+		tag = "YUN"
 		value = -9999
 	}
 	ai_strategy = {
 		type = front_unit_request
-		id = "RAJ"
+		tag = "RAJ"
 		value = -9999
 	}
 	ai_strategy = {
 		type = front_unit_request
-		id = "SOV"
+		tag = "SOV"
 		value = -9999
 	}
 	ai_strategy = {
 		type = front_unit_request
-		id = "TIB"
+		tag = "TIB"
 		value = -9999
 	}
 	ai_strategy = {
 		type = front_unit_request
-		id = "SIK"
+		tag = "SIK"
 		value = -9999
 	}
 	ai_strategy = {
 		type = front_unit_request
-		id = "XSM"
+		tag = "XSM"
 		value = -9999
 	}
 }
@@ -501,22 +501,22 @@ CHI_defend_against_JAP_proper = {
 	}
 	ai_strategy = {
 		type = front_unit_request
-		id = FRA
+		tag = FRA
 		value = -9999
 	}
 	ai_strategy = {
 		type = front_unit_request
-		id = ENG
+		tag = ENG
 		value = -9999
 	}
 	ai_strategy = {
 		type = front_unit_request
-		id = RAJ
+		tag = RAJ
 		value = -9999
 	}
 	ai_strategy = {
 		type = front_unit_request
-		id = TIB
+		tag = TIB
 		value = -9999
 	}
 
@@ -552,135 +552,6 @@ CHI_defend = {
 
 	ai_strategy = { type = garrison value = 200 }
 }
-
-dont_waste_equipment1 = {
-	allowed = { 
-		tag = CHI 
-	}
-	enable = {
-	        has_war_with = JAP
-		is_historical_focus_on = yes
-	}
-		abort = {
-                CHI = { surrender_progress > 0.20 }
-
-		
-	}
-
-	ai_strategy = {
-		type = front_control
-		priority = 999
-                country_trigger = {
-			OR = {
-				tag = JAP
-				is_in_faction_with = JAP
-			}
-		}
-		
-
-		execution_type = careful
-		execute_order = no
-		manual_attack = no
-	}
-}
-
-
-
-dont_waste_equipment2 = {
-	allowed = { 
-		tag = CHI 
-	}
-	enable = {
-	        has_war_with = JAP
-		CHI = { surrender_progress > 0.20 }
-		is_historical_focus_on = yes
-	}
-		abort = {
-                CHI = { surrender_progress < 0.20 }
-
-		
-	}
-
-	ai_strategy = {
-		type = front_control
-		priority = 999
-  country_trigger = {
-			OR = {
-				tag = JAP
-				is_in_faction_with = JAP
-			}
-		}
-		
-
-		execution_type = careful
-		execute_order = yes
-		manual_attack = yes
-	}
-}
-
-counter_attack = {
-	allowed = { 
-		tag = CHI 
-	}
-	enable = {
-	        has_war_with = JAP
-		date > 1941.12.1
-		is_historical_focus_on = yes
-		JAP = { is_ai = yes }
-	}
-	abort = {
-		always = no
-	}
-	
-
-	ai_strategy = {
-		type = front_control
-		priority = 999
-  country_trigger = {
-			OR = {
-				tag = JAP
-				is_in_faction_with = JAP
-			}
-		}
-		
-
-		execution_type = careful
-		execute_order = yes
-		manual_attack = yes
-	}
-}
-
-counter_attackplayer = {
-	allowed = { 
-		tag = CHI 
-	}
-	enable = {
-	        has_war_with = JAP
-		is_historical_focus_on = yes
-		JAP = { is_ai = no }
-	}
-	abort = {
-		always = no
-	}
-	
-
-	ai_strategy = {
-		type = front_control
-		priority = 999
-  country_trigger = {
-			OR = {
-				tag = JAP
-				is_in_faction_with = JAP
-			}
-		}
-		
-
-		execution_type = careful
-		execute_order = yes
-		manual_attack = yes
-	}
-}
-
 ignore_raj = {
 	allowed = { 
 		tag = CHI 
@@ -695,7 +566,7 @@ ignore_raj = {
 
 	ai_strategy = {
 		type = front_unit_request
-		id = RAJ
+		tag = RAJ
 		value = -9999
 	}
 	ai_strategy = {
@@ -856,4 +727,34 @@ CHI_you_should_be_prepared_for_war = {
         value = 100
     }
 }
-
+CHI_FRONT_STRAT = {
+	allowed = { is_literally_china = yes }
+	enable = {
+		has_war_with = JAP
+	}
+	abort = {
+		NOT = { has_war_with = JAP }
+	}
+	
+	ai_strategy = {
+		type = consider_weak
+		id = "JAP"
+		value = -100
+	}
+	ai_strategy = {
+		type = front_control
+		ratio = 0.0
+		tag = JAP
+		priority = 10 
+		ordertype = front 
+		execution_type = careful 
+		manual_attack = yes
+	}
+	
+	ai_strategy = {
+		type = front_unit_request
+		value = 100
+		tag = JAP
+	}
+	
+}

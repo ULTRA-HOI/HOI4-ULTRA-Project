@@ -1302,6 +1302,39 @@ operations = {
 			}
 		}
 	}
+	
+	GER_pressure_Persia = {
+		allowed = {
+			original_tag = GER
+		}
+		Visible = {
+			is_in_faction_with = IRQ
+		}
+		available = {
+			has_war_with = ENG
+			ENG = {
+				NOT = {
+					controls_state = 816
+				}
+				NOT = {
+					controls_state = 656
+				}
+			}
+		}
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 100
+		}
+		
+		complete_effect = {
+			ENG = { remove_resource_rights = 413 }
+			ENG = { remove_resource_rights = 412 }
+			ENG = { remove_resource_rights = 411 }
+		}
+		
+	}
 }
 
 GER_case_anton_category = {
@@ -4575,32 +4608,6 @@ political_actions = {
 		}
 	}
 	
-	GER_resume_the_war_effort = {
-		icon = generic_operation
-		
-		allowed = {
-			original_tag = GER
-		}
-		visible = {
-			has_idea = GER_sieg_im_westen
-		}
-		
-		available = {
-			OR = {
-				has_war_with = USA
-				has_war_with = SOV
-			}
-		}
-		
-		fire_only_once = yes
-		ai_will_do = {
-			factor = 100
-		}
-		
-		complete_effect = {
-			remove_ideas = GER_sieg_im_westen
-		}
-	}
 	
 	GER_brandenburger_decision = {
 		icon = generic_operation
@@ -4826,18 +4833,7 @@ foreign_politics = {
 		ai_will_do = {
 			factor = 20000
 		}
-		visible = {
-			USA = {
-				OR = {
-					is_ai = yes 
-					is_lend_leasing = yes
-				}
-				NOT = {
-					is_in_faction_with = GER
-				}
-			}
-			#NOT = {has_global_flag = { GER_USA_DOW }}
-		}
+		
 		complete_effect = {
 			GER = { declare_war_on = { target = USA type = annex_everything }}
 			USA = {add_timed_idea = { idea = GER_happy_time days = 275 }}
@@ -5533,6 +5529,115 @@ foreign_politics = {
 				}
 			}
 		}
+	}
+	
+	GER_stop_spanish_resources = {
+	
+		icon = tungsten
+		
+		allowed = {
+			original_tag = GER
+		}
+		
+		visible = {
+			has_country_flag = spanish_resource_concessions
+			NOT = {
+				has_country_flag = spanish_resources_stopped
+			}
+		}
+		
+		available = {
+			has_war_with = FRA 
+			OR = { #France does not control South-West 
+				FRA = {
+					has_capitulated = no
+				}
+				FRA = {
+					controls_state = 19 #aquitaine
+				}
+				FRA = {
+					controls_state = 23 #Poitou
+				}
+				FRA = {
+					controls_state = 24 #Centre
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 100
+		}
+		
+		complete_effect = {
+		
+			hidden_effect = {
+				set_country_flag = spanish_resources_stopped
+			}
+			
+			GER = { remove_resource_rights = 171 }
+			GER = { remove_resource_rights = 176 }
+		
+		}
+		
+	}
+	
+	GER_resume_spanish_resources = {
+	
+		icon = tungsten
+		
+		allowed = {
+			original_tag = GER
+		}
+		
+		visible = {
+			has_country_flag = spanish_resources_stopped
+		}
+		
+		available = {
+			OR = {
+				NOT = {
+					has_war_with = FRA
+				}
+				AND = {
+					FRA = {
+						has_capitulated = yes
+					}
+					FRA = {
+						NOT = {
+							controls_state = 19
+						}
+					}
+					FRA = {
+						NOT = {
+							controls_state = 23
+						}
+					}
+					FRA = {
+						NOT = {
+							controls_state = 24
+						}
+					}
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 100
+		}
+		
+		complete_effect = {
+		
+			hidden_effect = {
+				clr_country_flag = spanish_resources_stopped
+			}
+			
+			SPA = {
+				give_resource_rights = { receiver = GER state = 171 }
+				give_resource_rights = { receiver = GER state = 176 }
+			}
+		
+		}
+		
 	}
 	
 	GER_danubian_membership = {
@@ -6947,6 +7052,44 @@ GER_military_buildup = {
 			remove_ideas = GER_bad_torpedoes
 			
 		}
+	}
+	
+	GER_baustab_becker = {
+	
+		icon = generic_industry
+		
+		allowed = {
+			tag = GER
+		}
+		
+		visible = {
+			date > 1942.1.1
+			has_war_with = SOV
+			FRA = {
+				has_capitulated = yes
+			}
+		}
+		
+		available = {
+			has_tech = ger_light_1_5_td
+		}
+		
+		cost = 50
+		
+		ai_will_do = {
+			factor = 10
+		}
+		
+		days_remove = 60
+		
+		remove_effect = {
+			add_equipment_to_stockpile = {
+				type =  ger_light_td_equipment_1_5
+				amount = 190
+				producer = GER
+			}
+		}
+		
 	}
 }
 

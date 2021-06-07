@@ -324,6 +324,15 @@ focus_tree = {
 			add_ideas = BUL_nationalized_industry
 
 			#Opinion Modifiers
+			every_country = {
+				limit = {
+					BUL_country_can_influence_bulgaria = yes
+					has_opinion_modifier = BUL_industrial_investments_in_bulgaria
+				}
+				remove_opinion_modifier = { target = BUL modifier = BUL_industrial_investments_in_bulgaria }
+
+				BUL = { remove_opinion_modifier = { target = PREV modifier = BUL_industrial_investments_in_bulgaria } }
+			}
 			
 
 			every_country = {
@@ -1563,6 +1572,7 @@ focus_tree = {
 					}
 				}
 			}
+			is_subject = no	  
 		}
 
 		bypass = {
@@ -1662,6 +1672,7 @@ focus_tree = {
 					}
 				}
 			}
+			is_subject = no	  
 		}
 
 		bypass = {
@@ -1761,6 +1772,7 @@ focus_tree = {
 					}
 				}
 			}
+			is_subject = no	  
 		}
 
 		bypass = {
@@ -2268,6 +2280,16 @@ focus_tree = {
 						set_variable = { BUL_spanish_tag_aided = PREV }
 					}
 				}
+				add_ai_strategy = {
+					type = befriend
+					id = SPD
+					value = 100
+				}
+				add_ai_strategy = {
+					type = send_volunteers_desire
+					id = SPD
+					value = 100
+				}
 			}
 			else = {
 				random_country = {
@@ -2286,6 +2308,11 @@ focus_tree = {
 					add_manpower = 3000
 					ROOT = {
 						set_variable = { BUL_spanish_tag_aided = PREV }
+						add_ai_strategy = {
+							type = send_volunteers_desire
+							id = PREV
+							value = 100
+						}
 					}
 				}
 			}
@@ -3143,6 +3170,7 @@ focus_tree = {
 
 		available = {
 			has_government = communism
+			is_subject = no	  
 		}
 		
 
@@ -3178,13 +3206,14 @@ focus_tree = {
 				}
 				add_war_support = 0.1
 				custom_effect_tooltip = BUL_carry_the_revolution_abroad_comintern_invitation_tt
-				every_other_country = { #Independent Balkan commie nations are invited to the Comintern (or wargoal)
-					limit = {
-						BUL_is_balkan_nation = yes
-						has_government = communism
-						is_in_faction = no
-					}
-					hidden_effect = {
+				hidden_effect = {
+					every_other_country = { #Independent Balkan commie nations are invited to the Comintern (or wargoal)
+						limit = {
+							BUL_is_balkan_nation = yes
+							has_government = communism
+							is_in_faction = no
+						}
+					  
 						country_event = { id = bftb_bulgaria_soviet_influence.4 hours = 4 random_hours = 2 }
 					}
 				}
@@ -3279,6 +3308,7 @@ focus_tree = {
 
 		available = {
 			has_government = communism
+			is_subject = no	  
 		}
 		
 		completion_reward = {
@@ -3323,6 +3353,7 @@ focus_tree = {
 
 		available = {
 			has_government = communism
+			is_subject = no	  
 		}
 		
 		search_filters = {FOCUS_FILTER_WAR_SUPPORT}
@@ -3454,7 +3485,7 @@ focus_tree = {
 		mutually_exclusive = { focus = BUL_free_balkan_states }
 
 		available = {
-
+			is_subject = no
 		}
 		
 		search_filters = {FOCUS_FILTER_ANNEXATION}
@@ -3782,6 +3813,7 @@ focus_tree = {
 			has_country_flag = BUL_balkan_federation_project_ready_flag
 			is_in_faction = no
 			has_government = communism
+			is_subject = no	  
 		}
 		
 		search_filters = {FOCUS_FILTER_STABILITY}
@@ -3827,7 +3859,7 @@ focus_tree = {
 		cost = 10
 
 		available = {
-
+			is_subject = no
 		}
 		
 		completion_reward = {
@@ -3979,6 +4011,7 @@ focus_tree = {
 		available = {
 			country_exists = SOV
 			NOT = {	is_in_faction_with = SOV }
+			is_subject = no	  
 		}
 		
 		search_filters = {FOCUS_FILTER_WAR_SUPPORT}
@@ -4087,6 +4120,7 @@ focus_tree = {
 
 		available = {
 			country_exists = ITA
+			is_subject = no	  
 		}
 		
 		search_filters = {FOCUS_FILTER_ANNEXATION}
@@ -4700,6 +4734,7 @@ focus_tree = {
 
 		available = {
 			has_government = democratic
+			is_subject = no	  
 		}
 		
 		search_filters = {FOCUS_FILTER_STABILITY FOCUS_FILTER_POLITICAL}
@@ -5008,6 +5043,7 @@ focus_tree = {
 					has_government = neutrality
 				}
 			}
+			is_subject = no	  
 		}
 		
 		search_filters = {FOCUS_FILTER_INDUSTRY FOCUS_FILTER_STABILITY FOCUS_FILTER_MANPOWER}
@@ -5134,6 +5170,7 @@ focus_tree = {
 				has_government = democratic
 				has_government = neutrality
 			}
+			is_subject = no	  
 		}
 		
 		search_filters = {FOCUS_FILTER_WAR_SUPPORT}
@@ -5212,6 +5249,7 @@ focus_tree = {
 				is_faction_leader = yes
 				ENG = { is_faction_leader = yes }
 			}
+			is_subject = no	  
 		}
 		
 		search_filters = {FOCUS_FILTER_ANNEXATION}
@@ -5478,6 +5516,7 @@ focus_tree = {
 				has_government = democratic
 				has_government = neutrality
 			}
+			is_subject = no	  
 		}
 
 		search_filters = {FOCUS_FILTER_WAR_SUPPORT}
@@ -6102,6 +6141,10 @@ focus_tree = {
 		
 		search_filters = {FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY}
 		completion_reward = {
+			add_popularity = {
+				ideology = ROOT
+				popularity = 0.15
+			}		 
 			if = {
 				limit = {
 					has_government = neutrality
@@ -6117,10 +6160,7 @@ focus_tree = {
 					popularity = 0.05
 				}
 			}
-			add_popularity = {
-				ideology = ROOT
-				popularity = 0.15
-			}
+			
 			add_stability = 0.05
 			custom_effect_tooltip = available_political_advisor
 			show_ideas_tooltip = BUL_dimitrana_ivanova
@@ -6612,6 +6652,7 @@ focus_tree = {
 				has_war = no
 			}
 			has_game_rule = { rule = IHMP_HISTORY option = ALLOWED } 
+			is_subject = no
 		}
 		
 		completion_reward = {
@@ -6747,6 +6788,7 @@ focus_tree = {
 				is_neighbor_of = ROOT
 				NOT = { is_in_faction_with = ROOT }
 			}
+			is_subject = no	  
 		}
 		
 		search_filters = {FOCUS_FILTER_WAR_SUPPORT}
@@ -6879,6 +6921,7 @@ focus_tree = {
 		cost = 10
 
 		available = {
+			is_subject = no	  
 		}
 		
 		completion_reward = {
@@ -7564,7 +7607,12 @@ focus_tree = {
 			GER = { 
 				NOT = { is_justifying_wargoal_against = ROOT }
 			}
-			
+			GER = {
+				has_opinion	= {
+					target = ROOT
+					value > 24
+				}
+			}
 			OR = {
 				is_in_faction = no
 				is_in_faction_with = GER
@@ -8015,11 +8063,11 @@ focus_tree = {
 	}
 
 	focus = {
-		id = BUL_bulgarisation_of_the_balkans
+		id = BUL_bulgarian_administration_of_the_balkans
 
 		prerequisite = { focus = BUL_peaceful_development focus = BUL_nationalist_propaganda }
 
-		icon = GFX_focus_BUL_bulgarisation_of_the_balkans
+		icon = GFX_focus_BUL_bulgarian_administration_of_the_balkans
 		relative_position_id = BUL_join_the_tripartite_pact
 		x = -4
 		y = 2
@@ -8034,14 +8082,14 @@ focus_tree = {
 		
 		search_filters = {FOCUS_FILTER_ANNEXATION}
 		completion_reward = {
-			custom_effect_tooltip = BUL_bulgarisation_of_the_balkans_decisions_tt
-			custom_effect_tooltip = BUL_bulgarisation_of_the_balkans_cores_tt
+			custom_effect_tooltip = BUL_bulgarian_administration_of_the_balkans_decisions_tt
+			custom_effect_tooltip = BUL_bulgarian_administration_of_the_balkans_cores_tt
 			if = {
 				limit = {
 					has_full_control_of_state = 106
 					106 = { NOT = { is_core_of = ROOT } }
 				}
-				106 = { set_state_flag = BUL_bulgarisation_campaign_flag }
+				106 = { set_state_flag = BUL_bulgarian_reintegration_campaign_flag }
 				add_state_core = 106
 			}
 			if = {
@@ -8049,7 +8097,7 @@ focus_tree = {
 					has_full_control_of_state = 913
 					913 = { NOT = { is_core_of = ROOT } }
 				}
-				913 = { set_state_flag = BUL_bulgarisation_campaign_flag }
+				913 = { set_state_flag = BUL_bulgarian_reintegration_campaign_flag }
 				add_state_core = 913
 			}
 			if = {
@@ -8057,7 +8105,7 @@ focus_tree = {
 					has_full_control_of_state = 77
 					77 = { NOT = { is_core_of = ROOT } }
 				}
-				77 = { set_state_flag = BUL_bulgarisation_campaign_flag }
+				77 = { set_state_flag = BUL_bulgarian_reintegration_campaign_flag }
 				add_state_core = 77
 			}
 			custom_effect_tooltip = BUL_historical_states_tt
@@ -8076,10 +8124,10 @@ focus_tree = {
 	focus = {
 		id = BUL_restore_the_bulgarian_patriarchate
 
-		prerequisite = { focus = BUL_bulgarisation_of_the_balkans }
+		prerequisite = { focus = BUL_bulgarian_administration_of_the_balkans }
 
 		icon = GFX_focus_BUL_restore_the_bulgarian_patriarchate
-		relative_position_id = BUL_bulgarisation_of_the_balkans
+		relative_position_id = BUL_bulgarian_administration_of_the_balkans
 		x = 0
 		y = 1
 		cost = 10
@@ -8331,7 +8379,7 @@ focus_tree = {
 			}
 		}
 
-		prerequisite = { focus = BUL_total_war focus = BUL_bulgarisation_of_the_balkans }
+		prerequisite = { focus = BUL_total_war focus = BUL_bulgarian_administration_of_the_balkans }
 
 		icon = GFX_focus_BUL_the_third_bulgarian_empire
 		relative_position_id = BUL_total_war

@@ -1,4 +1,32 @@
-﻿default_production_strat = {
+﻿TRUCKS = {
+	enable = {
+		OR = {
+			NOT = { original_tag = CHI }
+			NOT = { original_tag = PRC }
+			NOT = { original_tag = GXC } 	
+			NOT = { original_tag = ETH } 
+			NOT = { original_tag = XSM } 
+			NOT = { original_tag = SIK } 
+			NOT = { original_tag = SIA } 
+			NOT = { original_tag = SHX } 
+			NOT = { original_tag = TIB } 
+			NOT = { original_tag = YUN } 
+			NOT = { original_tag = MEN } 
+			NOT = { original_tag = NEP } 
+			NOT = { original_tag = AFG } 
+			NOT = { original_tag = BHU } 
+			NOT = { original_tag = FIN } 
+		   
+		}
+	}
+    	ai_strategy = {
+		type = equipment_production_min_factories
+		id = motorized
+		value = 1
+	}
+}
+
+default_production_strat = {
 	enable = {
 		always = yes
 	}
@@ -357,7 +385,7 @@ default_unit_production = {
 			NOT = { original_tag = BUL }
 			NOT = { original_tag = NOR } 
 			NOT = { original_tag = AUS }
-			NOT = { original_tag = NZE }
+			NOT = { original_tag = NZL }
 			NOT = { original_tag = SAF }
 			NOT = { original_tag = CAN }				   
 		}
@@ -1567,7 +1595,7 @@ CAN_build_fighters = {
 	ai_strategy = {
 		type = equipment_production_min_factories
 		id = motorized 
-		value = 1
+		value = 3
 	}
 	ai_strategy = {
 		type = equipment_production_min_factories
@@ -1820,7 +1848,7 @@ ENG_build_guns_1 = {
     	ai_strategy = {
 		type = equipment_production_min_factories
 		id = motorized
-		value = 3
+		value = 4
 	}
     	ai_strategy = {
 		type = equipment_production_min_factories
@@ -1872,7 +1900,7 @@ ENG_build_guns_2 = {
     	ai_strategy = {
 		type = equipment_production_min_factories
 		id = motorized
-		value = 5
+		value = 7
 	}
     	ai_strategy = {
 		type = equipment_production_min_factories
@@ -1922,7 +1950,7 @@ ENG_build_guns_3 = {
     	ai_strategy = {
 		type = equipment_production_min_factories
 		id = motorized
-		value = 10
+		value = 12
 	}
     	ai_strategy = {
 		type = equipment_production_min_factories
@@ -1971,7 +1999,7 @@ ENG_build_guns_4 = {
     	ai_strategy = {
 		type = equipment_production_min_factories
 		id = motorized
-		value = 20
+		value = 30
 	}
     	ai_strategy = {
 		type = equipment_production_min_factories
@@ -1991,7 +2019,7 @@ ENG_naval_role_ratios_historical = {
 		value = 20		
 	}
 	ai_strategy = { 
-		type = role_ratio
+		type = unit_ratio
 		id = convoy 				
 		value = 20		
 	}
@@ -2062,6 +2090,11 @@ FIN_build_guns_early = {
 	}
 	abort = {
                 date > 1941.1.1			
+	}
+	ai_strategy = {
+		type = equipment_production_min_factories
+		id = motorized
+		value = 1
 	}
 	ai_strategy = {
 		type = equipment_production_min_factories
@@ -3082,7 +3115,7 @@ ITA_build_guns_36 = {
     ai_strategy = {
 		type = equipment_production_min_factories
 		id = motorized
-		value = 1
+		value = 2
 	}
 
 	ai_strategy = {
@@ -3133,7 +3166,7 @@ ITA_build_guns_37 = {
     	ai_strategy = {
 		type = equipment_production_min_factories
 		id = motorized
-		value = 1
+		value = 2
 	}
 
 	ai_strategy = {
@@ -3184,7 +3217,7 @@ ITA_build_guns_38 = {
     	ai_strategy = {
 		type = equipment_production_min_factories
 		id = motorized
-		value = 2
+		value = 3
 	}
 
 	ai_strategy = {
@@ -3235,7 +3268,7 @@ ITA_build_guns_39 = {
     	ai_strategy = {
 		type = equipment_production_min_factories
 		id = motorized
-		value = 2
+		value = 3
 	}
 
 	ai_strategy = {
@@ -3281,12 +3314,12 @@ ITA_build_guns_war = {
     	ai_strategy = {
 		type = equipment_production_min_factories
 		id = armor
-		value = 2
+		value = 5
 	}
     	ai_strategy = {
 		type = equipment_production_min_factories
 		id = motorized
-		value = 3
+		value = 2
 	}
 }
 ITA_build_airforce1 = {
@@ -3419,11 +3452,37 @@ JAP_dont_upgrade_mgs_too_early = {
 JAP_build_trucks_and_guns = {
 	enable = {
 		tag = JAP
-		date < 1938.3.1
+		date < 1937.1.1
 	}
 
 		abort = {
-		date > 1938.3.1
+		date > 1937.1.1
+	}
+	ai_strategy = {
+		type = equipment_production_min_factories
+		id = infantry
+		value = 2								
+	}
+	ai_strategy = {
+		type = equipment_production_min_factories
+		id = motorized
+		value = 3								
+	}
+	ai_strategy = {
+		type = equipment_production_min_factories
+		id = artillery
+		value = 2
+	}
+	ai_strategy = { type = equipment_production_factor id = motorized 			                value = 50       }
+}
+JAP_build_trucks_and_guns_2 = {
+	enable = {
+		tag = JAP
+		date > 1938.1.1
+	}
+
+		abort = {
+		date < 1938.1.1
 	}
 	ai_strategy = {
 		type = equipment_production_min_factories
@@ -3433,7 +3492,7 @@ JAP_build_trucks_and_guns = {
 	ai_strategy = {
 		type = equipment_production_min_factories
 		id = motorized
-		value = 3								
+		value = 4								
 	}
 	ai_strategy = {
 		type = equipment_production_min_factories
@@ -3445,7 +3504,7 @@ JAP_build_trucks_and_guns = {
 JAP_build_airforce_0 = {
 	enable = {
 		tag = JAP
-		date > 1938.3.1
+		date > 1938.1.1
 		date < 1939.1.1
 	}
 
@@ -3472,7 +3531,7 @@ JAP_build_airforce_0 = {
 	ai_strategy = {
 		type = equipment_production_min_factories
 		id = motorized
-		value = 3								
+		value = 5								
 	}
 	ai_strategy = {
 		type = equipment_production_min_factories
@@ -3530,7 +3589,7 @@ JAP_build_airforce_1 = {
 	ai_strategy = {
 		type = equipment_production_min_factories
 		id = motorized
-		value = 4								
+		value = 5								
 	}
 	ai_strategy = {
 		type = equipment_production_min_factories
@@ -3686,7 +3745,7 @@ JAP_naval_role_ratios_historical = {
 		value = 10		
 	}
 	ai_strategy = { 
-		type = role_ratio 
+		type = unit_ratio 
 		id = convoy 				
 		value = 10		
 	}
@@ -3893,7 +3952,7 @@ minor_naval_role_ratios_historical2 = {
 		OR = {
 			original_tag = CAN
 			original_tag = AUS
-			original_tag = NZE
+			original_tag = NZL
 			original_tag = SAF
 			original_tag = NOR
 			original_tag = RAJ
@@ -4088,7 +4147,7 @@ SOV_build_36 = {
 	ai_strategy = {
 		type = equipment_production_min_factories
 		id = motorized
-		value = 5								
+		value = 7								
 	}
 	ai_strategy = { type = equipment_production_factor id = armor 		value = 80	}
 	ai_strategy = {
@@ -4126,7 +4185,7 @@ SOV_build_37 = {
 	ai_strategy = {
 		type = equipment_production_min_factories
 		id = motorized
-		value = 5								
+		value = 7								
 	}
 	ai_strategy = { type = equipment_production_factor id = armor 		value = 80	}
 	ai_strategy = {
@@ -4165,7 +4224,7 @@ SOV_build_38 = {
 	ai_strategy = {
 		type = equipment_production_min_factories
 		id = motorized
-		value = 7								
+		value = 10								
 	}
 	ai_strategy = { type = equipment_production_factor id = armor 		value = 80	}
 	ai_strategy = {
@@ -4204,7 +4263,7 @@ SOV_build_39 = {
 	ai_strategy = {
 		type = equipment_production_min_factories
 		id = motorized
-		value = 12						
+		value = 15						
 	}
 	ai_strategy = { type = equipment_production_factor id = armor 		value = 80 	}
 	ai_strategy = {
@@ -4220,7 +4279,7 @@ SOV_build_39 = {
 	ai_strategy = {
 		type = equipment_production_min_factories
 		id = artillery
-		value = 30								
+		value = 27								
 	}
 	ai_strategy = {
 		type = equipment_production_min_factories
@@ -4253,7 +4312,7 @@ SOV_build_40 = {
 	ai_strategy = {
 		type = equipment_production_min_factories
 		id = motorized
-		value = 12						
+		value = 18						
 	}
 	ai_strategy = {
 		type = equipment_production_min_factories
@@ -4274,7 +4333,7 @@ SOV_build_40 = {
 	ai_strategy = {
 		type = equipment_production_min_factories
 		id = artillery
-		value = 35								
+		value = 32								
 	}
 	ai_strategy = {
 		type = equipment_production_min_factories
@@ -4302,7 +4361,7 @@ SOV_build_41 = {
 	ai_strategy = {
 		type = equipment_production_min_factories
 		id = motorized
-		value = 12						
+		value = 20						
 	}
 	ai_strategy = {
 		type = equipment_production_min_factories
@@ -4323,7 +4382,7 @@ SOV_build_41 = {
 	ai_strategy = {
 		type = equipment_production_min_factories
 		id = artillery
-		value = 40								
+		value = 25								
 	}
 	ai_strategy = {
 		type = equipment_production_min_factories
@@ -4350,7 +4409,7 @@ SOV_build_412 = {
 	ai_strategy = {
 		type = equipment_production_min_factories
 		id = motorized
-		value = 12						
+		value = 25						
 	}
 	ai_strategy = {
 		type = equipment_production_min_factories

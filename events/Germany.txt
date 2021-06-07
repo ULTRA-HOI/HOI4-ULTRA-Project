@@ -3653,7 +3653,7 @@ country_event = {
 		}
 		add_tech_bonus = {
 			name = med_armor_bonus
-			ahead_reduction = 0.5
+			ahead_reduction = 0.25
 			uses = 1
 			technology = sov_medium_3
 		}
@@ -3693,14 +3693,21 @@ country_event = {
 		# REVISIT Balance research bonus
 		add_tech_bonus = {
 			name = GER_soviet_treaty
-			bonus = 1.0
+			bonus = 0.5
 			uses = 1
 			technology = ger_medium_1
-		}		
+		}
+
+		add_tech_bonus = {
+			name = GER_soviet_treaty
+			ahead_reduction = 0.5
+			uses = 1
+			technology = ger_support_1
+		}
 		
 		add_tech_bonus = {
 			name = GER_soviet_treaty
-			bonus = 1
+			bonus = 0.5
 			uses = 1
 			technology = ger_medium_2
 		}
@@ -6901,6 +6908,37 @@ country_event = {
 		name = germany.1013.a
 		GER = { 
 			add_war_support = 0.10
+		}
+	}
+}
+
+## hidden event to grand resources in spain
+
+
+country_event = {
+	id = germany.1014
+	title = germany.1014.t
+	desc = germany.1014.d
+	picture = GFX_report_event_degaulle_churchill
+	hidden = yes
+	fire_only_once = yes
+	trigger = {
+		SPA = {
+			has_completed_focus = SPA_the_condor_legion
+			has_war = no
+		}
+	}
+	option = {
+		name = germany.1014.a
+		ai_chance = {
+			base = 100
+		}
+		SPA = {
+			give_resource_rights = { receiver = GER state = 171 }
+			give_resource_rights = { receiver = GER state = 176 }
+		}
+		GER = {
+			set_country_flag = spanish_resource_concessions
 		}
 	}
 }
