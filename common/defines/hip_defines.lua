@@ -348,9 +348,9 @@ NDefines.NMilitary.LAND_COMBAT_COLLATERAL_FACTOR = 0.0025		   -- Factor to scale
 NDefines.NMilitary.COMBAT_MOVEMENT_SPEED = 0.25	               -- speed reduction base modifier in combat
 NDefines.NMilitary.TACTIC_SWAP_FREQUENCEY = 12                   -- hours between tactic swaps
 NDefines.NMilitary.INITIATIVE_PICK_COUNTER_ADVANTAGE_FACTOR  = 0.45 -- advantage per leader level for picking a counter
-NDefines.NMilitary.RIVER_CROSSING_PENALTY_LARGE = -0.5 -- -0.75           -- large river crossing
+NDefines.NMilitary.RIVER_CROSSING_PENALTY_LARGE = -0.4 -- -0.75           -- large river crossing
 NDefines.NMilitary.RIVER_CROSSING_SPEED_PENALTY = 0 -- -0.25          -- small river crossing
-NDefines.NMilitary.RIVER_CROSSING_PENALTY = -0.25                 -- small river crossing
+NDefines.NMilitary.RIVER_CROSSING_PENALTY = -0.2                 -- small river crossing
 NDefines.NMilitary.RIVER_CROSSING_SPEED_PENALTY_LARGE = -0.5     -- large river crossing
 NDefines.NNavy.AMPHIBIOUS_LANDING_PENALTY = 0 -- -0.7								-- amphibious landing penalty -- replaced on units stats
 NDefines.NMilitary.BASE_FORT_PENALTY = -0.15					   -- fort penalty		#HOI4TGW ::: BASE_FORT_PENALTY = -0.15

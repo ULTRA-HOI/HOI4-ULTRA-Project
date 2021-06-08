@@ -1,5 +1,82 @@
 # Changelog
 
++## 0.8.9
+
+### Compatibility 
+
+- 1.10.7 compatibility update
+
+### Features 
+
+- Added Army Manager : This feature allow to represent logistic tails of divisions and the quality of communications
+
+### Balance
+
+- Nerfed seducer and buffed Master Operative traits.
+- Counterintelligence mission does not get diminushing returns
+- Forming Vichy France nows properly gives complience in France and low countries 
+- Defeatism national spirit now lower resistance target instead of previous effect 
+- Intel network now reduce entrenchment/planification by a % instead of flat values 
+- Reduced drasticaly the numbers of divisions per general/FM
+- Reduced the political power given by Hitler trait
+- Germany starts with Hess and Bormann recruited
+- Everything related to "Sieg im Westen" national spirit removed
+- Chinese supply rebalanced
+- Finland buffs toned down
+- Quartered all ship steel cost 
+- Oil Provessing techs nerfed 
+- Halved time to reopen a closed mill
+- Doubled convoys needed for resource transport
+- Added back industrial/resources malus for the 3 last levels of conscription 
+- Depth Charges overhauled to be closer to reality
+- Sub stealth rebalanced 
+- Subs will attempt to flee losing combats to avoid everlasting naval combats.
+- Halved xp cost for soviet army reforms
+- Reduced purges maluses
+
+### Database 
+
+- Added a third lvl of operative xp 
+- Spy network now works for every VP
+- Occupation of Denmark does not gives a reichkommisariat anymore
+- Removed collaboration operation
+- Most of the tanks have now refined armor values 
+- Overstreched Dockyards debuff removed 
+- Various historical ships added on templates decisions
+- Baustab Becker decision for Germany 
+- Portugal starts with Free Trade 
+- Pupetts starting with Free Trade can't remove it 
+- Added events/decisions to represent the rares materials Germany got in Spain after the civil war
+- Added/added back some colonial puppetts to fix a decisive balance issue about colonial resource transfers
+- Germany can take a decision to pressure Persia if Iraq is secured on Axis
+- Research bonus for T34/85
+- Modern tanks merged into medium tanks 
+- Planes fuel consumption is consistant 
+- Trucks fuel consistant is consistant with mechanized and tanks 
+- Default fuel capacity is 3 days for divisions 
+- Oil depletion event chains on some places 
+- Panzer III/IV rework on availibility to avoid early spamm
+- Panay incident cannot trigger a war anymore 
+- UK/Netherlands should be already at war against a major power to be guaranted by USA
+
+### QoL 
+
+- Added a decision to show/hide equipment purchases decisions 
+- Integrated resource topbar mod (by Lennard)
+
+### AI 
+
+- Commonwealth AI more coordinated 
+- Chinese AI improved 
+- Italian AI will build less Battleships
+- Japanese AI is better to make naval invasions
+
+### Bugfixes 
+
+- Fixed some occurences where AI Germany stopped all offensives during Fall Gelb
+- Historical tanks divisions templates are now properly considered as tanks divisions by the game 
+
+
 ## 0.8.7
 
 ### Map
