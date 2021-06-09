@@ -1782,31 +1782,7 @@ focus_tree = {
 		}
 	}
 	
-	focus = {
-		id = GER_volksturm
-		icon = GFX_focus_generic_military_mission
-		prerequisite = { focus = GER_total_war }
-		x = -1
-		y = 1
-		relative_position_id = GER_total_war
-		cost = 5
-		ai_will_do = {
-			factor = 1
-		}
-		
-		available = {
-			OR = {
-				has_idea = massive_draft
-				has_idea = all_adults_serve
-				has_idea = scraping_the_barrel
-			}
-		}
-		
-		completion_reward = {
-			add_ideas = GER_volksturm
-		}
-		
-	}
+	
 	
 	focus = {
 		id = GER_werwolf
@@ -2556,6 +2532,16 @@ focus_tree = {
 				country_event = { id = germany.75 days = 1 }
 				custom_effect_tooltip = needs_approval
 			}
+			hidden_effect = {
+				IF = {
+					limit = {
+						is_ai = yes
+					}
+					set_technology = {
+						ger_medium_1 = 1
+					}
+				}
+			}
 			# Actual reward effects added in event if Soviets approve
 			effect_tooltip = {
 				# Trade influence with the USSR? Or simply let the opinion mod do the work
@@ -3291,7 +3277,7 @@ focus_tree = {
 				limit = {
 					is_ai = yes
 				}
-				date > 1941.4.15
+				date > 1941.2.15
 			}
 			date > 1940.1.1
 			has_government = fascism
@@ -3328,19 +3314,19 @@ focus_tree = {
 				OR = {
 					AND = {
 						date > 1940.7.1
-						date < 1941.3.1
+						date < 1941.2.1
 					}
 					AND = {
 						date > 1941.7.1
-						date < 1942.3.1
+						date < 1942.2.1
 					}
 					AND = {
 						date > 1942.7.1
-						date < 1943.3.1
+						date < 1943.2.1
 					}
 					AND = {
 						date > 1943.7.1
-						date < 1944.3.1
+						date < 1944.2.1
 					}
 					date < 1939.1.1 #Not DNM, but seems silly to have a separate modifier.
 				}
