@@ -61,7 +61,12 @@ technologies = {
 		enable_equipments = {
 			ger_scout_plane_equipment_2
 		}
-	
+		
+		path = {
+			leads_to_tech = ger_scout_plane3
+			research_cost_coeff = 1
+		}
+		
 		research_cost = 2
 		start_year = 1940
 		folder = {
@@ -73,6 +78,60 @@ technologies = {
 			medium_air
 			air_equipment
 			cat_scout_plane
+		}
+		
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				is_major = yes
+				factor = 2
+			}
+			
+			modifier = {
+				has_war = yes
+				factor = 1.5
+			}
+			
+			modifier = {
+				factor = 4
+				original_tag = GER
+			}
+			
+			modifier = {
+				factor = 0
+				NOT = {
+					OR = {
+						original_tag = GER
+						has_country_flag = german_technologies_tree_flag
+					}
+				}
+			}
+			
+		}
+	}
+	
+	ger_scout_plane3 = {
+
+		enable_equipments = {
+			ger_scout_plane_equipment_3
+		}
+	
+		research_cost = 2
+		start_year = 1945
+		folder = {
+			name = ger_air_techs_folder
+			position = { x = -5 y = 22 }
+		}
+		
+		categories = {
+			medium_air
+			air_equipment
+			cat_scout_plane
+			jet_technology
+		}
+		
+		dependencies = {
+			jet_engines = 1
 		}
 		
 		ai_will_do = {
@@ -2927,7 +2986,7 @@ technologies = {
 		}
 	
 		path = {
-			#leads_to_tech = ger_light_bomber_1
+			leads_to_tech = ger_light_bomber_1
 			research_cost_coeff = 1
 		}
 
@@ -2947,59 +3006,298 @@ technologies = {
 		}
 		
 		ai_will_do = {
-			factor = 4
-			
-			modifier = {
-				factor = 35
-				date > "1936.1.1"
-			}
-			
-			modifier = {
-				factor = 35
-				date > "1937.1.1"
-			}
-			
-			modifier = {
-				factor = 35
-				date > "1938.1.1"
-			}
+			factor = 0		
+		}		
+	}
+	
+	#Do 17 E
+	ger_light_bomber_1 = {
 
-			modifier = {
-				factor = 0
-				tag = BUL
-			}
+		enable_equipments = {
+			ger_light_bomber_equipment_1
+		}
+	
+		path = {
+			leads_to_tech = ger_light_bomber_3
+			research_cost_coeff = 1
+		}
 
-			modifier = {
-				factor = 0
-				tag = ROM
-			}
+		research_cost = 2.5
+		start_year = 1936
 
-			modifier = {
-				factor = 0
-				tag = HUN
-			}
-
-			modifier = {
-				factor = 0
-				tag = CRO
-			}
-
-			modifier = {
-				factor = 0
-				tag = SLO
-			}
-			
-			modifier = {
-				factor = 0
-				NOT = {
-					OR = {
-						original_tag = GER
-						has_country_flag = german_technologies_tree_flag
-					}
-				}
-			}
+		folder = {
+			name = ger_air_techs_folder
+			position = { x = 19 y = 4 }
+		}
+		
+		sub_technologies = {
+			ger_light_bomber_2
+		}
+		
+		categories = {
+			major_technologies
+			medium_air
+			tactical_bomber
+			air_equipment
+		}
+		
+		ai_will_do = {
+			factor = 0		
+		}		
+	}
+	
+	#Do 17 Z
+	ger_light_bomber_2 = {
+	
+		enable_equipments = {
+			ger_light_bomber_equipment_2
+		}
+		
+		research_cost = 1.5
+		start_year = 1939
+		
+		categories = {
+			major_technologies
+			medium_air
+			tactical_bomber
+			air_equipment
+		}
+		
+		ai_will_do = {
+			factor = 0		
 		}		
 		
+	}
+	
+	#Ju 88 A
+	ger_light_bomber_3 = {
+
+		enable_equipments = {
+			ger_light_bomber_equipment_3
+		}
+	
+		path = {
+			leads_to_tech = ger_light_bomber_4
+			research_cost_coeff = 1
+		}
+
+		research_cost = 2.5
+		start_year = 1939
+
+		folder = {
+			name = ger_air_techs_folder
+			position = { x = 19 y = 10 }
+		}
+		
+		sub_technologies = {
+			ger_light_maritime_3
+		}
+		
+		categories = {
+			major_technologies
+			medium_air
+			tactical_bomber
+			air_equipment
+		}
+		
+		ai_will_do = {
+			factor = 0		
+		}		
+	}
+	
+	#Ju 88 A17
+	ger_light_maritime_3 = {
+
+		enable_equipments = {
+			ger_light_maritime_equipment_3
+		}
+
+		research_cost = 1 #Maritime Variant
+		start_year = 1939
+		
+		categories = {
+			major_technologies
+		    medium_air
+			tactical_bomber
+			air_equipment
+			naval_air
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	#Ju 88 S
+	ger_light_bomber_4 = {
+
+		enable_equipments = {
+			ger_light_bomber_equipment_4
+		}
+	
+		path = {
+			leads_to_tech = ger_light_bomber_6
+			research_cost_coeff = 1
+		}
+
+		research_cost = 1.5
+		start_year = 1943
+
+		folder = {
+			name = ger_air_techs_folder
+			position = { x = 19 y = 18 }
+		}
+		
+		sub_technologies = {
+			ger_light_bomber_5
+		}
+		
+		categories = {
+			major_technologies
+			medium_air
+			tactical_bomber
+			air_equipment
+		}
+		
+		ai_will_do = {
+			factor = 0		
+		}		
+	}
+	
+	#Ju 188
+	ger_light_bomber_5 = {
+	
+		enable_equipments = {
+			ger_light_bomber_equipment_5
+		}
+		
+		research_cost = 1
+		start_year = 1943
+		
+		categories = {
+			major_technologies
+			medium_air
+			tactical_bomber
+			air_equipment
+		}
+		
+		ai_will_do = {
+			factor = 0		
+		}		
+		
+	}
+	
+	#Ju 388
+	ger_light_bomber_6 = {
+
+		enable_equipments = {
+			ger_light_bomber_equipment_6
+		}
+	
+		path = {
+			leads_to_tech = ger_light_bomber_7
+			research_cost_coeff = 1
+		}
+
+		research_cost = 1.5
+		start_year = 1944
+
+		folder = {
+			name = ger_air_techs_folder
+			position = { x = 19 y = 20 }
+		}
+		
+		sub_technologies = {
+			
+		}
+		
+		categories = {
+			major_technologies
+			medium_air
+			tactical_bomber
+			air_equipment
+		}
+		
+		ai_will_do = {
+			factor = 0		
+		}		
+	}
+	
+	#Arado 234
+	ger_light_bomber_7 = {
+
+		enable_equipments = {
+			ger_light_bomber_equipment_7
+		}
+	
+		path = {
+			leads_to_tech = ger_light_bomber_8
+			research_cost_coeff = 1
+		}
+
+		research_cost = 2.5
+		start_year = 1945
+
+		folder = {
+			name = ger_air_techs_folder
+			position = { x = 19 y = 22 }
+		}
+		
+		dependencies = {
+			jet_engines = 1
+		}
+		
+		sub_technologies = {
+			
+		}
+		
+		categories = {
+			major_technologies
+			medium_air
+			tactical_bomber
+			air_equipment
+			jet_technology
+		}
+		
+		ai_will_do = {
+			factor = 0		
+		}		
+	}
+	
+	#Arado 234 C
+	ger_light_bomber_8 = {
+
+		enable_equipments = {
+			ger_light_bomber_equipment_7
+		}
+
+		research_cost = 1
+		start_year = 1946
+
+		folder = {
+			name = ger_air_techs_folder
+			position = { x = 19 y = 24 }
+		}
+		
+		dependencies = {
+			jet_engines = 1
+		}
+		
+		sub_technologies = {
+			
+		}
+		
+		categories = {
+			major_technologies
+			medium_air
+			tactical_bomber
+			air_equipment
+			jet_technology
+		}
+		
+		ai_will_do = {
+			factor = 0		
+		}		
 	}
 	
 	######################################################### Medium bombers 
