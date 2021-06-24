@@ -2250,6 +2250,13 @@ focus_tree = {
 				uses = 2
 				category = battlefield_support_tree
 			}
+			
+			add_tech_bonus = {
+				name = GER_air_innovation
+				bonus = 0.5
+				uses = 2
+				category = light_fighter
+			}
 
 			if = {
 				limit = {
@@ -2341,8 +2348,8 @@ focus_tree = {
 			}
 			add_tech_bonus = {
 				name = bomber_bonus
-				bonus = 1.0
-				uses = 1
+				bonus = 0.5
+				uses = 5
 				category = tactical_bomber
 				category = cas_bomber			
 			}
@@ -2366,8 +2373,8 @@ focus_tree = {
 		completion_reward = {
 			add_tech_bonus = {
 				name = GER_long_range_escorts
-				bonus = 1.0
-				uses = 2
+				bonus = 0.5
+				uses = 4
 				category = cat_heavy_fighter
 			}
 		}
@@ -2392,8 +2399,8 @@ focus_tree = {
 		completion_reward = {
 			add_tech_bonus = {
 				name = nav_bomber_bonus
-				bonus = 1.0
-				uses = 2
+				bonus = 0.5
+				uses = 4
 				category = naval_air
 			}
 		}
@@ -2424,8 +2431,8 @@ focus_tree = {
 			}
 			add_tech_bonus = {
 				name = bomber_bonus
-				bonus = 1.0
-				uses = 1
+				bonus = 0.5
+				uses = 2
 				category = cat_strategic_bomber
 			}
 		}
@@ -2591,6 +2598,13 @@ focus_tree = {
 		y = 2
 		relative_position_id = GER_strategic_air_effort
 		cost = 10
+		
+		available = {
+			has_war = yes
+			any_enemy_country = {
+				is_major = yes
+			}
+		}
 		ai_will_do = {
 			factor = 1
 		}
@@ -2609,10 +2623,11 @@ focus_tree = {
 				category = radar_tech
 			}
 			add_tech_bonus = {
-				bonus = 1.0
-				uses = 1
-				technology = fighter3
+				bonus = 0.5
+				uses = 4
+				category = light_fighter
 			}
+			
 			if = {
 				limit = {
 					has_opinion_modifier = sov_ger_treaty
@@ -2799,18 +2814,23 @@ focus_tree = {
 			add_ideas = GER_rocketry_idea
 			add_tech_bonus = {
 				name = GER_rocketry_focus
-				bonus = 1.0
-				ahead_reduction = 1
-				uses = 4
-				category = rocketry
+				ahead_reduction = 2
+				uses = 1
+				technology = experimental_rockets
 			}
 			add_tech_bonus = {
 				name = GER_rocketry_focus
-				bonus = 1.0
-				ahead_reduction = 1
-				uses = 3
-				category = jet_technology
+				ahead_reduction = 2
+				uses = 1
+				technology = rocket_engines
 			}
+			add_tech_bonus = {
+				name = GER_rocketry_focus
+				ahead_reduction = 2
+				uses = 1
+				technology = jet_engines
+			}
+			
 		}
 	}
 
@@ -2818,6 +2838,7 @@ focus_tree = {
 		id = GER_wunderwaffe
 		icon = GFX_focus_wonderweapons
 		prerequisite = { focus = GER_rocketry_focus }
+		prerequisite = { focus = GER_total_war }
 		x = 0
 		y = 1
 		relative_position_id = GER_rocketry_focus
@@ -2831,9 +2852,15 @@ focus_tree = {
 		completion_reward = {
 			add_tech_bonus = {
 				name = secret_bonus
-				bonus = 1.0
+				bonus = 0.5
 				uses = 2
 				category = nuclear
+			}
+			add_tech_bonus = {
+				name = secret_bonus
+				ahead_reduction = 1
+				bonus = 0.5
+				uses = 2
 				category = rocketry
 			}
 			add_tech_bonus = {
@@ -2847,6 +2874,13 @@ focus_tree = {
 				ahead_reduction = 1
 				uses = 1
 				technology = night_vision2
+			}
+			add_tech_bonus = {
+				name = GER_rocketry_focus
+				bonus = 0.5
+				ahead_reduction = 1
+				uses = 3
+				category = jet_technology
 			}
 		}
 	}
