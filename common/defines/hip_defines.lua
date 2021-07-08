@@ -209,7 +209,7 @@ NDefines.SABOTAGE_FACTORY_DAMAGE = 75.0		-- How much damage takes a factory buil
 
 -- Research Stuff 
 
-NDefines.NTechnology.BASE_YEAR_AHEAD_PENALTY_FACTOR = 6 -- Base year ahead penalty
+NDefines.NTechnology.BASE_YEAR_AHEAD_PENALTY_FACTOR = 10 -- was 6 --Base year ahead penalty
 NDefines.NTechnology.BASE_TECH_COST = 90 --85				-- Base cost for a tech. multiplied with tech cost and ahead of time penalties
 NDefines.NTechnology.DEFAULT_XP_RESEARCH_COST = 100			-- default xp cost of a research to speed up the process
 NDefines.NTechnology.DEFAULT_XP_RESEARCH_BONUS = 1.5		-- default research bonus gained when xp is used to research an item
