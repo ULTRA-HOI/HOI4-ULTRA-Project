@@ -434,6 +434,16 @@ technologies = {
 			leads_to_tech = usa_fighter_4
 			research_cost_coeff = 1
 		}
+		
+		path = {
+			leads_to_tech = usa_fighter_bomber_1
+			research_cost_coeff = 1
+		}
+		
+		path = {
+			leads_to_tech = usa_fighter_bomber_5
+			research_cost_coeff = 1
+		}
 
 		
 		research_cost = 2.5
@@ -553,11 +563,6 @@ technologies = {
 		enable_equipments = {
 			usa_fighter_equipment_5
 		}
-	
-		path = {
-			leads_to_tech = usa_jet_fighter_1
-			research_cost_coeff = 1
-		}
 
 		
 		research_cost = 1
@@ -609,42 +614,7 @@ technologies = {
 		}
 	}
 	
-	#F-94
-	usa_jet_fighter_1 = {   
-
-		enable_equipments = {
-			usa_jet_fighter_equipment_1
-		}
 	
-		
-		research_cost = 1
-		start_year = 1950
-		
-		folder = {
-			name = usa_air_techs_folder
-			position = { x = -1 y = 32 }
-		}
-		
-		sub_technologies = {
-			
-		}
-		
-		dependencies = {
-			jet_engines = 1
-		}
-		
-		categories = {
-			major_technologies
-			light_air
-			light_fighter
-			air_equipment
-			jet_technology
-		}
-
-		ai_will_do = {
-			factor = 0
-		}
-	}
 	
 	############################################################# fighter-bombers
 	
@@ -667,9 +637,6 @@ technologies = {
 			
 		}
 		
-		dependencies = {
-			usa_fighter_3 = 1
-		}
 
 		
 		research_cost = 2.5
@@ -812,9 +779,6 @@ technologies = {
 			research_cost_coeff = 1
 		}
 		
-		dependencies = {
-			usa_fighter_3 = 1
-		}
 		
 		
 		sub_technologies = {
@@ -837,7 +801,32 @@ technologies = {
 		}
 
 		ai_will_do = {
-			factor = 0
+			factor = 4
+			
+			modifier = {
+				factor = 40
+				date > "1940.1.1"
+			}
+			
+			modifier = {
+				factor = 40
+				date > "1941.1.1"
+			}
+			
+			modifier = {
+				factor = 40
+				date > "1942.1.1"
+			}
+			
+			modifier = {
+				factor = 0
+				NOT = {
+					OR = {
+						original_tag = USA
+						has_country_flag = american_technologies_tree_flag
+					}
+				}
+			}
 		}
 	}
 	
@@ -874,7 +863,32 @@ technologies = {
 		}
 
 		ai_will_do = {
-			factor = 0
+			factor = 4
+			
+			modifier = {
+				factor = 40
+				date > "1941.1.1"
+			}
+			
+			modifier = {
+				factor = 40
+				date > "1942.1.1"
+			}
+			
+			modifier = {
+				factor = 40
+				date > "1943.1.1"
+			}
+			
+			modifier = {
+				factor = 0
+				NOT = {
+					OR = {
+						original_tag = USA
+						has_country_flag = american_technologies_tree_flag
+					}
+				}
+			}
 		}
 	}
 	
@@ -1425,6 +1439,11 @@ technologies = {
 			usa_heavy_fighter_equipment_6
 		}
 		
+		path = {
+			leads_to_tech = usa_jet_fighter_1
+			research_cost_coeff = 1
+		}
+		
 		sub_technologies = {
 			
 		}
@@ -1445,6 +1464,44 @@ technologies = {
 		}
 		
 		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	#F-94
+	usa_jet_fighter_1 = {   
+
+		enable_equipments = {
+			usa_jet_fighter_equipment_1
+		}
+	
+		
+		research_cost = 1
+		start_year = 1950
+		
+		folder = {
+			name = usa_air_techs_folder
+			position = { x = 11 y = 32 }
+		}
+		
+		sub_technologies = {
+			
+		}
+		
+		dependencies = {
+			jet_engines = 1
+			usa_jet_fighter_bomber_10 = 1
+		}
+		
+		categories = {
+			major_technologies
+			light_air
+			light_fighter
+			air_equipment
+			jet_technology
+		}
+
 		ai_will_do = {
 			factor = 0
 		}
