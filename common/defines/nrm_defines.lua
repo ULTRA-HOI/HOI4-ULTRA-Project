@@ -10,7 +10,8 @@ NDefines.NProduction.EQUIPMENT_MODULE_ADD_XP_COST = 1.0
 NDefines.NProduction.EQUIPMENT_MODULE_REPLACE_XP_COST = 1.0
 NDefines.NProduction.EQUIPMENT_MODULE_CONVERT_XP_COST = 1.0
 NDefines.NProduction.EQUIPMENT_MODULE_REMOVE_XP_COST = 1.0
-NDefines.NProduction.MIN_NAVAL_EQUIPMENT_CONVERSION_IC_COST_FACTOR = 0.001
+NDefines.NProduction.MIN_NAVAL_EQUIPMENT_CONVERSION_IC_COST_FACTOR = 0.2		-- Minimum fraction of an equipment type's base industry capacity cost to use when converting a naval equipment, such as through ship refitting.
+NDefines.NProduction.MIN_NAVAL_EQUIPMENT_CONVERSION_RESOURCE_COST_FACTOR = 0.2
 
 --------------------------------------------------------------------------------------------------------------
 -- TRAINING STUFF
@@ -214,8 +215,8 @@ NDefines.NAI.PRODUCTION_MAX_PROGRESS_TO_SWITCH_NAVAL = 0.02
 NDefines.NAI.PRODUCTION_CARRIER_PLANE_BUFFER_RATIO = 2.0
 NDefines.NAI.MAX_FUEL_CONSUMPTION_RATIO_FOR_NAVY_TRAINING = 0.4
 NDefines.NAI.MAX_FULLY_TRAINED_SHIP_RATIO_FOR_TRAINING = 1.0
-NDefines.NAI.REFIT_SHIP_RELUCTANCE = 500
-NDefines.NAI.REFIT_SHIP_PERCENTAGE_OF_FORCES = 0.0
+NDefines.NAI.REFIT_SHIP_RELUCTANCE = 1
+NDefines.NAI.REFIT_SHIP_PERCENTAGE_OF_FORCES = 0.10
 NDefines.NAI.MAX_CARRIER_OVERFILL = 1.50
 NDefines.NAI.SCREEN_TASKFORCE_MAX_SHIP_COUNT = 16
 NDefines.NAI.MIN_CAPITALS_FOR_CARRIER_TASKFORCE = 4
@@ -253,8 +254,8 @@ NDefines.NAI.MAX_INVASION_SIZE = 18
 -- NDefines.NAI.NAVAL_MISSION_PATROL_NEAR_CONTROLLED = 120						-- Extra patrol mission score near controlled provinces
 NDefines.NAI.INVASION_DISTANCE_RANDOMNESS = 300									-- This higher the value the more unpredictable the invasions. Compares to actual map distance in pixels.
 -- NDefines.NAI.STRIKE_FLEET_MAX_DISTANCE_TO_COMBAT = 500.0						-- The strike fleet will not attempt to intervene in combats further away than this.
-NDefines.NAI.MISSING_CONVOYS_BOOST_FACTOR = 0.0
--- NDefines.NAI.CONVOY_NEED_SAFETY_BUFFER = 0
+NDefines.NAI.MISSING_CONVOYS_BOOST_FACTOR = 2
+NDefines.NAI.MISSING_CONVOYS_BOOST_FACTOR = 2					-- The more convoys a country is missing, the more resources it diverts to cover this.
 NDefines.NAI.MIN_NAVAL_MISSION_PRIO_TO_ASSIGN = {  -- priorities for regions to get assigned to a mission
 	0, -- HOLD (consumes fuel HOLD_MISSION_MOVEMENT_COST fuel while moving)
 	200, -- PATROL		

@@ -185,7 +185,9 @@ NDefines.NTrade.DISTANCE_TRADE_FACTOR = -0.01										-- Trade factor is modifi
 NDefines.NTrade.RELATION_TRADE_FACTOR = 0.1					-- Trade factor is modified by Opinion value times this
 NDefines.NTrade.ANTI_MONOPOLY_TRADE_FACTOR_THRESHOLD = 0.8	-- What percentage of resources has to be sold to the buyer for the anti-monopoly factor to take effect
 NDefines.NTrade.ANTI_MONOPOLY_TRADE_FACTOR = -25			-- This is added to the factor value when anti-monopoly threshold is exceeded
-
+NDefines.NAI.MAX_FACTORY_TO_SPARE_FOR_MISSION_FUEL_TRADE = 0.33						-- amount of factories to spend on oil trade in case of fuel need for missions
+NDefines.NAI.MAX_FACTORY_TO_SPARE_FOR_CRITICAL_MISSION_FUEL_TRADE = 0.66		-- amount of factories to spend on oil trade in case of fuel need for prio missions
+NDefines.NAI.MAX_FACTORY_TO_TRADE_FOR_FUEL = 0.5
 NDefines.NTrade.BASE_LAND_TRADE_RANGE = 250
 
 -- Building Stuff
@@ -312,7 +314,7 @@ NDefines.NMilitary.COMBAT_OVER_WIDTH_PENALTY = -1.5					-- over combat width pen
 NDefines.NMilitary.STRATEGIC_SPEED_BASE = 5.0                 	-- Speed of strategic redeployment
 NDefines.NMilitary.STRATEGIC_INFRA_SPEED = 15.0                   -- Max of additional speed gained trough level for strategic redeployment per infra
 NDefines.NMilitary.FASTER_ORG_REGAIN_LEVEL = 0.2
-NDefines.NMilitary.FASTER_ORG_REGAIN_MULT = 0.7
+NDefines.NMilitary.FASTER_ORG_REGAIN_MULT = 0.8
 NDefines.NMilitary.ACCLIMATIZATION_SPEED_GAIN = 0.08				-- A variable used to balance the overall speed of gaining the acclimatization
 NDefines.NMilitary.ACCLIMATIZATION_LOSS_SPEED_FACTOR = 1.0		-- Loosing one acclimatization while being under affect of the opposite climate should cause it to drop down much faster than gaining.
 NDefines.NMilitary.UNIT_LEADER_MODIFIER_COOLDOWN_ON_GROUP_CHANGE = 3		-- time in days for a unit leader to regain its modifiers
@@ -750,7 +752,7 @@ NDefines.NAI.LENDLEASE_FRACTION_OF_STOCKPILE = 0.5 --0.25
 NDefines.NAI.TRADEABLE_FACTORIES_FRACTION = 1
 --NDefines.NAI.MIN_DELIVERED_TRADE_FRACTION = 0.6
 
-NDefines.NAI.ESTIMATED_CONVOYS_PER_DIVISION = 6
+NDefines.NAI.ESTIMATED_CONVOYS_PER_DIVISION = 36
 
 NDefines.NAI.WAIT_YEARS_BEFORE_FREER_BUILDING = 0
 
@@ -842,81 +844,69 @@ NDefines.NAI.PLAN_MIN_SIZE_FOR_FALLBACK = 5000					                -- A country 
 --------------------------------------------------------------------------------------------------------------
 -- AIR AI
 --------------------------------------------------------------------------------------------------------------
+NDefines.NAI.AIR_WING_REINFORCEMENT_LIMIT = 100
+NDefines.NAI.AIR_SUPERIORITY_FACTOR = 0                                     -- [2.5]  -- Factor for air superiority score
+NDefines.NAI.AIR_SCORE_DISTANCE_IMPACT = 10                                 -- [0.3]  -- Effect of distance applied to the score calculations
+NDefines.NAI.DAYS_BETWEEN_AIR_PRIORITIES_UPDATE = 2                             -- [4]    -- Amount of days between air ai updates priorities for air wings ( from 1 to N )
+NDefines.NAI.NUM_HOURS_SINCE_LAST_COMBAT_TO_SUPPORT_UNITS_VIA_AIR = 24           -- [72]   -- units will be considered in combat if they are just out of their last combat for air supporting
 
--- NDefines.NAI.PRODUCTION_CARRIER_PLANE_BUFFER_RATIO = 3				-- in additiona to total deck size of carriers, we want at list this ratio to buffer it
--- NDefines.NAI.PRODUCTION_CARRIER_PLANE_PRODUCTION_BOOST_TO_BUFFER = 4.0  -- production of carrier planes will go up by this ratio if we lack buffers
-
-NDefines.NAI.MAX_FUEL_CONSUMPTION_RATIO_FOR_AIR_TRAINING = 1
-
-NDefines.NAI.AIR_WING_REINFORCEMENT_LIMIT = 200
-
---NDefines.NAI.AIR_SUPERIORITY_FACTOR = 2.5                                        -- [2.5]  -- Factor for air superiority score
---NDefines.NAI.AIR_SCORE_DISTANCE_IMPACT = 0.3                                     -- [0.3]  -- Effect of distance applied to the score calculations
---NDefines.NAI.DAYS_BETWEEN_AIR_PRIORITIES_UPDATE = 4                              -- [4]    -- Amount of days between air ai updates priorities for air wings ( from 1 to N )
---NDefines.NAI.NUM_HOURS_SINCE_LAST_COMBAT_TO_SUPPORT_UNITS_VIA_AIR = 72           -- [72]   -- units will be considered in combat if they are just out of their last combat for air supporting
-
-NDefines.NAI.NAVAL_AIR_SUPERIORITY_IMPORTANCE = 1.0                             -- [0.10] -- Strategic importance of air superiority ( amount of enemy planes in area )
---NDefines.NAI.NAVAL_SHIP_AIR_IMPORTANCE = 2.0                                       -- [2.0]  -- Naval ship air importance
-NDefines.NAI.NAVAL_SHIP_IN_PORT_AIR_IMPORTANCE = 20.0                             -- [6.0]  -- Naval ship in the port air importance
-NDefines.NAI.NAVAL_COMBAT_AIR_IMPORTANCE = 500.0                                     -- [12.0] -- Naval combat air importance
---NDefines.NAI.NAVAL_TRANSFER_AIR_IMPORTANCE = 0.0                                 -- [0.0]  -- Naval transfer air importance
---NDefines.NAI.NAVAL_COMBAT_TRANSFER_AIR_IMPORTANCE = 50.0                         -- [50.0] -- Naval combat involving enemy land units
-NDefines.NAI.NAVAL_IMPORTANCE_SCALE = 10.0                                        -- [1.0]  -- Naval total importance scale (every naval score get's multiplied by it)
+NDefines.NAI.NAVAL_AIR_SUPERIORITY_IMPORTANCE = 100                           -- [0.10] -- Strategic importance of air superiority ( amount of enemy planes in area )
+NDefines.NAI.NAVAL_SHIP_AIR_IMPORTANCE = 50                                     -- [2.0]  -- Naval ship air importance
+NDefines.NAI.NAVAL_SHIP_IN_PORT_AIR_IMPORTANCE = 40                            -- [6.0]  -- Naval ship in the port air importance
+NDefines.NAI.NAVAL_COMBAT_AIR_IMPORTANCE = 150                                     -- [12.0] -- Naval combat air importance
+NDefines.NAI.NAVAL_TRANSFER_AIR_IMPORTANCE = 60                                -- [0.0]  -- Naval transfer air importance
+NDefines.NAI.NAVAL_COMBAT_TRANSFER_AIR_IMPORTANCE = 175                      -- [50.0] -- Naval combat involving enemy land units
+NDefines.NAI.NAVAL_IMPORTANCE_SCALE = 1                                        -- [1.0]  -- Naval total importance scale (every naval score get's multiplied by it)
 NDefines.NAI.NAVAL_FIGHTERS_PER_PLANE = 1.0                                        -- [1.1]  -- Amounts of air superiority planes requested per enemy plane
---NDefines.NAI.NAVAL_STRIKE_PLANES_PER_ARMY = 0                                    -- [0]    -- Amount of planes requested per enemy army
-NDefines.NAI.NAVAL_STRIKE_PLANES_PER_SHIP = 40                                   -- [20]   -- Amount of bombers requested per enemy ship
--- NDefines.NAI.NAVAL_MIN_EXCORT_WINGS = 1                                         -- [0]    -- Min amount of airwings requested to excort operations
+NDefines.NAI.NAVAL_STRIKE_PLANES_PER_ARMY = 10                                    -- [0]    -- Amount of planes requested per enemy army
+NDefines.NAI.NAVAL_STRIKE_PLANES_PER_SHIP = 10                                  -- [20]   -- Amount of bombers requested per enemy ship
+NDefines.NAI.NAVAL_MIN_EXCORT_WINGS = 1                                         -- [0]    -- Min amount of airwings requested to excort operations
+NDefines.NAI.PORT_STRIKE_PLANES_PER_SHIP = 10                                    -- [10]   -- Amount of bombers request per enemy ship in the port
 
--- NDefines.NAI.MINES_SWEEPING_PLANES_PER_MAX_MINES = 0 			-- Amount of air wings request for mines sweeping when there is max amount of mines planted by enemy in certain region
--- NDefines.NAI.MINES_PLANTING_PLANES_PER_MAX_DESIRE = 0			-- Amount of air wings request for mines planting when there is max desire for it.
--- NDefines.NAI.MINES_PLANTING_DESIRE_PER_HOME_STATE = 0.0			-- Scoring for how much do we want to plant naval mines with our air wings if the naval region is adjacent to a home state. Multiple adjacent states increases the score. Max sum of score is 1.0.
--- NDefines.NAI.MINES_PLANTING_DESIRE_PER_ENEMY_STATE = 0.0		-- Scoring for how much do we want to plant naval mines with our air wings if the naval region is adjacent to the enemy state. Multiple adjacent states increases the score. Max sum of score is 1.0.
--- NDefines.NAI.MINES_PLANTING_DESIRE_PER_NAVAL_THREAT = 0		-- How much threat must be generated in the naval region, in order to get the maximum desire to plant naval mines in there.
+NDefines.NAI.LAND_DEFENSE_AIR_SUPERIORITY_IMPORTANCE = 0.10                     -- [0.10] -- Strategic importance of air superiority ( amount of enemy planes in area )
+NDefines.NAI.LAND_DEFENSE_CIVIL_FACTORY_IMPORTANCE = 50                          -- [50]   -- Strategic importance of civil factories
+NDefines.NAI.LAND_DEFENSE_MILITARY_FACTORY_IMPORTANCE = 70                        -- [70]   -- Strategic importance of military factories
+NDefines.NAI.LAND_DEFENSE_NAVAL_FACTORY_IMPORTANCE = 30                            -- [30]   -- Strategic importance of naval factories
+NDefines.NAI.LAND_DEFENSE_AA_IMPORTANCE_FACTOR = 1                            -- [1.0]  -- Factor of AA influence on strategic importance ( 0.0 - 1.0 )
+NDefines.NAI.LAND_DEFENSE_INFRA_IMPORTANCE_FACTOR = 1                        -- [0.5]  -- Factor of infrastructure influence on strategic importance ( 0.0 - 1.0 )
+NDefines.NAI.LAND_DEFENSE_IMPORTANCE_SCALE = 1                                 -- [1.5]  -- Lend defence total importance scale (every land defence score get's multiplied by it)
+NDefines.NAI.LAND_DEFENSE_MIN_FACTORIES_FOR_AIR_IMPORTANCE = 10                   -- [6]    -- If amount of factories is less importance of factories won't apply
+NDefines.NAI.LAND_DEFENSE_FIGHERS_PER_PLANE = 0                               -- [1.0]  -- Amount of air superiority planes requested per enemy plane
+NDefines.NAI.LAND_DEFENSE_INTERSEPTORS_PER_BOMBERS = 1                           -- [2.0]  -- Amount of air interceptor planes requested per enemy bomber
+NDefines.NAI.LAND_DEFENSE_INTERSEPTORS_PER_PLANE = 1                            -- [1.0]  -- Amount of air interceptor planes requested per enemy plane (non bomber)
 
-NDefines.NAI.PORT_STRIKE_PLANES_PER_SHIP = 20                                    -- [10]   -- Amount of bombers request per enemy ship in the port
+NDefines.NAI.LAND_COMBAT_AIR_SUPERIORITY_IMPORTANCE = 0.20                         -- [0.20] -- Strategic importance of air superiority ( amount of enemy planes in area )
+NDefines.NAI.LAND_COMBAT_OUR_ARMIES_AIR_IMPORTANCE = 12                          -- [12]   -- Strategic importance of our armies
+NDefines.NAI.LAND_COMBAT_OUR_COMBATS_AIR_IMPORTANCE = 55                          -- [55]   -- Strategic importance of our armies in the combats
+NDefines.NAI.LAND_COMBAT_FRIEND_ARMIES_AIR_IMPORTANCE = 12                      -- [12]   -- Strategic importance of friendly armies
+NDefines.NAI.LAND_COMBAT_FRIEND_COMBATS_AIR_IMPORTANCE = 6                      -- [6]    -- Strategic importance of friendly armies in the combat
+NDefines.NAI.LAND_COMBAT_ENEMY_ARMIES_AIR_IMPORTANCE = 8                         -- [8]    -- Strategic importance of our armies
+NDefines.NAI.LAND_COMBAT_ENEMY_LAND_FORTS_AIR_IMPORTANCE = 5                    -- [5]    -- Strategic importance of enemy land forts in the region
+NDefines.NAI.LAND_COMBAT_ENEMY_COASTAL_FORTS_AIR_IMPORTANCE = 3                  -- [3]    -- Strategic importance of enemy coastal fronts in the region
+NDefines.NAI.LAND_COMBAT_IMPORTANCE_SCALE = 1                                     -- [1.5]  -- Lend combat total importance scale (every land combat score get's multiplied by it)
+NDefines.NAI.LAND_COMBAT_FIGHTERS_PER_PLANE = 0                                    -- [1.1]  -- Amount of air superiority planes requested per enemy plane
+NDefines.NAI.LAND_COMBAT_CAS_WINGS_PER_ENEMY_ARMY_LIMIT = 0                      -- [4]    -- Limit of CAS wings requested by enemy armies
+NDefines.NAI.LAND_COMBAT_CAS_PER_ENEMY_ARMY = 0                                -- [20]   -- Amount of CAS planes requested per enemy army
+NDefines.NAI.LAND_COMBAT_CAS_PER_COMBAT = 200                                   -- [150]  -- Amount of CAS requested per combat 
+NDefines.NAI.LAND_COMBAT_BOMBERS_PER_LAND_FORT_LEVEL = 0                       -- [15]   -- Amount of bomber planes requested per enemy land fort level
+NDefines.NAI.LAND_COMBAT_BOMBERS_PER_COASTAL_FORT_LEVEL = 0                     -- [10]   -- Amount of bomber planes requested per enemy coastal fort level
+NDefines.NAI.LAND_COMBAT_MIN_EXCORT_WINGS = 2                                    -- [2]    -- Min amount of airwings requested to excort operations
+NDefines.NAI.LAND_COMBAT_INTERCEPT_PER_PLANE = 1                                   -- [0.4]  -- Amount of interception planes requested per enemy plane
 
---NDefines.NAI.LAND_DEFENSE_AIR_SUPERIORITY_IMPORTANCE = 0.10                      -- [0.10] -- Strategic importance of air superiority ( amount of enemy planes in area )
-NDefines.NAI.LAND_DEFENSE_CIVIL_FACTORY_IMPORTANCE = 100                           -- [50]   -- Strategic importance of civil factories
-NDefines.NAI.LAND_DEFENSE_MILITARY_FACTORY_IMPORTANCE = 120                        -- [70]   -- Strategic importance of military factories
-NDefines.NAI.LAND_DEFENSE_NAVAL_FACTORY_IMPORTANCE = 80                            -- [30]   -- Strategic importance of naval factories
---NDefines.NAI.LAND_DEFENSE_AA_IMPORTANCE_FACTOR = 1.0                             -- [1.0]  -- Factor of AA influence on strategic importance ( 0.0 - 1.0 )
---NDefines.NAI.LAND_DEFENSE_INFRA_IMPORTANCE_FACTOR = 0.5                          -- [0.5]  -- Factor of infrastructure influence on strategic importance ( 0.0 - 1.0 )
---NDefines.NAI.LAND_DEFENSE_IMPORTANCE_SCALE = 1.5                                 -- [1.5]  -- Lend defence total importance scale (every land defence score get's multiplied by it)
---NDefines.NAI.LAND_DEFENSE_MIN_FACTORIES_FOR_AIR_IMPORTANCE = 6                   -- [6]    -- If amount of factories is less importance of factories won't apply
-NDefines.NAI.LAND_DEFENSE_FIGHERS_PER_PLANE = 0.1                                -- [1.0]  -- Amount of air superiority planes requested per enemy plane
-NDefines.NAI.LAND_DEFENSE_INTERSEPTORS_PER_BOMBERS = 2                           -- [2.0]  -- Amount of air interceptor planes requested per enemy bomber
-NDefines.NAI.LAND_DEFENSE_INTERSEPTORS_PER_PLANE = 0.0                             -- [1.0]  -- Amount of air interceptor planes requested per enemy plane (non bomber)
+NDefines.NAI.STR_BOMB_AIR_SUPERIORITY_IMPORTANCE = 0.1                         -- [0.10] -- Strategic importance of air superiority ( amount of enemy planes in area )
+NDefines.NAI.STR_BOMB_CIVIL_FACTORY_IMPORTANCE = 50                              -- [50]   -- Strategic importance of enemy civil factories
+NDefines.NAI.STR_BOMB_MILITARY_FACTORY_IMPORTANCE = 70                          -- [70]   -- Strategic importance of enemy military factories
+NDefines.NAI.STR_BOMB_NAVAL_FACTORY_IMPORTANCE = 30                              -- [30]   -- Strategic importance of enemy naval factories
+NDefines.NAI.STR_BOMB_AA_IMPORTANCE_FACTOR = 0.5                                 -- [0.5]  -- Factor of AA influence on strategic importance ( 0.0 - 1.0 )
+NDefines.NAI.STR_BOMB_INFRA_IMPORTANCE_FACTOR = 0.25                            -- [0.25] -- Factor of infrastructure influence on strategic importance ( 0.0 - 1.0 )
+NDefines.NAI.STR_BOMB_IMPORTANCE_SCALE = 1                                -- [1.0]  -- str bombing total importance scale (every str bombing score get's multiplied by it)
+NDefines.NAI.STR_BOMB_MIN_ENEMY_FIGHTERS_IN_AREA = 1000                           -- [300]  -- If amount of enemy fighters is higher than this mission won't perform
+NDefines.NAI.STR_BOMB_FIGHTERS_PER_PLANE = 1.5                                 -- [1.1]  -- Amount of air superiority planes requested per enemy plane
+NDefines.NAI.STR_BOMB_PLANES_PER_CIV_FACTORY = 20                               -- [20]   -- Amount of planes requested per enemy civ factory
+NDefines.NAI.STR_BOMB_PLANES_PER_MIL_FACTORY = 25                               -- [25]   -- Amount of planes requested per enemy military factory
+NDefines.NAI.STR_BOMB_PLANES_PER_NAV_FACTORY = 15                              -- [15]   -- Amount of planes requested per enemy naval factory
+NDefines.NAI.STR_BOMB_MIN_EXCORT_WINGS = 1                                       -- [2]    -- Min amount of airwings requested to excort operations
 
---NDefines.NAI.LAND_COMBAT_AIR_SUPERIORITY_IMPORTANCE = 1.0                          -- [0.20] -- Strategic importance of air superiority ( amount of enemy planes in area )
---NDefines.NAI.LAND_COMBAT_OUR_ARMIES_AIR_IMPORTANCE = 100                           -- [12]   -- Strategic importance of our armies
---NDefines.NAI.LAND_COMBAT_OUR_COMBATS_AIR_IMPORTANCE = 100                          -- [55]   -- Strategic importance of our armies in the combats
---NDefines.NAI.LAND_COMBAT_FRIEND_ARMIES_AIR_IMPORTANCE = 12                       -- [12]   -- Strategic importance of friendly armies
---NDefines.NAI.LAND_COMBAT_FRIEND_COMBATS_AIR_IMPORTANCE = 6                       -- [6]    -- Strategic importance of friendly armies in the combat
---NDefines.NAI.LAND_COMBAT_ENEMY_ARMIES_AIR_IMPORTANCE = 8                         -- [8]    -- Strategic importance of our armies
---NDefines.NAI.LAND_COMBAT_ENEMY_LAND_FORTS_AIR_IMPORTANCE = 5                     -- [5]    -- Strategic importance of enemy land forts in the region
---NDefines.NAI.LAND_COMBAT_ENEMY_COASTAL_FORTS_AIR_IMPORTANCE = 3                  -- [3]    -- Strategic importance of enemy coastal fronts in the region
---NDefines.NAI.LAND_COMBAT_IMPORTANCE_SCALE = 2                                     -- [1.5]  -- Lend combat total importance scale (every land combat score get's multiplied by it)
-NDefines.NAI.LAND_COMBAT_FIGHTERS_PER_PLANE = 2                                    -- [1.1]  -- Amount of air superiority planes requested per enemy plane
---NDefines.NAI.LAND_COMBAT_CAS_WINGS_PER_ENEMY_ARMY_LIMIT = 4                      -- [4]    -- Limit of CAS wings requested by enemy armies
-NDefines.NAI.LAND_COMBAT_CAS_PER_ENEMY_ARMY = 0                                 -- [20]   -- Amount of CAS planes requested per enemy army
---NDefines.NAI.LAND_COMBAT_CAS_PER_COMBAT = 150                                    -- [150]  -- Amount of CAS requested per combat 
---NDefines.NAI.LAND_COMBAT_BOMBERS_PER_LAND_FORT_LEVEL = 15                        -- [15]   -- Amount of bomber planes requested per enemy land fort level
---NDefines.NAI.LAND_COMBAT_BOMBERS_PER_COASTAL_FORT_LEVEL = 10                     -- [10]   -- Amount of bomber planes requested per enemy coastal fort level
---NDefines.NAI.LAND_COMBAT_MIN_EXCORT_WINGS = 2                                    -- [2]    -- Min amount of airwings requested to excort operations
---NDefines.NAI.LAND_COMBAT_INTERCEPT_PER_PLANE = 0                                   -- [0.4]  -- Amount of interception planes requested per enemy plane
-
---NDefines.NAI.STR_BOMB_AIR_SUPERIORITY_IMPORTANCE = 0.10                          -- [0.10] -- Strategic importance of air superiority ( amount of enemy planes in area )
---NDefines.NAI.STR_BOMB_CIVIL_FACTORY_IMPORTANCE = 50                              -- [50]   -- Strategic importance of enemy civil factories
---NDefines.NAI.STR_BOMB_MILITARY_FACTORY_IMPORTANCE = 70                           -- [70]   -- Strategic importance of enemy military factories
---NDefines.NAI.STR_BOMB_NAVAL_FACTORY_IMPORTANCE = 30                              -- [30]   -- Strategic importance of enemy naval factories
---NDefines.NAI.STR_BOMB_AA_IMPORTANCE_FACTOR = 0.5                                 -- [0.5]  -- Factor of AA influence on strategic importance ( 0.0 - 1.0 )
---NDefines.NAI.STR_BOMB_INFRA_IMPORTANCE_FACTOR = 0.25                             -- [0.25] -- Factor of infrastructure influence on strategic importance ( 0.0 - 1.0 )
---NDefines.NAI.STR_BOMB_IMPORTANCE_SCALE = 1.0                                     -- [1.0]  -- str bombing total importance scale (every str bombing score get's multiplied by it)
-NDefines.NAI.STR_BOMB_MIN_ENEMY_FIGHTERS_IN_AREA = 400                            -- [300]  -- If amount of enemy fighters is higher than this mission won't perform
---NDefines.NAI.STR_BOMB_FIGHTERS_PER_PLANE = 1.1                                   -- [1.1]  -- Amount of air superiority planes requested per enemy plane
---NDefines.NAI.STR_BOMB_PLANES_PER_CIV_FACTORY = 20                                -- [20]   -- Amount of planes requested per enemy civ factory
---NDefines.NAI.STR_BOMB_PLANES_PER_MIL_FACTORY = 25                                -- [25]   -- Amount of planes requested per enemy military factory
---NDefines.NAI.STR_BOMB_PLANES_PER_NAV_FACTORY = 15                                -- [15]   -- Amount of planes requested per enemy naval factory
---NDefines.NAI.STR_BOMB_MIN_EXCORT_WINGS = 2                                       -- [2]    -- Min amount of airwings requested to excort operations
-
---NDefines.NAI.MAX_CARRIER_OVERFILL = 1.85                                         -- [1.85] -- Carriers will be overfilled to this amount if there are doctrines to justify it
+NDefines.NAI.AIR_AI_ENEMY_PROV_RATIO_FOR_COMBAT_REGION = 0.05			 -- if a region has more than this ratio of provinces controlled by enemy, AI will consider it as a combat zone while assigning planes
+NDefines.NAI.MAX_CARRIER_OVERFILL = 1.2                       
+                  
