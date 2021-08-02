@@ -702,8 +702,8 @@ NDefines.NAI.STOP_TRAINING_EQUIPMENT_LEVEL = 0.9 --0.8                          
 -- EQUIPMENT PRODUCTION
 --------------------------------------------------------------------------------------------------------------
 
-NDefines.NAI.PRODUCTION_EQUIPMENT_SURPLUS_FACTOR = 0.5 -- 0.25	-- Base value for how much of currently used equipment the AI will at least strive to have in stock
-
+NDefines.NAI.PRODUCTION_EQUIPMENT_SURPLUS_FACTOR = 0.1 -- 0.25	-- Base value for how much of currently used equipment the AI will at least strive to have in stock
+NDefines.NAI.PRODUCTION_EQUIPMENT_SURPLUS_FACTOR_GARRISON = 0.05
 
 
 NDefines.NAI.PRODUCTION_MAX_PROGRESS_TO_SWITCH_NAVAL = 0.01
@@ -711,8 +711,6 @@ NDefines.NAI.PRODUCTION_MAX_PROGRESS_TO_SWITCH_NAVAL = 0.01
 
 
 NDefines.NAI.PRODUCTION_LINE_SWITCH_SURPLUS_NEEDED_MODIFIER = 0 -- 0.2 --delays the AI from upgrading air lines too long, this is handled by strategies instead
-
---NDefines.NAI.PRODUCTION_UNAVAILABLE_RESORCE_FACTORY_FACTOR = 0.5
 
 --------------------------------------------------------------------------------------------------------------
 -- FUEL
