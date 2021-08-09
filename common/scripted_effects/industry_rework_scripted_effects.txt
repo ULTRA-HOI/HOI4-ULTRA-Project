@@ -29,9 +29,8 @@ on_daily_labour_calculations = {
 	set_variable = { total_non_core_population = 0 }
 	set_variable = { avaliable_non_core_population = 0 }
 	
-	every_state = {
+	every_controlled_state = {
 		limit = {
-			is_controlled_by = PREV
 			NOT = { is_core_of = PREV }
 		}
 		set_variable = { state_avaliable_labour = state_population_k }
@@ -77,9 +76,7 @@ on_daily_labour_calculations = {
 	#Apply Agricultural Burden to States / Record it
 	set_variable = { agricultural_penalty_percentage = 0 }
 	
-	every_state = {
-		limit = { is_controlled_by = PREV }
-		
+	every_controlled_state = {
 		#Calculates agricultural burden
 		set_variable = { agriculture_burden = state_level_agriculture_penalty }
 		multiply_variable = { agriculture_burden = PREV.total_core_labour_population }
@@ -224,44 +221,44 @@ on_daily_labour_calculations = {
 	multiply_variable = { agricultural_penalty_percentage = -1 }
 	
 	#Calculates total economic bonus
-	if = {
-		limit = { NOT = { has_variable = total_factor_productivity } }
-		set_variable = { total_factor_productivity = 1 }
-	}
-	set_variable = { factory_output_multiplier = total_factor_productivity }
-	multiply_variable = { factory_output_multiplier = capital_multiplier }
-	multiply_variable = { factory_output_multiplier = labour_multiplier }
+	# if = {
+	# 	limit = { NOT = { has_variable = total_factor_productivity } }
+	# 	set_variable = { total_factor_productivity = 1 }
+	# }
+	# set_variable = { factory_output_multiplier = total_factor_productivity }
+	# multiply_variable = { factory_output_multiplier = capital_multiplier }
+	# multiply_variable = { factory_output_multiplier = labour_multiplier }
 	
 	#Gets Output/K
-	divide_variable = { factory_output_multiplier = total_capital }
+	# divide_variable = { factory_output_multiplier = total_capital }
 	
 	#calculate civ output
-	set_variable = { civ_output = factory_output_multiplier }
-	multiply_variable = { civ_output = num_of_civilian_factories }
+	# set_variable = { civ_output = factory_output_multiplier }
+	# multiply_variable = { civ_output = num_of_civilian_factories }
 	
 	#calculate total output
-	set_variable = { total_output = factory_output_multiplier }
-	multiply_variable = { total_output = total_capital }
+	# set_variable = { total_output = factory_output_multiplier }
+	# multiply_variable = { total_output = total_capital }
 	
 	#Calculate Upkeep Costs
-	set_variable = { upkeep = total_capital }
-	multiply_variable = { upkeep = 5 }
-	set_variable = { upkeep_needs = upkeep }
-	multiply_variable = { upkeep = upkeep_modifier }
-	divide_variable = { upkeep = total_output }
+	# set_variable = { upkeep = total_capital }
+	# multiply_variable = { upkeep = 5 }
+	# set_variable = { upkeep_needs = upkeep }
+	# multiply_variable = { upkeep = upkeep_modifier }
+	# divide_variable = { upkeep = total_output }
 	
 	#Sets military factory output modifier
-	set_variable = { mil_bonus = factory_output_multiplier }
-	multiply_variable = { mil_bonus = 1.136 }
+	# set_variable = { mil_bonus = factory_output_multiplier }
+	# multiply_variable = { mil_bonus = 1.136 }
 	
-	set_variable = { civ_bonus = mil_bonus }
-	divide_variable = { civ_bonus = 41 }
-	divide_variable = { civ_bonus = 10 }
+	# set_variable = { civ_bonus = mil_bonus }
+	# divide_variable = { civ_bonus = 41 }
+	# divide_variable = { civ_bonus = 10 }
 	
-	divide_variable = { mil_bonus = 100 }
+	# divide_variable = { mil_bonus = 100 }
 	
-	subtract_from_variable = { mil_bonus = 1 }
-	subtract_from_variable = { civ_bonus = 1 }
+	# subtract_from_variable = { mil_bonus = 1 }
+	# subtract_from_variable = { civ_bonus = 1 }
 	
 	#Set dynamic number of civilian trucks per 6 month
 	set_variable = { civilian_truck_production = num_of_civilian_factories }
