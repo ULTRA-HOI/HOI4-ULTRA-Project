@@ -288,8 +288,8 @@ NDefines.NMilitary.PARACHUTE_ORG_REGAIN_PENALTY_MULT = -0.5	   -- penalty to org
 
 NDefines.NMilitary.BASE_COMBAT_WIDTH = 144                     -- base combat width
 NDefines.NMilitary.ADDITIONAL_COMBAT_WIDTH = 72                  -- more opened up by support attack
-NDefines.NMilitary.ENEMY_AIR_SUPERIORITY_IMPACT = -0.35 ---0.35        -- effect on defense due to enemy air superiorty
-NDefines.NMilitary.ENEMY_AIR_SUPERIORITY_SPEED_IMPACT = -0.4     -- was -0.3 - effect on speed due to enemy air superiority
+NDefines.NMilitary.ENEMY_AIR_SUPERIORITY_IMPACT = -0.5 ---0.35        -- effect on defense due to enemy air superiorty
+NDefines.NMilitary.ENEMY_AIR_SUPERIORITY_SPEED_IMPACT = -0.5     -- was -0.3 - effect on speed due to enemy air superiority
 
 NDefines.NMilitary.MAX_ARMY_EXPERIENCE = 999 					--Max army experience a country can store
 NDefines.NMilitary.MAX_NAVY_EXPERIENCE = 999					--Max navy experience a country can store
