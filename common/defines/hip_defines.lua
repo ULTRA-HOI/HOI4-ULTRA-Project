@@ -487,7 +487,7 @@ NDefines.NAir.AIR_WING_FLIGHT_SPEED_MULT = 0.02			-- was 0.02	-- Global speed mu
 
 
 NDefines.NAir.ANTI_AIR_PLANE_DAMAGE_FACTOR = 0.8				-- was 0.8	-- Anti Air Gun Damage factor
-NDefines.NAir.ANTI_AIR_PLANE_DAMAGE_CHANCE = 0.025 --0.1					-- Anti Air Gun hit chance
+NDefines.NAir.ANTI_AIR_PLANE_DAMAGE_CHANCE = 0.1 --0.1					-- Anti Air Gun hit chance
 NDefines.NAir.BOMBING_TARGETING_RANDOM_FACTOR = 0.40						-- was 0.25	-- % of picking the wrong target
 
 NDefines.NAir.AIR_WING_COUNTRY_XP_FROM_TRAINING_FACTOR = 0.020 				-- was 0.005	--Factor on country Air XP gained from wing training
