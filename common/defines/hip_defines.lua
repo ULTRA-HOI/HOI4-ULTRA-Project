@@ -143,7 +143,7 @@ NDefines.NProduction.MAX_CIV_FACTORIES_PER_LINE = 10		-- was 15 -- Max number of
 NDefines.NProduction.BASE_FACTORY_START_EFFICIENCY_FACTOR = 1 --10	-- Base start efficiency for factories expressed in %.
 NDefines.NProduction.BASE_FACTORY_MAX_EFFICIENCY_FACTOR = 25
 NDefines.NProduction.BASE_FACTORY_SPEED = 2.5 				-- Base factory speed multiplier (how much hoi3 style IC each factory gives).
-NDefines.NProduction.BASE_FACTORY_SPEED_MIL = 8				-- Base factory speed multiplier (how much hoi3 style IC each factory gives).
+NDefines.NProduction.BASE_FACTORY_SPEED_MIL = 5 --8				-- Base factory speed multiplier (how much hoi3 style IC each factory gives).
 NDefines.NProduction.BASE_FACTORY_SPEED_NAV = 4
 
 NDefines.NProduction.BASE_FACTORY_EFFICIENCY_BALANCE_FACTOR = 0.1 			-- Factory efficiency balancing factor
@@ -297,7 +297,7 @@ NDefines.NMilitary.MAX_AIR_EXPERIENCE = 999					--Max air experience a country c
 
 NDefines.NMilitary.SLOWEST_SPEED = 1
 NDefines.NMilitary.DIG_IN_FACTOR = 0.01 -- 0.02
-NDefines.NMilitary.AIR_SUPPORT_BASE = 0.5    --0.3                    -- CAS bonus factor for air support moddifier for land unit in combat
+NDefines.NMilitary.AIR_SUPPORT_BASE = 0.6    --0.3                    -- CAS bonus factor for air support moddifier for land unit in combat
 NDefines.NMilitary.REINFORCE_CHANCE = 0.04                 	   -- base chance to join combat from back line when empty
 
 NDefines.NMilitary.LOW_ORG_FOR_ATTACK = 0.5                      -- at what org % we start affecting speed when doign hostile moves. scales down ZERO_ORG_MOVEMENT_MODIFIER
@@ -531,7 +531,7 @@ NDefines.NAir.NAVAL_STRIKE_DAMAGE_TO_ORG = 0.75					-- Balancing value to conver
 NDefines.NAir.NAVAL_STRIKE_DETECTION_BALANCE_FACTOR = 0.5 --0.7		-- Value used to scale the surface_visibility stats to balance the gameplay, so 100% detection chance still won't spam the strikes.
 
 
-NDefines.NAir.AA_INDUSTRY_AIR_DAMAGE_FACTOR = -0.08				-- 5x levels = 40% defense from bombing
+NDefines.NAir.AA_INDUSTRY_AIR_DAMAGE_FACTOR = -0.12				-- 5x levels = 60% defense from bombing
 
 NDefines.NAir.MISSION_COMMAND_POWER_COSTS = {  -- command power cost per plane to create a mission
 		0.0, -- AIR_SUPERIORITY
