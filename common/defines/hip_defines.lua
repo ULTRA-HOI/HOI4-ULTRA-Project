@@ -247,7 +247,7 @@ NDefines.NMilitary.BASE_DIVISION_SUPPORT_SLOT_COST = 5 	--Base cost to unlock a 
 
 
 
-NDefines.NMilitary.LAND_COMBAT_FORT_DAMAGE_CHANCE = 10		-- chance to get a hit to damage on forts. (out of 100)
+NDefines.NMilitary.LAND_COMBAT_FORT_DAMAGE_CHANCE = 1		-- chance to get a hit to damage on forts. (out of 100)
 
 -- Nukes 
 
@@ -262,15 +262,15 @@ NDefines.NMilitary.LAND_AIR_COMBAT_MAX_PLANES_PER_ENEMY_WIDTH = 10 --5 -- how ma
 
 -- Land combat general regulation
 
-NDefines.NMilitary.LAND_COMBAT_STR_DAMAGE_MODIFIER = 0.15 --0.06        -- global damage modifier... but some equipment is returned at end of battles see : EQUIPMENT_COMBAT_LOSS_FACTOR
+NDefines.NMilitary.LAND_COMBAT_STR_DAMAGE_MODIFIER = 0.35 --0.06        -- global damage modifier... but some equipment is returned at end of battles see : EQUIPMENT_COMBAT_LOSS_FACTOR
 NDefines.NMilitary.LAND_COMBAT_ORG_DAMAGE_MODIFIER = 0.10 --0.04        -- global damage modifier
 NDefines.NMilitary.BASE_CHANCE_TO_AVOID_HIT = 80              -- Base chance to avoid hit if defences left.
-NDefines.NMilitary.CHANCE_TO_AVOID_HIT_AT_NO_DEF = 40	           -- chance to avoid hit if no defences left.
+NDefines.NMilitary.CHANCE_TO_AVOID_HIT_AT_NO_DEF = 60	           -- chance to avoid hit if no defences left.
 
 -- Effects on experience and equipment
 
-NDefines.NMilitary.EXPERIENCE_LOSS_FACTOR = 0.75                 -- percentage of experienced solders who die when manpower is removed
-NDefines.NMilitary.EQUIPMENT_COMBAT_LOSS_FACTOR = 0.8 	       -- % of equipment lost to strength ratio in combat, so some % is returned if below 1
+NDefines.NMilitary.EXPERIENCE_LOSS_FACTOR = 0.4                 -- percentage of experienced solders who die when manpower is removed
+NDefines.NMilitary.EQUIPMENT_COMBAT_LOSS_FACTOR = 0.95 	       -- % of equipment lost to strength ratio in combat, so some % is returned if below 1
 
 -- Armor case
 
@@ -290,7 +290,7 @@ NDefines.NMilitary.PARACHUTE_ORG_REGAIN_PENALTY_MULT = -0.5	   -- penalty to org
 
 NDefines.NMilitary.BASE_COMBAT_WIDTH = 144                     -- base combat width
 NDefines.NMilitary.ADDITIONAL_COMBAT_WIDTH = 72                  -- more opened up by support attack
-NDefines.NMilitary.ENEMY_AIR_SUPERIORITY_IMPACT = -0.35 ---0.35        -- effect on defense due to enemy air superiorty
+NDefines.NMilitary.ENEMY_AIR_SUPERIORITY_IMPACT = -0.5 ---0.35        -- effect on defense due to enemy air superiorty
 NDefines.NMilitary.ENEMY_AIR_SUPERIORITY_SPEED_IMPACT = -0.4     -- was -0.3 - effect on speed due to enemy air superiority
 
 NDefines.NMilitary.MAX_ARMY_EXPERIENCE = 999 					--Max army experience a country can store
@@ -355,13 +355,13 @@ NDefines.NMilitary.RIVER_CROSSING_SPEED_PENALTY = 0 -- -0.25          -- small r
 NDefines.NMilitary.RIVER_CROSSING_PENALTY = -0.2                 -- small river crossing
 NDefines.NMilitary.RIVER_CROSSING_SPEED_PENALTY_LARGE = -0.5     -- large river crossing
 NDefines.NNavy.AMPHIBIOUS_LANDING_PENALTY = 0 -- -0.7								-- amphibious landing penalty -- replaced on units stats
-NDefines.NMilitary.BASE_FORT_PENALTY = -0.15					   -- fort penalty		#HOI4TGW ::: BASE_FORT_PENALTY = -0.15
-NDefines.NMilitary.MULTIPLE_COMBATS_PENALTY = -0.6               -- defender penalty if attacked from multiple directions
+NDefines.NMilitary.BASE_FORT_PENALTY = -0.1					   -- fort penalty		#HOI4TGW ::: BASE_FORT_PENALTY = -0.15
+NDefines.NMilitary.MULTIPLE_COMBATS_PENALTY = -0.5               -- defender penalty if attacked from multiple directions
 NDefines.NMilitary.ENEMY_AIR_SUPERIORITY_DEFENSE_STEEPNESS = 120 -- how quickly defense approaches the max impact diminishing returns curve
-NDefines.NMilitary.ENCIRCLED_PENALTY = 0                      -- penalty when completely encircled
+NDefines.NMilitary.ENCIRCLED_PENALTY = 0                   -- penalty when completely encircled
 NDefines.NMilitary.UNIT_DIGIN_CAP = 5 --10                           -- how "deep" you can dig you can dig in until hitting max bonus
 NDefines.NMilitary.UNIT_DIGIN_SPEED = 0.5 --1						   -- how "deep" you can dig a day.
-NDefines.NMilitary.ORG_LOSS_FACTOR_ON_CONQUER = 0.15              -- percentage of (max) org loss on takign enemy province
+NDefines.NMilitary.ORG_LOSS_FACTOR_ON_CONQUER = 0.05              -- percentage of (max) org loss on takign enemy province
 NDefines.NMilitary.PLAN_SUPPLY_FACTOR = 0.2						-- Factor applied to available supply on a front location when determining priority
 
 
@@ -394,7 +394,7 @@ NDefines.NMilitary.PROMOTE_LEADER_CP_COST = 75.0 --30.0                    -- co
 -- Anti Air effect 
 
 NDefines.NMilitary.ANTI_AIR_TARGETTING_TO_CHANCE = 0.045 --0.045 --0.07			-- Balancing value to determine the chance of ground AA hitting an attacking airplane, affecting both the effective average damage done by AA to airplanes, and the reduction of damage done by airplanes due to AA support
-NDefines.NMilitary.ANTI_AIR_ATTACK_TO_AMOUNT = 0.01 --0.015 --0.005				-- Balancing value to convert equipment stat anti_air_attack to the random % value of airplanes being hit.
+NDefines.NMilitary.ANTI_AIR_ATTACK_TO_AMOUNT = 0.004 --0.015 --0.005				-- Balancing value to convert equipment stat anti_air_attack to the random % value of airplanes being hit.
 
 
 -- Supply 
@@ -410,7 +410,7 @@ NDefines.NCountry.SUPPLY_CONVOY_FACTOR = 0.5					-- How many convoys each supply
 NDefines.NBuildings.SUPPLY_PORT_LEVEL_THROUGHPUT = 1.5   -- supply throughput per level of naval base
 NDefines.NBuildings.INFRA_TO_SUPPLY = 2					-- was 2
 NDefines.NBuildings.INFRA_TO_SUPPLY_COEFF = 1 -- 1.5
-NDefines.NMilitary.ATTRITION_DAMAGE_ORG = 0.3
+NDefines.NMilitary.ATTRITION_DAMAGE_ORG = 0.1
 NDefines.NMilitary.ATTRITION_EQUIPMENT_LOSS_CHANCE = 0.005
 NDefines.NMilitary.SUPPLY_USE_FACTOR_MOVING = 10                -- supply use when moving/fighting vs inactive
 NDefines.NMilitary.SUPPLY_USE_FACTOR_INACTIVE = 0.95
@@ -455,7 +455,7 @@ NDefines.NMilitary.ARMY_IDLE_FUEL_MULT = 0.05					-- was 0.0	-- fuel consumption
 NDefines.NMilitary.ARMY_NAVAL_TRANSFER_FUEL_MULT = 0.05			-- was 0.0 -- fuel consumption ratio while naval transferring
 NDefines.NMilitary.ARMY_STRATEGIC_DEPLOYMENT_FUEL_MULT = 0.05		-- was 0.0 -- fuel consumption ratio while doing strategic deployment
 NDefines.NMilitary.OUT_OF_FUEL_EQUIPMENT_MULT = 0.1			-- was 0.1 -- ratio of the stats that you get from equipments that uses fuel and you lack it
-NDefines.NMilitary.FUEL_CAPACITY_DEFAULT_HOURS = 72 --120 --216              -- was 96 -- default capacity if not specified
+NDefines.NMilitary.FUEL_CAPACITY_DEFAULT_HOURS = 144 --120 --216              -- was 96 -- default capacity if not specified
 
 
 
