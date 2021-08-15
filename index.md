@@ -1,6 +1,65 @@
 # Changelog
 
-+## 0.8.9
+### 0.9
+
+### AI 
+
+- Diverse AI improvements 
+- Soviet AI nows DOW Germany if there is a sucessfull Sealion 
+
+### Database 
+
+- USS Hornet correctly implemented
+- Starting number of synthetic fuel & rubber reffinerie adjusted
+- Adjustements/scrapping on german tanks
+- Improved descriptions for German Tanks
+- AI now research land doctrines with a determinated pace and doesn't try to research everything asap
+- Max level of buildings reduced to consider how strat bombing works
+- Panzer IV G and Panzer IV H are now distinct techs
+- Added Panther 8.8cm as 1946 tank technology
+- Scrapped Leopard I tank (development is too late to not break the game model) 
+- Improved late Panther models pictures
+
+### Bugfix 
+
+- Skilled Staffer correcly works with general's division limits.
+- Corrected stupid Hard Attack value on Chi-Se
+- Avoid formation of weird chinese enclaves in the japan-china truce event
+
+### Balance 
+
+- Economics systems have all more CG needs 
+- Reduced base IC output of military factories
+- War Bonds are no longer available for planned economies 
+- Autarky policies cannot be removed at war 
+- KDF-Wagen special projects nows gives less civs but more mils
+- synthetic fuel & rubber reffinerie construction cost, input and output changed 
+- Manhattan Projects now allows to research nukes at historical times 
+- War Support requirement for mobilisation laws increased, especialy for minors
+- Lotta Svard increase Female Participation by 20%
+- Unprotected Pacific event should not happen before 1940
+- Tanks research cost tweaked to be consistant
+- Iraqi coup events can now happens as soon as UK lose Suez regardless the date
+- All ground equipment costs revised
+- Mittlestand nows makes german tanks more costly, can be removed later in war with Total War focus
+- Tweaked land combat defines
+- Ahead research Penalty increased
+- Tweaked ground fuel usage defines
+
+
+### QoL 
+
+- Decision to DOW Soviet Union as Germany enabled for the player 
+- Notification Popup when Escalation Clause decision is time out
+
+### Map 
+
+- Malta is now an urban tile
+- Redrawed strategic zones map to prepare to aircraft overhaul
+
+
+
+### 0.8.9
 
 ### Compatibility 
 
