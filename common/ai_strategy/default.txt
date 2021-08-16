@@ -251,7 +251,6 @@ always = no
 }
 
 
-
 ALL_dont_upgrade_rifles_too_early = {
 	enable = {
 		OR = {
@@ -2066,6 +2065,31 @@ ENG_build_new_battleships = {
 	}
 }
 
+ENG_halt_fighter_production_in_transitioning = { # we have good jets, use them
+	enable = {
+		OR = {
+			original_tag = ENG
+		}
+		date > 1947.1.1	
+	}
+	abort = {
+		# once we start we never go back to prop fighters
+	}
+
+	ai_strategy = {
+		type = equipment_variant_production_factor
+		id = fighter_equipment
+		value = -100
+	}
+	
+	ai_strategy = {
+		type = equipment_variant_production_factor
+		id = rocket_interceptor_equipment 
+		value = 100
+	}
+	
+}
+
 default_FIN_production = {
 	enable = {
 		original_tag = FIN
@@ -2799,6 +2823,31 @@ GER_halt_support_tank = {
 		type = equipment_variant_production_factor
 		id = support_tank_equipment
 		value = -1000
+	}
+	
+}
+
+GER_halt_fighter_production_in_transitioning = { # we have good jets, use them
+	enable = {
+		OR = {
+			original_tag = GER
+		}
+		date > 1946.1.1	
+	}
+	abort = {
+		# once we start we never go back to prop fighters
+	}
+
+	ai_strategy = {
+		type = equipment_variant_production_factor
+		id = fighter_equipment
+		value = -100
+	}
+	
+	ai_strategy = {
+		type = equipment_variant_production_factor
+		id = jet_fighter_equipment
+		value = 100
 	}
 	
 }
@@ -4458,7 +4507,7 @@ SOV_build_41 = {
 
 }
 }
-SOV_build_412 = {
+SOV_build_42 = {
 	enable = {
 		tag = SOV
                 date > 1941.7.1	
@@ -4776,6 +4825,31 @@ SOV_dont_upgrade_at_too_early = {
 	}
 }
 
+SOV_halt_fighter_production_in_transitioning = { # we have good jets, use them
+	enable = {
+		OR = {
+			original_tag = SOV
+		}
+		date > 1947.1.1	
+	}
+	abort = {
+		# once we start we never go back to prop fighters
+	}
+
+	ai_strategy = {
+		type = equipment_variant_production_factor
+		id = fighter_equipment
+		value = -100
+	}
+	
+	ai_strategy = {
+		type = equipment_variant_production_factor
+		id = rocket_interceptor_equipment #We wants MiGs
+		value = 100
+	}
+	
+}
+
 
 
 USA_strategy_army = {
@@ -4834,14 +4908,37 @@ USA_strategy_army = {
 	}
 }
 
-USA_build_airforce = {
+USA_halt_fighter_production_in_transitioning = {
 	enable = {
-		tag = USA
-                date > 1941.1.1		
+		original_tag = USA
+		date > 1943.7.1	
+	}
+	abort = {
+		# once we start we never go back to pure fighters
 	}
 
-			abort = {
-                date > 1949.1.1			
+	ai_strategy = {
+		type = equipment_variant_production_factor
+		id = fighter_equipment
+		value = -100
+	}
+	
+	ai_strategy = {
+		type = equipment_variant_production_factor
+		id = fighter_bomber_equipment
+		value = 100
+	}
+	
+}
+
+USA_build_airforce_1 = {
+	enable = {
+		tag = USA
+        date > 1941.1.1		
+	}
+
+	abort = {
+		date > 1943.7.1
 	}
 
 	ai_strategy = {
@@ -4849,20 +4946,34 @@ USA_build_airforce = {
 		id = fighter
 		value = 30								
 	}
-	ai_strategy = {
-		type = equipment_production_min_factories
-		id = interceptor
-		value = 30								
-	}
-	ai_strategy = {
-		type = equipment_production_min_factories
-		id = tactical_bomber
-		value = 30								
-	}
+	
 	ai_strategy = {
 		type = equipment_production_min_factories
 		id = strategic_bomber
 		value = 30								
+	}
+}
+
+USA_build_airforce_2 = {
+	enable = {
+		tag = USA
+        date > 1943.7.1	
+	}
+
+	abort = {
+		date > 1949.1.1	
+	}
+
+	ai_strategy = {
+		type = equipment_production_min_factories
+		id = fighter
+		value = 50								
+	}
+	
+	ai_strategy = {
+		type = equipment_production_min_factories
+		id = strategic_bomber
+		value = 150							
 	}
 }
 
