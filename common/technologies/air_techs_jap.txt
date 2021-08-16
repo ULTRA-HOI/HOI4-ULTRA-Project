@@ -1141,6 +1141,11 @@ technologies = {
 		enable_equipments = {
 			jap_light_bomber_equipment_1
 		}
+		
+		path = {
+			leads_to_tech = jap_light_bomber_2
+			research_cost_coeff = 1
+		}
 
 		research_cost = 2.5
 		start_year = 1940
@@ -1148,6 +1153,33 @@ technologies = {
 		folder = {
 			name = jap_air_techs_folder
 			position = { x = 11 y = 12 }
+		}
+		
+		categories = {
+			major_technologies
+			medium_air
+			tactical_bomber
+			air_equipment
+		}
+		
+		ai_will_do = {
+			factor = 0		
+		}		
+	}
+	
+	#Ki-48-IIa
+	jap_light_bomber_2 = {
+
+		enable_equipments = {
+			jap_light_bomber_equipment_2
+		}
+
+		research_cost = 1
+		start_year = 1942
+
+		folder = {
+			name = jap_air_techs_folder
+			position = { x = 11 y = 16 }
 		}
 		
 		categories = {
@@ -1335,11 +1367,68 @@ technologies = {
 		}
 	}
 	
-	#Ki-67
+	#Ki-49-IIa
 	jap_tactical_bomber_3 = {
 
 		enable_equipments = {
 			jap_tac_bomber_equipment_3
+		}
+	
+		path = {
+			leads_to_tech = jap_tactical_bomber_4
+			research_cost_coeff = 1
+		}
+
+		research_cost = 1
+		start_year = 1942
+
+		folder = {
+			name = jap_air_techs_folder
+			position = { x = 15 y = 16 }
+		}
+		
+		categories = {
+			major_technologies
+			medium_air
+			tactical_bomber
+			air_equipment
+		}
+		
+		ai_will_do = {
+			factor = 4
+			
+			modifier = {
+				factor = 40
+				date > "1942.1.1"
+			}
+			
+			modifier = {
+				factor = 40
+				date > "1943.1.1"
+			}
+			
+			modifier = {
+				factor = 40
+				date > "1944.1.1"
+			}
+			
+			modifier = {
+				factor = 0
+				NOT = {
+					OR = {
+						original_tag = JAP
+						has_country_flag = japanese_technologies_tree_flag
+					}
+				}
+			}
+		}
+	}
+	
+	#Ki-67
+	jap_tactical_bomber_4 = {
+
+		enable_equipments = {
+			jap_tac_bomber_equipment_4
 		}
 	
 		
@@ -1575,7 +1664,7 @@ technologies = {
 			research_cost_coeff = 1
 		}
 		
-		research_cost = 1
+		research_cost = 2.5
 		start_year = 1940
 		
 		folder = {
@@ -1624,11 +1713,95 @@ technologies = {
 		}
 	}
 	
-	#A7M
+	#A6M5
 	jap_cv_fighter_4 = {
 	
 		enable_equipments = {
 			jap_cv_fighter_equipment_4
+		}
+		
+		path = {
+			leads_to_tech = jap_cv_fighter_6
+			research_cost_coeff = 1
+		}
+		
+		research_cost = 1
+		start_year = 1943
+		
+		folder = {
+			name = jap_air_nav_techs_folder
+			position = { x = -5 y = 18 }
+		}
+		
+		sub_technologies = {
+			jap_cv_fighter_5
+		}
+		
+		categories = {
+			major_technologies
+			light_air
+		    naval_air
+			air_equipment
+		}
+		
+		ai_will_do = {
+			factor = 4
+			
+			modifier = {
+				factor = 40
+				date > "1943.1.1"
+			}
+			
+			modifier = {
+				factor = 40
+				date > "1944.1.1"
+			}
+			
+			modifier = {
+				factor = 40
+				date > "1945.1.1"
+			}
+			
+			modifier = {
+				factor = 0
+				NOT = {
+					OR = {
+						original_tag = JAP
+						has_country_flag = japanese_technologies_tree_flag
+					}
+				}
+			}
+		}
+	}
+	
+	#A6M8
+	jap_cv_fighter_5 = {
+	
+		enable_equipments = {
+			jap_cv_fighter_equipment_5
+		}
+		
+		research_cost = 1
+		start_year = 1945
+		
+		
+		categories = {
+			major_technologies
+			light_air
+		    naval_air
+			air_equipment
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	#A7M
+	jap_cv_fighter_6 = {
+	
+		enable_equipments = {
+			jap_cv_fighter_equipment_6
 		}
 		
 		research_cost = 1
@@ -2292,6 +2465,33 @@ technologies = {
 			name = jap_air_nav_techs_folder
 			position = { x = 15 y = 2 }
 		}
+		
+		sub_technologies = {
+			jap_med_maritime_0_5
+		}
+
+		categories = {
+		    medium_air
+			tactical_bomber
+			air_equipment
+			naval_air
+		}
+		
+		ai_will_do = {
+			factor = 0
+			
+		}
+	}
+	
+	#G3M3
+	jap_med_maritime_0_5 = {
+
+		enable_equipments = {
+			jap_med_maritime_equipment_0_5
+		}
+		
+		research_cost = 1
+		start_year = 1941
 
 		categories = {
 		    medium_air
