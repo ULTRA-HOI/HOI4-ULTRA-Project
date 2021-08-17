@@ -7131,20 +7131,28 @@ special_projects = {
 				}
 			}
 		}
-		visible = { has_tech = atomic_research }
+		visible = {
+			has_tech = atomic_research
+			NOT = {
+				has_country_flag = heavy_water_completed
+			}
+		}
+		
 		cost = 0
 		ai_will_do = {
 			factor = 5 
 		}
+		fire_only_once = yes
 		cancel_trigger = { NOT = { has_global_flag = GER_heavy_water_production_underway } } #can be removed via intelligence ops
 		days_remove = 365
 		remove_effect = {
 			add_tech_bonus = {
 				name = GER_heavy_water
 				category = nuclear
-				uses = 2
+				uses = 1
 				bonus = 2
 			}
+			set_country_flag = heavy_water_completed
 		}
 		complete_effect = { set_global_flag = GER_heavy_water_production_underway }
 	}
