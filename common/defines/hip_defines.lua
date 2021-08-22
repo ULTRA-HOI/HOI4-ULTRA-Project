@@ -359,7 +359,7 @@ NDefines.NMilitary.ENEMY_AIR_SUPERIORITY_DEFENSE_STEEPNESS = 120 -- how quickly 
 NDefines.NMilitary.ENCIRCLED_PENALTY = 0                      -- penalty when completely encircled
 NDefines.NMilitary.UNIT_DIGIN_CAP = 5 --10                           -- how "deep" you can dig you can dig in until hitting max bonus
 NDefines.NMilitary.UNIT_DIGIN_SPEED = 0.5 --1						   -- how "deep" you can dig a day.
-NDefines.NMilitary.ORG_LOSS_FACTOR_ON_CONQUER = 0.15              -- percentage of (max) org loss on takign enemy province
+NDefines.NMilitary.ORG_LOSS_FACTOR_ON_CONQUER = 0.15 --0.05             -- percentage of (max) org loss on takign enemy province
 NDefines.NMilitary.PLAN_SUPPLY_FACTOR = 0.2						-- Factor applied to available supply on a front location when determining priority
 
 
@@ -453,7 +453,7 @@ NDefines.NMilitary.ARMY_IDLE_FUEL_MULT = 0.05					-- was 0.0	-- fuel consumption
 NDefines.NMilitary.ARMY_NAVAL_TRANSFER_FUEL_MULT = 0.05			-- was 0.0 -- fuel consumption ratio while naval transferring
 NDefines.NMilitary.ARMY_STRATEGIC_DEPLOYMENT_FUEL_MULT = 0.05		-- was 0.0 -- fuel consumption ratio while doing strategic deployment
 NDefines.NMilitary.OUT_OF_FUEL_EQUIPMENT_MULT = 0.1			-- was 0.1 -- ratio of the stats that you get from equipments that uses fuel and you lack it
-NDefines.NMilitary.FUEL_CAPACITY_DEFAULT_HOURS = 72 --120 --216              -- was 96 -- default capacity if not specified
+NDefines.NMilitary.FUEL_CAPACITY_DEFAULT_HOURS = 96 --144 --120 --216              -- was 96 -- default capacity if not specified
 
 
 
