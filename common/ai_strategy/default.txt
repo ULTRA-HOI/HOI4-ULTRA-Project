@@ -2317,12 +2317,11 @@ GER_strategy_army2 = {
 	abort = {
 		always = no
 	}
-		
 	ai_strategy = { type = role_ratio id = motorized 							value = 12 		}
 	ai_strategy = { type = role_ratio id = light_armor 							value = -50 		}		
 	ai_strategy = { type = role_ratio id = armor 								value = 22 		}	
 	ai_strategy = { type = role_ratio id = mechanized 							value = 10 		}	
-	ai_strategy = { type = role_ratio id = heavy_armor 							value = 9 		}	
+	ai_strategy = { type = role_ratio id = heavy_armor 							value = 0 		}	
 }
 
 GER_dont_upgrade_rifles_too_early = {
@@ -2410,29 +2409,31 @@ GER_build_guns_36 = {
 	ai_strategy = {
 		type = equipment_production_min_factories
 		id = artillery
-		value = 5
+		value = 4
 	}
     	ai_strategy = {
 		type = equipment_production_min_factories
 		id = infantry
-		value = 5
+		value = 4
 	}
 	ai_strategy = { type = equipment_variant_production_factor id = heavy_infantry_equipment value = 10 }
     	ai_strategy = {
 		type = equipment_production_min_factories
 		id = armor
-		value = 5
+		value = 4
 	}
     	ai_strategy = {
 		type = equipment_production_min_factories
 		id = motorized
-		value = 5
+		value = 4
 	}
-    	ai_strategy = {
+	
+	ai_strategy = {
 		type = equipment_production_min_factories
 		id = mechanized
-		value = 3
+		value = 1
 	}
+    	
 }
 GER_build_guns_37 = {
 	enable = {
@@ -2456,29 +2457,31 @@ GER_build_guns_37 = {
 	ai_strategy = {
 		type = equipment_production_min_factories
 		id = artillery
-		value = 7
+		value = 5
 	}
     	ai_strategy = {
 		type = equipment_production_min_factories
 		id = infantry
-		value = 7
+		value = 5
 	}
 	ai_strategy = { type = equipment_variant_production_factor id = heavy_infantry_equipment value = 10 }
     	ai_strategy = {
 		type = equipment_production_min_factories
 		id = armor
-		value = 7
-	}
-    	ai_strategy = {
-		type = equipment_production_min_factories
-		id = motorized
 		value = 5
 	}
     	ai_strategy = {
 		type = equipment_production_min_factories
-		id = mechanized
-		value = 3
+		id = motorized
+		value = 4
 	}
+	
+	ai_strategy = {
+		type = equipment_production_min_factories
+		id = mechanized
+		value = 1
+	}
+    	
 }
 GER_build_guns_38 = {
 	enable = {
@@ -2497,33 +2500,34 @@ GER_build_guns_38 = {
 	ai_strategy = {
 		type = equipment_production_min_factories
 		id = anti_tank
-		value = 3
+		value = 2
 	}
 	ai_strategy = {
 		type = equipment_production_min_factories
 		id = artillery
-		value = 9
+		value = 7
 	}
     	ai_strategy = {
 		type = equipment_production_min_factories
 		id = infantry
-		value = 9
+		value = 7
 	}
 	ai_strategy = { type = equipment_variant_production_factor id = heavy_infantry_equipment value = 50 }
     	ai_strategy = {
 		type = equipment_production_min_factories
 		id = armor
-		value = 9
+		value = 5
 	}
     	ai_strategy = {
 		type = equipment_production_min_factories
 		id = motorized
-		value = 9
+		value = 6
 	}
-    	ai_strategy = {
+	
+	ai_strategy = {
 		type = equipment_production_min_factories
 		id = mechanized
-		value = 4
+		value = 1
 	}
 }
 GER_build_trucks_39 = {
@@ -2538,28 +2542,28 @@ GER_build_trucks_39 = {
     	ai_strategy = {
 		type = equipment_production_min_factories
 		id = motorized
-		value = 10
+		value = 8
 	}
     	ai_strategy = {
 		type = equipment_production_min_factories
 		id = mechanized
-		value = 5
+		value = 3
 	}
     	ai_strategy = {
 		type = equipment_production_min_factories
 		id = infantry
-		value = 10
+		value = 8
 	}
 	ai_strategy = { type = equipment_variant_production_factor id = heavy_infantry_equipment value = 10 }
 	ai_strategy = {
 		type = equipment_production_min_factories
 		id = artillery
-		value = 10
+		value = 8
 	}
 	ai_strategy = {
 		type = equipment_production_min_factories
 		id = anti_tank
-		value = 4
+		value = 3
 	}
 	ai_strategy = {
 		type = equipment_production_min_factories
@@ -2583,7 +2587,7 @@ GER_build_trucks_42 = {
     	ai_strategy = {
 		type = equipment_production_min_factories
 		id = motorized
-		value = 15
+		value = 10
 	}
     	ai_strategy = {
 		type = equipment_production_min_factories
@@ -2613,7 +2617,7 @@ GER_build_trucks_42 = {
     	ai_strategy = {
 		type = equipment_production_min_factories
 		id = armor
-		value = 40
+		value = 18
 	}
 }
 
@@ -2658,7 +2662,7 @@ GER_build_tanks_43 = {
     	ai_strategy = {
 		type = equipment_production_min_factories
 		id = armor
-		value = 80
+		value = 30
 	}
 }
 
@@ -2673,16 +2677,22 @@ GER_build_fighters_early = {
         date > 1938.1.1
 		
 	}
-    	ai_strategy = {
+    ai_strategy = {
 		type = equipment_production_min_factories
 		id = fighter
-		value = 5
+		value = 2
 	}
     	
-    	ai_strategy = {
+    ai_strategy = {
 		type = equipment_production_min_factories
 		id = cas
 		value = 1
+	}
+	
+	ai_strategy = {
+		type = equipment_production_min_factories
+		id = tactical_bomber
+		value = 1								
 	}
 }
 
@@ -2697,16 +2707,22 @@ GER_build_fighters_late1 = {
         date > 1939.1.1
 		
 	}
-    	ai_strategy = {
+    ai_strategy = {
 		type = equipment_production_min_factories
 		id = fighter
-		value = 10
+		value = 8
 	}
     	
-    	ai_strategy = {
+    ai_strategy = {
 		type = equipment_production_min_factories
 		id = cas
-		value = 4
+		value = 2
+	}
+	
+	ai_strategy = {
+		type = equipment_production_min_factories
+		id = tactical_bomber
+		value = 2								
 	}
 }
 
@@ -2720,16 +2736,22 @@ GER_build_fighters_late2 = {
         date > 1941.1.1
 		
 	}
-    	ai_strategy = {
+    ai_strategy = {
 		type = equipment_production_min_factories
 		id = fighter
-		value = 20
+		value = 15
 	}
     	
-    	ai_strategy = {
+    ai_strategy = {
 		type = equipment_production_min_factories
 		id = cas
 		value = 5
+	}
+	
+	ai_strategy = {
+		type = equipment_production_min_factories
+		id = tactical_bomber
+		value = 3								
 	}
 }
 GER_build_fighters_late3 = {
@@ -2742,28 +2764,34 @@ GER_build_fighters_late3 = {
         date > 1949.1.1
 		
 	}
-    	ai_strategy = {
+    ai_strategy = {
 		type = equipment_production_min_factories
 		id = fighter
 		value = 40
 	}
-    	ai_strategy = {
+    ai_strategy = {
 		type = equipment_production_min_factories
 		id = interceptor
 		value = 10
 	}
     	
-    	ai_strategy = {
+    ai_strategy = {
 		type = equipment_production_min_factories
 		id = cas
 		value = 5
+	}
+	
+	ai_strategy = {
+		type = equipment_production_min_factories
+		id = tactical_bomber
+		value = 2								
 	}
 }
 
 GER_halt_light_armor_production_in_transitioning = {
 	enable = {
 		original_tag = GER
-			date > 1940.1.1		
+			date > 1939.1.1		
 	}
 	abort = {
 		# once we start we never go back to light armor
