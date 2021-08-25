@@ -4130,34 +4130,36 @@ SOV_strategy_army = {
 	ai_strategy = { type = role_ratio id = paratroopers 							value = 1 		}	
 	ai_strategy = { type = role_ratio id = motorized 							value = 20 		}	
 	ai_strategy = { type = role_ratio id = cavalry 								value = 12 		}
-	ai_strategy = { type = role_ratio id = light_armor 							value = 24 		}	
-	ai_strategy = { type = role_ratio id = armor 								value = 24 		}
-	ai_strategy = { type = build_army id = heavy_armor 							value = 14 		}
-	ai_strategy = { type = role_ratio id = heavy_armor 							value = 16 		}	
+	ai_strategy = { type = role_ratio id = light_armor 							value = -200 		}	
+	ai_strategy = { type = role_ratio id = armor 								value = 25 		}
+	ai_strategy = { type = build_army id = heavy_armor 							value = -200 		}
+	ai_strategy = { type = role_ratio id = heavy_armor 							value = -200 		}	
 	ai_strategy = { type = role_ratio id = mechanized 							value = 12 		}	
 	ai_strategy = { type = role_ratio id = garrison						    	        value = 1 		}
-	ai_strategy = { type = air_factory_balance value = 40 }
+	ai_strategy = { type = air_factory_balance value = 30 }
 	ai_strategy = { type = equipment_production_factor id = fighter 		value = 80 	}	
 	ai_strategy = { type = equipment_production_factor id = interceptor 		value = 10 	}	
-	ai_strategy = { type = equipment_production_factor id = tactical_bomber 	value = 0 	}	
-	ai_strategy = { type = equipment_production_factor id = naval_bomber 		value = 0    	}	
-	ai_strategy = { type = equipment_production_factor id = strategic_bomber 	value = 0  	}	
+	ai_strategy = { type = equipment_production_factor id = tactical_bomber 	value = -200 	}	
+	ai_strategy = { type = equipment_production_factor id = naval_bomber 		value = -200    	}	
+	ai_strategy = { type = equipment_production_factor id = strategic_bomber 	value = -200  	}	
 	ai_strategy = { type = equipment_production_factor id = cas 			value = 10 	}	
 	ai_strategy = { type = equipment_production_factor id = air_transport 		value = -200 	}	
+	ai_strategy = { type = equipment_production_factor id = scout_plane  		value = -200 	}	
 	
 	ai_strategy = { type = unit_ratio id = fighter 							value = 80 	}	
-	ai_strategy = { type = unit_ratio id = interceptor						value = 0 	}		
-	ai_strategy = { type = unit_ratio id = tactical_bomber 						value = 0 	}	
-	ai_strategy = { type = unit_ratio id = naval_bomber 						value = 0 	}	
-	ai_strategy = { type = unit_ratio id = strategic_bomber 					value = 0 	}	
+	ai_strategy = { type = unit_ratio id = interceptor						value = 10 	}		
+	ai_strategy = { type = unit_ratio id = tactical_bomber 						value = -200 	}	
+	ai_strategy = { type = unit_ratio id = naval_bomber 						value = -200 	}	
+	ai_strategy = { type = unit_ratio id = strategic_bomber 					value = -200 	}	
 	ai_strategy = { type = unit_ratio id = cas 							value = 8 	}	
 	ai_strategy = { type = unit_ratio id = air_transport 						value = -200 	}	
+	ai_strategy = { type = unit_ratio id = scout_plane 						value = -200 	}	
 }
 
 SOV_halt_light_armor_production_in_transitioning = {
 	enable = {
 		original_tag = SOV
-			date > 1943.10.30		
+			date > 1937.1.1
 	}
 	abort = {
 		# once we start we never go back to light armor
@@ -4166,10 +4168,10 @@ SOV_halt_light_armor_production_in_transitioning = {
 	ai_strategy = {
 		type = equipment_variant_production_factor
 		id = light_tank_equipment
-		value = -100
+		value = -200
 	}
-	ai_strategy = { type = role_ratio id = light_armor 							value = -100		}
-	ai_strategy = { type = build_army id = light_armor 							value = -100 		}
+	ai_strategy = { type = role_ratio id = light_armor 							value = -200	}
+	ai_strategy = { type = build_army id = light_armor 							value = -200	}
 	
 }
 
@@ -4266,9 +4268,14 @@ SOV_build_36 = {
 	ai_strategy = {
 		type = equipment_production_min_factories
 		id = motorized
-		value = 7								
+		value = 8						
 	}
-	ai_strategy = { type = equipment_production_factor id = armor 		value = 80	}
+	ai_strategy = {
+		type = equipment_production_min_factories
+		id = mechanized
+		value = 1					
+	}
+	ai_strategy = { type = equipment_production_factor id = armor 		value = 30	}
 	ai_strategy = {
 		type = equipment_production_min_factories
 		id = armor 
@@ -4283,12 +4290,18 @@ SOV_build_36 = {
 	ai_strategy = {
 		type = equipment_production_min_factories
 		id = artillery
-		value = 5							
+		value = 7		
 	}
 	ai_strategy = {
 		type = equipment_production_min_factories
 		id = anti_tank
-		value = 3							
+		value = 2							
+	}
+	ai_strategy = {
+		type = equipment_production_min_factories
+		id = anti_air
+		value = 1
+
 	}
 
 }
@@ -4305,9 +4318,14 @@ SOV_build_37 = {
 	ai_strategy = {
 		type = equipment_production_min_factories
 		id = motorized
-		value = 7								
+		value = 10							
 	}
-	ai_strategy = { type = equipment_production_factor id = armor 		value = 80	}
+	ai_strategy = {
+		type = equipment_production_min_factories
+		id = mechanized
+		value = 1					
+	}
+	ai_strategy = { type = equipment_production_factor id = armor 		value = 30	}
 	ai_strategy = {
 		type = equipment_production_min_factories
 		id = armor 
@@ -4322,12 +4340,18 @@ SOV_build_37 = {
 	ai_strategy = {
 		type = equipment_production_min_factories
 		id = artillery
-		value = 10							
+		value = 8					
 	}
 	ai_strategy = {
 		type = equipment_production_min_factories
 		id = anti_tank
-		value = 5							
+		value = 3						
+	}
+	ai_strategy = {
+		type = equipment_production_min_factories
+		id = anti_air
+		value = 1
+
 	}
 
 }
@@ -4347,7 +4371,12 @@ SOV_build_38 = {
 		id = motorized
 		value = 10								
 	}
-	ai_strategy = { type = equipment_production_factor id = armor 		value = 80	}
+	ai_strategy = {
+		type = equipment_production_min_factories
+		id = mechanized
+		value = 1					
+	}
+	ai_strategy = { type = equipment_production_factor id = armor 		value = 30	}
 	ai_strategy = {
 		type = equipment_production_min_factories
 		id = armor 
@@ -4362,12 +4391,18 @@ SOV_build_38 = {
 	ai_strategy = {
 		type = equipment_production_min_factories
 		id = artillery
-		value = 12							
+		value = 10				
 	}
 	ai_strategy = {
 		type = equipment_production_min_factories
 		id = anti_tank
-		value = 5						
+		value = 3						
+	}
+	ai_strategy = {
+		type = equipment_production_min_factories
+		id = anti_air
+		value = 1
+
 	}
 
 }
@@ -4387,7 +4422,12 @@ SOV_build_39 = {
 		id = motorized
 		value = 20					
 	}
-	ai_strategy = { type = equipment_production_factor id = armor 		value = 80 	}
+	ai_strategy = {
+		type = equipment_production_min_factories
+		id = mechanized
+		value = 1					
+	}
+	ai_strategy = { type = equipment_production_factor id = armor 		value = 30 	}
 	ai_strategy = {
 		type = equipment_production_min_factories
 		id = armor 
@@ -4402,17 +4442,17 @@ SOV_build_39 = {
 	ai_strategy = {
 		type = equipment_production_min_factories
 		id = artillery
-		value = 20								
+		value = 15							
 	}
 	ai_strategy = {
 		type = equipment_production_min_factories
 		id = anti_tank
-		value = 14								
+		value = 8							
 	}
 	ai_strategy = {
 		type = equipment_production_min_factories
 		id = anti_air
-		value = 1
+		value = 3
 
 	}
 
@@ -4433,8 +4473,13 @@ SOV_build_40 = {
 		id = motorized
 		value = 20						
 	}
+	ai_strategy = {
+		type = equipment_production_min_factories
+		id = mechanized
+		value = 1					
+	}
 	
-	ai_strategy = { type = equipment_production_factor id = armor 		value = 80 	}
+	ai_strategy = { type = equipment_production_factor id = armor 		value = 30 	}
 	ai_strategy = {
 		type = equipment_production_min_factories
 		id = armor 
@@ -4449,17 +4494,17 @@ SOV_build_40 = {
 	ai_strategy = {
 		type = equipment_production_min_factories
 		id = artillery
-		value = 20								
+		value = 15								
 	}
 	ai_strategy = {
 		type = equipment_production_min_factories
 		id = anti_tank
-		value = 15							
+		value = 18							
 	}
 	ai_strategy = {
 		type = equipment_production_min_factories
 		id = anti_air
-		value = 1
+		value = 3
 
 }
 }
@@ -4479,8 +4524,13 @@ SOV_build_41 = {
 		id = motorized
 		value = 20						
 	}
+	ai_strategy = {
+		type = equipment_production_min_factories
+		id = mechanized
+		value = 1					
+	}
 	
-	ai_strategy = { type = equipment_production_factor id = armor 		value = 80 	}
+	ai_strategy = { type = equipment_production_factor id = armor 		value = 30 	}
 	ai_strategy = {
 		type = equipment_production_min_factories
 		id = armor 
@@ -4495,17 +4545,17 @@ SOV_build_41 = {
 	ai_strategy = {
 		type = equipment_production_min_factories
 		id = artillery
-		value = 25								
-	}
-	ai_strategy = {
-		type = equipment_production_min_factories
-		id = anti_tank
 		value = 15								
 	}
 	ai_strategy = {
 		type = equipment_production_min_factories
+		id = anti_tank
+		value = 10								
+	}
+	ai_strategy = {
+		type = equipment_production_min_factories
 		id = anti_air
-		value = 1
+		value = 3
 
 }
 }
@@ -4524,8 +4574,13 @@ SOV_build_42 = {
 		id = motorized
 		value = 30						
 	}
+	ai_strategy = {
+		type = equipment_production_min_factories
+		id = mechanized
+		value = 1					
+	}
 	
-	ai_strategy = { type = equipment_production_factor id = armor 		value = 80 	}
+	ai_strategy = { type = equipment_production_factor id = armor 		value = 30 	}
 	ai_strategy = {
 		type = equipment_production_min_factories
 		id = armor 
@@ -4540,17 +4595,17 @@ SOV_build_42 = {
 	ai_strategy = {
 		type = equipment_production_min_factories
 		id = artillery
-		value = 30								
-	}
-	ai_strategy = {
-		type = equipment_production_min_factories
-		id = anti_tank
 		value = 20								
 	}
 	ai_strategy = {
 		type = equipment_production_min_factories
+		id = anti_tank
+		value = 15								
+	}
+	ai_strategy = {
+		type = equipment_production_min_factories
 		id = anti_air
-		value = 1
+		value = 5
 
 }
 }
@@ -4603,7 +4658,7 @@ SOV_build_CAS = {
 	ai_strategy = {
 		type = equipment_production_min_factories
 		id = fighter
-		value = 10								
+		value = 15								
 	}
 	ai_strategy = {
 		type = equipment_production_min_factories
@@ -4698,7 +4753,7 @@ SOV_build_CAS2 = {
 	ai_strategy = {
 		type = equipment_production_min_factories
 		id = CAS
-		value = 10								
+		value = 5							
 	}
 }
 
