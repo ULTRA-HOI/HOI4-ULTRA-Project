@@ -399,16 +399,16 @@ NDefines.NMilitary.ANTI_AIR_ATTACK_TO_AMOUNT = 0.01 --0.015 --0.005				-- Balanc
 
 
 NDefines.NCountry.VP_TO_SUPPLY_BASE = 0.5 --0.3					-- Bonus to supply from a VP, no matter the level
-NDefines.NCountry.VP_TO_SUPPLY_BONUS_CONVERSION = 0.25 -- 0.1		 -- Bonus to supply local supplies from Victory Points, multiplied by this aspect and rounded to closest integer
+NDefines.NCountry.VP_TO_SUPPLY_BONUS_CONVERSION = 0.2 --0.25 -- 0.1		 -- Bonus to supply local supplies from Victory Points, multiplied by this aspect and rounded to closest integer
 NDefines.NCountry.SUPPLY_FROM_DAMAGED_INFRA = 0.25 --0.5                -- damaged infrastructure counts as this in supply calcs
-NDefines.NCountry.SUPPLY_BASE_MULT = 0.3							-- multiplier on supply base values
-NDefines.NCountry.SUPPLY_BONUS_FROM_INPUT = 0.35					-- % of supply bonus from input area.
+NDefines.NCountry.SUPPLY_BASE_MULT = 0.25						-- multiplier on supply base values
+NDefines.NCountry.SUPPLY_BONUS_FROM_INPUT = 0.50					-- % of supply bonus from input area.
 NDefines.NCountry.SUPPLY_PATH_MAX_DISTANCE = 10						-- When supply route reach more than X nodes, the manpower+equipment delivery speed reach 100% penalty.
 NDefines.NCountry.SUPPLY_CONVOY_FACTOR = 0.5					-- How many convoys each supply needs
 NDefines.NBuildings.SUPPLY_PORT_LEVEL_THROUGHPUT = 1.5   -- supply throughput per level of naval base
-NDefines.NBuildings.INFRA_TO_SUPPLY = 2					-- was 2
-NDefines.NBuildings.INFRA_TO_SUPPLY_COEFF = 1 -- 1.5
-NDefines.NMilitary.ATTRITION_DAMAGE_ORG = 0.3
+NDefines.NBuildings.INFRA_TO_SUPPLY = 1.4					-- was 2
+NDefines.NBuildings.INFRA_TO_SUPPLY_COEFF = 1.4 --1 -- 1.5
+NDefines.NMilitary.ATTRITION_DAMAGE_ORG = 0.1
 NDefines.NMilitary.ATTRITION_EQUIPMENT_LOSS_CHANCE = 0.005
 NDefines.NMilitary.SUPPLY_USE_FACTOR_MOVING = 10                -- supply use when moving/fighting vs inactive
 NDefines.NMilitary.SUPPLY_USE_FACTOR_INACTIVE = 0.95
