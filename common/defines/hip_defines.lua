@@ -256,7 +256,7 @@ NDefines.NMilitary.NUKE_MAX_DAMAGE_PERCENT = 0.09 --0.9					-- Minimum damage fr
 
 -- air impact on land combats
 
-NDefines.NMilitary.LAND_AIR_COMBAT_STR_DAMAGE_MODIFIER = 0.015   -- air global damage modifier
+NDefines.NMilitary.LAND_AIR_COMBAT_STR_DAMAGE_MODIFIER = 0.005   -- air global damage modifier
 NDefines.NMilitary.LAND_AIR_COMBAT_ORG_DAMAGE_MODIFIER = 0.005    -- global damage modifier
 NDefines.NMilitary.LAND_AIR_COMBAT_MAX_PLANES_PER_ENEMY_WIDTH = 10 --5 -- how many CAS/TAC can enter a combat depending on enemy width there
 
@@ -361,7 +361,7 @@ NDefines.NMilitary.ENEMY_AIR_SUPERIORITY_DEFENSE_STEEPNESS = 120 -- how quickly 
 NDefines.NMilitary.ENCIRCLED_PENALTY = 0                   -- penalty when completely encircled
 NDefines.NMilitary.UNIT_DIGIN_CAP = 5 --10                           -- how "deep" you can dig you can dig in until hitting max bonus
 NDefines.NMilitary.UNIT_DIGIN_SPEED = 0.5 --1						   -- how "deep" you can dig a day.
-NDefines.NMilitary.ORG_LOSS_FACTOR_ON_CONQUER = 0.05              -- percentage of (max) org loss on takign enemy province
+NDefines.NMilitary.ORG_LOSS_FACTOR_ON_CONQUER = 0.15 --0.05             -- percentage of (max) org loss on takign enemy province
 NDefines.NMilitary.PLAN_SUPPLY_FACTOR = 0.2						-- Factor applied to available supply on a front location when determining priority
 
 
@@ -401,15 +401,15 @@ NDefines.NMilitary.ANTI_AIR_ATTACK_TO_AMOUNT = 0.004 --0.015 --0.005				-- Balan
 
 
 NDefines.NCountry.VP_TO_SUPPLY_BASE = 0.5 --0.3					-- Bonus to supply from a VP, no matter the level
-NDefines.NCountry.VP_TO_SUPPLY_BONUS_CONVERSION = 0.25 -- 0.1		 -- Bonus to supply local supplies from Victory Points, multiplied by this aspect and rounded to closest integer
+NDefines.NCountry.VP_TO_SUPPLY_BONUS_CONVERSION = 0.2 --0.25 -- 0.1		 -- Bonus to supply local supplies from Victory Points, multiplied by this aspect and rounded to closest integer
 NDefines.NCountry.SUPPLY_FROM_DAMAGED_INFRA = 0.25 --0.5                -- damaged infrastructure counts as this in supply calcs
-NDefines.NCountry.SUPPLY_BASE_MULT = 0.3							-- multiplier on supply base values
-NDefines.NCountry.SUPPLY_BONUS_FROM_INPUT = 0.35					-- % of supply bonus from input area.
+NDefines.NCountry.SUPPLY_BASE_MULT = 0.25						-- multiplier on supply base values
+NDefines.NCountry.SUPPLY_BONUS_FROM_INPUT = 0.25 -- 0.5					-- % of supply bonus from input area.
 NDefines.NCountry.SUPPLY_PATH_MAX_DISTANCE = 10						-- When supply route reach more than X nodes, the manpower+equipment delivery speed reach 100% penalty.
 NDefines.NCountry.SUPPLY_CONVOY_FACTOR = 0.5					-- How many convoys each supply needs
 NDefines.NBuildings.SUPPLY_PORT_LEVEL_THROUGHPUT = 1.5   -- supply throughput per level of naval base
-NDefines.NBuildings.INFRA_TO_SUPPLY = 2					-- was 2
-NDefines.NBuildings.INFRA_TO_SUPPLY_COEFF = 1 -- 1.5
+NDefines.NBuildings.INFRA_TO_SUPPLY = 1.4					-- was 2
+NDefines.NBuildings.INFRA_TO_SUPPLY_COEFF = 1.4 --1 -- 1.5
 NDefines.NMilitary.ATTRITION_DAMAGE_ORG = 0.1
 NDefines.NMilitary.ATTRITION_EQUIPMENT_LOSS_CHANCE = 0.005
 NDefines.NMilitary.SUPPLY_USE_FACTOR_MOVING = 10                -- supply use when moving/fighting vs inactive
@@ -461,21 +461,23 @@ NDefines.NMilitary.FUEL_CAPACITY_DEFAULT_HOURS = 144 --120 --216              --
 
 -- PLANE STUFF
 
-NDefines.NAir.AIR_WING_MAX_STATS_ATTACK = 150					-- Max stats
-NDefines.NAir.AIR_WING_MAX_STATS_DEFENCE = 150
+NDefines.NAir.AIR_WING_MAX_STATS_ATTACK = 400					-- Max stats
+NDefines.NAir.AIR_WING_MAX_STATS_DEFENCE = 400
 NDefines.NAir.AIR_WING_MAX_STATS_AGILITY = 150
 NDefines.NAir.AIR_WING_MAX_STATS_SPEED = 1500
 NDefines.NAir.AIR_WING_MAX_STATS_BOMBING = 150
 NDefines.NAir.DISRUPTION_FACTOR = 0
 NDefines.NAir.DISRUPTION_FACTOR_CARRIER = 0
 NDefines.NAir.ESCORT_FACTOR = 0
+NDefines.NAir.COMBAT_DAMAGE_STATS_MULTILIER = 0
+NDefines.NAir.COMBAT_BETTER_AGILITY_DAMAGE_REDUCTION = 0
 
 -- Night effect (brutal)
 
 NDefines.NAir.DETECT_CHANCE_FROM_NIGHT = -0.4 -- -0.2					-- How much the night can reduce the air detection. (see static modifiers to check how weather affects it too.)
 NDefines.NAir.CAS_NIGHT_ATTACK_FACTOR = 0.05 --0.1                      -- CAS damaged get multiplied by this in land combats at night
 
-NDefines.NAir.COMBAT_MULTIPLANE_CAP = 2.0						-- was 3.0 - How many planes can shoot at each plane on other side ( if there are 100 planes we are atttacking COMBAT_MULTIPLANE_CAP * 100 of our planes can shoot )
+NDefines.NAir.COMBAT_MULTIPLANE_CAP = 3.0						-- was 3.0 - How many planes can shoot at each plane on other side ( if there are 100 planes we are atttacking COMBAT_MULTIPLANE_CAP * 100 of our planes can shoot )
 NDefines.NAir.ACCIDENT_CHANCE_BASE = 0.10						-- was 0.05	- Base chance % (0 - 100) for accident to happen. Reduced with higher reliability stat.
 NDefines.NAir.ACCIDENT_CHANCE_BALANCE_MULT = 1.0 --0.5					-- Multiplier for balancing how often the air accident really happens. The higher mult, the more often.
 NDefines.NAir.ACCIDENT_EFFECT_MULT = 0.01 --0.005						-- Multiplier for balancing the effect of accidents
@@ -492,7 +494,7 @@ NDefines.NAir.BOMBING_TARGETING_RANDOM_FACTOR = 0.40						-- was 0.25	-- % of pi
 
 NDefines.NAir.AIR_WING_COUNTRY_XP_FROM_TRAINING_FACTOR = 0.020 				-- was 0.005	--Factor on country Air XP gained from wing training
 
-NDefines.NAir.COMBAT_DAMAGE_SCALE = 0.4				-- was 0.1			-- Higher value = more shot down planes
+NDefines.NAir.COMBAT_DAMAGE_SCALE = 2				-- was 0.1			-- Higher value = more shot down planes
 NDefines.NAir.COMBAT_DAMAGE_SCALE_CARRIER = 24 --6                    -- same as above but used inside naval combat for carrier battles
 
 NDefines.NAir.AIR_WING_XP_TRAINING_MISSION_GAIN_DAILY = 4.0 --3.3 						--Daily gain when running training exercise mission
@@ -531,7 +533,7 @@ NDefines.NAir.NAVAL_STRIKE_DAMAGE_TO_ORG = 0.75					-- Balancing value to conver
 NDefines.NAir.NAVAL_STRIKE_DETECTION_BALANCE_FACTOR = 0.5 --0.7		-- Value used to scale the surface_visibility stats to balance the gameplay, so 100% detection chance still won't spam the strikes.
 
 
-NDefines.NAir.AA_INDUSTRY_AIR_DAMAGE_FACTOR = -0.08				-- 5x levels = 40% defense from bombing
+NDefines.NAir.AA_INDUSTRY_AIR_DAMAGE_FACTOR = -0.12				-- 5x levels = 60% defense from bombing
 
 NDefines.NAir.MISSION_COMMAND_POWER_COSTS = {  -- command power cost per plane to create a mission
 		0.0, -- AIR_SUPERIORITY
@@ -907,4 +909,3 @@ NDefines.NAI.STR_BOMB_MIN_EXCORT_WINGS = 1                                      
 
 NDefines.NAI.AIR_AI_ENEMY_PROV_RATIO_FOR_COMBAT_REGION = 0.05			 -- if a region has more than this ratio of provinces controlled by enemy, AI will consider it as a combat zone while assigning planes
 NDefines.NAI.MAX_CARRIER_OVERFILL = 1.2                       
-                  
