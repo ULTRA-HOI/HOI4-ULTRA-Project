@@ -218,7 +218,7 @@ NDefines.NAI.MAX_FULLY_TRAINED_SHIP_RATIO_FOR_TRAINING = 1.0
 NDefines.NAI.REFIT_SHIP_RELUCTANCE = 1
 NDefines.NAI.REFIT_SHIP_PERCENTAGE_OF_FORCES = 0.10
 NDefines.NAI.MAX_CARRIER_OVERFILL = 1.50
-NDefines.NAI.SCREEN_TASKFORCE_MAX_SHIP_COUNT = 16
+NDefines.NAI.SCREEN_TASKFORCE_MAX_SHIP_COUNT = 6 --16
 NDefines.NAI.MIN_CAPITALS_FOR_CARRIER_TASKFORCE = 4
 NDefines.NAI.CAPITALS_TO_CARRIER_RATIO = 1.5
 NDefines.NAI.SCREENS_TO_CAPITAL_RATIO = 4.0
@@ -320,10 +320,10 @@ NDefines.NAI.CONVOY_ESCORT_MUL_FROM_NO_CONVOYS = 0 -- score multiplier when no c
 -- NDefines.NAI.NAVAL_MISSION_ESCORT_NEAR_OWNED = 0 --300 -- Extra escort mission score near owned provinces
 -- NDefines.NAI.NAVAL_MISSION_ESCORT_NEAR_CONTROLLED = 0 --250 -- Extra escort mission score near controlled provinces
 
-NDefines.NAI.MAX_SCREEN_TASKFORCES_FOR_CONVOY_DEFENSE_MIN = 0.40 --0.20 -- maximum ratio of all screen-ships forces to be used in convoy defense (increases up to max as AI loses convoys).
-NDefines.NAI.MAX_SCREEN_TASKFORCES_FOR_CONVOY_DEFENSE_MAX = 0.85 --0.70 -- maximum ratio of all screen-ships forces to be used in convoy defense (increases up to max as AI loses convoys).
--- NDefines.NAI.MAX_SCREEN_TASKFORCES_FOR_CONVOY_DEFENSE_MIN_CONVOY_THREAT = 100 -- AI will increase screen assignment for escort missions as threate increases
-NDefines.NAI.MAX_SCREEN_TASKFORCES_FOR_CONVOY_DEFENSE_MAX_CONVOY_THREAT = 500 -- 1500 -- AI will increase screen assignment for escort missions as threate increases
+NDefines.NAI.MAX_SCREEN_TASKFORCES_FOR_CONVOY_DEFENSE_MIN = 0.50 --0.20 -- maximum ratio of all screen-ships forces to be used in convoy defense (increases up to max as AI loses convoys).
+NDefines.NAI.MAX_SCREEN_TASKFORCES_FOR_CONVOY_DEFENSE_MAX = 0.90 --0.70 -- maximum ratio of all screen-ships forces to be used in convoy defense (increases up to max as AI loses convoys).
+NDefines.NAI.MAX_SCREEN_TASKFORCES_FOR_CONVOY_DEFENSE_MIN_CONVOY_THREAT = 50 -- AI will increase screen assignment for escort missions as threate increases
+NDefines.NAI.MAX_SCREEN_TASKFORCES_FOR_CONVOY_DEFENSE_MAX_CONVOY_THREAT = 1500 -- 1500 -- AI will increase screen assignment for escort missions as threate increases
 
 -------------------------
 -- convoy raiding
@@ -350,8 +350,8 @@ NDefines.NNavy.DEPTH_CHARGES_HIT_CHANCE_MULT = 2 --1   -- Base hit chance is 10%
 NDefines.NNavy.DEPTH_CHARGES_DAMAGE_MULT = 1
 
 NDefines.NNavy.NAVAL_COMBAT_SUB_DETECTION_FACTOR = 1.0      -- balance value for sub detection in combat by ships
-NDefines.NNavy.DEPTH_CHARGE_STAT_FOR_SHIP_TO_BE_SUB_HUNTER = 10
-NDefines.NNavy.SUB_DETECTION_STAT_FOR_SHIP_TO_BE_SUB_HUNTER = 4
+NDefines.NNavy.DEPTH_CHARGE_STAT_FOR_SHIP_TO_BE_SUB_HUNTER = 0.5
+NDefines.NNavy.SUB_DETECTION_STAT_FOR_SHIP_TO_BE_SUB_HUNTER = 3
 
 NDefines.NNavy.SUBMARINE_REVEAL_BASE_CHANCE = 10
 NDefines.NNavy.SUBMARINE_BASE_TORPEDO_REVEAL_CHANCE = 0.2
