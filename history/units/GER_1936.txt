@@ -67,7 +67,7 @@ division_template = {
 		artillery = { x = 1 y = 0 }
 		armored_car_recon = { x = 1 y = 1 }
 		anti_tank = { x = 1 y = 2 }
-		anti_air = { x = 1 y = 3 }
+		heavy_anti_air = { x = 1 y = 3 }
 		
 	}
 	priority = 2
@@ -518,7 +518,7 @@ air_wings = {
 	### I. Luftkreiskommando -- Konigsberg ###
 	763 = { 
 		# Jagdgeschwader 232 	
-		fighter_equipment_0 =  {		# He 51
+		ger_fighter_equipment_0 =  {		# He 51
 			owner = "GER" 
 			amount = 40
 		}
@@ -529,13 +529,13 @@ air_wings = {
 	### II. Luftkreiskommando -- Berlin ###
 	791 = { 
 		# Jagdgeschwader 132 'Richtofen'		
-		fighter_equipment_0 =  {		# Ar 68
+		ger_fighter_equipment_0 =  {		# Ar 68
 			owner = "GER" 
 			amount = 80
 		}
 		start_experience_factor = 0.4
 		name = "Jagdgeschwader 132"
-		ace={ # Order is important. Ace will be assigned to the wing above (fighter_equipment_0).
+		ace={ # Order is important. Ace will be assigned to the wing above (ger_fighter_equipment_0).
 			modifier="fighter_genius"
 			name="Erich"
 			surname="Hartmann"
@@ -544,22 +544,21 @@ air_wings = {
 		}
 		start_experience_factor = 0.4
 		# Kampfgeschwader 153		
-		tac_bomber_equipment_0 = {		# Do 23
+		ger_tac_bomber_equipment_1 = {		# Do 23
 			owner = "GER" 
 			amount = 80
 		}
 		start_experience_factor = 0.4
-		tac_bomber_equipment_0 = {		# Ju 86
+		ger_tac_bomber_equipment_1 = {		# Ju 86
 			owner = "GER" 
 			amount = 40
-			version_name = "Ju 86"
 		}
 		start_experience_factor = 0.4
 		name = "Kampfgeschwader 153"
 		# TODO: REMOVE THIS LATER ???
 		transport_plane_equipment_1 = {
 			owner = "GER" 
-			amount = 4
+			amount = 40
 		}
 		start_experience_factor = 0.4
 	}
@@ -567,14 +566,14 @@ air_wings = {
 	### III. Luftkreiskommando -- Breslau ###
 	66 = { 
 		# Kampfgeschwader 253 'General Wever'		
-		tac_bomber_equipment_0 = {		# He 45 or Do 23 ?
+		ger_light_bomber_equipment_0 = {		# He 45 or Do 23 ?
 			owner = "GER" 
 			amount = 120
 		}
 		start_experience_factor = 0.4
 		name = "Kampfgeschwader 253"
 		# Sturzkampfgeschwader 162		
-		CAS_equipment_1 =  {			# Hs 123
+		ger_cas_equipment_0 =  {			# Hs 123
 			owner = "GER" 
 			amount = 80
 		}
@@ -585,21 +584,21 @@ air_wings = {
 	### IV. Luftkreiskommando -- Kassel ###
 	57 = { 
 		# Jagdgeschwader 134 'Horst Wessel'		
-		fighter_equipment_0 =  {		# He 51 # Ar 68
+		ger_fighter_equipment_0 =  {		# He 51 # Ar 68
 			owner = "GER" 
 			amount = 120
 		}
 		start_experience_factor = 0.4
 		name = "Jagdgeschwader 134"
 		# Kampfgeschwader 152 'Hindenburg'	
-		tac_bomber_equipment_1 = {		# Do 23
+		ger_tac_bomber_equipment_1 = {		# Do 23
 			owner = "GER" 
 			amount = 80
 		}
 		start_experience_factor = 0.4
 		name = "Kampfgeschwader 152"
 		# Kampfgeschwader 155	
-		tac_bomber_equipment_0 = {		# He 45 or Do 23 ? (light bomber)
+		ger_tac_bomber_equipment_1 = {		# He 45 or Do 23 ? (light bomber)
 			owner = "GER" 
 			amount = 80
 		}
@@ -610,13 +609,13 @@ air_wings = {
 	### V. Luftkreiskommando -- Munich ###
 	52 = { 
 		# Jagdgeschwader 136		
-		fighter_equipment_0 =  {		# He 51
+		ger_fighter_equipment_0 =  {		# He 51
 			owner = "GER" 
 			amount = 40
 		}
 		name = "Jagdgeschwader 136"
 		# Kampfgeschwader 154	
-		tac_bomber_equipment_0 = {		# Do 23
+		ger_tac_bomber_equipment_1 = {		# Do 23
 			owner = "GER" 
 			amount = 80
 		}
@@ -627,7 +626,7 @@ air_wings = {
 	### VI. Luftkreiskommando -- Kiel ###
 	58 = { 
 		# Küstenfliegergruppe 106		
-		nav_bomber_equipment_1 =  {		# He 59, Do 18
+		ger_flying_boat_equipment_0 =  {		# He 59, Do 18
 			owner = "GER" 
 			amount = 72
 		}
@@ -642,43 +641,108 @@ air_wings = {
 #########################
 
 instant_effect = {
+	
+	
 
 	add_equipment_production = {
 		equipment = {
-			type = infantry_equipment_1
-			creator = "GER"
+			type = ger_fighter_equipment_0
+			creator = "GER" 
 		}
-		requested_factories = 8
+		requested_factories = 3
+		progress = 0.15
+		efficiency = 50
+	}
+
+	add_equipment_production = {
+		equipment = {
+			type = ger_cas_equipment_0
+			creator = "GER" 
+		}
+		requested_factories = 1
+		progress = 0.2
+		efficiency = 50
+	}
+
+	add_equipment_production = {
+		equipment = {
+			type = ger_tac_bomber_equipment_1
+			creator = "GER" 
+		}
+		requested_factories = 1
 		progress = 0.1
 		efficiency = 50
 	}
 	
 	add_equipment_production = {
 		equipment = {
-			type = heavy_infantry_equipment_2
-			creator = "GER"
+			type = ger_light_bomber_equipment_0
+			creator = "GER" 
 		}
-		requested_factories = 4
+		requested_factories = 1
 		progress = 0.1
 		efficiency = 50
+	}
+	
+	add_equipment_production = {
+		equipment = {
+			type = ger_flying_boat_equipment_0
+			creator = "GER" 
+		}
+		requested_factories = 1
+		progress = 0.1
+		efficiency = 50
+	}
+	
+	IF = {
+		limit = {
+			is_AI = yes
+		}
+		set_technology = {
+			ger_medium_1 = 1
+		}
+		add_equipment_production = {
+			equipment = {
+				type = ger_medium_equipment_1
+				creator = "GER" 
+			}
+			requested_factories = 3
+			progress = 0.4
+			efficiency = 5
+		}
+		add_equipment_to_stockpile = {
+			type = support_equipment_1
+			amount = 6000
+			producer = GER
+		}
 	}
 
 	add_equipment_production = {
 		equipment = {
-			type = support_equipment_1
+			type = ger_light_equipment_1
 			creator = "GER" 
 		}
 		requested_factories = 3
-		progress = 0.3
+		progress = 0.4
 		efficiency = 50
 	}
-
+	
+	add_equipment_production = {
+		equipment = {
+			type = motorized_equipment_1
+			creator = "GER" 
+		}
+		requested_factories = 3
+		progress = 0.4
+		efficiency = 50
+	}
+	
 	add_equipment_production = {
 		equipment = {
 			type = artillery_equipment_1
 			creator = "GER" 
 		}
-		requested_factories = 3
+		requested_factories = 4
 		progress = 0.3
 		efficiency = 50
 	}
@@ -688,16 +752,6 @@ instant_effect = {
 			type = heavy_artillery_equipment_1
 			creator = "GER" 
 		}
-		requested_factories = 1
-		progress = 0.3
-		efficiency = 50
-	}
-
-	add_equipment_production = {
-		equipment = {
-			type = anti_tank_equipment_1
-			creator = "GER" 
-		}
 		requested_factories = 2
 		progress = 0.3
 		efficiency = 50
@@ -705,7 +759,7 @@ instant_effect = {
 
 	add_equipment_production = {
 		equipment = {
-			type = anti_air_equipment_1
+			type = anti_tank_equipment_1
 			creator = "GER" 
 		}
 		requested_factories = 2
@@ -725,14 +779,44 @@ instant_effect = {
 
 	add_equipment_production = {
 		equipment = {
-			type = ger_light_equipment_0
+			type = anti_air_equipment_1
 			creator = "GER" 
 		}
-		requested_factories = 8
-		progress = 0.4
+		requested_factories = 1
+		progress = 0.3
 		efficiency = 50
 	}
 	
+	add_equipment_production = {
+		equipment = {
+			type = infantry_equipment_1
+			creator = "GER"
+		}
+		requested_factories = 4
+		progress = 0.1
+		efficiency = 50
+	}
+	
+	add_equipment_production = {
+		equipment = {
+			type = heavy_infantry_equipment_2
+			creator = "GER"
+		}
+		requested_factories = 3
+		progress = 0.1
+		efficiency = 50
+	}
+
+	add_equipment_production = {
+		equipment = {
+			type = support_equipment_1
+			creator = "GER" 
+		}
+		requested_factories = 1
+		progress = 0.3
+		efficiency = 50
+	}
+
 	add_equipment_production = {
 		equipment = {
 			type = ger_scout_car_equipment_1
@@ -742,56 +826,17 @@ instant_effect = {
 		progress = 0.1
 		efficiency = 50
 	}
-
-	add_equipment_production = {
-		equipment = {
-			type = motorized_equipment_1
-			creator = "GER" 
-		}
-		requested_factories = 3
-		progress = 0.4
-		efficiency = 50
-	}
-
-	add_equipment_production = {
-		equipment = {
-			type = fighter_equipment_0
-			creator = "GER" 
-		}
-		requested_factories = 5
-		progress = 0.15
-		efficiency = 50
-	}
-
-	add_equipment_production = {
-		equipment = {
-			type = CAS_equipment_1
-			creator = "GER" 
-		}
-		requested_factories = 3
-		progress = 0.2
-		efficiency = 50
-	}
-
-	add_equipment_production = {
-		equipment = {
-			type = tac_bomber_equipment_1
-			creator = "GER" 
-		}
-		requested_factories = 2
-		progress = 0.1
-		efficiency = 50
+	
+	#########################
+	## STARTING STOCKPILES ##
+	#########################
+	
+	add_equipment_to_stockpile = {
+		type = motorized_equipment_1
+		amount = 23000
+		producer = GER
 	}
 	
-	add_equipment_production = {
-		equipment = {
-			type = nav_bomber_equipment_1
-			creator = "GER" 
-		}
-		requested_factories = 1
-		progress = 0.1
-		efficiency = 50
-	}
 }
 
 #####################
