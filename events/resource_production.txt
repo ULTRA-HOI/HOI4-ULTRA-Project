@@ -1,56 +1,48 @@
 ##Events managing the resource system - basicaly disable resources factories when lacking of raw resources.
-
 add_namespace = resource_production
-
-country_event = {#not enough iron or coal to produce steel, close a steel mill
-    id = resource_production.1 
-    title = resource_production.1.t
-    desc = resource_production.1.d 
-    
-    picture = GFX_report_event_election_vote
-
-    trigger = {
-		
-		any_state={
-			is_controlled_by = ROOT
+country_event = {
+	#not enough iron or coal to produce steel, close a steel mill
+	id = resource_production.1
+	title = resource_production.1.t
+	desc = resource_production.1.d
+	picture = GFX_report_event_election_vote
+	trigger = {
+		OR = {
+			check_variable = {
+				resource@iron < 0
+			}
+			check_variable = {
+				resource@coal < 0
+			}
+		}
+		any_controlled_state = {
 			steel_refinery > 0
 		}
-		OR={
-			check_variable = { resource@iron < 0}
-			check_variable = { resource@coal < 0}
-		}
-    }
-
-    mean_time_to_happen = {
-        days = 7
-		modifier = {
-			factor = 10 # If true multiply 2 by 20 = 40
-			is_ai = yes
-		}
-    }
-
-    hidden = no 
-
-    option = { # close it
-        name = resource_production.1.a 
+	}
+	is_triggered_only = yes
+	option = {
+		# close it
+		name = resource_production.1.a
 		IF = {
 			limit = {
-				any_state={
-					is_controlled_by = ROOT
+				any_controlled_state = {
 					steel_refinery > 3
 					NOT = {
 						is_owned_by = ROOT
 					}
 				}
-				OR={
-					check_variable = { resource@iron < -99}
-					check_variable = { resource@coal < -99}
+				OR = {
+					check_variable = {
+						resource@iron < -99
+					}
+					check_variable = {
+						resource@coal < -99
+					}
 				}
 			}
-			random_state={
-				limit={
+			random_controlled_state = {
+				limit = {
 					steel_refinery > 3
-					is_controlled_by = ROOT
 					NOT = {
 						is_owned_by = ROOT
 					}
@@ -68,21 +60,22 @@ country_event = {#not enough iron or coal to produce steel, close a steel mill
 		}
 		ELSE_IF = {
 			limit = {
-				any_state={
-					is_controlled_by = ROOT
+				any_controlled_state = {
 					is_owned_by = ROOT
 					steel_refinery > 3
 				}
-				OR={
-					check_variable = { resource@iron < -99}
-					check_variable = { resource@coal < -99}
+				OR = {
+					check_variable = {
+						resource@iron < -99
+					}
+					check_variable = {
+						resource@coal < -99
+					}
 				}
 			}
-			random_state={
-				limit={
+			random_owned_controlled_state = {
+				limit = {
 					steel_refinery > 3
-					is_controlled_by = ROOT
-					is_owned_by = ROOT
 				}
 				remove_building = {
 					type = steel_refinery
@@ -97,22 +90,24 @@ country_event = {#not enough iron or coal to produce steel, close a steel mill
 		}
 		ELSE_IF = {
 			limit = {
-				any_state={
+				any_controlled_state = {
 					steel_refinery > 1
-					is_controlled_by = ROOT
 					NOT = {
 						is_owned_by = ROOT
 					}
 				}
-				OR={
-					check_variable = { resource@iron < -49}
-					check_variable = { resource@coal < -49}
+				OR = {
+					check_variable = {
+						resource@iron < -49
+					}
+					check_variable = {
+						resource@coal < -49
+					}
 				}
 			}
-			random_state={
-				limit={
+			random_controlled_state = {
+				limit = {
 					steel_refinery > 1
-					is_controlled_by = ROOT
 					NOT = {
 						is_owned_by = ROOT
 					}
@@ -130,21 +125,22 @@ country_event = {#not enough iron or coal to produce steel, close a steel mill
 		}
 		ELSE_IF = {
 			limit = {
-				any_state={
+				any_controlled_state = {
 					steel_refinery > 1
-					is_controlled_by = ROOT
 					is_owned_by = ROOT
 				}
-				OR={
-					check_variable = { resource@iron < -49}
-					check_variable = { resource@coal < -49}
+				OR = {
+					check_variable = {
+						resource@iron < -49
+					}
+					check_variable = {
+						resource@coal < -49
+					}
 				}
 			}
-			random_state={
-				limit={
+			random_owned_controlled_state = {
+				limit = {
 					steel_refinery > 1
-					is_controlled_by = ROOT
-					is_owned_by = ROOT
 				}
 				remove_building = {
 					type = steel_refinery
@@ -159,18 +155,16 @@ country_event = {#not enough iron or coal to produce steel, close a steel mill
 		}
 		ELSE_IF = {
 			limit = {
-				any_state={
+				any_controlled_state = {
 					steel_refinery > 0
-					is_controlled_by = ROOT
 					NOT = {
 						is_owned_by = ROOT
 					}
 				}
 			}
-			random_state={
-				limit={
+			random_controlled_state = {
+				limit = {
 					steel_refinery > 0
-					is_controlled_by = ROOT
 					NOT = {
 						is_owned_by = ROOT
 					}
@@ -187,11 +181,9 @@ country_event = {#not enough iron or coal to produce steel, close a steel mill
 			}
 		}
 		ELSE = {
-			random_state={
-				limit={
+			random_owned_controlled_state = {
+				limit = {
 					steel_refinery > 0
-					is_controlled_by = ROOT
-					is_owned_by = ROOT
 				}
 				remove_building = {
 					type = steel_refinery
@@ -204,60 +196,52 @@ country_event = {#not enough iron or coal to produce steel, close a steel mill
 				}
 			}
 		}
-
-    }
+	}
 }
 
-country_event = {#not enough bauxite or coal to produce aluminium, close an aluminium smelter
-    id = resource_production.2 
-    title = resource_production.2.t
-    desc = resource_production.2.d 
-    
-    picture = GFX_report_event_election_vote
-
-    trigger = {
-		
-		any_state={
+country_event = {
+	#not enough bauxite or coal to produce aluminium, close an aluminium smelter
+	id = resource_production.2
+	title = resource_production.2.t
+	desc = resource_production.2.d
+	picture = GFX_report_event_election_vote
+	trigger = {
+		OR = {
+			check_variable = {
+				resource@bauxite < 0
+			}
+			check_variable = {
+				resource@coal < 0
+			}
+		}
+		any_controlled_state = {
 			aluminium_refinery > 0
-			is_controlled_by = ROOT
 		}
-		OR={
-			check_variable = { resource@bauxite < 0}
-			check_variable = { resource@coal < 0}
-		}
-    }
-
-    mean_time_to_happen = {
-        days = 7
-		modifier = {
-			factor = 10 # If true multiply 2 by 30 = 60
-			is_ai = yes
-		}
-    }
-
-    hidden = no 
-
-    option = { # close it
-        name = resource_production.2.a 
-		
+	}
+	is_triggered_only = yes
+	option = {
+		# close it
+		name = resource_production.2.a
 		IF = {
 			limit = {
-				any_state={
+				any_controlled_state = {
 					aluminium_refinery > 3
-					is_controlled_by = ROOT
 					NOT = {
 						is_owned_by = ROOT
 					}
 				}
-				OR={
-					check_variable = { resource@bauxite < -99}
-					check_variable = { resource@coal < -99}
+				OR = {
+					check_variable = {
+						resource@bauxite < -99
+					}
+					check_variable = {
+						resource@coal < -99
+					}
 				}
 			}
-			random_state={
-				limit={
+			random_controlled_state = {
+				limit = {
 					aluminium_refinery > 3
-					is_controlled_by = ROOT
 					NOT = {
 						is_owned_by = ROOT
 					}
@@ -275,21 +259,22 @@ country_event = {#not enough bauxite or coal to produce aluminium, close an alum
 		}
 		ELSE_IF = {
 			limit = {
-				any_state={
+				any_controlled_state = {
 					aluminium_refinery > 3
-					is_controlled_by = ROOT
 					is_owned_by = ROOT
 				}
-				OR={
-					check_variable = { resource@bauxite < -99}
-					check_variable = { resource@coal < -99}
+				OR = {
+					check_variable = {
+						resource@bauxite < -99
+					}
+					check_variable = {
+						resource@coal < -99
+					}
 				}
 			}
-			random_state={
-				limit={
+			random_owned_controlled_state = {
+				limit = {
 					aluminium_refinery > 3
-					is_controlled_by = ROOT
-					is_owned_by = ROOT
 				}
 				remove_building = {
 					type = aluminium_refinery
@@ -304,22 +289,24 @@ country_event = {#not enough bauxite or coal to produce aluminium, close an alum
 		}
 		ELSE_IF = {
 			limit = {
-				any_state={
+				any_controlled_state = {
 					aluminium_refinery > 1
-					is_controlled_by = ROOT
 					NOT = {
 						is_owned_by = ROOT
 					}
 				}
-				OR={
-					check_variable = { resource@bauxite < -49}
-					check_variable = { resource@coal < -49}
+				OR = {
+					check_variable = {
+						resource@bauxite < -49
+					}
+					check_variable = {
+						resource@coal < -49
+					}
 				}
 			}
-			random_state={
-				limit={
+			random_controlled_state = {
+				limit = {
 					aluminium_refinery > 1
-					is_controlled_by = ROOT
 					NOT = {
 						is_owned_by = ROOT
 					}
@@ -337,21 +324,22 @@ country_event = {#not enough bauxite or coal to produce aluminium, close an alum
 		}
 		ELSE_IF = {
 			limit = {
-				any_state={
+				any_controlled_state = {
 					aluminium_refinery > 1
-					is_controlled_by = ROOT
 					is_owned_by = ROOT
 				}
-				OR={
-					check_variable = { resource@bauxite < -49}
-					check_variable = { resource@coal < -49}
+				OR = {
+					check_variable = {
+						resource@bauxite < -49
+					}
+					check_variable = {
+						resource@coal < -49
+					}
 				}
 			}
-			random_state={
-				limit={
+			random_owned_controlled_state = {
+				limit = {
 					aluminium_refinery > 1
-					is_controlled_by = ROOT
-					is_owned_by = ROOT
 				}
 				remove_building = {
 					type = aluminium_refinery
@@ -366,19 +354,16 @@ country_event = {#not enough bauxite or coal to produce aluminium, close an alum
 		}
 		ELSE_IF = {
 			limit = {
-				any_state={
+				any_controlled_state = {
 					aluminium_refinery > 0
-					is_controlled_by = ROOT
 					NOT = {
 						is_owned_by = ROOT
 					}
 				}
-				
 			}
-			random_state={
-				limit={
+			random_controlled_state = {
+				limit = {
 					aluminium_refinery > 1
-					is_controlled_by = ROOT
 					NOT = {
 						is_owned_by = ROOT
 					}
@@ -395,11 +380,9 @@ country_event = {#not enough bauxite or coal to produce aluminium, close an alum
 			}
 		}
 		ELSE = {
-			random_state={
-				limit={
+			random_owned_controlled_state = {
+				limit = {
 					aluminium_refinery > 0
-					is_controlled_by = ROOT
-					is_owned_by = ROOT
 				}
 				remove_building = {
 					type = aluminium_refinery
@@ -412,55 +395,41 @@ country_event = {#not enough bauxite or coal to produce aluminium, close an alum
 				}
 			}
 		}
-
-    }
+	}
 }
 
-country_event = {#not enough coal to produce fuel, close a synthetic reffinery
-    id = resource_production.3 
-    title = resource_production.3.t
-    desc = resource_production.3.d 
-    
-    picture = GFX_report_event_election_vote
-
-    trigger = {
-		
-		any_state={
+country_event = {
+	#not enough coal to produce fuel, close a synthetic reffinery
+	id = resource_production.3
+	title = resource_production.3.t
+	desc = resource_production.3.d
+	picture = GFX_report_event_election_vote
+	trigger = {
+		OR = {
+			check_variable = {
+				resource@coal < 0
+			}
+		}
+		any_controlled_state = {
 			synthetic_refinery > 0
-			is_controlled_by = ROOT
 		}
-		OR={
-			check_variable = { resource@coal < 0}
-		}
-    }
-
-    mean_time_to_happen = {
-        days = 2
-		modifier = {
-			factor = 10 # If true multiply 2 by 30 = 60
-			is_ai = yes
-		}
-    }
-
-    hidden = no 
-
-    option = { # close it
-        name = resource_production.3.a 
+	}
+	is_triggered_only = yes
+	option = {
+		# close it
+		name = resource_production.3.a
 		IF = {
 			limit = {
-				any_state={
-					aluminium_refinery > 0
-					is_controlled_by = ROOT
+				any_controlled_state = {
+					synthetic_refinery > 0
 					NOT = {
 						is_owned_by = ROOT
 					}
 				}
-				
 			}
-			random_state={
-				limit={
+			random_controlled_state = {
+				limit = {
 					synthetic_refinery > 0
-					is_controlled_by = ROOT
 					NOT = {
 						is_owned_by = ROOT
 					}
@@ -477,14 +446,9 @@ country_event = {#not enough coal to produce fuel, close a synthetic reffinery
 			}
 		}
 		ELSE = {
-			
-			random_state={
-				limit={
+			random_owned_controlled_state = {
+				limit = {
 					synthetic_refinery > 0
-					is_controlled_by = ROOT
-					
-					is_owned_by = ROOT
-					
 				}
 				remove_building = {
 					type = synthetic_refinery
@@ -497,55 +461,44 @@ country_event = {#not enough coal to produce fuel, close a synthetic reffinery
 				}
 			}
 		}
-
-    }
+	}
 }
 
-country_event = {#not enough coal to produce rubber, close a rubber reffinery
-    id = resource_production.4 
-    title = resource_production.4.t
-    desc = resource_production.4.d 
-    
-    picture = GFX_report_event_election_vote
-
-    trigger = {
-		
-		any_state={
+country_event = {
+	#not enough coal or oil to produce rubber, close a rubber reffinery
+	id = resource_production.4
+	title = resource_production.4.t
+	desc = resource_production.4.d
+	picture = GFX_report_event_election_vote
+	trigger = {
+		OR = {
+			check_variable = {
+				resource@coal < 0
+			}
+			check_variable = {
+				resource@oil < 0
+			}
+		}
+		any_controlled_state = {
 			synthetic_rubber_refinery > 0
-			is_controlled_by = ROOT
 		}
-		OR={
-			check_variable = { resource@coal < 0}
-		}
-    }
-
-    mean_time_to_happen = {
-        days = 2
-		modifier = {
-			factor = 10 # If true multiply 2 by 30 = 60
-			is_ai = yes
-		}
-    }
-
-    hidden = no 
-
-    option = { # close it
-        name = resource_production.4.a 
+	}
+	is_triggered_only = yes
+	option = {
+		# close it
+		name = resource_production.4.a
 		IF = {
 			limit = {
-				any_state={
-					aluminium_refinery > 0
-					is_controlled_by = ROOT
+				any_controlled_state = {
+					synthetic_rubber_refinery > 0
 					NOT = {
 						is_owned_by = ROOT
 					}
 				}
-				
 			}
-			random_state={
-				limit={
+			random_controlled_state = {
+				limit = {
 					synthetic_rubber_refinery > 0
-					is_controlled_by = ROOT
 					NOT = {
 						is_owned_by = ROOT
 					}
@@ -562,14 +515,9 @@ country_event = {#not enough coal to produce rubber, close a rubber reffinery
 			}
 		}
 		ELSE = {
-			
-			random_state={
-				limit={
+			random_owned_controlled_state = {
+				limit = {
 					synthetic_rubber_refinery > 0
-					is_controlled_by = ROOT
-					
-					is_owned_by = ROOT
-					
 				}
 				remove_building = {
 					type = synthetic_rubber_refinery
@@ -582,7 +530,5 @@ country_event = {#not enough coal to produce rubber, close a rubber reffinery
 				}
 			}
 		}
-
-    }
+	}
 }
-

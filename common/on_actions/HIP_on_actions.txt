@@ -428,48 +428,49 @@ on_actions = {
 		}
 	}
 	
-	on_weekly = { 
+	on_weekly_GER = { 
 		effect = {
-			 if = {
-                limit = {
-       
-                 NOT = { has_global_flag = airbase_limiter_ran } }
-				for_each_scope_loop = {
-					array = global.small_airbase_list
-					if = {
-						limit = { 
-							air_base > 1 
-						}
-						remove_building = { 
-							type = air_base 
-							level = 1 
-						}
-						controller = { 
-							PREV = { save_event_target_as = GDU_badairport1 } 
-							country_event = { id = gduairlimiter.1 }
-						}
+			for_each_scope_loop = {
+				array = global.small_airbase_list
+				if = {
+					limit = { 
+						air_base > 1 
 					}
-			
-				}
-				for_each_scope_loop = {
-					array = global.medium_airbase_list
-					if = {
-						limit = { 
-							air_base > 3 
-						}
-						remove_building = { 
-							type = air_base 
-							level = 1 
-						}
-						controller = { 
-							PREV = { save_event_target_as = GDU_badairport2 } 
-							country_event = { id = gduairlimiter.2 }
-						}
+					remove_building = { 
+						type = air_base 
+						level = 1 
 					}
-			
+					controller = { 
+						PREV = { save_event_target_as = GDU_badairport1 } 
+						country_event = { id = gduairlimiter.1 }
+					}
 				}
-				set_global_flag = { flag = airbase_limiter_ran value = 1 days = 1 }
-			}	
+			}
+			for_each_scope_loop = {
+				array = global.medium_airbase_list
+				if = {
+					limit = { 
+						air_base > 3 
+					}
+					remove_building = { 
+						type = air_base 
+						level = 1 
+					}
+					controller = { 
+						PREV = { save_event_target_as = GDU_badairport2 } 
+						country_event = { id = gduairlimiter.2 }
+					}
+				}
+			}
+		}
+	}
+
+	on_weekly = {
+		effect = {
+			country_event = { id = resource_production.1 random = 167 }
+			country_event = { id = resource_production.2 random = 167 }
+			country_event = { id = resource_production.3 random = 167 }
+			country_event = { id = resource_production.4 random = 167 }
 		}
 	}
 	
@@ -531,8 +532,6 @@ on_actions = {
 				}
 				
 			}
-			
 		}
 	}
-
 }
