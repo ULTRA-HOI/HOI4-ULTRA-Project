@@ -709,116 +709,63 @@ economy_decisions = {
 			}
 		}
 	}
-	
 	#close steel mill
 	close_steel_mill = {
-
-		icon = generic_political_discourse
-
+		icon = steel
 		available = {
-		         is_ai = no
+			is_ai = no
 			OR = {
 				custom_trigger_tooltip = {
 					tooltip = trigger_has_0_iron
 					hidden_trigger = {
-						check_variable = { resource@iron < 0}
+						check_variable = {
+							resource@iron < 0
+						}
 					}
 				}
 				custom_trigger_tooltip = {
 					tooltip = trigger_has_0_coal
 					hidden_trigger = {
-						check_variable = { resource@coal < 0}
+						check_variable = {
+							resource@coal < 0
+						}
 					}
 				}
 			}
 		}
-
 		visible = {
-		         is_ai = no
-			any_state={
-				steel_refinery > 0
-				is_owned_and_controlled_by = ROOT
-			}
-		}
-
-		fire_only_once = no
-
-		cost = 10
-
-		complete_effect = {
-			random_state={
-				limit={
-					steel_refinery > 0
-					is_owned_and_controlled_by = ROOT
-				}
-				custom_effect_tooltip=steel_mill_close
-				hidden_effect={
-					remove_building = {
-						type = steel_refinery
-						level = 1
-					}
-					add_building_construction = {
-						type = steel_refinery_inactive
-						level = 1
-						instant_build = yes
-					}
-				}
-			}
-		}
-
-		ai_will_do = {
-			base = 0
-		}
-	}
-	
-	close_foreign_steel_mill = {
-
-		icon = generic_political_discourse
-
-		available = {
-		         is_ai = no
+			is_ai = no
 			OR = {
 				custom_trigger_tooltip = {
 					tooltip = trigger_has_0_iron
 					hidden_trigger = {
-						check_variable = { resource@iron < 0}
+						check_variable = {
+							resource@iron < 0
+						}
 					}
 				}
 				custom_trigger_tooltip = {
 					tooltip = trigger_has_0_coal
 					hidden_trigger = {
-						check_variable = { resource@coal < 0}
+						check_variable = {
+							resource@coal < 0
+						}
 					}
 				}
 			}
-		}
-
-		visible = {
-		         is_ai = no
-			any_state={
+			FROM = {
 				steel_refinery > 0
-				is_controlled_by = ROOT
-				NOT = {
-					is_owned_by = ROOT
-				}
 			}
 		}
-
 		fire_only_once = no
-
+		state_target = yes
+		target_array = controlled_states
+		on_map_mode = map_and_decisions_view
 		cost = 0
-
 		complete_effect = {
-			random_state={
-				limit={
-					steel_refinery > 0
-					is_controlled_by = ROOT
-					NOT = {
-						is_owned_by = ROOT
-					}
-				}
-				custom_effect_tooltip=steel_mill_close
-				hidden_effect={
+			FROM = {
+				custom_effect_tooltip = steel_mill_close
+				hidden_effect = {
 					remove_building = {
 						type = steel_refinery
 						level = 1
@@ -831,63 +778,69 @@ economy_decisions = {
 				}
 			}
 		}
-
 		ai_will_do = {
 			base = 0
 		}
 	}
-	
 	#reopen steel mill after being closed
 	reopen_steel_mill = {
-
-		icon = generic_political_discourse
-
+		icon = steel
 		available = {
-		         is_ai = no
+			is_ai = no
 			custom_trigger_tooltip = {
 				tooltip = trigger_has_30_iron
 				hidden_trigger = {
-					check_variable = { resource@iron > 4}
+					check_variable = {
+						resource@iron > 4
+					}
 				}
 			}
 			custom_trigger_tooltip = {
 				tooltip = trigger_has_30_coal
 				hidden_trigger = {
-					check_variable = { resource@coal > 4}
+					check_variable = {
+						resource@coal > 4
+					}
 				}
 			}
-			
 		}
-
 		visible = {
-		         is_ai = no
-			any_state ={
+			is_ai = no
+			custom_trigger_tooltip = {
+				tooltip = trigger_has_30_iron
+				hidden_trigger = {
+					check_variable = {
+						resource@iron > 4
+					}
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = trigger_has_30_coal
+				hidden_trigger = {
+					check_variable = {
+						resource@coal > 4
+					}
+				}
+			}
+			FROM = {
 				steel_refinery_inactive > 0
-				is_controlled_by = ROOT
 			}
 			NOT = {
 				has_idea = new_recession
 			}
 		}
-
 		fire_only_once = no
-		
 		days_remove = 5
-
 		cost = 0
-		
+		state_target = yes
+		target_array = controlled_states
+		on_map_mode = map_and_decisions_view
 		complete_effect = {
-			
 		}
-
 		remove_effect = {
-			random_state={
-				limit={
-					steel_refinery_inactive > 0
-					is_controlled_by = ROOT
-				}
-				custom_effect_tooltip=closed_steel_mill_reopens
-				hidden_effect={
+			FROM = {
+				custom_effect_tooltip = closed_steel_mill_reopens
+				hidden_effect = {
 					remove_building = {
 						type = steel_refinery_inactive
 						level = 1
@@ -900,49 +853,44 @@ economy_decisions = {
 				}
 			}
 		}
-
 		ai_will_do = {
 			base = 1000
 		}
 	}
 	#close steel mill
 	close_steel_mill_ai = {
-
-		icon = generic_political_discourse
-
+		icon = steel
 		available = {
-		         is_ai = yes
+			is_ai = yes
 			OR = {
 				custom_trigger_tooltip = {
 					tooltip = trigger_has_300_steel
 					hidden_trigger = {
-						check_variable = { resource@steel > 300}
+						check_variable = {
+							resource@steel > 300
+						}
 					}
 				}
 			}
 		}
-
 		visible = {
-		         is_ai = yes
-			any_state={
+			is_ai = yes
+			any_state = {
 				steel_refinery > 0
 				is_owned_and_controlled_by = ROOT
 			}
 		}
-
 		fire_only_once = no
-                days_remove = 10
-
+		days_remove = 10
 		cost = 0
-
 		complete_effect = {
-			random_state={
-				limit={
+			random_state = {
+				limit = {
 					steel_refinery > 0
 					is_owned_and_controlled_by = ROOT
 				}
-				custom_effect_tooltip=steel_mill_close
-				hidden_effect={
+				custom_effect_tooltip = steel_mill_close
+				hidden_effect = {
 					remove_building = {
 						type = steel_refinery
 						level = 1
@@ -955,31 +903,28 @@ economy_decisions = {
 				}
 			}
 		}
-
 		ai_will_do = {
 			base = 1000
 		}
 	}
-	
 	close_foreign_steel_mill_ai = {
-
-		icon = generic_political_discourse
-
+		icon = steel
 		available = {
-		         is_ai = yes
+			is_ai = yes
 			OR = {
 				custom_trigger_tooltip = {
 					tooltip = trigger_has_250_steel
 					hidden_trigger = {
-						check_variable = { resource@steel > 250}
+						check_variable = {
+							resource@steel > 250
+						}
 					}
 				}
 			}
 		}
-
 		visible = {
-		         is_ai = yes
-			any_state={
+			is_ai = yes
+			any_state = {
 				steel_refinery > 0
 				is_controlled_by = ROOT
 				NOT = {
@@ -987,22 +932,20 @@ economy_decisions = {
 				}
 			}
 		}
-
 		fire_only_once = no
-
 		cost = 0
-                days_remove = 10
+		days_remove = 10
 		complete_effect = {
-			random_state={
-				limit={
+			random_state = {
+				limit = {
 					steel_refinery > 0
 					is_controlled_by = ROOT
 					NOT = {
 						is_owned_by = ROOT
 					}
 				}
-				custom_effect_tooltip=steel_mill_close
-				hidden_effect={
+				custom_effect_tooltip = steel_mill_close
+				hidden_effect = {
 					remove_building = {
 						type = steel_refinery
 						level = 1
@@ -1015,43 +958,43 @@ economy_decisions = {
 				}
 			}
 		}
-
 		ai_will_do = {
 			base = 1
 		}
 	}
-	
 	#reopen steel mill after being closed
 	reopen_steel_mill_ai = {
-
-		icon = generic_political_discourse
-
+		icon = steel
 		available = {
-		         is_ai = yes
-				custom_trigger_tooltip = {
-					tooltip = trigger_has_100_steel
-					hidden_trigger = {
-						check_variable = { resource@steel < 100}
+			is_ai = yes
+			custom_trigger_tooltip = {
+				tooltip = trigger_has_100_steel
+				hidden_trigger = {
+					check_variable = {
+						resource@steel < 100
 					}
 				}
+			}
 			custom_trigger_tooltip = {
 				tooltip = trigger_has_30_iron
 				hidden_trigger = {
-					check_variable = { resource@iron > 5}
+					check_variable = {
+						resource@iron > 5
+					}
 				}
 			}
 			custom_trigger_tooltip = {
 				tooltip = trigger_has_30_coal
 				hidden_trigger = {
-					check_variable = { resource@coal > 5}
+					check_variable = {
+						resource@coal > 5
+					}
 				}
 			}
-			
 		}
-
 		visible = {
-		         is_ai = yes
-			any_state ={
+			is_ai = yes
+			any_state = {
 				steel_refinery_inactive > 0
 				is_controlled_by = ROOT
 			}
@@ -1059,25 +1002,19 @@ economy_decisions = {
 				has_idea = new_recession
 			}
 		}
-
 		fire_only_once = no
-		
 		days_remove = 5
-
 		cost = 0
-		
 		complete_effect = {
-			
 		}
-
 		remove_effect = {
-			random_state={
-				limit={
+			random_state = {
+				limit = {
 					steel_refinery_inactive > 0
 					is_controlled_by = ROOT
 				}
-				custom_effect_tooltip=closed_steel_mill_reopens
-				hidden_effect={
+				custom_effect_tooltip = closed_steel_mill_reopens
+				hidden_effect = {
 					remove_building = {
 						type = steel_refinery_inactive
 						level = 1
@@ -1090,116 +1027,64 @@ economy_decisions = {
 				}
 			}
 		}
-
 		ai_will_do = {
 			base = 1
 		}
 	}
-	
 	close_aluminium_smelter = {
-
-		icon = generic_political_discourse
-
+		icon = aluminium
 		available = {
 			OR = {
 				custom_trigger_tooltip = {
 					tooltip = trigger_has_0_bauxite
 					hidden_trigger = {
-						check_variable = { resource@bauxite < 0}
+						check_variable = {
+							resource@bauxite < 0
+						}
 					}
 				}
 				custom_trigger_tooltip = {
 					tooltip = trigger_has_0_coal
 					hidden_trigger = {
-						check_variable = { resource@coal < 0}
+						check_variable = {
+							resource@coal < 0
+						}
 					}
 				}
 			}
 		}
-
 		visible = {
-			any_state={
-				aluminium_refinery > 0
-				is_owned_and_controlled_by = ROOT
-			}
-		}
-
-		fire_only_once = no
-
-		cost = 10
-
-		complete_effect = {
-			random_state={
-				limit={
-					aluminium_refinery > 0
-					is_owned_and_controlled_by = ROOT
-				}
-				custom_effect_tooltip=aluminium_smelter_close
-				hidden_effect={
-					remove_building = {
-						type = aluminium_refinery
-						level = 1
-					}
-					add_building_construction = {
-						type = aluminium_refinery_inactive
-						level = 1
-						instant_build = yes
-					}
-				}
-			}
-		}
-
-		ai_will_do = {
-			base = 0
-		}
-	}
-	
-	close_foreign_aluminium_smelter = {
-
-		icon = generic_political_discourse
-
-		available = {
 			OR = {
 				custom_trigger_tooltip = {
 					tooltip = trigger_has_0_bauxite
 					hidden_trigger = {
-						check_variable = { resource@bauxite < 0}
+						check_variable = {
+							resource@bauxite < 0
+						}
 					}
 				}
 				custom_trigger_tooltip = {
 					tooltip = trigger_has_0_coal
 					hidden_trigger = {
-						check_variable = { resource@coal < 0}
+						check_variable = {
+							resource@coal < 0
+						}
 					}
 				}
 			}
-		}
-
-		visible = {
-			any_state={
+			FROM = {
 				aluminium_refinery > 0
-				is_controlled_by = ROOT
-				NOT = {
-					is_owned_by = ROOT
-				}
 			}
 		}
-
 		fire_only_once = no
-
+		state_target = yes
+		target_array = controlled_states
+		on_map_mode = map_and_decisions_view
 		cost = 0
-
 		complete_effect = {
-			random_state={
-				limit={
-					aluminium_refinery > 0
-					is_controlled_by = ROOT
-					NOT = {
-						is_owned_by = ROOT
-					}
-				}
-				custom_effect_tooltip=aluminium_smelter_close
-				hidden_effect={
+			FROM = {
+				custom_effect_tooltip = aluminium_smelter_close
+				hidden_effect = {
 					remove_building = {
 						type = aluminium_refinery
 						level = 1
@@ -1212,57 +1097,64 @@ economy_decisions = {
 				}
 			}
 		}
-
 		ai_will_do = {
 			base = 0
 		}
 	}
-	
 	#reopen aluminium smelter after being closed
 	reopen_aluminium_smelter = {
-
-		icon = generic_political_discourse
-
+		icon = aluminium
 		available = {
 			custom_trigger_tooltip = {
 				tooltip = trigger_has_30_bauxite
 				hidden_trigger = {
-					check_variable = { resource@bauxite > 4}
+					check_variable = {
+						resource@bauxite > 4
+					}
 				}
 			}
 			custom_trigger_tooltip = {
 				tooltip = trigger_has_30_coal
 				hidden_trigger = {
-					check_variable = { resource@coal > 4}
+					check_variable = {
+						resource@coal > 4
+					}
 				}
 			}
 		}
-
 		visible = {
-			any_state ={
+			custom_trigger_tooltip = {
+				tooltip = trigger_has_30_bauxite
+				hidden_trigger = {
+					check_variable = {
+						resource@bauxite > 4
+					}
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = trigger_has_30_coal
+				hidden_trigger = {
+					check_variable = {
+						resource@coal > 4
+					}
+				}
+			}
+			FROM = {
 				aluminium_refinery_inactive > 0
-				is_controlled_by = ROOT
 			}
 		}
-
 		fire_only_once = no
-
+		state_target = yes
+		target_array = controlled_states
+		on_map_mode = map_and_decisions_view
 		days_remove = 5
-
 		cost = 0
-		
 		complete_effect = {
-			
 		}
-
 		remove_effect = {
-			random_state={
-				limit={
-					aluminium_refinery_inactive > 0
-					is_controlled_by = ROOT
-				}
-				custom_effect_tooltip=closed_aluminium_smelter_reopens
-				hidden_effect={
+			FROM = {
+				custom_effect_tooltip = closed_aluminium_smelter_reopens
+				hidden_effect = {
 					remove_building = {
 						type = aluminium_refinery_inactive
 						level = 1
@@ -1275,106 +1167,44 @@ economy_decisions = {
 				}
 			}
 		}
-
 		ai_will_do = {
 			base = 1000
 		}
 	}
-	
 	close_synthetic_refinery = {
-
-		icon = generic_political_discourse
-
+		icon = oil
 		available = {
-			OR = {
-				
-				custom_trigger_tooltip = {
-					tooltip = trigger_has_0_coal
-					hidden_trigger = {
-						check_variable = { resource@coal < 0}
+			custom_trigger_tooltip = {
+				tooltip = trigger_has_0_coal
+				hidden_trigger = {
+					check_variable = {
+						resource@coal < 0
 					}
 				}
 			}
 		}
-
 		visible = {
-			any_state={
+			custom_trigger_tooltip = {
+				tooltip = trigger_has_0_coal
+				hidden_trigger = {
+					check_variable = {
+						resource@coal < 0
+					}
+				}
+			}
+			FROM = {
 				synthetic_refinery > 0
-				is_owned_and_controlled_by = ROOT
 			}
 		}
-
 		fire_only_once = no
-
-		cost = 10
-
-		complete_effect = {
-			random_state={
-				limit={
-					synthetic_refinery > 0
-					is_owned_and_controlled_by = ROOT
-				}
-				custom_effect_tooltip= synthetic_refinery_close
-				hidden_effect={
-					remove_building = {
-						type = synthetic_refinery
-						level = 1
-					}
-					add_building_construction = {
-						type = synthetic_refinery_inactive
-						level = 1
-						instant_build = yes
-					}
-				}
-			}
-		}
-
-		ai_will_do = {
-			base = 0
-		}
-	}
-	
-	close_foreign_synthetic_refinery = {
-
-		icon = generic_political_discourse
-
-		available = {
-			OR = {
-				
-				custom_trigger_tooltip = {
-					tooltip = trigger_has_0_coal
-					hidden_trigger = {
-						check_variable = { resource@coal < 0}
-					}
-				}
-			}
-		}
-
-		visible = {
-			any_state={
-				synthetic_refinery > 0
-				is_controlled_by = ROOT
-				NOT = {
-					is_owned_by = ROOT
-				}
-			}
-		}
-
-		fire_only_once = no
-
+		state_target = yes
+		target_array = controlled_states
+		on_map_mode = map_and_decisions_view
 		cost = 0
-
 		complete_effect = {
-			random_state={
-				limit={
-					synthetic_refinery > 0
-					is_controlled_by = ROOT
-					NOT = {
-						is_owned_by = ROOT
-					}
-				}
-				custom_effect_tooltip= synthetic_refinery_close
-				hidden_effect={
+			FROM = {
+				custom_effect_tooltip = synthetic_refinery_close
+				hidden_effect = {
 					remove_building = {
 						type = synthetic_refinery
 						level = 1
@@ -1387,52 +1217,48 @@ economy_decisions = {
 				}
 			}
 		}
-
 		ai_will_do = {
 			base = 0
 		}
 	}
-	
 	#reopen synthetic refinery being closed
 	reopen_synthetic_refinery = {
-
-		icon = generic_political_discourse
-
+		icon = oil
 		available = {
-			
 			custom_trigger_tooltip = {
 				tooltip = trigger_has_90_coal
 				hidden_trigger = {
-					check_variable = { resource@coal > 14}
+					check_variable = {
+						resource@coal > 14
+					}
 				}
 			}
 		}
-
 		visible = {
-			any_state ={
+			custom_trigger_tooltip = {
+				tooltip = trigger_has_90_coal
+				hidden_trigger = {
+					check_variable = {
+						resource@coal > 14
+					}
+				}
+			}
+			FROM = {
 				synthetic_refinery_inactive > 0
-				is_controlled_by = ROOT
 			}
 		}
-
 		fire_only_once = no
-
+		state_target = yes
+		target_array = controlled_states
+		on_map_mode = map_and_decisions_view
 		days_remove = 5
-
 		cost = 0
-		
 		complete_effect = {
-			
 		}
-
 		remove_effect = {
-			random_state={
-				limit={
-					synthetic_refinery_inactive > 0
-					is_controlled_by = ROOT
-				}
-				custom_effect_tooltip=closed_synthetic_refinery_reopens
-				hidden_effect={
+			FROM = {
+				custom_effect_tooltip = closed_synthetic_refinery_reopens
+				hidden_effect = {
 					remove_building = {
 						type = synthetic_refinery_inactive
 						level = 1
@@ -1445,106 +1271,64 @@ economy_decisions = {
 				}
 			}
 		}
-
 		ai_will_do = {
 			base = 1000
 		}
 	}
-	
 	close_synthetic_rubber_refinery = {
-
-		icon = generic_political_discourse
-
+		icon = rubber
 		available = {
 			OR = {
-				
 				custom_trigger_tooltip = {
 					tooltip = trigger_has_0_coal
 					hidden_trigger = {
-						check_variable = { resource@coal < 0}
+						check_variable = {
+							resource@coal < 0
+						}
+					}
+				}
+				custom_trigger_tooltip = {
+					tooltip = trigger_has_0_oil
+					hidden_trigger = {
+						check_variable = {
+							resource@oil < 0
+						}
 					}
 				}
 			}
 		}
-
 		visible = {
-			any_state={
-				synthetic_rubber_refinery > 0
-				is_owned_and_controlled_by = ROOT
-			}
-		}
-
-		fire_only_once = no
-
-		cost = 10
-
-		complete_effect = {
-			random_state={
-				limit={
-					synthetic_rubber_refinery > 0
-					is_owned_and_controlled_by = ROOT
-				}
-				custom_effect_tooltip= synthetic_rubber_refinery_close
-				hidden_effect={
-					remove_building = {
-						type = synthetic_rubber_refinery
-						level = 1
-					}
-					add_building_construction = {
-						type = synthetic_rubber_refinery_inactive
-						level = 1
-						instant_build = yes
-					}
-				}
-			}
-		}
-
-		ai_will_do = {
-			base = 0
-		}
-	}
-	
-	close_foreign_synthetic_rubber_refinery = {
-
-		icon = generic_political_discourse
-
-		available = {
 			OR = {
-				
 				custom_trigger_tooltip = {
 					tooltip = trigger_has_0_coal
 					hidden_trigger = {
-						check_variable = { resource@coal < 0}
+						check_variable = {
+							resource@coal < 0
+						}
+					}
+				}
+				custom_trigger_tooltip = {
+					tooltip = trigger_has_0_oil
+					hidden_trigger = {
+						check_variable = {
+							resource@oil < 0
+						}
 					}
 				}
 			}
-		}
-
-		visible = {
-			any_state={
+			FROM = {
 				synthetic_rubber_refinery > 0
-				is_controlled_by = ROOT
-				NOT = {
-					is_owned_by = ROOT
-				}
 			}
 		}
-
 		fire_only_once = no
-
+		state_target = yes
+		target_array = controlled_states
+		on_map_mode = map_and_decisions_view
 		cost = 0
-
 		complete_effect = {
-			random_state={
-				limit={
-					synthetic_rubber_refinery > 0
-					is_controlled_by = ROOT
-					NOT = {
-						is_owned_by = ROOT
-					}
-				}
-				custom_effect_tooltip= synthetic_rubber_refinery_close
-				hidden_effect={
+			FROM = {
+				custom_effect_tooltip = synthetic_rubber_refinery_close
+				hidden_effect = {
 					remove_building = {
 						type = synthetic_rubber_refinery
 						level = 1
@@ -1557,51 +1341,63 @@ economy_decisions = {
 				}
 			}
 		}
-
 		ai_will_do = {
 			base = 0
 		}
 	}
-	
 	reopen_synthetic_rubber_refinery = {
-
-		icon = generic_political_discourse
-
+		icon = rubber
 		available = {
-			
 			custom_trigger_tooltip = {
 				tooltip = trigger_has_90_coal
 				hidden_trigger = {
-					check_variable = { resource@coal > 14}
+					check_variable = {
+						resource@coal > 14
+					}
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = trigger_has_5_oil
+				hidden_trigger = {
+					check_variable = {
+						resource@oil > 4
+					}
 				}
 			}
 		}
-
 		visible = {
-			any_state ={
+			custom_trigger_tooltip = {
+				tooltip = trigger_has_90_coal
+				hidden_trigger = {
+					check_variable = {
+						resource@coal > 14
+					}
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = trigger_has_5_oil
+				hidden_trigger = {
+					check_variable = {
+						resource@oil > 4
+					}
+				}
+			}
+			FROM = {
 				synthetic_rubber_refinery_inactive > 0
-				is_controlled_by = ROOT
 			}
 		}
-
 		fire_only_once = no
-
+		state_target = yes
+		target_array = controlled_states
+		on_map_mode = map_and_decisions_view
 		days_remove = 5
-
 		cost = 0
-		
 		complete_effect = {
-			
 		}
-
 		remove_effect = {
-			random_state={
-				limit={
-					synthetic_rubber_refinery_inactive > 0
-					is_controlled_by = ROOT
-				}
-				custom_effect_tooltip=closed_synthetic_rubber_refinery_reopens
-				hidden_effect={
+			FROM = {
+				custom_effect_tooltip = closed_synthetic_rubber_refinery_reopens
+				hidden_effect = {
 					remove_building = {
 						type = synthetic_rubber_refinery_inactive
 						level = 1
@@ -1614,12 +1410,10 @@ economy_decisions = {
 				}
 			}
 		}
-
 		ai_will_do = {
 			base = 1000
 		}
 	}
-	
 	resume_baku_exploitation_phase1 = {
 		icon = oil
 		
