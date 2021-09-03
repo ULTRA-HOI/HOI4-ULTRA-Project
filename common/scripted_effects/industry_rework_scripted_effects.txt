@@ -19,11 +19,7 @@
 #Daily Labour Requirements Calculation
 
 on_daily_labour_calculations = {
-	
-	#Calculates agricultural bonus
-	set_variable = { agricultural_bonus = agricultural_trade }
-	divide_variable = { agricultural_bonus = 3 }
-	
+		
 	#Calculates total population (in 1000s)
 	set_variable = { total_population = max_manpower_k }
 	set_variable = { total_non_core_population = 0 }
@@ -263,6 +259,244 @@ on_daily_labour_calculations = {
 	#Set dynamic number of civilian trucks per 6 month
 	set_variable = { civilian_truck_production = num_of_civilian_factories }
 	multiply_variable = { civilian_truck_production = 100 }
+}
+
+calculate_state_level_agriculture_penalty = {
+	if = {
+		limit = {
+			is_core_of = CAN
+		}
+		set_variable = { state_level_agriculture_penalty = 0.1 }
+	}
+	else_if = {
+		limit = {
+			is_core_of = URG
+		}
+		set_variable = { state_level_agriculture_penalty = 0.15 }
+	}
+	else_if = {
+		limit = {
+			is_core_of = USA
+		}
+		set_variable = { state_level_agriculture_penalty = 0.16 }
+	}
+	else_if = {
+		limit = {
+			OR = {
+				is_core_of = ENG
+				is_core_of = AST
+				is_core_of = NZL
+				is_core_of = ARG
+				is_core_of = CHL
+			}
+		}
+		set_variable = { state_level_agriculture_penalty = 0.2 }
+
+	}
+	else_if = {
+		limit = {
+			OR = {
+				is_core_of = NOR
+			}
+		}
+		set_variable = { state_level_agriculture_penalty = 0.20 }
+	}
 	
-	
+	else_if = {
+		limit = {
+			OR = {
+				is_core_of = DEN
+				is_core_of = SWE
+			}
+		}
+		set_variable = { state_level_agriculture_penalty = 0.20 }
+	}
+	else_if = {
+		limit = {
+			OR = {
+				is_core_of = HOL
+				is_core_of = BEL
+				is_core_of = GER
+				is_core_of = CZE
+				is_core_of = LUX
+				is_core_of = AUS
+			}
+		}
+		set_variable = { state_level_agriculture_penalty = 0.3 }
+	}
+	else_if = {
+		limit = {
+			OR = {
+				is_core_of = FRA
+			}
+		}
+		set_variable = { state_level_agriculture_penalty = 0.4 }
+	}
+	else_if = {
+		limit = {
+			OR = {
+				is_core_of = ITA
+				is_core_of = SPR
+				is_core_of = POR
+				is_core_of = SAF
+				is_core_of = FIN
+				AND = {
+					NOT = {
+						is_core_of = CHL
+						is_core_of = ARG
+					}
+					is_on_continent = south_america
+				}
+				AND = {
+					NOT = {
+						is_core_of = USA
+						is_core_of = CAN
+					}
+					is_on_continent = north_america
+				}
+			}
+		}
+		set_variable = { state_level_agriculture_penalty = 0.45 }
+	}
+	else_if = {
+		limit = {
+			OR = {
+				is_core_of = SOV
+			}
+		}
+		set_variable = { state_level_agriculture_penalty = 0.52 }
+	}
+	else_if = {
+		limit = {
+			OR = {
+				is_core_of = JAP
+			}
+		}
+		set_variable = { state_level_agriculture_penalty = 0.55 }
+	}
+	else_if = {
+		limit = {
+			OR = {
+				is_core_of = POL
+				AND = {
+					is_core_of = UKR
+					is_core_of = POL
+				}
+			}
+		}
+		set_variable = { state_level_agriculture_penalty = 0.52 }
+	}
+	else_if = {
+		limit = {
+			OR = {
+				is_core_of = HUN
+				is_core_of = SLO
+			}
+		}
+		set_variable = { state_level_agriculture_penalty = 0.40 }
+	}
+	else_if = {
+		limit = {
+			OR = {
+				is_core_of = BUL
+			}
+		}
+		set_variable = { state_level_agriculture_penalty = 0.35 }
+	}
+	else_if = {
+		limit = {
+			OR = {
+				is_core_of = LIT
+				is_core_of = LAT
+				is_core_of = EST
+				is_core_of = PER
+			}
+		}
+		set_variable = { state_level_agriculture_penalty = 0.58 }
+	}
+	else_if = {
+		limit = {
+			OR = {
+				is_core_of = YUG
+			}
+		}
+		set_variable = { state_level_agriculture_penalty = 0.44 }
+	}
+	else_if = {
+		limit = {
+			OR = {
+				is_core_of = GRE
+			}
+		}
+		set_variable = { state_level_agriculture_penalty = 0.40 }
+	}
+	else_if = {
+		limit = {
+			OR = {
+				is_core_of = TUR
+			}
+		}
+		set_variable = { state_level_agriculture_penalty = 0.50 }
+	}
+	else_if = {
+		limit = {
+			OR = {
+				is_core_of = ROM
+			}
+		}
+		set_variable = { state_level_agriculture_penalty = 0.65 }
+	}
+	else_if = {
+		limit = {
+			OR = {
+				is_core_of = ALB
+				is_core_of = EGY
+				is_core_of = TUN
+				is_core_of = MOR
+			}
+		}
+		set_variable = { state_level_agriculture_penalty = 0.7 }
+	}
+	else_if = {
+		limit = {
+			OR = {
+				AND = {
+					NOT = {
+						is_core_of = JAP
+						is_core_of = SOV
+					}
+					is_on_continent = asia
+				}
+				
+				AND = {
+					NOT = {
+						is_core_of = AST
+						is_core_of = NZL
+					}
+					is_on_continent = australia
+				}
+				
+				AND = {
+					NOT = {
+						is_core_of = TUR
+						is_core_of = PER
+					}
+					is_on_continent = middle_east
+				}
+			}
+		}
+		set_variable = { state_level_agriculture_penalty = 0.75 }
+	}
+	else_if = {
+		limit = {
+			NOT = {
+				is_core_of = SAF
+			}
+			is_on_continent = africa
+		}
+		set_variable = { state_level_agriculture_penalty = 0.8 }
+	}
+	else ={	
+		set_variable = { state_level_agriculture_penalty = 0.75 }
+	}
 }
