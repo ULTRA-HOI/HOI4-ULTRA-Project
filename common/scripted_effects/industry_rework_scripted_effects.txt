@@ -500,3 +500,35 @@ calculate_state_level_agriculture_penalty = {
 		set_variable = { state_level_agriculture_penalty = 0.75 }
 	}
 }
+
+init_default_logistics_and_women = {
+	#Sets default female workplace participation rate (to offset labour needs).
+	set_variable = { female_participation_rate = 0.5 }
+			
+	#Sets default logistical level
+	set_variable = { logistical_level = 1 }
+	set_variable = { signal_level = 1 }
+}
+
+init_industry_rework = {
+	#Calculate deployed manpower to remove
+	set_variable = { manpower_to_remove = has_army_manpower  }
+	add_to_variable = { manpower_to_remove = num_battalions_with_type@infantry }
+	multiply_variable = { manpower_to_remove = -1000 }
+	# Adds agriculture mechanisation to every relevant countries
+	every_owned_state = {
+		calculate_state_level_agriculture_penalty = yes
+	}
+	#Adds key labour requirements dynamic modifier
+
+	on_daily_labour_calculations = yes
+	logistical_calculations = yes
+	add_dynamic_modifier = { modifier = agricultural_trade }
+	add_dynamic_modifier = { modifier = agriculture_needs }
+	add_dynamic_modifier = { modifier = labour_requirements }
+	add_dynamic_modifier = { modifier = female_labour_penalty }
+	add_dynamic_modifier = { modifier = not_of_working_age_penalty }
+	add_dynamic_modifier = { modifier = division_slice }
+	add_dynamic_modifier = { modifier = mechanisation_bonus }
+	add_manpower = var:manpower_to_remove
+}
