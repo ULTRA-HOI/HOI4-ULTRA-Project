@@ -680,7 +680,6 @@ invading_france_is_pointless_because_we_go_through_benelux_soon = {
 			date > 1941.1.1
 			HOL = {	has_capitulated = yes }
 			BEL = {	has_capitulated = yes }
-			LUX = {	has_capitulated = yes }
 		}
 	}
 
@@ -715,7 +714,6 @@ GER_want_to_invade_FRA_without_ITA = {
 			AND = {
 				HOL = {	has_capitulated = yes }
 				BEL = {	has_capitulated = yes }
-				LUX = {	has_capitulated = yes }
 			}
 		}
 	}
@@ -969,7 +967,6 @@ war_with_soviets = {
 				FRA = { has_capitulated = no }
 				has_war_with = FRA
 			}
-			date < 1941.1.1
 			is_in_faction_with = SOV
 			date > 1942.1.1							
 		}
@@ -1008,7 +1005,7 @@ war_with_soviets = {
 	ai_strategy = {									
 		type = area_priority
 		id = south_russia
-		value = 50 #more focus here
+		value = 200 #more focus here
 	}
 	
 	ai_strategy = {									
@@ -1692,7 +1689,7 @@ invading_france_is_pointless_because_we_go_through_benelux_soon = {
 	abort = {
 		OR = {
 			has_tech = landing_craft
-			date > 1940.1.1
+			date > 1942.1.1
 		}
 	}
 
@@ -1713,7 +1710,7 @@ invading_france_is_pointless_because_we_go_through_benelux_soon = {
 worry_about_barbarossa_before_africa = {
 	enable = {
 		tag = GER
-
+		date > 1941.5.1
 		country_exists = SOV
 		NOT = {	is_in_faction_with = SOV }
 		has_war_with = ENG
@@ -1764,22 +1761,6 @@ make_sure_poland_is_ganked_before_we_move = {
 	}
 }
 
-#GER_after_poland_falls_we_want_more_suppression_units_for_france = {
-#	enable = {
-#		tag = GER
-#		POL = { has_capitulated = yes }
-#		has_war = yes
-#	}
-#	abort = {
-#		has_war = no
-#	}
-#
-#	ai_strategy = {
-#		type = role_ratio
-#		id = suppression
-#		value = 10
-#	}
-#}
 
 GER_want_to_invade_FRA_without_ITA = {
 	enable = {
@@ -2128,6 +2109,7 @@ war_with_soviets = {
 			}
 			date > 1941.6.1							
 		}
+		date > 1941.5.1	
 	}
 	abort = {
 		OR = {
@@ -2175,7 +2157,7 @@ war_with_soviets = {
 	ai_strategy = {									
 		type = area_priority
 		id = south_russia
-		value = 50 #more focus here
+		value = 200 #more focus here
 	}
 }
 
@@ -2189,7 +2171,9 @@ war_with_soviets_2 = {
 	abort = {
 		OR = {
 			NOT = { country_exists = SOV }
-			date < 1941.1.1
+			SOV = {
+				has_focus_tree = bitter_peace_focus
+			}
 		}
 	}
 
@@ -2227,14 +2211,16 @@ war_with_soviets_3 = {
 	abort = {
 		OR = {
 			NOT = { country_exists = SOV }
-			date < 1942.10.1
+			SOV = {
+				has_focus_tree = bitter_peace_focus
+			}
 		}
 	}
 
 	ai_strategy = {
 		type = area_priority
 		id = south_russia
-		value = 20 #more focus here					
+		value = 100 #more focus here					
 	}
 
 }
@@ -2336,23 +2322,6 @@ Axis_care_less_about_making_friends = {
 	}
 }
 
-GER_wants_civ = {
-	enable = {
-		tag = GER
-		has_government = fascism
-		date < 1937.9.15
-		
-		has_war = no
-	 
-	}
-	abort_when_not_enabled = yes
-	ai_strategy = {
-		type = building_target
-		id = industrial_complex
-		value = 59
-	}
-}
-
 GER_wants_no_docks = {
 	enable = {
 		tag = GER
@@ -2399,7 +2368,7 @@ GER_wants_synth2 = {
 	enable = {
 		tag = GER
 		has_war = yes
-                date < 1941.1.1
+                date < 1944.1.1
 	}
 	abort_when_not_enabled = yes
 	ai_strategy = {
@@ -2418,7 +2387,7 @@ GER_wants_no_synth = {
 	enable = {
 		tag = GER
 		has_war = yes
-                date > 1941.1.1
+                date > 1944.1.1
 	}
 	abort_when_not_enabled = yes
 	ai_strategy = {
@@ -2475,11 +2444,7 @@ GER_share_borders_with_ITA_against_SOV = {
 		value = 100
 	}
 
-	#ai_strategy = {
-	#	type = dont_defend_ally_borders
-	#	id = "ROM"
-	#	value = 100
-	#}
+	
 	ai_strategy = {
 		type = dont_defend_ally_borders
 		id = "HUN"
@@ -2725,7 +2690,7 @@ GER_enable_invasion_of_NOR = {
 	ai_strategy = {
 		type = invade
 		id = "NOR"			
-		value = 1000
+		value = 500
 	}
 }
 
@@ -2852,7 +2817,7 @@ GER_Summer_Offensive = {
                 has_war_with = SOV
 	}
 	abort = {
-                date > 1941.12.3
+                date > 1941.11.1
 
 	}
 	ai_strategy = {
@@ -2865,16 +2830,21 @@ GER_Summer_Offensive = {
 		execute_order = yes
 		manual_attack = yes
 	}
+	ai_strategy = {
+		type = consider_weak
+		id = "SOV"
+		value = 9999 
+	}
 }
 
 GER_winter_hold = {
 	enable = {
 		original_tag = GER
                 has_war_with = SOV
-                date > 1941.12.3
+                date > 1941.11.1
 	}
 	abort = {
-                date > 1942.4.1
+                date > 1942.6.1
 
 	}
 	ai_strategy = {
@@ -2889,14 +2859,41 @@ GER_winter_hold = {
 	}
 }
 
+GER_Summer_Offensive2 = {
+	enable = {
+		original_tag = GER
+        has_war_with = SOV
+		date > 1942.6.1
+	}
+	abort = {
+                date > 1942.11.1
+
+	}
+	ai_strategy = {
+		type = front_control
+		country_trigger = {
+			original_tag = SOV
+		}
+		ordertype = front
+		execution_type = rush_weak
+		execute_order = yes
+		manual_attack = yes
+	}
+	ai_strategy = {
+		type = consider_weak
+		id = "SOV"
+		value = 9999 
+	}
+}
+
 GER_winter_hold2 = {
 	enable = {
 		original_tag = GER
                 has_war_with = SOV
-                date > 1942.12.3
+                date > 1942.11.1
 	}
 	abort = {
-                date > 1943.4.1
+                date > 1943.6.1
 
 	}
 	ai_strategy = {
