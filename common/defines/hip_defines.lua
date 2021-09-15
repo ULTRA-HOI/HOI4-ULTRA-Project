@@ -297,7 +297,7 @@ NDefines.NMilitary.MAX_ARMY_EXPERIENCE = 999 					--Max army experience a countr
 NDefines.NMilitary.MAX_NAVY_EXPERIENCE = 999					--Max navy experience a country can store
 NDefines.NMilitary.MAX_AIR_EXPERIENCE = 999					--Max air experience a country can store
 
-NDefines.NMilitary.SLOWEST_SPEED = 1
+NDefines.NMilitary.SLOWEST_SPEED = 0.4
 NDefines.NMilitary.DIG_IN_FACTOR = 0.01 -- 0.02
 NDefines.NMilitary.AIR_SUPPORT_BASE = 0.5    --0.3                    -- CAS bonus factor for air support moddifier for land unit in combat
 NDefines.NMilitary.REINFORCE_CHANCE = 0.04                 	   -- base chance to join combat from back line when empty
