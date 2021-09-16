@@ -276,6 +276,13 @@ ALL_dont_upgrade_rifles_too_early = {
 	
 }
 SPA_dont_upgrade_rifles_too_early = {
+	allowed = {
+		OR = {
+			tag = SPA
+			tag = SPD 
+			tag = SPR
+		}
+	}
 	enable = {
 		OR = {
 			tag = SPA
@@ -299,8 +306,11 @@ SPA_dont_upgrade_rifles_too_early = {
 }
 
 All_Garrison = {
+	allowed = {
+		is_major = no
+	}
 	enable = {
-                date > 1936.1.1
+        date > 1936.1.1
 	}
 	
 	abort = {
@@ -363,6 +373,9 @@ default_attack = {
 	
 }				  
 default_unit_production = {
+	allowed = {
+		is_major = no
+	}
 	enable = {
 		OR = {
 			NOT = { original_tag = GER }
@@ -397,7 +410,7 @@ default_unit_production = {
 	ai_strategy = {
 		type = role_ratio
 		id = mountaineers
-		value = 4
+		value = 0
 	}
 
 	ai_strategy = {
@@ -509,6 +522,9 @@ default_role_ratios = {
 }
 
 default_role_ratios = {
+	allowed = {
+		is_major = no
+	}
 	enable = {
 		has_dlc = "Man the Guns"
 		not = {
@@ -585,6 +601,9 @@ default_role_ratios = {
 }
 
 convoy_voy_voy_voy = {
+	allowed = {
+		is_major = no
+	}
 	enable = {
 		has_dlc = "Man the Guns"
 		convoy_threat > 0.2
@@ -640,6 +659,9 @@ convoy_voy_voy_voy = {
 }
 
 ill_show_you_mine = {
+	allowed = {
+		is_major = no
+	}
 	enable = {
 		has_dlc = "Man the Guns"
 		mine_threat > 0.2
@@ -678,6 +700,9 @@ ill_show_you_mine = {
 }
 
 ill_show_you_mine_2 = {
+	allowed = {
+		is_major = no
+	}
 	enable = {
 		has_dlc = "Man the Guns"
 		mine_threat > 0.5
@@ -740,23 +765,12 @@ default_pp_spend_amount = {
 	}
 }
 
-default_paratroopers_production = {
-	enable = {
-		NOT = { original_tag = GER }
-		ai_wants_divisions >  12 #Massively decreasing the amount of paratroopers the AI wants
-	}
-	abort = {
-		ai_wants_divisions < 13 #Massively decreasing the amount of paratroopers the AI wants
-	}
 
-	ai_strategy = {
-		type = role_ratio
-		id = paratroopers
-		value = 0
-	}
-}
 
 default_garrison_production = {
+	allowed = {
+		is_major = no
+	}
 	enable = {
 		NOT = { 
 			original_tag = GER 
@@ -869,6 +883,9 @@ default_armored_production = {
 }
 
 highered_armored_production = {
+	allowed = {
+		is_major = no
+	}
 	enable = {
 		NOT = { original_tag = GER } NOT = { original_tag = FRA } NOT = { original_tag = ENG  } NOT = { original_tag = SOV  } NOT = { original_tag = USA  } NOT = { original_tag = JAP }
 		num_of_military_factories > 69
@@ -885,6 +902,15 @@ highered_armored_production = {
 }
 
 slightly_naval_focused_nation = {
+	allowed = {
+		OR = {
+			tag = JAP
+			tag = USA
+			tag = ENG
+			tag = FRA
+			tag = ITA
+		}
+	}
 	enable = {
 		OR = {
 			tag = JAP
@@ -921,6 +947,13 @@ slightly_naval_focused_nation = {
 }
 
 more_naval_focused_nation = {
+	allowed = {
+		OR = {
+			tag = JAP
+			tag = USA
+			tag = ENG
+		}
+	}
 	enable = {
 		OR = {
 			tag = JAP
@@ -1109,6 +1142,14 @@ default_stockpile_management = {
 
 
 dont_build_capitals_if_on_treaty = {
+	allowed = {
+		OR = {
+			tag = JAP
+			tag = ITA
+			tag = GER
+			tag = ENG
+		}
+	}
 	enable = {
 		has_naval_treaty_trigger = yes
 		not = {
@@ -1192,6 +1233,9 @@ do_not_waste_pp_if_saving_for_manpower_laws = {
 }
 
 build_intelligence_agency_as_major = {
+	allowed = {
+		is_major = yes
+	}
 	enable = {
 		is_major = yes
 		OR = {
@@ -1208,6 +1252,9 @@ build_intelligence_agency_as_major = {
 }
 
 build_intelligence_agency = {
+	allowed = {
+		is_major = yes
+	}
 	enable = {
 		date > 1940.1.1
 		has_war = no
@@ -1228,6 +1275,9 @@ build_intelligence_agency = {
 }
 
 upgrade_intelligence_agency = {
+	allowed = {
+		is_major = yes
+	}
 	enable = {
 		date > 1940.1.1
 		num_of_civilian_factories > 50
@@ -1245,6 +1295,9 @@ upgrade_intelligence_agency = {
 }
 
 upgrade_intelligence_agency_as_spy_master = {
+	allowed = {
+		is_major = yes
+	}
 	enable = {
 		is_spymaster = yes
 		OR = {
@@ -1264,6 +1317,9 @@ upgrade_intelligence_agency_as_spy_master = {
 }
 
 addintelligence_agency_normal_upgrade_prio = {
+	allowed = {
+		is_major = yes
+	}
 	enable = {
 		always = yes
 	}
@@ -1296,6 +1352,9 @@ addintelligence_agency_normal_upgrade_prio = {
 }
 
 ask_foreign_manpower_as_major = {
+	allowed = {
+		is_major = yes
+	}
 	enable = {
 		is_major = yes
 		garrison_manpower_need > 200000
@@ -1313,7 +1372,9 @@ ask_foreign_manpower_as_major = {
 }
 
 more_upgrades_as_spymaster = {
-
+	allowed = {
+		is_major = yes
+	}
 	enable = {
 		is_spymaster = yes
 	}
@@ -1382,6 +1443,9 @@ default_spyplanes_production = {
 }
 
 minors_dont_spy = {
+	allowed = {
+		is_major = no
+	}
 	enable = {
 		has_tech = scout_plane1
 		is_major = no
@@ -1397,6 +1461,9 @@ minors_dont_spy = {
 }
 
 air_strategy_recon_plane = {
+	allowed = {
+		is_major = yes
+	}
      enable = {
         is_major = yes
         has_deployed_air_force_size = { size > 200 type = scout_plane }
@@ -1475,6 +1542,13 @@ no_volunteers_china_japan_war = {
 }
 
 scandinavia_dont_ally_with_non_democratic = {
+	allowed = {
+		OR = {
+			tag = DEN
+			tag = SWE
+			tag = NOR
+		}
+	}
 	enable = {
 		OR = {
 			tag = DEN
@@ -1533,6 +1607,9 @@ scandinavia_dont_ally_with_non_democratic = {
 }
 
 BEL_build_guns_early = {
+	allowed = {
+		original_tag = BEL
+	}
 	enable = {
 		original_tag = BEL
                 
@@ -1560,6 +1637,9 @@ BEL_build_guns_early = {
 }
 
 CAN_build_fighters = {
+	allowed = {
+		original_tag = CAN
+	}
 	enable = {
 		original_tag = CAN
 		date > 1940.1.1
@@ -1602,6 +1682,9 @@ CAN_build_fighters = {
 }
 
 CHI_unit_production = {
+	allowed = {
+		original_tag = CHI
+	}
 	enable = { is_literally_china = yes}
 	abort = {
 		always = no
@@ -1630,6 +1713,9 @@ CHI_unit_production = {
 }
 
 CHI_halt_light_armor_production_in_transitioning = {
+	allowed = {
+		original_tag = CHI
+	}
 	enable = {
 		original_tag = CHI
 			date < 1944.1.1		
@@ -1732,6 +1818,9 @@ ENG_strategy_army = {
 }
 
 ENG_dont_upgrade_rifles_too_early = {
+	allowed = {
+		original_tag = ENG
+	}
 	enable = { original_tag = ENG }
 
 	abort = {
@@ -1746,6 +1835,9 @@ ENG_dont_upgrade_rifles_too_early = {
 }
 
 ENG_upgrade_mgs_too_early = {
+	allowed = {
+		original_tag = ENG
+	}
 	enable = { original_tag = ENG }
 
 
@@ -1757,6 +1849,9 @@ ENG_upgrade_mgs_too_early = {
 	}
 }
 ENG_upgrade_mgs_too_early = {
+	allowed = {
+		original_tag = ENG
+	}
 	enable = { original_tag = ENG }
 
 
@@ -1768,6 +1863,9 @@ ENG_upgrade_mgs_too_early = {
 	}
 }
 ENG_dont_upgrade_mgs_too_early = {
+	allowed = {
+		original_tag = ENG
+	}
 	enable = { original_tag = ENG }
 
 	abort = {
@@ -1784,6 +1882,9 @@ ENG_dont_upgrade_mgs_too_early = {
 }
 
 ENG_halt_light_armor_production_in_transitioning = {
+	allowed = {
+		original_tag = ENG
+	}
 	enable = {
 		original_tag = ENG	
 	}
@@ -1800,6 +1901,9 @@ ENG_halt_light_armor_production_in_transitioning = {
 }
 
 ENG_build_guns_1 = {
+	allowed = {
+		original_tag = ENG
+	}
 	enable = {
 		original_tag = ENG
                 date < 1938.1.1
@@ -1851,6 +1955,9 @@ ENG_build_guns_1 = {
 	}
 }
 ENG_build_guns_2 = {
+	allowed = {
+		original_tag = ENG
+	}
 	enable = {
 		original_tag = ENG
                 date < 1939.1.1
@@ -1904,6 +2011,9 @@ ENG_build_guns_2 = {
 	}
 }
 ENG_build_guns_3 = {
+	allowed = {
+		original_tag = ENG
+	}
 	enable = {
 		original_tag = ENG
                 date < 1940.1.1
@@ -1955,6 +2065,9 @@ ENG_build_guns_3 = {
 	}
 }
 ENG_build_guns_4 = {
+	allowed = {
+		original_tag = ENG
+	}
 	enable = {
 		original_tag = ENG
 		date > 1940.1.1
@@ -2034,7 +2147,7 @@ ENG_naval_role_ratios_historical = {
 }
 
 ENG_build_new_carriers = {
-                allowed = { original_tag = ENG }
+    allowed = { original_tag = ENG }
 	enable = {
 		has_dlc = "Man the Guns"
 		has_tech = advanced_ship_hull_carrier
@@ -2046,7 +2159,7 @@ ENG_build_new_carriers = {
 	ai_strategy = { type = role_ratio id = naval_carrier_light value = 50 }
 }
 ENG_build_new_battleships = {
-                allowed = { original_tag = ENG }
+    allowed = { original_tag = ENG }
 	enable = {
 		original_tag = ENG
 		date > 1937.2.1
@@ -2064,6 +2177,9 @@ ENG_build_new_battleships = {
 }
 
 ENG_halt_fighter_production_in_transitioning = { # we have good jets, use them
+	allowed = {
+		original_tag = ENG
+	}
 	enable = {
 		OR = {
 			original_tag = ENG
@@ -2089,11 +2205,14 @@ ENG_halt_fighter_production_in_transitioning = { # we have good jets, use them
 }
 
 default_FIN_production = {
+	allowed = {
+		original_tag = FIN
+	}
 	enable = {
 		original_tag = FIN
 	}
 	
-	ai_strategy = { type = role_ratio id = infantry 							value = 20	}	
+	ai_strategy = { type = role_ratio id = infantry 							value = 40	}	
 	ai_strategy = { type = role_ratio id = mountaineers 						        value = 0 	}	
 	ai_strategy = { type = role_ratio id = marines 								value = 0	}	
 	ai_strategy = { type = role_ratio id = paratroopers							value = 0 	}	
@@ -2101,11 +2220,14 @@ default_FIN_production = {
 	ai_strategy = { type = role_ratio id = cavalry 								value = 6 	}	
 	ai_strategy = { type = role_ratio id = armor 								value = 4	}	
 	ai_strategy = { type = role_ratio id = mechanized 							value = 0 	}	
-	ai_strategy = { type = role_ratio id = garrison						    	        value = 20 	}	
+	ai_strategy = { type = role_ratio id = garrison						    	        value = 0 	}	
 	ai_strategy = { type = equipment_production_factor id = armor 				                value = 5	}
 	ai_strategy = { type = equipment_production_factor id = motorized 			                value = 5       }	
 }
 FIN_build_guns_early = {
+	allowed = {
+		original_tag = FIN
+	}
 	enable = {
 		original_tag = FIN
                 
@@ -2190,6 +2312,7 @@ FRA_naval_role_ratios_historical = {
 }
 
 FRA_build_guns_early = {
+	allowed = { original_tag = FRA }
 	enable = {
 		original_tag = FRA
                 
@@ -2226,6 +2349,7 @@ FRA_build_guns_early = {
 	}
 }
 FRA_build_guns_2 = {
+	allowed = { original_tag = FRA }
 	enable = {
 		original_tag = FRA
                 date > 1939.1.1	
@@ -2308,6 +2432,7 @@ GER_strategy_army = {
 }
 
 GER_strategy_army2 = {
+	allowed = { original_tag = GER }
 	enable = {
 		original_tag = GER
                 date > 1940.6.1
@@ -2323,6 +2448,7 @@ GER_strategy_army2 = {
 }
 
 GER_production_limits = {
+	allowed = { original_tag = GER }
 	enable = {
 		original_tag = GER
 	}
@@ -2347,6 +2473,7 @@ GER_production_limits = {
 
 }
 GER_production_limits2 = {
+	allowed = { original_tag = GER }
 	enable = {
 		original_tag = GER
         has_manpower < 500000
@@ -2369,6 +2496,7 @@ GER_production_limits2 = {
 }
 
 GER_dont_upgrade_rifles_too_early = {
+	allowed = { original_tag = GER }
 	enable = { original_tag = GER }
 
 	abort = {
@@ -2384,6 +2512,7 @@ GER_dont_upgrade_rifles_too_early = {
 }
 
 GER_dont_upgrade_mgs_too_early = {
+	allowed = { original_tag = GER }
 	enable = { original_tag = GER }
 
 	abort = {
@@ -2399,6 +2528,7 @@ GER_dont_upgrade_mgs_too_early = {
 	}
 }
 GER_dont_upgrade_hart_too_early = {
+	allowed = { original_tag = GER }
 	enable = { original_tag = GER }
 
 	abort = {
@@ -2416,6 +2546,7 @@ GER_dont_upgrade_hart_too_early = {
 
 
 GER_dont_upgrade_hart_too_early_2 = {
+	allowed = { original_tag = GER }
 	enable = { original_tag = GER }
 
 	abort = {
@@ -2432,6 +2563,7 @@ GER_dont_upgrade_hart_too_early_2 = {
 }
 
 GER_build_guns_36 = {
+	allowed = { original_tag = GER }
 	enable = {
 		original_tag = GER
                 date < 1937.1.1
@@ -2480,6 +2612,7 @@ GER_build_guns_36 = {
     	
 }
 GER_build_guns_37 = {
+	allowed = { original_tag = GER }
 	enable = {
 		original_tag = GER
                 date < 1938.1.1
@@ -2528,6 +2661,7 @@ GER_build_guns_37 = {
     	
 }
 GER_build_guns_38 = {
+	allowed = { original_tag = GER }
 	enable = {
 		original_tag = GER
                 date < 1939.1.1
@@ -2575,6 +2709,7 @@ GER_build_guns_38 = {
 	}
 }
 GER_build_trucks_39 = {
+	allowed = { original_tag = GER }
 	enable = {
 		original_tag = GER
         date < 1942.1.1
@@ -2621,6 +2756,7 @@ GER_build_trucks_39 = {
 	}
 }
 GER_build_trucks_42 = {
+	allowed = { original_tag = GER }
 	enable = {
 		original_tag = GER
 		date > 1942.1.1
@@ -2666,6 +2802,7 @@ GER_build_trucks_42 = {
 }
 
 GER_build_tanks_43 = {
+	allowed = { original_tag = GER }
 	enable = {
 		original_tag = GER
 		date > 1943.1.1
@@ -2712,6 +2849,7 @@ GER_build_tanks_43 = {
 
 
 GER_build_fighters_early = {
+	allowed = { original_tag = GER }
 	enable = {
 		original_tag = GER
                 date < 1938.1.1
@@ -2742,6 +2880,7 @@ GER_build_fighters_early = {
 
 
 GER_build_fighters_late1 = {
+	allowed = { original_tag = GER }
 	enable = {
 		original_tag = GER
                 date > 1938.1.1
@@ -2771,6 +2910,7 @@ GER_build_fighters_late1 = {
 }
 
 GER_build_fighters_late2 = {
+	allowed = { original_tag = GER }
 	enable = {
 		original_tag = GER
                 date > 1939.1.1
@@ -2799,6 +2939,7 @@ GER_build_fighters_late2 = {
 	}
 }
 GER_build_fighters_late3 = {
+	allowed = { original_tag = GER }
 	enable = {
 		original_tag = GER
                 date > 1941.1.1
@@ -2833,6 +2974,7 @@ GER_build_fighters_late3 = {
 }
 
 GER_halt_light_armor_production_in_transitioning = {
+	allowed = { original_tag = GER }
 	enable = {
 		original_tag = GER
 			date > 1940.7.1		
@@ -2852,6 +2994,7 @@ GER_halt_light_armor_production_in_transitioning = {
 }
 
 GER_halt_support_tank = {
+	allowed = { original_tag = GER }
 	enable = {
 		original_tag = GER
 		has_tech = ger_medium_4  #Panzer IV G
@@ -2869,6 +3012,7 @@ GER_halt_support_tank = {
 }
 
 GER_halt_fighter_production_in_transitioning = { # we have good jets, use them
+	allowed = { original_tag = GER }
 	enable = {
 		OR = {
 			original_tag = GER
@@ -2894,6 +3038,7 @@ GER_halt_fighter_production_in_transitioning = { # we have good jets, use them
 }
 
 GER_wait_for_tiger = {
+	allowed = { original_tag = GER }
 	enable = {
 		original_tag = GER		
 	}
@@ -2911,6 +3056,7 @@ GER_wait_for_tiger = {
 
 
 GER_naval_role_ratios_historical = {
+	allowed = { original_tag = GER }
 		enable = {
 		original_tag = GER			
 	}
@@ -2935,6 +3081,7 @@ GER_naval_role_ratios_historical = {
 }
 
 GER_build_BB = {
+	allowed = { original_tag = GER }
 	enable = {
 		original_tag = GER
                 
@@ -2957,6 +3104,7 @@ GER_build_BB = {
 
 }
 GER_naval_role_ratios_historical_switch_to_subs = {
+	allowed = { original_tag = GER }
 	enable = {
 		has_dlc = "Man the Guns"
 		original_tag = GER
@@ -2996,6 +3144,7 @@ GRE_strategy_army = {
 
 
 HOL_build_guns_early = {
+	allowed = { original_tag = HOL }
 	enable = {
 		original_tag = HOL
                 
@@ -3020,6 +3169,7 @@ HOL_build_guns_early = {
 
 
 HUN_build_some_tanks = {
+	allowed = { original_tag = HUN }
 	enable = {
 		original_tag = HUN
 	}
@@ -3067,6 +3217,7 @@ ITA_strategy_army = {
 	ai_strategy = { type = unit_ratio id = air_transport 						value = -200 	}	
 }
 ITA_halt_light_armor_production_in_transitioning = {
+	allowed = { original_tag = ITA }
 	enable = {
 		original_tag = ITA
 			date > 1942.1.1		
@@ -3087,6 +3238,7 @@ ITA_halt_light_armor_production_in_transitioning = {
 }
 
 ITA_dont_upgrade_rifles_too_early = {
+	allowed = { original_tag = ITA }
 	enable = {
 		original_tag = ITA
 	}
@@ -3107,6 +3259,7 @@ ITA_dont_upgrade_rifles_too_early = {
 }
 
 ITA_were_too_poor = {
+	allowed = { original_tag = ITA }
 	enable = {
 		original_tag = ITA
 
@@ -3128,6 +3281,7 @@ ITA_were_too_poor = {
 }
 
 ITA_dont_upgrade_mgs_too_early = {
+	allowed = { original_tag = ITA }
 	enable = { original_tag = ITA }
 
 	abort = {
@@ -3166,6 +3320,7 @@ ITA_naval_role_ratios_historical = {
 
 
 ITA_build_BB = {
+	allowed = { original_tag = ITA }
 	enable = {
 		original_tag = ITA
                 
@@ -3190,6 +3345,7 @@ ITA_build_BB = {
 
 
 ITA_build_guns_36 = {
+	allowed = { original_tag = ITA }
 	enable = {
 		original_tag = ITA
 		date > 1936.1.1
@@ -3238,6 +3394,7 @@ ITA_build_guns_36 = {
 	}
 }
 ITA_build_guns_37 = {
+	allowed = { original_tag = ITA }
 	enable = {
 		original_tag = ITA
 		date > 1937.1.1
@@ -3290,6 +3447,7 @@ ITA_build_guns_37 = {
 	}
 }
 ITA_build_guns_38 = {
+	allowed = { original_tag = ITA }
 	enable = {
 		original_tag = ITA
 		date > 1938.1.1
@@ -3342,6 +3500,7 @@ ITA_build_guns_38 = {
 	}
 }
 ITA_build_guns_39 = {
+	allowed = { original_tag = ITA }
 	enable = {
 		original_tag = ITA
 		date > 1939.1.1
@@ -3394,6 +3553,7 @@ ITA_build_guns_39 = {
 	}
 }
 ITA_build_guns_war = {
+	allowed = { original_tag = ITA }
 	enable = {
 		original_tag = ITA
 		date > 1940.1.1
@@ -3434,6 +3594,7 @@ ITA_build_guns_war = {
 	}
 }
 ITA_build_airforce1 = {
+	allowed = { original_tag = ITA }
 	enable = {
 		tag = ITA
 		has_government = fascism
@@ -3466,6 +3627,7 @@ ITA_build_airforce1 = {
 	}
 }
 ITA_build_airforce2 = {
+	allowed = { original_tag = ITA }
 	enable = {
 		tag = ITA
 		has_government = fascism
@@ -3536,6 +3698,7 @@ JAP_strategy_army = {
 }
 
 JAP_dont_upgrade_rifles_too_early = {
+	allowed = { original_tag = JAP }
 	enable = { original_tag = JAP }
 
 	abort = {
@@ -3550,6 +3713,7 @@ JAP_dont_upgrade_rifles_too_early = {
 }
 
 JAP_dont_upgrade_mgs_too_early = {
+	allowed = { original_tag = JAP }
 	enable = { original_tag = JAP }
 
 	abort = {
@@ -3566,6 +3730,7 @@ JAP_dont_upgrade_mgs_too_early = {
 }
 
 JAP_build_trucks_and_guns = {
+	allowed = { original_tag = JAP }
 	enable = {
 		tag = JAP
 		date < 1937.1.1
@@ -3593,6 +3758,7 @@ JAP_build_trucks_and_guns = {
 	ai_strategy = { type = equipment_production_factor id = motorized 			                value = 50       }
 }
 JAP_build_trucks_and_guns_2 = {
+	allowed = { original_tag = JAP }
 	enable = {
 		tag = JAP
 		date > 1938.1.1
@@ -3620,6 +3786,7 @@ JAP_build_trucks_and_guns_2 = {
 	ai_strategy = { type = equipment_production_factor id = motorized 			                value = 50       }
 }
 JAP_build_airforce_0 = {
+	allowed = { original_tag = JAP }
 	enable = {
 		tag = JAP
 		date > 1938.1.1
@@ -3679,6 +3846,7 @@ JAP_build_airforce_0 = {
 	}
 }
 JAP_build_airforce_1 = {
+	allowed = { original_tag = JAP }
 	enable = {
 		tag = JAP
 		date > 1938.3.1
@@ -3738,6 +3906,7 @@ JAP_build_airforce_1 = {
 	}
 }
 JAP_build_airforce2 = {
+	allowed = { original_tag = JAP }
 	enable = {
 		tag = JAP
 		date > 1940.1.1
@@ -3797,6 +3966,7 @@ JAP_build_airforce2 = {
 }
 
 JAP_build_airforce2 = {
+	allowed = { original_tag = JAP }
 	enable = {
 		tag = JAP
 		date > 1942.1.1
@@ -3886,6 +4056,7 @@ JAP_naval_role_ratios_historical = {
 }
 
 JAP_build_SHBB = {
+	allowed = { original_tag = JAP }
 	enable = {
 		has_dlc = "Man the Guns"
 		original_tag = JAP
@@ -3934,6 +4105,7 @@ POL_strategy_army = {
 }
 
 POL_build_guns_early = {
+	allowed = { original_tag = POL }
 	enable = {
 		original_tag = POL
                 
@@ -3981,6 +4153,7 @@ POL_build_guns_early = {
 
 
 minor_strategy_army = {
+	allowed = { is_major = no }
 	enable = {
 		OR = {
 			original_tag = ROM
@@ -4037,6 +4210,7 @@ minor_strategy_army = {
 
 
 minor_naval_role_ratios_historical = {
+	allowed = { is_major = no }
 	enable = {
 		OR = {
 			original_tag = ROM
@@ -4070,6 +4244,7 @@ minor_naval_role_ratios_historical = {
 }
 
 minor_naval_role_ratios_historical2 = {
+	allowed = { is_major = no }
 	enable = {
 		OR = {
 			original_tag = CAN
@@ -4106,6 +4281,7 @@ minor_naval_role_ratios_historical2 = {
 
 
 ROM_NO_TANKS = {
+	allowed = { original_tag = ROM }
 	enable = {
 		original_tag = ROM		
 	}
@@ -4160,6 +4336,7 @@ SOV_strategy_army = {
 }
 
 SOV_halt_light_armor_production_in_transitioning = {
+	allowed = { original_tag = SOV }
 	enable = {
 		original_tag = SOV
 			date > 1937.1.1
@@ -4180,6 +4357,7 @@ SOV_halt_light_armor_production_in_transitioning = {
 
 
 SOV_spam_some_rifles = {
+	allowed = { original_tag = SOV }
 	enable = {
 		original_tag = SOV
                 has_war_with = GER
@@ -4216,6 +4394,7 @@ SOV_naval_role_ratios_historical = {
 	}
 }
 SPD_build_36 = {
+	allowed = { original_tag = SPD }
 	enable = {
 		tag = SPD
 	}
@@ -4230,6 +4409,7 @@ SPD_build_36 = {
 	}
 }
 SPR_build_36 = {
+	allowed = { original_tag = SPR }
 	enable = {
 		tag = SPR
 	}
@@ -4244,6 +4424,7 @@ SPR_build_36 = {
 	}
 }
 SPA_build_36 = {
+	allowed = { original_tag = SPA }
 	enable = {
 		tag = SPA
 	}
@@ -4261,6 +4442,7 @@ SPA_build_36 = {
 
 
 SOV_build_36 = {
+	allowed = { original_tag = SOV }
 	enable = {
 		tag = SOV
 	}
@@ -4309,6 +4491,7 @@ SOV_build_36 = {
 
 }
 SOV_build_37 = {
+	allowed = { original_tag = SOV }
 	enable = {
 		tag = SOV
                 date > 1937.1.1	
@@ -4360,6 +4543,7 @@ SOV_build_37 = {
 }
 
 SOV_build_38 = {
+	allowed = { original_tag = SOV }
 	enable = {
 		tag = SOV
                 date > 1938.1.1	
@@ -4411,6 +4595,7 @@ SOV_build_38 = {
 }
 
 SOV_build_39 = {
+	allowed = { original_tag = SOV }
 	enable = {
 		tag = SOV
                 date > 1939.1.1	
@@ -4462,6 +4647,7 @@ SOV_build_39 = {
 }
 
 SOV_build_40 = {
+	allowed = { original_tag = SOV }
 	enable = {
 		tag = SOV
                 date > 1940.1.1	
@@ -4513,6 +4699,7 @@ SOV_build_40 = {
 }
 
 SOV_build_41 = {
+	allowed = { original_tag = SOV }
 	enable = {
 		tag = SOV
                 date > 1941.1.1	
@@ -4563,6 +4750,7 @@ SOV_build_41 = {
 }
 }
 SOV_build_42 = {
+	allowed = { original_tag = SOV }
 	enable = {
 		tag = SOV
                 date > 1941.7.1	
@@ -4618,6 +4806,7 @@ SOV_build_42 = {
 
 
 SOV_build_airforce = {
+	allowed = { original_tag = SOV }
 	enable = {
 		tag = SOV
 	}
@@ -4648,6 +4837,7 @@ SOV_build_airforce = {
 	}
 }
 SOV_build_CAS = {
+	allowed = { original_tag = SOV }
 	enable = {
 		tag = SOV
                 date > 1940.1.1	
@@ -4685,6 +4875,7 @@ SOV_build_CAS = {
 	}
 }
 SOV_build_CAS2 = {
+	allowed = { original_tag = SOV }
 	enable = {
 		tag = SOV
                 date > 1942.1.1	
@@ -4723,6 +4914,7 @@ SOV_build_CAS2 = {
 }
 
 SOV_build_CAS2 = {
+	allowed = { original_tag = SOV }
 	enable = {
 		tag = SOV
                 date > 1943.1.1	
@@ -4762,6 +4954,7 @@ SOV_build_CAS2 = {
 
 
 SOV_dont_upgrade_rifles_too_early = {
+	allowed = { original_tag = SOV }
 	enable = {
 		tag = SOV
 	}
@@ -4784,6 +4977,7 @@ SOV_dont_upgrade_rifles_too_early = {
 }
 
 SOV_dont_upgrade_mgs_too_early = {
+	allowed = { original_tag = SOV }
 	enable = {
 		tag = SOV
                 date < 1943.6.1	
@@ -4801,6 +4995,7 @@ SOV_dont_upgrade_mgs_too_early = {
 }
 
 SOV_dont_upgrade_at_too_early = {
+	allowed = { original_tag = SOV }
 	enable = {
 		tag = SOV
 	}
@@ -4817,6 +5012,7 @@ SOV_dont_upgrade_at_too_early = {
 }
 
 SOV_dont_upgrade_at_too_early = {
+	allowed = { original_tag = SOV }
 	enable = {
 		tag = SOV
 	}
@@ -4833,6 +5029,7 @@ SOV_dont_upgrade_at_too_early = {
 }
 
 SOV_dont_upgrade_hart_too_early = {
+	allowed = { original_tag = SOV }
 	enable = { original_tag = SOV }
 
 	abort = {
@@ -4850,6 +5047,7 @@ SOV_dont_upgrade_hart_too_early = {
 
 
 SOV_dont_upgrade_hart_too_early_2 = {
+	allowed = { original_tag = SOV }
 	enable = { original_tag = SOV }
 
 	abort = {
@@ -4867,6 +5065,7 @@ SOV_dont_upgrade_hart_too_early_2 = {
 
 
 SOV_dont_upgrade_at_too_early = {
+	allowed = { original_tag = SOV }
 	enable = { original_tag = SOV }
 
 	abort = {
@@ -4883,6 +5082,7 @@ SOV_dont_upgrade_at_too_early = {
 }
 
 SOV_halt_fighter_production_in_transitioning = { # we have good jets, use them
+	allowed = { original_tag = SOV }
 	enable = {
 		OR = {
 			original_tag = SOV
@@ -4967,6 +5167,7 @@ USA_strategy_army = {
 }
 
 USA_halt_fighter_production_in_transitioning = {
+	allowed = { original_tag = USA }
 	enable = {
 		original_tag = USA
 		date > 1940.7.1	
@@ -4990,6 +5191,7 @@ USA_halt_fighter_production_in_transitioning = {
 }
 
 USA_build_airforce_1 = {
+	allowed = { original_tag = USA }
 	enable = {
 		tag = USA
         date > 1941.1.1		
@@ -5013,6 +5215,7 @@ USA_build_airforce_1 = {
 }
 
 USA_build_airforce_2 = {
+	allowed = { original_tag = USA }
 	enable = {
 		tag = USA
         date > 1943.7.1	
@@ -5037,6 +5240,7 @@ USA_build_airforce_2 = {
 
 
 USA_naval_role_ratios_historical = {
+	allowed = { original_tag = USA }
 	enable = {
 	
 		original_tag = USA			
@@ -5058,6 +5262,7 @@ USA_naval_role_ratios_historical = {
 
 }
 USA_build_BB = {
+	allowed = { original_tag = USA }
 	enable = {
 		original_tag = USA
                 date > 1940.1.1
@@ -5163,6 +5368,7 @@ usavssov = {
 
 
 USA_halt_light_armor_production_in_transitioning = {
+	allowed = { original_tag = USA }
 	enable = {
 		original_tag = USA
 			date > 1942.1.1		
