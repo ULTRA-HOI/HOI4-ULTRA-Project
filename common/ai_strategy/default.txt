@@ -2274,16 +2274,16 @@ FRA_build_guns_2 = {
 GER_strategy_army = {
 	allowed = { original_tag = GER }
 	enable = { original_tag = GER }
-	ai_strategy = { type = role_ratio id = infantry 							value = 100 	}	
-	ai_strategy = { type = role_ratio id = mountaineers 							value = 2 		}	
+	ai_strategy = { type = role_ratio id = infantry 							value = 120 	}	
+	ai_strategy = { type = role_ratio id = mountaineers 							value = 0 		}	
 	ai_strategy = { type = role_ratio id = marines 								value = 0 		}	
 	ai_strategy = { type = role_ratio id = paratroopers 							value = 0		}	
 	ai_strategy = { type = role_ratio id = motorized 							value = 3 		}
 	ai_strategy = { type = role_ratio id = mechanized 							value = 0 		}	
 	ai_strategy = { type = role_ratio id = cavalry 								value = 0 		}
-	ai_strategy = { type = role_ratio id = light_armor 							value = 15 		}	
-	ai_strategy = { type = role_ratio id = armor 								value = 18 		}		
-	ai_strategy = { type = role_ratio id = garrison						    	        value = 12 		}
+	ai_strategy = { type = role_ratio id = light_armor 							value = 9 		}	
+	ai_strategy = { type = role_ratio id = armor 								value = 12 		}		
+	ai_strategy = { type = role_ratio id = garrison						    	        value = 0 		}
 	ai_strategy = { type = equipment_production_factor id = armor 			value = 40      }
 	ai_strategy = { type = equipment_production_factor id = motorized 			value = 20      }
 	ai_strategy = { type = air_factory_balance value = 40 }
@@ -2316,10 +2316,56 @@ GER_strategy_army2 = {
 		always = no
 	}
 	ai_strategy = { type = role_ratio id = motorized 							value = 6 		}
-	ai_strategy = { type = role_ratio id = light_armor 							value = -50 		}		
-	ai_strategy = { type = role_ratio id = armor 								value = 12 		}	
+	ai_strategy = { type = role_ratio id = light_armor 							value = -500		}		
+	ai_strategy = { type = role_ratio id = armor 								value = 18 		}	
 	ai_strategy = { type = role_ratio id = mechanized 							value = 1 		}	
 	ai_strategy = { type = role_ratio id = heavy_armor 							value = 0 		}	
+}
+
+GER_production_limits = {
+	enable = {
+		original_tag = GER
+	}
+	
+	ai_strategy = { type = build_army id = infantry 						        value = 240		}	
+	ai_strategy = { type = build_army id = mountaineers 							value = 2 		}	
+	ai_strategy = { type = build_army id = marines 								value = 0		}	
+	ai_strategy = { type = build_army id = paratroopers							value = 0 		}	
+	ai_strategy = { type = build_army id = motorized 							value = 6 		}	
+	ai_strategy = { type = build_army id = cavalry 								value = 0 		}	
+	ai_strategy = { type = build_army id = armor 								value = 18 		}
+	ai_strategy = { type = build_army id = light_armor 							value = 9 		}	
+	ai_strategy = { type = build_army id = mechanized 							value = 2 		}	
+	ai_strategy = { type = build_army id = garrison	 							value = 0 		}
+	ai_strategy = {
+        type = force_build_armies
+        value = 9999 }
+
+	abort = {
+		has_manpower < 500000
+	}	
+
+}
+GER_production_limits2 = {
+	enable = {
+		original_tag = GER
+        has_manpower < 500000
+	}
+	
+	ai_strategy = { type = build_army id = infantry 						        value = 0		}	
+	ai_strategy = { type = build_army id = mountaineers 							value = 0 		}	
+	ai_strategy = { type = build_army id = marines 								value = 0		}	
+	ai_strategy = { type = build_army id = paratroopers							value = 0 		}	
+	ai_strategy = { type = build_army id = motorized 							value = 0 		}	
+	ai_strategy = { type = build_army id = cavalry 								value = 0 		}	
+	ai_strategy = { type = build_army id = armor 								value = 3 		}
+	ai_strategy = { type = build_army id = light_armor 							value = 0		}	
+	ai_strategy = { type = build_army id = mechanized 							value = 0 		}	
+	ai_strategy = { type = build_army id = garrison	 							value = 0 		}
+	abort = {
+		has_manpower > 500000
+	}	
+
 }
 
 GER_dont_upgrade_rifles_too_early = {
@@ -2789,7 +2835,7 @@ GER_build_fighters_late3 = {
 GER_halt_light_armor_production_in_transitioning = {
 	enable = {
 		original_tag = GER
-			date > 1938.7.1		
+			date > 1940.7.1		
 	}
 	abort = {
 		# once we start we never go back to light armor
@@ -2800,7 +2846,7 @@ GER_halt_light_armor_production_in_transitioning = {
 		id = light_tank_equipment
 		value = -1000
 	}
-	ai_strategy = { type = role_ratio id = light_armor 							value = -20 		}
+	ai_strategy = { type = role_ratio id = light_armor 							value = -200 		}
 	ai_strategy = { type = build_army id = light_armor 							value = -100 		}
 	
 }
@@ -2861,52 +2907,6 @@ GER_wait_for_tiger = {
 		value = -100
 	}
 	
-}
-
-GER_production_limits = {
-	enable = {
-		original_tag = GER
-	}
-	
-	ai_strategy = { type = build_army id = infantry 						        value = 220		}	
-	ai_strategy = { type = build_army id = mountaineers 							value = 2 		}	
-	ai_strategy = { type = build_army id = marines 								value = 0		}	
-	ai_strategy = { type = build_army id = paratroopers							value = 0 		}	
-	ai_strategy = { type = build_army id = motorized 							value = 3 		}	
-	ai_strategy = { type = build_army id = cavalry 								value = 0 		}	
-	ai_strategy = { type = build_army id = armor 								value = 9 		}
-	ai_strategy = { type = build_army id = light_armor 							value = 5 		}	
-	ai_strategy = { type = build_army id = mechanized 							value = 2 		}	
-	ai_strategy = { type = build_army id = garrison	 							value = 21 		}
-	ai_strategy = {
-        type = force_build_armies
-        value = 9999 }
-
-	abort = {
-		has_manpower < 500000
-	}	
-
-}
-GER_production_limits2 = {
-	enable = {
-		original_tag = GER
-        has_manpower < 500000
-	}
-	
-	ai_strategy = { type = build_army id = infantry 						        value = 0		}	
-	ai_strategy = { type = build_army id = mountaineers 							value = 0 		}	
-	ai_strategy = { type = build_army id = marines 								value = 0		}	
-	ai_strategy = { type = build_army id = paratroopers							value = 0 		}	
-	ai_strategy = { type = build_army id = motorized 							value = 0 		}	
-	ai_strategy = { type = build_army id = cavalry 								value = 0 		}	
-	ai_strategy = { type = build_army id = armor 								value = 3 		}
-	ai_strategy = { type = build_army id = light_armor 							value = 0 		}	
-	ai_strategy = { type = build_army id = mechanized 							value = 0 		}	
-	ai_strategy = { type = build_army id = garrison	 							value = 0 		}
-	abort = {
-		has_manpower > 500000
-	}	
-
 }
 
 
