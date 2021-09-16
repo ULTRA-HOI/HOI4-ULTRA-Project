@@ -94,7 +94,7 @@ NDefines.NCountry.FUEL_LEASE_CONVOY_RATIO = 0.0015				-- was 0.0005 -- num convo
 
 
 --Non_core manpower:
-NDefines.NCountry.LOCAL_MANPOWER_ACCESSIBLE_NON_CORE_FACTOR = 0.20 --- Was 0.02 -- Number of manpower from colonies
+NDefines.NCountry.LOCAL_MANPOWER_ACCESSIBLE_NON_CORE_FACTOR = 0.02 --- Was 0.02 -- Number of manpower from colonies
 
 -- collaboration stuff
 
