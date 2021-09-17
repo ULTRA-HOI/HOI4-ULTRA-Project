@@ -4303,16 +4303,16 @@ SOV_strategy_army = {
 	allowed = { original_tag = SOV }
 	enable = { original_tag = SOV }
 	
-	ai_strategy = { type = role_ratio id = infantry 							value = 120 	}	
-	ai_strategy = { type = role_ratio id = mountaineers 							value = 2 		}	
+	ai_strategy = { type = role_ratio id = infantry 							value = 220 	}	
+	ai_strategy = { type = role_ratio id = mountaineers 							value = 0 		}	
 	ai_strategy = { type = role_ratio id = marines 								value = 0 		}	
 	ai_strategy = { type = role_ratio id = paratroopers 							value = 0 		}	
 	ai_strategy = { type = role_ratio id = motorized 							value = 5 		}	
 	ai_strategy = { type = role_ratio id = cavalry 								value = 12 		}
-	ai_strategy = { type = role_ratio id = light_armor 							value = 2 		}	
-	ai_strategy = { type = role_ratio id = armor 								value = 10 		}
+	ai_strategy = { type = role_ratio id = light_armor 							value = 0 		}	
+	ai_strategy = { type = role_ratio id = armor 								value = 20 		}
 	ai_strategy = { type = role_ratio id = mechanized 							value = 0 		}	
-	ai_strategy = { type = role_ratio id = garrison						    	        value = 1 		}
+	ai_strategy = { type = role_ratio id = garrison						    	        value = 0 		}
 	ai_strategy = { type = equipment_production_factor id = armor 			value = 40      }
 	ai_strategy = { type = equipment_production_factor id = motorized 			value = 20      }
 	ai_strategy = { type = air_factory_balance value = 40 }
@@ -4333,6 +4333,32 @@ SOV_strategy_army = {
 	ai_strategy = { type = unit_ratio id = cas 							value = 8 	}	
 	ai_strategy = { type = unit_ratio id = air_transport 						value = -200 	}	
 	ai_strategy = { type = unit_ratio id = scout_plane 						value = -200 	}	
+}
+
+SOV_production_limits = {
+	allowed = { original_tag = SOV }
+	enable = {
+		original_tag = SOV
+	}
+	
+	ai_strategy = { type = build_army id = infantry 						        value = 600	}	
+	ai_strategy = { type = build_army id = mountaineers 							value = 0 		}	
+	ai_strategy = { type = build_army id = marines 								value = 0		}	
+	ai_strategy = { type = build_army id = paratroopers							value = 0 		}	
+	ai_strategy = { type = build_army id = motorized 							value = 18		}	
+	ai_strategy = { type = build_army id = cavalry 								value = 0 		}	
+	ai_strategy = { type = build_army id = armor 								value = 38 		}
+	ai_strategy = { type = build_army id = light_armor 							value = 0		}	
+	ai_strategy = { type = build_army id = mechanized 							value = 0 		}	
+	ai_strategy = { type = build_army id = garrison	 							value = 50 		}
+	ai_strategy = {
+        type = force_build_armies
+        value = 9999 }
+
+	abort = {
+		has_manpower < 500000
+	}	
+
 }
 
 SOV_halt_light_armor_production_in_transitioning = {
