@@ -885,19 +885,20 @@ germany_help_italy_in_north_africa = {
 			ITA = { has_capitulated = yes }
 			NOT = { 115 = { is_controlled_by = ITA } }
 			NOT = { 156 = { is_controlled_by = ITA } }
+			NOT = { 448 = { is_controlled_by = ITA } }
 		}
 	}
 
 	ai_strategy = {
 		type = force_defend_ally_borders
 		id = "ITA"
-		value = 100
+		value = 200
 	}
 
 	ai_strategy = { 
 		type = area_priority        
 		id = north_africa			      
-		value = 50 
+		value = 100 
 	}
 }
 
@@ -963,12 +964,16 @@ GER_focus_on_north_africa = {
 		tag = GER
 		118 = { is_controlled_by = ENG }
 		816 = { is_controlled_by = ENG }
+		448 = { is_controlled_by = ITA }
 	}
 	abort = {
 		tag = GER
-		NOT = { 
-			118 = { is_controlled_by = ENG }
-			816 = { is_controlled_by = ENG }
+		OR = {
+			NOT = { 
+				118 = { is_controlled_by = ENG }
+				816 = { is_controlled_by = ENG }
+			}
+			NOT = {448 = { is_controlled_by = ITA }}
 		}
 	}
 
@@ -1845,7 +1850,6 @@ worry_about_barbarossa_before_africa = {
 		country_exists = SOV
 		NOT = {	is_in_faction_with = SOV }
 		has_war_with = ENG
-		ENG = { is_ai = yes }
 	}
 
 	abort_when_not_enabled = yes
@@ -1853,12 +1857,12 @@ worry_about_barbarossa_before_africa = {
 	ai_strategy = {
 		type = area_priority
 		id = middle_east
-		value = -50
+		value = -100
 	}
 	ai_strategy = {
 		type = area_priority
 		id = north_africa
-		value = -50
+		value = -100
 	}
 }										
 make_sure_poland_is_ganked_before_we_move = {
@@ -2212,6 +2216,7 @@ GER_focus_on_north_africa = {
 		tag = GER
 		118 = { is_controlled_by = ENG }
 		816 = { is_controlled_by = ENG }
+		448 = { is_controlled_by = ITA }
 	}
 	abort = {
 		tag = GER
@@ -2987,12 +2992,14 @@ Rommel = {
 	}
 	enable = {
 		tag = GER
-		450 = {
-			is_controlled_by = ENG
+		448 = {
+			is_controlled_by = ITA
 		}
+		is_in_faction_with = ITA
+		has_war_with = ENG
 	}
 	abort = {
-		450 = {
+		816 = {
 			is_controlled_by = ITA
 		}
 	}
@@ -3002,7 +3009,7 @@ Rommel = {
 		
 		area = north_africa
 
-		value = 50
+		value = 100
 	}
 	ai_strategy = {
 		type = area_priority
