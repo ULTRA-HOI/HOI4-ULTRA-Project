@@ -269,7 +269,7 @@ NDefines.NMilitary.CHANCE_TO_AVOID_HIT_AT_NO_DEF = 60	           -- chance to av
 
 -- Effects on experience and equipment
 
-NDefines.NMilitary.EXPERIENCE_LOSS_FACTOR = 0.6                 -- percentage of experienced solders who die when manpower is removed
+NDefines.NMilitary.EXPERIENCE_LOSS_FACTOR = 0.75                 -- percentage of experienced solders who die when manpower is removed
 NDefines.NMilitary.EQUIPMENT_COMBAT_LOSS_FACTOR = 0.95 	       -- % of equipment lost to strength ratio in combat, so some % is returned if below 1
 
 -- Armor case
