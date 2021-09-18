@@ -20,7 +20,7 @@ country_event = {
 		division_template = {
 			name = "Soviet Motor Rifle Division"
 			priority = 1
-                        division_names_group = SOV_MOT_01
+            division_names_group = SOV_MOT_01
 			regiments = {
 				motorized = { x = 0 y = 0 }
 				motorized = { x = 0 y = 1 }
@@ -50,7 +50,7 @@ country_event = {
 			support = {
 				DIV_HQ = { x = 0 y = 0 }
 				engineer = { x = 0 y = 1}
-				armored_car_recon = { x = 0 y = 2 }
+				mot_recon = { x = 0 y = 2 }
 		        maintenance_company = { x = 0 y = 3}
 		        logistics_company = { x = 0 y = 4 }
 		        artillery = { x = 1 y = 0 }
@@ -64,6 +64,7 @@ country_event = {
 	option = {}
 }
 
+############ Infantry
 country_event = {
 	id = sov_armor_ai.02
 	hidden = yes
@@ -75,60 +76,48 @@ country_event = {
 	trigger = {
 		tag = SOV
 		is_ai = yes
-		has_tech = sov_mechanized_infantry_3
-		
 	}
 
 	immediate = {
 		
-
 		division_template = {
-			name = "Soviet Semi Mechanized Division"
-			priority = 2
-                        division_names_group = SOV_MEC_01
+			name = "Soviet Riffle Division"
+			priority = 1
+			division_names_group = SOV_Inf_01
+
 			regiments = {
-				motorized = { x = 0 y = 0 }
-				motorized = { x = 0 y = 1 }
-				motorized = { x = 0 y = 2 }
-
-				motorized = { x = 1 y = 0 }
-				motorized = { x = 1 y = 1 }
-				motorized = { x = 1 y = 2 }
-
-				mot_artillery_brigade = { x = 2 y = 0 }
-				mot_artillery_brigade = { x = 2 y = 1 }
-				mot_artillery_brigade = { x = 2 y = 2 }
+				heavy_infantry = { x = 0 y = 0 }
+				heavy_infantry = { x = 0 y = 1 }
+				heavy_infantry = { x = 0 y = 2 }
 				
-				motorized = { x = 3 y = 0 }
-				motorized = { x = 3 y = 1 }
-				motorized = { x = 3 y = 2 }
-
-				motorized = { x = 4 y = 0 }
-				motorized = { x = 4 y = 1 }
-				motorized = { x = 4 y = 2 }
-
+				heavy_infantry = { x = 1 y = 0 }
+				heavy_infantry = { x = 1 y = 1 }
+				heavy_infantry = { x = 1 y = 2 }
 				
-
+				heavy_infantry = { x = 2 y = 0 }
+				heavy_infantry = { x = 2 y = 1 }
+				heavy_infantry = { x = 2 y = 2 }
 				
+				artillery_brigade = { x = 3 y = 0 }
+				artillery_brigade = { x = 3 y = 1 }
+				artillery_brigade = { x = 3 y = 2 }
+				
+				anti_tank_brigade =  { x = 4 y = 0 }
+				anti_air_brigade =  { x = 4 y = 1 }
+				anti_tank_brigade = { x = 4 y = 2 }
 			}
-
+			
 			support = {
 				DIV_HQ = { x = 0 y = 0 }
-				engineer = { x = 0 y = 1}
-				armored_car_recon = { x = 0 y = 2 }
-		        maintenance_company = { x = 0 y = 3}
-		        logistics_company = { x = 0 y = 4 }
-		        artillery = { x = 1 y = 0 }
-		        anti_tank = { x = 1 y = 1 }
-				signal_company = { x = 1 y = 2 }
-				field_hospital = { x = 1 y = 3 }
-		                
+				engineer = { x = 0 y = 1 }
+				recon = { x = 0 y = 2 }
+				artillery = { x = 0 y = 3 }
+				military_police = { x = 0 y = 4 }
 			}
 		}
 	}
 	option = {}
 }
-
 
 ############## Light Armor
 
@@ -150,7 +139,7 @@ country_event = {
 		division_template = {
 			name = "Light Tank Korps I"
 			priority = 1
-                        division_names_group = SOV_ARM_02
+            division_names_group = SOV_ARM_02
 			regiments = {
 				light_armor = { x = 0 y = 0 }
 				light_armor = { x = 0 y = 1 }
@@ -168,10 +157,10 @@ country_event = {
 				DIV_HQ = { x = 0 y = 0 }
 				engineer = { x = 0 y = 1 }
 				armored_car_recon = { x = 0 y = 2 }
-		                maintenance_company = { x = 0 y = 3 }
-		                anti_tank = { x = 0 y = 4 }
-		                medium_armor_support = { x = 1 y = 0 }
-		                artillery = { x = 1 y = 1 }
+		        maintenance_company = { x = 0 y = 3 }
+		        anti_tank = { x = 0 y = 4 }
+		        medium_armor_support = { x = 1 y = 0 }
+		        artillery = { x = 1 y = 1 }
 			}
 		}
 	}
@@ -200,8 +189,8 @@ country_event = {
 
 		division_template = {
 			name = "Medium Tank Korps I"
-			priority = 1
-                        division_names_group = SOV_ARM_02
+			priority = 2
+            division_names_group = SOV_ARM_02
 			regiments = {
 				medium_armor = { x = 0 y = 0 }
 				medium_armor = { x = 0 y = 1 }
@@ -232,112 +221,5 @@ country_event = {
 	}
 
 	option = {}
-}
-
-country_event = {
-	id = sov_armor_ai.41
-	hidden = yes
-
-	mean_time_to_happen = { days = 2 }
-
-	fire_only_once = yes
-
-	trigger = {
-		tag = SOV
-		is_ai = yes
-		date > 1940.1.1
-	}
-
-	immediate = {
-			
-
-		division_template = {
-			name = "Medium Tank Korps II"
-			priority = 2
-                        division_names_group = SOV_ARM_02
-			regiments = {
-				medium_armor = { x = 0 y = 0 }
-				medium_armor = { x = 0 y = 1 }
-				medium_armor = { x = 0 y = 2 }
-				motorized = { x = 1 y = 0 }
-				motorized = { x = 1 y = 1 }
-				motorized = { x = 1 y = 2 }
-				motorized = { x = 2 y = 0 }
-				motorized = { x = 2 y = 1 }
-				motorized = { x = 2 y = 2 }
-				mot_artillery_brigade = { x = 3 y = 0 }
-				mot_artillery_brigade = { x = 3 y = 1 }
-				mot_artillery_brigade = { x = 3 y = 2 }
-
-			}
-
-			support = {
-				DIV_HQ = { x = 0 y = 0 }
-				engineer = { x = 0 y = 1}
-				armored_car_recon = { x = 0 y = 2 }
-				artillery = { x = 0 y = 3 }
-		        maintenance_company = { x = 0 y = 4}
-		        anti_tank = { x = 1 y = 0}
-				signal_company = { x = 1 y = 1 }
-				logistics_company = { x = 1 y = 2 }
-			}
-		}
-	}
-
-	option = {}
-}
-
-############## Heavy Armor
-country_event = {
-	id = sov_armor_ai.51
-	hidden = yes
-
-	mean_time_to_happen = { days = 2 }
-
-	fire_only_once = yes
-
-	trigger = {
-		tag = SOV
-		is_ai = yes
-		date > 1945.1.1
-	}
-
-	immediate = {
-			set_technology = { sov_heavy_spg_2 = 1 }
-			set_technology = { sov_heavy_spg_6 = 1 }
-		        set_technology = { sov_medium_td_3 = 1 }
-		        set_technology = { sov_light_4 = 1 }
-
-		add_equipment_to_stockpile = { type = sov_heavy_equipment_2 amount = 1000 producer = SOV }
-
-		division_template = {
-			name = "Heavy Tank Korps I"
-			priority = 2
-                        division_names_group = SOV_ARM_03
-			regiments = {
-				heavy_armor = { x = 0 y = 0 }
-				heavy_armor = { x = 0 y = 1 }
-				heavy_armor = { x = 0 y = 2 }
-
-				mechanized = { x = 1 y = 0 }
-				mechanized = { x = 1 y = 1 }
-				motorized = { x = 1 y = 2 }
-
-			        motorized = { x = 2 y = 0 }
-				mot_artillery_brigade = { x = 2 y = 1 }
-			}
-			support = {
-				DIV_HQ = { x = 0 y = 0 }
-				engineer = { x = 0 y = 1}
-				light_tank_recon = { x = 0 y = 2 }
-				artillery = { x = 0 y = 3 }
-		                maintenance_company = { x = 0 y = 4}
-		                anti_tank = { x = 1 y = 0}
-		                heavy_armor_support = { x = 1 y = 1}
-				signal_company = { x = 1 y = 2 }
-				logistics_company = { x = 1 y = 3 }
-			}
-		}
-	}
 }
 
