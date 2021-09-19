@@ -1,5 +1,5 @@
 name="HOI4 ULTRA (Historical Industry Project)"
-version="0.9.*"
+version="0.10.*"
 tags={
 	"Map"
 	"Historical"
