@@ -1,5 +1,62 @@
 # Changelog
 
+### 0.10
+
+### Features 
+
+- Unique air trees for all majors
+- Rewamped generic air tree for minors
+- Adapted air doctrines 
+- Adapted focus trees
+- Switzerland and Sweden gets a "armed neutrality" decision
+- Removed airforce size modifiers
+
+### AI 
+
+- Diverse improvements. Particular attention to the eastern front in AI vs AI
+- AI Soviet Union gets streamlined production and decent division templates
+- Soviet Union suffer one week org debuff when attacked by German AI
+
+### QoL
+
+- Starting stockpiles does not need events anymore
+- Improved decisions for opening/closing resource buildings
+
+### Performances 
+
+- Optimized AI files & manpower calculations 
+
+### Database 
+
+- Post 1945 major tanks get proper stats
+- Scrapped most of anachronic tanks
+- Temporarily removed Sturmtiger
+- Sturmpanzer IV considered as heavy AG
+
+### Balance 
+
+- Nerf to Auftragstaktiks
+- Adjustments to division xp
+- Speed of equipment overhauled. Motorized are nerfed a lot in bad terrain.
+- Poland needs to be near completely occupied to capitulate
+- Great Purges empty all xp reserves
+- Siegfried Line have better for level
+- Reduced casualties trickelback
+- Increased xp loss when taking damages
+- Getting rid of purge effects costs more xp
+- Supply system adjustements (based on IHMP)
+- Positionning system adjustments (based on IHMP)
+
+
+### Map 
+
+- Moved resources and buildings more accuratly in China and Soviet Union
+
+### Bugfix 
+
+- You don't get anymore insane manpower from occupation
+- Diverse interface bug fixed
+
 ### 0.9
 
 ### AI 
