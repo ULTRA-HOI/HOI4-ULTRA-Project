@@ -1,4 +1,4 @@
-name="HOI4 ULTRA (Historical Industry Project)"
+name="Ultra Historical Mod - Realism Overhaul"
 version="0.10.*"
 tags={
 	"Map"
