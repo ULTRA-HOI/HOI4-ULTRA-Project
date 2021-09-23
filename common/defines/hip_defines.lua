@@ -120,7 +120,7 @@ NDefines.NResistance.COMPLIANCE_DECAY_AT_MAX_COMPLIANCE = -0.055 -- -0.083 -- as
 
 NDefines.NCountry.MAX_PROPAGANDA_STABILITY_IMPACT = -0.1   -- -0.2			-- Max total penalty from operative performing the propaganda mission in a country
 NDefines.NCountry.MAX_PROPAGANDA_WAR_SUPPORT_IMPACT = -0.1  -- -0.2		-- Max total penalty from operative performing the propaganda mission in a country
-NDefines.NOperatives.MAX_OPERATIVE_SLOT_FROM_AGENCY_UPGRADES = 2 --1	-- max operative slots gained from upgrades
+NDefines.NOperatives.MAX_OPERATIVE_SLOT_FROM_AGENCY_UPGRADES = 4 --1	-- max operative slots gained from upgrades
 
 NDefines.NIntel.STATIC_INTEL_SOURCE_BROKEN_CYPHER_MAXIMUMS = { 65.0, 65.0, 65.0, 65.0 }
 NDefines.NIntel.STATIC_INTEL_SOURCE_RADAR_MAXIMUMS = { 10.0, 10.0, 20.0, 20.0 }
