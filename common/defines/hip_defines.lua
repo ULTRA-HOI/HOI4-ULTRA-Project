@@ -39,19 +39,19 @@ NDefines.NDiplomacy.VOLUNTEERS_DIVISIONS_REQUIRED = 20				-- This many divisons 
  -- YAMM
  
 NDefines.NDiplomacy.RESOURCE_SENT_AUTONOMY_DAILY_BASE = 0.0		    -- If puppet provides resources to its master they increase their autonomy by at least this amount
-NDefines.NDiplomacy.RESOURCE_SENT_AUTONOMY_DAILY_FACTOR = 0.002	    -- If puppet provides resources to its master they increase their autonomy by the resources factored by this
+NDefines.NDiplomacy.RESOURCE_SENT_AUTONOMY_DAILY_FACTOR = 0.0	    -- If puppet provides resources to its master they increase their autonomy by the resources factored by this
 NDefines.NDiplomacy.WAR_SCORE_AUTONOMY_BASE = 0.0					-- Value added if any war score is contributed by puppet
-NDefines.NDiplomacy.WAR_SCORE_AUTONOMY_FACTOR = 0.3				    -- If puppet generates war score it get a boost to independence 
+NDefines.NDiplomacy.WAR_SCORE_AUTONOMY_FACTOR = 0.03				    -- If puppet generates war score it get a boost to independence 
 NDefines.NDiplomacy.LL_TO_OVERLORD_AUTONOMY_DAILY_BASE = 0.0		-- If puppet lend leases equipment to overlord of at least same tech level as they have, they gain autonomy
 NDefines.NDiplomacy.LL_TO_OVERLORD_AUTONOMY_DAILY_FACTOR = 0.02	    -- If puppet lend leases equipment to overlord of at least same tech level as they have, they gain autonomy
 NDefines.NDiplomacy.LL_TO_PUPPET_AUTONOMY_DAILY_BASE = 0.0			-- If overlord lend leases equipment to puppet of higher tech level as they have, puppet losses autonomy
 NDefines.NDiplomacy.LL_TO_PUPPET_AUTONOMY_DAILY_FACTOR = -0.02   	-- If overlord lend leases equipment to puppet of higher tech level as they have, puppet losses autonomy
 NDefines.NDiplomacy.AUTONOMY_FREEDOM_FROM_CAPITULATE = 0.3          -- if overlord capitulate you get this
-NDefines.NDiplomacy.AUTONOMY_LEVEL_CHANGE_PP_COST_BASE = 80.0		-- Base cost of changing level of autonomy
-NDefines.NDiplomacy.AUTONOMY_LEVEL_CHANGE_PP_ANNEX = 300			-- Annexation cost
+NDefines.NDiplomacy.AUTONOMY_LEVEL_CHANGE_PP_COST_BASE = 150.0		-- Base cost of changing level of autonomy
+NDefines.NDiplomacy.AUTONOMY_LEVEL_CHANGE_PP_ANNEX = 500		-- Annexation cost
 NDefines.NDiplomacy.AUTONOMY_LEVEL_CHANGE_PP_FREE = 500			    -- Break free cost
 NDefines.NDiplomacy.MAX_SCORE_DIFF_TO_CHANGE_AUTONOMY = 10			-- The max diff between current freedom score and the cap for next or previous level allowed for changing
-NDefines.NDiplomacy.MASTER_BUILD_AUTONOMY_FACTOR = -0.8             -- scales autonomy gain from construction by this
+NDefines.NDiplomacy.MASTER_BUILD_AUTONOMY_FACTOR = -0.9            -- scales autonomy gain from construction by this
 NDefines.NDiplomacy.BASE_BOOST_PARTY_POPULARITY_DAILY_DRIFT = 0.03   -- Daily amount of popularity that will be added by the activity.
 NDefines.NDiplomacy.PEACE_SCORE_PER_PASS = 1	                    -- When you pass in a peace deal you gain this percent of your original score
 
