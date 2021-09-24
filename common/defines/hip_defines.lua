@@ -426,7 +426,7 @@ NDefines.NMilitary.OUT_OF_SUPPLY_MORALE = -0.25                   -- max org reg
 
 NDefines.NMilitary.PLAN_SPREAD_ATTACK_WEIGHT = 3
 NDefines.NMilitary.PLAYER_ORDER_PLANNING_DECAY = 0.02
-NDefines.NMilitary.PLANNING_MAX = 0.25 --0.3                           	-- can get more from techs
+NDefines.NMilitary.PLANNING_MAX = 0.1 --0.3                           	-- can get more from techs
 NDefines.NAI.RESERVE_TO_COMMITTED_BALANCE = 0.3
 NDefines.NAI.ORG_UNIT_WEAK = 0.35
 NDefines.NAI.STR_UNIT_WEAK = 0.60
