@@ -1018,10 +1018,17 @@ ignore_spain = {
 
 ENG_war_against_ITA = {
 	allowed = { 
-		tag = ENG
+		OR = {
+			tag = ENG
+			tag = FRA 
+			tag = USA
+		}
 	}
 	enable = {
-		is_in_faction_with = ENG
+		OR = {
+			is_in_faction_with = ENG
+			tag = ENG
+		}
 		has_war_with = ITA
 	}
 	abort = {
@@ -1103,14 +1110,31 @@ ENG_war_against_ITA = {
 		id = 202 #aegean sea
 		value = 2000
 	}
+	ai_strategy = {
+		type = naval_avoid_region
+		id = 168 #adriatic sea
+		value = 2000
+	}
+	ai_strategy = {
+		type = naval_avoid_region
+		id = 169 #tyrrhenian sea
+		value = 2000
+	}
 }
 
 ENG_war_against_ITA_2 = {
 	allowed = { 
-		tag = ENG
+		OR = {
+			tag = ENG
+			tag = FRA 
+			tag = USA
+		}
 	}
 	enable = {
-		is_in_faction_with = ENG
+		OR = {
+			is_in_faction_with = ENG
+			tag = ENG
+		}
 		has_war_with = ITA
 		AND = { 
 			NOT = {	451 = { is_controlled_by = ITA } }
@@ -1178,6 +1202,16 @@ ENG_war_against_ITA_2 = {
 	ai_strategy = {
 		type = naval_avoid_region
 		id = 202 #aegean sea
+		value = 2000
+	}
+	ai_strategy = {
+		type = naval_avoid_region
+		id = 168 #adriatic sea
+		value = 2000
+	}
+	ai_strategy = {
+		type = naval_avoid_region
+		id = 169 #tyrrhenian sea
 		value = 2000
 	}
 }
@@ -1281,18 +1315,21 @@ ENG_but_not_too_early = { #avoid sacrificing men/equipment on Germany too early
 
 ENG_invade_the_axis_avoid_regions_germany = {
 	allowed = { 
-		tag = ENG
+		OR = {
+			tag = ENG
+			tag = FRA
+			tag = USA
+		}
 	}
 	enable = {
-		is_in_faction_with = ENG
+		OR = {
+			is_in_faction_with = ENG
+			tag = ENG
+		}
 		GER = { has_war_with = ENG }
 	}
 	abort = {
-		tag = ENG
-		OR = {
-			NOT = { GER = { has_war_with = ENG } }
-			36 = { is_controlled_by = HOL }
-		}
+		NOT = { GER = { has_war_with = ENG } }
 	}
 
 	ai_strategy = {
@@ -1300,15 +1337,48 @@ ENG_invade_the_axis_avoid_regions_germany = {
 		id = 173 #Eastern North Sea
 		value = 2000
 	}
+	ai_strategy = {
+		type = naval_avoid_region
+		id = 335 #Skagerak
+		value = 2000
+	}
+	ai_strategy = {
+		type = naval_avoid_region
+		id = 207 #Belt
+		value = 2000
+	}
+	ai_strategy = {
+		type = naval_avoid_region
+		id = 206 #Baltic
+		value = 2000
+	}
 }
 
 ENG_invade_the_axis_avoid_regions_france = {
 	allowed = { 
-		tag = ENG
+		OR = {
+			tag = ENG
+			tag = FRA
+			tag = USA
+		}
 	}
 	enable = {
-		is_in_faction_with = ENG
+		OR = {
+			is_in_faction_with = ENG
+			tag = ENG
+		}
 		GER = { has_war_with = ENG }
+		OR = {
+			FRA = {
+				has_capitulated = yes
+			}
+			FRA = {
+				exists = no
+			}
+			FRA = {
+				is_in_faction_with = GER
+			}
+		}
 	}
 	abort = {
 		tag = ENG
@@ -1330,20 +1400,24 @@ ENG_invade_the_axis_avoid_regions_france = {
 
 ENG_invade_the_axis_avoid_regions_norway = {
 	allowed = { 
-		tag = ENG
+		OR = {
+			tag = ENG
+			tag = FRA
+			tag = USA
+		}
 	}
 	enable = {
-		is_in_faction_with = ENG
+		OR = {
+			is_in_faction_with = ENG
+			tag = ENG
+		}
 		GER = { has_war_with = ENG }
 		GER = { has_war_with = NOR }
 		NOR = { has_capitulated = yes }
 	}
 	abort = {
 		tag = ENG
-		OR = {
-			NOT = { GER = { has_war_with = ENG } }
-			36 = { is_controlled_by = HOL }
-		}
+		NOT = { GER = { has_war_with = ENG } }
 	}
 
 	ai_strategy = {
@@ -1351,6 +1425,7 @@ ENG_invade_the_axis_avoid_regions_norway = {
 		id = 174 #Norwegian Coast
 		value = 2000
 	}
+	
 }
 
 ENG_invade_the_axis = {
