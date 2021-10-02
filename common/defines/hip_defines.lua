@@ -480,7 +480,7 @@ NDefines.NAir.CAS_NIGHT_ATTACK_FACTOR = 0.05 --0.1                      -- CAS d
 NDefines.NAir.COMBAT_MULTIPLANE_CAP = 3.0						-- was 3.0 - How many planes can shoot at each plane on other side ( if there are 100 planes we are atttacking COMBAT_MULTIPLANE_CAP * 100 of our planes can shoot )
 NDefines.NAir.ACCIDENT_CHANCE_BASE = 0.10						-- was 0.05	- Base chance % (0 - 100) for accident to happen. Reduced with higher reliability stat.
 NDefines.NAir.ACCIDENT_CHANCE_BALANCE_MULT = 1.0 --0.5					-- Multiplier for balancing how often the air accident really happens. The higher mult, the more often.
-NDefines.NAir.ACCIDENT_EFFECT_MULT = 0.01 --0.005						-- Multiplier for balancing the effect of accidents
+NDefines.NAir.ACCIDENT_EFFECT_MULT = 0.05 --0.005						-- Multiplier for balancing the effect of accidents
 NDefines.NAir.AIR_WING_XP_TRAINING_MISSION_ACCIDENT_FACTOR = 1.1 --1.5 				--Training exercises cause more accidents
 
 NDefines.NAir.AIR_DEPLOYMENT_DAYS = 10							-- was 5 -- Days to deploy one air wing
@@ -494,7 +494,7 @@ NDefines.NAir.BOMBING_TARGETING_RANDOM_FACTOR = 0.40						-- was 0.25	-- % of pi
 
 NDefines.NAir.AIR_WING_COUNTRY_XP_FROM_TRAINING_FACTOR = 0.020 				-- was 0.005	--Factor on country Air XP gained from wing training
 
-NDefines.NAir.COMBAT_DAMAGE_SCALE = 2				-- was 0.1			-- Higher value = more shot down planes
+NDefines.NAir.COMBAT_DAMAGE_SCALE = 4				-- was 0.1			-- Higher value = more shot down planes
 NDefines.NAir.COMBAT_DAMAGE_SCALE_CARRIER = 24 --6                    -- same as above but used inside naval combat for carrier battles
 
 NDefines.NAir.AIR_WING_XP_TRAINING_MISSION_GAIN_DAILY = 4.0 --3.3 						--Daily gain when running training exercise mission
