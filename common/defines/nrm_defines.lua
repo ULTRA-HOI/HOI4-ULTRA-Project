@@ -18,8 +18,8 @@ NDefines.NProduction.MIN_NAVAL_EQUIPMENT_CONVERSION_RESOURCE_COST_FACTOR = 0.2
 --------------------------------------------------------------------------------------------------------------
 
 NDefines.NNavy.TRAINING_EXPERIENCE_FACTOR = 0.15 --0.3								-- Amount of exp each ship gain every 24h while training (before modifiers)
-NDefines.NNavy.TRAINING_ACCIDENT_CHANCES = 0.01 --0.02						-- Chances one ship get damage each hour while on training
-NDefines.NNavy.TRAINING_ACCIDENT_STRENGTH_LOSS_FACTOR = 0.01 --0.05						-- Amount of strength loss in a training accident, propotional to the maximum strength of the ship
+NDefines.NNavy.TRAINING_ACCIDENT_CHANCES = 0.005 --0.02						-- Chances one ship get damage each hour while on training
+NDefines.NNavy.TRAINING_ACCIDENT_STRENGTH_LOSS_FACTOR = 0.005 --0.05						-- Amount of strength loss in a training accident, propotional to the maximum strength of the ship
 
 
 --------------------------------------------------------------------------------------------------------------
