@@ -47,6 +47,29 @@ country_event = {
 	
 	fire_only_once = yes
 	
+	immediate = {
+		ENG = { remove_resource_rights = 291 }
+		ENG = { remove_resource_rights = 676 }
+		hidden_effect = {
+			291 = {
+				add_resource = {
+					type = oil
+					amount = -10
+				}
+			}
+			676 = {
+				add_resource = {
+					type = oil
+					amount = -7
+				}
+			}
+			country_event = {
+				id = iraq.4
+				days = 2
+			}
+		}
+	}
+	
 	option = { # pro axis government
 		name = iraq.1.a
 		
@@ -61,12 +84,11 @@ country_event = {
 			}
 			set_politics = { ruling_party = fascism elections_allowed = no }
 			
-			
-		}
-		ENG = { remove_resource_rights = 291 }
-		ENG = { remove_resource_rights = 676 }
-		GER = {
-			puppet = IRQ
+			declare_war_on = {
+				target = ENG
+				type = annex_everything
+			}
+				
 		}
 		
 		news_event = {id = iraq.2 days = 1}
@@ -108,6 +130,37 @@ country_event = {
 		GER = {
 			add_to_faction = IRQ
 		}
+		
+	}
+}
+
+country_event = {
+	id = iraq.4
+	title = iraq.4.t 
+	desc = iraq.4.d
+	
+	picture = GFX_news_event_desertion_poster.dds
+	
+	is_triggered_only = yes
+	hidden = yes
+	fire_only_once = yes
+	
+	immediate = {
+		291 = {
+			add_resource = {
+				type = oil
+				amount = 10
+			}
+		}
+		676 = {
+			add_resource = {
+				type = oil
+				amount = 7
+			}
+		}
+	}
+	
+	option = {
 		
 	}
 }
