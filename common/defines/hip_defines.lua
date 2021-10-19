@@ -299,7 +299,7 @@ NDefines.NMilitary.MAX_AIR_EXPERIENCE = 999					--Max air experience a country c
 
 NDefines.NMilitary.SLOWEST_SPEED = 0.4
 NDefines.NMilitary.DIG_IN_FACTOR = 0.01 -- 0.02
-NDefines.NMilitary.AIR_SUPPORT_BASE = 0.6    --0.3                    -- CAS bonus factor for air support moddifier for land unit in combat
+NDefines.NMilitary.AIR_SUPPORT_BASE = 0.5    --0.3                    -- CAS bonus factor for air support moddifier for land unit in combat
 NDefines.NMilitary.REINFORCE_CHANCE = 0.04                 	   -- base chance to join combat from back line when empty
 
 NDefines.NMilitary.LOW_ORG_FOR_ATTACK = 0.5                      -- at what org % we start affecting speed when doign hostile moves. scales down ZERO_ORG_MOVEMENT_MODIFIER
