@@ -30,12 +30,6 @@ NDefines.NNavy.CARRIER_HOURS_DELAY_AFTER_EACH_COMBAT = 2 --4          -- how oft
 NDefines.NAir.CARRIER_HOURS_DELAY_AFTER_EACH_COMBAT = 2 --8          -- how often carrier planes do battle inside naval combat - seems to not work
 NDefines.NNavy.NAVAL_STRIKE_CARRIER_MULTIPLIER = 1.5 --5.0              -- damage bonus when planes are in naval combat where their carrier is present (and can thus sortie faster and more effectively)
 
-NDefines.NNavy.NAVAL_COMBAT_AIR_CAPITAL_TARGET_SCORE = 20  -- was 50; too high value leads to overflow
---NDefines.NNavy.NAVAL_COMBAT_AIR_CARRIER_TARGET_SCORE = 200
-NDefines.NNavy.NAVAL_COMBAT_AIR_CONVOY_TARGET_SCORE = 10   -- was 25
-NDefines.NNavy.NAVAL_COMBAT_AIR_STRENGTH_TARGET_SCORE = 10						 -- how much score factor from low health (scales between 0->this number); was 100. Too high lead to overflow
-NDefines.NNavy.NAVAL_COMBAT_AIR_LOW_AA_TARGET_SCORE = 5                         -- how much score factor from low AA guns (scales between 0->this number): was 50
-
 
 NDefines.NNavy.CARRIER_ONLY_COMBAT_ACTIVATE_TIME = 0							-- hours from start of combat when carriers get to fight
 NDefines.NNavy.CAPITAL_ONLY_COMBAT_ACTIVATE_TIME = 36 --4                          -- hours from start of combat when only carriers, capitals and subs get to attack
