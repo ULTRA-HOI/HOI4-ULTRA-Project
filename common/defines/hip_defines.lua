@@ -526,6 +526,10 @@ NDefines.NAir.NAVAL_STRIKE_BASE_STR_TO_PLANES_RATIO = 1 --0.03		-- Max airbomber
 
 NDefines.NAir.HOURS_DELAY_AFTER_EACH_COMBAT = 4					-- How many hours needs the wing to be ready for the next combat. Use for tweaking if combats happens too often. (generally used as double because of roundtrip)
 
+-- Air fuel 
+
+NDefines.NAir.FUEL_COST_MULT = 0.5 --0.35 --fuel multiplier for all air missions
+
 -- Naval strikes
 
 NDefines.NAir.NAVAL_STRIKE_TARGETTING_TO_AMOUNT = 0.1 -- 0.3			-- Balancing value to convert the naval_strike_targetting equipment stats to chances of how many airplanes managed to do successfull strike.
