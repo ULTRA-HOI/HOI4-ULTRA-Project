@@ -274,8 +274,8 @@ NDefines.NMilitary.EQUIPMENT_COMBAT_LOSS_FACTOR = 0.95 	       -- % of equipment
 
 -- Armor case
 
-NDefines.NMilitary.ARMOR_VS_AVERAGE = 0.4			                -- how to weight in highest armor & pen vs the division average
-NDefines.NMilitary.PEN_VS_AVERAGE = 0.3
+NDefines.NMilitary.ARMOR_VS_AVERAGE = 0.6			                -- how to weight in highest armor & pen vs the division average
+NDefines.NMilitary.PEN_VS_AVERAGE = 0.45
 
 NDefines.NMilitary.LAND_COMBAT_STR_ARMOR_ON_SOFT_DICE_SIZE = 1   -- extra damage dice if our armor outclasses enemy
 NDefines.NMilitary.LAND_COMBAT_ORG_ARMOR_ON_SOFT_DICE_SIZE = 1   -- extra damage dice if our armor outclasses enemy
