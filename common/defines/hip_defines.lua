@@ -280,7 +280,7 @@ NDefines.NMilitary.PEN_VS_AVERAGE = 0.3
 NDefines.NMilitary.LAND_COMBAT_STR_ARMOR_ON_SOFT_DICE_SIZE = 1   -- extra damage dice if our armor outclasses enemy
 NDefines.NMilitary.LAND_COMBAT_ORG_ARMOR_ON_SOFT_DICE_SIZE = 1   -- extra damage dice if our armor outclasses enemy
 NDefines.NMilitary.LAND_COMBAT_STR_ARMOR_DEFLECTION_FACTOR = 0.75 -- damage reduction if armor outclassing enemy (beware, it is reverted, meaning 0.75 is 75% of damges still taken)
-NDefines.NMilitary.LAND_COMBAT_ORG_ARMOR_DEFLECTION_FACTOR = 0.75 -- damage reduction if armor outclassing enemy (beware, it is reverted, meaning 0.75 is 75% of damges still taken)
+NDefines.NMilitary.LAND_COMBAT_ORG_ARMOR_DEFLECTION_FACTOR = 0.5 -- damage reduction if armor outclassing enemy (beware, it is reverted, meaning 0.75 is 75% of damges still taken)
 
 -- Paradrops 
 NDefines.NMilitary.PARACHUTE_COMPLETE_ORG = 0.4				   -- Organisation value (in %) after unit being dropped, regardless if failed, disrupted, or successful.
