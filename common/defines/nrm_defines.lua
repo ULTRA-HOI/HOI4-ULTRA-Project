@@ -30,7 +30,6 @@ NDefines.NNavy.CARRIER_HOURS_DELAY_AFTER_EACH_COMBAT = 2 --4          -- how oft
 NDefines.NAir.CARRIER_HOURS_DELAY_AFTER_EACH_COMBAT = 2 --8          -- how often carrier planes do battle inside naval combat - seems to not work
 NDefines.NNavy.NAVAL_STRIKE_CARRIER_MULTIPLIER = 1.5 --5.0              -- damage bonus when planes are in naval combat where their carrier is present (and can thus sortie faster and more effectively)
 
-NDefines.NNavy.NAVAL_COMBAT_AIR_SUB_TARGET_SCORE = 10                             -- scoring for target picking for planes inside naval combat, one define per ship type
 NDefines.NNavy.NAVAL_COMBAT_AIR_CAPITAL_TARGET_SCORE = 20  -- was 50; too high value leads to overflow
 --NDefines.NNavy.NAVAL_COMBAT_AIR_CARRIER_TARGET_SCORE = 200
 NDefines.NNavy.NAVAL_COMBAT_AIR_CONVOY_TARGET_SCORE = 10   -- was 25
