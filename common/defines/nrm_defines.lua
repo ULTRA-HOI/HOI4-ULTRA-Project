@@ -358,7 +358,7 @@ NDefines.NNavy.SUBMARINE_HIDE_TIMEOUT = 5						-- Amount of in-game-hours that t
 
 
 -- those two work together in the formula f(x) = Y(x/(x+X)) where Y is MAX and X is SLOPE
-NDefines.NNavy.NAVAL_COMBAT_AIR_SUB_DETECTION_MAX = 10.0
+NDefines.NNavy.NAVAL_COMBAT_AIR_SUB_DETECTION_MAX = 20.0
 NDefines.NNavy.NAVAL_COMBAT_AIR_SUB_DETECTION_SLOPE = 10.0						-- lower means sharper curve (ramps up very fast, then flatten out very fast). Must be >0
 
 NDefines.NNavy.NAVAL_COMBAT_AIR_SUB_DETECTION_EXTERNAL_FACTOR = 1.0					-- Factor applied to the stats of external air planes
