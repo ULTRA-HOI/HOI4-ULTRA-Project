@@ -1046,23 +1046,31 @@ foreign_politics = {
 			}
 			SOV = {
 				OR = {
-					divisions_in_state = { state = 408 size < 8 }
-					divisions_in_state = { state = 409 size < 2 }
-					divisions_in_state = { state = 657 size < 7 }
-					divisions_in_state = { state = 561 size < 4 }
-					divisions_in_state = { state = 563 size < 3 }
+					army_manpower_in_state = { state = 408 type = infantry amount < 64000 }
+					army_manpower_in_state = { state = 409 type = infantry amount < 16000 }
+					army_manpower_in_state = { state = 657 type = infantry amount < 56000 }
+					army_manpower_in_state = { state = 563 type = infantry amount < 24000 }
 				}
 			}
 		}
 		
 		available = {
+			NOT = {
+				has_non_aggression_pact_with = SOV
+			}
+			JAP = {
+				army_manpower_in_state = { state = 527 type = infantry amount > 8000 }
+				army_manpower_in_state = { state = 717 type = infantry amount > 32000 }
+				army_manpower_in_state = { state = 948 type = infantry amount > 80000 }
+				army_manpower_in_state = { state = 714 type = infantry amount > 32000 }
+				army_manpower_in_state = { state = 761 type = infantry amount > 40000 }
+			}
 			SOV = {
 				OR = {
-					divisions_in_state = { state = 408 size < 8 }
-					divisions_in_state = { state = 409 size < 2 }
-					divisions_in_state = { state = 657 size < 7 }
-					divisions_in_state = { state = 561 size < 4 }
-					divisions_in_state = { state = 563 size < 3 }
+					army_manpower_in_state = { state = 408 type = infantry amount < 64000 }
+					army_manpower_in_state = { state = 409 type = infantry amount < 16000 }
+					army_manpower_in_state = { state = 657 type = infantry amount < 56000 }
+					army_manpower_in_state = { state = 563 type = infantry amount < 24000 }
 				}
 			}
 		}
@@ -1070,11 +1078,10 @@ foreign_politics = {
 		cancel_trigger = {
 			SOV = {
 				AND = {
-					divisions_in_state = { state = 408 size > 7 }
-					divisions_in_state = { state = 409 size > 1 }
-					divisions_in_state = { state = 657 size > 6 }
-					divisions_in_state = { state = 561 size > 3 }
-					divisions_in_state = { state = 563 size > 2 }
+					army_manpower_in_state = { state = 408 type = infantry amount > 64000 }
+					army_manpower_in_state = { state = 409 type = infantry amount > 16000 }
+					army_manpower_in_state = { state = 657 type = infantry amount > 56000 }
+					army_manpower_in_state = { state = 563 type = infantry amount > 24000 }
 				}
 			}
 		}
@@ -1083,11 +1090,11 @@ foreign_politics = {
             SOV = { country_event = { id = japan.213 } }
         }
 		
-		cost = 10
+		cost = 50
 		
-		days_remove = 30
+		days_remove = 90
 		
-		days_re_enable = 90
+		days_re_enable = 180
 		
 		is_good = yes
 		
