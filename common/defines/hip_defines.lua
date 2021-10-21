@@ -485,7 +485,6 @@ NDefines.NAir.ACCIDENT_CHANCE_BALANCE_MULT = 1.0 --0.5					-- Multiplier for bal
 NDefines.NAir.ACCIDENT_EFFECT_MULT = 0.025 --0.005						-- Multiplier for balancing the effect of accidents
 NDefines.NAir.AIR_WING_XP_TRAINING_MISSION_ACCIDENT_FACTOR = 1.1 --1.5 				--Training exercises cause more accidents
 
-NDefines.NAir.AIR_DEPLOYMENT_DAYS = 10							-- was 5 -- Days to deploy one air wing
 NDefines.NAir.AIR_WING_FLIGHT_SPEED_MULT = 0.02			-- was 0.02	-- Global speed multiplier for airplanes (affects fe.transferring to another base)
 
 
