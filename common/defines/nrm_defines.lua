@@ -340,9 +340,9 @@ NDefines.NNavy.SUB_DETECTION_CHANCE_SPOTTING_SPEED_EFFECT = 2.0				-- effect of 
 NDefines.NNavy.SUB_DETECTION_CHANCE_BASE_SPOTTING_POW_EFFECT = 1.5			-- effect of spotting speed will be powered by this for initial spotting of pure submarine forces. this along with prev value is added together and rolled against a random to start spotting
 NDefines.NNavy.DEPTH_CHARGES_HIT_PROFILE = 120.0	-- hit profile for depth charges. Stealthier and faster subs should be hit less
 NDefines.NNavy.DEPTH_CHARGES_HIT_CHANCE_MULT = 2 --1   -- Base hit chance is 10% for every guns. 20% for DC in late war, but early war DC should hit enough to deal constant minor damages to subs.
-NDefines.NNavy.DEPTH_CHARGES_DAMAGE_MULT = 1.5
+NDefines.NNavy.DEPTH_CHARGES_DAMAGE_MULT = 1
 
-NDefines.NNavy.NAVAL_COMBAT_SUB_DETECTION_FACTOR = 1.5      -- balance value for sub detection in combat by ships
+NDefines.NNavy.NAVAL_COMBAT_SUB_DETECTION_FACTOR = 1      -- balance value for sub detection in combat by ships
 NDefines.NNavy.DEPTH_CHARGE_STAT_FOR_SHIP_TO_BE_SUB_HUNTER = 0.5
 NDefines.NNavy.SUB_DETECTION_STAT_FOR_SHIP_TO_BE_SUB_HUNTER = 3
 
