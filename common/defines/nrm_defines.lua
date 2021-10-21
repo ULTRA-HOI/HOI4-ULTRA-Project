@@ -80,8 +80,6 @@ NDefines.NNavy.COMBAT_CHASE_RESIGNATION_HOURS = 10								-- Before we resign ch
 NDefines.NNavy.COMBAT_SHIP_SPEED_TO_FIELD_FACTOR = 0.02						-- Modifier to the ships speed in the combat. For better balance, make it lower to slow down the speed of approaching.
 NDefines.NNavy.COMBAT_MAX_GROUPS = 2										-- Max amount of "Fire Exchange" groups (FEX).
 NDefines.NNavy.NAVAL_SUPREMACY_CAN_INVADE = 0.6								-- required naval supremacy to perform invasions on an area
-NDefines.NNavy.NAVAL_COMBAT_RESULT_TIMEOUT_YEARS = 0.5							-- WAS 2 | after that many years, we clear the naval combat results, so they don't get stuck forever in the memory.
-NDefines.NNavy.CONVOY_LOSS_HISTORY_TIMEOUT_MONTHS = 1						-- WAS 24 | after this many months remove the history of lost convoys to not bloat savegames and memory since there is no way to see them anyway
 NDefines.NNavy.NAVAL_INVASION_SPOTTING_SPEED_MULT = 3.0
 
 NDefines.NNavy.COMBAT_MIN_DURATION = 12                          -- Min combat duration before we can retreat. It's a balancing variable so it's not possible to always run with our weak ships agains big flotillas.
