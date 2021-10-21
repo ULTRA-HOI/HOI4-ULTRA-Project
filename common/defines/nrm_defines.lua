@@ -347,8 +347,8 @@ NDefines.NNavy.SUB_DETECTION_STAT_FOR_SHIP_TO_BE_SUB_HUNTER = 3
 NDefines.NNavy.SUBMARINE_REVEAL_BASE_CHANCE = 10
 NDefines.NNavy.SUBMARINE_BASE_TORPEDO_REVEAL_CHANCE = 0.2
 
-NDefines.NNavy.SUBMARINE_REVEALED_TIMEOUT = 5              --Amount of in-game-hours that makes the submarine visible if it is on the defender side.
-NDefines.NNavy.SUBMARINE_HIDE_TIMEOUT = 5						-- Amount of in-game-hours that takes the submarine (with position unrevealed), to hide.
+NDefines.NNavy.SUBMARINE_REVEALED_TIMEOUT = 6              --Amount of in-game-hours that makes the submarine visible if it is on the defender side.
+NDefines.NNavy.SUBMARINE_HIDE_TIMEOUT = 6						-- Amount of in-game-hours that takes the submarine (with position unrevealed), to hide.
 
 -------------------------
 -- SUBS AND PLANES
