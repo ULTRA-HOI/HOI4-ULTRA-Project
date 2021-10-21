@@ -502,7 +502,7 @@ NDefines.NAir.AIR_WING_XP_TRAINING_MISSION_GAIN_DAILY = 4.0 --3.3 						--Daily 
 NDefines.NAir.AIR_WING_XP_AIR_VS_AIR_COMBAT_GAIN = 4.0 --0.8 							--Wings in combat gain extra XP	
 NDefines.NAir.AIR_WING_XP_LOSS_REDUCTION_OVER_FRIENDLY_TERRITORY_FACTOR = 0.75 --0.3 	--Reduction on XP loss over friendly territory
 NDefines.NAir.AIR_WING_XP_GROUND_MISSION_COMPLETED_GAIN = 0.60 --0.28 					--Bombers bombing, CAS cassing, NBs nbing, kamikazees kamikazeeing, etc.
-NDefines.NAir.AIR_WING_XP_RECON_MISSION_COMPLETED_GAIN = 0.1 --0.05 					--recon mission
+NDefines.NAir.AIR_WING_XP_RECON_MISSION_COMPLETED_GAIN = 0.6 --0.05 					--recon mission
 
 NDefines.NAir.EFFICIENCY_REGION_CHANGE_DAILY_GAIN_TACTICAL_BOMBER = 0.1	-- How much efficiency to regain per day. Gain applied hourly.
 NDefines.NAir.EFFICIENCY_REGION_CHANGE_DAILY_GAIN_STRATEGIC_BOMBER = 0.036	-- How much efficiency to regain per day. Gain applied hourly.
