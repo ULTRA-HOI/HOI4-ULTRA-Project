@@ -1,5 +1,87 @@
 # Changelog
 
+### 0.10.1
+
+### Features 
+
+- Double agent and linguist operatives have now proper effects
+- Going for Truces in China as Japan gives air doctrines bonus (simulate big air experience IJA get in China, currently not being really possible to represent)
+- Some countries including Soviet Union, France, Japan and Italy get a national spirit decreasing a lot unit training to represent the reservist population after generations of mandatory military service 
+
+
+### Database
+
+- Scrapped (temporarily) some aircrafts that would be pure downgrades
+- Early japanese medium bombers realiability reduced to reflect engine issues thoses had
+- Some carabean island are now allowed to build bigger airbases
+- As Romania, ceding territories gives War Support
+- Removed weird naval base in the Bering Strait
+- Removed duplicated city in Virginia
+- Naval leader traits/skills no longer increase ship armor/HP but rather org, decrease visibility etc
+- Doenitz starts only lvl 4 instead of 5 and accordingly reduced skills
+
+### Balance 
+
+- Airwing deployments reduced to 5 days
+- Recon mission gives more xp
+- Sub detection from various doctrines reduced
+- Revealed subs takes 20% more time to hide again
+- Submarines modules are less penalizing on sub visibility stat 
+- Snorkel buffed to be worth using despite the huge speed malus
+- Stealth module cost have been reduced to be worth taking
+- Submarines are more costly in terms of steel 
+- Submarines have more base HP
+- Submarines have more base sub vibility stat (aka easier to detect)
+- German torpedo debuff is made harsher 
+- Sub detection from ship modules increased 
+- Depth charge damage from ship modules increased 
+- Strongly reduced Swiss manpower tied to agriculture 
+- US air doctrine bonus from focus tree buffed to 100% from 50%
+- Claims have increased effects on complience/resistance 
+- Heavy Artillery models buffed save first model to be worth taking
+- Airbases are now very cheap 
+- Some unit weight have been lowered, allowing division transport to not suck up most of your convoys 
+- Economic depression no longer affects unit training time
+- Reworked starting number of research slots and extra research slots given by focuses 
+- Reduced Light Attack from sub deck guns
+- Torpedoes are a bit less precise
+- Nerfed Trade Interdiction doctrines
+- Increased carriers staking penalty back to vanilla values
+- Admiral traits/Skills are globaly less impactfull
+- Soviet Army reforms steps now needs only 100 days instead of 180
+- Rebalanced air superiority values of aircrafts
+- Air and Naval missions consume more fuel
+- Reduced war support penalty from getting convoys raided
+- Air power is more efficient to detect subs
+- Slightly reduced base air support bonus value
+- Slightly changed how division armor/piercing are calculated (more amphasis on max values instead of average values)
+- Not being pierced gives further reduction of incoming org damages but keep the same str damage reduction
+- Stugs (AGs and TDs) are no longer affected by german tank debuff from Mittelstand
+
+### AI 
+
+- AI Austria is now prevented to promote generals
+- AI soviet gets shorter org debuff against AI Germany than soviet player
+- AI USA should not struggle too much to produce new divisions
+
+### Bugfixes 
+
+- Naval losses display fixed
+- Sunderland (british maritime patrol) correctly displayed as 1938 tech
+- Denmark and Norway can correctly mobilize once at war
+- Admiral Scheer correctly considered as Panzerschiff
+- Fix missing categories in Equipment in the field view
+- Diverse localisation fixes
+- Soviet/Japanese decisions on Manchurian border now works as expected
+- IS2 is correctly considered as IS1 variant and as such get reduced research time
+- Light Bombers can now correctly do strat bombing
+
+### QoL 
+
+- Increased low/medium fuel icon saturation to be more visible
+- Planning bonus bar is now red instead of blue
+- Hide ahistorical branchs for Germany under game options
+
 ### 0.10
 
 ### Features 
