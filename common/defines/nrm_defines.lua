@@ -36,7 +36,7 @@ NDefines.NNavy.CAPITAL_ONLY_COMBAT_ACTIVATE_TIME = 36 --4                       
 NDefines.NNavy.ALL_SHIPS_ACTIVATE_TIME = 40 --8                                    -- hours where all get to attack
 --NDefines.NNavy.BEST_CAPITALS_TO_SCREENS_RATIO = 0.33 --0.25 							-- capitals / screens ratio used for creating FEX groups in naval combat
 NDefines.NNavy.CARRIER_STACK_PENALTY = 4
-NDefines.NNavy.CARRIER_STACK_PENALTY_EFFECT = 0.05 --0.1
+NDefines.NNavy.CARRIER_STACK_PENALTY_EFFECT = 0.075 --0.1
 NDefines.NNavy.ENEMY_AIR_SUPERIORITY_IMPACT = -0.9
 --------------------------------------------------------------------------------------------------------------
 -- MISC NAVY STUFF
