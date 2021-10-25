@@ -5196,7 +5196,7 @@ focus_tree = {
 			}
 		}
 		cancel_if_invalid = no
-		x = -2
+		x = -1
 		y = 1
 		relative_position_id = GER_war_with_france
 		cost = 5
@@ -5216,7 +5216,7 @@ focus_tree = {
 		icon = GFX_focus_research
 		
 		prerequisite = { focus = GER_improve_national_spirit }
-		x = -1
+		x = 0
 		y = 1
 		relative_position_id = GER_improve_national_spirit
 		cost = 5
@@ -5251,7 +5251,7 @@ focus_tree = {
 		}
 		cancel_if_invalid = yes
 		#will_lead_to_war_with = SWI
-		x = 0
+		x = 1
 		y = 1
 		relative_position_id = GER_war_with_france
 		cost = 4
@@ -5272,77 +5272,6 @@ focus_tree = {
 		}
 	}
 
-	focus = {
-		id = GER_reintegrate_luxemburg_and_alsace_lorraine
-		icon = GFX_goal_generic_position_armies
-		prerequisite = { focus = GER_improve_national_spirit }
-		available = {
-			is_subject = no
-			#has_full_control_of_state = 8
-			has_full_control_of_state = 28
-			has_full_control_of_state = 796
-			OR = {
-				FRA = { has_capitulated = yes }
-				FRA = { is_subject_of = GER }				 
-				NOT = {
-					any_country = {
-						original_tag = FRA
-						exists = yes
-					}
-				}
-				owns_state = 28  
-			}
-			
-			OR = {
-				BEL = { has_capitulated = yes }
-				NOT = {
-					any_country = {
-						original_tag = BEL
-						exists = yes
-					}
-				}
-			}
-			has_government = fascism
-		}
-		bypass = {
-		}
-		cancel_if_invalid = yes
-		x = 1
-		y = 1
-		relative_position_id = GER_improve_national_spirit
-		cost = 5
-		ai_will_do = {
-			factor = 10
-		}
-		
-		completion_reward = {
-			add_state_core = 8
-			add_state_core = 28
-			add_state_core = 796
-			if = {
-				limit = {
-					NOT = { owns_state = 28 }
-				}
-				transfer_state = 28
-				transfer_state = 8
-				transfer_state = 796
-			}
-			28 = { 
-				set_state_name = "Elsass-Lothringen"
-				remove_core_of = VIC
-			}
-			set_province_name = { id = 9503 name = "Strassburg" }
-			set_province_name = { id = 678 name = "Mulhausen" }
-			FRA = {
-				country_event = { id = wtt_germany.63 }
-			}
-			LUX = {
-				country_event = { id = wtt_germany.64 }
-			}
-		}
-	}
-
-	
 	focus = {
 		id = GER_naval_rearmament
 		icon = GFX_goal_generic_build_navy
