@@ -528,7 +528,7 @@ NDefines.NAir.HOURS_DELAY_AFTER_EACH_COMBAT = 4					-- How many hours needs the 
 
 -- Air fuel 
 
-NDefines.NAir.FUEL_COST_MULT = 0.5 --0.35 --fuel multiplier for all air missions
+NDefines.NAir.FUEL_COST_MULT = 0.4 --0.35 --fuel multiplier for all air missions
 
 -- Naval strikes
 
