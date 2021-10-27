@@ -141,12 +141,12 @@ NDefines.NOperatives.INTEL_NETWORK_MIN_VP_TO_TARGET = 1					-- was 15 -- The min
 -- Production Stuff
 
 NDefines.NProduction.MAX_EQUIPMENT_RESOURCES_NEED = 4 	-- Max number of different strategic resources an equipment can be dependent on.
-NDefines.NProduction.MAX_CIV_FACTORIES_PER_LINE = 10		-- was 15 -- Max number of factories that can be assigned a single production line.
+NDefines.NProduction.MAX_CIV_FACTORIES_PER_LINE = 20		-- was 15 -- Max number of factories that can be assigned a single production line.
 NDefines.NProduction.BASE_FACTORY_START_EFFICIENCY_FACTOR = 1 --10	-- Base start efficiency for factories expressed in %.
 NDefines.NProduction.BASE_FACTORY_MAX_EFFICIENCY_FACTOR = 25
-NDefines.NProduction.BASE_FACTORY_SPEED = 2.6 				-- Base factory speed multiplier (how much hoi3 style IC each factory gives).
-NDefines.NProduction.BASE_FACTORY_SPEED_MIL = 6 --8				-- Base factory speed multiplier (how much hoi3 style IC each factory gives).
-NDefines.NProduction.BASE_FACTORY_SPEED_NAV = 4
+NDefines.NProduction.BASE_FACTORY_SPEED = 0.65 				-- Base factory speed multiplier (how much hoi3 style IC each factory gives).
+NDefines.NProduction.BASE_FACTORY_SPEED_MIL = 1.5 --8				-- Base factory speed multiplier (how much hoi3 style IC each factory gives).
+NDefines.NProduction.BASE_FACTORY_SPEED_NAV = 1
 
 NDefines.NProduction.BASE_FACTORY_EFFICIENCY_BALANCE_FACTOR = 0.1 			-- Factory efficiency balancing factor
 
@@ -176,7 +176,7 @@ NDefines.NProduction.ANNEX_FIELD_EQUIPMENT_RATIO = 0.9	--How much equipment from
 -- Oil Suff 
 
 NDefines.NCountry.STARTING_FUEL_RATIO = 0.5						-- starting fuel ratio compared to max fuel for countries
-NDefines.NCountry.BASE_FUEL_GAIN_PER_OIL = 5 --11						-- base amount of fuel gained hourly per excess oil
+NDefines.NCountry.BASE_FUEL_GAIN_PER_OIL = 1.25 --11						-- base amount of fuel gained hourly per excess oil
 NDefines.NCountry.BASE_FUEL_GAIN = 2.0							-- base amount of fuel gained hourly, independent of excess oil
 NDefines.NCountry.BASE_FUEL_CAPACITY = 50000						-- base amount of fuel capacity
 
