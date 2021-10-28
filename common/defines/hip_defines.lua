@@ -116,13 +116,23 @@ NDefines.NResistance.SUPPRESSION_NEEDED_BY_RESISTANCE_POINT = 0.5 --0.75 -- Numb
 NDefines.NResistance.	COMPLIANCE_GROWTH_HAS_CLAIM = 10 --5 -- compliance growth buff if state has a claim
 NDefines.NResistance.COMPLIANCE_GROWTH_BASE = 0.05 -- 0.075 -- base compliance grow
 NDefines.NResistance.COMPLIANCE_GROWTH_BASE = 0.05 -- 0.075 -- base compliance grow
-NDefines.NResistance.COMPLIANCE_DECAY_AT_MAX_COMPLIANCE = -0.055 -- -0.083 -- as compliance increases, it gets a decay rate depending on its value. compliance should stabilize at some value until its growth changes
+NDefines.NResistance.COMPLIANCE_DECAY_AT_MAX_COMPLIANCE = -0.055 -- -0.083 -- as compliance increases, it gets a decay rate depending on its value. compliance should stabilize at some value until its growth chWanges
 
 -- espionage stuff 
 
 NDefines.NCountry.MAX_PROPAGANDA_STABILITY_IMPACT = -0.1   -- -0.2			-- Max total penalty from operative performing the propaganda mission in a country
 NDefines.NCountry.MAX_PROPAGANDA_WAR_SUPPORT_IMPACT = -0.1  -- -0.2		-- Max total penalty from operative performing the propaganda mission in a country
 NDefines.NOperatives.MAX_OPERATIVE_SLOT_FROM_AGENCY_UPGRADES = 4 --1	-- max operative slots gained from upgrades
+
+-- used for calculating how many operatives will a spy master gain from its faction members
+	-- first number in every now is number of operatives gained
+	-- second number is total factory needed (mil and civ) for giving previous ratio
+NDefines.NOperatives.OPERATIVE_SLOTS_FROM_FACTION_MEMBERS_FOR_SPY_MASTER = {
+	0.0, 	0.0, -- 0 operative for [0, 100)
+	0.25,  	100.0, -- 0.25 operative for [100, 500)
+	0.5, 	500.0, -- 0.5 operative for [500, 1000)
+	0.75, 	1000.0, -- 0.75 operative for >= 100
+}
 
 NDefines.NIntel.STATIC_INTEL_SOURCE_BROKEN_CYPHER_MAXIMUMS = { 65.0, 65.0, 65.0, 65.0 }
 NDefines.NIntel.STATIC_INTEL_SOURCE_RADAR_MAXIMUMS = { 10.0, 10.0, 20.0, 20.0 }
@@ -907,9 +917,9 @@ NDefines.NAI.STR_BOMB_INFRA_IMPORTANCE_FACTOR = 0.25                            
 NDefines.NAI.STR_BOMB_IMPORTANCE_SCALE = 1                                -- [1.0]  -- str bombing total importance scale (every str bombing score get's multiplied by it)
 NDefines.NAI.STR_BOMB_MIN_ENEMY_FIGHTERS_IN_AREA = 2000                           -- [300]  -- If amount of enemy fighters is higher than this mission won't perform
 NDefines.NAI.STR_BOMB_FIGHTERS_PER_PLANE = 1.5                                 -- [1.1]  -- Amount of air superiority planes requested per enemy plane
-NDefines.NAI.STR_BOMB_PLANES_PER_CIV_FACTORY = 20                               -- [20]   -- Amount of planes requested per enemy civ factory
-NDefines.NAI.STR_BOMB_PLANES_PER_MIL_FACTORY = 25                               -- [25]   -- Amount of planes requested per enemy military factory
-NDefines.NAI.STR_BOMB_PLANES_PER_NAV_FACTORY = 15                              -- [15]   -- Amount of planes requested per enemy naval factory
+NDefines.NAI.STR_BOMB_PLANES_PER_CIV_FACTORY = 5                               -- [20]   -- Amount of planes requested per enemy civ factory
+NDefines.NAI.STR_BOMB_PLANES_PER_MIL_FACTORY = 6.25                               -- [25]   -- Amount of planes requested per enemy military factory
+NDefines.NAI.STR_BOMB_PLANES_PER_NAV_FACTORY = 3.75                              -- [15]   -- Amount of planes requested per enemy naval factory
 NDefines.NAI.STR_BOMB_MIN_EXCORT_WINGS = 1                                       -- [2]    -- Min amount of airwings requested to excort operations
 
 NDefines.NAI.AIR_AI_ENEMY_PROV_RATIO_FOR_COMBAT_REGION = 0.05			 -- if a region has more than this ratio of provinces controlled by enemy, AI will consider it as a combat zone while assigning planes
