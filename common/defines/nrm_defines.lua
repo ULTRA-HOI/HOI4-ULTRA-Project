@@ -2,14 +2,14 @@
 -- Production STUFF
 --------------------------------------------------------------------------------------------------------------
 
-NDefines.NProduction.DEFAULT_MAX_NAV_FACTORIES_PER_LINE = 4
+NDefines.NProduction.DEFAULT_MAX_NAV_FACTORIES_PER_LINE = 5
 NDefines.NProduction.CAPITAL_SHIP_MAX_NAV_FACTORIES_PER_LINE = 10
 NDefines.NProduction.CONVOY_MAX_NAV_FACTORIES_PER_LINE = 15
 NDefines.NProduction.EQUIPMENT_MODULE_ADD_XP_COST = 1.0
 NDefines.NProduction.EQUIPMENT_MODULE_REPLACE_XP_COST = 1.0
 NDefines.NProduction.EQUIPMENT_MODULE_CONVERT_XP_COST = 1.0
 NDefines.NProduction.EQUIPMENT_MODULE_REMOVE_XP_COST = 1.0
-NDefines.NProduction.MIN_NAVAL_EQUIPMENT_CONVERSION_IC_COST_FACTOR = 0.2		-- Minimum fraction of an equipment type's base industry capacity cost to use when converting a naval equipment, such as through ship refitting.
+NDefines.NProduction.MIN_NAVAL_EQUIPMENT_CONVERSION_IC_COST_FACTOR = 0.02		-- Minimum fraction of an equipment type's base industry capacity cost to use when converting a naval equipment, such as through ship refitting.
 NDefines.NProduction.MIN_NAVAL_EQUIPMENT_CONVERSION_RESOURCE_COST_FACTOR = 0.2
 
 --------------------------------------------------------------------------------------------------------------
