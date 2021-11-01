@@ -63,7 +63,7 @@ NDefines.NCountry.REINFORCEMENT_EQUIPMENT_DELIVERY_SPEED = 0.15 	-- Modifier for
 NDefines.NCountry.REINFORCEMENT_MANPOWER_DELIVERY_SPEED = 20 		-- Modifier for army manpower reinforcement delivery speed (travel time)
 
 NDefines.NCountry.BASE_STABILITY_WAR_FACTOR = 0 					-- Default stability war factor # was -0.3	
-NDefines.NCountry.MAJOR_MIN_FACTORIES = 60						-- need at least these many factories to become a major
+NDefines.NCountry.MAJOR_MIN_FACTORIES = 200						-- need at least these many factories to become a major
 NDefines.NCountry.INVASION_REPORT_EXPERATION_DAYS = 10			-- Invasion experation days
 
 NDefines.NCountry.REINFORCEMENT_DELIVERY_SPEED_MIN = 0.35 			-- The distance from the supply region to capital should affect the speed only a little bit. Main factor for penalty is overcrowded areas, and not the route length.
