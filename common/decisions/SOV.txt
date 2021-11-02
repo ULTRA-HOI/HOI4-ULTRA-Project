@@ -520,6 +520,84 @@ SOV_industry_relocation = {
 		}
 	}
 	
+	SOV_relocate_industry_from_tula = {
+
+		icon = generic_construction
+
+		highlight_state_targets = {
+			state = 223
+		}
+
+		available = {
+			223 = { #Tula
+				is_owned_and_controlled_by = SOV
+				industrial_complex > 11
+			}
+			573 = { is_owned_and_controlled_by = SOV } #Zlatoust
+			582 = { is_owned_and_controlled_by = SOV } #Magnitogorsk
+		}
+
+		fire_only_once = yes
+
+		cost = 0
+		
+		ai_will_do = {
+			factor = 1000
+		}
+		
+		days_remove = 30
+
+		modifier = {
+			
+		}
+
+		
+
+		visible = {
+			has_war = yes
+		}
+
+		remove_effect = {
+			if = {
+				limit = {
+					controls_state = 223
+				}
+				223 = { #Tula
+					
+					remove_building = {
+						type = industrial_complex
+						level = 12
+					}
+				}
+				573 = { #Zlatoust
+					add_extra_state_shared_building_slots = 12				
+					add_building_construction = {
+						type = industrial_complex
+						level = 12
+						instant_build = yes
+					}
+	
+					hidden_effect = {			
+						damage_building = { type = industrial_complex damage = 0.3 }
+						damage_building = { type = industrial_complex damage = 0.3 }
+						damage_building = { type = industrial_complex damage = 0.3 }
+						damage_building = { type = industrial_complex damage = 0.3 }
+						damage_building = { type = industrial_complex damage = 0.3 }
+						damage_building = { type = industrial_complex damage = 0.3 }
+						damage_building = { type = industrial_complex damage = 0.3 }
+						damage_building = { type = industrial_complex damage = 0.3 }
+						damage_building = { type = industrial_complex damage = 0.3 }
+						damage_building = { type = industrial_complex damage = 0.3 }
+						damage_building = { type = industrial_complex damage = 0.3 }
+						damage_building = { type = industrial_complex damage = 0.3 }
+					}
+				}
+				custom_effect_tooltip = relocate_industry_repair
+			}
+			custom_effect_tooltip = SOV_relocate_industry_from_smolensk_tt
+		}
+	}
+	
 	SOV_relocate_industry_from_donbass = {
 
 		icon = generic_construction
