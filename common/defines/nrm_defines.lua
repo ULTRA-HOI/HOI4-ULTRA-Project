@@ -189,9 +189,9 @@ NDefines.NNavy.CHANCE_TO_DAMAGE_PART_ON_CRITICAL_HIT_FROM_AIR	 = 0.25
 
 
 NDefines.NNavy.GUN_HIT_PROFILES = { -- hit profiles for guns, if target ih profile is lower the gun will have lower accuracy
-		56.0,	-- big guns
+		60.0,	-- big guns
 		120.0,	-- torpedos
-		44.0,	-- small guns
+		50.0,	-- small guns
 	}
 
 NDefines.NNavy.COMBAT_RESULT_PRIORITY_DAY_TO_LIVE = { 										-- the game will delete the combat results after some duration depending on its importance
