@@ -165,9 +165,9 @@ NDefines.NProduction.EQUIPMENT_BASE_LEND_LEASE_WEIGHT = 2 -- was 1 -- Base equip
 NDefines.NProduction.EQUIPMENT_LEND_LEASE_WEIGHT_FACTOR = 0.01 -- was 0.01 -- Base equipment lend lease factor
 NDefines.NProduction.MAX_LINE_RESOURCE_PENALTY = 90		-- Max penalty factor for production lines lacking strategic resources in %.
 
-NDefines.NProduction.BASE_FACTORY_EFFICIENCY_VARIANT_CHANGE_FACTOR = 80		-- Base factor for changing production variants in %.
-NDefines.NProduction.BASE_FACTORY_EFFICIENCY_PARENT_CHANGE_FACTOR = 60		-- Base factor for changing production parent<->children in %.
-NDefines.NProduction.BASE_FACTORY_EFFICIENCY_FAMILY_CHANGE_FACTOR = 10		-- Base factor for changing production with same family in %.
+NDefines.NProduction.BASE_FACTORY_EFFICIENCY_VARIANT_CHANGE_FACTOR = 90		-- Base factor for changing production variants in %.
+NDefines.NProduction.BASE_FACTORY_EFFICIENCY_PARENT_CHANGE_FACTOR = 80		-- Base factor for changing production parent<->children in %.
+NDefines.NProduction.BASE_FACTORY_EFFICIENCY_FAMILY_CHANGE_FACTOR = 50		-- Base factor for changing production with same family in %.
 NDefines.NProduction.BASE_FACTORY_EFFICIENCY_ARCHETYPE_CHANGE_FACTOR = 0 	-- Base factor for changing production with same archetype in %.
 
 NDefines.NProduction.MIN_POSSIBLE_TRAINING_MANPOWER = 50000			-- was 100000 -- How many deployment lines minimum can be training
