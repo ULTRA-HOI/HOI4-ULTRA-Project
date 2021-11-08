@@ -20,15 +20,15 @@
 
 logistical_calculations = {
 	#Calculates variables used for dynamic modifiers
-	set_variable = { signal_bonus = signal_level }
-	subtract_from_variable = { signal_bonus = 4 }
-	IF = { 
-		LIMIT = { check_variable = { supply_bonus < 0 } }
-		multiply_variable = { signal_bonus = 0.025 }
-	}
-	ELSE = {
-		multiply_variable = { signal_bonus = 0.015 }
-	}
+	set_variable = { var_signal_bonus = signal_level }
+	subtract_from_variable = { var_signal_bonus = 5 }
+	multiply_variable = { var_signal_bonus = 0.02 }
+
+	set_variable = { var_planning_bonus = var_signal_bonus }
+	multiply_variable = { var_planning_bonus = 4 }
+
+	set_variable = { var_recon_bonus = var_signal_bonus }
+	multiply_variable = { var_recon_bonus = 2 }
 	
 	#Calculate supply consumption bonus
 	set_variable = { logistical_bonus = logistical_level }
@@ -38,8 +38,10 @@ logistical_calculations = {
 	#Calculate Equipment needs
 	set_variable = { trucks_needed = logistical_level }
 	set_variable = { light_trucks_needed = logistical_level }
+	set_variable = { tanks_trucks_needed = logistical_level }
 	multiply_variable = { trucks_needed = 5 }
 	multiply_variable = { light_trucks_needed = 2 }
+	multiply_variable = { tanks_trucks_needed = 15 }
 	set_variable = { support_needed = signal_level }
 	multiply_variable = { support_needed = 15 }
 	

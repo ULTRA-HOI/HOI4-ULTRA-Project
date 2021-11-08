@@ -45,14 +45,6 @@ guiTypes = {
 			truncate = yes
 			fixedsize = yes
 		}
-		instantTextboxType = {
-			name = "upgrade_duration_title"
-			position = { x = 146 y = 54 }
-			font = "hoi_18mbs"
-			maxWidth = 800
-			text = "Modifications cost 25 Command Power"
-			format = center
-		}
 		buttonType = {
 			name = "btn_close"
 			position = { x = -44 y = 6 }
@@ -104,21 +96,19 @@ guiTypes = {
 		buttonType = {
 				name = "increase_logistics_button"
 				position = { x = 25 y = 116 }
-				quadTextureSprite ="GFX_army_designer_button_modify"
+				quadTextureSprite ="GFX_army_designer_button_green"
 				buttonFont = "hoi_18mbs"
-				buttonText = "Increase Logistics"
+				buttonText = INCREASE_LOGISTICS
 				clicksound = click_default
-				pdx_tooltip  = "Command Power Cost: 25"
 		}
 		
 		buttonType = {
 				name = "decrease_logistics_button"
 				position = { x = 25 y = 166 }
-				quadTextureSprite ="GFX_army_designer_button_modify"
+				quadTextureSprite ="GFX_army_designer_button_red"
 				buttonFont = "hoi_18mbs"
-				buttonText = "Decrease Logistics"
+				buttonText = DECREASE_LOGISTICS
 				clicksound = click_default
-				pdx_tooltip  = "Command Power Cost: 25"
 		}
 		
 		instantTextboxType = {
@@ -149,7 +139,7 @@ guiTypes = {
 			name = "upgrade_branch_desc_3"
 			position = { x = 15 y = 80 }
 			font = "hoi_16mbs"
-			text = "We can mechanize and de-mechanize our troops as needed - at the cost of command power."
+			text = "We can mechanize and de-mechanize our troops as needed."
 			format = left
 			maxWidth = 900	
 		}
@@ -157,7 +147,7 @@ guiTypes = {
 			name = "upgrade_branch_info"
 			position = { x = 200 y = 112 }
 			font = "hoi_18mbs"
-			text = "Logistical Level: [?logistical_level]"
+			text = "Logistical Level: [?logistical_level|Y0]"
 			format = left
 			maxWidth = 900	
 		}
@@ -165,7 +155,7 @@ guiTypes = {
 			name = "upgrade_branch_stat_1"
 			position = { x = 200 y = 134 }
 			font = "hoi_16mbs"
-			text = "Trucks Needed Per Heavy Battalion: [?trucks_needed]"
+			text = "Trucks / Heavy Battalion: [?trucks_needed|-0]"
 			format = left
 			maxWidth = 900	
 		}
@@ -173,15 +163,23 @@ guiTypes = {
 			name = "upgrade_branch_stat_2"
 			position = { x = 200 y = 150 }
 			font = "hoi_16mbs"
-			text = "Trucks Needed Per Light Battalion: [?light_trucks_needed]"
+			text = "Trucks / Light Battalion: [?light_trucks_needed|-0]"
 			format = left
 			maxWidth = 900	
 		}
 		instantTextboxType = {
 			name = "upgrade_branch_stat_3"
-			position = { x =200 y = 166 }
+			position = { x = 200 y = 166 }
 			font = "hoi_16mbs"
-			text = "Supply Consumption Reduction: [?logistical_bonus|%]"
+			text = "Trucks / Tank Battalion: [?tanks_trucks_needed|-0]"
+			format = left
+			maxWidth = 900	
+		}
+		instantTextboxType = {
+			name = "upgrade_branch_stat_4"
+			position = { x =200 y = 182 }
+			font = "hoi_16mbs"
+			text = "Supply Consumption: [?logistical_bonus|-0%]"
 			format = left
 			maxWidth = 900	
 		}
@@ -219,21 +217,19 @@ guiTypes = {
 		buttonType = {
 				name = "increase_communications_button"
 				position = { x = 25 y = 116 }
-				quadTextureSprite ="GFX_army_designer_button_modify"
+				quadTextureSprite ="GFX_army_designer_button_green"
 				buttonFont = "hoi_18mbs"
-				buttonText = "Increase Signals"
+				buttonText = INCREASE_SIGNALS
 				clicksound = click_default
-				pdx_tooltip = "Command Power Cost: 25"
 		}
 		
 		buttonType = {
 				name = "decrease_communications_button"
 				position = { x = 25 y = 166 }
-				quadTextureSprite ="GFX_army_designer_button_modify"
+				quadTextureSprite ="GFX_army_designer_button_red"
 				buttonFont = "hoi_18mbs"
-				buttonText = "Decrease Signals"
+				buttonText = DECREASE_SIGNALS
 				clicksound = click_default
-				pdx_tooltip = "Command Power Cost: 25"
 		}
 		
 		instantTextboxType = {
@@ -256,7 +252,7 @@ guiTypes = {
 			name = "upgrade_branch_desc_2"
 			position = { x = 15 y = 48 }
 			font = "hoi_16mbs"
-			text = "Larger allocations of support equipment and manpower will result in higher planning speed, iniative and recovery for certain support companies."
+			text = "Larger allocations of support equipment and manpower will result in higher planning speed, iniative and recovery."
 			format = left
 			maxWidth = 900	
 		}
@@ -264,7 +260,7 @@ guiTypes = {
 			name = "upgrade_branch_desc_3"
 			position = { x = 15 y = 64 }
 			font = "hoi_16mbs"
-			text = "These support companies include field hospitals, HQs and Signal companies. We can allocate and deallocate support equipment as needed - at the cost of command power."
+			text = "We can allocate and deallocate support equipment as needed."
 			format = left
 			maxWidth = 900	
 		}
@@ -272,7 +268,7 @@ guiTypes = {
 			name = "upgrade_branch_info"
 			position = { x = 200 y = 112 }
 			font = "hoi_18mbs"
-			text = "Signals Level: [?signal_level]"
+			text = "Signals Level: [?signal_level|Y0]"
 			format = left
 			maxWidth = 900	
 		}
@@ -280,7 +276,7 @@ guiTypes = {
 			name = "upgrade_branch_stat_1"
 			position = { x = 200 y = 134 }
 			font = "hoi_16mbs"
-			text = "Support Needed Per HQ Company: [?support_needed]"
+			text = "Support Eq. / HQ Company: [?support_needed|-0]"
 			format = left
 			maxWidth = 900	
 		}
@@ -288,7 +284,7 @@ guiTypes = {
 			name = "upgrade_branch_stat_2"
 			position = { x =200 y = 150 }
 			font = "hoi_16mbs"
-			text = "Recovery Rate Modifier: [?signal_bonus|%]"
+			text = "Division Recovery Rate: [?var_signal_bonus|+0%]"
 			format = left
 			maxWidth = 900	
 		}
@@ -296,7 +292,7 @@ guiTypes = {
 			name = "upgrade_branch_stat_3"
 			position = { x =200 y = 166 }
 			font = "hoi_16mbs"
-			text = "Planning Speed Modifier: [?signal_bonus|%]"
+			text = "Planning Speed: [?var_planning_bonus|+0%]"
 			format = left
 			maxWidth = 900	
 		}
@@ -304,7 +300,7 @@ guiTypes = {
 			name = "upgrade_branch_stat_4"
 			position = { x =200 y = 182 }
 			font = "hoi_16mbs"
-			text = "Recon Modifier: [?signal_bonus|%]"
+			text = "Reconnaissance: [?var_recon_bonus|+0%]"
 			format = left
 			maxWidth = 900	
 		}
