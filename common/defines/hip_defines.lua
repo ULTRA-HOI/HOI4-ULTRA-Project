@@ -567,8 +567,7 @@ NDefines.NAir.MISSION_COMMAND_POWER_COSTS = {  -- command power cost per plane t
 		0.0, -- MISSION_RECON
 	}
 
-
-
+NDefines.NAir.AIR_SUPPLY_CONVERSION_SCALE = 0.005	--0.05				-- Conversion scale for planes to air supply
 
 --Focus 		
 NDefines.NFocus.MAX_SAVED_FOCUS_PROGRESS = 14
