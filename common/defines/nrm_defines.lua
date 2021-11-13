@@ -202,7 +202,7 @@ NDefines.NNavy.COMBAT_RESULT_PRIORITY_DAY_TO_LIVE = { 										-- the game will
 -- NAVY AI
 --------------------------------------------------------------------------------------------------------------
 NDefines.NAI.PRODUCTION_MAX_PROGRESS_TO_SWITCH_NAVAL = 0.02
-NDefines.NAI.NAVAL_DOCKYARDS_SHIP_FACTOR = 9 --1.5 --The extent to which number of dockyards play into amount of sips a nation wants
+NDefines.NAI.NAVAL_DOCKYARDS_SHIP_FACTOR = 15 --1.5 --The extent to which number of dockyards play into amount of sips a nation wants
 NDefines.NAI.DOCKYARDS_PER_NAVAL_DESIRE_EFFECT = 0 -- -20 --Effects how much AI wants to build dockyards based on how navally focused they are in general. Recommended range -100.0 to 100.0.
 NDefines.NAI.NEEDED_NAVAL_FACTORIES_EXPENSIVE_SHIP_BONUS = 24 --12 --Amount of naval yards you need to get a bonus to building really expensive ships
 NDefines.NAI.PRODUCTION_CARRIER_PLANE_BUFFER_RATIO = 2.0
