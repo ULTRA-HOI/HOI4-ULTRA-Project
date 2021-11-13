@@ -156,7 +156,7 @@ NDefines.NProduction.BASE_FACTORY_START_EFFICIENCY_FACTOR = 1 --10	-- Base start
 NDefines.NProduction.BASE_FACTORY_MAX_EFFICIENCY_FACTOR = 25
 NDefines.NProduction.BASE_FACTORY_SPEED = 0.65 				-- Base factory speed multiplier (how much hoi3 style IC each factory gives).
 NDefines.NProduction.BASE_FACTORY_SPEED_MIL = 1.5 --8				-- Base factory speed multiplier (how much hoi3 style IC each factory gives).
-NDefines.NProduction.BASE_FACTORY_SPEED_NAV = 1.25
+NDefines.NProduction.BASE_FACTORY_SPEED_NAV = 1.5
 
 NDefines.NProduction.BASE_FACTORY_EFFICIENCY_BALANCE_FACTOR = 0.1 			-- Factory efficiency balancing factor
 
