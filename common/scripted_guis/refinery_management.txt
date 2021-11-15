@@ -1,0 +1,147 @@
+scripted_gui = {
+
+	refinery_management = {
+
+		context_type = selected_state_context
+
+		window_name = "refinery_management_window"
+
+		parent_window_token = selected_state_view
+
+		visible = {
+			is_controlled_by = ROOT
+			OR = {
+				steel_refinery > 0
+				steel_refinery_inactive > 0
+				aluminium_refinery > 0
+				aluminium_refinery_inactive > 0
+				synthetic_refinery > 0
+				synthetic_refinery_inactive > 0
+				synthetic_rubber_refinery > 0
+				synthetic_rubber_refinery_inactive > 0
+			}
+		}
+
+		ai_enabled = {
+			always = no
+		}
+
+		effects = {
+			steel_refinery_open_click = {
+				remove_building = {
+					type = steel_refinery_inactive
+					level = 1
+				}
+				add_building_construction = {
+					type = steel_refinery
+					level = 1
+					instant_build = yes
+				}
+			}
+			steel_refinery_close_click = {
+				remove_building = {
+					type = steel_refinery
+					level = 1
+				}
+				add_building_construction = {
+					type = steel_refinery_inactive
+					level = 1
+					instant_build = yes
+				}
+			}
+			aluminium_refinery_open_click = {
+				remove_building = {
+					type = aluminium_refinery_inactive
+					level = 1
+				}
+				add_building_construction = {
+					type = aluminium_refinery
+					level = 1
+					instant_build = yes
+				}
+			}
+			aluminium_refinery_close_click = {
+				remove_building = {
+					type = aluminium_refinery
+					level = 1
+				}
+				add_building_construction = {
+					type = aluminium_refinery_inactive
+					level = 1
+					instant_build = yes
+				}
+			}
+			synthetic_refinery_open_click = {
+				remove_building = {
+					type = synthetic_refinery_inactive
+					level = 1
+				}
+				add_building_construction = {
+					type = synthetic_refinery
+					level = 1
+					instant_build = yes
+				}
+			}
+			synthetic_refinery_close_click = {
+				remove_building = {
+					type = synthetic_refinery
+					level = 1
+				}
+				add_building_construction = {
+					type = synthetic_refinery_inactive
+					level = 1
+					instant_build = yes
+				}
+			}
+			synthetic_rubber_refinery_open_click = {
+				remove_building = {
+					type = synthetic_rubber_refinery_inactive
+					level = 1
+				}
+				add_building_construction = {
+					type = synthetic_rubber_refinery
+					level = 1
+					instant_build = yes
+				}
+			}
+			synthetic_rubber_refinery_close_click = {
+				remove_building = {
+					type = synthetic_rubber_refinery
+					level = 1
+				}
+				add_building_construction = {
+					type = synthetic_rubber_refinery_inactive
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+
+		triggers = {
+			steel_refinery_open_click_enabled = {
+				steel_refinery_inactive > 0
+			}
+			steel_refinery_close_click_enabled = {
+				steel_refinery > 0
+			}
+			aluminium_refinery_open_click_enabled = {
+				aluminium_refinery_inactive > 0
+			}
+			aluminium_refinery_close_click_enabled = {
+				aluminium_refinery > 0
+			}
+			synthetic_refinery_open_click_enabled = {
+				synthetic_refinery_inactive > 0
+			}
+			synthetic_refinery_close_click_enabled = {
+				synthetic_refinery > 0
+			}
+			synthetic_rubber_refinery_open_click_enabled = {
+				synthetic_rubber_refinery_inactive > 0
+			}
+			synthetic_rubber_refinery_close_click_enabled = {
+				synthetic_rubber_refinery > 0
+			}
+		}
+	}
+}
