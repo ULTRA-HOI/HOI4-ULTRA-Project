@@ -97,3 +97,76 @@ purchase_available = {
 		}
 	}
 }
+
+calculate_equipment_buy_pp_cost = {
+	set_temp_variable = { buy_equipment_cost = 25 }
+	if = {
+		limit = {
+			OR = {
+				AND = {
+					has_completed_focus = CHI_mission_to_germany
+					FROM = {
+						original_tag = GER
+					}
+				}
+				AND = {
+					has_completed_focus = CHI_reach_out_to_france
+					FROM = {
+						original_tag = FRA
+					}
+				}
+				AND = {
+					has_completed_focus = CHI_british_cooperation
+					FROM = {
+						original_tag = ENG
+					}
+				}
+				AND = {
+					has_completed_focus = CHI_mission_to_the_us
+					FROM = {
+						original_tag = USA
+					}
+				}
+			}
+			subtract_from_temp_variable = { buy_equipment_cost = 10 }
+		}
+	}
+	if = {
+		limit = {
+			has_idea = german_advisors
+			FROM = {
+				original_tag = GER
+			}
+		}
+		subtract_from_temp_variable = { buy_equipment_cost = 5 }
+	}
+}
+
+has_equipment_buy_pp_cost_discount = {
+	OR = {
+		AND = {
+			has_completed_focus = CHI_mission_to_germany
+			FROM = {
+				original_tag = GER
+			}
+		}
+		AND = {
+			has_completed_focus = CHI_reach_out_to_france
+			FROM = {
+				original_tag = FRA
+			}
+		}
+		AND = {
+			has_completed_focus = CHI_british_cooperation
+			FROM = {
+				original_tag = ENG
+			}
+		}
+		AND = {
+			has_completed_focus = CHI_mission_to_the_us
+			FROM = {
+				original_tag = USA
+			}
+		}
+	}
+}

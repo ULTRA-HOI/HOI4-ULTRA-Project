@@ -11,28 +11,7 @@ purchase_foreign_equipment_category = {
 			hidden_trigger = {
 				NOT = { has_country_flag = purchases_show }
 			}
-			OR = {
-				original_tag = FIN
-				original_tag = POL
-				original_tag = HUN
-				original_tag = ROM
-				original_tag = BUL
-				original_tag = YUG
-				original_tag = GRE
-				original_tag = TUR
-				original_tag = SIA
-				original_tag = IRQ
-				original_tag = PER
-				original_tag = CHI
-				original_tag = SWI
-				original_tag = AUS
-				original_tag = HOL
-				original_tag = SPR
-				original_tag = SPA
-				original_tag = SWE
-				original_tag = DEN
-				original_tag = NOR
-			}
+			equipment_buyer = yes
 		}
 
 		complete_effect = {
@@ -46,35 +25,16 @@ purchase_foreign_equipment_category = {
 		ai_will_do = {
 			factor = -9999
 			}
-		visible = { has_country_flag = purchases_show
-			OR = {
-				original_tag = FIN
-				original_tag = POL
-				original_tag = HUN
-				original_tag = ROM
-				original_tag = BUL
-				original_tag = YUG
-				original_tag = GRE
-				original_tag = TUR
-				original_tag = SIA
-				original_tag = IRQ
-				original_tag = PER
-				original_tag = CHI
-				original_tag = SWI
-				original_tag = AUS
-				original_tag = HOL
-				original_tag = SPR
-				original_tag = SPA
-				original_tag = SWE
-				original_tag = DEN
-				original_tag = NOR
-			}
+		visible = {
+			has_country_flag = purchases_show
+			equipment_buyer = yes
 		}
 
 		complete_effect = {
 			clr_country_flag = purchases_show
 		}
 	}
+	
 	purchase_infantry_equipment = {
 		icon = generic_industry
 	
@@ -95,9 +55,10 @@ purchase_foreign_equipment_category = {
 		available = {
 			purchase_available = yes
 			num_of_civilian_factories_available_for_projects > 7
+			calculate_equipment_buy_pp_cost = yes
 		}
 		
-		cost = 25
+		cost = var:buy_equipment_cost?25
 		
 		days_re_enable = 90
 		fire_only_once = no
@@ -110,7 +71,19 @@ purchase_foreign_equipment_category = {
 			}
 			modifier = {
 				factor = 3
-				original_tag = CHI
+				is_literally_china = yes
+			}
+			modifier = {
+				factor = 0.2
+				is_chinese_warlord = yes
+			}
+			modifier = {
+				factor = 1.5
+				has_equipment_buy_pp_cost_discount = yes
+			}
+			modifier = {
+				factor = 1.5
+				has_idea = german_advisors
 			}
 			modifier = {
 				factor = 0
@@ -190,9 +163,10 @@ purchase_foreign_equipment_category = {
 		available = {
 			purchase_available = yes
 			num_of_civilian_factories_available_for_projects > 7
+			calculate_equipment_buy_pp_cost = yes
 		}
 		
-		cost = 25
+		cost = var:buy_equipment_cost?25
 		
 		days_re_enable = 90
 		fire_only_once = no
@@ -202,6 +176,22 @@ purchase_foreign_equipment_category = {
 			modifier = {
 				factor = 2
 				is_in_faction_with = FROM
+			}
+			modifier = {
+				factor = 3
+				is_literally_china = yes
+			}
+			modifier = {
+				factor = 0.2
+				is_chinese_warlord = yes
+			}
+			modifier = {
+				factor = 1.5
+				has_equipment_buy_pp_cost_discount = yes
+			}
+			modifier = {
+				factor = 1.5
+				has_idea = german_advisors
 			}
 			modifier = {
 				factor = 0
@@ -283,9 +273,10 @@ purchase_foreign_equipment_category = {
 		available = {
 			purchase_available = yes
 			num_of_civilian_factories_available_for_projects > 7
+			calculate_equipment_buy_pp_cost = yes
 		}
 		
-		cost = 25
+		cost = var:buy_equipment_cost?25
 		
 		days_re_enable = 90
 		fire_only_once = no
@@ -295,6 +286,22 @@ purchase_foreign_equipment_category = {
 			modifier = {
 				factor = 2
 				is_in_faction_with = FROM
+			}
+			modifier = {
+				factor = 3
+				is_literally_china = yes
+			}
+			modifier = {
+				factor = 0.2
+				is_chinese_warlord = yes
+			}
+			modifier = {
+				factor = 1.5
+				has_equipment_buy_pp_cost_discount = yes
+			}
+			modifier = {
+				factor = 1.5
+				has_idea = german_advisors
 			}
 			modifier = {
 				factor = 0
@@ -376,9 +383,10 @@ purchase_foreign_equipment_category = {
 		available = {
 			purchase_available = yes
 			num_of_civilian_factories_available_for_projects > 7
+			calculate_equipment_buy_pp_cost = yes
 		}
 		
-		cost = 25
+		cost = var:buy_equipment_cost?25
 		
 		days_re_enable = 90
 		fire_only_once = no
@@ -388,6 +396,22 @@ purchase_foreign_equipment_category = {
 			modifier = {
 				factor = 2
 				is_in_faction_with = FROM
+			}
+			modifier = {
+				factor = 3
+				is_literally_china = yes
+			}
+			modifier = {
+				factor = 0.2
+				is_chinese_warlord = yes
+			}
+			modifier = {
+				factor = 1.5
+				has_equipment_buy_pp_cost_discount = yes
+			}
+			modifier = {
+				factor = 1.5
+				has_idea = german_advisors
 			}
 			modifier = {
 				factor = 0
@@ -467,9 +491,10 @@ purchase_foreign_equipment_category = {
 		available = {
 			purchase_available = yes
 			num_of_civilian_factories_available_for_projects > 7
+			calculate_equipment_buy_pp_cost = yes
 		}
 		
-		cost = 25
+		cost = var:buy_equipment_cost?25
 		
 		days_re_enable = 90
 		fire_only_once = no
@@ -481,8 +506,23 @@ purchase_foreign_equipment_category = {
 				is_in_faction_with = FROM
 			}
 			modifier = {
+				factor = 3
+				is_literally_china = yes
+			}
+			modifier = {
+				factor = 0.2
+				is_chinese_warlord = yes
+			}
+			modifier = {
+				factor = 1.5
+				has_equipment_buy_pp_cost_discount = yes
+			}
+			modifier = {
+				factor = 1.5
+				has_idea = german_advisors
+			}
+			modifier = {
 				factor = 0
-                               
 				OR = {
 				    original_tag = CHI
 					num_of_civilian_factories < 5
@@ -561,9 +601,10 @@ purchase_foreign_equipment_category = {
 		available = {
 			purchase_available = yes
 			num_of_civilian_factories_available_for_projects > 7
+			calculate_equipment_buy_pp_cost = yes
 		}
 		
-		cost = 25
+		cost = var:buy_equipment_cost?25
 		
 		days_re_enable = 90
 		fire_only_once = no
@@ -573,6 +614,22 @@ purchase_foreign_equipment_category = {
 			modifier = {
 				factor = 2
 				is_in_faction_with = FROM
+			}
+			modifier = {
+				factor = 3
+				is_literally_china = yes
+			}
+			modifier = {
+				factor = 0.2
+				is_chinese_warlord = yes
+			}
+			modifier = {
+				factor = 1.5
+				has_equipment_buy_pp_cost_discount = yes
+			}
+			modifier = {
+				factor = 1.5
+				has_idea = german_advisors
 			}
 			modifier = {
 				factor = 0
@@ -653,9 +710,10 @@ purchase_foreign_equipment_category = {
 		available = {
 			purchase_available = yes
 			num_of_civilian_factories_available_for_projects > 7
+			calculate_equipment_buy_pp_cost = yes
 		}
 		
-		cost = 25
+		cost = var:buy_equipment_cost?25
 		
 		days_re_enable = 90
 		fire_only_once = no
@@ -665,6 +723,22 @@ purchase_foreign_equipment_category = {
 			modifier = {
 				factor = 2
 				is_in_faction_with = FROM
+			}
+			modifier = {
+				factor = 3
+				is_literally_china = yes
+			}
+			modifier = {
+				factor = 0.2
+				is_chinese_warlord = yes
+			}
+			modifier = {
+				factor = 1.5
+				has_equipment_buy_pp_cost_discount = yes
+			}
+			modifier = {
+				factor = 1.5
+				has_idea = german_advisors
 			}
 			modifier = {
 				factor = 0
@@ -746,9 +820,10 @@ purchase_foreign_equipment_category = {
 		available = {
 			purchase_available = yes
 			num_of_civilian_factories_available_for_projects > 7
+			calculate_equipment_buy_pp_cost = yes
 		}
 		
-		cost = 25
+		cost = var:buy_equipment_cost?25
 		
 		days_re_enable = 90
 		fire_only_once = no
@@ -758,6 +833,22 @@ purchase_foreign_equipment_category = {
 			modifier = {
 				factor = 2
 				is_in_faction_with = FROM
+			}
+			modifier = {
+				factor = 3
+				is_literally_china = yes
+			}
+			modifier = {
+				factor = 0.2
+				is_chinese_warlord = yes
+			}
+			modifier = {
+				factor = 1.5
+				has_equipment_buy_pp_cost_discount = yes
+			}
+			modifier = {
+				factor = 1.5
+				has_idea = german_advisors
 			}
 			modifier = {
 				factor = 0
@@ -839,9 +930,10 @@ purchase_foreign_equipment_category = {
 		available = {
 			purchase_available = yes
 			num_of_civilian_factories_available_for_projects > 7
+			calculate_equipment_buy_pp_cost = yes
 		}
 		
-		cost = 25
+		cost = var:buy_equipment_cost?25
 		
 		days_re_enable = 90
 		fire_only_once = no
@@ -851,6 +943,22 @@ purchase_foreign_equipment_category = {
 			modifier = {
 				factor = 2
 				is_in_faction_with = FROM
+			}
+			modifier = {
+				factor = 3
+				is_literally_china = yes
+			}
+			modifier = {
+				factor = 0.2
+				is_chinese_warlord = yes
+			}
+			modifier = {
+				factor = 1.5
+				has_equipment_buy_pp_cost_discount = yes
+			}
+			modifier = {
+				factor = 1.5
+				has_idea = german_advisors
 			}
 			modifier = {
 				factor = 0
@@ -932,9 +1040,10 @@ purchase_foreign_equipment_category = {
 		available = {
 			purchase_available = yes
 			num_of_civilian_factories_available_for_projects > 7
+			calculate_equipment_buy_pp_cost = yes
 		}
 		
-		cost = 25
+		cost = var:buy_equipment_cost?25
 		
 		days_re_enable = 90
 		fire_only_once = no
@@ -944,6 +1053,22 @@ purchase_foreign_equipment_category = {
 			modifier = {
 				factor = 2
 				is_in_faction_with = FROM
+			}
+			modifier = {
+				factor = 3
+				is_literally_china = yes
+			}
+			modifier = {
+				factor = 0.2
+				is_chinese_warlord = yes
+			}
+			modifier = {
+				factor = 1.5
+				has_equipment_buy_pp_cost_discount = yes
+			}
+			modifier = {
+				factor = 1.5
+				has_idea = german_advisors
 			}
 			modifier = {
 				factor = 0
