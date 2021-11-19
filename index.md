@@ -1,5 +1,60 @@
 # Changelog
 
+### 0.11.0
+
+### Features
+
+- Industrial granualrity increased by a factor of 4
+- Token costs in coal/bauxite/iron on equipments are no longer needed
+
+### Database 
+
+- Industry numbers rescaled to be closer from Kennedy's studies. Majors starting industrial potential increased comparatively to minors, majors rescaled toward each others to be closer to historical sources.
+- Countries starts less militarized (lower mils to civ ratio)
+- Weather reworked in Europe to get proper winters, even in Western Europe. Now, it is more painfull to attack Northern France between November and March for exemple.
+- Fixed/improved various localisations 
+- Germany starts without any Fieldmarshalls 
+- Terrains now gives temperature modifiers
+
+### UI 
+
+- New State UI allowing up to 225 shared buildings
+- Reffinery management GUI tool
+
+### Map 
+
+- Northern Macedonia is now a bulgarian core
+- Vinnistya state resized to allow a proper Romanian Transnistria
+- Southern Slovakia is now only a hungarian core
+- Added VP/urban tiles in Northern France 
+- Reworked completely the Rhein-Ruhr area to look closer to actual one
+- Suwalky triangle added as enclave State 
+- Reworked states to get historical MR-pact border within Poland
+- Reworked northern Norway map so their is no longer one single giant State and Strategic region there
+- Reworked states around the Ardennes, expend the strategic area so Sedan is correctly part of it
+- Splitted the french alps State and reshaped states and strategic regions in southern France
+
+### Balance 
+
+- Prewar Industrial growth lowered from ~10% per year to about 3-5%
+- Factory conversion even more desirable
+- Rebalanced various national spirits 
+- equipment purchase feature improved 
+- adjusted some focus length
+- Reverted submarine steel cost
+- Economic systems doesn't affect much resources export ratio
+- Tanks bataillons and derrivative get more hardness % so historical armored division hardness is something relevant enough
+- Adjusted naval guns hit profiles so naval battles are a bit more deadly
+- Reduced naval positioning penalty
+
+### AI 
+
+- AI vs AI Eastern front should be less likely to collapse 
+- Stopped AI to do unnecessary conscriptions
+- German AI now correctly recruit Speer as soon it is available
+- Serious bug councerning Soviet Union converting every divisions into tanks corrected
+
+
 ### 0.10.1
 
 ### Features 
