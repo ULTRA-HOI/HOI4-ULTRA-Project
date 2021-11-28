@@ -201,7 +201,7 @@ characters={
 		}
 		advisor={
 			cost = 150
-			slot = theorist
+			slot = land_theorist
 			idea_token = manstein
 			ledger = army
 			allowed = {
@@ -233,7 +233,7 @@ characters={
 		}
 		advisor={
 			cost = 100
-			slot = theorist
+			slot = land_theorist
 			idea_token = heinz_guderian
 			ledger = army
 			allowed = {
@@ -812,7 +812,7 @@ characters={
 		}
 		advisor={
 			cost = 150
-			slot = theorist
+			slot = naval_theorist
 			idea_token = alfred_saalwachter
 			ledger = navy
 			allowed = {
@@ -998,7 +998,7 @@ characters={
 		}
 		advisor={
 			cost = 150
-			slot = theorist
+			slot = air_theorist
 			idea_token = wolfram_von_richthofen
 			ledger = air
 			allowed = {
@@ -1019,7 +1019,7 @@ characters={
 		}
 		advisor={
 			cost = 100
-			slot = theorist
+			slot = air_theorist
 			idea_token = walther_wever
 			ledger = air
 			allowed = {
@@ -1038,7 +1038,7 @@ characters={
 		}
 		advisor={
 			cost = 100
-			slot = theorist
+			slot = air_theorist
 			idea_token = ernst_udet
 			ledger = air
 			allowed = {
@@ -1059,7 +1059,7 @@ characters={
 		}
 		advisor={
 			cost = 100
-			slot = theorist
+			slot = naval_theorist
 			idea_token = otto_ciliax
 			ledger = navy
 			allowed = {
@@ -1204,7 +1204,39 @@ characters={
 				}
 			}
 			traits = {
-				air_chief_ground_support_2
+				air_chief_ground_support_3
+			}
+			cost = 100
+			ai_will_do = {
+				factor = 2.000
+			}
+		}
+		advisor={
+			slot = political_advisor
+			idea_token = goering
+			allowed = {
+				original_tag = GER
+			}
+			available = {
+				or = {
+					has_government = fascism
+					has_country_flag = GER_reinstated_nazi_leadership
+				}
+				if = {
+					limit = { has_dlc = "Man the Guns" }	
+					NOT = { has_autonomy_state = autonomy_supervised_state }
+				}
+				has_completed_focus = GER_four_year_plan
+				
+				IF = {
+					limit = {
+						has_completed_focus = GER_autarky
+					}
+					has_idea = autarki_economy
+				}
+			}
+			traits = {
+				captain_of_industry
 			}
 			cost = 100
 			ai_will_do = {
@@ -1440,7 +1472,7 @@ characters={
 				original_tag = GER
 			}
 			traits = {
-				armaments_organizer 
+				reich_architect
 			}
 		}		
 	}
@@ -1460,13 +1492,13 @@ characters={
 				original_tag = GER
 			}
 			available = {
-				has_completed_focus = GER_four_year_plan 
 				not = {
 					has_completed_focus = GER_demand_sudetenland 
+					has_war = yes
 				}
 			}
 			traits = {
-				captain_of_industry 
+				financial_expert
 			}
 			ai_will_do = {
 				factor = 2.000
@@ -1894,6 +1926,7 @@ characters={
 			idea_token = ger_wilhelm_canaris
 			available = {
 				has_intelligence_agency = yes 
+				has_idea = disloyal_abwehr
 			}
 			allowed = {
 				original_tag = GER
