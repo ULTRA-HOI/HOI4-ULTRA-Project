@@ -62,16 +62,22 @@ country_event = {
 		ai_chance = {
 			base = 40
 			modifier = {
-				factor = 0				
-				any_other_country = {
-					OR = {
-						is_major = yes
-						tag = YUG
+				factor = 0
+				OR = {			
+					any_other_country = {
+						OR = {
+							is_major = yes
+							tag = YUG
+						}
+						NOT = { tag = ITA }
+						OR = {
+							has_guaranteed = ROOT
+							is_in_faction_with = ROOT
+						}
 					}
-					NOT = { tag = ITA }
-					OR = {
-						has_guaranteed = ROOT
-						is_in_faction_with = ROOT
+					AND = {
+						is_subject = yes
+						NOT = { is_subject_of = ITA }
 					}
 				}
 			}
@@ -81,6 +87,10 @@ country_event = {
 					has_government = communism
 					has_government = fascism #glorious Albania will never yield!
 				}
+			}
+			modifier = {
+				factor = 5
+				is_subject_of = ITA
 			}
 		}
 		ITA = {
@@ -123,6 +133,16 @@ country_event = {
 						}
 					}
 				}
+			}
+			modifier = {
+				add = 100
+				is_in_faction = yes
+				NOT = { is_in_faction_with = ITA }
+			}
+			modifier = {
+				add = 100
+				is_subject = yes
+				NOT = { is_subject_of = ITA }
 			}
 		}
 		ITA = {
@@ -208,8 +228,8 @@ country_event = {
 			uses = 1
 			technology = tech_mountaineers2
 		}
-		add_tech_bonus = {
-			bonus = 2.0
+		add_doctrine_cost_reduction = {
+			cost_reduction = 0.35
 			uses = 2
 			category = naval_doctrine
 		}
