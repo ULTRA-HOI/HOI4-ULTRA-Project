@@ -132,9 +132,8 @@ country_event = {
 						}
 					}
 				}
-				create_field_marshal = {
-					name = "Saturnino Cedillo"
-					gfx = "GFX_portrait_mex_saturnino_cedillo"
+				add_field_marshal_role = {
+					character = MEX_saturnino_cedillo
 					traits = { trait_reckless }
 					skill = 3
 					attack_skill = 4
@@ -142,9 +141,8 @@ country_event = {
 					planning_skill = 2
 					logistics_skill = 2
 				}
-				create_corps_commander = { # Fictitious
-					name = "Manuel Sánchez"
-					portrait_path = "gfx/leaders/South America/Portrait_South_America_Generic_land_2.dds"
+				add_corps_commander_role = { # Fictitious
+					character = MEX_manuel_sanchez
 					traits = { harsh_leader }
 					skill = 3
 					attack_skill = 2
@@ -156,30 +154,32 @@ country_event = {
 					limit = {
 						has_government = neutrality
 					}
-					create_country_leader = {
-						name = "Saturnino Cedillo"
-						desc = "POLITICS_SATURNINO_CEDILLO_DESC"
-						picture = "GFX_portrait_mex_saturnino_cedillo"
-						expire = "1965.1.1"
-						ideology = despotism
-						traits = {
-							strongman_of_san_luis_potosi
+					add_country_leader_role = {
+						character = MEX_saturnino_cedillo
+						country_leader = {
+							expire = "1965.1.1"
+							ideology = despotism
+							traits = {
+								strongman_of_san_luis_potosi
+							}
 						}
+						promote_leader = yes
 					}
 				}
 				if = {
 					limit = {
 						has_government = fascism
 					}
-					create_country_leader = {
-						name = "Saturnino Cedillo"
-						desc = "POLITICS_SATURNINO_CEDILLO_DESC"
-						picture = "GFX_portrait_mex_saturnino_cedillo"
-						expire = "1965.1.1"
-						ideology = fascism_ideology
-						traits = {
-							strongman_of_san_luis_potosi
+					add_country_leader_role = {
+						character = MEX_saturnino_cedillo
+						country_leader = {
+							expire = "1965.1.1"
+							ideology = fascism_ideology
+							traits = {
+								strongman_of_san_luis_potosi
+							}
 						}
+						promote_leader = yes
 					}
 				}
 			}
@@ -1056,7 +1056,7 @@ country_event = {
 			AND = {
 				has_government = communism
 				NOT = {
-					has_country_leader = { ruling_only = yes name = "Dionisio Encina" }
+					has_country_leader = { ruling_only = yes character = MEX_dionisio_encina }
 				} 
 			}
 
@@ -1064,6 +1064,14 @@ country_event = {
 		NOT = {
 			has_global_flag = trotsky_not_welcome_in_mexico
 		}
+		NOT = {
+			SOV_is_left_opposition = yes 
+			NOT = { SOV_soviet_civil_war_not_started = yes } # IF the civil war has already started, and Left Opposition has risen up, Trotsky probably won't appear in Mexico
+		}
+		NOT = {
+			has_global_flag = flag_trotsky_dead
+		}
+		
 	}
 	
 	mean_time_to_happen = {
@@ -1076,7 +1084,7 @@ country_event = {
 		if = {
 			limit = {
 				SOV = {
-					has_country_leader = { name = "Joseph Stalin" }
+					has_country_leader = { character = SOV_iosif_stalin }
 				}
 			}
 			SOV = {
@@ -1150,7 +1158,7 @@ country_event = {
 	option = {
 		trigger = {
 			SOV = {
-				has_country_leader = { name = "Joseph Stalin" }
+				has_country_leader = { character = SOV_iosif_stalin }
 			}
 			NOT = {
 				has_war_with = SOV
@@ -1162,11 +1170,11 @@ country_event = {
 		if = {
 			limit = {
 				SOV = {
-					has_country_leader = { name = "Joseph Stalin" }
+					has_country_leader = { character = SOV_iosif_stalin }
 				}
 				NOT = {
 					has_country_leader = {
-						name = "Hernán Laborde"
+						character = MEX_hernan_laborde
 						ruling_only = yes
 					}
 				}
@@ -1209,7 +1217,59 @@ country_event = {
 		}
 	}
 	
-	
+	option = {
+		name = mexico.17.c # Invite him to join the government
+		
+		trigger = {
+			OR = {
+				has_government = communism
+				has_government = neutrality
+			}
+			has_dlc = "Man the Guns"
+		}
+		
+		custom_effect_tooltip = available_chief_of_army
+		show_ideas_tooltip = MEX_leon_trotsky
+		
+		add_stability = -0.03
+		
+		if = {
+			limit = {
+				SOV = {
+					has_country_leader = { character = SOV_iosif_stalin }
+				}
+			}
+			SOV = {
+				add_opinion_modifier = {
+					target = ROOT
+					modifier = mexico_trotskyite_wreckers
+				}
+			}
+		}
+		USA = {
+			add_opinion_modifier = {
+				target = ROOT
+				modifier = mexico_communist_menace
+			}
+		}
+		
+		set_global_flag = flag_mexico_invited_trotsky_to_government
+		
+		ai_chance = {
+			factor = 0
+			
+			modifier = {
+				add = 100
+				OR = {
+					has_country_flag = MEX_AI_CARDENISMO 
+					has_game_rule = {
+						rule = MEX_ai_behavior
+						option = CARDENISMO
+					}
+				}
+			}
+		}
+		
 }
 
 # The 1940 election begins
@@ -1316,21 +1376,22 @@ country_event = {
 		trigger = {
 			NOT = {
 				has_country_leader = {
-					name = "Francisco Múgica"
+					character = MEX_francisco_mugica
 				}
 			}
 			has_government = neutrality
 		}
 
-		create_country_leader = {
-			name = "Francisco Múgica"
-			desc = "POLITICS_FRANCISCO_MUGICA_DESC"
-			picture = "GFX_portrait_mex_francisco_mugica"
-			expire = "1965.1.1"
-			ideology = moderatism
-			traits = {
-				revolutionary_general
+		add_country_leader_role = {
+			character = MEX_francisco_mugica
+			country_leader = {
+				expire = "1965.1.1"
+				ideology = moderatism
+				traits = {
+					revolutionary_general
+				}
 			}
+			promote_leader = yes
 		}
 		
 		hidden_effect = { # Juan Andreu complains he was not selected
@@ -1358,21 +1419,22 @@ country_event = {
 		trigger = {
 			NOT = {
 				has_country_leader = {
-					name = "Manuel Ávila Camacho"
+					character = MEX_manuel_avila_camacho
 				}
 			}
 			has_government = neutrality
 		}
 
-		create_country_leader = {
-			name = "Manuel Ávila Camacho"
-			desc = "POLITICS_MANUEL_AVILA_DESC"
-			picture = "GFX_portrait_mex_avila_civil"
-			expire = "1965.1.1"
-			ideology = oligarchism
-			traits = {
-				the_gentleman_president
+		add_country_leader_role = {
+			character = MEX_manuel_avila_camacho
+			country_leader = {
+				expire = "1965.1.1"
+				ideology = oligarchism
+				traits = {
+					the_gentleman_president
+				}
 			}
+			promote_leader = yes
 		}
 		
 		hidden_effect = { # Juan Andreu complains he was not selected
@@ -1404,21 +1466,22 @@ country_event = {
 			has_completed_focus = MEX_focus_support_general_cedillo
 			NOT = {
 				has_country_leader = {
-					name = "Saturnino Cedillo"
+					character = MEX_saturnino_cedillo
 				}
 			}
 			has_government = neutrality
 		}
 
-		create_country_leader = {
-			name = "Saturnino Cedillo"
-			desc = "POLITICS_SATURNINO_CEDILLO_DESC"
-			picture = "GFX_portrait_mex_saturnino_cedillo"
-			expire = "1965.1.1"
-			ideology = despotism
-			traits = {
-				strongman_of_san_luis_potosi
+		add_country_leader_role = {
+			character = MEX_saturnino_cedillo
+			country_leader = {
+				expire = "1965.1.1"
+				ideology = despotism
+				traits = {
+					strongman_of_san_luis_potosi
+				}
 			}
+			promote_leader = yes
 		}
 	}
 	
@@ -1428,21 +1491,22 @@ country_event = {
 	#	trigger = {
 	#		NOT = {
 	#			has_country_leader = {
-	#				name = "Juan Andreu"
+	#				character = MEX_juan_andreu
 	#			}
 	#		}
 	#		has_government = neutrality
 	#	}
 
-	#	create_country_leader = {
-	#		name = "Juan Andreu"
-	#		desc = "POLITICS_JUAN_ANDREU_DESC"
-	#		picture = "GFX_portrait_mex_juan_andreu"
-	#		expire = "1965.1.1"
-	#		ideology = oligarchism
-	#		traits = {
-	#			the_silver_president
+	#	add_country_leader_role = {
+	#		character = MEX_juan_andreu
+	#		country_leader = {
+	#			expire = "1965.1.1"
+	#			ideology = oligarchism
+	#			traits = {
+	#				the_silver_president
+	#			}
 	#		}
+	#		promote_leader = yes
 	#	}
 	#}
 
@@ -1455,21 +1519,22 @@ country_event = {
 			has_completed_focus = MEX_focus_confederation_of_mexican_workers
 			NOT = {
 				has_country_leader = {
-					name = "Vicente Lombardo"
+					character = MEX_vicente_lombardo
 				}
 			}
 			has_government = democratic
 		}
-
-		create_country_leader = {
-			name = "Vicente Lombardo"
-			desc = "POLITICS_VICENTE_LOMBARDO_DESC"
-			picture = "GFX_portrait_mex_vicente_lombardo"
-			expire = "1965.1.1"
-			ideology = socialism
-			traits = {
-				the_dean_of_mexican_marxism
+		
+		add_country_leader_role = {
+			character = MEX_vicente_lombardo
+			country_leader = {
+				expire = "1965.1.1"
+				ideology = socialism
+				traits = {
+					the_dean_of_mexican_marxism
+				}
 			}
+			promote_leader = yes
 		}
 		
 		hidden_effect = { # Juan Andreu complains he was not selected
@@ -1501,21 +1566,22 @@ country_event = {
 		trigger = {
 			NOT = {
 				has_country_leader = {
-					name = "Francisco Múgica"
+					character = MEX_francisco_mugica
 				}
 			}
 			has_government = democratic
 		}
 
-		create_country_leader = {
-			name = "Francisco Múgica"
-			desc = "POLITICS_FRANCISCO_MUGICA_DESC"
-			picture = "GFX_portrait_mex_francisco_mugica"
-			expire = "1965.1.1"
-			ideology = socialism
-			traits = {
-				revolutionary_general
+		add_country_leader_role = {
+			character = MEX_francisco_mugica
+			country_leader = {
+				expire = "1965.1.1"
+				ideology = socialism
+				traits = {
+					revolutionary_general
+				}
 			}
+			promote_leader = yes
 		}
 		
 		hidden_effect = { # Juan Andreu complains he was not selected
@@ -1547,21 +1613,22 @@ country_event = {
 		trigger = {
 			NOT = {
 				has_country_leader = {
-					name = "Manuel Ávila Camacho"
+					character = MEX_manuel_avila_camacho
 				}
 			}
 			has_government = democratic
 		}
-
-		create_country_leader = {
-			name = "Manuel Ávila Camacho"
-			desc = "POLITICS_MANUEL_AVILA_DESC"
-			picture = "GFX_portrait_mex_avila_civil"
-			expire = "1965.1.1"
-			ideology = conservatism
-			traits = {
-				the_gentleman_president
+		
+		add_country_leader_role = {
+			character = MEX_manuel_avila_camacho
+			country_leader = {
+				expire = "1965.1.1"
+				ideology = conservatism
+				traits = {
+					the_gentleman_president
+				}
 			}
+			promote_leader = yes
 		}
 		
 		hidden_effect = { # Juan Andreu complains he was not selected
@@ -1597,21 +1664,22 @@ country_event = {
 	#	trigger = {
 	#		NOT = {
 	#			has_country_leader = {
-	#				name = "Juan Andreu"
+	#				character = MEX_juan_andreu
 	#			}
 	#		}
 	#		has_government = democratic
 	#	}
 
-	#	create_country_leader = {
-	#		name = "Juan Andreu"
-	#		desc = "POLITICS_JUAN_ANDREU_DESC"
-	#		picture = "GFX_portrait_mex_juan_andreu"
-	#		expire = "1965.1.1"
-	#		ideology = conservatism
-	#		traits = {
-	#			the_silver_president
+	#	add_country_leader_role = {
+	#		character = MEX_juan_andreu
+	#		country_leader = {
+	#			expire = "1965.1.1"
+	#			ideology = conservatism
+	#			traits = {
+	#				the_silver_president
+	#			}
 	#		}
+	#		promote_leader = yes
 	#	}
 	#}
 	
@@ -1624,21 +1692,22 @@ country_event = {
 			has_completed_focus = MEX_focus_confederation_of_mexican_workers
 			NOT = {
 				has_country_leader = {
-					name = "Vicente Lombardo"
+					character = MEX_vicente_lombardo
 				}
 			}
 			has_government = communism
 		}
 
-		create_country_leader = {
-			name = "Vicente Lombardo"
-			desc = "POLITICS_VICENTE_LOMBARDO_DESC"
-			picture = "GFX_portrait_mex_vicente_lombardo"
-			expire = "1965.1.1"
-			ideology = marxism
-			traits = {
-				the_dean_of_mexican_marxism
+		add_country_leader_role = {
+			character = MEX_vicente_lombardo
+			country_leader = {
+				expire = "1965.1.1"
+				ideology = marxism
+				traits = {
+					the_dean_of_mexican_marxism
+				}
 			}
+			promote_leader = yes
 		}
 	}
 	
@@ -1648,31 +1717,32 @@ country_event = {
 		trigger = {
 			NOT = {
 				has_country_leader = {
-					name = "Francisco Múgica"
+					character = MEX_francisco_mugica
 				}
 			}
 			has_government = communism
 		}
 
-		create_country_leader = {
-			name = "Francisco Múgica"
-			desc = "POLITICS_FRANCISCO_MUGICA_DESC"
-			picture = "GFX_portrait_mex_francisco_mugica"
-			expire = "1965.1.1"
-			ideology = marxism
-			traits = {
-				revolutionary_general
+		add_country_leader_role = {
+			character = MEX_francisco_mugica
+			country_leader = {
+				expire = "1965.1.1"
+				ideology = marxism
+				traits = {
+					revolutionary_general
+				}
 			}
+			promote_leader = yes
 		}
 	}
-
+	
 	option = { # Stalinist successor: Dionisio Encina
 		name = mexico.19.k
 		
 		trigger = {
 			NOT = {
 				has_country_leader = {
-					name = "Dionisio Encina"
+					character = MEX_dionisio_encina
 				}
 			}
 
@@ -1685,14 +1755,15 @@ country_event = {
 			}
 		}
 
-		create_country_leader = {
-			name = "Dionisio Encina"
-			desc = "POLITICS_DIONISIO_ENCINA_DESC"
-			picture = "GFX_Portrait_MEX_Dionisio_Encina"
-			expire = "1965.1.1"
-			ideology = stalinism
-			traits = {
-				staunch_stalinist
+		add_country_leader_role = {
+			promote_leader = yes
+			character = MEX_dionisio_encina
+			country_leader = {
+				expire = "1965.1.1"
+				ideology = stalinism
+				traits = {
+					staunch_stalinist
+				}
 			}
 		}
 	}
@@ -1703,7 +1774,7 @@ country_event = {
 		trigger = {
 			NOT = {
 				has_country_leader = {
-					name = "Hernán Laborde"
+					character = MEX_hernan_laborde
 				}
 			}
 			has_government = communism
@@ -1713,24 +1784,44 @@ country_event = {
 				}
 				AND = { # If Trotsky is in power, he steps down and Laborde is successor
 					has_global_flag = flag_mexico_invited_trotsky_to_government
-					has_country_leader = { name = "Leon Trotsky" }
+					has_country_leader = { character = MEX_leon_trotsky }
 				}
 			}
 		}
 
-		create_country_leader = {
-			name = "Hernán Laborde"
-			desc = "POLITICS_HERNAN_LABORDE_DESC"
-			picture = "GFX_Portrait_MEX_Hernan_Laborde"
-			expire = "1965.1.1"
-			ideology = leninism
-			traits = {
-				devoted_trotskyist
+		promote_character = MEX_hernan_laborde
+	}
+
+	option = { # Trotsky himself
+		name = mexico.19.m
+		
+		trigger = {
+			NOT = {
+				has_country_leader = { character = MEX_leon_trotsky }
+			}
+			NOT = { has_global_flag = flag_trotsky_dead }
+			NOT = {
+				SOV = {
+					has_country_leader = { character = SOV_lev_trotsky }
+				}
+			}
+			has_government = communism
+			has_global_flag = flag_mexico_invited_trotsky_to_government
+			NOT = { has_global_flag = flag_trotsky_has_returned_to_ussr_from_mexico }
+		}
+		MEX_leon_trotsky = {
+			add_country_leader_role = {
+				promote_leader = yes
+				country_leader = {
+					ideology = leninism
+					expire = "1965.1.1.1"
+					traits = {
+						exiled_revolutionary
+					}
+				}
 			}
 		}
 	}
-
-	
 	
 	option = { # Continuity candidate: Saturnino Cedillo
 		name = mexico.19.n
@@ -1740,7 +1831,7 @@ country_event = {
 				OR = {
 					has_global_flag = flag_mexico_cedillo_has_revolted
 					has_country_leader = {
-						name = "Saturnino Cedillo"
+						character = MEX_saturnino_cedillo
 					}
 				}	
 			}
@@ -1748,15 +1839,16 @@ country_event = {
 			has_government = fascism
 		}
 
-		create_country_leader = {
-			name = "Saturnino Cedillo"
-			desc = "POLITICS_SATURNINO_CEDILLO_DESC"
-			picture = "GFX_portrait_mex_saturnino_cedillo"
-			expire = "1965.1.1"
-			ideology = fascism_ideology
-			traits = {
-				strongman_of_san_luis_potosi
+		add_country_leader_role = {
+			character = MEX_saturnino_cedillo
+			country_leader = {
+				expire = "1965.1.1"
+				ideology = fascism_ideology
+				traits = {
+					strongman_of_san_luis_potosi
+				}
 			}
+			promote_leader = yes
 		}
 	}
 
@@ -1766,14 +1858,14 @@ country_event = {
 	#	trigger = {
 	#		NOT = {
 	#			has_country_leader = {
-	#				name = "Juan Andreu"
+	#				character = MEX_juan_andreu
 	#			}
 	#		}
 	#		has_government = fascism
 	#	}
 
 	#	create_country_leader = {
-	#		name = "Juan Andreu"
+	#		character = MEX_juan_andreu
 	#		desc = "POLITICS_JUAN_ANDREU_DESC"
 	#		picture = "GFX_portrait_mex_juan_andreu"
 	#		expire = "1965.1.1"
@@ -1791,21 +1883,22 @@ country_event = {
 			has_completed_focus = MEX_focus_legion_of_christ
 			NOT = {
 				has_country_leader = {
-					name = "Jesús Degollado Guízar"
+					character = MEX_jesus_degollado_guizar
 				}
 			}
 			has_government = fascism
 		}
 
-		create_country_leader = {
-			name = "Jesús Degollado Guízar"
-			desc = "POLITICS_JESUS_DEGOLLADO_GUIZAR_DESC"
-			picture = "GFX_portrait_mex_jesus_degollado_guizar"
-			expire = "1965.1.1"
-			ideology = falangism
-			traits = {
-				cristero_general
+		add_country_leader_role = {
+			character = MEX_jesus_degollado_guizar
+			country_leader = {
+				expire = "1965.1.1"
+				ideology = falangism
+				traits = {
+					cristero_general
+				}
 			}
+			promote_leader = yes
 		}
 	}
 
@@ -1815,45 +1908,71 @@ country_event = {
 		trigger = {
 			NOT = {
 				has_country_leader = {
-					name = "Salvador Abascal"
+					character = MEX_salvador_abascal
 				}
 			}
 			has_government = fascism
 		}
-
-		create_country_leader = {
-			name = "Salvador Abascal"
-			desc = "POLITICS_SALVADOR_ABASCAL_DESC"
-			picture = "GFX_Portrait_MEX_Salvador_Abascal"
-			expire = "1965.1.1"
-			ideology = falangism
-			traits = {
-				fascist_militia_leader
+		if = {
+			limit = {
+				has_country_leader = { #If he is already country leader, fake tooltip
+					character = MEX_salvador_abascal
+					ruling_only = no
+				}
+			}
+			effect_tooltip = {
+				add_country_leader_role = {
+					character = MEX_salvador_abascal
+					country_leader = {
+						expire = "1965.1.1"
+						ideology = falangism
+						traits = {
+							fascist_militia_leader
+						}
+					}
+					promote_leader = yes
+				}
+			}
+		}
+		else = {
+			add_country_leader_role = {
+				character = MEX_salvador_abascal
+				country_leader = {
+					expire = "1965.1.1"
+					ideology = falangism
+					traits = {
+						fascist_militia_leader
+					}
+				}
+				promote_leader = yes
 			}
 		}
 	}
+
 	option = { # Neither Trotsky nor Laborde: Valentín Campa
 		name = mexico.19.r
 		
 		trigger = {
 			has_country_leader = {
 			 	ruling_only = yes
-			 	name = "Hernán Laborde"
+			 	character = MEX_hernan_laborde
 			}				
 		}
 
-		create_country_leader = {
-			name = "Valentín Campa"
-			desc = "POLITICS_VALENTIN_CAMPA_DESC"
-			picture = "gfx/leaders/South America/Portrait_South_America_Generic_4.dds"
-			expire = "1965.1.1"
-			ideology = leninism
-			traits = {
-				railroad_enthusiast
+		add_country_leader_role = {
+			character = MEX_valentin_campa
+			country_leader = {
+				expire = "1965.1.1"
+				ideology = leninism
+				traits = {
+					railroad_enthusiast
+				}
 			}
+			promote_leader = yes
 		}
 	}
-	# That should be enough for now.
+
+	# That should be enough for now. # (After endless new character system adjustments): Yes it was definitely enough
 
 }
 
@@ -1885,12 +2004,33 @@ country_event = {
 	
 	is_triggered_only = yes
 
+	trigger = {
+		NOT = {
+			has_global_flag = flag_trotsky_dead
+		}
+	}
+
 	immediate = {
-		set_global_flag = trotsky_dead
+		hidden_effect = {
+			if = {
+				limit = {
+					tag = SOV
+				}
+				SOV_kill_trotsky_effect = yes
+			}
+		}
 	}
 	
 	option = {
 		name = mexico.21.a
+
+		effect_tooltip = {
+			retire_character = SOV_lev_trotsky
+		}
+		swap_ideas = {
+			remove_idea = trotskyite_plot_nsb
+			add_idea = trotskyite_plot_purged
+		}
 	}
 }
 
@@ -1911,7 +2051,7 @@ country_event = {
 		has_global_flag = flag_trotsky_returning_to_ussr_from_mexico
 		has_global_flag = flag_mexico_invited_trotsky_to_government
 		NOT = {
-			has_global_flag = trotsky_dead
+			has_global_flag = flag_trotsky_dead
 		}
 		has_dlc = "Man the Guns"
 	}
@@ -1938,18 +2078,9 @@ country_event = {
 		
 		if = {
 			limit = {
-				has_country_leader = { name = "Leon Trotsky" }
+				has_country_leader = { character = MEX_leon_trotsky }
 			}
-			create_country_leader = {
-				name = "Hernán Laborde"
-				desc = "POLITICS_HERNAN_LABORDE_DESC"
-				picture = "GFX_Portrait_MEX_Hernan_Laborde"
-				expire = "1965.1.1"
-				ideology = leninism
-				traits = {
-					devoted_trotskyist
-				}
-			}
+			promote_character = MEX_hernan_laborde
 		}
 	}
 }
@@ -2371,9 +2502,8 @@ country_event = {
 				}
 				MEX_remove_church_power = yes
 				set_cosmetic_tag = MEX_cristero
-				create_field_marshal = {
-					name = "Jesús Degollado Guízar"
-					gfx = "GFX_portrait_mex_jesus_degollado_guizar"
+				add_field_marshal_role = {
+					character = MEX_jesus_degollado_guizar
 					traits = { war_hero trait_cautious }
 					skill = 3
 					attack_skill = 3
@@ -2381,9 +2511,8 @@ country_event = {
 					planning_skill = 2
 					logistics_skill = 2
 				}
-				create_corps_commander = { # Fictitious
-					name = "Alberto Gorostieta Vega"
-					portrait_path = "gfx/leaders/South America/Portrait_South_America_Generic_land_2.dds"
+				add_corps_commander_role = { # Fictitious
+					character = MEX_alberto_gorostieta_vega
 					traits = { war_hero }
 					skill = 3
 					attack_skill = 2
@@ -2391,9 +2520,8 @@ country_event = {
 					planning_skill = 3
 					logistics_skill = 3
 				}
-				create_corps_commander = { # Fictitious
-					name = "Dionisio Navarro Anguiano"
-					portrait_path = "gfx/leaders/South America/Portrait_South_America_Generic_land_1.dds"
+				add_corps_commander_role = { # Fictitious
+					character = MEX_dionisio_navarro_anguiano
 					traits = { infantry_officer }
 					skill = 3
 					attack_skill = 3
@@ -2401,25 +2529,27 @@ country_event = {
 					planning_skill = 3
 					logistics_skill = 2
 				}
-				create_country_leader = {
-					name = "Jesús Degollado Guízar"
-					desc = "POLITICS_JESUS_DEGOLLADO_GUIZAR_DESC"
-					picture = GFX_portrait_mex_jesus_degollado_guizar
-					expire = "1965.1.1"
-					ideology = falangism
-					traits = {
-						cristero_general
+				add_country_leader_role = {
+					character = MEX_jesus_degollado_guizar
+					country_leader = {
+						expire = "1965.1.1"
+						ideology = falangism
+						traits = {
+							cristero_general
+						}
 					}
+					promote_leader = yes
 				}
-				create_country_leader = {
-					name = "Luis María Martínez"
-					desc = "POLITICS_LUIS_MARIA_MARTINEZ_DESC"
-					picture = "GFX_portrait_MEX_Luis_Maria_Martinez"
-					expire = "1965.1.1"
-					ideology = socialism
-					traits = {
-						primate_of_mexico
+				add_country_leader_role = {
+					character = MEX_luis_maria_martinez
+					country_leader = {
+						expire = "1965.1.1"
+						ideology = socialism
+						traits = {
+							primate_of_mexico
+						}
 					}
+					promote_leader = yes
 				}
 				division_template = {
 					name = "Guardia Cristera"
@@ -2621,105 +2751,113 @@ country_event = {
 						}
 						set_nationality = event_target:mexican_second_revolution_rebeller
 					}
-				}
-				if = {
-					limit = {
-						ROOT = {
-							NOT = {
-								has_completed_focus = MEX_focus_jefe_maximo
+					if = {
+						limit = {
+							ROOT = {
+								NOT = {
+									has_completed_focus = MEX_focus_jefe_maximo
+								}
 							}
 						}
-					}
-					create_field_marshal = {
-						name = "Plutarco E. Calles"
-						id = 711
-						gfx = "GFX_portrait_mex_calles_military"
-						traits = { harsh_leader }
-						skill = 4
-						attack_skill = 4
-						defense_skill = 3
-						planning_skill = 2
-						logistics_skill = 3
+						MEX_plutarco_calles = {
+							add_field_marshal_role = {
+								traits = { harsh_leader }
+								skill = 4
+								attack_skill = 4
+								defense_skill = 3
+								planning_skill = 2
+								logistics_skill = 3
+							}
+							set_nationality = event_target:mexican_second_revolution_rebeller
+						}
 					}
 				}
-				create_corps_commander = { # It's your chance to shine, my boy!
-					name = "Vicente Lombardo"
-					gfx = "GFX_portrait_mex_vicente_lombardo"
-					traits = { politically_connected }
-					skill = 1
-					attack_skill = 1
-					defense_skill = 1
-					planning_skill = 1
-					logistics_skill = 1
+				
+				MEX_vicente_lombardo = {
+					add_corps_commander_role = { # It's your chance to shine, my boy!
+						traits = { politically_connected }
+						skill = 1
+						attack_skill = 1
+						defense_skill = 1
+						planning_skill = 1
+						logistics_skill = 1
+					}	
+					set_nationality = event_target:mexican_second_revolution_rebeller
+
 				}
-				create_corps_commander = {
-					name = "Adolfo de la Huerta"
-					gfx = "GFX_Portrait_MEX_Adolfo_de_la_Huerta"
-					traits = { trait_reckless }
-					skill = 2
-					attack_skill = 2
-					defense_skill = 1
+
+				add_corps_commander_role = {
+					character = MEX_adolfo_de_la_huerta
+					traits = { }
+					skill = 3
+					attack_skill = 3
+					defense_skill = 3
 					planning_skill = 2
 					logistics_skill = 2
-				}
-				create_country_leader = { # Exiled until 1935 following a rebellion attempt, allowed back in by Cardenas and joined the cabinet of Avila
-					name = "Adolfo de la Huerta"
-					desc = "POLITICS_ADOLFO_DE_LA_HUERTA_DESC"
-					picture = "GFX_Portrait_MEX_Adolfo_de_la_Huerta"
-					expire = "1965.1.1"
-					ideology = conservatism
-					traits = {
-						#
+				}				
+				add_country_leader_role = { # Exiled until 1935 following a rebellion attempt, allowed back in by Cardenas and joined the cabinet of Avila
+					character = MEX_adolfo_de_la_huerta
+					country_leader = {
+						expire = "1965.1.1"
+						ideology = conservatism
+						traits = {
+							#
+						}
 					}
+					promote_leader = yes				
 				}
-				create_country_leader = {
-					name = "Plutarco E. Calles"
-					desc = "POLITICS_PLUTARCO_E_CALLES_DESC"
-					picture = GFX_portrait_mex_calles_military
-					expire = "1965.1.1"
-					ideology = despotism
-					traits = {
-						el_jefe_maximo
+				add_country_leader_role = {
+					character = MEX_plutarco_calles
+					country_leader = {
+						expire = "1965.1.1"
+						ideology = despotism
+						traits = {
+							el_jefe_maximo
+						}
 					}
+					promote_leader = yes				
 				}
-				create_country_leader = {
-					name = "Vicente Lombardo"
-					desc = "POLITICS_VICENTE_LOMBARDO_DESC"
-					picture = "GFX_portrait_mex_vicente_lombardo"
-					expire = "1965.1.1"
-					ideology = marxism
-					traits = {
-						the_dean_of_mexican_marxism
+				add_country_leader_role = {
+					character = MEX_vicente_lombardo
+					country_leader = {
+						expire = "1965.1.1"
+						ideology = marxism
+						traits = {
+							the_dean_of_mexican_marxism
+						}
 					}
+				promote_leader = yes				
 				}
 				if = {
 					limit = {
 						NOT = { has_global_flag = flag_mexico_cedillo_has_revolted }
 					}
-					create_country_leader = {
-						name = "Saturnino Cedillo"
-						desc = "POLITICS_SATURNINO_CEDILLO_DESC"
-						picture = "GFX_portrait_mex_saturnino_cedillo"
-						expire = "1965.1.1"
-						ideology = fascism_ideology
-						traits = {
-							strongman_of_san_luis_potosi
+					add_country_leader_role = {
+						character = MEX_saturnino_cedillo
+						country_leader = {
+							expire = "1965.1.1"
+							ideology = fascism_ideology
+							traits = {
+								strongman_of_san_luis_potosi
+							}
 						}
+						promote_leader = yes				
 					}
 				}
 				if = {
 					limit = {
 						has_global_flag = flag_mexico_cedillo_has_revolted
 					}
-					create_country_leader = {
-						name = "Juan Andreu"
-						desc = "POLITICS_JUAN_ANDREU_DESC"
-						picture = "GFX_portrait_mex_juan_andreu"
-						expire = "1965.1.1"
-						ideology = fascism_ideology
-						traits = {
-							the_silver_president
+					add_country_leader_role = {
+						character = MEX_juan_andreu
+						country_leader = {
+							expire = "1965.1.1"
+							ideology = fascism_ideology
+							traits = {
+								the_silver_president
+							}
 						}
+						promote_leader = yes				
 					}
 				}
 				division_template = {
@@ -3021,10 +3159,9 @@ country_event = {
 						cost_factor = 0
 					}
 				}
-				if = {
+				else_if = {
 					limit = {
 						has_tech = improved_light_tank
-						NOT = { has_tech = advanced_light_tank }
 					}
 					create_production_license = {
 						target = MEX
@@ -3034,10 +3171,9 @@ country_event = {
 						cost_factor = 0
 					}
 				}
-				if = {
+				else_if = {
 					limit = {
 						has_tech = basic_light_tank
-						NOT = { has_tech = improved_light_tank }
 					}
 					create_production_license = {
 						target = MEX
@@ -3059,10 +3195,9 @@ country_event = {
 						cost_factor = 0
 					}
 				}
-				if = {
+				else_if = {
 					limit = {
 						has_tech = improved_medium_tank
-						NOT = { has_tech = advanced_medium_tank }
 					}
 					create_production_license = {
 						target = MEX
@@ -3072,10 +3207,9 @@ country_event = {
 						cost_factor = 0
 					}
 				}
-				if = {
+				else_if = {
 					limit = {
 						has_tech = basic_medium_tank
-						NOT = { has_tech = improved_medium_tank }
 					}
 					create_production_license = {
 						target = MEX
@@ -3097,10 +3231,9 @@ country_event = {
 						cost_factor = 0
 					}
 				}
-				if = {
+				else_if = {
 					limit = {
 						has_tech = improved_heavy_tank
-						NOT = { has_tech = advanced_heavy_tank }
 					}
 					create_production_license = {
 						target = MEX
@@ -3110,15 +3243,122 @@ country_event = {
 						cost_factor = 0
 					}
 				}
-				if = {
+				else_if = {
 					limit = {
 						has_tech = basic_heavy_tank
-						NOT = { has_tech = improved_heavy_tank }
 					}
 					create_production_license = {
 						target = MEX
 						equipment = {
 							type = heavy_tank_equipment_1
+						}
+						cost_factor = 0
+					}
+				}
+				if = {
+					limit = {
+						has_tech = advanced_light_tank_chassis
+					}
+					create_production_license = {
+						target = MEX
+						equipment = {
+							type = light_tank_chassis_3
+						}
+						cost_factor = 0
+					}
+				}
+				else_if = {
+					limit = {
+						has_tech = improved_light_tank_chassis
+					}
+					create_production_license = {
+						target = MEX
+						equipment = {
+							type = light_tank_chassis_2
+						}
+						cost_factor = 0
+					}
+				}
+				else_if = {
+					limit = {
+						has_tech = basic_light_tank_chassis
+					}
+					create_production_license = {
+						target = MEX
+						equipment = {
+							type = light_tank_chassis_1
+						}
+						cost_factor = 0
+					}
+				}
+				if = {
+					limit = {
+						has_tech = advanced_medium_tank_chassis
+					}
+					create_production_license = {
+						target = MEX
+						equipment = {
+							type = medium_tank_chassis_3
+						}
+						cost_factor = 0
+					}
+				}
+				else_if = {
+					limit = {
+						has_tech = improved_medium_tank_chassis
+					}
+					create_production_license = {
+						target = MEX
+						equipment = {
+							type = medium_tank_chassis_2
+						}
+						cost_factor = 0
+					}
+				}
+				else_if = {
+					limit = {
+						has_tech = basic_medium_tank_chassis
+					}
+					create_production_license = {
+						target = MEX
+						equipment = {
+							type = medium_tank_chassis_1
+						}
+						cost_factor = 0
+					}
+				}
+				if = {
+					limit = {
+						has_tech = advanced_heavy_tank_chassis
+					}
+					create_production_license = {
+						target = MEX
+						equipment = {
+							type = heavy_tank_chassis_3
+						}
+						cost_factor = 0
+					}
+				}
+				else_if = {
+					limit = {
+						has_tech = improved_heavy_tank_chassis
+					}
+					create_production_license = {
+						target = MEX
+						equipment = {
+							type = heavy_tank_chassis_2
+						}
+						cost_factor = 0
+					}
+				}
+				else_if = {
+					limit = {
+						has_tech = basic_heavy_tank_chassis
+					}
+					create_production_license = {
+						target = MEX
+						equipment = {
+							type = heavy_tank_chassis_1
 						}
 						cost_factor = 0
 					}
@@ -3272,10 +3512,10 @@ country_event = {
 						cost_factor = 0
 					}
 				}
-				if = {
+				else_if = {
 					limit = {
 						has_tech = improved_light_tank
-						NOT = { has_tech = advanced_light_tank }
+						
 					}
 					create_production_license = {
 						target = MEX
@@ -3285,10 +3525,10 @@ country_event = {
 						cost_factor = 0
 					}
 				}
-				if = {
+				else_if = {
 					limit = {
 						has_tech = basic_light_tank
-						NOT = { has_tech = improved_light_tank }
+						
 					}
 					create_production_license = {
 						target = MEX
@@ -3310,10 +3550,10 @@ country_event = {
 						cost_factor = 0
 					}
 				}
-				if = {
+				else_if = {
 					limit = {
 						has_tech = improved_medium_tank
-						NOT = { has_tech = advanced_medium_tank }
+					
 					}
 					create_production_license = {
 						target = MEX
@@ -3323,10 +3563,10 @@ country_event = {
 						cost_factor = 0
 					}
 				}
-				if = {
+				else_if = {
 					limit = {
 						has_tech = basic_medium_tank
-						NOT = { has_tech = improved_medium_tank }
+					
 					}
 					create_production_license = {
 						target = MEX
@@ -3348,10 +3588,10 @@ country_event = {
 						cost_factor = 0
 					}
 				}
-				if = {
+				else_if = {
 					limit = {
 						has_tech = improved_heavy_tank
-						NOT = { has_tech = advanced_heavy_tank }
+						
 					}
 					create_production_license = {
 						target = MEX
@@ -3361,15 +3601,129 @@ country_event = {
 						cost_factor = 0
 					}
 				}
-				if = {
+				else_if = {
 					limit = {
 						has_tech = basic_heavy_tank
-						NOT = { has_tech = improved_heavy_tank }
+						
 					}
 					create_production_license = {
 						target = MEX
 						equipment = {
 							type = heavy_tank_equipment_1
+						}
+						cost_factor = 0
+					}
+				}
+				if = {
+					limit = {
+						has_tech = advanced_light_tank_chassis
+					}
+					create_production_license = {
+						target = MEX
+						equipment = {
+							type = light_tank_chassis_3
+						}
+						cost_factor = 0
+					}
+				}
+				else_if = {
+					limit = {
+						has_tech = improved_light_tank_chassis
+						
+					}
+					create_production_license = {
+						target = MEX
+						equipment = {
+							type = light_tank_chassis_2
+						}
+						cost_factor = 0
+					}
+				}
+				else_if = {
+					limit = {
+						has_tech = basic_light_tank_chassis
+						
+					}
+					create_production_license = {
+						target = MEX
+						equipment = {
+							type = light_tank_chassis_1
+						}
+						cost_factor = 0
+					}
+				}
+				if = {
+					limit = {
+						has_tech = advanced_medium_tank_chassis
+					}
+					create_production_license = {
+						target = MEX
+						equipment = {
+							type = medium_tank_chassis_3
+						}
+						cost_factor = 0
+					}
+				}
+				else_if = {
+					limit = {
+						has_tech = improved_medium_tank_chassis
+					
+					}
+					create_production_license = {
+						target = MEX
+						equipment = {
+							type = medium_tank_chassis_2
+						}
+						cost_factor = 0
+					}
+				}
+				else_if = {
+					limit = {
+						has_tech = basic_medium_tank_chassis
+					
+					}
+					create_production_license = {
+						target = MEX
+						equipment = {
+							type = medium_tank_chassis_1
+						}
+						cost_factor = 0
+					}
+				}
+				if = {
+					limit = {
+						has_tech = advanced_heavy_tank_chassis
+					}
+					create_production_license = {
+						target = MEX
+						equipment = {
+							type = heavy_tank_chassis_3
+						}
+						cost_factor = 0
+					}
+				}
+				else_if = {
+					limit = {
+						has_tech = improved_heavy_tank_chassis
+						
+					}
+					create_production_license = {
+						target = MEX
+						equipment = {
+							type = heavy_tank_chassis_2
+						}
+						cost_factor = 0
+					}
+				}
+				else_if = {
+					limit = {
+						has_tech = basic_heavy_tank_chassis
+						
+					}
+					create_production_license = {
+						target = MEX
+						equipment = {
+							type = heavy_tank_chassis_1
 						}
 						cost_factor = 0
 					}
@@ -3891,7 +4245,7 @@ country_event = {
 		trigger = {
 			NOT = {
 				MEX = {
-					has_country_leader = { ruling_only = yes name = "Leon Trotsky" }
+					has_country_leader = { ruling_only = yes character = MEX_leon_trotsky }
 				}			
 			}	
 		}
@@ -3900,7 +4254,7 @@ country_event = {
 		text = mexico.52.desc_trotsky
 		trigger = {			
 			MEX = {
-				has_country_leader = { ruling_only = yes name = "Leon Trotsky" }
+				has_country_leader = { ruling_only = yes character = MEX_leon_trotsky }
 			}				
 		}
 	}		
