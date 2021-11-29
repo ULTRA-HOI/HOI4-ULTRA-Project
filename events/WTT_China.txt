@@ -20,6 +20,17 @@ country_event = {
 				has_global_flag = CHI_xian_refused
 				factor = 0
 			}
+			modifier = {
+				factor = 0
+				OR = {
+					has_war_with = PRC
+					has_war_with = YUN
+					has_war_with = SIK
+					has_war_with = XSM
+					has_war_with = GXC
+					has_war_with = CHI
+				}
+			}
 		}
 		FROM = {
 			puppet = ROOT
@@ -1022,6 +1033,7 @@ country_event = {
 			NOT = {
 				has_country_flag = SOV_xian_refuse
 			}
+			SOV = { has_government = communism } # No point in asking a non-communist SOV
 		}
 		name = wtt_xian_incident.7.a #ask Soviets
 		ai_chance = {
@@ -1483,8 +1495,7 @@ country_event = {
 			}
 		}
 		set_country_flag = joseph_stilwell_sent_to_china
-		random_army_leader = { 
-			limit = { has_id = 57 }
+		USA_douglas_macarthur = {
 			set_nationality = FROM
 			save_event_target_as = CHI_USA_general
 		}
@@ -1503,8 +1514,7 @@ country_event = {
 			}
 		}
 		set_country_flag = joseph_stilwell_sent_to_china
-		random_army_leader = { 
-			limit = { has_id = 602 }
+		USA_dwight_d_eisenhower = { 
 			set_nationality = FROM
 			save_event_target_as = CHI_USA_general
 		}
@@ -1956,7 +1966,7 @@ country_event = {
 		trigger = {
 			owns_state = 608
 		}
-		set_capital = 608
+		set_capital = { state = 608 }
 	}
 
 	#Move to Nanjing
@@ -1970,7 +1980,7 @@ country_event = {
 		}
 		custom_effect_tooltip = CHI_nanjing_tt
 		hidden_effect = {
-			set_capital = 613
+			set_capital = { state = 613 }
 		}
 	}
 
