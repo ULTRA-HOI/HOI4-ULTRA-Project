@@ -13,13 +13,13 @@ country_event = {
 	
 	is_triggered_only = yes
 	
-	
 	option = { # Accept demands
 		name = romania.1.a
 		ai_chance = {
 			factor = 90
 			modifier = { # Don't accept if in a faction that can protect them
 				factor = 0
+				NOT = { is_in_faction_with = FROM }
 				OR = {
 					any_other_country = {
 						is_major = yes
@@ -31,10 +31,13 @@ country_event = {
 					}
 					has_idea = anti_soviet_pact
 				}
+			}
+			modifier = {
+				factor = 0.1
 				is_historical_focus_on = no #Romania will still cede on historical
 			}
 		}
-		SOV = {
+		FROM = {
 			country_event = { days = 1 id = soviet.4 }
 		}
 		ROM = {
@@ -42,6 +45,7 @@ country_event = {
 		}
 		set_country_flag = bessarabia_ceded
 	}
+	
 	option = { # Refuse
 		name = romania.1.b
 		ai_chance = {
@@ -49,14 +53,18 @@ country_event = {
 			modifier = {
 				add = 10
 				is_in_faction = yes
-				NOT = { is_in_faction_with = SOV }
+				NOT = { is_in_faction_with = FROM }
 			}
 			modifier = {
 				is_historical_focus_on = yes
 				factor = 0
 			}
+			modifier = {
+				factor = 0
+				is_in_faction_with = FROM
+			}
 		}
-		SOV = {
+		FROM = {
 			country_event = { days = 1 id = soviet.5 }
 			effect_tooltip = {
 				create_wargoal = {
