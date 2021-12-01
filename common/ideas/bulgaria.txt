@@ -6,6 +6,7 @@
 #BUL_is_democratic_liberal_ai
 #BUL_is_fascist_axis_ai
 #BUL_is_monarchist_ferdinand_ai
+
 ideas = {
 
 
@@ -247,13 +248,13 @@ ideas = {
 			allowed = {
 				original_tag = BUL
 				has_country_leader = {
-					name = "Boris III"
+					character = BUL_boris_iii
 				}
 			}
 
 			allowed_civil_war = {
 				has_country_leader = {
-					name = "Boris III"
+					character = BUL_boris_iii
 				}
 				NOT = { has_government = communism }
 				NOT = { has_government = democratic }		
@@ -272,13 +273,13 @@ ideas = {
 			allowed = {
 				original_tag = BUL
 				has_country_leader = {
-					name = "Boris III"
+					character = BUL_boris_iii
 				}
 			}
 
 			allowed_civil_war = {
 				has_country_leader = {
-					name = "Boris III"
+					character = BUL_boris_iii
 				}
 				NOT = { has_government = communism }
 				NOT = { has_government = democratic }
@@ -297,13 +298,13 @@ ideas = {
 			allowed = {
 				original_tag = BUL
 				has_country_leader = {
-					name = "Boris III"
+					character = BUL_boris_iii
 				}
 			}
 
 			allowed_civil_war = {
 				has_country_leader = {
-					name = "Boris III"
+					character = BUL_boris_iii
 				}
 				NOT = { has_government = communism }
 				NOT = { has_government = democratic }
@@ -322,13 +323,13 @@ ideas = {
 			allowed = {
 				original_tag = BUL
 				has_country_leader = {
-					name = "Boris III"
+					character = BUL_boris_iii
 				}
 			}
 
 			allowed_civil_war = {
 				has_country_leader = {
-					name = "Boris III"
+					character = BUL_boris_iii
 				}
 				BUL_has_abolished_monarchy = no
 			}
@@ -346,20 +347,20 @@ ideas = {
 			allowed = {
 				original_tag = BUL
 				has_country_leader = {
-					name = "Boris III"
+					character = BUL_boris_iii
 				}
 			}
 
 			allowed_civil_war = {
 				has_country_leader = {
-					name = "Boris III"
+					character = BUL_boris_iii
 				}
 				has_completed_focus = BUL_seek_cooperation_with_the_tsar
 				NOT = {
 					any_other_country = {
 						tag = BUL
 						has_country_leader = {
-							name = "Boris III"
+							character = BUL_boris_iii
 						}
 					}
 				}
@@ -783,7 +784,7 @@ ideas = {
 				conscription_factor = 0.05
 				experience_gain_navy_factor = 0.1
 				experience_gain_army_factor = 0.1
-				army_leader_cost_factor = -0.25
+				army_leader_cost_factor = -0.2
 			}
 		}
 
@@ -804,9 +805,8 @@ ideas = {
 				non_core_manpower = 0.05
 				experience_gain_navy_factor = 0.1
 				experience_gain_army_factor = 0.1
-				army_leader_cost_factor = -0.25
-				navy_leader_cost_factor = -0.25
-				
+				army_leader_cost_factor = -0.15
+				navy_leader_cost_factor = -0.15
 				army_morale_factor = 0.1
 				max_command_power = 25
 				justify_war_goal_time = -0.5
@@ -832,9 +832,8 @@ ideas = {
 				non_core_manpower = 0.05
 				experience_gain_navy_factor = 0.1
 				experience_gain_army_factor = 0.1
-				army_leader_cost_factor = -0.25
-				navy_leader_cost_factor = -0.25
-				
+				army_leader_cost_factor = -0.15
+				navy_leader_cost_factor = -0.15
 				army_morale_factor = 0.1
 				max_command_power = 50
 				justify_war_goal_time = -0.5
@@ -861,9 +860,8 @@ ideas = {
 				non_core_manpower = 0.05
 				experience_gain_navy_factor = 0.15
 				experience_gain_army_factor = 0.15
-				army_leader_cost_factor = -0.25
-				navy_leader_cost_factor = -0.25
-				
+				army_leader_cost_factor = -0.15
+				navy_leader_cost_factor = -0.15
 				army_morale_factor = 0.1
 				max_command_power = 75
 				justify_war_goal_time = -0.5
@@ -890,9 +888,8 @@ ideas = {
 				non_core_manpower = 0.05
 				experience_gain_navy_factor = 0.15
 				experience_gain_army_factor = 0.15
-				army_leader_cost_factor = -0.5
-				navy_leader_cost_factor = -0.5
-				
+				army_leader_cost_factor = -0.3
+				navy_leader_cost_factor = -0.3
 				army_morale_factor = 0.1
 				max_command_power = 100
 				justify_war_goal_time = -0.5
@@ -919,9 +916,8 @@ ideas = {
 				non_core_manpower = 0.05
 				experience_gain_navy_factor = 0.05
 				experience_gain_army_factor = 0.05
-				army_leader_cost_factor = -0.25
-				navy_leader_cost_factor = -0.25
-				
+				army_leader_cost_factor = -0.15
+				navy_leader_cost_factor = -0.15
 				army_morale_factor = 0.1
 				justify_war_goal_time = -0.5
 			}
@@ -1193,9 +1189,9 @@ ideas = {
 			removal_cost = -1
 			
 			modifier = {
-				political_power_factor = -0.25
-				military_leader_cost_factor = 0.25
-				political_advisor_cost_factor = 0.25
+				political_power_factor = -0.20
+				military_leader_cost_factor = 0.20
+				political_advisor_cost_factor = 0.20
 			} 
 		}
 
@@ -1322,9 +1318,10 @@ ideas = {
 			removal_cost = -1
 
 			cancel = {
-				BUL_is_balkan_nation = yes
-				is_in_faction_with = BUL
-				NOT = { original_tag = BUL }
+				OR = {
+					BUL = { has_capitulated = yes }
+					NOT = { country_exists = BUL }
+				}
 			}
 			
 			modifier = {
@@ -1911,18 +1908,6 @@ ideas = {
 	}
 
 
-
-   ###    ########  ##     ## ####  ######   #######  ########   ######  
-  ## ##   ##     ## ##     ##  ##  ##    ## ##     ## ##     ## ##    ## 
- ##   ##  ##     ## ##     ##  ##  ##       ##     ## ##     ## ##       
-##     ## ##     ## ##     ##  ##   ######  ##     ## ########   ######  
-######### ##     ##  ##   ##   ##        ## ##     ## ##   ##         ## 
-##     ## ##     ##   ## ##    ##  ##    ## ##     ## ##    ##  ##    ## 
-##     ## ########     ###    ####  ######   #######  ##     ##  ######  
-
-	
-
-
 ########  ########  ######  ####  ######   ##    ## ######## ########   ######  
 ##     ## ##       ##    ##  ##  ##    ##  ###   ## ##       ##     ## ##    ## 
 ##     ## ##       ##        ##  ##        ####  ## ##       ##     ## ##       
@@ -1941,7 +1926,8 @@ ideas = {
 
 			picture = henschel
 
-			 cost = 100
+			cost = 100
+			
 			allowed = {
 				original_tag = BUL
 				has_dlc = "Battle for the Bosporus"
@@ -2169,7 +2155,7 @@ ideas = {
 			}
 
 			visible = {
-				always = no
+				has_completed_focus = BUL_an_aegean_sea_fleet
 			}
 
 			available = {
@@ -2328,8 +2314,6 @@ ideas = {
 		designer = yes
 
 		BUL_dar = { #DLC
-			name = dar
-			
 			picture = bul_dar
 
 			
@@ -2372,7 +2356,7 @@ ideas = {
 			}
 
 			visible = {
-				always = no
+				has_completed_focus = BUL_prussia_of_the_balkans
 			}
 
 			available = {
@@ -2433,7 +2417,7 @@ ideas = {
 			}
 
 			visible = {
-				always = no
+				has_completed_focus = BUL_prussia_of_the_balkans
 			}
 
 			available = {
@@ -2665,7 +2649,7 @@ ideas = {
 			}
 
 			visible = {
-				always = no
+				has_completed_focus = BUL_prussia_of_the_balkans
 			}
 
 			available = {
@@ -2723,7 +2707,7 @@ ideas = {
 			}
 
 			visible = {
-				always = no
+				has_completed_focus = BUL_prussia_of_the_balkans
 			}
 
 			available = {
@@ -2995,7 +2979,7 @@ ideas = {
 			}
 
 			available = {
-			OR = {
+				OR = {
 					has_completed_focus = BUL_invigorate_national_industry
 					has_completed_focus = BUL_nationalization
 				}
