@@ -95,6 +95,171 @@ form_scandinavia_category = {
 }
 
 
+ form_nordic_league_category = {
+
+	form_nordic_league = {
+
+		icon = generic_form_nation
+
+		allowed = {
+			OR = {
+				original_tag = NOR
+				original_tag = DEN
+				original_tag = SWE
+				original_tag = FIN
+				original_tag = ICE
+				original_tag = EST
+			}
+			OR = {
+				has_dlc = "Waking the Tiger"
+				AND = {
+					has_dlc = "No Step Back"
+					original_tag = EST
+				}
+			}
+		}
+
+		available = {
+			is_subject = no
+			if = {
+				limit = {
+					NOT = { original_tag = EST }
+				}
+				# Norway
+				custom_trigger_tooltip = {
+					tooltip = form_country_norway_required_states_tt
+					controls_state = 110
+					controls_state = 142
+					controls_state = 143
+					controls_state = 144
+				}
+				# Sweden
+				custom_trigger_tooltip = {
+					tooltip = form_country_sweden_required_states_tt
+					controls_state = 124
+					controls_state = 138
+					controls_state = 139
+					controls_state = 140
+					controls_state = 141
+					controls_state = 38
+					controls_state = 666
+				}
+				# Denmark
+				custom_trigger_tooltip = {
+					tooltip = form_country_denmark_required_states_tt
+					controls_state = 37
+					controls_state = 99
+					controls_state = 100
+					controls_state = 101
+					controls_state = 337
+				}
+				# Finland
+				custom_trigger_tooltip = {
+					tooltip = form_country_finland_required_states_tt
+					controls_state = 111
+					controls_state = 145
+					controls_state = 148
+					controls_state = 149
+					controls_state = 150
+				}
+			}
+			else = {
+				custom_trigger_tooltip = {
+					tooltip = control_all_nordic_states_tt
+					all_state = {
+						OR = {
+							controls_or_subject_of = yes
+							controller = {
+								original_tag = FIN
+								is_in_faction_with = ROOT
+							}
+							NOT = {
+								AND = {
+									is_core_of = NOR
+									is_core_of = DEN
+									is_core_of = SWE
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		visible = {
+			OR = {
+				original_tag = NOR
+				original_tag = DEN
+				original_tag = SWE
+				original_tag = FIN
+				AND = {
+					original_tag = EST
+					has_completed_focus = EST_form_scandinavia
+				}
+			}
+			NOT = { has_global_flag = form_nordic_league_flag }
+		}
+
+		complete_effect = {
+			set_cosmetic_tag = NDC_UNIFIED
+			# Norway
+			custom_effect_tooltip = form_country_norway_coring_states_tt
+			hidden_effect = {
+				110 = { add_core_of = ROOT }
+				142 = { add_core_of = ROOT }
+				143 = { add_core_of = ROOT }
+				144 = { add_core_of = ROOT }
+			}
+			# Sweden
+			custom_effect_tooltip = form_country_sweden_coring_states_tt
+			hidden_effect = {
+				124 = { add_core_of = ROOT }
+				138 = { add_core_of = ROOT }
+				139 = { add_core_of = ROOT }
+				140 = { add_core_of = ROOT }
+				141 = { add_core_of = ROOT }
+				38 = { add_core_of = ROOT }
+				666 = { add_core_of = ROOT }
+			}
+			# Denmark
+			custom_effect_tooltip = form_country_denmark_coring_states_tt
+			hidden_effect = {
+				37 = { add_core_of = ROOT }
+				99 = { add_core_of = ROOT }
+				100 = { add_core_of = ROOT }
+				101 = { add_core_of = ROOT }
+				337 = { add_core_of = ROOT }
+			}
+			# Finland
+			custom_effect_tooltip = form_country_finland_coring_states_tt
+			hidden_effect = {
+				111 = { add_core_of = ROOT }
+				145 = { add_core_of = ROOT }
+				148 = { add_core_of = ROOT }
+				149 = { add_core_of = ROOT }
+				150 = { add_core_of = ROOT }
+			}
+			hidden_effect = {
+				if = {
+					limit = { NOT = { original_tag = EST } }
+					news_event = { id = wtt_news.54 hours = 6 }
+				}
+				else = {
+					news_event = { id = EST_events.3 hours = 6 }
+				}
+				set_global_flag = form_nordic_league_flag
+			}
+		}
+
+		ai_will_do = {
+			factor = 200
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+		}
+	}
+}
 
 form_gran_colombia_category = {
 
@@ -200,6 +365,199 @@ form_gran_colombia_category = {
 
 
 
+ form_austria_hungary_category = {
+
+	form_austria_hungary = {
+
+		icon = generic_form_nation
+
+		allowed = {
+			OR = {
+				original_tag = AUS
+				original_tag = CZE
+				original_tag = CRO
+			}
+			has_dlc = "Waking the Tiger"
+		}
+
+		available = {
+			is_subject = no
+			controls_state = 102
+			controls_state = 103
+			controls_state = 104
+			controls_state = 804
+			controls_state = 109
+			controls_state = 45
+			controls_state = 83
+			controls_state = 76
+			controls_state = 84
+			controls_state = 764
+			controls_state = 82
+			# Austria
+			custom_trigger_tooltip = {
+				tooltip = form_country_austria_required_states_tt
+				controls_state = 153
+				controls_state = 152
+				controls_state = 4
+			}
+			# Czechoslovakia
+			custom_trigger_tooltip = {
+				tooltip = form_country_czechoslovakia_required_states_tt
+				controls_state = 69
+				controls_state = 9
+				controls_state = 75
+				controls_state = 74
+				controls_state = 72
+				controls_state = 70
+				controls_state = 664
+				controls_state = 71
+				controls_state = 73
+			}
+			# Hungary
+			custom_trigger_tooltip = {
+				tooltip = form_country_hungary_required_states_tt
+				controls_state = 155
+				controls_state = 43
+				controls_state = 154
+			}
+		}
+
+		visible = {
+			OR = {
+				original_tag = AUS
+				original_tag = CZE
+				original_tag = CRO
+			}
+			NOT = { has_global_flag = form_austria_hungary_flag }
+		}
+
+		complete_effect = {
+			set_cosmetic_tag = HUN_EMPIRE
+			if = {
+				limit = {
+					NOT = { tag = AUS }
+				}
+				AUS = { set_cosmetic_tag = AUS_NOT_WHITE }
+			}
+			102 = { add_core_of = ROOT }
+			103 = { add_core_of = ROOT }
+			104 = { add_core_of = ROOT }
+			804 = { add_core_of = ROOT }
+			109 = { add_core_of = ROOT }
+			45 = { add_core_of = ROOT }
+			83 = { add_core_of = ROOT }
+			76 = { add_core_of = ROOT }
+			84 = { add_core_of = ROOT }
+			39 = { add_core_of = ROOT }
+			163 = { add_core_of = ROOT }
+			736 = { add_core_of = ROOT }
+			764 = { add_core_of = ROOT }
+			82 = { add_core_of = ROOT }
+			# Austria
+			custom_effect_tooltip = form_country_austria_coring_states_tt
+			hidden_effect = {
+				153 = { add_core_of = ROOT }
+				152 = { add_core_of = ROOT }
+				4 = { add_core_of = ROOT }
+			}
+			# Czechoslovakia
+			custom_effect_tooltip = form_country_czechoslovakia_coring_states_tt
+			hidden_effect = {
+				69 = { add_core_of = ROOT }
+				9 = { add_core_of = ROOT }
+				75 = { add_core_of = ROOT }
+				74 = { add_core_of = ROOT }
+				72 = { add_core_of = ROOT }
+				70 = { add_core_of = ROOT }
+				664 = { add_core_of = ROOT }
+				71 = { add_core_of = ROOT }
+				73 = { add_core_of = ROOT }
+			}
+			# Hungary
+			custom_effect_tooltip = form_country_hungary_coring_states_tt
+			hidden_effect = {
+				155 = { add_core_of = ROOT }
+				43 = { add_core_of = ROOT }
+				154 = { add_core_of = ROOT }
+			}
+			hidden_effect = {
+				news_event = { id = wtt_news.56 hours = 6 }
+				set_global_flag = form_austria_hungary_flag
+			}
+		}
+
+		ai_will_do = {
+			factor = 200
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+		}
+	}
+
+	reintegrate_austro_hungarian_empire = {
+
+		icon = generic_form_nation
+
+		allowed = {
+			original_tag = HUN
+			has_dlc = "Waking the Tiger"
+		}
+
+		available = {
+			is_subject = no
+			controls_state = 155
+			controls_state = 43
+			controls_state = 154
+			controls_state = 102
+			controls_state = 103
+			controls_state = 104
+			controls_state = 804
+			controls_state = 109
+			controls_state = 45
+			controls_state = 83
+			controls_state = 76
+			controls_state = 84
+			controls_state = 764
+			controls_state = 82
+		}
+
+		visible = {
+			tag = HUN
+			has_completed_focus = HUN_proclaim_the_restoration_of_austria_hungary
+			NOT = { has_global_flag = reintegrate_the_empire_flag }
+		}
+
+		complete_effect = {
+			155 = { add_core_of = ROOT }
+			43 = { add_core_of = ROOT }
+			154 = { add_core_of = ROOT }
+			102 = { add_core_of = ROOT }
+			103 = { add_core_of = ROOT }
+			104 = { add_core_of = ROOT }
+			804 = { add_core_of = ROOT }
+			109 = { add_core_of = ROOT }
+			45 = { add_core_of = ROOT }
+			83 = { add_core_of = ROOT }
+			76 = { add_core_of = ROOT }
+			84 = { add_core_of = ROOT }
+			39 = { add_core_of = ROOT }
+			163 = { add_core_of = ROOT }
+			736 = { add_core_of = ROOT }
+			764 = { add_core_of = ROOT }
+			82 = { add_core_of = ROOT }
+			set_global_flag = reintegrate_the_empire_flag
+		}
+
+		ai_will_do = {
+			factor = 200
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+		}
+	}
+}
 form_commonwealth_category = {
 
 	form_commonwealth = {
@@ -243,6 +601,22 @@ form_commonwealth_category = {
 				controls_state = 96
 				controls_state = 784
 			}
+			OR = {
+				AND = {
+					original_tag = POL
+					core_compliance = {
+						occupied_country_tag = LIT
+						value > 80
+					}
+				}
+				AND = {
+					original_tag = LIT
+					core_compliance = {
+						occupied_country_tag = POL
+						value > 80
+					}
+				}
+			}
 		}
 
 		visible = {
@@ -254,65 +628,14 @@ form_commonwealth_category = {
 		}
 
 		complete_effect = {
-			set_cosmetic_tag = PLC_UNIFIED
-			# Lithuania
-			custom_effect_tooltip = form_country_lithuania_coring_states_tt
-			hidden_effect = {
-				11 = { add_core_of = ROOT }
-				1042 = { add_core_of = ROOT }
-				1043 = { add_core_of = ROOT }
-				189 = { add_core_of = ROOT }
-				188 = { add_core_of = ROOT }
-				784 = { add_core_of = ROOT }				
+			if = {
+				limit = { has_cosmetic_tag = POL_KINGDOM_RUS }
+				set_cosmetic_tag = PLC_UNIFIED_RUS
 			}
-			# Poland
-			custom_effect_tooltip = form_country_poland_coring_states_tt
-			hidden_effect = {
-				85 = { add_core_of = ROOT }
-				86 = { add_core_of = ROOT }
-				87 = { add_core_of = ROOT }
-				88 = { add_core_of = ROOT }
-				90 = { add_core_of = ROOT }
-				98 = { add_core_of = ROOT }
-				10 = { add_core_of = ROOT }
-				97 = { add_core_of = ROOT }
-				92 = { add_core_of = ROOT }
-				91 = { add_core_of = ROOT }
-				89 = { add_core_of = ROOT }
-				93 = { add_core_of = ROOT }
-				94 = { add_core_of = ROOT }
-				95 = { add_core_of = ROOT }
-				96 = { add_core_of = ROOT }
-				784 = { add_core_of = ROOT }
+			else = {
+				set_cosmetic_tag = PLC_UNIFIED
 			}
-			190 = { add_core_of = ROOT }
-			12 = { add_core_of = ROOT }
-			1036 = { add_core_of = ROOT }
-			1037 = { add_core_of = ROOT }
-			1038 = { add_core_of = ROOT }
-			5 = { add_core_of = ROOT }
-			763 = { add_core_of = ROOT }
-			207 = { add_core_of = ROOT }
-			242 = { add_core_of = ROOT }
-			206 = { add_core_of = ROOT }
-			241 = { add_core_of = ROOT }
-			243 = { add_core_of = ROOT }
-			204 = { add_core_of = ROOT }
-			194 = { add_core_of = ROOT }
-			201 = { add_core_of = ROOT }
-			199 = { add_core_of = ROOT }
-			198 = { add_core_of = ROOT }
-			202 = { add_core_of = ROOT }
-			203 = { add_core_of = ROOT }
-			193 = { add_core_of = ROOT }
-			259 = { add_core_of = ROOT }
-			762 = { add_core_of = ROOT }
-
-
-			hidden_effect = {
-				news_event = { id = wtt_news.57 hours = 6 }
-				set_global_flag = form_commonwealth_flag
-			}
+			POL_basic_form_commonwealth = yes
 		}
 
 		ai_will_do = {
@@ -474,7 +797,10 @@ form_baltic_federation_category = {
 				original_tag = LAT
 				original_tag = LIT
 			}
-			has_dlc = "Waking the Tiger"
+			OR = {
+				has_dlc = "Waking the Tiger"
+				has_dlc = "No Step Back"
+			}
 		}
 
 		available = {
@@ -545,7 +871,7 @@ form_baltic_federation_category = {
 				1043 = { add_core_of = ROOT }
 				189 = { add_core_of = ROOT }
 				188 = { add_core_of = ROOT }
-				784 = { add_core_of = ROOT }				
+				784 = { add_core_of = ROOT }
 			}
 			hidden_effect = {
 				news_event = { id = wtt_news.60 hours = 6 }
@@ -1691,7 +2017,7 @@ form_greater_greece_category = {
 				AND = {
 					has_completed_focus = GRE_the_modern_movement
 					has_country_leader = {
-						name = "Ioannis Metaxas"
+						character = GRE_ioannis_metaxas
 						ruling_only = yes
 					}
 				}
@@ -1699,7 +2025,7 @@ form_greater_greece_category = {
 					has_completed_focus = GRE_resurrecting_the_megali_idea
 					NOT = { 
 						has_country_leader = {
-							name = "Georgios Kosmidis"
+							character = GRE_georgios_kosmidis
 							ruling_only = yes
 						}
 					}
@@ -1808,15 +2134,16 @@ form_greater_greece_category = {
 
 		complete_effect = {
 			retire_country_leader = yes
-			create_country_leader = {
-				name = "Aristotle Onassis"
-				desc = "POLITICS_ARISTOTLE_ONASSIS_DESC"
-				picture = "gfx/leaders/GRE/portrait_gre_aristotle_onassis.dds"
-				expire = "1965.1.1"
-				ideology = liberalism
-				traits = {
-					the_young_magnate
+			add_country_leader_role = {
+				character = GRE_aristotle_onassis
+				country_leader = {
+					expire = "1965.1.1"
+					ideology = liberalism
+					traits = {
+						the_young_magnate
+					}
 				}
+				promote_leader = yes
 			}
 		}
 
