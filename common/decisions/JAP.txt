@@ -13,7 +13,6 @@ JAP_intervene_in_china = {
 			JAP_has_idea_JAP_intervene_in_china = yes
 			any_enemy_country = {
 				is_literally_china = yes
-					   
 			}
 		}
 
@@ -24,6 +23,11 @@ JAP_intervene_in_china = {
 			modifier = {
 				has_war_with = USA
 				factor = 10 #screw it, kill everything
+			}
+			modifier = {
+				factor = 0
+				has_country_flag = JAP_slow_down_in_china
+				#NOT = { has_war_with = USA }
 			}
 		}
 		modifier = {
@@ -45,9 +49,8 @@ JAP_intervene_in_china = {
 				USA = { add_war_support = 0.025 }
 			}
 			JAP_intervene_in_china_level_down = yes
-			add_named_threat = { 
-				threat = 1
-				name = JAP_china_step_up_war_effort
+			hidden_effect = {
+				set_country_flag = { flag = JAP_slow_down_in_china value = 1 days = 100 }
 			}
 		}
 	}
@@ -67,7 +70,6 @@ JAP_intervene_in_china = {
 			has_completed_focus = JAP_secure_china
 			any_enemy_country = {
 				is_literally_china = yes
-					   
 			}
 			event_target:WTT_current_china_leader = {
 				NOT = { is_puppet_of = JAP }
@@ -77,11 +79,16 @@ JAP_intervene_in_china = {
 		fire_only_once = yes
 
 		ai_will_do = {
-			factor = 10
-			
+			factor = 1
+			modifier = {
+				is_historical_focus_on = yes
+				date < 1944.1.1
+				controls_state = 609 #East Heibei, to ensure that Japan hasn't been kicked off the mainland
+				factor = 0
+			}
 		}
 
-		
+		cost = 50
 
 		complete_effect = {
 			if = {
@@ -129,7 +136,6 @@ JAP_intervene_in_china = {
 			JAP_has_idea_JAP_intervene_in_china = yes
 			any_enemy_country = {
 				is_literally_china = yes
-					   
 			}
 		}
 
@@ -732,7 +738,7 @@ foreign_politics = {
 						array = CHI.core_states
 						var:v = {
 							NOT = {
-								state = 524 
+								state = 524
 							}
 							controller = {
 								OR = {
@@ -774,7 +780,7 @@ foreign_politics = {
 		visible = {
 			FROM = { exists = yes }
 			any_enemy_country = {
-				is_literally_china = yes				  
+				is_literally_china = yes
 			}
 		}
 
@@ -1478,10 +1484,9 @@ JAP_southern_expansion = {
 						is_in_faction_with = ROOT
 					}
 				} 
-			}													 
+			}
 			custom_trigger_tooltip = {
 				tooltip = demand_indochina_focus_tt
-
 				OR = {
 					286 = { 
 						CONTROLLER = { 
@@ -1538,13 +1543,13 @@ JAP_southern_expansion = {
 			}			
 			modifier = {
 				factor = 3
-				FRA = { has_war = yes } 
-				
+				FRA = { has_war = yes }
 				strength_ratio = {
 					tag = FRA
-					ratio > 0.9			
+					ratio > 0.9
 				}
 			}
+
 		}
 
 		complete_effect = {
@@ -1581,7 +1586,6 @@ JAP_southern_expansion = {
 		}
 
 	}
-	
 }
 
 #Category allowed for JAP
@@ -1740,7 +1744,6 @@ JAP_colonial_independence = {
 						original_tag = JAP
 					}
 				}
-								   
 			}
 			610 = {
 				is_fully_controlled_by = controller
@@ -1750,7 +1753,6 @@ JAP_colonial_independence = {
 						original_tag = JAP
 					}
 				}
-								   
 			}
 			716 = {
 				is_fully_controlled_by = controller
@@ -1760,7 +1762,6 @@ JAP_colonial_independence = {
 						original_tag = JAP
 					}
 				}
-								   
 			}
 			715 = {
 				is_fully_controlled_by = controller
@@ -1770,7 +1771,6 @@ JAP_colonial_independence = {
 						original_tag = JAP
 					}
 				}
-								   
 			}
 			328 = {
 				is_fully_controlled_by = controller
@@ -1780,7 +1780,6 @@ JAP_colonial_independence = {
 						original_tag = JAP
 					}
 				}
-								   
 			}
 			717 = {
 				is_fully_controlled_by = controller
@@ -1790,7 +1789,6 @@ JAP_colonial_independence = {
 						original_tag = JAP
 					}
 				}
-								   
 			}
 			714 = {
 				is_fully_controlled_by = controller
@@ -1800,7 +1798,6 @@ JAP_colonial_independence = {
 						original_tag = JAP
 					}
 				}
-								   
 			}
 		}
 
@@ -1813,7 +1810,6 @@ JAP_colonial_independence = {
 						original_tag = JAP
 					}
 				}
-					
 			}
 			610 = {
 				owner = {
@@ -1822,7 +1818,6 @@ JAP_colonial_independence = {
 						original_tag = JAP
 					}
 				}
-					
 			}
 			716 = {
 				owner = {
@@ -1831,7 +1826,6 @@ JAP_colonial_independence = {
 						original_tag = JAP
 					}
 				}
-					
 			}
 			715 = {
 				owner = {
@@ -1840,7 +1834,6 @@ JAP_colonial_independence = {
 						original_tag = JAP
 					}
 				}
-					
 			}
 			328 = {
 				owner = {
@@ -1849,7 +1842,6 @@ JAP_colonial_independence = {
 						original_tag = JAP
 					}
 				}
-					
 			}
 			717 = {
 				owner = {
@@ -1861,12 +1853,12 @@ JAP_colonial_independence = {
 					
 			}
 			714 = {
-				owner = {											   	 										  
+				owner = {
 					OR = {
 						is_subject_of = JAP
-						original_tag = JAP	 					
-					}				  		  											   
-				}					
+						original_tag = JAP
+					}
+				}
 			}
 		}
 
@@ -2033,7 +2025,7 @@ operations = {
 				has_war_with = FRA
 			}
 		}
-		
+
 		is_good = no
 	
 		fire_only_once = yes
@@ -2045,7 +2037,7 @@ operations = {
 		}
 		
 		visible = {
-			has_completed_focus = JAP_strike_on_the_southern_resource_area			
+			has_completed_focus = JAP_strike_on_the_southern_resource_area
 		}
 	
 		complete_effect = {
@@ -2069,6 +2061,8 @@ operations = {
 			NOT = {
 				has_war_with = SOV
 				is_in_faction_with = SOV
+				has_non_aggression_pact_with = SOV
+				SOV = { is_puppet_of = JAP }
 			}
 			527 = {
 				any_neighbor_state = {
@@ -2083,17 +2077,25 @@ operations = {
 			}
 		}
 		highlight_states = {
-			highlight_state_targets = {			
+			highlight_state_targets = {
 				state = 408
 				state = 527
 			}
 		}
+
 		fire_only_once = yes
 		ai_will_do = {
 			factor = 1
 			modifier = {
 				is_historical_focus_on = yes
 				date < 1939.1.1
+				factor = 0
+			}
+			modifier = { # We won't do this if we are supporting the opposition
+				OR = {
+					SOV = { has_country_flag = SOV_CSW_transfer_vladivostok_flag }
+					SOV = { has_country_flag = SOV_CSW_transfer_sakhalin_flag }
+				}
 				factor = 0
 			}
 		}
@@ -2150,10 +2152,10 @@ operations = {
 			custom_effect_tooltip = effects_if_border_conflict_is_lost
 			effect_tooltip = {
 				JAP = {
-					add_tech_bonus = {
+					add_doctrine_cost_reduction = {
 						name = sov_jap_border_conflict_won
 						category = land_doctrine
-						bonus = 1.0
+						cost_reduction = 0.5
 					}
 					add_tech_bonus = {
 						name = sov_jap_border_conflict_won
@@ -2175,6 +2177,8 @@ operations = {
 		icon = border_war
 
 		allowed = { always = no } #Activated from effect
+		visible = { hidden_trigger = { NOT = { has_border_war_with = JAP } } }
+		cancel_if_not_visible = yes
 
 		available = {
 			#var:ROOT.defender_state_vs_@FROM = {
@@ -2202,10 +2206,10 @@ operations = {
 			custom_effect_tooltip = effects_if_border_conflict_is_lost
 			effect_tooltip = {
 				JAP = {
-					add_tech_bonus = {
+					add_doctrine_cost_reduction = {
 						name = sov_jap_border_conflict_won
 						category = land_doctrine
-						bonus = 1.0
+						cost_reduction = 0.5
 					}
 					add_tech_bonus = {
 						name = sov_jap_border_conflict_won
@@ -2224,17 +2228,16 @@ operations = {
 		allowed = { always = no } #Activated from effect
 
 		available = {
-			#var:ROOT.defender_state_vs_@FROM = {
-			#	has_ROOT_at_least_1_div_in_current_state_scope = yes
-			#}
-			hidden_trigger = { always = no }
+			has_border_war_with = SOV # Japan shouldn't lose war support if they actually use the window of opportunity
 		}
+
 		highlight_states = {
 			highlight_state_targets = {
 				state = 527
 				state = 408
 			}
 		}
+
 		ai_will_do = {
 			base = 0
 			modifier = {
@@ -2292,9 +2295,9 @@ operations = {
 			}
 		}
 		highlight_states = {
-			highlight_state_targets = {	
+			highlight_state_targets = {
 				state = 527
-				state = 408						
+				state = 408
 			}
 		}
 		ai_will_do = {
@@ -2346,12 +2349,14 @@ operations = {
 			527 = { has_border_war = no }
 			408 = { has_border_war = no }
 		}
+
 		highlight_states = {
 			highlight_state_targets = {
 				state = 408
 				state = 527
 			}
 		}
+
 		ai_will_do = {
 			base = 0
 			modifier = {
@@ -2401,7 +2406,19 @@ operations = {
 		ai_will_do = {
 			base = 0
 			modifier = {
-				
+				add = 100 
+				is_historical_focus_on = no 
+			}
+			modifier = {
+				add = 50 
+				AND = {
+					tag = JAP 
+					has_completed_focus = JAP_support_the_kodoha_faction
+				}
+			}
+			modifier = {
+				factor = 0
+				has_war = yes 
 			}
 		}
 
@@ -2409,13 +2426,28 @@ operations = {
 
 		complete_effect = {
 			if = {
-				limit = { is_border_conflict_defender_vs_FROM = yes }
+				limit = { original_tag = SOV }
 				set_border_war_data = {
 					attacker = 527
 					defender = 408
 					defender_modifier = 0.15
 					combat_width = 100
 				}
+				JAP = {
+					set_country_flag = {
+						flag = WTT_border_conflict_escalate_to_war_cooldown
+						days = 60
+						value = 1
+					}
+					remove_targeted_decision = { target = SOV decision = JAP_border_conflict_escalate_conflict }
+				}
+				set_country_flag = {
+					flag = WTT_border_conflict_escalate_to_war_cooldown
+					days = 60
+					value = 1
+				}
+				custom_effect_tooltip = in_60_days
+				activate_targeted_decision = { target = JAP decision = JAP_border_conflict_escalate_to_war }
 			}
 			else = {
 				set_border_war_data = {
@@ -2424,52 +2456,70 @@ operations = {
 					attacker_modifier = 0.15
 					combat_width = 100
 				}
-			}
-			SOV = {
+				SOV = {
+					set_country_flag = {
+						flag = WTT_border_conflict_escalate_to_war_cooldown
+						days = 60
+						value = 1
+					}
+					remove_targeted_decision = { target = JAP decision = JAP_border_conflict_escalate_conflict }
+				}
 				set_country_flag = {
-					flag = WTT_border_conflict_escalate_to_war_cooldown_@ROOT
+					flag = WTT_border_conflict_escalate_to_war_cooldown
 					days = 60
 					value = 1
 				}
-				remove_targeted_decision = { target = JAP decision = JAP_border_conflict_escalate_conflict }
+				custom_effect_tooltip = in_60_days
+				activate_targeted_decision = { target = SOV decision = JAP_border_conflict_escalate_to_war }
 			}
-			set_country_flag = {
-				flag = WTT_border_conflict_escalate_to_war_cooldown_@SOV
-				days = 60
-				value = 1
-			}
-			custom_effect_tooltip = in_60_days
-			activate_targeted_decision = { target = SOV decision = JAP_border_conflict_escalate_to_war }
+			
 		}
 	}
 
 	#Decision to escalate conflict further
 	JAP_border_conflict_escalate_to_war = {
 
-		icon = decision_generic_ignite_civil_war
+		icon = generic_ignite_civil_war
 
 		allowed = { always = no } #Activated from effect
 
 		visible = {
-			NOT = { has_country_flag = WTT_border_conflict_escalate_to_war_cooldown_@FROM }
+			NOT = { has_country_flag = WTT_border_conflict_escalate_to_war_cooldown }
 			has_border_war_with = FROM
 		}
+		cancel_trigger = {
+			NOT = { has_border_war = yes }
+		}
+
 		highlight_states = {
-			highlight_state_targets = {
+ 			highlight_state_targets = {
 				state = 408
 				state = 527
-			}
+			} 
 		}
+
 		cost = 150
 
 		ai_will_do = {
 			base = 0
 			modifier = {
-				
+				add = 100 
+				is_historical_focus_on = no 
+			}
+			modifier = {
+				add = 50 
+				AND = {
+					tag = JAP 
+					has_completed_focus = JAP_support_the_kodoha_faction
+				}
+			}
+			modifier = {
+				factor = 0
+				has_war = yes 
 			}
 		}
 
-		days_remove = 15
+		days_remove = 10
 
 		fire_only_once = yes #Reactivation handled in effect
 
@@ -2477,20 +2527,26 @@ operations = {
 
 		complete_effect = {
 			if = {
-				limit = { is_border_conflict_defender_vs_FROM = yes }
+				limit = { original_tag = SOV }
 				408 = { save_event_target_as = their_state }
 				527 = { save_event_target_as = our_state }
+				JAP = {
+					country_event = { id = japan_border_conflict.6 hours = 1 }
+					hidden_effect = {
+						remove_targeted_decision = { target = SOV decision = JAP_border_conflict_escalate_to_war }
+					}
+			 	}
 			}
 			else = {
 				527 = { save_event_target_as = our_state }
 				408 = { save_event_target_as = their_state }
+				SOV = {
+					country_event = { id = japan_border_conflict.5 hours = 1 }
+					hidden_effect = {
+						remove_targeted_decision = { target = JAP decision = JAP_border_conflict_escalate_to_war }
+					}
+			 	}
 			}
-			SOV = {
-				country_event = { id = japan_border_conflict.5 }
-				hidden_effect = {
-					remove_targeted_decision = { target = JAP decision = JAP_border_conflict_escalate_to_war }
-				}
-		 	}
 		}
 
 		remove_effect = {
@@ -2501,7 +2557,7 @@ operations = {
 			}
 			declare_war_on = { target = FROM type = annex_everything }
 			if = {
-				limit = { is_border_conflict_defender_vs_FROM = yes }
+				limit = { original_tag = SOV }
 				527 = {
 					clr_state_flag = border_incident_active
 				}
@@ -2531,12 +2587,14 @@ operations = {
 		visible = {
 			has_border_war_with = FROM
 		}
+
 		highlight_states = {
 			highlight_state_targets = {
 				state = 527
 				state = 408
-			}
+			} 
 		}
+
 		ai_will_do = {
 			base = 0
 			modifier = {
@@ -2548,7 +2606,7 @@ operations = {
 
 		complete_effect = {
 			if = {
-				limit = { is_border_conflict_defender_vs_FROM = yes }
+				limit = { original_tag = SOV }
 				finalize_border_war = {
 					attacker_win = yes
 					attacker = 527
@@ -2619,6 +2677,7 @@ prospect_for_resources = {
 	#Below is visible when JAP_establish_the_northern_resource_area is completed
 	JAP_develop_north_sakhalin_oil_deposits = { #655
 		icon = oil
+
 		highlight_states = {
 			highlight_state_targets = {
 				state = 655
@@ -2681,6 +2740,7 @@ prospect_for_resources = {
 	#Below is visible when JAP_exploit_the_southern_resource_area is completed
 	JAP_develop_luzon_chromium_deposits = { #623
 		icon = chromium
+
 		highlight_states = {
 			highlight_state_targets = {
 				state = 623
@@ -2736,6 +2796,7 @@ prospect_for_resources = {
 
 	JAP_develop_mindanao_steel_deposits = { #627
 		icon = steel
+
 		highlight_states = {
 			highlight_state_targets = {
 				state = 627
