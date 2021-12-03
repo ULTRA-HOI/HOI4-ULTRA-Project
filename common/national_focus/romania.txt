@@ -112,10 +112,11 @@
 
 		available = {
 			has_game_rule = { rule = IHMP_HISTORY option = ALLOWED }
-			NOT = { has_war_with = SOV }
-			SOV = {
+			NOT = { has_war_with = SOU }
+			SOU = {
 				exists = yes
 				is_subject = no
+				has_civil_war = no
 			}
 		}
 		
@@ -193,6 +194,7 @@
 				NOT = {
 					has_war_with = ROOT
 				}
+				has_civil_war = no 	   
 			}
 		}
 
@@ -246,7 +248,6 @@
 		id = ROM_join_comintern
 		icon = GFX_focus_generic_join_comintern
 		prerequisite = { focus = ROM_basing_rights_for_soviet_union }
-		#mutually_exclusive = { focus = ROM_join_allies focus = ROM_join_axis}
 		x = 0
 		y = 4
 		relative_position_id = ROM_a_deal_with_the_devil
@@ -264,9 +265,8 @@
 		}
 
 		available = {
-			SOV = { is_faction_leader = yes }
+			SOV_comintern_joinable = yes 
 			is_in_faction = no
-			NOT = { has_war_with = SOV }
 			is_subject = no
 			NOT = {
 				any_other_country = {
@@ -369,9 +369,9 @@
 			}
 			add_to_tech_sharing_group = ROM_invite_german_advisors_tech_group
 			GER = { add_to_tech_sharing_group = ROM_invite_german_advisors_tech_group }
-			add_tech_bonus = {
+			add_doctrine_cost_reduction = { = {
 				name = ROM_invite_german_advisors
-				bonus = 1.0
+				cost_reduction = 0.5
 				uses = 1
 				category = land_doctrine
 			}
@@ -499,8 +499,6 @@
 			}
 		}
 	}
-
-	
 
 	focus = {
 		id = ROM_demand_transnistria
@@ -965,12 +963,11 @@
 		}
 	}
 
-	
 
 	focus = {
 		id = ROM_agrarian_reform
 		icon = GFX_goal_generic_consumer_goods
-		prerequisite = { focus = ROM_civil_works  }
+		prerequisite = { focus = ROM_civil_works}
 		x = 0
 		y = 1
 		relative_position_id = ROM_civil_works
@@ -1008,6 +1005,7 @@
 		relative_position_id = ROM_civil_works
 
 		cost = 5
+
 		ai_will_do = {
 			factor = 1
 		}
@@ -1134,7 +1132,6 @@
 		available_if_capitulated = no
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 		complete_tooltip = {
-			
 		}
 
 		completion_reward = {
@@ -1203,7 +1200,6 @@
 		available_if_capitulated = no
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 		complete_tooltip = {
-			
 		}
 
 		completion_reward = {
@@ -1239,19 +1235,15 @@
 		available_if_capitulated = no
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 		complete_tooltip = {
-			
 		}
 
 		completion_reward = {
-			
 			custom_effect_tooltip = available_designer
 			show_ideas_tooltip = ROM_iar
 			custom_effect_tooltip = Construction_Focus_tt
 			unlock_decision_tooltip = { decision = ROM_invest_in_the_iar_decision show_effect_tooltip = yes }
 		}
 	}
-
-	
 
 	focus = {
 		id = ROM_expand_the_university_of_bucharest
@@ -1313,8 +1305,6 @@
 
 		completion_reward = {
 			#add_ideas = ROM_exploit_the_baita_mines
-			
-			
 			81 = {
 				add_resource = {
 					type = tungsten
@@ -1324,7 +1314,6 @@
 		}
 	}
 
-	
 
 	#############################
 	######## KING BRANCH ########
@@ -1379,10 +1368,15 @@
 				popularity = 65
 			}
 			remove_ideas = neutrality_idea
+			hidden_effect = {
+				country_event = {
+					id = DOD_romania.163
+					days = 5
+					random_days = 10
+				}
+			}
 		}
 	}
-
-	
 
 	focus = {
 		id = ROM_fortify_the_borders
@@ -1575,8 +1569,6 @@
 		available_if_capitulated = yes
 		search_filters = { FOCUS_FILTER_MANPOWER }
 		completion_reward = {
-			
-			
 			add_country_leader_trait = camarilla_leader
 			add_ideas = ROM_the_sentinel_of_the_motherland
 		}
@@ -1672,7 +1664,6 @@
 				has_government = communism
 				#NOT = { has_war_with = ROM}
 			}
-			
 		}
 
 		bypass = {
@@ -1814,6 +1805,7 @@
 				}
 				add_ideas = ROM_securitate	
 			}
+
 			#Remove ideas or display tooltip warning that it will happen
 			if = {
 				limit = {
@@ -1821,8 +1813,7 @@
 				}
 				remove_ideas = ROM_constitutional_guarantees
 				else = {
-						custom_effect_tooltip = ROM_appoint_soviet_friendly_government_tooltip
-					
+					custom_effect_tooltip = ROM_appoint_soviet_friendly_government_tooltip
 				}
 			}
 		}
@@ -1851,9 +1842,7 @@
 			GER = {
 				is_faction_leader = yes
 				has_government = fascism
-				
 			}
-			
 		}
 
 		bypass = {
@@ -1958,7 +1947,6 @@
 						modifier = BFTB_incongruous_neighbors
 					}
 				}
-				
 			}
 			unlock_decision_category_tooltip = ROM_change_sides
 			unlock_decision_tooltip = ROM_change_sides_to_allies
@@ -2013,21 +2001,26 @@
 		available_if_capitulated = no
 
 		completion_reward = {
-			create_country_leader = {
-				name = "Ion Antonescu"
-				desc = "POLITICS_ION_ANTONESCU_DESC"
-				picture = "Portrait_Romania_Ion_Antonescu.dds"
-				expire = "1965.1.1"
-				ideology = fascism_ideology
-				traits = {
-					#
+			
+			ROM_ion_antonescu = { #Making Antonescu into a Country leader and removing him from his other roles. 
+				add_country_leader_role = {
+					country_leader = {
+						expire = "1965.1.1"
+						ideology = fascism_ideology
+						traits = {
+							prince_of_terror
+						}
+					}
+					promote_leader = yes
 				}
+				remove_advisor_role = { slot = army_chief }
+				remove_unit_leader_role = yes
 			}
-
+		
 			set_party_name = { 
 			    ideology = fascism
-			    long_name = ROM_fascism_party2_long
-			    name = ROM_fascism_party2
+			    long_name = ROM_fascism_party_long
+			    name = ROM_fascism_party
 			}
 			if = {
 				limit = { has_idea = ROM_the_sentinel_of_the_motherland }
@@ -2139,7 +2132,7 @@
 		icon = GFX_focus_rom_abdicate
 		prerequisite = { focus = ROM_iron_guard focus = ROM_securitate }
 		mutually_exclusive = { focus = ROM_handle_the_king focus = ROM_king_michaels_coup }
-		x = 0		
+		x = 0
 		y = 2
 		relative_position_id = ROM_appoint_soviet_friendly_government
 
@@ -2243,11 +2236,8 @@
 			ENG = {
 				is_faction_leader = yes
 				has_government = democratic
-				
 			}
-			
 		}
-		
 		allow_branch = {
 			#has_game_rule = { rule = IHMP_HISTORY option = ALLOWED } 
 		}
@@ -2292,7 +2282,7 @@
 			}
 			hidden_effect = { set_country_flag = can_change_sides_dem }
 			unlock_decision_category_tooltip = ROM_change_sides
-			unlock_decision_tooltip = ROM_change_sides_to_allies												  
+			unlock_decision_tooltip = ROM_change_sides_to_allies
 			add_stability = -0.05
 			add_opinion_modifier = { modifier = ROM_appoint_allied_friendly_government target = ENG }
 			ENG = { add_opinion_modifier = { modifier = ROM_appoint_allied_friendly_government target = ROOT } }
@@ -2460,7 +2450,7 @@
 		completion_reward = {
 			air_experience = 25
 			random_owned_controlled_state = {
-				prioritize = { 46 79 }		  
+				prioritize = { 46 79 }
 				limit = {
 					ROOT = { has_full_control_of_state = PREV }
 					free_building_slots = {
@@ -2476,7 +2466,7 @@
 				set_state_flag = ROM_expand_the_air_force_AB
 			}
 			random_owned_controlled_state = {
-				prioritize = { 46 79 }		  
+				prioritize = { 46 79 }
 				limit = {
 					ROOT = { has_full_control_of_state = PREV }
 					free_building_slots = {
@@ -2591,10 +2581,10 @@
 		available_if_capitulated = yes
 		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
-			add_tech_bonus = {
+			add_doctrine_cost_reduction = {
 				name = ROM_ground_support
-				bonus = 1.0
-				uses = 1
+				cost_reduction = 0.25
+				uses = 2
 				category = battlefield_support_tree
 			}
 		}
@@ -2776,10 +2766,10 @@
 		available_if_capitulated = yes
 		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
-			add_tech_bonus = {
+			add_doctrine_cost_reduction = {
 				name = ROM_air_superiority
-				bonus = 1.0
-				uses = 1
+				cost_reduction = 0.25
+				uses = 2
 				category = strategic_destruction_tree
 			}
 		}
@@ -3012,9 +3002,9 @@
 
 		completion_reward = {
 			army_experience = 25
-			add_tech_bonus = {
+			add_doctrine_cost_reduction = {
 				name = land_doc_bonus
-				bonus = 0.5
+				cost_reduction = 0.25
 				uses = 1
 				category = land_doctrine
 			}
@@ -3363,7 +3353,6 @@
 					create_unit = {
 						division = "name = \"Royal Guards Division\" division_template = \"Royal Guards Division\" start_experience_factor = 1.0" 
 						owner = ROM
-						
 					}
 				}
 			}			
@@ -3435,7 +3424,6 @@
 			hidden_effect = {
 				if = {
 					limit = {
-						
 						has_tech = tech_recon
 					}
 					division_template = {
@@ -3486,7 +3474,6 @@
 								artillery = { x = 0 y = 2 }
 							}
 						}
-
 					}
 				}
 				random_owned_controlled_state = {
@@ -3529,8 +3516,6 @@
 
 		completion_reward = {
 			add_ideas = ROM_acquire_modern_tanks
-			
-			
 		}
 	}
 
@@ -3633,7 +3618,6 @@
 		available_if_capitulated = no
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 		complete_tooltip = {
-			
 		}
 
 		completion_reward = {
