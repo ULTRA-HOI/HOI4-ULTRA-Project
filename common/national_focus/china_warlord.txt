@@ -82,7 +82,6 @@
 		available_if_capitulated = no
 
 		search_filters = { FOCUS_FILTER_POLITICAL }
-
 		completion_reward = {
 			add_political_power = 120
 			warlord_rule_all_parties = yes
@@ -378,7 +377,7 @@
 				limit = {
 					is_controlled_by = ROOT
 				}
-				add_extra_state_shared_building_slots = 4 
+				add_extra_state_shared_building_slots = 2
 			}
 		}
 	}
@@ -439,12 +438,6 @@
 			}
 			is_subject = no
 			NOT = { has_war_with = CHI }
-			CHI = {
-				has_war = no
-			}
-			CHI = {
-				is_subject = no
-			}
 			if = {
 				limit = {
 					WTT_not_taking_over_national_leadership = no				
@@ -619,7 +612,7 @@
 				limit = {
 					is_controlled_by = ROOT
 				}
-				add_extra_state_shared_building_slots = 4 
+				add_extra_state_shared_building_slots = 2
 			}
 		}
 	}
@@ -843,13 +836,13 @@
 
 		available = {
 			has_opinion = {
-				target = SOV
+				target = SOU
 				value > 50
 			}
 			is_subject = no
 			NOT = { has_war_with = PRC }
-			NOT = { has_war_with = SOV }
-			SOV = { has_government = communism }
+			NOT = { has_war_with = SOU }
+			SOU = { has_government = communism }
 		}
 
 		bypass = {
@@ -864,7 +857,7 @@
 			custom_effect_tooltip = CHI_the_yanan_incident_effect_tt
 			save_event_target_as = warlord
 			add_ideas = PRC_soviet_tribute_1
-			SOV = { country_event = { id = wtt_warlord_vs_prc.1 } }
+			SOU = { country_event = { id = wtt_warlord_vs_prc.1 } }
 		}
 	}
 
@@ -1160,23 +1153,33 @@
 		completion_reward = {
 			if = {
 				limit = { ROOT = { tag = GXC } }
-				create_field_marshal = {
-					name = "Li Zongren"
-					gfx = GFX_portrait_li_zongren
-					traits = { infantry_officer } # Many warlord battles as a junior commander
-					skill = 3
-					attack_skill = 2
-					defense_skill = 4
-					planning_skill = 2
-					logistics_skill = 2					
+				add_field_marshal_role = {
+					character = "GXC_li_zongren"
+						traits = { infantry_officer } # Many warlord battles as a junior commander
+						skill = 3
+						attack_skill = 2
+						defense_skill = 4
+						planning_skill = 2
+						logistics_skill = 2	
 				}
 			}
 			else_if = {
 				limit = { ROOT = { tag = YUN } }
-				create_field_marshal = {
-					name = "Long Yun"
-					gfx = GFX_portrait_yun_long_yun				
-					traits = { old_guard organizer } # Fought in the Xinhai Revolution, showed personal bravery fighting Japan
+				add_field_marshal_role = {
+					character = "YUN_long_yun"
+						traits = { war_hero } # Fought in the Xinhai Revolution, showed personal bravery fighting Japan
+						skill = 3
+						attack_skill = 3
+						defense_skill = 3
+						planning_skill = 2
+						logistics_skill = 2
+				}
+			}
+			else_if = {
+				limit = { ROOT = { tag = SHX } }
+				add_field_marshal_role = {
+					character = "SHX_yan_xishan"
+					traits = { career_officer infantry_officer } # Educated at officer schools in China and Japan
 					skill = 3
 					attack_skill = 3
 					defense_skill = 3
@@ -1185,23 +1188,9 @@
 				}
 			}
 			else_if = {
-				limit = { ROOT = { tag = SHX } }
-				create_field_marshal = {
-					name = "Yan Xishan"
-					gfx = GFX_portrait_yan_xishan
-					traits = { old_guard infantry_officer } # Educated at officer schools in China and Japan
-					skill = 3
-					attack_skill = 2
-					defense_skill = 3
-					planning_skill = 3
-					logistics_skill = 2
-				}
-			}
-			else_if = {
 				limit = { ROOT = { tag = XSM } }
-				create_field_marshal = {
-					name = "Ma Bufang"
-					gfx = GFX_portrait_xsm_ma_bufang
+				add_field_marshal_role = {
+					character = "XSM_ma_bufang"
 					traits = { cavalry_officer } # Raised 30,000 Muslim Cavalrymen
 					skill = 3
 					attack_skill = 3
@@ -1212,8 +1201,8 @@
 			}
 			else_if = {
 				limit = { ROOT = { tag = SIK } }
-				create_field_marshal = {
-					name = "Sheng Shicai"
+				add_field_marshal_role = {
+					character = SIK_sheng_shicai
 					gfx = GFX_portrait_sheng_shicai
 					traits = { politically_connected } # Studied political economy, played Stalin and Chiang against one another
 					skill = 3
@@ -1374,10 +1363,6 @@
 
 		available = {
 			is_subject = no
-			OR = {
-				neutrality > 0.5
-				communism > 0.5
-			}
 		}
 
 		bypass = {
@@ -1455,7 +1440,7 @@
 			}
 		}
 
-		search_filters = { FOCUS_FILTER_INDUSTRY }									
+		search_filters = { FOCUS_FILTER_INDUSTRY }
 		completion_reward = {
 			random_owned_controlled_state = {
 				limit = {
@@ -1549,7 +1534,7 @@
 			}
 		}
 
-		search_filters = { FOCUS_FILTER_INDUSTRY }									
+		search_filters = { FOCUS_FILTER_INDUSTRY }
 		completion_reward = {
 			random_owned_controlled_state = {
 				limit = {
@@ -1598,7 +1583,6 @@
 		available_if_capitulated = no
 
 		search_filters = { FOCUS_FILTER_INDUSTRY }
-
 		completion_reward = {
 			add_ideas = CHI_long_term_economic_planning
 		}
