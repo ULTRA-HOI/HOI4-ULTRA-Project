@@ -183,9 +183,8 @@
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		search_filters = { FOCUS_FILTER_INDUSTRY }									
+		search_filters = { FOCUS_FILTER_INDUSTRY }
 		complete_tooltip = {
-			
 		}
 
 		completion_reward = {
@@ -224,14 +223,14 @@
 
 		}
 
-		search_filters = { FOCUS_FILTER_INDUSTRY }									
+		search_filters = { FOCUS_FILTER_INDUSTRY }
 		completion_reward = {
 			every_state = {
 				limit = {
 					is_fully_controlled_by = ROOT
 					is_core_of = ROOT
 				}
-				add_extra_state_shared_building_slots = 4
+				add_extra_state_shared_building_slots = 2
 			}
 		}
 	}
@@ -266,7 +265,7 @@
 
 		}
 
-		search_filters = { FOCUS_FILTER_RESEARCH }						
+		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			add_research_slot = 1
 		}
@@ -287,7 +286,20 @@
 		}
 
 		available = {
-			num_of_factories > 100
+			OR = {
+				num_of_factories > 100
+				all_state = {
+					OR = {
+						NOT = { is_core_of = CHI }
+						NOT = { is_core_of = PRC }
+						OR = {
+							is_controlled_by = ROOT
+							CONTROLLER = { is_in_faction_with = ROOT }
+							CONTROLLER = { is_subject_of = ROOT }
+						}
+					}
+				}
+			}
 		}
 
 		bypass = {
@@ -301,6 +313,7 @@
 		complete_tooltip = {
 
 		}
+
 		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			add_research_slot = 1			
@@ -337,7 +350,7 @@
 
 		}
 
-		search_filters = { FOCUS_FILTER_RESEARCH }									
+		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			add_tech_bonus = {
 				name = MAN_trade_delegation
@@ -374,9 +387,8 @@
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		search_filters = { FOCUS_FILTER_INDUSTRY }									
+		search_filters = { FOCUS_FILTER_INDUSTRY }
 		complete_tooltip = {
-			
 		}
 
 		completion_reward = {
@@ -416,7 +428,7 @@
 
 		}
 
-		search_filters = { FOCUS_FILTER_POLITICAL }									 
+		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			add_political_power = 120
 		}
@@ -448,7 +460,7 @@
 		continue_if_invalid = no
 		available_if_capitulated = yes
 
-		search_filters = { FOCUS_FILTER_STABILITY }									 
+		search_filters = { FOCUS_FILTER_STABILITY }
 		complete_tooltip = {
 
 		}
@@ -488,7 +500,7 @@
 
 		}
 
-		search_filters = { FOCUS_FILTER_INDUSTRY }									
+		search_filters = { FOCUS_FILTER_INDUSTRY }
 		completion_reward = {
 			country_event = wtt_manchukou.11
 		}
@@ -520,11 +532,10 @@
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		search_filters = { FOCUS_FILTER_INDUSTRY }									
+		search_filters = { FOCUS_FILTER_INDUSTRY }
 		complete_tooltip = {
 			custom_effect_tooltip = available_political_advisor
 			show_ideas_tooltip = MAN_songgotu_zhanshan
-			
 		}
 
 		completion_reward = {
@@ -543,7 +554,7 @@
 		y = 1
 		relative_position_id = MAN_invite_japanese_investors
 
-		cost = 5
+		cost = 10
 
 		ai_will_do = {
 			factor = 4
@@ -578,46 +589,51 @@
 
 		}
 
-		search_filters = { FOCUS_FILTER_INDUSTRY }									
+		search_filters = { FOCUS_FILTER_INDUSTRY }
 		completion_reward = {
 			if = {
-				limit = { 716 = { is_fully_controlled_by = ROOT } }
-				716 = {
-					add_building_construction = {
-						type = infrastructure
-						level = 1
-						instant_build = yes
+					limit = {
+						controls_state = 716
+					}
+					build_railway = { #Mukden-Korean border
+						path = {
+							11771 9885 3895 3839 3970 6981
+						}
+					}
+					build_railway = { #Mukden - Dalian
+						path = {
+							11771 987 9781 11764 964 3783
+						}
+					}
+				}
+			if = {
+				limit = { 
+					328 = { is_fully_controlled_by = ROOT } 
+					controls_state = 715
+					controls_state = 716
+				}
+				build_railway = {
+					path = { #Mukden - Hsinking - Harbin
+						11771 11808 916 4642 4572 4503 7652 10433
 					}
 				}
 			}
 			if = {
-				limit = { 328 = { is_fully_controlled_by = ROOT } }
-				328 = {
-					add_building_construction = {
-						type = infrastructure
-						level = 1
-						instant_build = yes
-					}
-				} 
+				limit = {
+					controls_state = 716
+					controls_state = 610
+				}
+				build_railway = { #Mukden - Chinese border
+					path = { 11771 6951 11815 9835 6837 11886 3900 }
+				}
 			}
 			if = {
-				limit = { 610 = { is_fully_controlled_by = ROOT } }
-				610 = {
-					add_building_construction = {
-						type = infrastructure
-						level = 1
-						instant_build = yes
-					}
-				} 
-			}
-			if = {
-				limit = { 717 = { is_fully_controlled_by = ROOT } }
-				717 = {
-					add_building_construction = {
-						type = infrastructure
-						level = 1
-						instant_build = yes
-					}
+				limit = {
+					controls_state = 714
+					controls_state = 715
+				}
+				build_railway = { #Mukden - central Manchuria
+					path = { 11771 846 9831 930 4633 4561 4506 7582 10433 }
 				}
 			}
 		}
@@ -653,7 +669,7 @@
 
 		}
 
-		search_filters = { FOCUS_FILTER_INDUSTRY }									
+		search_filters = { FOCUS_FILTER_INDUSTRY }
 		completion_reward = {
 			if = {
 				limit = { has_tech = excavation1 }
@@ -701,11 +717,10 @@
 
 		}
 
-		search_filters = { FOCUS_FILTER_INDUSTRY }									
+		search_filters = { FOCUS_FILTER_INDUSTRY }
 		completion_reward = {
 			716 = {
-				add_extra_state_shared_building_slots = 4
-				
+				add_extra_state_shared_building_slots = 2
 				add_building_construction = { type = steel_refinery level = 2 instant_build = yes }
 			}
 			unlock_decision_tooltip = MAN_develop_liaotung_iron_ore_deposits
@@ -742,7 +757,7 @@
 
 		}
 
-		search_filters = { FOCUS_FILTER_RESEARCH }									
+		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			add_research_slot = 1
 		}
@@ -799,7 +814,7 @@
 
 		}
 
-		search_filters = { FOCUS_FILTER_INDUSTRY }									
+		search_filters = { FOCUS_FILTER_INDUSTRY }
 		completion_reward = {
 			country_event = wtt_manchukou.11
 		}
@@ -835,7 +850,7 @@
 
 		}
 
-		search_filters = { FOCUS_FILTER_INDUSTRY }									
+		search_filters = { FOCUS_FILTER_INDUSTRY }
 		completion_reward = {
 			add_ideas = MAN_national_defense_state
 		}
@@ -871,7 +886,7 @@
 
 		}
 
-		search_filters = { FOCUS_FILTER_INDUSTRY }									
+		search_filters = { FOCUS_FILTER_INDUSTRY }
 		completion_reward = {
 			custom_effect_tooltip = Construction_Focus_tt
 			unlock_decision_tooltip = { decision = MAN_mukden_arsenal_decision show_effect_tooltip = yes }
@@ -946,12 +961,12 @@
 
 		}
 
-		search_filters = { FOCUS_FILTER_RESEARCH }									
+		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			remove_ideas = MAN_kwantung_veto
-			add_tech_bonus = {
+			add_doctrine_cost_reduction = {
 				name = MAN_alliance_with_the_kwantung_army
-				bonus = 1.0
+				cost_reduction = 0.5
 				uses = 1
 				category = land_doctrine
 			}
@@ -988,7 +1003,7 @@
 
 		}
 
-		search_filters = { FOCUS_FILTER_POLITICAL }									 
+		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			MAN_low_legitimacy_level_down = yes
 		}
@@ -1026,7 +1041,7 @@
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		search_filters = { FOCUS_FILTER_ANNEXATION }									  
+		search_filters = { FOCUS_FILTER_ANNEXATION }
 		complete_tooltip = {
 
 		}
@@ -1036,7 +1051,6 @@
 		}
 	}
 
-	
 
 	focus = {
 		id = MAN_the_two_emperors
@@ -1080,7 +1094,7 @@
 
 		}
 
-		search_filters = { FOCUS_FILTER_POLITICAL }									 
+		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			add_autonomy_ratio = {
 				value = 0.15
@@ -1120,7 +1134,7 @@
 		continue_if_invalid = no
 		available_if_capitulated = yes
 
-		search_filters = { FOCUS_FILTER_POLITICAL }									 
+		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			MAN_low_legitimacy_level_down = yes
 			set_country_flag = MAN_assertiveness
@@ -1177,7 +1191,7 @@
 						level = 1
 						instant_build = yes
 					}
-					add_extra_state_shared_building_slots = 4
+					add_extra_state_shared_building_slots = 2
 				}
 			}
 			if = {
@@ -1188,7 +1202,7 @@
 						level = 1
 						instant_build = yes
 					}
-					add_extra_state_shared_building_slots = 4
+					add_extra_state_shared_building_slots = 2
 				}
 			}
 			if = {
@@ -1199,7 +1213,7 @@
 						level = 1
 						instant_build = yes
 					}
-					add_extra_state_shared_building_slots = 4
+					add_extra_state_shared_building_slots = 2
 				}
 			}
 			if = {
@@ -1210,7 +1224,7 @@
 						level = 1
 						instant_build = yes
 					}
-					add_extra_state_shared_building_slots = 4
+					add_extra_state_shared_building_slots = 2
 				} 
 			}
 		}
@@ -1351,17 +1365,17 @@
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		search_filters = { FOCUS_FILTER_INDUSTRY }										
+		search_filters = { FOCUS_FILTER_INDUSTRY }
 		complete_tooltip = {
 			unlock_decision_tooltip = MAN_fund_underground_gun_shops
 			every_state = {
 				limit = {
 					has_state_flag = MAN_local_arms_procurement_AF
 				}
-				add_extra_state_shared_building_slots = 4
+				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
 					type = arms_factory
-					level = 4
+					level = 2
 					instant_build = yes
 				}
 			}
@@ -1375,14 +1389,14 @@
 					is_fully_controlled_by = ROOT
 					free_building_slots = {
 						building = arms_factory
-						size > 3
+						size > 1
 						include_locked = yes
 					}
 				}
-				add_extra_state_shared_building_slots = 4
+				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
 					type = arms_factory
-					level = 4
+					level = 2
 					instant_build = yes
 				}
 				set_state_flag = MAN_local_arms_procurement_AF
@@ -1393,14 +1407,14 @@
 					is_fully_controlled_by = ROOT
 					free_building_slots = {
 						building = arms_factory
-						size > 3
+						size > 1
 						include_locked = yes
 					}
 				}
-				add_extra_state_shared_building_slots = 4
+				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
 					type = arms_factory
-					level = 4
+					level = 2
 					instant_build = yes
 				}
 				set_state_flag = MAN_local_arms_procurement_AF
@@ -1434,8 +1448,7 @@
 		continue_if_invalid = no
 		available_if_capitulated = yes
 
-
-		search_filters = { FOCUS_FILTER_MANPOWER }									
+		search_filters = { FOCUS_FILTER_MANPOWER }
 		completion_reward = {
 			MAN_low_legitimacy_level_down = yes
 			add_ideas = MAN_bolster_nationalism
@@ -1474,7 +1487,7 @@
 
 		}
 
-		search_filters = { FOCUS_FILTER_WAR_SUPPORT }									   
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
 		completion_reward = {
 			add_war_support = 0.1
 		}
@@ -1573,7 +1586,7 @@
 		continue_if_invalid = no
 		available_if_capitulated = yes
 
-		search_filters = { FOCUS_FILTER_MANPOWER }									
+		search_filters = { FOCUS_FILTER_MANPOWER }
 		completion_reward = {
 			add_ideas = MAN_five_people_armies
 			unlock_decision_tooltip = MAN_raise_manchu_banner
@@ -1697,7 +1710,7 @@
 
 		}
 
-		search_filters = { FOCUS_FILTER_STABILITY }									 
+		search_filters = { FOCUS_FILTER_STABILITY }
 		completion_reward = {
 			add_stability = 0.1
 		}
@@ -1736,7 +1749,7 @@
 
 		will_lead_to_war_with = JAP
 
-		search_filters = { FOCUS_FILTER_ANNEXATION }									  
+		search_filters = { FOCUS_FILTER_ANNEXATION }
 		completion_reward = {
 			hidden_effect = { set_variable = { MAN_independence_target = OVERLORD } } #We're using a variable here because the saved event target becomes invalidated deep in ScopedEventTarget
 			OVERLORD = { set_autonomy = { target = ROOT autonomy_state = autonomy_free } }
@@ -1837,7 +1850,7 @@
 
 		}
 
-		search_filters = { FOCUS_FILTER_RESEARCH }									
+		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			add_research_slot = 1
 		}
@@ -1920,7 +1933,7 @@
 
 		}
 
-		search_filters = { FOCUS_FILTER_ANNEXATION }									  
+		search_filters = { FOCUS_FILTER_ANNEXATION }
 		completion_reward = {
 			MAN_low_legitimacy_clear_all = yes	
 			set_cosmetic_tag = MAN_restored
@@ -2029,7 +2042,7 @@
 
 		}
 
-		search_filters = { FOCUS_FILTER_ANNEXATION }									  
+		search_filters = { FOCUS_FILTER_ANNEXATION }
 		completion_reward = {
 			every_country = {
 				limit = {
@@ -2076,7 +2089,7 @@
 
 		}
 
-		search_filters = { FOCUS_FILTER_ANNEXATION }									  
+		search_filters = { FOCUS_FILTER_ANNEXATION }
 		completion_reward = {
 			every_country = {
 				limit = {
