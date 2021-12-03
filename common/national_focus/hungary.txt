@@ -4,7 +4,8 @@
 ### search_filters = {FOCUS_FILTER_STABILITY}
 ### search_filters = {FOCUS_FILTER_WAR_SUPPORT}
 ### search_filters = {FOCUS_FILTER_MANPOWER}
-### search_filters = {FOCUS_FILTER_ANNEXATION}											 
+### search_filters = {FOCUS_FILTER_ANNEXATION}
+
 focus_tree = {
 	id = hungarian_focus
 	
@@ -88,7 +89,7 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		search_filters = { FOCUS_FILTER_POLITICAL }									 
+		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			add_political_power = 120
 		}
@@ -120,7 +121,7 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = yes
 
-		search_filters = { FOCUS_FILTER_POLITICAL }									 
+		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			add_ideas = HUN_hungarian_monarchy
 			set_party_name = { ideology = neutrality long_name = HUN_legitimists_party_long name = HUN_legitimists_party }
@@ -153,7 +154,7 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = yes
 
-		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }															
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
 		completion_reward = {
 			swap_ideas = {
 				remove_idea = HUN_hungarian_monarchy
@@ -201,7 +202,7 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = yes
 
-		search_filters = { FOCUS_FILTER_POLITICAL }									 
+		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			swap_ideas = {
 				add_idea = HUN_hungarian_monarchy_democratic
@@ -269,7 +270,7 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = yes
 
-		search_filters = { FOCUS_FILTER_POLITICAL }									 
+		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			set_politics = { ruling_party = democratic }
 			hold_election = HUN
@@ -514,7 +515,6 @@ focus_tree = {
 		available_if_capitulated = yes
 
 
-
 		completion_reward = {
 			ROM = { country_event = generic.5 }
 		}
@@ -595,8 +595,7 @@ focus_tree = {
 		available_if_capitulated = yes
 
 
-
-		search_filters = { FOCUS_FILTER_POLITICAL }									 
+		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			swap_ideas = {
 				add_idea = HUN_hungarian_monarchy_fascism
@@ -608,41 +607,25 @@ focus_tree = {
 					has_government = neutrality
 				}
 				add_popularity = { ideology = fascism popularity = 0.05 }
-				create_country_leader = {
-					name = "Friedrich Franz of Mecklenburg-Schwerin"
-					desc = "POLITICS_FRIEDRICH_FRANZ_OF_MECKLENBURG-SCHWERIN_DESC"
-					picture = GFX_Portrait_hungary_friedrich_franz
-					expire = "1965.1.1"
-					ideology = despotism
-					traits = {
-						fascist_sympathies
+				add_country_leader_role = {
+					character = "HUN_franz_friedrich"
+					country_leader = {
+					  ideology=despotism
+					  traits = { fascist_sympathies }
+					  expire="1965.1.1"
 					}
-					id = 501 #Neutral Franz
-				}
-				hidden_effect = {
-					create_country_leader = {
-						name = "Friedrich Franz of Mecklenburg-Schwerin"
-						desc = "POLITICS_FRIEDRICH_FRANZ_OF_MECKLENBURG-SCHWERIN_DESC"
-						picture = GFX_Portrait_hungary_friedrich_franz
-						expire = "1965.1.1"
-						ideology = nazism
-						traits = {
-						}
-						id = 502 #Nazi Franz
+					promote_leader = yes
+				}				
+			}
+			else = {
+				add_country_leader_role = {
+					character = "HUN_franz_friedrich"
+					country_leader = {
+					  ideology=nazism
+					  expire="1965.1.1"
 					}
-				}
-				else = {
-					create_country_leader = {
-						name = "Friedrich Franz of Mecklenburg-Schwerin"
-						desc = "POLITICS_FRIEDRICH_FRANZ_OF_MECKLENBURG-SCHWERIN_DESC"
-						picture = GFX_Portrait_hungary_friedrich_franz
-						expire = "1965.1.1"
-						ideology = nazism
-						traits = {
-						}
-						id = 502 #Nazi Franz
-					}
-				}
+					promote_leader = yes
+				}	
 			}
 			hidden_effect = {
 				news_event = { id = news.297 }
@@ -678,7 +661,6 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-
 
 
 		completion_reward = {
@@ -720,25 +702,11 @@ focus_tree = {
 		available_if_capitulated = yes
 
 
-
-		search_filters = { FOCUS_FILTER_POLITICAL }									 
+		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 			add_timed_idea = { idea = HUN_strengthen_fascists days = 720 }
 			add_popularity = { ideology = fascism popularity = 0.05 }
 			set_party_name = { ideology = fascism long_name = HUN_arrow_cross_party_long name = HUN_arrow_cross_party }
-			hidden_effect = {
-				create_country_leader = {
-					name = "Miklós Horthy"
-					desc = "POLITICS_MIKLOS_HORTHY_DESC"
-					picture = "Portrait_Hungary_Miklos_Horthy.dds"
-					expire = "1965.1.1"
-					ideology = fascism_ideology
-					traits = {
-						anti_communist
-					}
-					id = 503 #Horthy fascist
-				}
-			}
 		}
 	}
 
@@ -777,7 +745,6 @@ focus_tree = {
 		available_if_capitulated = yes
 
 
-
 		completion_reward = {
 			add_threat = 1
 			if = {
@@ -811,10 +778,22 @@ focus_tree = {
 				if = {
 					#Retire Horthy if neutral leader
 					limit = {
-						has_country_leader = { id = 500 }
+						has_country_leader = { character = HUN_miklos_horthy }
 					}
 					hidden_effect = { 
 						retire_country_leader = yes 
+					}
+				}
+				hidden_effect = {
+					add_country_leader_role = {
+						character = "HUN_miklos_horthy"
+						country_leader={
+							ideology=fascism_ideology
+							traits={ anti_communist }
+							expire="1965.1.1.1"
+							id=503
+						}
+						promote_leader = yes
 					}
 				}
 			}
@@ -826,9 +805,17 @@ focus_tree = {
 				if = {
 					#Retire Franz if he neutral leader
 					limit = {
-						has_country_leader = { id = 501 }
+						has_country_leader = { character = HUN_franz_friedrich }
 					}
 					hidden_effect = { retire_country_leader = yes }
+					add_country_leader_role = {
+						character = "HUN_franz_friedrich"
+						country_leader = {
+						  ideology=nazism
+						  expire="1965.1.1"
+						}
+						promote_leader = yes
+					}
 				}
 
 				#Undecided
@@ -910,7 +897,6 @@ focus_tree = {
 		available_if_capitulated = no
 
 
-
 		completion_reward = {
 			swap_ideas = {
 				add_idea = HUN_interventionism_2
@@ -969,7 +955,6 @@ focus_tree = {
 		available_if_capitulated = no
 
 
-
 		completion_reward = {
 			#This modifies the AI change in germany.4 Aschluss event
 			give_guarantee = AUS
@@ -1010,7 +995,6 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = yes
-
 
 
 		completion_reward = {
@@ -1091,7 +1075,6 @@ focus_tree = {
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-
 
 
 		completion_reward = {
@@ -1203,7 +1186,6 @@ focus_tree = {
 		available_if_capitulated = yes
 
 
-
 		completion_reward = {
 			GER = {
 				country_event = generic.2
@@ -1260,8 +1242,7 @@ focus_tree = {
 		available_if_capitulated = no
 
 
-
-		search_filters = { FOCUS_FILTER_ANNEXATION }									  
+		search_filters = { FOCUS_FILTER_ANNEXATION }
 		completion_reward = {
 			add_state_claim = 76
 			add_state_claim = 83
@@ -1394,8 +1375,7 @@ focus_tree = {
 		available_if_capitulated = no
 
 
-
-		search_filters = { FOCUS_FILTER_ANNEXATION }									  
+		search_filters = { FOCUS_FILTER_ANNEXATION }
 		completion_reward = {
 			custom_effect_tooltip = HUN_demands_tt
 			if = {
@@ -1599,8 +1579,7 @@ focus_tree = {
 		available_if_capitulated = no
 
 
-
-		search_filters = { FOCUS_FILTER_ANNEXATION }									  
+		search_filters = { FOCUS_FILTER_ANNEXATION }
 		completion_reward = {
 			custom_effect_tooltip = HUN_demands_tt
 			if = {
@@ -1624,7 +1603,7 @@ focus_tree = {
 				}
 				70 = {
 					controller = {
-						country_event = DOD_hungary.100
+						country_event = { id = DOD_hungary.100 hours = 5 } 
 					}
 				}
 			}
@@ -1638,7 +1617,7 @@ focus_tree = {
 						}
 					}
 				}
-				SLO = { country_event = DOD_hungary.107 }
+				SLO = { country_event = { id = DOD_hungary.107 hours = 3 } }
 			}
 			if = {
 				limit = {
@@ -1650,10 +1629,10 @@ focus_tree = {
 						}
 					}
 				}
-				SLO = { OVERLORD = { country_event = DOD_hungary.107 } }
+				SLO = { OVERLORD = { country_event = { id = DOD_hungary.107 hours = 4 } } }
 			}
 			hidden_effect = {
-				news_event = { id = news.309 }
+				news_event = { id = news.309 hours = 8 }
 			}
 		}
 	}
@@ -1694,8 +1673,7 @@ focus_tree = {
 		available_if_capitulated = no
 
 
-
-		search_filters = { FOCUS_FILTER_STABILITY }									 
+		search_filters = { FOCUS_FILTER_STABILITY }
 		completion_reward = {
 			custom_effect_tooltip = HUN_GREATER_tt
 			set_cosmetic_tag = HUN_GREATER
@@ -1707,7 +1685,6 @@ focus_tree = {
 	}
 
 
-	
 
 	############################
 	##### INDUSTRY BRANCH ######
@@ -1737,7 +1714,7 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		search_filters = { FOCUS_FILTER_RESEARCH }									
+		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			add_tech_bonus = {
 				name = HUN_industrial_revitalization
@@ -1774,7 +1751,7 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		search_filters = { FOCUS_FILTER_INDUSTRY }									
+		search_filters = { FOCUS_FILTER_INDUSTRY }
 		complete_tooltip = {
 			random_state = {
 				limit = {
@@ -1899,9 +1876,8 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		search_filters = { FOCUS_FILTER_INDUSTRY }									
+		search_filters = { FOCUS_FILTER_INDUSTRY }
 		complete_tooltip = {
-			
 		}
 
 		completion_reward = {
@@ -1935,7 +1911,7 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		search_filters = { FOCUS_FILTER_INDUSTRY }									
+		search_filters = { FOCUS_FILTER_INDUSTRY }
 		completion_reward = {
 			if = {
 				limit = {
@@ -1980,7 +1956,7 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		search_filters = { FOCUS_FILTER_RESEARCH }									
+		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			add_research_slot = 1
 		}
@@ -2013,7 +1989,7 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		search_filters = { FOCUS_FILTER_RESEARCH }									
+		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			add_tech_bonus = {
 				name = HUN_announce_the_gyor_program
@@ -2055,9 +2031,8 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 		
-		search_filters = { FOCUS_FILTER_INDUSTRY }									
+		search_filters = { FOCUS_FILTER_INDUSTRY }
 		complete_tooltip = {
-			
 		}
 
 		completion_reward = {
@@ -2094,7 +2069,7 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		search_filters = { FOCUS_FILTER_INDUSTRY }									
+		search_filters = { FOCUS_FILTER_INDUSTRY }
 		completion_reward = {
 			add_ideas = HUN_invite_foreign_investors
 		}
@@ -2126,9 +2101,8 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		search_filters = { FOCUS_FILTER_INDUSTRY }									
+		search_filters = { FOCUS_FILTER_INDUSTRY }
 		complete_tooltip = {
-			
 		}
 
 		completion_reward = {
@@ -2163,7 +2137,7 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		search_filters = { FOCUS_FILTER_INDUSTRY }									
+		search_filters = { FOCUS_FILTER_INDUSTRY }
 		completion_reward = {
 			43 = {
 				add_building_construction = { type = aluminium_refinery level = 4 instant_build = yes }
@@ -2171,7 +2145,6 @@ focus_tree = {
 		}
 	}
 
-	
 
 	############################
 	###### ARMS INDUSTRY #######
@@ -2204,9 +2177,8 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		search_filters = { FOCUS_FILTER_INDUSTRY }									
+		search_filters = { FOCUS_FILTER_INDUSTRY }
 		complete_tooltip = {
-			
 		}
 
 		completion_reward = {
@@ -2243,7 +2215,7 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		search_filters = { FOCUS_FILTER_RESEARCH }									
+		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			add_research_slot = 1
 		}
@@ -2275,9 +2247,8 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		search_filters = { FOCUS_FILTER_INDUSTRY }									
+		search_filters = { FOCUS_FILTER_INDUSTRY }
 		complete_tooltip = {
-			
 		}
 
 		completion_reward = {
@@ -2317,7 +2288,7 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		search_filters = { FOCUS_FILTER_RESEARCH }									
+		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			add_tech_bonus = {
 				name = HUN_synthetic_industry
@@ -2354,7 +2325,7 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 		
-		search_filters = { FOCUS_FILTER_INDUSTRY }									
+		search_filters = { FOCUS_FILTER_INDUSTRY }
 		complete_tooltip = {
 
 			random_state = {
@@ -2422,7 +2393,7 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		search_filters = { FOCUS_FILTER_MANPOWER FOCUS_FILTER_INDUSTRY }														  
+		search_filters = { FOCUS_FILTER_MANPOWER FOCUS_FILTER_INDUSTRY }
 		completion_reward = {
 			add_ideas = HUN_secret_rearmament
 		}
@@ -2485,11 +2456,11 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		search_filters = { FOCUS_FILTER_RESEARCH }									
+		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
-			add_tech_bonus = {
+			add_doctrine_cost_reduction = {
 				name = HUN_theoretical_air_efforts
-				bonus = 1.0
+				cost_reduction = 0.5
 				uses = 1
 				category = air_doctrine
 			}
@@ -2542,7 +2513,7 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		search_filters = { FOCUS_FILTER_INDUSTRY }									
+		search_filters = { FOCUS_FILTER_INDUSTRY }
 		completion_reward = {
 			if = {
 				limit = {
@@ -2556,7 +2527,7 @@ focus_tree = {
 				}
 				ROM = { country_event = DOD_hungary.140 }
 			}
-			
+
 			custom_effect_tooltip = HUN_bled_agreement_custom_effect_tooltip
 		}
 	}
@@ -2591,12 +2562,12 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = yes
 
-		search_filters = { FOCUS_FILTER_RESEARCH }									
+		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			air_experience = 25
-			add_tech_bonus = {
+			add_doctrine_cost_reduction = {
 				name = HUN_establish_the_air_force
-				bonus = 1.0
+				cost_reduction = 0.5
 				uses = 1
 				category = air_doctrine
 			}
@@ -2632,7 +2603,7 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		search_filters = { FOCUS_FILTER_RESEARCH }									
+		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			add_ideas = HUN_indigenous_designs
 		}
@@ -2665,7 +2636,7 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		search_filters = { FOCUS_FILTER_RESEARCH }									
+		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			add_tech_bonus = {
 				name = HUN_heavy_fighter_effort
@@ -2705,7 +2676,7 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		search_filters = { FOCUS_FILTER_RESEARCH }									
+		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			add_tech_bonus = {
 				name = HUN_light_fighter_effort
@@ -2747,7 +2718,7 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		search_filters = { FOCUS_FILTER_RESEARCH }									
+		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			add_tech_bonus = {
 				name = HUN_cas_focus
@@ -2788,7 +2759,7 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		search_filters = { FOCUS_FILTER_RESEARCH }									
+		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			add_tech_bonus = {
 				name = HUN_tac_focus
@@ -2908,7 +2879,7 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		search_filters = { FOCUS_FILTER_RESEARCH }									
+		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			country_event = DOD_hungary.150 
 		}
@@ -2990,7 +2961,7 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		search_filters = { FOCUS_FILTER_RESEARCH }									
+		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			country_event = DOD_hungary.160
 		}
@@ -3024,7 +2995,7 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		search_filters = { FOCUS_FILTER_RESEARCH }									
+		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			add_to_tech_sharing_group = HUN_joint_air_development_group
 			every_other_country = {
@@ -3066,12 +3037,12 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = yes
 
-		search_filters = { FOCUS_FILTER_RESEARCH }									
+		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			army_experience = 10
-			add_tech_bonus = {
+			add_doctrine_cost_reduction = {
 				name = HUN_army_maneuvers
-				bonus = 1.0
+				cost_reduction = 0.5
 				uses = 1
 				category = land_doctrine
 			}
@@ -3109,11 +3080,11 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = yes
 
-		search_filters = { FOCUS_FILTER_RESEARCH }									
+		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
-			add_tech_bonus = {
+			add_doctrine_cost_reduction = {
 				name = HUN_mobile_focus
-				bonus = 1.0
+				cost_reduction = 0.25
 				uses = 1
 				category = cat_mobile_warfare
 			}
@@ -3156,13 +3127,13 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		search_filters = { FOCUS_FILTER_RESEARCH }									
+		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			add_tech_bonus = {
 				name = HUN_the_botond
 				bonus = 1.0
 				uses = 1
-				category = cat_mechanized_equipment
+				category = motorized_equipment
 			}
 		}
 	}
@@ -3193,7 +3164,7 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		search_filters = { FOCUS_FILTER_RESEARCH }									
+		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			add_tech_bonus = {
 				name = HUN_motorized_logistics
@@ -3232,19 +3203,13 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		search_filters = { FOCUS_FILTER_RESEARCH }									
+		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			add_tech_bonus = {
 				name = HUN_develop_tanks
 				uses = 1
 				category = armor
 				bonus = 1
-			}
-			
-			
-			
-			hidden_effect = {
-				
 			}
 		}
 	}
@@ -3276,7 +3241,7 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		search_filters = { FOCUS_FILTER_INDUSTRY }									
+		search_filters = { FOCUS_FILTER_INDUSTRY }
 		completion_reward = {
 			add_ideas = HUN_assault_gun_focus
 		}
@@ -3308,7 +3273,7 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		search_filters = { FOCUS_FILTER_RESEARCH }									
+		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			add_to_tech_sharing_group = HUN_joint_tank_development_group
 			every_other_country = {
@@ -3347,7 +3312,7 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		search_filters = { FOCUS_FILTER_RESEARCH }									
+		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			add_tech_bonus = {
 				name = HUN_armored_warfare
@@ -3384,11 +3349,11 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = yes
 
-		search_filters = { FOCUS_FILTER_RESEARCH }									
+		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
-			add_tech_bonus = {
+			add_doctrine_cost_reduction = {
 				name = HUN_mobile_corps_doctrine
-				bonus = 1.0
+				cost_reduction = 0.25
 				uses = 1
 				category = cat_mobile_warfare
 			}
@@ -3426,11 +3391,11 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = yes
 
-		search_filters = { FOCUS_FILTER_RESEARCH }									
+		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
-			add_tech_bonus = {
+			add_doctrine_cost_reduction = {
 				name = HUN_home_defense
-				bonus = 1.0
+				cost_reduction = 0.25
 				uses = 1
 				category = cat_grand_battle_plan
 			}
@@ -3463,7 +3428,7 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		search_filters = { FOCUS_FILTER_RESEARCH }									
+		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			add_tech_bonus = {
 				name = HUN_danuvia_submachine_guns
@@ -3500,7 +3465,7 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		search_filters = { FOCUS_FILTER_RESEARCH }									
+		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			add_tech_bonus = {
 				name = HUN_artillery_effort
@@ -3537,7 +3502,7 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		search_filters = { FOCUS_FILTER_MANPOWER }									
+		search_filters = { FOCUS_FILTER_MANPOWER }
 		completion_reward = {
 			custom_effect_tooltip = HUN_light_infantry_divisions_doctrine_tech_tt
 			custom_effect_tooltip = HUN_light_infantry_divisions_doctrine_unit_tt
@@ -3627,7 +3592,7 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		search_filters = { FOCUS_FILTER_RESEARCH }									
+		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			add_tech_bonus = {
 				name = HUN_form_parachute_battalions
@@ -3671,7 +3636,7 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		search_filters = { FOCUS_FILTER_INDUSTRY }									
+		search_filters = { FOCUS_FILTER_INDUSTRY }
 		completion_reward = {
 			navy_experience = 15
 			add_ideas = HUN_naval_warfare
@@ -3706,12 +3671,12 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		search_filters = { FOCUS_FILTER_RESEARCH }									
+		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			navy_experience = 15
-			add_tech_bonus = {
+			add_doctrine_cost_reduction = {
 				name = HUN_restauration
-				bonus = 1.0
+				cost_reduction = 0.5
 				uses = 1
 				category = cat_fleet_in_being
 			}
@@ -3744,7 +3709,7 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		search_filters = { FOCUS_FILTER_RESEARCH }									
+		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			navy_experience = 15
 			add_tech_bonus = {
@@ -3785,13 +3750,13 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		search_filters = { FOCUS_FILTER_RESEARCH }									
+		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			navy_experience = 15
-			add_tech_bonus = {
+			add_doctrine_cost_reduction = {
 				name = HUN_reform
-				bonus = 1.0
-				uses = 1
+				cost_reduction = 0.5
+				uses = 2
 				category = cat_trade_interdiction
 				category = cat_base_strike
 			}
@@ -3824,7 +3789,7 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		search_filters = { FOCUS_FILTER_RESEARCH }									
+		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			navy_experience = 15
 			add_tech_bonus = {
@@ -3862,7 +3827,7 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		search_filters = { FOCUS_FILTER_RESEARCH }									
+		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			navy_experience = 15
 			add_tech_bonus = {
@@ -3901,7 +3866,7 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		search_filters = { FOCUS_FILTER_RESEARCH }									
+		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			navy_experience = 15
 			add_tech_bonus = {
@@ -3940,7 +3905,7 @@ focus_tree = {
 		continue_if_invalid = no
 		available_if_capitulated = no
 
-		search_filters = { FOCUS_FILTER_RESEARCH }									
+		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			navy_experience = 15
 			add_tech_bonus = {
