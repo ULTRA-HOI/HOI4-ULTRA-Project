@@ -221,10 +221,10 @@
 					}	
 				}
 				add_extra_state_shared_building_slots = 16
-				set_state_flag = FRA_industrial_expansion_target		
+				set_state_flag = FRA_industrial_expansion_target
 				random_neighbor_state = {
 					limit = { 
-						is_core_of = ROOT 
+						is_core_of = ROOT
 						is_owned_by = ROOT
 						NOT = {
 							has_state_flag = FRA_industrial_expansion_target
@@ -258,7 +258,6 @@
 		continue_if_invalid = no
 		available_if_capitulated = no
 		complete_tooltip = {
-			
 		}
 
 		search_filters = {  FOCUS_FILTER_INDUSTRY }
@@ -266,7 +265,6 @@
 			custom_effect_tooltip = FRA_industrial_expansion_effect_tt
 			custom_effect_tooltip = Construction_Focus_tt
 			unlock_decision_tooltip = { decision = FRA_industrial_expansion_decision show_effect_tooltip = yes }
-			
 		}
 	}
 
@@ -289,7 +287,6 @@
 		}
 
 		complete_tooltip = {
-			
 		}
 
 		search_filters = { FOCUS_FILTER_INDUSTRY }
@@ -653,7 +650,7 @@
 				limit = { amount_research_slots > 3 }
 				num_of_factories > 440
 			}
-			amount_research_slots < 8		
+			amount_research_slots < 8
 		}
 		prerequisite = {
 			focus = FRA_industrial_expansion
@@ -686,7 +683,7 @@
 				limit = { amount_research_slots > 3 }
 				num_of_factories > 500
 			}
-			amount_research_slots < 8		
+			amount_research_slots < 8
 		}
 		x = 0
 		y = 1
@@ -894,11 +891,11 @@
 		available_if_capitulated = no
 		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
-			add_tech_bonus = {
+			add_doctrine_cost_reduction = {
 				name = FRA_methodical_battle
 				category = land_doctrine
 				uses = 2
-				bonus = 2
+				cost_reduction = 0.65
 			}
 		}
 	}
@@ -953,7 +950,7 @@
 			1032 = { is_controlled_by = ROOT }
 			29 = { is_controlled_by = ROOT }
 			785 = { is_controlled_by = ROOT }
-			has_idea = FRA_protected_by_the_maginot_line								   
+			has_idea = FRA_protected_by_the_maginot_line
 		}
 		completion_reward = {
 			ROOT = { country_event = { id = france.2 } }
@@ -1027,7 +1024,6 @@
 			}
 		}
 	}
-	
 
 	focus = {
 		id = FRA_infantry_tanks
@@ -1405,11 +1401,11 @@
 		available_if_capitulated = no
 		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
-			add_tech_bonus = {
+			add_doctrine_cost_reduction = {
 				name = FRA_air_ground_cooperation
 				category = air_doctrine
 				uses = 2
-				bonus = 0.5
+				cost_reduction = 0.5
 			}
 		}
 	}
@@ -1471,9 +1467,9 @@
 		completion_reward = {
 			remove_ideas = FRA_victors_of_wwi
 			army_experience = 10
-			add_tech_bonus = {
+			add_doctrine_cost_reduction = {
 				name = FRA_army_reform
-				bonus = 1.0
+				cost_reduction = 0.5
 				uses = 2
 				category = land_doctrine
 			}
@@ -1516,16 +1512,17 @@
 
 		search_filters = { FOCUS_FILTER_POLITICAL  }
 		completion_reward = {
-			create_country_leader = {
-				name = "Léon Blum"
-				desc = "POLITICS_ÉDOUARD_DALADIER_DESC"
-				picture = GFX_portrait_fra_leon_blum
-				expire = "1965.1.1"
-				ideology = socialism
-				traits = {
-					reluctant_interventionist
-					stout_defender
+			add_country_leader_role = {
+				character = FRA_leon_blum
+				country_leader = {
+					expire = "1965.1.1"
+					ideology = socialism
+					traits = {
+						reluctant_interventionist
+						stout_defender
+					}
 				}
+				promote_leader = yes
 			}
 			set_country_flag = { flag = FRA_popular_front_cooldown value = 1 days = 360 } #fires strike event if labour laws not reformed in time
 		}
@@ -2058,6 +2055,17 @@
 		available_if_capitulated = no
 
 		completion_reward = {
+			promote_character  = FRA_rene_nicod
+			add_trait = {
+				character = FRA_rene_nicod
+				ideology = marxism
+				trait = reluctant_veteran
+			}
+			set_party_name = {
+				ideology = communism
+				long_name = FRA_union_populaire_long
+				name = FRA_union_populaire
+			}
 			if = {
 				limit = {
 					NOT = {
@@ -2197,8 +2205,10 @@
 						original_tag = SLO
 						original_tag = MNT
 						original_tag = BOS
+						original_tag = HRZ
 						original_tag = MAC
 						original_tag = CRO
+						original_tag = TRA
 					}
 					exists = yes
 					is_in_faction = no
@@ -2576,6 +2586,17 @@
 		available_if_capitulated = no
 
 		completion_reward = {
+			promote_character = FRA_rene_nicod
+			add_trait = {
+				character = FRA_rene_nicod
+				ideology = marxism
+				trait = proletariat_internationalist
+			}
+			set_party_name = {
+				ideology = communism
+				long_name = FRA_union_populaire_long
+				name = FRA_union_populaire
+			}
 			set_rule = { can_create_factions = yes }
 			create_faction = FRA_communist_faction
 			create_operative_leader = {
@@ -2688,7 +2709,7 @@
 						}
 					}
 				}
-			}											   
+			}
 			custom_effect_tooltip = unlocks_espionage_operation_tt
 			custom_effect_tooltip = FRA_instigate_workers_revolution_spain
 		}
@@ -2835,7 +2856,6 @@
 			add_ideas = { FRA_egalite_liberte_solidarite }
 		}
 	}
-	
 	focus = {
 		id = FRA_reorganize_the_aviation_industry
 		icon = GFX_goal_generic_air_production
@@ -2910,7 +2930,6 @@
 		completion_reward = {
 			custom_effect_tooltip = Construction_Focus_tt
 			unlock_decision_tooltip = { decision = FRA_form_the_state_arsenals_decision show_effect_tooltip = yes }
-			
 		}
 	}
 	focus = {
@@ -3697,14 +3716,14 @@
 						is_core_of = PREV
 						free_building_slots = {
 							building = industrial_complex
-							size > 7
+							size > 3
 							include_locked = yes
 						}
 					}
-					add_extra_state_shared_building_slots = 8
+					add_extra_state_shared_building_slots = 4
 					add_building_construction = {
 						type = arms_factory
-						level = 8
+						level = 4
 						instant_build = yes
 					}
 				}
@@ -3810,7 +3829,6 @@
 			remove_worker_shortage_effect = yes
 		}
 	}
-	
 	focus = {
 		id = FRA_revive_the_franco_polish_alliance
 		icon = GFX_focus_generic_polish_deal
@@ -3994,7 +4012,7 @@
 				has_government = democratic
 			}
 			NOT = { has_war_with = ENG }
-			
+			is_in_faction = no
 			OR = {
 				GER = {
 					owns_state = 69
@@ -4098,6 +4116,7 @@
 
 		available = {
 			is_subject = no
+			is_in_faction = no
 		}
 		
 		allow_branch = {
@@ -4168,7 +4187,7 @@
 		completion_reward = {
 			ITA = {
 				country_event = lar_concessions_to_italy.5
-		}
+			}
 		}
 	}
 	focus = {
@@ -4190,7 +4209,6 @@
 			is_subject = no
 			NOT = {
 				has_war_with = ITA
-				
 			}
 			ENG = {
 				NOT = {
@@ -4227,6 +4245,7 @@
 		}
 		relative_position_id = FRA_france_leads
 		cost = 5
+		dynamic = yes 		
 
 		ai_will_do = {
 			factor = 1
@@ -4236,6 +4255,7 @@
 			is_subject = no
 			SOV = {
 				exists = yes
+				NOT = { has_government = fascism }					  
 				NOT = {
 					has_war_with = ROOT
 				}
@@ -4964,7 +4984,6 @@
 		prerequisite = {
 			focus = FRA_integralism
 		}
-		
 		relative_position_id = FRA_integralism
 		cost = 5
 
@@ -5000,7 +5019,6 @@
 		prerequisite = {
 			focus = FRA_integralism
 		}
-		
 		relative_position_id = FRA_integralism
 		cost = 5
 
@@ -5036,7 +5054,6 @@
 		prerequisite = {
 			focus = FRA_integralism
 		}
-		
 		relative_position_id = FRA_integralism
 		cost = 5
 
@@ -5247,7 +5264,15 @@
 		available = {
 			any_other_country = {
 				original_tag = SPR
-				has_government = ROOT
+				OR = {
+					has_government = ROOT
+					AND = {
+						has_country_leader = { character = SPA_francisco_franco }
+						ROOT = {
+							has_government = fascism
+						}
+					}
+				}
 			}
 			if = {
 				limit = {
@@ -5278,7 +5303,13 @@
 			random_other_country = { 
 				limit = {
 					original_tag = SPR
-					has_government = ROOT
+					OR = {
+						has_government = ROOT
+						has_country_leader = { character = SPA_francisco_franco ruling_only = yes }
+						NOT = {
+							has_global_flag = spanish_civil_war #to make the focus show an effect before the SCW breaks out
+						}
+					}
 				}
 				if = {
 					limit = {
@@ -5628,6 +5659,7 @@
 		available = {
 			GER = {
 				has_government = ROOT
+				NOT = { has_war_with = ROOT }				 
 			}
 			OR = { 
 				is_subject = no
@@ -6548,7 +6580,6 @@
 			GER = { country_event = { id = germany.91 days = 1 } }			
 		}
 	}
-	
 
 
 	##### END ###########
@@ -6566,11 +6597,9 @@
 				not = { has_dlc = "La Resistance" }
 			}
 		}
-
 		available_if_capitulated = yes
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 		complete_tooltip = {
-				
 		}
 
 		completion_reward = {
@@ -6799,7 +6828,6 @@
 		cost = 10
 
 		available_if_capitulated = no
-		
 		available = {
 			has_tech = improved_ship_hull_carrier
 		}
@@ -6954,9 +6982,9 @@
 
 		completion_reward = {
 
-			add_tech_bonus = {
+			add_doctrine_cost_reduction = {
 				name = FRA_naval_doctrine
-				bonus = 1.0
+				cost_reduction = 0.5
 				uses = 2
 				category = naval_doctrine
 			}
@@ -7142,9 +7170,9 @@
 		completion_reward = {
 			air_experience = 50
 
-			add_tech_bonus = {
+			add_doctrine_cost_reduction = {
 				name = FRA_air_doctrine
-				bonus = 0.5
+				cost_reduction = 0.5
 				uses = 2
 				category = air_doctrine
 			}
