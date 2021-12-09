@@ -9,18 +9,37 @@ guiTypes = {
 		fade_type = linear
 		orientation = CENTER
 		origo = center
-		show_sound = pop_up
+		show_sound = "ui_ship_designer_panel_appear"
 
 		background = {
 			name = "Background"
 			spriteType ="GFX_ship_designer_popup_bg"
 		}
 
+		iconType ={
+			name ="experience_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 298 y = 507 }
+			Orientation = "UPPER_LEFT"
+			alwaystransparent = yes
+		}
+
+		instantTextboxType = {
+			name = "experience"
+			position = { x = 295 y = 510 }
+			font = "hoi_18mbs"
+			maxWidth = 70
+			maxHeight = 20
+			format = centre
+			text = "DESIGNER_EXPERIENCE"
+			pdx_tooltip = "CURRENT_EXPERIENCE"
+		}
+
 		iconType = {
 			name = "select_model"
 			position = { x=45 y=85 }	
 			quadTextureSprite = "GFX_3d_view_placeholder"
-		}		
+		}
 		
 		containerWindowType = {
 			name = "border_container"
@@ -31,7 +50,30 @@ guiTypes = {
 				name ="bg_tech_button"
 				spriteType = "GFX_division_3d_bg"
 				position = { x=0 y=0 }
-				size = { x=100%% y=100%%}
+				size = { x=100%% y=100%% }
+				pdx_tooltip = "SELECT_3D_MODEL"
+			}
+		}
+
+		containerWindowType = {
+			name = "icon_selection_container"
+			position = { x=147 y=82 }
+			size = { width = 314 height = 58 }
+
+			background = {
+				name = "background"
+				spriteType = "GFX_mini_tooltip"
+				pdx_tooltip = "SELECT_2D_ICON"
+			}
+
+			buttonType = {
+				name = "btn_equipment_icon"
+				position = { x = 0 y = 0 }
+				spriteType = "GFX_locked_icon"
+				Orientation = "CENTER"
+				centerPosition = yes
+				clicksound = "ui_ship_designer_equipment_icon"
+				alwaystransparent = yes
 			}
 		}
 
@@ -60,9 +102,11 @@ guiTypes = {
 		}
 		
 		buttonType = {
-			name = "btn_role"
+			name = "niche_button"
 			position = { x=460 y=92 }
 			spriteType = "GFX_naval_equipment_role_icons"
+			clicksound = "ui_ship_designer_company_icon"
+			# In the ship designer this button gets its tooltip set in code.
 		}
 
 		instantTextboxType = {
@@ -123,7 +167,83 @@ guiTypes = {
 			@custom_btn_mod_col_6 = 438
 			@custom_btn_mod_row_icon = 0
 			@custom_btn_mod_row_button = 2
+			
+			# Position used to check if module is in top or bottom row 
+			# to anchor tooltip so it doesnt cover the highlight effect in gui
+			positionType = {
+				name = "ypos_module_row_0"
+				position = { x=0 y=@custom_btn_mod_row }
+			}
 
+			positionType = {
+				name = "pos_custom_module_slot_window_0"
+				position = { x=@fixed_btn_mod_col_0 y=@custom_btn_mod_row }
+			}
+
+			positionType = {
+				name = "pos_custom_module_slot_window_1"
+				position = { x=@fixed_btn_mod_col_1 y=@custom_btn_mod_row }
+			}
+
+			positionType = {
+				name = "pos_custom_module_slot_window_2"
+				position = { x=@fixed_btn_mod_col_2 y=@custom_btn_mod_row }
+			}
+
+			positionType = {
+				name = "pos_custom_module_slot_window_3"
+				position = { x=@fixed_btn_mod_col_3 y=@custom_btn_mod_row }
+			}
+
+			positionType = {
+				name = "pos_custom_module_slot_window_4"
+				position = { x=@fixed_btn_mod_col_4 y=@custom_btn_mod_row }
+			}
+
+			positionType = {
+				name = "pos_custom_module_slot_window_5"
+				position = { x=@fixed_btn_mod_col_5 y=@custom_btn_mod_row }
+			}
+
+			positionType = {
+				name = "pos_custom_module_slot_window_6"
+				position = { x=@fixed_btn_mod_col_6 y=@custom_btn_mod_row }
+			}
+
+			positionType = {
+				name = "pos_fixed_module_slot_window_0"
+				position = { x=@fixed_btn_mod_col_0 y=@fixed_btn_mod_row }
+			}
+
+			positionType = {
+				name = "pos_fixed_module_slot_window_1"
+				position = { x=@fixed_btn_mod_col_1 y=@fixed_btn_mod_row }
+			}
+
+			positionType = {
+				name = "pos_fixed_module_slot_window_2"
+				position = { x=@fixed_btn_mod_col_2 y=@fixed_btn_mod_row }
+			}
+
+			positionType = {
+				name = "pos_fixed_module_slot_window_3"
+				position = { x=@fixed_btn_mod_col_3 y=@fixed_btn_mod_row }
+			}
+
+			positionType = {
+				name = "pos_fixed_module_slot_window_4"
+				position = { x=@fixed_btn_mod_col_4 y=@fixed_btn_mod_row }
+			}
+
+			positionType = {
+				name = "pos_fixed_module_slot_window_5"
+				position = { x=@fixed_btn_mod_col_5 y=@fixed_btn_mod_row }
+			}
+
+			positionType = {
+				name = "pos_fixed_module_slot_window_6"
+				position = { x=@fixed_btn_mod_col_6 y=@fixed_btn_mod_row }
+			}
 
 			iconType = {
 				name = "icn_custom_module_0"
@@ -482,8 +602,9 @@ guiTypes = {
 				position = { x = 15 y = 343 }
 				size = { width = 515 height = 130 }
 				clipping = yes
-				
 				verticalScrollbar = "right_vertical_slider"
+				scroll_wheel_factor = 63
+				smooth_scrolling = yes
 
 				background = {
 					name = "Background"
@@ -495,7 +616,7 @@ guiTypes = {
 					position = { x = 0 y = 0 }
 					size = { width = 100%% height = 100%% }
 					slotsize = { width = 103 height = 62 }
-					max_slots_horizontal = 5		   
+					max_slots_horizontal = 5
 					format = "UPPER_LEFT"
 				}
 			}
@@ -549,6 +670,8 @@ guiTypes = {
 				position = { x=5 y=235}	
 				size = { width=533 height=176 }
 				verticalScrollbar = "right_vertical_slider"
+				scroll_wheel_factor = 42
+				smooth_scrolling = yes
 				
 				background = {
 					name = "Background"
@@ -609,6 +732,8 @@ guiTypes = {
 				position = { x=65 y=30}	
 				size = { width=430 height=360 }
 				verticalScrollbar = "right_vertical_slider"
+				scroll_wheel_factor = 80
+				smooth_scrolling = yes			
 				
 				background = {
 					name = "Background"
@@ -678,7 +803,7 @@ guiTypes = {
 			buttonText = "EQUIPMENT_DESIGNER_DUPLICATE"
 			pdx_tooltip = "EQUIPMENT_DESIGNER_DUPLICATE_DESC"
 			buttonFont = "hoi_18mbs"
-			clicksound = click_default
+			clicksound = "ui_ship_designer_duplicate"
 		}
 
 		ButtonType = {
@@ -687,7 +812,23 @@ guiTypes = {
 			quadTextureSprite ="GFX_button_123x34"
 			buttonText = "EQUIPMENT_DESIGNER_AUTO_BUTTON"
 			buttonFont = "hoi_18mbs"
-			clicksound = click_default
+			clicksound = "ui_ship_designer_auto"
+		}
+
+		ButtonType = {
+			name = "auto_upgrade_button"
+			position = { x=205 y=504 }
+			quadTextureSprite ="GFX_designer_button_upgrade_strip"
+			clicksound = "ui_ship_designer_auto_upgrade"
+		}
+
+		buttonType = {
+			name = "auto_upgraded_checkbox_button"
+			position = { x=240 y =508 }
+			quadTextureSprite ="GFX_generic_checkbox3"
+			pdx_tooltip = "EQUIPMENT_DESIGNER_AUTO_UPGRADED_CHECKBOX_BUTTON_DESC"
+			clicksound = click_checkbox
+			frame = 1
 		}
 
 		ButtonType = {
@@ -696,7 +837,7 @@ guiTypes = {
 			quadTextureSprite ="GFX_button_123x34"
 			buttonText = "EQUIPMENT_DESIGNER_SAVE"
 			buttonFont = "hoi_18mbs"
-			clicksound = click_default
+			clicksound = "ui_ship_designer_save"
 		}
 
 		# drop down for ship names
@@ -743,7 +884,7 @@ guiTypes = {
 				quadTextureSprite ="GFX_expand_button"
 				buttonFont = "Main_14_black"
 				Orientation = "UPPER_RIGHT"
-				clicksound = click_default
+				clicksound = "ui_ship_designer_expand"
 			}
 			
 			expandedWindow = {
@@ -755,6 +896,8 @@ guiTypes = {
 				animation_time = 300
 				size = { width=230 height=260 }	
 				verticalScrollbar = "right_vertical_slider"
+				scroll_wheel_factor = 40
+				smooth_scrolling = yes
 				margin = { top = 7 bottom = 7 right = 6 }
 				#clipping = no
 				
@@ -813,7 +956,7 @@ guiTypes = {
 				quadTextureSprite ="GFX_expand_button"
 				buttonFont = "Main_14_black"
 				Orientation = "UPPER_RIGHT"
-				clicksound = click_default
+				clicksound = "ui_ship_designer_expand"
 			}
 
 			expandedWindow = {
@@ -825,6 +968,8 @@ guiTypes = {
 				animation_time = 300
 				size = { width=230 height=325 }
 				verticalScrollbar = "right_vertical_slider"
+				scroll_wheel_factor = 50
+				smooth_scrolling = yes
 				margin = { top = 7 bottom = 7 right = 6 }
 				#clipping = no
 
@@ -857,6 +1002,13 @@ guiTypes = {
 			Orientation = "UPPER_RIGHT"
 			clicksound = click_close
 			pdx_tooltip = "CLOSE"
+		}
+
+		iconType = {
+			name = "resources_bg"
+			position = { x = 540 y = 501 }
+			SpriteType = "GFX_resources_bg"
+			alwaystransparent = yes
 		}
 
 		instantTextboxType = {
@@ -896,10 +1048,36 @@ guiTypes = {
 			size = { width=538 height=604 }
 			verticalScrollbar = "right_vertical_slider"
 			margin = { top = 12 bottom = 12 }
+			scroll_wheel_factor = 40
+			smooth_scrolling = yes
 
 			background = {
 				name = "background"
 				spriteType = "GFX_tiled_window_1b_border"
+			}
+			
+			iconType = {
+				name = "icn_module_slot_frame"
+				position = { x=17 y=14 }
+				spriteType = "GFX_equipment_module_bg"
+			}
+			
+			iconType = {
+				name = "icon_module_slot"
+				position = { x=17 y=18 }
+				#size = { width=76 height=47 }
+				spriteType = "GFX_locked_icon"
+				#Orientation = "CENTER"
+				#centerPosition = yes
+			}
+			
+			instantTextboxType = {
+				name = "slot_name"
+				position = { x=98 y=20 }
+				maxWidth = 350
+				maxHeight = 22
+				font = "hoi_18mbs"
+				text = "SHIP_DESIGNER_MODULE_SELECTION"
 			}
 
 			instantTextboxType = {
@@ -917,7 +1095,7 @@ guiTypes = {
 				spriteType = "GFX_button_123x34"
 				buttonText = "REGIMENTS_SELECTION_CANCEL"
 				buttonFont = "hoi_18mbs"
-				clicksound = click_default
+				clicksound = click_close
 			}
 
 			gridBoxType = {
@@ -945,7 +1123,7 @@ guiTypes = {
 		background = {
 			name = "Background"
 			quadTextureSprite ="GFX_mini_tooltip"
-			clicksound = click_default
+			clicksound = ui_ship_designer_role_entry
 		}
 
 		iconType = {
@@ -978,7 +1156,7 @@ guiTypes = {
 		background = {
 			name = "Background"
 			quadTextureSprite ="GFX_mini_tooltip"
-			clicksound = click_default
+			clicksound = "ui_ship_designer_role_entry"
 		}
 
 		instantTextboxType = {
@@ -1003,7 +1181,7 @@ guiTypes = {
 		background = {
 			name = "background"
 			spriteType ="GFX_mini_tooltip"
-			clicksound = click_default
+			clicksound = "ui_ship_designer_role_entry"
 		}
 
 		iconType = {
@@ -1023,6 +1201,13 @@ guiTypes = {
 			maxHeight = 22
 			multiline = yes
 			format = left
+			alwaystransparent = yes
+		}
+		
+		iconType = {
+			name = "validity_icon"
+			spriteType = "GFX_module_requirements"
+			position = { x=5 y=5 }
 			alwaystransparent = yes
 		}
 	}
@@ -1058,6 +1243,28 @@ guiTypes = {
 		}
 
 		instantTextboxType = {
+			name = "allow_role_text"
+			position = { x=0 y=40 }
+			font = "hoi_18mbs"
+			maxWidth = 155
+			maxHeight = 22
+			multiline = no
+			format = left
+			alwaystransparent = yes
+		}
+
+		instantTextboxType = {
+			name = "forbid_role_text"
+			position = { x=40 y=40 }
+			font = "hoi_18mbs"
+			maxWidth = 155
+			maxHeight = 22
+			multiline = no
+			format = left
+			alwaystransparent = yes
+		}
+
+		instantTextboxType = {
 			name = "cost"
 			position = { x=85 y=20 }
 			font = "hoi_16mbs"
@@ -1066,6 +1273,13 @@ guiTypes = {
 			maxHeight = 16
 			multiline = no
 			format = left
+			alwaystransparent = yes
+		}
+
+		iconType = {
+			name = "validity_icon"
+			spriteType = "GFX_module_requirements"
+			position = { x=5 y=5 }
 			alwaystransparent = yes
 		}
 
@@ -1169,7 +1383,7 @@ guiTypes = {
 	}
 
 	containerWindowType = {
-		name = "equipment_designer_role_icon_entry"
+		name = "equipment_designer_niche_icon_entry"
 		position = { x=0 y=0 }
 		size = { width=37 height=37 }
 
@@ -1184,7 +1398,38 @@ guiTypes = {
 			name = "icon"
 			quadTextureSprite = "GFX_naval_equipment_role_icons"
 			position = { x = 2 y = 2 }
+			clicksound = "ui_ship_designer_role_entry"
 		}
 
 	}
+
+	containerWindowType = {
+		name = "equipment_designer_module_slot_entry"
+		position = { x=0 y=0 }
+		size = { width=76 height=47 } # Size of icn_module_slot_frame. Important for centering btn_module_slot.
+
+		iconType = {
+			name = "icn_module_slot_frame"
+			position = { x=0 y=0 }
+			spriteType = "GFX_equipment_module_bg"
+		}
+
+		buttonType = {
+			name = "btn_module_slot"
+			position = { x=0 y=0 }
+			spriteType = "GFX_locked_icon"
+			Orientation = "CENTER"
+			centerPosition = yes
+			clicksound = "ui_ship_designer_company_icon" #This is a button for clicking into ANY of the modules.
+		}
+
+		iconType = {
+			name = "icn_requirements"
+			position = { x=4 y=4 }
+			spriteType = "GFX_module_requirements"
+			alwaystransparent = yes
+		}
+
+	}
+
 }
