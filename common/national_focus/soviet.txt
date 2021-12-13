@@ -5788,7 +5788,7 @@ focus_tree = {
 		relative_position_id = SOV_strengthen_the_mobilization_plan
 		cost = 5
 
-		mutually_exclusive = { focus = SOV_beaten_but_not_defeated }
+		#mutually_exclusive = { focus = SOV_beaten_but_not_defeated }
 
 		allow_branch = {
 			if = {
@@ -5840,7 +5840,7 @@ focus_tree = {
 		relative_position_id = SOV_the_path_of_marxism_leninism
 		cost = 5
 
-		mutually_exclusive = { focus = SOV_the_right_opposition focus = SOV_the_left_opposition }
+		#mutually_exclusive = { focus = SOV_the_right_opposition focus = SOV_the_left_opposition }
 
 		allow_branch = {
 			if = {
@@ -8034,6 +8034,111 @@ focus_tree = {
 			}
 		}
 	}
+	
+	focus = {
+		id = SOV_baltic_security
+		icon = GFX_focus_SOV_baltic_security
+		prerequisite = { focus = SOV_the_comintern }
+		x = 3
+		y = -1
+		relative_position_id = SOV_anti_capitalist_policies
+		cost = 5
+
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				has_civil_war = yes
+			}	
+		}
+		
+		bypass = {
+			NOT = { has_country_flag = SOV_paranoia_system_active_flag }
+			NOT = {
+				country_exists = EST
+				country_exists = LAT
+				country_exists = LIT
+			}
+		}
+
+		available = {
+			OR = {
+				NOT = { has_country_flag = SOV_paranoia_system_active_flag }  #TODO_Manu: Change for the inverse, "Political Paranoia has subsided"
+			}
+			is_subject = no
+		}
+		
+		search_filters = {}
+
+		completion_reward = {
+			if = {
+				limit = {
+					country_exists = EST
+				}
+				EST = {
+					if = {
+						limit = { ROOT = { has_government = fascism } }
+						add_timed_idea = { idea = fascist_influence days = 1095 }
+					}
+					if = {
+						limit = { ROOT = { has_government = democratic } }
+						add_timed_idea = { idea = democratic_influence days = 1095 }
+					}
+					if = {
+						limit = { ROOT = { has_government = communism } }
+						add_timed_idea = { idea = communist_influence days = 1095 }
+					}
+					hidden_effect = {
+						country_event = { id = generic.1 }
+					}
+				}
+			}
+			if = {
+				limit = {
+					country_exists = LAT
+				}
+				LAT = {
+					if = {
+						limit = { ROOT = { has_government = fascism } }
+						add_timed_idea = { idea = fascist_influence days = 1095 }
+					}
+					if = {
+						limit = { ROOT = { has_government = democratic } }
+						add_timed_idea = { idea = democratic_influence days = 1095 }
+					}
+					if = {
+						limit = { ROOT = { has_government = communism } }
+						add_timed_idea = { idea = communist_influence days = 1095 }
+					}
+					hidden_effect = {
+						country_event = { id = generic.1 }
+					}
+				}
+			}
+			if = {
+				limit = {
+					country_exists = LIT
+				}
+				LIT = {
+					if = {
+						limit = { ROOT = { has_government = fascism } }
+						add_timed_idea = { idea = fascist_influence days = 1095 }
+					}
+					if = {
+						limit = { ROOT = { has_government = democratic } }
+						add_timed_idea = { idea = democratic_influence days = 1095 }
+					}
+					if = {
+						limit = { ROOT = { has_government = communism } }
+						add_timed_idea = { idea = communist_influence days = 1095 }
+					}
+					hidden_effect = {
+						country_event = { id = generic.1 }
+					}
+				}
+			}
+		}
+	}
 
 	focus = {
 		id = SOV_claims_in_baltic
@@ -8055,7 +8160,7 @@ focus_tree = {
 			}	
 		}
 
-		mutually_exclusive = { focus = SOV_respect_baltic_self_determination }
+		#mutually_exclusive = { focus = SOV_respect_baltic_self_determination }
 
 		available = {
 			NOT = { has_country_flag = SOV_paranoia_system_active_flag }
@@ -8656,7 +8761,7 @@ focus_tree = {
 			}	
 		}
 		
-		mutually_exclusive = { focus = SOV_reconcile_japan }
+		#mutually_exclusive = { focus = SOV_reconcile_japan }
 
 		available = {
 			any_country = {
@@ -8823,7 +8928,7 @@ focus_tree = {
 	focus = {
 		id = SOV_prepare_a_war_with_japan
 		icon = GFX_focus_AST_war_japan
-		prerequisite = { focus = SOV_the_gobi_gambit focus = SOV_two_red_flags focus = SOV_support_the_kuomintang }
+		prerequisite = {focus = SOV_two_red_flags focus = SOV_support_the_kuomintang }
 		x = 1
 		y = 1
 		relative_position_id = SOV_two_red_flags
