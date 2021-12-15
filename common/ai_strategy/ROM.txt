@@ -15,11 +15,10 @@
 
 
 ROM_be_nice_to_hitler = {
-	allowed = { 
-		tag = ROM
+	allowed = {
+		original_tag = ROM
 	}
 	enable = {
-		tag = ROM
 		has_completed_focus = ROM_trade_treaty_with_germany
 	}
 	abort={
@@ -34,11 +33,10 @@ ROM_be_nice_to_hitler = {
 }
 
 ROM_build_early_civ = {
-	allowed = { 
-		tag = ROM
+	allowed = {
+		original_tag = ROM
 	}
 	enable = {
-		tag = ROM
 		date < 1937.10.15
 		has_war = no
 	}
@@ -51,12 +49,12 @@ ROM_build_early_civ = {
 		value = 16
 	}
 }
+
 ROM_build_mils = {
 	allowed = { 
-		tag = ROM
+		original_tag = ROM
 	}
 	enable = {
-		tag = ROM
 		date > 1937.10.15
 	}
 	
@@ -65,22 +63,21 @@ ROM_build_mils = {
 	ai_strategy = {
 		type = building_target
 		id = arms_factory
-		value = 3
+		value = 10
 	}
 }
 
 
 ROM_build_oil = { # Moldova
-	allowed = { 
-		tag = ROM
+	allowed = {
+		original_tag = ROM
 	}
 	enable = {
-		tag = ROM
 		has_war = no
 		date > 1940.1.1
 		46 = {
 			is_controlled_by = ROM
-			infrastructure < 8
+			infrastructure < 5
 		}
 	}
 
@@ -94,12 +91,100 @@ ROM_build_oil = { # Moldova
 	}	
 }
 
-romania_dont_ally_with_japan = {
-	allowed = { 
-		tag = ROM
+ROM_highway_to_the_danger_zone_78 = { # bessarabia
+	allowed = {
+		original_tag = ROM
 	}
 	enable = {
-		tag = ROM
+		has_war = no
+		date > 1938.1.1
+		78 = {
+			is_controlled_by = ROM
+			infrastructure < 4
+		}
+	}
+
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = build_building
+		id = infrastructure
+		target = 78
+		value = 1
+	}	
+}
+
+ROM_highway_to_the_danger_zone_766 = { # s. bessarabia
+	allowed = {
+		original_tag = ROM
+	}
+	enable = {
+		has_war = no
+		date > 1938.1.1
+		78 = {
+			OR = {
+				NOT = { is_controlled_by = ROM }
+				infrastructure > 3
+			}
+		}
+		766 = {
+			is_controlled_by = ROM
+			infrastructure < 4
+		}
+	}
+
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = build_building
+		id = infrastructure
+		target = 766
+		value = 1
+	}	
+}
+
+ROM_highway_to_the_danger_zone_79 = { # Moldova
+	allowed = {
+		original_tag = ROM
+	}
+	enable = {
+		has_war = no
+		date > 1938.1.1
+		78 = {
+			OR = {
+				NOT = { is_controlled_by = ROM }
+				infrastructure > 3
+			}
+		}
+		766 = {
+			OR = {
+				NOT = { is_controlled_by = ROM }
+				infrastructure > 3
+			}
+		}
+		79 = {
+			is_controlled_by = ROM
+			infrastructure < 4
+		}
+	}
+
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = build_building
+		id = infrastructure
+		target = 79
+		value = 1
+	}	
+}
+
+
+romania_dont_ally_with_japan = {
+	allowed = {
+		original_tag = ROM
+	}
+	enable = {
+		original_tag = ROM
 	}
 	abort = {
 		NOT = { country_exists = JAP }
@@ -119,7 +204,7 @@ romania_dont_ally_with_japan = {
 
 romania_dont_attack_bulgaria = {
 	allowed = { 
-		tag = ROM
+		original_tag = ROM
 	}
 	enable = {
 		tag = ROM
@@ -141,10 +226,9 @@ romania_dont_attack_bulgaria = {
 
 ROM_war_with_soviets = {
 	allowed = { 
-		tag = ROM
+		original_tag = ROM
 	}
 	enable = {
-		tag = ROM
 		country_exists = SOV
 		is_in_faction_with = GER
 		NOT = { is_in_faction_with = SOV }
@@ -192,10 +276,9 @@ ROM_war_with_soviets = {
 
 ROM_want_to_invade_FRA_without_ITA = {
 	allowed = { 
-		tag = ROM
+		original_tag = ROM
 	}
 	enable = {
-		tag = ROM
 		is_historical_focus_on = yes
 		date < 1940.5.1
 		HOL = {	has_capitulated = no }
@@ -249,10 +332,6 @@ ROM_want_to_invade_FRA_without_ITA = {
 		target_country = HOL
 		value = 1000
 	}
-
-	
-
-	
 
 	ai_strategy = {
 		type = dont_join_wars_with
