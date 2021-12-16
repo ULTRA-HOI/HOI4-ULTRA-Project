@@ -6,6 +6,7 @@ tags={
 	"Fixes"
 	"Balance"
 }
+replace_path="history/states"
 picture="ultra.jpg"
 supported_version="1.10.*"
 remote_file_id="1516163124"
