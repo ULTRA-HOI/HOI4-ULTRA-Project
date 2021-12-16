@@ -255,7 +255,7 @@ NDefines.NMilitary.MAX_DIVISION_BRIGADE_HEIGHT = 3			-- Max height of regiments 
 NDefines.NMilitary.MAX_DIVISION_SUPPORT_WIDTH = 2			-- Max width of support in division designer.
 NDefines.NMilitary.BASE_DIVISION_BRIGADE_GROUP_COST = 1 	--Base cost to unlock a regiment slot,
 NDefines.NMilitary.BASE_DIVISION_BRIGADE_CHANGE_COST = 1	--Base cost to change a regiment column.
-NDefines.NMilitary.BASE_DIVISION_SUPPORT_SLOT_COST = 5 	--Base cost to unlock a support slot
+NDefines.NMilitary.BASE_DIVISION_SUPPORT_SLOT_COST = 1 	--Base cost to unlock a support slot
 
 
 
