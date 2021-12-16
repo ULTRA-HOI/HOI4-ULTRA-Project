@@ -872,3 +872,5 @@ NDefines.NAI.STR_BOMB_MIN_EXCORT_WINGS = 1                                      
 
 NDefines.NAI.AIR_AI_ENEMY_PROV_RATIO_FOR_COMBAT_REGION = 0.05			 -- if a region has more than this ratio of provinces controlled by enemy, AI will consider it as a combat zone while assigning planes
 NDefines.NAI.MAX_CARRIER_OVERFILL = 1.2                       
+
+NDefines.NCharacter.OFFICER_CORP_HIGH_COMMAND_SLOTS_IN_MENU = 6 --For Alert manager to count the number of High Command Slots in the UI
