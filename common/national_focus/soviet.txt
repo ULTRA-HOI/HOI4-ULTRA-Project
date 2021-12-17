@@ -180,6 +180,10 @@ focus_tree = {
 		y = 0
 		relative_position_id = SOV_infrastructure_effort_nsb
 		cost = 5
+		
+		allow_branch = {
+			always = no
+		}
 
 		ai_will_do = {
 			factor = 1
@@ -321,11 +325,15 @@ focus_tree = {
 		icon = GFX_focus_generic_industry_1
 		prerequisite = { focus = SOV_infrastructure_effort_nsb }
 		prerequisite = { focus = SOV_heavy_industry }
-		x = 1
+		x = 0
 		y = 1
 		relative_position_id = SOV_infrastructure_effort_nsb
 		cost = 10
-
+		
+		allow_branch = {
+			always = yes
+		}
+		
 		available = {
 			custom_trigger_tooltip = {
 				tooltip = SOV_fyp_controlled_factories_tier_1_tt
@@ -348,41 +356,6 @@ focus_tree = {
 		}
 
 		completion_reward = { #TODO_Manu: This is just copy-pasted from the old focus -> Is this what we want?
-			random_owned_controlled_state = {
-				limit = {
-					industrial_complex > 0
-					free_building_slots = {
-						building = industrial_complex
-						size > 2
-						include_locked = yes
-					}
-				}
-				add_extra_state_shared_building_slots = 2
-				add_building_construction = {
-					type = industrial_complex
-					level = 1
-					instant_build = yes
-				}
-				set_state_flag = SOV_finish_five_year_plan_2IC
-			}
-			random_owned_controlled_state = {
-				limit = {
-					industrial_complex > 0
-					free_building_slots = {
-						building = industrial_complex
-						size > 1
-						include_locked = yes
-					}
-				}
-				add_extra_state_shared_building_slots = 2
-				add_building_construction = {
-					type = industrial_complex
-					level = 1
-					instant_build = yes
-				}
-				set_state_flag = SOV_finish_five_year_plan_2IC
-			}
-
 			custom_effect_tooltip = available_political_advisor
 			show_ideas_tooltip = SOV_lazar_kaganovich
 		}
@@ -839,71 +812,6 @@ focus_tree = {
 
 			custom_effect_tooltip = SOV_steel_casting_industry_ns_tt
 
-			random_owned_controlled_state = {
-				limit = {
-					has_resources_amount = {
-						resource = steel
-						amount > 0
-					}
-					free_building_slots = {
-						building = industrial_complex
-						size > 0
-						include_locked = yes
-					}
-				}
-				add_extra_state_shared_building_slots = 1
-				add_building_construction = {
-					type = industrial_complex
-					level = 1
-					instant_build = yes
-				}
-				add_resource = {
-					type = steel
-					amount = 5
-				}
-				set_state_flag = SOV_steel_casting_industry_flag
-			}
-			if = {
-				limit = {
-					any_owned_state = {
-						has_resources_amount = {
-							resource = steel
-							amount > 0
-						}
-						free_building_slots = {
-							building = industrial_complex
-							size > 1
-							include_locked = yes
-						}
-						NOT = {	has_state_flag = SOV_steel_casting_industry_flag }
-					}
-				}
-				random_owned_controlled_state = {
-					limit = {
-						has_resources_amount = {
-							resource = steel
-							amount > 0
-						}
-						free_building_slots = {
-							building = industrial_complex
-							size > 0
-							include_locked = yes
-						}
-						NOT = {	has_state_flag = SOV_steel_casting_industry_flag }
-					}
-					add_extra_state_shared_building_slots = 1
-					add_building_construction = {
-						type = industrial_complex
-						level = 1
-						instant_build = yes
-					}
-					add_resource = {
-						type = steel
-						amount = 5
-					}
-					set_state_flag = SOV_steel_casting_industry_flag
-				}
-			}
 		}
 	}
 
@@ -1470,12 +1378,6 @@ focus_tree = {
 						level = 1
 						instant_build = yes
 					}
-					add_extra_state_shared_building_slots = 1
-					add_building_construction = {
-						type = industrial_complex
-						level = 1
-						instant_build = yes
-					}
 				}
 				add_to_temp_variable = { SOV_states_targeted_eastern_development = 1 }
 			}
@@ -1495,12 +1397,6 @@ focus_tree = {
 				566 = { #IRKUTSK
 					add_building_construction = {
 						type = infrastructure
-						level = 1
-						instant_build = yes
-					}
-					add_extra_state_shared_building_slots = 1
-					add_building_construction = {
-						type = industrial_complex
 						level = 1
 						instant_build = yes
 					}
@@ -1525,12 +1421,6 @@ focus_tree = {
 						level = 1
 						instant_build = yes
 					}
-					add_extra_state_shared_building_slots = 1
-					add_building_construction = {
-						type = industrial_complex
-						level = 1
-						instant_build = yes
-					}
 				}
 				add_to_temp_variable = { SOV_states_targeted_eastern_development = 1 }
 			}
@@ -1550,12 +1440,6 @@ focus_tree = {
 				564 = { #ULAN UDE
 					add_building_construction = {
 						type = infrastructure
-						level = 1
-						instant_build = yes
-					}
-					add_extra_state_shared_building_slots = 1
-					add_building_construction = {
-						type = industrial_complex
 						level = 1
 						instant_build = yes
 					}
@@ -1663,12 +1547,6 @@ focus_tree = {
 						level = 1
 						instant_build = yes
 					}
-					add_extra_state_shared_building_slots = 1
-					add_building_construction = {
-						type = industrial_complex
-						level = 1
-						instant_build = yes
-					}
 				}
 				add_to_temp_variable = { SOV_states_targeted_eastern_development = 1 }
 			}
@@ -1688,12 +1566,6 @@ focus_tree = {
 				582 = { #MAGNITOGORSK
 					add_building_construction = {
 						type = infrastructure
-						level = 1
-						instant_build = yes
-					}
-					add_extra_state_shared_building_slots = 1
-					add_building_construction = {
-						type = industrial_complex
 						level = 1
 						instant_build = yes
 					}
@@ -1718,12 +1590,6 @@ focus_tree = {
 						level = 1
 						instant_build = yes
 					}
-					add_extra_state_shared_building_slots = 1
-					add_building_construction = {
-						type = industrial_complex
-						level = 1
-						instant_build = yes
-					}
 				}
 				add_to_temp_variable = { SOV_states_targeted_eastern_development = 1 }
 			}
@@ -1743,12 +1609,6 @@ focus_tree = {
 				653 = { #SVERDLOVSK
 					add_building_construction = {
 						type = infrastructure
-						level = 1
-						instant_build = yes
-					}
-					add_extra_state_shared_building_slots = 1
-					add_building_construction = {
-						type = industrial_complex
 						level = 1
 						instant_build = yes
 					}
@@ -1949,14 +1809,7 @@ focus_tree = {
 		cost = 10
 
 		available = {
-			any_owned_state = {
-				is_fully_controlled_by = ROOT
-				free_building_slots = {
-					building = arms_factory
-					size > 1
-					include_locked = yes
-				}
-			}
+			
 		}
 		
 		search_filters = {FOCUS_FILTER_INDUSTRY}
@@ -1966,19 +1819,7 @@ focus_tree = {
 			custom_effect_tooltip = SOV_expand_the_aircraft_industry_ns_tt
 
 			random_owned_controlled_state = {
-				limit = {
-					free_building_slots = {
-						building = arms_factory
-						size > 1
-						include_locked = yes
-					}
-				}
-				add_extra_state_shared_building_slots = 2
-				add_building_construction = {
-					type = arms_factory
-					level = 2
-					instant_build = yes
-				}
+				
 				if = {
 					limit = {
 						air_base < 9
@@ -2405,26 +2246,11 @@ focus_tree = {
 
 		}
 		
-		search_filters = {FOCUS_FILTER_INDUSTRY FOCUS_FILTER_RESEARCH FOCUS_FILTER_NAVY_XP}
+		search_filters = {FOCUS_FILTER_RESEARCH FOCUS_FILTER_NAVY_XP}
 
 		completion_reward = {
 			navy_experience = 25
-			random_owned_controlled_state = {
-				limit = {
-					dockyard > 0
-					free_building_slots = {
-						building = dockyard
-						size > 1
-						include_locked = yes
-					}
-				}
-				add_extra_state_shared_building_slots = 2
-				add_building_construction = {
-					type = dockyard
-					level = 2
-					instant_build = yes
-				}
-			}
+			
 			add_tech_bonus = {
 				name = ships_bonus
 				bonus = 1.0
@@ -2454,21 +2280,7 @@ focus_tree = {
 
 		completion_reward = {
 			195 = { #LENINGRAD
-				if = {
-					limit = {
-						free_building_slots = {
-							building = dockyard
-							size > 0
-							include_locked = yes
-						}
-					}
-					add_extra_state_shared_building_slots = 1
-					add_building_construction = {
-						type = dockyard
-						level = 1
-						instant_build = yes
-					}
-				}
+				
 				add_building_construction = {
 					type = anti_air_building
 					level = 2
@@ -3449,24 +3261,6 @@ focus_tree = {
 					category = infantry_weapons
 				}
 			}
-			
-			219 = {
-				if = {
-					limit = {
-						free_building_slots = {
-							building = arms_factory
-							size > 0
-							include_locked = yes
-						}
-					}
-					add_extra_state_shared_building_slots = 1
-					add_building_construction = {
-						type = arms_factory
-						level = 1
-						instant_build = yes
-					}
-				}
-			}
 		}
 	}
 
@@ -3568,46 +3362,6 @@ focus_tree = {
 					category = artillery
 				}
 			}
-			
-			if = { # 2 Mils in Chelyabinsk
-				limit = {
-					has_full_control_of_state = 572
-					572 = {
-						free_building_slots = {
-							building = arms_factory
-							size > 0
-							include_locked = yes
-						}
-					}
-				}
-				572 = {
-					add_extra_state_shared_building_slots = 1
-					add_building_construction = {
-						type = arms_factory
-						level = 1
-						instant_build = yes
-					}
-				}
-			}
-			else = { # If Chelyabinsk not available, then 1 Mil elsewhere
-				random_owned_state = {
-					limit = {
-						is_fully_controlled_by = ROOT
-						arms_factory > 1
-						free_building_slots = {
-							building = arms_factory
-							size > 0
-							include_locked = yes
-						}
-					}
-					add_extra_state_shared_building_slots = 1
-					add_building_construction = {
-						type = arms_factory
-						level = 1
-						instant_build = yes
-					}
-				}
-			}
 
 			add_ideas = SOV_defense_industry_artillery_bonus
 		}
@@ -3651,24 +3405,6 @@ focus_tree = {
 					bonus = 0.75
 					uses = 2
 					category = artillery
-				}
-			}
-
-			219 = {
-				if = {
-					limit = {
-						free_building_slots = {
-							building = arms_factory
-							size > 0
-							include_locked = yes
-						}
-					}
-					add_extra_state_shared_building_slots = 1
-					add_building_construction = {
-						type = arms_factory
-						level = 1
-						instant_build = yes
-					}
 				}
 			}
 		}
@@ -6098,113 +5834,6 @@ focus_tree = {
 			add_stability = -0.05
 			add_war_support = -0.05
 
-			if = { #Target a rural state with no civs
-				limit = {
-					any_owned_state = {
-						OR = {
-							has_state_category = town #Developed Rural Region
-							has_state_category = rural #Rural Region
-						}
-						is_fully_controlled_by = ROOT
-						industrial_complex < 1
-						arms_factory < 1
-						dockyard < 1
-						free_building_slots = {
-							building = industrial_complex
-							size > 1
-							include_locked = yes
-						}
-					}
-				}
-				random_owned_state = {
-					limit = {
-						OR = {
-							has_state_category = town #Developed Rural Region
-							has_state_category = rural #Rural Region
-						}
-						is_fully_controlled_by = ROOT
-						industrial_complex < 1
-						arms_factory < 1
-						dockyard < 1
-						free_building_slots = {
-							building = industrial_complex
-							size > 1
-							include_locked = yes
-						}
-					}
-					add_extra_state_shared_building_slots = 2
-					add_building_construction = {
-						type = industrial_complex
-						level = 2
-						instant_build = yes
-					}
-				}
-			}
-			else_if = { #Failsafe 1: Target a random rural state
-				limit = {
-					any_owned_state = {
-						OR = {
-							has_state_category = town #Developed Rural Region
-							has_state_category = rural #Rural Region
-						}
-						is_fully_controlled_by = ROOT
-						free_building_slots = {
-							building = industrial_complex
-							size > 1
-							include_locked = yes
-						}
-					}
-				}
-				random_owned_state = {
-					limit = {
-						OR = {
-							has_state_category = town #Developed Rural Region
-							has_state_category = rural #Rural Region
-						}
-						is_fully_controlled_by = ROOT
-						free_building_slots = {
-							building = industrial_complex
-							size > 1
-							include_locked = yes
-						}
-					}
-					add_extra_state_shared_building_slots = 2
-					add_building_construction = {
-						type = industrial_complex
-						level = 2
-						instant_build = yes
-					}
-				}
-			}
-			else_if = { #Failsafe 2: Target a random state
-				limit = {
-					any_owned_state = {
-						is_fully_controlled_by = ROOT
-						free_building_slots = {
-							building = industrial_complex
-							size > 1
-							include_locked = yes
-						}
-					}
-				}
-				random_owned_state = {
-					limit = {
-						is_fully_controlled_by = ROOT
-						free_building_slots = {
-							building = industrial_complex
-							size > 1
-							include_locked = yes
-						}
-					}
-					add_extra_state_shared_building_slots = 2
-					add_building_construction = {
-						type = industrial_complex
-						level = 2
-						instant_build = yes
-					}
-				}
-			}
-
 			SOV_paranoia_medium_decrease_effect = yes
 		}
 	}
@@ -6419,44 +6048,6 @@ focus_tree = {
 					NOT = { has_idea = tot_economic_mobilisation }
 				}
 				add_ideas = war_economy
-			}
-			if = {
-				limit = {
-					217 = {
-						is_controlled_by = ROOT
-						free_building_slots = {
-							building = arms_factory
-							size > 1
-							include_locked = yes
-						}
-					}
-				}
-				217 = {
-					add_extra_state_shared_building_slots = 2
-					add_building_construction = {
-						type = arms_factory
-						level = 2
-						instant_build = yes
-					}
-				}
-			}
-			else = {
-				random_controlled_state = {
-					limit = {
-						arms_factory > 1
-						free_building_slots = {
-							building = arms_factory
-							size > 1
-							include_locked = yes
-						}
-					}
-					add_extra_state_shared_building_slots = 2
-					add_building_construction = {
-						type = arms_factory
-						level = 2
-						instant_build = yes
-					}
-				}
 			}
 		}
 	}
