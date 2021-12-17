@@ -251,7 +251,7 @@ NDefines.NMilitary.FIELD_MARSHAL_ARMIES_CAP = 6				-- how many armies a field ma
 NDefines.NMilitary.CORPS_COMMANDER_DIVISIONS_CAP = 12			-- how many divisions a corps commander is limited to. 0 = inf, < 0 = blocked
 NDefines.NMilitary.FIELD_MARSHAL_DIVISIONS_CAP = 12			-- how many divisions a field marshall is limited to. 0 = inf, < 0 = blocked 
 NDefines.NMilitary.MAX_DIVISION_BRIGADE_WIDTH = 5			-- Max width of regiments in division designer.
-NDefines.NMilitary.MAX_DIVISION_BRIGADE_HEIGHT = 3			-- Max height of regiments in division designer.
+NDefines.NMilitary.MAX_DIVISION_BRIGADE_HEIGHT = 4 --3			-- Max height of regiments in division designer.
 NDefines.NMilitary.MAX_DIVISION_SUPPORT_WIDTH = 2			-- Max width of support in division designer.
 NDefines.NMilitary.BASE_DIVISION_BRIGADE_GROUP_COST = 1 	--Base cost to unlock a regiment slot,
 NDefines.NMilitary.BASE_DIVISION_BRIGADE_CHANGE_COST = 1	--Base cost to change a regiment column.
