@@ -875,6 +875,7 @@ NDefines.NAI.MAX_CARRIER_OVERFILL = 1.2
 
 NDefines.NCharacter.OFFICER_CORP_HIGH_COMMAND_SLOTS_IN_MENU = 6 --For Alert manager to count the number of High Command Slots in the UI
 
+NDefines.NCharacter.DEFAULT_PP_COST_FOR_POLITICAL_ADVISOR = 100
 NDefines.NSupply.CAPITAL_SUPPLY_CIVILIAN_FACTORIES = 0.075 --0,3-- supply from one civilian factory
 NDefines.NSupply.CAPITAL_SUPPLY_MILITARY_FACTORIES = 0.15 --0.6-- supply from one military factory
 NDefines.NSupply.CAPITAL_SUPPLY_DOCKYARDS = 0.1 --0.4--supply from one naval factory
