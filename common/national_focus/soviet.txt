@@ -3197,6 +3197,7 @@ focus_tree = {
 
 		icon = GFX_goal_generic_army_tanks
 		prerequisite = { focus = SOV_the_means_to_wage_war }
+		prerequisite = { focus = SOV_move_industry_to_the_urals }
 		x = 1
 		y = 1
 		relative_position_id = SOV_the_means_to_wage_war
@@ -3208,6 +3209,9 @@ focus_tree = {
 				NOT = { num_of_controlled_factories < SOV_fyp_factory_requirement_tier_4 }
 			}
 			#TODO_Manu: This could require X num of factories to have been relocated
+			572 = {
+				arms_factory > 29
+			}
 		}
 		
 		search_filters = {FOCUS_FILTER_INDUSTRY FOCUS_FILTER_ARMY_XP}
@@ -3222,17 +3226,17 @@ focus_tree = {
 				every_owned_state = {
 					limit = {
 						is_on_continent = asia
-						arms_factory > 2
+						arms_factory > 29
 						free_building_slots = {
 							building = arms_factory
-							size > 1
+							size > 9
 							include_locked = yes
 						}
 					}
-					add_extra_state_shared_building_slots = 1
+					add_extra_state_shared_building_slots = 10
 					add_building_construction = {
 						type = arms_factory
-						level = 1
+						level = 10
 						instant_build = yes
 					}
 				}
@@ -3242,28 +3246,28 @@ focus_tree = {
 			set_temp_variable = { temp_targets_index = 0 }
 			while_loop_effect = {
 				limit = {
-					check_variable = { temp_targets_index = 10 compare = less_than }
+					check_variable = { temp_targets_index = 100 compare = less_than }
 				}
 				hidden_effect = {
 					random_owned_state = {
 						limit = {
 							is_on_continent = asia
-							arms_factory > 2
+							arms_factory > 29
 							free_building_slots = {
 								building = arms_factory
-								size > 1
+								size > 9
 								include_locked = yes
 							}
 							NOT = { has_state_flag = SOV_development_of_tankograd_flag }
 						}
-						add_extra_state_shared_building_slots = 1
+						add_extra_state_shared_building_slots = 10
 						add_building_construction = {
 							type = arms_factory
-							level = 1
+							level = 10
 							instant_build = yes
 						}
 						set_state_flag = SOV_development_of_tankograd_flag
-						add_to_temp_variable = { SOV.temp_targets_index = 1 }
+						add_to_temp_variable = { SOV.temp_targets_index = 10 }
 						log = "Round [?SOV.temp_targets_index]"
 					}
 				}
