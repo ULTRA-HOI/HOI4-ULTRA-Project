@@ -639,7 +639,7 @@ focus_construction_project = {
 
 ####### Soviet focus tree ########
 
-	SOV_finish_five_year_plan_decision = {
+	SOV_eastern_development_decision = {
 	
 		icon = generic_construction
 		
@@ -648,11 +648,11 @@ focus_construction_project = {
 		}
 		
 		visible = {
-			has_completed_focus = SOV_finish_five_year_plan
+			has_completed_focus = SOV_eastern_development
 		}
 		
 		available = {
-			has_completed_focus = SOV_finish_five_year_plan
+			has_completed_focus = SOV_eastern_development
 			num_of_civilian_factories_available_for_projects > 119
 		}
 		
@@ -667,33 +667,124 @@ focus_construction_project = {
 		is_good = yes
 		
 		modifier = {
-			civilian_factory_use = 120
+			civilian_factory_use = 80
 		}
 		
 		remove_effect = {
-			254 = {
-				add_extra_state_shared_building_slots = 12
-				add_building_construction = {
-					type = industrial_complex
-					level = 12
-					instant_build = yes
+			set_temp_variable = { SOV_states_targeted_eastern_development = 0 } #Used this way to prioritize between desirable states
+			if = {
+				limit = {
+					408 = { #VLADIVOSTOK
+						is_fully_controlled_by = ROOT
+						infrastructure < 5
+						free_building_slots = {
+							building = industrial_complex
+							size > 7
+							include_locked = yes
+						}
+					}
 				}
-				
-			}
-			253 = {
-				add_extra_state_shared_building_slots = 12
-				add_building_construction = {
-					type = industrial_complex
-					level = 12
-					instant_build = yes
+				408 = { #VLADIVOSTOK
+					add_extra_state_shared_building_slots = 8
+					add_building_construction = {
+						type = industrial_complex
+						level = 8
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
 				}
-				
+				add_to_temp_variable = { SOV_states_targeted_eastern_development = 1 }
 			}
-		}
-		
+			else_if = { #Irkutsk replaces Vladivostok if necessary
+				limit = {
+					check_variable = { SOV_states_targeted_eastern_development = 2 compare = less_than_or_equals }
+					566 = { #IRKUTSK
+						is_fully_controlled_by = ROOT
+						infrastructure < 5
+						free_building_slots = {
+							building = industrial_complex
+							size > 7
+							include_locked = yes
+						}
+					}
+				}
+				566 = { #IRKUTSK
+					add_extra_state_shared_building_slots = 8
+					add_building_construction = {
+						type = industrial_complex
+						level = 8
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+
+			if = {
+				limit = {
+					409 = { #KHABAROVSK
+						is_fully_controlled_by = ROOT
+						infrastructure < 5
+						free_building_slots = {
+							building = industrial_complex
+							size > 7
+							include_locked = yes
+						}
+					}
+				}
+				409 = { #KHABAROVSK
+					add_extra_state_shared_building_slots = 8
+					add_building_construction = {
+						type = industrial_complex
+						level = 8
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+				add_to_temp_variable = { SOV_states_targeted_eastern_development = 1 }
+			}
+			else_if = { #Ulan Ude replaces Khabarovsk if necessary
+				limit = {
+					check_variable = { SOV_states_targeted_eastern_development = 2 compare = less_than_or_equals }
+					564 = { #ULAN UDE
+						is_fully_controlled_by = ROOT
+						infrastructure < 5
+						free_building_slots = {
+							building = industrial_complex
+							size > 7
+							include_locked = yes
+						}
+					}
+				}
+				564 = { #ULAN UDE
+					add_extra_state_shared_building_slots = 8
+					add_building_construction = {
+						type = industrial_complex
+						level = 8
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+		}	
 	}
 	
-	SOV_production_effort_decision = {
+	SOV_develop_the_urals_decision = {
 	
 		icon = generic_construction
 		
@@ -702,12 +793,12 @@ focus_construction_project = {
 		}
 		
 		visible = {
-			has_completed_focus = SOV_production_effort
+			has_completed_focus = SOV_develop_the_urals
 		}
 		
 		available = {
-			has_completed_focus = SOV_production_effort
-			num_of_civilian_factories_available_for_projects > 59
+			has_completed_focus = SOV_develop_the_urals
+			num_of_civilian_factories_available_for_projects > 159
 		}
 		
 		fire_only_once = yes
@@ -721,66 +812,117 @@ focus_construction_project = {
 		is_good = yes
 		
 		modifier = {
-			civilian_factory_use = 60
+			civilian_factory_use = 160
 		}
 		remove_effect = {
-			653 = {
-				if = {
-					limit = { 
-						is_controlled_by = SOV
+			set_temp_variable = { SOV_states_targeted_eastern_development = 0 } #Used this way to prioritize between desirable states
+			if = {
+				limit = {
+					572 = { #CHELYABISNK
+						is_fully_controlled_by = ROOT
+						infrastructure < 5
 						free_building_slots = {
-							building = arms_factory
-							size > 3
+							building = industrial_complex
+							size > 7
 							include_locked = yes
 						}
 					}
-					add_extra_state_shared_building_slots = 4
+				}
+				572 = { #CHELYABISNK
+					add_extra_state_shared_building_slots = 8
 					add_building_construction = {
-						type = arms_factory
-						level = 4
+						type = industrial_complex
+						level = 8
 						instant_build = yes
 					}
-					
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+				add_to_temp_variable = { SOV_states_targeted_eastern_development = 1 }
+			}
+			if = { #Magnitogorsk replaces Chelyabinsk if necessary
+				limit = {
+					check_variable = { SOV_states_targeted_eastern_development = 4 compare = less_than_or_equals }
+					582 = { #MAGNITOGORSK
+						is_fully_controlled_by = ROOT
+						infrastructure < 5
+						free_building_slots = {
+							building = industrial_complex
+							size > 7
+							include_locked = yes
+						}
+					}
+				}
+				582 = { #MAGNITOGORSK
+					add_extra_state_shared_building_slots = 8
+					add_building_construction = {
+						type = industrial_complex
+						level = 8
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
 				}
 			}
-			
-			572 = {
-				if = {
-					limit = { 
-						is_controlled_by = SOV
-						free_building_slots = {
-							building = arms_factory
-							size > 3
-							include_locked = yes
-						}
-					}
-					add_extra_state_shared_building_slots = 4
-					add_building_construction = {
-						type = arms_factory
-						level = 4
-						instant_build = yes
-					}
 
-				}
-			}
-			
-			578 = {
-				if = {
-					limit = { 
-						is_controlled_by = SOV
+			if = {
+				limit = {
+					573 = { #ZLATOUST
+						is_fully_controlled_by = ROOT
+						infrastructure < 5
 						free_building_slots = {
-							building = arms_factory
-							size > 3
+							building = industrial_complex
+							size > 7
 							include_locked = yes
 						}
 					}
-					add_extra_state_shared_building_slots = 4
+				}
+				573 = { #ZLATOUST
+					add_extra_state_shared_building_slots = 8
 					add_building_construction = {
-						type = arms_factory
-						level = 4
+						type = industrial_complex
+						level = 8
 						instant_build = yes
 					}
-					
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+				add_to_temp_variable = { SOV_states_targeted_eastern_development = 1 }
+			}
+			if = { #Sverdlovsk replaces Zlatoust if necessary
+				limit = {
+					check_variable = { SOV_states_targeted_eastern_development = 4 compare = less_than_or_equals }
+					653 = { #SVERDLOVSK
+						is_fully_controlled_by = ROOT
+						infrastructure < 5
+						free_building_slots = {
+							building = industrial_complex
+							size > 7
+							include_locked = yes
+						}
+					}
+				}
+				653 = { #SVERDLOVSK
+					add_extra_state_shared_building_slots = 8
+					add_building_construction = {
+						type = industrial_complex
+						level = 8
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
 				}
 			}
 		}
@@ -795,11 +937,11 @@ focus_construction_project = {
 		}
 		
 		visible = {
-			has_country_flag = SOV_war_eco_flag
+			has_completed_focus = SOV_war_economy
 		}
 		
 		available = {
-			#has_country_flag = SOV_war_eco_flag
+			has_completed_focus = SOV_war_economy
 			num_of_civilian_factories_available_for_projects > 59
 		}
 		
@@ -817,7 +959,7 @@ focus_construction_project = {
 			civilian_factory_use = 60
 		}
 		remove_effect = {
-			653 = {
+			249 = { #Kazan
 				if = {
 					limit = { 
 						is_controlled_by = SOV
@@ -837,7 +979,7 @@ focus_construction_project = {
 				}
 			}
 			
-			572 = {
+			651 = { #Ufa
 				if = {
 					limit = { 
 						is_controlled_by = SOV
@@ -857,7 +999,7 @@ focus_construction_project = {
 				}
 			}
 			
-			578 = {
+			251 = { #Kuibyshev
 				if = {
 					limit = { 
 						is_controlled_by = SOV
@@ -874,6 +1016,128 @@ focus_construction_project = {
 						instant_build = yes
 					}
 					
+				}
+			}
+			
+			clr_country_flag = SOV_war_eco_flag
+		}
+	}
+	
+	SOV_expand_the_aircraft_industry_decision = {
+	
+		icon = generic_construction
+		
+		allowed = {
+			original_tag = SOV
+		}
+		
+		visible = {
+			has_completed_focus = SOV_expand_the_aircraft_industry
+		}
+		
+		available = {
+			has_completed_focus = SOV_expand_the_aircraft_industry
+			num_of_civilian_factories_available_for_projects > 59
+		}
+		
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 100
+		}
+		
+		cost = 0
+		
+		days_remove = 90
+		is_good = yes
+		
+		modifier = {
+			civilian_factory_use = 60
+		}
+		remove_effect = {
+			217 = { #Stalingrad
+				if = {
+					limit = { 
+						is_controlled_by = SOV
+						free_building_slots = {
+							building = arms_factory
+							size > 3
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 4
+					add_building_construction = {
+						type = arms_factory
+						level = 4
+						instant_build = yes
+					}
+				}
+				if = {
+					limit = {
+						air_base < 18
+					}
+					add_building_construction = {
+						type = air_base
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+			
+			219 = { #Moscow
+				if = {
+					limit = { 
+						is_controlled_by = SOV
+						free_building_slots = {
+							building = arms_factory
+							size > 3
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 4
+					add_building_construction = {
+						type = arms_factory
+						level = 4
+						instant_build = yes
+					}
+				}
+				if = {
+					limit = {
+						air_base < 18
+					}
+					add_building_construction = {
+						type = air_base
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+			
+			195 = { #Leningrad
+				if = {
+					limit = { 
+						is_controlled_by = SOV
+						free_building_slots = {
+							building = arms_factory
+							size > 3
+							include_locked = yes
+						}
+					}
+					add_extra_state_shared_building_slots = 4
+					add_building_construction = {
+						type = arms_factory
+						level = 4
+						instant_build = yes
+					}
+				}
+				if = {
+					limit = {
+						air_base < 18
+					}
+					add_building_construction = {
+						type = air_base
+						level = 2
+						instant_build = yes
+					}
 				}
 			}
 			
@@ -948,14 +1212,13 @@ focus_construction_project = {
 		}
 		
 		visible = {
-			has_completed_focus = SOV_finish_five_year_plan
-			date > 1936.1.1
+			has_completed_focus = SOV_expand_shipbuilding_plants
 			date < 1937.1.1
 		}
 		
 		available = {
-			has_completed_focus = SOV_finish_five_year_plan
-			num_of_civilian_factories_available_for_projects > 29
+			has_completed_focus = SOV_expand_shipbuilding_plants
+			num_of_civilian_factories_available_for_projects > 59
 		}
 		
 		fire_only_once = yes
@@ -969,27 +1232,27 @@ focus_construction_project = {
 		is_good = yes
 		
 		modifier = {
-			civilian_factory_use = 30
+			civilian_factory_use = 60
 		}
 		
 		remove_effect = {
-			random_owned_controlled_state = {
+			custom_effect_tooltip = SOV_expand_shipbuilding_plants_tt
+			every_owned_state = {
 				limit = {
-					is_core_of = SOV
-					dockyard > 0
+					has_state_flag = SOV_naval_bases_reinforced_flag
+					is_fully_controlled_by = ROOT
 					free_building_slots = {
 						building = dockyard
-						size > 5
+						size > 0
 						include_locked = yes
 					}
 				}
-				add_extra_state_shared_building_slots = 6
+				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
 					type = dockyard
-					level = 6
+					level = 1
 					instant_build = yes
 				}
-				
 			}
 		}
 		
@@ -1004,14 +1267,14 @@ focus_construction_project = {
 		}
 		
 		visible = {
-			has_completed_focus = SOV_finish_five_year_plan
+			has_completed_focus = SOV_expand_shipbuilding_plants
 			date > 1937.1.1
 			date < 1938.1.1
 		}
 		
 		available = {
-			has_completed_focus = SOV_finish_five_year_plan
-			num_of_civilian_factories_available_for_projects > 29
+			has_completed_focus = SOV_expand_shipbuilding_plants
+			num_of_civilian_factories_available_for_projects > 59
 		}
 		
 		fire_only_once = yes
@@ -1025,27 +1288,27 @@ focus_construction_project = {
 		is_good = yes
 		
 		modifier = {
-			civilian_factory_use = 30
+			civilian_factory_use = 60
 		}
 		
 		remove_effect = {
-			random_owned_controlled_state = {
+			custom_effect_tooltip = SOV_expand_shipbuilding_plants_tt
+			every_owned_state = {
 				limit = {
-					is_core_of = SOV
-					dockyard > 0
+					has_state_flag = SOV_naval_bases_reinforced_flag
+					is_fully_controlled_by = ROOT
 					free_building_slots = {
 						building = dockyard
-						size > 5
+						size > 0
 						include_locked = yes
 					}
 				}
-				add_extra_state_shared_building_slots = 6
+				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
 					type = dockyard
-					level = 6
+					level = 1
 					instant_build = yes
 				}
-				
 			}
 		}
 		
@@ -1060,14 +1323,14 @@ focus_construction_project = {
 		}
 		
 		visible = {
-			has_completed_focus = SOV_finish_five_year_plan
+			has_completed_focus = SOV_expand_shipbuilding_plants
 			date > 1938.1.1
 			date < 1939.1.1
 		}
 		
 		available = {
-			has_completed_focus = SOV_finish_five_year_plan
-			num_of_civilian_factories_available_for_projects > 29
+			has_completed_focus = SOV_expand_shipbuilding_plants
+			num_of_civilian_factories_available_for_projects > 59
 		}
 		
 		fire_only_once = yes
@@ -1081,27 +1344,27 @@ focus_construction_project = {
 		is_good = yes
 		
 		modifier = {
-			civilian_factory_use = 30
+			civilian_factory_use = 60
 		}
 		
 		remove_effect = {
-			random_owned_controlled_state = {
+			custom_effect_tooltip = SOV_expand_shipbuilding_plants_tt
+			every_owned_state = {
 				limit = {
-					is_core_of = SOV
-					dockyard > 0
+					has_state_flag = SOV_naval_bases_reinforced_flag
+					is_fully_controlled_by = ROOT
 					free_building_slots = {
 						building = dockyard
-						size > 5
+						size > 0
 						include_locked = yes
 					}
 				}
-				add_extra_state_shared_building_slots = 6
+				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
 					type = dockyard
-					level = 6
+					level = 1
 					instant_build = yes
 				}
-				
 			}
 		}
 		
@@ -1116,14 +1379,14 @@ focus_construction_project = {
 		}
 		
 		visible = {
-			has_completed_focus = SOV_finish_five_year_plan
+			has_completed_focus = SOV_expand_shipbuilding_plants
 			date > 1939.1.1
 			date < 1940.1.1
 		}
 		
 		available = {
 			has_completed_focus = SOV_finish_five_year_plan
-			num_of_civilian_factories_available_for_projects > 29
+			num_of_civilian_factories_available_for_projects > 59
 		}
 		
 		fire_only_once = yes
@@ -1137,27 +1400,27 @@ focus_construction_project = {
 		is_good = yes
 		
 		modifier = {
-			civilian_factory_use = 30
+			civilian_factory_use = 60
 		}
 		
 		remove_effect = {
-			random_owned_controlled_state = {
+			custom_effect_tooltip = SOV_expand_shipbuilding_plants_tt
+			every_owned_state = {
 				limit = {
-					is_core_of = SOV
-					dockyard > 0
+					has_state_flag = SOV_naval_bases_reinforced_flag
+					is_fully_controlled_by = ROOT
 					free_building_slots = {
 						building = dockyard
-						size > 5
+						size > 0
 						include_locked = yes
 					}
 				}
-				add_extra_state_shared_building_slots = 6
+				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
 					type = dockyard
-					level = 6
+					level = 1
 					instant_build = yes
 				}
-				
 			}
 		}
 		
@@ -1172,14 +1435,14 @@ focus_construction_project = {
 		}
 		
 		visible = {
-			has_completed_focus = SOV_finish_five_year_plan
+			has_completed_focus = SOV_expand_shipbuilding_plants
 			date > 1940.1.1
 			date < 1941.1.1
 		}
 		
 		available = {
 			has_completed_focus = SOV_finish_five_year_plan
-			num_of_civilian_factories_available_for_projects > 29
+			num_of_civilian_factories_available_for_projects > 59
 		}
 		
 		fire_only_once = yes
@@ -1193,27 +1456,27 @@ focus_construction_project = {
 		is_good = yes
 		
 		modifier = {
-			civilian_factory_use = 30
+			civilian_factory_use = 60
 		}
 		
 		remove_effect = {
-			random_owned_controlled_state = {
+			custom_effect_tooltip = SOV_expand_shipbuilding_plants_tt
+			every_owned_state = {
 				limit = {
-					is_core_of = SOV
-					dockyard > 0
+					has_state_flag = SOV_naval_bases_reinforced_flag
+					is_fully_controlled_by = ROOT
 					free_building_slots = {
 						building = dockyard
-						size > 5
+						size > 0
 						include_locked = yes
 					}
 				}
-				add_extra_state_shared_building_slots = 6
+				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
 					type = dockyard
-					level = 6
+					level = 1
 					instant_build = yes
 				}
-				
 			}
 		}
 		
@@ -1228,14 +1491,14 @@ focus_construction_project = {
 		}
 		
 		visible = {
-			has_completed_focus = SOV_finish_five_year_plan
+			has_completed_focus = SOV_expand_shipbuilding_plants
 			date > 1941.1.1
 			date < 1942.1.1
 		}
 		
 		available = {
 			has_completed_focus = SOV_finish_five_year_plan
-			num_of_civilian_factories_available_for_projects > 29
+			num_of_civilian_factories_available_for_projects > 59
 		}
 		
 		fire_only_once = yes
@@ -1249,27 +1512,27 @@ focus_construction_project = {
 		is_good = yes
 		
 		modifier = {
-			civilian_factory_use = 30
+			civilian_factory_use = 60
 		}
 		
 		remove_effect = {
-			random_owned_controlled_state = {
+			custom_effect_tooltip = SOV_expand_shipbuilding_plants_tt
+			every_owned_state = {
 				limit = {
-					is_core_of = SOV
-					dockyard > 0
+					has_state_flag = SOV_naval_bases_reinforced_flag
+					is_fully_controlled_by = ROOT
 					free_building_slots = {
 						building = dockyard
-						size > 5
+						size > 0
 						include_locked = yes
 					}
 				}
-				add_extra_state_shared_building_slots = 6
+				add_extra_state_shared_building_slots = 1
 				add_building_construction = {
 					type = dockyard
-					level = 6
+					level = 1
 					instant_build = yes
 				}
-				
 			}
 		}
 		

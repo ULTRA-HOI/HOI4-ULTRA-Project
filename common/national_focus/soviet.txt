@@ -1381,92 +1381,8 @@ focus_tree = {
 		search_filters = {FOCUS_FILTER_INDUSTRY}
 
 		completion_reward = {
-			set_temp_variable = { SOV_states_targeted_eastern_development = 0 } #Used this way to prioritize between desirable states
-			if = {
-				limit = {
-					408 = { #VLADIVOSTOK
-						is_fully_controlled_by = ROOT
-						infrastructure < 5
-						free_building_slots = {
-							building = industrial_complex
-							size > 0
-							include_locked = yes
-						}
-					}
-				}
-				408 = { #VLADIVOSTOK
-					add_building_construction = {
-						type = infrastructure
-						level = 1
-						instant_build = yes
-					}
-				}
-				add_to_temp_variable = { SOV_states_targeted_eastern_development = 1 }
-			}
-			else_if = { #Irkutsk replaces Vladivostok if necessary
-				limit = {
-					check_variable = { SOV_states_targeted_eastern_development = 2 compare = less_than_or_equals }
-					566 = { #IRKUTSK
-						is_fully_controlled_by = ROOT
-						infrastructure < 5
-						free_building_slots = {
-							building = industrial_complex
-							size > 0
-							include_locked = yes
-						}
-					}
-				}
-				566 = { #IRKUTSK
-					add_building_construction = {
-						type = infrastructure
-						level = 1
-						instant_build = yes
-					}
-				}
-			}
-
-			if = {
-				limit = {
-					409 = { #KHABAROVSK
-						is_fully_controlled_by = ROOT
-						infrastructure < 5
-						free_building_slots = {
-							building = industrial_complex
-							size > 0
-							include_locked = yes
-						}
-					}
-				}
-				409 = { #KHABAROVSK
-					add_building_construction = {
-						type = infrastructure
-						level = 1
-						instant_build = yes
-					}
-				}
-				add_to_temp_variable = { SOV_states_targeted_eastern_development = 1 }
-			}
-			else_if = { #Ulan Ude replaces Khabarovsk if necessary
-				limit = {
-					check_variable = { SOV_states_targeted_eastern_development = 2 compare = less_than_or_equals }
-					564 = { #ULAN UDE
-						is_fully_controlled_by = ROOT
-						infrastructure < 5
-						free_building_slots = {
-							building = industrial_complex
-							size > 0
-							include_locked = yes
-						}
-					}
-				}
-				564 = { #ULAN UDE
-					add_building_construction = {
-						type = infrastructure
-						level = 1
-						instant_build = yes
-					}
-				}
-			}
+			custom_effect_tooltip = Construction_Focus_tt
+			unlock_decision_tooltip = { decision = SOV_eastern_development_decision show_effect_tooltip = yes }
 		}
 	}
 
@@ -1550,92 +1466,8 @@ focus_tree = {
 		search_filters = {FOCUS_FILTER_INDUSTRY}
 
 		completion_reward = {
-			set_temp_variable = { SOV_states_targeted_eastern_development = 0 } #Used this way to prioritize between desirable states
-			if = {
-				limit = {
-					572 = { #CHELYABISNK
-						is_fully_controlled_by = ROOT
-						infrastructure < 5
-						free_building_slots = {
-							building = industrial_complex
-							size > 0
-							include_locked = yes
-						}
-					}
-				}
-				572 = { #CHELYABISNK
-					add_building_construction = {
-						type = infrastructure
-						level = 1
-						instant_build = yes
-					}
-				}
-				add_to_temp_variable = { SOV_states_targeted_eastern_development = 1 }
-			}
-			else_if = { #Magnitogorsk replaces Chelyabinsk if necessary
-				limit = {
-					check_variable = { SOV_states_targeted_eastern_development = 2 compare = less_than_or_equals }
-					582 = { #MAGNITOGORSK
-						is_fully_controlled_by = ROOT
-						infrastructure < 5
-						free_building_slots = {
-							building = industrial_complex
-							size > 0
-							include_locked = yes
-						}
-					}
-				}
-				582 = { #MAGNITOGORSK
-					add_building_construction = {
-						type = infrastructure
-						level = 1
-						instant_build = yes
-					}
-				}
-			}
-
-			if = {
-				limit = {
-					573 = { #ZLATOUST
-						is_fully_controlled_by = ROOT
-						infrastructure < 5
-						free_building_slots = {
-							building = industrial_complex
-							size > 0
-							include_locked = yes
-						}
-					}
-				}
-				573 = { #ZLATOUST
-					add_building_construction = {
-						type = infrastructure
-						level = 1
-						instant_build = yes
-					}
-				}
-				add_to_temp_variable = { SOV_states_targeted_eastern_development = 1 }
-			}
-			else_if = { #Sverdlovsk replaces Zlatoust if necessary
-				limit = {
-					check_variable = { SOV_states_targeted_eastern_development = 2 compare = less_than_or_equals }
-					653 = { #SVERDLOVSK
-						is_fully_controlled_by = ROOT
-						infrastructure < 5
-						free_building_slots = {
-							building = industrial_complex
-							size > 0
-							include_locked = yes
-						}
-					}
-				}
-				653 = { #SVERDLOVSK
-					add_building_construction = {
-						type = infrastructure
-						level = 1
-						instant_build = yes
-					}
-				}
-			}
+			custom_effect_tooltip = Construction_Focus_tt
+			unlock_decision_tooltip = { decision = SOV_develop_the_urals_decision show_effect_tooltip = yes }
 		}
 	}
 
@@ -1839,34 +1671,8 @@ focus_tree = {
 		completion_reward = {
 			set_variable = { SOV_soviet_airforce_aircraft_manufacturer_cost_factor = -0.25 }
 			custom_effect_tooltip = SOV_expand_the_aircraft_industry_ns_tt
-
-			random_owned_controlled_state = {
-				
-				if = {
-					limit = {
-						air_base < 9
-					}
-					add_building_construction = {
-						type = air_base
-						level = 2
-						instant_build = yes
-					}
-				}
-				else = {
-					ROOT = {
-						random_owned_controlled_state = {
-							limit = {
-								air_base < 9
-							}
-							add_building_construction = {
-								type = air_base
-								level = 2
-								instant_build = yes
-							}
-						}
-					}
-				}
-			}
+			custom_effect_tooltip = Construction_Focus_tt
+			unlock_decision_tooltip = { decision = SOV_expand_the_aircraft_industry_decision show_effect_tooltip = yes }
 		}
 	}
 
@@ -2732,43 +2538,8 @@ focus_tree = {
 		search_filters = {FOCUS_FILTER_INDUSTRY}
 
 		completion_reward = {
+			custom_effect_tooltip = Construction_Focus_tt
 			custom_effect_tooltip = SOV_expand_shipbuilding_plants_tt
-			every_owned_state = {
-				limit = {
-					has_state_flag = SOV_naval_bases_reinforced_flag
-					is_fully_controlled_by = ROOT
-					free_building_slots = {
-						building = dockyard
-						size > 0
-						include_locked = yes
-					}
-				}
-				if = {
-					limit = {
-						state = 195 #LENINGRAD - Gets 2 dockyards instead of 1
-						free_building_slots = {
-							building = dockyard
-							size > 1
-							include_locked = yes
-						}
-					}
-					add_extra_state_shared_building_slots = 2
-					add_building_construction = {
-						type = dockyard
-						level = 2
-						instant_build = yes
-					}
-				}
-				else = {
-					add_extra_state_shared_building_slots = 1
-					add_building_construction = {
-						type = dockyard
-						level = 1
-						instant_build = yes
-					}
-				}
-			}
-			
 		}
 	}
 
@@ -6071,6 +5842,8 @@ focus_tree = {
 				}
 				add_ideas = war_economy
 			}
+			custom_effect_tooltip = Construction_Focus_tt
+			unlock_decision_tooltip = { decision = SOV_war_eco_decision show_effect_tooltip = yes }
 		}
 	}
 
