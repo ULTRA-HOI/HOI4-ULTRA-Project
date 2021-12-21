@@ -216,6 +216,7 @@ NDefines.NBuildings.RADAR_RANGE_MIN = 15				-- Radar range (from state center to
 NDefines.NBuildings.RADAR_RANGE_MAX = 120				-- Range is interpolated between building levels 1-15.
 NDefines.NBuildings.RADAR_INTEL_EFFECT = 30			-- Province covered by radar increases intel by 10 (where 255 is max). Province may be covered by multiple radars, then the value sums up.
 NDefines.SABOTAGE_FACTORY_DAMAGE = 75.0		-- How much damage takes a factory building in sabotage when state is occupied. Damage is mult by (1 + resistance strength), i.e. up to 2 x base value.	
+NDefines.	INFRASTRUCTURE_RESOURCE_BONUS = 0.1 --0.2-- multiplicative resource bonus for each level of (non damaged) infrastructure
 
 
 
@@ -245,7 +246,7 @@ NDefines.NMilitary.WAR_SCORE_LOSSES_RATIO = 0
 
 NDefines.NMilitary.HOURLY_ORG_MOVEMENT_IMPACT = -0.4		-- how much org is lost every hour while moving an army.
 NDefines.NMilitary.ZERO_ORG_MOVEMENT_MODIFIER = -0.2		-- speed impact at 0 org.
-NDefines.NMilitary.INFRA_ORG_IMPACT = 0.75				-- scale factor of infra on org regain.
+NDefines.NMilitary.INFRA_ORG_IMPACT = 0.4			--0.5	-- scale factor of infra on org regain.
 NDefines.NMilitary.INFRASTRUCTURE_MOVEMENT_SPEED_IMPACT = -0.02	-- speed penalty per infrastucture below maximum.
 NDefines.NMilitary.FIELD_MARSHAL_ARMIES_CAP = 6				-- how many armies a field marshall is limited to. 0 = inf, < 0 = blocked 
 NDefines.NMilitary.CORPS_COMMANDER_DIVISIONS_CAP = 12			-- how many divisions a corps commander is limited to. 0 = inf, < 0 = blocked
@@ -883,3 +884,4 @@ NDefines.NCharacter.GENIUS_ADVISOR_MIN_RANK = 7
 NDefines.NSupply.CAPITAL_SUPPLY_CIVILIAN_FACTORIES = 0.075 --0,3-- supply from one civilian factory
 NDefines.NSupply.CAPITAL_SUPPLY_MILITARY_FACTORIES = 0.15 --0.6-- supply from one military factory
 NDefines.NSupply.CAPITAL_SUPPLY_DOCKYARDS = 0.1 --0.4--supply from one naval factory
+NDefines.NSupply.INFRA_TO_SUPPLY = 0.15			--0.3				-- each level of infra gives this many supply
