@@ -10842,10 +10842,6 @@ SOV_industry_relocation = {
 					}
 				}
 			}
-			modifier = {
-				factor = 0
-				SOV_save_pp_for_manpower_trouble = yes
-			}
 		}
 
 		state_target = yes
@@ -10885,17 +10881,17 @@ SOV_industry_relocation = {
 				is_fully_controlled_by = ROOT
 				infrastructure > 2
 			}
-			has_equipment = { train_equipment > 79 } #20 trains per factory
+			has_equipment = { train_equipment > 199 } #5 trains per factory
 		}
 
 		visible = {
 			FROM = {
-				OR = { #Has at least 2 factories
-					arms_factory > 1
-					industrial_complex > 1
+				OR = { #Has at least 20 factories
+					arms_factory > 19
+					industrial_complex > 19
 					AND = {
-						arms_factory > 0
-						industrial_complex > 0
+						arms_factory > 9
+						industrial_complex > 9
 					}
 				}
 			}
@@ -10903,11 +10899,11 @@ SOV_industry_relocation = {
 
 		cancel_if_not_visible = no
 
-		cost = 25
+		cost = 0
 
 		days_remove = SOV_industrial_relocation_days
 
-		complete_effect = {  #Attempt to remove 2 CIVS & 2 MILS
+		complete_effect = {  #Attempt to remove 20 CIVS & 20 MILS
 			hidden_effect = {
 				add_equipment_to_stockpile = {
 					type = train_equipment
@@ -10935,17 +10931,17 @@ SOV_industry_relocation = {
 							}
 							if = {
 								limit = {
-									arms_factory > 0
+									arms_factory > 9
 								}
 								remove_building = {
 									type = arms_factory
-									level = 1
+									level = 10
 								}
 								if = {
 									limit = {
 										has_state_flag = SOV_mils_removed_flag
 									}
-									modify_state_flag = { flag = SOV_mils_removed_flag value = 1 }
+									modify_state_flag = { flag = SOV_mils_removed_flag value = 10 }
 								}
 								else = {
 									set_state_flag = SOV_mils_removed_flag
@@ -10953,17 +10949,17 @@ SOV_industry_relocation = {
 							}
 							else_if = {
 								limit = {
-									industrial_complex > 0
+									industrial_complex > 9
 								}
 								remove_building = {
 									type = industrial_complex
-									level = 1
+									level = 10
 								}
 								if = {
 									limit = {
 										has_state_flag = SOV_civs_removed_flag
 									}
-									modify_state_flag = { flag = SOV_civs_removed_flag value = 1 }
+									modify_state_flag = { flag = SOV_civs_removed_flag value = 10 }
 								}
 								else = {
 									set_state_flag = SOV_civs_removed_flag
@@ -10973,17 +10969,17 @@ SOV_industry_relocation = {
 						else = { #GO CIVS (if possible)
 							if = {
 								limit = {
-									industrial_complex > 0
+									industrial_complex > 9
 								}
 								remove_building = {
 									type = industrial_complex
-									level = 1
+									level = 10
 								}
 								if = {
 									limit = {
 										has_state_flag = SOV_civs_removed_flag
 									}
-									modify_state_flag = { flag = SOV_civs_removed_flag value = 1 }
+									modify_state_flag = { flag = SOV_civs_removed_flag value = 10 }
 								}
 								else = {
 									set_state_flag = SOV_civs_removed_flag
@@ -10991,24 +10987,24 @@ SOV_industry_relocation = {
 							}
 							else_if = {
 								limit = {
-									arms_factory > 0
+									arms_factory > 9
 								}
 								remove_building = {
 									type = arms_factory
-									level = 1
+									level = 10
 								}
 								if = {
 									limit = {
 										has_state_flag = SOV_mils_removed_flag
 									}
-									modify_state_flag = { flag = SOV_mils_removed_flag value = 1 }
+									modify_state_flag = { flag = SOV_mils_removed_flag value = 10 }
 								}
 								else = {
 									set_state_flag = SOV_mils_removed_flag
 								}
 							}
 						}
-						add_to_temp_variable = { SOV_factories_counter = 1 }
+						add_to_temp_variable = { SOV_factories_counter = 10 }
 					}
 				}
 			}
@@ -11034,7 +11030,7 @@ SOV_industry_relocation = {
 						check_variable = { SOV_factories_counter = SOV_half_the_factories_to_relocate compare = less_than }
 					}
 					SOV_relocate_industry_in_appropriate_state_effect = yes
-					add_to_temp_variable = { SOV_factories_counter = 1 }
+					add_to_temp_variable = { SOV_factories_counter = 10 }
 				}
 			}
 			custom_effect_tooltip = SOV_relocate_industry_repair_tt
@@ -11069,7 +11065,7 @@ SOV_industry_relocation = {
 			controls_state = 195
 			controls_state = 264
 			controls_state = 653
-			195 = { has_state_flag = leningrad_aluminium_developed }
+			#195 = { has_state_flag = leningrad_aluminium_developed }
 			has_civil_war = no
 		}
 

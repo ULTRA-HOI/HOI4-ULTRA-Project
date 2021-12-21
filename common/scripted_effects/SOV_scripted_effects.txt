@@ -3952,10 +3952,29 @@ SOV_damage_relocated_military_factories_effect = {
 				NOT = { is_fully_controlled_by = ROOT }
 			}
 		}
-		damage_building = { type = arms_factory damage = 0.9 }
+		damage_building = { type = arms_factory damage = 0.4 }
+		damage_building = { type = arms_factory damage = 0.4 }
+		damage_building = { type = arms_factory damage = 0.4 }
+		damage_building = { type = arms_factory damage = 0.4 }
+		damage_building = { type = arms_factory damage = 0.4 }
+		damage_building = { type = arms_factory damage = 0.4 }
+		damage_building = { type = arms_factory damage = 0.4 }
+		damage_building = { type = arms_factory damage = 0.4 }
+		damage_building = { type = arms_factory damage = 0.4 }
+		damage_building = { type = arms_factory damage = 0.4 }
 	}
 	else = {
-		damage_building = { type = arms_factory damage = 0.5 }
+		damage_building = { type = arms_factory damage = 0.2 }
+		damage_building = { type = arms_factory damage = 0.2 }
+		damage_building = { type = arms_factory damage = 0.2 }
+		damage_building = { type = arms_factory damage = 0.2 }
+		damage_building = { type = arms_factory damage = 0.2 }
+		damage_building = { type = arms_factory damage = 0.2 }
+		damage_building = { type = arms_factory damage = 0.2 }
+		damage_building = { type = arms_factory damage = 0.2 }
+		damage_building = { type = arms_factory damage = 0.2 }
+		damage_building = { type = arms_factory damage = 0.2 }
+		damage_building = { type = arms_factory damage = 0.2 }
 	}
 }
 
@@ -3966,10 +3985,29 @@ SOV_damage_relocated_civilian_factories_effect = {
 				NOT = { is_fully_controlled_by = ROOT }
 			}
 		}
-		damage_building = { type = industrial_complex damage = 0.9 }
+		damage_building = { type = arms_factory damage = 0.8 }
+		damage_building = { type = arms_factory damage = 0.8 }
+		damage_building = { type = arms_factory damage = 0.8 }
+		damage_building = { type = arms_factory damage = 0.8 }
+		damage_building = { type = arms_factory damage = 0.8 }
+		damage_building = { type = arms_factory damage = 0.8 }
+		damage_building = { type = arms_factory damage = 0.8 }
+		damage_building = { type = arms_factory damage = 0.8 }
+		damage_building = { type = arms_factory damage = 0.8 }
+		damage_building = { type = arms_factory damage = 0.8 }
 	}
 	else = {
-		damage_building = { type = industrial_complex damage = 0.5 }
+		damage_building = { type = arms_factory damage = 0.4 }
+		damage_building = { type = arms_factory damage = 0.4 }
+		damage_building = { type = arms_factory damage = 0.4 }
+		damage_building = { type = arms_factory damage = 0.4 }
+		damage_building = { type = arms_factory damage = 0.4 }
+		damage_building = { type = arms_factory damage = 0.4 }
+		damage_building = { type = arms_factory damage = 0.4 }
+		damage_building = { type = arms_factory damage = 0.4 }
+		damage_building = { type = arms_factory damage = 0.4 }
+		damage_building = { type = arms_factory damage = 0.4 }
+		damage_building = { type = arms_factory damage = 0.4 }
 	}
 }
 
@@ -3989,7 +4027,7 @@ SOV_relocate_industry_in_appropriate_state_effect = {
 						SOV_is_industrial_relocation_destiny_state = yes
 						free_building_slots = {
 							building = arms_factory
-							size > 1
+							size > 19
 							include_locked = yes
 						}
 					}
@@ -3999,7 +4037,7 @@ SOV_relocate_industry_in_appropriate_state_effect = {
 						SOV_is_industrial_relocation_destiny_state = yes
 						free_building_slots = {
 							building = arms_factory
-							size > 1
+							size > 19
 							include_locked = yes
 						}
 					}
@@ -4008,26 +4046,26 @@ SOV_relocate_industry_in_appropriate_state_effect = {
 						limit = {
 							FROM = { has_state_flag = SOV_mils_removed_flag }
 						}
-						add_extra_state_shared_building_slots = 1
+						add_extra_state_shared_building_slots = 10
 						add_building_construction = {
 							type = arms_factory
-							level = 1
+							level = 10
 							instant_build = yes
 						}
-						FROM = { modify_state_flag = { flag = SOV_mils_removed_flag value = -1 } }
+						FROM = { modify_state_flag = { flag = SOV_mils_removed_flag value = -10 } }
 						SOV_damage_relocated_military_factories_effect = yes
 					}
 					else_if = {
 						limit = {
 							FROM = { has_state_flag = SOV_civs_removed_flag }
 						}
-						add_extra_state_shared_building_slots = 1
+						add_extra_state_shared_building_slots = 10
 						add_building_construction = {
 							type = industrial_complex
-							level = 1
+							level = 10
 							instant_build = yes
 						}
-						FROM = { modify_state_flag = { flag = SOV_civs_removed_flag value = -1 } }
+						FROM = { modify_state_flag = { flag = SOV_civs_removed_flag value = -10 } }
 						SOV_damage_relocated_civilian_factories_effect = yes
 					}
 					#SECOND FACTORY - Prio Civ
@@ -4035,26 +4073,26 @@ SOV_relocate_industry_in_appropriate_state_effect = {
 						limit = {
 							FROM = { has_state_flag = SOV_civs_removed_flag }
 						}
-						add_extra_state_shared_building_slots = 1
+						add_extra_state_shared_building_slots = 10
 						add_building_construction = {
 							type = industrial_complex
-							level = 1
+							level = 10
 							instant_build = yes
 						}
-						FROM = { modify_state_flag = { flag = SOV_civs_removed_flag value = -1 } }
+						FROM = { modify_state_flag = { flag = SOV_civs_removed_flag value = -10 } }
 						SOV_damage_relocated_civilian_factories_effect = yes
 					}
 					else_if = {
 						limit = {
 							FROM = { has_state_flag = SOV_mils_removed_flag }
 						}
-						add_extra_state_shared_building_slots = 1
+						add_extra_state_shared_building_slots = 10
 						add_building_construction = {
 							type = arms_factory
-							level = 1
+							level = 10
 							instant_build = yes
 						}
-						FROM = { modify_state_flag = { flag = SOV_mils_removed_flag value = -1 } }
+						FROM = { modify_state_flag = { flag = SOV_mils_removed_flag value = -10 } }
 						SOV_damage_relocated_military_factories_effect = yes
 					}
 				}
@@ -4065,7 +4103,7 @@ SOV_relocate_industry_in_appropriate_state_effect = {
 						SOV_is_industrial_relocation_destiny_fallback_state = yes
 						free_building_slots = {
 							building = arms_factory
-							size > 1
+							size > 19
 							include_locked = yes
 						}
 					}
@@ -4075,7 +4113,7 @@ SOV_relocate_industry_in_appropriate_state_effect = {
 						SOV_is_industrial_relocation_destiny_fallback_state = yes
 						free_building_slots = {
 							building = arms_factory
-							size > 1
+							size > 19
 							include_locked = yes
 						}
 					}
@@ -4084,26 +4122,26 @@ SOV_relocate_industry_in_appropriate_state_effect = {
 						limit = {
 							FROM = { has_state_flag = SOV_mils_removed_flag }
 						}
-						add_extra_state_shared_building_slots = 1
+						add_extra_state_shared_building_slots = 10
 						add_building_construction = {
 							type = arms_factory
-							level = 1
+							level = 10
 							instant_build = yes
 						}
-						FROM = { modify_state_flag = { flag = SOV_mils_removed_flag value = -1 } }
+						FROM = { modify_state_flag = { flag = SOV_mils_removed_flag value = -10 } }
 						SOV_damage_relocated_military_factories_effect = yes
 					}
 					else_if = {
 						limit = {
 							FROM = { has_state_flag = SOV_civs_removed_flag }
 						}
-						add_extra_state_shared_building_slots = 1
+						add_extra_state_shared_building_slots = 10
 						add_building_construction = {
 							type = industrial_complex
-							level = 1
+							level = 10
 							instant_build = yes
 						}
-						FROM = { modify_state_flag = { flag = SOV_civs_removed_flag value = -1 } }
+						FROM = { modify_state_flag = { flag = SOV_civs_removed_flag value = -10 } }
 						SOV_damage_relocated_civilian_factories_effect = yes
 					}
 					#SECOND FACTORY
@@ -4111,26 +4149,26 @@ SOV_relocate_industry_in_appropriate_state_effect = {
 						limit = {
 							FROM = { has_state_flag = SOV_mils_removed_flag }
 						}
-						add_extra_state_shared_building_slots = 1
+						add_extra_state_shared_building_slots = 10
 						add_building_construction = {
 							type = arms_factory
-							level = 1
+							level = 10
 							instant_build = yes
 						}
-						FROM = { modify_state_flag = { flag = SOV_mils_removed_flag value = -1 } }
+						FROM = { modify_state_flag = { flag = SOV_mils_removed_flag value = -10 } }
 						SOV_damage_relocated_military_factories_effect = yes
 					}
 					else_if = {
 						limit = {
 							FROM = { has_state_flag = SOV_civs_removed_flag }
 						}
-						add_extra_state_shared_building_slots = 1
+						add_extra_state_shared_building_slots = 10
 						add_building_construction = {
 							type = industrial_complex
-							level = 1
+							level = 10
 							instant_build = yes
 						}
-						FROM = { modify_state_flag = { flag = SOV_civs_removed_flag value = -1 } }
+						FROM = { modify_state_flag = { flag = SOV_civs_removed_flag value = -10 } }
 						SOV_damage_relocated_civilian_factories_effect = yes
 					}
 				}
@@ -4143,7 +4181,7 @@ SOV_relocate_industry_in_appropriate_state_effect = {
 						is_on_continent = asia
 						free_building_slots = {
 							building = arms_factory
-							size > 1
+							size > 19
 							include_locked = yes
 						}
 					}
@@ -4155,7 +4193,7 @@ SOV_relocate_industry_in_appropriate_state_effect = {
 						is_on_continent = asia
 						free_building_slots = {
 							building = arms_factory
-							size > 1
+							size > 19
 							include_locked = yes
 						}
 					}
@@ -4164,26 +4202,26 @@ SOV_relocate_industry_in_appropriate_state_effect = {
 						limit = {
 							FROM = { has_state_flag = SOV_mils_removed_flag }
 						}
-						add_extra_state_shared_building_slots = 1
+						add_extra_state_shared_building_slots = 10
 						add_building_construction = {
 							type = arms_factory
-							level = 1
+							level = 10
 							instant_build = yes
 						}
-						FROM = { modify_state_flag = { flag = SOV_mils_removed_flag value = -1 } }
+						FROM = { modify_state_flag = { flag = SOV_mils_removed_flag value = -10 } }
 						SOV_damage_relocated_military_factories_effect = yes
 					}
 					else_if = {
 						limit = {
 							FROM = { has_state_flag = SOV_civs_removed_flag }
 						}
-						add_extra_state_shared_building_slots = 1
+						add_extra_state_shared_building_slots = 10
 						add_building_construction = {
 							type = industrial_complex
-							level = 1
+							level = 10
 							instant_build = yes
 						}
-						FROM = { modify_state_flag = { flag = SOV_civs_removed_flag value = -1 } }
+						FROM = { modify_state_flag = { flag = SOV_civs_removed_flag value = -10 } }
 						SOV_damage_relocated_civilian_factories_effect = yes
 					}
 					#SECOND FACTORY
@@ -4191,26 +4229,26 @@ SOV_relocate_industry_in_appropriate_state_effect = {
 						limit = {
 							FROM = { has_state_flag = SOV_mils_removed_flag }
 						}
-						add_extra_state_shared_building_slots = 1
+						add_extra_state_shared_building_slots = 10
 						add_building_construction = {
 							type = arms_factory
-							level = 1
+							level = 10
 							instant_build = yes
 						}
-						FROM = { modify_state_flag = { flag = SOV_mils_removed_flag value = -1 } }
+						FROM = { modify_state_flag = { flag = SOV_mils_removed_flag value = -10 } }
 						SOV_damage_relocated_military_factories_effect = yes
 					}
 					else_if = {
 						limit = {
 							FROM = { has_state_flag = SOV_civs_removed_flag }
 						}
-						add_extra_state_shared_building_slots = 1
+						add_extra_state_shared_building_slots = 10
 						add_building_construction = {
 							type = industrial_complex
-							level = 1
+							level = 10
 							instant_build = yes
 						}
-						FROM = { modify_state_flag = { flag = SOV_civs_removed_flag value = -1 } }
+						FROM = { modify_state_flag = { flag = SOV_civs_removed_flag value = -10 } }
 						SOV_damage_relocated_civilian_factories_effect = yes
 					}
 				}
