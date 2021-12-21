@@ -80,10 +80,13 @@ focus_tree = {
 
 		complete_tooltip = {
 			every_state = {
-				limit = { has_state_flag = SOV_infrastructure_effort_3Inf }
+				limit = { 
+					has_state_flag = SOV_infrastructure_effort_3Inf 
+					SOV_is_industrial_relocation_destiny_state = yes
+				}
 				add_building_construction = {
 					type = infrastructure
-					level = 2
+					level = 1
 					instant_build = yes
 				}
 			}
@@ -93,11 +96,12 @@ focus_tree = {
 			if = {
 				limit = {
 					all_owned_state = {
-						infrastructure > 2
+						infrastructure > 5
 					}
 				}
 				random_owned_controlled_state = {
 					limit = {
+						SOV_is_industrial_relocation_destiny_state = yes #aims for future industrial heartland
 						free_building_slots = {
 							building = infrastructure
 							size > 1
@@ -112,6 +116,7 @@ focus_tree = {
 				}
 				random_owned_controlled_state = {
 					limit = {
+						SOV_is_industrial_relocation_destiny_state = yes
 						free_building_slots = {
 							building = infrastructure
 							size > 1
@@ -127,7 +132,8 @@ focus_tree = {
 			}
 			random_owned_controlled_state = {
 				limit = {
-					infrastructure < 3
+					SOV_is_industrial_relocation_destiny_state = yes
+					infrastructure < 6
 				}
 				add_building_construction = {
 					type = infrastructure
@@ -138,7 +144,8 @@ focus_tree = {
 			}
 			random_owned_controlled_state = {
 				limit = {
-					infrastructure < 3
+					SOV_is_industrial_relocation_destiny_state = yes
+					infrastructure < 6
 				}
 				add_building_construction = {
 					type = infrastructure
@@ -149,7 +156,8 @@ focus_tree = {
 			}
 			random_owned_controlled_state = {
 				limit = {
-					infrastructure < 3
+					SOV_is_industrial_relocation_destiny_state = yes
+					infrastructure < 6
 				}
 				add_building_construction = {
 					type = infrastructure
@@ -160,7 +168,8 @@ focus_tree = {
 			}
 			random_owned_controlled_state = {
 				limit = {
-					infrastructure < 3
+					SOV_is_industrial_relocation_destiny_state = yes
+					infrastructure < 6
 				}
 				add_building_construction = {
 					type = infrastructure
@@ -171,7 +180,8 @@ focus_tree = {
 			}
 			random_owned_controlled_state = {
 				limit = {
-					infrastructure < 3
+					SOV_is_industrial_relocation_destiny_fallback_state = yes
+					infrastructure < 6
 				}
 				add_building_construction = {
 					type = infrastructure
@@ -182,7 +192,32 @@ focus_tree = {
 			}
 			random_owned_controlled_state = {
 				limit = {
-					infrastructure < 3
+					SOV_is_industrial_relocation_destiny_fallback_state = yes
+					infrastructure < 6
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				set_state_flag = SOV_infrastructure_effort_3Inf	
+			}
+			random_owned_controlled_state = {
+				limit = {
+					SOV_is_industrial_relocation_destiny_fallback_state = yes
+					infrastructure < 6
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				set_state_flag = SOV_infrastructure_effort_3Inf	
+			}
+			random_owned_controlled_state = {
+				limit = {
+					SOV_is_industrial_relocation_destiny_fallback_state = yes
+					infrastructure < 6
 				}
 				add_building_construction = {
 					type = infrastructure
@@ -2567,7 +2602,7 @@ focus_tree = {
 		cost = 5
 
 		available = {
-
+			dockyard > 49
 		}
 		
 		search_filters = {FOCUS_FILTER_INDUSTRY FOCUS_FILTER_RESEARCH}
@@ -2990,7 +3025,7 @@ focus_tree = {
 		}
 
 		available = {
-
+			arms_factory > 149
 		}
 		
 		search_filters = {FOCUS_FILTER_INDUSTRY}
@@ -3015,6 +3050,10 @@ focus_tree = {
 
 		available = {
 			has_full_control_of_state = 219 #MOSCOW
+			custom_trigger_tooltip = {
+				tooltip = SOV_fyp_controlled_factories_tier_2_tt
+				NOT = { num_of_controlled_factories < SOV_fyp_factory_requirement_tier_2 }
+			}
 		}
 		
 		search_filters = {FOCUS_FILTER_INDUSTRY FOCUS_FILTER_RESEARCH}
