@@ -5279,8 +5279,25 @@ focus_tree = {
 		}
 
 		available = {
-			date > 1941.6.1 #force it to be taken at the worst moment. Maybe find more organic conditions later?
+			OR = {
+				is_ai = yes
+				date > 1941.6.1 #force it to be taken at the worst moment. Maybe find more organic conditions later?
+				any_other_country = {
+					has_wargoal_against = SOV
+				}
+				GER = { #add more country unique things
+					OR = {
+						has_completed_focus = GER_anti_soviet_pact
+						focus_progress = {
+							focus = GER_ussr_war_goal
+							progress > 0.1
+						}
+					}
+				}
+			}
 		}
+		
+		continue_if_invalid = yes
 		
 		search_filters = {FOCUS_FILTER_ARMY_XP}
 
