@@ -1653,15 +1653,40 @@ focus_tree = {
 ##     ##  ##  ##    ##  ##    ## ##    ##  ##     ## ##          ##    
 ##     ## #### ##     ##  ######  ##     ## ##     ## ##          ##    
 
+	focus = {
+		id = SOV_foster_flying_clubs
 
+		icon = GFX_focus_SOV_flying_clubs
+		x = 10
+		y = 0
+		relative_position_id = SOV_infrastructure_effort_nsb
+		cost = 5
+
+		available = {
+			
+		}
+		
+		search_filters = {FOCUS_FILTER_AIR_XP}
+
+		completion_reward = {
+			add_to_variable = { SOV_soviet_airforce_air_accidents_factor = -0.25 }
+			add_to_variable = { SOV_soviet_airforce_air_ace_generation_chance_factor = 0.25 }
+			add_to_variable = { SOV_soviet_airforce_air_weather_penalty = -0.1 }
+			add_to_variable = { SOV_soviet_airforce_air_training_xp_gain_factor = 0.1 }
+			custom_effect_tooltip = SOV_foster_flying_clubs_ns_tt
+
+			air_experience = 25
+		}
+	}
 
 	focus = {
 		id = SOV_transpolar_flights
 
 		icon = GFX_goal_generic_air_fighter2
-		x = 10
-		y = 0
-		relative_position_id = SOV_infrastructure_effort_nsb
+		prerequisite = { focus = SOV_foster_flying_clubs }
+		x = 1
+		y = 1
+		relative_position_id = SOV_foster_flying_clubs
 		cost = 5
 
 		ai_will_do = {
@@ -1683,14 +1708,14 @@ focus_tree = {
 		id = SOV_expand_the_aircraft_industry
 
 		icon = GFX_goal_generic_construct_mil_factory
-		prerequisite = { focus = SOV_transpolar_flights }
+		prerequisite = { focus = SOV_foster_flying_clubs }
 		x = -1
 		y = 1
-		relative_position_id = SOV_transpolar_flights
+		relative_position_id = SOV_foster_flying_clubs
 		cost = 10
 
 		available = {
-			
+			NOT = { has_country_flag = SOV_paranoia_system_active_flag }
 		}
 		
 		search_filters = {FOCUS_FILTER_INDUSTRY}
@@ -1714,7 +1739,7 @@ focus_tree = {
 		cost = 10
 
 		available = {
-
+			
 		}
 		
 		search_filters = {}
@@ -1788,8 +1813,17 @@ focus_tree = {
 		mutually_exclusive = { focus = SOV_intensify_pilot_training_program }
 
 		available = {
-			any_enemy_country = {
-				SOV_is_major_not_original_sov = yes
+			OR = {
+				FRA = {
+					OR = {
+						has_capitulated = yes
+						exists = no
+						is_in_faction_with = GER
+					}
+				}
+				any_enemy_country = {
+					SOV_is_major_not_original_sov = yes
+				}
 			}
 		}
 		
@@ -1829,10 +1863,12 @@ focus_tree = {
 		}
 	}
 
-	focus = {
-		id = SOV_foster_flying_clubs
+	
 
-		icon = GFX_focus_SOV_flying_clubs
+	focus = {
+		id = SOV_women_in_aviation
+
+		icon = GFX_focus_SOV_women_in_aviation
 		prerequisite = { focus = SOV_transpolar_flights }
 		x = 1
 		y = 1
@@ -1840,37 +1876,7 @@ focus_tree = {
 		cost = 10
 
 		available = {
-			NOT = { has_country_flag = SOV_paranoia_system_active_flag }
-		}
-		
-		search_filters = {FOCUS_FILTER_AIR_XP}
 
-		completion_reward = {
-			add_to_variable = { SOV_soviet_airforce_air_accidents_factor = -0.25 }
-			add_to_variable = { SOV_soviet_airforce_air_ace_generation_chance_factor = 0.25 }
-			add_to_variable = { SOV_soviet_airforce_air_weather_penalty = -0.1 }
-			add_to_variable = { SOV_soviet_airforce_air_training_xp_gain_factor = 0.1 }
-			custom_effect_tooltip = SOV_foster_flying_clubs_ns_tt
-
-			air_experience = 25
-		}
-	}
-
-	focus = {
-		id = SOV_women_in_aviation
-
-		icon = GFX_focus_SOV_women_in_aviation
-		prerequisite = { focus = SOV_foster_flying_clubs }
-		x = 1
-		y = 1
-		relative_position_id = SOV_foster_flying_clubs
-		cost = 10
-
-		available = {
-			OR = {
-				has_completed_focus = SOV_the_path_of_marxism_leninism
-				has_completed_focus = SOV_womens_fascist_movement
-			}
 		}
 		
 		search_filters = {FOCUS_FILTER_AIR_XP}
@@ -1933,10 +1939,10 @@ focus_tree = {
 		id = SOV_intensify_pilot_training_program
 
 		icon = GFX_goal_generic_air_doctrine
-		prerequisite = { focus = SOV_foster_flying_clubs }
+		prerequisite = { focus = SOV_transpolar_flights }
 		x = 0
 		y = 2
-		relative_position_id = SOV_foster_flying_clubs
+		relative_position_id = SOV_transpolar_flights
 		cost = 10
 
 		mutually_exclusive = { focus = SOV_increase_aircraft_production }
@@ -1966,14 +1972,15 @@ focus_tree = {
 		id = SOV_expand_aviation_institutes
 
 		icon = GFX_focus_generic_military_academy
-		prerequisite = { focus = SOV_expand_the_aircraft_industry focus = SOV_foster_flying_clubs }
+		prerequisite = { focus = SOV_expand_the_aircraft_industry }
+		prerequisite = { focus = SOV_transpolar_flights }
 		x = 1
 		y = 1
 		relative_position_id = SOV_expand_the_aircraft_industry
 		cost = 10
 
 		available = {
-
+			NOT = { has_country_flag = SOV_paranoia_system_active_flag }
 		}
 		
 		search_filters = {FOCUS_FILTER_AIR_XP}
