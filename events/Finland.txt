@@ -471,6 +471,9 @@ country_event = {
 		name = finland.11.a
 		declare_war_on = { target = SOV type = annex_everything }
 		news_event = fin_news.3
+		ai_chance = {
+			base = 100
+		}	
 	}
 	
 		option = {
@@ -478,12 +481,14 @@ country_event = {
 		GER = {
 			add_opinion_modifier = { target = FIN modifier = FIN_betrayal }
 			create_wargoal = {
-					type = take_state
-					target = FIN
-					generator = { 111 }
-					}
+				type = take_state
+				target = FIN
+				generator = { 111 }
+			}
 		}
-						  
+		ai_chance = {
+			base = 0
+		}	
 	}
 }
 
@@ -2431,57 +2436,6 @@ country_event = {
 		}
 	}
 	
-#The Shelling of Mainila
-country_event = {
-		id = finland.92
-		title = finland.92.t
-		desc = finland.92.d
-		picture = GFX_report_event_stalin_meeting
-		
-		is_triggered_only = yes
-		
-		#Historical option, say the Soviets fired the shots
-		option = { 
-			name = finland.92.a
-				ai_chance = {
-				base = 1
-				modifier = {
-				factor = 10
-				is_historical_focus_on = yes
-					}			
-				}
-			SOV = { country_event = { days = 4 id = finland.93 } }
-			custom_effect_tooltip = finland.92.a_tt
-			set_country_flag = fin_mainilashots
-		}
-		
-	}
-
-#Finland says soviets fired shots
-country_event = {
-		id = finland.93
-		title = finland.93.t
-		desc = finland.93.d
-		picture = GFX_report_event_finnish_letter
-		
-		is_triggered_only = yes
-		
-		#Historical, soviets get wargoal
-		option = { 
-				name = finland.93.a
-				ai_chance = {
-				base = 1
-				modifier = {
-				factor = 10
-				is_historical_focus_on = yes
-					}			
-				}
-				declare_war_on = {
-					type = annex_everything
-					target = FIN
-			}
-		}
-	}
 
 #Anti-Communist Protests
 country_event = {
