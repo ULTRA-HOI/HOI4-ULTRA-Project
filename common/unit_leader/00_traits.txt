@@ -388,6 +388,7 @@ leader_traits = {
 	}
 
 	bearer_of_artillery = {
+		# ULTRA - Artillery Officer
 		type = corps_commander
 		
 		trait_type = personality_trait
@@ -553,6 +554,10 @@ leader_traits = {
 		field_marshal_modifier = {
 			supply_consumption_factor = -0.075
 		}
+
+		prerequisites = {
+			logistics_skill_level > 4
+		}
 		
 		ai_will_do = {
 			factor = 1
@@ -595,6 +600,13 @@ leader_traits = {
 			}
 			org_loss_when_moving = -0.225
 		}
+
+		prerequisites = {
+			OR = {
+				has_trait = cavalry_leader
+				has_trait = panzer_leader
+			}
+		}
 		 
 		slot = army_chief
 		specialist_advisor_trait = army_chief_offensive_1
@@ -619,6 +631,12 @@ leader_traits = {
 			defence = 0.10
 			max_dig_in_factor = 0.1
 		}
+		prerequisites = {
+			OR = {
+				has_trait = infantry_leader
+				has_trait = bearer_of_artillery
+			}
+		}
 		slot = army_chief
 		specialist_advisor_trait = army_chief_entrenchment_1
 		expert_advisor_trait = army_chief_entrenchment_2
@@ -632,12 +650,14 @@ leader_traits = {
 	}
 	
 	fast_planner = { 
+		# Ultra - Brilliant Strategist
 		type = field_marshal
 		gain_xp = {
 			always = no # not gainable
 		}
 		prerequisites = {
-			has_trait = brilliant_strategist
+			has_trait = harsh_leader
+			planning_skill_level > 4
 		}
 
 		cost = 1000
@@ -670,6 +690,7 @@ leader_traits = {
 
 
 	thorough_planner = { 
+		# ULTRA - Reliable Warhorse
 		type = field_marshal
 		gain_xp = {
 			always = no # not gainable
@@ -700,6 +721,7 @@ leader_traits = {
 
 
 	unyielding_defender = { 
+		# ULTRA - Meticulous Planner
 		type = field_marshal
 		gain_xp = {
 			always = no # not gainable
@@ -707,6 +729,7 @@ leader_traits = {
 
 		prerequisites = {
 			has_trait = inflexible_strategist
+			planning_skill_level > 3
 		}
 
 		cost = 1000
@@ -732,6 +755,7 @@ leader_traits = {
 
 
 	aggressive_assaulter = { 
+		# Ultra - Improvisational Master
 		type = field_marshal
 		gain_xp = {
 			always = no # not gainable
@@ -740,7 +764,16 @@ leader_traits = {
 		field_marshal_modifier = {
 			planning_speed = 0.075
 			army_morale_factor = 0.075
-		}														
+		}		
+		
+		prerequisites = {
+			OR = {
+				has_trait = war_hero
+				has_trait = war_hero_2
+				has_trait = war_hero_3
+			}	
+		}
+
 		custom_effect_tooltip = INCREASED_ASSAULT_AND_SHOCK_CHANCE
 		
 		slot = army_chief
@@ -966,6 +999,7 @@ leader_traits = {
 		genius_advisor_trait = army_logistics_3								 
 	}
 	trickster = { 
+		# ULTRA - Well Informed
 		type = corps_commander
 		gain_xp = {
 			OR = {
@@ -1703,6 +1737,7 @@ leader_traits = {
 	}
 	
 	expert_improviser = { 
+		# ULTRA - Tactical Genius
 		type = corps_commander
 		gain_xp = {
 			always = no # not gainable
@@ -1753,9 +1788,12 @@ leader_traits = {
 		trait_type = assignable_trait
 		parent = trickster
 		prerequisites = {
-			check_variable = { num_terrain_traits > 0 }
+			OR = {
+				has_trait = war_hero
+				has_trait = war_hero_2
+				has_trait = war_hero_3
+			}
 		}
-		custom_prerequisite_tooltip = needs_at_least_one_terrain
 		
 		gui_row = 13
 	}
