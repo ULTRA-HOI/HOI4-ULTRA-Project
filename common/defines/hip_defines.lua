@@ -35,6 +35,7 @@ NDefines.NDiplomacy.VICTORY_POINT_WORTH_FACTOR = 25				-- multiplier when calcua
 NDefines.NDiplomacy.VOLUNTEERS_PER_TARGET_PROVINCE = 0.01			-- Each province owned by the target country contributes this amount of volunteers to the limit.
 NDefines.NDiplomacy.VOLUNTEERS_PER_COUNTRY_ARMY = 0.01				-- Each army unit owned by the source country contributes this amount of volunteers to the limit.
 NDefines.NDiplomacy.VOLUNTEERS_DIVISIONS_REQUIRED = 20				-- This many divisons are required for the country to be able to send volunteers.
+NDefines.NDiplomacy.OPINION_PER_VOLUNTEER = 20						-- Opinion bonus per one sent volunteer division
 
  -- YAMM
  
