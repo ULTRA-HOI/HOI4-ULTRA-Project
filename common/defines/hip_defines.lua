@@ -477,7 +477,7 @@ NDefines.NAir.DETECT_CHANCE_FROM_NIGHT = -0.4 -- -0.2					-- How much the night 
 NDefines.NAir.CAS_NIGHT_ATTACK_FACTOR = 0.05 --0.1                      -- CAS damaged get multiplied by this in land combats at night
 
 NDefines.NAir.COMBAT_MULTIPLANE_CAP = 3.0						-- was 3.0 - How many planes can shoot at each plane on other side ( if there are 100 planes we are atttacking COMBAT_MULTIPLANE_CAP * 100 of our planes can shoot )
-NDefines.NAir.ACCIDENT_CHANCE_BASE = 0.10						-- was 0.05	- Base chance % (0 - 100) for accident to happen. Reduced with higher reliability stat.
+NDefines.NAir.ACCIDENT_CHANCE_BASE = 0.05						-- was 0.05	- Base chance % (0 - 100) for accident to happen. Reduced with higher reliability stat.
 NDefines.NAir.ACCIDENT_CHANCE_BALANCE_MULT = 1.0 --0.5					-- Multiplier for balancing how often the air accident really happens. The higher mult, the more often.
 NDefines.NAir.ACCIDENT_EFFECT_MULT = 0.025 --0.005						-- Multiplier for balancing the effect of accidents
 NDefines.NAir.AIR_WING_XP_TRAINING_MISSION_ACCIDENT_FACTOR = 1.1 --1.5 				--Training exercises cause more accidents
