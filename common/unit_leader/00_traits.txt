@@ -245,10 +245,10 @@ leader_traits = {
 		type = land
 		trait_type = personality_trait
 		
-		non_shared_modifier = {
+		modifier = {
 			army_morale_factor = 0.05
 			dig_in_speed_factor = 0.1
-			wounded_chance_factor = 0.3 # +30% chance to get wounded in combat
+			wounded_chance_factor = 0.25 # +25% chance to get wounded in combat
 		}
 	}
 	
@@ -274,7 +274,7 @@ leader_traits = {
 			planning_speed = -0.10
 			breakthrough_factor = -0.065
 			offence = -0.015
-			wounded_chance_factor = -0.20 # -20% chance to get wounded
+			wounded_chance_factor = -0.15 # -15% chance to get wounded
 		}
 		
 		new_commander_weight = {
@@ -310,7 +310,7 @@ leader_traits = {
 			max_planning = -0.03
 			breakthrough_factor = 0.065
 			defence = -0.015
-			wounded_chance_factor = 0.20  # +20% chance to get wounded
+			wounded_chance_factor = 0.15  # +15% chance to get wounded
 		}
 		
 		new_commander_weight = {
@@ -566,8 +566,10 @@ leader_traits = {
 		}
 		
 		field_marshal_modifier = {
-			supply_consumption_factor = -0.075
+			supply_consumption_factor = -0.05
 		}
+		
+		enable_ability = extra_suplies
 
 		prerequisites = {
 			logistics_skill_level > 4
@@ -653,10 +655,12 @@ leader_traits = {
 				has_trait = combined_arms_expert #Defensive Expert
 			}
 		}
+		
 		slot = army_chief
 		specialist_advisor_trait = army_chief_entrenchment_1
 		expert_advisor_trait = army_chief_entrenchment_2
 		genius_advisor_trait = army_chief_entrenchment_3
+		
 		ai_will_do = {
 			factor = 1
 		}
@@ -780,6 +784,7 @@ leader_traits = {
 		}		
 		
 		prerequisites = {
+			planning_skill_level > 3
 			OR = {
 				has_trait = war_hero
 				has_trait = war_hero_2
@@ -814,7 +819,7 @@ leader_traits = {
 		}
 		
 		field_marshal_modifier = {
-			recon_factor = 0.075
+			recon_factor = 0.05
 			army_morale_factor = 0.075
 		}
 		
@@ -898,7 +903,7 @@ leader_traits = {
 		modifier = {
 			max_planning = 0.03
 		}
-		enable_ability = extra_suplies
+		
 		slot = high_command
 		specialist_advisor_trait = army_regrouping_1
 		expert_advisor_trait = army_regrouping_2
@@ -947,7 +952,7 @@ leader_traits = {
 		}
 		custom_gain_xp_trigger_tooltip = cavalary_ratio_over_10
 		
-		cost = 400
+		cost = 600
 		modifier = {
 			cavalry_attack_factor = 0.03
 			cavalry_defence_factor = 0.03
@@ -995,7 +1000,7 @@ leader_traits = {
 		type = corps_commander # Offensive Specialist
 		gain_xp = { is_attacker = yes }
 		
-		cost = 600
+		cost = 1000
 		modifier = {
 			offence = 0.05
 			max_planning = 0.03
@@ -1014,7 +1019,7 @@ leader_traits = {
 		type = corps_commander # Defensive Specialist
 		gain_xp = { is_defender = yes }
 		
-		cost = 600
+		cost = 1000
 		modifier = {
 			defence = 0.05
 			max_dig_in = 3
@@ -1049,7 +1054,7 @@ leader_traits = {
 		}
 		custom_gain_xp_trigger_tooltip = fighting_with_max_capacity
 		
-		cost = 500
+		cost = 750
 		
 		corps_commander_modifier = {
 			max_commander_army_size = 3
@@ -1078,12 +1083,10 @@ leader_traits = {
 		}
 		custom_gain_xp_trigger_tooltip = has_flanked
 		
-		cost = 600
+		cost = 750
 		modifier = {
-			recon_factor = 0.15
-			#river = {
-			#	attack = 0.1
-			#}
+			recon_factor = 0.10
+			max_planning = 0.075
 		}
 		
 		ai_will_do = {
@@ -1175,7 +1178,7 @@ leader_traits = {
 				has_combat_modifier = river_crossing
 			}
 		}
-		cost = 150
+		cost = 250
 		modifier = {
 
 			max_dig_in = 2.5
@@ -1210,7 +1213,7 @@ leader_traits = {
 				has_combat_modifier = amphibious_attack
 			}
 		}
-		cost = 400
+		cost = 500
 		modifier = {
 			supply_consumption_factor = -0.125
 			out_of_supply_factor = -0.19
@@ -1240,7 +1243,7 @@ leader_traits = {
 		modifier = {
 			desert = {
 				movement = 0.03
-				attack = 0.03
+				attack = 0.05
 				defence = 0.03
 			}
 		}
@@ -1267,7 +1270,7 @@ leader_traits = {
 		cost = 250
 		modifier = {
 			marsh = {
-				movement = 0.03
+				movement = 0.05
 				attack = 0.03
 				defence = 0.03
 			}
@@ -1285,10 +1288,52 @@ leader_traits = {
 		gain_xp = {
 			is_fighting_in_terrain = mountain
 		}
-		cost = 250
+		cost = 400
 		modifier = {
 			mountain = {
 				movement = 0.03
+				attack = 0.03
+				defence = 0.05
+			}
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+		trait_type = basic_terrain_trait
+		gui_row = 6
+	}
+
+	hill_fighter = { 
+		type = corps_commander
+		gain_xp = {
+			is_fighting_in_terrain = hills
+		}
+		cost = 400
+		modifier = {
+			hills = {
+				movement = 0.03
+				attack = 0.03
+				defence = 0.05
+			}
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+		trait_type = basic_terrain_trait
+		gui_row = 5
+	}
+
+	jungle_rat = { 
+		type = corps_commander
+		gain_xp = {
+			is_fighting_in_terrain = jungle
+		}
+		cost = 400
+		modifier = {
+			jungle = {
+				movement = 0.05
 				attack = 0.03
 				defence = 0.03
 			}
@@ -1301,17 +1346,17 @@ leader_traits = {
 		gui_row = 3
 	}
 
-	hill_fighter = { 
+	ranger = { 
 		type = corps_commander
 		gain_xp = {
-			is_fighting_in_terrain = hills
+			is_fighting_in_terrain = forest
 		}
-		cost = 250
+		cost = 400
 		modifier = {
-			hills = {
+			forest = {
 				movement = 0.03
 				attack = 0.03
-				defence = 0.03
+				defence = 0.05
 			}
 		}
 		
@@ -1320,48 +1365,6 @@ leader_traits = {
 		}
 		trait_type = basic_terrain_trait
 		gui_row = 2
-	}
-
-	jungle_rat = { 
-		type = corps_commander
-		gain_xp = {
-			is_fighting_in_terrain = jungle
-		}
-		cost = 250
-		modifier = {
-			jungle = {
-				movement = 0.03
-				attack = 0.03
-				defence = 0.03
-			}
-		}
-		
-		ai_will_do = {
-			factor = 1
-		}
-		trait_type = basic_terrain_trait
-		gui_row = 6
-	}
-
-	ranger = { 
-		type = corps_commander
-		gain_xp = {
-			is_fighting_in_terrain = forest
-		}
-		cost = 250
-		modifier = {
-			forest = {
-				movement = 0.03
-				attack = 0.03
-				defence = 0.03
-			}
-		}
-		
-		ai_will_do = {
-			factor = 1
-		}
-		trait_type = basic_terrain_trait
-		gui_row = 5
 	}
 
 	urban_assault_specialist = { #Urban Combat Specialist 
@@ -1373,8 +1376,8 @@ leader_traits = {
 		modifier = {
 			urban = {
 				movement = 0.03
-				attack = 0.075
-				defence = 0.075
+				attack = 0.03
+				defence = 0.05
 			}
 		}
 		
@@ -1421,11 +1424,10 @@ leader_traits = {
 		}
 		
 		prerequisites = {
-			has_trait = armor_officer
-			has_trait = cavalry_officer
+			has_trait = panzer_leader
+			has_trait = cavalry_leader
 			OR = {
 				attack_skill_level > 4
-				defense_skill_level > 4
 				planning_skill_level > 4
 			}
 		}
@@ -1434,8 +1436,8 @@ leader_traits = {
 			army_armor_attack_factor = 0.05
 			army_armor_defence_factor = 0.03
 			motorized_attack_factor = 0.03
-			mechanized_attack_factor = 0.05
 			motorized_defence_factor = 0.05
+			mechanized_attack_factor = 0.05
 			mechanized_defence_factor = 0.05
 		}
 		corps_commander_modifier = {
@@ -1483,8 +1485,8 @@ leader_traits = {
 		prerequisites = {
 			has_trait = cavalry_officer
 			OR = {
-				attack_skill_level > 3
-				planning_skill_level > 3
+				attack_skill_level > 2
+				planning_skill_level > 2
 			}
 		}
 		
@@ -1552,7 +1554,7 @@ leader_traits = {
 		}
 		
 		prerequisites = {
-			attack_skill_level > 5
+			attack_skill_level > 4
 			planning_skill_level > 4
 		}
 		
@@ -1579,13 +1581,13 @@ leader_traits = {
 		}
 		
 		prerequisites = {
-			defense_skill_level > 5
+			defense_skill_level > 4
 			planning_skill_level > 4
 		}
 		
 		modifier = {
 			defence = 0.075
-			max_dig_in = 5
+			max_dig_in = 7
 		}
 		
 		ai_will_do = {
@@ -1603,10 +1605,6 @@ leader_traits = {
 	fortress_buster = {
 		type = corps_commander
 		gain_xp = {
-			OR = {
-				has_combat_modifier = fort_attack
-				dig_in > 10
-			}
 		}
 		
 		modifier = {
@@ -1642,9 +1640,9 @@ leader_traits = {
 		}
 		
 		modifier = {
-			#river = {
-			#	attack = 0.05
-			#}
+			river = {
+				movement = 0.05
+			}
 			desert = {
 				movement = 0.05
 			}
@@ -1661,7 +1659,7 @@ leader_traits = {
 				movement = 0.05
 			}
 			urban = {
-				movement = 0.1
+				movement = 0.05
 			}
 			jungle = {
 				movement = 0.05
@@ -1767,8 +1765,8 @@ leader_traits = {
 		}
 		
 		modifier = {
-			air_paradrop_attack_factor = 0.15
-			air_paradrop_defence_factor = 0.15
+			air_paradrop_attack_factor = 0.125
+			air_paradrop_defence_factor = 0.10
 			extra_paratrooper_supply_grace = 240
 		}
 		
