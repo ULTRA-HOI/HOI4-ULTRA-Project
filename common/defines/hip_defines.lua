@@ -648,6 +648,7 @@ NDefines.NAI.DIVISION_DESIGN_COMBAT_WIDTH_TARGET_WEIGHT = 0 -- -200	        -- T
 NDefines.NAI.UPGRADE_DIVISION_RELUCTANCE = 7 --7
 --NDefines.NAI.UPGRADE_PERCENTAGE_OF_FORCES = 0.25 --0.1
 NDefines.NAI.UPGRADES_DEFICIT_LIMIT_DAYS = 180 --180 --50                           -- Ai will avoid upgrading units in the field to new templates if it takes longer than this to fullfill their equipment need
+NDefines.NAI.DEFAULT_LEGACY_VARIANT_CREATION_XP_CUTOFF_LAND = 1000	-- blocked by default -- Army XP needed before attempting to create a variant of a type that uses the legacy upgrades system. ai_strategy supports land_xp_spend_priority upgrade_xp_cutoff. If none is set, this define is used instead.
 
 --------------------------------------------------------------------------------------------------------------
 -- DIVISION PRODUCTION
