@@ -263,35 +263,24 @@ careful_with_early_invasions = {
 	enable = {
 		date < 1943.1.1
 
-		#if = { # commented in case we want to add it back
-		#	limit = { NOT = { has_dlc = "Man the Guns"} }
-		#	NOT = { has_tech = landing_craft }
-		#}
-		#else = {
-		#	NOT = { has_tech = mtg_landing_craft }
-		#}
-
 		OR = {
 			is_in_faction_with = ENG # anyone in allies
-			tag = FRA
+			original_tag = FRA
+			original_tag = ENG
 		}
 
 		NOT = {
 			SOV = {
 				has_war_with = GER
-				surrender_progress > 0.15
+				surrender_progress > 0.25
 			}
 		}
 	}
 	abort = {
-		#OR = { # commented in case we want to add it back
-		#	has_tech = landing_craft
-		#	has_tech = mtg_landing_craft
-		#}
 		OR = {
 			SOV = {
 				has_war_with = GER
-				surrender_progress > 0.15
+				surrender_progress > 0.25
 			}
 			date > 1943.1.1
 		}
@@ -320,6 +309,27 @@ careful_with_early_invasions = {
 		id = scandinavia
 		value = -300
 	}
+	
+	ai_strategy = {
+		type = naval_avoid_region
+		id = 202 #aegean sea
+		value = 2000
+	}
+	ai_strategy = {
+		type = naval_avoid_region
+		id = 168 #adriatic sea
+		value = 2000
+	}
+	ai_strategy = {
+		type = naval_avoid_region
+		id = 169 #tyrrhenian sea
+		value = 2000
+	}
+	ai_strategy = {
+		type = naval_avoid_region
+		id = 29 #central med
+		value = 2000
+	}
 }
 
 east_prussia_invasion_is_death_trap = {
@@ -327,7 +337,8 @@ east_prussia_invasion_is_death_trap = {
 
 		OR = {
 			is_in_faction_with = ENG # anyone in allies
-			tag = FRA
+			original_tag = FRA
+			original_tag = ENG
 		}
 
 		GER = { has_war_with = POL }
