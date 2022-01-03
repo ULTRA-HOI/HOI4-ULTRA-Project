@@ -646,6 +646,14 @@ NDefines.NAI.UPGRADE_DIVISION_RELUCTANCE = 7 --7
 NDefines.NAI.UPGRADES_DEFICIT_LIMIT_DAYS = 180 --180 --50                           -- Ai will avoid upgrading units in the field to new templates if it takes longer than this to fullfill their equipment need
 NDefines.NAI.DEFAULT_LEGACY_VARIANT_CREATION_XP_CUTOFF_LAND = 1000	-- blocked by default -- Army XP needed before attempting to create a variant of a type that uses the legacy upgrades system. ai_strategy supports land_xp_spend_priority upgrade_xp_cutoff. If none is set, this define is used instead.
 
+-- AI constructions
+
+NDefines.NAI.BUILDING_TARGETS_BUILDING_PRIORITIES = {				-- buildings in order of pirority when considering building targets strategies. First has the greatest priority, omitted has the lowest. NOTE: not all buildings are supported by building targets strategies.
+	'arms_factory',
+	'dockyard',
+	'industrial_complex',
+}
+
 --------------------------------------------------------------------------------------------------------------
 -- DIVISION PRODUCTION
 --------------------------------------------------------------------------------------------------------------
