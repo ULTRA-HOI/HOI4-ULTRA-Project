@@ -484,10 +484,6 @@ NDefines.NAir.AIR_WING_XP_TRAINING_MISSION_ACCIDENT_FACTOR = 1.1 --1.5 				--Tra
 
 NDefines.NAir.AIR_WING_FLIGHT_SPEED_MULT = 0.02			-- was 0.02	-- Global speed multiplier for airplanes (affects fe.transferring to another base)
 
-NDefines.NAir.ACE_DEATH_CHANCE_BASE = 0.000						-- was 0.003, disabled -- Base chance % for ace pilot die when an airplane is shot down in the Ace wing.
-NDefines.NAir.ACE_EARN_CHANCE_BASE = 0.000						-- was 0.003, disabled -- Base chance % for ace pilot to be created. Happens only when successfully kill airplane/ship or damage the buildings.
-
-
 NDefines.NAir.ANTI_AIR_PLANE_DAMAGE_FACTOR = 0.8				-- was 0.8	-- Anti Air Gun Damage factor
 NDefines.NAir.ANTI_AIR_PLANE_DAMAGE_CHANCE = 0.1 --0.1					-- Anti Air Gun hit chance
 NDefines.NAir.BOMBING_TARGETING_RANDOM_FACTOR = 0.40						-- was 0.25	-- % of picking the wrong target
