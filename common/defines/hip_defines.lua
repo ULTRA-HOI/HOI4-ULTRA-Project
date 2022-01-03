@@ -683,6 +683,8 @@ NDefines.NAI.DEPLOY_MIN_EQUIPMENT_WAR_FACTOR = 0.95 --0.9		                     
 NDefines.NAI.START_TRAINING_EQUIPMENT_LEVEL = 0.95 --0.9                               -- ai will not start to train if equipment drops below this level
 NDefines.NAI.STOP_TRAINING_EQUIPMENT_LEVEL = 0.9 --0.8                                -- ai will not train if equipment drops below this level
 
+NDefines.NAI.WANTED_UNITS_INDUSTRY_FACTORY = 0.75                        -- How many units a country wants is partially based on how much military industry that is available
+
 --------------------------------------------------------------------------------------------------------------
 -- EQUIPMENT PRODUCTION
 --------------------------------------------------------------------------------------------------------------
