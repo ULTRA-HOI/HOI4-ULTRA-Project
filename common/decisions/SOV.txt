@@ -12449,6 +12449,160 @@ SOV_great_patriotic_war = {
 			country_event = wtt_soviet_hold_city.6
 		}
 	}
+	
+	#move the capital from Moscow
+	
+	SOV_move_capital = {
+		icon = generic_civil_support
+
+		allowed = {
+			original_tag = SOV
+		}
+		
+		visible = {
+			OR = {
+				NOT = {
+					controls_state = 206 #Minsk
+				}
+				NOT = {
+					controls_state = 202 #Kiev
+				}
+				NOT = {
+					controls_state = 195 #Leningrad
+				}
+				NOT = {
+					controls_state = 221 #Kharkov
+				}
+			}
+		}
+		
+		available = {
+			controls_state = 253 #Ivanovo
+			controls_state = 653 #Sverdlosk
+			NOT = {
+				controls_state = 242 #Smolensk
+			}
+			OR = {
+				NOT = {
+					controls_state = 205 #Kaluga
+				}
+				NOT = {
+					controls_state = 223 #Tula
+				}
+				NOT = {
+					controls_state = 254 #Ryazan
+				}
+				NOT = {
+					controls_state = 246 #Rzhev
+				}
+			}
+		}
+		
+		fire_only_once = yes
+		
+		
+		
+		ai_will_do = {
+			factor = 1000
+		}
+		
+		complete_effect = {
+			set_capital = 653 #Sverdlosk
+			add_ideas = SOV_moscow_abandoned
+			hidden_effect = {
+				set_country_flag = moscow_abandoned
+			}
+		}
+	}
+	
+	SOV_return_to_moscow = {
+		icon = generic_civil_support
+
+		allowed = {
+			original_tag = SOV
+		}
+		
+		visible = {
+			has_country_flag = moscow_abandoned
+		}
+		
+		
+		
+		ai_will_do = {
+			factor = 1000
+		}
+		
+		available = {
+			controls_state = 219 #moscow 
+			controls_state = 242
+			controls_state = 205
+			controls_state = 223
+			controls_state = 254
+			controls_state = 246
+			controls_state = 247
+		}
+		
+		complete_effect = {
+			set_capital = 219
+			remove_ideas = SOV_moscow_abandoned
+			
+			hidden_effect = {
+				clr_country_flag = moscow_abandoned
+			}
+		}
+	}
+	
+	SOV_sabotage_oil_field = {
+		icon = oil
+		
+		highlight_state_targets = {
+			state = 229
+		}
+
+		allowed = {
+			original_tag = SOV
+		}
+		
+		visible = {
+			owns_state = 229
+			NOT = {
+				has_global_flag = baku_sabotaged
+			}
+		}
+		
+		available = {
+			OR = {
+				NOT = {
+					controls_state = 232
+				}
+				NOT = {
+					controls_state = 230
+				}
+				NOT = {
+					controls_state = 231
+				}
+			}
+		}
+		
+		cost = 10
+		
+		ai_will_do = {
+			factor = 1000
+		}
+		
+		complete_effect = {
+			229 = {
+				add_resource = {
+					type = oil
+					amount = -102
+				}
+
+			}
+			hidden_effect = {
+				set_global_flag = baku_sabotaged
+			}
+		}
+	}
 
 	##########################
 	##### SCORCHED EARTH #####
@@ -17360,6 +17514,207 @@ operations = {
 			}
 		}
 	}
+	
+	SOV_operation_zet = {
+		icon = generic_civil_support
+		
+		allowed = {
+			original_tag = SOV
+		}
+		
+		fire_only_once = yes
+		days_remove = 30
+		
+		ai_will_do = {
+			factor = 50
+		}
+		cost = 25
+		is_good = yes
+		
+		visible = {
+			CHI = {
+				has_war_with = JAP 
+				NOT = {
+					has_war_with = SOV
+				}
+				NOT = {
+					has_war_with = PRC
+				}
+			}
+		}
+			
+		available = {
+		
+			CHI = {
+				NOT = {
+					controls_state = 613
+				}
+			}
+			
+			has_equipment = {
+				infantry_equipment > 4999
+			}
+			
+			has_equipment = {
+				heavy_infantry_equipment > 324			
+			}
+			
+			has_equipment = {
+				artillery_equipment > 239
+			}
+			
+			has_equipment = {
+				anti_air_equipment > 19
+			}
+			
+			has_equipment = {
+				light_tank_equipment > 81
+			}
+			has_equipment = {
+				fighter_equipment > 330
+				
+			}
+			has_equipment = {
+				tac_bomber_equipment > 145
+			}
+			has_equipment = {
+				motorized_equipment > 699
+			}
+		}
+		
+		
+		remove_effect = {
+			send_equipment = {
+				equipment = infantry_equipment
+				amount = 20000
+				target = CHI
+			}
+			send_equipment = {
+				equipment = heavy_infantry_equipment
+				amount = 325
+				target = CHI
+			}
+			send_equipment = {
+				equipment = artillery_equipment
+				amount = 240
+				target = CHI
+			}
+			
+			send_equipment = {
+				equipment = light_tank_equipment
+				amount = 82
+				target = CHI
+			}
+			send_equipment = {
+				equipment = fighter_equipment
+				amount = 331
+				target = CHI
+			}
+			send_equipment = {
+				equipment = tac_bomber_equipment
+				amount = 146
+				target = CHI
+			}
+			army_experience = 100
+			air_experience = 100
+			
+			if = {
+				limit = {
+					NOT = {
+						has_war_with = CHI
+						CHI = {
+							has_war_with = PRC
+						}
+					}
+				}
+				CHI = {
+					add_opinion_modifier = { target = SOV modifier = operation_zet_chi }				
+				}
+				JAP = { add_opinion_modifier = { target = SOV modifier = operation_zet_jap } }
+				PRC = { add_opinion_modifier = { target = SOV modifier = operation_zet_jap } }
+			}
+			else_if = {
+				limit = {
+					NOT = {
+						has_war_with = PRC
+					}
+				}
+				CHI = {
+					add_opinion_modifier = { target = SOV modifier = operation_zet_jap }				
+				}
+				JAP = { add_opinion_modifier = { target = SOV modifier = operation_zet_jap } }
+				PRC = { add_opinion_modifier = { target = SOV modifier = operation_zet_chi } }
+			}
+		}
+	}
+	
+	SOV_august_storm = {
+		visible = {
+			original_tag = SOV
+			has_war = no
+			has_completed_focus = SOV_war_with_japan
+			JAP = {
+				OR = {
+					has_government = fascism
+					has_government = neutrality
+				}
+			}
+		}
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 1
+		}
+		
+		available = {
+			NOT = {
+				has_non_aggression_pact_with = JAP
+			}
+			OR = {
+				GER = {
+					exists = no
+				}
+				GER = {
+					is_subject = yes
+				}
+			}
+			OR = {
+				AND = {
+					date > 1943.8.1
+					date < 1943.8.30
+				}
+				AND = {
+					date > 1944.8.1
+					date < 1944.8.30
+				}
+				AND = {
+					date > 1945.8.1
+					date < 1945.8.30
+				}
+				AND = {
+					date > 1946.8.1
+					date < 1946.8.30
+				}
+				AND = {
+					date > 1947.8.1
+					date < 1947.8.30
+				}
+			}
+			has_completed_focus = SOV_war_with_japan
+		}
+		
+		complete_effect = {
+			declare_war_on = {
+				target = JAP
+				type = annex_everything
+			}
+			add_timed_idea = {
+				idea = SOV_summer_offensive
+				days = 30
+			}
+		}
+	}
 }
 
 political_actions = {
@@ -17645,6 +18000,282 @@ political_actions = {
 			factor = 0
 		}
 	}
+	
+	SOV_propose_neutral_germany = { # Staline's notes
+	
+		icon = generic_civil_support
+		
+		fire_only_once = yes
+		
+		cost = 200
+		
+		allowed = {
+			original_tag = SOV
+		}
+		
+		visible = {
+			DDR = { exists = yes }
+		}
+		
+		ai_will_do = {
+			factor = 5000
+		}
+		
+		available = {
+			DDR = { exists = yes }
+			WGR = { exists = yes }
+			AUS = { exists = yes }
+		}
+		
+		complete_effect = {
+			USA = {
+				country_event = {id = hip_germany.8 days = 1}
+			}
+		}
+	}
+	
+	SOV_the_german_question = { # Germany fate in a "Red Europe"
+		icon = generic_civil_support
+		
+		fire_only_once = yes
+		
+		cost = 25
+		
+		allowed = {
+			original_tag = SOV
+		}
+		
+		visible = {
+			SOV = { 
+				controls_state = 791 #Berlin
+				controls_state = 4 # Vienna
+				controls_state = 52 # Munich
+				controls_state = 790 # Hamburg 
+			}
+		}
+		
+		available = {
+			GER = {
+				NOT = {
+					exists = yes
+				}
+			}
+			controls_state = 51 #Köln
+			controls_state = 55		
+		}
+		
+		ai_will_do = {
+			factor = 5000
+		}
+		
+		complete_effect = {
+			SOV = {
+				country_event = {id = hip_germany.12}
+			}
+		}
+		
+	}
+	# In case of JAP-SOV war (japanese victory)
+	SOV_negociate_with_japan = {
+	
+		fire_only_once = yes
+		cost = 25
+		
+		allowed = {
+			original_tag = SOV
+		}
+		
+		visible = {
+			has_war_with = JAP
+			NOT = {
+				controls_state = 408 # Vladivostok
+			}
+		}
+		
+		available = {
+			NOT = {
+				controls_state = 408 # Vladivostok
+				controls_state = 564 # Ulan Ude
+				controls_state = 563 # Chita
+				controls_state = 561
+				controls_state = 657 # Amur Border
+			}
+			IF = {
+				limit = {
+					is_ai = yes
+				}
+				casualties > 1000000
+			}
+		}
+		
+		ai_will_do = {
+			factor = 5000
+		}
+		
+		complete_effect = {
+			JAP = {
+				country_event = {id = hip_sov.5}
+			}
+		}
+	}
+	
+	SOV_increase_conscription_1 = {
+		fire_only_once = yes
+		cost = 50
+		icon = generic_civil_support
+		allowed = {
+			original_tag = SOV
+		}
+		visible = {
+			OR = {
+				has_idea = limited_conscription
+			}
+		}
+	
+		available = {
+			OR = {
+				AND = {
+					has_war = yes
+					any_enemy_country = {
+						is_major = yes
+					}
+				}
+				GER = {
+					has_war_with = FRA
+				}
+				GER = {
+					has_war_with = ENG
+				}
+				ENG = {
+					has_war_with = FRA
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 5000
+		}
+		
+		complete_effect = {
+			
+			add_ideas = extensive_conscription
+		}
+		
+	}
+	
+	SOV_increase_conscription_2 = {
+		fire_only_once = yes
+		cost = 50
+		icon = generic_civil_support
+		allowed = {
+			original_tag = SOV
+		}
+		visible = {
+			has_war = no 
+			OR = {
+				has_idea = service_by_requirement
+				has_idea = extensive_conscription
+			}	
+		}
+		
+		available = {
+			OR = {
+				AND = {
+					has_war = yes
+					any_enemy_country = {
+						is_major = yes
+					}
+				}
+				any_country = {
+					is_major = yes 
+					has_capitulated = yes
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 5000
+		}
+		
+		complete_effect = {
+			
+			add_ideas = massive_conscription
+		}
+		
+	}
+	
+	SOV_backstab_GER = {
+		allowed = {
+			original_tag = SOV 
+		}
+		
+		visible = {
+			NOT = {
+				has_war_with = GER
+			}
+			GER = {
+				has_war_with = ENG
+			}
+		}
+		
+		available = {
+			NOT = {
+				is_in_faction_with = GER
+			}
+			OR = {
+				GER = {
+					OR = {
+						controls_state = 127 
+						controls_state = 126 
+						controls_state = 125 
+						controls_state = 129 
+						controls_state = 130
+						controls_state = 131 
+						controls_state = 123 
+						controls_state = 122 
+						controls_state = 132 
+						controls_state = 121 
+						controls_state = 136 
+						controls_state = 120 
+						controls_state = 133 
+					}
+				}
+				
+				ITA = {
+					OR = {
+						controls_state = 127 
+						controls_state = 126 
+						controls_state = 125 
+						controls_state = 129 
+						controls_state = 130
+						controls_state = 131 
+						controls_state = 123 
+						controls_state = 122 
+						controls_state = 132 
+						controls_state = 121 
+						controls_state = 136 
+						controls_state = 120 
+						controls_state = 133 
+					}
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 1000
+		}
+		
+		fire_only_once = yes
+		
+		cost = 25
+		
+		complete_effect = {
+			declare_war_on = {
+				target = GER
+				type = annex_everything
+			}
+		}
+	}
 
 }
 
@@ -17909,6 +18540,47 @@ SOV_panslavic_nationalism = {
 		complete_effect = {
 			set_cosmetic_tag = SOV_PANSLAVIC
 			news_event = { id = nsb_news.405 hours = 12 }
+		}
+	}
+}
+
+capitulation_decisions = {
+	SOV_bitter_peace = {
+		icon = generic_political_discourse
+	
+		fire_only_once = yes
+		
+		allowed = {
+			original_tag = SOV
+		}
+		
+		visible = {
+			has_war_with = GER
+			NOT = { 219 = { is_controlled_by = SOV } }   # Moscow
+			NOT = { 217 = { is_controlled_by = SOV } }	 # Stalingrad
+		}
+		
+		available = {
+			NOT = { 195 = { is_controlled_by = SOV } }	 # Leningrad
+			NOT = { 219 = { is_controlled_by = SOV } }   # Moscow
+			NOT = { 217 = { is_controlled_by = SOV } }	 # Stalingrad
+			NOT = { 229 = { is_controlled_by = SOV } } 	 #Baku
+			OR = {
+				NOT = { 408 = { is_controlled_by = SOV } } #Vladivostok
+					
+				NOT = { 252 = { is_controlled_by = SOV } } #Gorki reached
+			}
+		}
+		
+		ai_will_do = {
+			factor = 99999
+		}
+		
+		complete_effect = {
+			country_event = {			
+				days = 1
+				id = hip_sov.1
+			}
 		}
 	}
 }
