@@ -654,6 +654,8 @@ NDefines.NAI.BUILDING_TARGETS_BUILDING_PRIORITIES = {				-- buildings in order o
 	'industrial_complex',
 }
 
+NDefines.NAI.FIX_SUPPLY_BOTTLENECK_SATURATION_THRESHOLD = 0.95 --0.75  -- Try to fix supply bottlenecks if supply node saturation exceeds this value.
+
 --------------------------------------------------------------------------------------------------------------
 -- DIVISION PRODUCTION
 --------------------------------------------------------------------------------------------------------------
