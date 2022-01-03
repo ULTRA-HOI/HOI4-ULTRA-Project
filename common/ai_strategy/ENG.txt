@@ -123,6 +123,140 @@ ai_strategy = {
 	}
 }
 
+royal_air_force = {
+	allowed = { original_tag = ENG }
+	enable = {
+		date > 1939.4.1
+	}
+	abort = {
+		date < 1939.4.1
+	}
+
+	ai_strategy = {
+		type = air_factory_balance
+		value = 125
+	}
+
+}
+
+ENG_template_design_1 = {
+	allowed = { original_tag = ENG }
+	enable = {
+		date < 1940.1.1
+	}
+	abort = {
+		date > 1940.1.1
+	}
+
+	ai_strategy = {
+		type = template_prio
+		id = infantry
+		value = 40
+	}
+
+	ai_strategy = {
+		type = template_prio
+		id = motorized
+		value = -50
+	}
+
+	ai_strategy = {
+		type = template_prio
+		id = cavalry
+		value = -100
+	}
+
+	ai_strategy = {
+		type = template_prio
+		id = light_armor
+		value = 50
+	}
+
+	ai_strategy = {
+		type = template_prio
+		id = medium_armor
+		value = 10
+	}
+
+	ai_strategy = {
+		type = template_prio
+		id = heavy_armor
+		value = -100
+	}
+
+	ai_strategy = {
+		type = template_prio
+		id = paratroopers
+		value = -10
+	}
+
+	ai_strategy = {
+		type = template_prio
+		id = mechanized
+		value = -50
+	}
+}
+
+ENG_template_design_2 = {
+	allowed = { original_tag = ENG }
+	enable = {
+		date > 1940.1.1
+	}
+
+	ai_strategy = {
+		type = template_prio
+		id = infantry
+		value = -10
+	}
+
+	ai_strategy = {
+		type = template_prio
+		id = motorized
+		value = 10
+	}
+
+	ai_strategy = {
+		type = template_prio
+		id = cavalry
+		value = -100
+	}
+
+	ai_strategy = {
+		type = template_prio
+		id = light_armor
+		value = -10
+	}
+
+	ai_strategy = {
+		type = template_prio
+		id = medium_armor
+		value = 40
+	}
+
+	ai_strategy = {
+		type = template_prio
+		id = modern_armor
+		value = 50
+	}
+
+	ai_strategy = {
+		type = template_prio
+		id = heavy_armor
+		value = -100
+	}
+
+	ai_strategy = {
+		type = template_prio
+		id = paratroopers
+		value = -10
+	}
+
+	ai_strategy = {
+		type = template_prio
+		id = mechanized
+		value = 10
+	}
+}
 
 # lets make sure the allies dont overcommit to invasions early on
 careful_with_early_invasions = {
@@ -2221,18 +2355,253 @@ ENG_wants_docks = {
 	}
 	enable = {
 		tag = ENG
-		has_war = yes
+		date > 1938.1.1
 	}
 	ai_strategy = {
 		type = building_target
 		id = dockyard
-		value = 30
+		value = 150
 	}
 	ai_strategy = {
 		type = building_target
 		id = arms_factory
-		value = 100
+		value = 200
 	}
+}
+
+ENG_dont_build_in_colonies = {
+	allowed = { 
+		tag = ENG
+	}
+	enable = {
+		tag = ENG
+	}
+	
+	#Mainland first
+	ai_strategy = {
+        type = factory_build_score_factor
+        target = 132
+        value = 300
+    }
+	
+	ai_strategy = {
+        type = factory_build_score_factor
+        target = 130
+        value = 300
+    }
+	
+	ai_strategy = {
+        type = factory_build_score_factor
+        target = 128
+        value = 300
+    }
+	
+	ai_strategy = {
+        type = factory_build_score_factor
+        target = 129
+        value = 300
+    }
+	
+	ai_strategy = {
+        type = factory_build_score_factor
+        target = 338
+        value = 300
+    }
+	
+	ai_strategy = {
+        type = factory_build_score_factor
+        target = 126
+        value = 300
+    }
+	
+	ai_strategy = {
+        type = factory_build_score_factor
+        target = 125
+        value = 300
+    }
+	
+	ai_strategy = {
+        type = factory_build_score_factor
+        target = 127
+        value = 250
+    }
+	
+	ai_strategy = {
+        type = factory_build_score_factor
+        target = 123
+        value = 250
+    }
+	
+	ai_strategy = {
+        type = factory_build_score_factor
+        target = 122
+        value = 250
+    }
+	
+	ai_strategy = {
+        type = factory_build_score_factor
+        target = 131
+        value = 250
+    }
+	
+	ai_strategy = {
+        type = factory_build_score_factor
+        target = 121
+        value = 250
+    }
+	
+	ai_strategy = {
+        type = factory_build_score_factor
+        target = 133
+        value = 250
+    }
+	
+	ai_strategy = {
+        type = factory_build_score_factor
+        target = 119
+        value = 250
+    }
+	
+	ai_strategy = {
+        type = factory_build_score_factor
+        target = 136
+        value = 100
+    }
+	
+	ai_strategy = {
+        type = factory_build_score_factor
+        target = 120
+        value = 100
+    }
+	
+	#no industry in colonies
+	ai_strategy = {
+        type = factory_build_score_factor
+        target = 455
+        value = -500
+    }
+	
+	ai_strategy = {
+        type = factory_build_score_factor
+        target = 454
+        value = -500
+    }
+	
+	ai_strategy = {
+        type = factory_build_score_factor
+        target = 453
+        value = -500
+    }
+	
+	ai_strategy = {
+        type = factory_build_score_factor
+        target = 918
+        value = -500
+    }
+	
+	ai_strategy = {
+        type = factory_build_score_factor
+        target = 183
+        value = -500
+    }
+	
+	ai_strategy = {
+        type = factory_build_score_factor
+        target = 116
+        value = -500
+    }
+	
+	ai_strategy = {
+        type = factory_build_score_factor
+        target = 118
+        value = -500
+    }
+	
+	ai_strategy = {
+        type = factory_build_score_factor
+        target = 452
+        value = -500
+    }
+	
+	ai_strategy = {
+        type = factory_build_score_factor
+        target = 447
+        value = -500
+    }
+	
+	ai_strategy = {
+        type = factory_build_score_factor
+        target = 816
+        value = -500
+    }
+	
+	ai_strategy = {
+        type = factory_build_score_factor
+        target = 446
+        value = -500
+    }
+	
+	ai_strategy = {
+        type = factory_build_score_factor
+        target = 552
+        value = -500
+    }
+	
+	ai_strategy = {
+        type = factory_build_score_factor
+        target = 457
+        value = -500
+    }
+	
+	ai_strategy = {
+        type = factory_build_score_factor
+        target = 446
+        value = -500
+    }
+	
+	ai_strategy = {
+        type = factory_build_score_factor
+        target = 451
+        value = -500
+    }
+	
+	ai_strategy = {
+        type = factory_build_score_factor
+        target = 767
+        value = -500
+    }
+	
+	ai_strategy = {
+        type = factory_build_score_factor
+        target = 549
+        value = -500
+    }
+	
+	ai_strategy = {
+        type = factory_build_score_factor
+        target = 656
+        value = -500
+    }
+	
+	ai_strategy = {
+        type = factory_build_score_factor
+        target = 765
+        value = -500
+    }
+	
+	ai_strategy = {
+        type = factory_build_score_factor
+        target = 658
+        value = -500
+    }
+	
+	ai_strategy = {
+        type = factory_build_score_factor
+        target = 659
+        value = -500
+    }
+	
+	# TODO : to be expended if necessary
 }
 
 
