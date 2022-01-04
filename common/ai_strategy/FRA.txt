@@ -27,7 +27,7 @@ FRA_area_priority = {
 	ai_strategy = {
 		type = area_priority
 		id = scandinavia
-		value = 50
+		value = 10
 	}
 	
 	ai_strategy = {
@@ -45,25 +45,25 @@ FRA_area_priority = {
 	ai_strategy = {
 		type = area_priority
 		id = north_america
-		value = 10
+		value = -100
 	}
 	
 	ai_strategy = {
 		type = area_priority
 		id = south_america
-		value = 10
+		value = -100
 	}
 
 	ai_strategy = {
 		type = area_priority
 		id = middle_east
-		value = 10
+		value = -10
 	}
 	
 	ai_strategy = {
 		type = area_priority
 		id = asia
-		value = 0
+		value = -10
 	}
 
 	ai_strategy = {
@@ -90,14 +90,6 @@ FRA_area_priority = {
 		value = -50
 	}
 }
-
-
-
-
-  
-
-
-
 
 FRA_accept_USA_access = {
 	allowed = {
@@ -273,8 +265,8 @@ FRA_benelux_will_surely_not_fall = {
 		OR = {
 			date > 1940.8.1
 			AND = {
-				HOL = { surrender_progress > 0.30 }
-				BEL = { surrender_progress > 0.30 }
+				HOL = { surrender_progress > 0.5 }
+				BEL = { surrender_progress > 0.5 }
 			}
 		}
 	}
@@ -282,17 +274,12 @@ FRA_benelux_will_surely_not_fall = {
 	ai_strategy = {
 		type = dont_defend_ally_borders
 		id = "HOL"
-		value = 50
-	}
-	ai_strategy = {
-		type = dont_defend_ally_borders
-		id = "BEL"
-		value = 50
+		value = 500
 	}
 	ai_strategy = {
 		type = dont_defend_ally_borders
 		id = "LUX"
-		value = 50
+		value = 500
 	}
 	ai_strategy = {
 		type = put_unit_buffers
@@ -300,9 +287,40 @@ FRA_benelux_will_surely_not_fall = {
 		states = {
 			29
 			785
-			18
+			1032
+			17
 		}
-		ratio = 0.1
+		ratio = 0.4
+		area = france
+		subtract_invasions_from_need = no
+		subtract_fronts_from_need = yes
+	}
+}
+
+FRA_maginot_protecc = {
+
+	allowed = { original_tag = FRA }
+	
+	enable = {
+		date < 1945.6.1
+	}
+	
+	abort = {
+		OR = {
+			GER = {exists = no}
+			GER = {has_capitulated = yes}
+			GER = {is_in_faction_with = FRA}
+			FRA = {has_capitulated = yes}
+		}
+	}
+	
+	ai_strategy = {
+		type = put_unit_buffers
+		# Alsace-Moselle
+		states = {
+			28
+		}
+		ratio = 0.25
 		area = france
 		subtract_invasions_from_need = no
 		subtract_fronts_from_need = yes
@@ -318,7 +336,6 @@ FRA_CHILL_OUT = {
 	abort = {
         date > 1941.6.1
 	}
-		
 
 	ai_strategy = {
 		type = front_control
@@ -330,12 +347,12 @@ FRA_CHILL_OUT = {
 		ordertype = front
 		execution_type = careful
 		execute_order = no
-		manual_attack = yes
+		manual_attack = no
 	}
 	ai_strategy = {
 		type = front_control
 		country_trigger = {
-				tag = GER
+			tag = GER
 		}
 		ordertype = front
 		execution_type = careful
@@ -398,7 +415,7 @@ FRA_build_mils = {
 	ai_strategy = {
 		type = building_target
 		id = arms_factory
-		value = 10
+		value = 300
 	}
 }
 
