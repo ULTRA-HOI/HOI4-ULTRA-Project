@@ -8025,28 +8025,25 @@ focus_tree = {
 			}
 		}
 	}
-
+	
 	focus = {
-		id = SOV_claims_in_baltic
-		icon = GFX_focus_SOV_baltic_security
+		id = SOV_secure_leningrad
+		icon = GFX_focus_generic_attack_finland
+		relative_position_id = SOV_claims_in_baltic
 		prerequisite = { focus = SOV_the_comintern }
-		x = 4
+		x = 3
 		y = 1
 		relative_position_id = SOV_the_comintern
 		cost = 5
-
+		
 		ai_will_do = {
 			factor = 1
 			modifier = {
 				factor = 0
-				OR = {
-					has_civil_war = yes
-					date < 1939.1.1
-				}
+				has_civil_war = yes
 			}	
 		}
-
-		#mutually_exclusive = { focus = SOV_respect_baltic_self_determination }
+		dynamic = yes 
 
 		available = {
 			NOT = { has_country_flag = SOV_paranoia_system_active_flag }
@@ -8071,6 +8068,54 @@ focus_tree = {
 					has_war_with = GER
 				}
 			}
+		}
+
+		bypass = {
+			has_full_control_of_state = 146
+		}
+		
+		search_filters = {FOCUS_FILTER_ANNEXATION}
+
+		completion_reward = {
+			add_state_claim = 146 # Karjala
+			146 = {
+				controller = {
+					set_country_flag = SOV_ultimatum_sent_flag #Add it for AI strats reasons														 
+					add_timed_idea = {
+						idea = communist_pressure
+						days = 365
+					}
+					country_event = { id = finland.1 hours = 16 random_hours = 8 }
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = SOV_claims_in_baltic
+		icon = GFX_focus_SOV_baltic_security
+		prerequisite = { focus = SOV_secure_leningrad }
+		x = 0
+		y = 1
+		relative_position_id = SOV_secure_leningrad
+		cost = 5
+
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				OR = {
+					has_civil_war = yes
+					date < 1939.1.1
+				}
+			}	
+		}
+
+		#mutually_exclusive = { focus = SOV_respect_baltic_self_determination }
+
+		available = {
+			NOT = { has_country_flag = SOV_paranoia_system_active_flag }
+			is_subject = no
 		}
 
 		bypass = {
@@ -8134,54 +8179,10 @@ focus_tree = {
 	}
 
 	focus = {
-		id = SOV_secure_leningrad
-		icon = GFX_focus_generic_attack_finland
-		prerequisite = { focus = SOV_claims_in_baltic }
-		x = -1
-		y = 1
-		relative_position_id = SOV_claims_in_baltic
-		cost = 5
-		
-		ai_will_do = {
-			factor = 1
-			modifier = {
-				factor = 0
-				has_civil_war = yes
-			}	
-		}
-		dynamic = yes 
-
-		available = {
-			NOT = { has_country_flag = SOV_paranoia_system_active_flag }
-			is_subject = no
-		}
-
-		bypass = {
-			has_full_control_of_state = 146
-		}
-		
-		search_filters = {FOCUS_FILTER_ANNEXATION}
-
-		completion_reward = {
-			add_state_claim = 146 # Karjala
-			146 = {
-				controller = {
-					set_country_flag = SOV_ultimatum_sent_flag #Add it for AI strats reasons														 
-					add_timed_idea = {
-						idea = communist_pressure
-						days = 365
-					}
-					country_event = { id = finland.1 hours = 16 random_hours = 8 }
-				}
-			}
-		}
-	}
-
-	focus = {
 		id = SOV_claims_on_poland
 		icon = GFX_goal_generic_occupy_states_ongoing_war
 		prerequisite = { focus = SOV_claims_in_baltic }
-		x = 1
+		x = 0
 		y = 1
 		relative_position_id = SOV_claims_in_baltic
 		cost = 5
@@ -8606,7 +8607,7 @@ focus_tree = {
 		id = SOV_preemptive_invasion_of_iran
 		icon = GFX_focus_generic_attack_iran
 		prerequisite = { focus = SOV_the_comintern }
-		x = 8
+		x = 6
 		y = 1
 		relative_position_id = SOV_the_comintern
 		cost = 5
@@ -8654,7 +8655,7 @@ focus_tree = {
 		id = SOV_the_threat_from_the_land_of_the_rising_sun
 		icon = GFX_focus_attack_japan
 		prerequisite = { focus = SOV_the_comintern }
-		x = 12
+		x = 9
 		y = 1
 		relative_position_id = SOV_the_comintern
 		cost = 5
