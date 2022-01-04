@@ -199,6 +199,11 @@ germany_enemy = {
 		id = "HUN"
 		value = 50
 	}
+	ai_strategy = {
+		type = antagonize
+		id = "FIN"
+		value = 25
+	}
 }
 
 spanish_civil_war_SOV = {
@@ -560,7 +565,7 @@ SOV_dont_send_volunteers_that_early_to_china = {
 
 	abort = {
 		CHI = {
-			surrender_progress > 0.8
+			surrender_progress > 0.95
 		}
 		OR = {
 			#Soviet focus plans are set so that they support a Chinese tag in 39-40
@@ -631,7 +636,7 @@ SOV_have_some_train_production = {
 	ai_strategy = {
 		type = equipment_production_min_factories
 		id = train
-		value = 3
+		value = 15
 	}
 }
 
@@ -1414,25 +1419,21 @@ SOV_unit_buffer_for_asian_threat = {
 		type = put_unit_buffers
 
 		# ratio of total armeis in country to be buffered
-		ratio = 0.1
+		ratio = 0.01
 
 		# you can specify an order id. ratio of same orders ids will be share same ratio
 		#order_id = 2
 
 		# states to put garrison orders (if no state is friendly, strat is invalid)
 		states = {
-			564
 			563
-			566
-			567
-			561
 			657
 			408
 			409
 		}
 
 		# ai areas that the orders will use these buffers in
-		area = asia
+		area = east_russia
 
 		# by default if you have orders in target areas, the buffer will request less units.
 		# you can override this to disable the feature
@@ -2047,7 +2048,7 @@ SOV_wants_civs = { #We want some civ construction first
 	ai_strategy = {
 		type = building_target
 		id = arms_factory
-		value = 300
+		value = 400
 	}
 	ai_strategy = {
 		type = building_target
@@ -2071,7 +2072,7 @@ SOV_wants_mil = { #Mils then
 	ai_strategy = {
 		type = building_target
 		id = arms_factory
-		value = 800
+		value = 900
 	}
 	ai_strategy = {
 		type = building_target
@@ -2147,7 +2148,7 @@ SOV_industry_we_are_the_baddies = {
 	}
 	ai_strategy = {
 		type = air_factory_balance
-		value = 30
+		value = 10
 	}
 }
 
@@ -2161,7 +2162,7 @@ SOV_industry_we_are_the_baddies_2 = {
 
 	ai_strategy = {
 		type = added_military_to_civilian_factory_ratio
-		value = 20
+		value = 10
 	}
 }
 
@@ -2651,19 +2652,19 @@ war_with_finland = {
 	ai_strategy = {
 		type = conquer
 		id = "FIN"			
-		value = 2000
+		value = 100
 	}
 	
 	ai_strategy = {
 		type = area_priority
 		id = scandinavia
-		value = 1000 #more focus here
+		value = 50 #more focus here
 	}
 	
 	ai_strategy = {
 		type = area_priority
 		id = north_russia
-		value = 1000 #more focus here
+		value = 100 #more focus here
 	}
 	
 	ai_strategy = {
@@ -2770,6 +2771,34 @@ claims_on_finland = {
 		type = antagonize
 		id = "FIN"			
 		value = 200
+	}	
+}
+
+garrison_finland_plz = {
+	allowed = { 
+		original_tag = SOV
+	}
+	enable = {
+		original_tag = SOV
+		has_completed_focus = SOV_claims_on_baltic
+		country_exists = FIN
+	}
+	abort = {
+		OR = {
+			NOT = {
+				country_exists = FIN
+			}
+			FIN = {
+				has_government = ROOT
+			}
+			owns_state = 722 #Karelija
+		}
+	}
+	
+	ai_strategy = {
+		type = antagonize
+		id = "FIN"			
+		value = 100
 	}	
 }
 
@@ -2964,6 +2993,6 @@ sov_dont_overcomit_east = {
 	ai_strategy = {
 		type = area_priority
 		id = east_russia
-		value = -999 #less focus here
+		value = -200 #less focus here
 	}
 }
