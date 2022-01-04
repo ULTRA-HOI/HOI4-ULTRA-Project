@@ -492,196 +492,11 @@ country_event = {
 	fire_only_once = yes
 
 	trigger = {
-		OR = {
-			tag = GER
-			AND = {
-				tag = LIT
-				is_ai = no
-				has_global_flag = LIT_occupies_POL
-			}
-		}
+		tag = GER
 		has_global_flag = sov_yes_pact
 		SOU = { exists = yes }
-		NOT =  { has_war_with = SOU }
-		OR = {
-			AND = {
-				OR = {
-					owns_state = 96
-					any_other_country = {
-						is_in_faction_with = GER
-						GER = {
-							is_faction_leader = yes
-						}
-						owns_state = 96
-					}
-				}
-				OR = {
-					owns_state = 95
-					any_other_country = {
-						is_in_faction_with = GER
-						GER = {
-							is_faction_leader = yes
-						}
-						owns_state = 95
-					}
-				}
-				OR = {
-					owns_state = 94
-					any_other_country = {
-						is_in_faction_with = GER
-						GER = {
-							is_faction_leader = yes
-						}
-						owns_state = 94
-					}
-				}
-				OR = {
-					owns_state = 93
-					any_other_country = {
-						is_in_faction_with = GER
-						GER = {
-							is_faction_leader = yes
-						}
-						owns_state = 93
-					}
-				}
-				OR = {
-					owns_state = 91
-					any_other_country = {
-						is_in_faction_with = GER
-						GER = {
-							is_faction_leader = yes
-						}
-						owns_state = 91
-					}
-				}
-				OR = {
-					owns_state = 97
-					any_other_country = {
-						is_in_faction_with = GER
-						GER = {
-							is_faction_leader = yes
-						}
-						owns_state = 97
-					}
-				}
-				OR = {
-					owns_state = 89
-					any_other_country = {
-						is_in_faction_with = GER
-						GER = {
-							is_faction_leader = yes
-						}
-						owns_state = 89
-					}
-				}
-				OR = {
-					owns_state = 1035
-					any_other_country = {
-						is_in_faction_with = GER
-						GER = {
-							is_faction_leader = yes
-						}
-						owns_state = 1035
-					}
-				}
-				OR = {
-					owns_state = 784
-					any_other_country = {
-						is_in_faction_with = GER
-						GER = {
-							is_faction_leader = yes
-						}
-						owns_state = 784
-					}
-				}
-			}
-			AND = {
-				POL = { has_capitulated = yes }
-				AND = {
-					OR = {
-						controls_state = 96
-						any_other_country = {
-							is_in_faction_with = GER
-							GER = {
-								is_faction_leader = yes
-							}
-							controls_state = 96
-						}
-					}
-					OR = {
-						controls_state = 95
-						any_other_country = {
-							is_in_faction_with = GER
-							GER = {
-								is_faction_leader = yes
-							}
-							controls_state = 95
-						}
-					}
-					OR = {
-						controls_state = 94
-						any_other_country = {
-							is_in_faction_with = GER
-							GER = {
-								is_faction_leader = yes
-							}
-							controls_state = 94
-						}
-					}
-					OR = {
-						controls_state = 93
-						any_other_country = {
-							is_in_faction_with = GER
-							GER = {
-								is_faction_leader = yes
-							}
-							controls_state = 93
-						}
-					}
-					OR = {
-						controls_state = 91
-						any_other_country = {
-							is_in_faction_with = GER
-							GER = {
-								is_faction_leader = yes
-							}
-							controls_state = 91
-						}
-					}
-					OR = {
-						controls_state = 97
-						any_other_country = {
-							is_in_faction_with = GER
-							GER = {
-								is_faction_leader = yes
-							}
-							controls_state = 97
-						}
-					}
-					OR = {
-						controls_state = 89
-						any_other_country = {
-							is_in_faction_with = GER
-							GER = {
-								is_faction_leader = yes
-							}
-							controls_state = 89
-						}
-					}
-					OR = {
-						controls_state = 784
-						any_other_country = {
-							is_in_faction_with = GER
-							GER = {
-								is_faction_leader = yes
-							}
-							controls_state = 784
-						}
-					}
-				}
-			}
-		}
+		POL = { has_capitulated = yes }
+		NOT =  { has_war_with = SOV }
 	}
 
 	mean_time_to_happen = {
@@ -690,70 +505,251 @@ country_event = {
 
 	option = {
 		ai_chance = {
-			base = 1
-			modifier = {
-				factor = 0
-				AND = {
-					POL = {
-						is_ai = no
-						has_civil_war = no
-					}
-					is_in_faction_with = POL
-				}
-			}
+			base = 10
 		}
 		name = germany.14.a
-		if = { #MR Pact if ally has taken some of Poland
+		if = {
 			limit = {
-				GER = { is_faction_leader = yes }
-				any_allied_country = {
-					NOT = { is_subject_of = GER }
-					NOT = { tag = SOU }
+				96 = {
 					OR = {
-						controls_state = 96
-						controls_state = 95
-						controls_state = 94
-						controls_state = 93
-						controls_state = 91
-						controls_state = 97
-						controls_state = 89
-						controls_state = 784
+						is_controlled_by = GER
+						is_controlled_by = SOU
+						any_other_country = {
+							controls_state = 96
+							is_in_faction_with = GER
+							GER = { is_faction_leader = yes }
+						}
 					}
 				}
 			}
-			random_country = {
+			SOU = { transfer_state = 96 }
+		}
+		if = {
+			limit = {
+				95 = {
+					OR = {
+						is_controlled_by = GER
+						is_controlled_by = SOU
+						any_other_country = {
+							controls_state = 95
+							is_in_faction_with = GER
+							GER = { is_faction_leader = yes }
+						}
+					}
+				}
+			}
+			SOU = { transfer_state = 95 }
+		}
+		if = {
+			limit = {
+				94 = {
+					OR = {
+						is_controlled_by = GER
+						is_controlled_by = SOU
+						any_other_country = {
+							controls_state = 94
+							is_in_faction_with = GER
+							GER = { is_faction_leader = yes }
+						}
+					}
+				}
+			}
+			SOU = { transfer_state = 94 }
+		}
+		if = {
+			limit = {
+				93 = {
+					OR = {
+						is_controlled_by = GER
+						is_controlled_by = SOU
+						any_other_country = {
+							controls_state = 93
+							is_in_faction_with = GER
+							GER = { is_faction_leader = yes }
+						}
+					}
+				}
+			}
+			SOU = { transfer_state = 93 }
+		}
+		if = {
+			limit = {
+				91 = {
+					OR = {
+						is_controlled_by = GER
+						is_controlled_by = SOU
+						any_other_country = {
+							controls_state = 91
+							is_in_faction_with = GER
+							GER = { is_faction_leader = yes }
+						}
+					}
+				}
+			}
+			SOU = { transfer_state = 91 }
+		}
+		if = {
+			limit = {
+				97 = {
+					OR = {
+						is_controlled_by = GER
+						is_controlled_by = SOU
+						any_other_country = {
+							controls_state = 97
+							is_in_faction_with = GER
+							GER = { is_faction_leader = yes }
+						}
+					}
+				}
+			}
+			SOU = { transfer_state = 97 }
+		}
+		if = {
+			limit = {
+				89 = {
+					OR = {
+						is_controlled_by = GER
+						is_controlled_by = SOU
+						any_other_country = {
+							controls_state = 89
+							is_in_faction_with = GER
+							GER = { is_faction_leader = yes }
+						}
+					}
+				}
+			}
+			SOU = { transfer_state = 89 }
+		}
+		if = {
+			limit = {
+				1035 = {
+					OR = {
+						is_controlled_by = GER
+						is_controlled_by = SOU
+						any_other_country = {
+							controls_state = 1035
+							is_in_faction_with = GER
+							GER = { is_faction_leader = yes }
+						}
+					}
+				}
+			}
+			GER = { set_state_controller = 1035 }
+		}
+		if = {
+			limit = {
+				92 = {
+					OR = {
+						is_controlled_by = GER
+						is_controlled_by = SOU
+						any_other_country = {
+							controls_state = 92
+							is_in_faction_with = GER
+							GER = { is_faction_leader = yes }
+						}
+					}
+				}
+			}
+			GER = { set_state_controller = 92 }
+		}
+		if = {
+			limit = {
+				88 = {
+					OR = {
+						is_controlled_by = GER
+						is_controlled_by = SOU
+						any_other_country = {
+							controls_state = 88
+							is_in_faction_with = GER
+							GER = { is_faction_leader = yes }
+						}
+					}
+				}
+			}
+			GER = { set_state_controller = 88 }
+		}
+		if = {
+			limit = {
+				90 = {
+					OR = {
+						is_controlled_by = GER
+						is_controlled_by = SOU
+						any_other_country = {
+							controls_state = 90
+							is_in_faction_with = GER
+							GER = { is_faction_leader = yes }
+						}
+					}
+				}
+			}
+			GER = { set_state_controller = 90 }
+		}
+		if = {
+			limit = {
+				10 = {
+					OR = {
+						is_controlled_by = GER
+						is_controlled_by = SOU
+						any_other_country = {
+							controls_state = 10
+							is_in_faction_with = GER
+							GER = { is_faction_leader = yes }
+						}
+					}
+				}
+			}
+			GER = { set_state_controller = 10 }
+		}
+		if = {
+			limit = {
+				98 = {
+					OR = {
+						is_controlled_by = GER
+						is_controlled_by = SOU
+						any_other_country = {
+							controls_state = 98
+							is_in_faction_with = GER
+							GER = { is_faction_leader = yes }
+						}
+					}
+				}
+			}
+			GER = { set_state_controller = 98 }
+		}
+		if = {
+			limit = {
+				784 = {
+					OR = {
+						is_controlled_by = GER
+						is_controlled_by = SOU
+						any_other_country = {
+							controls_state = 784
+							is_in_faction_with = GER
+							GER = { is_faction_leader = yes }
+						}
+					}
+				}
+			}
+			if = {
 				limit = {
-					is_in_faction_with = ROOT
-					NOT = { is_subject_of = GER }
-					NOT = { tag = SOU }
-					OR = {
-						controls_state = 96
-						controls_state = 95
-						controls_state = 94
-						controls_state = 93
-						controls_state = 91
-						controls_state = 97
-						controls_state = 89
-						controls_state = 784
-					}
+					LIT = { exists = yes }
 				}
-				if = {
-					limit = {
-						is_subject = yes
-					}
-					OVERLORD = { country_event = germany.1002 }
-				}
-				else = {
-					country_event = { id = germany.1002 hours = 3 }
-				}
+				LIT = { transfer_state = 784 }
+			else = {
+				SOU = { transfer_state = 784 }
+			}
 			}
 		}
-		else = { #MR Pact as normal
-			MR_pact_transfer_state_effect = yes
-			SOU = { country_event = { id = germany.15 hours = 3 } }
+		every_state = {
+			limit = {
+				is_core_of = POL
+				is_controlled_by = SOU
+			}
+			GER = { set_state_controller = ROOT }
 		}
-		if = { 
-			limit = { SOU = { has_war_with = POL } }
+		SOU = { remove_state_claim = 784 }
+		SOU = { country_event = germany.15 }
+		if = { limit = { SOU = { has_war_with = POL } }
 			SOU = { white_peace = POL }
 		}
 	}
