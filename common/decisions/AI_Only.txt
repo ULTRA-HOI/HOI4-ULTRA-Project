@@ -118,28 +118,28 @@ political_actions = {
 		
 		available = {
 			has_idea = partial_economic_mobilisation
-		        is_ai = yes
+		    is_ai = yes
 			has_war_support > 0.5
-				OR = {
-					AND = {
-						has_government = fascism
-						threat > 0.50
-					}
-					AND = {
-						has_government = communism
-						threat > 0.50
-					}
-					AND = {
-						has_war = yes
-						any_enemy_country = {
-							ic_ratio = { 
-								tag = ROOT 
-								ratio > 0.05
-							}
+			OR = {
+				AND = {
+					has_government = fascism
+					threat > 0.50
+				}
+				AND = {
+					has_government = communism
+					threat > 0.50
+				}
+				AND = {
+					has_war = yes
+					any_enemy_country = {
+						ic_ratio = { 
+							tag = ROOT 
+							ratio > 0.05
 						}
 					}
+				}
+			}
 		}
-}
 		
 		ai_will_do = {
 			base = 100
@@ -161,21 +161,21 @@ political_actions = {
 
 	tot_economic_mobilisation_ai = {
 		icon = generic_industry
-	
 		
-	        fire_only_once = yes
+	    fire_only_once = yes
 		visible = {
 			has_idea = war_economy
-			has_war = no
-		        is_ai = yes
+		    is_ai = yes
 		}
 		
 		available = {
 			has_idea = war_economy
 			has_war = yes
-		        is_ai = yes
+		    is_ai = yes
 			has_war_support > 0.8
-
+			NOT = {
+				original_tag = GER
+			}
 		}
 		
 		ai_will_do = {
@@ -192,7 +192,6 @@ political_actions = {
 				}
 				add_ideas = tot_economic_mobilisation
 			}
-			
 		}
 	}
 	limited_conscription_ai = {
@@ -207,17 +206,15 @@ political_actions = {
 		
 		available = {
 			has_idea = volunteer_only
-		        is_ai = yes
-				has_war_support > 0.1
-				IF = {
-					limit = {
-						original_tag = USA
-						has_defensive_war = no
-					}
-					congress_high_support_trigger = yes 
+		    is_ai = yes
+			has_war_support > 0.1
+			IF = {
+				limit = {
+					original_tag = USA
+					has_defensive_war = no
 				}
-
-
+				congress_high_support_trigger = yes 
+			}
 		}
 		
 		ai_will_do = {
@@ -238,7 +235,6 @@ political_actions = {
 				}
 				add_ideas = limited_conscription
 			}
-			
 		}
 	}
 	extensive_conscription_ai = {
