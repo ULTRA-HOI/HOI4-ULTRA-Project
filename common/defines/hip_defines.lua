@@ -648,7 +648,6 @@ NDefines.NAI.DEFAULT_LEGACY_VARIANT_CREATION_XP_CUTOFF_LAND = 1000	-- blocked by
 NDefines.NAI.DIVISION_UPGRADE_MIN_XP = 9999 -- Minimum XP before attempting to upgrade a division template.
 NDefines.NAI.DIVISION_CREATE_MIN_XP = 9999 -- Minimum XP before attempting to create a fresh new division template.
 NDefines.NAI.VARIANT_UPGRADE_MIN_XP = 9999 -- Minimum XP before attempting to create a new variant.
-NDefines.NAI.UPGRADE_XP_RUSH_UPDATE = 300 -- If XP is above this on the daily tick the AI will attempt to spend it
 
 -- AI constructions
 
