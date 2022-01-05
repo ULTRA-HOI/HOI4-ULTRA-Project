@@ -645,6 +645,10 @@ NDefines.NAI.UPGRADE_DIVISION_RELUCTANCE = 7 --7
 --NDefines.NAI.UPGRADE_PERCENTAGE_OF_FORCES = 0.25 --0.1
 NDefines.NAI.UPGRADES_DEFICIT_LIMIT_DAYS = 180 --180 --50                           -- Ai will avoid upgrading units in the field to new templates if it takes longer than this to fullfill their equipment need
 NDefines.NAI.DEFAULT_LEGACY_VARIANT_CREATION_XP_CUTOFF_LAND = 1000	-- blocked by default -- Army XP needed before attempting to create a variant of a type that uses the legacy upgrades system. ai_strategy supports land_xp_spend_priority upgrade_xp_cutoff. If none is set, this define is used instead.
+NDefines.NAI.DIVISION_UPGRADE_MIN_XP = 9999 -- Minimum XP before attempting to upgrade a division template.
+NDefines.NAI.DIVISION_CREATE_MIN_XP = 9999 -- Minimum XP before attempting to create a fresh new division template.
+NDefines.NAI.VARIANT_UPGRADE_MIN_XP = 9999 -- Minimum XP before attempting to create a new variant.
+NDefines.NAI.UPGRADE_XP_RUSH_UPDATE = 300 -- If XP is above this on the daily tick the AI will attempt to spend it
 
 -- AI constructions
 
