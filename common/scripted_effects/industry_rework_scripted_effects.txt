@@ -84,8 +84,8 @@ on_daily_labour_calculations = {
 	}
 	
 	#Calculate number of labour needed for resources
-	
-	#Sets variable equal to number of resources --to check if variable names correct
+
+	#Sets variable equal to number of resources 
 	set_variable = { labour_oil = resource_produced@oil }
 	set_variable = { labour_aluminium = resource_produced@aluminium }
 	set_variable = { labour_tungsten = resource_produced@tungsten }
@@ -94,6 +94,24 @@ on_daily_labour_calculations = {
 	set_variable = { labour_coal = resource_produced@coal }
 	set_variable = { labour_bauxite = resource_produced@bauxite }
 	set_variable = { labour_iron = resource_produced@iron }
+	
+	set_variable = { consumed_oil = modifier@country_resource_cost_oil }
+	set_variable = { consumed_aluminium = modifier@country_resource_cost_aluminium }
+	set_variable = { consumed_tungsten = modifier@country_resource_cost_tungsten }
+	set_variable = { consumed_steel = modifier@country_resource_cost_steel }
+	set_variable = { consumed_chromium = modifier@country_resource_cost_chromium }
+	set_variable = { consumed_coal = modifier@country_resource_cost_coal }
+	set_variable = { consumed_bauxite = modifier@country_resource_cost_bauxite }
+	set_variable = { consumed_iron = modifier@country_resource_cost_iron }
+	
+	add_to_variable = { labour_oil = consumed_oil }
+	add_to_variable = { labour_aluminium = consumed_aluminium }
+	add_to_variable = { labour_tungsten = consumed_tungsten }
+	add_to_variable = { labour_steel = consumed_steel }
+	add_to_variable = { labour_chromium = consumed_chromium }
+	add_to_variable = { labour_coal = consumed_coal }
+	add_to_variable = { labour_bauxite = consumed_bauxite }
+	add_to_variable = { labour_iron = consumed_iron }
 
 	
 	#Multiplies number of resource by labour requirements per resource (divided by 1000 to stop overflows)
@@ -103,7 +121,7 @@ on_daily_labour_calculations = {
 	multiply_variable = { labour_steel = 0.075 }
 	multiply_variable = { labour_chromium = 0.075 }
 	multiply_variable = { labour_coal = 0.075 }
-	multiply_variable = { labour_bauxite = 0.025 }
+	multiply_variable = { labour_bauxite = 0.015 }
 	multiply_variable = { labour_iron = 0.075 }
 	
 	#Adds up total labour needed for resources
@@ -120,7 +138,7 @@ on_daily_labour_calculations = {
 	
 	#Sets variable equal to number of factories
 	set_variable = { labour_total_factories = num_of_factories }
-	multiply_variable = { labour_total_factories = 2.0 }
+	multiply_variable = { labour_total_factories = 2.0 } #2000 MP per factory
 	
 	
 	set_variable = { total_labour_needs = labour_total_factories }
