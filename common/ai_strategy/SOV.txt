@@ -3530,3 +3530,119 @@ SOV_stockpile_for_barb = {
 		value = 25
 	}
 }
+
+SOV_defense_in_depth_1 = { #try to defend behind rivers
+	allowed = { 
+		original_tag = SOV
+	}
+	enable = {
+		original_tag = SOV
+		date > 1940.6.1
+	}
+	
+	abort = {
+		OR = {
+			NOT = { has_full_control_of_state = 1037 }
+			NOT = { has_full_control_of_state = 96 }
+			NOT = { has_full_control_of_state = 207 }
+			NOT = { has_full_control_of_state = 206 }
+			NOT = { has_full_control_of_state = 204 }
+			NOT = { has_full_control_of_state = 194 }
+			NOT = { has_full_control_of_state = 202 }
+			NOT = { has_full_control_of_state = 203 }
+			NOT = { has_full_control_of_state = 226 }
+			NOT = { has_full_control_of_state = 197 }
+		}
+	}
+
+	ai_strategy = {
+		type = put_unit_buffers
+		
+		#order_id = 2
+		
+		# riverline
+		states = { 
+			1036
+			1038
+			207
+			241
+			193
+			259
+			200
+		}
+		
+		ratio = 0.35
+		
+		area = north_russia
+		area = west_russia
+		area = south_russia
+		
+		subtract_invasions_from_need = no
+		subtract_fronts_from_need = yes
+	}
+}
+
+SOV_defense_in_depth_2 = { #defend the core
+	allowed = { 
+		original_tag = SOV
+	}
+	enable = {
+		original_tag = SOV
+		OR = {
+			NOT = { has_full_control_of_state = 1036 }
+			NOT = { has_full_control_of_state = 1038 }
+			NOT = { has_full_control_of_state = 207 }
+			NOT = { has_full_control_of_state = 241 }
+			NOT = { has_full_control_of_state = 193 }
+			NOT = { has_full_control_of_state = 259 }
+			NOT = { has_full_control_of_state = 200 }
+		}
+	}
+	
+	abort = {
+		OR = {
+			NOT = { has_full_control_of_state = 245 }
+			NOT = { has_full_control_of_state = 260 }
+			NOT = { has_full_control_of_state = 258 }
+			NOT = { has_full_control_of_state = 223 }
+			NOT = { has_full_control_of_state = 205 }
+			NOT = { has_full_control_of_state = 242 }
+			NOT = { has_full_control_of_state = 246 }
+			NOT = { has_full_control_of_state = 263 }
+			NOT = { has_full_control_of_state = 208 }
+		}
+	}
+
+	ai_strategy = {
+		type = put_unit_buffers
+		
+		#order_id = 2
+		
+		#Protect main cities
+		states = { 
+			195
+			244
+			264
+			260
+			247
+			219
+			885
+			883
+			254
+			257
+			265
+			217
+			237
+			236
+		}
+		
+		ratio = 0.35
+		
+		area = north_russia
+		area = west_russia
+		area = south_russia
+		
+		subtract_invasions_from_need = no
+		subtract_fronts_from_need = yes
+	}
+}
