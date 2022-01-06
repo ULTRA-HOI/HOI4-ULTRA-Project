@@ -1564,6 +1564,12 @@ JAP_vs_CHI_2 = {
 		execute_order = yes
 		manual_attack = yes
 	}
+	
+	ai_strategy = {
+		type = invade
+		id = "CHI"			
+		value = 150
+	}
 }
 
 stalemate = {
@@ -1638,10 +1644,9 @@ stalemate = {
 		}
 	}
 	abort = { 
-                has_completed_focus = JAP_secure_china
+        has_completed_focus = JAP_secure_china
 	}
 
-		
 	ai_strategy = {
 		type = front_control
 		country_trigger = {
@@ -1652,14 +1657,9 @@ stalemate = {
 		}
 		
 		ordertype = front
-		execution_type = rush
+		execution_type = careful
 		execute_order = no
-		manual_attack = yes
-	}
-	ai_strategy = {
-		type = invade
-		id = "CHI"			
-		value = 500
+		manual_attack = no
 	}
 	
 }
@@ -1771,7 +1771,7 @@ jap_ai_take_all_ports = {
 	enable = {
 		tag = JAP
 		has_war_with = CHI
-                date > 1938.7.1
+        date > 1939.1.1
 	}
 	
 	abort = {
@@ -1781,7 +1781,7 @@ jap_ai_take_all_ports = {
 	ai_strategy = {
 		type = invade
 		id = "CHI"			
-		value = 400
+		value = 150
 	}
 
 }
@@ -1793,8 +1793,8 @@ jap_early_invasions_are_risky = {
 	enable = {
 		tag = JAP
 	}
-abort = {
-date > 1938.7.1
+	abort = {
+		date > 1938.7.1
 	}
 	ai_strategy = {
 		type = invade
@@ -1810,17 +1810,17 @@ jap_late_invasions_are_risky = {
 	enable = {
 		tag = JAP
 		CHI = { is_ai = yes }
-                date > 1941.12.1
+        date > 1941.12.1
 	}
-abort = {
-           date > 1945.12.1
+	abort = {
+        date > 1945.12.1
 	}
 
 
 	ai_strategy = {
 		type = invade
 		id = "CHI"			
-		value = -9999
+		value = -500
 	}
 
 }
@@ -1835,14 +1835,14 @@ jap_ai_take_nanking = {
 	}
 	
 	abort = {
-				613 = {
+		613 = {
 			or = {
 				is_fully_controlled_by = JAP
 				is_fully_controlled_by = MAN
 				is_fully_controlled_by = MEN
 			}
+		}
 	}
-}
 
 
 	ai_strategy = {
@@ -1946,27 +1946,27 @@ prepare_for_war = {
 	ai_strategy = {
 		type = prepare_for_war
 		id = "CHI"
-		value = 500
+		value = 250
 	}
 	ai_strategy = {
 		type = prepare_for_war
 		id = "PRC"
-		value = 200
+		value = 50
 	}
 	ai_strategy = {
 		type = prepare_for_war
 		id = "SHX"
-		value = 200
+		value = 50
 	}	
 }
 
 JAP_china_wont_naval_invade = {
 	allowed = { original_tag = JAP }
-	enable = { 				date > 1936.1.1
-
+	enable = { 
+		date > 1936.1.1
 	}
 	abort = {
-				date > 1940.1.1
+		date > 1940.1.1
 	}
 	
 	
@@ -2008,18 +2008,18 @@ seize_coast = {
 	ai_strategy = { 
 		type = area_priority        
 		id = north_china			      
-		value = 1000
+		value = 100
 	}
 	
 	ai_strategy = { 
 		type = area_priority        
 		id = china_coast			      
-		value = 25
+		value = 50
 	}
 	ai_strategy = { 
 		type = area_priority        
 		id = west_china			      
-		value = -400
+		value = -9999
 	}
 	
 	ai_strategy = { 
@@ -2045,8 +2045,6 @@ mountains_are_death_trap = {
 		country_exists = PRC
 		has_completed_focus = JAP_secure_china
 	}
-
-		
 
 	ai_strategy = {
 		type = front_control
@@ -2074,34 +2072,32 @@ if_stuck_invade = {
 	}
 	enable = {
 		tag = JAP
-		date > 1938.6.1
-				608 = {
+		date > 1939.1.1
+		608 = {
 			or = {
 				is_fully_controlled_by = JAP
 				is_fully_controlled_by = MAN
 				is_fully_controlled_by = MEN
 			}
-	}
+		}
 	}
 
 	abort = {
 		country_exists = CHI
-				614 = {
+		614 = {
 			or = {
 				is_fully_controlled_by = JAP
 				is_fully_controlled_by = MAN
 				is_fully_controlled_by = MEN
 			}
-	}
+		}
 	}
 
-			ai_strategy = {
+	ai_strategy = {
 		type = invade
 		id = "CHI"			
-		value = 200
+		value = 100
 	}
-
-
 }
 
 jap_dont_train_1 = {
