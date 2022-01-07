@@ -216,8 +216,8 @@ NDefines.NBuildings.RADAR_RANGE_BASE = 15				-- Radar range base, first level ra
 NDefines.NBuildings.RADAR_RANGE_MIN = 15				-- Radar range (from state center to province center) in measure of map pixels. Exluding techs.
 NDefines.NBuildings.RADAR_RANGE_MAX = 120				-- Range is interpolated between building levels 1-15.
 NDefines.NBuildings.RADAR_INTEL_EFFECT = 30			-- Province covered by radar increases intel by 10 (where 255 is max). Province may be covered by multiple radars, then the value sums up.
-NDefines.SABOTAGE_FACTORY_DAMAGE = 75.0		-- How much damage takes a factory building in sabotage when state is occupied. Damage is mult by (1 + resistance strength), i.e. up to 2 x base value.	
-NDefines.INFRASTRUCTURE_RESOURCE_BONUS = 0.1 --0.2-- multiplicative resource bonus for each level of (non damaged) infrastructure
+NDefines.NBuildings.SABOTAGE_FACTORY_DAMAGE = 75.0		-- How much damage takes a factory building in sabotage when state is occupied. Damage is mult by (1 + resistance strength), i.e. up to 2 x base value.	
+NDefines.NBuildings.INFRASTRUCTURE_RESOURCE_BONUS = 0.1 --0.2-- multiplicative resource bonus for each level of (non damaged) infrastructure
 
 
 
