@@ -1438,12 +1438,36 @@ GER_enable_invasion_of_NOR = {
 			FRA = { has_capitulated = yes } # uh oh, maybe we need more units against FRA
 		}
 	}
-	abort_when_not_enabled = yes
+	
+	abort = {
+		OR = {
+			NOR = {has_capitulated = yes}
+			NOR = {exists = no}
+			NOR = { is_subject_of = GER}
+		}
+	}
 
 	ai_strategy = {
 		type = invade
 		id = "NOR"
 		value = 500
+	}
+	
+	ai_strategy = {
+		type = invasion_unit_request
+		country_trigger = { always = yes }
+		value = 100
+	}
+
+	ai_strategy = {
+		type = front_unit_request
+		# norway
+		state = 110
+		state = 142
+		state = 143
+		state = 144
+
+		value = 100
 	}
 }
 
