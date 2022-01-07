@@ -417,7 +417,6 @@ NDefines.NMilitary.OUT_OF_SUPPLY_SPEED = -0.5                    -- max speed re
 NDefines.NMilitary.NON_CORE_SUPPLY_SPEED = -0.7				   -- we are not running on our own VP supply so need to steal stuff along the way
 NDefines.NMilitary.OUT_OF_SUPPLY_MORALE = -0.25                   -- max org regain reduction from supply
 NDefines.NSupply.SUPPLY_HUB_FULL_MOTORIZATION_TRUCK_COST = 800 --80.0 -- How many trucks does it cost to fully motorize a hub
-NDefines.NSupply.SUPPLY_HUB_FULL_MOTORIZATION_BONUS = 2.0 --2.2 ---- The range bonus added to a fully motorized hub. This supply is added on top of the XXX_INITIAL_SUPPLY_FLOW defined above.
 NDefines.NSupply.RAILWAY_BASE_FLOW = 5.0 --10.0 		-- how much base flow railway gives when a node connected to its capital/a naval node by a railway
 NDefines.NSupply.RAILWAY_FLOW_PER_LEVEL = 10.0 --5.0 	-- how much additional flow a railway level gives
 NDefines.NSupply.RAILWAY_FLOW_PENALTY_PER_DAMAGED = 10.0 --5.0 -- penalty to flow per damaged railway
