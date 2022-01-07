@@ -2705,19 +2705,19 @@ prepare_for_war_with_germany = {
 	ai_strategy = {
 		type = conquer
 		id = "GER"			
-		value = 2000
+		value = 1000
 	}
 
 	ai_strategy = {
 		type = conquer
 		id = "HUN"			
-		value = 2000
+		value = 500
 	}
 
 	ai_strategy = {
 		type = conquer
 		id = "ROM"			
-		value = 1000
+		value = 500
 	}
 
 	ai_strategy = {
@@ -2741,43 +2741,43 @@ prepare_for_war_with_germany = {
 	ai_strategy = {
 		type = area_priority
 		id = west_russia
-		value = 1000 #more focus here
+		value = 500 #more focus here
 	}
 
 	ai_strategy = {
 		type = area_priority
 		id = south_russia
-		value = 1000 #more focus here
+		value = 500 #more focus here
 	}
 
 	ai_strategy = {
 		type = area_priority
 		id = germany
-		value = 2000 #more focus here
+		value = 500 #more focus here
 	}
 
 	ai_strategy = {
 		type = area_priority
 		id = east_europe
-		value = 2000 #more focus here
+		value = 500 #more focus here
 	}
 
 	ai_strategy = {
 		type = area_priority
 		id = balkans
-		value = 1000 #more focus here
+		value = 200 #more focus here
 	}
 
 	ai_strategy = {
 		type = area_priority
 		id = east_russia
-		value = -500 #less focus here
+		value = -100 #less focus here
 	}
 
 	ai_strategy = {
 		type = area_priority
 		id = asia
-		value = -500 #less focus here
+		value = -100 #less focus here
 	}
 
 	ai_strategy = {
@@ -3644,4 +3644,86 @@ SOV_defense_in_depth_2 = { #defend the core
 		subtract_invasions_from_need = no
 		subtract_fronts_from_need = yes
 	}
+}
+
+sov_prepare_countenance = {
+	
+	allowed = { 
+		original_tag = SOV
+	}
+	enable = {
+		original_tag = SOV
+		has_completed_focus = SOV_preemptive_invasion_of_iran
+	}
+	
+	abort = {
+		OR = {
+			PER = {
+				has_capitulated = yes
+			}
+			PER = {
+				exists = no
+			}
+			PER = {
+				is_subject = yes
+			}
+		}
+	}
+	
+	ai_strategy = {
+		type = conquer
+		id = "PER"			
+		value = 250
+	}
+	
+	ai_strategy = {
+		type = area_priority
+		id = asia
+		value = 250 #more focus here
+	}
+}
+
+eng_prepare_countenance = {
+	
+	allowed = {
+		original_tag = ENG
+	}
+	enable = {
+		original_tag = ENG
+		SOV = {has_completed_focus = SOV_preemptive_invasion_of_iran}
+		has_global_flag = SOV_agreed_anglo_soviet_invasion_of_iran_flag
+	}
+	
+	abort = {
+		OR = {
+			PER = {
+				has_capitulated = yes
+			}
+			PER = {
+				exists = no
+			}
+			PER = {
+				is_subject = yes
+			}
+		}
+	}
+	
+	ai_strategy = {
+		type = conquer
+		id = "PER"			
+		value = 250
+	}
+	
+	ai_strategy = {
+		type = area_priority
+		id = asia
+		value = 250 #more focus here
+	}
+	
+	ai_strategy = {
+		type = area_priority
+		id = middle_east
+		value = 250 #more focus here
+	}
+	
 }
