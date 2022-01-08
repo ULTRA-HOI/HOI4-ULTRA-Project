@@ -1696,3 +1696,63 @@ ITA_plz_defend_against_FRA = {
 		value = 25
 	}
 }
+
+Axis_abandon_iraq = {
+	
+	enable = {
+		OR = {
+			tag = GER
+			tag = HUN
+			tag = ROM
+			tag = HUN
+		}
+		is_in_faction_with = IRQ
+	}
+	abort = {
+		OR = {
+			ITA = { controls_state = 454 }
+			GER = { controls_state = 454 }
+			date > 1946.1.1
+		}
+	}
+
+	ai_strategy = {
+		type = dont_defend_ally_borders
+		id = "IRQ"
+		value = 500
+	}
+	
+	ai_strategy = { 
+		type = area_priority        
+		id = asia		      
+		value = -500
+	}
+}
+
+ITA_abandon_iraq = {
+	allowed = { 
+		original_tag = ITA
+	}
+	enable = {
+		is_in_faction_with = IRQ
+	}
+	abort = {
+		OR = {
+			ITA = { controls_state = 454 }
+			GER = { controls_state = 454 }
+			date > 1946.1.1
+		}
+	}
+
+	ai_strategy = {
+		type = dont_defend_ally_borders
+		id = "IRQ"
+		value = 500
+	}
+	
+	ai_strategy = { 
+		type = area_priority        
+		id = asia	      
+		value = -500 
+	}
+}
