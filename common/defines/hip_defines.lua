@@ -420,8 +420,8 @@ NDefines.NSupply.SUPPLY_HUB_FULL_MOTORIZATION_TRUCK_COST = 800 --80.0 -- How man
 NDefines.NSupply.RAILWAY_BASE_FLOW = 5.0 --10.0 		-- how much base flow railway gives when a node connected to its capital/a naval node by a railway
 NDefines.NSupply.RAILWAY_FLOW_PER_LEVEL = 10.0 --5.0 	-- how much additional flow a railway level gives
 NDefines.NSupply.RAILWAY_FLOW_PENALTY_PER_DAMAGED = 10.0 --5.0 -- penalty to flow per damaged railway
-NDefines.NSupply.RAILWAY_CONVERSION_COOLDOWN = 15 --10 -- railways will be put on cooldown when they are captured by enemy and will not be usable during the cooldown
-NDefines.NSupply.RAILWAY_CONVERSION_COOLDOWN_CORE = 15 --5 -- Recapturing railways that have been "converted" by the ennemy does not change if core or not....
+NDefines.NSupply.RAILWAY_CONVERSION_COOLDOWN = 12 --10 -- railways will be put on cooldown when they are captured by enemy and will not be usable during the cooldown
+NDefines.NSupply.RAILWAY_CONVERSION_COOLDOWN_CORE = 12 --5 -- Recapturing railways that have been "converted" by the ennemy does not change if core or not....
 NDefines.NSupply.RAILWAY_CONVERSION_COOLDOWN_CIVILWAR = 0
 
 -- Battleplan Execution Adjustments
