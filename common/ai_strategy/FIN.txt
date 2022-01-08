@@ -212,13 +212,13 @@ Finland_Please_Defend = {
 	ai_strategy = {
 		type = ignore
 		id = "SWE"
-		value = 9999
+		value = 999
 	}
 	
 	ai_strategy = {
 		type = ignore
 		id = "NOR"
-		value = 9999
+		value = 999
 	}
 
 }
@@ -235,7 +235,116 @@ FIN_build_mils = {
 	ai_strategy = {
 		type = building_target
 		id = arms_factory
-		value = 3
+		value = 10
+	}
+}
+
+FIN_defend_karelia = {
+	allowed = { 
+		original_tag = FIN
+	}
+	enable = {
+		controls_state = 146
+	}
+	
+	abort_when_not_enabled = yes
+	
+	ai_strategy = {
+		type = put_unit_buffers
+		
+		#order_id = 2
+		
+		# Mannerheim Line
+		states = { 
+			146
+		}
+		
+		ratio = 0.8
+		
+		area = north_russia
+		
+		subtract_invasions_from_need = no
+		subtract_fronts_from_need = yes
+	}
+	
+	ai_strategy = {
+		type = invade
+		id = "SOV"			
+		value = -2000 # that low means not going for islands either
+	}
+}
+
+FIN_retake_karelia = {
+	allowed = { 
+		original_tag = FIN
+	}
+	enable = {
+		SOV = {
+			any_owned_state = { is_core_of = FIN }
+			controls_state = 146
+		}
+		NOT = {controls_state = 146}
+	}
+	
+	abort_when_not_enabled = yes
+	
+	ai_strategy = {
+		type = front_control
+		state_trigger = {
+			state = 146
+		}
+		ordertype = front
+		execution_type = rush_weak
+		execute_order = yes
+		manual_attack = yes
+	}
+	
+	ai_strategy = {
+		type = area_priority
+		id = north_russia
+		value = 500
+	}
+	
+	ai_strategy = {
+		type = invade
+		id = "SOV"			
+		value = -2000 # that low means not going for islands either
+	}
+}
+
+FIN_chill_Karelia_back = {
+	allowed = { 
+		original_tag = FIN
+	}
+	enable = {
+		SOV = {
+			has_war_with = GER
+		}
+		FIN = {
+			controls_state = 146
+		}
+	}
+	abort = {
+       NOT = {
+			controls_state = 146
+	   }
+
+	}
+	ai_strategy = {
+		type = front_control
+		country_trigger = {
+			original_tag = SOV
+		}
+		ordertype = front
+		execution_type = careful
+		execute_order = no
+		manual_attack = no
+	}
+	
+	ai_strategy = {
+		type = invade
+		id = "SOV"			
+		value = -2000 # that low means not going for islands either
 	}
 }
 
