@@ -3836,58 +3836,6 @@ war_measures = {
 		}
 		
 	}
-	
-	use_archaic_equipment = {
-		
-		icon = generic_industry
-
-    	allowed = {
-            always = yes
-        }
-		
-		visible = {
-			OR = {
-				has_idea = agrarian_economy
-				has_idea = scraping_the_barrel
-				original_tag = MAN
-				num_of_military_factories < 5
-			}
-			NOT = {
-				has_idea = irrelevant_nation
-			}
-		}
-		
-		available = {
-			OR = {
-				has_war = yes
-				num_of_military_factories < 5
-			}
-			has_equipment = {
-				infantry_equipment < 0
-			}
-		}
-		
-		ai_will_do = {
-			factor = 1000
-		}
-		
-		complete_effect = {
-			IF = {
-				limit = {
-					NOT = {
-						has_tech = archaic_infantry
-					}
-				}
-				set_technology = archaic_infantry
-			}
-			
-			add_equipment_to_stockpile = {
-				type = archaic_infantry_equipment_0
-				amount = 50000
-				producer = ROOT
-			}
-		}	
-	}
 }
 
 foreign_politics = {
@@ -4253,6 +4201,60 @@ economy_decisions = {
 				tag = SOV 
 			}
 		}
+	}
+	
+	use_archaic_equipment = {
+		
+		icon = generic_industry
+
+    	allowed = {
+            always = yes
+        }
+		
+		visible = {
+			OR = {
+				has_idea = agrarian_economy
+				has_idea = scraping_the_barrel
+				original_tag = MAN
+				num_of_military_factories < 5
+			}
+			NOT = {
+				has_idea = irrelevant_nation
+			}
+		}
+		
+		available = {
+			OR = {
+				has_war = yes
+				num_of_military_factories < 5
+			}
+			has_equipment = {
+				infantry_equipment < 1
+			}
+		}
+		
+		ai_will_do = {
+			factor = 1000
+		}
+		
+		days_re_enable = 30
+		
+		complete_effect = {
+			IF = {
+				limit = {
+					NOT = {
+						has_tech = archaic_infantry
+					}
+				}
+				set_technology = archaic_infantry
+			}
+			
+			add_equipment_to_stockpile = {
+				type = archaic_infantry_equipment_0
+				amount = 50000 #to be made depend of pop number
+				producer = ROOT
+			}
+		}	
 	}
 }
 
