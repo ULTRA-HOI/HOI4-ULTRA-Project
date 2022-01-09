@@ -3277,8 +3277,8 @@ focus_tree = {
 
 	focus = {
 		id = SOV_superior_war_machines
-
-		icon = GFX_focus_generic_tank_production
+		icon = GFX_goal_generic_army_tanks
+		
 		prerequisite = { focus = SOV_pc_of_mechanical_engineering }
 		x = -1
 		y = 1
@@ -3437,14 +3437,14 @@ focus_tree = {
 
 	focus = {
 		id = SOV_development_of_tankograd
-
-		icon = GFX_goal_generic_army_tanks
+		icon = GFX_focus_generic_tank_production
+		
 		prerequisite = { focus = SOV_the_means_to_wage_war }
 		prerequisite = { focus = SOV_move_industry_to_the_urals }
 		x = 1
 		y = 1
 		relative_position_id = SOV_the_means_to_wage_war
-		cost = 10
+		cost = 5
 		
 		ai_will_do = {
 			factor = 1
@@ -3461,7 +3461,14 @@ focus_tree = {
 				is_major = yes
 			}
 			572 = {
-				arms_factory > 29
+				OR = {
+					arms_factory > 29
+					industrial_complex > 29
+					AND = {
+						arms_factory > 14
+						industrial_complex > 14
+					}
+				}
 			}
 		}
 		
@@ -3470,59 +3477,9 @@ focus_tree = {
 		completion_reward = {
 			add_to_variable = { SOV_defense_industry_land_equipment_upgrade_xp_cost = -0.1 }
 			custom_effect_tooltip = SOV_development_of_tankograd_ns_tt
-
-			custom_effect_tooltip = SOV_development_of_tankograd_factories_tt
-			#This is just for tooltip purposes
-			effect_tooltip = {
-				every_owned_state = {
-					limit = {
-						is_on_continent = asia
-						arms_factory > 29
-						free_building_slots = {
-							building = arms_factory
-							size > 9
-							include_locked = yes
-						}
-					}
-					add_extra_state_shared_building_slots = 10
-					add_building_construction = {
-						type = arms_factory
-						level = 10
-						instant_build = yes
-					}
-				}
-			}
-
-			#Actual effects
-			set_temp_variable = { temp_targets_index = 0 }
-			while_loop_effect = {
-				limit = {
-					check_variable = { temp_targets_index = 100 compare = less_than }
-				}
-				hidden_effect = {
-					random_owned_state = {
-						limit = {
-							is_on_continent = asia
-							arms_factory > 29
-							free_building_slots = {
-								building = arms_factory
-								size > 9
-								include_locked = yes
-							}
-							NOT = { has_state_flag = SOV_development_of_tankograd_flag }
-						}
-						add_extra_state_shared_building_slots = 10
-						add_building_construction = {
-							type = arms_factory
-							level = 10
-							instant_build = yes
-						}
-						set_state_flag = SOV_development_of_tankograd_flag
-						add_to_temp_variable = { SOV.temp_targets_index = 10 }
-						log = "Round [?SOV.temp_targets_index]"
-					}
-				}
-			}
+			set_country_flag = tankograd
+			custom_effect_tooltip = Construction_Focus_tt
+			unlock_decision_tooltip = { decision = SOV_development_of_tankograd_decision show_effect_tooltip = yes }
 		}
 	}
 
