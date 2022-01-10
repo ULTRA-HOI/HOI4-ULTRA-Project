@@ -59,7 +59,17 @@ equipment_buyer = {
 purchase_visible = {
 	has_country_flag = purchases_show
 	country_exists = FROM
-	has_war = no
+	OR = {
+		has_war = no
+		AND = {
+			is_literally_china = yes
+			OR = {
+				controls_state = 594
+				controls_state = 930
+				controls_state = 747
+			}
+		}
+	}
 	NOT = {
 		has_country_flag = purchase_pending
 	}
