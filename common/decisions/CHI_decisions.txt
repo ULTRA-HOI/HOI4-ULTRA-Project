@@ -994,6 +994,10 @@ CHI_industrial_evacuations = {
 						type = industrial_complex
 						level = 2
 					}
+					remove_building = {
+						type = steel_refinery
+						level = 1
+					}
 					
 	
 					#Move AF
@@ -1039,10 +1043,15 @@ CHI_industrial_evacuations = {
 							}
 							
 							
-							add_extra_state_shared_building_slots = 7
+							add_extra_state_shared_building_slots = 8
 							add_building_construction = {
 								type = industrial_complex
 								level = 7
+								instant_build = yes
+							}
+							add_building_construction = {
+								type = steel_refinery
+								level = 1
 								instant_build = yes
 							}
 							CONTROLLER = { set_country_flag = CHI_industrial_evacuations_moved_IC }
@@ -1234,23 +1243,17 @@ CHI_industrial_evacuations = {
 			613 = { #613 #shanghai	
 				industrial_complex > 4	
 			}
-			802 = {
-				industrial_complex > 9
-			}
 		}
 		highlight_states = {
 			highlight_state_targets = {
-				state = 802
+				state = 613
 			}
 		}
 		visible = {
 			has_completed_focus = CHI_industrial_evacuations
 			613 = { #613 #shanghai
 				is_controlled_by = ROOT
-			}
-			802 = { #802 #shanghai
-				is_controlled_by = ROOT
-			}			
+			}		
 		}
 
 		fire_only_once = yes
@@ -1265,21 +1268,18 @@ CHI_industrial_evacuations = {
 			if = {
 				limit = {
 					controls_state = 613
-					controls_state = 802
 				}
-				802 = {
-					remove_building = {
-						type = industrial_complex
-						level = 10
-					}
-				}
+				
 				613 = { #613 #shanghai
 									
 					remove_building = {
 						type = industrial_complex
 						level = 5
 					}
-					
+					remove_building = {
+						type = steel_refinery
+						level = 1
+					}
 	
 					#Move AF
 					CONTROLLER = {
@@ -1292,23 +1292,26 @@ CHI_industrial_evacuations = {
 								
 								free_building_slots = {
 									building = industrial_complex
-									size > 14
+									size > 5
 									include_locked = yes
 								}
 							}
 							
-							
-							add_extra_state_shared_building_slots = 15
+							add_extra_state_shared_building_slots = 6
 							add_building_construction = {
 								type = industrial_complex
-								level = 15
+								level = 5
+								instant_build = yes
+							}
+							add_building_construction = {
+								type = steel_refinery
+								level = 1
 								instant_build = yes
 							}
 							CONTROLLER = { set_country_flag = CHI_industrial_evacuations_moved_IC }
 							
 						}
-	
-						
+
 						clr_country_flag = CHI_industrial_evacuations_moved_IC
 					}			
 				}
