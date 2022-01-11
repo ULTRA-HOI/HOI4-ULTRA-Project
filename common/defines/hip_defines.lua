@@ -218,6 +218,7 @@ NDefines.NBuildings.RADAR_RANGE_MAX = 120				-- Range is interpolated between bu
 NDefines.NBuildings.RADAR_INTEL_EFFECT = 30			-- Province covered by radar increases intel by 10 (where 255 is max). Province may be covered by multiple radars, then the value sums up.
 NDefines.NBuildings.SABOTAGE_FACTORY_DAMAGE = 75.0		-- How much damage takes a factory building in sabotage when state is occupied. Damage is mult by (1 + resistance strength), i.e. up to 2 x base value.	
 NDefines.NBuildings.INFRASTRUCTURE_RESOURCE_BONUS = 0.1 --0.2-- multiplicative resource bonus for each level of (non damaged) infrastructure
+NDefines.NBuildings.SUPPLY_ROUTE_RESOURCE_BONUS = 0.0   -- multiplicative resource bonus for having a railway/naval connection to the capital
 
 
 
