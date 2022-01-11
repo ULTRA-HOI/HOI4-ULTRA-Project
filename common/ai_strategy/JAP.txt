@@ -787,30 +787,6 @@ all_china_must_prosper_in_my_prosperity_sphere_PRC = {
 	}
 }
 
-jap_china_is_weak = {
-	allowed = {
-		original_tag = JAP
-	}
-
-	enable = {
-		date < 1939.10.1
-		NOT = { has_war_with = CHI } # only underestimate the japanese before the war
-	}
-
-	abort = {
-		OR = {
-			date > 1939.10.1
-			has_war_with = CHI # only underestimate the japanese before the war
-		}
-	}
-
-	ai_strategy = {
-		type = consider_weak
-		id = "CHI"
-		value = 100
-	}
-}
-
 
 jap_building_boats_is_great = {
 	allowed = {
@@ -906,7 +882,7 @@ jap_early_part_beware_allies = {
 		tag = JAP
 		USA = { is_in_faction = no }
 		focus_progress = {
-			focus = JAP_secure_the_philippines
+			focus = JAP_strike_on_the_southern_resource_area
 			progress > 0.1
 		}
 		PHI = {	is_subject_of = USA }
@@ -997,7 +973,7 @@ jap_early_part_beware_allies = {
 	}
 	enable = {
 		tag = JAP
-                has_completed_focus = JAP_secure_the_philippines
+        has_completed_focus = JAP_strike_on_the_southern_resource_area
 	}
 	
 abort_when_not_enabled = yes
@@ -1396,7 +1372,7 @@ prepare_strike_south = {
 
 }
 
-jap_leave_russia_alone = {
+jap_dont_leave_russia_alone = {
 	allowed = { 
 		tag = JAP
 	}
@@ -1408,28 +1384,27 @@ jap_leave_russia_alone = {
 	ai_strategy = {
 		type = front_unit_request
 		tag = "SOV"			
-		value = -9999
+		value = 100
 	}
 	ai_strategy = {
 		type = conquer
 		id = "SOV"			
-		value = -9999
-
+		value = 50
 	}
 	ai_strategy = {
 		type = invade
 		id = "SOV"			
-		value = -2000
+		value = -999
 	}
 	ai_strategy = {
-		type = ignore
+		type = antagonize
 		id = "SOV"			
-		value = 9999
+		value = 100
 	}
 	ai_strategy = {
 		type = front_unit_request
 		area = east_russia			
-		value = -9999
+		value = 50
 	}
 }
 
@@ -1468,6 +1443,13 @@ JAP_vs_CHI_1 = {
 				is_fully_controlled_by = MEN
 			}
 		}
+		956 = {
+			or = {
+				is_fully_controlled_by = JAP
+				is_fully_controlled_by = MAN
+				is_fully_controlled_by = MEN
+			}
+		}
 		743 = {
 			or = {
 				is_fully_controlled_by = JAP
@@ -1476,32 +1458,25 @@ JAP_vs_CHI_1 = {
 			}
 		}
 	}
-		
+	
+	ai_strategy = {
+		type = consider_weak
+		id = "CHI"
+		value = 100
+	}
 
 	ai_strategy = {
 		type = front_control
 		state_trigger = {
 			state = 608
+			state = 897
 			state = 614
 			state = 597
+			state = 956
 			state = 743
-			state = 802
 		}
 		
-		ratio > 0.95
-		ordertype = front
-		execution_type = rush_weak
-		execute_order = yes
-		manual_attack = yes
-	}
-	ai_strategy = {
-		type = front_control
-		state_trigger = {
-
-			state = 897
-		}
-		
-		ratio > 0.95
+		ratio > 0.60
 		ordertype = front
 		execution_type = rush_weak
 		execute_order = yes
@@ -1545,9 +1520,42 @@ JAP_vs_CHI_2 = {
 				is_fully_controlled_by = MEN
 			}
 		}
+		969 = {
+			or = {
+				is_fully_controlled_by = JAP
+				is_fully_controlled_by = MAN
+				is_fully_controlled_by = MEN
+			}
+		}
+		1026 = {
+			or = {
+				is_fully_controlled_by = JAP
+				is_fully_controlled_by = MAN
+				is_fully_controlled_by = MEN
+			}
+		}
+		802 = {
+			or = {
+				is_fully_controlled_by = JAP
+				is_fully_controlled_by = MAN
+				is_fully_controlled_by = MEN
+			}
+		}
+		917 = {
+			or = {
+				is_fully_controlled_by = JAP
+				is_fully_controlled_by = MAN
+				is_fully_controlled_by = MEN
+			}
+		}
 	}
 		
-
+	ai_strategy = {
+		type = consider_weak
+		id = "CHI"
+		value = 100
+	}
+	
 	ai_strategy = {
 		type = front_control
 		state_trigger = {
@@ -1555,12 +1563,15 @@ JAP_vs_CHI_2 = {
 			state = 606
 			state = 613
 			state = 749
+			state = 969
+			state = 1026
 			state = 802
+			state = 917
 		}
 		
-		ratio > 0.95
+		ratio > 0.55
 		ordertype = front
-		execution_type = rush
+		execution_type = rush_weak
 		execute_order = yes
 		manual_attack = yes
 	}
@@ -1585,21 +1596,7 @@ stalemate = {
 				is_fully_controlled_by = MEN
 			}
 		}
-		606 = {
-			or = {
-				is_fully_controlled_by = JAP
-				is_fully_controlled_by = MAN
-				is_fully_controlled_by = MEN
-			}
-		}
 		613 = {
-			or = {
-				is_fully_controlled_by = JAP
-				is_fully_controlled_by = MAN
-				is_fully_controlled_by = MEN
-			}
-		}
-		749 = {
 			or = {
 				is_fully_controlled_by = JAP
 				is_fully_controlled_by = MAN
@@ -1620,15 +1617,7 @@ stalemate = {
 				is_fully_controlled_by = MEN
 			}
 		}
-		597 = {
-			or = {
-				is_fully_controlled_by = JAP
-				is_fully_controlled_by = MAN
-				is_fully_controlled_by = MEN
-			}
-		}
-
-		900 = {
+		956 = {
 			or = {
 				is_fully_controlled_by = JAP
 				is_fully_controlled_by = MAN
@@ -1655,7 +1644,6 @@ stalemate = {
 				is_in_faction_with = CHI
 			}
 		}
-		
 		ordertype = front
 		execution_type = careful
 		execute_order = no
@@ -1674,72 +1662,6 @@ end_stalemate = {
 		has_government = fascism
 		country_exists = CHI
 		has_completed_focus = JAP_secure_china
-		CHI = { is_ai = yes }
-		598 = { 
-			or = {
-				is_fully_controlled_by = JAP
-				is_fully_controlled_by = MAN
-				is_fully_controlled_by = MEN
-			}
-		}
-		606 = {
-			or = {
-				is_fully_controlled_by = JAP
-				is_fully_controlled_by = MAN
-				is_fully_controlled_by = MEN
-			}
-		}
-		613 = {
-			or = {
-				is_fully_controlled_by = JAP
-				is_fully_controlled_by = MAN
-				is_fully_controlled_by = MEN
-			}
-		}
-		749 = {
-			or = {
-				is_fully_controlled_by = JAP
-				is_fully_controlled_by = MAN
-				is_fully_controlled_by = MEN
-			}
-		}
-		608 = { 
-			or = {
-				is_fully_controlled_by = JAP
-				is_fully_controlled_by = MAN
-				is_fully_controlled_by = MEN
-			}
-		}
-		614 = {
-			or = {
-				is_fully_controlled_by = JAP
-				is_fully_controlled_by = MAN
-				is_fully_controlled_by = MEN
-			}
-		}
-		597 = {
-			or = {
-				is_fully_controlled_by = JAP
-				is_fully_controlled_by = MAN
-				is_fully_controlled_by = MEN
-			}
-		}
-
-		900 = {
-			or = {
-				is_fully_controlled_by = JAP
-				is_fully_controlled_by = MAN
-				is_fully_controlled_by = MEN
-			}
-		}
-		743 = {
-			or = {
-				is_fully_controlled_by = JAP
-				is_fully_controlled_by = MAN
-				is_fully_controlled_by = MEN
-			}
-		}
-	
 	}
 	abort = {
 		OR = {			
@@ -1771,7 +1693,7 @@ jap_ai_take_all_ports = {
 	enable = {
 		tag = JAP
 		has_war_with = CHI
-        date > 1939.1.1
+        date > 1938.7.1
 	}
 	
 	abort = {
@@ -1816,7 +1738,6 @@ jap_late_invasions_are_risky = {
         date > 1945.12.1
 	}
 
-
 	ai_strategy = {
 		type = invade
 		id = "CHI"			
@@ -1831,7 +1752,7 @@ jap_ai_take_nanking = {
 	enable = {
 		tag = JAP
 		date < 1939.1.1
-                CHI = { is_ai = yes }
+        CHI = { is_ai = yes }
 	}
 	
 	abort = {
@@ -1850,24 +1771,26 @@ jap_ai_take_nanking = {
 		state = 613
 		ordertype = invasion
 		execute_order = yes
+		value = 200
 	}
 	
 	ai_strategy = {
 		type = invasion_unit_request
 		state = 613
-		value = 600
+		value = 200
 	}
 	ai_strategy = {
 		type = front_control
 		state = 802
 		ordertype = invasion
 		execute_order = yes
+		value = 200
 	}
 	
 	ai_strategy = {
 		type = invasion_unit_request
 		state = 802
-		value = 600
+		value = 200
 	}
 
 }
@@ -1876,7 +1799,7 @@ JAP_take_south = {
 	allowed = { tag = JAP }
 	enable = {
 		has_war_with = CHI
-                date > 1938.6.1
+        date > 1938.6.1
 		is_historical_focus_on = yes
 		CHI = { is_ai = yes }
 		613 = {
@@ -1912,6 +1835,7 @@ JAP_take_south = {
 		state = 592
 		ordertype = invasion
 		execute_order = yes
+		value = 50
 	}
 	ai_strategy = {
 		type = front_control
@@ -1926,6 +1850,7 @@ JAP_take_south = {
 		execution_type = careful
 		execute_order = yes
 		manual_attack = yes
+		value = 50
 	}
 
 }
@@ -1935,7 +1860,7 @@ prepare_for_war = {
 	allowed = { original_tag = JAP } 
 
 	enable = {
-			focus_progress = {
+		focus_progress = {
 			focus = JAP_intervene_in_china
 			progress > 0.01
 		}
@@ -1951,12 +1876,12 @@ prepare_for_war = {
 	ai_strategy = {
 		type = prepare_for_war
 		id = "PRC"
-		value = 50
+		value = 25
 	}
 	ai_strategy = {
 		type = prepare_for_war
 		id = "SHX"
-		value = 50
+		value = 25
 	}	
 }
 
@@ -1968,8 +1893,7 @@ JAP_china_wont_naval_invade = {
 	abort = {
 		date > 1940.1.1
 	}
-	
-	
+
 	ai_strategy = {
 		type = garrison
 		value = -60
@@ -1985,7 +1909,7 @@ seize_coast = {
 	enable = {
 		tag = JAP
 		has_government = fascism
-				614 = {
+		614 = {
 			or = {
 				is_fully_controlled_by = JAP
 				is_fully_controlled_by = MAN
@@ -1996,13 +1920,13 @@ seize_coast = {
 	}
 	abort = {
 		country_exists = CHI
-				613 = {
+		613 = {
 			or = {
 				is_fully_controlled_by = JAP
 				is_fully_controlled_by = MAN
 				is_fully_controlled_by = MEN
 			}
-	}
+		}
 	}
 		
 	ai_strategy = { 
@@ -2026,6 +1950,90 @@ seize_coast = {
 		type = area_priority        
 		id = south_china			      
 		value = 25
+	}
+	
+	ai_strategy = {
+		type = invasion_unit_request
+		state = 592
+		value = 50
+	}
+
+	ai_strategy = {
+		type = front_control
+		state = 592
+		ordertype = invasion
+		execute_order = yes
+		value = 50
+	}
+	
+	ai_strategy = {
+		type = invasion_unit_request
+		state = 591
+		value = 50
+	}
+
+	ai_strategy = {
+		type = front_control
+		state = 591
+		ordertype = invasion
+		execute_order = yes
+		value = 50
+	}
+	
+	ai_strategy = {
+		type = invasion_unit_request
+		state = 931
+		value = 50
+	}
+
+	ai_strategy = {
+		type = front_control
+		state = 931
+		ordertype = invasion
+		execute_order = yes
+		value = 50
+	}
+	
+	ai_strategy = {
+		type = invasion_unit_request
+		state = 923
+		value = 50
+	}
+
+	ai_strategy = {
+		type = front_control
+		state = 923
+		ordertype = invasion
+		execute_order = yes
+		value = 50
+	}
+	
+	ai_strategy = {
+		type = invasion_unit_request
+		state = 924
+		value = 50
+	}
+
+	ai_strategy = {
+		type = front_control
+		state = 924
+		ordertype = invasion
+		execute_order = yes
+		value = 50
+	}
+	
+	ai_strategy = {
+		type = invasion_unit_request
+		state = 969
+		value = 50
+	}
+
+	ai_strategy = {
+		type = front_control
+		state = 969
+		ordertype = invasion
+		execute_order = yes
+		value = 50
 	}
 
 }
@@ -2085,7 +2093,7 @@ if_stuck_invade = {
 	}
 	enable = {
 		tag = JAP
-		date > 1939.1.1
+		date > 1938.7.1
 		608 = {
 			or = {
 				is_fully_controlled_by = JAP
@@ -2097,7 +2105,7 @@ if_stuck_invade = {
 
 	abort = {
 		country_exists = CHI
-		614 = {
+		898 = {
 			or = {
 				is_fully_controlled_by = JAP
 				is_fully_controlled_by = MAN
@@ -2135,16 +2143,14 @@ dont_prepare_for_war_yet = {
 	allowed = { original_tag = JAP } 
 
 	enable = {
-                date < 1941.6.1
+        date < 1941.6.1
 		NOT = { has_war_with = ENG }
 	}
 
 	abort = { 
 
         date > 1941.6.1
-or = {
-    	has_war_with = ENG
-			}
+		has_war_with = ENG
 	}
 
 	ai_strategy = {
@@ -2176,13 +2182,13 @@ jap_shanghai = {
 		}
 	}
 	abort = {
-				802 = {
+		802 = {
 			or = {
 				is_fully_controlled_by = JAP
 				is_fully_controlled_by = MAN
 				is_fully_controlled_by = MEN
 			}
-	}
+		}
 	}
 
 	ai_strategy = {
@@ -2193,13 +2199,12 @@ jap_shanghai = {
 	ai_strategy = {
 		type = put_unit_buffers
 		
-		order_id = 1
+		#order_id = 1
 		
 		# Pacific
 		states = { 
 			917
 		}
-		
 		ratio = 0.20
 	}
 }
@@ -2211,15 +2216,13 @@ jap_be_careful_not_to_lose_too_much_equipment = {
 	enable = {
 		tag = JAP
 		date > 1938.10.1
-			has_war_with = CHI
-
+		has_war_with = CHI
 	}
 
 	abort = {
 		OR = {
 			date > 1942.10.1
-		NOT = { has_war_with = CHI } # only underestimate the japanese before the war
-
+			NOT = { has_war_with = CHI } # only underestimate the japanese before the war
 		}		
 	}
 	
@@ -2237,7 +2240,6 @@ jap_be_careful_not_to_lose_too_much_equipment = {
 		execute_order = yes
 		manual_attack = yes
 	}
-
 }
 
 Invade_singapore = {
@@ -2501,7 +2503,6 @@ JAP_industry_we_on_an_island_bruv = {
 		value = 50
 	}
 
-
 }
 
 soviet_peace = {
@@ -2545,16 +2546,6 @@ soviet_peace = {
 		id = "SOV"			
 		value = -2000
 	}
-	ai_strategy = {
-		type = front_unit_request
-		tag = "SOV"			
-		value = -9999
-	}
-	ai_strategy = {
-		type = ignore
-		id = "SOV"			
-		value = 9999
-	}	
 }
 
 
@@ -2610,7 +2601,7 @@ soviet_war = {
 	ai_strategy = {
 		type =  antagonize
 		id = "SIK"
-		value = 100
+		value = 0
 	}
 
 	ai_strategy = {
@@ -2630,7 +2621,105 @@ soviet_war = {
 		id = "SOV"			
 		value = -2000
 	}	
-}				
+}
+
+JAP_defend_manchuria = {
+	allowed = { 
+		original_tag = JAP
+	}
+	
+	available = {
+		NOT = {
+			has_war_with = SOV
+		}
+	}
+	
+	abort_when_not_enabled = yes
+	
+	ai_strategy = {
+		type =  antagonize
+		id = "SOV"
+		value = 100
+	}
+	
+	ai_strategy = {
+		type = force_defend_ally_borders
+		id = "MAN"
+		value = 100
+	}
+	
+	ai_strategy = {
+		type = put_unit_buffers
+		
+		#order_id = 2
+		
+		states = { 
+			527
+			717
+			951
+			716
+			745
+			328
+			714
+			761
+			610
+		}
+		
+		ratio = 0.35
+		
+		area = north_china
+		
+		subtract_invasions_from_need = no
+		subtract_fronts_from_need = yes
+	}
+}
+
+MAN_defend_manchuria = {
+	allowed = { 
+		original_tag = JAP
+	}
+	
+	available = {
+		NOT = {
+			has_war_with = SOV
+		}
+	}
+	
+	abort_when_not_enabled = yes
+	
+	ai_strategy = {
+		type =  antagonize
+		id = "SOV"
+		value = 50
+	}
+	
+	ai_strategy = {
+		type = put_unit_buffers
+		
+		#order_id = 2
+		
+		states = { 
+			527
+			717
+			951
+			716
+			745
+			328
+			714
+			761
+			610
+		}
+		
+		ratio = 1
+		
+		area = north_china
+		
+		subtract_invasions_from_need = no
+		subtract_fronts_from_need = yes
+	}
+}
+	
+	
 
 
 
