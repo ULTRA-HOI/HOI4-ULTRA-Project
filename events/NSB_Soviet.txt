@@ -2919,6 +2919,10 @@ country_event = {
 				add = 1
 				FROM = { original_tag = PER }
 			}
+			modifier = {
+				factor = 0
+				surrender_progress < 0.5
+			}
 		}
 	}
 
@@ -2931,7 +2935,7 @@ country_event = {
 		}
 
 		ai_chance = {
-			base = 100
+			base = 1
 			modifier = {
 				factor = 0
 				OR = {
@@ -2940,6 +2944,9 @@ country_event = {
 						ratio < 0.6
 					}
 					surrender_progress > 0.5
+					ENG = {
+						has_war_with = GER
+					}
 				}
 			}
 		}
@@ -2975,20 +2982,22 @@ country_event = {
 		}
 
 		ai_chance = {
-			base = 10
+			base = 100
 			modifier = {
 				factor = 100
-				is_in_faction_with = ENG
+				ENG = {
+					has_war_with = GER
+				}
 			}
 			modifier = {
-				factor = 2
+				factor = 25
 				has_opinion = {
 					target = FROM
 					value > -25
 				}
 			}
 			modifier = {
-				factor = 5
+				factor = 50
 				has_opinion = {
 					target = FROM
 					value > 50
@@ -2999,9 +3008,9 @@ country_event = {
 				OR = {
 					strength_ratio = {
 						tag = FROM
-						ratio < 0.6
+						ratio < 0.5
 					}
-					surrender_progress > 0.25
+					surrender_progress > 0.50
 				}
 			}
 		}
@@ -3062,17 +3071,22 @@ country_event = {
 			base = 10
 			modifier = {
 				factor = 100
-				is_in_faction_with = FROM
+				ENG = {
+					has_war_with = GER
+				}
+				SOV = {
+					has_war_with = GER
+				}
 			}
 			modifier = {
-				factor = 2
+				factor = 25
 				has_opinion = {
 					target = FROM
 					value > -25
 				}
 			}
 			modifier = {
-				factor = 5
+				factor = 50
 				has_opinion = {
 					target = FROM
 					value > 50
@@ -3088,13 +3102,13 @@ country_event = {
 						}
 					}
 					has_war_with = PER
-					has_guaranteed = PER
-					has_non_aggression_pact_with = PER
+					#has_guaranteed = PER
+					#has_non_aggression_pact_with = PER
 					is_in_faction_with = PER
 					is_subject = yes
 					strength_ratio = {
 						tag = FROM
-						ratio < 0.6
+						ratio < 0.5
 					}
 					surrender_progress > 0.5
 				}
