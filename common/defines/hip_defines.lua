@@ -116,7 +116,6 @@ NDefines.NResistance.SUPPRESSION_NEEDED_BY_RESISTANCE_POINT = 0.5 --0.75 -- Numb
 
 NDefines.NResistance.COMPLIANCE_GROWTH_HAS_CLAIM = 10 --5 -- compliance growth buff if state has a claim
 NDefines.NResistance.COMPLIANCE_GROWTH_BASE = 0.05 -- 0.075 -- base compliance grow
-NDefines.NResistance.COMPLIANCE_GROWTH_BASE = 0.05 -- 0.075 -- base compliance grow
 NDefines.NResistance.COMPLIANCE_DECAY_AT_MAX_COMPLIANCE = -0.055 -- -0.083 -- as compliance increases, it gets a decay rate depending on its value. compliance should stabilize at some value until its growth chWanges
 
 -- espionage stuff 
