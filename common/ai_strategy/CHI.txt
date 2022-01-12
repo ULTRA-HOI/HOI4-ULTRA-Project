@@ -65,96 +65,96 @@ CHI_ignore_neighbours = {
 	ai_strategy = {
 		type = contain
 		id = "TIB"			
-		value = -9999
+		value = -999
 	}
 
 	ai_strategy = {
 		type = contain
 		id = "RAJ"			
-		value = -9999
+		value = -999
 	}
 
 	ai_strategy = {
 		type = contain
 		id = "FRA"			
-		value = -9999
+		value = -999
 	}
 
 	ai_strategy = {
 		type = ignore
 		id = "TIB"
-		value = 9999
+		value = 999
 	}
 
 	ai_strategy = {
 		type = ignore
 		id = "RAJ"
-		value = 9999
+		value = 999
 	}
 
 	ai_strategy = {
 		type = ignore
 		id = "FRA"
-		value = 9999
+		value = 999
 	}
 	ai_strategy = {
 		type = ignore
 		id = "SIK"
-		value = 9999
+		value = 999
 	}
 	ai_strategy = {
 		type = contain
 		id = "SIK"
-		value = -9999
+		value = -999
 	}
 
 	ai_strategy = {
 		type = ignore
 		id = "TIB"
-		value = 9999
+		value = 999
 	}
 
 	ai_strategy = {
 		type = ignore
 		id = "RAJ"
-		value = 9999
+		value = 999
 	}
 
 	ai_strategy = {
 		type = ignore
 		id = "FRA"
-		value = 9999
+		value = 999
 	}
 	ai_strategy = {
 		type = ignore
 		id = "SIK"
-		value = 9999
+		value = 999
 	}
 
 	ai_strategy = {
 		type = front_unit_request
 		tag = "RAJ"			
-		value = -9999
+		value = -999
 	}
 	ai_strategy = {
 		type = front_unit_request
 		tag = "FRA"			
-		value = -9999
+		value = -999
 	}
 	ai_strategy = {
 		type = front_unit_request
 		tag = "ENG"			
-		value = -9999
+		value = -999
 	}
 	ai_strategy = {
 		type = front_unit_request
 		tag = "TIB"			
-		value = -9999
+		value = -999
 	}
 	ai_strategy = {
 		type = front_unit_request
 		tag = "SIK"			
-		value = -9999
+		value = -999
 	}
 
 }
@@ -197,7 +197,7 @@ CHI_you_should_be_prepared_for_war = {
 	
 	ai_strategy = {
         type = force_build_armies
-        value = 9999
+        value = 999
     }
 }
 
@@ -481,8 +481,7 @@ CHI_defend_against_JAP_proper = {
 		OR = {
 			has_war_with = FRA
 			has_war_with = RAJ
-                        has_war_with = TIB
-
+            has_war_with = TIB
 		}
 	}
 
@@ -500,22 +499,22 @@ CHI_defend_against_JAP_proper = {
 	ai_strategy = {
 		type = front_unit_request
 		tag = FRA
-		value = -9999
+		value = -999
 	}
 	ai_strategy = {
 		type = front_unit_request
 		tag = ENG
-		value = -9999
+		value = -999
 	}
 	ai_strategy = {
 		type = front_unit_request
 		tag = RAJ
-		value = -9999
+		value = -999
 	}
 	ai_strategy = {
 		type = front_unit_request
 		tag = TIB
-		value = -9999
+		value = -999
 	}
 
 }
@@ -525,20 +524,18 @@ CHI_defend_ports_not_borders_before_war_for_attrition_reasons = {
 		original_tag = CHI
 	}
 	enable = {
-				original_tag = CHI
-		
-	                  	NOT = { has_war_with = JAP }
+		original_tag = CHI
+	    NOT = { has_war_with = JAP }
 	}
 	
 	abort = {
 		OR = {
 			has_war_with = JAP
 			has_war_with = MAN
-
 		}
 	}
 
-	ai_strategy = { type = garrison value = 500 }
+	ai_strategy = { type = garrison value = 100 }
 }
 
 
@@ -552,9 +549,8 @@ CHI_defend = {
 	abort = {
 		always = no
 	}
-	
 
-	ai_strategy = { type = garrison value = 20 }
+	ai_strategy = { type = garrison value = 50 }
 }
 ignore_raj = {
 	allowed = { 
@@ -571,17 +567,17 @@ ignore_raj = {
 	ai_strategy = {
 		type = front_unit_request
 		tag = RAJ
-		value = -9999
+		value = -999
 	}
 	ai_strategy = {
 		type = ignore
 		id = "RAJ"
-		value = 9999
+		value = 999
 	}
 	ai_strategy = {
 		type = front_unit_request
 		area = east_asia
-		value = -9999
+		value = -999
 	}
 }
 
@@ -592,7 +588,7 @@ increase_relation = {
 	}
 	enable = {
 		always = yes
-                original_tag = CHI 
+        original_tag = CHI 
 	}
 	
 	ai_strategy = {
@@ -756,18 +752,104 @@ CHI_buffer_in_mainland = {
 	ai_strategy = {
 		type = put_unit_buffers
 		states = {
-			620 #Mainland china, without coast. This should slow down japanese advance due to tendency for china to retreat in disarray.
-			602
+			622 #Mainland china, without coast. This should slow down japanese advance due to tendency for china to retreat in disarray.
+			954
+			744
+			935
+			936
+			902
+			606
+			920
+			898
+			900
+			943
 			600
-			750
+			944
+			602
+			939
 			603
-			748
-			605
+			967
+			966
 		}
-		ratio = 0.15
-		area = asia
+		ratio = 0.5
+		area = west_china
 		subtract_invasions_from_need = no
-		subtract_fronts_from_need = no
+		subtract_fronts_from_need = yes
+	}
+}
+
+CHI_defend_nankin = {
+	allowed = {
+		is_literally_china = yes
+	}
+	enable = {
+		controls_state = 613
+	}
+	abort_when_not_enabled = yes
+	
+	ai_strategy = {
+		type = put_unit_buffers
+		states = {
+			613 #Defend the capital
+		}
+		ratio = 0.2
+		area = china_coast
+		subtract_invasions_from_need = no
+		subtract_fronts_from_need = yes
+	}
+}
+
+CHI_defend_wuhan = {
+	allowed = {
+		is_literally_china = yes
+	}
+	enable = {
+		controls_state = 898
+		NOT = {
+			controls_state = 613
+		}
+	}
+	abort_when_not_enabled = yes
+	
+	ai_strategy = {
+		type = put_unit_buffers
+		states = {
+			898 #Defend the capital
+			937
+		}
+		ratio = 0.2
+		area = west_china
+		subtract_invasions_from_need = no
+		subtract_fronts_from_need = yes
+	}
+}
+
+CHI_defend_chongqing = {
+	allowed = {
+		is_literally_china = yes
+	}
+	enable = {
+		controls_state = 605
+		NOT = {
+			controls_state = 613
+		}
+		NOT = {
+			controls_state = 899
+		}
+	}
+	abort_when_not_enabled = yes
+	
+	ai_strategy = {
+		type = put_unit_buffers
+		states = {
+			605 #Defend the capital
+			901
+			753
+		}
+		ratio = 0.2
+		area = west_china
+		subtract_invasions_from_need = no
+		subtract_fronts_from_need = yes
 	}
 }
 
@@ -780,7 +862,7 @@ CHI_hunker_down_now  = {
 		date < 1945.1.1 #We accept our fate after this point
 		has_war_with = JAP
 		is_historical_focus_on = yes
-		surrender_progress > 0.5
+		surrender_progress > 0.25
 	}
 
 	abort = {
@@ -789,14 +871,13 @@ CHI_hunker_down_now  = {
 
 	ai_strategy = {
 		type = front_control
-
-		tag = JAP
-
-		ratio = 0.6
-
-		priority = 100
+		country_trigger = {
+			original_tag = JAP
+		}
 		ordertype = front
 		execution_type = careful
+		execute_order = no
+		manual_attack = yes
 	}
 }
 CHI_FRONT_STRAT = {
@@ -809,24 +890,14 @@ CHI_FRONT_STRAT = {
 	}
 	
 	ai_strategy = {
-		type = consider_weak
-		id = "JAP"
-		value = -100
-	}
-	ai_strategy = {
 		type = front_control
-		ratio = 0.0
-		tag = JAP
-		priority = 10 
-		ordertype = front 
-		execution_type = careful 
+		country_trigger = {
+			original_tag = JAP
+		}
+		ordertype = front
+		execution_type = careful
+		execute_order = no
 		manual_attack = yes
-	}
-	
-	ai_strategy = {
-		type = front_unit_request
-		value = 100
-		tag = JAP
 	}
 	
 }
