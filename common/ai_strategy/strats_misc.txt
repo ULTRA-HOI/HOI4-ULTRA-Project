@@ -45,3 +45,46 @@ stop_inf_equip_production = {
 	ai_strategy = { type = equipment_production_factor id = armor			        value = 20 }
 	ai_strategy = { type = equipment_production_factor id = fighter			        value = 10 }		
 }
+
+BEL_dont_all_in_ardennes = {
+	allowed = { 
+		original_tag = BEL
+	}
+	
+	enable = {
+		GER = {
+			has_war = yes
+		}
+		FRA = {
+			has_war = yes
+		}
+	}
+	
+	abort = {
+		has_capitulated = yes
+	}
+	
+	ai_strategy = {
+		type = put_unit_buffers
+		states = { #concentrate on heartland
+			6
+			34
+		}
+		ratio = 0.6
+		area = benelux
+		subtract_invasions_from_need = no
+		subtract_fronts_from_need = yes
+	}
+	# protect borders with belligerents
+	ai_strategy = {
+		type = antagonize
+		id = "FRA"
+		value = 100
+	}
+	
+	ai_strategy = {
+		type = antagonize
+		id = "GER"
+		value = 50
+	}
+}
