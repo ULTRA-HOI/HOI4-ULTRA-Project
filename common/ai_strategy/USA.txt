@@ -825,179 +825,150 @@ USA_avoid_early_deathtraps = {
 	abort = {
 		date > 1943.6.1
 	}
-	
 	ai_strategy = {
 		type = send_volunteers_desire
 		id = ENG
 		value = -500
 	}
-
 	ai_strategy = {
 		type = send_volunteers_desire
 		id = FRA
 		value = -500
 	}
-
 	ai_strategy = {
 		type = send_volunteers_desire
 		id = SOV
 		value = -500
 	}
-
 	ai_strategy = {
 		type = send_volunteers_desire
 		id = NOR
 		value = -500
 	}
-
 	ai_strategy = {
 		type = send_volunteers_desire
 		id = DEN
 		value = -500
 	}
-
 	ai_strategy = {
 		type = send_volunteers_desire
 		id = HOL
 		value = -500
 	}
-
 	ai_strategy = {
 		type = send_volunteers_desire
 		id = BEL
 		value = -500
 	}
-
 	ai_strategy = {
 		type = send_volunteers_desire
 		id = YUG
 		value = -500
 	}
-
 	ai_strategy = {
 		type = send_volunteers_desire
 		id = GRE
 		value = -500
 	}
-
 	ai_strategy = {
 		type = send_volunteers_desire
 		id = POL
 		value = -500
 	}
-
 	ai_strategy = {
 		type = dont_defend_ally_borders
 		id = "PHI"
-		value = 1000
+		value = 500
 	}
-
 	ai_strategy = {
 		type = dont_defend_ally_borders
 		id = "AST"
-		value = 1000
+		value = 500
 	}
-
 	ai_strategy = {
 		type = area_priority
 		id = oceania
-		value = -2000
+		value = -500
 	}
-
 	ai_strategy = {
 		type = naval_avoid_region
 		id = 177 #W N Pacific
-		value = 2000
+		value = 500
 	}
-
 	ai_strategy = {
 		type = naval_avoid_region
 		id = 82 #Gulf of carpentaria
-		value = 2000
+		value = 500
 	}
-
 	ai_strategy = {
 		type = naval_avoid_region
 		id = 60 #W Indian Ocean
-		value = 2000
+		value = 500
 	}
-
 	ai_strategy = {
 		type = naval_avoid_region
 		id = 85 #SW Indian Ocean
-		value = 2000
+		value = 500
 	}
-
 	ai_strategy = {
 		type = naval_avoid_region
 		id = 99 #Far E Indian Ocean
-		value = 2000
+		value = 500
 	}
-	
 	ai_strategy = {
 		type = invade
 		id = "JAP"			
-		value = -2000
+		value = -500
 	}
-
 	ai_strategy = {
 		type = invade
 		id = "SIA"			
-		value = -2000
+		value = -500
 	}
-
 	ai_strategy = {
 		type = naval_avoid_region
 		id = 86
-		value = 2000
+		value = 500
 	}
-
 	ai_strategy = {
 		type = naval_avoid_region
 		id = 81
-		value = 2000
+		value = 500
 	}
-
 	ai_strategy = {
 		type = naval_avoid_region
 		id = 83
-		value = 2000
+		value = 500
 	}
-
 	ai_strategy = {
 		type = naval_avoid_region
 		id = 72
-		value = 2000
+		value = 500
 	}
-
 	ai_strategy = {
 		type = naval_avoid_region
 		id = 73
-		value = 2000
+		value = 500
 	}
-
 	ai_strategy = {
 		type = naval_avoid_region
 		id = 71
-		value = 2000
+		value = 500
 	}
-
 	ai_strategy = {
 		type = naval_avoid_region
 		id = 91
-		value = 2000
+		value = 500
 	}
-
 	ai_strategy = {
 		type = naval_avoid_region
 		id = 92
-		value = 2000
+		value = 500
 	}
-
 	ai_strategy = {
 		type = naval_avoid_region
 		id = 98
-		value = 2000
+		value = 500
 	}
 }
 USA_home_land_is_safe = {
@@ -1319,7 +1290,6 @@ USA_go_time = {
 		id = "JAP"
 		value = 75
 	}
-
 }
 
 USA_start_buffering_in_pacific = {
@@ -1350,26 +1320,6 @@ USA_start_buffering_in_pacific = {
 		subtract_invasions_from_need = yes
 		subtract_fronts_from_need = no
 	}
-
-	ai_strategy = {
-		type = put_unit_buffers
-
-		# pacific islands
-		states = {
-			633 #Marshall
-			632 #Wake
-			684 #Caroline
-			645 #Iwo Jima
-			638 #Guam
-			646 #Saipan
-		}
-
-		ratio = 0.05
-		area = philippines
-
-		subtract_invasions_from_need = yes
-		subtract_fronts_from_need = no
-	}
 }
 
 
@@ -1378,18 +1328,20 @@ USA_fight_the_japanese = {
 		original_tag = USA
 	}
 	enable = {
-		JAP = { has_war_with = USA }
+		has_war_with = JAP
 		date > 1943.6.1
 	}
 
 	abort = {
 		OR = {
-			NOT = { JAP = { has_war_with = USA } }
+			NOT = { has_war_with = JAP }
 			is_in_faction_with = JAP
-			has_government = fascism
+			JAP = {
+				exists = no
+			}
 		}
 	}
-
+	
 	ai_strategy = {
 		type = conquer
 		id = "JAP"			
@@ -1408,17 +1360,10 @@ USA_fight_the_japanese = {
 		value = 500
 	}
 
-
-	ai_strategy = { 
-		type = area_priority       
-		id = atlantic 			      
-		value = 100
-	}
-
 	ai_strategy = { 
 		type = area_priority       
 		id = oceania			      
-		value = 800
+		value = 500
 	}
 	
 	ai_strategy = {
@@ -1435,7 +1380,7 @@ USA_fight_the_japanese = {
 			642
 		}
 		
-		ratio = 0.3
+		ratio = 0.25
 		
 		area = pacific
 		
@@ -1452,7 +1397,7 @@ USA_fight_the_japanese = {
 			627
 		}
 		
-		ratio = 0.3
+		ratio = 0.25
 		
 		area = philippines
 		
@@ -1764,13 +1709,19 @@ USA_invade_the_axis = {
 	ai_strategy = {
 		type = invade
 		id = "GER"			
-		value = 999
+		value = 500
+	}
+	
+	ai_strategy = {
+		type = area_priority
+		id = scandinavia
+		value = -999
 	}
 
 	ai_strategy = {
 		type = invade
-		id = "VIC"			
-		value = 999
+		id = "ITA"			
+		value = 250
 	}
 
 	ai_strategy = {
@@ -1784,14 +1735,6 @@ USA_invade_the_axis = {
 		id = "BUL"
 		value = -999
 	}
-
-	ai_strategy = {
-		type = invade
-		id = "JAP"
-		value = 999
-	}
-
-	
 }
 
 USA_invade_the_axis_2 = {
@@ -1808,64 +1751,53 @@ USA_invade_the_axis_2 = {
 		}
 	}
 	abort = {
-        GER = { has_capitulated = yes }
+       GER = { has_capitulated = yes }
 	}
 	ai_strategy = {
 		type = protect
 		id = "ENG"
 		value = -200
 	}
-
 	ai_strategy = { 
 		type = conquer      
 		id = "GER" 			      
 		value = 500
 	}
-
 	ai_strategy = {
 		type = protect
 		id = "FRA"			
 		value = 200
 	}
-
 	ai_strategy = {
 		type = protect
 		id = "BEL"			
 		value = 200
 	}
-
 	ai_strategy = {
 		type = protect
 		id = "HOL"			
 		value = 200
 	}
-
-
 	ai_strategy = {
 		type = protect
 		id = "DEN"			
 		value = 200
 	}
-
 	ai_strategy = {
 		type = force_defend_ally_borders
 		id = "BEL"
 		value = 100
 	}
-
 	ai_strategy = {
 		type = force_defend_ally_borders
 		id = "HOL"
 		value = 100
 	}
-
-
 	ai_strategy = {
 		type = force_defend_ally_borders
 		id = "DEN"
 		value = 100
 	}
-
 	ai_strategy = {
 		type = naval_avoid_region
 		id = 42 #
@@ -2021,11 +1953,11 @@ USA_wants_mil_2 = {
 
 invade_ita_early_2 = {
 	allowed = {
-		tag = USA
+		original_tag = USA
 	}
 	enable = {
 		original_tag = USA
-        date > 1943.6.1
+      date > 1943.6.1
 	}
 
 	ai_strategy = {
