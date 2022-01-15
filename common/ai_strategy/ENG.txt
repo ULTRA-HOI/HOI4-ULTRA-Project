@@ -544,6 +544,61 @@ ENG_lifeline_of_the_empire = {
 	}
 }
 
+ENG_crush_italian_east_africa = {
+	allowed = { original_tag = ENG }
+	enable = {
+		has_war_with = ITA
+	}
+	abort = {
+		ENG = {
+			controls_state = 550
+			controls_state = 269
+			controls_state = 559
+			ETH = {
+				exists = yes
+			}
+		}
+	}
+
+	ai_strategy = {
+		type = area_priority
+		id = south_africa
+		value = 100 # this is extra on top of 50 base (now equal to other territory)
+	}
+	ai_strategy = {
+		type = front_control
+		state_trigger = {
+			state = 271
+			state = 559
+			state = 550
+		}
+		ordertype = front
+		execution_type = rush_weak
+		execute_order = yes
+		manual_attack = yes
+	}
+	ai_strategy = {
+		type = front_unit_request
+		tag = ITA
+		value = 100
+	}
+	ai_strategy = {
+		type = front_unit_request
+		area = south_africa
+		value = 250
+	}
+	ai_strategy = {
+		type = conquer
+		id = "ITA"			
+		value = 100
+	}
+	ai_strategy = {
+		type = invade
+		id = "ITA"			
+		value = -200
+	}
+}
+
 ENG_USA_focus_on_europe = {
 	allowed = {
 		OR = {
