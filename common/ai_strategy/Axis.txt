@@ -1,7 +1,7 @@
 AXIS_LEND_LEASE = {
 	allowed = {
 		tag = GER
-                date > 1940.6.1
+        date > 1940.6.1
 	}
 
 	enable = {
@@ -13,26 +13,175 @@ AXIS_LEND_LEASE = {
 	ai_strategy = {
 		type = send_lend_lease_desire
 		id = ITA
-		value = 30000
+		value = 500
 	}
 	ai_strategy = { type = support id = "ITA" value = 500 }
 	ai_strategy = {
 		type = send_lend_lease_desire
 		id = HUN
-		value = 30000
+		value = 500
 	}
 	ai_strategy = { type = support id = "HUN" value = 500 }
 	ai_strategy = {
 		type = send_lend_lease_desire
 		id = ROM
-		value = 30000
+		value = 500
 	}
 	ai_strategy = { type = support id = "ROM" value = 500 }
 	ai_strategy = {
 		type = send_lend_lease_desire
 		id = FIN
-		value = 10000
+		value = 800
 	}
 	ai_strategy = { type = support id = "FIN" value = 500 }
 
+}
+
+axis_minor_not_in_finland = {
+	allowed = {
+		OR = {
+			original_tag = ROM
+			original_tag = HUN
+			original_tag = SLO
+			original_tag = BUL
+		}
+	}
+	
+	enable = {
+		is_in_faction_with = FIN
+	}
+	
+	abort_when_not_enabled = yes
+	
+	ai_strategy = {
+		type = dont_defend_ally_borders
+		id = "FIN"
+		value = 999
+	}
+}
+
+axis_minor_not_in_italia = {
+	allowed = {
+		OR = {
+			original_tag = ROM
+			original_tag = HUN
+			original_tag = SLO
+			original_tag = BUL
+			original_tag = CRO
+		}
+	}
+	
+	enable = {
+		is_in_faction_with = ITA
+	}
+	
+	abort_when_not_enabled = yes
+	
+	ai_strategy = {
+		type = dont_defend_ally_borders
+		id = "ITA"
+		value = 999
+	}
+}
+
+finland_stays_in_finland = {
+	allowed = {
+		original_tag = FIN
+	}
+	
+	enable = {
+		is_in_faction_with = GER
+	}
+	
+	abort_when_not_enabled = yes
+	
+	ai_strategy = {
+		type = dont_defend_ally_borders
+		id = "GER"
+		value = 999
+	}
+	
+	ai_strategy = {
+		type = dont_defend_ally_borders
+		id = "ROM"
+		value = 999
+	}
+	
+	ai_strategy = {
+		type = dont_defend_ally_borders
+		id = "BUL"
+		value = 999
+	}
+	
+	ai_strategy = {
+		type = dont_defend_ally_borders
+		id = "SLO"
+		value = 999
+	}
+	
+	ai_strategy = {
+		type = dont_defend_ally_borders
+		id = "HUN"
+		value = 999
+	}
+	
+	ai_strategy = {
+		type = dont_defend_ally_borders
+		id = "CRO"
+		value = 999
+	}
+	
+	ai_strategy = {
+		type = dont_defend_ally_borders
+		id = "ITA"
+		value = 999
+	}
+}
+
+bulgaria_stays_in_bulgaria = {
+	allowed = {
+		original_tag = BUL
+	}
+	
+	enable = {
+		is_in_faction_with = GER
+	}
+	
+	abort_when_not_enabled = yes
+	
+	ai_strategy = {
+		type = dont_defend_ally_borders
+		id = "GER"
+		value = 999
+	}
+	
+	ai_strategy = {
+		type = dont_defend_ally_borders
+		id = "ROM"
+		value = 999
+	}
+	
+	ai_strategy = {
+		type = dont_defend_ally_borders
+		id = "SLO"
+		value = 999
+	}
+	
+	ai_strategy = {
+		type = dont_defend_ally_borders
+		id = "HUN"
+		value = 999
+	}
+	
+	ai_strategy = {
+		type = dont_defend_ally_borders
+		id = "CRO"
+		value = 999
+	}
+	
+	ai_strategy = {
+		type = dont_defend_ally_borders
+		id = "ITA"
+		value = 999
+	}
 }
