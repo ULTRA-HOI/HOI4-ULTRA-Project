@@ -1489,7 +1489,7 @@ GER_enable_invasion_of_NOR = {
 	ai_strategy = {
 		type = consider_weak
 		id = "NOR"
-		value = 9999 
+		value = 999
 	}
 }
 
@@ -1775,30 +1775,36 @@ GER_blitzkrieg_benelux  = {
 	}
 
 	abort_when_not_enabled = yes
+	
+	ai_strategy = {
+		type = consider_weak
+		id = "BEL"
+		value = 999
+	}
+	
+	ai_strategy = {
+		type = consider_weak
+		id = "HOL"
+		value = 999
+	}
 
 	ai_strategy = {
 		type = front_control
-
 		tag = HOL
-
 		ratio = 0.25
-
 		priority = 100
 		ordertype = front
-		execution_type = rush
+		execution_type = rush_weak
 		execute_order = yes
 	}
 
 	ai_strategy = {
 		type = front_control
-
 		tag = BEL
-
 		ratio = 0.25
-
 		priority = 100
 		ordertype = front
-		execution_type = rush
+		execution_type = rush_weak
 		execute_order = yes
 	}
 
@@ -1807,7 +1813,7 @@ GER_blitzkrieg_benelux  = {
 
 		tag = BEL
 
-		value = 50 # lets put more units, should be safe
+		value = 100 # lets put more units, should be safe
 	}
 
 	ai_strategy = {
@@ -2342,6 +2348,12 @@ GER_blitz_yug  = {
 	abort = {
 		YUG = {	has_capitulated = yes }	
 	}
+	
+	ai_strategy = {
+		type = consider_weak
+		id = "YUG"
+		value = 999
+	}
 	ai_strategy = {
 		type = front_control
 		country_trigger = {
@@ -2360,15 +2372,79 @@ GER_blitz_gre  = {
 	
 	enable = {
 		has_war_with = GRE
+		YUG = {	has_capitulated = yes }
 	}
 	abort = {
 		GRE = {	has_capitulated = yes }	
 
 	}
 	ai_strategy = {
+		type = consider_weak
+		id = "GRE"
+		value = 999
+	}
+	ai_strategy = {
 		type = front_control
 		country_trigger = {
 			original_tag = GRE
+		}
+		ordertype = front
+		execution_type = rush_weak
+		execute_order = yes
+		manual_attack = yes
+	}
+}
+GER_blitz_pol  = {
+	allowed = {
+		original_tag = GER
+	}
+	
+	enable = {
+		has_war_with = POL
+	}
+	abort = {
+		POL = {	has_capitulated = yes }	
+	}
+	ai_strategy = {
+		type = consider_weak
+		id = "POL"
+		value = 999
+	}
+	ai_strategy = {
+		type = front_control
+		country_trigger = {
+			original_tag = POL
+		}
+		ordertype = front
+		execution_type = rush_weak
+		execute_order = yes
+		manual_attack = yes
+	}
+}
+
+GER_blitz_fra  = {
+	allowed = {
+		original_tag = GER
+	}
+	
+	enable = {
+		has_war_with = FRA
+		BEL = {	has_capitulated = yes }
+		controls_state = 16 #Paris
+	}
+	abort = {
+		FRA = {	has_capitulated = yes }	
+
+	}
+	ai_strategy = {
+		type = consider_weak
+		id = "FRA"
+		value = 999
+	}
+	ai_strategy = {
+		type = front_control
+		country_trigger = {
+			original_tag = FRA
 		}
 		ordertype = front
 		execution_type = rush_weak
