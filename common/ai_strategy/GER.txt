@@ -1429,19 +1429,17 @@ GER_ITA_close_up_maginot_line_after_FRA_falls  = {
 
 
 # AI are not willing to invade if it is at war at its home against another country's home location
-# lets force invade NOR for GER & ITA
+# lets force invade NOR for GER
 GER_enable_invasion_of_NOR = {
 	allowed = {
-		OR = {
-			original_tag = GER
-			original_tag = ITA
-		}
+		original_tag = GER
 	}
 	enable = {
 		# try to invade NOR if things are looking not so bad
-		OR = {
-			date > 1940.6.1
-			FRA = { has_capitulated = yes } # uh oh, maybe we need more units against FRA
+		AND = {
+			date > 1940.2.1
+			has_completed_focus = GER_weserubung
+			POL = {has_capitulated = yes}
 		}
 	}
 	
@@ -1461,7 +1459,9 @@ GER_enable_invasion_of_NOR = {
 	
 	ai_strategy = {
 		type = invasion_unit_request
-		country_trigger = { always = yes }
+		country_trigger = {
+			original_tag = NOR
+		}
 		value = 100
 	}
 
@@ -2445,6 +2445,35 @@ GER_blitz_fra  = {
 		type = front_control
 		country_trigger = {
 			original_tag = FRA
+		}
+		ordertype = front
+		execution_type = rush_weak
+		execute_order = yes
+		manual_attack = yes
+	}
+}
+
+GER_blitz_den  = {
+	allowed = {
+		original_tag = GER 
+	}
+
+	enable = {
+		has_war_with = DEN
+	}
+	abort = {
+		DEN = {	has_capitulated = yes }	
+	}
+	
+	ai_strategy = {
+		type = consider_weak
+		id = "DEN"
+		value = 999
+	}
+	ai_strategy = {
+		type = front_control
+		country_trigger = {
+			original_tag = DEN
 		}
 		ordertype = front
 		execution_type = rush_weak
