@@ -18,997 +18,997 @@
 
 #Daily Labour Requirements Calculation
 
-logistical_calculations = {
-	#Calculates variables used for dynamic modifiers
-	set_variable = { var_signal_bonus = signal_level }
-	subtract_from_variable = { var_signal_bonus = 5 }
-	multiply_variable = { var_signal_bonus = 0.02 }
+-- logistical_calculations = {
+	-- #Calculates variables used for dynamic modifiers
+	-- set_variable = { var_signal_bonus = signal_level }
+	-- subtract_from_variable = { var_signal_bonus = 5 }
+	-- multiply_variable = { var_signal_bonus = 0.02 }
 
-	set_variable = { var_planning_bonus = var_signal_bonus }
-	multiply_variable = { var_planning_bonus = 4 }
+	-- set_variable = { var_planning_bonus = var_signal_bonus }
+	-- multiply_variable = { var_planning_bonus = 4 }
 
-	set_variable = { var_recon_bonus = var_signal_bonus }
-	multiply_variable = { var_recon_bonus = 2 }
+	-- set_variable = { var_recon_bonus = var_signal_bonus }
+	-- multiply_variable = { var_recon_bonus = 2 }
 	
-	#Calculate supply consumption bonus
-	set_variable = { logistical_bonus = logistical_level }
-	multiply_variable = { logistical_bonus = 0.05 }
-	multiply_variable = { logistical_bonus = -1 }
+	-- #Calculate supply consumption bonus
+	-- set_variable = { logistical_bonus = logistical_level }
+	-- multiply_variable = { logistical_bonus = 0.05 }
+	-- multiply_variable = { logistical_bonus = -1 }
 	
-	#Calculate Equipment needs
-	set_variable = { trucks_needed = logistical_level }
-	set_variable = { light_trucks_needed = logistical_level }
-	set_variable = { tanks_trucks_needed = logistical_level }
-	multiply_variable = { trucks_needed = 5 }
-	multiply_variable = { light_trucks_needed = 2 }
-	multiply_variable = { tanks_trucks_needed = 15 }
-	set_variable = { support_needed = signal_level }
-	multiply_variable = { support_needed = 15 }
+	-- #Calculate Equipment needs
+	-- set_variable = { trucks_needed = logistical_level }
+	-- set_variable = { light_trucks_needed = logistical_level }
+	-- set_variable = { tanks_trucks_needed = logistical_level }
+	-- multiply_variable = { trucks_needed = 5 }
+	-- multiply_variable = { light_trucks_needed = 2 }
+	-- multiply_variable = { tanks_trucks_needed = 15 }
+	-- set_variable = { support_needed = signal_level }
+	-- multiply_variable = { support_needed = 15 }
 	
-	#Applies equipment needs
-	IF = {
-		LIMIT = { check_variable = { logistical_level = 0 } }
-		set_technology  = {
-			logistical_level_1 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_2 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_3 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_4 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_5 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_6 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_7 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_8 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_9 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_10 = 0
-			popup = no
-		}
-	}
-	ELSE_IF = {
-		LIMIT = { check_variable =  { logistical_level = 1 } }
+	-- #Applies equipment needs
+	-- IF = {
+		-- LIMIT = { check_variable = { logistical_level = 0 } }
+		-- set_technology  = {
+			-- logistical_level_1 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_2 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_3 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_4 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_5 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_6 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_7 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_8 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_9 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_10 = 0
+			-- popup = no
+		-- }
+	-- }
+	-- ELSE_IF = {
+		-- LIMIT = { check_variable =  { logistical_level = 1 } }
 
-		set_technology  = {
-			logistical_level_2 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_3 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_4 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_5 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_6 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_7 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_8 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_9 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_10 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_1 = 1
-			popup = no
-		}
-	}
-	ELSE_IF = {
-		LIMIT = { check_variable =  { logistical_level = 2 } }
-		set_technology  = {
-			logistical_level_1 = 0
-			popup = no
-		}
+		-- set_technology  = {
+			-- logistical_level_2 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_3 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_4 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_5 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_6 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_7 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_8 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_9 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_10 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_1 = 1
+			-- popup = no
+		-- }
+	-- }
+	-- ELSE_IF = {
+		-- LIMIT = { check_variable =  { logistical_level = 2 } }
+		-- set_technology  = {
+			-- logistical_level_1 = 0
+			-- popup = no
+		-- }
 
-		set_technology  = {
-			logistical_level_3 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_4 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_5 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_6 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_7 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_8 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_9 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_10 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_2 = 1
-			popup = no
-		}
-	}
-	ELSE_IF = {
-		LIMIT = { check_variable =  { logistical_level = 3 } }
-		set_technology  = {
-			logistical_level_1 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_2 = 0
-			popup = no
-		}
+		-- set_technology  = {
+			-- logistical_level_3 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_4 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_5 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_6 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_7 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_8 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_9 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_10 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_2 = 1
+			-- popup = no
+		-- }
+	-- }
+	-- ELSE_IF = {
+		-- LIMIT = { check_variable =  { logistical_level = 3 } }
+		-- set_technology  = {
+			-- logistical_level_1 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_2 = 0
+			-- popup = no
+		-- }
 
-		set_technology  = {
-			logistical_level_4 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_5 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_6 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_7 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_8 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_9 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_10 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_3 = 1
-			popup = no
-		}
-	}
-	ELSE_IF = {
-		LIMIT = { check_variable =  { logistical_level = 4 } }
-		set_technology  = {
-			logistical_level_1 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_2 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_3 = 0
-			popup = no
-		}
+		-- set_technology  = {
+			-- logistical_level_4 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_5 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_6 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_7 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_8 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_9 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_10 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_3 = 1
+			-- popup = no
+		-- }
+	-- }
+	-- ELSE_IF = {
+		-- LIMIT = { check_variable =  { logistical_level = 4 } }
+		-- set_technology  = {
+			-- logistical_level_1 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_2 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_3 = 0
+			-- popup = no
+		-- }
 
-		set_technology  = {
-			logistical_level_5 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_6 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_7 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_8 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_9 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_10 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_4 = 1
-			popup = no
-		}
-	}
-	ELSE_IF = {
-		LIMIT = { check_variable =  { logistical_level = 5 } }
-		set_technology  = {
-			logistical_level_1 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_2 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_3 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_4 = 0
-			popup = no
-		}
+		-- set_technology  = {
+			-- logistical_level_5 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_6 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_7 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_8 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_9 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_10 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_4 = 1
+			-- popup = no
+		-- }
+	-- }
+	-- ELSE_IF = {
+		-- LIMIT = { check_variable =  { logistical_level = 5 } }
+		-- set_technology  = {
+			-- logistical_level_1 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_2 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_3 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_4 = 0
+			-- popup = no
+		-- }
 
-		set_technology  = {
-			logistical_level_6 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_7 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_8 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_9 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_10 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_5 = 1
-			popup = no
-		}
-	}
-	ELSE_IF = {
-		LIMIT = { check_variable =  { logistical_level = 6 } }
-		set_technology  = {
-			logistical_level_1 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_2 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_3 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_4 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_5 = 0
-			popup = no
-		}
+		-- set_technology  = {
+			-- logistical_level_6 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_7 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_8 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_9 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_10 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_5 = 1
+			-- popup = no
+		-- }
+	-- }
+	-- ELSE_IF = {
+		-- LIMIT = { check_variable =  { logistical_level = 6 } }
+		-- set_technology  = {
+			-- logistical_level_1 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_2 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_3 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_4 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_5 = 0
+			-- popup = no
+		-- }
 
-		set_technology  = {
-			logistical_level_7 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_8 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_9 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_10 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_6 = 1
-			popup = no
-		}
-	}
-	ELSE_IF = {
-		LIMIT = { check_variable =  { logistical_level = 7 } }
-		set_technology  = {
-			logistical_level_1 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_2 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_3 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_4 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_5 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_6 = 0
-			popup = no
-		}
+		-- set_technology  = {
+			-- logistical_level_7 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_8 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_9 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_10 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_6 = 1
+			-- popup = no
+		-- }
+	-- }
+	-- ELSE_IF = {
+		-- LIMIT = { check_variable =  { logistical_level = 7 } }
+		-- set_technology  = {
+			-- logistical_level_1 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_2 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_3 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_4 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_5 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_6 = 0
+			-- popup = no
+		-- }
 
-		set_technology  = {
-			logistical_level_8 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_9 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_10 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_7 = 1
-			popup = no
-		}
-	}
-	ELSE_IF = {
-		LIMIT = { check_variable =  { logistical_level = 8 } }
-		set_technology  = {
-			logistical_level_1 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_2 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_3 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_4 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_5 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_6 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_7 = 0
-			popup = no
-		}
+		-- set_technology  = {
+			-- logistical_level_8 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_9 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_10 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_7 = 1
+			-- popup = no
+		-- }
+	-- }
+	-- ELSE_IF = {
+		-- LIMIT = { check_variable =  { logistical_level = 8 } }
+		-- set_technology  = {
+			-- logistical_level_1 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_2 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_3 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_4 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_5 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_6 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_7 = 0
+			-- popup = no
+		-- }
 
-		set_technology  = {
-			logistical_level_9 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_10 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_8 = 1
-			popup = no
-		}
-	}
-	ELSE_IF = {
-		LIMIT = { check_variable =  { logistical_level = 9 } }
-		set_technology  = {
-			logistical_level_1 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_2 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_3 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_4 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_5 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_6 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_7 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_8 = 0
-			popup = no
-		}
+		-- set_technology  = {
+			-- logistical_level_9 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_10 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_8 = 1
+			-- popup = no
+		-- }
+	-- }
+	-- ELSE_IF = {
+		-- LIMIT = { check_variable =  { logistical_level = 9 } }
+		-- set_technology  = {
+			-- logistical_level_1 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_2 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_3 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_4 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_5 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_6 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_7 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_8 = 0
+			-- popup = no
+		-- }
 
-		set_technology  = {
-			logistical_level_10 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_9 = 1
-			popup = no
-		}
-	}
-	ELSE_IF = {
-		LIMIT = { check_variable = { logistical_level = 10 } }
-		set_technology  = {
-			logistical_level_1 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_2 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_3 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_4 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_5 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_6 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_7 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_8 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_9 = 0
-			popup = no
-		}
-		set_technology  = {
-			logistical_level_10 = 1
-			popup = no
-		}
-	}
-	#Applies equipment needs
-	IF = {
-		LIMIT = { check_variable = { signal_level = 0 } }
-		set_technology  = {
-			signal_level_1 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_2 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_3 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_4 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_5 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_6 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_7 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_8 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_9 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_10 = 0
-			popup = no
-		}
-	}
-	ELSE_IF = {
-		LIMIT = { check_variable =  { signal_level = 1 } }
+		-- set_technology  = {
+			-- logistical_level_10 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_9 = 1
+			-- popup = no
+		-- }
+	-- }
+	-- ELSE_IF = {
+		-- LIMIT = { check_variable = { logistical_level = 10 } }
+		-- set_technology  = {
+			-- logistical_level_1 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_2 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_3 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_4 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_5 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_6 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_7 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_8 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_9 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- logistical_level_10 = 1
+			-- popup = no
+		-- }
+	-- }
+	-- #Applies equipment needs
+	-- IF = {
+		-- LIMIT = { check_variable = { signal_level = 0 } }
+		-- set_technology  = {
+			-- signal_level_1 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_2 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_3 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_4 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_5 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_6 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_7 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_8 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_9 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_10 = 0
+			-- popup = no
+		-- }
+	-- }
+	-- ELSE_IF = {
+		-- LIMIT = { check_variable =  { signal_level = 1 } }
 
-		set_technology  = {
-			signal_level_2 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_3 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_4 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_5 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_6 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_7 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_8 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_9 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_10 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_1 = 1
-			popup = no
-		}
-	}
-	ELSE_IF = {
-		LIMIT = { check_variable =  { signal_level = 2 } }
-		set_technology  = {
-			signal_level_1 = 0
-			popup = no
-		}
+		-- set_technology  = {
+			-- signal_level_2 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_3 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_4 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_5 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_6 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_7 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_8 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_9 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_10 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_1 = 1
+			-- popup = no
+		-- }
+	-- }
+	-- ELSE_IF = {
+		-- LIMIT = { check_variable =  { signal_level = 2 } }
+		-- set_technology  = {
+			-- signal_level_1 = 0
+			-- popup = no
+		-- }
 
-		set_technology  = {
-			signal_level_3 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_4 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_5 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_6 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_7 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_8 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_9 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_10 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_2 = 1
-			popup = no
-		}
-	}
-	ELSE_IF = {
-		LIMIT = { check_variable =  { signal_level = 3 } }
-		set_technology  = {
-			signal_level_1 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_2 = 0
-			popup = no
-		}
+		-- set_technology  = {
+			-- signal_level_3 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_4 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_5 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_6 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_7 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_8 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_9 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_10 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_2 = 1
+			-- popup = no
+		-- }
+	-- }
+	-- ELSE_IF = {
+		-- LIMIT = { check_variable =  { signal_level = 3 } }
+		-- set_technology  = {
+			-- signal_level_1 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_2 = 0
+			-- popup = no
+		-- }
 
-		set_technology  = {
-			signal_level_4 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_5 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_6 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_7 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_8 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_9 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_10 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_3 = 1
-			popup = no
-		}
-	}
-	ELSE_IF = {
-		LIMIT = { check_variable =  { signal_level = 4 } }
-		set_technology  = {
-			signal_level_1 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_2 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_3 = 0
-			popup = no
-		}
+		-- set_technology  = {
+			-- signal_level_4 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_5 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_6 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_7 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_8 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_9 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_10 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_3 = 1
+			-- popup = no
+		-- }
+	-- }
+	-- ELSE_IF = {
+		-- LIMIT = { check_variable =  { signal_level = 4 } }
+		-- set_technology  = {
+			-- signal_level_1 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_2 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_3 = 0
+			-- popup = no
+		-- }
 
-		set_technology  = {
-			signal_level_5 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_6 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_7 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_8 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_9 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_10 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_4 = 1
-			popup = no
-		}
-	}
-	ELSE_IF = {
-		LIMIT = { check_variable =  { signal_level = 5 } }
-		set_technology  = {
-			signal_level_1 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_2 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_3 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_4 = 0
-			popup = no
-		}
+		-- set_technology  = {
+			-- signal_level_5 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_6 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_7 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_8 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_9 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_10 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_4 = 1
+			-- popup = no
+		-- }
+	-- }
+	-- ELSE_IF = {
+		-- LIMIT = { check_variable =  { signal_level = 5 } }
+		-- set_technology  = {
+			-- signal_level_1 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_2 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_3 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_4 = 0
+			-- popup = no
+		-- }
 
-		set_technology  = {
-			signal_level_6 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_7 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_8 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_9 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_10 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_5 = 1
-			popup = no
-		}
-	}
-	ELSE_IF = {
-		LIMIT = { check_variable =  { signal_level = 6 } }
-		set_technology  = {
-			signal_level_1 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_2 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_3 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_4 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_5 = 0
-			popup = no
-		}
+		-- set_technology  = {
+			-- signal_level_6 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_7 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_8 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_9 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_10 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_5 = 1
+			-- popup = no
+		-- }
+	-- }
+	-- ELSE_IF = {
+		-- LIMIT = { check_variable =  { signal_level = 6 } }
+		-- set_technology  = {
+			-- signal_level_1 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_2 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_3 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_4 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_5 = 0
+			-- popup = no
+		-- }
 
-		set_technology  = {
-			signal_level_7 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_8 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_9 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_10 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_6 = 1
-			popup = no
-		}
-	}
-	ELSE_IF = {
-		LIMIT = { check_variable =  { signal_level = 7 } }
-		set_technology  = {
-			signal_level_1 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_2 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_3 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_4 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_5 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_6 = 0
-			popup = no
-		}
+		-- set_technology  = {
+			-- signal_level_7 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_8 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_9 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_10 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_6 = 1
+			-- popup = no
+		-- }
+	-- }
+	-- ELSE_IF = {
+		-- LIMIT = { check_variable =  { signal_level = 7 } }
+		-- set_technology  = {
+			-- signal_level_1 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_2 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_3 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_4 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_5 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_6 = 0
+			-- popup = no
+		-- }
 
-		set_technology  = {
-			signal_level_8 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_9 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_10 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_7 = 1
-			popup = no
-		}
-	}
-	ELSE_IF = {
-		LIMIT = { check_variable =  { signal_level = 8 } }
-		set_technology  = {
-			signal_level_1 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_2 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_3 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_4 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_5 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_6 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_7 = 0
-			popup = no
-		}
+		-- set_technology  = {
+			-- signal_level_8 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_9 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_10 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_7 = 1
+			-- popup = no
+		-- }
+	-- }
+	-- ELSE_IF = {
+		-- LIMIT = { check_variable =  { signal_level = 8 } }
+		-- set_technology  = {
+			-- signal_level_1 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_2 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_3 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_4 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_5 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_6 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_7 = 0
+			-- popup = no
+		-- }
 
-		set_technology  = {
-			signal_level_9 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_10 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_8 = 1
-			popup = no
-		}
-	}
-	ELSE_IF = {
-		LIMIT = { check_variable =  { signal_level = 9 } }
-		set_technology  = {
-			signal_level_1 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_2 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_3 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_4 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_5 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_6 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_7 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_8 = 0
-			popup = no
-		}
+		-- set_technology  = {
+			-- signal_level_9 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_10 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_8 = 1
+			-- popup = no
+		-- }
+	-- }
+	-- ELSE_IF = {
+		-- LIMIT = { check_variable =  { signal_level = 9 } }
+		-- set_technology  = {
+			-- signal_level_1 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_2 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_3 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_4 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_5 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_6 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_7 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_8 = 0
+			-- popup = no
+		-- }
 
-		set_technology  = {
-			signal_level_10 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_9 = 1
-			popup = no
-		}
-	}
-	ELSE_IF = {
-		LIMIT = { check_variable = { signal_level = 10 } }
-		set_technology  = {
-			signal_level_1 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_2 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_3 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_4 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_5 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_6 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_7 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_8 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_9 = 0
-			popup = no
-		}
-		set_technology  = {
-			signal_level_10 = 1
-			popup = no
-		}
-	}
-}
+		-- set_technology  = {
+			-- signal_level_10 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_9 = 1
+			-- popup = no
+		-- }
+	-- }
+	-- ELSE_IF = {
+		-- LIMIT = { check_variable = { signal_level = 10 } }
+		-- set_technology  = {
+			-- signal_level_1 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_2 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_3 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_4 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_5 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_6 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_7 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_8 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_9 = 0
+			-- popup = no
+		-- }
+		-- set_technology  = {
+			-- signal_level_10 = 1
+			-- popup = no
+		-- }
+	-- }
+-- }
