@@ -77,7 +77,7 @@ NDefines.NCountry.WAR_SUPPORT_OFFNSIVE_WAR = -0.1				-- Impact of being in offen
 NDefines.NCountry.WAR_SUPPORT_DEFENSIVE_WAR = 0.2				-- Impact of being in defensive war
 NDefines.NCountry.FRONT_PROVINCE_SCORE_HOSTILE_TROOPS = -1 		-- If province score in a front is below this value we are losing territory, and hostile troop alert will show.
 NDefines.NCountry.THEATRES_BIND_BORDER_DISTANCE = 25000			-- Map distance (before sqrt) between the center of the borders that determines if theatres should be bound or not.
-NDefines.NCountry.MIN_NAVAL_SUPPLY_EFFICIENCY = 0.15				-- Min ratio when supplies will be considered delivered from the capital by naval path
+NDefines.NCountry.MIN_NAVAL_SUPPLY_EFFICIENCY = 0.01 --0.15				-- Min ratio when supplies will be considered delivered from the capital by naval path
 NDefines.NCountry.STATE_VALUE_RESEOURCE_MULT = 0.05				-- The Value of each resource in a state ( Value is used to determine costs in peace conference and PP cost to occupy)
 NDefines.NCountry.BASE_SURRENDER_LIMIT = 0.75						-- Base level of occupation required for country surrender
 NDefines.NCountry.INTERCEPTION_WAR_SUPPORT_SCALE = 0.00002		-- Scaling of interceptions to war support impact
@@ -218,7 +218,7 @@ NDefines.NBuildings.RADAR_INTEL_EFFECT = 30			-- Province covered by radar incre
 NDefines.NBuildings.SABOTAGE_FACTORY_DAMAGE = 75.0		-- How much damage takes a factory building in sabotage when state is occupied. Damage is mult by (1 + resistance strength), i.e. up to 2 x base value.	
 NDefines.NBuildings.INFRASTRUCTURE_RESOURCE_BONUS = 0.1 --0.2-- multiplicative resource bonus for each level of (non damaged) infrastructure
 NDefines.NBuildings.SUPPLY_ROUTE_RESOURCE_BONUS = 0.0   -- multiplicative resource bonus for having a railway/naval connection to the capital
-
+NDefines.INFRASTRUCTURE_MUD_EFFECT = -0.65 -- -0.8 -- multiplicative effect on mud growth for max infra
 
 
 	
@@ -410,26 +410,60 @@ NDefines.NMilitary.ATTRITION_DAMAGE_ORG = 0.1
 NDefines.NMilitary.ATTRITION_EQUIPMENT_LOSS_CHANCE = 0.005
 NDefines.NMilitary.SUPPLY_USE_FACTOR_MOVING = 10                -- supply use when moving/fighting vs inactive
 NDefines.NMilitary.SUPPLY_USE_FACTOR_INACTIVE = 0.95
-NDefines.NMilitary.SUPPLY_GRACE = 108		-- troops always carry 3 days of food and supply
+NDefines.NMilitary.SUPPLY_GRACE = 168 --108		-- troops always carry 3 days of food and supply
+NDefines.NMilitary.SUPPLY_ORG_MAX_CAP = 0.10                     --0.30 Max organization is factored by this if completely out of supply
 NDefines.NMilitary.MAX_OUT_OF_SUPPLY_DAYS = 14 				   -- how many days of shitty supply until max penalty achieved
 NDefines.NMilitary.OUT_OF_SUPPLY_ATTRITION = 0.025                -- max attrition when out of supply
-NDefines.NMilitary.OUT_OF_SUPPLY_SPEED = -0.5                    -- max speed reduction from supply
+NDefines.NMilitary.OUT_OF_SUPPLY_SPEED = -0.9                    -- -0.8 max speed reduction from supply
 NDefines.NMilitary.NON_CORE_SUPPLY_SPEED = -0.7				   -- we are not running on our own VP supply so need to steal stuff along the way
 NDefines.NMilitary.OUT_OF_SUPPLY_MORALE = -0.25                   -- max org regain reduction from supply
+NDefines.NMilitary.LOW_SUPPLY = 0.75							   --0.99 -- When the supply status of an unit becomes low.
 NDefines.NSupply.SUPPLY_HUB_FULL_MOTORIZATION_TRUCK_COST = 800 --80.0 -- How many trucks does it cost to fully motorize a hub
 NDefines.NSupply.RAILWAY_BASE_FLOW = 5.0 --10.0 		-- how much base flow railway gives when a node connected to its capital/a naval node by a railway
 NDefines.NSupply.RAILWAY_FLOW_PER_LEVEL = 10.0 --5.0 	-- how much additional flow a railway level gives
 NDefines.NSupply.RAILWAY_FLOW_PENALTY_PER_DAMAGED = 10.0 --5.0 -- penalty to flow per damaged railway
-NDefines.NSupply.RAILWAY_CONVERSION_COOLDOWN = 12 --10 -- railways will be put on cooldown when they are captured by enemy and will not be usable during the cooldown
-NDefines.NSupply.RAILWAY_CONVERSION_COOLDOWN_CORE = 12 --5 -- Recapturing railways that have been "converted" by the ennemy does not change if core or not....
+NDefines.NSupply.RAILWAY_CONVERSION_COOLDOWN = 21 --10 -- railways will be put on cooldown when they are captured by enemy and will not be usable during the cooldown
+NDefines.NSupply.RAILWAY_CONVERSION_COOLDOWN_CORE = 21 --5 -- Recapturing railways that have been "converted" by the ennemy does not change if core or not....
 NDefines.NSupply.RAILWAY_CONVERSION_COOLDOWN_CIVILWAR = 0
+NDefines.NSupply.RAILWAY_MIN_FLOW = 0.5		-- 5.0 -- minimum railway flow can be reduced to
+NDefines.NSupply.CAPITAL_INITIAL_SUPPLY_FLOW = 1.5 -- 5.0 starting supply from
+NDefines.NSupply.CAPITAL_STARTING_PENALTY_PER_PROVINCE = 0.25 -- 0.50 starting penalty that will be added as supply moves away from its origin (modified by stuff like terrain)
+NDefines.NSupply.CAPITAL_ADDED_PENALTY_PER_PROVINCE = 0.0 -- 1.2 added penalty as we move away from origin
+NDefines.NSupply.NODE_INITIAL_SUPPLY_FLOW = 1.5    -- 2.8
+NDefines.NSupply.NODE_STARTING_PENALTY_PER_PROVINCE = 0.25 -- 0.50
+NDefines.NSupply.NODE_ADDED_PENALTY_PER_PROVINCE = 0.00 --0.70 -- removed this, as don't want an exponentially increasing curve
+NDefines.NSupply.NAVAL_BASE_INITIAL_SUPPLY_FLOW = 1.5 --  3.3 
+NDefines.NSupply.NAVAL_BASE_STARTING_PENALTY_PER_PROVINCE = 0.25 --  0.84
+NDefines.NSupply.NAVAL_BASE_ADDED_PENALTY_PER_PROVINCE = 0.0 --  1.1
+NDefines.NSupply.NODE_FLOW_BONUS_PER_RAIL_LEVEL = 0.1 -- 0.34  the idea being that trucks are the big way of increasing flow out of the hub, rails are there to increase the max capacity
+NDefines.NSupply.SUPPLY_FLOW_DROP_REDUCTION_AT_MAX_INFRA = 0.12 -- 0.30 -- max infrastructure level will reduce the supply flow drop off by this ratio
+NDefines.NSupply.SUPPLY_FLOW_PENALTY_CROSSING_RIVERS = 0.10 -- 0.20 -- crossing rivers introduces additional penalty
+NDefines.NSupply.SUPPLY_FLOW_DIST_LOGISTICS_FALLOFF_K = 1.3 -- How steep the curve is
+NDefines.NSupply.SUPPLY_FLOW_DIST_LOGISTICS_FALLOFF_MIN_PENALTY_SCALE = 0.0 -- 0.25 Logistics curve never reduces penalty facor below this limit
+NDefines.NSupply.SUPPLY_NODE_MIN_SUPPLY_THRESHOLD = 0.5 --  1.0 -- if supply of a node is below this value it will be set to 0 -- Currently unused?
+NDefines.NSupply.VP_TO_SUPPLY_BASE = 0.0							-- 0.2 -- Bonus to supply from a VP, no matter the level
+NDefines.NSupply.VP_TO_SUPPLY_BONUS_CONVERSION = 0.02			-- 0.05 -- Bonus to supply local supplies from Victory Points, multiplied by this aspect and rounded to closest integer
+NDefines.NSupply.SUPPLY_FROM_DAMAGED_INFRA = 0.0                -- 0.15 -- damaged infrastructure counts as this in supply calcs
+NDefines.NSupply.SUPPLY_BASE_MULT = 0.0							-- 0.2 - multiplier on supply base values
+NDefines.NSupply.SUPPLY_FLOW_REDUCTION_THRESHOLD = 0.02 -- 0.1 -- if supply flow is lower than this, it is not applied
+NDefines.NSupply.ARMY_MAX_SUPPLY_RATIO_GAIN_PER_HOUR = 0.05 -- 0.15 the idea is to reduce the rate of supply drop-off when out of supply
+NDefines.NSupply.DAYS_TO_START_GIVING_SUPPLY_AFTER_MOVING_SUPPLY_CAPITAL = 1  --7 all supply doesn't really come from the capital -- the country will start gaining supply after this many days moving its capital
+NDefines.NSupply.SUPPLY_PATH_MAX_DISTANCE = 21	-- 15 -- max time it can take
+NDefines.NSupply.ALERT_VERY_LOW_SUPPLY_LEVEL = 0.25			   --0.2 -- At which point we show up the low and very low supply level alert. Value is in % of supplies supported vs required.
+NDefines.NSupply.SUPPLY_THRESHOLD_FOR_ARMY_ATTRITION = 0.25 --0.35 the main impact of supply is poorer performance, not parts wearing out more quickly -- armies will only get attrition below this supply
+NDefines.NSupply.AVAILABLE_MANPOWER_STATE_SUPPLY = 0.0						--  0.18 -- Factor for state supply from max manpower (population)
+NDefines.NSupply.STORED_SUPPLY_CONSUMPTION_RATE_FACTOR = 0.50				-- 0.75 -- Multiplies consumption rate of stored supply (more/less easement)
+NDefines.NAITheatre.AI_THEATRE_SUPPLY_CRISIS_LIMIT = 0.2                              -- 0.1 -- If a unit is standing in an area with this supply ratio it will try to escape
+
+-- order by EExecutionType: careful, balanced, rush, <skip>, weak rush
+NDefines.NMilitary.PLAN_EXECUTE_SUPPLY_CHECK = { 1.0, 0.75, 0.55, 1.0, 0.4 } --  {1.0, 0.0, 0.0, 1.0, 0.0} -- for each execution mode how careful should we be with supply (1.0 means full required supply available, zero is no limit).
 
 -- Lack of supply effect
 
-NDefines.NMilitary.COMBAT_SUPPLY_LACK_ATTACKER_ATTACK = -0.50     -- attack combat penalty for attacker if out of supply
-NDefines.NMilitary.COMBAT_SUPPLY_LACK_ATTACKER_DEFEND = -0.65     -- defend combat penalty for attacker if out of supply
-NDefines.NMilitary.COMBAT_SUPPLY_LACK_DEFENDER_ATTACK = -0.20     -- attack combat penalty for defender if out of supply
-NDefines.NMilitary.COMBAT_SUPPLY_LACK_DEFENDER_DEFEND = -0.15     -- defend combat penalty for defender if out of supply
+NDefines.NMilitary.COMBAT_SUPPLY_LACK_ATTACKER_ATTACK = -0.70     -- attack combat penalty for attacker if out of supply
+NDefines.NMilitary.COMBAT_SUPPLY_LACK_ATTACKER_DEFEND = -0.50     -- defend combat penalty for attacker if out of supply
+NDefines.NMilitary.COMBAT_SUPPLY_LACK_DEFENDER_ATTACK = -0.70     -- attack combat penalty for defender if out of supply
+NDefines.NMilitary.COMBAT_SUPPLY_LACK_DEFENDER_DEFEND = -0.25     -- defend combat penalty for defender if out of supply
 
 -- Battleplan Execution Adjustments
 
@@ -912,4 +946,4 @@ NDefines.NCharacter.GENIUS_ADVISOR_MIN_RANK = 7
 NDefines.NSupply.CAPITAL_SUPPLY_CIVILIAN_FACTORIES = 0.075 --0,3-- supply from one civilian factory
 NDefines.NSupply.CAPITAL_SUPPLY_MILITARY_FACTORIES = 0.15 --0.6-- supply from one military factory
 NDefines.NSupply.CAPITAL_SUPPLY_DOCKYARDS = 0.1 --0.4--supply from one naval factory
-NDefines.NSupply.INFRA_TO_SUPPLY = 0.15			--0.3				-- each level of infra gives this many supply
+NDefines.NSupply.INFRA_TO_SUPPLY = 0.00		--0.3				-- each level of infra gives this many supply
