@@ -515,6 +515,24 @@ NDefines.NAir.ESCORT_FACTOR = 0
 NDefines.NAir.COMBAT_DAMAGE_STATS_MULTILIER = 0
 NDefines.NAir.COMBAT_BETTER_AGILITY_DAMAGE_REDUCTION = 0
 
+NDefines.NAir.MISSION_COMMAND_POWER_COSTS = {  -- command power cost per plane to create a mission
+		0.0, -- AIR_SUPERIORITY
+		0.0, -- CAS
+		0.0, -- INTERCEPTION
+		0.0, -- STRATEGIC_BOMBER
+		0.0, -- NAVAL_BOMBER
+		0.0, -- DROP_NUKE
+		0.0, -- PARADROP
+		0.0, -- NAVAL_KAMIKAZE
+        0.0, -- PORT_STRIKE
+		0.0, -- ATTACK_LOGISTICS
+		0.2, -- AIR_SUPPLY
+		0.0, -- TRAINING
+		0.0, -- NAVAL_MINES_PLANTING
+		0.0, -- NAVAL_MINES_SWEEPING
+		0.0, -- MISSION_RECON
+}
+
 -- Night effect (brutal)
 
 NDefines.NAir.DETECT_CHANCE_FROM_NIGHT = -0.4 -- -0.2					-- How much the night can reduce the air detection. (see static modifiers to check how weather affects it too.)
