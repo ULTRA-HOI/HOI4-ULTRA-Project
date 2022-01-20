@@ -154,7 +154,10 @@ war_with_soviets = {
 	enable = {
 		country_exists = SOV
 		NOT = { is_in_faction_with = SOV }
-		date > 1941.5.1
+		OR = {
+			NOR = { has_capitulated = yes }
+			date > 1941.5.1
+		}
 		OR = {
 			AND = {
 				FRA = { has_capitulated = yes }
@@ -2387,7 +2390,10 @@ GER_prep_yug = {
 		FRA = {
 			has_capitulated = yes
 		}
-		date > 1941.3.1
+		OR = {
+			date > 1941.3.1
+			NOR = {has_capitulated = yes}
+		}
 	}
 	abort = {
 		has_war_with = YUG
@@ -3151,5 +3157,40 @@ GER_italian_theater = {
 		type = conquer
 		id = "ITA"			
 		value = 100
+	}
+}
+
+GER_dont_help_ita = { #don't send Panzers in Ethiopia plox
+	allowed = {
+		original_tag = GER
+	}
+	
+	enable = {
+		is_in_faction_with = ITA
+		ITA = {
+			controls_state = 451
+			controls_state = 450
+			controls_state = 448
+		}
+	}
+	
+	abort_when_not_enabled = yes
+	
+	ai_strategy = {
+		type = dont_defend_ally_borders
+		id = "ITA"
+		value = 999
+	}
+	
+	ai_strategy = {
+		type = area_priority
+		id = north_africa
+		value = -999
+	}
+	
+	ai_strategy = {
+		type = area_priority
+		id = south_africa
+		value = -999
 	}
 }
