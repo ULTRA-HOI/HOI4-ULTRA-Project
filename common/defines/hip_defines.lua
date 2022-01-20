@@ -394,7 +394,7 @@ NDefines.NMilitary.FIELD_EXPERIENCE_MAX_PER_DAY = 1.2  -- Most xp you can gain p
 NDefines.NMilitary.COMMANDER_LEVEL_UP_STAT_COUNT = 3 		--was 3		-- num stats gained on level up
 NDefines.NMilitary.COMMANDER_LEVEL_UP_STAT_WEIGHTS = {8, 4, 1, 2} -- was {5, 5, 5, 5} -- level up stat random base weights attack, defense, planning, logistics
 
-NDefines.NMilitary.PROMOTE_LEADER_CP_COST = 75.0 -- was 40                    -- cost of promoting a leader
+NDefines.NMilitary.PROMOTE_LEADER_CP_COST = 60.0 -- was 40                    -- cost of promoting a leader
 
 -- Anti Air effect 
 
