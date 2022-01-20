@@ -916,13 +916,53 @@ political_actions = {
 			
 		}
 	}
+	
+	send_convoy_to_soviets_AI = {
+		 fire_only_once = yes
+		allowed = {
+			OR = {
+				original_tag = ENG
+				original_tag = USA
+			}
+		}
+		
+		visible = {
+			is_ai = yes
+			SOV = {
+				has_war_with = GER
+			}
+			ENG = {
+				has_war_with = GER
+			}
+		}
+		
+		available = {
+			has_equipment = {
+				convoy > 1999
+			}
+		}
+		
+		cost = 0
+		
+		ai_will_do = {
+			base = 100
+		}
+		
+		complete_effect = {
+			send_equipment = {
+				equipment = convoy
+				amount = 1000
+				target = SOV
+			}
+		}
+	}
 }
 
 GER_military_buildup = {
     GER_correct_bad_torpedoes_ai = {
 
 		allowed = {
-            	original_tag = GER
+            original_tag = GER
 		}
 
 		visible = {
