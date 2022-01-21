@@ -3270,3 +3270,26 @@ GER_dont_help_persia = { #don't send Panzers in Iran plox
 		value = -999
 	}
 }
+GER_keep_on_raiding = {
+	allowed = {
+		original_tag = GER
+	}
+	enable = {
+		date > 1940.4.1
+		OR = {
+		has_war_with = ENG
+		has_war_with = USA
+		}
+	}
+
+	abort = {
+		NOT = { has_war_with = ENG }	
+		NOT = { has_war_with = USA }
+	}
+
+	ai_strategy = {
+		type = naval_mission_threshold
+		id = "MISSION_CONVOY_RAIDING"
+		value = -95 #puts our threshold at 5
+	}
+}
