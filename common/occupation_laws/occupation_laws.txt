@@ -232,6 +232,10 @@ liberate_workers_occupation = {
 	
 	ai_will_do = {
 		base = 200
+		modifier = {
+			has_government = communism
+			add = 1000			
+		}
 	}
 }
 
@@ -454,7 +458,7 @@ brutally_oppressive_occupation = {
 		required_garrison_factor 		= 1.0
 		resistance_damage_to_garrison 	= 1.0
 		local_resources 				= 0.35 ###0.35
-		local_factories 				= 0.20 ###0.20
+		local_factories 				= 0.25 ###0.20
 		resistance_decay 				= 1.0
 	}
 	
@@ -475,6 +479,38 @@ brutally_oppressive_occupation = {
 			resistance > resistance_limit
 			
 			add = 1000
+		}
+		
+		modifier = {
+			is_controlled_by = GER
+			GER = { has_government = fascism }
+			NOT = {
+				OR = {
+					is_core_of = FRA
+					is_core_of = BEL
+					is_core_of = HOL
+					is_core_of = DEN
+					is_core_of = CZE
+					is_core_of = NOR
+					is_core_of = SWE
+					is_core_of = SWI
+					is_core_of = ITA
+					is_core_of = ENG
+					is_core_of = IRE
+					is_core_of = SPR
+					is_core_of = POR
+					is_core_of = ICE
+					is_claimed_by = GER
+				}
+			}
+			add = 1000			
+		}
+		
+		modifier = {
+			is_controlled_by = JAP
+			JAP = { has_government = fascism }
+			compliance < 25
+			add = 1000			
 		}
 	}
 }
