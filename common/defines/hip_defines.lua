@@ -107,7 +107,7 @@ NDefines.NCountry.SURRENDER_LIMIT_REDUCTION_PER_COLLABORATION = 0.0 --0.3 	--eac
 NDefines.NResistance.GARRISON_MANPOWER_LOST_BY_ATTACK = 0.0025 	--0.018 -- Ratio of manpower lost by garrison at each attack on garrison (this number will be reduced by the hardness of garrison template)
 NDefines.NResistance.GARRISON_EQUIPMENT_LOST_BY_ATTACK = 0.005 	-- 0.02 -- Ratio of equipment lost by garrison at each attack on garrison (this number will be reduced by the hardness of garrison template)
 
-NDefines.NResistance.RESISTANCE_TARGET_BASE = 35.0 -- base resistance target percentage
+NDefines.NResistance.RESISTANCE_TARGET_BASE = 50 --35.0 -- base resistance target percentage
 NDefines.NResistance.RESISTANCE_TARGET_MODIFIER_HAS_CLAIM = -10.0		---5.0	-- resistance target modifier in % for states we have claim
 NDefines.NResistance.RESISTANCE_TARGET_MODIFIER_OCCUPIED_CAPITULATED = -10.0 -- resistance target modifier when the enemy is capitulated
 
