@@ -115,9 +115,9 @@ NDefines.NResistance.MAX_GARRISON_RATIO_WE_AGREE_TO_SUPPORT = 0.3 --3.0	-- The p
 NDefines.NResistance.SUPPRESSION_NEEDED_BY_RESISTANCE_POINT = 0.5 --0.75 -- Number of suppression point we need for each 1% of resistance
 
 NDefines.NResistance.COMPLIANCE_GROWTH_HAS_CLAIM = 10 --5 -- compliance growth buff if state has a claim
-NDefines.NResistance.COMPLIANCE_GROWTH_BASE = 0.01 -- 0.075 -- base compliance grow
-NDefines.NResistance.COMPLIANCE_DECAY_AT_MAX_COMPLIANCE = -0.011 -- -0.083 -- as compliance increases, it gets a decay rate depending on its value. compliance should stabilize at some value until its growth chWanges
-NDefines.NResistance.COMPLIANCE_DECAY_PER_EXILE_LEGITIMACY = -0.003 -- 0.015 -- higher legitimacy will give higher decay to compliance
+NDefines.NResistance.COMPLIANCE_GROWTH_BASE = 0.02 -- 0.075 -- base compliance grow
+NDefines.NResistance.COMPLIANCE_DECAY_AT_MAX_COMPLIANCE = -0.022 -- -0.083 -- as compliance increases, it gets a decay rate depending on its value. compliance should stabilize at some value until its growth chWanges
+NDefines.NResistance.COMPLIANCE_DECAY_PER_EXILE_LEGITIMACY = -0.006 -- 0.015 -- higher legitimacy will give higher decay to compliance
 -- espionage stuff 
 
 NDefines.NCountry.MAX_PROPAGANDA_STABILITY_IMPACT = -0.1   -- -0.2			-- Max total penalty from operative performing the propaganda mission in a country
