@@ -299,13 +299,13 @@ political_actions = {
 		icon = generic_prepare_civil_war
 
 		available = {
-			has_army_experience > 299
+			has_army_experience > 99
 			has_completed_focus = ITA_modernized_army
 		}
 
 		cost = 25
 		ai_will_do = {
-			factor = 500
+			factor = 0
 		}
 		days_remove = 120
 
@@ -315,6 +315,7 @@ political_actions = {
 				has_idea = ITA_army_corruption_2
 				has_idea = ITA_army_corruption_3
 			}
+			is_ai = no
 		}
 		remove_effect = {
 			if = {
@@ -337,7 +338,54 @@ political_actions = {
 			}
 		}
 		complete_effect = {
-			army_experience = -200
+			army_experience = -100
+		}		
+	}
+	
+	ITA_army_reform_AI = {
+
+		icon = generic_prepare_civil_war
+
+		available = {
+			has_completed_focus = ITA_modernized_army
+		}
+
+		cost = 0
+		ai_will_do = {
+			factor = 999
+		}
+		days_remove = 120
+
+		visible = {
+			OR = {
+				has_idea = ITA_army_corruption_1
+				has_idea = ITA_army_corruption_2
+				has_idea = ITA_army_corruption_3
+			}
+			is_ai = yes
+		}
+		remove_effect = {
+			if = {
+				limit = { has_idea = ITA_army_corruption_1 }
+				swap_ideas = {
+					remove_idea = ITA_army_corruption_1
+					add_idea = ITA_army_corruption_2
+				}
+			}
+			else_if = {
+				limit = { has_idea = ITA_army_corruption_2 }
+				swap_ideas = {
+					remove_idea = ITA_army_corruption_2
+					add_idea = ITA_army_corruption_3
+				}
+			}
+			else_if = {
+				limit = { has_idea = ITA_army_corruption_3 }
+				remove_ideas = ITA_army_corruption_3
+			}
+		}
+		complete_effect = {
+			
 		}		
 	}
 	
