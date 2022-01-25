@@ -1682,10 +1682,9 @@ SOV_winter_offensive_2 = {
 
 SOV_chill_for_a_bit = {
 	allowed = { 
-		tag = SOV
+		original_tag = SOV
 	}
 	enable = {
-		original_tag = SOV
         has_war_with = GER
 	}
 	abort = {
@@ -1706,10 +1705,9 @@ SOV_chill_for_a_bit = {
 
 SOV_chill_for_a_bit_2 = {
 	allowed = { 
-		tag = SOV
+		original_tag = SOV
 	}
 	enable = {
-		original_tag = SOV
         has_war_with = GER
         date > 1942.1.1
 	}
@@ -1753,11 +1751,10 @@ SOV_Automn_Offensive = {
 }
 
 SOV_chill_for_a_bit_3 = {
-	allowed = { 
-		tag = SOV
+	allowed = {
+		original_tag = SOV
 	}
 	enable = {
-		original_tag = SOV
         has_war_with = GER
         date > 1943.11.1
 	}
@@ -1777,7 +1774,7 @@ SOV_chill_for_a_bit_3 = {
 }
 
 SOV_summer_Offensive = {
-	allowed = { 
+	allowed = {
 		original_tag = SOV
 	}
 	enable = {
@@ -1801,11 +1798,10 @@ SOV_summer_Offensive = {
 }
 
 SOV_chill_for_a_bit_4 = {
-	allowed = { 
-		tag = SOV
+	allowed = {
+		original_tag = SOV
 	}
 	enable = {
-		original_tag = SOV
         has_war_with = GER
         date > 1944.10.1
 	}
@@ -1825,7 +1821,7 @@ SOV_chill_for_a_bit_4 = {
 }
 
 SOV_spring_Offensive = { #Rush B
-	allowed = { 
+	allowed = {
 		original_tag = SOV
 	}
 	enable = {
@@ -1849,18 +1845,16 @@ SOV_spring_Offensive = { #Rush B
 }
 
 SOV_some_safer_places_to_build = {
-	allowed = { 
+	allowed = {
 		original_tag = SOV
 	}
 	enable = {
-		original_tag = SOV
+		always = yes
 	}
-
 	abort = {
-		original_tag = SOV
-		OR = {	
+		OR = {
 			GER = { has_capitulated = yes }
-			GER = { exists = no }			
+			GER = { exists = no }
 		}
 	}
 	ai_strategy = {
@@ -2539,16 +2533,15 @@ SOV_some_safer_places_to_build = {
 }
 
 SOV_wants_civs = { #We want some civ construction first
-	allowed = { 
+	allowed = {
 		original_tag = SOV
 	}
 	enable = {
-		date > 1936.1.1	
+		date > 1936.1.1
 	}
-		
 	abort = {
-		date > 1938.1.1	
-	}	
+		date > 1938.1.1
+	}
 	ai_strategy = {
 		type = building_target
 		id = arms_factory
@@ -2562,17 +2555,16 @@ SOV_wants_civs = { #We want some civ construction first
 }
 
 SOV_wants_mil = { #Mils then
-	allowed = { 
+	allowed = {
 		original_tag = SOV
 	}
 	enable = {
-		date > 1938.1.1	
+		date > 1938.1.1
 	}
-		
 	abort = {
-	
-	}	
-		
+		date > 1945.12.1
+		has_war = no
+	}
 	ai_strategy = {
 		type = building_target
 		id = arms_factory
@@ -2599,7 +2591,7 @@ SOV_wants_no_docks = {
 		original_tag = SOV
 	}
 	enable = {
-		original_tag = SOV
+		always = yes
 	}
 	abort = {
 		date > 1945.12.1
@@ -2616,16 +2608,15 @@ SOV_wants_no_docks = {
 	}
 }
 
-SOV_ramp_up_production = {		
-	allowed = { 
+SOV_ramp_up_production = {
+	allowed = {
 		original_tag = SOV
 	}
 	enable = {
-		original_tag = SOV
 		OR = {
 			date > 1938.4.1
 			has_war = yes
-        }
+		}
 	}
 	abort = {
 	}
@@ -2659,7 +2650,9 @@ SOV_industry_we_are_the_baddies_2 = {
 	enable = {
 		date > 1941.1.1
 	}
-
+	abort = {
+		date > 1945.1.1
+	}
 	ai_strategy = {
 		type = added_military_to_civilian_factory_ratio
 		value = 10
@@ -2668,10 +2661,9 @@ SOV_industry_we_are_the_baddies_2 = {
 
 prepare_for_war_with_germany = {
 	allowed = { 
-		tag = SOV
+		original_tag = SOV
 	}
 	enable = {
-		tag = SOV
 		country_exists = GER
 		has_completed_focus = SOV_anti_fascist_diplomacy
 		controls_state = 146
@@ -2686,19 +2678,19 @@ prepare_for_war_with_germany = {
 
 	ai_strategy = {
 		type = conquer
-		id = "GER"			
+		id = "GER"
 		value = 1000
 	}
 
 	ai_strategy = {
 		type = conquer
-		id = "HUN"			
+		id = "HUN"
 		value = 500
 	}
 
 	ai_strategy = {
 		type = conquer
-		id = "ROM"			
+		id = "ROM"
 		value = 500
 	}
 
@@ -2774,37 +2766,36 @@ prepare_for_war_with_germany = {
 }
 
 war_with_germany = {
-	allowed = { 
-		tag = SOV
+	allowed = {
+		original_tag = SOV
 	}
 	enable = {
-		tag = SOV
 		country_exists = GER
-		has_war_with = GER 
+		has_war_with = GER
 	}
 	abort = {
-		OR = { 
-			has_war_with = JAP 
+		OR = {
+			has_war_with = JAP
 			has_war_with = CHI
 			NOT = { has_war_with = GER }
-		}	
+		}
 	}
 
 	ai_strategy = {
 		type = conquer
-		id = "GER"			
+		id = "GER"
 		value = 500
 	}
 
 	ai_strategy = {
 		type = conquer
-		id = "HUN"			
+		id = "HUN"
 		value = 250
 	}
 
 	ai_strategy = {
 		type = conquer
-		id = "ROM"			
+		id = "ROM"
 		value = 250
 	}
 
@@ -2884,7 +2875,6 @@ spain_scw_support_SOV_resistance = {
 		original_tag = SOV
 	}
 	enable = {
-		original_tag = SOV
 		has_government = communism
 		country_exists = SPD
 		has_dlc = "La Resistance"
@@ -2922,15 +2912,14 @@ SOV_ignore_ENG = {
 		original_tag = SOV
 	}
 	enable = {
-		original_tag = SOV
-        country_exists = ENG
+		country_exists = ENG
 	}
 	abort = {
-        has_war_with = ENG
+		has_war_with = ENG
 	}
 	ai_strategy = {
 		type = ignore
-		id = "ENG"			
+		id = "ENG"
 		value = 9999
 	}
 }
@@ -2941,9 +2930,8 @@ SOV_focus = {
 	}
 
 	enable = {
-		original_tag = SOV
-        has_war_with = GER
-        surrender_progress > 0.01
+		has_war_with = GER
+		surrender_progress > 0.01
 	}
 
 	abort = {
@@ -2966,11 +2954,9 @@ SOV_LEND_LEASE = {
 	allowed = {
 		original_tag = SOV
 	}
-
 	enable = {
-		original_tag = SOV
+		always = yes
 	}
-
 	ai_strategy = {
 		type = send_lend_lease_desire
 		id = CHI
@@ -2993,12 +2979,11 @@ SOV_DONT_LEND_LEASE1 = {
 	}
 
 	enable = {
-		original_tag = SOV
-        date > 1939.1.1
+		date > 1939.1.1
 	}
 
 	abort = {
-        date > 1945.1.1
+		date > 1945.1.1
 	}
 	ai_strategy = {
 		type = send_lend_lease_desire
@@ -3016,11 +3001,11 @@ SOV_DONT_LEND_LEASE1 = {
 }
 
 sov_no_crazy_invasions = {
-	allowed = { 
+	allowed = {
 		original_tag = SOV
 	}
 	enable = {
-		original_tag = SOV
+		always = yes
 	}
 	abort = {
 		date > 1945.1.1
@@ -3028,17 +3013,16 @@ sov_no_crazy_invasions = {
 
 	ai_strategy = {
 		type = invade
-		id = "GER"			
+		id = "GER"
 		value = -3000
 	}
 }
 
 SOV_beware_japanese_ambush = {
-	allowed = { 
+	allowed = {
 		original_tag = SOV
 	}
 	enable = {
-		original_tag = SOV
 		date > 1940.1.1
 		date < 1943.1.1
 		GER = { is_ai = yes }
@@ -3076,7 +3060,6 @@ soviet_european_trade_zone = {
 		original_tag = SOV
 	}
 	enable = {
-		original_tag = SOV
 		OR = {
 			408 = { is_controlled_by = SOV }
 			409 = { is_controlled_by = SOV }
@@ -3119,12 +3102,10 @@ soviet_european_trade_zone = {
 }
 
 war_with_finland = {
-	allowed = { 
+	allowed = {
 		original_tag = SOV
 	}
 	enable = {
-		original_tag = SOV
-		country_exists = FIN
 		has_war_with = FIN
 	}
 	abort = {
@@ -3134,7 +3115,7 @@ war_with_finland = {
 
 	ai_strategy = {
 		type = conquer
-		id = "FIN"			
+		id = "FIN"
 		value = 100
 	}
 	
@@ -3154,15 +3135,14 @@ war_with_finland = {
 		type = invade
 		id = "FIN"
 		value = -500
-	}	
+	}
 }
 
 claims_on_baltic_EST = {
-	allowed = { 
+	allowed = {
 		original_tag = SOV
 	}
 	enable = {
-		original_tag = SOV
 		has_completed_focus = SOV_claims_on_baltic
 		has_country_flag = estonia_demand
 		country_exists = EST
@@ -3186,7 +3166,6 @@ claims_on_baltic_LAT = {
 		original_tag = SOV
 	}
 	enable = {
-		original_tag = SOV
 		has_completed_focus = SOV_claims_on_baltic
 		has_country_flag = latvia_demand
 		country_exists = LAT
@@ -3210,7 +3189,6 @@ claims_on_baltic_LIT = {
 		original_tag = SOV
 	}
 	enable = {
-		original_tag = SOV
 		has_completed_focus = SOV_claims_on_baltic
 		has_country_flag = lithuania_demand
 		country_exists = LIT
@@ -3234,7 +3212,6 @@ claims_on_finland = {
 		original_tag = SOV
 	}
 	enable = {
-		original_tag = SOV
 		has_completed_focus = SOV_claims_on_baltic
 		country_exists = FIN
 	}
@@ -3262,7 +3239,6 @@ garrison_finland_plz = {
 		original_tag = SOV
 	}
 	enable = {
-		original_tag = SOV
 		has_completed_focus = SOV_claims_on_baltic
 		country_exists = FIN
 	}
@@ -3318,7 +3294,6 @@ claims_on_romania = {
 		original_tag = SOV
 	}
 	enable = {
-		original_tag = SOV
 		has_completed_focus = SOV_claim_bessarabia
 		has_country_flag = bessarabia_demand
 		country_exists = ROM
@@ -3342,7 +3317,7 @@ soviet_dont_ally_with_allies_if_BP = {
 		original_tag = SOV
 	}
 	enable = {
-		original_tag = SOV
+		always = yes
 	}
 	
 	ai_strategy = {
@@ -3373,7 +3348,7 @@ sov_wtf_justifying_on_allies = {
 		original_tag = SOV
 	}
 	enable = {
-		original_tag = SOV
+		always = yes
 	}
 	
 	abort = {
@@ -3455,10 +3430,9 @@ sov_wtf_are_you_doing = {
 		original_tag = SOV
 	}
 	enable = {
-		original_tag = SOV
+		always = yes
 	}
 	abort = {
-
 	}
 
 	ai_strategy = {
@@ -3473,7 +3447,6 @@ japan_peace = {
 		original_tag = SOV
 	}
 	enable = {
-		original_tag = SOV
 		country_exists = JAP
 	}
 	abort = {
@@ -3492,7 +3465,6 @@ sov_dont_overcomit_east = {
 		original_tag = SOV
 	}
 	enable = {
-		original_tag = SOV
 		NOT = {
 			has_war_with = JAP
 		}
@@ -3532,7 +3504,6 @@ SOV_defense_in_depth_1 = { #try to defend behind rivers
 		original_tag = SOV
 	}
 	enable = {
-		original_tag = SOV
 		date > 1940.6.1
 	}
 	
@@ -3583,7 +3554,6 @@ SOV_defense_in_depth_2 = { #defend the core
 		original_tag = SOV
 	}
 	enable = {
-		original_tag = SOV
 		OR = {
 			NOT = { has_full_control_of_state = 1036 }
 			NOT = { has_full_control_of_state = 1038 }
@@ -3648,7 +3618,6 @@ sov_prepare_countenance = {
 		original_tag = SOV
 	}
 	enable = {
-		original_tag = SOV
 		has_completed_focus = SOV_preemptive_invasion_of_iran
 	}
 	
@@ -3747,7 +3716,7 @@ invading_japan_is_stupid = {
 		original_tag = SOV
 	}
 	enable = {
-		original_tag = SOV
+		always = yes
 	}
 	abort = {
 		date > 1945.6.1
