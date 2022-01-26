@@ -5748,7 +5748,18 @@ focus_tree = {
 			any_enemy_country = {
 				SOV_is_major_not_original_sov = yes
 			}
-			surrender_progress < 0.05
+			OR = {
+				surrender_progress < 0.05
+				IF = {
+					limit = {
+						has_completed_focus = SOV_lessons_of_war
+						has_country_flag = SOV_order_227_flag
+					}
+					NOT = {
+						has_decision = SOV_order_227
+					}
+				}
+			}
 		}
 		
 		search_filters = {FOCUS_FILTER_ARMY_XP}
