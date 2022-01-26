@@ -1,190 +1,98 @@
 PRC_you_should_be_prepared_for_war = {
-	allowed = { 
+	allowed = {
 		tag = PRC
 	}
 	enable = {
 		original_tag = PRC
 	}
-	
 	ai_strategy = {
-        type = force_build_armies
-        value = 200
-    }
+		type = force_build_armies
+		value = 200
+	}
 }
 
 PRC_dont_upgrade_to_weapons_1_too_early = {
-	allowed = { 
+	allowed = {
 		tag = PRC
 	}
 	enable = {
-		original_tag = PRC
 		OR = {
-			date < "1939.1.1" # stock up on lots of rifles, we got the manpower
+			date < "1939.1.1"			# stock up on lots of rifles, we got the manpower
 			AND = {
 				date > "1939.8.1"
-				surrender_progress < 0.1 # if we arent losing badly its ok now
+				surrender_progress < 0.1				# if we arent losing badly its ok now
 			}
 		}
 	}
-	
 	abort_when_not_enabled = yes
-	
 	ai_strategy = {
 		type = production_upgrade_desire_offset
 		id = infantry_equipment_1
 		value = -100
 	}
-
-	
 }
+
+PRC_dont_upgrade_to_weapons_2_too_early = {
+	allowed = {
+		original_tag = PRC
+	}
+	enable = {
+		OR = {
+			date < "1943.1.1"			# stock up on lots of rifles, we got the manpower
+			AND = {
+				date > "1943.8.1"
+				surrender_progress < 0.1				# if we arent losing badly its ok now
+			}
+		}
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = production_upgrade_desire_offset
+		id = infantry_equipment_2
+		value = -100
+	}
+	ai_strategy = {
+		type = added_military_to_civilian_factory_ratio
+		value = 50
+	}
+	ai_strategy = {
+		type = building_target
+		id = arms_factory
+		value = 100
+	}
+}
+
 PRC_you_should_not_defend_the_CHI = {
-	allowed = { 
+	allowed = {
 		tag = PRC
 	}
 	enable = {
-		original_tag = PRC
+		always = yes
 	}
-	abort_when_not_enabled = yes
-	
-	ai_strategy = { 
-		type = dont_defend_ally_borders        
-		id = CHI			      
+	ai_strategy = {
+		type = dont_defend_ally_borders
+		id = CHI
 		value = 200
 	}
 }
 
-
 PRC_dont_join_the_comintern = {
-	allowed = { 
+	allowed = {
 		tag = PRC
 	}
 	enable = {
-		original_tag = PRC
 		country_exists = CHI
 	}
-
-	abort = {
-		NOT = { country_exists = CHI }
-	}
-
+	abort_when_not_enabled = yes
 	ai_strategy = {
 		type = alliance
-		id = "SOV"			
+		id = "SOV"
 		value = -800
 	}
 }
 
-PRC_CHI_ignore_these_countries2 = {
-	allowed = { 
-		OR = {
-			original_tag = PRC
-			original_tag = CHI
-		}
-	}
-	enable = {
-		OR = {
-			original_tag = PRC
-			original_tag = CHI
-		}
-	}
-
-	abort = {
-		OR = {
-			has_war_with = TIB
-			has_war_with = RAJ
-			has_war_with = MON
-			has_war_with = SOV
-			has_war_with = YUN
-			has_war_with = GXC
-			has_war_with = XSM
-			has_war_with = SIK
-		}
-	}
-	
-	ai_strategy = {
-		type = antagonize
-		id = "SIK"
-		value = -10
-	}
-
-	ai_strategy = {
-		type = ignore
-		id = "SIK"
-		value = 500
-	}
-	ai_strategy = {
-		type = antagonize
-		id = "TIB"
-		value = -10
-	}
-
-	ai_strategy = {
-		type = ignore
-		id = "TIB"
-		value = 500
-	}
-
-	ai_strategy = {
-		type = antagonize
-		id = "RAJ"
-		value = -10
-	}
-
-	ai_strategy = {
-		type = ignore
-		id = "RAJ"
-		value = 500
-	}
-
-	ai_strategy = {
-		type = antagonize
-		id = "MON"
-		value = -10
-	}
-
-	ai_strategy = {
-		type = ignore
-		id = "MON"
-		value = 500
-	}
-
-	ai_strategy = {
-		type = antagonize
-		id = "SOV"
-		value = -10
-	}
-
-	ai_strategy = {
-		type = ignore
-		id = "SOV"
-		value = 500
-	}
-	ai_strategy = {
-		type = antagonize
-		id = "GXC"
-		value = -10
-	}
-
-	ai_strategy = {
-		type = ignore
-		id = "GXC"
-		value = 500
-	}
-	ai_strategy = {
-		type = antagonize
-		id = "YUN"
-		value = -10
-	}
-
-	ai_strategy = {
-		type = ignore
-		id = "YUN"
-		value = 500
-	}
-}
-
 PRC_unit_production = {
-	allowed = { 
+	allowed = {
 		tag = PRC
 	}
 	enable = {
@@ -193,221 +101,178 @@ PRC_unit_production = {
 	abort = {
 		always = no
 	}
-	
 	ai_strategy = {
 		type = role_ratio
 		id = garrison
 		value = 10
 	}
-
-
 	ai_strategy = {
 		type = role_ratio
 		id = paratroopers
 		value = 0
 	}
-
 	ai_strategy = {
 		type = role_ratio
 		id = mountaineers
 		value = 0
 	}
-
 	ai_strategy = {
 		type = role_ratio
 		id = marines
 		value = 0
 	}
-
 	ai_strategy = {
 		type = role_ratio
 		id = armor
 		value = 0
 	}
-
 	ai_strategy = {
 		type = role_ratio
 		id = infantry
 		value = 100
 	}
-	
 	#Air unit factors
 	ai_strategy = {
 		type = unit_ratio
 		id = fighter
-		value = 75 # From 70 to 75
+		value = 75		# From 70 to 75
 	}
-	
 	ai_strategy = {
 		type = unit_ratio
 		id = cas
 		value = 0
 	}
-	
 	ai_strategy = {
 		type = unit_ratio
 		id = tactical_bomber
 		value = 0
 	}
-	
 	ai_strategy = {
 		type = unit_ratio
 		id = strategic_bomber
 		value = 0
 	}
-	
 	ai_strategy = {
 		type = unit_ratio
 		id = naval_bomber
 		value = 0
 	}
-	
-	
 	# Naval unit factors
 	ai_strategy = {
 		type = unit_ratio
 		id = capital_ship
-		value = 25 # from 15 to 25
+		value = 25		# from 15 to 25
 	}
-
 	ai_strategy = {
 		type = unit_ratio
 		id = submarine
-		value = 40 #from 50 to 40
+		value = 40		#from 50 to 40
 	}
-
 	ai_strategy = {
 		type = unit_ratio
 		id = screen_ship
 		value = 20
 	}
-
 	ai_strategy = {
 		type = unit_ratio
 		id = convoy
 		value = 20
 	}
-	
 	ai_strategy = {
 		type = equipment_production_factor
 		id = fighter
 		value = 5
 	}
-	
 	ai_strategy = {
 		type = equipment_production_factor
 		id = infantry
 		value = 60
 	}
-	
 	ai_strategy = {
 		type = equipment_production_factor
 		id = artillery
 		value = 25
 	}
-	
 	ai_strategy = {
 		type = equipment_production_factor
 		id = armor
 		value = 0
 	}
-	
 }
 
-
 PRC_prio_military_even_at_peace = {
-	allowed = { 
+	allowed = {
 		tag = PRC
 	}
 	enable = {
 		original_tag = PRC
 	}
-	
 	ai_strategy = {
 		type = added_military_to_civilian_factory_ratio
 		value = 50
 	}
-	
 }
-	
 
-
-PRC_ignore_neighbours = {
-	allowed = { 
-		tag = PRC
-	}
-	enable = {
+PRC_ignore_these_countries = {
+	reversed = yes
+	allowed = {
 		original_tag = PRC
 	}
-	
-	abort = {
-		has_war_with = TIB
-		has_war_with = SIK
-		has_war_with = MON
+	enable = {
+		NOT = {
+			has_war_with = PRC
+		}
 	}
-
+	abort_when_not_enabled = yes
+	targets = {
+		SIK
+		TIB
+		RAJ
+		MON
+		SOV
+		GXC
+		YUN
+		XSM
+		FRA
+		ENG
+	}
 	ai_strategy = {
-		type = contain
-		id = "TIB"			
-		value = -200
+		type = antagonize
+		id = "PRC"
+		value = -10
 	}
-
-	ai_strategy = {
-		type = contain
-		id = "SIK"			
-		value = -200
-	}
-
-	ai_strategy = {
-		type = contain
-		id = "MON"			
-		value = -200
-	}
-
 	ai_strategy = {
 		type = ignore
-		id = "TIB"
+		id = "PRC"
 		value = 200
 	}
-
 	ai_strategy = {
-		type = ignore
-		id = "SIK"
-		value = 200
-	}
-
-	ai_strategy = {
-		type = ignore
-		id = "MON"
-		value = 200
+		type = front_unit_request
+		tag = "PRC"
+		value = -200
 	}
 }
 
 be_careful_prc = {
-	allowed = { 
-		tag = PRC 
+	allowed = {
+		tag = PRC
 	}
 	enable = {
-	        has_war_with = JAP
+		has_war_with = JAP
 		is_historical_focus_on = yes
 	}
 	abort = {
-	        has_war_with = CHI
-                
+		has_war_with = CHI
 	}
-	
-
 	ai_strategy = {
 		type = front_control
 		priority = 999
-  country_trigger = {
+		country_trigger = {
 			OR = {
 				tag = JAP
 				is_in_faction_with = JAP
 			}
 		}
-		
-
 		execution_type = careful
 		execute_order = no
 		manual_attack = yes

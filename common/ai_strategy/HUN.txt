@@ -1,15 +1,3 @@
-# befriend
-# conquer
-# antagonize
-# build_ship
-# build_army
-# unit_ratio
-# build_building
-# research_tech
-# garrison
-# protect
-# influence
-
 germany_ally_1 = {
 	allowed = {
 		original_tag = HUN
@@ -19,20 +7,22 @@ germany_ally_1 = {
 		country_exists = GER
 	}
 	abort = {
-		NOT = { country_exists = GER }
+		NOT = {
+			country_exists = GER
+		}
 	}
-	
 	ai_strategy = {
 		type = befriend
-		id = "GER"			
+		id = "GER"
 		value = 100
 	}
 	ai_strategy = {
 		type = alliance
-		id = "GER"			
+		id = "GER"
 		value = 100
-	}	
+	}
 }
+
 germany_dont_ally_historical = {
 	allowed = {
 		original_tag = HUN
@@ -42,14 +32,15 @@ germany_dont_ally_historical = {
 		country_exists = GER
 	}
 	abort = {
-		is_in_faction_with = GER #got here somehow, might as well stay
+		is_in_faction_with = GER		#got here somehow, might as well stay
 	}
 	ai_strategy = {
 		type = alliance
-		id = "GER"			
+		id = "GER"
 		value = -200
-	}	
+	}
 }
+
 germany_ally_2 = {
 	allowed = {
 		original_tag = HUN
@@ -59,19 +50,20 @@ germany_ally_2 = {
 		country_exists = GER
 	}
 	abort = {
-		NOT = { country_exists = GER }
+		NOT = {
+			country_exists = GER
+		}
 	}
-	
 	ai_strategy = {
 		type = befriend
-		id = "GER"			
+		id = "GER"
 		value = 200
 	}
 	ai_strategy = {
 		type = alliance
-		id = "GER"			
+		id = "GER"
 		value = 200
-	}	
+	}
 }
 
 germany_jerk = {
@@ -83,20 +75,22 @@ germany_jerk = {
 		country_exists = GER
 	}
 	abort = {
-		NOT = { country_exists = GER }
+		NOT = {
+			country_exists = GER
+		}
 	}
-	
 	ai_strategy = {
 		type = befriend
-		id = "GER"			
+		id = "GER"
 		value = -200
 	}
 	ai_strategy = {
 		type = alliance
-		id = "GER"			
+		id = "GER"
 		value = -200
-	}	
+	}
 }
+
 germany_kaiser = {
 	allowed = {
 		original_tag = HUN
@@ -117,19 +111,19 @@ germany_kaiser = {
 	}
 	ai_strategy = {
 		type = befriend
-		id = "GER"			
+		id = "GER"
 		value = 200
 	}
 	ai_strategy = {
 		type = alliance
-		id = "GER"			
+		id = "GER"
 		value = 200
 	}
 	ai_strategy = {
 		type = support
 		id = "GER"
 		value = 200
-	}	
+	}
 }
 
 germany_hungary_kaiser = {
@@ -153,192 +147,81 @@ germany_hungary_kaiser = {
 	}
 	ai_strategy = {
 		type = befriend
-		id = "HUN"			
+		id = "HUN"
 		value = 200
 	}
 	ai_strategy = {
 		type = alliance
-		id = "HUN"			
+		id = "HUN"
 		value = 200
 	}
 	ai_strategy = {
 		type = support
 		id = "HUN"
 		value = 200
-	}	
+	}
 }
 
 HUN_war_with_soviets = {
-	allowed = { 
+	allowed = {
 		tag = HUN
 	}
 	enable = {
 		tag = HUN
 		country_exists = SOV
 		is_in_faction_with = GER
-		NOT = { is_in_faction_with = SOV }
+		NOT = {
+			is_in_faction_with = SOV
+		}
 		has_war_with = SOV
 	}
 	abort = {
 		OR = {
-			NOT = { country_exists = SOV }
+			NOT = {
+				country_exists = SOV
+			}
 			date < 1941.1.1
 			is_in_faction_with = SOV
-			NOT = { has_war_with = SOV }
+			NOT = {
+				has_war_with = SOV
+			}
 		}
 	}
-	
 	ai_strategy = {
 		type = antagonize
-		id = "SOV"			
+		id = "SOV"
 		value = 400
 	}
-
 	ai_strategy = {
 		type = conquer
-		id = "SOV"			
+		id = "SOV"
 		value = 500
 	}
-
 	ai_strategy = {
 		type = force_defend_ally_borders
 		id = "GER"
 		value = 200
 	}
-
 	ai_strategy = {
 		type = invade
 		id = "SOV"
 		value = -500
 	}
-
 	ai_strategy = {
 		type = area_priority
 		id = west_russia
-		value = 1000 #more focus here
-	}
-}
-
-HUN_want_to_invade_FRA_without_ITA = {
-	allowed = { 
-		tag = HUN
-	}
-	enable = {
-		tag = HUN
-		is_historical_focus_on = yes
-		date < 1940.5.1
-		HOL = {	has_capitulated = no }
-		BEL = {	has_capitulated = no }
-	}
-
-	abort = {
-		OR = { 
-			date > 1940.5.1
-			FRA = {	has_capitulated = yes }
-			AND = {
-				HOL = {	has_capitulated = yes }
-				BEL = {	has_capitulated = yes }
-			}
-		}
-	}
-	
-	ai_strategy = {
-		type = dont_join_wars_with
-		id = ITA
-		target_country = FRA
-		value = 1000
-	}
-
-	ai_strategy = {
-		type = dont_join_wars_with
-		id = ITA
-		target_country = POL
-		value = 1000
-	}
-
-	ai_strategy = {
-		type = dont_join_wars_with
-		id = ITA
-		target_country = ENG
-		value = 1000
-	}
-
-	ai_strategy = {
-		type = dont_join_wars_with
-		id = ITA
-		target_country = BEL
-		value = 1000
-	}
-
-	ai_strategy = {
-		type = dont_join_wars_with
-		id = ITA
-		target_country = HOL
-		value = 1000
-	}
-
-
-	ai_strategy = {
-		type = dont_join_wars_with
-		id = ITA
-		target_country = CAN
-		value = 1000
-	}
-
-	ai_strategy = {
-		type = dont_join_wars_with
-		id = ITA
-		target_country = SAF
-		value = 1000
-	}
-
-	ai_strategy = {
-		type = dont_join_wars_with
-		id = ITA
-		target_country = RAJ
-		value = 1000
-	}
-
-	ai_strategy = {
-		type = dont_join_wars_with
-		id = ITA
-		target_country = AST
-		value = 1000
-	}
-
-	ai_strategy = {
-		type = dont_join_wars_with
-		id = ITA
-		target_country = NZL
-		value = 1000
-	}
-
-	ai_strategy = {
-		type = dont_join_wars_with
-		id = ITA
-		target_country = DEN
-		value = 1000
-	}
-
-	ai_strategy = {
-		type = dont_join_wars_with
-		id = ITA
-		target_country = NOR
-		value = 1000
+		value = 1000		#more focus here
 	}
 }
 
 HUN_build_mils = {
-	allowed = { 
+	allowed = {
 		tag = HUN
 	}
-
 	enable = {
 		tag = HUN
 	}
-	
 	abort_when_not_enabled = yes
-	
 	ai_strategy = {
 		type = building_target
 		id = arms_factory

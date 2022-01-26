@@ -1,27 +1,16 @@
-# befriend
-# conquer
-# antagonize
-# build_ship
-# build_army
-# unit_ratio
-# build_building
-# research_tech
-# garrison
-# protect
-# influence
-
 WTT_add_infiltration_save_equipment = {
 	enable = {
 		OR = {
 			has_completed_focus = PRC_infiltration
 			has_completed_focus = PRC_anti_japanese_expedition
 		}
-
 	}
 	abort = {
 		OR = {
 			has_war_with = event_target:WTT_current_china_leader
-			NOT = { country_exists = event_target:WTT_current_china_leader }
+			NOT = {
+				country_exists = event_target:WTT_current_china_leader
+			}
 			AND = {
 				has_war = yes
 				any_enemy_country = {
@@ -30,7 +19,6 @@ WTT_add_infiltration_save_equipment = {
 			}
 		}
 	}
-	
 	ai_strategy = {
 		type = save_equipment
 		id = infantry_equipment
@@ -70,42 +58,29 @@ WTT_remove_infiltration_save_equipment = {
 # make warlords support china better
 WTT_all_warlords_support_china_in_war = {
 	reversed = yes
-
 	enable = {
-		CHI = { is_faction_leader = yes }
+		CHI = {
+			is_faction_leader = yes
+		}
 		is_in_faction_with = CHI
 		has_war = yes
 	}
 	abort = {
 		OR = {
-			CHI = { is_faction_leader = no }
-			NOT = { is_in_faction_with = CHI }
+			CHI = {
+				is_faction_leader = no
+			}
+			NOT = {
+				is_in_faction_with = CHI
+			}
 			has_war = no
-		}		
+		}
 	}
-	
 	ai_strategy = {
 		type = send_volunteers_desire
 		id = CHI
 		value = 50
 	}
-}
-
-# make warlords support china better part 2
-WTT_all_warlords_support_china_in_war = {
-	enable = {
-		CHI = { is_faction_leader = yes }
-		is_in_faction_with = CHI
-		has_war = yes
-	}
-	abort = {
-		OR = {
-			CHI = { is_faction_leader = no }
-			NOT = { is_in_faction_with = CHI }
-			has_war = no
-		}		
-	}
-	
 	ai_strategy = {
 		type = spare_unit_factor
 		value = 50
@@ -113,26 +88,30 @@ WTT_all_warlords_support_china_in_war = {
 }
 
 # we skip some of the minor minors that dont see much frontline
-
-
 SOV_dont_support_if_exiles_and_friendly_with_japan = {
 	allowed = {
 		tag = SOV
 	}
-
-	enable = {		
+	enable = {
 		OR = {
-			SOV = { has_government = neutrality }	
-			SOV = { has_government = fascism }	
+			SOV = {
+				has_government = neutrality
+			}
+			SOV = {
+				has_government = fascism
+			}
 		}
 	}
 	abort = {
-		OR ={
-			SOV = { has_war_with = JAP }
-			SOV = { has_completed_focus = SOV_memories_of_1905 }
+		OR = {
+			SOV = {
+				has_war_with = JAP
+			}
+			SOV = {
+				has_completed_focus = SOV_memories_of_1905
+			}
 		}
 	}
-	
 	ai_strategy = {
 		type = send_volunteers_desire
 		id = "YUN"
@@ -158,7 +137,6 @@ SOV_dont_support_if_exiles_and_friendly_with_japan = {
 		id = "PRC"
 		value = -500
 	}
-	
 	ai_strategy = {
 		type = send_lend_lease_desire
 		id = "YUN"

@@ -1,103 +1,109 @@
-# befriend
-# conquer
-# antagonize
-# build_ship
-# build_army
-# unit_ratio
-# build_building
-# research_tech
-# garrison
-# protect
-# influence
-# send_volunteers_desire
-
-
 FIN_alone_in_the_north = {
-	enable = {
+	allowed = {
 		original_tag = FIN
 		is_historical_focus_on = yes
 	}
-
-	abort = {
-		has_global_flag = SOV_winter_war_flag
-		GER = { has_war_with = SOV }
+	enable = {
+		NOT = {
+			OR = {
+				has_global_flag = SOV_winter_war_flag
+				GER = {
+					has_war_with = SOV
+				}
+			}
+		}
 	}
-
+	abort_when_not_enabled = yes
 	ai_strategy = {
 		type = pp_spend_priority
-		id = relation	
+		id = relation
 		value = -200
-	}	
+	}
 }
 
 FIN_the_soviet_threat = {
-	enable = {
+	allowed = {
 		original_tag = FIN
 		is_historical_focus_on = yes
 	}
-
-	abort = {
-		OR = {
-			is_in_faction_with = SOV
-			is_guaranteed_by = SOV
-			has_guaranteed = SOV
-			has_non_aggression_pact_with = SOV
+	enable = {
+		NOT = {
+			OR = {
+				is_in_faction_with = SOV
+				is_guaranteed_by = SOV
+				has_guaranteed = SOV
+				has_non_aggression_pact_with = SOV
+			}
 		}
 	}
-
+	abort_when_not_enabled = yes
 	ai_strategy = {
 		type = prepare_for_war
-		id = SOV	
+		id = SOV
 		value = 200
-	}	
+	}
 }
 
 FIN_trust_nordic_neutrality = {
 	enable = {
 		tag = FIN
 		is_historical_focus_on = yes
-		NOT = { has_war_with = NOR }
-		NOT = { has_war_with = SWE }
 	}
-
-	abort = {
-		OR = {
+	enable = {
+		NOT = {
 			has_war_with = NOR
+		}
+		NOT = {
 			has_war_with = SWE
 		}
 	}
-
+	abort_when_not_enabled = yes
 	ai_strategy = {
-	 	type = front_unit_request
+		type = front_unit_request
 		tag = NOR
 		value = -200
 	}
 	ai_strategy = {
-	 	type = front_unit_request
+		type = front_unit_request
 		tag = SWE
 		value = -200
+	}
+	ai_strategy = {
+		type = ignore
+		id = "SWE"
+		value = 999
+	}
+	ai_strategy = {
+		type = ignore
+		id = "NOR"
+		value = 999
 	}
 }
 
 FIN_antagonize_soviets = {
-	enable = {
+	allowed = {
 		tag = FIN
 		is_historical_focus_on = yes
-		SOV = { owns_state = 146 } #Karjala
 	}
-
+	enable = {
+		SOV = {
+			owns_state = 146			#Karjala
+		}
+	}
 	abort = {
 		OR = {
-			AND = { #We have Karjala back
-				NOT = { has_war_with = SOV }
-				owns_state = 146 #Karjala
+			AND = {
+				#We have Karjala back
+				NOT = {
+					has_war_with = SOV
+				}
+				owns_state = 146				#Karjala
 			}
 			is_subject = yes
 			has_non_aggression_pact_with = SOV
 			is_in_faction_with = SOV
 		}
 	}
-
 	ai_strategy = {
 		type = antagonize
 		id = SOV
@@ -105,7 +111,7 @@ FIN_antagonize_soviets = {
 	}
 	ai_strategy = {
 		type = prepare_for_war
-		id = SOV	
+		id = SOV
 		value = 200
 	}
 	ai_strategy = {
@@ -115,19 +121,35 @@ FIN_antagonize_soviets = {
 	}
 }
 
-FIN_continuation_war_wait = { #Don't attack Soviets until Barbarossa
-	enable = {
+FIN_continuation_war_wait = {
+	#Don't attack Soviets until Barbarossa
+	allowed = {
 		tag = FIN
 		is_historical_focus_on = yes
-		SOV = {
-			any_owned_state = { is_core_of = FIN }
-			NOT = { has_war_with = GER }
-		}
-		NOT = { has_war_with = GER }
-		NOT = { GER = { is_justifying_wargoal_against = FIN } }
-		NOT = {	GER = { has_non_aggression_pact_with = SOV } }
 	}
-
+	enable = {
+		SOV = {
+			any_owned_state = {
+				is_core_of = FIN
+			}
+			NOT = {
+				has_war_with = GER
+			}
+		}
+		NOT = {
+			has_war_with = GER
+		}
+		NOT = {
+			GER = {
+				is_justifying_wargoal_against = FIN
+			}
+		}
+		NOT = {
+			GER = {
+				has_non_aggression_pact_with = SOV
+			}
+		}
+	}
 	abort = {
 		OR = {
 			ROOT = {
@@ -138,7 +160,6 @@ FIN_continuation_war_wait = { #Don't attack Soviets until Barbarossa
 			}
 		}
 	}
-
 	ai_strategy = {
 		type = declare_war
 		id = SOV
@@ -152,28 +173,32 @@ FIN_continuation_war_wait = { #Don't attack Soviets until Barbarossa
 }
 
 FIN_continuation_war_attack = {
-	enable = {
+	allowed = {
 		tag = FIN
-		is_subject = no
 		is_historical_focus_on = yes
+	}
+	enable = {
+		is_subject = no
 		GER = {
 			has_war_with = SOV
 		}
 		SOV = {
-			any_owned_state = { is_core_of = FIN }	
-		}
-	}
-
-	abort = {
-		SOV = {
-			OR ={
-				has_capitulated = yes
-				is_subject = yes
-				NOT = { has_government = communism }
+			any_owned_state = {
+				is_core_of = FIN
 			}
 		}
 	}
-
+	abort = {
+		SOV = {
+			OR = {
+				has_capitulated = yes
+				is_subject = yes
+				NOT = {
+					has_government = communism
+				}
+			}
+		}
+	}
 	ai_strategy = {
 		type = antagonize
 		id = SOV
@@ -197,41 +222,13 @@ FIN_continuation_war_attack = {
 	}
 }
 
-Finland_Please_Defend = {
-	allowed = { 
-		tag = FIN
-	}
-	enable = {
-		tag = FIN  
-	}
-
-	abort = {
-		SWE = { has_war_with = FIN }
-	}	
-
-	ai_strategy = {
-		type = ignore
-		id = "SWE"
-		value = 999
-	}
-	
-	ai_strategy = {
-		type = ignore
-		id = "NOR"
-		value = 999
-	}
-
-}
 FIN_build_mils = {
-	allowed = { 
+	allowed = {
 		tag = FIN
 	}
 	enable = {
-		tag = FIN
+		always = yes
 	}
-	
-	abort_when_not_enabled = yes
-	
 	ai_strategy = {
 		type = building_target
 		id = arms_factory
@@ -240,54 +237,47 @@ FIN_build_mils = {
 }
 
 FIN_defend_karelia = {
-	allowed = { 
+	allowed = {
 		original_tag = FIN
 	}
 	enable = {
 		controls_state = 146
 	}
-	
 	abort_when_not_enabled = yes
-	
 	ai_strategy = {
 		type = put_unit_buffers
-		
 		#order_id = 2
-		
 		# Mannerheim Line
-		states = { 
+		states = {
 			146
 		}
-		
 		ratio = 0.8
-		
 		area = north_russia
-		
 		subtract_invasions_from_need = no
 		subtract_fronts_from_need = yes
 	}
-	
 	ai_strategy = {
 		type = invade
-		id = "SOV"			
-		value = -2000 # that low means not going for islands either
+		id = "SOV"
+		value = -2000		# that low means not going for islands either
 	}
 }
 
 FIN_retake_karelia = {
-	allowed = { 
+	allowed = {
 		original_tag = FIN
 	}
 	enable = {
 		SOV = {
-			any_owned_state = { is_core_of = FIN }
-			controls_state = 146
+			any_owned_state = {
+				is_core_of = FIN
+				NOT = {
+					is_fully_controlled_by = FIN
+				}
+			}
 		}
-		NOT = {controls_state = 146}
 	}
-	
 	abort_when_not_enabled = yes
-	
 	ai_strategy = {
 		type = front_control
 		state_trigger = {
@@ -298,22 +288,20 @@ FIN_retake_karelia = {
 		execute_order = yes
 		manual_attack = yes
 	}
-	
 	ai_strategy = {
 		type = area_priority
 		id = north_russia
 		value = 500
 	}
-	
 	ai_strategy = {
 		type = invade
-		id = "SOV"			
-		value = -2000 # that low means not going for islands either
+		id = "SOV"
+		value = -2000		# that low means not going for islands either
 	}
 }
 
 FIN_chill_Karelia_back = {
-	allowed = { 
+	allowed = {
 		original_tag = FIN
 	}
 	enable = {
@@ -324,12 +312,7 @@ FIN_chill_Karelia_back = {
 			controls_state = 146
 		}
 	}
-	abort = {
-       NOT = {
-			controls_state = 146
-	   }
-
-	}
+	abort_when_not_enabled = yes
 	ai_strategy = {
 		type = front_control
 		country_trigger = {
@@ -340,12 +323,9 @@ FIN_chill_Karelia_back = {
 		execute_order = no
 		manual_attack = no
 	}
-	
 	ai_strategy = {
 		type = invade
-		id = "SOV"			
-		value = -2000 # that low means not going for islands either
+		id = "SOV"
+		value = -2000		# that low means not going for islands either
 	}
 }
-
-

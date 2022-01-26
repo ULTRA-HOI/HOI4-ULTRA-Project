@@ -1,38 +1,31 @@
-# befriend
-# conquer
-# antagonize
-# build_ship
-# build_army
-# unit_ratio
-# build_building
-# research_tech
-# garrison
-# protect
-# influence
-
 british_help_against_germany = {
 	allowed = {
 		original_tag = POL
 	}
 	enable = {
 		OR = {
-			GER = { has_completed_focus = GER_second_vienna_award }
-			GER = { has_war_with = POL }
+			GER = {
+				has_completed_focus = GER_second_vienna_award
+			}
+			GER = {
+				has_war_with = POL
+			}
 		}
 		country_exists = ENG
 	}
 	abort = {
-		NOT = { country_exists = ENG }
+		NOT = {
+			country_exists = ENG
+		}
 	}
-	
 	ai_strategy = {
 		type = befriend
-		id = "ENG"			
+		id = "ENG"
 		value = 200
 	}
 	ai_strategy = {
 		type = alliance
-		id = "ENG"			
+		id = "ENG"
 		value = 200
 	}
 	ai_strategy = {
@@ -52,48 +45,41 @@ POL_template_design = {
 		original_tag = POL
 	}
 	enable = {
-		date < 1940.1.1				
+		date < 1940.1.1
 	}
-	abort = { 
+	abort = {
 		date > 1940.1.1
 	}
-
 	ai_strategy = {
 		type = template_prio
 		id = motorized
 		value = -10
 	}
-
 	ai_strategy = {
 		type = template_prio
 		id = cavalry
 		value = -100
 	}
-	
 	ai_strategy = {
 		type = template_prio
 		id = light_armor
 		value = 40
 	}
-
 	ai_strategy = {
 		type = template_prio
 		id = medium_armor
 		value = -10
 	}
-
 	ai_strategy = {
 		type = template_prio
 		id = heavy_armor
 		value = -50
 	}
-
 	ai_strategy = {
 		type = template_prio
 		id = paratroopers
 		value = -50
 	}
-	
 	ai_strategy = {
 		type = template_prio
 		id = infantry
@@ -106,91 +92,74 @@ dont_ally_germany_pls = {
 		original_tag = POL
 	}
 	enable = {
-		NOT = { has_government = fascism }
+		NOT = {
+			has_government = fascism
+		}
 	}
-	
 	ai_strategy = {
 		type = alliance
-		id = "GER"			
-		value = -10001
+		id = "GER"
+		value = -500
 	}
 }
 
-POL_ignore_hungary = {
+POL_ignore_hungary_romania = {
 	allowed = {
 		tag = POL
 	}
+	reversed = yes
 	enable = {
-		tag = POL
-		country_exists = HUN
-		has_war = yes
-		NOT = { has_war_with = HUN }
+		exists = yes
+		NOT = {
+			has_war_with = HUN
+		}
 	}
-	abort = {
-		has_war_with = HUN
+	abort_when_not_enabled = yes
+	targets = {
+		HUN
+		ROM
 	}
-	
 	ai_strategy = {
 		type = ignore
-		id = "HUN"
-		value = 1000
-	}
-}
-
-POL_ignore_romania = {
-	allowed = { 
-		tag = POL
-	}
-	enable = {
-		tag = POL
-		country_exists = ROM
-		has_war = yes
-		NOT = { has_war_with = ROM }
-	}
-	abort = {
-		has_war_with = ROM
-	}
-	
-	ai_strategy = {
-		type = ignore
-		id = "ROM"
-		value = 1000
+		id = "POL"
+		value = 500
 	}
 }
 
 POL_war_with_GER = {
-	allowed = { 
+	allowed = {
 		tag = POL
 	}
 	enable = {
-		tag = POL
-		GER = { has_government = fascism }
+		GER = {
+			has_government = fascism
+		}
 	}
 	abort = {
 		OR = {
-			NOT = { GER = { has_government = fascism } }
+			NOT = {
+				GER = {
+					has_government = fascism
+				}
+			}
 			has_war_with = SOV
 		}
 	}
-	
 	ai_strategy = {
 		type = ignore
 		id = "SOV"
 		value = 1000
 	}
-
 	ai_strategy = {
 		type = conquer
-		id = "GER"			
+		id = "GER"
 		value = 2000
 	}
-
 	ai_strategy = {
 		type = area_priority
 		id = east_europe
 		value = 1000
 	}
-
 	ai_strategy = {
 		type = area_priority
 		id = germany
@@ -198,57 +167,45 @@ POL_war_with_GER = {
 	}
 }
 
-dont_you_fucking_dare = {
-	allowed = { 
+POL_you_should_be_prepared_for_war_but_dont_you_fucking_dare = {
+	allowed = {
 		tag = POL
 	}
 	enable = {
-		original_tag = POL
+		always = yes
 	}
-
 	ai_strategy = {
 		type = pp_spend_priority
 		id = admiral
 		value = -9999
 	}
-
 	ai_strategy = {
 		type = pp_spend_priority
 		id = general
 		value = -9999
 	}
-}
-
-POL_you_should_be_prepared_for_war = {
-	allowed = { 
-		tag = POL
-	}
-	enable = {
-		original_tag = POL
-	}
-	abort_when_not_enabled = yes
-	
 	ai_strategy = {
-        type = force_build_armies
-        value = 9999
-    }
+		type = force_build_armies
+		value = 9999
+	}
 }
 
 POL_wants_mil = {
-	allowed = { 
+	allowed = {
 		tag = POL
 	}
 	enable = {
 		tag = POL
 		date > 1937.1.1
 	}
-	
 	abort_when_not_enabled = yes
-	
 	ai_strategy = {
 		type = building_target
 		id = arms_factory
 		value = 40
 	}
-	ai_strategy = { type = added_military_to_civilian_factory_ratio value = 200 }
+	ai_strategy = {
+		type = added_military_to_civilian_factory_ratio
+		value = 200
+	}
 }

@@ -1,56 +1,102 @@
 allied_invasion_spam = {
-	allowed = { 
-		OR = { tag = FRA tag = ENG }
+	allowed = {
+		OR = {
+			tag = FRA
+			tag = ENG
+		}
 	}
 	enable = {
-		OR = { tag = FRA tag = ENG }
 		date < 1941.12.1
 	}
-	abort = {
-		date > 1941.12.1
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = invade
+		id = "GER"
+		value = -1000
 	}
-	ai_strategy = { type = invade id = "GER" value = -1000 }
-	ai_strategy = { type = invade id = "ITA" value = -1000 }
-	ai_strategy = { type = invade id = "D02" value = -1000 }
-	ai_strategy = { type = invade id = "D01" value = -1000 }
+	ai_strategy = {
+		type = invade
+		id = "ITA"
+		value = -1000
+	}
+	ai_strategy = {
+		type = invade
+		id = "D02"
+		value = -1000
+	}
+	ai_strategy = {
+		type = invade
+		id = "D01"
+		value = -1000
+	}
 }
 
 axis_invasion_spam = {
-	allowed = { 
-		OR = { tag = ITA tag = GER }
+	allowed = {
+		OR = {
+			tag = ITA
+			tag = GER
+		}
 	}
 	enable = {
-		OR = { tag = ITA tag = GER }
 		date < 1949.12.1
 	}
-	abort = {
-		date > 1949.12.1
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = invade
+		id = "ENG"
+		value = -1000
 	}
-	ai_strategy = { type = invade id = "ENG" value = -1000 }
-	ai_strategy = { type = invade id = "FRA" value = -1000 }
-	ai_strategy = { type = invade id = "GRE" value = -1000 }
-	ai_strategy = { type = invade id = "SOV" value = -1000 }
+	ai_strategy = {
+		type = invade
+		id = "FRA"
+		value = -1000
+	}
+	ai_strategy = {
+		type = invade
+		id = "GRE"
+		value = -1000
+	}
+	ai_strategy = {
+		type = invade
+		id = "SOV"
+		value = -1000
+	}
 }
 
 stop_inf_equip_production = {
 	enable = {
-		has_equipment = { infantry_equipment > 299999 }
+		has_equipment = {
+			infantry_equipment > 299999
+		}
 	}
-	abort = {
-		has_equipment = { infantry_equipment < 300000 }
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = equipment_production_factor
+		id = infantry
+		value = -40
 	}
-	
-	ai_strategy = { type = equipment_production_factor id = infantry 			value = -40 }
-	ai_strategy = { type = equipment_production_factor id = motorized			value = -40 }
-	ai_strategy = { type = equipment_production_factor id = armor			        value = 20 }
-	ai_strategy = { type = equipment_production_factor id = fighter			        value = 10 }		
+	ai_strategy = {
+		type = equipment_production_factor
+		id = motorized
+		value = -40
+	}
+	ai_strategy = {
+		type = equipment_production_factor
+		id = armor
+		value = 20
+	}
+	ai_strategy = {
+		type = equipment_production_factor
+		id = fighter
+		value = 10
+	}
 }
 
 BEL_dont_all_in_ardennes = {
-	allowed = { 
+	allowed = {
 		original_tag = BEL
 	}
-	
 	enable = {
 		GER = {
 			has_war = yes
@@ -59,14 +105,13 @@ BEL_dont_all_in_ardennes = {
 			has_war = yes
 		}
 	}
-	
 	abort = {
 		has_capitulated = yes
 	}
-	
 	ai_strategy = {
 		type = put_unit_buffers
-		states = { #concentrate on heartland
+		states = {
+			#concentrate on heartland
 			6
 			34
 		}
@@ -81,7 +126,6 @@ BEL_dont_all_in_ardennes = {
 		id = "FRA"
 		value = 100
 	}
-	
 	ai_strategy = {
 		type = antagonize
 		id = "GER"
@@ -89,71 +133,17 @@ BEL_dont_all_in_ardennes = {
 	}
 }
 
-persia_stays_in_persia = {
+PER_SIK_MON_TAN_stays_home = {
 	allowed = {
 		original_tag = PER
-	}
-	
-	enable = {
-		is_in_faction_with = SOV
-	}
-	
-	abort_when_not_enabled = yes
-	
-	ai_strategy = {
-		type = dont_defend_ally_borders
-		id = "SOV"
-		value = 999
-	}
-}
-
-sinkiang_stays_in_sinkiang = {
-	allowed = {
 		original_tag = SIK
-	}
-	
-	enable = {
-		is_in_faction_with = SOV
-	}
-	
-	abort_when_not_enabled = yes
-	
-	ai_strategy = {
-		type = dont_defend_ally_borders
-		id = "SOV"
-		value = 999
-	}
-}
-
-mongolia_stays_in_mongolia = {
-	allowed = {
 		original_tag = MON
-	}
-	
-	enable = {
-		is_in_faction_with = SOV
-	}
-	
-	abort_when_not_enabled = yes
-	
-	ai_strategy = {
-		type = dont_defend_ally_borders
-		id = "SOV"
-		value = 999
-	}
-}
-
-tan_stays_in_tan = {
-	allowed = {
 		original_tag = TAN
 	}
-	
 	enable = {
 		is_in_faction_with = SOV
 	}
-	
 	abort_when_not_enabled = yes
-	
 	ai_strategy = {
 		type = dont_defend_ally_borders
 		id = "SOV"

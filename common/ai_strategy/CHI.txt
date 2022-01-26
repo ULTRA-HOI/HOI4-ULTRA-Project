@@ -1,21 +1,10 @@
-# befriend
-# conquer
-# antagonize
-# build_ship
-# build_army
-# unit_ratio
-# build_building
-# research_tech
-# garrison
-# protect
-# influence
-
 CHI_prio_military_even_at_peace = {
-	allowed = { original_tag = CHI }
-	enable = {
+	allowed = {
 		original_tag = CHI
 	}
-	
+	enable = {
+		always = yes
+	}
 	ai_strategy = {
 		type = added_military_to_civilian_factory_ratio
 		value = 50
@@ -25,448 +14,185 @@ CHI_prio_military_even_at_peace = {
 		id = arms_factory
 		value = 100
 	}
-	
+	# CHI_you_should_be_prepared_for_war
+	ai_strategy = {
+		type = force_build_armies
+		value = 999
+	}
+	# CHI_you_should_not_defend_the_chinas
+	ai_strategy = {
+		type = dont_defend_ally_borders
+		id = PRC
+		value = 200
+	}
+	ai_strategy = {
+		type = dont_defend_ally_borders
+		id = SHX
+		value = 200
+	}
 }
-	
-CHI_dont_mess_with_the_soviets = {
-	allowed = { original_tag = CHI }
-	enable = {
-		original_tag = CHI
-		
-		NOT = { has_war_with = SOV }
-	}
-	
-	abort = {
-		has_war_with = SOV
-	}
 
+CHI_dont_mess_with_the_soviets = {
+	allowed = {
+		original_tag = CHI
+	}
+	enable = {
+		NOT = {
+			has_war_with = SOV
+		}
+	}
+	abort_when_not_enabled = yes
 	ai_strategy = {
 		type = contain
-		id = "SOV"			
+		id = "SOV"
 		value = -200
 	}
 }
 
-CHI_ignore_neighbours = {
-	allowed = { original_tag = CHI }
-	enable = {
-		original_tag = CHI
-		
-	}
-	
-	abort = {
-		has_war_with = TIB
-		has_war_with = RAJ
-		has_war_with = FRA
-		has_war_with = ENG
-		has_war_with = SIK
-	}
-
-	ai_strategy = {
-		type = contain
-		id = "TIB"			
-		value = -999
-	}
-
-	ai_strategy = {
-		type = contain
-		id = "RAJ"			
-		value = -999
-	}
-
-	ai_strategy = {
-		type = contain
-		id = "FRA"			
-		value = -999
-	}
-
-	ai_strategy = {
-		type = ignore
-		id = "TIB"
-		value = 999
-	}
-
-	ai_strategy = {
-		type = ignore
-		id = "RAJ"
-		value = 999
-	}
-
-	ai_strategy = {
-		type = ignore
-		id = "FRA"
-		value = 999
-	}
-	ai_strategy = {
-		type = ignore
-		id = "SIK"
-		value = 999
-	}
-	ai_strategy = {
-		type = contain
-		id = "SIK"
-		value = -999
-	}
-
-	ai_strategy = {
-		type = ignore
-		id = "TIB"
-		value = 999
-	}
-
-	ai_strategy = {
-		type = ignore
-		id = "RAJ"
-		value = 999
-	}
-
-	ai_strategy = {
-		type = ignore
-		id = "FRA"
-		value = 999
-	}
-	ai_strategy = {
-		type = ignore
-		id = "SIK"
-		value = 999
-	}
-
-	ai_strategy = {
-		type = front_unit_request
-		tag = "RAJ"			
-		value = -999
-	}
-	ai_strategy = {
-		type = front_unit_request
-		tag = "FRA"			
-		value = -999
-	}
-	ai_strategy = {
-		type = front_unit_request
-		tag = "ENG"			
-		value = -999
-	}
-	ai_strategy = {
-		type = front_unit_request
-		tag = "TIB"			
-		value = -999
-	}
-	ai_strategy = {
-		type = front_unit_request
-		tag = "SIK"			
-		value = -999
-	}
-
-}
-
 CHI_some_safer_places_to_build = {
-	allowed = { original_tag = CHI }
-	enable = {
+	allowed = {
 		original_tag = CHI
 	}
-
-	abort = {
-		date > 1941.1.1
+	enable = {
+		date < 1941.1.1
 	}
-
+	abort_when_not_enabled = yes
 	ai_strategy = {
-        type = factory_build_score_factor
-        target =  748
-        value = 300
-    }
-
-    ai_strategy = {
-        type = factory_build_score_factor
-        target =  750
-        value = 300
-    }
-
+		type = factory_build_score_factor
+		target = 748
+		value = 300
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
-        target =  605
-        value = 300
-    }
+		type = factory_build_score_factor
+		target = 750
+		value = 300
+	}
+	ai_strategy = {
+		type = factory_build_score_factor
+		target = 605
+		value = 300
+	}
+	ai_strategy = {
+		type = factory_build_score_factor
+		target = 602
+		value = 300
+	}
 }
 
 CHI_you_should_be_prepared_for_war = {
-	allowed = { original_tag = CHI }
+	allowed = {
+		original_tag = CHI
+	}
 	enable = {
 		is_literally_china = yes
 	}
 	abort_when_not_enabled = yes
-	
 	ai_strategy = {
-        type = force_build_armies
-        value = 999
-    }
+		type = force_build_armies
+		value = 999
+	}
 }
 
 CHI_dont_upgrade_to_weapons_1_too_early = {
-	allowed = { original_tag = CHI }
-	enable = {
+	allowed = {
 		original_tag = CHI
+	}
+	enable = {
 		OR = {
-			date < "1941.1.1" # stock up on lots of rifles, we got the manpower
+			date < "1941.1.1"			# stock up on lots of rifles, we got the manpower
 			AND = {
 				date > "1939.8.1"
-				surrender_progress < 0.1 # if we arent losing badly its ok now
+				surrender_progress < 0.1				# if we arent losing badly its ok now
 			}
 		}
 	}
-	
 	abort_when_not_enabled = yes
-	
 	ai_strategy = {
 		type = production_upgrade_desire_offset
 		id = infantry_equipment_1
 		value = -100
 	}
-
-	
 }
 
 CHI_dont_upgrade_to_weapons_2_too_early = {
-	allowed = { original_tag = CHI }
-	enable = {
+	allowed = {
 		original_tag = CHI
+	}
+	enable = {
 		OR = {
-			date < "1943.1.1" # stock up on lots of rifles, we got the manpower
+			date < "1943.1.1"			# stock up on lots of rifles, we got the manpower
 			AND = {
 				date > "1943.8.1"
-				surrender_progress < 0.1 # if we arent losing badly its ok now
+				surrender_progress < 0.1				# if we arent losing badly its ok now
 			}
 		}
 	}
-	
 	abort_when_not_enabled = yes
-	
 	ai_strategy = {
 		type = production_upgrade_desire_offset
 		id = infantry_equipment_2
 		value = -100
 	}
-
-	
 }
 
 CHI_dont_upgrade_to_heavy_weapons_2_too_early = {
-	allowed = { original_tag = CHI }
-	enable = {
+	allowed = {
 		original_tag = CHI
+	}
+	enable = {
 		OR = {
-			date < "1943.1.1" # stock up on lots of rifles, we got the manpower
+			date < "1943.1.1"			# stock up on lots of rifles, we got the manpower
 			AND = {
 				date > "1943.8.1"
-				surrender_progress < 0.1 # if we arent losing badly its ok now
+				surrender_progress < 0.1				# if we arent losing badly its ok now
 			}
 		}
 	}
-	
 	abort_when_not_enabled = yes
-
 	ai_strategy = {
 		type = production_upgrade_desire_offset
 		id = heavy_infantry_equipment_2
-		value = -9999
-	}
-}
-
-CHI_you_should_not_defend_the_chinas = {
-	allowed = { original_tag = CHI }
-	enable = {
-		original_tag = CHI
-	}
-	abort_when_not_enabled = yes
-	
-	ai_strategy = { 
-		type = dont_defend_ally_borders      
-		id = PRC			      
-		value = 200
-	}
-	ai_strategy = { 
-		type = dont_defend_ally_borders      
-		id = SHX			      
-		value = 200
-	}
-}
-
-
-PRC_dont_upgrade_to_weapons_2_too_early = {
-	allowed = { original_tag = PRC }
-	enable = {
-		original_tag = PRC
-		OR = {
-			date < "1943.1.1" # stock up on lots of rifles, we got the manpower
-			AND = {
-				date > "1943.8.1"
-				surrender_progress < 0.1 # if we arent losing badly its ok now
-			}
-		}
-	}
-	
-	abort_when_not_enabled = yes
-	
-	ai_strategy = {
-		type = production_upgrade_desire_offset
-		id = infantry_equipment_2
 		value = -100
 	}
-	
-	ai_strategy = {
-		type = added_military_to_civilian_factory_ratio
-		value = 50
-	}
-	ai_strategy = {
-		type = building_target
-		id = arms_factory
-		value = 100
-	}
-
-	
 }
 
-PRC_CHI_ignore_these_countries = {
+CHI_ignore_these_countries = {
+	reversed = yes
 	allowed = {
-		OR = {
-			original_tag = PRC
-			original_tag = CHI
-		}
+		original_tag = CHI
 	}
 	enable = {
-		OR = {
-			original_tag = PRC
-			original_tag = CHI
+		NOT = {
+			has_war_with = CHI
 		}
 	}
-
-	abort = {
-		OR = {
-			has_war_with = TIB
-			has_war_with = RAJ
-			has_war_with = MON
-			has_war_with = SOV
-			has_war_with = YUN
-			has_war_with = GXC
-			has_war_with = XSM
-			has_war_with = SIK
-		}
-	}
-	
-	ai_strategy = {
-		type = antagonize
-		id = "SIK"
-		value = -10
-	}
-
-	ai_strategy = {
-		type = ignore
-		id = "SIK"
-		value = 500
-	}
-
-	ai_strategy = {
-		type = antagonize
-		id = "TIB"
-		value = -10
-	}
-
-	ai_strategy = {
-		type = ignore
-		id = "TIB"
-		value = 500
-	}
-
-	ai_strategy = {
-		type = antagonize
-		id = "RAJ"
-		value = -10
-	}
-
-	ai_strategy = {
-		type = ignore
-		id = "RAJ"
-		value = 500
-	}
-
-	ai_strategy = {
-		type = antagonize
-		id = "MON"
-		value = -10
-	}
-
-	ai_strategy = {
-		type = ignore
-		id = "MON"
-		value = 500
-	}
-
-	ai_strategy = {
-		type = antagonize
-		id = "SOV"
-		value = -10
-	}
-
-	ai_strategy = {
-		type = ignore
-		id = "SOV"
-		value = 500
+	abort_when_not_enabled = yes
+	targets = {
+		SIK
+		TIB
+		RAJ
+		MON
+		SOV
+		GXC
+		YUN
+		XSM
+		FRA
+		ENG
 	}
 	ai_strategy = {
 		type = antagonize
-		id = "GXC"
+		id = "CHI"
 		value = -10
 	}
-
 	ai_strategy = {
 		type = ignore
-		id = "GXC"
-		value = 500
-	}
-	ai_strategy = {
-		type = antagonize
-		id = "YUN"
-		value = -10
-	}
-
-	ai_strategy = {
-		type = ignore
-		id = "YUN"
-		value = 500
+		id = "CHI"
+		value = 200
 	}
 	ai_strategy = {
 		type = front_unit_request
-		tag = "GXC"
-		value = -500
-	}
-	ai_strategy = {
-		type = front_unit_request
-		tag = "YUN"
-		value = -500
-	}
-	ai_strategy = {
-		type = front_unit_request
-		tag = "RAJ"
-		value = -500
-	}
-	ai_strategy = {
-		type = front_unit_request
-		tag = "SOV"
-		value = -500
-	}
-	ai_strategy = {
-		type = front_unit_request
-		tag = "TIB"
-		value = -500
-	}
-	ai_strategy = {
-		type = front_unit_request
-		tag = "SIK"
-		value = -500
-	}
-	ai_strategy = {
-		type = front_unit_request
-		tag = "XSM"
-		value = -500
+		tag = "CHI"
+		value = -200
 	}
 }
 
@@ -475,17 +201,8 @@ CHI_defend_against_JAP_proper = {
 		original_tag = CHI
 	}
 	enable = {
-		original_tag = CHI
+		always = yes
 	}
-	abort = {
-		OR = {
-			has_war_with = FRA
-			has_war_with = RAJ
-            has_war_with = TIB
-		}
-	}
-
-	
 	ai_strategy = {
 		type = antagonize
 		id = "JAP"
@@ -496,27 +213,6 @@ CHI_defend_against_JAP_proper = {
 		id = "JAP"
 		value = 100
 	}
-	ai_strategy = {
-		type = front_unit_request
-		tag = FRA
-		value = -999
-	}
-	ai_strategy = {
-		type = front_unit_request
-		tag = ENG
-		value = -999
-	}
-	ai_strategy = {
-		type = front_unit_request
-		tag = RAJ
-		value = -999
-	}
-	ai_strategy = {
-		type = front_unit_request
-		tag = TIB
-		value = -999
-	}
-
 }
 
 CHI_defend_ports_not_borders_before_war_for_attrition_reasons = {
@@ -524,20 +220,16 @@ CHI_defend_ports_not_borders_before_war_for_attrition_reasons = {
 		original_tag = CHI
 	}
 	enable = {
-		original_tag = CHI
-	    NOT = { has_war_with = JAP }
-	}
-	
-	abort = {
-		OR = {
+		NOT = {
 			has_war_with = JAP
-			has_war_with = MAN
 		}
 	}
-
-	ai_strategy = { type = garrison value = 100 }
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = garrison
+		value = 100
+	}
 }
-
 
 CHI_defend = {
 	allowed = {
@@ -549,38 +241,11 @@ CHI_defend = {
 	abort = {
 		always = no
 	}
-
-	ai_strategy = { type = garrison value = 50 }
-}
-ignore_raj = {
-	allowed = { 
-		tag = CHI 
-	}
-	enable = {
-	        has_war_with = JAP
-	}
-	abort = {
-		has_war_with = RAJ
-	}
-	
-
 	ai_strategy = {
-		type = front_unit_request
-		tag = RAJ
-		value = -999
-	}
-	ai_strategy = {
-		type = ignore
-		id = "RAJ"
-		value = 999
-	}
-	ai_strategy = {
-		type = front_unit_request
-		area = east_asia
-		value = -999
+		type = garrison
+		value = 50
 	}
 }
-
 
 increase_relation = {
 	allowed = {
@@ -588,22 +253,19 @@ increase_relation = {
 	}
 	enable = {
 		always = yes
-        original_tag = CHI 
 	}
-	
 	ai_strategy = {
 		type = pp_spend_amount
 		id = idea
 		value = 100
 	}
-	
 	ai_strategy = {
 		type = pp_spend_amount
 		id = decision
 		value = 100
 	}
-	
-	ai_strategy = { #waste
+	ai_strategy = {
+		#waste
 		type = pp_spend_priority
 		id = relation
 		value = -100
@@ -615,129 +277,79 @@ china_befriend = {
 		original_tag = CHI
 	}
 	enable = {
-		tag = CHI
 		date > 1937.6.1
 	}
 	abort = {
 		date > 1938.4.1
 	}
-
-	ai_strategy = { #waste
+	ai_strategy = {
+		#waste
 		type = pp_spend_priority
 		id = relation
 		value = 200
 	}
-	
 	ai_strategy = {
 		type = befriend
-		id = "USA"			
+		id = "USA"
 		value = 500
 	}
 	ai_strategy = {
 		type = befriend
-		id = "ENG"			
+		id = "ENG"
 		value = 500
 	}
 	ai_strategy = {
 		type = befriend
-		id = "GER"			
+		id = "GER"
 		value = 500
 	}
 	ai_strategy = {
 		type = befriend
-		id = "SOV"			
+		id = "SOV"
 		value = 500
 	}
 	ai_strategy = {
 		type = befriend
-		id = "FRA"			
+		id = "FRA"
 		value = 500
 	}
 }
-
 
 china_befriend2 = {
 	allowed = {
 		original_tag = CHI
 	}
 	enable = {
-		tag = CHI
-		date > 1937.6.1
+		date > 1938.4.1
 	}
 	abort = {
 		date > 1941.1.1
 	}
-
-	ai_strategy = { #waste
+	ai_strategy = {
+		#waste
 		type = pp_spend_priority
 		id = relation
 		value = 200
 	}
-	
 	ai_strategy = {
 		type = befriend
-		id = "USA"			
+		id = "USA"
 		value = 500
 	}
 }
 
-CHI_dont_mess_with_the_soviets = {
-	allowed = {
-		original_tag = CHI
-	}
-	enable = {
-		original_tag = CHI
-		
-		NOT = { has_war_with = SOV }
-	}
-	
-	abort = {
-		has_war_with = SOV
-	}
-
-	ai_strategy = {
-		type = contain
-		id = "SOV"			
-		value = -200
-	}
-}
-
-CHI_some_safer_places_to_build = {
-	allowed = { original_tag = CHI }
-	enable = {
-		always = yes
-	}
-
-	abort = {
-		date > 1941.1.1
-	}
-
-	ai_strategy = {
-        type = factory_build_score_factor
-        target =  602
-        value = 300
-    }
-
-	ai_strategy = {
-        type = factory_build_score_factor
-        target =  605
-        value = 300
-    }
-}
-
 CHI_you_should_be_prepared_for_war = {
-	allowed = { 
+	allowed = {
 		is_literally_china = yes
 	}
 	enable = {
 		always = yes
 	}
 	abort_when_not_enabled = yes
-	
 	ai_strategy = {
-        type = force_build_armies
-        value = 100
-    }
+		type = force_build_armies
+		value = 100
+	}
 }
 
 CHI_buffer_in_mainland = {
@@ -748,11 +360,10 @@ CHI_buffer_in_mainland = {
 		date < 1941.1.1
 	}
 	abort_when_not_enabled = yes
-	
 	ai_strategy = {
 		type = put_unit_buffers
 		states = {
-			622 #Mainland china, without coast. This should slow down japanese advance due to tendency for china to retreat in disarray.
+			622			#Mainland china, without coast. This should slow down japanese advance due to tendency for china to retreat in disarray.
 			954
 			744
 			935
@@ -784,14 +395,15 @@ CHI_defend_nankin = {
 	}
 	enable = {
 		controls_state = 613
-		JAP = {is_ai = no}
+		JAP = {
+			is_ai = no
+		}
 	}
 	abort_when_not_enabled = yes
-	
 	ai_strategy = {
 		type = put_unit_buffers
 		states = {
-			613 #Defend the capital
+			613			#Defend the capital
 		}
 		ratio = 0.2
 		area = china_coast
@@ -811,11 +423,10 @@ CHI_defend_wuhan = {
 		}
 	}
 	abort_when_not_enabled = yes
-	
 	ai_strategy = {
 		type = put_unit_buffers
 		states = {
-			898 #Defend the capital
+			898			#Defend the capital
 			937
 		}
 		ratio = 0.2
@@ -839,11 +450,10 @@ CHI_defend_chongqing = {
 		}
 	}
 	abort_when_not_enabled = yes
-	
 	ai_strategy = {
 		type = put_unit_buffers
 		states = {
-			605 #Defend the capital
+			605			#Defend the capital
 			901
 			753
 		}
@@ -854,22 +464,17 @@ CHI_defend_chongqing = {
 	}
 }
 
-CHI_hunker_down_now  = {
+CHI_hunker_down_now = {
 	allowed = {
 		original_tag = CHI
 	}
-
 	enable = {
-		date < 1945.1.1 #We accept our fate after this point
+		date < 1945.1.1		#We accept our fate after this point
 		has_war_with = JAP
 		is_historical_focus_on = yes
 		surrender_progress > 0.25
 	}
-
-	abort = {
-		date > 1945.1.1 #We accept our fate after this point
-	}
-
+	abort_when_not_enabled = yes
 	ai_strategy = {
 		type = front_control
 		country_trigger = {
@@ -881,15 +486,15 @@ CHI_hunker_down_now  = {
 		manual_attack = yes
 	}
 }
+
 CHI_FRONT_STRAT = {
-	allowed = { is_literally_china = yes }
+	allowed = {
+		is_literally_china = yes
+	}
 	enable = {
 		has_war_with = JAP
 	}
-	abort = {
-		NOT = { has_war_with = JAP }
-	}
-	
+	abort_when_not_enabled = yes
 	ai_strategy = {
 		type = front_control
 		country_trigger = {
@@ -900,20 +505,21 @@ CHI_FRONT_STRAT = {
 		execute_order = no
 		manual_attack = yes
 	}
-	
 }
 
 CHI_supply_doesnt_need_no_stinkin_trucks = {
-    allowed = { original_tag = CHI }
-    enable = {
-        original_tag = CHI
-    }
-    ai_strategy = {
-        type = min_wanted_supply_trucks
-        value = 0
-    }
-    ai_strategy = {
-        type = wanted_supply_trucks
-        value = 50
-    }
+	allowed = {
+		original_tag = CHI
+	}
+	enable = {
+		always = yes
+	}
+	ai_strategy = {
+		type = min_wanted_supply_trucks
+		value = 0
+	}
+	ai_strategy = {
+		type = wanted_supply_trucks
+		value = 50
+	}
 }
