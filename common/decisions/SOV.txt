@@ -52,7 +52,7 @@ debug_decisions = { #TODO_Manu: Comment these out
 		}
 	}
 
-	SOV_TEST_CONTINENTS = {
+	SOV_TEST_ULTIMATE_CONTINENTS = {
 		priority = 200
 
 		icon = generic_prepare_civil_war
@@ -72,49 +72,7 @@ debug_decisions = { #TODO_Manu: Comment these out
 		cost = 0
 
 		complete_effect = {
-			if = {
-				limit = {
-					has_game_rule = {
-						rule = obsolete_focus_branches_visibility
-						option = HIDE
-					}
-				}
-				log = "HIDE obsolete focus branches"
-			}
-			else = {
-				log = "SHOW obsolete focus branches"
-			}
-			every_owned_state = {
-				limit = {
-					is_on_continent = asia
-				}
-				log = "[THIS.GetName]"
-				URG = { transfer_state = PREV }
-
-			}
-		}
-	}
-	SOV_TEST_ULTIMATE_CONTINENTS_SHOW = {
-		priority = 200
-
-		icon = generic_prepare_civil_war
-
-		allowed = {
-			original_tag = SOV
-		}
-
-		available = {
-			always = yes
-		}
-
-		visible = {
-			always = yes
-		}
-
-		cost = 0
-
-		complete_effect = {
-			log = "WARNING: This takes a while"
+			#log = "WARNING: This takes a while"
 			every_state = {
 				limit = {
 					is_on_continent = asia
@@ -715,7 +673,7 @@ SOV_paranoia_system = {
 				remove_ideas = SOV_purged_junior_navy_officers_1
 			}
 			else = {
-				log = "I CANNOT REMOVE A NS THAT DOESN'T EXIST!"
+				#log = "I CANNOT REMOVE A NS THAT DOESN'T EXIST!"
 			}
 		}
 	}
@@ -1711,7 +1669,7 @@ SOV_paranoia_system = {
 					subtract_from_temp_variable = { SOV_generic_portrait_frame = 6 }
 				}
 				add_to_temp_variable = { SOV_generic_portrait_frame = 1 }
-				log = "Final FRAME is [?SOV_generic_portrait_frame]"
+				#log = "Final FRAME is [?SOV_generic_portrait_frame]"
 
 				add_to_array = {
 					array = SOV_paranoia_generic_portraits_array
@@ -1721,7 +1679,7 @@ SOV_paranoia_system = {
 
 				add_to_variable = { SOV_paranoia_portrait_index = 1 }
 				add_to_temp_variable = { i = 1 }
-				log = "New index is [?SOV_paranoia_portrait_index]"
+				#log = "New index is [?SOV_paranoia_portrait_index]"
 			}
 		}
 	}
@@ -10859,6 +10817,10 @@ SOV_industry_relocation = {
 					}
 				}
 			}
+			modifier = {
+				factor = 0
+				SOV_save_pp_for_manpower_trouble = yes
+			}
 		}
 
 		state_target = yes
@@ -13490,7 +13452,7 @@ SOV_soviet_civil_war_dec_cat = {
 							damage = 1
 						}
 						set_state_flag = railway_damaged_flag
-						LOG = "Damage Railway 1 in [THIS.GetName]"
+						#LOG = "Damage Railway 1 in [THIS.GetName]"
 					}
 					random_controlled_state = {
 						limit = { NOT = { has_state_flag = railway_damaged_flag }}
@@ -13499,7 +13461,7 @@ SOV_soviet_civil_war_dec_cat = {
 							damage = 1
 						}
 						set_state_flag = railway_damaged_flag
-						LOG = "Damage Railway 2 in [THIS.GetName]"
+						#LOG = "Damage Railway 2 in [THIS.GetName]"
 					}
 					random_controlled_state = {
 						limit = { NOT = { has_state_flag = railway_damaged_flag }}
@@ -13508,7 +13470,7 @@ SOV_soviet_civil_war_dec_cat = {
 							damage = 1
 						}
 						set_state_flag = railway_damaged_flag
-						LOG = "Damage Railway 2 in [THIS.GetName]"
+						#LOG = "Damage Railway 2 in [THIS.GetName]"
 					}
 					every_owned_state = {
 						limit = { has_state_flag = railway_damaged_flag }
@@ -13678,7 +13640,7 @@ SOV_soviet_civil_war_dec_cat = {
 						NOT = { has_trait = trait_SOV_stalinist }
 					}
 					set_character_flag = SOV_potential_target_flag
-					log = "targeted leader = [THIS.GetName]"
+					#log = "targeted leader = [THIS.GetName]"
 				}
 
 			}
@@ -13757,7 +13719,7 @@ SOV_soviet_civil_war_dec_cat = {
 						NOT = { has_trait = trait_SOV_stalinist }
 					}
 					set_character_flag = SOV_potential_target_flag
-					log = "targeted leader = [THIS.GetName]"
+					#log = "targeted leader = [THIS.GetName]"
 				}
 			}
 			custom_effect_tooltip = SOV_navy_framejob_tt
@@ -17111,7 +17073,6 @@ SOV_soviet_civil_war_dec_cat = {
 		cancel_if_not_visible = yes
 
 		timeout_effect = {
-			custom_effect_tooltip = "TODO: Lock still neutral Advisors. Prevent Bloodless Coup" # TODO_THOMAS FIX EFFECT
 			add_political_power = -25
 			SOV_opposition_support_low_decrease_effect = yes
 			set_country_flag = SOV_secure_the_administration_completed_flag
@@ -17262,7 +17223,7 @@ SOV_soviet_civil_war_dec_cat = {
 		cancel_if_not_visible = yes
 
 		timeout_effect = {
-			custom_effect_tooltip = "TODO: Trigger Trotsky event" # TODO_THOMAS FIX EFFECT
+			ROOT = { news_event = { id = news.37 } } #SUCCESS - Kill Trotsky
 			SOV_opposition_support_low_decrease_effect = yes
 			set_country_flag = SOV_behead_the_snake_completed_flag
 		}

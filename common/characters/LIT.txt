@@ -127,8 +127,44 @@ characters={
 				traits = {
 					militant_minister 
 				}
-				ai_will_do = {
-					factor = 100
+				ai_will_do = { #You really want this if you're going fascist, AI
+					base = 100
+					modifier = { #I'm a fascist AI
+						factor = 2
+						OR = {
+							AND = {
+								is_historical_focus_on = yes
+								has_game_rule = {
+									rule = LIT_ai_behavior
+									option = FASCIST
+								}
+							}
+							has_country_flag = LIT_AI_RANDOM_FASCIST
+							has_game_rule = {
+								rule = LIT_ai_behavior
+								option = FASCIST
+							}
+						}
+					}
+					modifier = { #I'm late to the fascist party 
+						factor = 10
+						OR = {
+							AND = {
+								is_historical_focus_on = yes
+								has_game_rule = {
+									rule = LIT_ai_behavior
+									option = FASCIST
+								}
+							}
+							has_country_flag = LIT_AI_RANDOM_FASCIST
+							has_game_rule = {
+								rule = LIT_ai_behavior
+								option = FASCIST
+							}
+						}
+						date > 1937.1.1
+						fascism < 0.4
+					}
 				}
 			}
 
@@ -292,7 +328,7 @@ characters={
 		name=LIT_petras_schatz
 		portraits={
 			civilian={
-				large="gfx/leaders/Europe/portrait_europe_generic_5.dds"
+				large=GFX_portrait_LIT_petras_schatz
 			}
 		}
 		country_leader={
@@ -328,7 +364,7 @@ characters={
 		portraits={
 			army={
 				large="GFX_portrait_LIT_kazys_skucas"
-				small="gfx/interface/ideas/idea_LIT_kazys_skucas.dds"
+				small="GFX_portrait_LIT_kazys_skucas"
 			}
 		}
 		corps_commander = {
@@ -347,7 +383,7 @@ characters={
 		name=LIT_stasys_pundzevichius
 		portraits={
 			army={
-				small="gfx/interface/ideas/idea_LIT_stasys_pundzevicius.dds"
+				small="GFX_idea_LIT_stasys_pundzevicius"
 				large="GFX_portrait_LIT_stasys_pundzevicius"
 			}
 		}
@@ -367,7 +403,7 @@ characters={
 		name=LIT_kazys_musteikis
 		portraits={
 			army={
-				small="gfx/interface/ideas/idea_LIT_kazys_musteikis.dds"
+				small="GFX_idea_LIT_kazys_musteikis"
 				large="GFX_portrait_LIT_kazys_musteikis"
 			}
 		}
@@ -537,7 +573,7 @@ characters={
 		name=LIT_antanas_gustaitis
 		portraits={
 			army={
-				small="gfx/interface/ideas/idea_LIT_antanas_gustaitis.dds"
+				small=GFX_portrait_LIT_antanas_gustaitis_small
 				large="GFX_portrait_LIT_Antanas_Gustaitis"
 			}
 		}
@@ -658,7 +694,7 @@ characters={
 		name=LIT_leonas_bistras
 		portraits={
 			army={
-				small="gfx/interface/ideas/idea_europe_generic_4.dds" #No portrait
+				small=GFX_portrait_LIT_leonas_bistras_small #No portrait
 			}
 		}
 		advisor={
@@ -719,7 +755,7 @@ characters={
 		name=LIT_vladas_mironas
 		portraits={
 			army={
-				small="gfx/interface/ideas/idea_europe_generic_5.dds" #No portrait
+				small=GFX_portrait_LIT_vladas_mironas_small #No portrait
 			}
 		}
 		advisor={
@@ -782,9 +818,9 @@ characters={
 				fascist_demagogue 
 			}
 			ai_will_do = { #You really want this if you're going fascist, AI
-				factor = 1
+				base = 0
 				modifier = { #I'm a fascist AI
-					factor = 400
+					add = 50
 					OR = {
 						AND = {
 							is_historical_focus_on = yes
@@ -801,7 +837,7 @@ characters={
 					}
 				}
 				modifier = { #I'm late to the fascist party 
-					factor = 800
+					factor = 10
 					OR = {
 						AND = {
 							is_historical_focus_on = yes
