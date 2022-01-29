@@ -54,35 +54,46 @@ on_daily_labour_calculations = {
 	
 	#Apply Agricultural Burden to States / Record it
 	set_variable = { agricultural_penalty_percentage = 0 }
+	set_variable = { agriculture_penalty_temp = 0 }
 	
 	every_controlled_state = {
-		#Calculates agricultural burden
-		set_variable = { agriculture_burden = state_level_agriculture_penalty }
-		multiply_variable = { agriculture_burden = PREV.total_core_labour_population }
-		
-		#Calculates agricultural penalty to apply to states
-		set_variable = { agriculture_requirements = agriculture_burden }
-		divide_variable = { agriculture_requirements = PREV.total_population }
-		multiply_variable = { agriculture_requirements = -1 }
-		
-		#Factors in trade for core states
-		if = {
-			limit = { is_core_of = PREV }
-			set_variable = { agriculture_trade = PREV.agriculture_trade }
-			multiply_variable = { agriculture_trade = PREV.total_core_labour_population }
-			divide_variable = { agriculture_trade = PREV.total_population }
-			add_to_variable = { agriculture_requirements = agriculture_trade }
-			set_variable = { agriculture_burden = agriculture_requirements }
-			multiply_variable = { agriculture_burden = -1 }
-			multiply_variable = { agriculture_burden = state_population_k }
-			
-			#Agricultural burden
-			add_to_variable = { PREV.agricultural_penalty_percentage = THIS.agriculture_burden }
+		limit = { is_core_of = PREV }
+		set_variable = { agriculture_modifier = state_level_agriculture_penalty }
+		multiply_variable = { agriculture_modifier = THIS.state_population_k }
+		add_to_variable = { PREV.agriculture_penalty_temp = THIS.agriculture_modifier }
+	}
+
+	set_variable = { agriculture_percentage_core = agriculture_penalty_temp}
+	set_variable = { agriculture_total_temp = THIS.total_population }
+
+	divide_variable = { agriculture_percentage_core = THIS.total_population }
+
+	every_controlled_state = {
+		limit = { 
+			NOT = { is_core_of = PREV }
+			check_variable = { 
+			state_level_agriculture_penalty < PREV.agriculture_percentage_core
+			} 	
 		}
 		
-		#Adds female penalty
+		
+		set_variable = { agriculture_modifier = state_level_agriculture_penalty }
+		multiply_variable = { agriculture_modifier = THIS.state_population_k }
+		add_to_variable = { PREV.agriculture_penalty_temp = THIS.agriculture_modifier }
+		add_to_variable = { PREV.agriculture_total_temp = THIS.state_population_k }
 	}
+
+	add_to_variable = { agricultural_penalty_percentage = agriculture_penalty_temp }
+	divide_variable = { agricultural_penalty_percentage = agriculture_total_temp }
+	multiply_variable = { agricultural_penalty_percentage = -1 } 
 	
+	# For display
+	set_variable = { agriculture_occupation_bonus = agriculture_percentage_core }
+	add_to_variable = { agriculture_occupation_bonus = agricultural_penalty_percentage }
+	multiply_variable = { agriculture_occupation_bonus = total_labourpower }
+	set_variable = { labour_agriculture_display = agricultural_penalty_percentage }
+	multiply_variable = { labour_agriculture_display = -1 }
+	multiply_variable = { labour_agriculture_display = total_labourpower }
 	#Calculate number of labour needed for resources
 
 	#Sets variable equal to number of resources 
@@ -167,70 +178,10 @@ on_daily_labour_calculations = {
 	#actually remove needed manpower from pool
 	subtract_from_variable = { total_labourpower = total_labour_needs }
 	
-	#Calculates Division Slice
-	#set_variable = { division_slice = num_battalions@infantry } # num_battalions is battalions+support companies
-	#set_variable = { div_slice_calculator = logistical_level }
-	#multiply_variable = { div_slice_calculator = 1 }
-	#add_to_variable = { div_slice_calculator = 5 }
-	#divide_variable = { div_slice_calculator = 10 }
-	#multiply_variable = { division_slice = div_slice_calculator }
-	
-	#actually remove division slice from manpower pool
-	#subtract_from_variable { total_labourpower = division_slice }
-	
-	#set_variable = { division_slice_thousands = division_slice }
-    #divide_variable = { division_slice = total_population_with_foreign_workers }
-    #multiply_variable = { division_slice = -1 }
-	
 	#Calculates penalty to apply to total population
 	set_variable = { labour_penalty_percentage = total_labour_needs }
 	divide_variable = { labour_penalty_percentage = total_population_with_foreign_workers }
 	multiply_variable = { labour_penalty_percentage = -1 }
-	
-	#Calculates total agricultural burden
-	set_variable = { labour_total_agriculture = agricultural_penalty_percentage }
-	divide_variable = { agricultural_penalty_percentage = total_population_with_foreign_workers }
-	multiply_variable = { agricultural_penalty_percentage = -1 }
-	
-	#Calculates total economic bonus
-	# if = {
-	# 	limit = { NOT = { has_variable = total_factor_productivity } }
-	# 	set_variable = { total_factor_productivity = 1 }
-	# }
-	# set_variable = { factory_output_multiplier = total_factor_productivity }
-	# multiply_variable = { factory_output_multiplier = capital_multiplier }
-	# multiply_variable = { factory_output_multiplier = labour_multiplier }
-	
-	#Gets Output/K
-	# divide_variable = { factory_output_multiplier = total_capital }
-	
-	#calculate civ output
-	# set_variable = { civ_output = factory_output_multiplier }
-	# multiply_variable = { civ_output = num_of_civilian_factories }
-	
-	#calculate total output
-	# set_variable = { total_output = factory_output_multiplier }
-	# multiply_variable = { total_output = total_capital }
-	
-	#Calculate Upkeep Costs
-	# set_variable = { upkeep = total_capital }
-	# multiply_variable = { upkeep = 5 }
-	# set_variable = { upkeep_needs = upkeep }
-	# multiply_variable = { upkeep = upkeep_modifier }
-	# divide_variable = { upkeep = total_output }
-	
-	#Sets military factory output modifier
-	# set_variable = { mil_bonus = factory_output_multiplier }
-	# multiply_variable = { mil_bonus = 1.136 }
-	
-	# set_variable = { civ_bonus = mil_bonus }
-	# divide_variable = { civ_bonus = 41 }
-	# divide_variable = { civ_bonus = 10 }
-	
-	# divide_variable = { mil_bonus = 100 }
-	
-	# subtract_from_variable = { mil_bonus = 1 }
-	# subtract_from_variable = { civ_bonus = 1 }
 	
 	#Set dynamic number of civilian trucks per 6 month
 	set_variable = { civilian_truck_production = num_of_civilian_factories }
@@ -242,19 +193,19 @@ calculate_state_level_agriculture_penalty = {
 		limit = {
 			is_core_of = CAN
 		}
-		set_variable = { state_level_agriculture_penalty = 0.1 }
+		set_variable = { state_level_agriculture_penalty = 0.08 }
 	}
 	else_if = {
 		limit = {
 			is_core_of = URG
 		}
-		set_variable = { state_level_agriculture_penalty = 0.15 }
+		set_variable = { state_level_agriculture_penalty = 0.08 }
 	}
 	else_if = {
 		limit = {
 			is_core_of = USA
 		}
-		set_variable = { state_level_agriculture_penalty = 0.16 }
+		set_variable = { state_level_agriculture_penalty = 0.10 }
 	}
 	else_if = {
 		limit = {
@@ -266,7 +217,7 @@ calculate_state_level_agriculture_penalty = {
 				is_core_of = CHL
 			}
 		}
-		set_variable = { state_level_agriculture_penalty = 0.2 }
+		set_variable = { state_level_agriculture_penalty = 0.12 }
 
 	}
 	else_if = {
@@ -275,7 +226,7 @@ calculate_state_level_agriculture_penalty = {
 				is_core_of = NOR
 			}
 		}
-		set_variable = { state_level_agriculture_penalty = 0.20 }
+		set_variable = { state_level_agriculture_penalty = 0.12 }
 	}
 	
 	else_if = {
@@ -284,22 +235,22 @@ calculate_state_level_agriculture_penalty = {
 				is_core_of = DEN
 				is_core_of = SWE
 				is_core_of = SWI
+				is_core_of = HOL
+				is_core_of = BEL
 			}
 		}
-		set_variable = { state_level_agriculture_penalty = 0.20 }
+		set_variable = { state_level_agriculture_penalty = 0.12 }
 	}
 	else_if = {
 		limit = {
 			OR = {
-				is_core_of = HOL
-				is_core_of = BEL
 				is_core_of = GER
 				is_core_of = CZE
 				is_core_of = LUX
 				is_core_of = AUS
 			}
 		}
-		set_variable = { state_level_agriculture_penalty = 0.3 }
+		set_variable = { state_level_agriculture_penalty = 0.15 }
 	}
 	else_if = {
 		limit = {
@@ -307,7 +258,7 @@ calculate_state_level_agriculture_penalty = {
 				is_core_of = FRA
 			}
 		}
-		set_variable = { state_level_agriculture_penalty = 0.4 }
+		set_variable = { state_level_agriculture_penalty = 0.17 }
 	}
 	else_if = {
 		limit = {
@@ -333,7 +284,7 @@ calculate_state_level_agriculture_penalty = {
 				}
 			}
 		}
-		set_variable = { state_level_agriculture_penalty = 0.45 }
+		set_variable = { state_level_agriculture_penalty = 0.22 }
 	}
 	else_if = {
 		limit = {
@@ -341,7 +292,7 @@ calculate_state_level_agriculture_penalty = {
 				is_core_of = SOV
 			}
 		}
-		set_variable = { state_level_agriculture_penalty = 0.52 }
+		set_variable = { state_level_agriculture_penalty = 0.26 }
 	}
 	else_if = {
 		limit = {
@@ -349,7 +300,7 @@ calculate_state_level_agriculture_penalty = {
 				is_core_of = JAP
 			}
 		}
-		set_variable = { state_level_agriculture_penalty = 0.55 }
+		set_variable = { state_level_agriculture_penalty = 0.22 }
 	}
 	else_if = {
 		limit = {
@@ -361,7 +312,7 @@ calculate_state_level_agriculture_penalty = {
 				}
 			}
 		}
-		set_variable = { state_level_agriculture_penalty = 0.52 }
+		set_variable = { state_level_agriculture_penalty = 0.20 }
 	}
 	else_if = {
 		limit = {
@@ -370,7 +321,7 @@ calculate_state_level_agriculture_penalty = {
 				is_core_of = SLO
 			}
 		}
-		set_variable = { state_level_agriculture_penalty = 0.40 }
+		set_variable = { state_level_agriculture_penalty = 0.19 }
 	}
 	else_if = {
 		limit = {
@@ -378,7 +329,7 @@ calculate_state_level_agriculture_penalty = {
 				is_core_of = BUL
 			}
 		}
-		set_variable = { state_level_agriculture_penalty = 0.35 }
+		set_variable = { state_level_agriculture_penalty = 0.18 }
 	}
 	else_if = {
 		limit = {
@@ -389,7 +340,7 @@ calculate_state_level_agriculture_penalty = {
 				is_core_of = PER
 			}
 		}
-		set_variable = { state_level_agriculture_penalty = 0.58 }
+		set_variable = { state_level_agriculture_penalty = 0.29 }
 	}
 	else_if = {
 		limit = {
@@ -397,7 +348,7 @@ calculate_state_level_agriculture_penalty = {
 				is_core_of = YUG
 			}
 		}
-		set_variable = { state_level_agriculture_penalty = 0.44 }
+		set_variable = { state_level_agriculture_penalty = 0.22 }
 	}
 	else_if = {
 		limit = {
@@ -405,7 +356,7 @@ calculate_state_level_agriculture_penalty = {
 				is_core_of = GRE
 			}
 		}
-		set_variable = { state_level_agriculture_penalty = 0.40 }
+		set_variable = { state_level_agriculture_penalty = 0.20 }
 	}
 	else_if = {
 		limit = {
@@ -413,7 +364,7 @@ calculate_state_level_agriculture_penalty = {
 				is_core_of = TUR
 			}
 		}
-		set_variable = { state_level_agriculture_penalty = 0.50 }
+		set_variable = { state_level_agriculture_penalty = 0.25 }
 	}
 	else_if = {
 		limit = {
@@ -421,7 +372,7 @@ calculate_state_level_agriculture_penalty = {
 				is_core_of = ROM
 			}
 		}
-		set_variable = { state_level_agriculture_penalty = 0.60 }
+		set_variable = { state_level_agriculture_penalty = 0.28 }
 	}
 	else_if = {
 		limit = {
@@ -432,7 +383,7 @@ calculate_state_level_agriculture_penalty = {
 				is_core_of = MOR
 			}
 		}
-		set_variable = { state_level_agriculture_penalty = 0.7 }
+		set_variable = { state_level_agriculture_penalty = 0.35 }
 	}
 	else_if = {
 		limit = {
@@ -462,7 +413,7 @@ calculate_state_level_agriculture_penalty = {
 				}
 			}
 		}
-		set_variable = { state_level_agriculture_penalty = 0.75 }
+		set_variable = { state_level_agriculture_penalty = 0.38 }
 	}
 	else_if = {
 		limit = {
@@ -471,10 +422,10 @@ calculate_state_level_agriculture_penalty = {
 			}
 			is_on_continent = africa
 		}
-		set_variable = { state_level_agriculture_penalty = 0.8 }
+		set_variable = { state_level_agriculture_penalty = 0.4 }
 	}
 	else ={	
-		set_variable = { state_level_agriculture_penalty = 0.75 }
+		set_variable = { state_level_agriculture_penalty = 0.38 }
 	}
 }
 
@@ -491,10 +442,6 @@ init_default_logistics_and_women = {
 
  # Actual run on init of game.
 init_industry_rework = {
-	#Calculate deployed manpower to remove
-	set_variable = { manpower_to_remove = has_army_manpower  }
-	add_to_variable = { manpower_to_remove = num_battalions_with_type@infantry }
-	multiply_variable = { manpower_to_remove = -1000 }
 	# Adds agriculture mechanisation to every relevant countries
 	every_owned_state = {
 		calculate_state_level_agriculture_penalty = yes
@@ -502,14 +449,8 @@ init_industry_rework = {
 	#Adds key labour requirements dynamic modifier
 
 	on_daily_labour_calculations = yes
-	#logistical_calculations = yes
-	add_dynamic_modifier = { modifier = agricultural_trade }
 	add_dynamic_modifier = { modifier = agriculture_needs }
 	add_dynamic_modifier = { modifier = labour_requirements }
 	add_dynamic_modifier = { modifier = female_labour_penalty }
 	add_dynamic_modifier = { modifier = not_of_working_age_penalty }
-	#add_dynamic_modifier = { modifier = division_slice }
-	add_dynamic_modifier = { modifier = mechanisation_bonus }
-	add_dynamic_modifier = { modifier = signal_bonus }
-	add_manpower = var:manpower_to_remove
 }
