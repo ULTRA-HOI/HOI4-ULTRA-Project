@@ -1,5 +1,48 @@
 # Changelog
 
+### 0.12.0
+
+### Update
+
+- Updated to 1.11 and to NSB DLC
+
+### Features
+
+- Dynamic relation between manpower and Industry finished
+- Complete rebalance of new soviet Focus
+- Railway map rewrtitten from scratch
+- Rework on officer perks
+- Unique spirits (unfinished)
+- Rebalanced and added new generals (unfinished)
+- Capitulation now generate automaticaly some compliance
+- Added a fourth line on the division designer
+- More "construction focus" turned into construction project decisions
+
+### Balance 
+
+- Supply system rebalanced to be more realistic
+- Cost of railways/supply hubs tweaked
+- Compliance is slower to grow
+
+### AI 
+
+- Improvement of AI on most ww2 theaters
+
+### UI
+
+- Correction of most UI issues
+
+### Bugfixes 
+
+- Correction of older bugs being missed in previous version
+
+### Disabled stuff 
+
+- Tank designer is currently disabled to keep the mod 's unique tank trees. This is temporary while we rework it from scratch with unique chassis/modules.
+- Baltic focus trees disabled. Impossible to make them interresting, accurate and balanced.
+- Soviet fantasy content disabled
+
+
 ### 0.11.0
 
 ### Features
