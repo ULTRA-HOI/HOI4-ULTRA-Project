@@ -632,6 +632,25 @@ ideas = {
 				factor = 1
 			}
 		}
+		
+		great_little_army_spirit = {
+			ledger = army
+			visible = { 
+				original_tag = CAN
+			}
+			
+			modifier = {
+				special_forces_cap = 0.1
+				motorized_attack_factor = 0.1
+				mechanized_attack_factor = 0.1
+				planning_speed = 0.1
+				cat_superior_firepower_cost_factor = -0.1
+			}
+			
+			ai_will_do = {
+				factor = 1
+			}
+		}
 	}
 
 	division_command_spirit = {
@@ -877,17 +896,25 @@ ideas = {
 			ledger = army
 			
 			visible = {
-				original_tag = ENG
+				OR = {
+					original_tag = ENG
+					original_tag = CAN
+				}
 			}
 			
 			available = {
-				OR = {
-					has_idea = extensive_conscription
-					has_idea = service_by_requirement
-					has_idea = massive_conscription
-					has_idea = massive_draft
-					has_idea = all_adults_serve
-					has_idea = scraping_the_barrel
+				IF = {
+					limit = {
+						original_tag = ENG
+					}
+					OR = {
+						has_idea = extensive_conscription
+						has_idea = service_by_requirement
+						has_idea = massive_conscription
+						has_idea = massive_draft
+						has_idea = all_adults_serve
+						has_idea = scraping_the_barrel
+					}
 				}
 			}
 
