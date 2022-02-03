@@ -42,6 +42,7 @@ NDefines.NNavy.ENEMY_AIR_SUPERIORITY_IMPACT = -0.9
 --------------------------------------------------------------------------------------------------------------
 NDefines.NNavy.UNIT_TRANSFER_SPOTTING_SPEED_MULT = 2.0 -- 5.0						-- spotting speed mult against unit transfers
 NDefines.NNavy.PRIDE_OF_THE_FLEET_UNASSIGN_COST = 50 --100							-- cost to unassign/replace pride of the fleet
+NDefines.NNavy.SUPPLY_NEED_FACTOR = 1										 --was 4, multiplied in modules instead   -- multiplies supply usage
 
 --------------------------------------------------------------------------------------------------------------
 -- MINES STUFF
