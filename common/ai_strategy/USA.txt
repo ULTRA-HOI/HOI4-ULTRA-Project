@@ -1063,6 +1063,35 @@ USA_convoy_hungry = {
 	}
 }
 
+USA_ignore_french_state = {
+	allowed = {
+		original_tag = USA
+	}
+	
+	enable = {
+		date < "1942.11.1"
+		country_exists = VIC
+	}
+	
+	abort_when_not_enabled = yes
+	
+	ai_strategy = {
+		type = antagonize
+		id = VIC
+		value = -100
+	}
+	ai_strategy = {
+		type = declare_war
+		id = VIC
+		value = -100
+	}
+	ai_strategy = {
+		type = ignore
+		id = VIC
+		value = 999
+	}
+}
+
 USA_lose_fateful_lightning_from_terribly_swift_sword = {
 
 	allowed = {
@@ -1073,6 +1102,7 @@ USA_lose_fateful_lightning_from_terribly_swift_sword = {
 	}
 	enable = {
 		country_exists = VIC
+		date > "1942.11.1"
 		FRA = {
 			OR = {
 				has_capitulated = yes
@@ -1088,18 +1118,18 @@ USA_lose_fateful_lightning_from_terribly_swift_sword = {
 					has_war = no
 				}
 				is_historical_focus_on = yes
-				date > "1942.9.1"
+				date > "1942.11.1"
 			}
 			AND = {
 				OR = {
 					is_historical_focus_on = no
 					VIC = { has_war = yes }
 				}
-				date > "1942.6.1"
+				date > "1942.11.1"
 			}
 			AND = {
 				VIC = { is_ai = yes }
-				date > "1942.9.1"
+				date > "1942.11.1"
 			}
 		}
 	}
