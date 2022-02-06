@@ -9,91 +9,78 @@
 # garrison
 # protect
 # influence
-
 FRA_area_priority = {
-	allowed = { 
+	allowed = {
 		tag = FRA
 	}
 	enable = {
-		original_tag = FRA
+		always = yes
 	}
-
 	ai_strategy = {
 		type = area_priority
 		id = france
-		value = 500 #more focus here
+		value = 500		#more focus here
 	}
-	
 	ai_strategy = {
 		type = area_priority
 		id = scandinavia
 		value = 10
 	}
-	
 	ai_strategy = {
 		type = area_priority
 		id = benelux
-		value = 110 #more focus here
+		value = 110		#more focus here
 	}
-	
 	ai_strategy = {
 		type = area_priority
 		id = germany
-		value = 80 #more focus here
+		value = 80		#more focus here
 	}
-
 	ai_strategy = {
 		type = area_priority
 		id = north_america
-		value = -999
+		value = -500
 	}
-	
 	ai_strategy = {
 		type = area_priority
 		id = south_america
-		value = -999
+		value = -500
 	}
-
 	ai_strategy = {
 		type = area_priority
 		id = middle_east
 		value = -10
 	}
-	
 	ai_strategy = {
 		type = area_priority
 		id = asia
-		value = -999
+		value = -500
 	}
-
 	ai_strategy = {
 		type = area_priority
 		id = south_africa
-		value = -999
+		value = -500
 	}
-
 	ai_strategy = {
 		type = area_priority
 		id = north_africa
 		value = 50
 	}
-	
 	ai_strategy = {
 		type = area_priority
 		id = pacific
-		value = -999 #less focus here
+		value = -500		#less focus here
 	}
-	
 	ai_strategy = {
 		type = area_priority
 		id = oceania
-		value = -999
+		value = -500
 	}
 }
 
 FRA_accept_USA_access = {
 	allowed = {
-		tag = FRA # not original_tag to avoid Vichy weirdness
+		tag = FRA		# not original_tag to avoid Vichy weirdness
 	}
 	enable = {
 		date > 1940.9.9
@@ -108,7 +95,6 @@ FRA_accept_USA_access = {
 		}
 	}
 	abort_when_not_enabled = yes
-
 	ai_strategy = {
 		type = diplo_action_acceptance
 		id = USA
@@ -117,17 +103,13 @@ FRA_accept_USA_access = {
 	}
 }
 
-
 FRA_protect_vichy = {
-
 	reversed = yes
-
 	enable_reverse = {
 		GER = {
 			has_government = fascism
 		}
 	}
-
 	enable = {
 		has_focus_tree = vichy_french_focus
 	}
@@ -137,7 +119,6 @@ FRA_protect_vichy = {
 		id = GER
 		value = 200
 	}
-
 	ai_strategy = {
 		type = befriend
 		id = GER
@@ -146,12 +127,16 @@ FRA_protect_vichy = {
 }
 
 FRA_help_germany_if_vichy = {
-	allowed = { original_tag = FRA }
+	allowed = {
+		original_tag = FRA
+	}
 	enable = {
 		GER = {
 			has_government = fascism
 		}
-		NOT = { has_war_with = GER }
+		NOT = {
+			has_war_with = GER
+		}
 		has_focus_tree = vichy_french_focus
 	}
 	abort_when_not_enabled = yes
@@ -163,15 +148,12 @@ FRA_help_germany_if_vichy = {
 }
 
 FRA_antagonize_vichy = {
-
 	reversed = yes
-
 	enable_reverse = {
 		FRA = {
 			has_government = democratic
 		}
 	}
-
 	enable = {
 		has_focus_tree = vichy_french_focus
 		OR = {
@@ -183,13 +165,11 @@ FRA_antagonize_vichy = {
 			}
 		}
 	}
-
 	ai_strategy = {
 		type = antagonize
 		id = FRA
 		value = 200
 	}
-
 	ai_strategy = {
 		type = conquer
 		id = FRA
@@ -199,11 +179,9 @@ FRA_antagonize_vichy = {
 
 FRA_GER_will_probably_join_ITA = {
 	# if ITA is going to war with us, consider GER as a threat as well
-
 	allowed = {
 		original_tag = FRA
 	}
-
 	enable = {
 		GER = {
 			has_government = fascism
@@ -224,7 +202,6 @@ FRA_GER_will_probably_join_ITA = {
 					is_justifying_wargoal_against = FRA
 					has_wargoal_against = FRA
 				}
-
 				# check if we are declaring on any guarantee of FRA
 				FRA = {
 					any_guaranteed_country = {
@@ -240,9 +217,7 @@ FRA_GER_will_probably_join_ITA = {
 			}
 		}
 	}
-
 	abort_when_not_enabled = yes
-
 	ai_strategy = {
 		type = prepare_for_war
 		id = GER
@@ -251,26 +226,34 @@ FRA_GER_will_probably_join_ITA = {
 }
 
 FRA_benelux_will_surely_not_fall = {
-	allowed = { original_tag = FRA }
+	allowed = {
+		original_tag = FRA
+	}
 	enable = {
 		has_war_with = GER
 		date < 1940.8.1
 		OR = {
-			HOL = { has_capitulated = no }
-			BEL = { has_capitulated = no }
+			HOL = {
+				has_capitulated = no
+			}
+			BEL = {
+				has_capitulated = no
+			}
 		}
 	}
-
 	abort = {
 		OR = {
 			date > 1940.8.1
 			AND = {
-				HOL = { surrender_progress > 0.5 }
-				BEL = { surrender_progress > 0.5 }
+				HOL = {
+					surrender_progress > 0.5
+				}
+				BEL = {
+					surrender_progress > 0.5
+				}
 			}
 		}
 	}
-
 	ai_strategy = {
 		type = dont_defend_ally_borders
 		id = "HOL"
@@ -298,22 +281,28 @@ FRA_benelux_will_surely_not_fall = {
 }
 
 FRA_maginot_protecc = {
-
-	allowed = { original_tag = FRA }
-	
+	allowed = {
+		original_tag = FRA
+	}
 	enable = {
 		date < 1945.6.1
 	}
-	
 	abort = {
 		OR = {
-			GER = {exists = no}
-			GER = {has_capitulated = yes}
-			GER = {is_in_faction_with = FRA}
-			FRA = {has_capitulated = yes}
+			GER = {
+				exists = no
+			}
+			GER = {
+				has_capitulated = yes
+			}
+			GER = {
+				is_in_faction_with = FRA
+			}
+			FRA = {
+				has_capitulated = yes
+			}
 		}
 	}
-	
 	ai_strategy = {
 		type = put_unit_buffers
 		# Alsace-Moselle
@@ -327,16 +316,16 @@ FRA_maginot_protecc = {
 	}
 }
 
-
 FRA_CHILL_OUT = {
-	allowed = { tag = FRA }
+	allowed = {
+		tag = FRA
+	}
 	enable = {
 		has_war_with = GER
 	}
 	abort = {
-        date > 1941.6.1
+		date > 1941.6.1
 	}
-
 	ai_strategy = {
 		type = front_control
 		state_trigger = {
@@ -362,7 +351,7 @@ FRA_CHILL_OUT = {
 	ai_strategy = {
 		type = front_control
 		country_trigger = {
-				tag = LUX
+			tag = LUX
 		}
 		ordertype = front
 		execution_type = careful
@@ -372,9 +361,8 @@ FRA_CHILL_OUT = {
 	ai_strategy = {
 		type = ignore
 		id = LUX
-		value = 999
+		value = 500
 	}
-
 	ai_strategy = {
 		type = front_control
 		state_trigger = {
@@ -388,30 +376,28 @@ FRA_CHILL_OUT = {
 	ai_strategy = {
 		type = front_unit_request
 		tag = GER
-		value = 20 #Maginot protect
+		value = 20		#Maginot protect
 	}
 	ai_strategy = {
 		type = front_unit_request
 		tag = BEL
-		value = 60 #They will come here
+		value = 60		#They will come here
 	}
 	ai_strategy = {
 		type = front_unit_request
 		tag = ITA
-		value = 20 #No need to much troops in the alps
+		value = 20		#No need to much troops in the alps
 	}
 }
 
 FRA_build_mils = {
-	allowed = { 
+	allowed = {
 		tag = FRA
 	}
 	enable = {
-		tag = FRA
+		always = yes
 	}
-	
 	abort_when_not_enabled = yes
-	
 	ai_strategy = {
 		type = building_target
 		id = arms_factory
@@ -419,77 +405,70 @@ FRA_build_mils = {
 	}
 }
 
-
 FRA_ignore_british_africa = {
-	allowed = { 
+	allowed = {
 		tag = FRA
 	}
 	enable = {
-		tag = FRA
+		always = yes
 	}
 	abort = {
 		OR = {
 			date > 1942.1.1
-			FRA = { has_capitulated = yes }
+			FRA = {
+				has_capitulated = yes
+			}
 		}
 	}
-
 	ai_strategy = {
 		type = dont_defend_ally_borders
 		id = "ENG"
-		value = 999
+		value = 500
 	}
-
 	ai_strategy = {
 		type = ignore
 		id = "ETH"
-		value = 999
+		value = 500
 	}
-	
 	ai_strategy = {
 		type = area_priority
 		id = south_africa
-		value = -999
+		value = -500
 	}
 }
 
-
 FRA_trying_to_save_the_east_is_a_deathtrap = {
-	allowed = { 
+	allowed = {
 		tag = FRA
 	}
 	enable = {
-		tag = FRA
 		has_war_with = GER
 		OR = {
 			date < 1942.1.1
 			has_war_with = SOV
 		}
 	}
-	
 	abort = {
 		date > 1942.1.1
-		NOT = { has_war_with = SOV }
+		NOT = {
+			has_war_with = SOV
+		}
 	}
-	
 	ai_strategy = {
 		type = dont_defend_ally_borders
 		id = "POL"
 		value = 500
 	}
-
 	ai_strategy = {
 		type = dont_defend_ally_borders
 		id = "CZE"
 		value = 500
 	}
-
 	ai_strategy = {
 		type = dont_defend_ally_borders
 		id = "YUG"
 		value = 500
 	}
-
 	ai_strategy = {
 		type = dont_defend_ally_borders
 		id = "GRE"
@@ -498,7 +477,7 @@ FRA_trying_to_save_the_east_is_a_deathtrap = {
 }
 
 FRA_trying_to_save_benelux_is_deathtrap = {
-	allowed = { 
+	allowed = {
 		tag = FRA
 	}
 	enable = {
@@ -506,29 +485,24 @@ FRA_trying_to_save_benelux_is_deathtrap = {
 		has_war_with = GER
 		date < 1941.6.1
 	}
-	
 	abort = {
 		date > 1941.6.1
 	}
-	
 	ai_strategy = {
 		type = dont_defend_ally_borders
 		id = "HOL"
 		value = 500
 	}
-
 	ai_strategy = {
 		type = dont_defend_ally_borders
 		id = "LUX"
 		value = 500
 	}
-
 	ai_strategy = {
 		type = dont_defend_ally_borders
 		id = "EGY"
 		value = 500
 	}
-
 	ai_strategy = {
 		type = dont_defend_ally_borders
 		id = "DEN"
@@ -537,14 +511,13 @@ FRA_trying_to_save_benelux_is_deathtrap = {
 }
 
 FRA_protect_the_homeland = {
-	allowed = { 
+	allowed = {
 		tag = FRA
 	}
 	enable = {
-		original_tag = FRA
 		NOT = {
-			FRA = { 
-				is_in_faction_with = BEL 
+			FRA = {
+				is_in_faction_with = BEL
 			}
 		}
 		BEL = {
@@ -556,91 +529,77 @@ FRA_protect_the_homeland = {
 		BEL = {
 			has_capitulated = yes
 		}
-		FRA = { 
-			is_in_faction_with = BEL 
+		FRA = {
+			is_in_faction_with = BEL
 		}
 	}
-
 	ai_strategy = {
 		type = antagonize
 		id = "BEL"
 		value = 500
 	}
-
 	ai_strategy = {
 		type = conquer
 		id = "BEL"
 		value = 500
 	}
-	
 	ai_strategy = {
 		type = antagonize
 		id = "ITA"
 		value = 100
 	}
-
 	ai_strategy = {
 		type = conquer
 		id = "ITA"
 		value = 100
 	}
-	
 	ai_strategy = {
 		type = antagonize
 		id = "LUX"
 		value = 50
 	}
-
 	ai_strategy = {
 		type = conquer
 		id = "LUX"
 		value = 100
 	}
-
 	ai_strategy = {
 		type = ignore
 		id = "COG"
-		value = 999
+		value = 500
 	}
-
 	ai_strategy = {
 		type = ignore
 		id = "ETH"
-		value = 999
+		value = 500
 	}
-
 	ai_strategy = {
 		type = area_priority
 		id = south_africa
-		value = -999
+		value = -500
 	}
 }
 
 FRA_protect_the_homeland_2 = {
-	allowed = { 
+	allowed = {
 		tag = FRA
 	}
 	enable = {
-		tag = FRA
 		threat > 0.2
 		date < 1942.1.1
 	}
-	
 	abort = {
 		date > 1942.1.1
 	}
-	
 	ai_strategy = {
 		type = garrison
 		value = -100
 	}
-
 	ai_strategy = {
 		type = role_ratio
 		id = garrison
 		value = -100
 	}
-
 	ai_strategy = {
 		type = conquer
 		id = "GER"
@@ -664,49 +623,100 @@ FRA_protect_the_homeland_2 = {
 	ai_strategy = {
 		type = area_priority
 		id = france
-		value = 999 # Homeland
+		value = 500		# Homeland
 	}
-    ai_strategy = {
+	ai_strategy = {
 		type = area_priority
 		id = east_asia
-		value = -999 # dont suicide in the east
+		value = -500		# dont suicide in the east
 	}
 	ai_strategy = {
 		type = ignore
 		id = "ETH"
-		value = 999
+		value = 500
 	}
-
 	ai_strategy = {
 		type = area_priority
 		id = south_africa
-		value = -999
+		value = -500
 	}
 }
 
 FRA_defense_of_the_colonies = {
-	allowed = { 
+	allowed = {
 		tag = FRA
 	}
 	enable = {
-		original_tag = FRA
 		country_exists = ALG
 	}
 	abort = {
-		NOT = { 
+		NOT = {
 			country_exists = ALG
 		}
 	}
-
 	ai_strategy = {
 		type = dont_defend_ally_borders
 		id = "ALG"
 		value = 500
 	}
-
 	ai_strategy = {
 		type = garrison
 		id = "ALG"
 		value = -200
+	}
+}
+
+FRA_dont_bomb_ger_too_soon = {
+	allowed = {
+		original_tag = FRA
+	}
+	enable = {
+		FRA = {
+			has_war_with = GER
+		}
+		date < 1941.1.1
+	}
+	abort = { 
+		date > 1941.1.1
+	}
+	ai_strategy = {
+		type = area_priority
+		id = italy
+		value = -999
+	}
+	ai_strategy = {
+		type = area_priority
+		id = germany
+		value = -999
+	}
+	ai_strategy = {
+		type = area_priority
+		id = scandinavia
+		value = -999
+	}
+	ai_strategy = {
+		type = area_priority
+		id = poland
+		value = -999
+	}
+	ai_strategy = {
+		type = area_priority
+		id = balkans
+		value = -999
+	}
+	ai_strategy = {
+		type = area_priority
+		id = north_russia
+		value = -999
+	}
+	ai_strategy = {
+		type = area_priority
+		id = south_russia
+		value = -999
+	}
+	ai_strategy = {
+		type = area_priority
+		id = west_russia
+		value = -999
 	}
 }

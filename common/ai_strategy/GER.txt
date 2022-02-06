@@ -12,26 +12,19 @@
 # contain
 # area_priority
 # building_target
-
-
-
-
 GER_stockpile_less_early_game = {
 	allowed = {
 		original_tag = GER
 	}
-
 	enable = {
 		date < 1940.1.1
 	}
 	abort_when_not_enabled = yes
-
 	ai_strategy = {
 		type = equipment_stockpile_surplus_ratio
-		value = -20 # reduce while we build up in case of CZE or Austria issues
+		value = -20		# reduce while we build up in case of CZE or Austria issues
 	}
 }
-
 
 war_with_poland = {
 	allowed = {
@@ -42,9 +35,10 @@ war_with_poland = {
 		country_exists = POL
 	}
 	abort = {
-		NOT = { country_exists = POL }
+		NOT = {
+			country_exists = POL
+		}
 	}
-
 	ai_strategy = {
 		type = antagonize
 		id = "POL"
@@ -67,26 +61,25 @@ danzig_of_war_preparation = {
 		}
 		country_exists = POL
 	}
-
 	abort = {
 		OR = {
-			NOT = { country_exists = POL }
-
+			NOT = {
+				country_exists = POL
+			}
 			AND = {
 				has_completed_focus = GER_danzig_or_war
-				GER = { has_war_with = POL }
+				GER = {
+					has_war_with = POL
+				}
 			}
-
 			owns_state = 85
 		}
 	}
-
 	ai_strategy = {
 		type = conquer
 		id = "POL"
 		value = 100
 	}
-	
 	ai_strategy = {
 		type = conquer
 		id = "FRA"
@@ -106,15 +99,16 @@ dont_die_in_mountains = {
 		country_exists = FRA
 	}
 	abort = {
-		NOT = { country_exists = FRA }
+		NOT = {
+			country_exists = FRA
+		}
 		date > 1942.5.1
-	}	
+	}
 	ai_strategy = {
 		type = ignore
 		id = "SWI"
 		value = 500
 	}
-
 	ai_strategy = {
 		type = ignore
 		id = "SWE"
@@ -126,9 +120,9 @@ dont_die_in_mountains = {
 		value = -500
 	}
 	#ai_strategy = {
-		#type = befriend
-		#id = "SWI"
-		#value = 500
+	#type = befriend
+	#id = "SWI"
+	#value = 500
 	#}
 	ai_strategy = {
 		type = conquer
@@ -153,90 +147,89 @@ war_with_soviets = {
 	}
 	enable = {
 		country_exists = SOV
-		NOT = { is_in_faction_with = SOV }
+		NOT = {
+			is_in_faction_with = SOV
+		}
 		OR = {
-			NOR = { has_capitulated = yes }
+			NOR = {
+				has_capitulated = yes
+			}
 			date > 1941.5.1
 		}
 		OR = {
 			AND = {
-				FRA = { has_capitulated = yes }
+				FRA = {
+					has_capitulated = yes
+				}
 				has_war_with = FRA
 			}
-			date > 1941.6.1							
+			date > 1941.6.1
 		}
 	}
 	abort = {
 		OR = {
-			NOT = { country_exists = SOV }
+			NOT = {
+				country_exists = SOV
+			}
 			AND = {
-				FRA = { has_capitulated = no }
+				FRA = {
+					has_capitulated = no
+				}
 				has_war_with = FRA
 			}
 			is_in_faction_with = SOV
-			date > 1942.1.1							
+			date > 1942.1.1
 		}
 	}
-
-
 	ai_strategy = {
 		type = antagonize
-		id = "SOV"			
+		id = "SOV"
 		value = 400
 	}
-
 	ai_strategy = {
 		type = conquer
-		id = "SOV"			
+		id = "SOV"
 		value = 500
 	}
-	
 	ai_strategy = {
 		type = front_armor_score
 		id = "SOV"
 		value = 250
 	}
-
 	ai_strategy = {
 		type = invade
 		id = "SOV"
 		value = -500
 	}
-	
 	ai_strategy = {
 		type = dont_defend_ally_borders
 		id = "FIN"
 		value = 999
 	}
-	
 	ai_strategy = {
 		type = dont_defend_ally_borders
 		id = "ROM"
 		value = -100
 	}
-
-	ai_strategy = {									
+	ai_strategy = {
 		type = area_priority
 		id = north_russia
-		value = 200 #more focus here
+		value = 200		#more focus here
 	}
-
 	ai_strategy = {
-		type = area_priority							
+		type = area_priority
 		id = west_russia
-		value = 250 #more focus here
+		value = 250		#more focus here
 	}
-
-	ai_strategy = {									
+	ai_strategy = {
 		type = area_priority
 		id = south_russia
-		value = 200 #more focus here
+		value = 200		#more focus here
 	}
-	
-	ai_strategy = {									
+	ai_strategy = {
 		type = area_priority
 		id = scandinavia
-		value = -500 #less focus there
+		value = -500		#less focus there
 	}
 }
 
@@ -249,9 +242,10 @@ soviet_ally = {
 		country_exists = SOV
 	}
 	abort = {
-		NOT = { country_exists = SOV }
+		NOT = {
+			country_exists = SOV
+		}
 	}
-
 	ai_strategy = {
 		type = befriend
 		id = "SOV"
@@ -264,7 +258,6 @@ soviet_ally = {
 	}
 }
 
-
 italy_ally = {
 	allowed = {
 		original_tag = GER
@@ -274,9 +267,10 @@ italy_ally = {
 		country_exists = ITA
 	}
 	abort = {
-		NOT = { country_exists = ITA }
+		NOT = {
+			country_exists = ITA
+		}
 	}
-
 	ai_strategy = {
 		type = befriend
 		id = "ITA"
@@ -300,9 +294,10 @@ iron_pact_italy = {
 		}
 	}
 	abort = {
-		NOT = { country_exists = ITA }
+		NOT = {
+			country_exists = ITA
+		}
 	}
-
 	ai_strategy = {
 		type = befriend
 		id = "ITA"
@@ -324,9 +319,10 @@ japan_ally = {
 		country_exists = JAP
 	}
 	abort = {
-		NOT = { country_exists = JAP }
+		NOT = {
+			country_exists = JAP
+		}
 	}
-
 	ai_strategy = {
 		type = befriend
 		id = "JAP"
@@ -348,9 +344,10 @@ china_ally = {
 		country_exists = CHI
 	}
 	abort = {
-		NOT = { country_exists = CHI }
+		NOT = {
+			country_exists = CHI
+		}
 	}
-
 	ai_strategy = {
 		type = befriend
 		id = "CHI"
@@ -372,9 +369,10 @@ turkey_ally = {
 		country_exists = TUR
 	}
 	abort = {
-		NOT = { country_exists = TUR }
+		NOT = {
+			country_exists = TUR
+		}
 	}
-
 	ai_strategy = {
 		type = befriend
 		id = "TUR"
@@ -389,18 +387,23 @@ turkey_ally = {
 
 spain_ally = {
 	allowed = {
-		NOT = { has_dlc = "La Resistance" }
+		NOT = {
+			has_dlc = "La Resistance"
+		}
 		original_tag = GER
 	}
 	enable = {
 		has_completed_focus = GER_nationalist_spain_ally
 		country_exists = SPR
-		SPR = { has_government = fascism } # TODO Find way to detect dynamic revolter tag
+		SPR = {
+			has_government = fascism
+		}		# TODO Find way to detect dynamic revolter tag
 	}
 	abort = {
-		NOT = { country_exists = SPR }
+		NOT = {
+			country_exists = SPR
+		}
 	}
-
 	ai_strategy = {
 		type = befriend
 		id = "SPR"
@@ -424,11 +427,14 @@ spain_ally_resistance = {
 	}
 	abort = {
 		OR = {
-			NOT = { country_exists = SPA }
-			SPA = { has_completed_focus = SPA_join_the_allies }
+			NOT = {
+				country_exists = SPA
+			}
+			SPA = {
+				has_completed_focus = SPA_join_the_allies
+			}
 		}
 	}
-
 	ai_strategy = {
 		type = befriend
 		id = "SPA"
@@ -450,9 +456,10 @@ denmark_ally = {
 		country_exists = DEN
 	}
 	abort = {
-		NOT = { country_exists = DEN }
+		NOT = {
+			country_exists = DEN
+		}
 	}
-
 	ai_strategy = {
 		type = befriend
 		id = "DEN"
@@ -474,9 +481,10 @@ sweden_ally = {
 		country_exists = SWE
 	}
 	abort = {
-		NOT = { country_exists = SWE }
+		NOT = {
+			country_exists = SWE
+		}
 	}
-
 	ai_strategy = {
 		type = befriend
 		id = "SWE"
@@ -498,9 +506,10 @@ dutch_ally = {
 		country_exists = HOL
 	}
 	abort = {
-		NOT = { country_exists = HOL }
+		NOT = {
+			country_exists = HOL
+		}
 	}
-
 	ai_strategy = {
 		type = befriend
 		id = "HOL"
@@ -522,9 +531,10 @@ norway_ally = {
 		country_exists = NOR
 	}
 	abort = {
-		NOT = { country_exists = NOR }
+		NOT = {
+			country_exists = NOR
+		}
 	}
-
 	ai_strategy = {
 		type = befriend
 		id = "NOR"
@@ -550,7 +560,6 @@ anschluss_rejected = {
 			country_exists = AUS
 		}
 	}
-
 	ai_strategy = {
 		type = antagonize
 		id = "AUS"
@@ -571,18 +580,16 @@ CZE_is_idiot = {
 			country_exists = CZE
 		}
 	}
-
 	ai_strategy = {
 		type = antagonize
 		id = "CZE"
 		value = 300
 	}
-
 	ai_strategy = {
 		type = conquer
-		id = "CZE"			
+		id = "CZE"
 		value = 500
-	}	
+	}
 }
 
 play_nice_with_ribbentrop_pact = {
@@ -593,17 +600,24 @@ play_nice_with_ribbentrop_pact = {
 		has_global_flag = sov_yes_pact
 	}
 	abort = {
-		OR ={
-			GER = { has_war_with = SOV }
+		OR = {
+			GER = {
+				has_war_with = SOV
+			}
 			date > 1941.5.1
 			AND = {
-				LIT = { is_in_faction_with = SOV }
-				LAT = { is_in_faction_with = SOV }
-				EST = { is_in_faction_with = SOV }
+				LIT = {
+					is_in_faction_with = SOV
+				}
+				LAT = {
+					is_in_faction_with = SOV
+				}
+				EST = {
+					is_in_faction_with = SOV
+				}
 			}
 		}
 	}
-
 	# leave britney alone!
 	ai_strategy = {
 		type = ignore
@@ -627,13 +641,14 @@ tfv_protect_fascist_south_africa = {
 		original_tag = GER
 	}
 	enable = {
-		has_country_flag = saf_fascist_uprising # Set from the national focus
+		has_country_flag = saf_fascist_uprising		# Set from the national focus
 	}
 	abort = {
 		surrender_progress > 0.8
-		SAF = { has_civil_war = no }
+		SAF = {
+			has_civil_war = no
+		}
 	}
-
 	ai_strategy = {
 		type = protect
 		id = "SAF"
@@ -656,7 +671,6 @@ tfv_protect_fascist_south_africa = {
 	}
 }
 
-
 GER_area_priority = {
 	allowed = {
 		original_tag = GER
@@ -664,96 +678,81 @@ GER_area_priority = {
 	enable = {
 		always = yes
 	}
-
 	ai_strategy = {
 		type = area_priority
 		id = west_russia
-		value = 120 #more focus here
+		value = 120		#more focus here
 	}
-
 	ai_strategy = {
 		type = area_priority
 		id = balkans
-		value = 110 #more focus here
+		value = 110		#more focus here
 	}
-
 	ai_strategy = {
 		type = area_priority
 		id = east_europe
-		value = 110 #more focus here
+		value = 110		#more focus here
 	}
-
 	ai_strategy = {
 		type = area_priority
 		id = scandinavia
-		value = -10 #less focus here
+		value = -10		#less focus here
 	}
-
 	ai_strategy = {
 		type = area_priority
 		id = germany
-		value = 110 #more focus here
+		value = 110		#more focus here
 	}
-
 	ai_strategy = {
 		type = area_priority
 		id = france
-		value = 110 #more focus here
+		value = 110		#more focus here
 	}
-
 	ai_strategy = {
 		type = area_priority
 		id = benelux
-		value = 130 #more focus here
+		value = 130		#more focus here
 	}
-
 	ai_strategy = {
 		type = area_priority
 		id = britain
-		value = 100 #more focus here
+		value = 100		#more focus here
 	}
 	ai_strategy = {
 		type = area_priority
 		id = north_america
 		value = 100
 	}
-
 	ai_strategy = {
 		type = area_priority
 		id = south_america
 		value = -10
 	}
-
 	ai_strategy = {
 		type = area_priority
 		id = asia
 		value = -10
 	}
-
 	ai_strategy = {
 		type = area_priority
 		id = middle_east
 		value = -20
 	}
-
 	ai_strategy = {
 		type = area_priority
 		id = north_africa
 		value = -50
 	}
-	
 	ai_strategy = {
 		type = area_priority
 		id = south_africa
 		value = -999
 	}
-
 	ai_strategy = {
 		type = area_priority
 		id = pacific
-		value = -120 #less focus here
+		value = -120		#less focus here
 	}
-
 	ai_strategy = {
 		type = area_priority
 		id = oceania
@@ -767,11 +766,19 @@ invading_france_is_pointless_because_we_go_through_benelux_soon = {
 	}
 	enable = {
 		if = {
-			limit = { NOT = { has_dlc = "Man the Guns" } }
-			NOT = { has_tech = landing_craft }
+			limit = {
+				NOT = {
+					has_dlc = "Man the Guns"
+				}
+			}
+			NOT = {
+				has_tech = landing_craft
+			}
 		}
 		else = {
-			NOT = { has_tech = mtg_landing_craft }
+			NOT = {
+				has_tech = mtg_landing_craft
+			}
 		}
 		date < 1940.1.1
 	}
@@ -781,13 +788,11 @@ invading_france_is_pointless_because_we_go_through_benelux_soon = {
 			date > 1942.1.1
 		}
 	}
-
 	ai_strategy = {
 		type = invade
 		id = "FRA"
-		value = -2000 # that low means not going for islands either
+		value = -2000		# that low means not going for islands either
 	}
-
 	# danzig corridor is too small to be worth opening extra invasion front
 	ai_strategy = {
 		type = invade
@@ -803,13 +808,15 @@ worry_about_barbarossa_before_africa = {
 	enable = {
 		date > 1941.5.1
 		country_exists = SOV
-		NOT = {	is_in_faction_with = SOV }
+		NOT = {
+			is_in_faction_with = SOV
+		}
 		has_war_with = ENG
-		ENG = { is_ai = yes }
+		ENG = {
+			is_ai = yes
+		}
 	}
-
 	abort_when_not_enabled = yes
-
 	ai_strategy = {
 		type = area_priority
 		id = middle_east
@@ -828,16 +835,19 @@ make_sure_poland_is_ganked_before_we_move = {
 	}
 	enable = {
 		has_war_with = POL
-		POL = { has_capitulated = no }
+		POL = {
+			has_capitulated = no
+		}
 		date < 1940.1.1
 	}
 	abort = {
 		OR = {
-			POL = { has_capitulated = yes }
+			POL = {
+				has_capitulated = yes
+			}
 			date > 1940.1.1
 		}
 	}
-
 	ai_strategy = {
 		type = declare_war
 		id = "HOL"
@@ -855,41 +865,6 @@ make_sure_poland_is_ganked_before_we_move = {
 	}
 }
 
-GER_want_to_invade_FRA_without_ITA = {
-	allowed = {
-		original_tag = GER
-	}
-	enable = {
-		is_historical_focus_on = yes
-		date < 1940.1.1
-		FRA = {
-			is_ai = yes
-		}
-		HOL = {	has_capitulated = no }
-		BEL = {	has_capitulated = no }
-	}
-
-	abort = {
-		OR = {
-			date > 1940.1.1
-			FRA = {
-				is_ai = no
-			}
-			AND = {
-				HOL = {	has_capitulated = yes }
-				BEL = {	has_capitulated = yes }
-			}
-		}
-	}
-
-	ai_strategy = {
-		type = dont_join_wars_with
-		id = ITA
-		target_country = FRA
-		value = 500
-	}
-}
-
 axis_stay_away_from_the_royal_navy = {
 	allowed = {
 		OR = {
@@ -902,7 +877,6 @@ axis_stay_away_from_the_royal_navy = {
 	enable = {
 		has_war_with = ENG
 		#date < 1942.1.1
-
 		OR = {
 			GER = {
 				naval_strength_ratio = {
@@ -912,23 +886,61 @@ axis_stay_away_from_the_royal_navy = {
   			}
 
 			# if we manage to get a foothold in UK we must do what we can to exploit it! (checks coastal states)
-			divisions_in_state = { state = 127 size < 1 }
-			divisions_in_state = { state = 126 size < 1 }
-			divisions_in_state = { state = 125 size < 1 }
-			divisions_in_state = { state = 129 size < 1 }
-			divisions_in_state = { state = 130 size < 1 }
-			divisions_in_state = { state = 131 size < 1 }
-			divisions_in_state = { state = 123 size < 1 }
-			divisions_in_state = { state = 122 size < 1 }
-			divisions_in_state = { state = 132 size < 1 }
-			divisions_in_state = { state = 121 size < 1 }
-			divisions_in_state = { state = 136 size < 1 }
-			divisions_in_state = { state = 120 size < 1 }
-			divisions_in_state = { state = 133 size < 1 }
+			divisions_in_state = {
+				state = 127
+				size < 1
+			}
+			divisions_in_state = {
+				state = 126
+				size < 1
+			}
+			divisions_in_state = {
+				state = 125
+				size < 1
+			}
+			divisions_in_state = {
+				state = 129
+				size < 1
+			}
+			divisions_in_state = {
+				state = 130
+				size < 1
+			}
+			divisions_in_state = {
+				state = 131
+				size < 1
+			}
+			divisions_in_state = {
+				state = 123
+				size < 1
+			}
+			divisions_in_state = {
+				state = 122
+				size < 1
+			}
+			divisions_in_state = {
+				state = 132
+				size < 1
+			}
+			divisions_in_state = {
+				state = 121
+				size < 1
+			}
+			divisions_in_state = {
+				state = 136
+				size < 1
+			}
+			divisions_in_state = {
+				state = 120
+				size < 1
+			}
+			divisions_in_state = {
+				state = 133
+				size < 1
+			}
 		}
 	}
 	abort_when_not_enabled = yes
-
 	ai_strategy = {
 		type = naval_avoid_region
 		id = 18 #english channel
@@ -985,15 +997,15 @@ dont_take_claims_on_POL_we_got_focus = {
 		has_war = no
 		has_completed_focus = GER_demand_memel
 	}
-
 	abort = {
 		OR = {
-			NOT = { country_exists = POL }
+			NOT = {
+				country_exists = POL
+			}
 			date > 1940.1.1
 			has_war = yes
 		}
 	}
-
 	ai_strategy = {
 		type = ignore_claim
 		id = "POL"
@@ -1014,13 +1026,11 @@ axis_dont_mess_with_volunteers = {
 	abort = {
 		date > 1941.6.1
 	}
-
 	ai_strategy = {
 		type = send_volunteers_desire
 		id = JAP
 		value = -500
 	}
-
 	ai_strategy = {
 		type = send_volunteers_desire
 		id = MAN
@@ -1039,9 +1049,8 @@ axis_dont_mess_with_volunteers = {
 	ai_strategy = {
 		type = send_volunteers_desire
 		id = CHI
-		value = -500 #sorry buds
+		value = -500		#sorry buds
 	}
-
 	ai_strategy = {
 		type = send_volunteers_desire
 		id = PRC
@@ -1061,10 +1070,9 @@ GER_industry_we_are_the_baddies = {
 	enable = {
 		date > 1938.10.1
 	}
-	abort={
+	abort = {
 		date > 1940.1.1
 	}
-
 	ai_strategy = {
 		type = added_military_to_civilian_factory_ratio
 		value = 100
@@ -1078,7 +1086,6 @@ GER_industry_we_are_the_baddies_2 = {
 	enable = {
 		date > 1940.1.1
 	}
-
 	ai_strategy = {
 		type = added_military_to_civilian_factory_ratio
 		value = 20
@@ -1092,19 +1099,17 @@ GER_industry_we_are_the_baddies_but_not_yet = {
 	enable = {
 		date < 1937.8.1
 	}
-	abort={
+	abort = {
 		date > 1937.8.1
 	}
-
 	ai_strategy = {
 		type = role_ratio
 		id = armor
-		value = -50 #because doctrine this = 3
+		value = -50		#because doctrine this = 3
 	}
 }
 
 Axis_care_less_about_making_friends = {
-
 	enable = {
 		has_government = fascism
 		is_in_faction = yes
@@ -1113,13 +1118,14 @@ Axis_care_less_about_making_friends = {
 	}
 	abort = {
 		OR = {
-			NOT = { has_government = fascism }
+			NOT = {
+				has_government = fascism
+			}
 			is_in_faction = no
 			manpower_per_military_factory > 3000
 			has_war = no
 		}
 	}
-
 	ai_strategy = {
 		type = pp_spend_priority
 		id = relation
@@ -1135,32 +1141,28 @@ GER_wants_mil = {
 		tag = GER
 		has_government = fascism
 	}
-	
 	abort_when_not_enabled = yes
-	
 	ai_strategy = {
 		type = building_target
 		id = arms_factory
 		value = 500
 	}
-	
 	ai_strategy = {
 		type = building_target
-		id = dockyard 
+		id = dockyard
 		value = 25
 	}
-	
 	ai_strategy = {
 		type = building_target
 		id = industrial_complex
 		value = -9999
 	}
-
 	ai_strategy = {
 		type = dockyard_to_military_factory_ratio
-		value = 10  #aim for a 6-1 ratio on naval factories
+		value = 10		#aim for a 6-1 ratio on naval factories
 	}
 }
+
 GER_wants_synth = {
 	allowed = {
 		original_tag = GER
@@ -1172,7 +1174,7 @@ GER_wants_synth = {
 	}
 	abort = {
 		tag = GER
-        has_war = yes
+		has_war = yes
 	}
 	ai_strategy = {
 		type = building_target
@@ -1193,7 +1195,6 @@ GER_share_borders_with_ITA_against_SOV = {
 	enable = {
 		is_in_faction_with = ITA
 		going_war_with_SOV = yes
-
 		GER_should_split_SOV_front_with_ITA = yes
 	}
 	abort = {
@@ -1203,7 +1204,6 @@ GER_share_borders_with_ITA_against_SOV = {
 			GER_should_continue_split_SOV_front_with_ITA = yes
 		}
 	}
-
 	ai_strategy = {
 		type = dont_defend_ally_borders
 		id = "CRO"
@@ -1231,7 +1231,8 @@ GER_share_borders_with_ITA_against_SOV = {
 	}
 }
 
-GER_we_dont_fight_pathetic_sweden = { # :O
+GER_we_dont_fight_pathetic_sweden = {
+	# :O
 	allowed = {
 		original_tag = GER
 	}
@@ -1244,22 +1245,25 @@ GER_we_dont_fight_pathetic_sweden = { # :O
 	}
 	abort = {
 		SWE = {
-			not = { has_idea = neutrality_idea }
+			not = {
+				has_idea = neutrality_idea
+			}
 		}
 	}
 	ai_strategy = {
 		type = antagonize
 		id = SWE
-		value = -200 #keep the iron coming and no one gets hurt
+		value = -200		#keep the iron coming and no one gets hurt
 	}
 	ai_strategy = {
 		type = protect
 		id = SWE
-		value = 100 #keep the iron coming and no one gets hurt
+		value = 100		#keep the iron coming and no one gets hurt
 	}
 }
 
-GER_we_dont_fight_pathetic_sweden_on_historical = { # :O
+GER_we_dont_fight_pathetic_sweden_on_historical = {
+	# :O
 	allowed = {
 		original_tag = GER
 	}
@@ -1272,18 +1276,20 @@ GER_we_dont_fight_pathetic_sweden_on_historical = { # :O
 	}
 	abort = {
 		SWE = {
-			not = { has_idea = neutrality_idea }
+			not = {
+				has_idea = neutrality_idea
+			}
 		}
 	}
 	ai_strategy = {
 		type = antagonize
 		id = SWE
-		value = -50 #keep the iron coming and no one gets hurt
+		value = -50		#keep the iron coming and no one gets hurt
 	}
 	ai_strategy = {
 		type = protect
 		id = SWE
-		value = 50 #keep the iron coming and no one gets hurt
+		value = 50		#keep the iron coming and no one gets hurt
 	}
 }
 
@@ -1298,11 +1304,14 @@ spain_scw_support_GER_resistance = {
 	}
 	abort = {
 		OR = {
-			NOT = { country_exists = SPA }
-			SPA = { has_completed_focus = SPA_join_the_allies }
+			NOT = {
+				country_exists = SPA
+			}
+			SPA = {
+				has_completed_focus = SPA_join_the_allies
+			}
 		}
 	}
-
 	ai_strategy = {
 		type = support
 		id = "SPA"
@@ -1315,41 +1324,17 @@ spain_scw_support_GER_resistance = {
 	}
 }
 
-GER_we_are_bad_at_espionage_because_it_is_expensive_and_not_tanks = {
-	allowed = {
-		original_tag = GER
-		has_dlc = "La Resistance"
-	}
-	enable = {
-		has_government = fascism
-		num_of_civilian_factories < 90
-		num_of_civilian_factories > 30
-	}
-	abort = {
-		OR = {
-			num_of_civilian_factories > 90
-		}
-	}
-	ai_strategy = {
-		type = intelligence_agency_usable_factories
-		value = 20
-	}
-}
-
 GER_my_precisioussss = {
 	allowed = {
 		original_tag = GER
 	}
-
 	enable = {
 		OR = {
 			date < 1942.6.1
 			has_war = yes
 		}
 	}
-
 	abort_when_not_enabled = yes
-
 	ai_strategy = {
 		type = send_lend_lease_desire
 		id = SLO
@@ -1413,50 +1398,41 @@ GER_let_italy_handle_french_front_alone = {
 	}
 }
 
-
-GER_ITA_close_up_maginot_line_after_FRA_falls  = {
+GER_ITA_close_up_maginot_line_after_FRA_falls = {
 	allowed = {
 		OR = {
 			original_tag = GER
-			original_tag = FRA
+			original_tag = ITA
 		}
 	}
-
 	enable = {
 		date < 1941.3.3
 		has_war_with = FRA
 		FRA = {
 			has_capitulated = yes
-			days_since_capitulated > 7 # let's give a week before things settle
+			days_since_capitulated > 7			# let's give a week before things settle
 			days_since_capitulated < 90
 		}
-		NOT = { has_full_control_of_state = 28 }
+		NOT = {
+			has_full_control_of_state = 28
+		}
 	}
-
 	abort_when_not_enabled = yes
-
 	ai_strategy = {
 		type = front_control
-
-		state = 28 # close up maginot line
-
+		state = 28		# close up maginot line
 		ratio = 0.6
-
 		priority = 100
 		ordertype = front
 		execution_type = rush
 		execute_order = yes
 	}
-
 	ai_strategy = {
 		type = front_unit_request
-
 		state = 28
-
-		value = 50 # lets put more units, should be safe
+		value = 50		# lets put more units, should be safe
 	}
 }
-
 
 # AI are not willing to invade if it is at war at its home against another country's home location
 # lets force invade NOR for GER
@@ -1469,25 +1445,30 @@ GER_enable_invasion_of_NOR = {
 		AND = {
 			date > 1940.2.1
 			has_completed_focus = GER_weserubung
-			POL = {has_capitulated = yes}
+			POL = {
+				has_capitulated = yes
+			}
 		}
 	}
-	
 	abort = {
 		OR = {
-			date > 1940.5.1 #We stop for France
-			NOR = {has_capitulated = yes}
-			NOR = {exists = no}
-			NOR = { is_subject_of = GER}
+			date > 1940.5.1			#We stop for France
+			NOR = {
+				has_capitulated = yes
+			}
+			NOR = {
+				exists = no
+			}
+			NOR = {
+				is_subject_of = GER
+			}
 		}
 	}
-
 	ai_strategy = {
 		type = invade
 		id = "NOR"
 		value = 500
 	}
-	
 	ai_strategy = {
 		type = invasion_unit_request
 		country_trigger = {
@@ -1495,7 +1476,6 @@ GER_enable_invasion_of_NOR = {
 		}
 		value = 500
 	}
-
 	ai_strategy = {
 		type = front_unit_request
 		# norway
@@ -1503,10 +1483,8 @@ GER_enable_invasion_of_NOR = {
 		state = 142
 		state = 143
 		state = 144
-
 		value = 100
 	}
-	
 	ai_strategy = {
 		type = front_control
 		country_trigger = {
@@ -1533,25 +1511,30 @@ GER_enable_invasion_of_NOR_again = {
 		AND = {
 			date > 1940.6.1
 			has_completed_focus = GER_weserubung
-			FRA = {has_capitulated = yes}
+			FRA = {
+				has_capitulated = yes
+			}
 		}
 	}
-	
 	abort = {
 		OR = {
-			NOR = {has_capitulated = yes} #Finishing blow
-			NOR = {exists = no}
-			NOR = { is_subject_of = GER}
+			NOR = {
+				has_capitulated = yes
+			}			#Finishing blow
+			NOR = {
+				exists = no
+			}
+			NOR = {
+				is_subject_of = GER
+			}
 			date > 1941.5.15
 		}
 	}
-
 	ai_strategy = {
 		type = invade
 		id = "NOR"
 		value = 500
 	}
-	
 	ai_strategy = {
 		type = invasion_unit_request
 		country_trigger = {
@@ -1559,7 +1542,6 @@ GER_enable_invasion_of_NOR_again = {
 		}
 		value = 100
 	}
-
 	ai_strategy = {
 		type = front_unit_request
 		# norway
@@ -1567,10 +1549,8 @@ GER_enable_invasion_of_NOR_again = {
 		state = 142
 		state = 143
 		state = 144
-
 		value = 250
 	}
-	
 	ai_strategy = {
 		type = front_control
 		country_trigger = {
@@ -1588,7 +1568,6 @@ GER_enable_invasion_of_NOR_again = {
 	}
 }
 
-
 # focus armor units on low countries
 # and ignore mighty lux until they fall
 GER_around_the_maginot = {
@@ -1596,13 +1575,11 @@ GER_around_the_maginot = {
 		original_tag = GER
 		is_historical_focus_on = yes
 	}
-
 	enable = {
 		date < 1941.4.1
 		FRA = {
 			is_ai = yes
 		}
-
 		#uh oh, they are pushing
 		42 = {
 			is_controlled_by = GER
@@ -1610,7 +1587,6 @@ GER_around_the_maginot = {
 		50 = {
 			is_controlled_by = GER
 		}
-
 		# both low countries fell
 		OR = {
 			HOL = {
@@ -1620,14 +1596,16 @@ GER_around_the_maginot = {
 				has_capitulated = no
 			}
 		}
-
 		# lux somehow joined the fun
-		NOT = { has_war_with = LUX }
+		NOT = {
+			has_war_with = LUX
+		}
 		LUX = {
 			has_capitulated = no
-			NOT = { is_in_faction_with = FRA }
+			NOT = {
+				is_in_faction_with = FRA
+			}
 		}
-
 		# we are ready to declare war on low countries
 		OR = {
 			focus_progress = {
@@ -1635,47 +1613,46 @@ GER_around_the_maginot = {
 				progress > 0
 			}
 			AND = {
-				is_in_array = { potential_and_current_enemies = HOL }
-				is_in_array = { potential_and_current_enemies = BEL }
+				is_in_array = {
+					potential_and_current_enemies = HOL
+				}
+				is_in_array = {
+					potential_and_current_enemies = BEL
+				}
 			}
 		}
-		is_in_array = { potential_and_current_enemies = FRA }
+		is_in_array = {
+			potential_and_current_enemies = FRA
+		}
 	}
-
 	abort_when_not_enabled = yes
-
 	# leave LUX for later
 	ai_strategy = {
 		type = declare_war
 		id = "LUX"
 		value = -2000
 	}
-
 	ai_strategy = {
 		type = diplo_action_desire
 		id = "LUX"
 		target = declare_war
 		value = -50000
 	}
-
 	ai_strategy = {
 		type = front_armor_score
 		id = "FRA"
 		value = -100
 	}
-
 	ai_strategy = {
 		type = front_armor_score
 		id = "HOL"
 		value = 100
 	}
-
 	ai_strategy = {
 		type = front_armor_score
 		id = "BEL"
 		value = 100
 	}
-
 	ai_strategy = {
 		type = front_armor_score
 		id = "POL"
@@ -1683,39 +1660,33 @@ GER_around_the_maginot = {
 	}
 }
 
-
 # lets not invade until we have europe
 GER_dont_invade_until_FRA_falls = {
 	allowed = {
 		original_tag = GER
 		is_historical_focus_on = yes
 	}
-
 	enable = {
 		date < 1941.3.1
 		FRA = {
 			has_capitulated = no
 		}
 	}
-
 	abort_when_not_enabled = yes
-
 	ai_strategy = {
 		type = invasion_unit_request
-		country_trigger = { always = yes }
-
+		country_trigger = {
+			always = yes
+		}
 		value = -100
 	}
-
 	ai_strategy = {
 		type = front_unit_request
-
 		# norway
 		state = 110
 		state = 142
 		state = 143
 		state = 144
-
 		value = -100
 	}
 }
@@ -1724,31 +1695,28 @@ GER_have_some_train_production = {
 	allowed = {
 		original_tag = GER
 	}
-
 	enable = {
 		date > 1936.7.1
 		num_of_military_factories > 50
 	}
 	abort_when_not_enabled = yes
-
 	ai_strategy = {
-		type = equipment_production_min_factories # This does not seem to work
+		type = equipment_production_min_factories		# This does not seem to work
 		id = train
 		value = 15
 	}
 }
 
-GER_stock_up_on_trains_before_poland = { #but this does work
+GER_stock_up_on_trains_before_poland = {
+	#but this does work
 	allowed = {
 		original_tag = GER
 	}
-
 	enable = {
 		date > 1938.7.1
 		date < 1940.7.1
 	}
 	abort_when_not_enabled = yes
-
 	ai_strategy = {
 		type = min_wanted_supply_trains
 		value = 180
@@ -1759,17 +1727,15 @@ GER_stock_up_on_trains_before_barbarossa = {
 	allowed = {
 		original_tag = GER
 	}
-
 	enable = {
 		date > 1940.7.1
 		date < 1943.1.1
 		has_war = yes
 	}
 	abort = {
-		has_war_with = SOV # Barbarossa has started, let wartime prioritization do its thing
+		has_war_with = SOV		# Barbarossa has started, let wartime prioritization do its thing
 		date > 1943.1.1
 	}
-
 	ai_strategy = {
 		type = min_wanted_supply_trains
 		value = 600
@@ -1780,12 +1746,10 @@ GER_xp_upgrade_spending_land = {
 	allowed = {
 		original_tag = GER
 	}
-
 	enable = {
 		date < 1941.6.1
 	}
 	abort_when_not_enabled = yes
-
 	ai_strategy = {
 		type = land_xp_spend_priority
 		id = upgrade_xp_cutoff
@@ -1797,27 +1761,53 @@ GER_vichy_has_served_its_purpose = {
 	allowed = {
 		original_tag = GER
 	}
-
 	enable = {
 		country_exists = VIC
 		VIC = {
 			OR = {
-				has_country_flag = case_anton # Germany has activated the decision
-
-				count_triggers = { # Conditions for decision GER_case_anton
-					amount = 3 # lost control of ca half french north africa
-					458 = { CONTROLLER = { has_war_with = ROOT } }
-					459 = { CONTROLLER = { has_war_with = ROOT } }
-					460 = { CONTROLLER = { has_war_with = ROOT } }
-					461 = { CONTROLLER = { has_war_with = ROOT } }
-					462 = { CONTROLLER = { has_war_with = ROOT } }
-					513 = { CONTROLLER = { has_war_with = ROOT } }
-					665 = { CONTROLLER = { has_war_with = ROOT } }
+				has_country_flag = case_anton				# Germany has activated the decision
+				count_triggers = {
+					# Conditions for decision GER_case_anton
+					amount = 3					# lost control of ca half french north africa
+					458 = {
+						CONTROLLER = {
+							has_war_with = ROOT
+						}
+					}
+					459 = {
+						CONTROLLER = {
+							has_war_with = ROOT
+						}
+					}
+					460 = {
+						CONTROLLER = {
+							has_war_with = ROOT
+						}
+					}
+					461 = {
+						CONTROLLER = {
+							has_war_with = ROOT
+						}
+					}
+					462 = {
+						CONTROLLER = {
+							has_war_with = ROOT
+						}
+					}
+					513 = {
+						CONTROLLER = {
+							has_war_with = ROOT
+						}
+					}
+					665 = {
+						CONTROLLER = {
+							has_war_with = ROOT
+						}
+					}
 				}
 			}
 		}
 	}
-
 	ai_strategy = {
 		type = prepare_for_war
 		id = VIC
@@ -1831,11 +1821,11 @@ GER_dont_upgrade_to_weapons_3_too_early = {
 	}
 	enable = {
 		is_historical_focus_on = yes
-		has_equipment = { infantry_equipment < 60000 }
+		has_equipment = {
+			infantry_equipment < 60000
+		}
 	}
-
 	abort_when_not_enabled = yes
-
 	ai_strategy = {
 		type = production_upgrade_desire_offset
 		id = infantry_equipment_3
@@ -1843,47 +1833,48 @@ GER_dont_upgrade_to_weapons_3_too_early = {
 	}
 }
 
-GER_blitzkrieg_benelux  = {
+GER_blitzkrieg_benelux = {
 	allowed = {
 		original_tag = GER
 	}
-
 	enable = {
 		date > 1940.5.1
-		date < 1940.7.1 #Don't keep pushing wildly if we haven't capitulated benelux in 4 months - we lost anyway
+		date < 1940.7.1		#Don't keep pushing wildly if we haven't capitulated benelux in 4 months - we lost anyway
 		OR = {
 			AND = {
 				focus_progress = {
 					focus = GER_around_maginot
 					progress > 0.01
 				}
-				NOT = { has_war_with = HOL  }
+				NOT = {
+					has_war_with = HOL
+				}
 			}
 			AND = {
 				has_war_with = HOL
-				HOL = { has_capitulated = no }
+				HOL = {
+					has_capitulated = no
+				}
 			}
 			AND = {
 				has_war_with = BEL
-				BEL = { has_capitulated = no }
+				BEL = {
+					has_capitulated = no
+				}
 			}
 		}
 	}
-
 	abort_when_not_enabled = yes
-	
 	ai_strategy = {
 		type = consider_weak
 		id = "BEL"
 		value = 999
 	}
-	
 	ai_strategy = {
 		type = consider_weak
 		id = "HOL"
 		value = 999
 	}
-
 	ai_strategy = {
 		type = front_control
 		tag = HOL
@@ -1893,7 +1884,6 @@ GER_blitzkrieg_benelux  = {
 		execution_type = rush_weak
 		execute_order = yes
 	}
-
 	ai_strategy = {
 		type = front_control
 		tag = BEL
@@ -1903,21 +1893,15 @@ GER_blitzkrieg_benelux  = {
 		execution_type = rush_weak
 		execute_order = yes
 	}
-
 	ai_strategy = {
 		type = front_unit_request
-
 		tag = BEL
-
-		value = 100 # lets put more units, should be safe
+		value = 100		# lets put more units, should be safe
 	}
-
 	ai_strategy = {
 		type = front_unit_request
-
 		tag = HOL
-
-		value = 50 # lets put more units, should be safe
+		value = 50		# lets put more units, should be safe
 	}
 }
 
@@ -1925,7 +1909,6 @@ GER_blitzkrieg_benelux  = {
 #	allowed = {
 #		original_tag = GER
 #	}
-
 #	enable = {
 #		#always = no #This isn't great
 #		date < 1942.4.1 #To space!
@@ -1940,24 +1923,17 @@ GER_blitzkrieg_benelux  = {
 #		modulo_temp_variable = { days = 40 }
 #		check_variable = { days < 20 }
 #	}
-
 #	abort_when_not_enabled = yes
-
 #	ai_strategy = {
 #		type = front_control
-
 #		tag = SOV
-
 #		ratio = 0.5
-
 #		priority = 100
 #		ordertype = front
 #		execution_type = rush_weak
 #		execute_order = yes
 #	}
-
 #}
-
 GER_normandy_buffer = {
 	allowed = {
 		original_tag = GER
@@ -1967,10 +1943,9 @@ GER_normandy_buffer = {
 		FRA = {
 			has_capitulated = yes
 		}
-		date > 1942.1.1 #We need as much as possible punch for Barb
+		date > 1942.1.1		#We need as much as possible punch for Barb
 	}
 	abort_when_not_enabled = yes
-
 	ai_strategy = {
 		type = put_unit_buffers
 		states = {
@@ -1995,104 +1970,80 @@ GER_normandy_buffer = {
 	}
 }
 
-GER_push_back_our_coasts_until_overlord  = {
+GER_push_back_our_coasts_until_overlord = {
 	allowed = {
 		original_tag = GER
 	}
-
 	enable = {
 		date < 1943.6.6
 		is_historical_focus_on = yes
-		FRA = { has_capitulated = yes }
+		FRA = {
+			has_capitulated = yes
+		}
 	}
-
 	abort_when_not_enabled = yes
-
 	ai_strategy = {
 		type = front_control
-
 		tag = HOL
-
 		ratio = 0.25
-
 		priority = 100
 		ordertype = front
 		execution_type = balanced
 		execute_order = yes
 	}
-
 	ai_strategy = {
 		type = front_control
-
 		tag = BEL
-
 		ratio = 0.25
-
 		priority = 100
 		ordertype = front
 		execution_type = balanced
 		execute_order = yes
 	}
-
 	ai_strategy = {
 		type = front_control
-
 		tag = FRA
-
 		ratio = 0.25
-
 		priority = 100
 		ordertype = front
 		execution_type = balanced
 		execute_order = yes
 	}
-
 	ai_strategy = {
 		type = front_unit_request
-
 		tag = BEL
-
 		value = 25
 	}
-
 	ai_strategy = {
 		type = front_unit_request
-
 		tag = HOL
-
-		value = 25 # lets put more units, should be safe
+		value = 25		# lets put more units, should be safe
 	}
-
 	ai_strategy = {
 		type = front_unit_request
-
 		tag = FRA
-
 		value = 25
 	}
 }
 
-GER_pause_in_SOV = { #We got this far but our home is under siege
+GER_pause_in_SOV = {
+	#We got this far but our home is under siege
 	allowed = {
 		original_tag = GER
 	}
-
 	enable = {
 		date > 1943.1.1
 		is_historical_focus_on = yes
-		SOV = { has_capitulated = no }
+		SOV = {
+			has_capitulated = no
+		}
 		surrender_progress > 0.1
 	}
-
 	abort_when_not_enabled = yes
-
 	ai_strategy = {
 		type = front_control
-
 		tag = SOV
-
 		ratio = 0.75
-
 		priority = 100
 		ordertype = front
 		execution_type = careful
@@ -2101,14 +2052,14 @@ GER_pause_in_SOV = { #We got this far but our home is under siege
 }
 
 GER_Summer_Offensive = {
-	allowed = { 
+	allowed = {
 		original_tag = GER
 	}
 	enable = {
-        has_war_with = SOV
+		has_war_with = SOV
 	}
 	abort = {
-        date > 1941.8.15
+		date > 1941.8.15
 	}
 	ai_strategy = {
 		type = front_control
@@ -2123,19 +2074,20 @@ GER_Summer_Offensive = {
 	ai_strategy = {
 		type = consider_weak
 		id = "SOV"
-		value = 9999 
+		value = 9999
 	}
 }
+
 GER_Summer_Offensive_b = {
-	allowed = { 
+	allowed = {
 		original_tag = GER
 	}
 	enable = {
-        has_war_with = SOV
+		has_war_with = SOV
 		date > 1941.8.15
 	}
 	abort = {
-        date > 1941.10.15
+		date > 1941.10.15
 	}
 	ai_strategy = {
 		type = front_control
@@ -2149,16 +2101,17 @@ GER_Summer_Offensive_b = {
 	}
 }
 
-GER_automn_limited_operations = { #Typhoon
-	allowed = { 
+GER_automn_limited_operations = {
+	#Typhoon
+	allowed = {
 		original_tag = GER
 	}
 	enable = {
-        has_war_with = SOV
-        date > 1941.10.15
+		has_war_with = SOV
+		date > 1941.10.15
 	}
 	abort = {
-        date > 1941.12.5
+		date > 1941.12.5
 	}
 	ai_strategy = {
 		type = front_control
@@ -2173,15 +2126,15 @@ GER_automn_limited_operations = { #Typhoon
 }
 
 GER_winter_hold = {
-	allowed = { 
+	allowed = {
 		original_tag = GER
 	}
 	enable = {
-        has_war_with = SOV
-        date > 1941.12.5
+		has_war_with = SOV
+		date > 1941.12.5
 	}
 	abort = {
-        date > 1942.4.1
+		date > 1942.4.1
 	}
 	ai_strategy = {
 		type = front_control
@@ -2196,18 +2149,18 @@ GER_winter_hold = {
 }
 
 GER_spring_limited_operations = {
-	allowed = { 
+	allowed = {
 		original_tag = GER
 	}
 	enable = {
-        has_war_with = SOV
+		has_war_with = SOV
 		SOV = {
 			is_ai = no
 		}
-        date > 1942.4.1
+		date > 1942.4.1
 	}
 	abort = {
-        date > 1942.6.15
+		date > 1942.6.15
 	}
 	ai_strategy = {
 		type = front_control
@@ -2220,19 +2173,20 @@ GER_spring_limited_operations = {
 		manual_attack = yes
 	}
 }
+
 GER_spring_limited_operations_ai = {
-	allowed = { 
+	allowed = {
 		original_tag = GER
 	}
 	enable = {
-        has_war_with = SOV
+		has_war_with = SOV
 		SOV = {
 			is_ai = yes
 		}
-        date > 1942.4.1
+		date > 1942.4.1
 	}
 	abort = {
-        date > 1942.6.15
+		date > 1942.6.15
 	}
 	ai_strategy = {
 		type = front_control
@@ -2247,15 +2201,15 @@ GER_spring_limited_operations_ai = {
 }
 
 GER_Summer_Offensive2 = {
-	allowed = { 
+	allowed = {
 		original_tag = GER
 	}
 	enable = {
-        has_war_with = SOV
+		has_war_with = SOV
 		date > 1942.6.15
 	}
 	abort = {
-        date > 1942.8.15
+		date > 1942.8.15
 	}
 	ai_strategy = {
 		type = front_control
@@ -2270,18 +2224,18 @@ GER_Summer_Offensive2 = {
 }
 
 GER_automn_limited_operations2 = {
-	allowed = { 
+	allowed = {
 		original_tag = GER
 	}
 	enable = {
-        has_war_with = SOV
-        date > 1942.8.15
+		has_war_with = SOV
+		date > 1942.8.15
 		SOV = {
 			is_ai = no
 		}
 	}
 	abort = {
-        date > 1942.11.1
+		date > 1942.11.1
 	}
 	ai_strategy = {
 		type = front_control
@@ -2294,19 +2248,20 @@ GER_automn_limited_operations2 = {
 		manual_attack = yes
 	}
 }
+
 GER_automn_limited_operations2_ai = {
-	allowed = { 
+	allowed = {
 		original_tag = GER
 	}
 	enable = {
-        has_war_with = SOV
-        date > 1942.8.15
+		has_war_with = SOV
+		date > 1942.8.15
 		SOV = {
 			is_ai = yes
 		}
 	}
 	abort = {
-        date > 1942.11.1
+		date > 1942.11.1
 	}
 	ai_strategy = {
 		type = front_control
@@ -2321,15 +2276,15 @@ GER_automn_limited_operations2_ai = {
 }
 
 GER_winter_hold2 = {
-	allowed = { 
+	allowed = {
 		original_tag = GER
 	}
 	enable = {
-        has_war_with = SOV
-        date > 1942.11.1
+		has_war_with = SOV
+		date > 1942.11.1
 	}
 	abort = {
-        date > 1943.4.1
+		date > 1943.4.1
 	}
 	ai_strategy = {
 		type = front_control
@@ -2344,18 +2299,18 @@ GER_winter_hold2 = {
 }
 
 GER_spring_limited_operations2 = {
-	allowed = { 
+	allowed = {
 		original_tag = GER
 	}
 	enable = {
-        has_war_with = SOV
-        date > 1943.4.1
+		has_war_with = SOV
+		date > 1943.4.1
 		SOV = {
 			is_ai = no
 		}
 	}
 	abort = {
-        date > 1943.7.15
+		date > 1943.7.15
 	}
 	ai_strategy = {
 		type = front_control
@@ -2368,19 +2323,20 @@ GER_spring_limited_operations2 = {
 		manual_attack = yes
 	}
 }
+
 GER_spring_limited_operations2_ai = {
-	allowed = { 
+	allowed = {
 		original_tag = GER
 	}
 	enable = {
-        has_war_with = SOV
-        date > 1943.4.1
+		has_war_with = SOV
+		date > 1943.4.1
 		SOV = {
 			is_ai = yes
 		}
 	}
 	abort = {
-        date > 1943.7.15
+		date > 1943.7.15
 	}
 	ai_strategy = {
 		type = front_control
@@ -2394,12 +2350,13 @@ GER_spring_limited_operations2_ai = {
 	}
 }
 
-GER_Summer_Offensive3 = { #At that point german AI is unleashed against SU. Allied player have to do something.
-	allowed = { 
+GER_Summer_Offensive3 = {
+	#At that point german AI is unleashed against SU. Allied player have to do something.
+	allowed = {
 		original_tag = GER
 	}
 	enable = {
-        has_war_with = SOV
+		has_war_with = SOV
 		date > 1943.7.15
 		NOT = {
 			controls_state = 214
@@ -2420,7 +2377,7 @@ GER_Summer_Offensive3 = { #At that point german AI is unleashed against SU. Alli
 		}
 	}
 	abort = {
-        date > 1943.8.15
+		date > 1943.8.15
 	}
 	ai_strategy = {
 		type = front_control
@@ -2435,12 +2392,12 @@ GER_Summer_Offensive3 = { #At that point german AI is unleashed against SU. Alli
 }
 
 GER_automn_limited_operations3 = {
-	allowed = { 
+	allowed = {
 		original_tag = GER
 	}
 	enable = {
-        has_war_with = SOV
-        date > 1943.8.15
+		has_war_with = SOV
+		date > 1943.8.15
 		NOT = {
 			controls_state = 214
 			controls_state = 351
@@ -2460,7 +2417,7 @@ GER_automn_limited_operations3 = {
 		}
 	}
 	abort = {
-        date > 1943.11.1
+		date > 1943.11.1
 	}
 	ai_strategy = {
 		type = front_control
@@ -2475,15 +2432,15 @@ GER_automn_limited_operations3 = {
 }
 
 GER_winter_hold3 = {
-	allowed = { 
+	allowed = {
 		original_tag = GER
 	}
 	enable = {
-        has_war_with = SOV
-        date > 1943.11.1
+		has_war_with = SOV
+		date > 1943.11.1
 	}
 	abort = {
-        date > 1944.4.1
+		date > 1944.4.1
 	}
 	ai_strategy = {
 		type = front_control
@@ -2497,13 +2454,14 @@ GER_winter_hold3 = {
 	}
 }
 
-GER_spring_limited_operations3 = { #Past that point AI should be careful but take opportunities
-	allowed = { 
+GER_spring_limited_operations3 = {
+	#Past that point AI should be careful but take opportunities
+	allowed = {
 		original_tag = GER
 	}
 	enable = {
-        has_war_with = SOV
-        date > 1944.4.1
+		has_war_with = SOV
+		date > 1944.4.1
 		NOT = {
 			controls_state = 214
 			controls_state = 351
@@ -2523,7 +2481,6 @@ GER_spring_limited_operations3 = { #Past that point AI should be careful but tak
 		}
 	}
 	abort_when_not_enabled = yes
-	
 	ai_strategy = {
 		type = front_control
 		country_trigger = {
@@ -2536,32 +2493,60 @@ GER_spring_limited_operations3 = { #Past that point AI should be careful but tak
 	}
 }
 
-GER_AA_Stalemate = { #We got what we wanted, no need to push further
-	allowed = { 
+GER_AA_Stalemate = {
+	#We got what we wanted, no need to push further
+	allowed = {
 		original_tag = GER
 	}
 	enable = {
-        has_war_with = SOV
-		
-		214 = {is_fully_controlled_by = GER}
-		351 = {is_fully_controlled_by = GER}
-		248 = {is_fully_controlled_by = GER}
-		253 = {is_fully_controlled_by = GER}
-		252 = {is_fully_controlled_by = GER}
-		256 = {is_fully_controlled_by = GER}
-		250 = {is_fully_controlled_by = GER}
-		239 = {is_fully_controlled_by = GER}
-		265 = {is_fully_controlled_by = GER}
-		217 = {is_fully_controlled_by = GER}
-		236 = {is_fully_controlled_by = GER}
-		229 = {is_fully_controlled_by = GER}
-		230 = {is_fully_controlled_by = GER}
-		231 = {is_fully_controlled_by = GER}
-		1048 = {is_fully_controlled_by = GER}
+		has_war_with = SOV
+		214 = {
+			is_fully_controlled_by = GER
+		}
+		351 = {
+			is_fully_controlled_by = GER
+		}
+		248 = {
+			is_fully_controlled_by = GER
+		}
+		253 = {
+			is_fully_controlled_by = GER
+		}
+		252 = {
+			is_fully_controlled_by = GER
+		}
+		256 = {
+			is_fully_controlled_by = GER
+		}
+		250 = {
+			is_fully_controlled_by = GER
+		}
+		239 = {
+			is_fully_controlled_by = GER
+		}
+		265 = {
+			is_fully_controlled_by = GER
+		}
+		217 = {
+			is_fully_controlled_by = GER
+		}
+		236 = {
+			is_fully_controlled_by = GER
+		}
+		229 = {
+			is_fully_controlled_by = GER
+		}
+		230 = {
+			is_fully_controlled_by = GER
+		}
+		231 = {
+			is_fully_controlled_by = GER
+		}
+		1048 = {
+			is_fully_controlled_by = GER
+		}
 	}
-	
 	abort_when_not_enabled = yes
-	
 	ai_strategy = {
 		type = front_control
 		country_trigger = {
@@ -2575,11 +2560,10 @@ GER_AA_Stalemate = { #We got what we wanted, no need to push further
 		execute_order = no
 		manual_attack = no
 	}
-	
 }
 
 GER_prep_yug = {
-	allowed = { 
+	allowed = {
 		original_tag = GER
 	}
 	enable = {
@@ -2595,23 +2579,24 @@ GER_prep_yug = {
 		}
 		OR = {
 			date > 1941.3.1
-			NOR = {has_capitulated = yes}
+			NOR = {
+				has_capitulated = yes
+			}
 		}
 	}
 	abort = {
 		has_war_with = YUG
 	}
-	
 	ai_strategy = {
 		type = conquer
-		id = "YUG"			
+		id = "YUG"
 		value = 100
 	}
 	ai_strategy = {
 		type = conquer
-		id = "GRE"			
+		id = "GRE"
 		value = 100
-	}	
+	}
 	ai_strategy = {
 		type = invade
 		id = "GRE"
@@ -2619,18 +2604,18 @@ GER_prep_yug = {
 	}
 }
 
-GER_blitz_yug  = {
+GER_blitz_yug = {
 	allowed = {
-		original_tag = GER 
+		original_tag = GER
 	}
-
 	enable = {
 		has_war_with = YUG
 	}
 	abort = {
-		YUG = {	has_capitulated = yes }	
+		YUG = {
+			has_capitulated = yes
+		}
 	}
-	
 	ai_strategy = {
 		type = consider_weak
 		id = "YUG"
@@ -2647,18 +2632,21 @@ GER_blitz_yug  = {
 		manual_attack = yes
 	}
 }
-GER_blitz_gre  = {
+
+GER_blitz_gre = {
 	allowed = {
 		original_tag = GER
 	}
-	
 	enable = {
 		has_war_with = GRE
-		YUG = {	has_capitulated = yes }
+		YUG = {
+			has_capitulated = yes
+		}
 	}
 	abort = {
-		GRE = {	has_capitulated = yes }	
-
+		GRE = {
+			has_capitulated = yes
+		}
 	}
 	ai_strategy = {
 		type = consider_weak
@@ -2681,16 +2669,18 @@ GER_blitz_gre  = {
 		value = -999
 	}
 }
-GER_blitz_pol  = {
+
+GER_blitz_pol = {
 	allowed = {
 		original_tag = GER
 	}
-	
 	enable = {
 		has_war_with = POL
 	}
 	abort = {
-		POL = {	has_capitulated = yes }	
+		POL = {
+			has_capitulated = yes
+		}
 	}
 	ai_strategy = {
 		type = consider_weak
@@ -2709,19 +2699,21 @@ GER_blitz_pol  = {
 	}
 }
 
-GER_blitz_fra  = {
+GER_blitz_fra = {
 	allowed = {
 		original_tag = GER
 	}
-	
 	enable = {
 		has_war_with = FRA
-		BEL = {	has_capitulated = yes }
-		controls_state = 16 #Paris
+		BEL = {
+			has_capitulated = yes
+		}
+		controls_state = 16		#Paris
 	}
 	abort = {
-		FRA = {	has_capitulated = yes }	
-
+		FRA = {
+			has_capitulated = yes
+		}
 	}
 	ai_strategy = {
 		type = consider_weak
@@ -2740,18 +2732,18 @@ GER_blitz_fra  = {
 	}
 }
 
-GER_blitz_den  = {
+GER_blitz_den = {
 	allowed = {
-		original_tag = GER 
+		original_tag = GER
 	}
-
 	enable = {
 		has_war_with = DEN
 	}
 	abort = {
-		DEN = {	has_capitulated = yes }	
+		DEN = {
+			has_capitulated = yes
+		}
 	}
-	
 	ai_strategy = {
 		type = consider_weak
 		id = "DEN"
@@ -2770,7 +2762,7 @@ GER_blitz_den  = {
 }
 
 anschluss_prep = {
-	allowed = { 
+	allowed = {
 		original_tag = GER
 	}
 	enable = {
@@ -2784,18 +2776,15 @@ anschluss_prep = {
 			has_completed_focus = GER_anschluss
 		}
 	}
-	
 	ai_strategy = {
 		type = conquer
-		id = "AUS"			
+		id = "AUS"
 		value = 100
-	}		
+	}
 }
 
-
-
 sudetenland_prep = {
-	allowed = { 
+	allowed = {
 		original_tag = GER
 	}
 	enable = {
@@ -2809,218 +2798,154 @@ sudetenland_prep = {
 			has_completed_focus = GER_demand_sudetenland
 		}
 	}
-	
 	ai_strategy = {
 		type = conquer
-		id = "CZE"			
+		id = "CZE"
 		value = 100
-	}		
+	}
 }
 
 germany_focus_on_france_not_italy = {
-	allowed = { 
+	allowed = {
 		original_tag = GER
 	}
 	enable = {
-		GER = { has_war_with = FRA }
+		GER = {
+			has_war_with = FRA
+		}
 		date < 1942.1.1
-		FRA = { has_capitulated = no }
+		FRA = {
+			has_capitulated = no
+		}
 	}
 	abort = {
 		OR = {
-			FRA = { has_capitulated = yes }
+			FRA = {
+				has_capitulated = yes
+			}
 			date > 1942.1.1
 		}
 	}
-	
 	ai_strategy = {
 		type = dont_defend_ally_borders
 		id = "ITA"
 		value = 1000
 	}
-
-}
-
-invading_france_is_pointless_because_we_go_through_benelux_soon = {
-	allowed = { 
-		original_tag = GER
-	}
-	enable = {
-		NOT = { has_tech = landing_craft }
-		date < 1941.1.1
-	}
-	abort = {
-		OR = {
-			has_tech = landing_craft
-			date > 1941.1.1
-			HOL = {	has_capitulated = yes }
-			BEL = {	has_capitulated = yes }
-		}
-	}
-
-	ai_strategy = {
-		type = invade
-		id = "FRA"			
-		value = -999 # that low means not going for islands either
-	}
-
-	# danzig corridor is too small to be worth opening extra invasion front
-	ai_strategy = {
-		type = invade
-		id = "POL"			
-		value = -500 
-	}
-}
-
-GER_dont_invade_FRA = {
-
-	allowed = {
-		original_tag = GER
-	}
-	
-	enable = {
-		always = yes
-	}
-	
-	ai_strategy = {
-		type = invade
-		id = "FRA"			
-		value = -999 # that low means not going for islands either
-	}
-	
-	abort_when_not_enabled = yes
-
-}
-
-invading_france_is_pointless = {
-	allowed = { 
-		original_tag = GER
-	}
-	enable = {
-		original_tag = GER
-	}
-
-	ai_strategy = {
-		type = invade
-		id = "FRA"			
-		value = -2000 # that low means not going for islands either
-	}
 }
 
 GER_want_to_invade_FRA_without_ITA = {
-	allowed = { 
+	allowed = {
 		original_tag = GER
+		original_tag = ROM
+		original_tag = HUN
 	}
 	enable = {
 		is_historical_focus_on = yes
 		date < 1940.5.1
-		HOL = {	has_capitulated = no }
-		BEL = {	has_capitulated = no }
-		LUX = {	has_capitulated = no }
+		HOL = {
+			has_capitulated = no
+		}
+		BEL = {
+			has_capitulated = no
+		}
+		LUX = {
+			has_capitulated = no
+		}
 	}
-
 	abort = {
-		OR = { 
+		OR = {
 			date > 1940.5.1
-			FRA = {	has_capitulated = yes }
+			FRA = {
+				has_capitulated = yes
+			}
 			AND = {
-				HOL = {	has_capitulated = yes }
-				BEL = {	has_capitulated = yes }
+				HOL = {
+					has_capitulated = yes
+				}
+				BEL = {
+					has_capitulated = yes
+				}
 			}
 		}
 	}
-	
 	ai_strategy = {
 		type = dont_join_wars_with
 		id = ITA
 		target_country = FRA
 		value = 1000
 	}
-
 	ai_strategy = {
 		type = dont_join_wars_with
 		id = ITA
 		target_country = POL
 		value = 1000
 	}
-
 	ai_strategy = {
 		type = dont_join_wars_with
 		id = ITA
 		target_country = ENG
 		value = 1000
 	}
-
 	ai_strategy = {
 		type = dont_join_wars_with
 		id = ITA
 		target_country = BEL
 		value = 1000
 	}
-
 	ai_strategy = {
 		type = dont_join_wars_with
 		id = ITA
 		target_country = HOL
 		value = 1000
 	}
-
 	ai_strategy = {
 		type = dont_join_wars_with
 		id = ITA
 		target_country = LUX
 		value = 1000
 	}
-
 	ai_strategy = {
 		type = dont_join_wars_with
 		id = ITA
 		target_country = MAL
 		value = 1000
 	}
-
 	ai_strategy = {
 		type = dont_join_wars_with
 		id = ITA
 		target_country = CAN
 		value = 1000
 	}
-
 	ai_strategy = {
 		type = dont_join_wars_with
 		id = ITA
 		target_country = SAF
 		value = 1000
 	}
-
 	ai_strategy = {
 		type = dont_join_wars_with
 		id = ITA
 		target_country = RAJ
 		value = 1000
 	}
-
 	ai_strategy = {
 		type = dont_join_wars_with
 		id = ITA
 		target_country = AST
 		value = 1000
 	}
-
 	ai_strategy = {
 		type = dont_join_wars_with
 		id = ITA
 		target_country = NZL
 		value = 1000
 	}
-
 	ai_strategy = {
 		type = dont_join_wars_with
 		id = ITA
 		target_country = DEN
 		value = 1000
 	}
-
 	ai_strategy = {
 		type = dont_join_wars_with
 		id = ITA
@@ -3029,15 +2954,14 @@ GER_want_to_invade_FRA_without_ITA = {
 	}
 }
 
-
 VIC_is_our_bitch = {
-	allowed = { 
+	allowed = {
 		original_tag = GER
 	}
-   enable = {
+	enable = {
 		country_exists = VIC
 	}
-    ai_strategy = {
+	ai_strategy = {
 		type = conquer
 		id = "VIC"
 		value = -999
@@ -3059,9 +2983,8 @@ VIC_is_our_bitch = {
 	#}
 }
 
-
 germany_protect_the_fatherland = {
-	allowed = { 
+	allowed = {
 		original_tag = GER
 	}
 	enable = {
@@ -3071,31 +2994,26 @@ germany_protect_the_fatherland = {
 		original_tag = GER
 		surrender_progress < 0.05
 	}
-
 	ai_strategy = {
 		type = dont_defend_ally_borders
 		id = "FIN"
 		value = 1000
 	}
-
 	ai_strategy = {
 		type = dont_defend_ally_borders
 		id = "ROM"
 		value = 1000
 	}
-
 	ai_strategy = {
 		type = dont_defend_ally_borders
 		id = "HUN"
 		value = 1000
 	}
-
 	ai_strategy = {
 		type = dont_defend_ally_borders
 		id = "CRO"
 		value = 100
 	}
-
 	ai_strategy = {
 		type = area_priority
 		id = france
@@ -3106,7 +3024,6 @@ germany_protect_the_fatherland = {
 		id = balkans
 		value = -2000
 	}
-	
 	ai_strategy = {
 		type = area_priority
 		id = north_russia
@@ -3125,7 +3042,7 @@ germany_protect_the_fatherland = {
 }
 
 GER_stay_away_from_the_royal_navy = {
-	allowed = { 
+	allowed = {
 		original_tag = GER
 	}
 	enable = {
@@ -3139,23 +3056,61 @@ GER_stay_away_from_the_royal_navy = {
   			}
 
 			# if we manage to get a foothold in UK we must do what we can to exploit it! (checks coastal states)
-			divisions_in_state = { state = 127 size < 1 }
-			divisions_in_state = { state = 126 size < 1 }
-			divisions_in_state = { state = 125 size < 1 }
-			divisions_in_state = { state = 129 size < 1 }
-			divisions_in_state = { state = 130 size < 1 }
-			divisions_in_state = { state = 131 size < 1 }
-			divisions_in_state = { state = 123 size < 1 }
-			divisions_in_state = { state = 122 size < 1 }
-			divisions_in_state = { state = 132 size < 1 }
-			divisions_in_state = { state = 121 size < 1 }
-			divisions_in_state = { state = 136 size < 1 }
-			divisions_in_state = { state = 120 size < 1 }
-			divisions_in_state = { state = 133 size < 1 }
-		}		
+			divisions_in_state = {
+				state = 127
+				size < 1
+			}
+			divisions_in_state = {
+				state = 126
+				size < 1
+			}
+			divisions_in_state = {
+				state = 125
+				size < 1
+			}
+			divisions_in_state = {
+				state = 129
+				size < 1
+			}
+			divisions_in_state = {
+				state = 130
+				size < 1
+			}
+			divisions_in_state = {
+				state = 131
+				size < 1
+			}
+			divisions_in_state = {
+				state = 123
+				size < 1
+			}
+			divisions_in_state = {
+				state = 122
+				size < 1
+			}
+			divisions_in_state = {
+				state = 132
+				size < 1
+			}
+			divisions_in_state = {
+				state = 121
+				size < 1
+			}
+			divisions_in_state = {
+				state = 136
+				size < 1
+			}
+			divisions_in_state = {
+				state = 120
+				size < 1
+			}
+			divisions_in_state = {
+				state = 133
+				size < 1
+			}
+		}
 	}
 	abort_when_not_enabled = yes
-
 	ai_strategy = {
 		type = naval_avoid_region
 		id = 18 #english channel
@@ -3219,70 +3174,83 @@ GER_stay_away_from_the_royal_navy = {
 }
 
 axis_dont_step_into_the_sea = {
-	allowed = { 
-		original_tag = GER
-	}
-	enable = {
-		has_war_with = ENG
-		date < 1942.1.1		
-	}
-	abort = {
-		date > 1942.1.1	
-		NOT = { has_war_with = ENG }
-	}
-	ai_strategy = {
-		type = naval_avoid_region
-		id = 18 #english channel
-		value = 100
-	}
-	ai_strategy = {
-		type = naval_avoid_region
-		id = 68 #western mediterranean sea
-		value = 100
-	}
-	ai_strategy = {
-		type = naval_avoid_region
-		id = 69 #eastern mediterranean sea
-		value = 100
-	}
-	ai_strategy = {
-		type = naval_avoid_region
-		id = 100 #red sea
-		value = 100
-	}
-	ai_strategy = {
-		type = naval_avoid_region
-		id = 62 #cape approach
-		value = 100
-	}
-}
-
-axis_stay_away_from_the_biskay_before_fall_of_france = {
-	allowed = { 
+	allowed = {
 		original_tag = GER
 	}
 	enable = {
 		has_war_with = ENG
 		date < 1942.1.1
-		NOT = { 30 = { CONTROLLER = { is_in_faction_with = GER } } }#Loire
-		NOT = { 14 = { CONTROLLER = { is_in_faction_with = GER } } } #Brittany
 	}
-	abort_when_not_enabled = yes
-
+	abort = {
+		date > 1942.1.1
+		NOT = {
+			has_war_with = ENG
+		}
+	}
 	ai_strategy = {
 		type = naval_avoid_region
-		id = 42 #bay of biscay
+		id = 18		#english channel
+		value = 100
+	}
+	ai_strategy = {
+		type = naval_avoid_region
+		id = 68		#western mediterranean sea
+		value = 100
+	}
+	ai_strategy = {
+		type = naval_avoid_region
+		id = 69		#eastern mediterranean sea
+		value = 100
+	}
+	ai_strategy = {
+		type = naval_avoid_region
+		id = 100		#red sea
+		value = 100
+	}
+	ai_strategy = {
+		type = naval_avoid_region
+		id = 62		#cape approach
+		value = 100
+	}
+}
+
+axis_stay_away_from_the_biskay_before_fall_of_france = {
+	allowed = {
+		original_tag = GER
+	}
+	enable = {
+		has_war_with = ENG
+		date < 1942.1.1
+		NOT = {
+			30 = {
+				CONTROLLER = {
+					is_in_faction_with = GER
+				}
+			}
+		}		#Loire
+		NOT = {
+			14 = {
+				CONTROLLER = {
+					is_in_faction_with = GER
+				}
+			}
+		}		#Brittany
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = naval_avoid_region
+		id = 42		#bay of biscay
 		value = 600
 	}
 }
 
 GER_wants_synth2 = {
-	allowed = { 
+	allowed = {
 		original_tag = GER
 	}
 	enable = {
 		has_war = yes
-        date < 1944.1.1
+		date < 1944.1.1
 	}
 	abort_when_not_enabled = yes
 	ai_strategy = {
@@ -3298,12 +3266,12 @@ GER_wants_synth2 = {
 }
 
 GER_wants_no_synth = {
-	allowed = { 
+	allowed = {
 		original_tag = GER
 	}
 	enable = {
 		has_war = yes
-        date > 1944.1.1
+		date > 1944.1.1
 	}
 	abort_when_not_enabled = yes
 	ai_strategy = {
@@ -3319,12 +3287,12 @@ GER_wants_no_synth = {
 }
 
 GER_wants_AA = {
-	allowed = { 
+	allowed = {
 		original_tag = GER
 	}
 	enable = {
 		has_war = yes
-        date > 1943.1.1
+		date > 1943.1.1
 	}
 	abort_when_not_enabled = yes
 	ai_strategy = {
@@ -3335,7 +3303,7 @@ GER_wants_AA = {
 }
 
 dont_sealion_please = {
-	allowed = { 
+	allowed = {
 		original_tag = GER
 		original_tag = ITA
 	}
@@ -3355,33 +3323,30 @@ dont_sealion_please = {
 }
 
 GER_italian_theater = {
-	allowed = { 
+	allowed = {
 		original_tag = GER
 	}
 	enable = {
 		has_war_with = ITA
 	}
-	
-	abort_when_not_enabled = yes 
-	
+	abort_when_not_enabled = yes
 	ai_strategy = {
 		type = area_priority
 		id = italy
 		value = 100
 	}
-	
 	ai_strategy = {
 		type = conquer
-		id = "ITA"			
+		id = "ITA"
 		value = 100
 	}
 }
 
-GER_dont_help_ita = { #don't send Panzers in Ethiopia plox
+GER_dont_help_ita = {
+	#don't send Panzers in Ethiopia plox
 	allowed = {
 		original_tag = GER
 	}
-	
 	enable = {
 		is_in_faction_with = ITA
 		ITA = {
@@ -3390,21 +3355,17 @@ GER_dont_help_ita = { #don't send Panzers in Ethiopia plox
 			controls_state = 448
 		}
 	}
-	
 	abort_when_not_enabled = yes
-	
 	ai_strategy = {
 		type = dont_defend_ally_borders
 		id = "ITA"
 		value = 999
 	}
-	
 	ai_strategy = {
 		type = area_priority
 		id = north_africa
 		value = -999
 	}
-	
 	ai_strategy = {
 		type = area_priority
 		id = south_africa
@@ -3412,30 +3373,28 @@ GER_dont_help_ita = { #don't send Panzers in Ethiopia plox
 	}
 }
 
-GER_dont_help_iraq = { #don't send Panzers in Iraq plox
+GER_dont_help_iraq = {
+	#don't send Panzers in Iraq plox
 	allowed = {
 		original_tag = GER
 	}
-	
 	enable = {
 		is_in_faction_with = IRQ
-		IRQ = { has_capitulated = no }
+		IRQ = {
+			has_capitulated = no
+		}
 	}
-	
 	abort_when_not_enabled = yes
-	
 	ai_strategy = {
 		type = dont_defend_ally_borders
 		id = "IRQ"
 		value = 999
 	}
-	
 	ai_strategy = {
 		type = area_priority
 		id = middle_east
 		value = -999
 	}
-	
 	ai_strategy = {
 		type = area_priority
 		id = asia
@@ -3443,36 +3402,35 @@ GER_dont_help_iraq = { #don't send Panzers in Iraq plox
 	}
 }
 
-GER_dont_help_persia = { #don't send Panzers in Iran plox
+GER_dont_help_persia = {
+	#don't send Panzers in Iran plox
 	allowed = {
 		original_tag = GER
 	}
-	
 	enable = {
 		is_in_faction_with = PER
-		IRQ = { has_capitulated = no }
+		IRQ = {
+			has_capitulated = no
+		}
 	}
-	
 	abort_when_not_enabled = yes
-	
 	ai_strategy = {
 		type = dont_defend_ally_borders
 		id = "PER"
 		value = 999
 	}
-	
 	ai_strategy = {
 		type = area_priority
 		id = middle_east
 		value = -999
 	}
-	
 	ai_strategy = {
 		type = area_priority
 		id = asia
 		value = -999
 	}
 }
+
 GER_keep_on_raiding = {
 	allowed = {
 		original_tag = GER
@@ -3480,20 +3438,67 @@ GER_keep_on_raiding = {
 	enable = {
 		date > 1940.4.1
 		OR = {
-		has_war_with = ENG
-		has_war_with = USA
+			has_war_with = ENG
+			has_war_with = USA
 		}
 	}
-
 	abort = {
-		NOT = { has_war_with = ENG }	
-		NOT = { has_war_with = USA }
+		NOT = {
+			has_war_with = ENG
+		}
+		NOT = {
+			has_war_with = USA
+		}
 	}
-
 	ai_strategy = {
 		type = naval_mission_threshold
 		id = "MISSION_CONVOY_RAIDING"
-		value = -95 #puts our threshold at 5
+		value = -95		#puts our threshold at 5
+	}
+}
+
+GER_never_bomb_britain = {
+	allowed = {
+		original_tag = GER
+	}
+	enable = {
+		GER = {
+			has_war_with = ENG
+		}
+	}
+	abort = { # abort if Soviet Union is dead
+		controls_state = 219
+		controls_state = 195
+		controls_state = 217
+		controls_state = 229
+		controls_state = 236
+		controls_state = 214
+		controls_state = 250
+	}
+	ai_strategy = {
+		type = area_priority
+		id = britain
+		value = -999
+	}
+}
+
+GER_dont_bomb_france_too_soon = {
+	allowed = {
+		original_tag = GER
+	}
+	enable = {
+		GER = {
+			has_war_with = FRA
+		}
+		date < 1940.6.1
+	}
+	abort = { # abort when going around Maginot
+		has_war_with = BEL
+	}
+	ai_strategy = {
+		type = area_priority
+		id = france
+		value = -999
 	}
 }
 
@@ -3505,931 +3510,900 @@ GER_dont_build_non_core = {
 		always = yes
 	}
 	abort_when_not_enabled = yes
-	
 	### Note : only do for territories Historical AI will occupy
-	
 	## Czechoslovakia ##
-	
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 9
-        value = -999
-    }	
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 75
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 72
-        value = -999
-    }
-	
+		value = -999
+	}
 	## Poland ##
-	
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 85
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 86
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 762
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 98
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 87
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 88
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 90
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 10
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 92
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 89
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 91
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 93
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 94
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 97
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 1035
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 95
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 96
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 784
-        value = -999
-    }
-	
+		value = -999
+	}
 	## Denmark ##
-	
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 99
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 37
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 337
-        value = -999
-    }
-	
+		value = -999
+	}
 	## Norway ##
-	
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 110
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 142
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 143
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 144
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 1034
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 1033
-        value = -999
-    }
-	
+		value = -999
+	}
 	## Benelux ##
-	
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 36
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 7
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 35
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 6
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 34
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 797
-        value = -999
-    }
-	
+		value = -999
+	}
 	## France ##
-	
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 14
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 916
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 19
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 23
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 30
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 15
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 31
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 25
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 33
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 24
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 16
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 785
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 29
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 22
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 26
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 27
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 18
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 1032
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 17
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 20
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 1031
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 21
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 735
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 32
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 798
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 1
-        value = -999
-    }
-	
+		value = -999
+	}
 	## Italy ##
-	
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 160
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 736
-        value = -999
-    }
-	
+		value = -999
+	}
 	## Yugoslavia ##
-	
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 102
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 109
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 103
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 104
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 45
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 764
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 914
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 105
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 108
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 913
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 912
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 106
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 107
-        value = -999
-    }
-	
+		value = -999
+	}
 	## Greece ##
-	
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 184
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 731
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 185
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 47
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 186
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 182
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 187
-        value = -999
-    }
-	
+		value = -999
+	}
 	## Baltics ##
-	
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 1041
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 1040
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 191
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 13
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 1039
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 190
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 1037
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 1036
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 12
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 1038
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 189
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 1043
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 11
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 1042
-        value = -999
-    }
-	
+		value = -999
+	}
 	## Bielorussia ##
-	
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 207
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 206
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 204
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 194
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 241
-        value = -999
-    }
-	
+		value = -999
+	}
 	## Ukraine ##
-	
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 199
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 201
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 198
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 192
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 202
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 203
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 197
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 226
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 193
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 225
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 259
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 221
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 228
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 227
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 200
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 196
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 137
-        value = -999
-    }
-	
+		value = -999
+	}
 	## Northern Russia ##
-	
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 213
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 215
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 216
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 214
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 195
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 208
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 209
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 210
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 244
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 263
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 246
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 264
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 247
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 214
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 351
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 248
-        value = -999
-    }
-	
+		value = -999
+	}
 	## Central Russia ##
-	
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 242
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 885
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 219
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 884
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 883
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 253
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 243
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 224
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 205
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 223
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 254
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 252
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 256
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 250
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 255
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 257
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 258
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 222
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 220
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 240
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 260
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 239
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 265
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 245
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 218
-        value = -999
-    }
-	
+		value = -999
+	}
 	## Southern Russia ##
-	
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 217
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 236
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 238
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 237
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 234
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 235
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 232
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 233
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 1048
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 1049
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 1050
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 1047
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 231
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 230
-        value = -999
-    }
+		value = -999
+	}
 	ai_strategy = {
-        type = factory_build_score_factor
+		type = factory_build_score_factor
 		target = 229
-        value = -999
-    }
+		value = -999
+	}
 }
