@@ -1,0 +1,180 @@
+scripted_map_modes = {
+	mill_refinery_map_mode = {
+		top = {
+			type = state
+			color = {
+				FROM = {
+					set_temp_variable = {
+						max_tot = 0
+					}
+					controller = {
+						all_controlled_state = {
+							set_temp_variable = {
+								tot = THIS.building_level@steel_refinery
+							}
+							add_to_temp_variable = {
+								tot = THIS.building_level@steel_refinery_inactive
+							}
+							add_to_temp_variable = {
+								tot = THIS.building_level@aluminium_refinery
+							}
+							add_to_temp_variable = {
+								tot = THIS.building_level@aluminium_refinery_inactive
+							}
+							add_to_temp_variable = {
+								tot = THIS.building_level@synthetic_refinery
+							}
+							add_to_temp_variable = {
+								tot = THIS.building_level@synthetic_refinery_inactive
+							}
+							add_to_temp_variable = {
+								tot = THIS.building_level@synthetic_rubber_refinery
+							}
+							add_to_temp_variable = {
+								tot = THIS.building_level@synthetic_rubber_refinery_inactive
+							}
+							if = {
+								limit = {
+									check_variable = {
+										PREV.PREV.max_tot < tot
+									}
+								}
+								set_temp_variable = {
+									PREV.PREV.max_tot = tot
+								}
+							}
+						}
+					}
+					set_temp_variable = {
+						active = THIS.building_level@steel_refinery
+					}
+					set_temp_variable = {
+						inactive = THIS.building_level@steel_refinery_inactive
+					}
+					add_to_temp_variable = {
+						active = THIS.building_level@aluminium_refinery
+					}
+					add_to_temp_variable = {
+						inactive = THIS.building_level@aluminium_refinery_inactive
+					}
+					add_to_temp_variable = {
+						active = THIS.building_level@synthetic_refinery
+					}
+					add_to_temp_variable = {
+						inactive = THIS.building_level@synthetic_refinery_inactive
+					}
+					add_to_temp_variable = {
+						active = THIS.building_level@synthetic_rubber_refinery
+					}
+					add_to_temp_variable = {
+						inactive = THIS.building_level@synthetic_rubber_refinery_inactive
+					}
+					set_temp_variable = {
+						loc_tot = active
+					}
+					add_to_temp_variable = {
+						loc_tot = inactive
+					}
+					set_temp_variable = {
+						red = inactive
+					}
+					if = {
+						limit = {
+							check_variable = {
+								loc_tot > 0
+							}
+						}
+						divide_temp_variable = {
+							red = loc_tot
+						}
+					}
+					set_temp_variable = {
+						blue = 0
+					}
+					set_temp_variable = {
+						green = active
+					}
+					if = {
+						limit = {
+							check_variable = {
+								loc_tot > 0
+							}
+						}
+						divide_temp_variable = {
+							green = loc_tot
+						}
+					}
+					set_temp_variable = {
+						alpha = 0.5
+					}
+					
+					set_temp_variable = {
+						thickness = loc_tot
+					}
+					if = {
+						limit = {
+							check_variable = {
+								max_tot > 0
+							}
+						}
+						divide_temp_variable = {
+							thickness = max_tot
+						}
+					}
+					
+					multiply_temp_variable = {
+						thickness = 10
+					}
+				}
+			}
+			thickness = no
+			targets = {
+				target_array = global.states
+				target_trigger = {
+					FROM = {
+						OR = {
+							is_controlled_by = ROOT
+							CONTROLLER = {
+								OR = {
+									has_war_with = ROOT
+									is_ally_with = ROOT
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		bottom = {
+			type = country
+			color = {
+				set_temp_variable = {
+					alpha = 0.25
+				}
+				set_temp_variable = {
+					thickness = 10
+				}
+				set_temp_variable = {
+					red = 0
+				}
+				set_temp_variable = {
+					green = 0
+				}
+				set_temp_variable = {
+					blue = 0
+				}
+			}
+			thickness = yes
+			targets = {
+				targets = {
+					ROOT
+				}
+				target_array = allies
+				target_array = enemies
+			}
+		}
+		far_text = country
+		near_text = state
+		update_daily = yes
+	}
+}
