@@ -1,5 +1,93 @@
 # Changelog
 
+### 0.12.1
+
+### Features 
+
+- Implemented unique army spirits for Australia, Hungary, Canada and Poland
+- Custom mapmode for resources buildings
+
+### Database 
+
+- Hungary starts without motorized tech
+- Sexton is now a 1942 tech
+- Reworked slightly Canadian tree structure
+- Improved accuracy of 1936 german U-boat construction queue
+- Added a bunch of Soviet generals
+
+
+### Balance 
+
+- AFV gives less hardness
+- HQ and MP gives a bit less organisation
+- Increased base organisation of all infantry
+- Further decreased tanks orgnisation
+- Made AFV terrain maluses consistants
+- Rebalanced combined warfare. Tooltip in the division designer explains how it works
+- Anschluss now gives only 1 research slot instead of 2
+- Germany can get more female participation when war starts
+- UK is less penalized by indispensable civilian services
+- Reduced base factory efficiency gain and bonuses from economic mobilisation laws
+- Reduced inexperienced air wings maluses
+- Railway conversion time is set to 10 days
+- Panzer III N has better stats
+- Salzgitter decisions now needs increased levels of excavation techs and gives less iron
+- Canada has now access to powerfull US designers
+- Soviet "purger" characters can't stack
+- Spitfire Mk I is now a 1939 tech and has no tech bonus
+- Fighter Command focus gives bonuses to Hurricane line to make them more attractives
+- Military Training Act focus now needs 35% Tension (from 50%)
+- Naval designers now gives again token naval xp generation
+- Non-core resources strongly lowered but theoricaly compensated by compliance
+- Increased passive & training equipment attrition to be signifiant enough
+
+### Map
+
+- Added airbases levels in Europe
+- Got rid of Sri Lanka autonomous pupett state
+- Adjusted iron in Europe, taking quality of ore more into consideration
+- Various Soviet resources adjusted
+
+### Bugfixes
+
+- French State no longer join the Axis too soon
+- Italy should not longer leave Axis because there is no claims lefts on French State
+- Neubaufahrzeug has now correct stats
+- Naval Strike Torpedo Tactics doctrine is now on the right doctrine category
+- Japan AI no longer blocade itself in peacetime
+- UK's dominions no longer blocade themselves in peacetime
+
+### Artworks 
+
+- Improved Staff Office button
+
+### AI 
+
+- AI is less shy about producing and using aircrafts
+- Improved german AI division templates
+- AI now able to correcly pass important laws on time
+- German AI is building less dockyards
+- German AI should avoid invading French colonial holdings
+- AI is a bit better on blocking naval zones
+- US and Soviet AIs should no longer lack rubber
+- AI should not waste production on scout planes
+- AI is a bit less stupidly aggressive on air
+- Hungary and Romania AI keeps troops in their homeland
+- Improved starting Romanian division templates
+- AI should no longer starve itself from traded resources because converting too much factories
+
+### QoL
+
+- Naval supply easier to understand
+- We can open/close 5 resources buildings using ctrl
+- Improved tooltip for tank/infantry ratio in the division designer
+- Max wing size increased to 1600 so mass deploying planes is easier
+- Speed Stat is no longer changed by the air equipment upgrades
+
+### Performances
+
+- Optimized AI strategies
+
 ### 0.12.0
 
 ### Update
