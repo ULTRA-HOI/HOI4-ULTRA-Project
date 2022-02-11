@@ -120,6 +120,7 @@ NDefines.NResistance.COMPLIANCE_GROWTH_HAS_CLAIM = 10 --5 -- compliance growth b
 NDefines.NResistance.COMPLIANCE_GROWTH_BASE = 0.02 -- 0.075 -- base compliance grow
 NDefines.NResistance.COMPLIANCE_DECAY_AT_MAX_COMPLIANCE = -0.022 -- -0.083 -- as compliance increases, it gets a decay rate depending on its value. compliance should stabilize at some value until its growth chWanges
 NDefines.NResistance.COMPLIANCE_DECAY_PER_EXILE_LEGITIMACY = -0.006 -- 0.015 -- higher legitimacy will give higher decay to compliance
+NDefines.NResistance.INITIAL_HISTORY_COMPLIANCE = 90.0 -- compliance value for initial colony states
 -- espionage stuff 
 
 NDefines.NCountry.MAX_PROPAGANDA_STABILITY_IMPACT = -0.1   -- -0.2			-- Max total penalty from operative performing the propaganda mission in a country
