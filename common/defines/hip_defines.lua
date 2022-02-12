@@ -185,6 +185,7 @@ NDefines.NProduction.CONVERSION_SPEED_BONUS = 4						    --Modifier to the produ
 NDefines.NProduction.CAPITULATE_STOCKPILES_RATIO = 0.75				--How much equipment from deployed divisions will be transferred on capitulation
 NDefines.NProduction.ANNEX_FUEL_RATIO = 0.8			--How much fuel will be transferred on annexation
 NDefines.NProduction.ANNEX_FIELD_EQUIPMENT_RATIO = 0.9	--How much equipment from deployed divisions will be transferred on annexation
+NDefines.NProduction.MAX_MIL_FACTORIES_PER_LINE = 500
 
 -- Oil Suff 
 
