@@ -56,11 +56,20 @@ on_daily_labour_calculations = {
 	set_variable = { agricultural_penalty_percentage = 0 }
 	set_variable = { agriculture_penalty_temp = 0 }
 	
+	# gather damaged buildings in states 
+	set_variable = { damaged_MIL_current = 0 }
+	set_variable = { damaged_CIV_current = 0 }
+	set_variable = { damaged_NAV_current = 0 }
+
 	every_controlled_state = {
 		limit = { is_core_of = PREV }
 		set_variable = { agriculture_modifier = state_level_agriculture_penalty }
 		multiply_variable = { agriculture_modifier = THIS.state_population_k }
 		add_to_variable = { PREV.agriculture_penalty_temp = THIS.agriculture_modifier }
+
+		add_to_variable = { damaged_CIV_current = damaged_building_level@industrial_complex }
+		add_to_variable = { damaged_MIL_current = damaged_building_level@arms_factory }
+		add_to_variable = { damaged_NAV_current = damaged_building_level@dockyard }
 	}
 
 	set_variable = { agriculture_percentage_core = agriculture_penalty_temp}
@@ -81,6 +90,10 @@ on_daily_labour_calculations = {
 		multiply_variable = { agriculture_modifier = THIS.state_population_k }
 		add_to_variable = { PREV.agriculture_penalty_temp = THIS.agriculture_modifier }
 		add_to_variable = { PREV.agriculture_total_temp = THIS.state_population_k }
+
+		add_to_variable = { damaged_CIV_current = damaged_building_level@industrial_complex }
+		add_to_variable = { damaged_MIL_current = damaged_building_level@arms_factory }
+		add_to_variable = { damaged_NAV_current = damaged_building_level@dockyard }
 	}
 
 	add_to_variable = { agricultural_penalty_percentage = agriculture_penalty_temp }
@@ -154,6 +167,10 @@ on_daily_labour_calculations = {
 	multiply_variable = { labour_civilian_factories = 6.5 } #10000 MP per civ factory
 	set_variable = { labour_naval_factories = num_of_naval_factories }
 	multiply_variable = { labour_naval_factories = 7.5 } #15000 MP per nav factory
+
+	add_to_variable = { labour_military_factories = damaged_MIL_current }
+	add_to_variable = { labour_civilian_factories = damaged_CIV_current }
+	add_to_variable = { labour_naval_factories = damaged_NAV_current }
 
 	set_variable = { labour_total_factories = labour_military_factories }
 	add_to_variable = { labour_total_factories = labour_civilian_factories }
