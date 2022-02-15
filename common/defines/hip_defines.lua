@@ -253,8 +253,8 @@ NDefines.NMilitary.HOURLY_ORG_MOVEMENT_IMPACT = -0.4		-- how much org is lost ev
 NDefines.NMilitary.ZERO_ORG_MOVEMENT_MODIFIER = -0.2		-- speed impact at 0 org.
 NDefines.NMilitary.INFRA_ORG_IMPACT = 0.4			--0.5	-- scale factor of infra on org regain.
 NDefines.NMilitary.INFRASTRUCTURE_MOVEMENT_SPEED_IMPACT = -0.02	-- speed penalty per infrastucture below maximum.
-NDefines.NMilitary.FIELD_MARSHAL_ARMIES_CAP = 6				-- how many armies a field marshall is limited to. 0 = inf, < 0 = blocked 
-NDefines.NMilitary.CORPS_COMMANDER_DIVISIONS_CAP = 12			-- how many divisions a corps commander is limited to. 0 = inf, < 0 = blocked
+NDefines.NMilitary.FIELD_MARSHAL_ARMIES_CAP = 8				-- how many armies a field marshall is limited to. 0 = inf, < 0 = blocked 
+NDefines.NMilitary.CORPS_COMMANDER_DIVISIONS_CAP = 10			-- how many divisions a corps commander is limited to. 0 = inf, < 0 = blocked
 NDefines.NMilitary.FIELD_MARSHAL_DIVISIONS_CAP = 12			-- how many divisions a field marshall is limited to. 0 = inf, < 0 = blocked 
 NDefines.NMilitary.MAX_DIVISION_BRIGADE_WIDTH = 5			-- Max width of regiments in division designer.
 NDefines.NMilitary.MAX_DIVISION_BRIGADE_HEIGHT = 4 --3			-- Max height of regiments in division designer.
