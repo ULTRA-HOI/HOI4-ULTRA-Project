@@ -459,9 +459,6 @@ NDefines.NSupply.AVAILABLE_MANPOWER_STATE_SUPPLY = 0.0						--  0.18 -- Factor f
 NDefines.NSupply.STORED_SUPPLY_CONSUMPTION_RATE_FACTOR = 0.50				-- 0.75 -- Multiplies consumption rate of stored supply (more/less easement)
 NDefines.NAITheatre.AI_THEATRE_SUPPLY_CRISIS_LIMIT = 0.2                              -- 0.1 -- If a unit is standing in an area with this supply ratio it will try to escape
 
--- order by EExecutionType: careful, balanced, rush, <skip>, weak rush
-NDefines.NMilitary.PLAN_EXECUTE_SUPPLY_CHECK = { 1.0, 0.75, 0.55, 1.0, 0.4 } --  {1.0, 0.0, 0.0, 1.0, 0.0} -- for each execution mode how careful should we be with supply (1.0 means full required supply available, zero is no limit).
-
 -- Lack of supply effect
 
 NDefines.NMilitary.COMBAT_SUPPLY_LACK_ATTACKER_ATTACK = -0.70     -- attack combat penalty for attacker if out of supply
