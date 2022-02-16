@@ -204,7 +204,7 @@ NDefines.NTrade.ANTI_MONOPOLY_TRADE_FACTOR = -25			-- This is added to the facto
 NDefines.NAI.MAX_FACTORY_TO_SPARE_FOR_MISSION_FUEL_TRADE = 0.33						-- amount of factories to spend on oil trade in case of fuel need for missions
 NDefines.NAI.MAX_FACTORY_TO_SPARE_FOR_CRITICAL_MISSION_FUEL_TRADE = 0.66		-- amount of factories to spend on oil trade in case of fuel need for prio missions
 NDefines.NAI.MAX_FACTORY_TO_TRADE_FOR_FUEL = 0.5
-NDefines.NTrade.BASE_LAND_TRADE_RANGE = 250
+NDefines.NTrade.BASE_LAND_TRADE_RANGE = 325
 
 -- Building Stuff
 
