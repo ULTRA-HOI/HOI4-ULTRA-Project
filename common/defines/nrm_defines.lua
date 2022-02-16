@@ -16,7 +16,7 @@ NDefines.NProduction.MIN_NAVAL_EQUIPMENT_CONVERSION_RESOURCE_COST_FACTOR = 0.2
 -- TRAINING STUFF
 --------------------------------------------------------------------------------------------------------------
 
-NDefines.NNavy.TRAINING_EXPERIENCE_FACTOR = 0.15 --0.3								-- Amount of exp each ship gain every 24h while training (before modifiers)
+NDefines.NNavy.TRAINING_EXPERIENCE_FACTOR = 0.3 --0.3								-- Amount of exp each ship gain every 24h while training (before modifiers)
 NDefines.NNavy.TRAINING_ACCIDENT_CHANCES = 0.005 --0.02						-- Chances one ship get damage each hour while on training
 NDefines.NNavy.TRAINING_ACCIDENT_STRENGTH_LOSS_FACTOR = 0.005 --0.05						-- Amount of strength loss in a training accident, propotional to the maximum strength of the ship
 
@@ -115,8 +115,8 @@ NDefines.NNavy.MIN_HIT_PROFILE_MULT = 0.05
 
 -- XP for ships and admirals
 
-NDefines.NNavy.UNIT_EXPERIENCE_SCALE = 0.5   -- was 1.0
-NDefines.NNavy.LEADER_EXPERIENCE_SCALE = 0.5  -- was 1.0
+NDefines.NNavy.UNIT_EXPERIENCE_SCALE = 1.0   -- was 1.0
+NDefines.NNavy.LEADER_EXPERIENCE_SCALE = 1.0  -- was 1.0
 
 
 NDefines.NNavy.MAX_SUBMARINES_PER_AUTO_TASK_FORCE = 10
@@ -142,7 +142,10 @@ NDefines.NNavy.REPAIR_AND_RETURN_AMOUNT_SHIPS_MEDIUM = 0.6
 NDefines.NNavy.REPAIR_AND_RETURN_UNIT_DYING_STR = 0.35
 NDefines.NNavy.NAVY_EXPENSIVE_IC = 8000
 NDefines.NNavy.MISSION_MAX_REGIONS = 10
-NDefines.NNavy.EXPERIENCE_FACTOR_CARRIER_GAIN = 0.075
+NDefines.NNavy.EXPERIENCE_FACTOR_CONVOY_ATTACK = 0.08 --0.04
+NDefines.NNavy.EXPERIENCE_FACTOR_NON_CARRIER_GAIN = 0.08 --0.04						-- Xp gain by non-carrier ships in the combat
+NDefines.NNavy.EXPERIENCE_FACTOR_CARRIER_GAIN = 0.16 --0.08                              -- Xp gain by carrier ships in the combat
+NDefines.NNavy.FIELD_EXPERIENCE_SCALE = 0.1 --0.075
 NDefines.NNavy.ANTI_AIR_TARGETTING_TO_CHANCE = 0.5 -- was 0.1
 NDefines.NNavy.BASE_CARRIER_SORTIE_EFFICIENCY = 0.50 -- was 0.25 in ultra
 NDefines.NNavy.CONVOY_ATTACK_BASE_FACTOR = 0.10
