@@ -2958,6 +2958,54 @@ economy_decisions = {
 		}
 	}
 	
+	USA_order_convoys = {
+		icon = generic_construction
+		
+		allowed = {
+			original_tag = USA
+		}
+		
+		visible = {
+			NOT = {
+				OR = {
+					has_idea = war_economy
+					has_idea = tot_economic_mobilisation
+				}
+			}
+		}
+		
+		available = {
+			NOT = {
+				OR = {
+					has_idea = war_economy
+					has_idea = tot_economic_mobilisation
+				}
+			}
+			num_of_civilian_factories_available_for_projects > 49
+		}
+		
+		cost = 25
+		ai_will_do = {
+			factor = 10
+		}
+		days_re_enable = 365
+		
+		days_remove = 365
+		is_good = yes
+		
+		modifier = {
+			civilian_factory_use = 50
+		}
+		
+		remove_effect = {
+			add_equipment_to_stockpile = {
+				type = convoy_1
+				amount = 50
+				producer = USA
+			}
+		}
+	}
+	
 	USA_battleship_mission = {
 		icon = generic_naval
 		
