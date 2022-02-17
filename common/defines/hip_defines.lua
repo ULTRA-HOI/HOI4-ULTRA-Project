@@ -602,6 +602,11 @@ NDefines.NAir.AA_INDUSTRY_AIR_DAMAGE_FACTOR = -0.12				-- 5x levels = 60% defens
 
 NDefines.NAir.AIR_SUPPLY_CONVERSION_SCALE = 0.005	--0.05				-- Conversion scale for planes to air supply
 
+-- logistic strikes
+
+NDefines.NAir.AIR_WING_ATTACK_LOGISTICS_TRUCK_DAMAGE_FACTOR = 0.35
+NDefines.NAir.AIR_WING_ATTACK_LOGISTICS_TRAIN_DAMAGE_FACTOR = 0.065
+
 --Focus 		
 NDefines.NFocus.MAX_SAVED_FOCUS_PROGRESS = 14
 
