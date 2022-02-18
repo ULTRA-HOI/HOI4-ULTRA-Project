@@ -1,5 +1,70 @@
 # Changelog
 
+### 0.12.2
+
+### Features
+
+- Implemented unique naval spirits for Germany, UK, USA and Japan
+- USA can now order convoys from civilian industry
+- USA getting rid of depression gives an extra industry buff
+
+### Map 
+
+- Reworked Shanghai area
+- Reworked Lybia (victory points etc) so it is less empty
+- added more supply hubs
+- Improved soviet dosckyards repartitions
+- Further improved sovie rare material repartition
+- Better railways in Manchuria
+
+### Balance
+
+- Reduced logistical strikes effects
+- Leader traits reducing consumer goods nerfed
+- Air combats favor more quality over quantity
+- Supply hub range increased slightly
+- Army and army group size changed
+
+### Database 
+
+- Chinese Hindenburg line forts are in proper locations
+- Rubber now needs workers
+- Damage controls techs now have assignated dates
+- UK starts will all damage control techs already researched
+- The Hump focus no longer require China to be in faction with a soviet puppet
+- Mosquito planes buffed
+- US TDs have correct stats
+- US maritime commission mission now last 3 years
+- Polymer corporation now correctly give rubber reffineries
+- Canadian starting industry techs are consistants
+- Adjusted xp requirement for terrain traits
+- Snorkel decision for Germany does not need naval xp anymore
+- Nuclear Reactor are affordable
+- Germany, USA and Soviet Union gets more starting ministers
+- China can trade with India without convoys
+- Reworked events for small islands airbases
+- No more manpower freed by damaged building
+- Germany no longer starts with 38's reffinery techs
+- Added chinese generals (with place holder portraits)
+
+### AI
+
+- French AI should not send lots of good divisions guarding border with belgian Congo
+- Axis minors should not help Persia if Persia ends up into Axis
+- Better romanian templates
+
+### UI 
+
+- Workers needs on resources now available on trade screen
+- Added tooltip for building workers needs
+- Layout of german tank tree improved
+
+### Bugfixes
+
+- Cavalry now needs the same amount of equipment than infantry
+- Front AI bug fixed
+
+
 ### 0.12.1
 
 ### Features 
