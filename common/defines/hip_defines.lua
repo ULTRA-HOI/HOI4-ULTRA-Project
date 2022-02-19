@@ -459,7 +459,7 @@ NDefines.NSupply.AVAILABLE_MANPOWER_STATE_SUPPLY = 0.0						--  0.18 -- Factor f
 NDefines.NSupply.STORED_SUPPLY_CONSUMPTION_RATE_FACTOR = 0.50				-- 0.75 -- Multiplies consumption rate of stored supply (more/less easement)
 NDefines.NAITheatre.AI_THEATRE_SUPPLY_CRISIS_LIMIT = 0.2                              -- 0.1 -- If a unit is standing in an area with this supply ratio it will try to escape
 NDefines.NSupply.TRUCK_ATTRITION = 0.003 -- base truck attrition
-NDefines.NSupply.TRUCK_ATTRITION_FACTOR = 0.65 --a scale on total truck attrition
+NDefines.NSupply.TRUCK_ATTRITION_FACTOR = 0.45 --a scale on total truck attrition
 
 -- Lack of supply effect
 
