@@ -163,7 +163,7 @@ NDefines.NProduction.BASE_FACTORY_SPEED_NAV = 1.2
 
 NDefines.NProduction.BASE_FACTORY_EFFICIENCY_BALANCE_FACTOR = 0.1 			-- Factory efficiency balancing factor
 
-NDefines.NProduction.BASE_FACTORY_EFFICIENCY_GAIN = 0.75	--1.0	-- Base efficiency factor.
+NDefines.NProduction.BASE_FACTORY_EFFICIENCY_GAIN = 1.0	--1.0	-- Base efficiency factor.
 NDefines.NProduction.EQUIPMENT_BASE_LEND_LEASE_WEIGHT = 2 -- was 1 -- Base equipment lend lease factor
 NDefines.NProduction.EQUIPMENT_LEND_LEASE_WEIGHT_FACTOR = 0.01 -- was 0.01 -- Base equipment lend lease factor
 NDefines.NProduction.MAX_LINE_RESOURCE_PENALTY = 90		-- Max penalty factor for production lines lacking strategic resources in %.
