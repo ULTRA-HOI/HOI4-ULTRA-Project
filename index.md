@@ -1,5 +1,46 @@
 # Changelog
 
+### 0.12.3
+
+### Feature
+
+- USA can decide to give Greenland control to UK
+
+### Balance
+
+- Supply hubs and ports rebalanced to give more trhoughput but range lowered
+- Reduced globaly truck attrition
+- Terrains/weather have lowered effect on truck attrition
+- Japanese spirit gives less HP malus
+- Chinese army corruption is actualy painfull
+- Chinese warlords are also affected by army corruption
+- Factory efficiency growth is increased a bit so efficiency buildup does not take forever
+- Reduced drasticaly air xp from training air wings
+- Canadian industry decisions are rebalanced to be possible to take
+- Japan economy starts a bit more militarized
+- Buffed First air fleet effect
+- China no longer get access to major's technologies
+- China no longer gets offmap military factories by doing the "road" focuses
+- Chinese "road" focuses now allows access to foreign purchases if required states are held by china/allies
+
+### Map
+
+- further improved railroad's map
+
+### Bugfixes
+
+- fixed issue concerning heavy infantry equipment purchases
+- Chinese fleet is no longer placed in a DMZ
+- Fixed a CTD caused by previous patch Shanghai's rework
+- Machi C.200CB is now keeping efficiency from parent fighter
+- US decisions to order convoys no longer need 1 year between 2 uses
+- Cavalry should not overtake tanks in templates
+- Sino-German designer is removed when german advisors are recalled
+
+### AI
+
+- Chinese warlords won't help ROC but defend their own territory
+
 ### 0.12.2
 
 ### Features
