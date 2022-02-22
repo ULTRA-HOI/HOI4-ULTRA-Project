@@ -59,32 +59,6 @@ equipment_buyer = {
 purchase_visible = {
 	has_country_flag = purchases_show
 	country_exists = FROM
-	OR = {
-		has_war = no
-		AND = {
-			is_literally_china = yes
-			controls_state = 747 #Dali
-			OR = {
-				has_completed_focus = CHI_guarantee_the_hanoi_route
-				has_completed_focus = CHI_burma_road
-				has_completed_focus = CHI_ledo_road
-				has_completed_focus = CHI_the_hump
-			}
-			OR = {
-				FRA = {
-					controls_state = 1011
-					controls_state = 1015
-					has_capitulated = no
-				}
-				RAJ = {
-					controls_state = 432
-					controls_state = 974
-					has_capitulated = no
-					is_in_faction_with = ENG
-				}
-			}
-		}
-	}
 	NOT = {
 		has_country_flag = purchase_pending
 	}
@@ -115,6 +89,93 @@ purchase_available = {
 		is_in_faction = no
 		is_literally_china = yes
 	}
+	OR = {
+		has_war = no
+		AND = {
+			is_literally_china = yes
+			controls_state = 747 #Dali
+			OR = {
+				AND = {
+					#Hanoi Road
+					OR = {
+						CHI = {
+							controls_state = 594 #Nanning
+						}
+						any_allied_country = {
+							controls_state = 594
+						}
+					}
+					CHI = {
+						has_completed_focus = CHI_guarantee_the_hanoi_route
+					}
+					FRA = {
+						controls_state = 1011
+						controls_state = 1015
+						has_capitulated = no
+					}
+				}
+				AND = {
+					#Burma Road
+					OR = {
+						CHI = {
+							controls_state = 747 #Dali
+						}
+						any_allied_country = {
+							controls_state = 747
+						}
+					}
+					CHI = {
+						has_completed_focus = CHI_burma_road
+						controls_state = 751 #Liangshan
+					}
+					RAJ = {
+						controls_state = 878
+						controls_state = 640
+						has_capitulated = no
+						is_in_faction_with = ENG
+					}
+				}
+				AND = {
+					#Ledo Road
+					OR = {
+						CHI = {
+							controls_state = 747 #Dali
+						}
+						any_allied_country = {
+							controls_state = 747
+						}
+					}
+					CHI = {
+						has_completed_focus = CHI_ledo_road
+						controls_state = 751 #Liangshan
+					}
+					RAJ = {
+						controls_state = 432
+						controls_state = 974
+						has_capitulated = no
+						is_in_faction_with = ENG
+					}
+				}
+				AND = {
+					#The Hump
+					CHI = {
+						has_completed_focus = CHI_the_hump
+						OR = {
+							controls_state = 753 #Chengtu
+							any_allied_country = {
+								controls_state = 753
+							}
+						}
+					}
+					RAJ = {
+						controls_state = 432
+						has_capitulated = no
+						is_in_faction_with = ENG
+					}
+				}
+			}
+		}
+	}
 	FROM = {
 		has_opinion = {
 			target = ROOT
@@ -124,7 +185,9 @@ purchase_available = {
 }
 
 calculate_equipment_buy_pp_cost = {
-	set_temp_variable = { buy_equipment_cost = 25 }
+	set_temp_variable = {
+		buy_equipment_cost = 25
+	}
 	if = {
 		limit = {
 			OR = {
@@ -153,7 +216,9 @@ calculate_equipment_buy_pp_cost = {
 					}
 				}
 			}
-			subtract_from_temp_variable = { buy_equipment_cost = 10 }
+			subtract_from_temp_variable = {
+				buy_equipment_cost = 10
+			}
 		}
 	}
 	if = {
@@ -163,7 +228,9 @@ calculate_equipment_buy_pp_cost = {
 				original_tag = GER
 			}
 		}
-		subtract_from_temp_variable = { buy_equipment_cost = 5 }
+		subtract_from_temp_variable = {
+			buy_equipment_cost = 5
+		}
 	}
 }
 
