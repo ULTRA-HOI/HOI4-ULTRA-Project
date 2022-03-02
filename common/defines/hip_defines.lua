@@ -601,7 +601,7 @@ NDefines.NAir.NAVAL_STRIKE_DETECTION_BALANCE_FACTOR = 0.5 --0.7		-- Value used t
 
 NDefines.NAir.AA_INDUSTRY_AIR_DAMAGE_FACTOR = -0.12				-- 5x levels = 60% defense from bombing
 
-NDefines.NAir.AIR_SUPPLY_CONVERSION_SCALE = 0.005	--0.05				-- Conversion scale for planes to air supply
+NDefines.NAir.AIR_SUPPLY_CONVERSION_SCALE = 0.001	--0.05				-- Conversion scale for planes to air supply
 
 -- logistic strikes
 
