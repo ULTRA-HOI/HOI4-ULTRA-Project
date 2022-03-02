@@ -8108,9 +8108,6 @@ focus_tree = {
 
 			custom_effect_tooltip = if_they_accept #This will also make GER more likely to take Molotov-Ribbentrop pact and less to take Anti-Soviet Pact
 			effect_tooltip = {
-				
-					
-					
 
 				#Effects to Germans
 				GER = {
@@ -8129,6 +8126,65 @@ focus_tree = {
 						target = ROOT
 						modifier = SOV_strengthened_relations_with_us
 					}
+				}
+				
+				#Effects to Soviets 
+				if = {
+					limit = {
+						has_dlc = "Man the Guns"
+					}
+					# CA: Lützow -> Petropavlovsk
+					
+					add_tech_bonus = {
+						name = NSB_soviet_soviet_german_trade_agreement.1.t
+						bonus = 0.5
+						uses = 2
+						category = ship_modules_tech
+						category = bb_tech
+						category = dd_tech
+					}
+				}
+				else = { #No MTG
+					if = {
+						limit = {
+							NOT = { has_tech = basic_heavy_cruiser }
+						}
+						set_technology = { basic_heavy_cruiser = 1 }
+					}
+					add_tech_bonus = {
+						name = NSB_soviet_soviet_german_trade_agreement.1.t
+						bonus = 0.5
+						uses = 2
+						category = ca_tech
+						category = bb_tech
+						category = dd_tech
+					}
+				}
+
+				add_tech_bonus = {
+					name = NSB_soviet_soviet_german_trade_agreement.1.t
+					bonus = 0.5
+					uses = 1
+					category = cat_heavy_fighter
+					category = light_fighter
+				}
+				add_tech_bonus = {
+					name = NSB_soviet_soviet_german_trade_agreement.1.t
+					bonus = 0.5
+					uses = 1
+					category = tactical_bomber
+				}
+				add_tech_bonus = {
+					name = NSB_soviet_soviet_german_trade_agreement.1.t
+					bonus = 0.5
+					uses = 1
+					category = naval_equipment
+				}
+				add_tech_bonus = {
+					name = NSB_soviet_soviet_german_trade_agreement.1.t
+					bonus = 0.5
+					uses = 1
+					category = cat_production
 				}
 			}
 		}
