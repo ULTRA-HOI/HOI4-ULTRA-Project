@@ -83,6 +83,7 @@ NDefines.NCountry.BASE_SURRENDER_LIMIT = 0.75						-- Base level of occupation r
 NDefines.NCountry.INTERCEPTION_WAR_SUPPORT_SCALE = 0.00002		-- Scaling of interceptions to war support impact
 NDefines.NCountry.INTERCEPTION_BOMBING_WAR_SUPPORT_IMPACT = 0.1	-- 0.3 -- Max impact of interceptions on the war support
 NDefines.NCountry.MAX_BOMBING_WAR_SUPPORT_IMPACT = -0.25 -- -0.3					-- Max total penalty from bomber's damage
+NDefines.NCountry.BOMBING_WEEKLY_WAR_SUPPORT_PENALTY_DECAY = 0.001		-- Weekly decay of bomber damage war support penalty
 NDefines.NCountry.MAX_CONVOYS_BEING_RAIDED_WAR_SUPPORT_IMPACT =-0.25 -- -0.5 Max total penalty from trade convoy raided
 NDefines.NDiplomacy.BASE_SEND_ATTACHE_COST = 25					-- Political power cost to send attache
 NDefines.NDiplomacy.BASE_SEND_ATTACHE_CP_COST = 25				-- Command Power sent attache usage cost
