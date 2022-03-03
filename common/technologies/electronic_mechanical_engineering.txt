@@ -95,21 +95,23 @@ technologies = {
 	radio_detection = {
 
 		# 
-		enable_building = {
-			building = radar_station
-			level = 1
-		}
+		
 		coordination_bonus = 0.01
 		path = {
 			leads_to_tech = decimetric_radar 
 			research_cost_coeff = 1
 		}
+		path = {
+			leads_to_tech = basic_decimetric_naval_radar 
+			research_cost_coeff = 1
+		}
 		
 		research_cost = 1.5
+		start_year = 1938
 		
 		folder = {
 			name = electronics_folder
-			position = { x = -2 y = 4 }
+			position = { x = -2 y = 6 }
 		}
 		
 		ai_will_do = {
@@ -117,6 +119,10 @@ technologies = {
 			modifier = {
 				tag = USA
 				factor = 4
+			}
+			modifier = {
+				date < "1938.1.1"
+				factor = 0
 			}
 		}
 		
@@ -134,15 +140,14 @@ technologies = {
 			leads_to_tech = improved_decimetric_radar 
 			research_cost_coeff = 1
 		}
+		
 		coordination_bonus = 0.01
 		research_cost = 1.5
-		start_year = 1938
-		enable_equipment_modules = { 
-			nrm_radar_1
-		}
+		start_year = 1941
+		
 		folder = {
 			name = electronics_folder
-			position = { x = -2 y = 6 }
+			position = { x = -2 y = 12 }
 		}
 		
 		ai_will_do = {
@@ -155,7 +160,7 @@ technologies = {
 				factor = 5
 			}
 			modifier = {
-				date < "1938.1.1"
+				date < "1941.1.1"
 				factor = 0
 			}
 		}
@@ -167,7 +172,7 @@ technologies = {
 		
 		enable_building = {
 			building = radar_station
-			level = 2
+			level = 1
 		}
 	}
 	
@@ -176,13 +181,9 @@ technologies = {
 		# radar boost in air/sea combat depends on radar level
 		enable_building = {
 			building = radar_station
-			level = 3
+			level = 2
 		}
 		coordination_bonus = 0.01
-		enable_equipment_modules = { 
-			nrm_radar_2
-			nrm_submarine_radar_2
-		}
 
 		path = {
 			leads_to_tech = advanced_decimetric_radar 
@@ -190,56 +191,8 @@ technologies = {
 		}
 		
 		research_cost = 2
-		start_year = 1940
-		
-		
-		folder = {
-			name = electronics_folder
-			position = { x = -2 y = 10 }
-		}
-		
-		ai_will_do = {
-			factor = 1
-			modifier = {
-				OR = {
-					tag = ENG
-					tag = USA
-				}
-				factor = 5
-			}
-			modifier = {
-				date < "1940.1.1"
-				factor = 0
-			}
-		}
-		
-		categories = {
-			electronics
-			radar_tech
-		}
-	}
-	
-	advanced_decimetric_radar = {
-
-		# radar boost in air/sea combat depends on radar level
-		enable_building = {
-			building = radar_station
-			level = 4
-		}
-		
-		enable_equipment_modules = { 
-			nrm_radar_3
-			nrm_radar_fc_3
-			nrm_submarine_radar_3
-		}
-
-		path = {
-			leads_to_tech = centimetric_radar 
-			research_cost_coeff = 1
-		}
-		
-		research_cost = 2
 		start_year = 1942
+		
 		
 		folder = {
 			name = electronics_folder
@@ -267,34 +220,25 @@ technologies = {
 		}
 	}
 	
-	centimetric_radar = {
+	advanced_decimetric_radar = {
 
 		# radar boost in air/sea combat depends on radar level
 		enable_building = {
 			building = radar_station
-			level = 5
+			level = 3
 		}
 
-		enable_equipment_modules = { 
-			nrm_radar_4
-			nrm_radar_fc_4
-			nrm_submarine_radar_4
-		}
-
-		static_anti_air_hit_chance_factor = 0.2
-		
 		path = {
-			leads_to_tech = improved_centimetric_radar 
+			leads_to_tech = centimetric_radar 
 			research_cost_coeff = 1
 		}
 		
-		research_cost = 2.5
-		start_year = 1943
-  
+		research_cost = 2
+		start_year = 1944
 		
 		folder = {
 			name = electronics_folder
-			position = { x = -2 y = 16 }
+			position = { x = -2 y = 18 }
 		}
 		
 		ai_will_do = {
@@ -304,10 +248,10 @@ technologies = {
 					tag = ENG
 					tag = USA
 				}
-				factor = 4
+				factor = 5
 			}
 			modifier = {
-				date < "1943.1.1"
+				date < "1944.1.1"
 				factor = 0
 			}
 		}
@@ -318,24 +262,18 @@ technologies = {
 		}
 	}
 	
-	improved_centimetric_radar = {
+	centimetric_radar = {
 
 		# radar boost in air/sea combat depends on radar level
 		enable_building = {
 			building = radar_station
-			level = 6
-		}
-		coordination_bonus = 0.01
-		enable_equipment_modules = { 
-			nrm_radar_5
-			nrm_radar_fc_5
-			nrm_submarine_radar_5
+			level = 4
 		}
 
 		static_anti_air_hit_chance_factor = 0.2
 		
 		path = {
-			leads_to_tech = advanced_centimetric_radar 
+			leads_to_tech = improved_centimetric_radar 
 			research_cost_coeff = 1
 		}
 		
@@ -369,25 +307,324 @@ technologies = {
 		}
 	}
 	
-	advanced_centimetric_radar = {
+	improved_centimetric_radar = {
 
-		# radar boost in air/sea combat depends on radar level					 						   
-		coordination_bonus = 0.01				   
-		enable_equipment_modules = { 
-			nrm_radar_6
-			nrm_radar_fc_6
-			nrm_submarine_radar_6
+		# radar boost in air/sea combat depends on radar level
+		enable_building = {
+			building = radar_station
+			level = 5
 		}
+		coordination_bonus = 0.01
 		
 		static_anti_air_hit_chance_factor = 0.2
 		
+		path = {
+			leads_to_tech = advanced_centimetric_radar 
+			research_cost_coeff = 1
+		}
+		
 		research_cost = 2.5
-		start_year = 1947
+		start_year = 1946
   
 		
 		folder = {
 			name = electronics_folder
-			position = { x = -2 y = 24 }
+			position = { x = -2 y = 22 }
+		}
+		
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				OR = {
+					tag = ENG
+					tag = USA
+				}
+				factor = 4
+			}
+			modifier = {
+				date < "1946.1.1"
+				factor = 0
+			}
+		}
+		
+		categories = {
+			electronics
+			radar_tech
+		}
+	}
+	
+	advanced_centimetric_radar = {
+
+		# radar boost in air/sea combat depends on radar level	
+		enable_building = {
+			building = radar_station
+			level = 6
+		}
+		coordination_bonus = 0.01
+		
+		static_anti_air_hit_chance_factor = 0.2
+		
+		research_cost = 2.5
+		start_year = 1948
+  
+		
+		folder = {
+			name = electronics_folder
+			position = { x = -2 y = 26 }
+		}
+		
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				OR = {
+					tag = ENG
+					tag = USA
+				}
+				factor = 5
+			}
+			modifier = {
+				date < "1948.1.1"
+				factor = 0
+			}
+		}
+		
+		categories = {
+			electronics
+			radar_tech
+		}
+	}
+	
+	basic_decimetric_naval_radar = {
+		
+		research_cost = 2.5
+		
+		start_year = 1938
+		
+		allow_branch = {
+			has_dlc = "Man the Guns"
+		}
+		
+		path = {
+			leads_to_tech = improved_decimetric_naval_radar
+			research_cost_coeff = 1
+		}
+		
+		folder = {
+			name = electronics_folder
+			position = { x = 0 y = 6 }
+		}
+		
+		enable_equipment_modules = { 
+			nrm_radar_1
+		}
+		
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				OR = {
+					tag = ENG
+					tag = USA
+				}
+				factor = 5
+			}
+			modifier = {
+				date < "1938.1.1"
+				factor = 0
+			}
+		}
+		
+		categories = {
+			electronics
+			radar_tech
+		}
+	}
+	
+	improved_decimetric_naval_radar = {
+		
+		research_cost = 2.5
+		
+		start_year = 1940
+		
+		path = {
+			leads_to_tech = advanced_decimetric_naval_radar
+			research_cost_coeff = 1
+		}
+		
+		folder = {
+			name = electronics_folder
+			position = { x = 0 y = 10 }
+		}
+		
+		enable_equipment_modules = { 
+			nrm_radar_2
+			nrm_submarine_radar_2
+		}
+		
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				OR = {
+					tag = ENG
+					tag = USA
+				}
+				factor = 5
+			}
+			modifier = {
+				date < "1940.1.1"
+				factor = 0
+			}
+		}
+		
+		categories = {
+			electronics
+			radar_tech
+		}
+	}
+	
+	advanced_decimetric_naval_radar = {
+		
+		research_cost = 2.5
+		
+		start_year = 1942
+		
+		path = {
+			leads_to_tech = basic_centimetric_naval_radar
+			research_cost_coeff = 1
+		}
+		
+		folder = {
+			name = electronics_folder
+			position = { x = 0 y = 14 }
+		}
+		
+		enable_equipment_modules = { 
+			nrm_radar_3
+			nrm_radar_fc_3
+			nrm_submarine_radar_3
+		}
+		
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				OR = {
+					tag = ENG
+					tag = USA
+				}
+				factor = 5
+			}
+			modifier = {
+				date < "1942.1.1"
+				factor = 0
+			}
+		}
+		
+		categories = {
+			electronics
+			radar_tech
+		}
+	}
+	
+	basic_centimetric_naval_radar = {
+		
+		research_cost = 2.5
+		
+		start_year = 1944
+		
+		path = {
+			leads_to_tech = improved_centimetric_naval_radar
+			research_cost_coeff = 1
+		}
+		
+		folder = {
+			name = electronics_folder
+			position = { x = 0 y = 18 }
+		}
+		
+		enable_equipment_modules = { 
+			nrm_radar_4
+			nrm_radar_fc_4
+			nrm_submarine_radar_4
+		}
+		
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				OR = {
+					tag = ENG
+					tag = USA
+				}
+				factor = 5
+			}
+			modifier = {
+				date < "1944.1.1"
+				factor = 0
+			}
+		}
+		
+		categories = {
+			electronics
+			radar_tech
+		}
+	}
+	
+	improved_centimetric_naval_radar = {
+		
+		research_cost = 2.5
+		
+		start_year = 1945
+		
+		path = {
+			leads_to_tech = advanced_centimetric_naval_radar
+			research_cost_coeff = 1
+		}
+		
+		folder = {
+			name = electronics_folder
+			position = { x = 0 y = 20 }
+		}
+		
+		enable_equipment_modules = { 
+			nrm_radar_5
+			nrm_radar_fc_5
+			nrm_submarine_radar_5
+		}
+		
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				OR = {
+					tag = ENG
+					tag = USA
+				}
+				factor = 5
+			}
+			modifier = {
+				date < "1945.1.1"
+				factor = 0
+			}
+		}
+		
+		categories = {
+			electronics
+			radar_tech
+		}
+	}
+	
+	advanced_centimetric_naval_radar = {
+		
+		research_cost = 2.5
+		
+		start_year = 1947
+		
+		folder = {
+			name = electronics_folder
+			position = { x = 0 y = 24 }
+		}
+		
+		enable_equipment_modules = { 
+			nrm_radar_6
+			nrm_radar_fc_6
+			nrm_submarine_radar_6
 		}
 		
 		ai_will_do = {
@@ -874,7 +1111,7 @@ technologies = {
 			nrm_fire_control_4
 		}
 		
-		research_cost = 1
+		research_cost = 2.5
 		
 		start_year = 1936
 		
@@ -920,22 +1157,18 @@ technologies = {
 			research_cost_coeff = 1
 		}
 		
-		dependencies = {
-			mechanical_computing = 1
-		}
-
 		enable_equipment_modules = { 
 			nrm_fire_control_5
 			nrm_fire_control_aa_1
 		}
 		
-		research_cost = 1
+		research_cost = 2.5
 		
-		start_year = 1938
+		start_year = 1937
 		
 		folder = {
 			name = electronics_folder
-			position = { x = 2 y = 6 }
+			position = { x = 2 y = 4 }
 		}
 		
 		ai_will_do = {
@@ -971,9 +1204,9 @@ technologies = {
 			nrm_fire_control_aa_2
 		}
 		
-		research_cost = 1
+		research_cost = 2.5
 		
-		start_year = 1940
+		start_year = 1939
 		
 		allow_branch = {
 			has_dlc = "Man the Guns"
@@ -984,13 +1217,9 @@ technologies = {
 			research_cost_coeff = 1
 		}
 		
-		dependencies = {
-			computing_machine = 1
-		}
-		
 		folder = {
 			name = electronics_folder
-			position = { x = 2 y = 10 }
+			position = { x = 2 y = 8 }
 		}
 		
 		ai_will_do = {
@@ -1029,22 +1258,18 @@ technologies = {
 			has_dlc = "Man the Guns"
 		}
 		
-		dependencies = {
-			improved_computing_machine = 1
-		}
-		
 		path = {
 			leads_to_tech = modern_fire_control_system
 			research_cost_coeff = 1
 		}
 		
-		research_cost = 1
+		research_cost = 2.5
 		
-		start_year = 1942
+		start_year = 1941
 		
 		folder = {
 			name = electronics_folder
-			position = { x = 2 y = 14 }
+			position = { x = 2 y = 12 }
 		}
 		
 		ai_will_do = {
@@ -1076,17 +1301,13 @@ technologies = {
 			has_dlc = "Man the Guns"
 		}
 		
-		dependencies = {
-			advanced_computing_machine = 1
-		}
+		research_cost = 2.5
 		
-		research_cost = 1
-		
-		start_year = 1945
+		start_year = 1944
 		
 		folder = {
 			name = electronics_folder
-			position = { x = 2 y = 20 }
+			position = { x = 2 y = 18 }
 		}
 		
 		ai_will_do = {
