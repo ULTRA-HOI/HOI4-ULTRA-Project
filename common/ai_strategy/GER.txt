@@ -1198,10 +1198,13 @@ GER_share_borders_with_ITA_against_SOV = {
 		GER_should_split_SOV_front_with_ITA = yes
 	}
 	abort = {
-		not = {
-			is_in_faction_with = ITA
-			going_war_with_SOV = yes
-			GER_should_continue_split_SOV_front_with_ITA = yes
+		OR = {
+			not = {
+				is_in_faction_with = ITA
+				going_war_with_SOV = yes
+				GER_should_continue_split_SOV_front_with_ITA = yes
+			}
+			ITA = { has_capitulated = yes }
 		}
 	}
 	ai_strategy = {
@@ -1389,6 +1392,7 @@ GER_let_italy_handle_french_front_alone = {
 			}
 		}
 		date < 1940.8.1
+		ITA = {has_capitulated = no}
 	}
 	abort_when_not_enabled = yes
 	ai_strategy = {
@@ -2825,6 +2829,7 @@ germany_focus_on_france_not_italy = {
 				has_capitulated = yes
 			}
 			date > 1942.1.1
+			ITA = {has_capitulated = yes}
 		}
 	}
 	ai_strategy = {
@@ -3372,6 +3377,23 @@ GER_italian_theater = {
 	ai_strategy = {
 		type = conquer
 		id = "ITA"
+		value = 100
+	}
+}
+
+GER_italian_theater_2 = {
+	allowed = {
+		original_tag = GER
+	}
+	enable = {
+		ITA = {
+			has_capitulated = yes
+		}
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = area_priority
+		id = italy
 		value = 100
 	}
 }
