@@ -1520,34 +1520,29 @@ country_event = {
 
 	trigger = {
 		tag = GER
-		is_ai = yes
+		OR = {
+			is_ai = yes
+			ITA = { is_ai = yes }
+		}
 		VIC = {
 			exists = yes
 		}
-		controls_state = 665
+		OR = {
+			controls_state = 665
+			ITA = {
+				controls_state = 665
+			}
+		}
+		ITA = {
+			NOT = {
+				owns_state = 458
+			}
+		}
 	}
 
 	immediate = {
 		VIC = {
 			transfer_state = 665
-		}
-		IF = {
-			limit = {
-				controls_state = 458
-			}
-			transfer_state = 458
-		}
-		IF = {
-			limit = {
-				controls_state = 513
-			}
-			transfer_state = 513
-		}
-		IF = {
-			limit = {
-				controls_state = 460
-			}
-			transfer_state = 460
 		}
 	}
 }
