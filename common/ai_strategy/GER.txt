@@ -163,7 +163,7 @@ war_with_soviets = {
 				}
 				has_war_with = FRA
 			}
-			date > 1941.6.1
+			date > 1941.5.1
 		}
 	}
 	abort = {
@@ -178,7 +178,9 @@ war_with_soviets = {
 				has_war_with = FRA
 			}
 			is_in_faction_with = SOV
-			date > 1942.1.1
+			date > 1944.1.1
+			has_war_with = ITA
+			surrender_progress > 0.05
 		}
 	}
 	ai_strategy = {
@@ -1391,8 +1393,9 @@ GER_let_italy_handle_french_front_alone = {
 				progress > 0.01
 			}
 		}
-		date < 1940.8.1
+		date < 1940.9.1
 		ITA = {has_capitulated = no}
+		FRA = {has_capitulated = no}
 	}
 	abort_when_not_enabled = yes
 	ai_strategy = {
@@ -1481,6 +1484,11 @@ GER_enable_invasion_of_NOR = {
 		value = 500
 	}
 	ai_strategy = {
+		type = front_armor_score
+		id = "NOR"
+		value = -999
+	}
+	ai_strategy = {
 		type = front_unit_request
 		# norway
 		state = 110
@@ -1539,6 +1547,11 @@ GER_enable_invasion_of_NOR_again = {
 		type = invade
 		id = "NOR"
 		value = 500
+	}
+	ai_strategy = {
+		type = front_armor_score
+		id = "NOR"
+		value = -999
 	}
 	ai_strategy = {
 		type = invasion_unit_request
@@ -1651,12 +1664,12 @@ GER_around_the_maginot = {
 	ai_strategy = {
 		type = front_armor_score
 		id = "HOL"
-		value = 100
+		value = 150
 	}
 	ai_strategy = {
 		type = front_armor_score
 		id = "BEL"
-		value = 100
+		value = 150
 	}
 	ai_strategy = {
 		type = front_armor_score
@@ -1902,6 +1915,11 @@ GER_blitzkrieg_benelux = {
 		type = front_unit_request
 		tag = BEL
 		value = 100		# lets put more units, should be safe
+	}
+	ai_strategy = {
+		type = front_armor_score
+		id = "BEL"
+		value = 250
 	}
 	ai_strategy = {
 		type = front_unit_request
@@ -2627,6 +2645,11 @@ GER_blitz_yug = {
 		value = 999
 	}
 	ai_strategy = {
+		type = front_armor_score
+		id = "YUG"
+		value = 250
+	}
+	ai_strategy = {
 		type = front_control
 		country_trigger = {
 			original_tag = YUG
@@ -2693,6 +2716,11 @@ GER_blitz_pol = {
 		value = 999
 	}
 	ai_strategy = {
+		type = front_armor_score
+		id = "POL"
+		value = 250
+	}
+	ai_strategy = {
 		type = front_control
 		country_trigger = {
 			original_tag = POL
@@ -2713,7 +2741,7 @@ GER_blitz_fra = {
 		BEL = {
 			has_capitulated = yes
 		}
-		controls_state = 16		#Paris
+		#controls_state = 16		#Paris
 	}
 	abort = {
 		FRA = {
@@ -2724,6 +2752,11 @@ GER_blitz_fra = {
 		type = consider_weak
 		id = "FRA"
 		value = 999
+	}
+	ai_strategy = {
+		type = front_armor_score
+		id = "FRA"
+		value = 500
 	}
 	ai_strategy = {
 		type = front_control
@@ -2753,6 +2786,11 @@ GER_blitz_den = {
 		type = consider_weak
 		id = "DEN"
 		value = 999
+	}
+	ai_strategy = {
+		type = front_armor_score
+		id = "DEN"
+		value = 100
 	}
 	ai_strategy = {
 		type = front_control
@@ -3375,6 +3413,11 @@ GER_italian_theater = {
 		value = 100
 	}
 	ai_strategy = {
+		type = front_armor_score
+		id = "ITA"
+		value = 100
+	}
+	ai_strategy = {
 		type = conquer
 		id = "ITA"
 		value = 100
@@ -3394,6 +3437,16 @@ GER_italian_theater_2 = {
 	ai_strategy = {
 		type = area_priority
 		id = italy
+		value = 100
+	}
+	ai_strategy = {
+		type = front_armor_score
+		id = "USA"
+		value = 100
+	}
+	ai_strategy = {
+		type = front_armor_score
+		id = "ENG"
 		value = 100
 	}
 	ai_strategy = {
