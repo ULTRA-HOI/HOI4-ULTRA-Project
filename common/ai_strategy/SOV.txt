@@ -3644,12 +3644,55 @@ SOV_defense_in_depth_2 = {
 			217
 			236
 		}
-		ratio = 0.35
+		ratio = 0.2
 		area = north_russia
 		area = west_russia
 		area = south_russia
 		subtract_invasions_from_need = no
 		subtract_fronts_from_need = no
+	}
+}
+
+SOV_moscow_bulk = {
+	#defend the core
+	allowed = {
+		original_tag = SOV
+	}
+	enable = {
+		OR = {
+			NOT = {
+				has_full_control_of_state = 242
+			}
+			NOT = {
+				has_full_control_of_state = 246
+			}
+			NOT = {
+				has_full_control_of_state = 222
+			}
+			NOT = {
+				has_full_control_of_state = 258
+			}
+		}
+		controls_state = 219
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = put_unit_buffers
+		#order_id = 2
+		#Protect the capital
+		states = {
+			219
+			885
+			883
+			884
+			223
+			247
+			205
+		}
+		ratio = 0.2
+		area = west_russia
+		subtract_invasions_from_need = no
+		subtract_fronts_from_need = yes
 	}
 }
 
