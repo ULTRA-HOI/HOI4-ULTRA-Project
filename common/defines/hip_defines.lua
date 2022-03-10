@@ -393,6 +393,8 @@ NDefines.NMilitary.UNIT_EXPERIENCE_PER_COMBAT_HOUR =  0.00015 --0.00015
 NDefines.NMilitary.UNIT_EXPERIENCE_PER_TRAINING_DAY = 0.0015 --0.0015
 NDefines.NMilitary.FIELD_EXPERIENCE_MAX_PER_DAY = 1.2  -- Most xp you can gain per day
 
+NDefines.NMilitary.UNIT_LEADER_USE_NONLINEAR_XP_GAIN = false       -- Whether unit leader XP gain is scaled by 1/<nr_of_traits>
+
 -- Leaders skills 
 
 NDefines.NMilitary.COMMANDER_LEVEL_UP_STAT_COUNT = 3 		--was 3		-- num stats gained on level up
