@@ -1045,6 +1045,48 @@ GER_autarky_category = {
 		}
 	}
 	
+	GER_capture_NOR_gold = {
+		cancel_trigger = {
+			hidden_trigger = {
+				OR = {
+					NOT = { GER_has_economy_fatigue = yes }
+					has_idea = GER_economic_crash
+				}
+			}
+		}
+		
+		visible = {
+			GER_has_economy_fatigue = yes
+			GER_has_economy_fatigue_2 = yes
+			OR = {
+				has_war_with = NOR
+				has_wargoal_against = NOR
+			}
+		}
+
+		fire_only_once = yes
+		days_mission_timeout = 7
+		is_good = no
+		activation = {
+			has_war_with = NOR
+		}
+		
+		available = {
+			controls_province = 6115 #Oslo
+			controls_province = 53 # Stavanger
+			controls_province = 122 # Bergen
+			controls_province = 3022 # Trondheim
+			controls_province = 9296 # Kristiansand
+		}
+		
+		complete_effect = {
+			GER_autarky_level_down = yes
+			add_to_variable = { var = GER_autarky_counter value = -5 }
+			custom_effect_tooltip = norwegian_gold_economy_fatigue_tt
+		}
+		
+	}
+	
 }
 
 operations = {
