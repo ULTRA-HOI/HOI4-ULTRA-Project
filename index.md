@@ -1,5 +1,123 @@
 # Changelog
 
+### 0.12.4
+
+### Features
+
+- Italy gets unique naval command spirits
+- Wealth exploitation decisions for Germany are no longer instant
+- Reworked Autarky/economical Fatigue system to be more interresting
+- Reworked naval techs research dates
+- Overhauled radar techs, with separated land and naval radars lines
+- Japan gets a radar tech bonus when seizing Singapore
+- Firecontrol techs no longer need computer techs
+- Reworked the focus to move industry to Ural. Can now be taken before Barbarossa but displace less factories. Makes decisions actualy more important.
+- Reorganized Soviet Tank Tree, with KV1 available in 1939 and T-34 in 1940
+
+### Balance
+
+- Mud hurts more tanks/mots/mechs
+- Army Expension focus for Japan now gives a land doctrine bonus
+- Two Ocean Navy focus for the USA now needs 50% war support (from 55%)
+- Reduced chromium amount given by Alaska prospection
+- Torpedo cooldown is now 12 hours instead of 4
+- Doubled base torpedo attacks (with previous change, lead to 1/3 reduction of torpedoes effectiveness)
+- Naval hit chances from various modifiers reduced
+- Increased factories coal/steel consumption
+- Earned officer traits no longer increased required xp to learn a new trait
+- Adjusted resources IC cost
+- More soviet States allowed to transfer industry
+- Removed unnecessary tank research bonuses for Germany
+- Air combats are a bit less bloody
+- Convoy raiding hurts more trade lines
+- Manpower laws no longer reduce resource extraction
+- Germany have to control Estonia to be able to bring Finland to the war
+- Germany gets CG malus to represent [forbidden topic] policies cost
+- Air veterancy impact lowered
+- Lowered french economic malus
+- Support techs are available 1 year sooner
+- UK gets decisions to annex back Iraq/Syria once occupied
+- updated every focuses about radars
+- Finland cannot join the Axis on its own before 1942
+- First panzer III and IV IC cost increased by 25%
+- Forts are now more relevants (Less sensible to strat bombing, various units bonuses to forts lowered)
+- Lowered convoy cost by 25%
+- Reduced convoys needed for resources
+- Subs base visibility increased
+- Advanced and Streamlined subs hulls have later research dates
+- Glory of the Red Army gives reduced doctrine cost
+- Reduced starting attack/defence malus of the Red Army
+- Politicized Military doctrine cost malus is reduced, the focus allows to remove completely the malus
+- Removed attack/defence malus of state of shock, replaced by entenchment malus
+- Barbarossa mission bonus reduced to 5%
+- Less War Support impact from strat bombing
+- Reduced air supply effectiveness
+- Supply grace reduced to 5 days
+- Adjustment to supply related values
+- Approach Germany focus for Soviet Union now gives additional research bonus for the Soviets
+- Further focus time reductions for the Soviets
+- Ending the Winter War now automaticaly complete the Rehabilitated Military focus
+- Superior War Machines now gives bonuses to T34M, T44 and IS-1
+- Desperate measures automaticaly researchs T-34-F34 if first T-34 model is already researched
+- German-Soviet research pact no longer gives research bonuses for T-34 and KV1
+- Updated ship decisions xp costs
+- Rheinland focus require to have an army
+- Cohesion First is no longer exclusive with Restore Cossacks units
+- Chinese Army corruption is no longer completely removable but a bit less painful
+- Adjusted LL weights
+- Reichautobahn is now a 35 days focus
+- Ship xp loss reduced drasticaly when damaged
+- Cavalry suppression value increased 
+- Air/land designer gives passive xp generation
+- Chinese equipment purchases fixed
+
+### Database
+
+- Improved accuracy of starting US aircrafts
+
+### Map
+
+- Improved the accuracy of iron distribution in Soviet Union
+- Mariupol added as victory point
+- Refined the repartition of soviet naval industry
+- Taking Krivoy Rog VP should be enough to take control of the many resources there
+- The tile next to Metz is now properly hills and no longer plains
+
+### Bugfixes 
+
+- B24 aluminium cost is now consistant with other heavy bombers
+- Fixed lying tooltip for Stalingrad Tractor Factory upgrade
+- Avanger and TBY aircraft range fixed
+- Skilled Staffer trait is now again possible to get
+- Kamikaze focus can no longer be abused by liberating pupet
+- removed rare iterations when Algeria switch to Free France before US involvment
+- Cruiser mk IV cost fixed
+- Heavy Bomber designer now works for Super Heavy Bombers
+- Cannadian construction projects have correct civ requirements
+- AI only events giving free techs should no longer be activated for the player
+
+### AI
+
+- German AI will defend Axis French State if Allies invade it
+- German AI now properly blocks the Channel
+- German Ai should care about their italian pupet
+- Soviet AI should defend better Leningrad, Moscow and Stalingrad
+- Further improved Russian front AI balance
+- AI Uk should not blocade itself Singapore
+- Soviet AI no longer send "volunteers" in Spain
+- German Ai should not send troops in East Africa anymore
+- UK should defend better against Sealion
+
+### QoL
+
+- Reduced required free civs for conversion decisions. Still higher than civs actualy needed to not hurt trade.
+- The normaly hidden event that is sometime shown when loading a savegame now explain what it is.
+- Resource topbar is more dynamic and logical
+
+### interface 
+
+- Better icon for german naval spirit 
+
 ### 0.12.3
 
 ### Feature
