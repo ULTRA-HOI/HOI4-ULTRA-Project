@@ -23,134 +23,39 @@ country_event = {
 	option = {
 		# close it
 		name = resource_production.1.a
+		# How many need to be closed
+		set_temp_variable = { steel_cost_iron = 80 }
+		set_temp_variable = { steel_cost_coal = 50 }
+		set_temp_variable = { deficit_iron = resource@iron }
+		set_temp_variable = { deficit_coal = resource@coal }
+		set_temp_variable = { num_to_close_iron = resource@iron }
+		set_temp_variable = { num_to_close_coal = resource@coal }
+		set_temp_variable = { mills_removed = 0 }
+
+		divide_temp_variable = { num_to_close_iron = steel_cost_iron }
+		divide_temp_variable = { num_to_close_coal = steel_cost_coal }
+		round_temp_variable = num_to_close_iron
+		round_temp_variable = num_to_close_coal
 		IF = {
 			limit = {
-				any_controlled_state = {
-					steel_refinery > 7
-					NOT = {
-						is_owned_by = ROOT
-					}
-				}
-				OR = {
-					check_variable = {
-						resource@iron < -199
-					}
-					check_variable = {
-						resource@coal < -199
-					}
-				}
-			}
-			random_controlled_state = {
-				limit = {
-					steel_refinery > 7
-					NOT = {
-						is_owned_by = ROOT
-					}
-				}
-				remove_building = {
-					type = steel_refinery
-					level = 8
-				}
-				add_building_construction = {
-					type = steel_refinery_inactive
-					level = 8
-					instant_build = yes
-				}
-			}
-		}
-		ELSE_IF = {
-			limit = {
-				any_controlled_state = {
-					steel_refinery > 3
-					NOT = {
-						is_owned_by = ROOT
-					}
-				}
-				OR = {
-					check_variable = {
-						resource@iron < -99
-					}
-					check_variable = {
-						resource@coal < -99
-					}
-				}
-			}
-			random_controlled_state = {
-				limit = {
-					steel_refinery > 3
-					NOT = {
-						is_owned_by = ROOT
-					}
-				}
-				remove_building = {
-					type = steel_refinery
-					level = 4
-				}
-				add_building_construction = {
-					type = steel_refinery_inactive
-					level = 4
-					instant_build = yes
-				}
-			}
-		}
-		ELSE_IF = {
-			limit = {
-				any_controlled_state = {
-					steel_refinery > 1
-					NOT = {
-						is_owned_by = ROOT
-					}
-				}
-				OR = {
-					check_variable = {
-						resource@iron < -49
-					}
-					check_variable = {
-						resource@coal < -49
-					}
-				}
-			}
-			random_controlled_state = {
-				limit = {
-					steel_refinery > 1
-					NOT = {
-						is_owned_by = ROOT
-					}
-				}
-				remove_building = {
-					type = steel_refinery
-					level = 2
-				}
-				add_building_construction = {
-					type = steel_refinery_inactive
-					level = 2
-					instant_build = yes
-				}
-			}
-		}
-		ELSE_IF = {
-			limit = {
-				any_controlled_state = {
-					steel_refinery > 0
-					NOT = {
-						is_owned_by = ROOT
-					}
-				}
-				OR = {
 					check_variable = {
 						resource@iron < 0
 					}
 					check_variable = {
 						resource@coal < 0
 					}
-				}
+					check_variable = {
+						num_to_close_coal < num_to_close_iron
+					}
 			}
+			multiply_temp_variable = { num_to_close_coal = -1 }
+			#and remove, non-core first
 			random_controlled_state = {
-				limit = {
-					steel_refinery > 0
+				limit = { steel_refinery > 0
 					NOT = {
 						is_owned_by = ROOT
 					}
+					check_variable = { mills_removed < num_to_close_coal }
 				}
 				remove_building = {
 					type = steel_refinery
@@ -161,102 +66,167 @@ country_event = {
 					level = 1
 					instant_build = yes
 				}
+				add_to_temp_variable = { mills_removed = 1 }
+			}
+			random_controlled_state = {
+				limit = { steel_refinery > 0
+					NOT = {
+						is_owned_by = ROOT
+					}
+					check_variable = { mills_removed < num_to_close_coal }
+				}
+				remove_building = {
+					type = steel_refinery
+					level = 1
+				}
+				add_building_construction = {
+					type = steel_refinery_inactive
+					level = 1
+					instant_build = yes
+				}
+				add_to_temp_variable = { mills_removed = 1 }
+			}
+			random_controlled_state = {
+				limit = { steel_refinery > 0
+					NOT = {
+						is_owned_by = ROOT
+					}
+					check_variable = { mills_removed < num_to_close_coal }
+				}
+				remove_building = {
+					type = steel_refinery
+					level = 1
+				}
+				add_building_construction = {
+					type = steel_refinery_inactive
+					level = 1
+					instant_build = yes
+				}
+				add_to_temp_variable = { mills_removed = 1 }
+			}
+			random_controlled_state = {
+				limit = { steel_refinery > 0
+					NOT = {
+						is_owned_by = ROOT
+					}
+					check_variable = { mills_removed < num_to_close_coal }
+				}
+				remove_building = {
+					type = steel_refinery
+					level = 1
+				}
+				add_building_construction = {
+					type = steel_refinery_inactive
+					level = 1
+					instant_build = yes
+				}
+				add_to_temp_variable = { mills_removed = 1 }
+			}
+			random_controlled_state = {
+				limit = { steel_refinery > 0
+					NOT = {
+						is_owned_by = ROOT
+					}
+					check_variable = { mills_removed < num_to_close_coal }
+				}
+				remove_building = {
+					type = steel_refinery
+					level = 1
+				}
+				add_building_construction = {
+					type = steel_refinery_inactive
+					level = 1
+					instant_build = yes
+				}
+				add_to_temp_variable = { mills_removed = 1 }
+			}
+			random_controlled_state = {
+				limit = { steel_refinery > 0
+						is_owned_by = ROOT
+						check_variable = { mills_removed < num_to_close_coal }
+				}
+				remove_building = {
+					type = steel_refinery
+					level = 1
+				}
+				add_building_construction = {
+					type = steel_refinery_inactive
+					level = 1
+					instant_build = yes
+				}
+				add_to_temp_variable = { mills_removed = 1 }
+			}
+			random_controlled_state = {
+				limit = { steel_refinery > 0
+						is_owned_by = ROOT
+						check_variable = { mills_removed < num_to_close_coal }
+				}
+				remove_building = {
+					type = steel_refinery
+					level = 1
+				}
+				add_building_construction = {
+					type = steel_refinery_inactive
+					level = 1
+					instant_build = yes
+				}
+				add_to_temp_variable = { mills_removed = 1 }
+			}
+			random_controlled_state = {
+				limit = { steel_refinery > 0
+						is_owned_by = ROOT
+						check_variable = { mills_removed < num_to_close_coal }
+				}
+				remove_building = {
+					type = steel_refinery
+					level = 1
+				}
+				add_building_construction = {
+					type = steel_refinery_inactive
+					level = 1
+					instant_build = yes
+				}
+				add_to_temp_variable = { mills_removed = 1 }
+			}
+			random_controlled_state = {
+				limit = { steel_refinery > 0
+						is_owned_by = ROOT
+						check_variable = { mills_removed < num_to_close_coal }
+				}
+				remove_building = {
+					type = steel_refinery
+					level = 1
+				}
+				add_building_construction = {
+					type = steel_refinery_inactive
+					level = 1
+					instant_build = yes
+				}
+				add_to_temp_variable = { mills_removed = 1 }
 			}
 		}
 		ELSE_IF = {
 			limit = {
-				any_controlled_state = {
-					is_owned_by = ROOT
-					steel_refinery > 7
-				}
-				OR = {
 					check_variable = {
-						resource@iron < -199
+						resource@iron < 0
 					}
 					check_variable = {
-						resource@coal < -199
-					}
-				}
-			}
-			random_owned_controlled_state = {
-				limit = {
-					steel_refinery > 7
-				}
-				remove_building = {
-					type = steel_refinery
-					level = 8
-				}
-				add_building_construction = {
-					type = steel_refinery_inactive
-					level = 8
-					instant_build = yes
-				}
-			}
-		}
-		ELSE_IF = {
-			limit = {
-				any_controlled_state = {
-					is_owned_by = ROOT
-					steel_refinery > 3
-				}
-				OR = {
-					check_variable = {
-						resource@iron < -99
+						resource@coal < 0
 					}
 					check_variable = {
-						resource@coal < -99
+						var = num_to_close_coal
+						value = num_to_close_iron
+						compare = greater_than_or_equals
 					}
-				}
 			}
-			random_owned_controlled_state = {
-				limit = {
-					steel_refinery > 3
-				}
-				remove_building = {
-					type = steel_refinery
-					level = 4
-				}
-				add_building_construction = {
-					type = steel_refinery_inactive
-					level = 4
-					instant_build = yes
-				}
-			}
-		}
-		ELSE_IF = {
-			limit = {
-				any_controlled_state = {
-					steel_refinery > 1
-					is_owned_by = ROOT
-				}
-				OR = {
-					check_variable = {
-						resource@iron < -49
+			multiply_temp_variable = { num_to_close_iron = -1 }
+			#and remove, non-core first
+			random_controlled_state = {
+				limit = { steel_refinery > 0
+					NOT = {
+						is_owned_by = ROOT
 					}
-					check_variable = {
-						resource@coal < -49
-					}
-				}
-			}
-			random_owned_controlled_state = {
-				limit = {
-					steel_refinery > 1
-				}
-				remove_building = {
-					type = steel_refinery
-					level = 2
-				}
-				add_building_construction = {
-					type = steel_refinery_inactive
-					level = 2
-					instant_build = yes
-				}
-			}
-		}
-		ELSE = {
-			random_owned_controlled_state = {
-				limit = {
-					steel_refinery > 0
+					check_variable = { mills_removed < num_to_close_iron }
 				}
 				remove_building = {
 					type = steel_refinery
@@ -267,6 +237,475 @@ country_event = {
 					level = 1
 					instant_build = yes
 				}
+				add_to_temp_variable = { mills_removed = 1 }
+			}
+			random_controlled_state = {
+				limit = { steel_refinery > 0
+					NOT = {
+						is_owned_by = ROOT
+					}
+					check_variable = { mills_removed < num_to_close_iron }
+				}
+				remove_building = {
+					type = steel_refinery
+					level = 1
+				}
+				add_building_construction = {
+					type = steel_refinery_inactive
+					level = 1
+					instant_build = yes
+				}
+				add_to_temp_variable = { mills_removed = 1 }
+			}
+			random_controlled_state = {
+				limit = { steel_refinery > 0
+					NOT = {
+						is_owned_by = ROOT
+					}
+					check_variable = { mills_removed < num_to_close_iron }
+				}
+				remove_building = {
+					type = steel_refinery
+					level = 1
+				}
+				add_building_construction = {
+					type = steel_refinery_inactive
+					level = 1
+					instant_build = yes
+				}
+				add_to_temp_variable = { mills_removed = 1 }
+			}
+			random_controlled_state = {
+				limit = { steel_refinery > 0
+					NOT = {
+						is_owned_by = ROOT
+					}
+					check_variable = { mills_removed < num_to_close_iron }
+				}
+				remove_building = {
+					type = steel_refinery
+					level = 1
+				}
+				add_building_construction = {
+					type = steel_refinery_inactive
+					level = 1
+					instant_build = yes
+				}
+				add_to_temp_variable = { mills_removed = 1 }
+			}
+			random_controlled_state = {
+				limit = { steel_refinery > 0
+					NOT = {
+						is_owned_by = ROOT
+					}
+					check_variable = { mills_removed < num_to_close_iron }
+				}
+				remove_building = {
+					type = steel_refinery
+					level = 1
+				}
+				add_building_construction = {
+					type = steel_refinery_inactive
+					level = 1
+					instant_build = yes
+				}
+				add_to_temp_variable = { mills_removed = 1 }
+			}
+			random_controlled_state = {
+				limit = { steel_refinery > 0
+						is_owned_by = ROOT
+						check_variable = { mills_removed < num_to_close_iron }
+				}
+				remove_building = {
+					type = steel_refinery
+					level = 1
+				}
+				add_building_construction = {
+					type = steel_refinery_inactive
+					level = 1
+					instant_build = yes
+				}
+				add_to_temp_variable = { mills_removed = 1 }
+			}
+			random_controlled_state = {
+				limit = { steel_refinery > 0
+						is_owned_by = ROOT
+						check_variable = { mills_removed < num_to_close_iron }
+				}
+				remove_building = {
+					type = steel_refinery
+					level = 1
+				}
+				add_building_construction = {
+					type = steel_refinery_inactive
+					level = 1
+					instant_build = yes
+				}
+				add_to_temp_variable = { mills_removed = 1 }
+			}
+			random_controlled_state = {
+				limit = { steel_refinery > 0
+						is_owned_by = ROOT
+						check_variable = { mills_removed < num_to_close_iron }
+				}
+				remove_building = {
+					type = steel_refinery
+					level = 1
+				}
+				add_building_construction = {
+					type = steel_refinery_inactive
+					level = 1
+					instant_build = yes
+				}
+				add_to_temp_variable = { mills_removed = 1 }
+			}
+			random_controlled_state = {
+				limit = { steel_refinery > 0
+						is_owned_by = ROOT
+						check_variable = { mills_removed < num_to_close_iron }
+				}
+				remove_building = {
+					type = steel_refinery
+					level = 1
+				}
+				add_building_construction = {
+					type = steel_refinery_inactive
+					level = 1
+					instant_build = yes
+				}
+				add_to_temp_variable = { mills_removed = 1 }
+			}
+		}
+		ELSE_IF = {
+			limit = {
+					check_variable = {
+						resource@iron > -1
+					}
+					check_variable = {
+						resource@coal < 0
+					}
+			}
+			multiply_temp_variable = { num_to_close_coal = -1 }
+			#and remove, non-core first
+			random_controlled_state = {
+				limit = { steel_refinery > 0
+					NOT = {
+						is_owned_by = ROOT
+					}
+					check_variable = { mills_removed < num_to_close_coal }
+				}
+				remove_building = {
+					type = steel_refinery
+					level = 1
+				}
+				add_building_construction = {
+					type = steel_refinery_inactive
+					level = 1
+					instant_build = yes
+				}
+				add_to_temp_variable = { mills_removed = 1 }
+			}
+			random_controlled_state = {
+				limit = { steel_refinery > 0
+					NOT = {
+						is_owned_by = ROOT
+					}
+					check_variable = { mills_removed < num_to_close_coal }
+				}
+				remove_building = {
+					type = steel_refinery
+					level = 1
+				}
+				add_building_construction = {
+					type = steel_refinery_inactive
+					level = 1
+					instant_build = yes
+				}
+				add_to_temp_variable = { mills_removed = 1 }
+			}
+			random_controlled_state = {
+				limit = { steel_refinery > 0
+					NOT = {
+						is_owned_by = ROOT
+					}
+					check_variable = { mills_removed < num_to_close_coal }
+				}
+				remove_building = {
+					type = steel_refinery
+					level = 1
+				}
+				add_building_construction = {
+					type = steel_refinery_inactive
+					level = 1
+					instant_build = yes
+				}
+				add_to_temp_variable = { mills_removed = 1 }
+			}
+			random_controlled_state = {
+				limit = { steel_refinery > 0
+					NOT = {
+						is_owned_by = ROOT
+					}
+					check_variable = { mills_removed < num_to_close_coal }
+				}
+				remove_building = {
+					type = steel_refinery
+					level = 1
+				}
+				add_building_construction = {
+					type = steel_refinery_inactive
+					level = 1
+					instant_build = yes
+				}
+				add_to_temp_variable = { mills_removed = 1 }
+			}
+			random_controlled_state = {
+				limit = { steel_refinery > 0
+					NOT = {
+						is_owned_by = ROOT
+					}
+					check_variable = { mills_removed < num_to_close_coal }
+				}
+				remove_building = {
+					type = steel_refinery
+					level = 1
+				}
+				add_building_construction = {
+					type = steel_refinery_inactive
+					level = 1
+					instant_build = yes
+				}
+				add_to_temp_variable = { mills_removed = 1 }
+			}
+			random_controlled_state = {
+				limit = { steel_refinery > 0
+						is_owned_by = ROOT
+						check_variable = { mills_removed < num_to_close_coal }
+				}
+				remove_building = {
+					type = steel_refinery
+					level = 1
+				}
+				add_building_construction = {
+					type = steel_refinery_inactive
+					level = 1
+					instant_build = yes
+				}
+				add_to_temp_variable = { mills_removed = 1 }
+			}
+			random_controlled_state = {
+				limit = { steel_refinery > 0
+						is_owned_by = ROOT
+						check_variable = { mills_removed < num_to_close_coal }
+				}
+				remove_building = {
+					type = steel_refinery
+					level = 1
+				}
+				add_building_construction = {
+					type = steel_refinery_inactive
+					level = 1
+					instant_build = yes
+				}
+				add_to_temp_variable = { mills_removed = 1 }
+			}
+			random_controlled_state = {
+				limit = { steel_refinery > 0
+						is_owned_by = ROOT
+						check_variable = { mills_removed < num_to_close_coal }
+				}
+				remove_building = {
+					type = steel_refinery
+					level = 1
+				}
+				add_building_construction = {
+					type = steel_refinery_inactive
+					level = 1
+					instant_build = yes
+				}
+				add_to_temp_variable = { mills_removed = 1 }
+			}
+			random_controlled_state = {
+				limit = { steel_refinery > 0
+						is_owned_by = ROOT
+						check_variable = { mills_removed < num_to_close_coal }
+				}
+				remove_building = {
+					type = steel_refinery
+					level = 1
+				}
+				add_building_construction = {
+					type = steel_refinery_inactive
+					level = 1
+					instant_build = yes
+				}
+				add_to_temp_variable = { mills_removed = 1 }
+			}
+		}
+		ELSE_IF = {
+			limit = {
+					check_variable = {
+						resource@iron < 0
+					}
+					check_variable = {
+						resource@coal > -1
+					}
+			}
+			multiply_temp_variable = { num_to_close_iron = -1 }
+			#and remove, non-core first
+			random_controlled_state = {
+				limit = { steel_refinery > 0
+					NOT = {
+						is_owned_by = ROOT
+					}
+					check_variable = { mills_removed < num_to_close_iron }
+				}
+				remove_building = {
+					type = steel_refinery
+					level = 1
+				}
+				add_building_construction = {
+					type = steel_refinery_inactive
+					level = 1
+					instant_build = yes
+				}
+				add_to_temp_variable = { mills_removed = 1 }
+			}
+			random_controlled_state = {
+				limit = { steel_refinery > 0
+					NOT = {
+						is_owned_by = ROOT
+					}
+					check_variable = { mills_removed < num_to_close_iron }
+				}
+				remove_building = {
+					type = steel_refinery
+					level = 1
+				}
+				add_building_construction = {
+					type = steel_refinery_inactive
+					level = 1
+					instant_build = yes
+				}
+				add_to_temp_variable = { mills_removed = 1 }
+			}
+			random_controlled_state = {
+				limit = { steel_refinery > 0
+					NOT = {
+						is_owned_by = ROOT
+					}
+					check_variable = { mills_removed < num_to_close_iron }
+				}
+				remove_building = {
+					type = steel_refinery
+					level = 1
+				}
+				add_building_construction = {
+					type = steel_refinery_inactive
+					level = 1
+					instant_build = yes
+				}
+				add_to_temp_variable = { mills_removed = 1 }
+			}
+			random_controlled_state = {
+				limit = { steel_refinery > 0
+					NOT = {
+						is_owned_by = ROOT
+					}
+					check_variable = { mills_removed < num_to_close_iron }
+				}
+				remove_building = {
+					type = steel_refinery
+					level = 1
+				}
+				add_building_construction = {
+					type = steel_refinery_inactive
+					level = 1
+					instant_build = yes
+				}
+				add_to_temp_variable = { mills_removed = 1 }
+			}
+			random_controlled_state = {
+				limit = { steel_refinery > 0
+					NOT = {
+						is_owned_by = ROOT
+					}
+					check_variable = { mills_removed < num_to_close_iron }
+				}
+				remove_building = {
+					type = steel_refinery
+					level = 1
+				}
+				add_building_construction = {
+					type = steel_refinery_inactive
+					level = 1
+					instant_build = yes
+				}
+				add_to_temp_variable = { mills_removed = 1 }
+			}
+			random_controlled_state = {
+				limit = { steel_refinery > 0
+						is_owned_by = ROOT
+						check_variable = { mills_removed < num_to_close_iron }
+				}
+				remove_building = {
+					type = steel_refinery
+					level = 1
+				}
+				add_building_construction = {
+					type = steel_refinery_inactive
+					level = 1
+					instant_build = yes
+				}
+				add_to_temp_variable = { mills_removed = 1 }
+			}
+			random_controlled_state = {
+				limit = { steel_refinery > 0
+						is_owned_by = ROOT
+						check_variable = { mills_removed < num_to_close_iron }
+				}
+				remove_building = {
+					type = steel_refinery
+					level = 1
+				}
+				add_building_construction = {
+					type = steel_refinery_inactive
+					level = 1
+					instant_build = yes
+				}
+				add_to_temp_variable = { mills_removed = 1 }
+			}
+			random_controlled_state = {
+				limit = { steel_refinery > 0
+						is_owned_by = ROOT
+						check_variable = { mills_removed < num_to_close_iron }
+				}
+				remove_building = {
+					type = steel_refinery
+					level = 1
+				}
+				add_building_construction = {
+					type = steel_refinery_inactive
+					level = 1
+					instant_build = yes
+				}
+				add_to_temp_variable = { mills_removed = 1 }
+			}
+			random_controlled_state = {
+				limit = { steel_refinery > 0
+						is_owned_by = ROOT
+						check_variable = { mills_removed < num_to_close_iron }
+				}
+				remove_building = {
+					type = steel_refinery
+					level = 1
+				}
+				add_building_construction = {
+					type = steel_refinery_inactive
+					level = 1
+					instant_build = yes
+				}
+				add_to_temp_variable = { mills_removed = 1 }
 			}
 		}
 	}
@@ -295,126 +734,39 @@ country_event = {
 	option = {
 		# close it
 		name = resource_production.2.a
+		# How many need to be closed
+		set_temp_variable = { al_cost_bauxite = 75 }
+		set_temp_variable = { al_cost_coal = 50 }
+		set_temp_variable = { deficit_bauxite = resource@bauxite }
+		set_temp_variable = { deficit_coal = resource@coal }
+		set_temp_variable = { num_to_close_bauxite = resource@bauxite }
+		set_temp_variable = { num_to_close_coal = resource@coal }
+		set_temp_variable = { smelters_removed = 0 }
+
+		divide_temp_variable = { num_to_close_bauxite = al_cost_bauxite }
+		divide_temp_variable = { num_to_close_coal = al_cost_coal }
+		round_temp_variable = num_to_close_bauxite
+		round_temp_variable = num_to_close_coal
 		IF = {
 			limit = {
-				any_controlled_state = {
-					aluminium_refinery > 7
-					NOT = {
-						is_owned_by = ROOT
-					}
-				}
-				OR = {
 					check_variable = {
-						resource@bauxite < -199
+						resource@bauxite < 0
 					}
 					check_variable = {
-						resource@coal < -199
+						resource@coal < 0
 					}
-				}
+					check_variable = {
+						num_to_close_coal < num_to_close_bauxite
+					}
 			}
+			multiply_temp_variable = { num_to_close_coal = -1 }
+			#and remove, non-core first
 			random_controlled_state = {
-				limit = {
-					aluminium_refinery > 7
+				limit = { aluminium_refinery > 0
 					NOT = {
 						is_owned_by = ROOT
 					}
-				}
-				remove_building = {
-					type = aluminium_refinery
-					level = 8
-				}
-				add_building_construction = {
-					type = aluminium_refinery_inactive
-					level = 8
-					instant_build = yes
-				}
-			}
-		}
-		ELSE_IF = {
-			limit = {
-				any_controlled_state = {
-					aluminium_refinery > 3
-					NOT = {
-						is_owned_by = ROOT
-					}
-				}
-				OR = {
-					check_variable = {
-						resource@bauxite < -99
-					}
-					check_variable = {
-						resource@coal < -99
-					}
-				}
-			}
-			random_controlled_state = {
-				limit = {
-					aluminium_refinery > 3
-					NOT = {
-						is_owned_by = ROOT
-					}
-				}
-				remove_building = {
-					type = aluminium_refinery
-					level = 4
-				}
-				add_building_construction = {
-					type = aluminium_refinery_inactive
-					level = 4
-					instant_build = yes
-				}
-			}
-		}
-		ELSE_IF = {
-			limit = {
-				any_controlled_state = {
-					aluminium_refinery > 1
-					NOT = {
-						is_owned_by = ROOT
-					}
-				}
-				OR = {
-					check_variable = {
-						resource@bauxite < -49
-					}
-					check_variable = {
-						resource@coal < -49
-					}
-				}
-			}
-			random_controlled_state = {
-				limit = {
-					aluminium_refinery > 1
-					NOT = {
-						is_owned_by = ROOT
-					}
-				}
-				remove_building = {
-					type = aluminium_refinery
-					level = 2
-				}
-				add_building_construction = {
-					type = aluminium_refinery_inactive
-					level = 2
-					instant_build = yes
-				}
-			}
-		}
-		ELSE_IF = {
-			limit = {
-				any_controlled_state = {
-					aluminium_refinery > 0
-					NOT = {
-						is_owned_by = ROOT
-					}
-				}
-			}
-			random_controlled_state = {
-				limit = {
-					aluminium_refinery > 1
-					NOT = {
-						is_owned_by = ROOT
-					}
+					check_variable = { smelters_removed < num_to_close_coal }
 				}
 				remove_building = {
 					type = aluminium_refinery
@@ -425,102 +777,14 @@ country_event = {
 					level = 1
 					instant_build = yes
 				}
+				add_to_temp_variable = { smelters_removed = 1 }
 			}
-		}
-		ELSE_IF = {
-			limit = {
-				any_controlled_state = {
-					aluminium_refinery > 7
-					is_owned_by = ROOT
-				}
-				OR = {
-					check_variable = {
-						resource@bauxite < -199
+			random_controlled_state = {
+				limit = { aluminium_refinery > 0
+					NOT = {
+						is_owned_by = ROOT
 					}
-					check_variable = {
-						resource@coal < -199
-					}
-				}
-			}
-			random_owned_controlled_state = {
-				limit = {
-					aluminium_refinery > 7
-				}
-				remove_building = {
-					type = aluminium_refinery
-					level = 8
-				}
-				add_building_construction = {
-					type = aluminium_refinery_inactive
-					level = 8
-					instant_build = yes
-				}
-			}
-		}
-		ELSE_IF = {
-			limit = {
-				any_controlled_state = {
-					aluminium_refinery > 3
-					is_owned_by = ROOT
-				}
-				OR = {
-					check_variable = {
-						resource@bauxite < -99
-					}
-					check_variable = {
-						resource@coal < -99
-					}
-				}
-			}
-			random_owned_controlled_state = {
-				limit = {
-					aluminium_refinery > 3
-				}
-				remove_building = {
-					type = aluminium_refinery
-					level = 4
-				}
-				add_building_construction = {
-					type = aluminium_refinery_inactive
-					level = 4
-					instant_build = yes
-				}
-			}
-		}
-		ELSE_IF = {
-			limit = {
-				any_controlled_state = {
-					aluminium_refinery > 1
-					is_owned_by = ROOT
-				}
-				OR = {
-					check_variable = {
-						resource@bauxite < -49
-					}
-					check_variable = {
-						resource@coal < -49
-					}
-				}
-			}
-			random_owned_controlled_state = {
-				limit = {
-					aluminium_refinery > 1
-				}
-				remove_building = {
-					type = aluminium_refinery
-					level = 2
-				}
-				add_building_construction = {
-					type = aluminium_refinery_inactive
-					level = 2
-					instant_build = yes
-				}
-			}
-		}
-		ELSE = {
-			random_owned_controlled_state = {
-				limit = {
-					aluminium_refinery > 0
+					check_variable = { smelters_removed < num_to_close_coal }
 				}
 				remove_building = {
 					type = aluminium_refinery
@@ -531,6 +795,628 @@ country_event = {
 					level = 1
 					instant_build = yes
 				}
+				add_to_temp_variable = { smelters_removed = 1 }
+			}
+			random_controlled_state = {
+				limit = { aluminium_refinery > 0
+					NOT = {
+						is_owned_by = ROOT
+					}
+					check_variable = { smelters_removed < num_to_close_coal }
+				}
+				remove_building = {
+					type = aluminium_refinery
+					level = 1
+				}
+				add_building_construction = {
+					type = aluminium_refinery_inactive
+					level = 1
+					instant_build = yes
+				}
+				add_to_temp_variable = { smelters_removed = 1 }
+			}
+			random_controlled_state = {
+				limit = { aluminium_refinery > 0
+					NOT = {
+						is_owned_by = ROOT
+					}
+					check_variable = { smelters_removed < num_to_close_coal }
+				}
+				remove_building = {
+					type = aluminium_refinery
+					level = 1
+				}
+				add_building_construction = {
+					type = aluminium_refinery_inactive
+					level = 1
+					instant_build = yes
+				}
+				add_to_temp_variable = { smelters_removed = 1 }
+			}
+			random_controlled_state = {
+				limit = { aluminium_refinery > 0
+					NOT = {
+						is_owned_by = ROOT
+					}
+					check_variable = { smelters_removed < num_to_close_coal }
+				}
+				remove_building = {
+					type = aluminium_refinery
+					level = 1
+				}
+				add_building_construction = {
+					type = aluminium_refinery_inactive
+					level = 1
+					instant_build = yes
+				}
+				add_to_temp_variable = { smelters_removed = 1 }
+			}
+			random_controlled_state = {
+				limit = { aluminium_refinery > 0
+						is_owned_by = ROOT
+						check_variable = { smelters_removed < num_to_close_coal }
+				}
+				remove_building = {
+					type = aluminium_refinery
+					level = 1
+				}
+				add_building_construction = {
+					type = aluminium_refinery_inactive
+					level = 1
+					instant_build = yes
+				}
+				add_to_temp_variable = { smelters_removed = 1 }
+			}
+			random_controlled_state = {
+				limit = { aluminium_refinery > 0
+						is_owned_by = ROOT
+						check_variable = { smelters_removed < num_to_close_coal }
+				}
+				remove_building = {
+					type = aluminium_refinery
+					level = 1
+				}
+				add_building_construction = {
+					type = aluminium_refinery_inactive
+					level = 1
+					instant_build = yes
+				}
+				add_to_temp_variable = { smelters_removed = 1 }
+			}
+			random_controlled_state = {
+				limit = { aluminium_refinery > 0
+						is_owned_by = ROOT
+						check_variable = { smelters_removed < num_to_close_coal }
+				}
+				remove_building = {
+					type = aluminium_refinery
+					level = 1
+				}
+				add_building_construction = {
+					type = aluminium_refinery_inactive
+					level = 1
+					instant_build = yes
+				}
+				add_to_temp_variable = { smelters_removed = 1 }
+			}
+			random_controlled_state = {
+				limit = { aluminium_refinery > 0
+						is_owned_by = ROOT
+						check_variable = { smelters_removed < num_to_close_coal }
+				}
+				remove_building = {
+					type = aluminium_refinery
+					level = 1
+				}
+				add_building_construction = {
+					type = aluminium_refinery_inactive
+					level = 1
+					instant_build = yes
+				}
+				add_to_temp_variable = { smelters_removed = 1 }
+			}
+		}
+		ELSE_IF = {
+			limit = {
+					check_variable = {
+						resource@bauxite < 0
+					}
+					check_variable = {
+						resource@coal < 0
+					}
+					check_variable = {
+						var = num_to_close_coal
+						value = num_to_close_bauxite
+						compare = greater_than_or_equals
+					}
+			}
+			multiply_temp_variable = { num_to_close_bauxite = -1 }
+			#and remove, non-core first
+			random_controlled_state = {
+				limit = { aluminium_refinery > 0
+					NOT = {
+						is_owned_by = ROOT
+					}
+					check_variable = { smelters_removed < num_to_close_bauxite }
+				}
+				remove_building = {
+					type = aluminium_refinery
+					level = 1
+				}
+				add_building_construction = {
+					type = aluminium_refinery_inactive
+					level = 1
+					instant_build = yes
+				}
+				add_to_temp_variable = { smelters_removed = 1 }
+			}
+			random_controlled_state = {
+				limit = { aluminium_refinery > 0
+					NOT = {
+						is_owned_by = ROOT
+					}
+					check_variable = { smelters_removed < num_to_close_bauxite }
+				}
+				remove_building = {
+					type = aluminium_refinery
+					level = 1
+				}
+				add_building_construction = {
+					type = aluminium_refinery_inactive
+					level = 1
+					instant_build = yes
+				}
+				add_to_temp_variable = { smelters_removed = 1 }
+			}
+			random_controlled_state = {
+				limit = { aluminium_refinery > 0
+					NOT = {
+						is_owned_by = ROOT
+					}
+					check_variable = { smelters_removed < num_to_close_bauxite }
+				}
+				remove_building = {
+					type = aluminium_refinery
+					level = 1
+				}
+				add_building_construction = {
+					type = aluminium_refinery_inactive
+					level = 1
+					instant_build = yes
+				}
+				add_to_temp_variable = { smelters_removed = 1 }
+			}
+			random_controlled_state = {
+				limit = { aluminium_refinery > 0
+					NOT = {
+						is_owned_by = ROOT
+					}
+					check_variable = { smelters_removed < num_to_close_bauxite }
+				}
+				remove_building = {
+					type = aluminium_refinery
+					level = 1
+				}
+				add_building_construction = {
+					type = aluminium_refinery_inactive
+					level = 1
+					instant_build = yes
+				}
+				add_to_temp_variable = { smelters_removed = 1 }
+			}
+			random_controlled_state = {
+				limit = { aluminium_refinery > 0
+					NOT = {
+						is_owned_by = ROOT
+					}
+					check_variable = { smelters_removed < num_to_close_bauxite }
+				}
+				remove_building = {
+					type = aluminium_refinery
+					level = 1
+				}
+				add_building_construction = {
+					type = aluminium_refinery_inactive
+					level = 1
+					instant_build = yes
+				}
+				add_to_temp_variable = { smelters_removed = 1 }
+			}
+			random_controlled_state = {
+				limit = { aluminium_refinery > 0
+						is_owned_by = ROOT
+						check_variable = { smelters_removed < num_to_close_bauxite }
+				}
+				remove_building = {
+					type = aluminium_refinery
+					level = 1
+				}
+				add_building_construction = {
+					type = aluminium_refinery_inactive
+					level = 1
+					instant_build = yes
+				}
+				add_to_temp_variable = { smelters_removed = 1 }
+			}
+			random_controlled_state = {
+				limit = { aluminium_refinery > 0
+						is_owned_by = ROOT
+						check_variable = { smelters_removed < num_to_close_bauxite }
+				}
+				remove_building = {
+					type = aluminium_refinery
+					level = 1
+				}
+				add_building_construction = {
+					type = aluminium_refinery_inactive
+					level = 1
+					instant_build = yes
+				}
+				add_to_temp_variable = { smelters_removed = 1 }
+			}
+			random_controlled_state = {
+				limit = { aluminium_refinery > 0
+						is_owned_by = ROOT
+						check_variable = { smelters_removed < num_to_close_bauxite }
+				}
+				remove_building = {
+					type = aluminium_refinery
+					level = 1
+				}
+				add_building_construction = {
+					type = aluminium_refinery_inactive
+					level = 1
+					instant_build = yes
+				}
+				add_to_temp_variable = { smelters_removed = 1 }
+			}
+			random_controlled_state = {
+				limit = { aluminium_refinery > 0
+						is_owned_by = ROOT
+						check_variable = { smelters_removed < num_to_close_bauxite }
+				}
+				remove_building = {
+					type = aluminium_refinery
+					level = 1
+				}
+				add_building_construction = {
+					type = aluminium_refinery_inactive
+					level = 1
+					instant_build = yes
+				}
+				add_to_temp_variable = { smelters_removed = 1 }
+			}
+		}
+		ELSE_IF = {
+			limit = {
+					check_variable = {
+						resource@bauxite > -1
+					}
+					check_variable = {
+						resource@coal < 0
+					}
+			}
+			multiply_temp_variable = { num_to_close_coal = -1 }
+			#and remove, non-core first
+			random_controlled_state = {
+				limit = { aluminium_refinery > 0
+					NOT = {
+						is_owned_by = ROOT
+					}
+					check_variable = { smelters_removed < num_to_close_coal }
+				}
+				remove_building = {
+					type = aluminium_refinery
+					level = 1
+				}
+				add_building_construction = {
+					type = aluminium_refinery_inactive
+					level = 1
+					instant_build = yes
+				}
+				add_to_temp_variable = { smelters_removed = 1 }
+			}
+			random_controlled_state = {
+				limit = { aluminium_refinery > 0
+					NOT = {
+						is_owned_by = ROOT
+					}
+					check_variable = { smelters_removed < num_to_close_coal }
+				}
+				remove_building = {
+					type = aluminium_refinery
+					level = 1
+				}
+				add_building_construction = {
+					type = aluminium_refinery_inactive
+					level = 1
+					instant_build = yes
+				}
+				add_to_temp_variable = { smelters_removed = 1 }
+			}
+			random_controlled_state = {
+				limit = { aluminium_refinery > 0
+					NOT = {
+						is_owned_by = ROOT
+					}
+					check_variable = { smelters_removed < num_to_close_coal }
+				}
+				remove_building = {
+					type = aluminium_refinery
+					level = 1
+				}
+				add_building_construction = {
+					type = aluminium_refinery_inactive
+					level = 1
+					instant_build = yes
+				}
+				add_to_temp_variable = { smelters_removed = 1 }
+			}
+			random_controlled_state = {
+				limit = { aluminium_refinery > 0
+					NOT = {
+						is_owned_by = ROOT
+					}
+					check_variable = { smelters_removed < num_to_close_coal }
+				}
+				remove_building = {
+					type = aluminium_refinery
+					level = 1
+				}
+				add_building_construction = {
+					type = aluminium_refinery_inactive
+					level = 1
+					instant_build = yes
+				}
+				add_to_temp_variable = { smelters_removed = 1 }
+			}
+			random_controlled_state = {
+				limit = { aluminium_refinery > 0
+					NOT = {
+						is_owned_by = ROOT
+					}
+					check_variable = { smelters_removed < num_to_close_coal }
+				}
+				remove_building = {
+					type = aluminium_refinery
+					level = 1
+				}
+				add_building_construction = {
+					type = aluminium_refinery_inactive
+					level = 1
+					instant_build = yes
+				}
+				add_to_temp_variable = { smelters_removed = 1 }
+			}
+			random_controlled_state = {
+				limit = { aluminium_refinery > 0
+						is_owned_by = ROOT
+						check_variable = { smelters_removed < num_to_close_coal }
+				}
+				remove_building = {
+					type = aluminium_refinery
+					level = 1
+				}
+				add_building_construction = {
+					type = aluminium_refinery_inactive
+					level = 1
+					instant_build = yes
+				}
+				add_to_temp_variable = { smelters_removed = 1 }
+			}
+			random_controlled_state = {
+				limit = { aluminium_refinery > 0
+						is_owned_by = ROOT
+						check_variable = { smelters_removed < num_to_close_coal }
+				}
+				remove_building = {
+					type = aluminium_refinery
+					level = 1
+				}
+				add_building_construction = {
+					type = aluminium_refinery_inactive
+					level = 1
+					instant_build = yes
+				}
+				add_to_temp_variable = { smelters_removed = 1 }
+			}
+			random_controlled_state = {
+				limit = { aluminium_refinery > 0
+						is_owned_by = ROOT
+						check_variable = { smelters_removed < num_to_close_coal }
+				}
+				remove_building = {
+					type = aluminium_refinery
+					level = 1
+				}
+				add_building_construction = {
+					type = aluminium_refinery_inactive
+					level = 1
+					instant_build = yes
+				}
+				add_to_temp_variable = { smelters_removed = 1 }
+			}
+			random_controlled_state = {
+				limit = { aluminium_refinery > 0
+						is_owned_by = ROOT
+						check_variable = { smelters_removed < num_to_close_coal }
+				}
+				remove_building = {
+					type = aluminium_refinery
+					level = 1
+				}
+				add_building_construction = {
+					type = aluminium_refinery_inactive
+					level = 1
+					instant_build = yes
+				}
+				add_to_temp_variable = { smelters_removed = 1 }
+			}
+		}
+		ELSE_IF = {
+			limit = {
+					check_variable = {
+						resource@bauxite < 0
+					}
+					check_variable = {
+						resource@coal > -1
+					}
+			}
+			multiply_temp_variable = { num_to_close_bauxite = -1 }
+			#and remove, non-core first
+			random_controlled_state = {
+				limit = {aluminium_refinery > 0
+					NOT = {
+						is_owned_by = ROOT
+					}
+					check_variable = { smelters_removed < num_to_close_bauxite }
+				}
+				remove_building = {
+					type = aluminium_refinery
+					level = 1
+				}
+				add_building_construction = {
+					type = aluminium_refinery_inactive
+					level = 1
+					instant_build = yes
+				}
+				add_to_temp_variable = { smelters_removed = 1 }
+			}
+			random_controlled_state = {
+				limit = {aluminium_refinery > 0
+					NOT = {
+						is_owned_by = ROOT
+					}
+					check_variable = { smelters_removed < num_to_close_bauxite }
+				}
+				remove_building = {
+					type = aluminium_refinery
+					level = 1
+				}
+				add_building_construction = {
+					type = aluminium_refinery_inactive
+					level = 1
+					instant_build = yes
+				}
+				add_to_temp_variable = { smelters_removed = 1 }
+			}
+			random_controlled_state = {
+				limit = {aluminium_refinery > 0
+					NOT = {
+						is_owned_by = ROOT
+					}
+					check_variable = { smelters_removed < num_to_close_bauxite }
+				}
+				remove_building = {
+					type = aluminium_refinery
+					level = 1
+				}
+				add_building_construction = {
+					type = aluminium_refinery_inactive
+					level = 1
+					instant_build = yes
+				}
+				add_to_temp_variable = { smelters_removed = 1 }
+			}
+			random_controlled_state = {
+				limit = {aluminium_refinery > 0
+					NOT = {
+						is_owned_by = ROOT
+					}
+					check_variable = { smelters_removed < num_to_close_bauxite }
+				}
+				remove_building = {
+					type = aluminium_refinery
+					level = 1
+				}
+				add_building_construction = {
+					type = aluminium_refinery_inactive
+					level = 1
+					instant_build = yes
+				}
+				add_to_temp_variable = { smelters_removed = 1 }
+			}
+			random_controlled_state = {
+				limit = {aluminium_refinery > 0
+					NOT = {
+						is_owned_by = ROOT
+					}
+					check_variable = { smelters_removed < num_to_close_bauxite }
+				}
+				remove_building = {
+					type = aluminium_refinery
+					level = 1
+				}
+				add_building_construction = {
+					type = aluminium_refinery_inactive
+					level = 1
+					instant_build = yes
+				}
+				add_to_temp_variable = { smelters_removed = 1 }
+			}
+			random_controlled_state = {
+				limit = { aluminium_refinery > 0
+						is_owned_by = ROOT
+						check_variable = { smelters_removed < num_to_close_bauxite }
+				}
+				remove_building = {
+					type = aluminium_refinery
+					level = 1
+				}
+				add_building_construction = {
+					type = aluminium_refinery_inactive
+					level = 1
+					instant_build = yes
+				}
+				add_to_temp_variable = { smelters_removed = 1 }
+			}
+			random_controlled_state = {
+				limit = { aluminium_refinery > 0
+						is_owned_by = ROOT
+						check_variable = { smelters_removed < num_to_close_bauxite }
+				}
+				remove_building = {
+					type = aluminium_refinery
+					level = 1
+				}
+				add_building_construction = {
+					type = aluminium_refinery_inactive
+					level = 1
+					instant_build = yes
+				}
+				add_to_temp_variable = { smelters_removed = 1 }
+			}
+			random_controlled_state = {
+				limit = { aluminium_refinery > 0
+						is_owned_by = ROOT
+						check_variable = { smelters_removed < num_to_close_bauxite }
+				}
+				remove_building = {
+					type = aluminium_refinery
+					level = 1
+				}
+				add_building_construction = {
+					type = aluminium_refinery_inactive
+					level = 1
+					instant_build = yes
+				}
+				add_to_temp_variable = { smelters_removed = 1 }
+			}
+			random_controlled_state = {
+				limit = { aluminium_refinery > 0
+						is_owned_by = ROOT
+						check_variable = { smelters_removed < num_to_close_bauxite }
+				}
+				remove_building = {
+					type = aluminium_refinery
+					level = 1
+				}
+				add_building_construction = {
+					type = aluminium_refinery_inactive
+					level = 1
+					instant_build = yes
+				}
+				add_to_temp_variable = { smelters_removed = 1 }
 			}
 		}
 	}
@@ -666,6 +1552,944 @@ country_event = {
 					level = 1
 					instant_build = yes
 				}
+			}
+		}
+	}
+}
+country_event = {
+	#not enough steel available, reopen steel mills
+	id = resource_production.5
+	title = resource_production.5.t
+	desc = resource_production.5.d
+	picture = GFX_report_event_election_vote
+	trigger = {
+		check_variable = {
+			resource@iron > 80
+		}
+		check_variable = {
+			resource@coal > 50
+		}
+		check_variable = {
+			resource@steel < 0
+		}
+		any_controlled_state = {
+			steel_refinery_inactive > 0
+		}
+	}
+	is_triggered_only = yes
+	option = {
+		# reopen it
+		name = resource_production.5.a
+		# How many can be reopened
+		set_temp_variable = { steel_cost_iron = 80 }
+		set_temp_variable = { steel_cost_coal = 50 }
+		set_temp_variable = { surplus_iron = resource@iron }
+		set_temp_variable = { surplus_coal = resource@coal }
+		set_temp_variable = { num_to_reopen_iron = resource@iron }
+		set_temp_variable = { num_to_reopen_coal = resource@coal }
+		set_temp_variable = { mills_reopened = 0 }
+
+		divide_temp_variable = { num_to_reopen_iron = steel_cost_iron }
+		divide_temp_variable = { num_to_reopen_coal = steel_cost_coal }
+		round_temp_variable = num_to_reopen_iron
+		round_temp_variable = num_to_reopen_coal
+		IF = {
+			limit = {
+					check_variable = {
+						num_to_reopen_coal < num_to_reopen_iron
+					}
+			}
+			#and reopen, core first
+			random_controlled_state = {
+				limit = { steel_refinery_inactive > 0
+						is_owned_by = ROOT
+						check_variable = { mills_reopened < num_to_reopen_coal }
+				}
+				remove_building = {
+					type = steel_refinery_inactive
+					level = 1
+				}
+				add_building_construction = {
+					type = steel_refinery
+					level = 1
+					instant_build = yes
+				}
+				add_to_temp_variable = { mills_reopened = 1 }
+			}
+			random_controlled_state = {
+				limit = { steel_refinery_inactive > 0
+						is_owned_by = ROOT
+						check_variable = { mills_reopened < num_to_reopen_coal }
+				}
+				remove_building = {
+					type = steel_refinery_inactive
+					level = 1
+				}
+				add_building_construction = {
+					type = steel_refinery
+					level = 1
+					instant_build = yes
+				}
+				add_to_temp_variable = { mills_reopened = 1 }
+			}
+			random_controlled_state = {
+				limit = { steel_refinery_inactive > 0
+						is_owned_by = ROOT
+						check_variable = { mills_reopened < num_to_reopen_coal }
+				}
+				remove_building = {
+					type = steel_refinery_inactive
+					level = 1
+				}
+				add_building_construction = {
+					type = steel_refinery
+					level = 1
+					instant_build = yes
+				}
+				add_to_temp_variable = { mills_reopened = 1 }
+			}
+			random_controlled_state = {
+				limit = { steel_refinery_inactive > 0
+						is_owned_by = ROOT
+						check_variable = { mills_reopened < num_to_reopen_coal }
+				}
+				remove_building = {
+					type = steel_refinery_inactive
+					level = 1
+				}
+				add_building_construction = {
+					type = steel_refinery
+					level = 1
+					instant_build = yes
+				}
+				add_to_temp_variable = { mills_reopened = 1 }
+			}
+			random_controlled_state = {
+				limit = { steel_refinery_inactive > 0
+						is_owned_by = ROOT
+						check_variable = { mills_reopened < num_to_reopen_coal }
+				}
+				remove_building = {
+					type = steel_refinery_inactive
+					level = 1
+				}
+				add_building_construction = {
+					type = steel_refinery
+					level = 1
+					instant_build = yes
+				}
+				add_to_temp_variable = { mills_reopened = 1 }
+			}
+			random_controlled_state = {
+				limit = { steel_refinery_inactive > 0
+					NOT = {
+						is_owned_by = ROOT
+					}
+					check_variable = { mills_reopened < num_to_reopen_coal }
+				}
+				remove_building = {
+					type = steel_refinery_inactive
+					level = 1
+				}
+				add_building_construction = {
+					type = steel_refinery
+					level = 1
+					instant_build = yes
+				}
+				add_to_temp_variable = { mills_reopened = 1 }
+			}
+			random_controlled_state = {
+				limit = { steel_refinery_inactive > 0
+					NOT = {
+						is_owned_by = ROOT
+					}
+					check_variable = { mills_reopened < num_to_reopen_coal }
+				}
+				remove_building = {
+					type = steel_refinery_inactive
+					level = 1
+				}
+				add_building_construction = {
+					type = steel_refinery
+					level = 1
+					instant_build = yes
+				}
+				add_to_temp_variable = { mills_reopened = 1 }
+			}
+			random_controlled_state = {
+				limit = { steel_refinery_inactive > 0
+					NOT = {
+						is_owned_by = ROOT
+					}
+					check_variable = { mills_reopened < num_to_reopen_coal }
+				}
+				remove_building = {
+					type = steel_refinery_inactive
+					level = 1
+				}
+				add_building_construction = {
+					type = steel_refinery
+					level = 1
+					instant_build = yes
+				}
+				add_to_temp_variable = { mills_reopened = 1 }
+			}
+			random_controlled_state = {
+				limit = { steel_refinery_inactive > 0
+					NOT = {
+						is_owned_by = ROOT
+					}
+					check_variable = { mills_reopened < num_to_reopen_coal }
+				}
+				remove_building = {
+					type = steel_refinery_inactive
+					level = 1
+				}
+				add_building_construction = {
+					type = steel_refinery
+					level = 1
+					instant_build = yes
+				}
+				add_to_temp_variable = { mills_reopened = 1 }
+			}
+		}
+		ELSE_IF = {
+			limit = {
+					check_variable = {
+						var = num_to_reopen_coal
+						value = num_to_reopen_iron
+						compare = greater_than_or_equals
+					}
+			}
+			#and reopen, core first
+			random_controlled_state = {
+				limit = { steel_refinery_inactive > 0
+						is_owned_by = ROOT
+						check_variable = { mills_reopened < num_to_reopen_iron }
+				}
+				remove_building = {
+					type = steel_refinery_inactive
+					level = 1
+				}
+				add_building_construction = {
+					type = steel_refinery
+					level = 1
+					instant_build = yes
+				}
+				add_to_temp_variable = { mills_reopened = 1 }
+			}
+			random_controlled_state = {
+				limit = { steel_refinery_inactive > 0
+						is_owned_by = ROOT
+						check_variable = { mills_reopened < num_to_reopen_iron }
+				}
+				remove_building = {
+					type = steel_refinery_inactive
+					level = 1
+				}
+				add_building_construction = {
+					type = steel_refinery
+					level = 1
+					instant_build = yes
+				}
+				add_to_temp_variable = { mills_reopened = 1 }
+			}
+			random_controlled_state = {
+				limit = { steel_refinery_inactive > 0
+						is_owned_by = ROOT
+						check_variable = { mills_reopened < num_to_reopen_iron }
+				}
+				remove_building = {
+					type = steel_refinery_inactive
+					level = 1
+				}
+				add_building_construction = {
+					type = steel_refinery
+					level = 1
+					instant_build = yes
+				}
+				add_to_temp_variable = { mills_reopened = 1 }
+			}
+			random_controlled_state = {
+				limit = { steel_refinery_inactive > 0
+						is_owned_by = ROOT
+						check_variable = { mills_reopened < num_to_reopen_iron }
+				}
+				remove_building = {
+					type = steel_refinery_inactive
+					level = 1
+				}
+				add_building_construction = {
+					type = steel_refinery
+					level = 1
+					instant_build = yes
+				}
+				add_to_temp_variable = { mills_reopened = 1 }
+			}
+			random_controlled_state = {
+				limit = { steel_refinery_inactive > 0
+						is_owned_by = ROOT
+						check_variable = { mills_reopened < num_to_reopen_iron }
+				}
+				remove_building = {
+					type = steel_refinery_inactive
+					level = 1
+				}
+				add_building_construction = {
+					type = steel_refinery
+					level = 1
+					instant_build = yes
+				}
+				add_to_temp_variable = { mills_reopened = 1 }
+			}
+			random_controlled_state = {
+				limit = { steel_refinery_inactive > 0
+					NOT = {
+						is_owned_by = ROOT
+					}
+					check_variable = { mills_reopened < num_to_reopen_iron }
+				}
+				remove_building = {
+					type = steel_refinery_inactive
+					level = 1
+				}
+				add_building_construction = {
+					type = steel_refinery
+					level = 1
+					instant_build = yes
+				}
+				add_to_temp_variable = { mills_reopened = 1 }
+			}
+			random_controlled_state = {
+				limit = { steel_refinery_inactive > 0
+					NOT = {
+						is_owned_by = ROOT
+					}
+					check_variable = { mills_reopened < num_to_reopen_iron }
+				}
+				remove_building = {
+					type = steel_refinery_inactive
+					level = 1
+				}
+				add_building_construction = {
+					type = steel_refinery
+					level = 1
+					instant_build = yes
+				}
+				add_to_temp_variable = { mills_reopened = 1 }
+			}
+			random_controlled_state = {
+				limit = { steel_refinery_inactive > 0
+					NOT = {
+						is_owned_by = ROOT
+					}
+					check_variable = { mills_reopened < num_to_reopen_iron }
+				}
+				remove_building = {
+					type = steel_refinery_inactive
+					level = 1
+				}
+				add_building_construction = {
+					type = steel_refinery
+					level = 1
+					instant_build = yes
+				}
+				add_to_temp_variable = { mills_reopened = 1 }
+			}
+			random_controlled_state = {
+				limit = { steel_refinery_inactive > 0
+					NOT = {
+						is_owned_by = ROOT
+					}
+					check_variable = { mills_reopened < num_to_reopen_iron }
+				}
+				remove_building = {
+					type = steel_refinery_inactive
+					level = 1
+				}
+				add_building_construction = {
+					type = steel_refinery
+					level = 1
+					instant_build = yes
+				}
+				add_to_temp_variable = { mills_reopened = 1 }
+			}
+		}
+	}
+}
+country_event = {
+	#not enough aluminium, reopen an aluminium smelter
+	id = resource_production.6
+	title = resource_production.6.t
+	desc = resource_production.6.d
+	picture = GFX_report_event_election_vote
+	trigger = {
+		check_variable = {
+			resource@bauxite > 75
+		}
+		check_variable = {
+			resource@coal > 50
+		}
+		check_variable = {
+			resource@aluminium < 0
+		}
+		any_controlled_state = {
+			aluminium_refinery_inactive > 0
+		}
+	}
+	is_triggered_only = yes
+	option = {
+		# reopen 
+		name = resource_production.6.a
+		# How many need to be closed
+		set_temp_variable = { al_cost_bauxite = 75 }
+		set_temp_variable = { al_cost_coal = 50 }
+		set_temp_variable = { surplus_bauxite = resource@bauxite }
+		set_temp_variable = { surplus_coal = resource@coal }
+		set_temp_variable = { num_to_reopen_bauxite = resource@bauxite }
+		set_temp_variable = { num_to_reopen_coal = resource@coal }
+		set_temp_variable = { smelters_reopened = 0 }
+
+		divide_temp_variable = { num_to_reopen_bauxite = al_cost_bauxite }
+		divide_temp_variable = { num_to_reopen_coal = al_cost_coal }
+		round_temp_variable = num_to_reopen_bauxite
+		round_temp_variable = num_to_reopen_coal
+		IF = {
+			limit = {
+					check_variable = {
+						num_to_reopen_coal < num_to_reopen_bauxite
+					}
+			}
+			#and reopen, core first
+			random_controlled_state = {
+				limit = { aluminium_refinery_inactive > 0
+						is_owned_by = ROOT
+						check_variable = { smelters_reopened < num_to_reopen_coal }
+				}
+				add_to_temp_variable = { smelters_reopened = 1 }
+				remove_building = {
+					type = aluminium_refinery_inactive
+					level = 1
+				}
+				add_building_construction = {
+					type = aluminium_refinery
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_controlled_state = {
+				limit = { aluminium_refinery_inactive > 0
+						is_owned_by = ROOT
+						check_variable = { smelters_reopened < num_to_reopen_coal }
+				}
+				add_to_temp_variable = { smelters_reopened = 1 }
+				remove_building = {
+					type = aluminium_refinery_inactive
+					level = 1
+				}
+				add_building_construction = {
+					type = aluminium_refinery
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_controlled_state = {
+				limit = { aluminium_refinery_inactive > 0
+						is_owned_by = ROOT
+						check_variable = { smelters_reopened < num_to_reopen_coal }
+				}
+				add_to_temp_variable = { smelters_reopened = 1 }
+				remove_building = {
+					type = aluminium_refinery_inactive
+					level = 1
+				}
+				add_building_construction = {
+					type = aluminium_refinery
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_controlled_state = {
+				limit = { aluminium_refinery_inactive > 0
+						is_owned_by = ROOT
+						check_variable = { smelters_reopened < num_to_reopen_coal }
+				}
+				add_to_temp_variable = { smelters_reopened = 1 }
+				remove_building = {
+					type = aluminium_refinery_inactive
+					level = 1
+				}
+				add_building_construction = {
+					type = aluminium_refinery
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_controlled_state = {
+				limit = { aluminium_refinery_inactive > 0
+						is_owned_by = ROOT
+						check_variable = { smelters_reopened < num_to_reopen_coal }
+				}
+				add_to_temp_variable = { smelters_reopened = 1 }
+				remove_building = {
+					type = aluminium_refinery_inactive
+					level = 1
+				}
+				add_building_construction = {
+					type = aluminium_refinery
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_controlled_state = {
+				limit = { aluminium_refinery_inactive > 0
+					NOT = {
+						is_owned_by = ROOT
+					}
+					check_variable = { smelters_reopened < num_to_reopen_coal }
+				}
+				add_to_temp_variable = { smelters_reopened = 1 }
+				remove_building = {
+					type = aluminium_refinery_inactive
+					level = 1
+				}
+				add_building_construction = {
+					type = aluminium_refinery
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_controlled_state = {
+				limit = { aluminium_refinery_inactive > 0
+					NOT = {
+						is_owned_by = ROOT
+					}
+					check_variable = { smelters_reopened < num_to_reopen_coal }
+				}
+				add_to_temp_variable = { smelters_reopened = 1 }
+				remove_building = {
+					type = aluminium_refinery_inactive
+					level = 1
+				}
+				add_building_construction = {
+					type = aluminium_refinery
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_controlled_state = {
+				limit = { aluminium_refinery_inactive > 0
+					NOT = {
+						is_owned_by = ROOT
+					}
+					check_variable = { smelters_reopened < num_to_reopen_coal }
+				}
+				add_to_temp_variable = { smelters_reopened = 1 }
+				remove_building = {
+					type = aluminium_refinery_inactive
+					level = 1
+				}
+				add_building_construction = {
+					type = aluminium_refinery
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_controlled_state = {
+				limit = { aluminium_refinery_inactive > 0
+					NOT = {
+						is_owned_by = ROOT
+					}
+					check_variable = { smelters_reopened < num_to_reopen_coal }
+				}
+				add_to_temp_variable = { smelters_reopened = 1 }
+				remove_building = {
+					type = aluminium_refinery_inactive
+					level = 1
+				}
+				add_building_construction = {
+					type = aluminium_refinery
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		ELSE_IF = {
+			limit = {
+					check_variable = {
+						var = num_to_reopen_coal
+						value = num_to_reopen_bauxite
+						compare = greater_than_or_equals
+					}
+			}
+			#and reopen, core first
+			random_controlled_state = {
+				limit = { aluminium_refinery_inactive > 0
+						is_owned_by = ROOT
+						check_variable = { smelters_reopened < num_to_reopen_bauxite }
+				}
+				add_to_temp_variable = { smelters_reopened = 1 }
+				remove_building = {
+					type = aluminium_refinery_inactive
+					level = 1
+				}
+				add_building_construction = {
+					type = aluminium_refinery
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_controlled_state = {
+				limit = { aluminium_refinery_inactive > 0
+						is_owned_by = ROOT
+						check_variable = { smelters_reopened < num_to_reopen_bauxite }
+				}
+				add_to_temp_variable = { smelters_reopened = 1 }
+				remove_building = {
+					type = aluminium_refinery_inactive
+					level = 1
+				}
+				add_building_construction = {
+					type = aluminium_refinery
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_controlled_state = {
+				limit = { aluminium_refinery_inactive > 0
+						is_owned_by = ROOT
+						check_variable = { smelters_reopened < num_to_reopen_bauxite }
+				}
+				add_to_temp_variable = { smelters_reopened = 1 }
+				remove_building = {
+					type = aluminium_refinery_inactive
+					level = 1
+				}
+				add_building_construction = {
+					type = aluminium_refinery
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_controlled_state = {
+				limit = { aluminium_refinery_inactive > 0
+						is_owned_by = ROOT
+						check_variable = { smelters_reopened < num_to_reopen_bauxite }
+				}
+				add_to_temp_variable = { smelters_reopened = 1 }
+				remove_building = {
+					type = aluminium_refinery_inactive
+					level = 1
+				}
+				add_building_construction = {
+					type = aluminium_refinery
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_controlled_state = {
+				limit = { aluminium_refinery_inactive > 0
+						is_owned_by = ROOT
+						check_variable = { smelters_reopened < num_to_reopen_bauxite }
+				}
+				add_to_temp_variable = { smelters_reopened = 1 }
+				remove_building = {
+					type = aluminium_refinery_inactive
+					level = 1
+				}
+				add_building_construction = {
+					type = aluminium_refinery
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_controlled_state = {
+				limit = { aluminium_refinery_inactive > 0
+					NOT = {
+						is_owned_by = ROOT
+					}
+					check_variable = { smelters_reopened < num_to_reopen_bauxite }
+				}
+				add_to_temp_variable = { smelters_reopened = 1 }
+				remove_building = {
+					type = aluminium_refinery_inactive
+					level = 1
+				}
+				add_building_construction = {
+					type = aluminium_refinery
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_controlled_state = {
+				limit = { aluminium_refinery_inactive > 0
+					NOT = {
+						is_owned_by = ROOT
+					}
+					check_variable = { smelters_reopened < num_to_reopen_bauxite }
+				}
+				add_to_temp_variable = { smelters_reopened = 1 }
+				remove_building = {
+					type = aluminium_refinery_inactive
+					level = 1
+				}
+				add_building_construction = {
+					type = aluminium_refinery
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_controlled_state = {
+				limit = { aluminium_refinery_inactive > 0
+					NOT = {
+						is_owned_by = ROOT
+					}
+					check_variable = { smelters_reopened < num_to_reopen_bauxite }
+				}
+				add_to_temp_variable = { smelters_reopened = 1 }
+				remove_building = {
+					type = aluminium_refinery_inactive
+					level = 1
+				}
+				add_building_construction = {
+					type = aluminium_refinery
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_controlled_state = {
+				limit = { aluminium_refinery_inactive > 0
+					NOT = {
+						is_owned_by = ROOT
+					}
+					check_variable = { smelters_reopened < num_to_reopen_bauxite }
+				}
+				add_to_temp_variable = { smelters_reopened = 1 }
+				remove_building = {
+					type = aluminium_refinery_inactive
+					level = 1
+				}
+				add_building_construction = {
+					type = aluminium_refinery
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+}
+country_event = {
+	#prio buildings in core territories
+	id = resource_production.7
+	title = resource_production.7.t
+	desc = resource_production.7.d
+	picture = GFX_report_event_election_vote
+	trigger = {
+		any_owned_state = {
+			steel_refinery_inactive > 0
+		}
+		any_controlled_state = {
+			NOT = {
+				is_owned_by = ROOT
+			}
+			steel_refinery > 0
+		}
+	}
+	is_triggered_only = yes
+	hidden = yes
+	option = {
+		name = resource_production.7.a
+		random_controlled_state = {
+			limit = {
+				NOT = {
+					is_owned_by = ROOT
+				}
+				steel_refinery > 0				
+			}
+			remove_building = {
+				type = steel_refinery
+				level = 1
+			}
+			add_building_construction = {
+				type = steel_refinery_inactive
+				level = 1
+				instant_build = yes
+			}
+		}
+		random_owned_controlled_state = {
+			limit = {
+				steel_refinery_inactive > 0
+			}
+			remove_building = {
+				type = steel_refinery_inactive
+				level = 1
+			}
+			add_building_construction = {
+				type = steel_refinery
+				level = 1
+				instant_build = yes
+			}
+		}
+	}
+}
+country_event = {
+	#prio buildings in core territories
+	id = resource_production.8
+	title = resource_production.8.t
+	desc = resource_production.8.d
+	picture = GFX_report_event_election_vote
+	trigger = {
+		any_owned_state = {
+			aluminium_refinery_inactive > 0
+		}
+		any_controlled_state = {
+			NOT = {
+				is_owned_by = ROOT
+			}
+			aluminium_refinery > 0
+		}
+	}
+	is_triggered_only = yes
+	hidden = yes
+	option = {
+		name = resource_production.8.a
+		random_controlled_state = {
+			limit = {
+				NOT = {
+					is_owned_by = ROOT
+				}
+				aluminium_refinery > 0				
+			}
+			remove_building = {
+				type = aluminium_refinery
+				level = 1
+			}
+			add_building_construction = {
+				type = aluminium_refinery_inactive
+				level = 1
+				instant_build = yes
+			}
+		}
+		random_owned_controlled_state = {
+			limit = {
+				aluminium_refinery_inactive > 0
+			}
+			remove_building = {
+				type = aluminium_refinery_inactive
+				level = 1
+			}
+			add_building_construction = {
+				type = aluminium_refinery
+				level = 1
+				instant_build = yes
+			}
+		}
+	}
+}
+country_event = {
+	#prio buildings in core territories
+	id = resource_production.9
+	title = resource_production.9.t
+	desc = resource_production.9.d
+	picture = GFX_report_event_election_vote
+	trigger = {
+		any_owned_state = {
+			synthetic_rubber_refinery_inactive > 0
+		}
+		any_controlled_state = {
+			NOT = {
+				is_owned_by = ROOT
+			}
+			synthetic_rubber_refinery > 0
+		}
+	}
+	is_triggered_only = yes
+	hidden = yes
+	option = {
+		name = resource_production.9.a
+		random_controlled_state = {
+			limit = {
+				NOT = {
+					is_owned_by = ROOT
+				}
+				synthetic_rubber_refinery > 0				
+			}
+			remove_building = {
+				type = synthetic_rubber_refinery
+				level = 1
+			}
+			add_building_construction = {
+				type = synthetic_refinery_inactive
+				level = 1
+				instant_build = yes
+			}
+		}
+		random_owned_controlled_state = {
+			limit = {
+				synthetic_rubber_refinery_inactive > 0
+			}
+			remove_building = {
+				type = synthetic_rubber_refinery_inactive
+				level = 1
+			}
+			add_building_construction = {
+				type = synthetic_refinery
+				level = 1
+				instant_build = yes
+			}
+		}
+	}
+}
+country_event = {
+	#prio buildings in core territories
+	id = resource_production.10
+	title = resource_production.10.t
+	desc = resource_production.10.d
+	picture = GFX_report_event_election_vote
+	trigger = {
+		any_owned_state = {
+			synthetic_refinery_inactive > 0
+		}
+		any_controlled_state = {
+			NOT = {
+				is_owned_by = ROOT
+			}
+			synthetic_refinery > 0
+		}
+	}
+	is_triggered_only = yes
+	hidden = yes
+	option = {
+		name = resource_production.10.a
+		random_controlled_state = {
+			limit = {
+				NOT = {
+					is_owned_by = ROOT
+				}
+				synthetic_refinery > 0				
+			}
+			remove_building = {
+				type = synthetic_refinery
+				level = 1
+			}
+			add_building_construction = {
+				type = synthetic_refinery_inactive
+				level = 1
+				instant_build = yes
+			}
+		}
+		random_owned_controlled_state = {
+			limit = {
+				synthetic_refinery_inactive > 0
+			}
+			remove_building = {
+				type = synthetic_refinery_inactive
+				level = 1
+			}
+			add_building_construction = {
+				type = synthetic_refinery
+				level = 1
+				instant_build = yes
 			}
 		}
 	}
