@@ -89,6 +89,14 @@ NDefines.NNavy.AGGRESSION_LIGHT_GUN_EFFICIENCY_ON_HEAVY_SHIPS = 0.1 -- ratio for
 NDefines.NNavy.AGGRESSION_HEAVY_GUN_EFFICIENCY_ON_HEAVY_SHIPS = 0.5 -- ratio for scoring for different gun types against heavy ships
 NDefines.NNavy.AGGRESSION_TORPEDO_EFFICIENCY_ON_HEAVY_SHIPS = 1.0   -- ratio for scoring for different gun types against heavy ships
 
+NDefines.NNavy.SUBMARINE_ESCAPE_RATIOS = { -- subs will escape battle in convoy raid if there are enemies that can attack
+	1000,     -- do not engage
+	15,   -- low
+	3.0,   -- medium
+	1.0,   -- high
+	0.5,   -- I am death incarnate!
+}
+
 NDefines.NNavy.BASE_GUN_COOLDOWNS = { -- number of hours for a gun to be ready after shooting
 		1.0,	-- big guns
 		12.0,	-- torpedos
