@@ -298,27 +298,6 @@ on_actions = {
 			
 			### inexperimented carriers ###
 			
-			#every_country = {
-			#	limit = {
-			#		NOT = {
-			#			OR = {
-			#				original_tag = USA 
-			#				original_tag = ENG
-			#				original_tag = JAP 
-			#				original_tag = ITA 
-			#				original_tag = FRA 
-			#			}
-			#		}
-			#		any_owned_state = {
-			#			is_coastal = yes
-			#		}
-			#		
-			#	}
-			#	add_ideas = {
-			#		inexperimented_carriers
-			#	}
-			#}
-			
 			every_country = {
 				limit = {
 					NOT = {
@@ -330,9 +309,14 @@ on_actions = {
 							original_tag = FRA 
 						}
 					}
+					any_owned_state = {
+						is_coastal = yes
+					}
 					
 				}
-				set_country_flag = noob_carrier
+				add_ideas = {
+					inexperimented_carriers
+				}
 			}
 			
 			### Limited dockyards ###
@@ -358,11 +342,9 @@ on_actions = {
 				limit = {
 					is_ai = yes
 				}
-				add_equipment_production = {
-					equipment = {
-						type = support_equipment_2
-					}
-					requested_factories = 1
+				country_event = {
+					id = generic.1052 #add AI support equipment production
+					days = 1
 				}
 			}
 			
