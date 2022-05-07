@@ -44,6 +44,7 @@ NDefines.NNavy.UNIT_TRANSFER_SPOTTING_SPEED_MULT = 2.0 -- 5.0						-- spotting s
 NDefines.NNavy.PRIDE_OF_THE_FLEET_UNASSIGN_COST = 50 --100							-- cost to unassign/replace pride of the fleet
 NDefines.NNavy.SUPPLY_NEED_FACTOR = 1										 --was 4, multiplied in modules instead   -- multiplies supply usage
 NDefines.NNavy.EXPERIENCE_LOSS_FACTOR = 0.25
+NDefines.NNavy.MAX_ORG_ON_MANUAL_MOVE = 1.0	--was 0.66 -- org will clamped to this ratio on manual move
 
 --------------------------------------------------------------------------------------------------------------
 -- MINES STUFF
