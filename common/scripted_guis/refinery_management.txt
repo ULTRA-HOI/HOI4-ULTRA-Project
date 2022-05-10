@@ -28,195 +28,499 @@ scripted_gui = {
 
 		effects = {
 			steel_refinery_open_click = {
-				remove_building = {
-					type = steel_refinery_inactive
-					level = 1
-				}
-				add_building_construction = {
-					type = steel_refinery
-					level = 1
-					instant_build = yes
+				steel_refinery_open = yes
+			}
+			steel_refinery_close_click = {
+				steel_refinery_close = yes
+			}
+			steel_refinery_open_control_click = {
+				steel_refinery_open_5 = yes
+			}
+			steel_refinery_close_control_click = {
+				steel_refinery_close_5 = yes
+
+			}
+			aluminium_refinery_open_click = {
+				aluminium_refinery_open = yes
+			}
+			aluminium_refinery_close_click = {
+				aluminium_refinery_close = yes
+			}
+			aluminium_refinery_open_control_click = {
+				aluminium_refinery_open_5 = yes
+			}
+			aluminium_refinery_close_control_click = {
+				aluminium_refinery_close_5 = yes
+			}
+			synthetic_refinery_open_click = {
+				synthetic_refinery_open = yes
+			}
+			synthetic_refinery_close_click = {
+				synthetic_refinery_close = yes
+			}
+			synthetic_refinery_open_control_click = {
+				synthetic_refinery_open_5 = yes
+			}
+			synthetic_refinery_close_control_click = {
+				synthetic_refinery_close_5 = yes
+			}
+			synthetic_rubber_refinery_open_click = {
+				synthetic_rubber_refinery_open = yes
+			}
+			synthetic_rubber_refinery_close_click = {
+				synthetic_rubber_refinery_close = yes
+			}
+			synthetic_rubber_refinery_open_control_click = {
+				synthetic_rubber_refinery_open_5 = yes
+			}
+			synthetic_rubber_refinery_close_control_click = {
+				synthetic_rubber_refinery_close_5 = yes
+			}
+		}
+
+		triggers = {
+			steel_refinery_open_click_enabled = {
+				steel_refinery_inactive > 0
+			}
+			steel_refinery_close_click_enabled = {
+				steel_refinery > 0
+			}
+			aluminium_refinery_open_click_enabled = {
+				aluminium_refinery_inactive > 0
+			}
+			aluminium_refinery_close_click_enabled = {
+				aluminium_refinery > 0
+			}
+			synthetic_refinery_open_click_enabled = {
+				synthetic_refinery_inactive > 0
+			}
+			synthetic_refinery_close_click_enabled = {
+				synthetic_refinery > 0
+			}
+			synthetic_rubber_refinery_open_click_enabled = {
+				synthetic_rubber_refinery_inactive > 0
+			}
+			synthetic_rubber_refinery_close_click_enabled = {
+				synthetic_rubber_refinery > 0
+			}
+		}
+	}
+
+	refinery_management_global = {
+
+		context_type = player_context
+
+		window_name = "refinery_management_global_window"
+
+		parent_window_token = trade_tab
+
+		visible = {
+			always = yes
+		}
+
+		ai_enabled = {
+			always = no
+		}
+
+		effects = {
+			steel_refinery_open_click = {
+				random_controlled_state = {
+					limit = {
+						steel_refinery_inactive > 0
+						is_core_of = PREV
+					}
+					steel_refinery_open = yes
 				}
 			}
 			steel_refinery_close_click = {
-				remove_building = {
-					type = steel_refinery
-					level = 1
-				}
-				add_building_construction = {
-					type = steel_refinery_inactive
-					level = 1
-					instant_build = yes
+				random_controlled_state = {
+					limit = {
+						steel_refinery > 0
+						is_core_of = PREV
+					}
+					steel_refinery_close = yes
 				}
 			}
 			steel_refinery_open_control_click = {
-				set_temp_variable = { build = building_level@steel_refinery_inactive }
-				clamp_temp_variable = { var = build min = 1 max = 5 }
-				remove_building = {
-					type = steel_refinery_inactive
-					level = build
-				}
-				add_building_construction = {
-					type = steel_refinery
-					level = build
-					instant_build = yes
+				set_temp_variable = { counter = 5 }
+				while_loop_effect = {
+					limit = {
+						check_variable = { counter > 0 }
+					}
+					random_controlled_state = {
+						limit = {
+							steel_refinery_inactive > 0
+							is_core_of = PREV
+						}
+						steel_refinery_open = yes
+					}
+					subtract_from_temp_variable = { counter = 1 }
 				}
 			}
 			steel_refinery_close_control_click = {
-				set_temp_variable = { build = building_level@steel_refinery }
-				clamp_temp_variable = { var = build min = 1 max = 5 }
-				remove_building = {
-					type = steel_refinery
-					level = build
+				set_temp_variable = { counter = 5 }
+				while_loop_effect = {
+					limit = {
+						check_variable = { counter > 0 }
+					}
+					random_controlled_state = {
+						limit = {
+							steel_refinery > 0
+							is_core_of = PREV
+						}
+						steel_refinery_close = yes
+					}
+					subtract_from_temp_variable = { counter = 1 }
 				}
-				add_building_construction = {
-					type = steel_refinery_inactive
-					level = build
-					instant_build = yes
+			}
+			steel_refinery_open_alt_click = {
+				random_controlled_state = {
+					limit = {
+						steel_refinery_inactive > 0
+						NOT = { is_core_of = PREV }
+					}
+					steel_refinery_open = yes
+				}
+			}
+			steel_refinery_close_alt_click = {
+				random_controlled_state = {
+					limit = {
+						steel_refinery > 0
+						NOT = { is_core_of = PREV }
+					}
+					steel_refinery_close = yes
+				}
+			}
+			steel_refinery_open_control_alt_click = {
+				set_temp_variable = { counter = 5 }
+				while_loop_effect = {
+					limit = {
+						check_variable = { counter > 0 }
+					}
+					random_controlled_state = {
+						limit = {
+							steel_refinery_inactive > 0
+							NOT = { is_core_of = PREV }
+						}
+						steel_refinery_open = yes
+					}
+					subtract_from_temp_variable = { counter = 1 }
+				}
+			}
+			steel_refinery_close_control_alt_click = {
+				set_temp_variable = { counter = 5 }
+				while_loop_effect = {
+					limit = {
+						check_variable = { counter > 0 }
+					}
+					random_controlled_state = {
+						limit = {
+							steel_refinery > 0
+							NOT = { is_core_of = PREV }
+						}
+						steel_refinery_close = yes
+					}
+					subtract_from_temp_variable = { counter = 1 }
 				}
 			}
 			aluminium_refinery_open_click = {
-				remove_building = {
-					type = aluminium_refinery_inactive
-					level = 1
-				}
-				add_building_construction = {
-					type = aluminium_refinery
-					level = 1
-					instant_build = yes
+				random_controlled_state = {
+					limit = {
+						aluminium_refinery_inactive > 0
+						is_core_of = PREV
+					}
+					aluminium_refinery_open = yes
 				}
 			}
 			aluminium_refinery_close_click = {
-				remove_building = {
-					type = aluminium_refinery
-					level = 1
-				}
-				add_building_construction = {
-					type = aluminium_refinery_inactive
-					level = 1
-					instant_build = yes
+				random_controlled_state = {
+					limit = {
+						aluminium_refinery > 0
+						is_core_of = PREV
+					}
+					aluminium_refinery_close = yes
 				}
 			}
 			aluminium_refinery_open_control_click = {
-				set_temp_variable = { build = building_level@aluminium_refinery_inactive }
-				clamp_temp_variable = { var = build min = 1 max = 5 }
-				remove_building = {
-					type = aluminium_refinery_inactive
-					level = build
-				}
-				add_building_construction = {
-					type = aluminium_refinery
-					level = build
-					instant_build = yes
+				set_temp_variable = { counter = 5 }
+				while_loop_effect = {
+					limit = {
+						check_variable = { counter > 0 }
+					}
+					random_controlled_state = {
+						limit = {
+							aluminium_refinery_inactive > 0
+							is_core_of = PREV
+						}
+						aluminium_refinery_open = yes
+					}
+					subtract_from_temp_variable = { counter = 1 }
 				}
 			}
 			aluminium_refinery_close_control_click = {
-				set_temp_variable = { build = building_level@aluminium_refinery }
-				clamp_temp_variable = { var = build min = 1 max = 5 }
-				remove_building = {
-					type = aluminium_refinery
-					level = build
+				set_temp_variable = { counter = 5 }
+				while_loop_effect = {
+					limit = {
+						check_variable = { counter > 0 }
+					}
+					random_controlled_state = {
+						limit = {
+							aluminium_refinery > 0
+							is_core_of = PREV
+						}
+						aluminium_refinery_close = yes
+					}
+					subtract_from_temp_variable = { counter = 1 }
 				}
-				add_building_construction = {
-					type = aluminium_refinery_inactive
-					level = build
-					instant_build = yes
+			}
+			aluminium_refinery_open_alt_click = {
+				random_controlled_state = {
+					limit = {
+						aluminium_refinery_inactive > 0
+						NOT = { is_core_of = PREV }
+					}
+					aluminium_refinery_open = yes
+				}
+			}
+			aluminium_refinery_close_alt_click = {
+				random_controlled_state = {
+					limit = {
+						aluminium_refinery > 0
+						NOT = { is_core_of = PREV }
+					}
+					aluminium_refinery_close = yes
+				}
+			}
+			aluminium_refinery_open_control_alt_click = {
+				set_temp_variable = { counter = 5 }
+				while_loop_effect = {
+					limit = {
+						check_variable = { counter > 0 }
+					}
+					random_controlled_state = {
+						limit = {
+							aluminium_refinery_inactive > 0
+							NOT = { is_core_of = PREV }
+						}
+						aluminium_refinery_open = yes
+					}
+					subtract_from_temp_variable = { counter = 1 }
+				}
+			}
+			aluminium_refinery_close_control_alt_click = {
+				set_temp_variable = { counter = 5 }
+				while_loop_effect = {
+					limit = {
+						check_variable = { counter > 0 }
+					}
+					random_controlled_state = {
+						limit = {
+							aluminium_refinery > 0
+							NOT = { is_core_of = PREV }
+						}
+						aluminium_refinery_close = yes
+					}
+					subtract_from_temp_variable = { counter = 1 }
 				}
 			}
 			synthetic_refinery_open_click = {
-				remove_building = {
-					type = synthetic_refinery_inactive
-					level = 1
-				}
-				add_building_construction = {
-					type = synthetic_refinery
-					level = 1
-					instant_build = yes
+				random_controlled_state = {
+					limit = {
+						synthetic_refinery_inactive > 0
+						is_core_of = PREV
+					}
+					synthetic_refinery_open = yes
 				}
 			}
 			synthetic_refinery_close_click = {
-				remove_building = {
-					type = synthetic_refinery
-					level = 1
-				}
-				add_building_construction = {
-					type = synthetic_refinery_inactive
-					level = 1
-					instant_build = yes
+				random_controlled_state = {
+					limit = {
+						synthetic_refinery > 0
+						is_core_of = PREV
+					}
+					synthetic_refinery_close = yes
 				}
 			}
 			synthetic_refinery_open_control_click = {
-				set_temp_variable = { build = building_level@synthetic_refinery_inactive }
-				clamp_temp_variable = { var = build min = 1 max = 5 }
-				remove_building = {
-					type = synthetic_refinery_inactive
-					level = build
-				}
-				add_building_construction = {
-					type = synthetic_refinery
-					level = build
-					instant_build = yes
+				set_temp_variable = { counter = 5 }
+				while_loop_effect = {
+					limit = {
+						check_variable = { counter > 0 }
+					}
+					random_controlled_state = {
+						limit = {
+							synthetic_refinery_inactive > 0
+							is_core_of = PREV
+						}
+						synthetic_refinery_open = yes
+					}
+					subtract_from_temp_variable = { counter = 1 }
 				}
 			}
 			synthetic_refinery_close_control_click = {
-				set_temp_variable = { build = building_level@synthetic_refinery }
-				clamp_temp_variable = { var = build min = 1 max = 5 }
-				remove_building = {
-					type = synthetic_refinery
-					level = build
+				set_temp_variable = { counter = 5 }
+				while_loop_effect = {
+					limit = {
+						check_variable = { counter > 0 }
+					}
+					random_controlled_state = {
+						limit = {
+							synthetic_refinery > 0
+							is_core_of = PREV
+						}
+						synthetic_refinery_close = yes
+					}
+					subtract_from_temp_variable = { counter = 1 }
 				}
-				add_building_construction = {
-					type = synthetic_refinery_inactive
-					level = build
-					instant_build = yes
+			}
+			synthetic_refinery_open_alt_click = {
+				random_controlled_state = {
+					limit = {
+						synthetic_refinery_inactive > 0
+						NOT = { is_core_of = PREV }
+					}
+					synthetic_refinery_open = yes
+				}
+			}
+			synthetic_refinery_close_alt_click = {
+				random_controlled_state = {
+					limit = {
+						synthetic_refinery > 0
+						NOT = { is_core_of = PREV }
+					}
+					synthetic_refinery_close = yes
+				}
+			}
+			synthetic_refinery_open_control_alt_click = {
+				set_temp_variable = { counter = 5 }
+				while_loop_effect = {
+					limit = {
+						check_variable = { counter > 0 }
+					}
+					random_controlled_state = {
+						limit = {
+							synthetic_refinery_inactive > 0
+							NOT = { is_core_of = PREV }
+						}
+						synthetic_refinery_open = yes
+					}
+					subtract_from_temp_variable = { counter = 1 }
+				}
+			}
+			synthetic_refinery_close_control_alt_click = {
+				set_temp_variable = { counter = 5 }
+				while_loop_effect = {
+					limit = {
+						check_variable = { counter > 0 }
+					}
+					random_controlled_state = {
+						limit = {
+							synthetic_refinery > 0
+							NOT = { is_core_of = PREV }
+						}
+						synthetic_refinery_close = yes
+					}
+					subtract_from_temp_variable = { counter = 1 }
 				}
 			}
 			synthetic_rubber_refinery_open_click = {
-				remove_building = {
-					type = synthetic_rubber_refinery_inactive
-					level = 1
-				}
-				add_building_construction = {
-					type = synthetic_rubber_refinery
-					level = 1
-					instant_build = yes
+				random_controlled_state = {
+					limit = {
+						synthetic_rubber_refinery_inactive > 0
+						is_core_of = PREV
+					}
+					synthetic_rubber_refinery_open = yes
 				}
 			}
 			synthetic_rubber_refinery_close_click = {
-				remove_building = {
-					type = synthetic_rubber_refinery
-					level = 1
-				}
-				add_building_construction = {
-					type = synthetic_rubber_refinery_inactive
-					level = 1
-					instant_build = yes
+				random_controlled_state = {
+					limit = {
+						synthetic_rubber_refinery > 0
+						is_core_of = PREV
+					}
+					synthetic_rubber_refinery_close = yes
 				}
 			}
 			synthetic_rubber_refinery_open_control_click = {
-				set_temp_variable = { build = building_level@synthetic_rubber_refinery_inactive }
-				clamp_temp_variable = { var = build min = 1 max = 5 }
-				remove_building = {
-					type = synthetic_rubber_refinery_inactive
-					level = build
-				}
-				add_building_construction = {
-					type = synthetic_rubber_refinery
-					level = build
-					instant_build = yes
+				set_temp_variable = { counter = 5 }
+				while_loop_effect = {
+					limit = {
+						check_variable = { counter > 0 }
+					}
+					random_controlled_state = {
+						limit = {
+							synthetic_rubber_refinery_inactive > 0
+							is_core_of = PREV
+						}
+						synthetic_rubber_refinery_open = yes
+					}
+					subtract_from_temp_variable = { counter = 1 }
 				}
 			}
 			synthetic_rubber_refinery_close_control_click = {
-				set_temp_variable = { build = building_level@synthetic_rubber_refinery }
-				clamp_temp_variable = { var = build min = 1 max = 5 }
-				remove_building = {
-					type = synthetic_rubber_refinery
-					level = build
+				set_temp_variable = { counter = 5 }
+				while_loop_effect = {
+					limit = {
+						check_variable = { counter > 0 }
+					}
+					random_controlled_state = {
+						limit = {
+							synthetic_rubber_refinery > 0
+							is_core_of = PREV
+						}
+						synthetic_rubber_refinery_close = yes
+					}
+					subtract_from_temp_variable = { counter = 1 }
 				}
-				add_building_construction = {
-					type = synthetic_rubber_refinery_inactive
-					level = build
-					instant_build = yes
+			}
+			synthetic_rubber_refinery_open_alt_click = {
+				random_controlled_state = {
+					limit = {
+						synthetic_rubber_refinery_inactive > 0
+						NOT = { is_core_of = PREV }
+					}
+					synthetic_rubber_refinery_open = yes
+				}
+			}
+			synthetic_rubber_refinery_close_alt_click = {
+				random_controlled_state = {
+					limit = {
+						synthetic_rubber_refinery > 0
+						NOT = { is_core_of = PREV }
+					}
+					synthetic_rubber_refinery_close = yes
+				}
+			}
+			synthetic_rubber_refinery_open_control_alt_click = {
+				set_temp_variable = { counter = 5 }
+				while_loop_effect = {
+					limit = {
+						check_variable = { counter > 0 }
+					}
+					random_controlled_state = {
+						limit = {
+							synthetic_rubber_refinery_inactive > 0
+							NOT = { is_core_of = PREV }
+						}
+						synthetic_rubber_refinery_open = yes
+					}
+					subtract_from_temp_variable = { counter = 1 }
+				}
+			}
+			synthetic_rubber_refinery_close_control_alt_click = {
+				set_temp_variable = { counter = 5 }
+				while_loop_effect = {
+					limit = {
+						check_variable = { counter > 0 }
+					}
+					random_controlled_state = {
+						limit = {
+							synthetic_rubber_refinery > 0
+							NOT = { is_core_of = PREV }
+						}
+						synthetic_rubber_refinery_close = yes
+					}
+					subtract_from_temp_variable = { counter = 1 }
 				}
 			}
 		}
