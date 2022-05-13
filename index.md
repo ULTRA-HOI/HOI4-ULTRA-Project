@@ -1,5 +1,121 @@
 # Changelog
 
+### 0.12.5
+
+### Features
+
+- Added decision to build railway guns
+- Added mission for capturing Norway's gold as Germany
+- Stealing Technology operation should work better with unique technologies
+- Improved Tizard Mission effects
+- Implemented french navy spirits
+- Soviet Union gets free generic navy spirit through focuses
+
+### Balance
+
+- Land equipment IC cost & supply use rebalanced
+- Leader bonuses changed to take terrain into consideration
+- Rebalanced hard attack values from arty
+- Reduced base mil output to compensate cheaper equipment
+- Improved resource system to be smoother
+- Memel focus now requires Germany to own Sudetenland
+- Submarines are now slightly less visible
+- Increased spillover damages on damaged convoys after a battle
+- Disabled land volunteers for everyone save Italy
+- Infiltration operations now gives more xp
+- Buffed underused agency upgrades
+- Subs less suicidal when set on "always engage"
+- Naval mines speed debuff removed
+- Tweaks on air doctrines effects
+- Increased xp threshold for generals/admirals
+- Introduced back air disruption
+- Counterintel have less impact on hostile operation time
+- Naval movement no longer affects ship org
+- Rebalanced economic mobilisation laws, Total Mobilisation law gives less consumer goods bonuses
+- Adjusted UK's rearmament spirits
+- UK and Soviet prewar armament decisions are more impactfull
+- US Great Depression now affects military production
+- Reduced max xp to 600
+- Adopting a doctrine now gives a harsh doctrine debuff for 90 days to prevent multiple instant buying
+- Base doctrine xp cost increased to 300
+- Carrier Experience decision is now way more xp costly
+- Base research length increased by 10%
+
+### Database
+
+- German naval spirits now gives cruiser design cost reduction
+- Finishing Plan Z gives more rewards and timer is increased to 9 years
+- Some german tanks are available later to increase historical accuracy
+- T-50 and KV1 are now correctly considered with 3-men turrets
+- Reduced stats from T-70
+- Mechanized get armor stats
+- M47 replaced by M46
+- IS-10 replaced by IS-7
+- Nerfed E-75
+- Propaganda minister now gives extra stability from party popularity
+- US female participation increased by 5%
+- Naval terrain effects made more realistic
+- Oil consumption of rubber reffineries increased
+- Coal consumption of synthetic fuel reffineries increased
+- Poland starts with more mils
+- Soviet Union starts without any naval spirit
+- Rebalanced starting mils/civs ratios for the 4 biggest majors
+- Nazi Policies cost more consumer goods
+- Improved initial german trade
+- Maluses from conscription laws lowered
+- Firecontrol is no longer required on carriers
+- A20 stats updated
+- Improved effect of german mission to Japan
+- Tank designers no longer affects all tank types
+- Von Fritsch removed as german advisor
+
+### QoL
+
+- Added global reffineries/mills UI in trade tab
+- Building icons improved
+- Added icon for reffineries/mils mapmod
+- Separated naval techs into 2 tabs
+- Condensed construction view for better visibility
+- Ship templates decision hidden under "utility" decisions
+- Added icons for coal/iron/bauxite related decisions
+- Added new shortcut for for naval invasion, naval invasion with floating harbor and paradrop (V ; shit + V ; G)
+- Theater selector UI improved
+- Improved ship icons
+
+
+### Localisation 
+
+- Improved german airwings names
+- Fixed german namelists
+- Jeune Ecole spirit renamed to Escort Focus
+- Updated description for reffineries/mills
+- Cosmetic fix to planes localisations
+- Improved tank localisations
+- Names of naval stuff updates gets roman numerals
+
+### Bugfixes
+
+- Italian naval spirit now correctly gives malus to carrier research
+- US election code leads to less weirdness
+- Fjord terrain type removed since having no effect. Replaced by separate ocean type.
+- Fixed armor on Type 97
+- Fixed air defence on Tu SB
+- There should no longer be war between Allies and Soviet Union over Poland
+- AI bombers should no longer have insane range
+- Fixed duplicated Tojo
+- Fixed resources display in intel ledger
+- Polish tanks should get properly armor stats
+- Fixed floatplanes making subs unbuildable
+- Fixed Penal Bataillons giving ridiculous HP
+- Fixed MP giving too much HP
+- Tu SB cost fixed
+- Hungary access to economic laws is now more consistant
+- US strategic bombing and combined bomber offensive bonuses now correctly applies to heavy maritime bombers
+
+### AI 
+
+- Polish AI improved
+
 ### 0.12.4
 
 ### Features
