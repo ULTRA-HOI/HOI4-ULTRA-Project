@@ -1,0 +1,58 @@
+init_building_macrobuilder = {
+    set_variable = { infra_upper_limit = 10 }
+    set_variable = { infra_lower_limit = 1 }
+    set_variable = { cic_frame = 1 }
+    set_variable = { mic_frame = 2 }
+    set_variable = { nic_frame = 3 }
+}
+macro_build = {
+    set_variable = { infra_upper_limit_cur = infra_upper_limit }
+    add_to_variable = { infra_upper_limit_cur = 1 }
+    set_variable = { infra_lower_limit_cur = infra_upper_limit }
+    subtract_from_variable = { infra_lower_limit_cur = 1 }
+    
+    while_loop_effect = {
+        limit = {
+            check_variable = { infra_upper_limit_cur = infra_lower_limit compare = greater_than }
+        }
+        every_controlled_state = {
+            limit = {
+                is_core_of = ROOT
+                infrastructure < ROOT.infra_upper_limit_cur
+                infrastructure > ROOT.infra_lower_limit_cur
+            }
+            if = {
+                limit = {
+                    ROOT = { has_country_flag = CIC_macrobuilder }
+                }
+                add_building_construction = {
+                    type = industrial_complex
+                    level = ROOT.amount_buildings
+                    instant_build = no
+                }
+            }
+            if = {
+                limit = {
+                    ROOT = { has_country_flag = MIC_macrobuilder }
+                }
+                add_building_construction = {
+                    type = arms_factory
+                    level = ROOT.amount_buildings
+                    instant_build = no
+                }
+            }
+            if = {
+                limit = {
+                    ROOT = { has_country_flag = NIC_macrobuilder }
+                }
+                add_building_construction = {
+                    type = dockyard
+                    level = ROOT.amount_buildings
+                    instant_build = no
+                }
+            }
+        }
+        subtract_from_variable = { infra_upper_limit_cur = 1 }
+        subtract_from_variable = { infra_lower_limit_cur = 1 }
+    }
+}

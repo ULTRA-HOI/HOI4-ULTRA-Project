@@ -1,0 +1,128 @@
+scripted_gui = {
+	building_macrobuilder = {
+		context_type = player_context
+		window_name = "building_macrobuilder_window"
+		parent_window_token = construction_tab
+		visible = {
+			always = yes
+		}
+		ai_enabled = {
+			always = no
+		}
+		properties = {
+			cic_enabled = {
+				frame = cic_frame
+			}
+			mic_enabled = {
+				frame = mic_frame
+			}
+			nic_enabled = {
+				frame = nic_frame
+			}
+		}
+		effects = {
+			macrobuilder_build_click = {
+				set_variable = { amount_buildings = 1 }
+				macro_build = yes
+			}
+			macrobuilder_build_control_click = {
+				set_variable = { amount_buildings = 5 }
+				macro_build = yes
+			}
+			cic_enabled_click = {
+				if = {
+					limit = {
+						has_country_flag = CIC_macrobuilder
+					}
+					clr_country_flag = CIC_macrobuilder
+					set_variable = { cic_frame = 1 }
+				}
+				else = {
+					set_country_flag = CIC_macrobuilder
+					set_variable = { cic_frame = 4 }
+				}
+			}
+			mic_enabled_click = {
+				if = {
+					limit = {
+						has_country_flag = MIC_macrobuilder
+					}
+					clr_country_flag = MIC_macrobuilder
+					set_variable = { mic_frame = 2 }
+				}
+				else = {
+					set_country_flag = MIC_macrobuilder
+					set_variable = { mic_frame = 5 }
+				}
+			}
+			nic_enabled_click = {
+				if = {
+					limit = {
+						has_country_flag = NIC_macrobuilder
+					}
+					clr_country_flag = NIC_macrobuilder
+					set_variable = { nic_frame = 3 }
+				}
+				else = {
+					set_country_flag = NIC_macrobuilder
+					set_variable = { nic_frame = 6 }
+				}
+			}
+			infra_upper_limit_increase_click = {
+				add_to_variable = {
+					infra_upper_limit = 1
+				}
+			}
+			infra_upper_limit_decrease_click = {
+				subtract_from_variable = {
+					infra_upper_limit = 1
+				}
+			}
+			infra_lower_limit_increase_click = {
+				add_to_variable = {
+					infra_lower_limit = 1
+				}
+			}
+			infra_lower_limit_decrease_click = {
+				subtract_from_variable = {
+					infra_lower_limit = 1
+				}
+			}
+		}
+		triggers = {
+			macrobuilder_build_click_enabled = {
+				OR = {
+					has_country_flag = CIC_macrobuilder
+					has_country_flag = MIC_macrobuilder
+					has_country_flag = NIC_macrobuilder
+				}
+			}
+			infra_upper_limit_increase_click_enabled = {
+				check_variable = {
+					infra_upper_limit < 10
+				}
+			}
+			infra_upper_limit_decrease_click_enabled = {
+				check_variable = {
+					infra_upper_limit > 1
+				}
+				check_variable = {
+					infra_upper_limit > infra_lower_limit
+				}
+			}
+			infra_lower_limit_increase_click_enabled = {
+				check_variable = {
+					infra_lower_limit < 10
+				}
+				check_variable = {
+					infra_lower_limit < infra_upper_limit
+				}
+			}
+			infra_lower_limit_decrease_click_enabled = {
+				check_variable = {
+					infra_lower_limit > 1
+				}
+			}
+		}
+	}
+}
