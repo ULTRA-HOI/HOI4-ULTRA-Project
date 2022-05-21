@@ -7664,6 +7664,10 @@ GER_military_buildup = {
 		icon = generic_naval
 
 		available = {
+			
+		set_temp_variable = { heavy_cruisers_and_panzerschiffe = num_ships_with_type@heavy_cruiser }
+		add_to_temp_variable = {heavy_cruisers_and_panzerschiffe = num_ships_with_type@panzerschiff }
+
 			has_navy_size = {
 				unit = battleship
 				size > 11
@@ -7676,13 +7680,18 @@ GER_military_buildup = {
 				unit = carrier
 				size > 3
 			}
-			has_navy_size = {
-				unit = panzerschiff
-				size > 14
-			}
-			has_navy_size = {
-				unit = heavy_cruiser
-				size > 4
+			OR = {
+				has_navy_size = {
+					unit = heavy_cruiser
+					size > 19
+				}
+				has_navy_size = {
+					unit = panzerschiff
+					size > 19
+				}
+				check_variable = {
+					heavy_cruisers_and_panzerschiffe > 19
+				}
 			}
 			has_navy_size = {
 				unit = light_cruiser
