@@ -186,6 +186,8 @@ NDefines.NProduction.ANNEX_FUEL_RATIO = 0.8			--How much fuel will be transferre
 NDefines.NProduction.ANNEX_FIELD_EQUIPMENT_RATIO = 0.9	--How much equipment from deployed divisions will be transferred on annexation
 NDefines.NProduction.MAX_MIL_FACTORIES_PER_LINE = 500
 
+NDefines.NProduction.FLOATING_HARBOR_MAX_NAV_FACTORIES_PER_LINE = 10
+NDefines.NProduction.RAILWAY_GUN_MAX_MIL_FACTORIES_PER_LINE = 10
 -- Oil Suff 
 
 NDefines.NCountry.STARTING_FUEL_RATIO = 0.5						-- starting fuel ratio compared to max fuel for countries
@@ -460,7 +462,7 @@ NDefines.NSupply.STORED_SUPPLY_CONSUMPTION_RATE_FACTOR = 0.50				-- 0.75 -- Mult
 NDefines.NAITheatre.AI_THEATRE_SUPPLY_CRISIS_LIMIT = 0.2                              -- 0.1 -- If a unit is standing in an area with this supply ratio it will try to escape
 NDefines.NSupply.TRUCK_ATTRITION = 0.003 -- base truck attrition
 NDefines.NSupply.TRUCK_ATTRITION_FACTOR = 0.45 --a scale on total truck attrition
-
+NDefines.NSupply.LOCAL_SUPPLY_PER_AIR_MISSION = 0.005
 -- Lack of supply effect
 
 NDefines.NMilitary.COMBAT_SUPPLY_LACK_ATTACKER_ATTACK = -0.70     -- attack combat penalty for attacker if out of supply
