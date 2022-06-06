@@ -36,7 +36,6 @@ NDefines.NNavy.ALL_SHIPS_ACTIVATE_TIME = 40 --8                                 
 --NDefines.NNavy.BEST_CAPITALS_TO_SCREENS_RATIO = 0.33 --0.25 							-- capitals / screens ratio used for creating FEX groups in naval combat
 NDefines.NNavy.CARRIER_STACK_PENALTY = 5
 NDefines.NNavy.CARRIER_STACK_PENALTY_EFFECT = 0.075 --0.1
-NDefines.NNavy.ENEMY_AIR_SUPERIORITY_IMPACT = -0.9
 --------------------------------------------------------------------------------------------------------------
 -- MISC NAVY STUFF
 --------------------------------------------------------------------------------------------------------------
@@ -156,8 +155,6 @@ NDefines.NNavy.BASE_CARRIER_SORTIE_EFFICIENCY = 0.50 -- was 0.25 in ultra
 NDefines.NNavy.CONVOY_ATTACK_BASE_FACTOR = 0.10
 NDefines.NNavy.DECRYPTION_SPOTTING_BONUS = 0.15
 NDefines.NNavy.MANPOWER_LOSS_RATIO_ON_STR_LOSS = 0.4
---NDefines.NNavy.CAPITAL_ONLY_COMBAT_ACTIVATE_TIME = 8
---NDefines.NNavy.ALL_SHIPS_ACTIVATE_TIME = 12
 NDefines.NNavy.ON_BASE_FUEL_COST = 0.01
 NDefines.NNavy.FUEL_COST_MULT = 0.25 --0.20
 NDefines.NNavy.AGGRESION_MULTIPLIER_FOR_COMBAT = 1.25
