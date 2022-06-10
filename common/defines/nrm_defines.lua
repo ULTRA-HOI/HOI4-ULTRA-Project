@@ -329,7 +329,7 @@ NDefines.NAI.MAX_SCREEN_TASKFORCES_FOR_CONVOY_DEFENSE_MAX_CONVOY_THREAT = 1500 -
 -- SUBS
 -------------------------
 NDefines.NNavy.ESCAPE_SPEED_SUB_BASE = 0.12
-NDefines.NNavy.ESCAPE_SPEED_HIDDEN_SUB = 0.35
+NDefines.NNavy.ESCAPE_SPEED_HIDDEN_SUB = 0.5
 NDefines.NNavy.CONVOY_DETECTION_CHANCE_BASE = 4.17
 
 NDefines.NNavy.SUB_DETECTION_CHANCE_BASE = 5									-- to start spotting a submarine, a dice is rolled and checked if it succeeds this percentage. if not, that enemy sub force won't be spotted on this tick
@@ -344,8 +344,8 @@ NDefines.NNavy.NAVAL_COMBAT_SUB_DETECTION_FACTOR = 1      -- balance value for s
 NDefines.NNavy.DEPTH_CHARGE_STAT_FOR_SHIP_TO_BE_SUB_HUNTER = 4
 NDefines.NNavy.SUB_DETECTION_STAT_FOR_SHIP_TO_BE_SUB_HUNTER = 3
 
-NDefines.NNavy.SUBMARINE_REVEAL_BASE_CHANCE = 10
-NDefines.NNavy.SUBMARINE_BASE_TORPEDO_REVEAL_CHANCE = 0.2
+NDefines.NNavy.SUBMARINE_REVEAL_BASE_CHANCE = 8
+NDefines.NNavy.SUBMARINE_BASE_TORPEDO_REVEAL_CHANCE = 0.1
 
 NDefines.NNavy.SUBMARINE_REVEALED_TIMEOUT = 6              --Amount of in-game-hours that makes the submarine visible if it is on the defender side.
 NDefines.NNavy.SUBMARINE_HIDE_TIMEOUT = 6						-- Amount of in-game-hours that takes the submarine (with position unrevealed), to hide.
