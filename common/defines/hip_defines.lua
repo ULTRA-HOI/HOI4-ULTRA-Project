@@ -979,3 +979,5 @@ NDefines.NSupply.CAPITAL_SUPPLY_CIVILIAN_FACTORIES = 0.075 --0,3-- supply from o
 NDefines.NSupply.CAPITAL_SUPPLY_MILITARY_FACTORIES = 0.15 --0.6-- supply from one military factory
 NDefines.NSupply.CAPITAL_SUPPLY_DOCKYARDS = 0.1 --0.4--supply from one naval factory
 NDefines.NSupply.INFRA_TO_SUPPLY = 0.00		--0.3				-- each level of infra gives this many supply
+NDefines.NSupply.NAVAL_BASE_FLOW = 0.0 -- max output/input of a naval node is limited by this base value + additional ratio for each level
+NDefines.NSupply.NAVAL_FLOW_PER_LEVEL = 2.5 -- max output/input of a naval node is limited by previous base value + this define per its level
