@@ -741,7 +741,9 @@ NDefines.NAI.BUILDING_TARGETS_BUILDING_PRIORITIES = {				-- buildings in order o
 	'industrial_complex',
 }
 
+NDefines.NAI.UPDATE_SUPPLY_BOTTLENECKS_FREQUENCY_HOURS = 72 --168   -- Check for and try to fix supply bottlenecks this often. (168 hours = 1 week)
 NDefines.NAI.FIX_SUPPLY_BOTTLENECK_SATURATION_THRESHOLD = 0.95 --0.75  -- Try to fix supply bottlenecks if supply node saturation exceeds this value.
+NDefines.NAI.	UPDATE_SUPPLY_MOTORIZATION_FREQUENCY_HOURS = 36    -- 52 -- Check if activating motorization would improve supply situation this often.
 
 --------------------------------------------------------------------------------------------------------------
 -- DIVISION PRODUCTION
