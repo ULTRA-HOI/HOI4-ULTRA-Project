@@ -104,15 +104,15 @@ NDefines.NNavy.BASE_GUN_COOLDOWNS = { -- number of hours for a gun to be ready a
 }
 NDefines.NNavy.MISSION_SUPREMACY_RATIOS = { -- supremacy multipliers for different mission types
 		0.0, -- HOLD
-		0.1, -- PATROL		
-		0.1, -- STRIKE FORCE 
+		1.0, -- PATROL		
+		0.8, -- STRIKE FORCE 
 		0.5, -- CONVOY RAIDING
 		0.5, -- CONVOY ESCORT
 		0.3, -- MINES PLANTING	
 		0.3, -- MINES SWEEPING	
 		0.0, -- TRAIN
 		0.0, -- RESERVE_FLEET`
-		1.0, -- NAVAL_INVASION_SUPPORT
+		0.8, -- NAVAL_INVASION_SUPPORT
 }
 NDefines.NNavy.SHIP_TO_FLEET_ANTI_AIR_RATIO	= 0.50 -- was 0.15
 NDefines.NNavy.ANTI_AIR_MULT_ON_INCOMING_AIR_DAMAGE = 0.01 -- was 0.15 in vanilla; Increase power and reducing multiplier to make damage scale better.
