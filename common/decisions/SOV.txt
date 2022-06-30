@@ -172,7 +172,8 @@ SOV_paranoia_system = {
 		days_remove = 90
 
 		modifier = {
-			consumer_goods_factor = 0.02
+			industrial_capacity_factory = -0.1
+			industrial_capacity_dockyard = -0.1 
 		}
 
 		complete_effect = {
@@ -1871,8 +1872,8 @@ SOV_propaganda_campaigns = {
 		cost = SOV_propaganda_motherland_calls_cost
 
 		modifier = {
-			weekly_manpower = 1000
-			training_time_factor = -0.1
+			weekly_manpower = 1500
+			training_time_factor = -0.15
 			minimum_training_level = -0.1
 		}
 
@@ -1951,7 +1952,6 @@ SOV_propaganda_campaigns = {
 		cost = SOV_propaganda_victory_at_hand_cost
 
 		modifier = {
-			army_attack_factor = 0.05
 			army_speed_factor = 0.1
 			org_loss_when_moving = -0.05
 		}
@@ -2127,7 +2127,6 @@ SOV_propaganda_campaigns = {
 		modifier = {
 			army_org_factor = 0.05
 			out_of_supply_factor = -0.1
-			no_supply_grace = 70
 		}
 
 		complete_effect = {
@@ -2262,7 +2261,7 @@ SOV_propaganda_campaigns = {
 		modifier = {
 			production_speed_supply_node_factor = 0.15
 			production_speed_rail_way_factor = 0.15
-			supply_consumption_factor = -0.1
+			supply_consumption_factor = -0.05
 		}
 
 		complete_effect = {
@@ -2390,26 +2389,6 @@ SOV_propaganda_campaigns = {
 		available = {
 			SOV_propaganda_poster_slot_available = yes
 
-			any_controlled_state = {
-				OR = {
-					has_resources_amount = {
-						resource = iron
-						amount > 0
-					}
-					has_resources_amount = {
-						resource = bauxite
-						amount > 0
-					}
-					has_resources_amount = {
-						resource = chromium
-						amount > 0
-					}
-					has_resources_amount = {
-						resource = tungsten
-						amount > 0
-					}
-				}
-			}
 		}
 
 		visible = {
@@ -2429,66 +2408,29 @@ SOV_propaganda_campaigns = {
 			set_variable = { SOV_new_propaganda_campaign = 10 }
 			SOV_pick_propaganda_campaign_slot_effect = yes
 			SOV_achievement_propaganda_counter_effect = yes
-			hidden_effect = {
-				capital_scope = {
-					set_variable = { SOV_steel_bonus = 0 }
-					set_variable = { SOV_aluminium_bonus = 0 }
-					set_variable = { SOV_chromium_bonus = 0 }
-					set_variable = { SOV_tungsten_bonus = 0 }
-				}
-				every_controlled_state = {
-					limit = {
-						has_resources_amount = {
-							resource = iron
-							amount > 0
-						}
-					}
-					capital_scope = { add_to_variable = { SOV_steel_bonus = 1 } }
-				}
+			modify_building_resources = {
+        	   building = steel_refinery
+        	   resource = steel
+        	   amount = 4
+        	}
+			modify_building_resources = {
+        	   building = aluminium_refinery
+        	   resource = aluminium
+        	   amount = 4
+			      }
 
-				every_controlled_state = {
-					limit = {
-						has_resources_amount = {
-							resource = bauxite
-							amount > 0
-						}
-					}
-					capital_scope = { add_to_variable = { SOV_aluminium_bonus = 1 } }
-				}
-
-				every_controlled_state = {
-					limit = {
-						has_resources_amount = {
-							resource = chromium
-							amount > 0
-						}
-					}
-					capital_scope = { add_to_variable = { SOV_chromium_bonus = 1 } }
-				}
-
-				every_controlled_state = {
-					limit = {
-						has_resources_amount = {
-							resource = tungsten
-							amount > 0
-						}
-					}
-					capital_scope = { add_to_variable = { SOV_tungsten_bonus = 1 } }
-				}
-			}
-
-			capital_scope = {
-				add_dynamic_modifier = { modifier = SOV_increased_metals_production }
-			}
-
-			custom_effect_tooltip = SOV_propaganda_more_metal_tt
-		}
-
+             }
 		remove_effect = {
-			capital_scope = {
-				remove_dynamic_modifier = { modifier = SOV_increased_metals_production }
-			}
-
+		modify_building_resources = {
+        	   building = steel_refinery
+        	   resource = steel
+        	   amount = -4
+        	}
+			modify_building_resources = {
+        	   building = aluminium_refinery
+        	   resource = aluminium
+        	   amount = -4
+			      }
 			set_variable = { SOV_propaganda_campaign_to_remove = 10 }
 			SOV_reset_propaganda_campaign_slot_effect = yes
 
@@ -2546,7 +2488,7 @@ SOV_propaganda_campaigns = {
 		cost = SOV_propaganda_high_yield_cost
 
 		modifier = {
-			consumer_goods_factor = -0.05
+			consumer_goods_factor = -0.02
 		}
 
 		complete_effect = {
@@ -2628,8 +2570,7 @@ SOV_propaganda_campaigns = {
 
 		modifier = {
 			experience_gain_army_factor = 0.1
-			command_power_gain_mult = 0.15
-			breakthrough_factor = 0.075
+			breakthrough_factor = 0.05
 		}
 
 		complete_effect = {
@@ -2699,7 +2640,7 @@ SOV_propaganda_campaigns = {
 		cost = SOV_propaganda_heroes_forward_cost
 
 		modifier = {
-			army_morale_factor = 0.07
+			army_morale_factor = 0.05
 		}
 
 		complete_effect = {
@@ -3489,7 +3430,7 @@ SOV_propaganda_campaigns = {
 		cost = SOV_propaganda_sweep_scum_out_cost
 
 		modifier = {
-			army_core_attack_factor = 0.1
+			army_core_attack_factor = 0.025
 			army_core_defence_factor = 0.05
 		}
 
@@ -3559,7 +3500,7 @@ SOV_propaganda_campaigns = {
 		cost = SOV_propaganda_knowledge_cost
 
 		modifier = {
-			research_speed_factor = 0.05
+			research_speed_factor = 0.1
 		}
 
 		complete_effect = {
@@ -3787,6 +3728,7 @@ SOV_propaganda_campaigns = {
 			SOV_propaganda_poster_slot_available = yes
 
 			has_war = yes
+			surrender_progress > 0.25
 			any_enemy_country = {
 				NOT = { original_tag = SOV }
 				any_controlled_state = {
@@ -3841,7 +3783,9 @@ SOV_propaganda_campaigns = {
 			}
 			custom_effect_tooltip = SOV_propaganda_death_to_invaders_state_modifier_tt
 		}
-
+        modifier = {
+		 army_core_attack_factor = 0.05
+		 army_morale_factor = 0.05 }
 		remove_effect = {
 			every_controlled_state = {
 				limit = {
@@ -3911,7 +3855,7 @@ SOV_propaganda_campaigns = {
 		cost = SOV_propaganda_stalin_cost
 
 		modifier = {
-			political_power_factor = 0.07
+			political_power_factor = 0.15
 			command_power_gain_mult = 0.1
 			war_support_weekly = 0.007
 			communism_drift = 0.1
@@ -3983,8 +3927,7 @@ SOV_propaganda_campaigns = {
 		cost = SOV_propaganda_rebuild_to_glory_cost
 
 		modifier = {
-			industry_repair_factor = 0.15
-			production_speed_buildings_factor = 0.05
+			production_speed_buildings_factor = 0.10
 		}
 
 		complete_effect = {
@@ -11536,16 +11479,16 @@ SOV_great_patriotic_war = {
 			any_enemy_country = { SOV_is_major_not_original_sov = yes }
 		}
 
-		cost = 50
+		cost = 25
 
 		days_remove = 35
 
-		complete_effect = {
+		complete_effect = { 
+		manpower = 10000
 		}
 
 		remove_effect = {
 			clr_country_flag = SOV_penal_units_raised_flag
-			SOV_spawn_penal_divisions_effect = yes
 		}
 	}
 
@@ -11807,7 +11750,6 @@ SOV_great_patriotic_war = {
 		}
 
 		modifier = {
-			army_speed_factor = -0.1
 			army_defence_factor = 0.05
 			org_loss_when_moving = -0.1
 		}
@@ -11831,7 +11773,7 @@ SOV_great_patriotic_war = {
 				SOV_is_major_not_original_sov = yes
 			}
 			has_completed_focus = SOV_lessons_of_war
-			surrender_progress > 0.1
+			surrender_progress > 0.15
 		}
 
 		ai_hint_pp_cost = 50
@@ -11851,13 +11793,16 @@ SOV_great_patriotic_war = {
 		}
 
 		days_remove = 720
-
+        
 		modifier = {
-			army_core_defence_factor = 0.25
+			army_core_defence_factor = 0.15
 			mobilization_speed = 0.15
 		}
 
 		complete_effect = {
+		add_ideas = {
+				for_the_motherland_spirit
+			}
 			hidden_effect = {
 				add_command_power = -50
 				add_political_power = -50
@@ -18256,7 +18201,9 @@ political_actions = {
 				any_country = {
 					is_major = yes 
 					has_capitulated = yes
+					is_ai = yes 
 				}
+				has_completed_focus = { SOV_military_reorganization }
 			}
 		}
 		
