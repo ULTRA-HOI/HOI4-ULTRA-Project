@@ -122,7 +122,8 @@ NDefines.NNavy.MIN_HIT_PROFILE_MULT = 0.05
 
 -- XP for ships and admirals
 
-NDefines.NNavy.UNIT_EXPERIENCE_SCALE = 1.0   -- was 1.0
+NDefines.NNavy.UNIT_EXPERIENCE_SCALE = 0.8   -- was 1.0
+NDefines.NNavy.EXPERIENCE_FACTOR_CARRIER_GAIN = 0.04,			-- was 0.08				-- Xp gain by carrier ships in the combat
 NDefines.NNavy.LEADER_EXPERIENCE_SCALE = 1.0  -- was 1.0
 
 
