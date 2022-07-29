@@ -188,9 +188,16 @@ on_daily_labour_calculations = {
 	
 	#Calculate Civilian Needs
 	if = {
-		limit = { NOT = { tag = ENG } }
+		limit = { tag = ENG }
+		set_variable = { civilian_needs = 0.15 }
+	}
+	if = {
+		limit = { tag = FRA }
+		set_variable = { civilian_needs = 0.14 }
+	}
+	if = {
+		limit = { NOT = { tag = ENG } NOT = { tag = FRA }}
 		set_variable = { civilian_needs = 0.1 }
-		ELSE = { set_variable = { civilian_needs = 0.15 } } #WHY is UK worse than all others??
 	}
 	multiply_variable = { civilian_needs = total_labourpower }	
 	
