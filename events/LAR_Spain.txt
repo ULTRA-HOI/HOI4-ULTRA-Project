@@ -4729,7 +4729,7 @@ country_event = {
 			modifier = {
 				factor = 0
 				OR = {
-					has_country_flag = SPR_AI_RANDOM_FALANGIST
+					#has_country_flag = SPR_AI_RANDOM_FALANGIST
 					has_game_rule = {
 						rule = SPR_ai_behavior 
 						option = FALANGIST
@@ -4739,7 +4739,7 @@ country_event = {
 			modifier = {
 				factor = 0
 				OR = {
-					has_country_flag = SPR_AI_RANDOM_CARLIST
+					#has_country_flag = SPR_AI_RANDOM_CARLIST
 					has_game_rule = {
 						rule = SPR_ai_behavior 
 						option = CARLIST
@@ -4792,6 +4792,10 @@ country_event = {
 					}
 				}
 			}
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
 		}
 		# Remove Spirits that will no longer be relevant
 		custom_effect_tooltip = nationalists_chosen
@@ -4836,6 +4840,10 @@ country_event = {
 						option = NATIONALIST_HISTORICAL
 					}
 				}
+			}
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
 			}
 		}
 		# Remove Spirits that will no longer be relevant
@@ -4987,6 +4995,10 @@ country_event = {
 						option = STALINIST
 					}
 				}
+			}
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
 			}
 			modifier = {
 				factor = 0
@@ -7173,7 +7185,27 @@ country_event = {
 					}
 				}
 			}
-			
+			if = {
+				limit = {
+					165 = {
+						is_capital = yes
+					}
+				}
+				random_owned_controlled_state = {
+					limit = {
+						NOT = {
+							state = 165
+						}
+					}
+					ROOT = {
+						set_capital = {
+							state = PREV
+						}
+					}
+				}
+
+			}
+	
 			if = {
 				limit = {
 					OR = {
