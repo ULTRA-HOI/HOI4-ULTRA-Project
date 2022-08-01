@@ -1,4 +1,4 @@
-name="Ultra Historical Mod - Realism Overhaul"
+name="Ultra - Myzael MP"
 version="0.12.*"
 tags={
 	"Map"
@@ -9,4 +9,4 @@ tags={
 replace_path="history/states"
 picture="ultra.jpg"
 supported_version="1.11.*"
-remote_file_id="1516163124"
+remote_file_id="2812247800"
