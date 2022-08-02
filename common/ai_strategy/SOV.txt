@@ -243,17 +243,22 @@ spanish_civil_war_SOV_resistance = {
 	ai_strategy = {
 		type = befriend
 		id = "SPD"
-		value = 250
+		value = 200
 	}
 	ai_strategy = {
 		type = support
 		id = "SPD"
-		value = 500
+		value = 200
 	}
 	ai_strategy = {
 		type = send_volunteers_desire
 		id = "SPD"
-		value = 250
+		value = 200
+	}
+	ai_strategy = {
+		type = send_lend_lease_desire
+		id = "SPD"
+		value = 200
 	}
 	ai_strategy = {
 		type = support
@@ -261,9 +266,19 @@ spanish_civil_war_SOV_resistance = {
 		value = -200
 	}
 	ai_strategy = {
+		type = befriend
+		id = "SPA"
+		value = -200
+	}
+	ai_strategy = {
 		type = send_volunteers_desire
 		id = "SPA"
-		value = -999
+		value = -200
+	}
+	ai_strategy = {
+		type = send_lend_lease_desire
+		id = "SPA"
+		value = -200
 	}
 }
 
@@ -456,18 +471,33 @@ SOV_dont_send_lend_lease_that_early_to_china = {
 		original_tag = SOV
 	}
 	enable = {
-		JAP = {
-			has_war_with = CHI
+		OR = {
+			AND = {
+				JAP = {
+					has_war_with = CHI
+				}
+				country_exists = CHI
+				CHI = {
+					surrender_progress < 0.4
+				}
+			}
+			NOT = { 
+				JAP = {
+					has_war_with = CHI
+				}
+			}
 		}
-		country_exists = CHI
-		CHI = {
-			surrender_progress < 0.4
-		}
+		
 	}
 	ai_strategy = {
 		type = send_lend_lease_desire
 		id = CHI
-		value = -999
+		value = -200
+	}
+	ai_strategy = {
+		type = send_lend_lease_desire
+		id = PRC
+		value = -100
 	}
 }
 
@@ -2978,7 +3008,7 @@ SOV_LEND_LEASE = {
 	ai_strategy = {
 		type = send_lend_lease_desire
 		id = CHI
-		value = 1000
+		value = 200
 	}
 	ai_strategy = {
 		type = support
