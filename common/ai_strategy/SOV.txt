@@ -119,14 +119,9 @@ japan_ally = {
 		}
 	}
 	ai_strategy = {
-		type = befriend
+		type = ignore
 		id = "JAP"
-		value = 200
-	}
-	ai_strategy = {
-		type = alliance
-		id = "JAP"
-		value = 200
+		value = 100
 	}
 }
 
@@ -1187,7 +1182,7 @@ SOV_molotov_active_sov = {
 		value = 35
 	}
 	ai_strategy = {
-		type = befriend
+		type = ignore
 		id = JAP
 		value = 20
 	}
@@ -2844,7 +2839,7 @@ prepare_for_war_with_germany = {
 	ai_strategy = {
 		type = area_priority
 		id = east_russia
-		value = -100		#less focus here
+		value = -50		#less focus here
 	}
 	ai_strategy = {
 		type = area_priority
@@ -3492,7 +3487,7 @@ japan_peace = {
 		}
 	}
 	ai_strategy = {
-		type = befriend
+		type = ignore
 		id = "JAP"
 		value = 50
 	}
@@ -3513,7 +3508,7 @@ sov_dont_overcomit_east = {
 	ai_strategy = {
 		type = area_priority
 		id = east_russia
-		value = -200		#less focus here
+		value = -150		#less focus here
 	}
 }
 
@@ -3913,5 +3908,120 @@ invading_japan_is_stupid = {
 		type = invade
 		id = "JAP"
 		value = -2000		# that low means not going for islands either
+	}
+}
+
+sov_dont_leave_japan_alone = {
+	allowed = {
+		tag = SOV
+	}
+	enable = {
+		tag = SOV
+		date > 1937.1.1
+	}
+	abort = {
+		date > 1945.6.1
+	}
+	ai_strategy = {
+		type = front_unit_request
+		tag = "JAP"
+		value = 50
+	}
+	ai_strategy = {
+		type = front_unit_request
+		tag = "MAN"
+		value = 50
+	}
+	ai_strategy = {
+		type = conquer
+		id = "MAN"
+		value = 75
+	}
+	ai_strategy = {
+		type = conquer
+		id = "JAP"
+		value = 90
+	}
+	ai_strategy = {
+		type = invade
+		id = "JAP"
+		value = -999
+	}
+	ai_strategy = {
+		type = antagonize
+		id = "JAP"
+		value = 150
+	}
+	ai_strategy = {
+		type = antagonize
+		id = "MAN"
+		value = 150
+	}
+	ai_strategy = {
+		type = front_unit_request
+		area = north_china
+		value = 50
+	}
+}
+
+sov_dont_leave_finland_alone = {
+	allowed = {
+		tag = SOV
+	}
+	enable = {
+		tag = SOV
+		date > 1940.5.1
+	}
+	abort = {
+		date > 1945.6.1
+	}
+	ai_strategy = {
+		type = front_unit_request
+		tag = "FIN"
+		value = 50
+	}
+	ai_strategy = {
+		type = conquer
+		id = "FIN"
+		value = 75
+	}
+	ai_strategy = {
+		type = invade
+		id = "FIN"
+		value = -999
+	}
+	ai_strategy = {
+		type = antagonize
+		id = "FIN"
+		value = 150
+	}
+	ai_strategy = {
+		type = front_unit_request
+		area = scandinavia
+		value = 50
+	}
+}
+
+persia_dont_move = {
+	allowed = {
+		original_tag = PER
+	}
+	
+	enable = {
+		OR = {
+			is_in_faction_with = ENG
+			is_in_faction_with = SOV
+		}
+	}
+	
+	ai_strategy = {
+		type = dont_defend_ally_borders
+		id = "ENG"
+		value = 999
+	}
+	ai_strategy = {
+		type = dont_defend_ally_borders
+		id = "SOV"
+		value = 999
 	}
 }
