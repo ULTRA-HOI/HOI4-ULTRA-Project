@@ -2276,16 +2276,28 @@ GER_spring_limited_operations_ai = {
 	}
 }
 
-GER_Summer_Offensive2 = {
+GER_Summer_Offensive2 = { #No need to push if we already control the most important places
 	allowed = {
 		original_tag = GER
 	}
 	enable = {
 		has_war_with = SOV
 		date > 1942.6.15
+		NOT = {
+			controls_state = 219 #Moscow
+			controls_state = 217 #Stalingrad
+			controls_state = 195 #Leningrad
+		}
 	}
 	abort = {
-		date > 1942.8.15
+		OR = {
+			date > 1942.8.15
+			AND = {
+				controls_state = 219 #Moscow
+				controls_state = 217 #Stalingrad
+				controls_state = 195 #Leningrad
+			}
+		}
 	}
 	ai_strategy = {
 		type = front_control
