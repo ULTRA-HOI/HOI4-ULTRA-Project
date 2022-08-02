@@ -1114,7 +1114,7 @@ jap_dont_leave_russia_alone = {
 	}
 	enable = {
 		tag = JAP
-		date > 1937.1.1
+		date > 1939.1.1
 	}
 	abort = {
 		date > 1944.6.1
@@ -1127,7 +1127,7 @@ jap_dont_leave_russia_alone = {
 	ai_strategy = {
 		type = conquer
 		id = "SOV"
-		value = 50
+		value = 100
 	}
 	ai_strategy = {
 		type = invade
@@ -1137,7 +1137,7 @@ jap_dont_leave_russia_alone = {
 	ai_strategy = {
 		type = antagonize
 		id = "SOV"
-		value = 100
+		value = 250
 	}
 	ai_strategy = {
 		type = front_unit_request
@@ -2199,10 +2199,13 @@ soviet_peace = {
 				country_exists = SOV
 			}
 			has_war_with = SOV
+			SOV = {
+				has_war_with = GER
+			}
 		}
 	}
 	ai_strategy = {
-		type = befriend
+		type = ignore
 		id = "SOV"
 		value = 50
 	}
@@ -2228,9 +2231,9 @@ soviet_war = {
 		tag = JAP
 	}
 	enable = {
-		NOT = {
-			has_war_with = CHI
-		}
+		#NOT = {
+		#	has_war_with = CHI
+		#}
 		OR = {
 			AND = {
 				NOT = {
@@ -2243,9 +2246,9 @@ soviet_war = {
 					has_civil_war = yes
 				}
 				SOV = {
-					NOT = {
-						controls_state = 219						#Moscow
-						controls_state = 217						#Stalingrad
+					OR = {
+						NOT = {controls_state = 219	}					#Moscow
+						NOT = {controls_state = 217	}					#Stalingrad
 					}
 				}
 			}
@@ -2336,7 +2339,7 @@ JAP_defend_manchuria = {
 			761
 			610
 		}
-		ratio = 0.1
+		ratio = 0.2
 		area = north_china
 		subtract_invasions_from_need = no
 		subtract_fronts_from_need = yes
