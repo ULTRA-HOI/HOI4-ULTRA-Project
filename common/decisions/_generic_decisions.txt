@@ -3289,6 +3289,79 @@ foreign_politics = {
 		
 	}
 	
+	SIK_defect_from_soviet_union = {
+		icon = generic_political_discourse
+		
+		fire_only_once = yes
+		
+		allowed = {
+			tag = SIK
+		}
+		
+		visible = {
+			is_subject_of = SOV
+			SOV = {
+				has_war = yes
+				any_enemy_country = {
+					ic_ratio = { 
+						tag = SOV
+						ratio > 0.25
+					}
+				}
+			}
+		}
+		
+		available = {
+			OR = { 
+				AND = { #Beaten in the west
+					SOV = { NOT = {controls_state = 1036} } #riga
+					SOV = { NOT = {controls_state = 206} } #minsk
+					SOV = { NOT = {controls_state = 202} } #kiev
+				}
+				AND = { #Beaten in the East
+					SOV = { NOT = {controls_state = 408} } #Vladivostock
+					SOV = { NOT = {controls_state = 560} } #nikolayevsk
+					SOV = { NOT = {controls_state = 563} } #chita
+				}
+			}
+			CHI = {
+				exists = yes
+				OR = {
+					controls_state = 926
+					controls_state = 755
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 1000
+			
+		}
+		
+		complete_effect = {
+			CHI = {
+				annex_country = {
+					target = SIK
+					transfer_troops = yes
+				}
+			}
+			SOV = {
+				country_event = {			
+					days = 1
+					id = wtt_warlord.30
+				}
+			}
+			CHI = {
+				country_event = {			
+					days = 1
+					id = wtt_warlord.31
+				}
+			}
+		}
+		
+		
+	}
+	
 }
 
 economy_decisions = {
