@@ -1643,21 +1643,31 @@ focus_tree = {
 		}
 		
 		available = {
-			IF = {
-				limit = {
-					is_ai = no
+			GER = {
+				OR = {
+					has_war_with = USA
+					AND = {
+						has_war_with = SOV 
+						OR = {
+							casualties > 1000000
+							has_government = democratic
+							has_government = neutrality
+						}
+					}
 				}
-				has_country_flag = total_krieg_speech
 			}
 		}
 
 		completion_reward = {
 			
 			add_ideas = tot_economic_mobilisation #temporary measure before we separate economic mobilisation to working hours
-			swap_ideas = {
-				remove_idea = GER_small_business
-				add_idea = GER_small_upgraded
+			hidden_effect = {
+				swap_ideas = {
+					remove_idea = GER_small_business
+					add_idea = GER_small_upgraded
+				}
 			}
+			custom_effect_tooltip = GER_tot_mob_1_tt
 			
 			add_tech_bonus = {
 				name = GER_total_war
@@ -1671,6 +1681,9 @@ focus_tree = {
 				uses = 1
 				technology = flexible_line
 			}
+			
+			custom_effect_tooltip = Construction_Focus_tt
+			custom_effect_tooltip = GER_tot_mob_2_tt
 		}
 	}
 	
