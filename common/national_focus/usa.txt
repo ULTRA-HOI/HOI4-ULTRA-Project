@@ -4193,16 +4193,60 @@ focus_tree = {
 #  # ### #  #     ##  ###  ##   #  ###  ##  #  # 
 
 	focus = {
+		id = USA_us_army_airforce
+		icon = GFX_focus_generic_strike_at_democracy1
+		x = 2
+		y = 2
+		relative_position_id = USA_war_department
+		prerequisite = { focus = USA_war_department }
+		cost = 5
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		search_filters = {FOCUS_FILTER_RESEARCH}
+
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = branch_independence_spirit
+				add_idea = death_from_above_spirit
+			}
+			swap_ideas = {
+				remove_idea = veteran_air_instructors_spirit
+				add_idea = excellence_in_all_we_do_spirit
+			}
+			add_doctrine_cost_reduction = {
+				name = USA_us_army_airforce
+				uses = 2
+				cost_reduction = 0.5
+				category = air_doctrine
+			}
+		}
+	}
+
+	focus = {
 		id = USA_air_war_plans_division
 		icon = GFX_goal_generic_build_airforce
-		x = 1
+		x = 0
 		y = 1
 		cost = 5
 		#ai_will_do = {
 		#	factor = 1
 		#}
-		prerequisite = { focus = USA_war_department }
-		relative_position_id = USA_war_department
+		prerequisite = { focus = USA_us_army_airforce }
+		relative_position_id = USA_us_army_airforce
 		available_if_capitulated = yes
 		search_filters = {FOCUS_FILTER_RESEARCH}
 
@@ -4222,7 +4266,6 @@ focus_tree = {
 		id = USA_air_support
 		icon = GFX_goal_generic_air_fighter
 		prerequisite = { focus = USA_air_war_plans_division }
-		mutually_exclusive = { focus = USA_strategic_bombing }
 		x = -1
 		y = 1
 		relative_position_id = USA_air_war_plans_division
@@ -4242,7 +4285,6 @@ focus_tree = {
 		id = USA_strategic_bombing
 		icon = GFX_goal_generic_occupy_start_war
 		prerequisite = { focus = USA_air_war_plans_division }
-		mutually_exclusive = { focus = USA_air_support }
 		x = 1
 		y = 1
 		relative_position_id = USA_air_war_plans_division
@@ -4264,7 +4306,7 @@ focus_tree = {
 		icon = GFX_goal_generic_air_doctrine
 		prerequisite = { focus = USA_air_support }
 		x = 0
-		y = 2
+		y = 1
 		relative_position_id = USA_air_support
 		cost = 5
 		#ai_will_do = {
@@ -4290,7 +4332,7 @@ focus_tree = {
 		text = CAS_effort
 		icon = GFX_goal_generic_CAS
 		prerequisite = { focus = USA_air_support }
-		x = -1
+		x = -2
 		y = 1
 		relative_position_id = USA_air_support
 		cost = 5
@@ -4327,8 +4369,8 @@ focus_tree = {
 				is_in_faction_with = ENG
 			}
 		}
-		x = 0
-		y = 2
+		x = 2
+		y = 1
 		relative_position_id = USA_strategic_bombing
 		cost = 5
 		#ai_will_do = {
@@ -4352,7 +4394,7 @@ focus_tree = {
 	focus = {
 		id = USA_escort_fighters
 		icon = GFX_focus_usa_escort_fighters
-		x = 0
+		x = 1
 		y = 2
 		prerequisite = { focus = USA_air_support focus = USA_strategic_bombing }
 		relative_position_id = USA_air_war_plans_division
@@ -4386,47 +4428,15 @@ focus_tree = {
 			}
 		}
 	}
-	focus = {
-		id = USA_us_army_airforce
-		icon = GFX_focus_generic_strike_at_democracy1
-		x = -1
-		y = 4
-		prerequisite = { focus = USA_TAC }
-		relative_position_id = USA_air_war_plans_division
-		cost = 5
-
-		ai_will_do = {
-			factor = 1
-		}
-
-		available = {
-
-		}
-		
-		bypass = {
-
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = no
-		search_filters = {FOCUS_FILTER_RESEARCH}
-
-		completion_reward = {
-			add_doctrine_cost_reduction = {
-				name = USA_us_army_airforce
-				uses = 2
-				cost_reduction = 0.5
-				category = air_doctrine
-			}
-		}
-	}
+	
 	focus = {
 		id = USA_us_air_force
 		icon = GFX_goal_generic_build_airforce
-		x = 1
-		y = 4
+		x = 0
+		y = 3
 		prerequisite = { focus = USA_combined_bomber_offensive }
+		prerequisite = { focus = USA_TAC }
+		prerequisite = { focus = USA_CAS }
 		relative_position_id = USA_air_war_plans_division
 		cost = 5
 
@@ -4521,7 +4531,7 @@ focus_tree = {
 		prerequisite = { focus = USA_fund_the_navy }
 		#mutually_exclusive = { focus = USA_carrier_primacy }
 		x = 0
-		y = 2
+		y = 3
 		relative_position_id = USA_fund_the_navy
 		cost = 5
 		#ai_will_do = {
