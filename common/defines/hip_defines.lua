@@ -160,7 +160,7 @@ NDefines.NProduction.MAX_CIV_FACTORIES_PER_LINE = 20		-- was 15 -- Max number of
 NDefines.NProduction.BASE_FACTORY_START_EFFICIENCY_FACTOR = 1 --10	-- Base start efficiency for factories expressed in %.
 NDefines.NProduction.BASE_FACTORY_MAX_EFFICIENCY_FACTOR = 65  -- 25
 NDefines.NProduction.BASE_FACTORY_SPEED = 0.65 				-- Base factory speed multiplier (how much hoi3 style IC each factory gives).
-NDefines.NProduction.BASE_FACTORY_SPEED_MIL = 1 --8				-- Base factory speed multiplier (how much hoi3 style IC each factory gives).
+NDefines.NProduction.BASE_FACTORY_SPEED_MIL = 1.1 --1 --8				-- Base factory speed multiplier (how much hoi3 style IC each factory gives).
 NDefines.NProduction.BASE_FACTORY_SPEED_NAV = 1.2
 
 NDefines.NProduction.BASE_FACTORY_EFFICIENCY_BALANCE_FACTOR = 0.1 			-- Factory efficiency balancing factor
