@@ -2851,12 +2851,13 @@ war_measures = {
 
         fire_only_once = no
 
-		days_remove = 180
+		#days_remove = 180
 
-		cost = GER_war_bonds_var?0
+		cost = 100
 
 		modifier = {
 			consumer_goods_factor = -0.05
+			political_power_gain = -0.25
 		}
 
 		ai_will_do = {
@@ -2873,60 +2874,8 @@ war_measures = {
 			}
 		}
 
-		remove_effect = {
-
-		}
-
 		complete_effect = {
-			if = {
-				limit = {
-					check_variable = {
-						var = GER_war_bonds_var
-						value = 0
-						compare = less_than
-					}
-				}
-				set_variable = {
-					var = GER_war_bonds_var
-					value = 0
-				}
-			}
-			add_to_variable = {
-				var = GER_war_bonds_var
-				value = 25
-			}
-			if = {
-				limit = {
-					check_variable = {
-						var = GER_war_bonds_var
-						value = 100
-						compare = greater_than_or_equals
-					}
-					check_variable = {
-						var = GER_war_bonds_war_support_var
-						value = -0.025
-						compare = greater_than
-					}
-				}
-				set_variable = {
-					var = GER_war_bonds_war_support_var
-					value = -0.025
-				}
-			}
-			if = {
-				limit = {
-					check_variable = {
-						var = GER_war_bonds_war_support_var
-						value = -0.025
-						compare = less_than_or_equals
-					}
-				}
-				add_to_variable = {
-					var = GER_war_bonds_war_support_var
-					value = -0.025
-				}
-				add_war_support = GER_war_bonds_war_support_var
-			}
+			stability_factor = -0.05
 		}
     }
 	
