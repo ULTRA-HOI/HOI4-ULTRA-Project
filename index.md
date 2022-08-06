@@ -1,5 +1,105 @@
 # Changelog
 
+### 0.13
+
+### Major Changes
+
+- Rebalanced aircraft stats with an improved calculation model
+- British Islands are now on their correct geographic location relative to the european continent
+- Major bug fixed where AI did not took important decisions
+- Adjusted the industrial production of USA, UK, Germany and Soviet Union to be closer to historical figures
+
+### Features
+
+- Unique Air spirits for Germany, UK and USA
+
+### Balance
+
+- Coordinated Strike number of attacks halved
+- Adjusted the industrial production of USA, UK, Germany and Soviet Union to be closer to historical figures
+- Increased the base military production by 10%
+- Chinese entrenchment speed malus no longer reduce it to 0
+- Operatives can get xp a bit more easily
+- Reduced slightly xp required by officers to get lvls
+- Soviet Army Spirit gives more bonus to get Skilled Staffer
+- Reduced the xp cost for Skilled Staffer
+- Reduced fuel gained per oil
+- Increase army, airforce and navy fuel consumption
+- Stalin's Heart of Steel trait makes Soviet Union impossible to capitulate if not completely occupied
+- The three higher mobilisation laws now needs total economic mobilisation to be selected
+- Very low range aircrafts now gets more range by making variants costing air xp at the cost of lower reliability
+- Removed the option for the player to get truce with China as Japan
+- Tora Tora Tora modifier is now AI only
+- Base attrition reduced from 5% to 2%
+- France manpower nerfed to take into consideration their industry workers
+- Made some french focus longer back to avoid it to fix all their issues before the war
+- Lowered ship xp gains
+- Reduced soviet chance to capture spies
+- Buffed Suicide Pills
+
+### Map
+
+- British Islands are now on their correct geographic location relative to the european continent
+- Reworked North Africa so it is minimum 3 tile wide, El Alamein chokepoint is now 2 provinces
+- Further splitted norvegian states
+- Naval zones of the Eastern Atlantic reshaped
+- Reshaped the North Sea
+
+### Database
+
+- Reshaped slightly UK and USA focus trees
+- "Research Treaty with Soviet Union" focus for Germany replaced by "Form the Panzertruppe" that gives the same bonuses without asking Soviet Union. Soviet Union gets its own bonus in its focus tree.
+- The focus moving soviet industry now properly need Soviet Union to be at war with an european major
+- Warbond is now permanent and give stability hit when selected
+- Adjusted values of Naval treaties to get treaty-complient historical ships to be buildable
+- Infrastructure in 1-city-states is no longer systematicaly 10 but is consistant with surronding areas
+- Added missing / erronous stats of some tanks and aircrafts
+- Archaïc equipment is locked for non-agrarian countries, except Japan by focus.
+- Sinkiang will defect Soviet Union, to be annexed by China, if Barbarossa is sucessfull enough
+- Hungarian focuses for planes licences updated for the unique aircraft trees
+- Submarines Hulls and lower-end DD engines costs are reduced
+- Reworked the weather of Europe
+- Reworked skills and stats of US generals
+- Speer can enter office on time
+- Rebalanced aircraft stats with an improved calculation model
+- Autarky now forces Germany into Limited Export law
+- UK/US gets excellent complience when controlling danish islands in the Atlantic
+- Redistributed industry location in Soviet Union to be more in big industrial centers, avoid Ukraine to be more industrialized than Italy
+- Greenland is given under US control when Iceland takes independance
+- Positive xp on airwings reduce accident chances
+- Reduced Philipines Manpower
+
+### QoL
+
+- Improved Ace window
+- Improved theater's interface
+
+### Bugfixes
+
+- Case Anton now properly pupet French State, allowing to capture the french fleet
+- Australia can no longer pupet Malaysia if it is occupied
+- General Rearmament focus is no longer bypassed by getting War Economy
+- China can no longer change economic system merely by spending 500 pp
+- Moving indutry from Moscow suburbs no longer brings their population to 0
+- Annexing CCzechoslovakia no longer push back France and UK to Partial Mobilisation law
+- Poland should no longer Ally Lithuania in Historical
+- Daladier correctly take power once the Popular Front falls
+- Answering allied call to arms no longer generate world tension : lead to insane amounts when various allied countries joined the british-soviet invasion of Iran
+- Some industry related bonus from focuses now works properly
+- Ai should be able again to take important decisions on time and not be locked in a loop of opening/closing resource buildings
+- Decisions to exploit foreign wealth as Germany now requires properly the conquests it was supposed to require
+
+- Lots of minor fixes
+
+### AI
+
+- AI countries gets hidden decisions to prevent going into lack of equipment death-spiral
+- Finland AI should aim to retake Carelia in the continuation war
+- Germany, Italy and Soviet Union should support more their favorite spanish faction
+- When both UK and Italy are AI, built a railway between Benghazi and Marsa Matruh
+- Major AIs should no longer switch back and forth between trade laws
+- Savoy is now an Italian claim so the AI does not transfers occupation to Germany
+
 ### 0.12.5
 
 ### Features
@@ -2564,4 +2664,4 @@ Implemented Xandor suggestions about division designer :
 - Slightly reduced the MIC/CIC ratio for Germany to better take into consideration MEFO bills into the original calculations (direct nerf)
 - Added 10 CIC to canada and 4 CIC to India
 - Buffed slightly the number of factories given by CAN and RAJ National focuses
-- Reduced the Tension given by Anschluss but increase the other tension given by other german early annexations
+- Reduced the Tension given by Anschluss but increase the other tension given by other german early annexationss
