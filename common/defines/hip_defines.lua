@@ -893,6 +893,11 @@ NDefines.NAI.PLAN_AVG_PREPARATION_TO_EXECUTE = 0.75				            -- % or more 
 NDefines.NAI.AI_FRONT_MOVEMENT_FACTOR_FOR_READY = 0.5			                -- If less than this fraction of units on a front is moving  AI sees it as ready for action
 --NDefines.NAI.PLAN_VALUE_TO_EXECUTE = -1.1                                     -- AI will typically avoid carrying out a plan it below this value (0.0 is considered balanced).
 
+NDefines.NAI.LENDLEASE_FRACTION_OF_STOCKPILE = 0.5		-- was 0.25 -- Base fraction AI would send as lendlease
+NDefines.NAI.MINIMUM_EQUIPMENT_TO_ASK_LEND_LEASE = 200	-- was -100-- AI will accept to lend lease this equipment only if our stockpile is less than that.
+NDefines.NAI.MINIMUM_CONVOY_TO_ASK_LEND_LEASE = 100	-- was 30	-- AI will accept to lend lease convoys only if our stockpile is less than that (special case because convoy stockpile can't be negative).
+NDefines.NAI.MINIMUM_FUEL_DAYS_TO_ASK_LEND_LEASE = 20	-- was 2-- AI will accept to lend lease fuel only if the player have less fuel than this number multiply by his max daily consumption.
+
 --NDefines.NAI.LOCATION_BALANCE_TO_ADVANCE = 0.0				                -- Limit on location strength balance between country and enemy for unit to dare to move forward.
 NDefines.NAI.PLAN_ACTIVATION_MAJOR_WEIGHT_FACTOR = 1		                    -- AI countries will hold on activating plans if stronger countries have plans in the same location. Majors count extra (value of 1 will negate this)
 NDefines.NAI.PLAN_ACTIVATION_PLAYER_WEIGHT_FACTOR = 1 		                -- AI countries will hold on activating plans if player controlled countries have plans in the same location. Majors count extra (value of 1 will negate this)
