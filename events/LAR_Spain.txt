@@ -826,7 +826,6 @@ country_event = {
 							DIV_HQ = { x = 0 y = 0 }	
 							artillery = { x = 0 y = 1 }
 							engineer = { x = 0 y = 2 }
-							recon = { x = 0 y = 3 }
 						}
 					}
 					172 = {
@@ -854,6 +853,16 @@ country_event = {
 							infantry = { x = 0 y = 0 }
 							infantry = { x = 0 y = 1 }
 							infantry = { x = 0 y = 2 }
+							heavy_infantry = { x = 1 y = 0 }
+						infantry = { x = 1 y = 1 }
+						infantry = { x = 1 y = 2 }
+						
+						}
+						support = {
+							DIV_HQ = { x = 0 y = 0 }	
+							artillery = { x = 0 y = 1 }
+							engineer = { x = 0 y = 2 }
+							
 						}
 					}
 					172 = {
@@ -876,7 +885,7 @@ country_event = {
 							owner = SPA
 							prioritize_location = 3816
 							allow_spawning_on_enemy_provs = yes
-							count = 1
+							count = 2
 						}
 					}
 				}
@@ -1963,10 +1972,9 @@ country_event = {
 						infantry = { x = 1 y = 2 }
 						infantry = { x = 2 y = 0 }
 						infantry = { x = 2 y = 1 }
-						infantry = { x = 2 y = 2 }
 						infantry = { x = 3 y = 0 }
 						infantry = { x = 3 y = 1 }
-						infantry = { x = 3 y = 2 }
+				
 						
 							}
 							
@@ -2716,12 +2724,14 @@ country_event = {
 							heavy_infantry = { x = 0 y = 0 }
 							heavy_infantry = { x = 0 y = 1 }
 							heavy_infantry = { x = 0 y = 2 }
-								infantry = { x = 1 y = 0 }
-								infantry = { x = 1 y = 1 }
-								infantry = { x = 1 y = 2 }
-								infantry = { x = 2 y = 0 }
-								artillery_brigade = { x = 2 y = 1 }
-								artillery_brigade = { x = 2 y = 2 }
+							heavy_infantry = { x = 1 y = 0 }
+							heavy_infantry = { x = 1 y = 1 }
+							infantry = { x = 1 y = 2 }
+							infantry = { x = 2 y = 0 }
+							infantry = { x = 2 y = 1 }
+							infantry = { x = 2 y = 2 }
+								artillery_brigade = { x = 3 y = 0 }
+								artillery_brigade = { x = 3 y = 1 }
 							}
 							support = {
 								DIV_HQ = { x = 0 y = 0 }	
@@ -2921,7 +2931,7 @@ country_event = {
 						division = "division_template = \"Guarnición Republicana\" start_experience_factor = 0.1" 
 						owner = SPD
 						allow_spawning_on_enemy_provs = yes
-						count = 6
+						count = 8
 					}
 				}
 				every_owned_state = {
@@ -4747,6 +4757,7 @@ country_event = {
 				}
 			}
 		}
+		
 		# Remove Spirits that will no longer be relevant
 		custom_effect_tooltip = nationalists_chosen
 		remove_ideas = SPR_military_disloyalty
@@ -4762,7 +4773,8 @@ country_event = {
 	}
 	option = { # Option for Nationalists - Falangism
 		name = lar_spain.2.b
-		trigger = { has_completed_focus = SPA_sin_paquito }
+		trigger = { has_completed_focus = SPA_sin_paquito
+                   has_game_rule = { rule = IHMP_HISTORY option = ALLOWED }		}
 		ai_chance = {
 			base = 30
 			modifier = {
@@ -4811,7 +4823,8 @@ country_event = {
 	}
 	option = { # Option for Nationalists - Carlism
 		name = lar_spain.2.c
-		trigger = { has_completed_focus = SPA_a_great_spain }
+		trigger = { has_completed_focus = SPA_a_great_spain
+         has_game_rule = { rule = IHMP_HISTORY option = ALLOWED }		}
 		ai_chance = {
 			base = 30
 			modifier = {
@@ -4917,7 +4930,8 @@ country_event = {
 	}
 	option = { # Option for Republicans - Communism
 		name = lar_spain.2.e
-		trigger = { has_completed_focus = SPR_the_popular_front }
+		trigger = { has_completed_focus = SPR_the_popular_front
+		 has_game_rule = { rule = IHMP_HISTORY option = ALLOWED } }
 		ai_chance = {
 			base = 30
 			modifier = {
@@ -4963,7 +4977,9 @@ country_event = {
 	}
 	option = { # Option for Republicans - Anarchism
 		name = lar_spain.2.f
-		trigger = { has_completed_focus = SPR_the_popular_front }
+		trigger = { has_completed_focus = SPR_the_popular_front
+         has_game_rule = { rule = IHMP_HISTORY option = ALLOWED } 
+		 }
 		ai_chance = {
 			base = 30
 			modifier = {
