@@ -168,7 +168,7 @@ focus_tree = {
 			}
 		}
 		relative_position_id = SPA_a_great_spain
-		cost = 5
+		cost = 4
 
 		available_if_capitulated = yes
 		search_filters = {FOCUS_FILTER_POLITICAL}
@@ -219,7 +219,7 @@ focus_tree = {
 		x = 0
 		y = 1
 		relative_position_id = SPA_negotiate_carlist_support
-		cost = 5
+		cost = 4
 
 		available_if_capitulated = yes
 		search_filters = {FOCUS_FILTER_SPA_CIVIL_WAR}
@@ -243,7 +243,7 @@ focus_tree = {
 		x = 0
 		y = 1
 		relative_position_id = SPA_the_army_of_africa
-		cost = 5
+		cost = 4
 
 		available_if_capitulated = yes
 		search_filters = {FOCUS_FILTER_SPA_CIVIL_WAR}
@@ -314,10 +314,9 @@ focus_tree = {
 	focus = {
 		id = SPA_sin_paquito
 		available = {
-			NOT = {
-				is_historical_focus_on = yes
+				has_game_rule = { rule = IHMP_HISTORY option = ALLOWED }
 			}
-		}
+		
 		bypass = {
 		}
 		prerequisite = { focus = SPA_secure_the_northern_garrisons }
@@ -327,7 +326,7 @@ focus_tree = {
 		x = -1
 		y = 1
 		relative_position_id = SPA_secure_the_northern_garrisons
-		cost = 4
+		cost = 2
 
 		available_if_capitulated = yes
 		search_filters = {FOCUS_FILTER_POLITICAL}
@@ -351,7 +350,7 @@ focus_tree = {
 		x = 1
 		y = 1
 		relative_position_id = SPA_secure_the_northern_garrisons
-		cost = 4
+		cost = 2
 
 		available_if_capitulated = yes
 		search_filters = {FOCUS_FILTER_POLITICAL FOCUS_FILTER_SPA_CIVIL_WAR}
@@ -669,10 +668,10 @@ focus_tree = {
 		available = {
 			has_global_flag = spanish_civil_war
 			hidden_trigger = { always = no }
-			NOT = {
-				is_historical_focus_on = yes
-			}
-			has_game_rule = { rule = IHMP_HISTORY option = ALLOWED } 
+		}
+		allow_branch = {
+			
+			has_game_rule = { rule = IHMP_HISTORY option = ALLOWED }  
 		}
 		bypass = {
 		}
@@ -2781,7 +2780,7 @@ focus_tree = {
 			}
 			NOT = { has_completed_focus = SPA_the_latin_bloc }
 			NOT = { has_global_flag = POR_iberian_summit_in_progress_flag }
-			has_game_rule = { rule = IHMP_HISTORY option = ALLOWED }  
+			NOT = { is_ai = yes} 
 		}
 		bypass = {
 			OR = {
@@ -3584,7 +3583,7 @@ focus_tree = {
 		x = -2
 		y = 1
 		relative_position_id = SPA_unify_the_nationalist_front
-		cost = 5
+		cost = 2
 
 		available_if_capitulated = yes
 
@@ -3606,7 +3605,7 @@ focus_tree = {
 		x = -1
 		y = 1
 		relative_position_id = SPA_save_the_alcazar
-		cost = 10
+		cost = 5
 
 		available_if_capitulated = yes
 		search_filters = {FOCUS_FILTER_WAR_SUPPORT FOCUS_FILTER_POLITICAL}
@@ -5547,7 +5546,10 @@ focus_tree = {
 		}
 		prerequisite = { focus = SPA_negotiate_carlist_support }
 		mutually_exclusive = { focus = SPA_the_phalanx_ascendant focus = SPA_unify_the_nationalist_front }
-		
+		allow_branch = {
+			
+			has_game_rule = { rule = IHMP_HISTORY option = ALLOWED }  
+		} 
 		icon = GFX_focus_spa_supremacy_of_the_communion
 		x = 9
 		y = 1
