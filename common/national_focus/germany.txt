@@ -2145,7 +2145,7 @@ focus_tree = {
 	focus = {
 		id = GER_air_innovation
 		icon = GFX_goal_generic_build_airforce
-		x = 12
+		x = 11
 		y = 0
 		cost = 5
 		ai_will_do = {
@@ -2288,11 +2288,42 @@ focus_tree = {
 	}
 
 	focus = {
+		id = GER_paratroopers_focus
+		icon = GFX_focus_generic_paratrooper
+		prerequisite = { focus = GER_air_innovation }
+		x = 1
+		y = 1
+		relative_position_id = GER_air_innovation
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		completion_reward = {
+			set_technology = { paratroopers = 1 popup = no }
+			add_tech_bonus = {
+				name = HUN_form_parachute_battalions
+				bonus = 2.0
+				uses = 1
+				category = para_tech
+			}
+			custom_effect_tooltip = GER_paratroopers_tt
+			custom_effect_tooltip = GER_paratroopers_tt_2
+			custom_effect_tooltip = GER_paratroopers_template_tt
+			hidden_effect = {
+				load_oob = "GER_paratroopers"
+			}
+		}
+	}
+
+	focus = {
 		id = GER_tactical_air_effort
 		icon = GFX_goal_generic_CAS
 		prerequisite = { focus = GER_air_innovation }
-		x = -1
-		y = 1
+		x = 0
+		y = 3
 		relative_position_id = GER_air_innovation
 		cost = 5
 		ai_will_do = {
@@ -2327,9 +2358,9 @@ focus_tree = {
 		id = GER_long_range_escorts
 		icon = GFX_goal_generic_air_fighter
 		prerequisite = { focus = GER_strategic_air_effort }
-		x = 1
+		x = 2
 		y = 1
-		relative_position_id = GER_strategic_air_effort
+		relative_position_id = GER_tactical_air_effort
 		cost = 5
 		ai_will_do = {
 			factor = 0.1
@@ -2354,10 +2385,9 @@ focus_tree = {
 		icon = GFX_goal_generic_air_naval_bomber
 		prerequisite = { focus = GER_strategic_air_effort }
 		prerequisite = { focus = GER_plan_z }
-		prerequisite = { focus = GER_naval_effort2 }
-		x = 0
-		y = 4
-		relative_position_id = GER_strategic_air_effort
+		x = 3
+		y = 2
+		relative_position_id = GER_tactical_air_effort
 		cost = 5
 		ai_will_do = {
 			factor = 1
@@ -2379,8 +2409,8 @@ focus_tree = {
 		id = GER_strategic_air_effort
 		icon = GFX_goal_generic_air_bomber
 		prerequisite = { focus = GER_air_innovation }
-		x = 1
-		y = 1
+		x = 2
+		y = 3
 		relative_position_id = GER_air_innovation
 		cost = 5
 		ai_will_do = {
@@ -2408,7 +2438,7 @@ focus_tree = {
 	focus = {
 		id = GER_army_innovation
 		icon = GFX_goal_generic_axis_build_infantry
-		x = 19
+		x = 20
 		y = 0
 		cost = 5
 		ai_will_do = {
@@ -2555,7 +2585,7 @@ focus_tree = {
 		icon = GFX_goal_generic_air_fighter2
 		prerequisite = { focus = GER_strategic_air_effort focus = GER_tactical_air_effort  }
 		x = 1
-		y = 3
+		y = 2
 		relative_position_id = GER_tactical_air_effort
 		cost = 5
 		
@@ -3029,7 +3059,7 @@ focus_tree = {
 		id = GER_rhineland
 		icon = GFX_goal_generic_military_sphere
 		#mutually_exclusive = { focus = GER_oppose_hitler }
-		x = 24
+		x = 25
 		y = 0
 		offset = {
 			trigger = {
@@ -5442,7 +5472,7 @@ focus_tree = {
 		icon = GFX_goal_generic_navy_doctrines_tactics
 		prerequisite = { focus = GER_naval_rearmament }
 		x = 0
-		y = 2
+		y = 1
 		relative_position_id = GER_naval_rearmament
 		cost = 5
 		ai_will_do = {
@@ -5534,8 +5564,8 @@ focus_tree = {
 		icon = GFX_goal_generic_navy_battleship
 		prerequisite = { focus = GER_naval_effort }
 		#mutually_exclusive = { focus = GER_rebuild_the_high_seas_fleet focus = GER_accept_british_naval_dominance }
-		x = -2
-		y = 1
+		x = -1
+		y = 2
 		relative_position_id = GER_naval_effort
 		cost = 5
 		ai_will_do = {
@@ -6663,8 +6693,8 @@ focus_tree = {
 			}
 		}
 		cancel_if_invalid = yes
-		x = 2
-		y = 4
+		x = 1
+		y = 3
 		relative_position_id = GER_plan_z
 		cost = 20
 		ai_will_do = {
