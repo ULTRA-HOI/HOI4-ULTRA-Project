@@ -189,6 +189,39 @@ MTG_naval_treaties = {
 		}
 	}
 	
+	MTG_accept_treaty_fascist = {
+
+		icon = generic
+			
+	
+		available = {
+			has_idea = MTG_naval_treaty_cheating
+			OR = {
+				tag = ITA
+				tag = JAP
+			}
+			has_global_flag = MTG_second_london_conference
+		}
+	
+		cost = 100
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 0
+		}
+	
+		visible = {
+			has_naval_treaty_trigger = yes
+			has_global_flag = MTG_second_london_conference
+			has_idea = MTG_naval_treaty_cheating
+		}
+	
+		complete_effect = {
+			hidden_effect = {
+				set_country_flag = accept_treaty
+			}
+		}
+	}
+	
 	MTG_abandon_treaty_germany = {
 
 		icon = generic
@@ -204,7 +237,7 @@ MTG_naval_treaties = {
 			}
 		}
 	
-		cost = 50
+		cost = 25
 		fire_only_once = yes
 		ai_will_do = {
 			factor = 0
@@ -769,6 +802,108 @@ MTG_naval_treaties = {
 					country_event = {id = generic.1050}
 				}
 			}
+		}
+	}
+	MTG_treaty_leaving_mission = {
+
+		icon = generic_naval	
+		
+		available = {
+			hidden_trigger = {
+				always = no
+				NOT = {
+					has_country_flag = accept_treaty
+				}
+			}
+		}
+		
+		cancel_trigger = {
+			OR = {
+				hidden_trigger = {
+					has_country_flag = accept_treaty
+				}
+				NOT = {
+					has_naval_treaty_trigger = yes
+				}
+			}
+		}
+		days_mission_timeout = 110
+		
+		activation = {
+			has_naval_treaty_trigger = yes
+			has_global_flag = MTG_second_london_conference
+			OR = {
+				tag = ITA
+				tag = JAP
+			}
+			hidden_trigger = {
+				NOT = {
+					has_country_flag = accept_treaty
+				}
+			}
+		}
+
+		visible = {
+			has_naval_treaty_trigger = yes
+		}
+		timeout_effect = {
+			remove_naval_treaty_effect = yes
+			every_other_country = {
+				limit = {
+					has_naval_treaty_trigger = yes
+				}
+				country_event = { id = MTG_naval_treaty.7 days = 2 }
+			}
+			if = {
+				limit = {
+					has_global_flag = {
+						flag = MTG_naval_treaty_signatories
+						value < 3
+					}
+				}
+				random_other_country = {
+					limit = {
+						has_naval_treaty_trigger = yes
+					}
+					remove_naval_treaty_effect = yes
+				}
+				clr_global_flag = MTG_naval_treaty_signatories
+				hidden_effect = { news_event = mtg_news.60 }
+			}
+			if = {
+				limit = {
+					has_global_flag = MTG_naval_treaty_signatories
+				}
+				modify_global_flag = {
+					flag = MTG_naval_treaty_signatories
+					value = -1
+				}
+			}
+			if = {
+				limit = {
+					not = {
+						any_other_country = {
+							OR = {
+								has_idea = MTG_naval_treaty_cheating_reduced
+								has_idea = MTG_naval_treaty_adherent_reduced
+							}
+						}
+					}
+				}
+				every_other_country = {
+					limit = {
+						OR = {
+							has_idea = MTG_naval_treaty_cheating
+							has_idea = MTG_naval_treaty_adherent
+						}
+					}
+					activate_mission = MTG_escalator_clause_invocation_mission
+					custom_effect_tooltip = MTG_escalator_clause_tt
+				}
+			}
+		}
+		complete_effect = {
+			
 		}
 	}
 	MTG_escalator_clause_invocation_mission = {
