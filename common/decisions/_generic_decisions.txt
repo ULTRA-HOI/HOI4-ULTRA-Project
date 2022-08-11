@@ -4818,4 +4818,149 @@ utility_decision_category = {
 			}
         }
 	}
+	
+	add_missing_operation_tokens = {
+		allowed = {
+		}
+
+		target_trigger = {
+			OR = {
+				AND = {
+					NOT = {
+						has_operation_token = {
+							tag = FROM
+							token = token_resistance_contacts
+						}
+					}
+					check_variable = { var_token_resistance_contacts_@FROM = 1 }
+				}
+				AND = {
+					NOT = {
+						has_operation_token = {
+							tag = FROM
+							token = token_airforce
+						}
+					}
+					check_variable = { var_token_airforce_@FROM = 1 }
+				}
+				AND = {
+					NOT = {
+						has_operation_token = {
+							tag = FROM
+							token = token_navy
+						}
+					}
+					check_variable = { var_token_navy_@FROM = 1 }
+				}
+				AND = {
+					NOT = {
+						has_operation_token = {
+							tag = FROM
+							token = token_army
+						}
+					}
+					check_variable = { var_token_army_@FROM = 1 }
+				}
+				AND = {
+					NOT = {
+						has_operation_token = {
+							tag = FROM
+							token = token_civilian
+						}
+					}
+					check_variable = { var_token_civilian_@FROM = 1 }
+				}
+			}
+		}
+		
+		visible = {
+			always = yes
+		}
+		
+		available = {
+			#always
+		}
+		
+		complete_effect = {
+			if = {
+				limit = {
+					NOT = {
+						has_operation_token = {
+							tag = FROM
+							token = token_resistance_contacts
+						}
+					}
+					check_variable = { var_token_resistance_contacts_@FROM = 1 }
+				}
+				add_operation_token = {
+					tag = FROM
+					token = token_resistance_contacts
+				}
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_operation_token = {
+							tag = FROM
+							token = token_airforce
+						}
+					}
+					check_variable = { var_token_airforce_@FROM = 1 }
+				}
+				add_operation_token = {
+					tag = FROM
+					token = token_airforce
+				}
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_operation_token = {
+							tag = FROM
+							token = token_navy
+						}
+					}
+					check_variable = { var_token_navy_@FROM = 1 }
+				}
+				add_operation_token = {
+					tag = FROM
+					token = token_navy
+				}
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_operation_token = {
+							tag = FROM
+							token = token_army
+						}
+					}
+					check_variable = { var_token_army_@FROM = 1 }
+				}
+				add_operation_token = {
+					tag = FROM
+					token = token_army
+				}
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_operation_token = {
+							tag = FROM
+							token = token_civilian
+						}
+					}
+					check_variable = { var_token_civilian_@FROM = 1 }
+				}
+				add_operation_token = {
+					tag = FROM
+					token = token_civilian
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
 }
