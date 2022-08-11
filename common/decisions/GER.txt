@@ -4276,6 +4276,127 @@ foreign_politics = {
 #Category only allowed for GER
 GER_military_buildup = {
 
+	GER_ship_objective_1 = { #Finish starting queue save BBs, research bonus on screens
+
+		icon = generic_naval
+
+		available = {
+
+			has_navy_size = {
+				unit = panzerschiff
+				size > 2
+			}
+			has_navy_size = {
+				unit = heavy_cruiser
+				size > 0
+			}
+			has_navy_size = {
+				unit = destroyer
+				size > 19
+			}
+		}
+
+		fire_only_once = yes
+		days_mission_timeout = 730
+		is_good = no
+		activation = {
+			has_completed_focus = GER_naval_effort
+		}
+
+
+		visible = {
+			has_completed_focus = GER_naval_effort
+		}
+
+		complete_effect = {
+			navy_experience = 50
+			add_tech_bonus = {
+				name = dd_bonus
+				bonus = 1.0
+				uses = 1
+				category = dd_tech
+			}
+			add_tech_bonus = {
+				name = cr_bonus
+				bonus = 1.0
+				uses = 2
+				category = cl_tech
+				category = ca_tech
+			}
+			add_doctrine_cost_reduction = {
+				cost_reduction = 0.5
+				uses = 1
+				category = naval_doctrine
+			}
+		}
+	}
+	
+	GER_ship_objective_2 = { #Finish Sharnhorsts, get research bonus on capitals
+
+		icon = generic_naval
+
+		available = {
+			has_navy_size = {
+				unit = battleship
+				size > 3
+			}
+		}
+
+		fire_only_once = yes
+		days_mission_timeout = 730
+		is_good = no
+		activation = {
+			has_completed_focus = GER_naval_effort2
+		}
+
+
+		visible = {
+			has_completed_focus = GER_naval_effort2
+		}
+
+		complete_effect = {
+			if ={
+				limit = { has_idea = aftermath_of_versailles_spirit }
+				swap_ideas = {
+					remove_idea = aftermath_of_versailles_spirit
+					add_idea = legacy_resurgent_spirit
+				}
+			}
+			navy_experience = 50
+			add_doctrine_cost_reduction = {
+				cost_reduction = 0.5
+				uses = 1
+				category = naval_doctrine
+			}
+			add_tech_bonus = {
+				name = capital_ships_bonus
+				bonus = 1.0
+				uses = 2
+				category = bb_tech
+			}
+			add_tech_bonus = {
+				name = heavy_battery_bonus
+				bonus = 1.0
+				uses = 4
+				category = cat_heavy_battery
+			}
+			add_tech_bonus = {
+				name = adv_heavy_battery_bonus
+				ahead_reduction = 1
+				bonus = 1.0
+				uses = 2
+				category = cat_adv_heavy_battery
+			}
+			add_tech_bonus = {
+				name = advanced_engine_bonus
+				ahead_reduction = 1
+				bonus = 0.5
+				uses = 1
+				technology = advanced_engine		
+			}
+		}
+	}
+
 	GER_plan_z = {
 
 		icon = generic_naval
