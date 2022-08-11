@@ -2376,7 +2376,7 @@ focus_tree = {
 		id = GER_naval_air_effort
 		text = naval_air_effort
 		icon = GFX_goal_generic_air_naval_bomber
-		prerequisite = { focus = GER_strategic_air_effort }
+		prerequisite = { focus = GER_tactical_air_effort }
 		prerequisite = { focus = GER_plan_z }
 		x = 3
 		y = 2
@@ -5511,6 +5511,10 @@ focus_tree = {
 		ai_will_do = {
 			factor = 1
 		}
+		
+		available = {
+			has_completed_focus = GER_anschluss
+		}
 
 		available_if_capitulated = yes
 
@@ -5538,8 +5542,11 @@ focus_tree = {
 		}
 
 		available = {
-			NOT = {
-				has_idea = MTG_anglo-german_treaty
+			OR = {
+				date > 1939
+				NOT = {
+					has_idea = MTG_anglo-german_treaty
+				}
 			}
 		}
 
@@ -5584,7 +5591,18 @@ focus_tree = {
 				uses = 2
 				category = cv_tech
 			}
-			
+			IF = {
+				limit = {
+					has_idea = MTG_anglo-german_treaty
+				}
+				remove_ideas = MTG_anglo-german_treaty
+				ENG = {
+					country_event = {
+						id = britain.104
+						days = 1
+					}
+				}
+			}
 			
 		}
 	}
@@ -5592,7 +5610,7 @@ focus_tree = {
 	focus = {
 		id = GER_u_boat_effort
 		icon = GFX_goal_generic_navy_submarine
-		prerequisite = { focus = GER_naval_effort }
+		prerequisite = { focus = GER_naval_effort2 }
 		#mutually_exclusive = { focus = GER_plan_z focus = GER_rebuild_the_high_seas_fleet focus = GER_accept_british_naval_dominance }
 		x = 1
 		y = 2
