@@ -12,7 +12,7 @@
 	
 	default = no
 
-	continuous_focus_position = { x = 50 y = 1100 }
+	continuous_focus_position = { x = 450 y = 800 }
 
 	focus = {
 		id = ITA_ethiopian_war_logistics
@@ -269,8 +269,8 @@
 		id = ITA_fortification_effort
 		icon = GFX_goal_generic_construct_military
 		prerequisite = { focus = ITA_industrial_effort_2 }
-		x = 0
-		y = 2
+		x = 1
+		y = 1
 		relative_position_id = ITA_industrial_effort_2
 		cost = 20
 		ai_will_do = {
@@ -380,8 +380,8 @@
 		icon = GFX_focus_research
 		text = extra_tech_slot
 		prerequisite = { focus = ITA_industrial_effort_2 }
-		x = 1
-		y = 1
+		x = 0
+		y = 2
 		relative_position_id = ITA_industrial_effort_2
 		cost = 10
 		ai_will_do = {
@@ -402,7 +402,7 @@
 		text = ITA_italian_highways
 		prerequisite = { focus = ITA_extra_tech_slot }
 		x = 0
-		y = 2
+		y = 1
 		relative_position_id = ITA_extra_tech_slot
 		cost = 10
 		ai_will_do = {
@@ -572,7 +572,7 @@
 				}
 			}
 		}
-		x = -1
+		x = 0
 		y = 1
 		relative_position_id = ITA_prospect_for_oil
 		cost = 5
@@ -599,7 +599,7 @@
 		icon = GFX_goal_generic_construct_civilian
 		text = ITA_libyan_infrastructure
 		prerequisite = { focus = ITA_prospect_for_oil }
-		x = 1
+		x = 2
 		y = 1
 		relative_position_id = ITA_prospect_for_oil
 		cost = 5
@@ -644,7 +644,7 @@
 	focus = {
 		id = ITA_army_primacy
 		icon = GFX_goal_generic_axis_build_infantry
-		x = 4
+		x = 3
 		y = 0
 		cost = 5
 		ai_will_do = {
@@ -812,7 +812,7 @@
 	focus = {
 		id = ITA_mare_nostrum
 		icon = GFX_goal_generic_build_navy
-		x = 6
+		x = 5
 		y = 0
 		cost = 10
 		ai_will_do = {
@@ -1122,7 +1122,7 @@
 		text = extra_tech_slot
 		prerequisite = { focus = ITA_air_innovation_2 focus = ITA_atlantic_fleet}
 		x = 2
-		y = 2
+		y = 1
 		relative_position_id = ITA_air_innovation_2
 		cost = 5
 		ai_will_do = {
@@ -1167,7 +1167,7 @@
 	focus = {
 		id = ITA_light_ship_effort
 		icon = GFX_goal_generic_navy_cruiser
-		x = 11
+		x = 10
 		y = 0
 		cost = 5
 		ai_will_do = {
@@ -1203,6 +1203,13 @@
 		x = 1
 		y = 1
 		relative_position_id = ITA_light_ship_effort
+		offset = {
+			trigger = {
+				NOT = { has_game_rule = { rule = IHMP_HISTORY option = ALLOWED } }
+			}
+			x = -1
+			y = 0
+		}
 		cost = 5
 		ai_will_do = {
 			factor = 1
@@ -1311,8 +1318,15 @@
 
 		available_if_capitulated = yes
 
-		x = 15
+		x = 14
 		y = 0
+		offset = {
+			trigger = {
+				NOT = { has_game_rule = { rule = IHMP_HISTORY option = ALLOWED } }
+			}
+			x = -1
+			y = 0
+		}
 		cost = 10
 		ai_will_do = {
 			factor = 1
@@ -1498,7 +1512,14 @@
 		x = 5
 		y = 1
 		relative_position_id = ITA_victoryinETH
-		cost = 4.4
+		offset = {
+			trigger = {
+				NOT = { has_game_rule = { rule = IHMP_HISTORY option = ALLOWED } }
+			}
+			x = -2
+			y = 0
+		}
+		cost = 4
 		ai_will_do = {
 			factor = 1
 		}
@@ -1576,6 +1597,13 @@
 		x = 1
 		y = 3
 		relative_position_id = ITA_support_nationalist_spain
+		offset = {
+			trigger = {
+				NOT = { has_game_rule = { rule = IHMP_HISTORY option = ALLOWED } }
+			}
+			x = -1
+			y = -2
+		}
 		cost = 10
 		search_filters = { FOCUS_FILTER_ANNEXATION }
 
@@ -1730,6 +1758,13 @@
 		}
 		x = -1
 		y = 1
+		offset = {
+			trigger = {
+				NOT = { has_game_rule = { rule = IHMP_HISTORY option = ALLOWED } }
+			}
+			x = 1
+			y = 0
+		}
 		relative_position_id = ITA_bulgaria_friend
 		cost = 10
 		ai_will_do = {
@@ -1815,8 +1850,10 @@
 		icon = GFX_focus_generic_italy_first
 		prerequisite = { focus = ITA_bulgaria_friend }
 		mutually_exclusive = { focus = ITA_pact_of_steel }
+		allow_branch ={
+			has_game_rule = { rule = IHMP_HISTORY option = ALLOWED }
+		}
 		available = {
-			has_game_rule = { rule = IHMP_HISTORY option = ALLOWED } 
 			is_subject = no
 			NOT = { has_war_with = BUL }
 			NOT = { is_in_faction_with = GER }
@@ -2219,6 +2256,13 @@
 		x = 1
 		y = 3
 		relative_position_id = ITA_pact_of_steel
+		offset = {
+			trigger = {
+				NOT = { has_game_rule = { rule = IHMP_HISTORY option = ALLOWED } }
+			}
+			x = 1
+			y = -2
+		}
 		cost = 10
 		ai_will_do = {
 			factor = 10
@@ -2311,9 +2355,9 @@
 			}
 		}
 		will_lead_to_war_with = TUR
-		x = -1
+		x = 0
 		y = 1
-		relative_position_id = ITA_greece_friend
+		relative_position_id = ITA_greece_war_goal
 		cost = 4
 		ai_will_do = {
 			factor = 0
