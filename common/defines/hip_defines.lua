@@ -465,6 +465,7 @@ NDefines.NAITheatre.AI_THEATRE_SUPPLY_CRISIS_LIMIT = 0.2                        
 NDefines.NSupply.TRUCK_ATTRITION = 0.003 -- base truck attrition
 NDefines.NSupply.TRUCK_ATTRITION_FACTOR = 0.45 --a scale on total truck attrition
 NDefines.NSupply.LOCAL_SUPPLY_PER_AIR_MISSION = 0.005
+NDefines.NSupply.SUPPLY_POINTS_PER_TRAIN = 0.1 -- was 1.0 but divided by 10 for granularity with trains being 10 time cheaper
 -- Lack of supply effect
 
 NDefines.NMilitary.COMBAT_SUPPLY_LACK_ATTACKER_ATTACK = -0.70     -- attack combat penalty for attacker if out of supply
@@ -622,7 +623,7 @@ NDefines.NCountry.AIR_SUPPLY_DROP_EXPIRATION_HOURS = 120  --168            -- Ai
 
 NDefines.NAir.AIR_WING_ATTACK_LOGISTICS_TRUCK_DAMAGE_FACTOR = 0.25
 NDefines.NAir.AIR_WING_ATTACK_LOGISTICS_INFRA_DAMAGE_SPILL_FACTOR = 0.001
-NDefines.NAir.AIR_WING_ATTACK_LOGISTICS_TRAIN_DAMAGE_FACTOR = 0.050
+NDefines.NAir.AIR_WING_ATTACK_LOGISTICS_TRAIN_DAMAGE_FACTOR = 0.50
 
 --Focus 		
 NDefines.NFocus.MAX_SAVED_FOCUS_PROGRESS = 14
