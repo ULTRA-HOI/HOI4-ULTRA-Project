@@ -11519,15 +11519,11 @@ SOV_great_patriotic_war = {
 
 		target_trigger = {
 			FROM = {
-				is_core_of = ROOT
-				OR = {
-					industrial_complex > 0
-					arms_factory > 0
-					dockyard > 0
+			    is_core_of = ROOT
+					arms_factory > 9
 				}
 			}
-		}
-
+		
 		target_root_trigger = {
 			has_completed_focus = SOV_desperate_measures
 		}
@@ -11569,21 +11565,173 @@ SOV_great_patriotic_war = {
 				remove_dynamic_modifier = { modifier = SOV_factory_worker_militias_raised }
 			}
 		}
-
+		
 		complete_effect = {
 			hidden_effect = {
 				#Cost
 				add_command_power = -25
-				add_political_power = -25
+				add_political_power = -15
+				 SOV = { 
+         division_template = {
+						name = "Worker Militia"
+						priority = 3
+						division_names_group = SOV_GAR_01
+						regiments = {
+							infantry = { x = 0 y = 0 }
+							infantry = { x = 0 y = 1 }
+							infantry = { x = 0 y = 2 }
+							infantry = { x = 1 y = 0 }
+							infantry = { x = 1 y = 1 }
+							infantry = { x = 1 y = 2 }
+							infantry = { x = 2 y = 0 }
+						}
+						support = {
+						DIV_HQ = { x = 0 y = 0 }
+						}
+						is_locked = yes 
+					}
+				}
 
 				FROM = {
 					add_dynamic_modifier = {
 						modifier = SOV_factory_worker_militias_raised
 						scope = SOV
 					}
-				}
+					IF = {
+					limit = {
+                     FROM = {
+					NOT = { arms_factory > 14 } 
+	                     }
+					}
+					create_unit = {
+							division = "division_template = \"Worker Militia\" start_experience_factor = 0.1 start_manpower_factor = 0.5 start_equipment_factor = 0.2"
+							owner = SOV
+							count = 2
+						}
+					
+					}
+					
+					ELSE_IF = { 
+					limit = {
+					  From = {
+					arms_factory > 14 
+					NOT = { arms_factory > 19 } 
+				        }
+					}
+					create_unit = {
+							division = "division_template = \"Worker Militia\" start_experience_factor = 0.1  start_manpower_factor = 0.5 start_equipment_factor = 0.2"
+							owner = SOV
+							count = 3
+						}
+					}
+					
+					ELSE_IF = { 
+					limit = {
+					  From = {
+					arms_factory > 19 
+					NOT = { arms_factory > 24} 
+				        }
+					}
+					create_unit = {
+							division = "division_template = \"Worker Militia\" start_experience_factor = 0.1  start_manpower_factor = 0.5 start_equipment_factor = 0.2"
+							owner = SOV
+							count = 4
+						}
+					
+					}
+					
+					ELSE_IF = { 
+					limit = {
+					  From = {
+					arms_factory > 24 
+					NOT = { arms_factory > 29 } 
+				        }
+					}
+					create_unit = {
+							division = "division_template = \"Worker Militia\" start_experience_factor = 0.1 start_manpower_factor = 0.5 start_equipment_factor = 0.2"
+							owner = SOV
+							count = 5
+						}
+					
+					}
+					
+					ELSE_IF = { 
+					limit = {
+					  From = {
+					arms_factory > 29
+					NOT = { arms_factory > 34} 
+				        }
+					}
+					create_unit = {
+							division = "division_template = \"Worker Militia\" start_experience_factor = 0.1 start_manpower_factor = 0.5 start_equipment_factor = 0.2"
+							owner = SOV
+							count = 6
+						}
+					
+					}
+					
+					ELSE_IF = { 
+					limit = {
+					  From = {
+					arms_factory > 34 
+					NOT = { arms_factory > 39 } 
+				        }
+					}
+					create_unit = {
+							division = "division_template = \"Worker Militia\" start_experience_factor = 0.1  start_manpower_factor = 0.5 start_equipment_factor = 0.2"
+							owner = SOV
+							count = 7
+						}
+					
+					}
+					
+					ELSE_IF = { 
+					limit = {
+					  From = {
+					arms_factory > 39
+					NOT = { arms_factory > 44} 
+				        }
+					}
+					create_unit = {
+							division = "division_template = \"Worker Militia\" start_experience_factor = 0.1  start_manpower_factor = 0.5 start_equipment_factor = 0.3"
+							owner = SOV
+							count = 8
+						}
+					
+					}
+					
+					ELSE_IF = { 
+					limit = {
+					  From = {
+					arms_factory > 44 
+					NOT = { arms_factory > 49 } 
+				        }
+					}
+					create_unit = {
+							division = "division_template = \"Worker Militia\" start_experience_factor = 0.1  start_manpower_factor = 0.5 start_equipment_factor = 0.3"
+							owner = SOV
+							count = 9
+						}
+					
+					}
+					
+					ELSE_IF = { 
+					limit = {
+					  From = {
+					arms_factory > 49
+				        }
+					}
+					create_unit = {
+							division = "division_template = \"Worker Militia\" start_experience_factor = 0.1  start_manpower_factor = 0.5 start_equipment_factor = 0.4"
+							owner = SOV
+							count = 10
+						}
+					
+					}
+					
 			}
 			custom_effect_tooltip = SOV_factory_worker_militias_state_modifier_tt
+		}
 		}
 
 		remove_effect = {
