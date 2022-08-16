@@ -4403,28 +4403,28 @@ GER_military_buildup = {
 
 		available = {
 			
-		set_temp_variable = { heavy_cruisers_and_panzerschiffe = num_ships_with_type@heavy_cruiser }
-		add_to_temp_variable = {heavy_cruisers_and_panzerschiffe = num_ships_with_type@panzerschiff }
+			set_temp_variable = { heavy_cruisers_and_panzerschiffe = num_ships_with_type@heavy_cruiser }
+			add_to_temp_variable = { heavy_cruisers_and_panzerschiffe = num_ships_with_type@panzerschiff }
+			set_temp_variable = { bb_and_cv = num_ships_with_type@battleship }
+			add_to_temp_variable = { bb_and_cv = num_ships_with_type@carrier }
+
 
 			has_navy_size = {
 				unit = battleship
-				size > 11
+				size > 7
 			}
-			has_navy_size = {
-				unit = carrier
-				size > 3
+			custom_trigger_tooltip = {
+				tooltip = bb_and_cv_tt
+				check_variable = {
+					bb_and_cv > 15
+				}
 			}
 			OR = {
-				has_navy_size = {
-					unit = heavy_cruiser
-					size > 19
-				}
-				has_navy_size = {
-					unit = panzerschiff
-					size > 19
-				}
-				check_variable = {
-					heavy_cruisers_and_panzerschiffe > 19
+				custom_trigger_tooltip = {
+					tooltip = heavy_cruisers_and_panzerschiffe_tt
+					check_variable = {
+						heavy_cruisers_and_panzerschiffe > 19
+					}
 				}
 				has_navy_size = {
 					unit = battle_cruiser
