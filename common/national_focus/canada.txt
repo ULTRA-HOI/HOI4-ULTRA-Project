@@ -2721,7 +2721,9 @@
 
 		available = {
 			has_tech = radio
-			has_tech = decimetric_radar
+			has_tech = radio_detection
+			date > 1940.1.1
+			is_in_faction_with = ENG
 		}
 		
 		bypass = {
@@ -2734,12 +2736,7 @@
 		search_filters = { FOCUS_FILTER_RESEARCH }
 
 		complete_tooltip = {
-			add_tech_bonus = {
-				name = CAN_the_pacific_coast_air_defence_radar_system
-				ahead_reduction = 2.0
-				uses = 1
-				category = radar_tech
-			}
+		
 			random_state = {
 				limit = {
 					has_state_flag = CAN_the_pacific_coast_air_defence_radar_system_radar1
@@ -2773,11 +2770,73 @@
 		}
 
 		completion_reward = {
+			
+			add_tech_bonus = {
+				name = CAN_the_pacific_coast_air_defence_radar_system
+				ahead_reduction = 1.0
+				uses = 1
+				technology = decimetric_radar
+			}
+			add_tech_bonus = {
+				name = CAN_the_pacific_coast_air_defence_radar_system
+				ahead_reduction = 2.5
+				uses = 1
+				technology = improved_decimetric_radar
+			}
+			add_tech_bonus = {
+				name = CAN_the_pacific_coast_air_defence_radar_system
+				ahead_reduction = 3.0
+				uses = 1
+				technology = advanced_decimetric_radar
+			}
+			add_tech_bonus = {
+				name = CAN_the_pacific_coast_air_defence_radar_system
+				ahead_reduction = 3.0
+				uses = 1
+				technology = centimetric_radar
+			}
+			add_tech_bonus = {
+				name = CAN_the_pacific_coast_air_defence_radar_system
+				ahead_reduction = 3.0
+				uses = 1
+				technology = improved_centimetric_radar
+			}
+			add_tech_bonus = {
+				name = CAN_the_pacific_coast_air_defence_radar_system
+				ahead_reduction = 3.0
+				uses = 1
+				technology = advanced_centimetric_radar
+			}
+			
 			add_tech_bonus = {
 				name = CAN_the_pacific_coast_air_defence_radar_system
 				bonus = 1.0
 				uses = 1
-				category = radar_tech
+				technology = improved_decimetric_naval_radar
+			}
+			add_tech_bonus = {
+				name = CAN_the_pacific_coast_air_defence_radar_system
+				ahead_reduction = 2.0
+				uses = 1
+				technology = advanced_decimetric_naval_radar
+			}
+			add_tech_bonus = {
+				name = CAN_the_pacific_coast_air_defence_radar_system
+				ahead_reduction = 2.0
+				uses = 1
+				technology = basic_centimetric_naval_radar
+			}
+			add_tech_bonus = {
+				name = CAN_the_pacific_coast_air_defence_radar_system
+				ahead_reduction = 2.0
+				uses = 1
+				technology = improved_centimetric_naval_radar
+			}
+			add_tech_bonus = {
+				name = CAN_the_pacific_coast_air_defence_radar_system
+				ahead_reduction = 2.0
+				uses = 1
+				technology = advanced_centimetric_naval_radar
 			}
 
 			if = {
@@ -2832,70 +2891,6 @@
 						instant_build = yes
 					}
 					set_state_flag = CAN_the_pacific_coast_air_defence_radar_system_radar3
-				}
-				else = {
-					set_technology = {
-						radio_detection = 1
-					}
-					effect_tooltip = {
-						random_owned_controlled_state = {
-							prioritize = { 473 }
-							limit = {
-								is_in_home_area = yes
-							}
-							add_building_construction = {
-								type = radar_station
-								level = 1
-								instant_build = yes
-							}
-						}
-
-						random_owned_controlled_state = {
-							limit = {
-								NOT = { state = 473 }
-								NOT = { has_state_flag = CAN_the_pacific_coast_air_defence_radar_system_radar1 }
-								is_in_home_area = yes
-							}
-							add_building_construction = {
-								type = radar_station
-								level = 1
-								instant_build = yes
-							}
-						}
-					}
-					random_owned_controlled_state = {
-						prioritize = { 473 }
-						limit = {
-							is_in_home_area = yes
-							free_building_slots = {
-								building = radar_station
-								size > 0
-							}
-						}
-						add_building_construction = {
-							type = radar_station
-							level = 1
-							instant_build = yes
-						}
-						set_state_flag = CAN_the_pacific_coast_air_defence_radar_system_radar1
-					}
-
-					random_owned_controlled_state = {
-						limit = {
-							NOT = { has_state_flag = CAN_the_pacific_coast_air_defence_radar_system_radar1 }
-							is_in_home_area = yes
-							free_building_slots = {
-								building = radar_station
-								size > 0
-							}
-						}
-						add_building_construction = {
-							type = radar_station
-							level = 1
-							instant_build = yes
-						}
-						set_state_flag = CAN_the_pacific_coast_air_defence_radar_system_radar2
-					}
 				}
 			}
 		}
