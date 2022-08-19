@@ -71,6 +71,7 @@ NDefines.NNavy.CONVOY_SINKING_SPILLOVER = 1.0 --0.5                 				-- Damag
 --NDefines.NNavy.ANTI_AIR_TARGETTING_TO_CHANCE = 0.02							-- Balancing value to convert averaged equipment stats (anti_air_targetting and naval_strike_agility) to probability chances of airplane being hit by navies AA.
 NDefines.NNavy.ANTI_AIR_ATTACK_TO_AMOUNT = 0.001 						-- Balancing value to convert equipment stat anti_air_attack to the random % value of airplanes being hit. Was .0025 in ultra; Lower this value so that plane lost are less
 NDefines.NNavy.AA_EFFICIENCY_PENALTY_ON_MINIMUM_POSITIONING	= 0.1           -- AA penalty at 0% positioning
+NDefines.NNavy.SCREENING_EFFICIENCY_PENALTY_ON_MINIMUM_POSITIONING				= 0.25  		-- was 0.5 -- screening efficiency (screen to capital ratio) at 0% positioning
 NDefines.NNavy.NAVAL_TRANSFER_BASE_SPEED = 6                                -- was 6 -- base speed of units on water being transported
 NDefines.NNavy.COMBAT_BASE_HIT_CHANCE = 0.05									-- base chance for hit
 NDefines.NNavy.COMBAT_EVASION_TO_HIT_CHANCE = 0.025							-- we take ship evasion stats, and mult by this value, so it gives hit chance reduction. So if reduction is 0.025 and ship evasion = 10, then there will be 0.25 (25%) lower hit chance. (Fe. 50% base -25% from evasion +10% bcoz it's very close).
