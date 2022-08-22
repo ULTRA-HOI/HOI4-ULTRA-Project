@@ -9346,7 +9346,46 @@ operations = {
 			add_popularity = { ideology = democratic popularity = -0.03 }
 		}
 	}
-
+	
+	ENG_operation_super-gymnast = {
+		icon = generic_operation
+		
+		allowed = {
+			original_tag = ENG
+		}
+		
+		visible = {			
+			any_country_with_original_tag = {
+				original_tag_to_check = FRA
+				has_government = fascism
+				OR = {
+					is_subject_of = GER
+					has_focus_tree = vichy_french_focus
+				}
+			}
+		}
+		available = {
+			original_tag = ENG
+			ENG = { controls_state = 448 }
+		}
+		
+		fire_only_once = yes
+		
+		complete_effect = {
+			ENG = {
+				declare_war_on = {
+					target = VIC
+					type = annex_everything
+				}
+			}
+			set_global_flag = operation_torch
+			
+			hidden_effect = {
+				news_event = {id = news.806 days = 1}
+			}
+		}
+	}
+	
 	mers_el_kebir_raid = {
 
 		icon = generic_naval
@@ -9755,4 +9794,3 @@ ships_for_UK = {
 		}
 	}
 }
-
