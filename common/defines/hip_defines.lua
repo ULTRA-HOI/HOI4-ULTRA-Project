@@ -286,7 +286,7 @@ NDefines.NMilitary.LAND_AIR_COMBAT_MAX_PLANES_PER_ENEMY_WIDTH = 10 --5 -- how ma
 
 -- Land combat general regulation
 
-NDefines.NMilitary.LAND_COMBAT_STR_DAMAGE_MODIFIER = 0.25 --0.06        -- global damage modifier... but some equipment is returned at end of battles see : EQUIPMENT_COMBAT_LOSS_FACTOR
+NDefines.NMilitary.LAND_COMBAT_STR_DAMAGE_MODIFIER = 0.2 --0.06        -- global damage modifier... but some equipment is returned at end of battles see : EQUIPMENT_COMBAT_LOSS_FACTOR
 NDefines.NMilitary.LAND_COMBAT_ORG_DAMAGE_MODIFIER = 0.10 --0.04        -- global damage modifier
 NDefines.NMilitary.BASE_CHANCE_TO_AVOID_HIT = 80              -- Base chance to avoid hit if defences left.
 NDefines.NMilitary.CHANCE_TO_AVOID_HIT_AT_NO_DEF = 60	           -- chance to avoid hit if no defences left.
