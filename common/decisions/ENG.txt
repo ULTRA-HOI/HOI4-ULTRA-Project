@@ -8049,6 +8049,29 @@ ENG_move_to_secure_the_dominions = {
 
 ENG_imperial_conference_decision = {
 	
+	ENG_imperial_conference_countdown = {
+
+			icon = generic_political_discourse	
+			
+			available = {
+				hidden_trigger = {
+					always = no
+				}
+			}
+			days_mission_timeout = 499
+		
+			visible = {
+				tag = ENG
+				always = yes
+			}
+			timeout_effect = {
+				set_country_flag = ENG_imperial_conference_timer_flag
+				country_event = { id = mtg_britain.82 hours = 6 }
+				hidden_effect = { news_event = { id = mtg_news.13 days = 1 } }
+				}
+			}
+		
+
 	ENG_imperial_conference_decision = {
 
 		icon = generic_political_discourse
@@ -8124,12 +8147,12 @@ ENG_imperial_conference_decision = {
 			NOT = { has_country_flag = ENG_imperial_conference_discussion_in_progress }
 		}
 
-		cost = 50
+		cost = 25
 
 		fire_only_once = yes
 
 		visible = {
-			has_completed_focus = ENG_imperial_conference
+ 
 			has_country_flag = ENG_imperial_conference_timer_flag
 		}
 
@@ -8155,12 +8178,12 @@ ENG_imperial_conference_decision = {
 			NOT = { has_country_flag = ENG_imperial_conference_discussion_in_progress }
 		}
 
-		cost = 50
+		cost = 25
 
 		fire_only_once = yes
 
 		visible = {
-			has_completed_focus = ENG_imperial_conference
+ 
 			has_country_flag = ENG_imperial_conference_timer_flag
 		}
 
@@ -8186,12 +8209,12 @@ ENG_imperial_conference_decision = {
 			NOT = { has_country_flag = ENG_imperial_conference_discussion_in_progress }
 		}
 
-		cost = 50
+		cost = 25
 
 		fire_only_once = yes
 
 		visible = {
-			has_completed_focus = ENG_imperial_conference
+ 
 			has_country_flag = ENG_imperial_conference_timer_flag
 		}
 
@@ -8205,84 +8228,6 @@ ENG_imperial_conference_decision = {
 		}
 	}
 
-	ENG_discuss_appeasement = {
-
-		icon = eng_trade_unions_support
-
-		allowed = {
-			tag = ENG
-		}
-
-		available = {
-			NOT = { has_country_flag = ENG_imperial_conference_discussion_in_progress }
-			has_war = no
-		}
-
-		cost = 50
-
-		fire_only_once = yes
-
-		visible = {
-			has_completed_focus = ENG_imperial_conference
-			has_country_flag = ENG_imperial_conference_timer_flag
-		}
-
-		complete_effect = {
-			country_event = { id = mtg_britain.95 hours = 6 }
-			set_country_flag = ENG_imperial_conference_discussion_in_progress
-		}
-
-		ai_will_do = {
-			factor = 100
-		}
-	}
-
-	ENG_discuss_imperial_federation = {
-
-		icon = eng_imperial_federation
-
-		allowed = {
-			tag = ENG
-		}
-
-		available = {
-			NOT = { has_country_flag = ENG_imperial_conference_discussion_in_progress }
-			OR = {
-				CAN = { exists = yes }
-				SAF = { exists = yes }
-				AST = { exists = yes }
-				NZL = { exists = yes }
-				AND = {
-					RAJ = { is_subject_of = ENG }
-					has_completed_focus = ENG_indian_autonomy
-				}
-			}
-		}
-
-		cost = 100
-
-		fire_only_once = yes
-
-		visible = {
-			has_completed_focus = ENG_imperial_conference
-			has_country_flag = ENG_imperial_conference_timer_flag
-		}
-
-		complete_effect = {
-			country_event = { id = mtg_britain.99 hours = 6 }
-			set_country_flag = ENG_imperial_conference_discussion_in_progress
-			if = {
-				limit = {
-					NOT = { has_completed_focus = ENG_indian_autonomy }
-				}
-				custom_effect_tooltip = ENG_indian_autonomy_tt
-			}
-		}
-
-		ai_will_do = {
-			factor = 100
-		}
-	}
 }
 
 political_actions = {
