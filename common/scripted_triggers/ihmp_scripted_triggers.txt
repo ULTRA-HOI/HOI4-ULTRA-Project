@@ -1,0 +1,386 @@
+DIPLOMACY_REQUEST_LICENSED_PRODUCTION_ENABLE_TRIGGER = {
+	if = {
+		limit = {
+			has_game_rule = {
+				rule = allow_licensing
+				option = FREE
+			}
+		}
+		always = yes
+	}
+	if = {
+		limit = {
+			has_game_rule = {
+				rule = allow_licensing
+				option = SAME_IDEOLOGY
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_ALLOW_LICENSING_SAME_IDEOLOGY_TT
+			has_government = FROM
+		}
+	}
+	if = {
+		limit = {
+			has_game_rule = {
+				rule = allow_licensing
+				option = SAME_FACTION
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_ALLOW_LICENSING_SAME_FACTION_TT
+			is_in_faction_with = FROM
+		}
+	}
+	if = {
+		limit = {
+			has_game_rule = {
+				rule = allow_licensing
+				option = HISTORICAL
+			}
+		}
+		OR = {
+			custom_trigger_tooltip = {
+				tooltip = RULE_ALLOW_LICENSING_SAME_FACTION_SOVIET_ALLIES_FACTION
+				is_in_faction_with = FROM
+			}
+			custom_trigger_tooltip = {
+				tooltip = RULE_ALLOW_LICENSING_SAME_FACTION_SOVIET_ALLIES_SOV
+				ROOT = { tag = SOV }
+				FROM = {
+					OR = {
+						tag = USA
+						is_in_faction_with = USA
+						is_in_faction_with = ENG
+					}
+				}
+				OR = {
+					ROOT = { has_war_with = ITA }
+					ROOT = { has_war_with = GER }
+					ROOT = { has_war_with = JAP }
+					FROM = { has_war_with = ITA }
+					FROM = { has_war_with = GER }
+					FROM = { has_war_with = JAP }
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = RULE_ALLOW_LICENSING_SAME_FACTION_SOVIET_ALLIES_ALLIED
+				OR = {
+					tag = USA
+					is_in_faction_with = USA
+					is_in_faction_with = ENG
+				}
+				FROM = {
+					tag = SOV
+				}
+				OR = {
+					ROOT = { has_war_with = ITA }
+					ROOT = { has_war_with = GER }
+					ROOT = { has_war_with = JAP }
+					FROM = { has_war_with = ITA }
+					FROM = { has_war_with = GER }
+					FROM = { has_war_with = JAP }
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = RULE_ALLOW_LICENSING_SAME_FACTION_SOVIET_ALLIES_USA
+				ROOT = {
+					OR = {
+						tag = USA
+						is_in_faction_with = USA
+						is_in_faction_with = ENG
+					}
+				}
+				FROM = {
+					OR = {
+						tag = USA
+						is_in_faction_with = USA
+						is_in_faction_with = ENG
+					}
+				}
+				USA = {
+					OR = {
+						has_idea = USA_lend_lease_act_li
+						has_idea = USA_lend_lease_act_na
+						has_idea = USA_lend_lease_act_dummy
+					}
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = RULE_ALLOW_LICENSING_SAME_FACTION_SWEDEN
+				FROM = {
+					tag = SWE
+				}
+			}
+		}
+	}
+	if = {
+		limit = {
+			has_game_rule = {
+				rule = allow_licensing
+				option = BLOCKED
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_ALLOW_LICENSING_BLOCKED_TT
+			always = no
+		}
+	}
+}
+
+DIPLOMACY_SEND_VOLUNTEERS_ENABLE_TRIGGER = {
+	if = {
+		limit = {
+			has_game_rule = {
+				rule = allow_volunteers
+				option = ALWAYS_FREE
+			}
+		}
+		always = yes
+	}
+	if = {
+		limit = {
+			has_game_rule = {
+				rule = allow_volunteers
+				option = LIMITED
+			}
+		}
+		always = yes
+	}
+	if = {
+		limit = {
+			has_game_rule = {
+				rule = allow_volunteers
+				option = SAME_IDEOLOGY
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_VOLUNTEERS_SAME_IDEOLOGY_TT
+			has_government = FROM
+		}
+	}
+	if = {
+		limit = {
+			has_game_rule = {
+				rule = allow_volunteers
+				option = HISTORICAL
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_ALLOW_VOLUNTEERS_HISTORICAL_TT
+			OR = {
+				tag = GER
+				tag = ITA
+				tag = SOV
+				tag = USA
+				tag = ENG
+				tag = FRA
+			}
+		}
+	}
+	if = {
+		limit = {
+			has_game_rule = {
+				rule = allow_volunteers
+				option = BLOCKED
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_VOLUNTEERS_BLOCKED_TT
+			always = no
+		}
+	}
+}
+
+DIPLOMACY_LEND_LEASE_ENABLE_TRIGGER = {
+	if = {
+		limit = {
+			has_game_rule = {
+				rule = allow_lend_lease
+				option = FREE
+			}
+		}
+		always = yes
+	}
+	if = {
+		limit = {
+			has_game_rule = {
+				rule = allow_lend_lease
+				option = LIMITED
+			}
+		}
+		always = yes #handled by game logic, see above
+	}
+	if = {
+		limit = {
+			has_game_rule = {
+				rule = allow_lend_lease
+				option = HISTORICAL
+			}
+		}
+		OR = {
+			custom_trigger_tooltip = {
+				tooltip = RULE_ALLOW_LEND_LEASE_SAME_FACTION_TT
+				is_in_faction_with = FROM
+			}
+			custom_trigger_tooltip = {
+				tooltip = RULE_ALLOW_LEND_LEASE_AXIS_JAPAN
+				ROOT = {
+					OR = {
+						tag = GER
+						is_in_faction_with = GER
+					}
+				}
+				FROM = {
+					tag = JAP
+				}
+				OR = {
+					has_global_flag = falkenhausen_recalled
+					JAP = { has_completed_focus = JAP_technological_exchange }
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = RULE_ALLOW_LEND_LEASE_GER_CHI
+				ROOT = {
+					OR = {
+						tag = GER
+						is_in_faction_with = GER
+					}
+				}
+				FROM = {
+					tag = CHI
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = RULE_ALLOW_LEND_LEASE_JAPAN_AXIS
+				ROOT = {
+					tag = JAP
+				}
+				FROM = {
+					OR = {
+						tag = GER
+						is_in_faction_with = GER
+					}
+				}
+				OR = {
+					has_global_flag = tripartite_pact
+					JAP = { has_completed_focus = JAP_technological_exchange }
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = RULE_ALLOW_LEND_LEASE_USA_ALLIES
+				ROOT = {
+					OR = {
+						tag = USA
+						is_in_faction_with = USA
+						is_in_faction_with = ENG
+					}
+				}
+				FROM = {
+					OR = {
+						tag = USA
+						is_in_faction_with = USA
+						is_in_faction_with = ENG
+					}
+				}
+				USA = {
+					OR = {
+						has_idea = USA_lend_lease_act_li
+						has_idea = USA_lend_lease_act_na
+						has_idea = USA_lend_lease_act_dummy
+					}
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = RULE_ALLOW_LEND_LEASE_USAALLIES_SOVIETS
+				OR = {
+					tag = USA
+					is_in_faction_with = USA
+					is_in_faction_with = ENG
+				}
+				FROM = {
+					tag = SOV
+				}
+				OR = {
+					ROOT = { has_war_with = ITA }
+					ROOT = { has_war_with = GER }
+					ROOT = { has_war_with = JAP }
+					FROM = { has_war_with = ITA }
+					FROM = { has_war_with = GER }
+					FROM = { has_war_with = JAP }
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = RULE_ALLOW_LEND_LEASE_SOVIETS_USAALLIES
+				ROOT = { tag = SOV }
+				FROM = {
+					OR = {
+						tag = USA
+						is_in_faction_with = USA
+						is_in_faction_with = ENG
+					}
+				}
+				OR = {
+					ROOT = { has_war_with = ITA }
+					ROOT = { has_war_with = GER }
+					ROOT = { has_war_with = JAP }
+					FROM = { has_war_with = ITA }
+					FROM = { has_war_with = GER }
+					FROM = { has_war_with = JAP }
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = RULE_ALLOW_LEND_LEASE_SCW
+				ROOT = {
+					OR = {
+						tag = GER
+						tag = SOV
+						tag = ITA
+					}
+				}
+				FROM = {
+					original_tag = SPR
+				}
+				OR = {
+					NOT = { has_global_flag = scw_over }
+				}
+			}
+		}
+	}
+	if = {
+		limit = {
+			has_game_rule = {
+				rule = allow_lend_lease
+				option = SAME_IDEOLOGY
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_ALLOW_LEND_LEASE_SAME_IDEOLOGY_TT
+			has_government = FROM
+		}
+	}
+	if = {
+		limit = {
+			has_game_rule = {
+				rule = allow_lend_lease
+				option = SAME_FACTION
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_ALLOW_LEND_LEASE_SAME_FACTION_TT
+			is_in_faction_with = FROM
+		}
+	}
+	if = {
+		limit = {
+			has_game_rule = {
+				rule = allow_lend_lease
+				option = BLOCKED
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = RULE_ALLOW_LEND_LEASE_BLOCKED_TT
+			always = no
+		}
+	}
+}
