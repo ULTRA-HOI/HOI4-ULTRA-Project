@@ -125,8 +125,9 @@ NDefines.NNavy.MIN_HIT_PROFILE_MULT = 0.05
 
 NDefines.NNavy.UNIT_EXPERIENCE_SCALE = 0.8   -- was 1.0
 NDefines.NNavy.UNIT_EXPERIENCE_PER_COMBAT_HOUR = 2.5 --10 -- how many experience is gained by ship's crew per combat hour
-NDefines.NNavy.EXPERIENCE_FACTOR_CARRIER_GAIN = 0.04			-- was 0.08				-- Xp gain by carrier ships in the combat
-NDefines.NNavy.LEADER_EXPERIENCE_SCALE = 1.0  -- was 1.0
+NDefines.NNavy.EXPERIENCE_FACTOR_NON_CARRIER_GAIN = 0.05			-- was 0.04				--- Xp gain by non-carrier ships in the combat
+NDefines.NNavy.EXPERIENCE_FACTOR_CARRIER_GAIN = 0.045			-- was 0.08				-- Xp gain by carrier ships in the combat
+NDefines.NNavy.LEADER_EXPERIENCE_SCALE = 1.1  -- was 1.0
 
 
 NDefines.NNavy.MAX_SUBMARINES_PER_AUTO_TASK_FORCE = 10
@@ -152,7 +153,7 @@ NDefines.NNavy.REPAIR_AND_RETURN_AMOUNT_SHIPS_MEDIUM = 0.6
 NDefines.NNavy.REPAIR_AND_RETURN_UNIT_DYING_STR = 0.35
 NDefines.NNavy.NAVY_EXPENSIVE_IC = 8000
 NDefines.NNavy.MISSION_MAX_REGIONS = 10
-NDefines.NNavy.FIELD_EXPERIENCE_SCALE = 0.12 --0.075
+NDefines.NNavy.FIELD_EXPERIENCE_SCALE = 0.13 --0.075
 NDefines.NNavy.ANTI_AIR_TARGETTING_TO_CHANCE = 0.5 -- was 0.1
 NDefines.NNavy.BASE_CARRIER_SORTIE_EFFICIENCY = 0.50 -- was 0.25 in ultra
 NDefines.NNavy.CONVOY_ATTACK_BASE_FACTOR = 0.10
