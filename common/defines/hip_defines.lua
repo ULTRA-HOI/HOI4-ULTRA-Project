@@ -32,9 +32,9 @@ NDefines.NDiplomacy.MP_NUM_LOSERS_FOR_PEACE_PAUSE = 1				-- Number of human play
 NDefines.NDiplomacy.MAX_PARTICIPANTS_FOR_MAJOR_COUNTRIES = 5		-- If we have more then x aggressors/defenders we only list major countries in tooltip for warscore progressbar or entry in world tension view
 NDefines.NDiplomacy.VICTORY_POINT_WORTH_FACTOR = 25				-- multiplier when calcualting proince worth (surrender)	
 
-NDefines.NDiplomacy.VOLUNTEERS_PER_TARGET_PROVINCE = 0.01			-- Each province owned by the target country contributes this amount of volunteers to the limit.
-NDefines.NDiplomacy.VOLUNTEERS_PER_COUNTRY_ARMY = 0.01				-- Each army unit owned by the source country contributes this amount of volunteers to the limit.
-NDefines.NDiplomacy.VOLUNTEERS_DIVISIONS_REQUIRED = 20				-- This many divisons are required for the country to be able to send volunteers.
+NDefines.NDiplomacy.VOLUNTEERS_PER_TARGET_PROVINCE = 0.00			-- Each province owned by the target country contributes this amount of volunteers to the limit.
+NDefines.NDiplomacy.VOLUNTEERS_PER_COUNTRY_ARMY = 0.00				-- Each army unit owned by the source country contributes this amount of volunteers to the limit.
+NDefines.NDiplomacy.VOLUNTEERS_DIVISIONS_REQUIRED = 0				-- This many divisons are required for the country to be able to send volunteers.
 NDefines.NDiplomacy.OPINION_PER_VOLUNTEER = 20						-- Opinion bonus per one sent volunteer division
 
  -- YAMM
