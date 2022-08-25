@@ -178,8 +178,13 @@ NDefines.NProduction.MIN_POSSIBLE_TRAINING_MANPOWER = 50000			-- was 100000 -- H
 NDefines.NProduction.MIN_FIELD_TO_TRAINING_MANPOWER_RATIO = 0.50	-- was 0.75 -- Ratio which % of army in field can be trained
 
 NDefines.NProduction.LICENSE_IC_COST_YEAR_INCREASE = 0.25					-- IC cost equipment for every year of equipment after 1936
-NDefines.NProduction.LICENSE_EQUIPMENT_BASE_SPEED = -0.3				-- base MIC speed modifier for licensed equipment
+NDefines.NProduction.LICENSE_EQUIPMENT_BASE_SPEED = 0				-- base MIC speed modifier for licensed equipment
 NDefines.NProduction.BASE_LICENSE_IC_COST = 0							-- Base IC cost for lended license
+NDefines.NProduction.LICENSE_EQUIPMENT_TECH_SPEED_PER_YEAR = 0		-- MIC speed modifier for licensed equipment for each year of difference between actual and latest equipment
+NDefines.NProduction.LICENSE_EQUIPMENT_TECH_SPEED_MAX_YEARS = 0			-- Maximum years for MIC speed modifier
+NDefines.NProduction.LICENSE_EQUIPMENT_SPEED_NOT_FACTION = -0.20		-- MIC speed modifier for licensed equipment for not being in faction
+NDefines.NProduction.LICENSE_EQUIPMENT_UPGRADE_XP_FACTOR = 2.0		-- XP cost for upgrading licensed equipment
+NDefines.NProduction.LICENSE_EQUIPMENT_SPEED_NO_LICENSE = -0.80			-- Penalty for producing non licensed equipment
 
 NDefines.NProduction.CONVERSION_SPEED_BONUS = 4						    --Modifier to the production speed when converting equipment
 
