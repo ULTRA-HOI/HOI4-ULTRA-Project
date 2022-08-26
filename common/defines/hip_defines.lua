@@ -247,6 +247,7 @@ NDefines.NTechnology.DEFAULT_XP_RESEARCH_BONUS = 1		-- default research bonus ga
 NDefines.NTechnology.BASE_RESEARCH_POINTS_SAVED = 30.0		-- Base amount of research points a country can save per slot.
 NDefines.NTechnology.LICENSE_PRODUCTION_TECH_BONUS = 0.15	-- License production tech bonus
 NDefines.NTechnology.MIN_RESEARCH_SPEED = 0.1				-- research speed can't go below this value
+NDefines.NTechnology.MAX_TECH_SHARING_BONUS	= 0.5			-- Max technology sharing bonus that can be applied instantly
 
 
 -- Political stuff
