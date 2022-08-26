@@ -16,7 +16,7 @@ NDefines.NProduction.MIN_NAVAL_EQUIPMENT_CONVERSION_RESOURCE_COST_FACTOR = 0.2
 -- TRAINING STUFF
 --------------------------------------------------------------------------------------------------------------
 
-NDefines.NNavy.TRAINING_EXPERIENCE_FACTOR = 0.3 --0.3								-- Amount of exp each ship gain every 24h while training (before modifiers)
+NDefines.NNavy.TRAINING_EXPERIENCE_FACTOR = 0.075 --0.3								-- Amount of exp each ship gain every 24h while training (before modifiers)
 NDefines.NNavy.TRAINING_ACCIDENT_CHANCES = 0.005 --0.02						-- Chances one ship get damage each hour while on training
 NDefines.NNavy.TRAINING_ACCIDENT_STRENGTH_LOSS_FACTOR = 0.005 --0.05						-- Amount of strength loss in a training accident, propotional to the maximum strength of the ship
 
@@ -123,7 +123,7 @@ NDefines.NNavy.MIN_HIT_PROFILE_MULT = 0.05
 
 -- XP for ships and admirals
 
-NDefines.NNavy.UNIT_EXPERIENCE_SCALE = 0.8   -- was 1.0
+NDefines.NNavy.UNIT_EXPERIENCE_SCALE = 1.0   -- was 1.0
 NDefines.NNavy.UNIT_EXPERIENCE_PER_COMBAT_HOUR = 2.5 --10 -- how many experience is gained by ship's crew per combat hour
 NDefines.NNavy.EXPERIENCE_FACTOR_NON_CARRIER_GAIN = 0.05			-- was 0.04				--- Xp gain by non-carrier ships in the combat
 NDefines.NNavy.EXPERIENCE_FACTOR_CARRIER_GAIN = 0.045			-- was 0.08				-- Xp gain by carrier ships in the combat
