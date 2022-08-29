@@ -1208,38 +1208,6 @@
 	}
 
 	focus = {
-		id = NZL_national_defense_institute
-		icon = GFX_focus_research
-		prerequisite = { focus = NZL_project_seal }
-		x = -2
-		y = 5
-		relative_position_id = NZL_national_roads_board
-
-		cost = 10
-
-		ai_will_do = {
-			factor = 35
-		}
-
-		available = {
-			is_subject = no
-		}
-
-		bypass = {
-
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = no
-		search_filters = { FOCUS_FILTER_RESEARCH }
-
-		completion_reward = {
-			add_research_slot = 1
-		}
-	}
-
-	focus = {
 		id = NZL_expand_the_university_of_auckland
 		icon = GFX_focus_research
 		prerequisite = { focus = NZL_think_big }
@@ -1584,16 +1552,8 @@
 		}
 
 		available = {
-			is_subject = no
 			has_war = yes
 			is_in_faction = yes
-			OR = {
-				num_of_factories > 203
-				any_other_country = {
-					is_in_faction_with = ROOT
-					num_of_factories > 203
-				}
-			}
 		}
 
 		bypass = {
@@ -1606,7 +1566,12 @@
 		search_filters = { FOCUS_FILTER_RESEARCH }
 
 		completion_reward = {
-			add_research_slot = 1
+			add_to_tech_sharing_group = tizard_mission
+			modify_tech_sharing_bonus = {
+			  	id = commonwealth_research
+			   	bonus = 0.1
+			}
+
 		}
 	}
 
