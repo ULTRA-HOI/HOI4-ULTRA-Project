@@ -1542,7 +1542,7 @@ war_measures = {
 	
 	### China ###
 	
-	CHI_anti_death_spiral_ai = {
+	CHI_anti_death_spiral_ai_inf = {
 
 		allowed = {
             original_tag = CHI
@@ -1555,13 +1555,8 @@ war_measures = {
 		
 		available = {  # has war with main opponent, lack crucial stuff
 			has_war_with = JAP
-			OR = {
-				has_equipment = {
-					infantry_equipment < 1
-				}
-				has_equipment = {
-					heavy_infantry_equipment < 1
-				}
+			has_equipment = {
+				infantry_equipment < 1
 			}
 		}
 
@@ -1578,37 +1573,83 @@ war_measures = {
 		complete_effect = {
 			add_equipment_to_stockpile = {
 				type = infantry_equipment_0
-				amount = 15000
+				amount = 7500
 				producer = CHI
 			}
+		}
+	}
+	
+	
+	CHI_anti_death_spiral_ai_heavyinf = {
+
+		allowed = {
+            original_tag = CHI
+		}
+
+		visible = {
+			is_ai = yes
+			has_war = yes
+		}
+		
+		available = {  # has war with main opponent, lack crucial stuff
+			has_war_with = JAP
+			has_equipment = {
+				heavy_infantry_equipment < 1
+			}
+		}
+
+		fire_only_once = no
+		
+		cost = 0
+		
+		days_re_enable = 10
+		
+		ai_will_do = {
+			factor = 100
+		}
+		
+		complete_effect = {
 			add_equipment_to_stockpile = {
 				type = heavy_infantry_equipment_1
-				amount = 5000
+				amount = 2500
 				producer = CHI
 			}	
+		}
+	}
+	
+	
+	CHI_anti_death_spiral_ai_support = {
+
+		allowed = {
+            original_tag = CHI
+		}
+
+		visible = {
+			is_ai = yes
+			has_war = yes
+		}
+		
+		available = {  # has war with main opponent, lack crucial stuff
+			has_war_with = JAP
+			has_equipment = {
+				support_equipment_1 < 1
+			}
+		}
+
+		fire_only_once = no
+		
+		cost = 0
+		
+		days_re_enable = 10
+		
+		ai_will_do = {
+			factor = 100
+		}
+		
+		complete_effect = {
 			add_equipment_to_stockpile = {
 				type = support_equipment_1
-				amount = 5000
-				producer = CHI
-			}
-			add_equipment_to_stockpile = {
-				type = motorized_equipment_1
-				amount = 5000
-				producer = CHI
-			}
-			add_equipment_to_stockpile = {
-				type = artillery_equipment_1
-				amount = 2000
-				producer = CHI
-			}
-			add_equipment_to_stockpile = {
-				type = anti_tank_equipment_1
-				amount = 2000
-				producer = CHI
-			}
-			add_equipment_to_stockpile = {
-				type = anti_air_equipment_1
-				amount = 1000
+				amount = 2500
 				producer = CHI
 			}
 		}
