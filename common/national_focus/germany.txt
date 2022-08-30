@@ -3107,7 +3107,7 @@ focus_tree = {
 	
 	focus = {
 		id = GER_japan_friend
-		icon = GFX_goal_generic_military_deal
+		icon = GFX_focus_chi_collaboration_with_the_japanese
 		prerequisite = { focus = GER_rhineland }
 		#mutually_exclusive = { focus = GER_china_friend }
 		available = {
@@ -3124,13 +3124,13 @@ focus_tree = {
 				}
 			}
 		}
-		x = 2
+		x = 4
 		y = 1
 		offset = {
 			trigger = {
 				NOT = { has_game_rule = { rule = IHMP_HISTORY option = ALLOWED } }
 			}
-			x = -2
+			x = -4
 			y = 0 
 		}
 		relative_position_id = GER_rhineland
@@ -3154,7 +3154,6 @@ focus_tree = {
 				add_opinion_modifier = { target = GER modifier = sanctions }
 				country_event = { id = china.3 hours = 6 }
 			}
-			unlock_decision_tooltip = GER_mission_to_japan
 			custom_effect_tooltip = GER_japan_friend_tt
 			set_global_flag = falkenhausen_recalled
 			if = {
@@ -3174,11 +3173,84 @@ focus_tree = {
 				}
 			}
 		}
+	}	
+	
+	focus = {
+		id = GER_mission_to_japan
+		icon = GFX_goal_tfv_generic_tech_sharing
+		prerequisite = { focus = GER_japan_friend }
+		available = {
+			AND = {
+				country_exists = JAP
+				JAP = { is_subject = no }
+				NOT = { has_war_with = JAP }
+				JAP = {
+					custom_trigger_tooltip = {
+						tooltip = GER_alone_or_peace_faction_tt
+						is_alone_or_in_faction_at_peace_with_GER = yes
+					}
+				}
+			}
+		}
+		x = 0
+		y = 1
+		relative_position_id = GER_japan_friend
+		cost = 5
+
+		available_if_capitulated = yes
+
+		ai_will_do = {
+			factor = 1
+		}	
+		completion_reward = {
+			JAP = {
+				custom_effect_tooltip = needs_approval
+				country_event = { id = germany.200 }
+				effect_tooltip = {
+					add_doctrine_cost_reduction = {
+						name = land_doc_bonus
+						cost_reduction = 0.5
+						uses = 1
+						category = land_doctrine
+					}
+					add_tech_bonus = {	
+						name = armor_bonus			
+						bonus = 0.5
+						uses = 1
+						category = armor
+					}
+				}
+				GER = {
+					effect_tooltip = {
+						add_tech_bonus = {				
+							name = cv_bonus			
+							bonus = 0.5
+							uses = 2
+							category = cv_tech
+						}
+						
+						add_tech_bonus = {
+							name = nav_bomber_bonus	
+							bonus = 0.5
+							uses = 2
+							category = naval_air
+						}
+						
+						add_doctrine_cost_reduction = {
+							name = naval_doc_bonus
+							cost_reduction = 0.5
+							uses = 2
+							category = carrier_doctrine
+						}
+					}
+				}
+			}
+		}
 	}
 
 	focus = {
 		id = GER_china_friend
-		icon = GFX_goal_generic_military_deal
+		icon = GFX_focus_chi_cooperation_with_the_nationalists
 		prerequisite = { focus = GER_rhineland }
 		#mutually_exclusive = { focus = GER_japan_friend }
 		available = {
@@ -3231,16 +3303,16 @@ focus_tree = {
 		id = GER_anti_comitern_pact
 		icon = GFX_goal_anti_comintern_pact
 		prerequisite = { focus = GER_rhineland  }
-		x = 4
-		y = 1
+		x = 6
+		y = 2
 
 		relative_position_id = GER_rhineland
 		offset = {
 			trigger = {
 				NOT = { has_game_rule = { rule = IHMP_HISTORY option = ALLOWED } }
 			}
-			x = -2
-			y = 0 
+			x = -4
+			y = -1
 		}
 		cost = 5
 		available = {
@@ -3304,7 +3376,7 @@ focus_tree = {
 			has_government = fascism
 		}
 		
-		x = 2
+		x = -2
 		y = 1
 		relative_position_id = GER_anti_comitern_pact
 		cost = 10
