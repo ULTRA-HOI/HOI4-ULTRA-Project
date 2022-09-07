@@ -24,7 +24,7 @@ X_JAP_propaganda_campaigns = {
 		modifier = {
 			stability_weekly = 0.001
 			war_support_weekly = 0.001
-			political_power_factor = 0.2
+			political_power_factor = 0.1
 		}
 		complete_effect = {
 			set_variable = { X_JAP_new_propaganda_campaign = 3 }
@@ -36,49 +36,49 @@ X_JAP_propaganda_campaigns = {
 			multiply_variable = { X_JAP_propaganda_3_cost = 2 }	#custom_effect_tooltip = SOV_propaganda_campaign_cooldown_tt
 		}
 	}
-	X_JAP_propaganda_4 = { # ID = 4
-		priority = 2
-		icon = eng_propaganda_campaigns
-		ai_will_do = { base = 0 }
-		allowed = { original_tag = JAP }
-		available = {
-			X_JAP_propaganda_poster_slot_available = yes
-			custom_trigger_tooltip = {
-				tooltip = jap_prop_4_tt
-				OR = {
-					has_decision = JAP_test_the_soviets
-					has_border_war_with = SOV
-					has_war_with = JAP	
-				}
-			}
-		}
-		visible = {
-			has_government = fascism
-			has_civil_war = no
-		}
-		days_remove = 180
-		days_re_enable = 100
-		cost = X_JAP_propaganda_4_cost
-		fire_only_once = yes
-		modifier = {
-			experience_gain_army = 0.10
-		}
-		complete_effect = {
-			set_variable = { X_JAP_new_propaganda_campaign = 4 }
-			X_JAP_pick_propaganda_campaign_slot_effect = yes
-		}
-		remove_effect = {
-			add_doctrine_cost_reduction = {
-				name = X_JAP_propaganda_4
-				cost_reduction = 1.0
-				uses = 1
-				category = land_doctrine	
-			}
-			set_variable = { X_JAP_propaganda_campaign_to_remove = 4 }
-			X_JAP_reset_propaganda_campaign_slot_effect = yes
-			multiply_variable = { X_JAP_propaganda_4_cost = 2 }
-		}
-	}
+#	X_JAP_propaganda_4 = { # ID = 4
+#		priority = 2
+#		icon = eng_propaganda_campaigns
+#		ai_will_do = { base = 0 }
+#		allowed = { original_tag = JAP }
+#		available = {
+#			X_JAP_propaganda_poster_slot_available = yes
+#			custom_trigger_tooltip = {
+#				tooltip = jap_prop_4_tt
+#				OR = {
+#					has_decision = JAP_test_the_soviets
+#					has_border_war_with = SOV
+#					has_war_with = JAP	
+#				}
+#			}
+#		}
+#		visible = {
+#			has_government = fascism
+#			has_civil_war = no
+#		}
+#		days_remove = 180
+#		days_re_enable = 100
+#		cost = X_JAP_propaganda_4_cost
+#		fire_only_once = yes
+#		modifier = {
+#			experience_gain_army = 0.10
+#		}
+#		complete_effect = {
+#			set_variable = { X_JAP_new_propaganda_campaign = 4 }
+#			X_JAP_pick_propaganda_campaign_slot_effect = yes
+#		}
+#		remove_effect = {
+#			add_doctrine_cost_reduction = {
+#				name = X_JAP_propaganda_4
+#				cost_reduction = 1.0
+#				uses = 1
+#				category = land_doctrine	
+#			}
+#			set_variable = { X_JAP_propaganda_campaign_to_remove = 4 }
+#			X_JAP_reset_propaganda_campaign_slot_effect = yes
+#			multiply_variable = { X_JAP_propaganda_4_cost = 2 }
+#		}
+#	}
 	X_JAP_propaganda_5 = { # ID = 5
 		priority = 2
 		icon = eng_propaganda_campaigns
@@ -87,8 +87,6 @@ X_JAP_propaganda_campaigns = {
 		available = {
 			X_JAP_propaganda_poster_slot_available = yes
 			has_war = no
-			country_exists = CHI
-			country_exists = MAN
 		}
 		visible = {
 			has_government = fascism
@@ -99,46 +97,13 @@ X_JAP_propaganda_campaigns = {
 		cost = X_JAP_propaganda_5_cost
 		fire_only_once = yes
 		modifier = {
-			weekly_manpower = 100 #placeholder
+			production_speed_infrastructure_factor = 0.125
 		}
 		complete_effect = {
-			CHI = {
-				random_owned_controlled_state = {
-					prioritize = { 613 }
-					add_extra_state_shared_building_slots = 2
-					add_building_construction = {
-						type = industrial_complex
-						level = 2
-						instant_build = yes
-					}
-				}
-				add_opinion_modifier = { target = JAP modifier = small_increase }
-			}
-			
 			set_variable = { X_JAP_new_propaganda_campaign = 5 }
 			X_JAP_pick_propaganda_campaign_slot_effect = yes
 		}
 		remove_effect = {
-				random_owned_controlled_state = {
-					prioritize = { 528 }
-					add_extra_state_shared_building_slots = 2
-					add_building_construction = {
-						type = industrial_complex
-						level = 2
-						instant_build = yes
-					}
-				}
-			MAN = {
-				random_owned_controlled_state = {
-					prioritize = { 328 }
-					add_extra_state_shared_building_slots = 2
-					add_building_construction = {
-						type = industrial_complex
-						level = 2
-						instant_build = yes
-					}
-				}
-			}
 			set_variable = { X_JAP_propaganda_campaign_to_remove = 5 }
 			X_JAP_reset_propaganda_campaign_slot_effect = yes
 			multiply_variable = { X_JAP_propaganda_5_cost = 2 }
@@ -158,8 +123,8 @@ X_JAP_propaganda_campaigns = {
 		days_re_enable = 100
 		cost = X_JAP_propaganda_6_cost
 		modifier = {
-			training_time_factor = -0.80
-			mobilization_speed = 0.4
+			training_time_factor = -0.1
+			mobilization_speed = 0.25
 		}
 		complete_effect = {
 			set_variable = { X_JAP_new_propaganda_campaign = 6 }
@@ -171,76 +136,36 @@ X_JAP_propaganda_campaigns = {
 			multiply_variable = { X_JAP_propaganda_6_cost = 2 }
 		}
 	}
-	X_JAP_propaganda_7 = { # ID = 7
-		priority = 2
-		icon = eng_propaganda_campaigns
-		ai_will_do = { base = 0 }
-		allowed = { original_tag = JAP }
-		available = { X_JAP_propaganda_poster_slot_available = yes }
-		visible = {
-			has_government = fascism
-			has_civil_war = no
-		}
-		days_remove = 180
-		days_re_enable = 100
-		cost = X_JAP_propaganda_7_cost
-		modifier = {
-			fascism_drift = 0.05
-			weekly_manpower = 2000
-		}
-		complete_effect = {
-			set_variable = { X_JAP_new_propaganda_campaign = 7 }
-			X_JAP_pick_propaganda_campaign_slot_effect = yes
-		}
-		remove_effect = {
-			set_variable = { X_JAP_propaganda_campaign_to_remove = 7 }
-			X_JAP_reset_propaganda_campaign_slot_effect = yes
-			multiply_variable = { X_JAP_propaganda_7_cost = 2 }
-		}
-	}
-	X_JAP_propaganda_8 = { # ID = 8
-		priority = 2
-		icon = eng_propaganda_campaigns
-		ai_will_do = { base = 0 }
-		allowed = { original_tag = JAP }
-		available = {
-			X_JAP_propaganda_poster_slot_available = yes
-			any_country = {
-				has_war_with = JAP
-				has_full_control_of_state = 608
-			}
-		}
-		visible = {
-			has_government = fascism
-			has_civil_war = no
-		}
-		days_remove = 180
-		days_re_enable = 100
-		cost = X_JAP_propaganda_8_cost
-		fire_only_once = yes
-		modifier = {
-			army_attack_factor = 0.1
-			breakthrough_factor = 0.1
-		}
-		complete_effect = {
-			set_variable = { X_JAP_new_propaganda_campaign = 8 }
-			X_JAP_pick_propaganda_campaign_slot_effect = yes
-		}
-		remove_trigger = {
-            any_country = {
-				OR = {
-					tag = JAP
-					is_in_faction_with = JAP
-				}
-				has_full_control_of_state = 608
-			}
-        }
-		remove_effect = {
-			set_variable = { X_JAP_propaganda_campaign_to_remove = 8 }
-			X_JAP_reset_propaganda_campaign_slot_effect = yes
-			multiply_variable = { X_JAP_propaganda_8_cost = 2 }
-		}
-	}
+#	X_JAP_propaganda_7 = { # ID = 7
+#		priority = 2
+#		icon = eng_propaganda_campaigns
+#		ai_will_do = { base = 0 }
+#		allowed = { original_tag = JAP }
+#		available = { 
+#			X_JAP_propaganda_poster_slot_available = yes 
+#			country_exists = MAN
+#		}
+#		visible = {
+#			has_government = fascism
+#			has_civil_war = no
+#		}
+#		days_remove = 180
+#		days_re_enable = 100
+#		cost = X_JAP_propaganda_7_cost
+#		modifier = {
+#			fascism_drift = 0.05
+#		}
+#		complete_effect = {
+#			set_variable = { X_JAP_new_propaganda_campaign = 7 }
+#			X_JAP_pick_propaganda_campaign_slot_effect = yes
+#		}
+#		remove_effect = {
+#			set_variable = { X_JAP_propaganda_campaign_to_remove = 7 }
+#			X_JAP_reset_propaganda_campaign_slot_effect = yes
+#			multiply_variable = { X_JAP_propaganda_7_cost = 2 }
+#		}
+#	}
+
 	X_JAP_propaganda_9 = { # ID = 9
 		priority = 2
 		icon = eng_propaganda_campaigns
@@ -254,9 +179,10 @@ X_JAP_propaganda_campaigns = {
 		days_remove = 180
 		days_re_enable = 100
 		cost = X_JAP_propaganda_9_cost
-		fire_only_once = yes
 		modifier = {
 			land_reinforce_rate = 0.05
+			army_attack_factor = 0.025
+			breakthrough_factor = 0.05
 		}
 		complete_effect = {
 			set_variable = { X_JAP_new_propaganda_campaign = 9 }
@@ -268,42 +194,7 @@ X_JAP_propaganda_campaigns = {
 			multiply_variable = { X_JAP_propaganda_9_cost = 2 }
 		}
 	}
-	X_JAP_propaganda_10 = { # ID = 10
-		priority = 2
-		icon = eng_propaganda_campaigns
-		ai_will_do = { base = 0 }
-		allowed = { original_tag = JAP }
-		available = {
-			X_JAP_propaganda_poster_slot_available = yes
-			has_completed_focus = JAP_sign_tripartite_pact
-			has_war_with = USA
-			USA = {
-				has_government = democratic
-				has_war_with = GER
-				has_war_with = ITA
-			}
-		}
-		visible = {
-			has_government = fascism
-			has_civil_war = no
-		}
-		days_remove = 180
-		days_re_enable = 100
-		cost = X_JAP_propaganda_10_cost
-		modifier = {
-			fascism_drift = 0.05
-			army_morale_factor = 0.1
-		}
-		complete_effect = {
-			set_variable = { X_JAP_new_propaganda_campaign = 10 }
-			X_JAP_pick_propaganda_campaign_slot_effect = yes
-		}
-		remove_effect = {
-			set_variable = { X_JAP_propaganda_campaign_to_remove = 10 }
-			X_JAP_reset_propaganda_campaign_slot_effect = yes
-			multiply_variable = { X_JAP_propaganda_10_cost = 2 }
-		}
-	}
+
 	X_JAP_propaganda_11 = { # ID = 11
 		priority = 2
 		icon = eng_propaganda_campaigns
@@ -324,8 +215,8 @@ X_JAP_propaganda_campaigns = {
 		days_re_enable = 100
 		cost = X_JAP_propaganda_11_cost
 		modifier = {
-			consumer_goods_factor = 0.05
-			production_factory_efficiency_gain_factor = 0.1
+			production_factory_efficiency_gain_factor = 0.05
+			production_factory_start_efficiency_factor = 0.05
 		}
 		complete_effect = {
 			set_variable = { X_JAP_new_propaganda_campaign = 11 }
@@ -338,38 +229,7 @@ X_JAP_propaganda_campaigns = {
 			multiply_variable = { X_JAP_propaganda_11_cost = 2 }
 		}
 	}
-	X_JAP_propaganda_12 = { # ID = 12
-		priority = 2
-		icon = eng_propaganda_campaigns
-		ai_will_do = { base = 0 }
-		allowed = { original_tag = JAP }
-		available = {
-			X_JAP_propaganda_poster_slot_available = yes
-			OR = {
-				has_completed_focus = JAP_range_focus
-				has_completed_focus = JAP_agility_focus
-			}
-		}
-		visible = {
-			has_government = fascism
-			has_civil_war = no
-		}
-		days_remove = 180
-		days_re_enable = 100
-		cost = X_JAP_propaganda_12_cost
-		modifier = {
-			experience_gain_air = 0.2
-		}
-		complete_effect = {
-			set_variable = { X_JAP_new_propaganda_campaign = 12 }
-			X_JAP_pick_propaganda_campaign_slot_effect = yes
-		}
-		remove_effect = {
-			set_variable = { X_JAP_propaganda_campaign_to_remove = 12 }
-			X_JAP_reset_propaganda_campaign_slot_effect = yes
-			multiply_variable = { X_JAP_propaganda_12_cost = 2 }
-		}
-	}
+
 	X_JAP_propaganda_13 = { # ID = 13
 		priority = 2
 		icon = eng_propaganda_campaigns
@@ -384,7 +244,7 @@ X_JAP_propaganda_campaigns = {
 		days_re_enable = 100
 		cost = X_JAP_propaganda_13_cost
 		modifier = {
-			army_org_regain = 0.1
+			army_org_regain = 0.05
 		}
 		complete_effect = {
 			set_variable = { X_JAP_new_propaganda_campaign = 13 }
@@ -396,65 +256,7 @@ X_JAP_propaganda_campaigns = {
 			multiply_variable = { X_JAP_propaganda_13_cost = 2 }
 		}
 	}
-	X_JAP_propaganda_14 = { # ID = 14
-		priority = 2
-		icon = eng_propaganda_campaigns
-		ai_will_do = { base = 0 }
-		allowed = { original_tag = JAP }
-		available = { X_JAP_propaganda_poster_slot_available = yes has_country_leader = { ruling_only = yes character = JAP_emperor_hirohito } }
-		visible = {
-			has_government = fascism
-			has_civil_war = no
-		}
-		days_remove = 180
-		days_re_enable = 100
-		cost = X_JAP_propaganda_14_cost
-		fire_only_once = yes
-		complete_effect = {
-			set_variable = { X_JAP_new_propaganda_campaign = 14 }
-			X_JAP_pick_propaganda_campaign_slot_effect = yes
-		}
-		remove_effect = {
-			add_political_power = 150
-			set_variable = { X_JAP_propaganda_campaign_to_remove = 14 }
-			X_JAP_reset_propaganda_campaign_slot_effect = yes
-			multiply_variable = { X_JAP_propaganda_14_cost = 2 }
-		}
-	}
-	X_JAP_propaganda_15 = { # ID = 15
-		priority = 2
-		icon = eng_propaganda_campaigns
-		ai_will_do = { base = 0 }
-		allowed = { original_tag = JAP }
-		available = {
-			X_JAP_propaganda_poster_slot_available = yes
-			has_completed_focus = JAP_sign_tripartite_pact
-			GER = { has_government = fascism }
-			ITA = { has_government = fascism }
-		}
-		visible = {
-			has_government = fascism
-			has_civil_war = no
-		}
-		days_remove = 180
-		days_re_enable = 100
-		cost = X_JAP_propaganda_15_cost
-		modifier = {
-			land_doctrine_cost_factor = -0.1
-			stability_weekly = -0.002
-		}
-		complete_effect = {
-			set_variable = { X_JAP_new_propaganda_campaign = 15 }
-			X_JAP_pick_propaganda_campaign_slot_effect = yes
-		}
-		remove_effect = {
-			GER = { add_political_power = 50 }
-			ITA = { add_political_power = 50 }
-			set_variable = { X_JAP_propaganda_campaign_to_remove = 15 }
-			X_JAP_reset_propaganda_campaign_slot_effect = yes
-			multiply_variable = { X_JAP_propaganda_15_cost = 2 }
-		}
-	}
+
 	X_JAP_propaganda_16 = { # ID = 16
 		priority = 2
 		icon = eng_propaganda_campaigns
@@ -470,10 +272,10 @@ X_JAP_propaganda_campaigns = {
 		cost = X_JAP_propaganda_16_cost
 		fire_only_once = yes
 		modifier = {
-			political_power_cost = 1.0
-			weekly_manpower = 350
+			political_power_cost = 0.75
 			stability_weekly = 0.002
 			war_support_weekly = 0.002
+			army_org_factor = 0.025
 		}
 		complete_effect = {
 			set_variable = { X_JAP_new_propaganda_campaign = 16 }
@@ -510,15 +312,15 @@ X_JAP_propaganda_campaigns = {
 		cost = X_JAP_propaganda_17_cost
 		fire_only_once = yes
 		modifier = {
-			weekly_manpower = 2500
-			required_garrison_factor = -0.1
+			required_garrison_factor = -0.2
+			resistance_growth = -0.2
 		}
 		complete_effect = {
 			set_variable = { X_JAP_new_propaganda_campaign = 17 }
 			X_JAP_pick_propaganda_campaign_slot_effect = yes
 		}
 		remove_effect = {
-			add_equipment_to_stockpile = { type = infantry_equipment_0 amount = 24000 producer = USA }
+			add_equipment_to_stockpile = { type = infantry_equipment_0 amount = 5000 producer = USA }
 			set_variable = { X_JAP_propaganda_campaign_to_remove = 17 }
 			X_JAP_reset_propaganda_campaign_slot_effect = yes
 			multiply_variable = { X_JAP_propaganda_17_cost = 2 }
@@ -548,60 +350,14 @@ X_JAP_propaganda_campaigns = {
 		cost = X_JAP_propaganda_18_cost
 		fire_only_once = yes
 		modifier = {
-			weekly_manpower = 8000
-			non_core_manpower = 0.1
+			non_core_manpower = 0.15
+			compliance_gain = 0.05
 		}
 		complete_effect = {
 			set_variable = { X_JAP_new_propaganda_campaign = 18 }
 			X_JAP_pick_propaganda_campaign_slot_effect = yes
 		}
 		remove_effect = {
-			custom_effect_tooltip = recindonesie_tt1
-			hidden_effect = {
-				division_template = {
-					name = "Keibodan" #Kyodo Boei Giyugun
-					division_names_group = JAP_INF_01
-					regiments = {
-						infantry = { x = 0 y = 0 }
-						infantry = { x = 0 y = 1 }
-						infantry = { x = 0 y = 2 }
-						infantry = { x = 0 y = 3 }
-
-						infantry = { x = 1 y = 0 }
-						infantry = { x = 1 y = 1 }
-						infantry = { x = 1 y = 2 }
-						infantry = { x = 1 y = 3 }
-
-						infantry = { x = 2 y = 0 }
-						infantry = { x = 2 y = 1 }
-						infantry = { x = 2 y = 2 }
-						infantry = { x = 2 y = 3 }
-
-						infantry = { x = 3 y = 0 }
-						infantry = { x = 3 y = 1 }
-						infantry = { x = 3 y = 2 }
-						infantry = { x = 3 y = 3 }
-					}
-				}
-				random_owned_controlled_state = {
-					prioritize = { 64 }
-					create_unit = { 
-						division = "name = \"1. Keibodan\" division_template = \"Keibodan\" start_experience_factor = 0.3" 
-						owner = JAP
-						count = 1
-					}
-					create_unit = { 
-						division = "name = \"2. Keibodan\" division_template = \"Keibodan\" start_experience_factor = 0.3" 
-						owner = JAP
-						count = 1
-					}
-					create_unit = { 
-						division = "name = \"3. Keibodan\" division_template = \"Keibodan\" start_experience_factor = 0.3" 
-						owner = JAP
-						count = 1
-					}
-				}
-			}
 			hidden_effect = { set_country_flag = japindiescoop }
 			set_variable = { X_JAP_propaganda_campaign_to_remove = 18 }
 			X_JAP_reset_propaganda_campaign_slot_effect = yes
@@ -636,69 +392,14 @@ X_JAP_propaganda_campaigns = {
 		cost = X_JAP_propaganda_19_cost
 		fire_only_once = yes
 		modifier = {
-			non_core_manpower = 0.4
+			non_core_manpower = 0.3
+			compliance_gain = 0.05
 		}
 		complete_effect = {
 			set_variable = { X_JAP_new_propaganda_campaign = 19 }
 			X_JAP_pick_propaganda_campaign_slot_effect = yes
 		}
 		remove_effect = {
-			custom_effect_tooltip = recindonesie_tt2
-			hidden_effect = {
-				division_template = {
-					name = "Kyodo Boei Giyugun"
-					division_names_group = JAP_INF_01
-					regiments = {
-						infantry = { x = 0 y = 0 }
-						infantry = { x = 0 y = 1 }
-						infantry = { x = 0 y = 2 }
-						infantry = { x = 0 y = 3 }
-
-						infantry = { x = 1 y = 0 }
-						infantry = { x = 1 y = 1 }
-						infantry = { x = 1 y = 2 }
-						infantry = { x = 1 y = 3 }
-
-						infantry = { x = 2 y = 0 }
-						infantry = { x = 2 y = 1 }
-						infantry = { x = 2 y = 2 }
-						infantry = { x = 2 y = 3 }
-
-						infantry = { x = 3 y = 0 }
-						infantry = { x = 3 y = 1 }
-						infantry = { x = 3 y = 2 }
-						infantry = { x = 3 y = 3 }
-					}
-				}
-				random_owned_controlled_state = {
-					prioritize = { 335 }
-					create_unit = { 
-						division = "name = \"1. Kyodo Boei Giyugun\" division_template = \"Kyodo Boei Giyugun\" start_experience_factor = 1.0" 
-						owner = JAP
-						count = 1
-					}
-					create_unit = { 
-						division = "name = \"2. Kyodo Boei Giyugun\" division_template = \"Kyodo Boei Giyugun\" start_experience_factor = 1.0" 
-						owner = JAP
-						count = 1
-					}
-					create_unit = { 
-						division = "name = \"3. Kyodo Boei Giyugun\" division_template = \"Kyodo Boei Giyugun\" start_experience_factor = 1.0" 
-						owner = JAP
-						count = 1
-					}
-					create_unit = { 
-						division = "name = \"4. Kyodo Boei Giyugun\" division_template = \"Kyodo Boei Giyugun\" start_experience_factor = 1.0" 
-						owner = JAP
-						count = 1
-					}
-					create_unit = { 
-						division = "name = \"5. Kyodo Boei Giyugun\" division_template = \"Kyodo Boei Giyugun\" start_experience_factor = 1.0" 
-						owner = JAP
-						count = 1
-					}
-				}
-			}
 			set_variable = { X_JAP_propaganda_campaign_to_remove = 19 }
 			X_JAP_reset_propaganda_campaign_slot_effect = yes
 			multiply_variable = { X_JAP_propaganda_19_cost = 2 }
@@ -727,15 +428,15 @@ X_JAP_propaganda_campaigns = {
 		days_re_enable = 100
 		cost = X_JAP_propaganda_20_cost
 		modifier = {
-			supply_consumption_factor = -0.2
-			production_speed_rail_way_factor = 0.2
+			supply_consumption_factor = -0.05
+			production_speed_rail_way_factor = 0.1
+			compliance_gain = 0.05
 		}
 		complete_effect = {
 			set_variable = { X_JAP_new_propaganda_campaign = 20 }
 			X_JAP_pick_propaganda_campaign_slot_effect = yes
 		}
 		remove_effect = {
-			add_equipment_to_stockpile = { type = infantry_equipment_0 amount = 24000 producer = RAJ }
 			set_variable = { X_JAP_propaganda_campaign_to_remove = 20 }
 			X_JAP_reset_propaganda_campaign_slot_effect = yes
 			multiply_variable = { X_JAP_propaganda_20_cost = 2 }
@@ -785,8 +486,11 @@ X_JAP_propaganda_campaigns = {
 				}
 				has_full_control_of_state = 335
 			}
-			has_war = yes
-			surrender_progress > 0.2
+			NOT = {
+				country_exists = INS
+				country_exists = MAL
+			}
+			date > 1943.1.1
 		}
 		visible = {
 			has_government = fascism
@@ -797,9 +501,9 @@ X_JAP_propaganda_campaigns = {
 		cost = X_JAP_propaganda_22_cost
 
 		modifier = {
-			dig_in_speed_factor = 0.5
-			production_speed_bunker_factor = 0.2
-			production_speed_coastal_bunker_factor = 0.2
+			dig_in_speed_factor = 0.3
+			production_speed_bunker_factor = 0.1
+			production_speed_coastal_bunker_factor = 0.1
 		}
 		complete_effect = {
 			set_variable = { X_JAP_new_propaganda_campaign = 22 }
@@ -837,8 +541,8 @@ X_JAP_propaganda_campaigns = {
 		cost = X_JAP_propaganda_23_cost
 		fire_only_once = yes
 		modifier = {
-			political_power_cost = 0.5
-			army_defence_factor = 0.1
+			political_power_cost = 0.3
+			army_defence_factor = 0.075
 		}
 		complete_effect = {
 			set_variable = { X_JAP_new_propaganda_campaign = 23 }
@@ -871,52 +575,14 @@ X_JAP_propaganda_campaigns = {
 		cost = X_JAP_propaganda_24_cost
 		fire_only_once = yes
 		modifier = {
-			weekly_manpower = -32000
-			consumer_goods_factor = 0.05
-			production_speed_buildings_factor = 0.2
+			production_speed_buildings_factor = 0.1
 		}
 		complete_effect = {
 			set_variable = { X_JAP_new_propaganda_campaign = 24 }
 			X_JAP_pick_propaganda_campaign_slot_effect = yes
 		}
 		remove_effect = {
-			add_political_power = 300
-			random_owned_controlled_state = {
-				prioritize = { 528 }
-				add_extra_state_shared_building_slots = 2
-				add_building_construction = {
-					type = arms_factory
-					level = 2
-					instant_build = yes
-				}
-			}
-			random_owned_controlled_state = {
-				prioritize = { 531 }
-				add_extra_state_shared_building_slots = 2
-				add_building_construction = {
-					type = arms_factory
-					level = 2
-					instant_build = yes
-				}
-			}
-			random_owned_controlled_state = {
-				prioritize = { 530 }
-				add_extra_state_shared_building_slots = 2
-				add_building_construction = {
-					type = arms_factory
-					level = 2
-					instant_build = yes
-				}
-			}
-			random_owned_controlled_state = {
-				prioritize = { 529 }
-				add_extra_state_shared_building_slots = 2
-				add_building_construction = {
-					type = arms_factory
-					level = 2
-					instant_build = yes
-				}
-			}
+			add_war_support = 0.1
 			set_variable = { X_JAP_propaganda_campaign_to_remove = 24 }
 			X_JAP_reset_propaganda_campaign_slot_effect = yes
 			multiply_variable = { X_JAP_propaganda_24_cost = 2 }
@@ -944,10 +610,9 @@ X_JAP_propaganda_campaigns = {
 		cost = X_JAP_propaganda_25_cost
 		fire_only_once = yes
 		modifier = {
-			navy_fuel_consumption_factor = -0.5
-			naval_enemy_retreat_chance = -0.1
+			naval_enemy_retreat_chance = -0.075
 			navy_org_factor = 0.05
-			positioning = 0.1
+			positioning = 0.05
 		}
 		complete_effect = {
 			set_variable = { X_JAP_new_propaganda_campaign = 25 }
@@ -975,11 +640,11 @@ X_JAP_propaganda_campaigns = {
 		fire_only_once = yes
 		modifier = {
 			industrial_capacity_factory = -0.2
-			army_core_attack_factor = 0.1
-			army_core_defence_factor = 0.1
-			convoy_retreat_speed = 0.2
-			training_time_factor = -0.80
-			conscription_factor = 0.5
+			army_core_attack_factor = 0.05
+			army_core_defence_factor = 0.05
+			convoy_retreat_speed = 0.15
+			training_time_factor = -0.20
+			conscription_factor = 0.15
 		}
 		complete_effect = {
 			set_variable = { X_JAP_new_propaganda_campaign = 26 }
@@ -998,33 +663,7 @@ X_JAP_propaganda_campaigns = {
 ########## AXIS / GER german
 
 X_GER_propaganda_campaigns = {
-	X_GER_propaganda_3 = { # ID = 3
-		priority = 2
-		icon = eng_propaganda_campaigns
-		ai_will_do = { base = 0 }
-		allowed = { original_tag = GER }
-		available = { X_GER_propaganda_poster_slot_available = yes }
-		visible = {
-			has_government = fascism
-			has_civil_war = no
-		}
-		days_remove = 180
-		days_re_enable = 100
-		cost = X_GER_propaganda_3_cost
-		modifier = {
-			political_power_factor = 0.1
-		}
-		complete_effect = {
-			set_variable = { X_GER_new_propaganda_campaign = 3 }
-			X_GER_pick_propaganda_campaign_slot_effect = yes
-		}
-		remove_effect = {
-			ENG = { add_opinion_modifier = { target = GER modifier = small_decrease } }
-			set_variable = { X_GER_propaganda_campaign_to_remove = 3 }
-			X_GER_reset_propaganda_campaign_slot_effect = yes
-			multiply_variable = { X_GER_propaganda_3_cost = 2 }	#custom_effect_tooltip = SOV_propaganda_campaign_cooldown_tt
-		}
-	}
+
 	X_GER_propaganda_4 = { # ID = 4
 		priority = 2
 		icon = eng_propaganda_campaigns
@@ -1040,7 +679,7 @@ X_GER_propaganda_campaigns = {
 		cost = X_GER_propaganda_4_cost
 		modifier = {
 			weekly_manpower = -200 #placeholder
-			stability_weekly = 0.007
+			stability_weekly = 0.005
 		}
 		complete_effect = {
 			add_stability = -0.1
@@ -1104,9 +743,8 @@ X_GER_propaganda_campaigns = {
 		cost = X_GER_propaganda_6_cost
 		fire_only_once = yes 
 		modifier = {
-			weekly_manpower = 5000
 			war_support_weekly = 0.001
-			training_time_factor = -0.80
+			training_time_factor = -0.30
 			mobilization_speed = 0.4
 		}
 		complete_effect = {
@@ -1137,6 +775,7 @@ X_GER_propaganda_campaigns = {
 		cost = X_GER_propaganda_7_cost
 		modifier = {
 			fascism_drift = 0.05
+			stability_weekly = 0.002
 		}
 		complete_effect = {
 			set_variable = { X_GER_new_propaganda_campaign = 7 }
@@ -1148,40 +787,40 @@ X_GER_propaganda_campaigns = {
 			multiply_variable = { X_GER_propaganda_7_cost = 2 }
 		}
 	}
-	X_GER_propaganda_8 = { # ID = 8
-		priority = 2
-		icon = eng_propaganda_campaigns
-		ai_will_do = { base = 0 }
-		allowed = { original_tag = GER }
-		available = {
-			X_GER_propaganda_poster_slot_available = yes
-			custom_trigger_tooltip = {
-				tooltip = "Year is 1939"
-				date > 1939.1.1
-				date < 1940.1.1
-			}
-			has_war = no
-		}
-		visible = {
-			has_government = fascism
-			has_civil_war = no
-		}
-		days_remove = 180
-		days_re_enable = 100
-		cost = X_GER_propaganda_8_cost
-		modifier = {
-			planning_speed = 0.8
-		}
-		complete_effect = {
-			set_variable = { X_GER_new_propaganda_campaign = 8 }
-			X_GER_pick_propaganda_campaign_slot_effect = yes
-		}
-		remove_effect = {
-			set_variable = { X_GER_propaganda_campaign_to_remove = 8 }
-			X_GER_reset_propaganda_campaign_slot_effect = yes
-			multiply_variable = { X_GER_propaganda_8_cost = 2 }
-		}
-	}
+#	X_GER_propaganda_8 = { # ID = 8
+#		priority = 2
+#		icon = eng_propaganda_campaigns
+#		ai_will_do = { base = 0 }
+#		allowed = { original_tag = GER }
+#		available = {
+#			X_GER_propaganda_poster_slot_available = yes
+#			custom_trigger_tooltip = {
+#				tooltip = "Year is 1939"
+#				date > 1939.1.1
+#				date < 1940.1.1
+#			}
+#			has_war = no
+#		}
+#		visible = {
+#			has_government = fascism
+#			has_civil_war = no
+#		}
+#		days_remove = 180
+#		days_re_enable = 100
+#		cost = X_GER_propaganda_8_cost
+#		modifier = {
+#			planning_speed = 0.8
+#		}
+#		complete_effect = {
+#			set_variable = { X_GER_new_propaganda_campaign = 8 }
+#			X_GER_pick_propaganda_campaign_slot_effect = yes
+#		}
+#		remove_effect = {
+#			set_variable = { X_GER_propaganda_campaign_to_remove = 8 }
+#			X_GER_reset_propaganda_campaign_slot_effect = yes
+#			multiply_variable = { X_GER_propaganda_8_cost = 2 }
+#		}
+#	}
 	X_GER_propaganda_9 = { # ID = 9
 		priority = 2
 		icon = eng_propaganda_campaigns
@@ -1205,7 +844,7 @@ X_GER_propaganda_campaigns = {
 		cost = X_GER_propaganda_9_cost
 		modifier = {
 			fascism_drift = 0.05
-			industrial_capacity_factory = 0.1
+			industrial_capacity_factory = 0.05
 		}
 		complete_effect = {
 			set_variable = { X_GER_new_propaganda_campaign = 9 }
@@ -1260,9 +899,9 @@ X_GER_propaganda_campaigns = {
 		days_re_enable = 100
 		cost = X_GER_propaganda_11_cost
 		modifier = {
-			dig_in_speed_factor = 0.8
-			production_speed_bunker_factor = 0.2
-			production_speed_coastal_bunker_factor = 0.2
+			dig_in_speed_factor = 0.2
+			production_speed_bunker_factor = 0.1
+			production_speed_coastal_bunker_factor = 0.1
 		}
 		complete_effect = {
 			set_variable = { X_GER_new_propaganda_campaign = 11 }
@@ -1274,253 +913,253 @@ X_GER_propaganda_campaigns = {
 			multiply_variable = { X_GER_propaganda_11_cost = 2 }
 		}
 	}
-	X_GER_propaganda_12 = { # ID = 12
-		priority = 2
-		icon = eng_propaganda_campaigns
-		ai_will_do = { base = 0 }
-		allowed = { original_tag = GER }
-		available = {
-			X_GER_propaganda_poster_slot_available = yes
-			any_country = {
-				OR = {
-					tag = GER
-					is_in_faction_with = GER
-				}
-				has_full_control_of_state = 2
-			}
-		}
-		visible = {
-			has_government = fascism
-			has_civil_war = no
-		}
-		days_remove = 180
-		days_re_enable = 100
-		cost = X_GER_propaganda_12_cost
-		fire_only_once = yes
-		complete_effect = {
-			set_variable = { X_GER_new_propaganda_campaign = 12 }
-			X_GER_pick_propaganda_campaign_slot_effect = yes
-		}
-		remove_effect = {
-			custom_effect_tooltip = "Gain an elite infantry unit."
-			hidden_effect = {
-				division_template = {
-					name = "Italienische SS"
-					division_names_group = GER_INF_01
-					regiments = {
-						infantry = { x = 0 y = 0 }
-						infantry = { x = 0 y = 1 }
-						infantry = { x = 0 y = 2 }
-						infantry = { x = 0 y = 3 }
-
-						infantry = { x = 1 y = 0 }
-						infantry = { x = 1 y = 1 }
-						infantry = { x = 1 y = 2 }
-
-						infantry = { x = 2 y = 0 }
-						infantry = { x = 2 y = 1 }
-						infantry = { x = 2 y = 2 }
-					}
-				}
-				random_owned_controlled_state = {
-					prioritize = { 64 }
-					create_unit = { 
-						division = "name = \"Italienische Nr. 1\" division_template = \"Italienische SS\" start_experience_factor = 1.0" 
-						owner = GER
-					}
-				}
-			}
-			set_variable = { X_GER_propaganda_campaign_to_remove = 12 }
-			X_GER_reset_propaganda_campaign_slot_effect = yes
-			multiply_variable = { X_GER_propaganda_12_cost = 2 }
-		}
-	}
-	X_GER_propaganda_13 = { # ID = 13
-		priority = 2
-		icon = eng_propaganda_campaigns
-		ai_will_do = { base = 0 }
-		allowed = { original_tag = GER }
-		available = {
-			X_GER_propaganda_poster_slot_available = yes
-			any_country = {
-				OR = {
-					tag = GER
-					is_in_faction_with = GER
-				}
-				has_full_control_of_state = 110
-			}
-		}
-		visible = {
-			has_government = fascism
-			has_civil_war = no
-		}
-		days_remove = 180
-		days_re_enable = 100
-		cost = X_GER_propaganda_13_cost
-		fire_only_once = yes
-		complete_effect = {
-			set_variable = { X_GER_new_propaganda_campaign = 13 }
-			X_GER_pick_propaganda_campaign_slot_effect = yes
-		}
-		remove_effect = {
-			custom_effect_tooltip = "Gain an elite infantry unit."
-			hidden_effect = {
-				division_template = {
-					name = "Norske SS"
-					division_names_group = GER_INF_01
-					regiments = {
-						infantry = { x = 0 y = 0 }
-						infantry = { x = 0 y = 1 }
-						infantry = { x = 0 y = 2 }
-						infantry = { x = 0 y = 3 }
-
-						infantry = { x = 1 y = 0 }
-						infantry = { x = 1 y = 1 }
-						infantry = { x = 1 y = 2 }
-
-						infantry = { x = 2 y = 0 }
-						infantry = { x = 2 y = 1 }
-						infantry = { x = 2 y = 2 }
-					}
-				}
-				random_owned_controlled_state = {
-					prioritize = { 64 }
-					create_unit = { 
-						division = "name = \"Norske SS Division\" division_template = \"Norske SS\" start_experience_factor = 1.0" 
-						owner = GER
-					}
-				}
-			}
-			set_variable = { X_GER_propaganda_campaign_to_remove = 13 }
-			X_GER_reset_propaganda_campaign_slot_effect = yes
-			multiply_variable = { X_GER_propaganda_13_cost = 2 }
-		}
-	}
-	X_GER_propaganda_14 = { # ID = 14
-		priority = 2
-		icon = eng_propaganda_campaigns
-		ai_will_do = { base = 0 }
-		allowed = { original_tag = GER }
-		available = {
-			X_GER_propaganda_poster_slot_available = yes
-			any_country = {
-				OR = {
-					tag = GER
-					is_in_faction_with = GER
-				}
-				has_full_control_of_state = 7
-			}
-		}
-		visible = {
-			has_government = fascism
-			has_civil_war = no
-		}
-		days_remove = 180
-		days_re_enable = 100
-		cost = X_GER_propaganda_14_cost
-		fire_only_once = yes
-		complete_effect = {
-			set_variable = { X_GER_new_propaganda_campaign = 14 }
-			X_GER_pick_propaganda_campaign_slot_effect = yes
-		}
-		remove_effect = {
-			custom_effect_tooltip = "Gain 2 small but elite infantry units."
-			hidden_effect = {
-				division_template = {
-					name = "Nederlanders SS"
-					division_names_group = GER_INF_01
-					regiments = {
-						infantry = { x = 0 y = 0 }
-						infantry = { x = 0 y = 1 }
-
-						infantry = { x = 1 y = 0 }
-						infantry = { x = 1 y = 1 }
-
-						infantry = { x = 2 y = 0 }
-					}
-				}
-				random_owned_controlled_state = {
-					prioritize = { 64 }
-					create_unit = { 
-						division = "name = \"Nederlanders SS Division\" division_template = \"Nederlanders SS\" start_experience_factor = 1.0" 
-						owner = GER
-						count = 2
-					}
-				}
-			}
-			hidden_effect = { set_country_flag = SNed }
-			set_variable = { X_GER_propaganda_campaign_to_remove = 14 }
-			X_GER_reset_propaganda_campaign_slot_effect = yes
-			multiply_variable = { X_GER_propaganda_14_cost = 2 }
-		}
-	}
-	X_GER_propaganda_15 = { # ID = 15
-		priority = 2
-		icon = eng_propaganda_campaigns
-		ai_will_do = { base = 0 }
-		allowed = { original_tag = GER }
-		available = {
-			X_GER_propaganda_poster_slot_available = yes
-			any_country = {
-				OR = {
-					tag = GER
-					is_in_faction_with = GER
-				}
-				has_full_control_of_state = 7
-			}
-			custom_trigger_tooltip = {
-				tooltip = "Has completed Schutzstaffel Nederlanders."
-				has_country_flag = SNed
-			}
-		}
-		visible = {
-			has_government = fascism
-			has_civil_war = no
-		}
-		days_remove = 180
-		days_re_enable = 100
-		cost = X_GER_propaganda_15_cost
-		fire_only_once = yes
-		complete_effect = {
-			set_variable = { X_GER_new_propaganda_campaign = 15 }
-			X_GER_pick_propaganda_campaign_slot_effect = yes
-		}
-		remove_effect = {
-			custom_effect_tooltip = "Gain a fully equiped grenadier division."
-			hidden_effect = {
-				division_template = {
-					name = "Nederlanders SS"
-					division_names_group = GER_INF_01
-					regiments = {
-						infantry = { x = 0 y = 0 }
-						infantry = { x = 0 y = 1 }
-						infantry = { x = 0 y = 2 }
-						infantry = { x = 0 y = 3 }
-
-						infantry = { x = 1 y = 0 }
-						infantry = { x = 1 y = 1 }
-						infantry = { x = 1 y = 2 }
-						infantry = { x = 1 y = 3 }
-
-						artillery_brigade = { x = 2 y = 0 }
-						artillery_brigade = { x = 2 y = 1 }
-						artillery_brigade = { x = 2 y = 2 }
-					}
-				}
-				random_owned_controlled_state = {
-					prioritize = { 64 }
-					create_unit = { 
-						division = "name = \"Nederlanders SS Division\" division_template = \"Nederlanders SS\" start_experience_factor = 0.8" 
-						owner = GER
-						count = 1
-					}
-				}
-			}
-			set_variable = { X_GER_propaganda_campaign_to_remove = 15 }
-			X_GER_reset_propaganda_campaign_slot_effect = yes
-			multiply_variable = { X_GER_propaganda_15_cost = 2 }
-		}
-	}
+#	X_GER_propaganda_12 = { # ID = 12
+#		priority = 2
+#		icon = eng_propaganda_campaigns
+#		ai_will_do = { base = 0 }
+#		allowed = { original_tag = GER }
+#		available = {
+#			X_GER_propaganda_poster_slot_available = yes
+#			any_country = {
+#				OR = {
+#					tag = GER
+#					is_in_faction_with = GER
+#				}
+#				has_full_control_of_state = 2
+#			}
+#		}
+#		visible = {
+#			has_government = fascism
+#			has_civil_war = no
+#		}
+#		days_remove = 180
+#		days_re_enable = 100
+#		cost = X_GER_propaganda_12_cost
+#		fire_only_once = yes
+#		complete_effect = {
+#			set_variable = { X_GER_new_propaganda_campaign = 12 }
+#			X_GER_pick_propaganda_campaign_slot_effect = yes
+#		}
+#		remove_effect = {
+#			custom_effect_tooltip = "Gain an elite infantry unit."
+#			hidden_effect = {
+#				division_template = {
+#					name = "Italienische SS"
+#					division_names_group = GER_INF_01
+#					regiments = {
+#						infantry = { x = 0 y = 0 }
+#						infantry = { x = 0 y = 1 }
+#						infantry = { x = 0 y = 2 }
+#						infantry = { x = 0 y = 3 }
+#
+#						infantry = { x = 1 y = 0 }
+#						infantry = { x = 1 y = 1 }
+#						infantry = { x = 1 y = 2 }
+#
+#						infantry = { x = 2 y = 0 }
+#						infantry = { x = 2 y = 1 }
+#						infantry = { x = 2 y = 2 }
+#					}
+#				}
+#				random_owned_controlled_state = {
+#					prioritize = { 64 }
+#					create_unit = { 
+#						division = "name = \"Italienische Nr. 1\" division_template = \"Italienische SS\" start_experience_factor = 1.0" 
+#						owner = GER
+#					}
+#				}
+#			}
+#			set_variable = { X_GER_propaganda_campaign_to_remove = 12 }
+#			X_GER_reset_propaganda_campaign_slot_effect = yes
+#			multiply_variable = { X_GER_propaganda_12_cost = 2 }
+#		}
+#	}
+#	X_GER_propaganda_13 = { # ID = 13
+#		priority = 2
+#		icon = eng_propaganda_campaigns
+#		ai_will_do = { base = 0 }
+#		allowed = { original_tag = GER }
+#		available = {
+#			X_GER_propaganda_poster_slot_available = yes
+#			any_country = {
+#				OR = {
+#					tag = GER
+#					is_in_faction_with = GER
+#				}
+#				has_full_control_of_state = 110
+#			}
+#		}
+#		visible = {
+#			has_government = fascism
+#			has_civil_war = no
+#		}
+#		days_remove = 180
+#		days_re_enable = 100
+#		cost = X_GER_propaganda_13_cost
+#		fire_only_once = yes
+#		complete_effect = {
+#			set_variable = { X_GER_new_propaganda_campaign = 13 }
+#			X_GER_pick_propaganda_campaign_slot_effect = yes
+#		}
+#		remove_effect = {
+#			custom_effect_tooltip = "Gain an elite infantry unit."
+#			hidden_effect = {
+#				division_template = {
+#					name = "Norske SS"
+#					division_names_group = GER_INF_01
+#					regiments = {
+#						infantry = { x = 0 y = 0 }
+#						infantry = { x = 0 y = 1 }
+#						infantry = { x = 0 y = 2 }
+#						infantry = { x = 0 y = 3 }
+#
+#						infantry = { x = 1 y = 0 }
+#						infantry = { x = 1 y = 1 }
+#						infantry = { x = 1 y = 2 }
+#
+#						infantry = { x = 2 y = 0 }
+#						infantry = { x = 2 y = 1 }
+#						infantry = { x = 2 y = 2 }
+#					}
+#				}
+#				random_owned_controlled_state = {
+#					prioritize = { 64 }
+#					create_unit = { 
+#						division = "name = \"Norske SS Division\" division_template = \"Norske SS\" start_experience_factor = 1.0" 
+#						owner = GER
+#					}
+#				}
+#			}
+#			set_variable = { X_GER_propaganda_campaign_to_remove = 13 }
+#			X_GER_reset_propaganda_campaign_slot_effect = yes
+#			multiply_variable = { X_GER_propaganda_13_cost = 2 }
+#		}
+#	}
+#	X_GER_propaganda_14 = { # ID = 14
+#		priority = 2
+#		icon = eng_propaganda_campaigns
+#		ai_will_do = { base = 0 }
+#		allowed = { original_tag = GER }
+#		available = {
+#			X_GER_propaganda_poster_slot_available = yes
+#			any_country = {
+#				OR = {
+#					tag = GER
+#					is_in_faction_with = GER
+#				}
+#				has_full_control_of_state = 7
+#			}
+#		}
+#		visible = {
+#			has_government = fascism
+#			has_civil_war = no
+#		}
+#		days_remove = 180
+#		days_re_enable = 100
+#		cost = X_GER_propaganda_14_cost
+#		fire_only_once = yes
+#		complete_effect = {
+#			set_variable = { X_GER_new_propaganda_campaign = 14 }
+#			X_GER_pick_propaganda_campaign_slot_effect = yes
+#		}
+#		remove_effect = {
+#			custom_effect_tooltip = "Gain 2 small but elite infantry units."
+#			hidden_effect = {
+#				division_template = {
+#					name = "Nederlanders SS"
+#					division_names_group = GER_INF_01
+#					regiments = {
+#						infantry = { x = 0 y = 0 }
+#						infantry = { x = 0 y = 1 }
+#
+#						infantry = { x = 1 y = 0 }
+#						infantry = { x = 1 y = 1 }
+#
+#						infantry = { x = 2 y = 0 }
+#					}
+#				}
+#				random_owned_controlled_state = {
+#					prioritize = { 64 }
+#					create_unit = { 
+#						division = "name = \"Nederlanders SS Division\" division_template = \"Nederlanders SS\" start_experience_factor = 1.0" 
+#						owner = GER
+#						count = 2
+#					}
+#				}
+#			}
+#			hidden_effect = { set_country_flag = SNed }
+#			set_variable = { X_GER_propaganda_campaign_to_remove = 14 }
+#			X_GER_reset_propaganda_campaign_slot_effect = yes
+#			multiply_variable = { X_GER_propaganda_14_cost = 2 }
+#		}
+#	}
+#	X_GER_propaganda_15 = { # ID = 15
+#		priority = 2
+#		icon = eng_propaganda_campaigns
+#		ai_will_do = { base = 0 }
+#		allowed = { original_tag = GER }
+#		available = {
+#			X_GER_propaganda_poster_slot_available = yes
+#			any_country = {
+#				OR = {
+#					tag = GER
+#					is_in_faction_with = GER
+#				}
+#				has_full_control_of_state = 7
+#			}
+#			custom_trigger_tooltip = {
+#				tooltip = "Has completed Schutzstaffel Nederlanders."
+#				has_country_flag = SNed
+#			}
+#		}
+#		visible = {
+#			has_government = fascism
+#			has_civil_war = no
+#		}
+#		days_remove = 180
+#		days_re_enable = 100
+#		cost = X_GER_propaganda_15_cost
+#		fire_only_once = yes
+#		complete_effect = {
+#			set_variable = { X_GER_new_propaganda_campaign = 15 }
+#			X_GER_pick_propaganda_campaign_slot_effect = yes
+#		}
+#		remove_effect = {
+#			custom_effect_tooltip = "Gain a fully equiped grenadier division."
+#			hidden_effect = {
+#				division_template = {
+#					name = "Nederlanders SS"
+#					division_names_group = GER_INF_01
+#					regiments = {
+#						infantry = { x = 0 y = 0 }
+#						infantry = { x = 0 y = 1 }
+#						infantry = { x = 0 y = 2 }
+#						infantry = { x = 0 y = 3 }
+#
+#						infantry = { x = 1 y = 0 }
+#						infantry = { x = 1 y = 1 }
+#						infantry = { x = 1 y = 2 }
+#						infantry = { x = 1 y = 3 }
+#
+#						artillery_brigade = { x = 2 y = 0 }
+#						artillery_brigade = { x = 2 y = 1 }
+#						artillery_brigade = { x = 2 y = 2 }
+#					}
+#				}
+#				random_owned_controlled_state = {
+#					prioritize = { 64 }
+#					create_unit = { 
+#						division = "name = \"Nederlanders SS Division\" division_template = \"Nederlanders SS\" start_experience_factor = 0.8" 
+#						owner = GER
+#						count = 1
+#					}
+#				}
+#			}
+#			set_variable = { X_GER_propaganda_campaign_to_remove = 15 }
+#			X_GER_reset_propaganda_campaign_slot_effect = yes
+#			multiply_variable = { X_GER_propaganda_15_cost = 2 }
+#		}
+#	}
 	X_GER_propaganda_16 = { # ID = 16
 		priority = 2
 		icon = eng_propaganda_campaigns
@@ -1541,7 +1180,7 @@ X_GER_propaganda_campaigns = {
 		days_re_enable = 100
 		cost = X_GER_propaganda_16_cost
 		modifier = {
-			winter_attrition_factor = -0.5
+			winter_attrition_factor = -0.1
 		}
 		complete_effect = {
 			set_variable = { X_GER_new_propaganda_campaign = 16 }
@@ -1553,104 +1192,104 @@ X_GER_propaganda_campaigns = {
 			multiply_variable = { X_GER_propaganda_16_cost = 2 }
 		}
 	}
-	X_GER_propaganda_17 = { # ID = 17
-		priority = 2
-		icon = eng_propaganda_campaigns
-		ai_will_do = { base = 0 }
-		allowed = { original_tag = GER }
-		available = {
-			X_GER_propaganda_poster_slot_available = yes
-			OR = {
-				has_war_with = SOV
-				has_war_with = USA
-			}
-		}
-		visible = {
-			has_government = fascism
-			has_civil_war = no
-		}
-		days_remove = 180
-		days_re_enable = 100
-		cost = X_GER_propaganda_17_cost
-		modifier = {
-			experience_gain_army = 0.2
-			army_armor_speed_factor = 0.05
-			army_armor_attack_factor = 0.05
-		}
-		complete_effect = {
-			set_variable = { X_GER_new_propaganda_campaign = 17 }
-			X_GER_pick_propaganda_campaign_slot_effect = yes
-		}
-		remove_effect = {
-			set_variable = { X_GER_propaganda_campaign_to_remove = 17 }
-			X_GER_reset_propaganda_campaign_slot_effect = yes
-			multiply_variable = { X_GER_propaganda_17_cost = 2 }
-		}
-	}
-	X_GER_propaganda_18 = { # ID = 18
-		priority = 2
-		icon = eng_propaganda_campaigns
-		ai_will_do = { base = 0 }
-		allowed = { original_tag = GER }
-		available = {
-			X_GER_propaganda_poster_slot_available = yes
-			OR = {
-				has_war_with = SOV
-				has_war_with = USA
-			}
-		}
-		visible = {
-			has_government = fascism
-			has_civil_war = no
-		}
-		days_remove = 180
-		days_re_enable = 100
-		cost = X_GER_propaganda_18_cost
-		modifier = {
-			experience_gain_air = 0.2
-		}
-		complete_effect = {
-			set_variable = { X_GER_new_propaganda_campaign = 18 }
-			X_GER_pick_propaganda_campaign_slot_effect = yes
-		}
-		remove_effect = {
-			set_variable = { X_GER_propaganda_campaign_to_remove = 18 }
-			X_GER_reset_propaganda_campaign_slot_effect = yes
-			multiply_variable = { X_GER_propaganda_18_cost = 2 }
-		}
-	}
-	X_GER_propaganda_19 = { # ID = 19
-		priority = 2
-		icon = eng_propaganda_campaigns
-		ai_will_do = { base = 0 }
-		allowed = { original_tag = GER }
-		available = {
-			X_GER_propaganda_poster_slot_available = yes
-			OR = {
-				has_war_with = SOV
-				has_war_with = USA
-			}
-		}
-		visible = {
-			has_government = fascism
-			has_civil_war = no
-		}
-		days_remove = 180
-		days_re_enable = 100
-		cost = X_GER_propaganda_19_cost
-		modifier = {
-			experience_gain_navy = 0.2
-		}
-		complete_effect = {
-			set_variable = { X_GER_new_propaganda_campaign = 19 }
-			X_GER_pick_propaganda_campaign_slot_effect = yes
-		}
-		remove_effect = {
-			set_variable = { X_GER_propaganda_campaign_to_remove = 19 }
-			X_GER_reset_propaganda_campaign_slot_effect = yes
-			multiply_variable = { X_GER_propaganda_19_cost = 2 }
-		}
-	}
+#	X_GER_propaganda_17 = { # ID = 17
+#		priority = 2
+#		icon = eng_propaganda_campaigns
+#		ai_will_do = { base = 0 }
+#		allowed = { original_tag = GER }
+#		available = {
+#			X_GER_propaganda_poster_slot_available = yes
+#			OR = {
+#				has_war_with = SOV
+#				has_war_with = USA
+#			}
+#		}
+#		visible = {
+#			has_government = fascism
+#			has_civil_war = no
+#		}
+#		days_remove = 180
+#		days_re_enable = 100
+#		cost = X_GER_propaganda_17_cost
+#		modifier = {
+#			experience_gain_army = 0.2
+#			army_armor_speed_factor = 0.05
+#			army_armor_attack_factor = 0.05
+#		}
+#		complete_effect = {
+#			set_variable = { X_GER_new_propaganda_campaign = 17 }
+#			X_GER_pick_propaganda_campaign_slot_effect = yes
+#		}
+#		remove_effect = {
+#			set_variable = { X_GER_propaganda_campaign_to_remove = 17 }
+#			X_GER_reset_propaganda_campaign_slot_effect = yes
+#			multiply_variable = { X_GER_propaganda_17_cost = 2 }
+#		}
+#	}
+#	X_GER_propaganda_18 = { # ID = 18
+#		priority = 2
+#		icon = eng_propaganda_campaigns
+#		ai_will_do = { base = 0 }
+#		allowed = { original_tag = GER }
+#		available = {
+#			X_GER_propaganda_poster_slot_available = yes
+#			OR = {
+#				has_war_with = SOV
+#				has_war_with = USA
+#			}
+#		}
+#		visible = {
+#			has_government = fascism
+#			has_civil_war = no
+#		}
+#		days_remove = 180
+#		days_re_enable = 100
+#		cost = X_GER_propaganda_18_cost
+#		modifier = {
+#			experience_gain_air = 0.2
+#		}
+#		complete_effect = {
+#			set_variable = { X_GER_new_propaganda_campaign = 18 }
+#			X_GER_pick_propaganda_campaign_slot_effect = yes
+#		}
+#		remove_effect = {
+#			set_variable = { X_GER_propaganda_campaign_to_remove = 18 }
+#			X_GER_reset_propaganda_campaign_slot_effect = yes
+#			multiply_variable = { X_GER_propaganda_18_cost = 2 }
+#		}
+#	}
+#	X_GER_propaganda_19 = { # ID = 19
+#		priority = 2
+#		icon = eng_propaganda_campaigns
+#		ai_will_do = { base = 0 }
+#		allowed = { original_tag = GER }
+#		available = {
+#			X_GER_propaganda_poster_slot_available = yes
+#			OR = {
+#				has_war_with = SOV
+#				has_war_with = USA
+#			}
+#		}
+#		visible = {
+#			has_government = fascism
+#			has_civil_war = no
+#		}
+#		days_remove = 180
+#		days_re_enable = 100
+#		cost = X_GER_propaganda_19_cost
+#		modifier = {
+#			experience_gain_navy = 0.2
+#		}
+#		complete_effect = {
+#			set_variable = { X_GER_new_propaganda_campaign = 19 }
+#			X_GER_pick_propaganda_campaign_slot_effect = yes
+#		}
+#		remove_effect = {
+#			set_variable = { X_GER_propaganda_campaign_to_remove = 19 }
+#			X_GER_reset_propaganda_campaign_slot_effect = yes
+#			multiply_variable = { X_GER_propaganda_19_cost = 2 }
+#		}
+#	}
 	X_GER_propaganda_20 = { # ID = 20
 		priority = 2
 		icon = eng_propaganda_campaigns
@@ -1740,7 +1379,7 @@ X_GER_propaganda_campaigns = {
 		cost = X_GER_propaganda_22_cost
 		fire_only_once = yes
 		modifier = {
-			production_lack_of_resource_penalty_factor = -0.8
+			production_lack_of_resource_penalty_factor = -0.3
 		}
 		complete_effect = {
 			set_variable = { X_GER_new_propaganda_campaign = 22 }
@@ -1752,41 +1391,41 @@ X_GER_propaganda_campaigns = {
 			multiply_variable = { X_GER_propaganda_22_cost = 2 }
 		}
 	}
-	X_GER_propaganda_23 = { # ID = 23
-		priority = 2
-		icon = eng_propaganda_campaigns
-		ai_will_do = { base = 0 }
-		allowed = { original_tag = GER }
-		available = {
-			X_GER_propaganda_poster_slot_available = yes
-			has_war = yes
-			surrender_progress > 0.5
-		}
-		visible = {
-			has_government = fascism
-			has_civil_war = no
-		}
-		days_remove = 180
-		days_re_enable = 100
-		cost = X_GER_propaganda_23_cost
-		fire_only_once = yes
-		complete_effect = {
-			set_variable = { X_GER_new_propaganda_campaign = 23 }
-			X_GER_pick_propaganda_campaign_slot_effect = yes
-		}
-		remove_effect = {
-			add_offsite_building = { type = arms_factory level = 2 }
-			add_doctrine_cost_reduction = {
-				name = X_GER_propaganda_23
-				cost_reduction = 1.0
-				uses = 1
-				category = land_doctrine	
-			}
-			set_variable = { X_GER_propaganda_campaign_to_remove = 23 }
-			X_GER_reset_propaganda_campaign_slot_effect = yes
-			multiply_variable = { X_GER_propaganda_23_cost = 2 }
-		}
-	}
+#	X_GER_propaganda_23 = { # ID = 23
+#		priority = 2
+#		icon = eng_propaganda_campaigns
+#		ai_will_do = { base = 0 }
+#		allowed = { original_tag = GER }
+#		available = {
+#			X_GER_propaganda_poster_slot_available = yes
+#			has_war = yes
+#			surrender_progress > 0.5
+#		}
+#		visible = {
+#			has_government = fascism
+#			has_civil_war = no
+#		}
+#		days_remove = 180
+#		days_re_enable = 100
+#		cost = X_GER_propaganda_23_cost
+#		fire_only_once = yes
+#		complete_effect = {
+#			set_variable = { X_GER_new_propaganda_campaign = 23 }
+#			X_GER_pick_propaganda_campaign_slot_effect = yes
+#		}
+#		remove_effect = {
+#			add_offsite_building = { type = arms_factory level = 2 }
+#			add_doctrine_cost_reduction = {
+#				name = X_GER_propaganda_23
+#				cost_reduction = 1.0
+#				uses = 1
+#				category = land_doctrine	
+#			}
+#			set_variable = { X_GER_propaganda_campaign_to_remove = 23 }
+#			X_GER_reset_propaganda_campaign_slot_effect = yes
+#			multiply_variable = { X_GER_propaganda_23_cost = 2 }
+#		}
+#	}
 	X_GER_propaganda_24 = { # ID = 24
 		priority = 2
 		icon = eng_propaganda_campaigns
@@ -1806,6 +1445,7 @@ X_GER_propaganda_campaigns = {
 		cost = X_GER_propaganda_24_cost
 		modifier = {
 			communism_drift = -0.05
+			intelligence_agency_defense = 1.5
 		}
 		targeted_modifier = {
 			tag = SOV
@@ -1842,64 +1482,64 @@ X_GER_propaganda_campaigns = {
 		modifier = {
 			army_core_attack_factor = 0.05
 			army_core_defence_factor = 0.05
-			production_speed_arms_factory_factor = 0.05
+			industrial_capacity_factory = 0.05
 		}
 		complete_effect = {
 			set_variable = { X_GER_new_propaganda_campaign = 25 }
 			X_GER_pick_propaganda_campaign_slot_effect = yes
 		}
 		remove_effect = {
-			add_offsite_building = { type = arms_factory level = 4 }
+#			add_offsite_building = { type = arms_factory level = 4 }
 			set_variable = { X_GER_propaganda_campaign_to_remove = 25 }
 			X_GER_reset_propaganda_campaign_slot_effect = yes
 			multiply_variable = { X_GER_propaganda_25_cost = 2 }
 		}
 	}
-	X_GER_propaganda_26 = { # ID = 26
-		priority = 2
-		icon = eng_propaganda_campaigns
-		ai_will_do = { base = 0 }
-		allowed = { original_tag = GER }
-		available = {
-			X_GER_propaganda_poster_slot_available = yes
-			OR = {
-				AND = {
-					date > 1943.2.18
-					has_war_with = SOV
-					has_war_with = USA
-				}
-				AND = {
-					has_war_with = ITA
-					not = { ITA = { has_government = fascism } }
-				}
-				AND = {
-					has_war_with = JAP
-					not = { JAP = { has_government = fascism } }
-				}
-			}
-		}
-		visible = {
-			has_government = fascism
-			has_civil_war = no
-		}
-		days_remove = 180
-		days_re_enable = 100
-		cost = X_GER_propaganda_26_cost
-		fire_only_once = yes
-		modifier = {
-			consumer_goods_factor = -0.05
-		}
-		complete_effect = {
-			set_variable = { X_GER_new_propaganda_campaign = 26 }
-			X_GER_pick_propaganda_campaign_slot_effect = yes
-		}
-		remove_effect = {
-			add_offsite_building = { type = arms_factory level = 4 }
-			set_variable = { X_GER_propaganda_campaign_to_remove = 26 }
-			X_GER_reset_propaganda_campaign_slot_effect = yes
-			multiply_variable = { X_GER_propaganda_26_cost = 2 }
-		}
-	}
+#	X_GER_propaganda_26 = { # ID = 26
+#		priority = 2
+#		icon = eng_propaganda_campaigns
+#		ai_will_do = { base = 0 }
+#		allowed = { original_tag = GER }
+#		available = {
+#			X_GER_propaganda_poster_slot_available = yes
+#			OR = {
+#				AND = {
+#					date > 1943.2.18
+#					has_war_with = SOV
+#					has_war_with = USA
+#				}
+#				AND = {
+#					has_war_with = ITA
+#					not = { ITA = { has_government = fascism } }
+#				}
+#				AND = {
+#					has_war_with = JAP
+#					not = { JAP = { has_government = fascism } }
+#				}
+#			}
+#		}
+#		visible = {
+#			has_government = fascism
+#			has_civil_war = no
+#		}
+#		days_remove = 180
+#		days_re_enable = 100
+#		cost = X_GER_propaganda_26_cost
+#		fire_only_once = yes
+#		modifier = {
+#			consumer_goods_factor = -0.05
+#		}
+#		complete_effect = {
+#			set_variable = { X_GER_new_propaganda_campaign = 26 }
+#			X_GER_pick_propaganda_campaign_slot_effect = yes
+#		}
+#		remove_effect = {
+#			add_offsite_building = { type = arms_factory level = 4 }
+#			set_variable = { X_GER_propaganda_campaign_to_remove = 26 }
+#			X_GER_reset_propaganda_campaign_slot_effect = yes
+#			multiply_variable = { X_GER_propaganda_26_cost = 2 }
+#		}
+#	}
 
 }
 
@@ -1919,7 +1559,7 @@ X_USA_propaganda_campaigns = {
 		days_re_enable = 100
 		cost = X_USA_propaganda_3_cost
 		modifier = {
-			consumer_goods_factor = -0.02
+			consumer_goods_factor = -0.015
 		}
 		complete_effect = {
 			set_variable = { X_USA_new_propaganda_campaign = 3 }
@@ -1981,31 +1621,31 @@ X_USA_propaganda_campaigns = {
 			multiply_variable = { X_USA_propaganda_5_cost = 2 }
 		}
 	}
-	X_USA_propaganda_6 = { # ID = 6
-		priority = 2
-		icon = eng_propaganda_campaigns
-		ai_will_do = { base = 0 }
-		allowed = { original_tag = USA }
-		available = { X_USA_propaganda_poster_slot_available = yes threat < 0.2 }
-		visible = {
-			has_government = democratic
-		}
-		days_remove = 180
-		days_re_enable = 100
-		cost = X_USA_propaganda_6_cost
-		modifier = {
-			war_support_weekly = 0.001
-		}
-		complete_effect = {
-			set_variable = { X_USA_new_propaganda_campaign = 6 }
-			X_USA_pick_propaganda_campaign_slot_effect = yes
-		}
-		remove_effect = {
-			set_variable = { X_USA_propaganda_campaign_to_remove = 6 }
-			X_USA_reset_propaganda_campaign_slot_effect = yes
-			multiply_variable = { X_USA_propaganda_6_cost = 2 }
-		}
-	}
+#	X_USA_propaganda_6 = { # ID = 6
+#		priority = 2
+#		icon = eng_propaganda_campaigns
+#		ai_will_do = { base = 0 }
+#		allowed = { original_tag = USA }
+#		available = { X_USA_propaganda_poster_slot_available = yes threat < 0.2 }
+#		visible = {
+#			has_government = democratic
+#		}
+#		days_remove = 180
+#		days_re_enable = 100
+#		cost = X_USA_propaganda_6_cost
+#		modifier = {
+#			war_support_weekly = 0.001
+#		}
+#		complete_effect = {
+#			set_variable = { X_USA_new_propaganda_campaign = 6 }
+#			X_USA_pick_propaganda_campaign_slot_effect = yes
+#		}
+#		remove_effect = {
+#			set_variable = { X_USA_propaganda_campaign_to_remove = 6 }
+#			X_USA_reset_propaganda_campaign_slot_effect = yes
+#			multiply_variable = { X_USA_propaganda_6_cost = 2 }
+#		}
+#	}
 	X_USA_propaganda_7 = { # ID = 7
 		priority = 2
 		icon = eng_propaganda_campaigns
@@ -2019,7 +1659,9 @@ X_USA_propaganda_campaigns = {
 		days_re_enable = 100
 		cost = X_USA_propaganda_7_cost
 		modifier = {
-			weekly_manpower = 2500 #placeholder
+#			weekly_manpower = 2500 #placeholder
+			training_time_army_factor = -0.15
+			experience_gain_army_unit_factor = 0.15
 		}
 		complete_effect = {
 			set_variable = { X_USA_new_propaganda_campaign = 7 }
@@ -2036,7 +1678,10 @@ X_USA_propaganda_campaigns = {
 		icon = eng_propaganda_campaigns
 		ai_will_do = { base = 0 }
 		allowed = { original_tag = USA }
-		available = { X_USA_propaganda_poster_slot_available = yes }
+		available = { 
+			X_USA_propaganda_poster_slot_available = yes 
+			Date > 1942.5.15
+		}
 		visible = {
 			has_government = democratic
 		}
@@ -2044,7 +1689,9 @@ X_USA_propaganda_campaigns = {
 		days_re_enable = 100
 		cost = X_USA_propaganda_8_cost
 		modifier = {
-			conscription_factor = 0.15
+			production_factory_efficiency_gain_factor = 0.05
+			industrial_capacity_factory = 0.025
+			industrial_capacity_dockyard = 0.025
 		}
 		complete_effect = {
 			set_variable = { X_USA_new_propaganda_campaign = 8 }
@@ -2056,56 +1703,56 @@ X_USA_propaganda_campaigns = {
 			multiply_variable = { X_USA_propaganda_8_cost = 2 }
 		}
 	}
-	X_USA_propaganda_9 = { # ID = 9
-		priority = 2
-		icon = eng_propaganda_campaigns
-		ai_will_do = { base = 0 }
-		allowed = { original_tag = USA }
-		available = {
-			X_USA_propaganda_poster_slot_available = yes CHI = { has_war_with = JAP }
-		}
-		visible = {
-			has_government = democratic
-			check_variable = { var = X_USA_propaganda_9_cost	value = 250	compare = less_than }
-		}
-		days_remove = 180
-		days_re_enable = 100
-		cost = X_USA_propaganda_9_cost
-		complete_effect = {
-			CHI = { add_offsite_building = { type = arms_factory level = 1 } }
-			set_variable = { X_USA_new_propaganda_campaign = 9 }
-			X_USA_pick_propaganda_campaign_slot_effect = yes
-		}
-		remove_effect = {
-			set_variable = { X_USA_propaganda_campaign_to_remove = 9 }
-			X_USA_reset_propaganda_campaign_slot_effect = yes
-			multiply_variable = { X_USA_propaganda_9_cost = 2 }
-		}
-	}
-	X_USA_propaganda_10 = { # ID = 10
-		priority = 2
-		icon = eng_propaganda_campaigns
-		ai_will_do = { base = 0 }
-		allowed = { original_tag = USA }
-		available = { X_USA_propaganda_poster_slot_available = yes FRA = { has_war_with = GER } }
-		visible = {
-			has_government = democratic
-			check_variable = { var = X_USA_propaganda_10_cost	value = 250	compare = less_than }
-		}
-		days_remove = 180
-		days_re_enable = 100
-		cost = X_USA_propaganda_10_cost
-		complete_effect = {
-			FRA = { add_offsite_building = { type = arms_factory level = 1 } }
-			set_variable = { X_USA_new_propaganda_campaign = 10 }
-			X_USA_pick_propaganda_campaign_slot_effect = yes
-		}
-		remove_effect = {
-			set_variable = { X_USA_propaganda_campaign_to_remove = 10 }
-			X_USA_reset_propaganda_campaign_slot_effect = yes
-			multiply_variable = { X_USA_propaganda_10_cost = 2 }
-		}
-	}
+#	X_USA_propaganda_9 = { # ID = 9
+#		priority = 2
+#		icon = eng_propaganda_campaigns
+#		ai_will_do = { base = 0 }
+#		allowed = { original_tag = USA }
+#		available = {
+#			X_USA_propaganda_poster_slot_available = yes CHI = { has_war_with = JAP }
+#		}
+#		visible = {
+#			has_government = democratic
+#			check_variable = { var = X_USA_propaganda_9_cost	value = 250	compare = less_than }
+#		}
+#		days_remove = 180
+#		days_re_enable = 100
+#		cost = X_USA_propaganda_9_cost
+#		complete_effect = {
+#			CHI = { add_offsite_building = { type = arms_factory level = 1 } }
+#			set_variable = { X_USA_new_propaganda_campaign = 9 }
+#			X_USA_pick_propaganda_campaign_slot_effect = yes
+#		}
+#		remove_effect = {
+#			set_variable = { X_USA_propaganda_campaign_to_remove = 9 }
+#			X_USA_reset_propaganda_campaign_slot_effect = yes
+#			multiply_variable = { X_USA_propaganda_9_cost = 2 }
+#		}
+#	}
+#	X_USA_propaganda_10 = { # ID = 10
+#		priority = 2
+#		icon = eng_propaganda_campaigns
+#		ai_will_do = { base = 0 }
+#		allowed = { original_tag = USA }
+#		available = { X_USA_propaganda_poster_slot_available = yes FRA = { has_war_with = GER } }
+#		visible = {
+#			has_government = democratic
+#			check_variable = { var = X_USA_propaganda_10_cost	value = 250	compare = less_than }
+#		}
+#		days_remove = 180
+#		days_re_enable = 100
+#		cost = X_USA_propaganda_10_cost
+#		complete_effect = {
+#			FRA = { add_offsite_building = { type = arms_factory level = 1 } }
+#			set_variable = { X_USA_new_propaganda_campaign = 10 }
+#			X_USA_pick_propaganda_campaign_slot_effect = yes
+#		}
+#		remove_effect = {
+#			set_variable = { X_USA_propaganda_campaign_to_remove = 10 }
+#			X_USA_reset_propaganda_campaign_slot_effect = yes
+#			multiply_variable = { X_USA_propaganda_10_cost = 2 }
+#		}
+#	}
 	X_USA_propaganda_11 = { # ID = 11
 		priority = 2
 		icon = eng_propaganda_campaigns
@@ -2144,7 +1791,7 @@ X_USA_propaganda_campaigns = {
 		days_re_enable = 100
 		cost = X_USA_propaganda_12_cost
 		modifier = {
-			production_lack_of_resource_penalty_factor = 0.8
+			production_lack_of_resource_penalty_factor = -0.4
 		}
 		complete_effect = {
 			set_variable = { X_USA_new_propaganda_campaign = 12 }
@@ -2169,9 +1816,9 @@ X_USA_propaganda_campaigns = {
 		days_re_enable = 100
 		cost = X_USA_propaganda_13_cost
 		modifier = {
-			weekly_manpower = 1800
+#			weekly_manpower = 1800
 			training_time_factor = -0.20
-			mobilization_speed = 0.1
+			mobilization_speed = 0.2
 		}
 		complete_effect = {
 			set_variable = { X_USA_new_propaganda_campaign = 13 }
@@ -2251,10 +1898,11 @@ X_USA_propaganda_campaigns = {
 		days_re_enable = 100
 		cost = X_USA_propaganda_16_cost
 		modifier = {
-			production_speed_air_base_factor = 0.2
-			production_speed_anti_air_building_factor = 0.2
-			production_speed_bunker_factor = 0.2
-			production_speed_coastal_bunker_factor = 0.2
+			production_speed_air_base_factor = 0.1
+			production_speed_anti_air_building_factor = 0.1
+			production_speed_bunker_factor = 0.1
+			production_speed_coastal_bunker_factor = 0.1
+			production_speed_radar_station_factor = 0.1
 		}
 		complete_effect = {
 			set_variable = { X_USA_new_propaganda_campaign = 16 }
@@ -2266,32 +1914,32 @@ X_USA_propaganda_campaigns = {
 			multiply_variable = { X_USA_propaganda_16_cost = 2 }
 		}
 	}
-	X_USA_propaganda_17 = { # ID = 17
-		priority = 2
-		icon = eng_propaganda_campaigns
-		ai_will_do = { base = 0 }
-		allowed = { original_tag = USA }
-		available = { X_USA_propaganda_poster_slot_available = yes has_war = yes }
-		visible = {
-			has_government = democratic
-		}
-		days_remove = 180
-		days_re_enable = 100
-		cost = X_USA_propaganda_17_cost
-		modifier = {
-			consumer_goods_factor = -0.05
-			war_support_weekly = -0.001
-		}
-		complete_effect = {
-			set_variable = { X_USA_new_propaganda_campaign = 17 }
-			X_USA_pick_propaganda_campaign_slot_effect = yes
-		}
-		remove_effect = {
-			set_variable = { X_USA_propaganda_campaign_to_remove = 17 }
-			X_USA_reset_propaganda_campaign_slot_effect = yes
-			multiply_variable = { X_USA_propaganda_17_cost = 2 }
-		}
-	}
+#	X_USA_propaganda_17 = { # ID = 17
+#		priority = 2
+#		icon = eng_propaganda_campaigns
+#		ai_will_do = { base = 0 }
+#		allowed = { original_tag = USA }
+#		available = { X_USA_propaganda_poster_slot_available = yes has_war = yes }
+#		visible = {
+#			has_government = democratic
+#		}
+#		days_remove = 180
+#		days_re_enable = 100
+#		cost = X_USA_propaganda_17_cost
+#		modifier = {
+#			consumer_goods_factor = -0.05
+#			war_support_weekly = -0.001
+#		}
+#		complete_effect = {
+#			set_variable = { X_USA_new_propaganda_campaign = 17 }
+#			X_USA_pick_propaganda_campaign_slot_effect = yes
+#		}
+#		remove_effect = {
+#			set_variable = { X_USA_propaganda_campaign_to_remove = 17 }
+#			X_USA_reset_propaganda_campaign_slot_effect = yes
+#			multiply_variable = { X_USA_propaganda_17_cost = 2 }
+#		}
+#	}
 	X_USA_propaganda_18 = { # ID = 18
 		priority = 2
 		icon = eng_propaganda_campaigns
@@ -2301,6 +1949,16 @@ X_USA_propaganda_campaigns = {
 			X_USA_propaganda_poster_slot_available = yes
 			JAP = { has_government = fascism }
 			has_war_with = JAP
+			NOT = {
+				AND = {
+					has_full_control_of_state = 629
+					has_full_control_of_state = 631
+					has_full_control_of_state = 630
+					has_full_control_of_state = 727
+					has_full_control_of_state = 632
+					has_full_control_of_state = 638
+				}
+			}
 		}
 		visible = {
 			has_government = democratic
@@ -2309,8 +1967,8 @@ X_USA_propaganda_campaigns = {
 		days_re_enable = 100
 		cost = X_USA_propaganda_18_cost
 		modifier = {
-			army_core_attack_factor = 0.05
-			army_core_defence_factor = 0.05
+			army_core_attack_factor = 0.025
+			army_core_defence_factor = 0.025
 		}
 		complete_effect = {
 			set_variable = { X_USA_new_propaganda_campaign = 18 }
@@ -2335,10 +1993,9 @@ X_USA_propaganda_campaigns = {
 		days_re_enable = 100
 		cost = X_USA_propaganda_19_cost
 		modifier = {
-			experience_gain_army = 0.10
-			experience_loss_factor = -0.1
+			experience_gain_army = 0.15
+			experience_loss_factor = -0.15
 			pocket_penalty = -0.1
-			weekly_manpower = 1200
 		}
 		complete_effect = {
 			set_variable = { X_USA_new_propaganda_campaign = 19 }
@@ -2462,7 +2119,7 @@ X_USA_propaganda_campaigns = {
 		days_re_enable = 100
 		cost = X_USA_propaganda_23_cost
 		modifier = {
-			industrial_capacity_factory = 0.1
+			industrial_capacity_factory = 0.075
 		}
 		complete_effect = {
 			set_variable = { X_USA_new_propaganda_campaign = 23 }
@@ -2523,8 +2180,8 @@ X_USA_propaganda_campaigns = {
 		cost = X_USA_propaganda_25_cost
 		targeted_modifier = {
 			tag = JAP
-			attack_bonus_against = 0.05
-			defense_bonus_against = 0.05
+			attack_bonus_against = 0.025
+			defense_bonus_against = 0.025
 		}
 		complete_effect = {
 			set_variable = { X_USA_new_propaganda_campaign = 25 }
@@ -2558,7 +2215,7 @@ X_USA_propaganda_campaigns = {
 		modifier = {
 			#amphibious_invasion = 0.5 # 50% faster invasions
 			invasion_preparation = -0.5
-			naval_invasion_capacity = 50
+			naval_invasion_capacity = 4
 		}
 		complete_effect = {
 			set_variable = { X_USA_new_propaganda_campaign = 26 }
@@ -2676,7 +2333,7 @@ X_ENG_propaganda_campaigns = {
 		days_re_enable = 100
 		cost = X_ENG_propaganda_4_cost
 		modifier = {
-			consumer_goods_factor = -0.02
+			consumer_goods_factor = -0.015
 		}
 		complete_effect = {
 			set_variable = { X_ENG_new_propaganda_campaign = 4 }
@@ -2790,7 +2447,8 @@ X_ENG_propaganda_campaigns = {
 		days_re_enable = 100
 		cost = X_ENG_propaganda_6_cost
 		modifier = {
-			weekly_manpower = 1800
+			stability_weekly = 0.001
+			out_of_supply_factor = -0.1
 		}
 		complete_effect = {
 			set_variable = { X_ENG_new_propaganda_campaign = 6 }
@@ -2848,8 +2506,8 @@ X_ENG_propaganda_campaigns = {
 		cost = X_ENG_propaganda_7_cost
 		targeted_modifier = {
 			tag = GER
-			attack_bonus_against = 0.05
-			defense_bonus_against = 0.05
+			attack_bonus_against = 0.025
+			defense_bonus_against = 0.025
 		}
 		complete_effect = {
 			set_variable = { X_ENG_new_propaganda_campaign = 7 }
@@ -2906,9 +2564,10 @@ X_ENG_propaganda_campaigns = {
 		days_re_enable = 100
 		cost = X_ENG_propaganda_8_cost
 		modifier = {
-			air_agility_factor = 0.03
-			air_attack_factor = 0.03
-			air_accidents_factor = -0.5
+			air_defence_factor = 0.05
+			air_attack_factor = 0.05
+			air_intercept_efficiency = 0.05
+#			air_accidents_factor = -0.5
 		}
 		complete_effect = {
 			set_variable = { X_ENG_new_propaganda_campaign = 8 }
@@ -2946,6 +2605,7 @@ X_ENG_propaganda_campaigns = {
 			X_ENG_propaganda_poster_slot_available = yes
 			OR = { original_tag = ENG is_in_faction_with = ENG is_puppet_of = ENG }
 			has_war = yes
+			has_completed_focus = ENG_issue_gasmasks
 		}
 		visible = {
 			has_government = democratic
@@ -2962,8 +2622,7 @@ X_ENG_propaganda_campaigns = {
 		days_re_enable = 100
 		cost = X_ENG_propaganda_9_cost
 		modifier = {
-			stability_weekly = 0.001
-			war_support_weekly = 0.001
+			army_core_defence_factor = 0.05
 		}
 		complete_effect = {
 			set_variable = { X_ENG_new_propaganda_campaign = 9 }
@@ -3017,7 +2676,7 @@ X_ENG_propaganda_campaigns = {
 		days_re_enable = 100
 		cost = X_ENG_propaganda_10_cost
 		modifier = {
-			army_morale_factor = 0.1
+			army_morale_factor = 0.05
 		}
 		complete_effect = {
 			set_variable = { X_ENG_new_propaganda_campaign = 10 }
@@ -3043,60 +2702,60 @@ X_ENG_propaganda_campaigns = {
 			multiply_variable = { X_ENG_propaganda_10_cost = 2 }
 		}
 	}
-	X_ENG_propaganda_11 = { # ID = 11
-		priority = 2
-		icon = eng_propaganda_campaigns
-		ai_will_do = { base = 0 }
-		allowed = {
-			NOT = { tag = JAP tag = GER tag = USA tag = LAT tag = GRE }
-			xchinese_country = no
-		}
-		available = {
-			X_ENG_propaganda_poster_slot_available = yes
-			OR = { original_tag = ENG is_in_faction_with = ENG is_puppet_of = ENG }
-			has_war = yes
-		}
-		visible = {
-			has_government = democratic
-			if = {
-				limit = {
-					NOT = { tag = ENG tag = JAP tag = GER tag = USA tag = LAT tag = GRE }
-				}
-				ENG = {
-					has_decision = X_ENG_propaganda_11
-				}
-			}
-		}
-		days_remove = 180
-		days_re_enable = 100
-		cost = X_ENG_propaganda_11_cost
-		modifier = {
-			army_core_defence_factor = 0.05
-		}
-		complete_effect = {
-			set_variable = { X_ENG_new_propaganda_campaign = 11 }
-			X_ENG_pick_propaganda_campaign_slot_effect = yes
-			if = {
-				limit = {
-					tag = ENG
-				}
-				hidden_effect = {
-					every_country = {
-						limit = {
-							OR = { is_in_faction_with = ENG is_puppet_of = ENG }
-							NOT = { tag = ENG tag = JAP tag = GER tag = USA tag = LAT tag = GRE }
-						}
-						activate_decision = X_ENG_propaganda_11
-					}
-				}
-			}
-		}
-		remove_effect = {
-			set_variable = { X_ENG_propaganda_campaign_to_remove = 11 }
-			X_ENG_reset_propaganda_campaign_slot_effect = yes
-			multiply_variable = { X_ENG_propaganda_11_cost = 2 }
-		}
-	}
+#	X_ENG_propaganda_11 = { # ID = 11
+#		priority = 2
+#		icon = eng_propaganda_campaigns
+#		ai_will_do = { base = 0 }
+#		allowed = {
+#			NOT = { tag = JAP tag = GER tag = USA tag = LAT tag = GRE }
+#			xchinese_country = no
+#		}
+#		available = {
+#			X_ENG_propaganda_poster_slot_available = yes
+#			OR = { original_tag = ENG is_in_faction_with = ENG is_puppet_of = ENG }
+#			has_war = yes
+#		}
+#		visible = {
+#			has_government = democratic
+#			if = {
+#				limit = {
+#					NOT = { tag = ENG tag = JAP tag = GER tag = USA tag = LAT tag = GRE }
+#				}
+#				ENG = {
+#					has_decision = X_ENG_propaganda_11
+#				}
+#			}
+#		}
+#		days_remove = 180
+#		days_re_enable = 100
+#		cost = X_ENG_propaganda_11_cost
+#		modifier = {
+#			army_core_defence_factor = 0.05
+#		}
+#		complete_effect = {
+#			set_variable = { X_ENG_new_propaganda_campaign = 11 }
+#			X_ENG_pick_propaganda_campaign_slot_effect = yes
+#			if = {
+#				limit = {
+#					tag = ENG
+#				}
+#				hidden_effect = {
+#					every_country = {
+#						limit = {
+#							OR = { is_in_faction_with = ENG is_puppet_of = ENG }
+#							NOT = { tag = ENG tag = JAP tag = GER tag = USA tag = LAT tag = GRE }
+#						}
+#						activate_decision = X_ENG_propaganda_11
+#					}
+#				}
+#			}
+#		}
+#		remove_effect = {
+#			set_variable = { X_ENG_propaganda_campaign_to_remove = 11 }
+#			X_ENG_reset_propaganda_campaign_slot_effect = yes
+#			multiply_variable = { X_ENG_propaganda_11_cost = 2 }
+#		}
+#	}
 	X_ENG_propaganda_12 = { # ID = 12
 		priority = 2
 		icon = eng_propaganda_campaigns
@@ -3125,7 +2784,8 @@ X_ENG_propaganda_campaigns = {
 		days_re_enable = 100
 		cost = X_ENG_propaganda_12_cost
 		modifier = {
-			production_speed_arms_factory_factor = 0.1
+#			production_speed_arms_factory_factor = 0.1
+			production_factory_efficiency_gain_factor = 0.075
 		}
 		complete_effect = {
 			set_variable = { X_ENG_new_propaganda_campaign = 12 }
@@ -3179,9 +2839,11 @@ X_ENG_propaganda_campaigns = {
 		days_re_enable = 100
 		cost = X_ENG_propaganda_13_cost
 		modifier = {
-			air_agility_factor = 0.03
-			air_attack_factor = 0.03
-			air_accidents_factor = -0.5
+#			air_agility_factor = 0.03
+#			air_attack_factor = 0.03
+#			air_accidents_factor = -0.5
+			air_strategic_bomber_defence_factor = 0.1
+			air_night_penalty = -0.1
 		}
 		complete_effect = {
 			set_variable = { X_ENG_new_propaganda_campaign = 13 }
@@ -3219,6 +2881,10 @@ X_ENG_propaganda_campaigns = {
 			X_ENG_propaganda_poster_slot_available = yes
 			OR = { original_tag = ENG is_in_faction_with = ENG is_puppet_of = ENG }
 			has_war = yes
+			AND = {
+				has_completed_focus = air_defense_focus
+				has_completed_focus = radar_focus
+			}
 		}
 		visible = {
 			has_government = democratic
@@ -3235,8 +2901,10 @@ X_ENG_propaganda_campaigns = {
 		days_re_enable = 100
 		cost = X_ENG_propaganda_14_cost
 		modifier = {
-			air_defence_factor = 0.03
-			air_ace_generation_chance_factor = 0.03
+#			air_defence_factor = 0.03
+#			air_ace_generation_chance_factor = 0.03
+			production_speed_anti_air_building_factor = 0.1
+			production_speed_radar_station_factor = 0.1
 		}
 		complete_effect = {
 			set_variable = { X_ENG_new_propaganda_campaign = 14 }
@@ -3290,8 +2958,8 @@ X_ENG_propaganda_campaigns = {
 		days_re_enable = 100
 		cost = X_ENG_propaganda_15_cost
 		modifier = {
-			experience_loss_factor = -0.4
-			pocket_penalty = -0.2
+			experience_loss_factor = -0.1
+			pocket_penalty = -0.15
 		}
 		complete_effect = {
 			set_variable = { X_ENG_new_propaganda_campaign = 15 }
@@ -3346,8 +3014,6 @@ X_ENG_propaganda_campaigns = {
 		cost = X_ENG_propaganda_16_cost
 		modifier = {
 			stability_weekly = -0.001
-			production_speed_industrial_complex_factor = 0.05
-			production_speed_arms_factory_factor = 0.05
 		}
 		complete_effect = {
 			set_variable = { X_ENG_new_propaganda_campaign = 16 }
@@ -3366,11 +3032,31 @@ X_ENG_propaganda_campaigns = {
 					}
 				}
 			}
+			modify_building_resources = {
+        	   building = steel_refinery
+        	   resource = steel
+        	   amount = 4
+        	}
+			modify_building_resources = {
+        	   building = aluminium_refinery
+        	   resource = aluminium
+        	   amount = 4
+			}
 		}
 		remove_effect = {
 			set_variable = { X_ENG_propaganda_campaign_to_remove = 16 }
 			X_ENG_reset_propaganda_campaign_slot_effect = yes
 			multiply_variable = { X_ENG_propaganda_16_cost = 2 }
+			modify_building_resources = {
+        	   building = steel_refinery
+        	   resource = steel
+        	   amount = -4
+        	}
+			modify_building_resources = {
+        	   building = aluminium_refinery
+        	   resource = aluminium
+        	   amount = -4
+			}
 		}
 	}
 	X_ENG_propaganda_17 = { # ID = 17
@@ -3401,8 +3087,9 @@ X_ENG_propaganda_campaigns = {
 		days_re_enable = 100
 		cost = X_ENG_propaganda_17_cost
 		modifier = {
-			naval_morale_factor = 0.3
-			industrial_capacity_dockyard = 0.1
+			naval_morale_factor = 0.1
+#			industrial_capacity_dockyard = 0.1
+			repair_speed_factor = 0.1
 		}
 		complete_effect = {
 			set_variable = { X_ENG_new_propaganda_campaign = 17 }
@@ -3428,60 +3115,60 @@ X_ENG_propaganda_campaigns = {
 			multiply_variable = { X_ENG_propaganda_17_cost = 2 }
 		}
 	}
-	X_ENG_propaganda_18 = { # ID = 18
-		priority = 2
-		icon = eng_propaganda_campaigns
-		ai_will_do = { base = 0 }
-		allowed = {
-			NOT = { tag = JAP tag = GER tag = USA tag = LAT tag = GRE }
-			xchinese_country = no
-		}
-		available = {
-			X_ENG_propaganda_poster_slot_available = yes
-			OR = { original_tag = ENG is_in_faction_with = ENG is_puppet_of = ENG }
-			has_war = yes
-		}
-		visible = {
-			has_government = democratic
-			if = {
-				limit = {
-					NOT = { tag = ENG tag = JAP tag = GER tag = USA tag = LAT tag = GRE }
-				}
-				ENG = {
-					has_decision = X_ENG_propaganda_18
-				}
-			}
-		}
-		days_remove = 180
-		days_re_enable = 100
-		cost = X_ENG_propaganda_18_cost
-		modifier = {
-			consumer_goods_factor = -0.05
-		}
-		complete_effect = {
-			set_variable = { X_ENG_new_propaganda_campaign = 18 }
-			X_ENG_pick_propaganda_campaign_slot_effect = yes
-			if = {
-				limit = {
-					tag = ENG
-				}
-				hidden_effect = {
-					every_country = {
-						limit = {
-							OR = { is_in_faction_with = ENG is_puppet_of = ENG }
-							NOT = { tag = ENG tag = JAP tag = GER tag = USA tag = LAT tag = GRE }
-						}
-						activate_decision = X_ENG_propaganda_18
-					}
-				}
-			}
-		}
-		remove_effect = {
-			set_variable = { X_ENG_propaganda_campaign_to_remove = 18 }
-			X_ENG_reset_propaganda_campaign_slot_effect = yes
-			multiply_variable = { X_ENG_propaganda_18_cost = 2 }
-		}
-	}
+#	X_ENG_propaganda_18 = { # ID = 18
+#		priority = 2
+#		icon = eng_propaganda_campaigns
+#		ai_will_do = { base = 0 }
+#		allowed = {
+#			NOT = { tag = JAP tag = GER tag = USA tag = LAT tag = GRE }
+#			xchinese_country = no
+#		}
+#		available = {
+#			X_ENG_propaganda_poster_slot_available = yes
+#			OR = { original_tag = ENG is_in_faction_with = ENG is_puppet_of = ENG }
+#			has_war = yes
+#		}
+#		visible = {
+#			has_government = democratic
+#			if = {
+#				limit = {
+#					NOT = { tag = ENG tag = JAP tag = GER tag = USA tag = LAT tag = GRE }
+#				}
+#				ENG = {
+#					has_decision = X_ENG_propaganda_18
+#				}
+#			}
+#		}
+#		days_remove = 180
+#		days_re_enable = 100
+#		cost = X_ENG_propaganda_18_cost
+#		modifier = {
+#			consumer_goods_factor = -0.05
+#		}
+#		complete_effect = {
+#			set_variable = { X_ENG_new_propaganda_campaign = 18 }
+#			X_ENG_pick_propaganda_campaign_slot_effect = yes
+#			if = {
+#				limit = {
+#					tag = ENG
+#				}
+#				hidden_effect = {
+#					every_country = {
+#						limit = {
+#							OR = { is_in_faction_with = ENG is_puppet_of = ENG }
+#							NOT = { tag = ENG tag = JAP tag = GER tag = USA tag = LAT tag = GRE }
+#						}
+#						activate_decision = X_ENG_propaganda_18
+#					}
+#				}
+#			}
+#		}
+#		remove_effect = {
+#			set_variable = { X_ENG_propaganda_campaign_to_remove = 18 }
+#			X_ENG_reset_propaganda_campaign_slot_effect = yes
+#			multiply_variable = { X_ENG_propaganda_18_cost = 2 }
+#		}
+#	}
 	X_ENG_propaganda_19 = { # ID = 19
 		priority = 2
 		icon = eng_propaganda_campaigns
@@ -3510,7 +3197,9 @@ X_ENG_propaganda_campaigns = {
 		days_re_enable = 100
 		cost = X_ENG_propaganda_19_cost
 		modifier = {
-			conscription_factor = 0.15
+#			conscription_factor = 0.15
+			production_factory_efficiency_gain_factor = 0.05
+			industrial_capacity_factory = 0.025
 		}
 		complete_effect = {
 			set_variable = { X_ENG_new_propaganda_campaign = 19 }
@@ -3567,8 +3256,8 @@ X_ENG_propaganda_campaigns = {
 		days_re_enable = 100
 		cost = X_ENG_propaganda_20_cost
 		modifier = {
-			navy_capital_ship_attack_factor = 0.1
-			navy_screen_attack_factor = 0.1
+			navy_capital_ship_attack_factor = 0.05
+			navy_screen_attack_factor = 0.05
 		}
 		complete_effect = {
 			set_variable = { X_ENG_new_propaganda_campaign = 20 }
@@ -3626,7 +3315,7 @@ X_ENG_propaganda_campaigns = {
 		cost = X_ENG_propaganda_21_cost
 		modifier = {
 			org_loss_when_moving = -0.2
-			supply_consumption_factor = -0.2
+			supply_consumption_factor = -0.05
 		}
 		complete_effect = {
 			set_variable = { X_ENG_new_propaganda_campaign = 21 }
@@ -3681,7 +3370,7 @@ X_ENG_propaganda_campaigns = {
 		cost = X_ENG_propaganda_22_cost
 		modifier = {
 			max_planning_factor = 0.2
-			max_dig_in_factor = 0.2
+			max_dig_in_factor = 0.1
 		}
 		complete_effect = {
 			set_variable = { X_ENG_new_propaganda_campaign = 22 }
@@ -3789,7 +3478,7 @@ X_ENG_propaganda_campaigns = {
 		days_re_enable = 100
 		cost = X_ENG_propaganda_24_cost
 		modifier = {
-			production_lack_of_resource_penalty_factor = 0.8
+			production_lack_of_resource_penalty_factor = -0.3
 		}
 		complete_effect = {
 			set_variable = { X_ENG_new_propaganda_campaign = 24 }
@@ -3843,8 +3532,8 @@ X_ENG_propaganda_campaigns = {
 		days_re_enable = 100
 		cost = X_ENG_propaganda_25_cost
 		modifier = {
-			industrial_capacity_factory = 0.1
-			industrial_capacity_dockyard = 0.1
+			industrial_capacity_factory = 0.05
+			industrial_capacity_dockyard = 0.05
 		}
 		complete_effect = {
 			set_variable = { X_ENG_new_propaganda_campaign = 25 }
@@ -3898,7 +3587,7 @@ X_ENG_propaganda_campaigns = {
 		days_re_enable = 100
 		cost = X_ENG_propaganda_26_cost
 		modifier = {
-			supply_node_range = 0.5
+			truck_attrition_factor = -0.25
 		}
 		complete_effect = {
 			set_variable = { X_ENG_new_propaganda_campaign = 26 }
