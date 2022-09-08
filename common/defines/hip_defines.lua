@@ -345,7 +345,7 @@ NDefines.NMilitary.ACCLIMATIZATION_SPEED_GAIN = 0.08				-- A variable used to ba
 NDefines.NMilitary.ACCLIMATIZATION_LOSS_SPEED_FACTOR = 1.0		-- Loosing one acclimatization while being under affect of the opposite climate should cause it to drop down much faster than gaining.
 NDefines.NMilitary.UNIT_LEADER_MODIFIER_COOLDOWN_ON_GROUP_CHANGE = 3		-- time in days for a unit leader to regain its modifiers
 
-NDefines.NMilitary.TRAINING_ATTRITION = 0.03		  			   -- amount of extra attrition from being in training
+NDefines.NMilitary.TRAINING_ATTRITION = 0.04		  			   -- amount of extra attrition from being in training
 NDefines.NMilitary.UNIT_UPKEEP_ATTRITION = 0.000							--Constant attrition value applied to armies.
 
 NDefines.NMilitary.OVERSEAS_LOSE_EQUIPMENT_FACTOR = 1.0		   -- percentage of equipment lost disbanded overseas
