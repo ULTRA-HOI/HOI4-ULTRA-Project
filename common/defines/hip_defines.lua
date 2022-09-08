@@ -345,7 +345,7 @@ NDefines.NMilitary.ACCLIMATIZATION_SPEED_GAIN = 0.08				-- A variable used to ba
 NDefines.NMilitary.ACCLIMATIZATION_LOSS_SPEED_FACTOR = 1.0		-- Loosing one acclimatization while being under affect of the opposite climate should cause it to drop down much faster than gaining.
 NDefines.NMilitary.UNIT_LEADER_MODIFIER_COOLDOWN_ON_GROUP_CHANGE = 3		-- time in days for a unit leader to regain its modifiers
 
-NDefines.NMilitary.TRAINING_ATTRITION = 0.04		  			   -- amount of extra attrition from being in training
+NDefines.NMilitary.TRAINING_ATTRITION = 0.01		  			   -- amount of extra attrition from being in training
 NDefines.NMilitary.UNIT_UPKEEP_ATTRITION = 0.000							--Constant attrition value applied to armies.
 
 NDefines.NMilitary.OVERSEAS_LOSE_EQUIPMENT_FACTOR = 1.0		   -- percentage of equipment lost disbanded overseas
@@ -424,7 +424,7 @@ NDefines.NMilitary.ANTI_AIR_ATTACK_TO_AMOUNT = 0.004 --0.015 --0.005				-- Balan
 NDefines.NCountry.SUPPLY_CONVOY_FACTOR = 0.5					-- How many convoys each supply needs
 NDefines.NBuildings.SUPPLY_PORT_LEVEL_THROUGHPUT = 3   -- supply throughput per level of naval base
 NDefines.NMilitary.ATTRITION_DAMAGE_ORG = 0.1
-NDefines.NMilitary.ATTRITION_EQUIPMENT_LOSS_CHANCE = 0.01 --0.05
+NDefines.NMilitary.ATTRITION_EQUIPMENT_LOSS_CHANCE = 0.02 --0.05
 NDefines.NMilitary.ATTRITION_EQUIPMENT_PER_TYPE_LOSS_CHANCE = 0.6 -- Chance for loosing equipment when suffer attrition. Scaled up the stronger attrition is. Then scaled down by equipment reliability.
 NDefines.NMilitary.SUPPLY_USE_FACTOR_MOVING = 10                -- supply use when moving/fighting vs inactive
 NDefines.NMilitary.SUPPLY_USE_FACTOR_INACTIVE = 0.95
