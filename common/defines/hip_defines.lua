@@ -403,7 +403,7 @@ NDefines.NMilitary.LEADER_EXPERIENCE_SCALE = 0.9
 NDefines.NMilitary.UNIT_EXPERIENCE_PER_COMBAT_HOUR =  0.00025 --0.00015
 NDefines.NMilitary.UNIT_EXPERIENCE_PER_TRAINING_DAY = 0.0025 --0.0015
 NDefines.NMilitary.FIELD_EXPERIENCE_MAX_PER_DAY = 2.0  --was 1.2 Most xp you can gain per day
-NDefines.NMilitary.BATALION_CHANGED_EXPERIENCE_DROP = 0.4,			-- Division experience drop if unit has different batalion
+NDefines.NMilitary.BATALION_CHANGED_EXPERIENCE_DROP = 0.4			-- Division experience drop if unit has different batalion
 
 NDefines.NMilitary.UNIT_LEADER_USE_NONLINEAR_XP_GAIN = false       -- Whether unit leader XP gain is scaled by 1/<nr_of_traits>
 
