@@ -1,5 +1,155 @@
 # Changelog
 
+### 0.14
+
+### Features
+
+- Japan should make sensible investment to get rid of escort malus
+- Reworked german naval focuses and missions
+- Removed railway conversion feature (makes no sense until we can get country unique values)
+- Uk get a decision to attack French State if they control Libya
+- Added back a focus for Soviet Union to declare on Germany
+- Imperial Conference overhauled
+- Imported Propaganda decisions for most majors
+
+### Map 
+
+- Added 69 new airzone in Eurasia
+- Most airbases are located in bigger cities
+- Splited norwegian sea
+- Splited Slovenia
+- More naval zones in Asia-Pacific
+- French Coast terrain adjusted
+
+### Database
+
+- Various aircraft stats adjusted
+- Australian manpower nerf
+- India manpower nerf
+- Norfolk navy yard is now an escort ship designer
+- Debt Charges techs dates are changed for later ones
+- USA/UK/Canada gets AoT bonus for ASW techs
+- Sub Stealth modules does not reduce raw visibility
+- Rebalanced effects of snorkels and stealth modules
+- BF109 E is now a 1939 tech
+- Added BF109 E7 as german 1940 fighter tech
+- Military focus order changed for Soviet Union
+- Streamline German Fighter research boosts
+- Silo Fuel capacity reduced by 20%, Infra fuel capacity reduced by 25%
+- Air fuel consumption increased by 33%
+- Secundary batteries are needed for cruiser & capital ships
+- Increased resources needed by reffineries
+- Factory militia now raise units
+- Remove non-equipment related techs for infantry and artillery
+- Heavy Artillery is now available as frontline unit
+- Terrain modifier significatly changed
+- Set AoT on diverse focus trees to get radar tech on historical date
+- Aligned cruiser and DD sonar stats
+- AoT bonus for Panzer II
+- Buffed Autocanons and light tanks in general
+- Heavy Arty and heavy AG gets fort bonuses
+- Raiding fleet designer no longer make maluses to carriers
+- Coal prospecting in Siberia gives more coal
+- Terrains have now naval invasion maluses
+- Ship Xp now change chances to get crit and org
+- Admiral defense change org and chances to get crit
+- Special Forces access overhauled
+- Added rules for LL, Licenses and Volunteers
+- Research Groups improved
+- German construction decision target historical states
+- Streamlined number of tanks/TD/AG to 36 equipment per subunit
+- Removed tank in support bataillons
+- Unit lvl overhauled to be more comprehensive
+- Changed commonwealth nations number of research slots
+- Mission to Japan is now a Focus instead of a Decision
+- Attrition system no longer affect disproportionnaly subunits with low number of equipments
+- Added a 5th row to division designer
+
+### Balance 
+
+- Trains are more granular (1:1 representation instead of 1:10)
+- Soviet Desperate measures are less punishing
+- Soviet General can get 2 additional divisions but get less xp from it
+- Order 227 does not need a focus anymore
+- Focuses allowing UK to get radar techs on time
+- UK's general rearmament focus can be taken if Germany occupy Prag
+- Naval xp increased by 20%
+- Screening penalty is less affected by positionning
+- Carrier-related doctrines have their own categories for bonuses
+- Submarine-related doctrine have their own category for bonuses
+- 2-Ocean navy act no longer make construction/refit modifiers
+- Coal is more expensive to prospect
+- Engineer techs now gives up to 5 entrenchment
+- Reduced entrenchment from doctrines
+- Tweaked trade defines
+- Auftragstaktik spirit buffet to 15% attack/defense
+- Politicized Military increase a bit more doctrine cost
+- Red Army base value rebalanced
+- Barbarossa bonus increased to 10%
+- Mers El Kebir raid is more effective
+- Reduced strength damage by 20% - compensate defense being better
+- Lone Wolf trait buffed
+- Spanish SCW focuses for Germany and Soviet Union increase air volunteer cap for both
+- Licenses restricted but less expensives
+- Countries should no longer be able to go out of agrarian economy
+- Convoy transporting troops are no longer disproportionnaly spotted
+- Poland should not surrender too fast
+
+### AI 
+
+- Various adjustements
+- UK no longer send troops to Norway
+- UK/FRA should no longer suicide fleets in the Baltic
+
+
+### UI
+
+- Naval layout improved
+- Improved modules names for German ship modules
+- Improved german focus icons
+
+### Bugfixes 
+
+- Italy correcly join the war against Soviet Union
+- Atlantikwall decision now correctly build fortifications in Normandy
+- Petain is working again
+
+
+### 0.13.1
+
+### Database
+
+- Range of some german heavy fighter slightly increased
+- Subjects (except Colony type for the India case) does not allow to use shared manpower feature
+- Tweaks on various officer traits (Amphibious, Tactician, Well Informed, Organizer)
+- Recon mission is available for maritime patrol and heavy maritime aircrafts
+- Cas mission is available for torpedo bombers
+- Terrains have now different supply/fuel consumption values for units on them
+
+### Balance
+
+- Reduced org loss on ships by 90% (workaround for a deficient vanilla system)
+- Trade law is now scaling by 2.5% instead of 3% CG
+- Increasing fuel consumption by fighting and moving units
+- Increased the speed for units to repleinish fuel when supplied
+- Reduced impact of xp on land and naval units
+- Considerably reduced the xp gained in combat by ships
+- Force Attack and Last Stand no longer make the unit invulnerable to org damages
+
+### Map
+
+- Added a few more naval zones in the atlantic ocean, improved names of existing naval zones
+
+### Bugfixes
+
+- Fixed wrong trigger on refinery management
+- VP position fix
+
+### AI
+
+- Tweaked AI Lend Lease defines
+
+
 ### 0.13
 
 ### Major Changes
