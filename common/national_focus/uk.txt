@@ -1253,17 +1253,16 @@ focus_tree = {
 			add_ideas = ENG_chiefs_of_staff_committee_idea
 		}
 	}
-
 	focus = {
-		id = fighter_command_focus
+		id = coastal_command_focus
 		prerequisite = { focus = air_rearmament_focus }
-		icon = GFX_goal_generic_air_fighter
+		icon = GFX_goal_generic_air_naval_bomber
 		x = 0
 		y = 1
 		relative_position_id = air_rearmament_focus
 		cost = 5
 		ai_will_do = {
-			factor = 3
+			factor = 1
 		}
 
 		available_if_capitulated = yes
@@ -1275,18 +1274,16 @@ focus_tree = {
 			}
 			air_experience = 50
 			add_tech_bonus = {
-				name = fighter_command_focus
+				name = coastal_command_focus
 				bonus = 0.5
-				uses = 2
-				#technology = eng_fighter_2
-				technology = eng_fighter_8
-				technology = eng_fighter_9
+				uses = 3
+				category = naval_bomber
 			}
 		}
 	}
 	focus = {
 		id = bomber_command_focus
-		prerequisite = { focus = fighter_command_focus }
+		prerequisite = { focus = coastal_command_focus }
 		icon = GFX_goal_generic_air_bomber
 		x = 0
 		y = 2
@@ -1318,15 +1315,15 @@ focus_tree = {
 		}
 	}
 	focus = {
-		id = coastal_command_focus
+		id = fighter_command_focus
 		prerequisite = { focus = bomber_command_focus }
-		icon = GFX_goal_generic_air_naval_bomber
+		icon = GFX_goal_generic_air_fighter
 		x = 0
 		y = 3
 		relative_position_id = air_rearmament_focus
 		cost = 5
 		ai_will_do = {
-			factor = 1
+			factor = 3
 		}
 
 		available_if_capitulated = yes
@@ -1338,16 +1335,18 @@ focus_tree = {
 			}
 			air_experience = 50
 			add_tech_bonus = {
-				name = coastal_command_focus
+				name = fighter_command_focus
 				bonus = 0.5
-				uses = 3
-				category = naval_bomber
+				uses = 2
+				category = fighter_bomber
 			}
 		}
 	}
+	
+	
 	focus = {
 		id = aircraft_production_focus
-		prerequisite = { focus = coastal_command_focus }
+		prerequisite = { focus = fighter_command_focus }
 		icon = GFX_goal_generic_air_production
 		x = 0
 		y = 4
