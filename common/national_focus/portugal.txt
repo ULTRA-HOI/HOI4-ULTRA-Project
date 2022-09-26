@@ -78,6 +78,8 @@ focus_tree = {
 			OR = {
 				has_full_control_of_state = 894 #North Angola
 				has_full_control_of_state = 540 #South Angola
+				has_full_control_of_state = 1116 #South Angola
+				has_full_control_of_state = 1117 #South Angola
 				has_full_control_of_state = 544 #Mozambique
 			}
 		}
@@ -118,6 +120,8 @@ focus_tree = {
 			OR = {
 				has_full_control_of_state = 894 #North Angola
 				has_full_control_of_state = 540 #South Angola
+				has_full_control_of_state = 1116 #South Angola
+				has_full_control_of_state = 1117 #South Angola
 				has_full_control_of_state = 544 #Mozambique
 			}
 		}
@@ -173,7 +177,21 @@ focus_tree = {
 					}
 					transfer_state = 540
 					POR = { set_country_flag = POR_released_angola_flag }
-				}								
+				}
+				if = {
+					limit = { 
+						POR = { has_full_control_of_state = 1116 }
+					}
+					transfer_state = 1116
+					POR = { set_country_flag = POR_released_angola_flag }
+				}
+				if = {
+					limit = { 
+						POR = { has_full_control_of_state = 1117 }
+					}
+					transfer_state = 1117
+					POR = { set_country_flag = POR_released_angola_flag }
+				}
 			}
 
 			MZB = {
@@ -296,7 +314,25 @@ focus_tree = {
 					instant_build = yes
 				}					
 				add_extra_state_shared_building_slots = 4					
-			}				
+			}
+			1116 = {
+
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}					
+				add_extra_state_shared_building_slots = 4					
+			}
+			1117 = {
+
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}					
+				add_extra_state_shared_building_slots = 4					
+			}
 		}
 	}
 
@@ -351,6 +387,18 @@ focus_tree = {
 					owner = { is_subject_of = ROOT }
 				}
 			}
+			OR = {
+				has_full_control_of_state = 1116
+				1116 = {
+					owner = { is_subject_of = ROOT }
+				}
+			}
+			OR = {
+				has_full_control_of_state = 1117
+				1117 = {
+					owner = { is_subject_of = ROOT }
+				}
+			}
 		}
 
 		bypass = {		
@@ -377,6 +425,24 @@ focus_tree = {
 					type = naval_base
 					level = 2
 					province = 8248
+					instant_build = yes
+				}
+
+			}
+			1116 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+
+			}
+			1117 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = infrastructure
+					level = 1
 					instant_build = yes
 				}
 
