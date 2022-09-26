@@ -81,6 +81,8 @@ focus_tree = {
 				has_full_control_of_state = 1116 #South Angola
 				has_full_control_of_state = 1117 #South Angola
 				has_full_control_of_state = 544 #Mozambique
+				has_full_control_of_state = 1121 #Mozambique
+				has_full_control_of_state = 1122 #Mozambique
 			}
 		}
 
@@ -123,6 +125,8 @@ focus_tree = {
 				has_full_control_of_state = 1116 #South Angola
 				has_full_control_of_state = 1117 #South Angola
 				has_full_control_of_state = 544 #Mozambique
+				has_full_control_of_state = 1121 #Mozambique
+				has_full_control_of_state = 1122 #Mozambique
 			}
 		}
 
@@ -200,6 +204,20 @@ focus_tree = {
 						POR = { has_full_control_of_state = 544 }
 					}
 					transfer_state = 544
+					POR = { set_country_flag = POR_released_mozambique_flag }
+				}
+				if = {
+					limit = { 
+						POR = { has_full_control_of_state = 1121 }
+					}
+					transfer_state = 1121
+					POR = { set_country_flag = POR_released_mozambique_flag }
+				}
+				if = {
+					limit = { 
+						POR = { has_full_control_of_state = 1122 }
+					}
+					transfer_state = 1122
 					POR = { set_country_flag = POR_released_mozambique_flag }
 				}	
 			}
@@ -491,6 +509,18 @@ focus_tree = {
 					owner = { is_subject_of = ROOT }
 				}
 			}
+			OR = {
+				has_full_control_of_state = 1121
+				1121 = {
+					owner = { is_subject_of = ROOT }
+				}
+			}
+			OR = {
+				has_full_control_of_state = 1122
+				1122 = {
+					owner = { is_subject_of = ROOT }
+				}
+			}
 		}
 
 		bypass = {		
@@ -519,12 +549,32 @@ focus_tree = {
 					instant_build = yes
 				}
 
+				
+			}
+			1121 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+
+			}
+			1122 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				
 				add_building_construction = {
 					type = naval_base
 					level = 2
 					province = 2123				
 					instant_build = yes
 				}
+
 			}
 		}
 	}
