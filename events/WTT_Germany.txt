@@ -456,6 +456,11 @@ country_event = {
 		GER = {
 			country_event = { id = wtt_germany.10 days = 1 random_days = 2 }
 		}
+		hidden_effect = {
+			GER = {	
+				set_country_flag = GER_italy_declined_assassination_of_mussolini_flag
+			}
+		}
 	}
 }
 
@@ -507,9 +512,23 @@ country_event = {
 			remove_idea = GER_preparing_ITA_coup
 			add_idea = GER_preparing_ITA_coup2
 		}
-		remove_ideas = victor_emmanuel
-		ITA_victor_emmanuel_iii = {
+		remove_ideas = vittorio_emanuele
+		ITA_vittorio_emanuele_iii = {
 			promote_character = { ideology = despotism }
+		}
+		
+		hidden_effect = {
+			retire_character = ITA_benito_mussolini
+			if = {
+				limit = {
+					has_any_power_balance = yes
+				}
+				set_power_balance = {
+					id = ITA_power_balance
+					right_side = ITA_king_side
+					set_value = 0.1
+				}
+			}
 		}
 		add_ai_strategy = {
 			type = alliance
@@ -3049,7 +3068,7 @@ country_event = {
 		}
 		
 		promote_character = HUN_otto_von_habsburg #Already a country leader (Non-Aligned -> Despotism)
-		
+
 		if = {
 			limit = {
 				tag = AUS
@@ -3336,7 +3355,7 @@ country_event = {
 					instant_build = yes
 				}
 				set_state_flag = GER_integrate_war_economies_2
-			}		
+			}
 		}
 		if = {
 			limit = {
@@ -3347,9 +3366,9 @@ country_event = {
 				limit = {
 					is_subject_of = FROM
 				}
-				ROOT = { set_autonomy = { target = PREV autonomy_state = autonomy_satellite } }
+				ROOT = { set_autonomy = { target = PREV autonomy_state = autonomy_satellite end_wars = no end_civil_wars = no} }
 			}
-			set_autonomy = { target = FROM autonomy_state = autonomy_satellite }
+			set_autonomy = { target = FROM autonomy_state = autonomy_satellite end_wars = no end_civil_wars = no}
 		}
 		if = {
 			limit = { 
@@ -3361,9 +3380,9 @@ country_event = {
 				limit = {
 					is_subject_of = FROM
 				}
-				ROOT = { set_autonomy = { target = PREV autonomy_state = autonomy_dominion } }
+				ROOT = { set_autonomy = { target = PREV autonomy_state = autonomy_dominion end_wars = no end_civil_wars = no} }
 			}
-			set_autonomy = { target = FROM autonomy_state = autonomy_dominion }
+			set_autonomy = { target = FROM autonomy_state = autonomy_dominion end_wars = no end_civil_wars = no}
 		}
 		if = {
 			limit = { 
@@ -3567,5 +3586,20 @@ country_event = {
 				}
 			}
 		}
+	}
+}
+
+country_event = {
+	id = wtt_germany.1006
+	title = wtt_germany.1006.t
+	desc = wtt_germany.1006.desc 
+	picture = GFX_report_event_german_volunteers
+
+	is_triggered_only = yes
+
+	fire_only_once = yes
+	
+	option = {
+		name = wtt_germany.1006.a
 	}
 }

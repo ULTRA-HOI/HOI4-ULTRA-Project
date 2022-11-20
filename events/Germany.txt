@@ -1858,6 +1858,7 @@ country_event = {
 				factor = 0
 				is_historical_focus_on = yes
 				NOT = { HUN = { has_completed_focus = HUN_protect_austria } }
+				NOT = { ITA = { has_completed_focus = ITA_guarantee_austrian_independence } }
 			}
 			modifier = {
 				GER = { has_army_size = { size > 39 } }
@@ -1869,9 +1870,18 @@ country_event = {
 			}
 			modifier = {
 				add = 10
-				HUN = { 
-					OR = { 
-						has_completed_focus = HUN_protect_austria 
+				HUN = {
+					OR = {
+						has_completed_focus = HUN_protect_austria
+						is_in_faction_with = AUS
+					}
+				}
+			}
+			modifier = {
+				add = 100
+				ITA = {
+					OR = {
+						has_completed_focus = ITA_guarantee_austrian_independence
 						is_in_faction_with = AUS
 					}
 				}
@@ -1900,6 +1910,16 @@ country_event = {
 			country_event = { hours = 2 id = germany.29 }
 			if = { limit = { is_in_faction_with = AUS }
 				remove_from_faction = AUS
+			}
+		}
+		if = {
+			limit = {
+				ITA = {
+					has_completed_focus = ITA_guarantee_austrian_independence
+				}
+			}
+			ITA = { #Italy gets an event to ask the UK and France to guarantee Austria too
+				country_event = { id = BBA_italy_interaction_events.24 hours = 1 }
 			}
 		}
 	}
@@ -4261,7 +4281,7 @@ country_event = {
 	fire_only_once = yes
 
 	trigger = {
-		has_country_leader = { name = "Adolf Hitler" }
+		has_country_leader = { character = GER_adolf_hitler ruling_only = yes }
 		tag = GER
 		AND = {
 			CZE = { has_capitulated = no }

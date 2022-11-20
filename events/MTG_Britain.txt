@@ -1894,6 +1894,19 @@ country_event = {
 	# Accept
 	option = {
 		name = mtg_britain.36.a
+		
+		ai_chance = {
+			base = 0
+			modifier = {
+				add = 1
+				OR = {
+					ITA_is_historical_ai = yes #Historical ITA has 50%-50% chances of accepting
+					ITA_is_alt_fascist_balbo_ai = yes
+					ITA_is_alt_fascist_grandi_ai = yes
+					ITA_is_monarchist_ai = yes
+				}
+			}
+		}
 		FROM = {
 			if = {
 				limit = {
@@ -1921,6 +1934,12 @@ country_event = {
 				}
 			}
 		}
+		#Italian subjects join the faction
+		every_subject_country = {
+			FROM = {
+				add_to_faction = PREV
+			}
+		}
 		hidden_effect = {
 			add_ai_strategy = {
 				type = alliance
@@ -1944,7 +1963,15 @@ country_event = {
 	option = {
 		name = mtg_britain.36.b
 		ai_chance = {
-			factor = 0
+			base = 1
+			modifier = {
+				factor = 0
+				OR = {
+					ITA_is_alt_fascist_balbo_ai = yes
+					ITA_is_alt_fascist_grandi_ai = yes
+					ITA_is_monarchist_ai = yes
+				}
+			}
 		}
 		FROM = { country_event = { id = mtg_britain.38 hours = 6 } }
 	}
@@ -2950,6 +2977,10 @@ country_event = {
 				NOT = { original_tag = ANG }
 				owns_state = 540
 				has_full_control_of_state = 540
+				owns_state = 891
+				has_full_control_of_state = 1116
+				owns_state = 892
+				has_full_control_of_state = 1117
 			}
 			release = ANG
 		}
@@ -6837,6 +6868,11 @@ country_event = {
 				factor = 3
 				FROM = { has_country_flag = ENG_extensive_diplomatic_pressure_flag }
 			}
+			modifier = {
+				factor = 0
+				tag = RAJ
+				ENG = { NOT = { has_completed_focus = ENG_indian_autonomy } }
+			}
 		}
 		custom_effect_tooltip = mtg_britain.100_tt #"If all accept you will get:"
 		effect_tooltip = { add_ideas = ENG_federal_integration }
@@ -6868,17 +6904,20 @@ country_event = {
 			modifier = {
 				factor = 0
 				tag = RAJ
+				ENG = { has_completed_focus = ENG_indian_autonomy }
 				has_opinion = { target = ENG value > 99 }
 			}
 			modifier = {
 				factor = 0
 				tag = RAJ
+				ENG = { has_completed_focus = ENG_indian_autonomy }
 				has_opinion = { target = ENG value > 89 }
 				FROM = { has_country_flag = ENG_diplomatic_pressure_flag }
 			}
 			modifier = {
 				factor = 0
 				tag = RAJ
+				ENG = { has_completed_focus = ENG_indian_autonomy }
 				has_opinion = { target = ENG value > 79 }
 				FROM = { has_country_flag = ENG_extensive_diplomatic_pressure_flag }
 			}

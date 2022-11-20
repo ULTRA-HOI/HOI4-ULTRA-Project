@@ -1889,7 +1889,14 @@ country_event = {
 	option = {
 		name = lar_compensate_italy.1.a #agree
 		ai_chance = {
-			factor = 100
+			base = 0
+			modifier = {
+				add = 100
+				OR = {
+					ITA_is_monarchist_ai = yes
+					ITA_is_alt_fascist_grandi_ai = yes
+				}
+			}
 		}
 		FRA = {
 			country_event = lar_compensate_italy.2
@@ -1903,7 +1910,7 @@ country_event = {
 	option = {
 		name = lar_compensate_italy.1.b #refuse
 		ai_chance = {
-			factor = 0
+			base = 1
 		}
 		FRA = {
 			country_event = lar_compensate_italy.3
@@ -2506,11 +2513,24 @@ country_event = {
 	option = {
 		name = lar_concessions_to_italy.4.a #agree
 		ai_chance = {
-			factor = 80
+			base = 5
+			modifier = {
+				add = 75
+				OR = {
+					ITA_is_alt_fascist_grandi_ai = yes
+					ITA_is_christian_democracy_ai = yes
+					ITA_is_socialist_ai = yes
+				}
+			}
+			modifier = {
+				factor = 0
+				is_in_faction = yes
+			}
 		}
 		set_global_flag = ITA_agrees_ENG_FRA_concessions
 		effect_tooltip = {
 			transfer_state = 268
+			transfer_state = 269
 		}
 		custom_effect_tooltip = LAR_concessions_stresa_front_tt
 		hidden_effect = {
@@ -2525,7 +2545,13 @@ country_event = {
 	option = {
 		name = lar_concessions_to_italy.4.b #no deal
 		ai_chance = {
-			factor = 20
+			base = 20
+			modifier = {
+				factor = 0
+				ITA_is_alt_fascist_grandi_ai = no
+				ITA_is_christian_democracy_ai = no
+				ITA_is_socialist_ai = no
+			}
 		}
 		FROM = {
 			country_event = lar_concessions_to_italy.7
