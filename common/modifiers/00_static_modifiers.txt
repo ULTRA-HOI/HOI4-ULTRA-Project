@@ -2,6 +2,10 @@
 # Effects are fully scriptable here.
 # These names can NOT be removed or changes, as the code uses them....
 
+_test_power_balance_mod = {
+	power_balance_daily = 0.02
+}
+
 weather_rain_light = { # on Region
 	air_accidents = 0.1
 	air_detection = -0.1
@@ -349,6 +353,18 @@ free_license = {
 	license_purchase_cost = 0 #no base cost
 }
 
+ITA_military_agreements = {
+	valid_relation_trigger = {
+		FROM = {
+			is_in_faction_with = ROOT
+		}
+	}
+	license_purchase_cost = 0 #base cost reduction
+	ai_license_acceptance = 20 #more to AI acceptance value.
+	license_production_speed = 0.25 #speed  increase for being a license
+	license_tech_difference_speed = 0.25 #less cost increase for each tech level between the license and own tech level
+}
+
 # applies when stability > 50%
 stability_good_modifier = {
 	industrial_capacity_factory = 0.20
@@ -379,6 +395,10 @@ war_support_bad_modifier = {
 	command_power_gain_mult = -0.95
 	surrender_limit = -0.3
 	army_morale_factor = -0.5
+}
+
+war_support_during_war = { #Applied during war, scaled from 0-100% with war support, not split.
+	stability_factor = -0.3
 }
 
 
@@ -485,7 +505,7 @@ diff_strong_ai_generic = {
 	production_factory_efficiency_gain_factor = 0.25
 	industrial_capacity_dockyard = 0.2
 	political_power_factor = 0.25
-	#research_speed_factor = 0.1
+	research_speed_factor = 0.1
 	production_lack_of_resource_penalty_factor = -0.3
 
 	# fuel
@@ -720,4 +740,16 @@ SOV_for_the_common_good_relation = { #For Right Oppo allies
 	ai_license_acceptance = 20 #more to AI acceptance value.
 	license_production_speed = 0.25 #speed  increase for being a license
 	license_tech_difference_speed = 0.25 #less cost increase for each tech level between the license and own tech level
+}
+
+ETH_league_of_nations_volunteer_resolution = {
+	send_volunteers_tension = -0.5
+	send_volunteer_divisions_required = -0.75
+	send_volunteer_factor = 0.25
+}
+
+ETH_support_spain_static_modifier = {
+	send_volunteers_tension = -0.5
+	send_volunteer_divisions_required = -0.75
+	send_volunteer_factor = 0.5
 }
