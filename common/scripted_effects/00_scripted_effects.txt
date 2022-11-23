@@ -39,7 +39,7 @@ replace_civ_with_arms_factories = {
 			instant_build = yes
 		}
 	}
-	
+
 	random_owned_controlled_state = {
 		limit = {
 			is_fully_controlled_by = ROOT
@@ -911,12 +911,12 @@ get_best_alliance_match_fascism_effect = { #arguably a trigger, but it does stuf
 	if = {
 		limit = {
 			all_other_country = {
-			
+
 				is_faction_leader = yes
 				is_major = yes
 				has_government = fascism
 				not = { has_war_with = ROOT }
-				
+
 				set_temp_variable = { this.leader_score = num_of_factories }
 				add_to_temp_variable = { this.leader_score = num_battalions }
 				all_of_scopes = {
@@ -1048,11 +1048,11 @@ civil_war_anti_exploiter_punitive_action = {
 				infantry = { x = 0 y = 0 }
 				infantry = { x = 0 y = 1 }
 				infantry = { x = 0 y = 2 }
-	
+
 		   	   	infantry = { x = 1 y = 0 }
 				infantry = { x = 1 y = 1 }
 				infantry = { x = 1 y = 2 }
-	
+
 		   	   	infantry = { x = 2 y = 0 }
 				artillery_brigade = { x = 2 y = 1 }
 				artillery_brigade = { x = 2 y = 2 }
@@ -1186,7 +1186,7 @@ clear_sabotaged_resources_if_necesary = {
 				}
 			}
 		}
-		
+
 		clear_variable = sabotaged_oil
 		clear_variable = sabotaged_aluminium
 		clear_variable = sabotaged_rubber
@@ -1220,7 +1220,7 @@ instantiate_collaboration_government = {
 	custom_effect_tooltip = compliance_80_effect_tooltip
 	hidden_effect = {
 		set_variable = { collaboration_formed@var:country_to_initiate = 1 }
-		
+
 		if = {
 			# if country_to_initiate does not exist, simply release it as a puppet
 			limit = {
@@ -1238,24 +1238,24 @@ instantiate_collaboration_government = {
 		}
 		else = {
 			# if country_to_initiate exists, create a dynamic country as our new puppet
-			
+
 			create_dynamic_country = {
 				original_tag = country_to_initiate
-			
+
 				set_variable = { collaboration_formed_by = PREV }
 				set_temp_variable = { new_country = this }
-				
+
 				PREV = {
 					every_controlled_state = {
 						limit = { occupied_country_tag = country_to_initiate }
-						
+
 						var:new_country = {
 							transfer_state = PREV
 						}
 					}
-					
+
 					puppet = new_country
-					
+
 					set_autonomy = {
 						target = new_country
 						autonomy_state = autonomy_collaboration_government
@@ -1590,7 +1590,7 @@ remove_communist_spirits_effect = {
 		limit = { has_idea = BALTIC_communist_propaganda }
 		remove_ideas = BALTIC_communist_propaganda
 	}
-	if = { 
+	if = {
 		limit = { has_idea = BALTIC_communist_militancy }
 		remove_ideas = BALTIC_communist_militancy
 	}
@@ -1984,6 +1984,150 @@ add_ruling_to_neu = {
 			communism = communism_support_var
 		}
 	}
+}
+
+on_daily = {
+
+}
+
+#on_daily_USA = {
+#	# you can specify an on daily action for a specific country
+#}
+
+###Game weight variables for faction load balancing.
+###We store these on germany because ... we have to
+
+set_add_fascist_game_weight_large = {
+	GER = {
+		if = {
+			limit = {
+				NOT = {
+					has_variable = fascist_game_weight
+				}
+			}
+			set_variable = { var = fascist_game_weight value = 20 }
+		}
+		else = {
+			add_to_variable = { var = fascist_game_weight value = 20 }
+		}
+	}
+}
+
+set_add_democratic_game_weight_large = {
+	GER = {
+		if = {
+			limit = {
+				NOT = {
+					has_variable = democratic_game_weight
+				}
+			}
+			set_variable = { var = democratic_game_weight value = 20 }
+		}
+		else = {
+			add_to_variable = { var = democratic_game_weight value = 20 }
+		}
+	}
+}
+
+set_add_unaligned_game_weight_large = {
+	GER = {
+		if = {
+			limit = {
+				NOT = {
+					has_variable = unaligned_game_weight
+				}
+			}
+			set_variable = { var = unaligned_game_weight value = 20 }
+		}
+		else = {
+			add_to_variable = { var = unaligned_game_weight value = 20 }
+		}
+	}
+}
+
+set_add_communist_weight_large = {
+	GER = {
+		if = {
+			limit = {
+				NOT = {
+					has_variable = communist_game_weight
+				}
+			}
+			set_variable = { var = communist_game_weight value = 20 }
+		}
+		else = {
+			add_to_variable = { var = communist_game_weight value = 20 }
+		}
+	}
+}
+
+set_add_fascist_weight_small = {
+	GER = {
+		if = {
+			limit = {
+				NOT = {
+					has_variable = fascist_game_weight
+				}
+			}
+			set_variable = { var = fascist_game_weight value = 8 }
+		}
+		else = {
+			add_to_variable = { var = fascist_game_weight value = 8 }
+		}
+	}
+}
+
+set_add_democratic_weight_small = {
+	GER = {
+		if = {
+			limit = {
+				NOT = {
+					has_variable = democratic_game_weight
+				}
+			}
+			set_variable = { var = democratic_game_weight value = 8 }
+		}
+		else = {
+			add_to_variable = { var = democratic_game_weight value = 8 }
+		}
+	}
+}
+
+set_add_unaligned_weight_small = {
+	GER = {
+		if = {
+			limit = {
+				NOT = {
+					has_variable = unaligned_game_weight
+				}
+			}
+			set_variable = { var = unaligned_game_weight value = 8 }
+		}
+		else = {
+			add_to_variable = { var = unaligned_game_weight value = 8 }
+		}
+	}
+}
+
+set_add_communist_weight_small = {
+	GER = {
+		if = {
+			limit = {
+				NOT = {
+					has_variable = communist_game_weight
+				}
+			}
+			set_variable = { var = communist_game_weight value = 8 }
+		}
+		else = {
+			add_to_variable = { var = communist_game_weight value = 8 }
+		}
+	}
+}
+
+leave_the_league_of_nations = {
+	custom_effect_tooltip = leave_the_league_of_nations_tt
+	hidden_effect = { remove_ideas = league_of_nations_member_idea }
 }
 
 

@@ -2,6 +2,21 @@ ideas = {
 
 	hidden_ideas = {
 
+		league_of_nations_member_idea = { 
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+			
+			modifier = {
+			}
+		}
+
 		continuous_naval_production = {
 			allowed = {
 				always = no
@@ -529,7 +544,50 @@ ideas = {
 		}
 	}
 	
+	# Special ones that can be applied on other countries through focus system.
 	country = {
+		
+		TO_chose_neutrality = {
+
+			picture = generic_pp_unity_bonus
+
+			removal_cost = -1
+
+			allowed = {
+				always = no # Added via event
+			}
+
+			#on_add = {
+			#	set_rule = { can_join_factions = no }
+			#}
+			#
+			#on_remove = {
+			#	set_rule = { can_join_factions = yes }
+			#}
+
+			modifier = {
+				trade_opinion_factor = 0.25
+				democratic_acceptance = -300
+				communism_acceptance = 100
+				#custom_modifier_tooltip = SOV_shocked_by_surprise_attack_cant_join_factions_tt
+			}
+		}
+		
+		TO_nato_ratified = {
+
+			picture = generic_democratic_drift_bonus
+
+			removal_cost = -1
+
+			allowed = {
+				always = no # Added via event
+			}
+
+			modifier = {
+				operative_slot = 1
+				communism_acceptance = -15
+			}
+		}
 		
 		nationalism = {
 			
@@ -548,6 +606,23 @@ ideas = {
 			
 			modifier = {
 				fascism_drift = 0.1
+			}
+		}
+		MTG_TEST_NAVAL_IDEA = { #MTG_TODO_GABRIEL: remove before shipping
+			
+			allowed = {
+				always = no
+			}
+
+			removal_cost = -1
+
+			picture = generic_infantry_bonus
+
+			
+			modifier = {
+				navy_fuel_consumption_factor = -1
+				air_fuel_consumption_factor = -1
+				#spotting_chance = 5
 			}
 		}
 
@@ -647,6 +722,91 @@ ideas = {
 			modifier = {
 				neutrality_drift = 0.1
 				neutrality_acceptance = 85
+			}
+		}
+
+		#Weaker version
+		fascist_influence_weak = {
+			name = fascist_influence
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = fascism
+			}
+
+			removal_cost = -1
+
+			picture = generic_fascism_drift_bonus
+			
+			modifier = {
+				fascism_drift = 0.1
+				fascism_acceptance = 35
+			}
+		}
+		
+		communist_influence_weak = {
+			name = communist_influence
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = communism
+			}
+
+			removal_cost = -1
+
+			picture = generic_communism_drift_bonus
+			
+			modifier = {
+				communism_drift = 0.1
+				communism_acceptance = 35
+			}
+		}
+
+		democratic_influence_weak = {
+			name = democratic_influence
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = democratic
+			}
+
+			removal_cost = -1
+
+			picture = generic_democratic_drift_bonus
+			
+			modifier = {
+				democratic_drift = 0.1
+				democratic_acceptance = 35
+			}
+		}
+
+		neutrality_influence_weak = {
+			name = neutrality_influence
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = neutrality
+			}
+
+			removal_cost = -1
+
+			picture = generic_pp_unity_bonus
+			
+			modifier = {
+				neutrality_drift = 0.1
+				neutrality_acceptance = 35
 			}
 		}
 		
@@ -782,8 +942,6 @@ ideas = {
 				mobilization_speed = 0.15
 			}
 		}
-		
-		
 		# Generic Focus Ideas
 
 		special_forces = {
@@ -995,7 +1153,6 @@ ideas = {
 				has_war = yes
 			}
 			
-			
 			removal_cost = -1
 	
 			modifier = {
@@ -1004,6 +1161,7 @@ ideas = {
 				#lend_lease_tension = 0.50
 				send_volunteers_tension = 0.20
 				guarantee_tension = 1.0
+				embargo_threshold_factor = 2.				  
 				ai_badass_factor = 0.01    # Will receive 1% of the threat from others
 				ai_get_ally_desire_factor = -100
 				foreign_subversive_activites = -99.99								
@@ -1516,6 +1674,22 @@ ideas = {
 				production_cost_max_nrm_ship_hull_carrier = 17000
 			}
 		}
+
+		organization_of_african_unity_member_idea = { 
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+			picture = generic_pp_unity_bonus
+			#TODO_ASD: Set correct icon - idea_generic_org_of_african_unity
+			modifier = {
+			}
+		}
 		
 		####HIP####
 		
@@ -1811,9 +1985,7 @@ ideas = {
 				consumer_goods_factor = 0.05
 				production_speed_buildings_factor = -0.1
 			}
-		
 		}
-		
 	}
 
 	# TECHNOLOGY
@@ -1855,6 +2027,12 @@ ideas = {
 					AND = {
 						OR = { tag = BUL tag = GRE tag = TUR }
 						has_dlc = "Battle for the Bosporus"
+					}
+				}
+				NOT = {
+					AND = {
+						OR = { tag = ETH tag = SWI }
+						has_dlc = "By Blood Alone"
 					}
 				}
 			}
@@ -1913,6 +2091,12 @@ ideas = {
 						has_dlc = "Battle for the Bosporus"
 					}
 				}
+				NOT = {
+					AND = {
+						OR = { tag = ETH tag = SWI }
+						has_dlc = "By Blood Alone"
+					}
+				}
 			}
 			
 			cost = 100
@@ -1969,6 +2153,12 @@ ideas = {
 						has_dlc = "Battle for the Bosporus"
 					}
 				}
+				NOT = {
+					AND = {
+						OR = { tag = ETH tag = SWI }
+						has_dlc = "By Blood Alone"
+					}
+				}
 			}
 			
 			cost = 100
@@ -2018,6 +2208,12 @@ ideas = {
 					AND = {
 						OR = { tag = BUL tag = GRE tag = TUR }
 						has_dlc = "Battle for the Bosporus"
+					}
+				}
+				NOT = {
+					AND = {
+						OR = { tag = ETH tag = SWI }
+						has_dlc = "By Blood Alone"
 					}
 				}
 			}
@@ -2071,6 +2267,12 @@ ideas = {
 						has_dlc = "Battle for the Bosporus"
 					}
 				}
+				NOT = {
+					AND = {
+						OR = { tag = ETH tag = SWI }
+						has_dlc = "By Blood Alone"
+					}
+				}
 			}
 			
 			cost = 100
@@ -2116,6 +2318,12 @@ ideas = {
 					AND = {
 						OR = { tag = BUL tag = GRE tag = TUR }
 						has_dlc = "Battle for the Bosporus"
+					}
+				}
+				NOT = {
+					AND = {
+						OR = { tag = ETH tag = SWI }
+						has_dlc = "By Blood Alone"
 					}
 				}
 			}
@@ -2166,6 +2374,12 @@ ideas = {
 						has_dlc = "Battle for the Bosporus"
 					}
 				}
+				NOT = {
+					AND = {
+						OR = { tag = ETH }
+						has_dlc = "By Blood Alone"
+					}
+				}
 			}
 			
 			cost = 100
@@ -2214,6 +2428,12 @@ ideas = {
 						has_dlc = "Battle for the Bosporus"
 					}
 				}
+				NOT = {
+					AND = {
+						OR = { tag = ETH tag = SWI }
+						has_dlc = "By Blood Alone"
+					}
+				}
 			}
 			
 			cost = 100
@@ -2254,13 +2474,7 @@ ideas = {
 				}
 				NOT = {
 					AND = {
-						OR = { tag = SPR tag = SPA tag = SPB tag = SPC tag = SPD }
-						has_dlc = "La Resistance"
-					}
-				}
-				NOT = {
-					AND = {
-						OR = { tag = POR }
+						OR = { tag = SPR tag = SPA tag = SPB tag = SPC tag = SPD tag = POR }
 						has_dlc = "La Resistance"
 					}
 				}
@@ -2268,6 +2482,12 @@ ideas = {
 					AND = {
 						OR = { tag = BUL tag = GRE tag = TUR }
 						has_dlc = "Battle for the Bosporus"
+					}
+				}
+				NOT = {
+					AND = {
+						OR = { tag = ETH }
+						has_dlc = "By Blood Alone"
 					}
 				}
 			}
@@ -2311,14 +2531,14 @@ ideas = {
 				}
 				NOT = {
 					AND = {
-						OR = { tag = POR }
-						has_dlc = "La Resistance"
+						OR = { tag = BUL tag = GRE tag = TUR }
+						has_dlc = "Battle for the Bosporus"
 					}
 				}
 				NOT = {
 					AND = {
-						OR = { tag = BUL tag = GRE tag = TUR }
-						has_dlc = "Battle for the Bosporus"
+						OR = { tag = ETH }
+						has_dlc = "By Blood Alone"
 					}
 				}
 			}
@@ -2362,14 +2582,14 @@ ideas = {
 				}
 				NOT = {
 					AND = {
-						OR = { tag = POR }
-						has_dlc = "La Resistance"
+						OR = { tag = BUL tag = GRE tag = TUR }
+						has_dlc = "Battle for the Bosporus"
 					}
 				}
 				NOT = {
 					AND = {
-						OR = { tag = BUL tag = GRE tag = TUR }
-						has_dlc = "Battle for the Bosporus"
+						OR = { tag = ETH }
+						has_dlc = "By Blood Alone"
 					}
 				}
 			}
