@@ -542,6 +542,7 @@ focus_tree = {
 				PER = { exists = no }
 				IRQ = { exists = no }
 			}
+			is_subject = yes
 		}
 
 		search_filters = { FOCUS_FILTER_POLITICAL }
@@ -550,7 +551,7 @@ focus_tree = {
 				limit = {
 					AFG = { 
 						exists = yes
-						is_puppet = no 
+						is_subject = no
 					}
 				}
 				AFG = { country_event = { id = bftb_turkey.23 } }
@@ -559,7 +560,7 @@ focus_tree = {
 				limit = {
 					EGY = { 
 						exists = yes
-						is_puppet = no 
+						is_subject = no
 					}
 				}
 				EGY = { country_event = { id = bftb_turkey.23 } }
@@ -568,7 +569,7 @@ focus_tree = {
 				limit = {
 					PER = { 
 						exists = yes
-						is_puppet = no 
+						is_subject = no
 					}
 				}
 				PER = { country_event = { id = bftb_turkey.23 } }
@@ -577,7 +578,7 @@ focus_tree = {
 				limit = {
 					IRQ = { 
 						exists = yes
-						is_puppet = no 
+						is_subject = no
 					}
 				}
 				IRQ = { country_event = { id = bftb_turkey.23 } }
@@ -586,7 +587,7 @@ focus_tree = {
 				limit = {
 					SYR = { 
 						exists = yes
-						is_puppet = no 
+						is_subject = no
 					}
 				}
 				SYR = { country_event = { id = bftb_turkey.23 } }
@@ -928,8 +929,8 @@ focus_tree = {
 					}
 				}
 				save_event_target_as = TUR_kurdish_state_event_target
-				TUR_agitate_kurdish_state_random_target_effect = yes
 			}
+			TUR_agitate_kurdish_state_random_target_effect = yes
 		}
 	}
 
@@ -1182,6 +1183,8 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_TUR_TRADITIONALISM FOCUS_FILTER_WAR_SUPPORT }
 		completion_reward = {
 			add_stability = -0.05
+			set_temp_variable = { placate_state_1 = -1 }
+			set_temp_variable = { placate_state_2 = -1 }
 			random_owned_state = {
 				limit = {
 					OR = {
@@ -1190,6 +1193,7 @@ focus_tree = {
 						has_dynamic_modifier = { modifier = islamist_insurgency }
 					}
 				}
+				PREV = { set_temp_variable = { placate_state_1  = PREV }} #At long last Mischief Village, at long last I have found you
 				save_event_target_as = TUR_fundamentalist_state
 				TUR_placate_fundamentalist_state_effect = yes
 			}
@@ -1200,7 +1204,9 @@ focus_tree = {
 						has_dynamic_modifier = { modifier = islamist_sedition }
 						has_dynamic_modifier = { modifier = islamist_insurgency }
 					}
+					NOT = { check_variable = { THIS = ROOT.var:placate_state_1  }}
 				}
+				PREV = { set_temp_variable = { placate_state_2  = PREV }}
 				save_event_target_as = TUR_fundamentalist_state
 				TUR_placate_fundamentalist_state_effect = yes
 			}
@@ -1211,6 +1217,8 @@ focus_tree = {
 						has_dynamic_modifier = { modifier = islamist_sedition }
 						has_dynamic_modifier = { modifier = islamist_insurgency }
 					}
+					NOT = { check_variable = { THIS = ROOT.var:placate_state_1  }}
+					NOT = { check_variable = { THIS = ROOT.var:placate_state_2  }}
 				}
 				save_event_target_as = TUR_fundamentalist_state
 				TUR_placate_fundamentalist_state_effect = yes
@@ -1850,6 +1858,10 @@ focus_tree = {
 		prerequisite = { focus = TUR_create_the_turkish_workers_militia }
 		available = {
 			communism > 0.3
+		}
+
+		bypass = {
+			has_government = communism
 		}
 		x = 0
 		y = 1
@@ -4460,6 +4472,7 @@ focus_tree = {
 		y = 1
 		relative_position_id = TUR_combined_operational_strategies
 		cost = 10
+		dynamic = yes 		
 		ai_will_do = {
 			base = 10
 		}
@@ -5371,6 +5384,7 @@ focus_tree = {
 		available = { 
 			date > 1945.1.1
 			NOT = { has_war_with = ITA }
+			is_subject = no
 		}
 		x = -1
 		y = 1
@@ -5411,6 +5425,7 @@ focus_tree = {
 				controls_state = 229
 			}
 			NOT = { has_war_with = GER }
+			is_subject = no	  
 		}
 		x = -2
 		y = 1
@@ -6517,6 +6532,7 @@ focus_tree = {
 		}
 		available = {
 			NOT = { is_in_faction_with = SOV }
+			is_subject = no
 		}
 		x = 0
 		y = 1
@@ -6524,6 +6540,9 @@ focus_tree = {
 		cost = 10
 		ai_will_do = {
 			base = 10
+		}
+		bypass = {
+			is_in_faction = yes
 		}
 
 		search_filters = { FOCUS_FILTER_POLITICAL }
@@ -6539,7 +6558,7 @@ focus_tree = {
 					SPR = { 
 						AND = {
 							exists = yes 
-							is_puppet = no
+							is_subject = no
 							NOT = { is_in_faction_with = SOV }
 						}
 					}
@@ -6563,9 +6582,11 @@ focus_tree = {
 		ai_will_do = {
 			base = 10
 		}
-
+		available = {
+			is_subject = no
+		}
 		bypass = {
-			is_in_faction_with = SOV
+			is_in_faction = yes
 		}
 
 		search_filters = { FOCUS_FILTER_POLITICAL }
@@ -6639,7 +6660,7 @@ focus_tree = {
 			FRA = {
 				OR = {
 					is_in_faction_with = TUR
-					is_puppet_of = TUR
+					is_subject_of = TUR
 					has_war_with = TUR
 					exists = no
 					has_capitulated = yes
@@ -6673,10 +6694,11 @@ focus_tree = {
 			ITA = {
 				OR = {
 					is_in_faction_with = TUR
-					is_puppet_of = TUR
+					is_subject_of = TUR
 					has_war_with = TUR
 					exists = no
 					has_capitulated = yes
+					NOT = { has_government = fascism }
 				}
 			}
 		}
@@ -7285,7 +7307,7 @@ focus_tree = {
 				limit = {
 					BUL = {
 						exists = yes
-						is_puppet = no
+						is_subject = no
 					}
 				}
 				create_wargoal = {
@@ -7300,7 +7322,7 @@ focus_tree = {
 						is_faction_leader = no
 					}
 					BUL = {
-						NOT = { is_puppet_of = TUR }
+						NOT = { is_subject_of = TUR }
 						is_in_faction_with = TUR
 						is_in_faction_with = SOV
 					}
@@ -7315,10 +7337,11 @@ focus_tree = {
 						is_faction_leader = no
 					}
 					BUL = {
-						NOT = { is_puppet_of = TUR }
+						NOT = { is_subject_of = TUR }
 						is_in_faction_with = TUR
 						is_in_faction_with = SOV
 					}
+					has_global_flag = TUR_soviets_faction_warning
 				}
 				SOV = { country_event = { id = bftb_turkey.139 } } #Turkey violates fellow faction member's sovereignty again!
 			}
@@ -7329,7 +7352,7 @@ focus_tree = {
 						is_faction_leader = no
 					}
 					BUL = {
-						NOT = { is_puppet_of = TUR }
+						NOT = { is_subject_of = TUR }
 						is_in_faction_with = TUR
 					}
 					var:faction_leader = {
@@ -7350,7 +7373,7 @@ focus_tree = {
 						is_faction_leader = no
 					}
 					BUL = {
-						NOT = { is_puppet_of = TUR }
+						NOT = { is_subject_of = TUR }
 						is_in_faction_with = TUR
 					}
 					var:faction_leader = {
@@ -7358,6 +7381,7 @@ focus_tree = {
 						is_in_faction_with = TUR
 						is_in_faction_with = BUL
 					}
+					has_global_flag = TUR_fascist_faction_leader_warned_turkey
 				}
 				var:faction_leader = {
 					country_event = { id = bftb_turkey.139 } #Turkey violates fellow faction member's sovereignty again!
@@ -7365,7 +7389,7 @@ focus_tree = {
 			}
 			else_if = {
 				limit = {
-					BUL = { is_puppet_of = TUR }
+					BUL = { is_subject_of = TUR }
 				}
 				annex_country = {
 					target = BUL
@@ -7427,6 +7451,7 @@ focus_tree = {
 			}
 			else_if = {
 				limit = {
+					has_global_flag = TUR_soviets_faction_warning							  
 					TUR = { 
 						is_in_faction_with = SOV
 						is_faction_leader = no
@@ -7485,6 +7510,7 @@ focus_tree = {
 			}
 			else_if = {
 				limit = {
+					has_global_flag = TUR_fascist_faction_leader_warned_turkey										   
 					var:faction_leader = {
 						has_government = fascism
 						NOT = { controls_state = 164 }
@@ -7558,6 +7584,7 @@ focus_tree = {
 			}
 			else_if = {
 				limit = {
+					has_global_flag = TUR_soviets_faction_warning						  
 					TUR = { 
 						is_in_faction_with = SOV
 						is_faction_leader = no
@@ -7602,6 +7629,7 @@ focus_tree = {
 			}
 			else_if = {
 				limit = {
+					has_global_flag = TUR_fascist_faction_leader_warned_turkey										   
 					var:faction_leader = {
 						has_government = fascism
 					}
@@ -7667,6 +7695,7 @@ focus_tree = {
 			}
 			else_if = {
 				limit = {
+					has_global_flag = TUR_soviets_faction_warning							  
 					TUR = { 
 						is_in_faction_with = SOV
 						is_faction_leader = no
@@ -7711,6 +7740,7 @@ focus_tree = {
 			}
 			else_if = {
 				limit = {
+					has_global_flag = TUR_fascist_faction_leader_warned_turkey										   
 					var:faction_leader = {
 						has_government = fascism
 					}
@@ -7783,6 +7813,7 @@ focus_tree = {
 			}
 			else_if = {
 				limit = {
+					has_global_flag = TUR_soviets_faction_warning							  
 					TUR = { 
 						is_in_faction_with = SOV
 						is_faction_leader = no
@@ -7833,6 +7864,7 @@ focus_tree = {
 			}
 			else_if = {
 				limit = {
+					has_global_flag = TUR_fascist_faction_leader_warned_turkey										   
 					var:faction_leader = {
 						has_government = fascism
 					}
@@ -7926,6 +7958,7 @@ focus_tree = {
 			}
 			else_if = {
 				limit = {
+					has_global_flag = TUR_soviets_faction_warning							  
 					TUR = { 
 						is_in_faction_with = SOV
 						is_faction_leader = no
@@ -7970,6 +8003,7 @@ focus_tree = {
 			}
 			else_if = {
 				limit = {
+					has_global_flag = TUR_fascist_faction_leader_warned_turkey										   
 					var:faction_leader = {
 						has_government = fascism
 					}
@@ -8045,6 +8079,7 @@ focus_tree = {
 			}
 			else_if = {
 				limit = {
+					has_global_flag = TUR_soviets_faction_warning							  
 					TUR = { 
 						is_in_faction_with = SOV
 						is_faction_leader = no
@@ -8089,6 +8124,7 @@ focus_tree = {
 			}
 			else_if = {
 				limit = {
+					has_global_flag = TUR_fascist_faction_leader_warned_turkey										   
 					var:faction_leader = {
 						has_government = fascism
 					}

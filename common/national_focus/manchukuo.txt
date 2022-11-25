@@ -467,6 +467,19 @@
 
 		completion_reward = {
 			add_stability = 0.1
+			if = {
+				limit = {
+					has_dlc = "La Resistance"
+					is_ai = no
+				}
+				if = {
+					limit = {
+						has_intelligence_agency = no
+					}
+					create_intelligence_agency = yes
+				}
+				add_ideas = MAN_hoankyoku_idea
+			}
 		}
 	}
 
@@ -1669,8 +1682,14 @@
 		available_if_capitulated = no
 
 		completion_reward = {
+			if = {
+				limit = {
+					is_subject_of = JAP
+				}
+				unlock_decision_tooltip = MAN_prepare_to_seize_arms
+			}
 			add_stability = 0.1
-			unlock_decision_tooltip = MAN_prepare_to_seize_arms
+			
 			if = {
 				limit = {
 					has_idea = MAN_kwantung_veto
@@ -1752,6 +1771,12 @@
 		search_filters = { FOCUS_FILTER_ANNEXATION }
 		completion_reward = {
 			hidden_effect = { set_variable = { MAN_independence_target = OVERLORD } } #We're using a variable here because the saved event target becomes invalidated deep in ScopedEventTarget
+			if = {
+				limit = {
+					is_subject = yes
+				}
+				add_country_leader_trait = nationalist_symbol
+			}
 			OVERLORD = { set_autonomy = { target = ROOT autonomy_state = autonomy_free } }
 			effect_tooltip = {		
 				if = {
@@ -1817,6 +1842,18 @@
 
 		completion_reward = {
 			MAN_low_legitimacy_level_down = yes
+
+			if = {
+				limit = {
+
+					NOT = {
+						has_country_leader_with_trait = nationalist_symbol
+					}
+					
+					is_subject = no
+				}
+				add_country_leader_trait = nationalist_symbol
+			}
 		}
 	}
 

@@ -415,15 +415,17 @@ focus_tree = {
 					prioritize = { 429 425 }
 					RAJ = { set_capital = { state = PREV } }
 				}
-				set_temp_variable = { ideology_val = party_popularity@communism }
-				scale_var_civil_war_size_by_autonomy_and_var_ideology_val = yes
-				start_civil_war = {
-					ruling_party = communism
-					ideology = neutrality
-					size = civil_war_size
-					capital = 439
+				if = {
+					set_temp_variable = { ideology_val = party_popularity@communism }
+					scale_var_civil_war_size_by_autonomy_and_var_ideology_val = yes
+					start_civil_war = {
+						ruling_party = communism
+						ideology = neutrality
+						size = civil_war_size
+						capital = 439
+					}
+					#Scaled by autonomy and party support - Don't add these before
 				}
-				#Scaled by autonomy and party support - Don't add these before
 				if = {
 					limit = {
 						has_global_flag = RAJ_seek_help_from_soviet_promised
@@ -458,6 +460,9 @@ focus_tree = {
 						ideology = neutrality
 						popularity = 0.15
 					}
+					set_variable = { RAJ_agrarian_society_increment = RAJ.RAJ_agrarian_society_increment }
+					set_variable = { RAJ_agrarian_society_value = RAJ.RAJ_agrarian_society_value }
+					add_dynamic_modifier = { modifier = RAJ_agrarian_society_dynamic }
 					ENG = { add_to_faction = PREV }
 				}						
 			}
@@ -848,6 +853,9 @@ focus_tree = {
 						ideology = neutrality
 						popularity = 0.15
 					}
+					set_variable = { RAJ_agrarian_society_increment = RAJ.RAJ_agrarian_society_increment }
+					set_variable = { RAJ_agrarian_society_value = RAJ.RAJ_agrarian_society_value }
+					add_dynamic_modifier = { modifier = RAJ_agrarian_society_dynamic }
 					ENG = { add_to_faction = PREV }
 				}					
 			}
