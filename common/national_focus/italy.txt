@@ -5592,84 +5592,8 @@ focus_tree = {
 
 		completion_reward = {
 			navy_experience = 25
-			random_owned_controlled_state = {
-				limit = {
-					dockyard > 0
-					free_building_slots = {
-						building = dockyard
-						size > 1
-						include_locked = yes
-					}
-				}
-				add_extra_state_shared_building_slots = 1
-				add_building_construction = {
-					type = dockyard
-					level = 1
-					instant_build = yes
-				}
-			}
-			random_owned_controlled_state = {
-				limit = {
-					dockyard > 0
-					free_building_slots = {
-						building = dockyard
-						size > 1
-						include_locked = yes
-					}
-				}
-				add_extra_state_shared_building_slots = 1
-				add_building_construction = {
-					type = dockyard
-					level = 1
-					instant_build = yes
-				}
-			}
-
-			if = {
-				limit = {
-					NOT = {
-						any_owned_state = {
-							dockyard > 0
-							free_building_slots = {
-								building = dockyard
-								size > 0
-								include_locked = yes
-							}
-						}
-					}
-				}
-				random_owned_controlled_state = {
-					limit = {
-						free_building_slots = {
-							building = dockyard
-							size > 1
-							include_locked = yes
-						}
-					}
-					add_extra_state_shared_building_slots = 1
-					add_building_construction = {
-						type = dockyard
-						level = 1
-						instant_build = yes
-					}
-				}
-				random_owned_controlled_state = {
-					limit = {
-						free_building_slots = {
-							building = dockyard
-							size > 1
-							include_locked = yes
-						}
-					}
-					add_extra_state_shared_building_slots = 1
-					add_building_construction = {
-						type = dockyard
-						level = 1
-						instant_build = yes
-					}
-				}				
-			}
-
+			custom_effect_tooltip = Construction_Focus_tt
+			unlock_decision_tooltip = { decision = ITA_naval_power_projection_decision show_effect_tooltip = yes }
 			add_doctrine_cost_reduction = {
 				name = naval_doc_bonus
 				cost_reduction = 0.5
@@ -5731,85 +5655,9 @@ focus_tree = {
 		search_filters = {FOCUS_FILTER_INDUSTRY}
 
 		completion_reward = {
-			if = {
-				limit = {
-					162 = {
-						is_fully_controlled_by = ROOT
-						free_building_slots = {
-							building = dockyard
-							size > 0
-							include_locked = yes
-						}
-					}
-				}
-				162 = { #TUSCANY (La Spezia)
-					add_extra_state_shared_building_slots = 1
-					add_building_construction = {
-						type = dockyard
-						level = 1
-						instant_build = yes
-					}
-				}
-			}
-			else = {
-				random_core_state = {
-					limit = {
-						is_fully_controlled_by = ROOT
-						free_building_slots = {
-							building = dockyard
-							size > 0
-							include_locked = yes
-						}
-					}
-					prioritize = { 157 161 2 } #ABRUZZO as main fallback
-					add_extra_state_shared_building_slots = 1
-					add_building_construction = {
-						type = dockyard
-						level = 1
-						instant_build = yes
-					}
-				}
-			}
+			custom_effect_tooltip = Construction_Focus_tt
+			unlock_decision_tooltip = { decision = ITA_expand_naval_facilities_decision show_effect_tooltip = yes }
 
-			if = {
-				limit = {
-					736 = {
-						is_fully_controlled_by = ROOT
-						free_building_slots = {
-							building = dockyard
-							size > 0
-							include_locked = yes
-						}
-					}
-				}
-				736 = { #LITORALE (Trieste)
-					add_extra_state_shared_building_slots = 1
-					add_building_construction = {
-						type = dockyard
-						level = 1
-						instant_build = yes
-					}
-				}
-			}
-			else = {
-				random_core_state = {
-					limit = {
-						is_fully_controlled_by = ROOT
-						free_building_slots = {
-							building = dockyard
-							size > 0
-							include_locked = yes
-						}
-					}
-					prioritize = { 852 160 161 } #ISTRIA as main fallback
-					add_extra_state_shared_building_slots = 1
-					add_building_construction = {
-						type = dockyard
-						level = 1
-						instant_build = yes
-					}
-				}
-			}
 
 			114 = { #SARDINIA (Cagliari, La Maddalena)
 				add_building_construction = {
@@ -5873,46 +5721,8 @@ focus_tree = {
 		completion_reward = {
 			add_to_variable = { ITA_rm_navy_capital_ship_attack_factor = 0.05 }
 			custom_effect_tooltip = ITA_oto_naval_guns_rm_tt
-
-			if = {
-				limit = {
-					162 = {
-						free_building_slots = {
-							building = dockyard
-							size > 0
-							include_locked = yes
-						}
-					}
-				}
-				162 = { #TUSCANY (La Spezia)
-					add_extra_state_shared_building_slots = 1
-					add_building_construction = {
-						type = dockyard
-						level = 1
-						instant_build = yes
-					}
-				}
-			}
-			else = {
-				random_core_state = {
-					limit = {
-						is_controlled_by = ROOT
-						free_building_slots = {
-							building = dockyard
-							size > 0
-							include_locked = yes
-						}
-					}
-					prioritize = { 157 161 160 } #ABRUZZO as main fallback
-					add_extra_state_shared_building_slots = 1
-					add_building_construction = {
-						type = dockyard
-						level = 1
-						instant_build = yes
-					}
-				}
-			}
-
+			custom_effect_tooltip = Construction_Focus_tt
+			unlock_decision_tooltip = { decision = ITA_oto_naval_guns_decision show_effect_tooltip = yes }
 			add_tech_bonus = {
 				name = ITA_oto_naval_guns
 				bonus = 1.0
@@ -6833,21 +6643,9 @@ focus_tree = {
 			# 		progress = 0.35
 			# 		amount = 2
 			# 	}
-			# }
-			
-			random_owned_controlled_state = {
-				limit = {
-					is_fully_controlled_by = ROOT
-					is_coastal = yes
-				}
-				prioritize = { 736 160 } #TRIESTE / VENETO
-				add_extra_state_shared_building_slots = 2
-				add_building_construction = {
-					type = dockyard
-					level = 2
-					instant_build = yes
-				}
-			}
+			# }			
+			custom_effect_tooltip = Construction_Focus_tt
+			unlock_decision_tooltip = { decision = ITA_cruiser_submarines_decision show_effect_tooltip = yes }
 		}
 	}
 
@@ -6914,19 +6712,8 @@ focus_tree = {
 			# 	}
 			# }
 
-			random_owned_controlled_state = {
-				limit = {
-					is_fully_controlled_by = ROOT
-					is_coastal = yes
-				}
-				prioritize = { 158 } #PIEDMONT (Built by Caproni, potentially in Milano, so Genova due to proximity)
-				add_extra_state_shared_building_slots = 2
-				add_building_construction = {
-					type = dockyard
-					level = 2
-					instant_build = yes
-				}
-			}
+			custom_effect_tooltip = Construction_Focus_tt
+			unlock_decision_tooltip = { decision = ITA_midget_submarines_dockyard_decision show_effect_tooltip = yes }
 
 			if = {
 				limit = {
@@ -7083,19 +6870,8 @@ focus_tree = {
 			# 	}
 			# }
 
-			random_owned_controlled_state = {
-				limit = {
-					is_fully_controlled_by = ROOT
-					is_coastal = yes
-				}
-				prioritize = { 162 158 } ##TUSCANY (Livorno) / PIEDMONT (Genova) (First ones built in Genova, others in Livorno, but Genova already receives a bunch of buildings)
-				add_extra_state_shared_building_slots = 2
-				add_building_construction = {
-					type = dockyard
-					level = 2
-					instant_build = yes
-				}
-			}
+			custom_effect_tooltip = Construction_Focus_tt
+			unlock_decision_tooltip = { decision = ITA_cacciatorpediniere_di_scorta_decision show_effect_tooltip = yes }
 		}
 	}
 
@@ -7235,19 +7011,8 @@ focus_tree = {
 			# 	}
 			# }
 
-			random_owned_controlled_state = {
-				limit = {
-					is_fully_controlled_by = ROOT
-					is_coastal = yes
-				}
-				prioritize = { 162 117 } ##TUSCANY (La Spezia) / CAMPANIA (Napoli) (Napoli just to split it up a little bit)
-				add_extra_state_shared_building_slots = 2
-				add_building_construction = {
-					type = dockyard
-					level = 2
-					instant_build = yes
-				}
-			}
+			custom_effect_tooltip = Construction_Focus_tt
+			unlock_decision_tooltip = { decision = ITA_ispettorato_dei_mezzi_antisommergibili_decision show_effect_tooltip = yes }
 		}
 	}
 
@@ -7341,19 +7106,8 @@ focus_tree = {
 			# 	}
 			# }
 
-			random_owned_controlled_state = {
-				limit = {
-					is_fully_controlled_by = ROOT
-					is_coastal = yes
-				}
-				prioritize = { 736 158 } ##LITORALE (Trieste) / PIEDMONT (Genova)
-				add_extra_state_shared_building_slots = 2
-				add_building_construction = {
-					type = dockyard
-					level = 2
-					instant_build = yes
-				}
-			}
+			custom_effect_tooltip = Construction_Focus_tt
+			unlock_decision_tooltip = { decision = ITA_navi_da_battaglia_decision show_effect_tooltip = yes }
 		}
 	}
 
@@ -7465,19 +7219,8 @@ focus_tree = {
 			# 	}
 			# }
 			
-			random_owned_controlled_state = {
-				limit = {
-					is_fully_controlled_by = ROOT
-					is_coastal = yes
-				}
-				prioritize = { 158 } #PIEDMONT (Genoa)
-				add_extra_state_shared_building_slots = 2
-				add_building_construction = {
-					type = dockyard
-					level = 2
-					instant_build = yes
-				}
-			}
+			custom_effect_tooltip = Construction_Focus_tt
+			unlock_decision_tooltip = { decision = ITA_proper_carriers_decision show_effect_tooltip = yes }
 		}
 	}
 
@@ -7599,19 +7342,8 @@ focus_tree = {
 			# 	}
 			# }
 			
-			random_owned_controlled_state = {
-				limit = {
-					is_fully_controlled_by = ROOT
-					is_coastal = yes
-				}
-				prioritize = { 158 } #PIEDMONT (Genoa)
-				add_extra_state_shared_building_slots = 2
-				add_building_construction = {
-					type = dockyard
-					level = 2
-					instant_build = yes
-				}
-			}
+			custom_effect_tooltip = Construction_Focus_tt
+			unlock_decision_tooltip = { decision = ITA_refit_civilian_ships_decision show_effect_tooltip = yes }
 		}
 	}
 
@@ -10042,7 +9774,7 @@ focus_tree = {
 		}
 		allow_branch = {
 			has_game_rule = { rule = IHMP_HISTORY option = ALLOWED } 
-		}		
+		}	
 		
 
 		search_filters = {FOCUS_FILTER_WAR_SUPPORT FOCUS_FILTER_POLITICAL FOCUS_FILTER_RESEARCH FOCUS_FILTER_BALANCE_OF_POWER}
