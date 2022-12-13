@@ -1657,7 +1657,7 @@ country_event = {
 		}
 		trigger = {
 			has_navy_size = {
-				archetype = ship_hull_heavy
+				archetype = nrm_ship_hull_capital
 				size > 5
 			}
 		}
@@ -1681,7 +1681,7 @@ country_event = {
 		}
 		trigger = {
 			has_navy_size = {
-				archetype = ship_hull_heavy
+				archetype = nrm_ship_hull_capital
 				size < 6
 			}
 			has_navy_size = {
@@ -6221,11 +6221,10 @@ country_event = {
 		
 		if = {
 			limit = {
-					has_dlc = "La Resistance"
+				has_dlc = "La Resistance"
 			}
-			set_technology = { armored_car1 = 1 }
 			add_equipment_to_stockpile = { 
-				type = gw_armored_car_equipment 
+				type = sov_scout_car_equipment_1 
 				amount = 480 
 				producer = SOV
 			}
@@ -6245,39 +6244,9 @@ country_event = {
 			}
 		}
 		else = {		
-			if = {
-				limit = {
-					NOT = {
-						has_dlc = "No Step Back"
-					}
-				}
-				if = {
-					limit = {
-						NOT = {
-							has_tech = gwtank
-						}
-					}
-					set_technology = { gwtank = 1 }
-					add_equipment_to_stockpile = { 
-						type = light_tank_equipment_1 
-						amount = 200 producer = SOV 
-					}
-				}
-			}
-			else = {
-				if = {
-					limit = {
-						NOT = {
-							has_tech = gwtank_chassis
-						}
-					}
-					set_technology = { gwtank_chassis = 1 }
-					add_equipment_to_stockpile = { 
-						type = light_tank_chassis_1 
-						amount = 200 producer = SOV 
-						variant_name = "T-26TU mod. 1933" 
-					}
-				}				
+			add_equipment_to_stockpile = { 
+				type = sov_light_equipment_1 
+				amount = 200 producer = SOV 
 			}
 		}
 	}
@@ -6310,22 +6279,10 @@ country_event = {
 		ai_chance = {
 			base = 10
 		}
-
-		set_technology = { iw_small_airframe = 1 }
-		create_equipment_variant = {
-			name = "I-15" #
-			type = small_plane_airframe_0
-			modules = {
-				fixed_main_weapon_slot = light_mg_4x
-				engine_type_slot = engine_1_1x
-				special_type_slot_1 = empty
-			}
-		}
 		add_equipment_to_stockpile = { 
-			type = small_plane_airframe_0
+			type = sov_fighter_equipment_0
 			producer = "SOV" 
 			amount = 100
-			variant_name = "I-15"
 		}
 	}
 }
