@@ -216,3 +216,47 @@ atlantikwall_available = {
 	has_completed_focus = GER_atlantikwall
 	num_of_civilian_factories_available_for_projects > 199
 }
+
+total_war_decision_trigger = { #TODO add more conditions where Germany is in trouble
+	has_completed_focus = GER_total_war
+	has_civil_war = no
+	has_idea = speer
+	has_idea = joseph_goebbels
+	OR = {
+		AND = { #You did not achieved objectives in Soviet Union
+			has_war_with = SOV
+			date > 1943.1.1
+			NOT = {
+				controls_state = 219 #Moscow
+			}
+			NOT = {
+				controls_state = 195 #Leningrad
+			}
+			NOT = {
+				controls_state = 217 #Stalingrad
+			}
+		}
+		AND = { #War in the East is a failure
+			GER = {
+				has_war_with = SOV
+			}
+			SOV = {
+				OR = {
+					controls_state = 763 #Königsberg
+					controls_state = 10 #Warsaw
+					controls_state = 46 #Bucharest
+				}
+			}
+		}
+		ITA = { #Italy is trouble
+			OR = {
+				has_capitulated = yes
+				has_civil_war = yes
+				NOT = {
+					controls_state = 115
+				}
+			}
+		}
+		casualties > 2500000 #war has gone horribly wrong
+	}
+}
