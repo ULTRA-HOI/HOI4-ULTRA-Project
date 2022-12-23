@@ -9,7 +9,7 @@ NDefines.NProduction.EQUIPMENT_MODULE_ADD_XP_COST = 1.0
 NDefines.NProduction.EQUIPMENT_MODULE_REPLACE_XP_COST = 1.0
 NDefines.NProduction.EQUIPMENT_MODULE_CONVERT_XP_COST = 1.0
 NDefines.NProduction.EQUIPMENT_MODULE_REMOVE_XP_COST = 1.0
-NDefines.NProduction.MIN_NAVAL_EQUIPMENT_CONVERSION_IC_COST_FACTOR = 0.02		-- Minimum fraction of an equipment type's base industry capacity cost to use when converting a naval equipment, such as through ship refitting.
+NDefines.NProduction.BASE_NAVAL_EQUIPMENT_CONVERSION_IC_COST_FACTOR = 0.02		-- Minimum fraction of an equipment type's base industry capacity cost to use when converting a naval equipment, such as through ship refitting.
 NDefines.NProduction.MIN_NAVAL_EQUIPMENT_CONVERSION_RESOURCE_COST_FACTOR = 0.2
 
 --------------------------------------------------------------------------------------------------------------
@@ -185,7 +185,9 @@ NDefines.NNavy.POSITIONING_PENALTY_HOURLY_DECAY_FOR_NEWLY_JOINED_SHIPS = 0.05
 NDefines.NNavy.DAMAGE_PENALTY_ON_MINIMUM_POSITIONING = 0.75 -- damage penalty at 0% positioning
 NDefines.NNavy.MAX_ANTI_AIR_REDUCTION_EFFECT_ON_INCOMING_AIR_DAMAGE = 0.75 -- was 0.5 in vanilla.
 NDefines.NNavy.SCREEN_RATIO_FOR_FULL_SCREENING_FOR_CAPITALS = 3.0
+NDefines.NNavy.SCREEN_RATIO_FOR_FULL_SCREENING_FOR_CONVOYS = 0.5	-- this screen ratio to num convoys is needed for full screening beyond screen line
 NDefines.NNavy.CAPITAL_RATIO_FOR_FULL_SCREENING_FOR_CARRIERS = 0.125
+NDefines.NNavy.CAPITAL_RATIO_FOR_FULL_SCREENING_FOR_CONVOYS = 0.025  -- this capital ratio to num convoys is needed for full screening beyond screen line
 NDefines.NNavy.NAVAL_COMBAT_AIR_CARRIER_TARGET_SCORE = 500
 
 NDefines.NNavy.CHANCE_TO_DAMAGE_PART_ON_CRITICAL_HIT = 0.25
@@ -203,6 +205,8 @@ NDefines.NNavy.COMBAT_RESULT_PRIORITY_DAY_TO_LIVE = { 										-- the game will
 		60, 
 		180,
 	}
+
+NDefines.NNavy.AIR_SPOTTER_NORMALIZED_AIRWING_SIZE = 48						-- each plane will contribute 1/this of the air-wing's detection stat
 --------------------------------------------------------------------------------------------------------------
 -- NAVY AI
 --------------------------------------------------------------------------------------------------------------
