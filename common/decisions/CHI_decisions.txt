@@ -322,387 +322,6 @@ war_measures = {
 			}			
 		}
 	}
-	
-	CHI_yellow_river_flooding = {
-
-		icon = hol_inundate_water_lines
-
-		allowed = {
-			tag = CHI
-		}
-		
-		visible = {
-			has_war_with = JAP
-		}
-
-		available = {
-			has_war_with = JAP
-			607 = { is_fully_controlled_by = ROOT }
-		}
-
-		cost = 25
-
-		fire_only_once = no
-		
-		ai_will_do = {
-			factor = 100
-		}
-
-		days_remove = 14
-		highlight_states = {
-			highlight_state_targets = { state = 607 state = 606 state = 598 state = 902 }
-		}
-		highlight_states = {
-			highlight_provinces = {
-				9958
-				7656
-				4066
-				10098
-				7540
-				7126
-				
-				9937
-				10079
-				4079
-				10040
-				12036
-				11916
-				7222
-				10008
-				
-				1001
-				4148
-				4001
-				7181
-			}
-		}
-		modifier = {
-		}
-
-		visible = {
-			
-			607 = { is_fully_controlled_by = ROOT }
-			NOT = { has_global_flag = CHI_yellow_river_flooded }
-		}
-
-		remove_effect = {
-			if = {
-				limit = {
-					607 = { is_fully_controlled_by = ROOT }
-				}
-				607 = {
-					add_province_modifier = {
-						static_modifiers = { flooded }
-						province = {
-							id = 9958
-							id = 7656
-							id = 4066
-							id = 10098
-							
-						}
-					}
-					damage_building = {
-					    type = infrastructure
-					    damage = 2
-					}
-					damage_building = {
-					    type = industrial_complex
-					    damage = 2.0
-					}
-					damage_building = {
-					    type = steel_refinery
-					    damage = 2.0
-					}
-				}
-				902 = {
-					add_province_modifier = {
-						static_modifiers = { flooded }
-						province = {
-							
-							id = 7540
-							id = 7126
-						}
-					}
-					damage_building = {
-					    type = infrastructure
-					    damage = 2
-					}
-					damage_building = {
-					    type = industrial_complex
-					    damage = 2.0
-					}
-					damage_building = {
-					    type = steel_refinery
-					    damage = 2.0
-					}
-				}
-				606 = {
-					add_province_modifier = {
-						static_modifiers = { flooded }
-						province = {
-							id = 9937
-							id = 10079
-							id = 4079
-							id = 10040
-							id = 12036
-							id = 11916
-							id = 7222
-							id = 10008
-						}
-					}
-					damage_building = {
-					    type = infrastructure
-					    damage = 3
-					}
-					damage_building = {
-					    type = industrial_complex
-					    damage = 6.0
-					}
-					
-				}
-				598 = {
-					add_province_modifier = {
-						static_modifiers = { flooded }
-						province = {
-							id = 4148
-							id = 4001
-							id = 7181
-						}
-					}
-					damage_building = {
-					    type = infrastructure
-					    damage = 3
-					}
-					
-				}
-				919 = {
-					add_province_modifier = {
-						static_modifiers = { flooded }
-						province = {
-							id = 1001
-						}
-					}
-					damage_building = {
-					    type = infrastructure
-					    damage = 3
-					}
-					
-				}
-			}
-			set_global_flag = CHI_yellow_river_flooded
-			
-		}
-
-		complete_effect = {
-		
-		}
-
-	}
-	
-	CHI_force_united_front = {
-		icon = generic_prepare_civil_war
-		
-		fire_only_once = yes
-		
-		ai_will_do = {
-			factor = 1000
-		}
-		
-		allowed = {
-			tag = CHI
-		}
-		
-		visible = {
-			has_war_with = JAP
-			OR = {
-				GXC = {
-					exists = yes
-					NOT = {is_in_faction_with = CHI}
-					is_in_faction = no
-					is_ai = yes
-				}
-				YUN = {
-					exists = yes
-					NOT = {is_in_faction_with = CHI}
-					is_in_faction = no
-					is_ai = yes
-				}
-				XSM = {
-					exists = yes
-					NOT = {is_in_faction_with = CHI}
-					is_in_faction = no
-					is_ai = yes
-				}
-				SHX = {
-					exists = yes
-					NOT = {is_in_faction_with = CHI}
-					is_in_faction = no
-					is_ai = yes
-				}
-				PRC = {
-					exists = yes
-					NOT = {is_in_faction_with = CHI}
-					is_in_faction = no
-					is_ai = yes
-				}
-			}
-		}
-		
-		available = {
-			has_completed_focus = CHI_united_front
-		}
-		
-		complete_effect = {
-			IF = {
-				limit = {
-					GXC = {
-						exists = yes
-						NOT = {is_in_faction_with = CHI}
-						is_in_faction = no
-						is_ai = yes
-					}
-				}
-				CHI = {
-					add_to_faction = GXC
-				}
-			}
-			IF = {
-				limit = {
-					YUN = {
-						exists = yes
-						NOT = {is_in_faction_with = CHI}
-						is_in_faction = no
-						is_ai = yes
-					}
-				}
-				CHI = {
-					add_to_faction = YUN
-				}
-			}
-			IF = {
-				limit = {
-					XSM = {
-						exists = yes
-						NOT = {is_in_faction_with = CHI}
-						is_in_faction = no
-						is_ai = yes
-					}
-				}
-				CHI = {
-					add_to_faction = XSM
-				}
-			}
-			IF = {
-				limit = {
-					SHX = {
-						exists = yes
-						NOT = {is_in_faction_with = CHI}
-						is_in_faction = no
-						is_ai = yes
-					}
-				}
-				CHI = {
-					add_to_faction = SHX
-				}
-			}
-			IF = {
-				limit = {
-					PRC = {
-						exists = yes
-						NOT = {is_in_faction_with = CHI}
-						is_in_faction = no
-						is_ai = yes
-					}
-				}
-				CHI = {
-					add_to_faction = PRC
-				}
-			}
-		}
-		
-	}
-	
-	CHI_annex_warlords = {
-		
-		icon = generic_prepare_civil_war
-		
-		cost = 0
-		
-		fire_only_once = yes
-
-		ai_will_do = {
-			factor = 1000
-		}
-		
-		allowed = {
-			tag = CHI
-		}
-		
-		visible = {
-			has_war_with = JAP
-			OR = {
-				GXC = {
-					exists = yes
-				}
-				YUN = {
-					exists = yes
-				}
-				XSM = {
-					exists = yes
-				}
-			}
-		}
-		
-		available = {
-			has_war_with = JAP
-			NOT = {controls_state = 613}
-			surrender_progress > 0.5
-			is_in_faction_with = GXC 
-			is_in_faction_with = YUN
-			is_in_faction_with = XSM
-			is_in_faction_with = SHX
-		}
-		
-		complete_effect = {
-			IF = {
-				limit = {
-					is_in_faction_with = GXC
-				}
-				annex_country = {
-					target = GXC
-					transfer_troops = yes
-				}
-			}
-			IF = {
-				limit = {
-					is_in_faction_with = YUN
-				}
-				annex_country = {
-					target = YUN
-					transfer_troops = yes
-				}
-			}
-			IF = {
-				limit = {
-					is_in_faction_with = XSM
-				}
-				annex_country = {
-					target = XSM
-					transfer_troops = yes
-				}
-			}
-			IF = {
-				limit = {
-					is_in_faction_with = SHX
-				}
-				annex_country = {
-					target = SHX
-					transfer_troops = yes
-				}
-			}
-		}
-	}
-	
 }
 
 
@@ -714,57 +333,81 @@ war_measures = {
 
 CHI_industrial_evacuations = {
 
-
-	
-
-	
-
-	CHI_industrial_evacuations_from_guangzhou = { #592 #guangzhou
+	#ULTRA: changed to targeted cecisions
+	CHI_industrial_evacuations_from = {
 		icon = generic_scorched_earth
-		available = {
-			592 = { #592 #guangzhou
-				AND = {
-					arms_factory > 1
-					industrial_complex > 5
+
+		state_target = yes
+
+		on_map_mode = map_and_decisions_view
+
+		target_array = controlled_states
+
+		target_trigger = {
+			FROM = {
+				is_controlled_by = ROOT
+				OR = {
+					arms_factory > 0
+					industrial_complex > 0
 				}
 			}
 		}
-		highlight_states = {
-			highlight_state_targets = {
-				state = 592
-			}
-		}
-		visible = {
+
+		target_root_trigger = {
 			has_completed_focus = CHI_industrial_evacuations
-			592 = { #592 #guangzhou
-				is_controlled_by = ROOT
-			}			
 		}
 
 		fire_only_once = yes
+		cost = 25
 
-		cost = 5
-
-		days_remove = 10
+		days_remove = 15
 
 		modifier = {}
 
 		remove_effect = {
-			if = {
-				limit = {
-					controls_state = 592
-				}
-				592 = { #592 #guangzhou
-					
-					remove_building = {
-						type = arms_factory
-						level = 2
+			FROM = {
+				if = {
+					limit = {
+						is_controlled_by = ROOT
 					}
-					remove_building = {
-						type = industrial_complex
-						level = 5
+					set_variable = {
+						var = af_level
+						value = arms_factory_level
 					}
-					
+					set_variable = {
+						var = af_to_move
+						value = arms_factory_level
+					}
+					multiply_variable = {
+						var = af_to_move
+						value = global.CHI_industrial_evacuations_amount_factor
+					}
+	
+					set_variable = {
+						var = ic_level
+						value = industrial_complex_level
+					}
+					set_variable = {
+						var = ic_to_move
+						value = industrial_complex_level
+					}
+					multiply_variable = {
+						var = ic_to_move
+						value = global.CHI_industrial_evacuations_amount_factor
+					}
+	
+					custom_effect_tooltip = CHI_industrial_evacuations_remove_AF
+					custom_effect_tooltip = CHI_industrial_evacuations_remove_IC
+					hidden_effect = {				
+						remove_building = {
+							type = arms_factory
+							level = af_level
+						}
+						remove_building = {
+							type = industrial_complex
+							level = ic_level
+						}
+					}
 	
 					#Move AF
 					CONTROLLER = {
@@ -777,20 +420,21 @@ CHI_industrial_evacuations = {
 								}
 								free_building_slots = {
 									building = arms_factory
-									size > 1
+									size > 2
 									include_locked = yes
 								}
 							}
-						
-							
-							add_extra_state_shared_building_slots = 2
-							add_building_construction = {
-								type = arms_factory
-								level = 2
-								instant_build = yes
+	
+							custom_effect_tooltip = CHI_industrial_evacuations_add_AF						
+							hidden_effect = {
+								add_extra_state_shared_building_slots = af_to_move
+								add_building_construction = {
+									type = arms_factory
+									level = af_to_move
+									instant_build = yes
+								}
+								CONTROLLER = { set_country_flag = CHI_industrial_evacuations_moved_AF }
 							}
-							CONTROLLER = { set_country_flag = CHI_industrial_evacuations_moved_AF }
-							
 						}
 	
 						#If no states are really safe or all safe are filled
@@ -806,7 +450,7 @@ CHI_industrial_evacuations = {
 										}
 										free_building_slots = {
 											building = arms_factory
-											size > 1
+											size > 2
 											include_locked = yes
 										}
 									}
@@ -818,18 +462,19 @@ CHI_industrial_evacuations = {
 									is_controlled_by = ROOT
 									free_building_slots = {
 										building = arms_factory
-										size > 1
+										size > 2
 										include_locked = yes
 									}
 								}
 	
 								custom_effect_tooltip = CHI_industrial_evacuations_add_AF						
-
-								add_extra_state_shared_building_slots = 2
-								add_building_construction = {
-									type = arms_factory
-									level = 2
-									instant_build = yes
+								hidden_effect = {
+									add_extra_state_shared_building_slots = af_to_move
+									add_building_construction = {
+										type = arms_factory
+										level = af_to_move
+										instant_build = yes
+									}
 								}
 							}
 						}
@@ -846,21 +491,21 @@ CHI_industrial_evacuations = {
 								}
 								free_building_slots = {
 									building = industrial_complex
-									size > 4
+									size > 2
 									include_locked = yes
 								}
 							}
 							
-							
-						
-							add_extra_state_shared_building_slots = 5
-							add_building_construction = {
-								type = industrial_complex
-								level = 5
-								instant_build = yes
+							custom_effect_tooltip = CHI_industrial_evacuations_add_IC
+							hidden_effect = {
+								add_extra_state_shared_building_slots = ic_to_move
+								add_building_construction = {
+									type = industrial_complex
+									level = ic_to_move
+									instant_build = yes
+								}
+								CONTROLLER = { set_country_flag = CHI_industrial_evacuations_moved_IC }
 							}
-							CONTROLLER = { set_country_flag = CHI_industrial_evacuations_moved_IC }
-							
 						}
 	
 						#If no states are really safe or all safe are filled
@@ -876,7 +521,7 @@ CHI_industrial_evacuations = {
 										}
 										free_building_slots = {
 											building = industrial_complex
-											size > 4
+											size > 2
 											include_locked = yes
 										}
 									}
@@ -888,503 +533,22 @@ CHI_industrial_evacuations = {
 									is_controlled_by = ROOT
 									free_building_slots = {
 										building = industrial_complex
-										size > 4
+										size > 2
 										include_locked = yes
 									}
 								}
 	
-								
-								
-								add_extra_state_shared_building_slots = ic_level
-								add_building_construction = {
-									type = industrial_complex
-									level = ic_level
-									instant_build = yes
-								}
-								
-							}
-						}
-						clr_country_flag = CHI_industrial_evacuations_moved_IC
-					}			
-				}
-			}
-		}
-
-		ai_will_do = {
-			factor = 1
-		}
-	}
-
-
-	
-
-	CHI_industrial_evacuations_from_anhui = { #898 #Wuhan
-		icon = generic_scorched_earth
-		available = {
-			898 = { #898 #Wuhan
-				AND = {
-					arms_factory > 1
-					industrial_complex > 2
-				}
-			}
-			937 = { # Hankou
-				arms_factory > 2
-				industrial_complex > 6
-			}
-		}
-
-		visible = {
-			has_completed_focus = CHI_industrial_evacuations
-			898 = { #Wuhan
-				is_controlled_by = ROOT
-			}	
-			937 = { # Hankou
-				is_controlled_by = ROOT
-			}
-		}
-		highlight_states = {
-			highlight_state_targets = {
-				state = 898
-			}
-		}
-		fire_only_once = yes
-
-		cost = 5
-
-		days_remove = 10
-
-		modifier = {}
-
-		remove_effect = {
-			if = {
-				limit = {
-					controls_state = 898
-					controls_state = 937
-				}
-				937 = {
-					remove_building = {
-						type = industrial_complex
-						level = 5
-					}
-					remove_building = {
-						type = arms_factory
-						level = 2
-					}
-				}
-				898 = { #Wuhan
-						
-					remove_building = {
-						type = arms_factory
-						level = 2
-					}
-					remove_building = {
-						type = industrial_complex
-						level = 2
-					}
-					remove_building = {
-						type = steel_refinery
-						level = 1
-					}
-					
-	
-					#Move AF
-					CONTROLLER = {
-						random_owned_controlled_state = {
-							prioritize = { 605 603 601 }
-							limit = {
-								is_fully_controlled_by = ROOT
-								
-								free_building_slots = {
-									building = arms_factory
-									size > 3
-									include_locked = yes
+								custom_effect_tooltip = CHI_industrial_evacuations_add_IC
+								hidden_effect = {
+									add_extra_state_shared_building_slots = ic_to_move
+									add_building_construction = {
+										type = industrial_complex
+										level = ic_to_move
+										instant_build = yes
+									}
 								}
 							}
-	
-							
-							add_extra_state_shared_building_slots = 4
-							add_building_construction = {
-								type = arms_factory
-								level = 4
-								instant_build = yes
-							}
-							CONTROLLER = { set_country_flag = CHI_industrial_evacuations_moved_AF }
-							
 						}
-	
-						
-						clr_country_flag = CHI_industrial_evacuations_moved_AF
-	
-	
-						#Move IC
-						random_owned_controlled_state = {
-							prioritize = { 605 603 601 }
-							limit = {
-								is_fully_controlled_by = ROOT
-								
-								free_building_slots = {
-									building = industrial_complex
-									size > 6
-									include_locked = yes
-								}
-							}
-							
-							
-							add_extra_state_shared_building_slots = 8
-							add_building_construction = {
-								type = industrial_complex
-								level = 7
-								instant_build = yes
-							}
-							add_building_construction = {
-								type = steel_refinery
-								level = 1
-								instant_build = yes
-							}
-							CONTROLLER = { set_country_flag = CHI_industrial_evacuations_moved_IC }
-							
-						}
-	
-						
-						clr_country_flag = CHI_industrial_evacuations_moved_IC
-					}			
-				}
-			}
-		}
-
-		ai_will_do = {
-			factor = 1
-		}
-	}
-
-	CHI_industrial_evacuations_from_henan = { #607 #henan
-		icon = generic_scorched_earth
-		available = {
-			607 = { #607 #henan
-				
-				industrial_complex > 0
-				
-			}
-		}
-		highlight_states = {
-			highlight_state_targets = {
-				state = 607
-			}
-		}
-		visible = {
-			has_completed_focus = CHI_industrial_evacuations
-			607 = { #607 #henan
-				is_controlled_by = ROOT
-			}			
-		}
-
-		fire_only_once = yes
-
-		cost = 5
-
-		days_remove = 10
-
-		modifier = {}
-
-		remove_effect = {
-			if = {
-				limit = {
-					controls_state = 607
-				}
-				607 = { #607 #henan
-					
-								
-						
-					remove_building = {
-						type = industrial_complex
-						level = 1
-					}
-					
-	
-					#Move AF
-					CONTROLLER = {
-						
-	
-	
-						#Move IC
-						random_owned_controlled_state = {
-							prioritize = { 605 603 601 }
-							limit = {
-								is_fully_controlled_by = ROOT
-								
-								free_building_slots = {
-									building = industrial_complex
-									size > 0
-									include_locked = yes
-								}
-							}
-							
-							
-							add_extra_state_shared_building_slots = 1
-							add_building_construction = {
-								type = industrial_complex
-								level = 1
-								instant_build = yes
-							}
-							CONTROLLER = { set_country_flag = CHI_industrial_evacuations_moved_IC }
-							
-						}
-	
-						clr_country_flag = CHI_industrial_evacuations_moved_IC
-					}			
-				}
-			}
-		}
-
-		ai_will_do = {
-			factor = 1
-		}
-	}
-
-	CHI_industrial_evacuations_from_beijing = { #608 #beijing
-		icon = generic_scorched_earth
-		available = {
-			608 = { #608 #beijing
-				
-					industrial_complex > 4
-				
-			}
-		}
-		highlight_states = {
-			highlight_state_targets = {
-				state = 608
-			}
-		}
-		visible = {
-			has_completed_focus = CHI_industrial_evacuations
-			608 = { #608 #beijing
-				is_controlled_by = ROOT
-			}			
-		}
-
-		fire_only_once = yes
-
-		cost = 5
-
-		days_remove = 10
-
-		modifier = {}
-
-		remove_effect = {
-			if = {
-				limit = {
-					controls_state = 608
-				}
-				608 = { #608 #beijing
-					
-							
-						
-					remove_building = {
-						type = industrial_complex
-						level = 3
-					}
-					
-	
-					#Move AF
-					CONTROLLER = {
-						
-						#Move IC
-						random_owned_controlled_state = {
-							prioritize = { 605 603 601 }
-							limit = {
-								is_fully_controlled_by = ROOT
-								
-								free_building_slots = {
-									building = industrial_complex
-									size > 2
-									include_locked = yes
-								}
-							}
-							
-							
-							add_extra_state_shared_building_slots = 4
-							add_building_construction = {
-								type = industrial_complex
-								level = 3
-								instant_build = yes
-							}
-							CONTROLLER = { set_country_flag = CHI_industrial_evacuations_moved_IC }
-							
-						}
-	
-						
-						clr_country_flag = CHI_industrial_evacuations_moved_IC
-					}			
-				}
-			}
-		}
-
-		ai_will_do = {
-			factor = 1
-		}
-	}
-
-	CHI_industrial_evacuations_from_shanghai = { #613 #shanghai
-	icon = generic_scorched_earth
-		available = {
-			613 = { #613 #shanghai	
-				industrial_complex > 4	
-			}
-		}
-		highlight_states = {
-			highlight_state_targets = {
-				state = 613
-			}
-		}
-		visible = {
-			has_completed_focus = CHI_industrial_evacuations
-			613 = { #613 #shanghai
-				is_controlled_by = ROOT
-			}		
-		}
-
-		fire_only_once = yes
-
-		cost = 5
-
-		days_remove = 10
-
-		modifier = {}
-
-		remove_effect = {
-			if = {
-				limit = {
-					controls_state = 613
-				}
-				
-				613 = { #613 #shanghai
-									
-					remove_building = {
-						type = industrial_complex
-						level = 5
-					}
-					remove_building = {
-						type = steel_refinery
-						level = 1
-					}
-	
-					#Move AF
-					CONTROLLER = {
-						
-						#Move IC
-						random_owned_controlled_state = {
-							prioritize = { 605 603 601 }
-							limit = {
-								is_fully_controlled_by = ROOT
-								
-								free_building_slots = {
-									building = industrial_complex
-									size > 5
-									include_locked = yes
-								}
-							}
-							
-							add_extra_state_shared_building_slots = 6
-							add_building_construction = {
-								type = industrial_complex
-								level = 5
-								instant_build = yes
-							}
-							add_building_construction = {
-								type = steel_refinery
-								level = 1
-								instant_build = yes
-							}
-							CONTROLLER = { set_country_flag = CHI_industrial_evacuations_moved_IC }
-							
-						}
-
-						clr_country_flag = CHI_industrial_evacuations_moved_IC
-					}			
-				}
-			}
-		}
-
-		ai_will_do = {
-			factor = 1
-		}
-	}
-
-
-	CHI_industrial_evacuations_from_qingdao = { #743 #qingdao
-		icon = generic_scorched_earth
-		available = {
-			743 = { #743 #qingdao
-
-				industrial_complex > 1
-				
-			}
-		}
-		highlight_states = {
-			highlight_state_targets = {
-				state = 743
-			}
-		}
-		visible = {
-			has_completed_focus = CHI_industrial_evacuations
-			743 = { #743 #qingdao
-				is_controlled_by = ROOT
-			}			
-		}
-
-		fire_only_once = yes
-
-		cost = 5
-
-		days_remove = 10
-
-		modifier = {}
-
-		remove_effect = {
-			if = {
-				limit = {
-					controls_state = 743
-				}
-				743 = { #743 #qingdao
-					
-								
-						
-					remove_building = {
-						type = industrial_complex
-						level = 1
-					}
-					
-	
-					#Move AF
-					CONTROLLER = {
-						
-	
-	
-						#Move IC
-						random_owned_controlled_state = {
-							prioritize = { 605 603 601 }
-							limit = {
-								is_fully_controlled_by = ROOT
-								
-								free_building_slots = {
-									building = industrial_complex
-									size > 0
-									include_locked = yes
-								}
-							}
-							
-							
-							add_extra_state_shared_building_slots = 1
-							add_building_construction = {
-								type = industrial_complex
-								level = 1
-								instant_build = yes
-							}
-							CONTROLLER = { set_country_flag = CHI_industrial_evacuations_moved_IC }
-							
-						}
-	
-						
 						clr_country_flag = CHI_industrial_evacuations_moved_IC
 					}			
 				}
@@ -1817,11 +981,13 @@ CHI_communist_infiltration = {
 		available = {
 			has_equipment = { infantry_equipment > 999 }
 		}
+
 		highlight_states = {
 			highlight_state_targets = {
 				state = 283
 			}
-		}
+}
+		
 		visible = {
 			283 = {
 				is_controlled_by = ROOT
@@ -1884,7 +1050,7 @@ CHI_communist_infiltration = {
 			highlight_state_targets = {
 				state = 597
 			}
-		}
+}
 
 		visible = {
 			597 = {
@@ -1948,7 +1114,7 @@ CHI_communist_infiltration = {
 			highlight_state_targets = {
 				state = 598
 			}
-		}
+}
 
 		visible = {
 			598 = {
@@ -2021,7 +1187,7 @@ CHI_communist_infiltration = {
 			highlight_state_targets = {
 				state = 607
 			}
-		}
+}
 
 		
 		modifier = {
@@ -2074,7 +1240,8 @@ CHI_communist_infiltration = {
 			highlight_state_targets = {
 				state = 608
 			}
-		}
+}
+		
 		visible = {
 			608 = {
 				is_controlled_by = ROOT
@@ -2136,7 +1303,7 @@ CHI_communist_infiltration = {
 			highlight_state_targets = {
 				state = 614
 			}
-		}
+}
 
 		visible = {
 			614 = {
@@ -2199,7 +1366,7 @@ CHI_communist_infiltration = {
 			highlight_state_targets = {
 				state = 615
 			}
-		}
+}
 
 		visible = {
 			615 = {
@@ -2262,7 +1429,7 @@ CHI_communist_infiltration = {
 			highlight_state_targets = {
 				state = 621
 			}
-		}
+}
 
 		visible = {
 			621 = {
@@ -2447,6 +1614,9 @@ CHI_communist_infiltration = {
 foreign_support = {
 	CHI_flying_tigers = {
 		icon = generic_air
+		allowed = {
+			original_tag = USA
+		}
 		available = {
 			has_equipment = { fighter_equipment > 149 }
 		}
@@ -2469,7 +1639,7 @@ foreign_support = {
 					USA = {
 						send_equipment = {
 							target = PREV
-							type = fighter_bomber_equipment
+							type = fighter_equipment
 							amount = 150
 						}
 					}
@@ -2478,12 +1648,15 @@ foreign_support = {
 			add_war_support = 0.01
 		}
 		modifier = {
-			air_volunteer_cap = 100
+			air_volunteer_cap = 1
 		}
 	}
 
 	CHI_soviet_volunteer_group = {
 		icon = generic_air
+		allowed = {
+			original_tag = SOV
+		}
 		available = {
 			has_equipment = { fighter_equipment > 99 }
 			has_equipment = { tac_bomber_equipment > 49 }
@@ -2634,7 +1807,27 @@ foreign_support = {
 			}
 		}
 		remove_effect = {
-			
+			288 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			640 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			325 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
 			if = {
 				limit = {
 					has_global_flag = CHI_burma_2
@@ -3225,4 +2418,399 @@ prestigious_projects = {
 		
 		}
 	}
+}
+
+CHI_occupation_actions = { 
+
+
+	CHI_breach_the_yellow_river = { 
+		icon = GFX_decision_hol_inundate_water_lines
+		
+		available = {
+			controls_state = 607
+			has_war_with = JAP
+		}
+		highlight_states = {
+			highlight_state_targets = {
+				state = 607
+				state = 606
+				state = 613
+				state = 902
+				state = 919
+			}
+		}
+		
+		visible = {
+			controls_state = 607
+			is_literally_china = yes
+			NOT = { has_global_flag = chi_yellow_river_blown } #So warlords don't do this too
+		}
+		
+		fire_only_once = yes
+		
+		cost = 20
+
+		ai_will_do = {
+			base = 0
+			#Pretty damn important
+			modifier = {
+				add = 10
+				NOT = { controls_state = 608 }
+			}
+			modifier = {
+				add = 15
+				NOT = { controls_state = 614 }
+			}
+			modifier = {
+				add = 50
+				NOT = { controls_state = 597 }
+			}
+			modifier = {
+				add = 100
+				NOT = { controls_state = 598 }
+			}
+			modifier = {
+				add = 100
+				NOT = { controls_state = 606 }
+			}
+		}
+		
+		complete_effect = {
+			add_war_support = -0.05
+			607 = {
+				add_province_modifier = {
+					static_modifiers = { flooded }
+					province = {
+						id = 9958
+						id = 7656
+						id = 4066
+						id = 10098
+					}
+				}
+				add_dynamic_modifier = {
+					modifier = yellow_river_blown
+					days = 730 
+				}
+				damage_building = {
+					type = rail_way
+					damage = 5
+				}
+				damage_building = {
+					type = infrastructure
+					damage = 2
+				}
+				damage_building = {
+					type = industrial_complex
+					damage = 2.0
+				}
+				damage_building = {
+					type = steel_refinery
+					damage = 2.0
+				}
+			}
+			902 = {
+				add_province_modifier = {
+					static_modifiers = { flooded }
+					province = {
+						id = 7540
+						id = 7126
+					}
+				}
+				damage_building = {
+					type = rail_way
+					damage = 5
+				}
+				damage_building = {
+					type = infrastructure
+					damage = 2
+				}
+				damage_building = {
+					type = industrial_complex
+					damage = 2.0
+				}
+				damage_building = {
+					type = steel_refinery
+					damage = 2.0
+				}
+			}
+			606 = {
+				add_province_modifier = {
+					static_modifiers = { flooded }
+					province = {
+						id = 9937
+						id = 10079
+						id = 4079
+						id = 10040
+						id = 12036
+						id = 11916
+						id = 7222
+						id = 10008
+					}
+				}
+				add_dynamic_modifier = {
+					modifier = yellow_river_blown
+					days = 730 
+				}
+				damage_building = {
+					type = rail_way
+					damage = 5
+				}
+				damage_building = {
+					type = infrastructure
+					damage = 2
+				}
+				damage_building = {
+					type = industrial_complex
+					damage = 2.0
+				}
+				damage_building = {
+					type = steel_refinery
+					damage = 2.0
+				}
+			}
+			613 = {
+				add_province_modifier = {
+					static_modifiers = { flooded }
+					province = {
+						id = 4001
+						id = 4148
+					}
+				}
+				damage_building = {
+					type = infrastructure
+					damage = 1
+				}
+			}
+			919 = {
+				add_province_modifier = {
+					static_modifiers = { flooded }
+					province = {
+						id = 1001
+					}
+				}
+				add_dynamic_modifier = {
+					modifier = yellow_river_blown
+					days = 730 
+				}
+				damage_building = {
+					type = infrastructure
+					damage = 3
+				}
+				damage_building = {
+					type = rail_way
+					damage = 3
+				}
+				
+			}
+			hidden_effect = { 
+				news_event = { id = news.409 } 
+				set_global_flag = chi_yellow_river_blown
+			}
+		}
+	}
+	
+	CHI_force_united_front = {
+		icon = generic_prepare_civil_war
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 1000
+		}
+		
+		allowed = {
+			tag = CHI
+		}
+		
+		visible = {
+			has_war_with = JAP
+			OR = {
+				GXC = {
+					exists = yes
+					NOT = {is_in_faction_with = CHI}
+					is_in_faction = no
+					is_ai = yes
+				}
+				YUN = {
+					exists = yes
+					NOT = {is_in_faction_with = CHI}
+					is_in_faction = no
+					is_ai = yes
+				}
+				XSM = {
+					exists = yes
+					NOT = {is_in_faction_with = CHI}
+					is_in_faction = no
+					is_ai = yes
+				}
+				SHX = {
+					exists = yes
+					NOT = {is_in_faction_with = CHI}
+					is_in_faction = no
+					is_ai = yes
+				}
+				PRC = {
+					exists = yes
+					NOT = {is_in_faction_with = CHI}
+					is_in_faction = no
+					is_ai = yes
+				}
+			}
+		}
+		
+		available = {
+			has_completed_focus = CHI_united_front
+		}
+		
+		complete_effect = {
+			IF = {
+				limit = {
+					GXC = {
+						exists = yes
+						NOT = {is_in_faction_with = CHI}
+						is_in_faction = no
+						is_ai = yes
+					}
+				}
+				CHI = {
+					add_to_faction = GXC
+				}
+			}
+			IF = {
+				limit = {
+					YUN = {
+						exists = yes
+						NOT = {is_in_faction_with = CHI}
+						is_in_faction = no
+						is_ai = yes
+					}
+				}
+				CHI = {
+					add_to_faction = YUN
+				}
+			}
+			IF = {
+				limit = {
+					XSM = {
+						exists = yes
+						NOT = {is_in_faction_with = CHI}
+						is_in_faction = no
+						is_ai = yes
+					}
+				}
+				CHI = {
+					add_to_faction = XSM
+				}
+			}
+			IF = {
+				limit = {
+					SHX = {
+						exists = yes
+						NOT = {is_in_faction_with = CHI}
+						is_in_faction = no
+						is_ai = yes
+					}
+				}
+				CHI = {
+					add_to_faction = SHX
+				}
+			}
+			IF = {
+				limit = {
+					PRC = {
+						exists = yes
+						NOT = {is_in_faction_with = CHI}
+						is_in_faction = no
+						is_ai = yes
+					}
+				}
+				CHI = {
+					add_to_faction = PRC
+				}
+			}
+		}
+		
+	}
+	
+	CHI_annex_warlords = {
+		
+		icon = generic_prepare_civil_war
+		
+		cost = 0
+		
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 1000
+		}
+		
+		allowed = {
+			tag = CHI
+		}
+		
+		visible = {
+			has_war_with = JAP
+			OR = {
+				GXC = {
+					exists = yes
+				}
+				YUN = {
+					exists = yes
+				}
+				XSM = {
+					exists = yes
+				}
+			}
+		}
+		
+		available = {
+			has_war_with = JAP
+			NOT = {controls_state = 613}
+			surrender_progress > 0.5
+			is_in_faction_with = GXC 
+			is_in_faction_with = YUN
+			is_in_faction_with = XSM
+			is_in_faction_with = SHX
+		}
+		
+		complete_effect = {
+			IF = {
+				limit = {
+					is_in_faction_with = GXC
+				}
+				annex_country = {
+					target = GXC
+					transfer_troops = yes
+				}
+			}
+			IF = {
+				limit = {
+					is_in_faction_with = YUN
+				}
+				annex_country = {
+					target = YUN
+					transfer_troops = yes
+				}
+			}
+			IF = {
+				limit = {
+					is_in_faction_with = XSM
+				}
+				annex_country = {
+					target = XSM
+					transfer_troops = yes
+				}
+			}
+			IF = {
+				limit = {
+					is_in_faction_with = SHX
+				}
+				annex_country = {
+					target = SHX
+					transfer_troops = yes
+				}
+			}
+		}
+	}
+	
 }
