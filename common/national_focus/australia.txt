@@ -1058,17 +1058,23 @@
 				technology = advanced_centimetric_naval_radar
 			}
 
-			effect_tooltip = {
+			if = {
+				limit = { has_tech = radio_detection }
 				random_owned_controlled_state = {
-					prioritize = { 521 }
+					prioritize = { 521 872 }
 					limit = {
 						is_in_home_area = yes
+						free_building_slots = {
+							building = radar_station
+							size > 0
+						}
 					}
 					add_building_construction = {
 						type = radar_station
 						level = 1
 						instant_build = yes
 					}
+					set_state_flag = AST_volunteer_air_observers_corps_radar1
 				}
 
 				random_owned_controlled_state = {
@@ -1076,11 +1082,100 @@
 					limit = {
 						NOT = { has_state_flag = AST_volunteer_air_observers_corps_radar1 }
 						is_in_home_area = yes
+						free_building_slots = {
+							building = radar_station
+							size > 0
+						}
 					}
 					add_building_construction = {
 						type = radar_station
 						level = 1
 						instant_build = yes
+					}
+					set_state_flag = AST_volunteer_air_observers_corps_radar2
+				}
+
+				random_owned_controlled_state = {
+					prioritize = { 520 }
+					limit = {
+						NOT = { has_state_flag = AST_volunteer_air_observers_corps_radar1 }
+						NOT = { has_state_flag = AST_volunteer_air_observers_corps_radar2 }
+						is_in_home_area = yes
+						free_building_slots = {
+							building = radar_station
+							size > 0
+						}
+					}
+					add_building_construction = {
+						type = radar_station
+						level = 1
+						instant_build = yes
+					}
+					set_state_flag = AST_volunteer_air_observers_corps_radar3
+				}
+				else = {
+					set_technology = {
+						radio_detection = 1
+					}
+					effect_tooltip = {
+						random_owned_controlled_state = {
+							prioritize = { 521 872 }
+							limit = {
+								is_in_home_area = yes
+							}
+							add_building_construction = {
+								type = radar_station
+								level = 1
+								instant_build = yes
+							}
+						}
+
+						random_owned_controlled_state = {
+							prioritize = { 285 }
+							limit = {
+								NOT = { has_state_flag = AST_volunteer_air_observers_corps_radar1 }
+								is_in_home_area = yes
+							}
+							add_building_construction = {
+								type = radar_station
+								level = 1
+								instant_build = yes
+							}
+						}
+					}
+					random_owned_controlled_state = {
+						prioritize = { 521 872 }
+						limit = {
+							is_in_home_area = yes
+							free_building_slots = {
+								building = radar_station
+								size > 0
+							}
+						}
+						add_building_construction = {
+							type = radar_station
+							level = 1
+							instant_build = yes
+						}
+						set_state_flag = AST_volunteer_air_observers_corps_radar1
+					}
+
+					random_owned_controlled_state = {
+						prioritize = { 285 }
+						limit = {
+							NOT = { has_state_flag = AST_volunteer_air_observers_corps_radar1 }
+							is_in_home_area = yes
+							free_building_slots = {
+								building = radar_station
+								size > 0
+							}
+						}
+						add_building_construction = {
+							type = radar_station
+							level = 1
+							instant_build = yes
+						}
+						set_state_flag = AST_volunteer_air_observers_corps_radar2
 					}
 				}
 			}
