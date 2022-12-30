@@ -119,6 +119,8 @@ NDefines.NNavy.ANTI_AIR_MULT_ON_INCOMING_AIR_DAMAGE = 0.01 -- was 0.15 in vanill
 NDefines.NNavy.ANTI_AIR_POW_ON_INCOMING_AIR_DAMAGE = 0.5 -- was 0.2. PLEASE DO NOT INCREASE THE VALUE ABOVE TOO MUCH. ^0.5 instead of ^0.2 means that AA DISRUPTION SCALE A LOT MORE.
 
 NDefines.NNavy.MIN_HIT_PROFILE_MULT = 0.05
+NDefines.NNavy.HIT_PROFILE_SPEED_FACTOR = 1		-- factors speed value when determining it profile (Vis * HIT_PROFILE_MULT * Ship Hit Profile Mult)
+NDefines.NNavy.HIT_PROFILE_SPEED_BASE											= 0		-- Base value added to hitprofile speed calulation
 
 -- XP for ships and admirals
 
