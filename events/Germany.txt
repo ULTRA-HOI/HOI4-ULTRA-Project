@@ -408,11 +408,12 @@ country_event = {
 			add_state_claim = 766 #SOUTHERN BESSARABIA (ROM)
 		}
 		
-		hidden_effect =  { add_timed_idea = { idea = SOV_molotov_ribbentrop_pact days = 730 } }
+		add_timed_idea = { idea = SOV_molotov_ribbentrop_pact days = 730 }
 		GER = {
 			country_event = { days = 1 id = germany.12 }
 			effect_tooltip = {
 				add_opinion_modifier = { target = SOV modifier = MR_pact }# pact
+				add_timed_idea = { idea = GER_molotov_ribbentrop_pact days = 730 }
 			}
 		}
 		set_global_flag = sov_yes_pact
@@ -464,6 +465,7 @@ country_event = {
 		}
 		diplomatic_relation = { country = SOV relation = non_aggression_pact }
 		add_opinion_modifier = { target = SOV modifier = MR_pact }# pact
+		add_timed_idea = { idea = GER_molotov_ribbentrop_pact days = 730 }
 		USA = {
 			set_country_flag = { flag = USA_MR_window days = 60 value = 1 }
 		}
@@ -773,6 +775,11 @@ country_event = {
 		}
 		SOU = { country_event = germany.16 }
 		clr_global_flag = sov_yes_pact
+		remove_ideas = GER_molotov_ribbentrop_pact
+		remove_opinion_modifier = {
+			target = SOV
+			modifier = MR_pact
+		}
 		diplomatic_relation = {
 			country = SOV
 			relation = non_aggression_pact
@@ -952,6 +959,11 @@ country_event = {
 					type = annex_everything
 					target = GER
 				}
+				remove_ideas = SOV_molotov_ribbentrop_pact
+				remove_opinion_modifier = {
+					target = GER
+					modifier = MR_pact
+				}
 			}
 		}
 		if = { 
@@ -1066,6 +1078,11 @@ country_event = {
 		}
 		SOU = { country_event = germany.16 }
 		clr_global_flag = sov_yes_pact
+		remove_ideas = GER_molotov_ribbentrop_pact
+		remove_opinion_modifier = {
+			target = SOV
+			modifier = MR_pact
+		}
 		GER = {
 			diplomatic_relation = {
 				country = SOV
@@ -1246,6 +1263,11 @@ country_event = {
 				create_wargoal = {
 					type = annex_everything
 					target = GER
+				}
+				remove_ideas = SOV_molotov_ribbentrop_pact
+				remove_opinion_modifier = {
+					target = GER
+					modifier = MR_pact
 				}
 			}
 		}
@@ -1510,6 +1532,15 @@ country_event = {
 		create_wargoal = {
 			type = annex_everything
 			target = FROM
+		}
+		effect_tooltip = {
+			GER = {
+				remove_ideas = GER_molotov_ribbentrop_pact
+				remove_opinion_modifier = {
+					target = SOV
+					modifier = MR_pact
+				}
+			}
 		}
 	}
 }
