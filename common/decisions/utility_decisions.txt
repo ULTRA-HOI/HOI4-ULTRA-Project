@@ -1,0 +1,256 @@
+utility_decision_category = {
+
+	show_utility = {
+		allowed = {
+			#Everyone
+		}
+		
+		visible = {
+			NOT = {
+				has_country_flag = utility_flag
+			}
+		}
+		
+		available = {
+			#always
+		}
+		
+		complete_effect = {
+			set_country_flag = utility_flag
+		}
+	}
+	
+	hide_utility = {
+		allowed = {
+			#Everyone
+		}
+		
+		visible = {
+			has_country_flag = utility_flag
+		}
+		
+		available = {
+			#always
+		}
+		
+		complete_effect = {
+			clr_country_flag = utility_flag
+		}
+	}
+	
+	hide_shiptemplates = {
+		allowed = {
+			#Everyone
+		}
+		
+		visible = {
+			has_country_flag = utility_flag
+			NOT = {
+				has_country_flag = shiptemplates_hide_flag
+			}
+		}
+		
+		available = {
+			#always
+		}
+		
+		complete_effect = {
+			set_country_flag = shiptemplates_hide_flag
+		}
+	}
+	
+	show_shiptemplates = {
+		allowed = {
+			#Everyone
+		}
+		
+		visible = {
+			has_country_flag = utility_flag
+			has_country_flag = shiptemplates_hide_flag
+		}
+		
+		available = {
+			#always
+		}
+		
+		complete_effect = {
+			clr_country_flag = shiptemplates_hide_flag
+		}
+	}
+
+	Use_foreign_tanks = {
+
+		icon = generic_operation
+
+        allowed = {
+            always = yes
+        }
+
+        available = {
+        	is_ai = no
+        }
+
+        visible = {
+        	is_ai = no
+			has_country_flag = utility_flag
+        }
+
+        cost = 0
+        fire_only_once = yes
+
+        ai_will_do = {
+			factor = 0
+		}
+
+		complete_effect = {
+			set_technology = {
+				armor_bug_fix = 1
+			}
+        }
+	}
+	
+	add_missing_operation_tokens = {
+		allowed = {
+		}
+
+		target_trigger = {
+			OR = {
+				AND = {
+					NOT = {
+						has_operation_token = {
+							tag = FROM
+							token = token_resistance_contacts
+						}
+					}
+					check_variable = { var_token_resistance_contacts_@FROM = 1 }
+				}
+				AND = {
+					NOT = {
+						has_operation_token = {
+							tag = FROM
+							token = token_airforce
+						}
+					}
+					check_variable = { var_token_airforce_@FROM = 1 }
+				}
+				AND = {
+					NOT = {
+						has_operation_token = {
+							tag = FROM
+							token = token_navy
+						}
+					}
+					check_variable = { var_token_navy_@FROM = 1 }
+				}
+				AND = {
+					NOT = {
+						has_operation_token = {
+							tag = FROM
+							token = token_army
+						}
+					}
+					check_variable = { var_token_army_@FROM = 1 }
+				}
+				AND = {
+					NOT = {
+						has_operation_token = {
+							tag = FROM
+							token = token_civilian
+						}
+					}
+					check_variable = { var_token_civilian_@FROM = 1 }
+				}
+			}
+		}
+		
+		visible = {
+			always = yes
+		}
+		
+		available = {
+			#always
+		}
+		
+		complete_effect = {
+			if = {
+				limit = {
+					NOT = {
+						has_operation_token = {
+							tag = FROM
+							token = token_resistance_contacts
+						}
+					}
+					check_variable = { var_token_resistance_contacts_@FROM = 1 }
+				}
+				add_operation_token = {
+					tag = FROM
+					token = token_resistance_contacts
+				}
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_operation_token = {
+							tag = FROM
+							token = token_airforce
+						}
+					}
+					check_variable = { var_token_airforce_@FROM = 1 }
+				}
+				add_operation_token = {
+					tag = FROM
+					token = token_airforce
+				}
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_operation_token = {
+							tag = FROM
+							token = token_navy
+						}
+					}
+					check_variable = { var_token_navy_@FROM = 1 }
+				}
+				add_operation_token = {
+					tag = FROM
+					token = token_navy
+				}
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_operation_token = {
+							tag = FROM
+							token = token_army
+						}
+					}
+					check_variable = { var_token_army_@FROM = 1 }
+				}
+				add_operation_token = {
+					tag = FROM
+					token = token_army
+				}
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_operation_token = {
+							tag = FROM
+							token = token_civilian
+						}
+					}
+					check_variable = { var_token_civilian_@FROM = 1 }
+				}
+				add_operation_token = {
+					tag = FROM
+					token = token_civilian
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+}
