@@ -1455,7 +1455,7 @@ focus_tree = {
 	focus = {
 		id = GER_extra_tech_slot
 		icon = GFX_focus_research2
-		text = extra_tech_slot
+		text = GER_extra_tech_slot
 		prerequisite = { focus = GER_kdf_wagen focus = GER_synthetic_rubber }
 		x = -1
 		y = 1
@@ -1748,7 +1748,7 @@ focus_tree = {
 		icon = GFX_goal_generic_construct_infrastructure
 		prerequisite = { focus = GER_four_year_plan }
 		x = 0
-		y = 4
+		y = 1
 		relative_position_id = GER_four_year_plan
 		available = {
 			
@@ -1794,7 +1794,7 @@ focus_tree = {
 		# prerequisite = { focus = GER_align_romania }
 													 
 		x = 0
-		y = 1
+		y = 3
 		relative_position_id = GER_grosraumwirtschaft
 		cost = 5
 		ai_will_do = {
@@ -2901,9 +2901,13 @@ focus_tree = {
 		available_if_capitulated = yes
 
 		completion_reward = {
+			GER = {
+				add_offsite_building = { type = industrial_complex level = 2 }
+			}
 			event_target:WTT_current_china_leader = {
 				add_offsite_building = { type = arms_factory level = 2 }
 				add_opinion_modifier = { target = GER modifier = ger_chi_diplomacy_focus }
+				add_opinion_modifier = { target = GER modifier = GER_chinese_trade }
 				set_country_flag = GER_befriended_by_germany_flag									 
 			}
 			JAP = {
@@ -2957,11 +2961,18 @@ focus_tree = {
 		completion_reward = {
 			JAP = {
 				add_opinion_modifier = { target = GER modifier = ger_jap_diplomacy_focus }
+				remove_opinion_modifier = { target = GER modifier = supported_the_chinese }
 			}
 			event_target:WTT_current_china_leader = {
 				add_opinion_modifier = { target = GER modifier = withdrew_advisors }
 				add_opinion_modifier = { target = GER modifier = sanctions }
+				add_offsite_building = { type = arms_factory level = -2 }
+				remove_opinion_modifier = { target = GER modifier = ger_chi_diplomacy_focus }
+				remove_opinion_modifier = { target = GER modifier = GER_chinese_trade }
 				country_event = { id = china.3 hours = 6 }
+			}
+			GER = {
+				add_offsite_building = { type = industrial_complex level = -2 }
 			}
 			custom_effect_tooltip = GER_japan_friend_tt
 			set_global_flag = falkenhausen_recalled
@@ -4182,6 +4193,7 @@ focus_tree = {
 	focus = {
 		id = GER_ussr_war_goal
 		icon = GFX_focus_ger_strike_at_the_source
+		text = GER_ussr_war_goal
 		prerequisite = { focus = GER_danzig_or_war }
 		mutually_exclusive = { focus = GER_soviet_ally }
 
@@ -4369,6 +4381,7 @@ focus_tree = {
 	focus = {
 		id = GER_turkey_friend
 		icon = GFX_focus_generic_befriend_turkey
+		text = GER_turkey_friend
 		prerequisite = { focus = GER_fall_blau }
 
 
