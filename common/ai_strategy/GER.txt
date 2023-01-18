@@ -3887,6 +3887,64 @@ GER_dont_bomb_france_too_soon = { #avoid to sacrifice airforce for no reasons
 	}
 }
 
+GER_bomb_benelux = {
+	allowed = {
+		original_tag = GER
+	}
+	enable = {
+		date > 1940.5.1
+		date < 1940.7.1		#Don't keep pushing wildly if we haven't capitulated benelux in 4 months - we lost anyway
+		OR = {
+			AND = {
+				focus_progress = {
+					focus = GER_around_maginot
+					progress > 0.01
+				}
+				NOT = {
+					has_war_with = HOL
+				}
+			}
+			AND = {
+				has_war_with = HOL
+				HOL = {
+					has_capitulated = no
+				}
+			}
+			AND = {
+				has_war_with = BEL
+				BEL = {
+					has_capitulated = no
+				}
+			}
+			NOT = {
+				controls_state = 29 #Lille
+			}
+		}
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = strategic_air_importance
+		id = 5 #Strategic Region ID - Netherland
+		value = 20000 #value of stocked main front in active combat is usually around 35,000
+	}
+	ai_strategy = {
+		type = strategic_air_importance
+		id = 289 #Strategic Region ID - Ardennes - we want to breakthrough there
+		value = 50000 #value of stocked main front in active combat is usually around 35,000
+	}
+	ai_strategy = {
+		type = strategic_air_importance
+		id = 290 #Strategic Region ID - Flanders-Wallonia
+		value = 20000 #value of stocked main front in active combat is usually around 35,000
+	}
+	ai_strategy = {
+		type = strategic_air_importance
+		id = 286 #Strategic Region ID - Alsace-Lorraine - don't go there plox
+		value = -20000 #value of stocked main front in active combat is usually around 35,000
+	}
+}
+
 GER_start_the_blitz = {
 	allowed = {
 		original_tag = GER
