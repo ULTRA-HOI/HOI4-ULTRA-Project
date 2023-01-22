@@ -4492,6 +4492,249 @@ GER_we_dont_believe_in_mountain_tanks = {
 	}
 }
 
+GER_make_some_radar_1 = {
+	allowed = {
+		original_tag = GER
+	}
+	enable = {
+		OR = {
+			has_war_with = POL
+			POL = {
+				has_capitulated = yes
+			}
+		}
+	}
+
+	abort = {
+		has_tech = radio_detection
+	}
+
+	ai_strategy = {
+		type = research_tech
+		id = 288 #Radio Detection
+		value = 2000
+	}
+}
+
+GER_make_some_radar_2 = {
+	allowed = {
+		original_tag = GER
+	}
+	enable = {
+		has_tech = radio_detection
+	}
+
+	abort = {
+		has_tech = decimetric_radar
+	}
+
+	ai_strategy = {
+		type = research_tech
+		id = 289 #Decimetric Radar
+		value = 2000
+	}
+}
+
+GER_make_some_radar_3 = {
+	allowed = {
+		original_tag = GER
+	}
+	enable = {
+		has_tech = decimetric_radar
+	}
+
+	abort = {
+		has_tech = improved_decimetric_radar
+	}
+
+	ai_strategy = {
+		type = research_tech
+		id = 290 #Improved Decimetric Radar
+		value = 200
+	}
+} #After this, you're on your own chaps
+
+GER_make_some_radar_4 = {
+	allowed = {
+		original_tag = GER
+	}
+	enable = {
+		has_tech = radio_detection
+		90 = {
+			free_building_slots = {
+				building = radar_station
+				size > 0
+				include_locked = yes
+			}
+		}
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = build_building
+		id = radar_station
+		target = 90 #Kielce
+		value = 2000
+	}
+}
+
+GER_make_some_radar_5 = {
+	allowed = {
+		original_tag = GER
+	}
+	enable = {
+		has_tech = radio_detection
+		763 = {
+			free_building_slots = {
+				building = radar_station
+				size > 0
+				include_locked = yes
+			}
+		}
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = build_building
+		id = radar_station
+		target = 763 #Konigsberg
+		value = 2000
+	}
+}
+
+GER_make_some_radar_6 = {
+	allowed = {
+		original_tag = GER
+	}
+	enable = {
+		has_tech = radio_detection
+		36 = {
+			free_building_slots = {
+				building = radar_station
+				size > 0
+				include_locked = yes
+			}
+		}
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = build_building
+		id = radar_station
+		target = 36 #Holland
+		value = 2000
+	}
+}
+
+GER_make_some_radar_7 = {
+	allowed = {
+		original_tag = GER
+	}
+	enable = {
+		has_tech = radio_detection
+		42 = {
+			free_building_slots = {
+				building = radar_station
+				size > 0
+				include_locked = yes
+			}
+		}
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = build_building
+		id = radar_station
+		target = 42 #Moselland
+		value = 2000
+	}
+}
+
+GER_protect_hungary = {
+	allowed = { original_tag = GER }
+	enable = {
+		is_historical_focus_on = yes
+		HUN = {
+			has_government = fascism
+		}
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = protect
+		id = "HUN"
+		value = 50
+	}
+
+}
+
+GER_protect_romania = {
+	allowed = { original_tag = GER }
+	enable = {
+		is_historical_focus_on = yes
+		ROM = {
+			OR = {
+				has_government = fascism
+				has_government = neutrality
+			}
+		}
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = protect
+		id = "ROM"
+		value = 50
+	}
+}
+
+GER_avoid_war_with_SWI = {
+	allowed = { original_tag = GER }
+	enable = {
+		is_historical_focus_on = yes
+		SWI = {
+			exists = yes
+		}
+	}
+	abort = {
+		OR = {
+			has_wargoal_against = SWI
+			SWI = {
+				NOT = { has_idea = SWI_swiss_neutrality }
+			}
+		}
+	}
+
+	ai_strategy = {
+		type = conquer
+		id = SWI
+		value = -999
+	}
+
+	ai_strategy = {
+		type = antagonize
+		id = SWI
+		value = -75
+	}
+}
+
+GER_dont_act_on_danzig_if_things_went_south = {
+	allowed = {
+		original_tag = GER
+	}
+	enable = {
+		has_war_with = CZE
+		date < 1940.6.1
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = declare_war
+		id = "POL"
+		value = -2000
+	}
+}
+
 GER_dont_build_non_core = {
 	allowed = {
 		original_tag = GER
