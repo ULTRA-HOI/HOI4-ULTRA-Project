@@ -2750,18 +2750,8 @@ focus_tree = {
 		completion_reward = {
 			add_to_variable = { ITA_iri_production_speed_arms_factory_factor = 0.025 }
 			custom_effect_tooltip = ITA_steel_industry_in_terni_ricostruzione_industriale_tt
-			2 = {
-				add_extra_state_shared_building_slots = 2
-				add_building_construction = {
-					type = industrial_complex
-					level = 2
-					instant_build = yes
-				}
-				add_resource = {
-					type = steel
-					amount = 8
-				}
-			}
+			custom_effect_tooltip = Construction_Focus_tt
+			unlock_decision_tooltip = { decision = ITA_steel_industry_in_terni_decision show_effect_tooltip = yes }			
 		}
 	}
 
@@ -2784,14 +2774,8 @@ focus_tree = {
 			add_to_variable = { ITA_iri_production_speed_industrial_complex_factor = 0.05 }
 			custom_effect_tooltip = ITA_power_plants_in_terni_ricostruzione_industriale_tt
 
-			2 = {
-				add_extra_state_shared_building_slots = 1
-				add_building_construction = {
-					type = industrial_complex
-					level = 1
-					instant_build = yes
-				}
-			}
+			custom_effect_tooltip = Construction_Focus_tt
+			unlock_decision_tooltip = { decision = ITA_power_plants_in_terni_decision show_effect_tooltip = yes }	
 		}
 	}
 
@@ -2875,165 +2859,8 @@ focus_tree = {
 		search_filters = {FOCUS_FILTER_INDUSTRY}
 
 		completion_reward = {
-			if = {
-				limit = {
-					has_full_control_of_state = 158
-					158 = {
-						free_building_slots = {
-							building = industrial_complex
-							size > 0
-							include_locked = yes
-						}
-					}
-				}
-				158 = { #PIEDMONT (Torino, Genoa)
-					add_extra_state_shared_building_slots = 3
-					add_building_construction = {
-						type = industrial_complex
-						level = 1
-						instant_build = yes
-					}
-				}
-			}
-			else = {
-				random_core_state = {
-					limit = {
-						is_controlled_by = ROOT
-						free_building_slots = {
-							building = industrial_complex
-							size > 0
-							include_locked = yes
-						}
-					}
-					prioritize = { 736 1082 } #LITORALE as main fallback
-					add_extra_state_shared_building_slots = 3
-					add_building_construction = {
-						type = industrial_complex
-						level = 1
-						instant_build = yes
-					}
-				}
-			}
-
-			if = {
-				limit = {
-					has_full_control_of_state = 159
-					159 = {
-						free_building_slots = {
-							building = arms_factory
-							size > 0
-							include_locked = yes
-						}
-					}
-				}
-				159 = { #LOMBARDY (Milano, Brescia)
-					add_extra_state_shared_building_slots = 3
-					add_building_construction = {
-						type = arms_factory
-						level = 1
-						instant_build = yes
-					}
-				}
-			}
-			else = {
-				random_core_state = {
-					limit = {
-						is_controlled_by = ROOT
-						free_building_slots = {
-							building = arms_factory
-							size > 0
-							include_locked = yes
-						}
-					}
-					prioritize = { 850 30 } #TRENTINO as main fallback
-					add_extra_state_shared_building_slots = 3
-					add_building_construction = {
-						type = arms_factory
-						level = 1
-						instant_build = yes
-					}
-				}
-			}
-
-			if = {
-				limit = {
-					has_full_control_of_state = 161
-					161 = {
-						free_building_slots = {
-							building = industrial_complex
-							size > 0
-							include_locked = yes
-						}
-					}
-				}
-				161 = { #EMILIA ROMAGNA (Bologna)
-					add_extra_state_shared_building_slots = 3
-					add_building_construction = {
-						type = industrial_complex
-						level = 1
-						instant_build = yes
-					}
-				}
-			}
-			else = {
-				random_core_state = {
-					limit = {
-						is_controlled_by = ROOT
-						free_building_slots = {
-							building = industrial_complex
-							size > 0
-							include_locked = yes
-						}
-					}
-					prioritize = { 30 850 } #ALTO ADIGE as main fallback
-					add_extra_state_shared_building_slots = 3
-					add_building_construction = {
-						type = industrial_complex
-						level = 1
-						instant_build = yes
-					}
-				}
-			}
-
-			if = {
-				limit = {
-					has_full_control_of_state = 160
-					160 = {
-						free_building_slots = {
-							building = dockyard
-							size > 0
-							include_locked = yes
-						}
-					}
-				}
-				160 = { #VENETO (Venice )
-					add_extra_state_shared_building_slots = 3
-					add_building_construction = {
-						type = dockyard
-						level = 1
-						instant_build = yes
-					}
-				}
-			}
-			else = {
-				random_core_state = {
-					limit = {
-						is_controlled_by = ROOT
-						free_building_slots = {
-							building = dockyard
-							size > 0
-							include_locked = yes
-						}
-					}
-					prioritize = { 1082 736 } #ISTRIA as main fallback
-					add_extra_state_shared_building_slots = 3
-					add_building_construction = {
-						type = dockyard
-						level = 1
-						instant_build = yes
-					}
-				}
-			}
+			custom_effect_tooltip = Construction_Focus_tt
+			unlock_decision_tooltip = { decision = ITA_strengthen_northern_industry_decision show_effect_tooltip = yes }		
 		}
 	}
 
@@ -3052,178 +2879,8 @@ focus_tree = {
 		search_filters = {FOCUS_FILTER_INDUSTRY}
 
 		completion_reward = {
-			if = {
-				limit = {
-					has_full_control_of_state = 117
-					117 = {
-						free_building_slots = {
-							building = industrial_complex
-							size > 1
-							include_locked = yes
-						}
-					}
-				}
-				117 = { #CAMPAGNA (Napoli)
-					if = {
-						limit = {
-							infrastructure < 5
-						}
-						add_building_construction = {
-							type = infrastructure
-							level = 1
-							instant_build = yes						
-						}
-					}
-					add_extra_state_shared_building_slots = 2
-					add_building_construction = {
-						type = industrial_complex
-						level = 1
-						instant_build = yes
-					}
-					add_building_construction = {
-						type = arms_factory
-						level = 1
-						instant_build = yes
-					}
-					add_building_construction = {
-						type = naval_base
-						level = 2
-						instant_build = yes
-						province = 819					
-					}
-				}
-			}
-			else = {
-				random_core_state = {
-					limit = {
-						is_controlled_by = ROOT
-						free_building_slots = {
-							building = industrial_complex
-							size > 0
-							include_locked = yes
-						}
-					}
-					prioritize = { 156 2 162 } #CALABRIA as main fallback
-					if = {
-						limit = {
-							infrastructure < 5
-						}
-						add_building_construction = {
-							type = infrastructure
-							level = 1
-							instant_build = yes						
-						}
-					}
-					add_extra_state_shared_building_slots = 2
-					add_building_construction = {
-						type = industrial_complex
-						level = 1
-						instant_build = yes
-					}
-					add_building_construction = {
-						type = arms_factory
-						level = 1
-						instant_build = yes
-					}
-				}
-			}
-
-			if = {
-				limit = {
-					has_full_control_of_state = 849
-				}
-				849 = { #PUGLIA (Taranto, Bari, Foggia)
-					if = {
-						limit = {
-							infrastructure < 5
-						}
-						add_building_construction = {
-							type = infrastructure
-							level = 1
-							instant_build = yes						
-						}
-					}
-					add_extra_state_shared_building_slots = 1
-					add_building_construction = {
-						type = dockyard
-						level = 1
-						instant_build = yes
-					}
-					add_building_construction = {
-						type = naval_base
-						level = 2
-						instant_build = yes
-						province = 9784					
-					}
-				}
-			}
-
-			if = {
-				limit = {
-					has_full_control_of_state = 115
-				}
-
-				115 = { #SICILY (Palermo, Messina, Catania)
-					if = {
-						limit = {
-							infrastructure < 5
-						}
-						add_building_construction = {
-							type = infrastructure
-							level = 1
-							instant_build = yes						
-						}
-					}
-					add_building_construction = {
-						type = naval_base
-						level = 1
-						instant_build = yes
-						province = 4159					
-					}
-					add_building_construction = {
-						type = naval_base
-						level = 1
-						instant_build = yes
-						province = 7059					
-					}
-				}
-			}
-
-			if = {
-				limit = {
-					has_full_control_of_state = 114
-				}
-				114 = { #SARDINIA (Cagliari)
-					if = {
-						limit = {
-							infrastructure < 5
-						}
-						add_building_construction = {
-							type = infrastructure
-							level = 1
-							instant_build = yes						
-						}
-						add_building_construction = {
-							type = naval_base
-							level = 2
-							instant_build = yes
-							province = 11773					
-						}
-					}
-				}
-			}
-
-			if = {
-				limit = {
-					has_full_control_of_state = 162 #TOSCANA
-				}
-				162 = {
-					add_resource = {
-						type = steel
-						amount = 12
-					}
-				}
-			}
+			custom_effect_tooltip = Construction_Focus_tt
+			unlock_decision_tooltip = { decision = ITA_modernize_the_mezzogiorno_decision show_effect_tooltip = yes }		
 		}
 	}
 
@@ -3297,22 +2954,7 @@ focus_tree = {
 				category = train_tech
 			}
 
-			random_owned_controlled_state = {
-				limit = {
-					is_core_of = ROOT
-					free_building_slots = {
-						building = industrial_complex
-						size > 0
-						include_locked = yes
-					}
-				}
-				add_extra_state_shared_building_slots = 1
-				add_building_construction = {
-					type = industrial_complex
-					level = 1
-					instant_build = yes
-				}
-			}
+
 
 			#Roma - La Spezia
 			build_railway = {
@@ -3369,44 +3011,8 @@ focus_tree = {
 			add_to_variable = { ITA_iri_consumer_goods_factor = -0.05 }
 			custom_effect_tooltip = ITA_investments_in_edison_ricostruzione_industriale_tt
 
-			if = {
-				limit = {
-					159 = {
-						free_building_slots = {
-							building = industrial_complex
-							size > 1
-							include_locked = yes
-						}
-					}
-				}
-				159 = { #LOMBARDY (Milano)
-					add_extra_state_shared_building_slots = 2
-					add_building_construction = {
-						type = industrial_complex
-						level = 2
-						instant_build = yes
-					}
-				}
-			}
-			else = {
-				random_core_state = {
-					limit = {
-						is_controlled_by = ROOT
-						free_building_slots = {
-							building = industrial_complex
-							size > 1
-							include_locked = yes
-						}
-					}
-					prioritize = { 161 850 } #EMILIA ROMAGNA as main fallback
-					add_extra_state_shared_building_slots = 2
-					add_building_construction = {
-						type = industrial_complex
-						level = 2
-						instant_build = yes
-					}
-				}
-			}
+			custom_effect_tooltip = Construction_Focus_tt
+			unlock_decision_tooltip = { decision = ITA_investments_in_edison_decision show_effect_tooltip = yes }	
 		}
 	}
 
@@ -3444,45 +3050,9 @@ focus_tree = {
 
 		search_filters = {FOCUS_FILTER_INDUSTRY}
 
-		completion_reward = {
-			if = {
-				limit = {
-					159 = {
-						free_building_slots = {
-							building = arms_factory
-							size > 1
-							include_locked = yes
-						}
-					}
-				}
-				159 = { #LOMBARDY (Milano)
-					add_extra_state_shared_building_slots = 2
-					add_building_construction = {
-						type = arms_factory
-						level = 2
-						instant_build = yes
-					}
-				}
-			}
-			else = {
-				random_core_state = {
-					limit = {
-						is_controlled_by = ROOT
-						free_building_slots = {
-							building = arms_factory
-							size > 1
-							include_locked = yes
-						}
-					}
-					prioritize = { 736 1082 } #LITORALE as main fallback
-					add_extra_state_shared_building_slots = 2
-					add_building_construction = {
-						type = arms_factory
-						level = 2
-						instant_build = yes
-					}
-				}
-			}
+		completion_reward = {	
+			custom_effect_tooltip = Construction_Focus_tt
+			unlock_decision_tooltip = { decision = ITA_fiocchi_munizioni_decision show_effect_tooltip = yes }		
 		}
 	}
 
@@ -3502,45 +3072,8 @@ focus_tree = {
 		search_filters = {FOCUS_FILTER_INDUSTRY FOCUS_FILTER_RESEARCH}
 
 		completion_reward = {
-			if = {
-				limit = {
-					159 = {
-						free_building_slots = {
-							building = arms_factory
-							size > 0
-							include_locked = yes
-						}
-					}
-				}
-				159 = { #LOMBARDY
-					add_extra_state_shared_building_slots = 1
-					add_building_construction = {
-						type = arms_factory
-						level = 1
-						instant_build = yes
-					}
-				}
-			}
-			else = {
-				random_core_state = {
-					limit = {
-						is_controlled_by = ROOT
-						free_building_slots = {
-							building = arms_factory
-							size > 0
-							include_locked = yes
-						}
-					}
-					prioritize = { 160 1082 736 } #VENETO as main fallback
-					add_extra_state_shared_building_slots = 1
-					add_building_construction = {
-						type = arms_factory
-						level = 1
-						instant_build = yes
-					}
-				}
-			}
-
+			custom_effect_tooltip = Construction_Focus_tt
+			unlock_decision_tooltip = { decision = ITA_brescia_small_arms_industry_decision show_effect_tooltip = yes }		
 			add_tech_bonus = {
 				name = ITA_brescia_small_arms_industry
 				bonus = 0.75
@@ -3613,52 +3146,8 @@ focus_tree = {
 		search_filters = {FOCUS_FILTER_INDUSTRY FOCUS_FILTER_RESEARCH}
 
 		completion_reward = {
-			if = {
-				limit = {
-					159 = {
-						free_building_slots = {
-							building = arms_factory
-							size > 1
-							include_locked = yes
-						}
-					}
-				}
-				159 = { #LOMBARDY (Milano)
-					add_extra_state_shared_building_slots = 2
-					add_building_construction = {
-						type = arms_factory
-						level = 2
-						instant_build = yes
-					}
-				}
-			}
-			else = {
-				random_core_state = {
-					limit = {
-						is_controlled_by = ROOT
-						free_building_slots = {
-							building = arms_factory
-							size > 1
-							include_locked = yes
-						}
-					}
-					prioritize = { 158 160 1082 736 39 } #PIEMONTE as main fallback
-					add_extra_state_shared_building_slots = 2
-					add_building_construction = {
-						type = arms_factory
-						level = 2
-						instant_build = yes
-					}
-				}
-			}
-
-			add_tech_bonus = {
-				name = ITA_redirect_alfa_romeo_production
-				bonus = 0.50
-				uses = 2
-				category = motorized_equipment
-				category = light_air
-			}
+			custom_effect_tooltip = Construction_Focus_tt
+			unlock_decision_tooltip = { decision = ITA_redirect_alfa_romeo_production_decision show_effect_tooltip = yes }
 		}
 	}
 
@@ -3779,6 +3268,9 @@ focus_tree = {
 				uses = 1
 				category = land_doctrine
 			}
+			custom_effect_tooltip = Construction_Focus_tt
+			unlock_decision_tooltip = { decision = ITA_army_primacy2_decision show_effect_tooltip = yes }			
+			
 		}
 	}
 
@@ -4589,7 +4081,7 @@ focus_tree = {
 		x = 1
 		y = 1
 		relative_position_id = ITA_self_propelled_guns
-		cost = 5
+		cost = 10
 		available = {
 		}
 
@@ -4603,6 +4095,9 @@ focus_tree = {
 
 			add_to_variable = { ITA_iri_consumer_goods_factor = 0.01 }
 			custom_effect_tooltip = ITA_ricostruzione_industriale_cg_penalty_tt
+			
+			custom_effect_tooltip = Construction_Focus_tt
+			unlock_decision_tooltip = { decision = ITA_modernize_ansaldo_facilities_decision show_effect_tooltip = yes }			
 
 
 			# if = {
@@ -4772,6 +4267,10 @@ focus_tree = {
 				}
 				ITA_add_citta_dell_aria_templates = yes
 			}
+			
+			custom_effect_tooltip = Construction_Focus_tt
+			unlock_decision_tooltip = { decision = ITA_citta_dell_aria_decision show_effect_tooltip = yes }
+			
 		}
 	}
 
@@ -4834,6 +4333,10 @@ focus_tree = {
 				}
 				ITA_add_reggianes_exports_templates = yes
 			}
+			
+			custom_effect_tooltip = Construction_Focus_tt
+			unlock_decision_tooltip = { decision = ITA_reggianes_exports_decision show_effect_tooltip = yes }
+			
 		}
 	}
 
@@ -5045,7 +4548,7 @@ focus_tree = {
 		x = -2
 		y = 1
 		relative_position_id = ITA_standardization
-		cost = 10
+		cost = 5
 		available = {
 		}
 
@@ -5074,7 +4577,7 @@ focus_tree = {
 		x = 2
 		y = 0
 		relative_position_id = ITA_long_range_aircraft
-		cost = 10
+		cost = 5
 		available = {
 		}
 
@@ -5100,7 +4603,7 @@ focus_tree = {
 		x = 4
 		y = 0
 		relative_position_id = ITA_long_range_aircraft
-		cost = 10
+		cost = 5
 		available = {
 		}
 
@@ -5126,7 +4629,7 @@ focus_tree = {
 		x = 6
 		y = 0
 		relative_position_id = ITA_long_range_aircraft
-		cost = 10
+		cost = 5
 		available = {
 		}
 
@@ -5167,6 +4670,9 @@ focus_tree = {
 			add_to_variable = { ITA_ra_air_superiority_efficiency = 0.05 }
 			add_to_variable = { ITA_ra_air_intercept_efficiency = 0.05 }
 			custom_effect_tooltip = ITA_supremacy_in_the_skies_ra_tt
+			
+			custom_effect_tooltip = Construction_Focus_tt
+			unlock_decision_tooltip = { decision = ITA_supremacy_in_the_skies_decision show_effect_tooltip = yes }			
 
 			air_experience = 50
 
