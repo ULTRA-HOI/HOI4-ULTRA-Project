@@ -2642,6 +2642,17 @@ SWI_add_country_leader_trait_based_on_councilor_trait = {
 }
 
 SWI_make_centralized_president = { #This takes the current president of the Confederation and makes them into a regulaar presiden. 
+	ROOT = {
+		every_character = {
+			limit = {
+				has_advisor_role = political_advisor 
+			}
+			set_can_be_fired_in_advisor_role = {
+				slot = political_advisor 
+				value = yes
+			}
+		}
+	}
 	if = {
 		limit = { ROOT = { has_government = democratic } }
 		if = {
