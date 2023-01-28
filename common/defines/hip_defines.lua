@@ -474,10 +474,14 @@ NDefines.NSupply.STORED_SUPPLY_CONSUMPTION_RATE_FACTOR = 0.50				-- 0.75 -- Mult
 NDefines.NAITheatre.AI_THEATRE_SUPPLY_CRISIS_LIMIT = 0.2                              -- 0.1 -- If a unit is standing in an area with this supply ratio it will try to escape
 NDefines.NSupply.TRUCK_ATTRITION = 0.003 -- base truck attrition
 NDefines.NSupply.TRUCK_ATTRITION_FACTOR = 0.45 --a scale on total truck attrition
-NDefines.NSupply.LOCAL_SUPPLY_PER_AIR_MISSION = 0.005
 NDefines.NSupply.SUPPLY_POINTS_PER_TRAIN = 0.1 -- was 1.0 but divided by 10 for granularity with trains being 10 time cheaper
 NDefines.NSupply.BASE_TRAIN_HP = 10.0 -- was 100.0 but have to be divided by 10 for train granularity change
 -- Lack of supply effect
+NDefines.NSupply.CAPITAL_SUPPLY_CIVILIAN_FACTORIES = 0.075 --0,3-- supply from one civilian factory
+NDefines.NSupply.CAPITAL_SUPPLY_MILITARY_FACTORIES = 0.15 --0.6-- supply from one military factory
+NDefines.NSupply.CAPITAL_SUPPLY_DOCKYARDS = 0.1 --0.4--supply from one naval factory
+NDefines.NSupply.INFRA_TO_SUPPLY = 0.00		--0.3				-- each level of infra gives this many supply
+NDefines.NSupply.NAVAL_BASE_FLOW = 0.0 -- max output/input of a naval node is limited by this base value + additional ratio for each level
 
 NDefines.NMilitary.COMBAT_SUPPLY_LACK_ATTACKER_ATTACK = -0.70     -- attack combat penalty for attacker if out of supply
 NDefines.NMilitary.COMBAT_SUPPLY_LACK_ATTACKER_DEFEND = -0.50     -- defend combat penalty for attacker if out of supply
@@ -764,9 +768,13 @@ NDefines.NAI.BUILDING_TARGETS_BUILDING_PRIORITIES = {				-- buildings in order o
 	'industrial_complex',
 }
 
+--------------------------------------------------------------------------------------------------------------
+-- SUPPLY
+--------------------------------------------------------------------------------------------------------------
+
 NDefines.NAI.UPDATE_SUPPLY_BOTTLENECKS_FREQUENCY_HOURS = 72 --168   -- Check for and try to fix supply bottlenecks this often. (168 hours = 1 week)
 NDefines.NAI.FIX_SUPPLY_BOTTLENECK_SATURATION_THRESHOLD = 0.95 --0.75  -- Try to fix supply bottlenecks if supply node saturation exceeds this value.
-NDefines.NAI.	UPDATE_SUPPLY_MOTORIZATION_FREQUENCY_HOURS = 36    -- 52 -- Check if activating motorization would improve supply situation this often.
+NDefines.NAI.UPDATE_SUPPLY_MOTORIZATION_FREQUENCY_HOURS = 36    -- 52 -- Check if activating motorization would improve supply situation this often.
 
 --------------------------------------------------------------------------------------------------------------
 -- DIVISION PRODUCTION
@@ -933,7 +941,6 @@ NDefines.NAI.PLAN_MIN_SIZE_FOR_FALLBACK = 5000					                -- A country 
 --------------------------------------------------------------------------------------------------------------
 -- AIR AI
 --------------------------------------------------------------------------------------------------------------
-NDefines.NAI.AIR_WING_REINFORCEMENT_LIMIT = 100
 NDefines.NAI.AIR_SUPERIORITY_FACTOR = 0                                     -- [2.5]  -- Factor for air superiority score
 NDefines.NAI.AIR_SCORE_DISTANCE_IMPACT = 10                                 -- [0.3]  -- Effect of distance applied to the score calculations
 NDefines.NAI.DAYS_BETWEEN_AIR_PRIORITIES_UPDATE = 4                             -- [4]    -- Amount of days between air ai updates priorities for air wings ( from 1 to N )
@@ -949,7 +956,6 @@ NDefines.NAI.NAVAL_IMPORTANCE_SCALE = 1                                        -
 NDefines.NAI.NAVAL_FIGHTERS_PER_PLANE = 1.0                                        -- [1.1]  -- Amounts of air superiority planes requested per enemy plane
 NDefines.NAI.NAVAL_STRIKE_PLANES_PER_ARMY = 0                                   -- [0]    -- Amount of planes requested per enemy army
 NDefines.NAI.NAVAL_STRIKE_PLANES_PER_SHIP = 20                                  -- [20]   -- Amount of bombers requested per enemy ship
-NDefines.NAI.NAVAL_MIN_EXCORT_WINGS = 0                                         -- [0]    -- Min amount of airwings requested to excort operations
 NDefines.NAI.PORT_STRIKE_PLANES_PER_SHIP = 10                                    -- [10]   -- Amount of bombers request per enemy ship in the port
 
 NDefines.NAI.LAND_DEFENSE_AIR_SUPERIORITY_IMPORTANCE = 0.4                     -- [0.10] -- Strategic importance of air superiority ( amount of enemy planes in area )
@@ -979,12 +985,12 @@ NDefines.NAI.LAND_COMBAT_CAS_PER_ENEMY_ARMY = 40                                
 NDefines.NAI.LAND_COMBAT_CAS_PER_COMBAT = 400                                 -- [150]  -- Amount of CAS requested per combat 
 NDefines.NAI.LAND_COMBAT_BOMBERS_PER_LAND_FORT_LEVEL = 30                       -- [15]   -- Amount of bomber planes requested per enemy land fort level
 NDefines.NAI.LAND_COMBAT_BOMBERS_PER_COASTAL_FORT_LEVEL = 30                     -- [10]   -- Amount of bomber planes requested per enemy coastal fort level
-NDefines.NAI.LAND_COMBAT_MIN_EXCORT_WINGS = 2                                    -- [2]    -- Min amount of airwings requested to excort operations
+NDefines.NAI.LAND_COMBAT_MIN_EXCORT_PLANES = 200                                    -- [80]    -- Min amount of airwings requested to excort operations
 NDefines.NAI.LAND_COMBAT_INTERCEPT_PER_PLANE = 1                                   -- [0.4]  -- Amount of interception planes requested per enemy plane
 
-NDefines.NAI.STR_BOMB_AIR_SUPERIORITY_IMPORTANCE = 0.1                         -- [0.10] -- Strategic importance of air superiority ( amount of enemy planes in area )
+NDefines.NAI.STR_BOMB_AIR_SUPERIORITY_IMPORTANCE = 0.3                         -- [0.10] -- Strategic importance of air superiority ( amount of enemy planes in area )
 NDefines.NAI.STR_BOMB_CIVIL_FACTORY_IMPORTANCE = 50                              -- [50]   -- Strategic importance of enemy civil factories
-NDefines.NAI.STR_BOMB_MILITARY_FACTORY_IMPORTANCE = 70                          -- [70]   -- Strategic importance of enemy military factories
+NDefines.NAI.STR_BOMB_MILITARY_FACTORY_IMPORTANCE = 90                          -- [70]   -- Strategic importance of enemy military factories
 NDefines.NAI.STR_BOMB_NAVAL_FACTORY_IMPORTANCE = 30                              -- [30]   -- Strategic importance of enemy naval factories
 NDefines.NAI.STR_BOMB_AA_IMPORTANCE_FACTOR = 0.5                                 -- [0.5]  -- Factor of AA influence on strategic importance ( 0.0 - 1.0 )
 NDefines.NAI.STR_BOMB_INFRA_IMPORTANCE_FACTOR = 0.25                            -- [0.25] -- Factor of infrastructure influence on strategic importance ( 0.0 - 1.0 )
@@ -994,7 +1000,7 @@ NDefines.NAI.STR_BOMB_FIGHTERS_PER_PLANE = 1.5                                 -
 NDefines.NAI.STR_BOMB_PLANES_PER_CIV_FACTORY = 5                               -- [20]   -- Amount of planes requested per enemy civ factory
 NDefines.NAI.STR_BOMB_PLANES_PER_MIL_FACTORY = 6.25                               -- [25]   -- Amount of planes requested per enemy military factory
 NDefines.NAI.STR_BOMB_PLANES_PER_NAV_FACTORY = 3.75                              -- [15]   -- Amount of planes requested per enemy naval factory
-NDefines.NAI.STR_BOMB_MIN_EXCORT_WINGS = 1                                       -- [2]    -- Min amount of airwings requested to excort operations
+NDefines.NAI.STR_BOMB_MIN_EXCORT_PLANES = 400                                       -- [200]    -- Min amount of planes requested to excort operations
 
 NDefines.NAI.AIR_AI_ENEMY_PROV_RATIO_FOR_COMBAT_REGION = 0.05			 -- if a region has more than this ratio of provinces controlled by enemy, AI will consider it as a combat zone while assigning planes
 
@@ -1005,8 +1011,4 @@ NDefines.NCharacter.SPECIALIST_ADVISOR_MIN_RANK = 3
 NDefines.NCharacter.EXPERT_ADVISOR_MIN_RANK = 5
 NDefines.NCharacter.GENIUS_ADVISOR_MIN_RANK = 7
 
-NDefines.NSupply.CAPITAL_SUPPLY_CIVILIAN_FACTORIES = 0.075 --0,3-- supply from one civilian factory
-NDefines.NSupply.CAPITAL_SUPPLY_MILITARY_FACTORIES = 0.15 --0.6-- supply from one military factory
-NDefines.NSupply.CAPITAL_SUPPLY_DOCKYARDS = 0.1 --0.4--supply from one naval factory
-NDefines.NSupply.INFRA_TO_SUPPLY = 0.00		--0.3				-- each level of infra gives this many supply
-NDefines.NSupply.NAVAL_BASE_FLOW = 0.0 -- max output/input of a naval node is limited by this base value + additional ratio for each level
+
