@@ -4699,13 +4699,99 @@ special_projects = {
 		remove_effect = {
 			add_tech_bonus = {
 				name = GER_heavy_water
-				category = nuclear
+				technology = nuclear_reactor
 				uses = 1
 				bonus = 2
 			}
 			set_country_flag = heavy_water_completed
 		}
 		complete_effect = { set_global_flag = GER_heavy_water_production_underway }
+	}
+
+	GER_peenemunde = {
+		allowed = {
+			original_tag = GER
+		}
+		available = {
+			has_completed_focus = GER_rocketry_focus
+			62 = {
+				CONTROLLER = {
+					OR = {
+						tag = ROOT
+						is_subject_of = ROOT
+					}
+				}
+			}
+			num_of_civilian_factories_available_for_projects > 79
+		}
+		visible = {
+			has_completed_focus = GER_rocketry_focus
+		}
+		
+		cost = 0
+		ai_will_do = {
+			factor = 5 
+		}
+		fire_only_once = yes
+		
+		days_remove = 120
+		modifier = {
+			civilian_factory_use = 80
+		}
+		remove_effect = {
+			add_tech_bonus = {
+				name = GER_rocketry_focus
+				ahead_reduction = 3
+				uses = 1
+				technology = experimental_rockets
+			}
+			add_tech_bonus = {
+				name = GER_rocketry_focus
+				ahead_reduction = 3
+				uses = 1
+				technology = rocket_engines
+			}
+			add_tech_bonus = {
+				name = GER_rocketry_focus
+				ahead_reduction = 2
+				bonus = 0.5
+				uses = 2
+				category = rocketry
+			}
+		}
+	}
+
+	GER_concentration_of_nuclear_research = {
+		allowed = {
+			original_tag = GER
+		}
+		available = {
+			has_completed_focus = GER_wunderwaffe
+			nuclear_reactor > 1
+			num_of_civilian_factories_available_for_projects > 119
+		}
+		visible = {
+			has_completed_focus = GER_wunderwaffe
+		}
+		
+		cost = 200
+		ai_will_do = {
+			factor = 5 
+		}
+		fire_only_once = yes
+		
+		days_remove = 120
+		modifier = {
+			civilian_factory_use = 120
+		}
+		remove_effect = {
+			add_tech_bonus = {
+				name = GER_concentration_of_nuclear_research
+				ahead_reduction = 3
+				uses = 1
+				technology = nukes
+			}
+		}
 	}
 	
 	GER_remove_ship_limit = {

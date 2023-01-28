@@ -2045,7 +2045,7 @@ focus_tree = {
 	focus = {
 		id = GER_air_innovation
 		icon = GFX_focus_generic_aircraft_production
-		x = 11
+		x = 13
 		y = 0
 		cost = 5
 		ai_will_do = {
@@ -2650,6 +2650,47 @@ focus_tree = {
 			}
 		}
 	}
+
+	focus = {
+		id = GER_dawn_of_modern_warfare
+		icon = GFX_focus_chi_army_reform
+		prerequisite = { focus = GER_army_innovation_2 }
+		x = 2
+		y = 1
+		relative_position_id = GER_army_innovation_2
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+		
+		available = {
+			has_war = yes 
+			OR = {
+				AND = {
+					has_war_with = SOV
+					has_war_with = SOV
+				}
+				date > 1943.1.1
+			}
+		}
+
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		completion_reward = {
+			add_tech_bonus = {
+				name = secret_bonus
+				ahead_reduction = 1
+				uses = 1
+				technology = night_vision
+			}
+			add_tech_bonus = {
+				name = secret_bonus
+				ahead_reduction = 1
+				uses = 1
+				technology = night_vision2
+			}
+		}
+	}
 	
 	
 	focus = {
@@ -2712,7 +2753,7 @@ focus_tree = {
 		x = 0
 		y = 1
 		relative_position_id = GER_extra_tech_slot
-		cost = 10
+		cost = 5
 		ai_will_do = {
 			factor = 1
 		}	
@@ -2721,25 +2762,56 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
 			add_ideas = GER_rocketry_idea
+			custom_effect_tooltip = Construction_Focus_tt
+			unlock_decision_tooltip = { decision = GER_peenemunde show_effect_tooltip = yes }
+		}
+	}
+	
+	focus = {
+		id = GER_jet_engine_experiments
+		icon = GFX_focus_generic_copy_plane_designs
+		prerequisite = { focus = GER_air_innovation_2 }
+		x = 0
+		y = 1
+		relative_position_id = GER_air_innovation_2
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}	
+
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		completion_reward = {
 			add_tech_bonus = {
-				name = GER_rocketry_focus
-				ahead_reduction = 3
-				uses = 1
-				technology = experimental_rockets
-			}
-			add_tech_bonus = {
-				name = GER_rocketry_focus
-				ahead_reduction = 3
-				uses = 1
-				technology = rocket_engines
-			}
-			add_tech_bonus = {
-				name = GER_rocketry_focus
+				name = GER_jet_engine_experiments
 				ahead_reduction = 4
 				uses = 1
 				technology = jet_engines
 			}
-			
+			add_tech_bonus = {
+				name = GER_jet_engine_experiments
+				ahead_reduction = 1
+				uses = 1
+				technology = ger_rocket_interceptor_1
+			}
+			add_tech_bonus = {
+				name = GER_jet_engine_experiments
+				ahead_reduction = 1
+				uses = 1
+				technology = ger_light_bomber_7
+			}
+			add_tech_bonus = {
+				name = GER_jet_engine_experiments
+				ahead_reduction = 1
+				uses = 1
+				technology = ger_light_bomber_8
+			}
+			add_tech_bonus = {
+				name = GER_jet_engine_experiments
+				ahead_reduction = 1
+				uses = 1
+				technology = ger_jet_strategic_bomber_1
+			}
 		}
 	}
 
@@ -2756,11 +2828,6 @@ focus_tree = {
 			factor = 1
 		}
 		
-		available = {
-			has_tech = rocket_engines
-			has_tech = jet_engines
-		}
-
 		available_if_capitulated = yes
 		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
@@ -2776,37 +2843,8 @@ focus_tree = {
 				uses = 1
 				technology = nuclear_reactor
 			}
-			add_tech_bonus = {
-				name = secret_bonus
-				ahead_reduction = 2
-				uses = 1
-				technology = nukes
-			}
-			add_tech_bonus = {
-				name = secret_bonus
-				ahead_reduction = 2
-				bonus = 0.5
-				uses = 2
-				category = rocketry
-			}
-			add_tech_bonus = {
-				name = secret_bonus
-				ahead_reduction = 1
-				uses = 1
-				technology = night_vision
-			}
-			add_tech_bonus = {
-				name = secret_bonus
-				ahead_reduction = 1
-				uses = 1
-				technology = night_vision2
-			}
-			add_tech_bonus = {
-				name = secret_bonus
-				ahead_reduction = 1
-				uses = 3
-				category = jet_technology
-			}
+			custom_effect_tooltip = Construction_Focus_tt
+			unlock_decision_tooltip = { decision = GER_concentration_of_nuclear_research show_effect_tooltip = yes }
 		}
 	}
 	
@@ -2814,7 +2852,7 @@ focus_tree = {
 		id = GER_rhineland
 		icon = GFX_focus_renounce_the_treaty_of_trianon
 		#mutually_exclusive = { focus = GER_oppose_hitler }
-		x = 22
+		x = 24
 		y = 0
 		cost = 10
 		available = {
@@ -5697,7 +5735,7 @@ focus_tree = {
 	focus = {
 		id = GER_naval_rearmament
 		icon = GFX_focus_POL_develop_polish_shipbuilding
-		x = 15
+		x = 17
 		y = 0
 		cost = 5
 		ai_will_do = {
