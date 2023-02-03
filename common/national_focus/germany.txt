@@ -50,6 +50,34 @@ focus_tree = {
 	}
 
 	focus = {
+		id = GER_zuse
+		icon = GFX_focus_mex_privatisation
+		x = 5
+		y = 1
+		cost = 5
+		relative_position_id = GER_four_year_plan
+		prerequisite = { focus = GER_four_year_plan }
+		ai_will_do = {
+			factor = 0
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		completion_reward = {
+			add_tech_bonus = {
+				name = GER_zuse
+				ahead_reduction = 1.0
+				uses = 1
+				technology = computing_machine
+			}
+			add_tech_bonus = {
+				name = GER_zuse
+				ahead_reduction = 2.0
+				uses = 1
+				technology = improved_computing_machine
+			}
+		}
+	}
+
+	focus = {
 		id = GER_west_wall
 		icon = GFX_goal_generic_construct_military
 		prerequisite = { focus = GER_four_year_plan }
@@ -1182,11 +1210,7 @@ focus_tree = {
 				name = GER_autarky
 				bonus = 1.0
 				uses = 2
-				technology = excavation1
-				technology = excavation2
-				technology = excavation3
-				technology = excavation4
-				technology = excavation5
+				category = excavation_tech
 			}
 			IF = {
 				limit = {
@@ -2044,7 +2068,7 @@ focus_tree = {
 	focus = {
 		id = GER_army_innovation
 		icon = GFX_goal_germanforces
-		x = 7
+		x = 8
 		y = 0
 		relative_position_id = GER_four_year_plan
 		cost = 5
@@ -2107,8 +2131,8 @@ focus_tree = {
 	focus = {
 		id = GER_air_innovation
 		icon = GFX_focus_generic_aircraft_production
-		x = 5
-		y = 0
+		x = 0
+		y = 3
 		relative_position_id = GER_army_innovation
 		cost = 5
 		ai_will_do = {
@@ -2258,7 +2282,7 @@ focus_tree = {
 		icon = GFX_goal_generic_air_fighter
 		prerequisite = { focus = GER_air_innovation }
 		x = 1
-		y = 3
+		y = 2
 		relative_position_id = GER_air_innovation
 		cost = 5
 		ai_will_do = {
@@ -2352,7 +2376,7 @@ focus_tree = {
 		icon = GFX_goal_generic_air_bomber
 		prerequisite = { focus = GER_air_innovation }
 		x = -1
-		y = 3
+		y = 2
 		relative_position_id = GER_air_innovation
 		cost = 5
 		ai_will_do = {
@@ -2656,8 +2680,8 @@ focus_tree = {
 	focus = {
 		id = GER_dawn_of_modern_warfare
 		icon = GFX_focus_chi_army_reform
-		prerequisite = { focus = GER_army_innovation_2 }
-		x = 2
+		prerequisite = { focus = GER_army_innovation_2 focus = GER_soviet_treaty }
+		x = -2
 		y = 1
 		relative_position_id = GER_army_innovation_2
 		cost = 5
@@ -2757,7 +2781,6 @@ focus_tree = {
 		id = GER_rocketry_focus
 		icon = GFX_focus_rocketry
 		prerequisite = { focus = GER_extra_tech_slot }
-		prerequisite = { focus = GER_air_innovation_2 }
 		x = 0
 		y = 1
 		relative_position_id = GER_extra_tech_slot
@@ -2866,7 +2889,7 @@ focus_tree = {
 		id = GER_naval_rearmament
 		icon = GFX_focus_POL_develop_polish_shipbuilding
 		x = 4
-		y = 0
+		y = -3
 		relative_position_id = GER_air_innovation
 		cost = 5
 		ai_will_do = {
@@ -4282,14 +4305,14 @@ focus_tree = {
 			has_war_with = SOV
 		}
 		cancel_if_invalid = yes
-		x = -2
+		x = 2
 		y = 1
 		relative_position_id = GER_danzig_or_war
 		offset = {
 			trigger = {
-				NOT = { has_game_rule = { rule = IHMP_HISTORY option = ALLOWED } }
+				has_game_rule = { rule = IHMP_HISTORY option = ALLOWED }
 			}
-			x = 4
+			x = -4
 			y = 0
 		}
 		cost = 5
@@ -5872,7 +5895,7 @@ focus_tree = {
 		icon = GFX_focus_generic_navy_battleship2
 		prerequisite = { focus = GER_naval_effort2 }
 		x = -1
-		y = 1
+		y = 3
 		relative_position_id = GER_naval_effort2
 		cost = 5
 		ai_will_do = {
@@ -7160,7 +7183,6 @@ focus_tree = {
 		id = GER_crossing_the_atlantic
 		icon = GFX_goal_generic_navy_battleship
 		prerequisite = { focus = GER_plan_z  }
-		prerequisite = { focus = GER_naval_effort2 }
 		prerequisite = { focus = GER_modular_construction }
 		available = {
 			is_subject = no
