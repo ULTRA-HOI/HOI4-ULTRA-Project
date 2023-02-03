@@ -1,5 +1,50 @@
 # Changelog
 
+### 0.15
+
+### Compatibility
+- Compatibility with 1.12 and BBA DLC
+
+### Balance
+- Speed is back as a relevant aircraft stat in game and is no longer a simple indication
+- Rebalance of naval warfare and ship stats to consider new systems introduced in 1.12
+- 80 compliance threshold now reduces resistance target by 10
+
+### Database
+- Standardized wing sizes
+- Adapted naval OOBs to BBA and improve them
+- Standardized plane missions and types
+- Reduced german starting fuel silos
+
+### Content
+- Revisited the BBA Italian focus tree to be more historical
+- Various new focuses added, especialy for Germany
+- UK can host a czech in-exile government once ww2 starts
+- Heydrich is now available as Prince of Terror, Himmler repurposed with unique role
+- MR pact gives now trade incentives for Germany to buy Soviet materials
+- Trade decision between USA and Canada so Canada can fuel allies economy with raw materials
+
+### Map
+- fixed minor border innacuracies
+
+### AI
+- Minor AI balance fixes
+- German AI should not send too much tanks into Norway/Greece
+- German AI is more efficient when invading Norway
+
+### UI
+- Various focus trees layout improved
+- Improved tooltips
+- Discord link added to the main menue
+
+### Bugfixes
+- various minor bugs fixed
+
+### Graphics
+- We no longer use tank pictures from the World Ablaze mod
+- Added MPU NATO counters
+
+
 ### 0.14
 
 ### Features
