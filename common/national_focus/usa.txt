@@ -4790,6 +4790,30 @@ focus_tree = {
 		
 	}
 	
+	focus = {
+		id = USA_convoy_tactics
+		icon = GFX_goal_generic_navy_cruiser
+		prerequisite = { focus = USA_battleship_primacy }
+		x = 4
+		y = 1
+		relative_position_id = USA_battleship_primacy
+		cost = 5
+		#ai_will_do = {
+		#	factor = 1
+		#}
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			navy_experience = 25
+			add_doctrine_cost_reduction = {
+				name = USA_convoy_tactics
+				cost_reduction = 0.5
+				uses = 2
+				category = convoy_defense_tree
+			}
+		}
+	}
 	
 	focus = {
 		id = USA_advanced_mahanian_doctrine
@@ -4812,37 +4836,6 @@ focus_tree = {
 				cost_reduction = 0.5
 				uses = 1
 				category = carrier_doctrine
-			}
-		}
-	}
-
-	focus = {
-		id = USA_bureau_of_ships
-		icon = GFX_goal_generic_build_navy
-		x = -1
-		y = 1
-		cost = 5
-		#ai_will_do = {
-		#	factor = 1
-		#}
-		prerequisite = { focus = USA_two_ocean_navy_act }
-		relative_position_id = USA_two_ocean_navy_act
-		available_if_capitulated = yes
-		
-		available = {
-			date > 1940.6.1
-		}
-
-		completion_reward = {
-			navy_experience = 50
-			
-			swap_ideas = {
-				remove_idea = USA_maritime_commission
-				add_idea = bureau_of_ships_focus
-			}
-			if = {
-				limit = { has_idea = bureau_of_ordnance_spirit }
-				remove_ideas = bureau_of_ordnance_spirit
 			}
 		}
 	}
@@ -5169,7 +5162,36 @@ focus_tree = {
 		}
 	}
 	
-	
+	focus = {
+		id = USA_bureau_of_ships
+		icon = GFX_goal_generic_build_navy
+		x = -1
+		y = 1
+		cost = 5
+		#ai_will_do = {
+		#	factor = 1
+		#}
+		prerequisite = { focus = USA_two_ocean_navy_act }
+		relative_position_id = USA_two_ocean_navy_act
+		available_if_capitulated = yes
+		
+		available = {
+			date > 1940.6.1
+		}
+
+		completion_reward = {
+			navy_experience = 50
+			
+			swap_ideas = {
+				remove_idea = USA_maritime_commission
+				add_idea = bureau_of_ships_focus
+			}
+			if = {
+				limit = { has_idea = bureau_of_ordnance_spirit }
+				remove_ideas = bureau_of_ordnance_spirit
+			}
+		}
+	}
 
 	focus = {
 		id = USA_bureau_of_aeronautics
@@ -5254,33 +5276,6 @@ focus_tree = {
 				ahead_reduction = 2.0
 				uses = 1
 				technology = advanced_centimetric_naval_radar
-			}
-		}
-	}
-
-	
-
-	focus = {
-		id = USA_convoy_tactics
-		icon = GFX_goal_generic_navy_cruiser
-		prerequisite = { focus = USA_battleship_primacy }
-		x = 4
-		y = 1
-		relative_position_id = USA_battleship_primacy
-		cost = 5
-		#ai_will_do = {
-		#	factor = 1
-		#}
-
-		available_if_capitulated = yes
-
-		completion_reward = {
-			navy_experience = 25
-			add_doctrine_cost_reduction = {
-				name = USA_convoy_tactics
-				cost_reduction = 0.5
-				uses = 2
-				category = convoy_defense_tree
 			}
 		}
 	}
