@@ -308,8 +308,8 @@ NDefines.NMilitary.ARMOR_VS_AVERAGE = 0.5			                -- how to weight in 
 NDefines.NMilitary.PEN_VS_AVERAGE = 0.45
 
 NDefines.NMilitary.PIERCING_THRESHOLDS = {					-- Our piercing / their armor must be this value to deal damage fraction equal to the index in the array below [higher number = higher penetration]. If armor is 0, 1.00 will be returned.
-		2.00,
 		1.50,
+		1.25,
 		1.00,
 		0.75,
 		0.50,
