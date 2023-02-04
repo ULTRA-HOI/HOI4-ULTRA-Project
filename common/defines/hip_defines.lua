@@ -286,8 +286,8 @@ NDefines.NMilitary.NUKE_MAX_DAMAGE_PERCENT = 0.09 --0.9					-- Minimum damage fr
 
 -- air impact on land combats
 
-NDefines.NMilitary.LAND_AIR_COMBAT_STR_DAMAGE_MODIFIER = 0.005   -- air global damage modifier
-NDefines.NMilitary.LAND_AIR_COMBAT_ORG_DAMAGE_MODIFIER = 0.005    -- global damage modifier
+NDefines.NMilitary.LAND_AIR_COMBAT_STR_DAMAGE_MODIFIER = 0.003   -- air global damage modifier
+NDefines.NMilitary.LAND_AIR_COMBAT_ORG_DAMAGE_MODIFIER = 0.003    -- global damage modifier
 NDefines.NMilitary.LAND_AIR_COMBAT_MAX_PLANES_PER_ENEMY_WIDTH = 10 --5 -- how many CAS/TAC can enter a combat depending on enemy width there
 
 -- Land combat general regulation
@@ -416,7 +416,7 @@ NDefines.NMilitary.PROMOTE_LEADER_CP_COST = 60.0 -- was 40                    --
 -- Anti Air effect 
 
 NDefines.NMilitary.ANTI_AIR_TARGETTING_TO_CHANCE = 0.045 --0.045 --0.07			-- Balancing value to determine the chance of ground AA hitting an attacking airplane, affecting both the effective average damage done by AA to airplanes, and the reduction of damage done by airplanes due to AA support
-NDefines.NMilitary.ANTI_AIR_ATTACK_TO_AMOUNT = 0.004 --0.015 --0.005				-- Balancing value to convert equipment stat anti_air_attack to the random % value of airplanes being hit.
+NDefines.NMilitary.ANTI_AIR_ATTACK_TO_AMOUNT = 0.002 --0.015 --0.005				-- Balancing value to convert equipment stat anti_air_attack to the random % value of airplanes being hit.
 
 
 -- Supply 
@@ -583,9 +583,9 @@ NDefines.NAir.CAS_NIGHT_ATTACK_FACTOR = 0.05 --0.1                      -- CAS d
 
 NDefines.NAir.COMBAT_MULTIPLANE_CAP = 3.0						-- was 3.0 - How many planes can shoot at each plane on other side ( if there are 100 planes we are atttacking COMBAT_MULTIPLANE_CAP * 100 of our planes can shoot )
 NDefines.NAir.ACCIDENT_CHANCE_BASE = 0.05						-- was 0.05	- Base chance % (0 - 100) for accident to happen. Reduced with higher reliability stat.
-NDefines.NAir.ACCIDENT_CHANCE_BALANCE_MULT = 1.0 --0.5					-- Multiplier for balancing how often the air accident really happens. The higher mult, the more often.
+NDefines.NAir.ACCIDENT_CHANCE_BALANCE_MULT = 0.5 --0.5					-- Multiplier for balancing how often the air accident really happens. The higher mult, the more often.
 NDefines.NAir.ACCIDENT_EFFECT_MULT = 0.025 --0.005						-- Multiplier for balancing the effect of accidents
-NDefines.NAir.AIR_WING_XP_TRAINING_MISSION_ACCIDENT_FACTOR = 1.1 --1.5 				--Training exercises cause more accidents
+NDefines.NAir.AIR_WING_XP_TRAINING_MISSION_ACCIDENT_FACTOR = 0.5 --1.5 				--Training exercises cause more accidents
 
 NDefines.NAir.AIR_WING_FLIGHT_SPEED_MULT = 0.02			-- was 0.02	-- Global speed multiplier for airplanes (affects fe.transferring to another base)
 
@@ -594,9 +594,8 @@ NDefines.NAir.ANTI_AIR_PLANE_DAMAGE_CHANCE = 0.1 --0.1					-- Anti Air Gun hit c
 NDefines.NAir.BOMBING_TARGETING_RANDOM_FACTOR = 0.40						-- was 0.25	-- % of picking the wrong target
 
 NDefines.NAir.AIR_WING_COUNTRY_XP_FROM_TRAINING_FACTOR = 0.005 				-- was 0.005	--Factor on country Air XP gained from wing training
-
-NDefines.NAir.COMBAT_DAMAGE_SCALE = 1.5				-- was 0.1			-- Higher value = more shot down planes
-NDefines.NAir.COMBAT_DAMAGE_SCALE_CARRIER = 12 --6                    -- same as above but used inside naval combat for carrier battles
+NDefines.NAir.COMBAT_DAMAGE_SCALE = 0.75				-- was 0.1			-- Higher value = more shot down planes
+NDefines.NAir.COMBAT_DAMAGE_SCALE_CARRIER = 6 --6                    -- same as above but used inside naval combat for carrier battles
 
 NDefines.NAir.AIR_WING_XP_TRAINING_MISSION_GAIN_DAILY = 4.0 --3.3 						--Daily gain when running training exercise mission
 NDefines.NAir.AIR_WING_XP_AIR_VS_AIR_COMBAT_GAIN = 4.0 --0.8 							--Wings in combat gain extra XP	
@@ -625,7 +624,7 @@ NDefines.NAir.PORT_STRIKES_DELAY_MULTIPLIER = 0.1  --2					-- multplies HOURS_DE
 NDefines.NAir.PORT_STRIKE_ENEMY_SUPERIORITY_LIMIT = 1.3 --1.1			-- Min air superiority for performing of naval strike
 NDefines.NAir.NAVAL_STRIKE_BASE_STR_TO_PLANES_RATIO = 1 --0.03		-- Max airbombers to do port strike comparing to strength
 
-NDefines.NAir.HOURS_DELAY_AFTER_EACH_COMBAT = 4					-- How many hours needs the wing to be ready for the next combat. Use for tweaking if combats happens too often. (generally used as double because of roundtrip)
+NDefines.NAir.HOURS_DELAY_AFTER_EACH_COMBAT = 2
 
 -- Air fuel 
 
