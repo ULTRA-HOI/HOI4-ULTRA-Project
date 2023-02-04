@@ -271,9 +271,9 @@ NDefines.NMilitary.FIELD_MARSHAL_DIVISIONS_CAP = 12			-- how many divisions a fi
 NDefines.NMilitary.MAX_DIVISION_BRIGADE_WIDTH = 6			-- Max width of regiments in division designer.
 NDefines.NMilitary.MAX_DIVISION_BRIGADE_HEIGHT = 4 			-- Max height of regiments in division designer.
 NDefines.NMilitary.MAX_DIVISION_SUPPORT_WIDTH = 2			-- Max width of support in division designer.
-NDefines.NMilitary.BASE_DIVISION_BRIGADE_GROUP_COST = 1 	--Base cost to unlock a regiment slot,
-NDefines.NMilitary.BASE_DIVISION_BRIGADE_CHANGE_COST = 1	--Base cost to change a regiment column.
-NDefines.NMilitary.BASE_DIVISION_SUPPORT_SLOT_COST = 1 	--Base cost to unlock a support slot
+NDefines.NMilitary.BASE_DIVISION_BRIGADE_GROUP_COST = 0 	--Base cost to unlock a regiment slot,
+NDefines.NMilitary.BASE_DIVISION_BRIGADE_CHANGE_COST = 0	--Base cost to change a regiment column.
+NDefines.NMilitary.BASE_DIVISION_SUPPORT_SLOT_COST = 0 	--Base cost to unlock a support slot
 
 
 
@@ -449,8 +449,8 @@ NDefines.NMilitary.SUPPLY_GRACE = 120 --108		-- troops always carry 5 days of fo
 NDefines.NMilitary.SUPPLY_ORG_MAX_CAP = 0.10                     --0.30 Max organization is factored by this if completely out of supply
 NDefines.NMilitary.MAX_OUT_OF_SUPPLY_DAYS = 14 				   -- how many days of shitty supply until max penalty achieved
 NDefines.NMilitary.OUT_OF_SUPPLY_ATTRITION = 0.025                -- max attrition when out of supply
-NDefines.NMilitary.OUT_OF_SUPPLY_SPEED = -0.9                    -- -0.8 max speed reduction from supply
-NDefines.NMilitary.NON_CORE_SUPPLY_SPEED = -0.7				   -- we are not running on our own VP supply so need to steal stuff along the way
+NDefines.NMilitary.OUT_OF_SUPPLY_SPEED = -0.1                    -- -0.8 max speed reduction from supply
+NDefines.NMilitary.NON_CORE_SUPPLY_SPEED = -0.1				   -- we are not running on our own VP supply so need to steal stuff along the way
 NDefines.NMilitary.OUT_OF_SUPPLY_MORALE = -0.25                   -- max org regain reduction from supply
 NDefines.NMilitary.LOW_SUPPLY = 0.75							   --0.99 -- When the supply status of an unit becomes low.
 NDefines.NSupply.SUPPLY_HUB_FULL_MOTORIZATION_TRUCK_COST = 1000 --80.0 -- How many trucks does it cost to fully motorize a hub
@@ -534,12 +534,12 @@ NDefines.NMilitary.ARMY_MAX_FUEL_FLOW_MULT = 0.9 --0.8					-- was 2.0 -- max fue
 NDefines.NMilitary.ARMY_COMBAT_FUEL_MULT =   0.5				-- was 1.0	-- fuel consumption ratio in combat (plus ARMY_MOVEMENT_FUEL_MULT if you are also moving. ie offensive combat)
 NDefines.NMilitary.ARMY_MOVEMENT_FUEL_MULT = 0.8 -- 1.0
 NDefines.NMilitary.ARMY_TRAINING_FUEL_MULT = 0.67				-- was 1.0	-- fuel consumption ratio while training
-NDefines.NMilitary.ARMY_IDLE_FUEL_MULT = 0.2					-- was 0.0	-- fuel consumption ratio while just existing
+NDefines.NMilitary.ARMY_IDLE_FUEL_MULT = 0.1					-- was 0.0	-- fuel consumption ratio while just existing
 NDefines.NMilitary.ARMY_NAVAL_TRANSFER_FUEL_MULT = 0.1			-- was 0.0 -- fuel consumption ratio while naval transferring
 NDefines.NMilitary.ARMY_STRATEGIC_DEPLOYMENT_FUEL_MULT = 0.1		-- was 0.0 -- fuel consumption ratio while doing strategic deployment
-NDefines.NMilitary.OUT_OF_FUEL_EQUIPMENT_MULT = 0.25			-- was 0.1 -- ratio of the stats that you get from equipments that uses fuel and you lack it
+NDefines.NMilitary.OUT_OF_FUEL_EQUIPMENT_MULT = 0.15			-- was 0.1 -- ratio of the stats that you get from equipments that uses fuel and you lack it
 NDefines.NMilitary.FUEL_CAPACITY_DEFAULT_HOURS = 144 --120 --216              -- was 96 -- default capacity if not specified
-
+NDefines.NMilitary.OUT_OF_FUEL_SPEED_MULT = 1					-- speed mult that armies get when out of fuel
 
 
 -- PLANE STUFF
@@ -662,9 +662,9 @@ NDefines.NCountry.AIR_SUPPLY_DROP_EXPIRATION_HOURS = 120  --168            -- Ai
 
 -- logistic strikes
 
-NDefines.NAir.AIR_WING_ATTACK_LOGISTICS_TRUCK_DAMAGE_FACTOR = 0.25
+NDefines.NAir.AIR_WING_ATTACK_LOGISTICS_TRUCK_DAMAGE_FACTOR = 0.125
 NDefines.NAir.AIR_WING_ATTACK_LOGISTICS_INFRA_DAMAGE_SPILL_FACTOR = 0.001
-NDefines.NAir.AIR_WING_ATTACK_LOGISTICS_TRAIN_DAMAGE_FACTOR = 0.050
+NDefines.NAir.AIR_WING_ATTACK_LOGISTICS_TRAIN_DAMAGE_FACTOR = 0.025
 
 NDefines.NAir.MAX_QUICK_WING_SELECTION = 5
 
