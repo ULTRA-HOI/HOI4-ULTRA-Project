@@ -307,6 +307,23 @@ NDefines.NMilitary.EQUIPMENT_COMBAT_LOSS_FACTOR = 0.95 	       -- % of equipment
 NDefines.NMilitary.ARMOR_VS_AVERAGE = 0.5			                -- how to weight in highest armor & pen vs the division average
 NDefines.NMilitary.PEN_VS_AVERAGE = 0.45
 
+NDefines.NMilitary.PIERCING_THRESHOLDS = {					-- Our piercing / their armor must be this value to deal damage fraction equal to the index in the array below [higher number = higher penetration]. If armor is 0, 1.00 will be returned.
+		2.00,
+		1.50,
+		1.00,
+		0.75,
+		0.50,
+		0.00,--there isn't much point setting this higher than 0
+	}
+NDefines.NMilitary.PIERCING_THRESHOLD_DAMAGE_VALUES = {	-- 0 armor will always receive maximum damage (so add overmatching at your own peril). the system expects at least 2 values, with no upper limit.
+		1.00,
+		0.90,
+		0.80,
+		0.70,
+		0.60,
+		0.50,
+	}
+
 NDefines.NMilitary.LAND_COMBAT_STR_ARMOR_ON_SOFT_DICE_SIZE = 2   -- extra damage dice if our armor outclasses enemy
 NDefines.NMilitary.LAND_COMBAT_ORG_ARMOR_ON_SOFT_DICE_SIZE = 6   -- extra damage dice if our armor outclasses enemy
 NDefines.NMilitary.LAND_COMBAT_STR_ARMOR_DEFLECTION_FACTOR = 0.75 -- damage reduction if armor outclassing enemy (beware, it is reverted, meaning 0.75 is 75% of damges still taken)
