@@ -8,265 +8,575 @@ equipments = {
 		is_archetype = yes
 		picture = archetype_infantry_equipment		
 		is_buildable = no
-		type = infantry
-		group_by = archetype
+		type = {
+			armor
+			infantry
+		}
+		group_by = type
 		
 		interface_category = interface_category_land
 		
 		active = yes
 		
 		#Misc Abilities
-		reliability = 0.84
-		maximum_speed = 2.5
+		reliability = 1
+		maximum_speed = 3
 
 		#Defensive Abilities 
-		defense = 10.9
-		breakthrough = 2.2
+		defense = 0
+		breakthrough = 0
 		hardness = 0
 		armor_value = 0
 		
-		max_strength = 20
+		max_strength = 1
 
 		#Offensive Abilities
-		soft_attack = 2
+		soft_attack = 0
 		hard_attack = 0
-		ap_attack = 3
+		ap_attack = 0
 		air_attack = 0
 
 		#Space taken in convoy
 		lend_lease_cost = 1
 		
-		supply_consumption = 0.01
-		
-		build_cost_ic = 0.3
+		build_cost_ic = 0.00
 		resources = {
 			steel = 1
-			#iron = 1
-			#coal = 1
 		}
-	}
 
-	ghost_infantry_equipment_0 = {
-		year = 1815
-		
-		archetype = infantry_equipment
-		priority = 10
-		visual_level = 0
-		is_convertable = yes
-	}
-	
-	archaic_infantry_equipment_0 = {
-		year = 1815
+		max_organisation = 0
+		default_morale = 0
 
-		can_be_produced = {
-			OR = {
-				has_idea = agrarian_economy
-				has_completed_focus = JAP_warrior_spirit
+		supply_consumption = 0.01
+
+		module_slots = {
+			leader_slot = {
+				required = yes
+				allowed_module_categories = {
+					squad_leader_rifle_module
+					squad_leader_smg_module
+				}
+			}
+			
+			man_1_slot = {
+				required = yes
+				allowed_module_categories = {
+					infantry_rifle_module
+					infantry_smg_module
+					infantry_mg_module
+					infantry_dm_module
+				}
+			}
+			man_3_slot = {
+				required = yes
+				allowed_module_categories = {
+					infantry_rifle_module
+					infantry_smg_module
+					infantry_mg_module
+					infantry_dm_module
+				}
+			}
+			man_5_slot = {
+				required = no
+				allowed_module_categories = {
+					infantry_rifle_module
+					infantry_smg_module
+					infantry_mg_module
+					infantry_dm_module
+				}
+			}
+			man_7_slot = {
+				required = no
+				allowed_module_categories = {
+					infantry_rifle_module
+					infantry_smg_module
+					infantry_mg_module
+					infantry_dm_module
+				}
+			}
+			man_9_slot = {
+				required = no
+				allowed_module_categories = {
+					infantry_rifle_module
+					infantry_smg_module
+					infantry_mg_module
+					infantry_dm_module
+				}
+			}
+			
+			
+			nco_slot = {
+				required = yes
+				allowed_module_categories = {
+					nco_rifle_module
+					nco_smg_module
+				}
+			}
+			man_2_slot = {
+				required = yes
+				allowed_module_categories = {
+					infantry_rifle_module
+					infantry_smg_module
+					infantry_mg_module
+					infantry_dm_module
+				}
+			}
+			
+			man_4_slot = {
+				required = yes
+				allowed_module_categories = {
+					infantry_rifle_module
+					infantry_smg_module
+					infantry_mg_module
+					infantry_dm_module
+				}
+			}
+			man_6_slot = {
+				required = no
+				allowed_module_categories = {
+					infantry_rifle_module
+					infantry_smg_module
+					infantry_mg_module
+					infantry_dm_module
+				}
+			}
+			
+			man_8_slot = {
+				required = no
+				allowed_module_categories = {
+					infantry_rifle_module
+					infantry_smg_module
+					infantry_mg_module
+					infantry_dm_module
+				}
+			}
+			
+			man_10_slot = {
+				required = no
+				allowed_module_categories = {
+					infantry_rifle_module
+					infantry_smg_module
+					infantry_mg_module
+					infantry_dm_module
+				}
+			}
+			
+			grenade_slot = {
+				required = no
+				allowed_module_categories = {
+					infantry_grenade_module
+				}
+			}
+			
+			at_slot = {
+				required = no
+				allowed_module_categories = {
+					infantry_at_module
+				}
+			}
+			
+			signal_slot = {
+				required = yes
+				allowed_module_categories = {
+					infantry_signal_module
+				}
+			}
+			
+			uniform_slot = {
+				required = yes
+				allowed_module_categories = {
+					infantry_uniform_module
+				}
+			}
+			
+			AI_slot = {
+				required = no
+				allowed_module_categories = {
+					infantry_AI_priority
+				}
 			}
 		}
+
+		default_modules = {
+			#leader_slot = squad_leader_bolt_action
+			#nco_slot = nco_bolt_action
+			#man_1_slot = infantry_bolt_action
+			#man_2_slot = infantry_bolt_action
+			#man_3_slot = infantry_bolt_action
+			#man_4_slot = infantry_bolt_action
+			#man_5_slot = infantry_bolt_action
+			#man_6_slot = infantry_bolt_action
+			#man_7_slot = infantry_bolt_action
+			#man_8_slot = infantry_lmg
+			#grenade_slot = infantry_grenades_few
+			uniform_slot = infantry_uniform_1
+			signal_slot = infantry_signal_0
+		}
+		
+		module_count_limit = {
+			category = infantry_dm_module
+			count < 2
+		}	
+		
+	}
+	
+	infantry_squad_0 = {
+		year = 1815
 	
 		archetype = infantry_equipment
-		parent = ghost_infantry_equipment_0
 		active = yes
 		priority = 01
 		visual_level = 0
 		
-		reliability = 0.85			
-		#Defensive Abilities
-		defense = 2
-		breakthrough = 0.2
-		
-		max_strength = 5
-
-		#Offensive Abilities
-		soft_attack = 0.4
-		hard_attack = 0
-		ap_attack = 0
-		
-		supply_consumption = 0.01
-		
-		build_cost_ic = 0.1
+		build_cost_ic = 0.0
 		resources = {
-			steel = 0
-			iron = 1
-			#coal = 1
+			steel = 1
 		}
+
+		module_slots = inherit
 	}
 
-	infantry_equipment_0 = {
+	infantry_ghost = {
 		year = 1918
-	
-		archetype = infantry_equipment
+		picture = archetype_infantry_equipment
+
+		is_archetype = yes
+		is_buildable = no
+		type = armor
+		group_by = type
+		interface_category = interface_category_land
 		active = yes
-		priority = 05
-		parent = ghost_infantry_equipment_0
+	}
+
+	infantry_squad_1 = {
+		year = 1815
+		archetype = infantry_ghost
+		is_buildable = no
+		active = yes
+		priority = 01
 		visual_level = 0
-		
-		supply_consumption = 0.01
 	}
-
-	ghost_infantry_equipment_1 = {
-		year = 1934
-		
-		archetype = infantry_equipment
-		priority = 10
-		parent = infantry_equipment_0
+	infantry_squad_2 = {
+		year = 1815
+		archetype = infantry_ghost
+		is_buildable = no
+		active = yes
+		priority = 01
 		visual_level = 0
-		is_convertable = yes
-		
 	}
-
-	# Regular infantry  1936
-	infantry_equipment_1 = {
-		year = 1936
-	
-		archetype = infantry_equipment
-		parent = ghost_infantry_equipment_1
-		priority = 10
-		visual_level = 1
-
-		reliability = 0.85			
-		#Defensive Abilities
-		defense = 10.9
-		breakthrough = 2.2
-		
-		max_strength = 20
-		
-		supply_consumption = 0.02
-
-		#Offensive Abilities
-		soft_attack = 4.2
-		hard_attack = 0
-		
-		build_cost_ic = 0.35
-		resources = {
-			steel = 2
-			#iron = 1
-			#coal = 1
-		}
-	}
-	
-	ghost_infantry_equipment_2 = {
-		year = 1934
-		
-		archetype = infantry_equipment
-		priority = 10
-		parent = infantry_equipment_1
+	infantry_squad_3 = {
+		year = 1815
+		archetype = infantry_ghost
+		is_buildable = no
+		active = yes
+		priority = 01
 		visual_level = 0
-		is_convertable = yes  
 	}
-
-	# Improved weapons  ~1939
-	infantry_equipment_2 = {
-		year = 1939
-	
-		archetype = infantry_equipment
-		parent = ghost_infantry_equipment_2
-		priority = 10
-		visual_level = 2
-		
-		reliability = 0.81			
-		#Defensive Abilities
-		defense = 12
-		breakthrough = 2.2
-		
-		supply_consumption = 0.023
-		
-		max_strength = 20
-
-		#Offensive Abilities
-		soft_attack = 4.8
-		hard_attack = 0
-		
-		build_cost_ic = 0.41
-		resources = {
-			steel = 2
-			#iron = 1
-			#coal = 1
-		}
-	}
-	
-	ghost_infantry_equipment_3 = {
-		year = 1934
-		
-		archetype = infantry_equipment
-		priority = 10
-		parent = infantry_equipment_2
+	infantry_squad_4 = {
+		year = 1815
+		archetype = infantry_ghost
+		is_buildable = no
+		active = yes
+		priority = 01
 		visual_level = 0
-		is_convertable = yes
 	}
-	
-	# Advanced weapons  ~1942
-	infantry_equipment_3 = {
-		year = 1942
-	
-		archetype = infantry_equipment
-		parent = ghost_infantry_equipment_3
-		priority = 10
-		visual_level = 3
-		
-		max_strength = 20
-		
-		reliability = 0.82
-		#Defensive Abilities
-		defense = 10.9
-		breakthrough = 2.2
-
-		#Offensive Abilities
-		soft_attack = 5.8
-		hard_attack = 0
-		
-		supply_consumption = 0.027
-		
-		build_cost_ic = 0.5
-		resources = {
-			
-			steel = 3
-			#iron = 1
-			#coal = 1
-		}
-	}
-	
-	ghost_infantry_equipment_4 = {
-		year = 1934
-		
-		archetype = infantry_equipment
-		priority = 10
-		parent = infantry_equipment_3
+	infantry_squad_5 = {
+		year = 1815
+		archetype = infantry_ghost
+		is_buildable = no
+		active = yes
+		priority = 01
 		visual_level = 0
-		is_convertable = yes
+	}
+	infantry_squad_6 = {
+		year = 1815
+		archetype = infantry_ghost
+		is_buildable = no
+		active = yes
+		priority = 01
+		visual_level = 0
+	}
+	infantry_squad_7 = {
+		year = 1815
+		archetype = infantry_ghost
+		is_buildable = no
+		active = yes
+		priority = 01
+		visual_level = 0
+	}
+	infantry_squad_8 = {
+		year = 1815
+		archetype = infantry_ghost
+		is_buildable = no
+		active = yes
+		priority = 01
+		visual_level = 0
+	}
+	infantry_squad_9 = {
+		year = 1815
+		archetype = infantry_ghost
+		is_buildable = no
+		active = yes
+		priority = 01
+		visual_level = 0
+	}
+	infantry_squad_10 = {
+		year = 1815
+		archetype = infantry_ghost
+		is_buildable = no
+		active = yes
+		priority = 01
+		visual_level = 0
+	}
+	infantry_squad_11 = {
+		year = 1815
+		archetype = infantry_ghost
+		is_buildable = no
+		active = yes
+		priority = 01
+		visual_level = 0
+	}
+	infantry_squad_12 = {
+		year = 1815
+		archetype = infantry_ghost
+		is_buildable = no
+		active = yes
+		priority = 01
+		visual_level = 0
+	}
+	infantry_squad_13 = {
+		year = 1815
+		archetype = infantry_ghost
+		is_buildable = no
+		active = yes
+		priority = 01
+		visual_level = 0
+	}
+	infantry_squad_14 = {
+		year = 1815
+		archetype = infantry_ghost
+		is_buildable = no
+		active = yes
+		priority = 01
+		visual_level = 0
+	}
+	infantry_squad_15 = {
+		year = 1815
+		archetype = infantry_ghost
+		is_buildable = no
+		active = yes
+		priority = 01
+		visual_level = 0
+	}
+	infantry_squad_16 = {
+		year = 1815
+		archetype = infantry_ghost
+		is_buildable = no
+		active = yes
+		priority = 01
+		visual_level = 0
+	}
+	infantry_squad_17 = {
+		year = 1815
+		archetype = infantry_ghost
+		is_buildable = no
+		active = yes
+		priority = 01
+		visual_level = 0
+	}
+	infantry_squad_18 = {
+		year = 1815
+		archetype = infantry_ghost
+		is_buildable = no
+		active = yes
+		priority = 01
+		visual_level = 0
+	}
+	infantry_squad_19 = {
+		year = 1815
+		archetype = infantry_ghost
+		is_buildable = no
+		active = yes
+		priority = 01
+		visual_level = 0
+	}
+	infantry_squad_20 = {
+		year = 1815
+		archetype = infantry_ghost
+		is_buildable = no
+		active = yes
+		priority = 01
+		visual_level = 0
+	}
+	infantry_squad_21 = {
+		year = 1815
+		archetype = infantry_ghost
+		is_buildable = no
+		active = yes
+		priority = 01
+		visual_level = 0
+	}
+	infantry_squad_22 = {
+		year = 1815
+		archetype = infantry_ghost
+		is_buildable = no
+		active = yes
+		priority = 01
+		visual_level = 0
+	}
+	infantry_squad_23 = {
+		year = 1815
+		archetype = infantry_ghost
+		is_buildable = no
+		active = yes
+		priority = 01
+		visual_level = 0
+	}
+	infantry_squad_24 = {
+		year = 1815
+		archetype = infantry_ghost
+		is_buildable = no
+		active = yes
+		priority = 01
+		visual_level = 0
+	}
+	infantry_squad_25 = {
+		year = 1815
+		archetype = infantry_ghost
+		is_buildable = no
+		active = yes
+		priority = 01
+		visual_level = 0
+	}
+	infantry_squad_26 = {
+		year = 1815
+		archetype = infantry_ghost
+		is_buildable = no
+		active = yes
+		priority = 01
+		visual_level = 0
+	}
+	infantry_squad_27 = {
+		year = 1815
+		archetype = infantry_ghost
+		is_buildable = no
+		active = yes
+		priority = 01
+		visual_level = 0
+	}
+	infantry_squad_28 = {
+		year = 1815
+		archetype = infantry_ghost
+		is_buildable = no
+		active = yes
+		priority = 01
+		visual_level = 0
+	}
+	infantry_squad_29 = {
+		year = 1815
+		archetype = infantry_ghost
+		is_buildable = no
+		active = yes
+		priority = 01
+		visual_level = 0
+	}
+	infantry_squad_30 = {
+		year = 1815
+		archetype = infantry_ghost
+		is_buildable = no
+		active = yes
+		priority = 01
+		visual_level = 0
+	}
+	infantry_squad_31 = {
+		year = 1815
+		archetype = infantry_ghost
+		is_buildable = no
+		active = yes
+		priority = 01
+		visual_level = 0
+	}
+	infantry_squad_32 = {
+		year = 1815
+		archetype = infantry_ghost
+		is_buildable = no
+		active = yes
+		priority = 01
+		visual_level = 0
+	}
+	infantry_squad_33 = {
+		year = 1815
+		archetype = infantry_ghost
+		is_buildable = no
+		active = yes
+		priority = 01
+		visual_level = 0
+	}
+	infantry_squad_34 = {
+		year = 1815
+		archetype = infantry_ghost
+		is_buildable = no
+		active = yes
+		priority = 01
+		visual_level = 0
+	}
+	infantry_squad_35 = {
+		year = 1815
+		archetype = infantry_ghost
+		is_buildable = no
+		active = yes
+		priority = 01
+		visual_level = 0
+	}
+	infantry_squad_36 = {
+		year = 1815
+		archetype = infantry_ghost
+		is_buildable = no
+		active = yes
+		priority = 01
+		visual_level = 0
+	}
+	infantry_squad_37 = {
+		year = 1815
+		archetype = infantry_ghost
+		is_buildable = no
+		active = yes
+		priority = 01
+		visual_level = 0
+	}
+	infantry_squad_38 = {
+		year = 1815
+		archetype = infantry_ghost
+		is_buildable = no
+		active = yes
+		priority = 01
+		visual_level = 0
+	}
+	infantry_squad_39 = {
+		year = 1815
+		archetype = infantry_ghost
+		is_buildable = no
+		active = yes
+		priority = 01
+		visual_level = 0
+	}
+	infantry_squad_40 = {
+		year = 1815
+		archetype = infantry_ghost
+		is_buildable = no
+		active = yes
+		priority = 01
+		visual_level = 0
+	}
+	infantry_squad_41 = {
+		year = 1815
+		archetype = infantry_ghost
+		is_buildable = no
+		active = yes
+		priority = 01
+		visual_level = 0
 	}
 
-	# Modern weapons  ~1945
-	infantry_equipment_4 = {
-		year = 1945
-	
-		archetype = infantry_equipment
-		parent = ghost_infantry_equipment_4
-		priority = 10
-		visual_level = 3
-		
-		reliability = 0.84
-
-		#Defensive Abilities
-		breakthrough = 2.2
-		defense = 10.9
-		
-		max_strength = 20
-
-		#Offensive Abilities
-		soft_attack = 7.9
-		hard_attack = 0
-		
-		supply_consumption = 0.038
-		
-		build_cost_ic = 0.6
-		resources = {
-			steel = 4
-			#iron = 1
-			#coal = 1
-		}
-	}
 	
 	heavy_infantry_equipment = {
 		year = 1918
@@ -274,7 +584,10 @@ equipments = {
 		is_archetype = yes
 		picture = archetype_infantry_equipment		
 		is_buildable = no
-		type = infantry
+		type = {
+			armor
+			infantry
+		}
 		group_by = archetype
 		
 		interface_category = interface_category_land
@@ -282,196 +595,272 @@ equipments = {
 		active = yes
 		
 		#Misc Abilities
-		reliability = 0.8
-		maximum_speed = 2
+		reliability = 0.88
+		maximum_speed = 3
 
 		#Defensive Abilities
 		hardness = 0
 		armor_value = 0
 		breakthrough = 0
-		defense = 0.7
+		defense = 0
 		
-		max_strength = 5
+		max_strength = 1
 
 		#Offensive Abilities
-		soft_attack = 1.6
+		soft_attack = 0
 		hard_attack = 0
 
-		supply_consumption = 0.015
-
 		#Space taken in convoy
-		lend_lease_cost = 1
+		lend_lease_cost = 1.2
 		
-		build_cost_ic = 0.4
+		build_cost_ic = 0.00
 		resources = {
 			steel = 2
 		}
+		
+		module_slots = {
+			
+			heavy_infantry_slot_0 = {
+				required = yes
+				allowed_module_categories = {
+					heavy_inf_battalion_mortar_module
+					heavy_inf_battalion_mg_module
+					heavy_inf_battalion_at_module
+					heavy_inf_battalion_aa_module
+					
+				}
+			}
+			
+			heavy_infantry_slot_1 = {
+				required = yes
+				allowed_module_categories = {
+					heavy_inf_battalion_mortar_module
+					heavy_inf_battalion_mg_module
+					heavy_inf_battalion_at_module
+					heavy_inf_battalion_aa_module
+				}
+			}
+			
+			heavy_infantry_slot_2 = {
+				required = no
+				allowed_module_categories = {
+					heavy_inf_battalion_at_module
+					heavy_inf_battalion_aa_module
+					heavy_inf_battalion_mortar_module
+					heavy_inf_battalion_mg_module
+					
+				}
+			}
+			
+			heavy_infantry_slot_3 = {
+				required = no
+				allowed_module_categories = {
+					heavy_inf_battalion_at_module
+					heavy_inf_battalion_aa_module
+					heavy_inf_battalion_mortar_module
+					heavy_inf_battalion_mg_module
+					
+				}
+			}
+			
+			heavy_infantry_slot_4 = {
+				required = no
+				allowed_module_categories = {
+					heavy_inf_battalion_mortar_module
+					heavy_inf_battalion_mg_module
+					heavy_inf_battalion_at_module
+					heavy_inf_battalion_aa_module
+				}
+			}
+			
+			heavy_infantry_slot_5 = {
+				required = no
+				allowed_module_categories = {
+					heavy_inf_battalion_mortar_module
+					heavy_inf_battalion_mg_module
+					heavy_inf_battalion_at_module
+					heavy_inf_battalion_aa_module
+				}
+			}
+			
+			heavy_infantry_slot_6 = {
+				required = no
+				allowed_module_categories = {
+					heavy_inf_regiment_ig_module
+					heavy_inf_regiment_at_module
+					heavy_inf_regiment_aa_module
+				}
+			}
+			
+			heavy_infantry_slot_7 = {
+				required = no
+				allowed_module_categories = {
+					heavy_inf_regiment_ig_module
+					heavy_inf_regiment_at_module
+					heavy_inf_regiment_aa_module
+				}
+			}
+			
+			heavy_infantry_slot_8 = {
+				required = no
+				allowed_module_categories = {
+					heavy_inf_regiment_ig_module
+					heavy_inf_regiment_at_module
+					heavy_inf_regiment_aa_module
+				}
+			}
+			
+			heavy_infantry_slot_9 = {
+				required = no
+				allowed_module_categories = {
+					heavy_inf_regiment_ig_module
+					heavy_inf_regiment_at_module
+					heavy_inf_regiment_aa_module
+				}
+			}
+			
+			heavy_infantry_slot_10 = {
+				required = no
+				allowed_module_categories = {
+					heavy_inf_regiment_ig_module
+					heavy_inf_regiment_at_module
+					heavy_inf_regiment_aa_module
+				}
+			}
+			
+			heavy_infantry_slot_11 = {
+				required = no
+				allowed_module_categories = {
+					heavy_inf_regiment_ig_module
+					heavy_inf_regiment_at_module
+					heavy_inf_regiment_aa_module
+				}
+			}
+			
+		}
+
+		default_modules = {
+			
+			
+		}
+		
+		module_count_limit = {
+			module = heavy_inf_bat_mortar_light
+			count < 2
+		}	
+		
+		module_count_limit = {
+			module = heavy_inf_bat_mortar_medium
+			count < 2
+		}	
+		
+		module_count_limit = {
+			module = heavy_inf_bat_mortar_heavy
+			count < 2
+		}	
+
+		module_count_limit = {
+			category = heavy_inf_battalion_mortar_module
+			count < 3
+		}	
+		
+		module_count_limit = {
+			category = heavy_inf_battalion_mg_module
+			count < 2
+		}
+
+		module_count_limit = {
+			category = heavy_inf_regiment_at_module
+			count < 2
+		}	
+		
+		module_count_limit = {
+			category = heavy_inf_regiment_aa_module
+			count < 2
+		}	
+
+		module_count_limit = {
+			category = heavy_inf_battalion_at_module
+			count < 2
+		}	
+		
+		module_count_limit = {
+			category = heavy_inf_battalion_aa_module
+			count < 2
+		}	
+		
+		module_count_limit = {
+			module = heavy_inf_reg_light_ig
+			count < 2
+		}	
+
+		module_count_limit = {
+			module = heavy_inf_reg_heavy_ig
+			count < 2
+		}	
+
+
 	}
 
 	# Regular heavy weapons
+	heavy_infantry_equipment_0 = {
+		year = 1918
+	
+		archetype = heavy_infantry_equipment
+		priority = 10
+		visual_level = 3
+		
+		
+		module_slots = inherit
+
+
+		default_modules = {
+			# Battalion Slots
+			heavy_infantry_slot_0 = heavy_inf_bat_mortar_light
+			heavy_infantry_slot_1 = heavy_inf_bat_hmg
+			heavy_infantry_slot_2 = empty
+			heavy_infantry_slot_3 = empty
+			heavy_infantry_slot_4 = empty
+			heavy_infantry_slot_5 = empty
+			
+			# Regiment Slots
+			heavy_infantry_slot_6 = empty
+			heavy_infantry_slot_7 = empty
+			heavy_infantry_slot_8 = empty
+			heavy_infantry_slot_9 = empty
+			heavy_infantry_slot_10 = empty
+			heavy_infantry_slot_11 = empty
+		}
+	}
+	
 	heavy_infantry_equipment_1 = {
 		year = 1918
 	
 		archetype = heavy_infantry_equipment
 		priority = 10
 		visual_level = 3
-	}
-
-	ghost_heavy_infantry_equipment_1 = {
-		year = 1934
 		
-		archetype = infantry_equipment
-		priority = 10
-		parent = heavy_infantry_equipment_1
-		visual_level = 0
-		is_convertable = yes
-	}
+		
+		module_slots = inherit
 
-	# Improved heavy weapons
-	heavy_infantry_equipment_2 = {
-		year = 1936
+
+		default_modules = {
+			# Battalion Slots
+			heavy_infantry_slot_0 = heavy_inf_bat_mortar_light
+			heavy_infantry_slot_1 = heavy_inf_bat_hmg
+			heavy_infantry_slot_2 = empty
+			heavy_infantry_slot_3 = empty
+			heavy_infantry_slot_4 = empty
+			heavy_infantry_slot_5 = empty
+			
+			# Regiment Slots
+			heavy_infantry_slot_6 = empty
+			heavy_infantry_slot_7 = empty
+			heavy_infantry_slot_8 = empty
+			heavy_infantry_slot_9 = empty
+			heavy_infantry_slot_10 = empty
+			heavy_infantry_slot_11 = empty
+		}
+	}
 	
-		archetype = heavy_infantry_equipment
-		parent = ghost_heavy_infantry_equipment_1
-		priority = 10
-		visual_level = 3
-		
-		reliability = 0.82
-
-		#Defensive Abilities
-		breakthrough = 0
-		defense = 0.8
-		
-		max_strength = 5
-
-		#Offensive Abilities
-		soft_attack = 2.6
-		hard_attack = 0
-
-		supply_consumption = 0.03
-		
-		build_cost_ic = 0.49
-		
-		
-		resources = {
-			steel = 2
-		}
-	}
-
-	ghost_heavy_infantry_equipment_2 = {
-		year = 1934
-		
-		archetype = infantry_equipment
-		priority = 10
-		parent = heavy_infantry_equipment_2
-		visual_level = 0
-		is_convertable = yes
-	}
-
-	# Advanced heavy weapons
-	heavy_infantry_equipment_3 = {
-		year = 1940
-	
-		archetype = heavy_infantry_equipment
-		parent = ghost_heavy_infantry_equipment_2
-		is_convertable = yes
-		priority = 10
-		visual_level = 3
-		
-		reliability = 0.84
-
-		#Defensive Abilities
-		breakthrough = 0
-		defense = 0.6
-		
-		max_strength = 5
-
-		#Offensive Abilities
-		soft_attack = 3.4
-		hard_attack = 0.1
-		
-		supply_consumption = 0.06
-		
-		build_cost_ic = 0.54
-		resources = {	
-			steel = 2
-		}
-	}
-
-	# Advanced heavy weapons + AT
-	heavy_infantry_equipment_4 = {
-		year = 1942
-	
-		archetype = heavy_infantry_equipment
-		parent = heavy_infantry_equipment_3
-		is_convertable = yes
-		priority = 10
-		visual_level = 3
-		can_convert_from = {
-			heavy_infantry_equipment_3
-		}
-		
-		reliability = 0.84
-
-		#Defensive Abilities
-		breakthrough = 0
-		defense = 0.5
-		
-		max_strength = 5
-
-		#Offensive Abilities
-		soft_attack = 3.5
-		hard_attack = 0.3
-		
-		ap_attack = 2
-		
-		supply_consumption = 0.06
-		
-		build_cost_ic = 0.62
-		resources = {
-			steel = 3
-		}
-	}
-
-	ghost_heavy_infantry_equipment_4 = {
-		year = 1944
-		
-		archetype = infantry_equipment
-		priority = 10
-		parent = heavy_infantry_equipment_4
-		visual_level = 0
-		is_convertable = yes
-	}
-
-	# Modern heavy weapons + AT
-	heavy_infantry_equipment_5 = {
-		year = 1944
-	
-		archetype = heavy_infantry_equipment
-		parent = ghost_heavy_infantry_equipment_4
-		priority = 10
-		visual_level = 3
-
-		reliability = 0.86
-
-		#Defensive Abilities
-		breakthrough = 0
-		defense = 0.5
-		
-		max_strength = 5
-
-		#Offensive Abilities
-		soft_attack = 3.5
-		hard_attack = 0.5
-		
-
-		ap_attack = 32
-		
-		supply_consumption = 0.06
-		
-		build_cost_ic = 0.72
-		resources = {
-			steel = 3
-		}
-	}
 }
