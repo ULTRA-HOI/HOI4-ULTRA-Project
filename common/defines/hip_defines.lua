@@ -214,8 +214,8 @@ NDefines.NAI.MAX_FACTORY_TO_SPARE_FOR_CRITICAL_MISSION_FUEL_TRADE = 0.66		-- amo
 NDefines.NAI.MAX_FACTORY_TO_TRADE_FOR_FUEL = 0.5
 NDefines.NTrade.BASE_LAND_TRADE_RANGE = 325
 NDefines.NDiplomacy.TROOP_FEAR = 5 				-- was 1				-- Impact on troops on borders when deciding how willing a nation is to trade
-NDefines.NDiplomacy.MONTH_TRADE_FACTOR = 5			-- was 2			-- Each month a trade gets this much boost to it's trade factor
-NDefines.NDiplomacy.MAX_MONTH_TRADE_FACTOR = 150			-- was 50	-- This is the maximum bonus that can be gained from time
+NDefines.NTrade.MONTH_TRADE_FACTOR = 5			-- was 2			-- Each month a trade gets this much boost to it's trade factor
+NDefines.NTrade.MAX_MONTH_TRADE_FACTOR = 150			-- was 50	-- This is the maximum bonus that can be gained from time
 
 -- Building Stuff
 
