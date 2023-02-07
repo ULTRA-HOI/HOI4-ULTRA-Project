@@ -276,6 +276,10 @@ NDefines.NMilitary.BASE_DIVISION_BRIGADE_CHANGE_COST = 0	--Base cost to change a
 NDefines.NMilitary.BASE_DIVISION_SUPPORT_SLOT_COST = 0 	--Base cost to unlock a support slot
 
 
+NDefines.NMilitary.RETREAT_SPEED_FACTOR = 0.4                    -- speed bonus when retreating
+NDefines.NMilitary.WITHDRAWING_SPEED_FACTOR = 0				-- speed bonus when withdrawing
+
+
 
 NDefines.NMilitary.LAND_COMBAT_FORT_DAMAGE_CHANCE = 1		-- chance to get a hit to damage on forts. (out of 100)
 
