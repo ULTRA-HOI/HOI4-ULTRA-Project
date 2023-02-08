@@ -1,5 +1,34 @@
 # Changelog
 
+### 0.15.1
+
+### Balance
+- Removed duplicated manpower malus for India
+- Air combat defines rebalanced
+- Armor/piercing values rebalanced
+- Minor logistic tweaks
+- Retreat Speed adjustments
+- nerf to medals stats
+
+### Database
+- Added a second steel mill in Finland
+- Japan starts with Bicycle tech
+- Luxemburg added to Reichmark block
+- Nerfed stats of german mecghnized rocket launcher
+
+### Bugfix
+- Fixed air speed defines
+- Fixed some state ID conflicts
+- Fixed inamura duplicated trait
+- Defines fixes
+- Fixed fighter-bombers not having properly air support mission
+- Fixed Italy having no efficiency growth
+
+### AI
+- lowered AI desire to build synth rubber
+- soviet AI will build more steel mills
+- further reduced initial advantage of german AI at Barbarossa
+
 ### 0.15
 
 ### Compatibility
