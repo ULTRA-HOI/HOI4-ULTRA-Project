@@ -211,7 +211,7 @@ NDefines.NTrade.ANTI_MONOPOLY_TRADE_FACTOR_THRESHOLD = 0.8	-- What percentage of
 NDefines.NTrade.ANTI_MONOPOLY_TRADE_FACTOR = -25			-- This is added to the factor value when anti-monopoly threshold is exceeded
 NDefines.NAI.MAX_FACTORY_TO_SPARE_FOR_MISSION_FUEL_TRADE = 0.33						-- amount of factories to spend on oil trade in case of fuel need for missions
 NDefines.NAI.MAX_FACTORY_TO_SPARE_FOR_CRITICAL_MISSION_FUEL_TRADE = 0.66		-- amount of factories to spend on oil trade in case of fuel need for prio missions
-NDefines.NAI.MAX_FACTORY_TO_TRADE_FOR_FUEL = 0.5
+NDefines.NAI.MAX_FACTORY_TO_TRADE_FOR_FUEL = 0.66
 NDefines.NTrade.BASE_LAND_TRADE_RANGE = 325
 NDefines.NDiplomacy.TROOP_FEAR = 5 				-- was 1				-- Impact on troops on borders when deciding how willing a nation is to trade
 NDefines.NTrade.MONTH_TRADE_FACTOR = 5			-- was 2			-- Each month a trade gets this much boost to it's trade factor
@@ -964,8 +964,8 @@ NDefines.NAI.PLAN_MIN_SIZE_FOR_FALLBACK = 5000					                -- A country 
 --------------------------------------------------------------------------------------------------------------
 -- AIR AI
 --------------------------------------------------------------------------------------------------------------
-NDefines.NAI.AIR_SUPERIORITY_FACTOR = 0                                     -- [2.5]  -- Factor for air superiority score
-NDefines.NAI.AIR_SCORE_DISTANCE_IMPACT = 10                                 -- [0.3]  -- Effect of distance applied to the score calculations
+NDefines.NAI.AIR_SUPERIORITY_FACTOR = 0.5                                     -- [2.5]  -- Factor for air superiority score
+NDefines.NAI.AIR_SCORE_DISTANCE_IMPACT = 5                                 -- [0.3]  -- Effect of distance applied to the score calculations
 NDefines.NAI.DAYS_BETWEEN_AIR_PRIORITIES_UPDATE = 4                             -- [4]    -- Amount of days between air ai updates priorities for air wings ( from 1 to N )
 NDefines.NAI.NUM_HOURS_SINCE_LAST_COMBAT_TO_SUPPORT_UNITS_VIA_AIR = 24           -- [72]   -- units will be considered in combat if they are just out of their last combat for air supporting
 
@@ -1012,18 +1012,18 @@ NDefines.NAI.LAND_COMBAT_MIN_EXCORT_PLANES = 200                                
 NDefines.NAI.LAND_COMBAT_INTERCEPT_PER_PLANE = 1                                   -- [0.4]  -- Amount of interception planes requested per enemy plane
 
 NDefines.NAI.STR_BOMB_AIR_SUPERIORITY_IMPORTANCE = 0.3                         -- [0.10] -- Strategic importance of air superiority ( amount of enemy planes in area )
-NDefines.NAI.STR_BOMB_CIVIL_FACTORY_IMPORTANCE = 50                              -- [50]   -- Strategic importance of enemy civil factories
-NDefines.NAI.STR_BOMB_MILITARY_FACTORY_IMPORTANCE = 90                          -- [70]   -- Strategic importance of enemy military factories
-NDefines.NAI.STR_BOMB_NAVAL_FACTORY_IMPORTANCE = 30                              -- [30]   -- Strategic importance of enemy naval factories
+NDefines.NAI.STR_BOMB_CIVIL_FACTORY_IMPORTANCE = 70                              -- [50]   -- Strategic importance of enemy civil factories
+NDefines.NAI.STR_BOMB_MILITARY_FACTORY_IMPORTANCE = 120                          -- [70]   -- Strategic importance of enemy military factories
+NDefines.NAI.STR_BOMB_NAVAL_FACTORY_IMPORTANCE = 50                              -- [30]   -- Strategic importance of enemy naval factories
 NDefines.NAI.STR_BOMB_AA_IMPORTANCE_FACTOR = 0.5                                 -- [0.5]  -- Factor of AA influence on strategic importance ( 0.0 - 1.0 )
 NDefines.NAI.STR_BOMB_INFRA_IMPORTANCE_FACTOR = 0.25                            -- [0.25] -- Factor of infrastructure influence on strategic importance ( 0.0 - 1.0 )
-NDefines.NAI.STR_BOMB_IMPORTANCE_SCALE = 1                                -- [1.0]  -- str bombing total importance scale (every str bombing score get's multiplied by it)
-NDefines.NAI.STR_BOMB_MIN_ENEMY_FIGHTERS_IN_AREA = 750                           -- [300]  -- If amount of enemy fighters is higher than this mission won't perform
-NDefines.NAI.STR_BOMB_FIGHTERS_PER_PLANE = 1.5                                 -- [1.1]  -- Amount of air superiority planes requested per enemy plane
-NDefines.NAI.STR_BOMB_PLANES_PER_CIV_FACTORY = 5                               -- [20]   -- Amount of planes requested per enemy civ factory
-NDefines.NAI.STR_BOMB_PLANES_PER_MIL_FACTORY = 6.25                               -- [25]   -- Amount of planes requested per enemy military factory
-NDefines.NAI.STR_BOMB_PLANES_PER_NAV_FACTORY = 3.75                              -- [15]   -- Amount of planes requested per enemy naval factory
-NDefines.NAI.STR_BOMB_MIN_EXCORT_PLANES = 400                                       -- [200]    -- Min amount of planes requested to excort operations
+NDefines.NAI.STR_BOMB_IMPORTANCE_SCALE = 1.5                                -- [1.0]  -- str bombing total importance scale (every str bombing score get's multiplied by it)
+NDefines.NAI.STR_BOMB_MIN_ENEMY_FIGHTERS_IN_AREA = 2000                           -- [2000]  -- If amount of enemy fighters is higher than this mission won't perform
+NDefines.NAI.STR_BOMB_FIGHTERS_PER_PLANE = 1.75                                 -- [1.1]  -- Amount of air superiority planes requested per enemy plane
+NDefines.NAI.STR_BOMB_PLANES_PER_CIV_FACTORY = 25                               -- [20]   -- Amount of planes requested per enemy civ factory
+NDefines.NAI.STR_BOMB_PLANES_PER_MIL_FACTORY = 35                               -- [25]   -- Amount of planes requested per enemy military factory
+NDefines.NAI.STR_BOMB_PLANES_PER_NAV_FACTORY = 20                              -- [15]   -- Amount of planes requested per enemy naval factory
+NDefines.NAI.STR_BOMB_MIN_EXCORT_PLANES = 600                                       -- [200]    -- Min amount of planes requested to excort operations
 
 NDefines.NAI.AIR_AI_ENEMY_PROV_RATIO_FOR_COMBAT_REGION = 0.05			 -- if a region has more than this ratio of provinces controlled by enemy, AI will consider it as a combat zone while assigning planes
 
