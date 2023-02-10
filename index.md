@@ -1,5 +1,33 @@
 # Changelog
 
+### 0.15.2
+
+### Balance
+- Subjects starts with Free Trade and can't change trade law
+- artillery org is more consistant
+- USA fix deffective torpedo is less painful
+
+### Database
+- Godo is a financial expert
+- Finlands starts with more war support and early mobilisation
+- Belgium starts with Bicycle infantry
+- IAR construction decision now taargets walachia
+- More accurate manpower for majors
+- Canada has a generic naval theorist
+- Reduced various USA focus time to be more consistant
+
+### AI
+- AI is using its airforce more and more efficiently
+- AI is producing more aircrafts
+- AI won't research stuff it can't use
+- Soviet AI won't go beserk against Finland while being pressured by Germany
+
+### Bugfixes
+- SS divisions fixed
+
+### Map
+- Ladoga and Onega lakes separated from the states they were in
+
 ### 0.15.1
 
 ### Balance
