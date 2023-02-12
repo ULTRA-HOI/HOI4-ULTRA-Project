@@ -292,7 +292,7 @@ NDefines.NMilitary.NUKE_MAX_DAMAGE_PERCENT = 0.09 --0.9					-- Minimum damage fr
 
 NDefines.NMilitary.LAND_AIR_COMBAT_STR_DAMAGE_MODIFIER = 0.003   -- air global damage modifier
 NDefines.NMilitary.LAND_AIR_COMBAT_ORG_DAMAGE_MODIFIER = 0.003    -- global damage modifier
-NDefines.NMilitary.LAND_AIR_COMBAT_MAX_PLANES_PER_ENEMY_WIDTH = 10 --5 -- how many CAS/TAC can enter a combat depending on enemy width there
+NDefines.NMilitary.LAND_AIR_COMBAT_MAX_PLANES_PER_ENEMY_WIDTH = 20 --5 -- how many CAS/TAC can enter a combat depending on enemy width there
 
 -- Land combat general regulation
 
@@ -339,7 +339,7 @@ NDefines.NMilitary.PARACHUTE_ORG_REGAIN_PENALTY_DURATION = 12   -- penalty in or
 NDefines.NMilitary.PARACHUTE_ORG_REGAIN_PENALTY_MULT = -0.5	   -- penalty to org regain after being parachuted.
 
 
-NDefines.NMilitary.ENEMY_AIR_SUPERIORITY_IMPACT = -0.6 ---0.35        -- effect on defense due to enemy air superiorty
+NDefines.NMilitary.ENEMY_AIR_SUPERIORITY_IMPACT = 0 ---0.35        -- effect on defense due to enemy air superiorty
 NDefines.NMilitary.ENEMY_AIR_SUPERIORITY_SPEED_IMPACT = -0.4     -- was -0.3 - effect on speed due to enemy air superiority
 
 NDefines.NMilitary.MAX_ARMY_EXPERIENCE = 600 					--Max army experience a country can store
@@ -348,7 +348,7 @@ NDefines.NMilitary.MAX_AIR_EXPERIENCE = 600					--Max air experience a country c
 
 NDefines.NMilitary.SLOWEST_SPEED = 0.4
 NDefines.NMilitary.DIG_IN_FACTOR = 0.01 -- 0.02
-NDefines.NMilitary.AIR_SUPPORT_BASE = 0.5    --0.3                    -- CAS bonus factor for air support moddifier for land unit in combat
+NDefines.NMilitary.AIR_SUPPORT_BASE = 1.0    --0.3                    -- CAS bonus factor for air support moddifier for land unit in combat
 NDefines.NMilitary.REINFORCE_CHANCE = 0.04                 	   -- base chance to join combat from back line when empty
 
 NDefines.NMilitary.LOW_ORG_FOR_ATTACK = 0.3                      -- at what org % we start affecting speed when doign hostile moves. scales down ZERO_ORG_MOVEMENT_MODIFIER
@@ -561,7 +561,7 @@ NDefines.NAir.TOP_SPEED_DAMAGE_BONUS_FACTOR = 0				-- A factor for scaling the t
 NDefines.NAir.COMBAT_DAMAGE_STATS_MULTILPIER = 0.2
 NDefines.NAir.COMBAT_BETTER_AGILITY_DAMAGE_REDUCTION = 0 		-- How much the better agility (than opponent's) can reduce their damage to us.
 NDefines.NAir.COMBAT_BETTER_SPEED_DAMAGE_INCREASE = 1 		-- How much the better Speed (than opponent's) can reduce increase our damage to them.
-NDefines.NAir.DISRUPTION_FACTOR = 2.0
+NDefines.NAir.DISRUPTION_FACTOR = 0.05
 NDefines.NAir.DISRUPTION_FACTOR_CARRIER = 4.0
 NDefines.NAir.DISRUPTION_SPEED_FACTOR = 1.0
 NDefines.NAir.DISRUPTION_AGILITY_FACTOR = 0.0
