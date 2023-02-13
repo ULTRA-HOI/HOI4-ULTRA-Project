@@ -661,6 +661,7 @@ NDefines.NAir.NAVAL_STRIKE_DETECTION_BALANCE_FACTOR = 0.5 --0.7		-- Value used t
 
 
 NDefines.NAir.AA_INDUSTRY_AIR_DAMAGE_FACTOR = -0.12				-- 5x levels = 60% defense from bombing
+NDefines.NAir.ANTI_AIR_PLANE_DAMAGE_FACTOR = 0.4					-- was 0.8 -- Anti Air Gun Damage factor
 
 NDefines.NCountry.AIR_SUPPLY_CONVERSION_SCALE = 0.005	--0.05				-- Conversion scale for planes to air supply
 NDefines.NCountry.AIR_SUPPLY_DROP_EXPIRATION_HOURS = 120  --168            -- Air drop length after being dropped
