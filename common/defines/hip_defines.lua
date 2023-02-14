@@ -308,8 +308,8 @@ NDefines.NMilitary.EQUIPMENT_COMBAT_LOSS_FACTOR = 0.95 	       -- % of equipment
 
 -- Armor case
 
-NDefines.NMilitary.ARMOR_VS_AVERAGE = 0.5			                -- how to weight in highest armor & pen vs the division average
-NDefines.NMilitary.PEN_VS_AVERAGE = 0.45
+NDefines.NMilitary.ARMOR_VS_AVERAGE = 0.35			                -- how to weight in highest armor & pen vs the division average
+NDefines.NMilitary.PEN_VS_AVERAGE = 0.25
 
 NDefines.NMilitary.PIERCING_THRESHOLDS = {					-- Our piercing / their armor must be this value to deal damage fraction equal to the index in the array below [higher number = higher penetration]. If armor is 0, 1.00 will be returned.
 		1.50,
