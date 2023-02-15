@@ -551,7 +551,7 @@ NDefines.NMilitary.OUT_OF_FUEL_SPEED_MULT = 1					-- speed mult that armies get 
 NDefines.NAir.AIR_DEPLOYMENT_DAYS = 0							-- instant deploy
 NDefines.NAir.AIR_WING_AVERAGE_SIZE = 96 						-- Eyeballed average amount of airplanes in wing. Used when calculating air volunteer.
 NDefines.NAir.AIR_WING_MAX_SIZE = 1600    --vanilla=1000
-NDefines.NAir.CARRIER_SIZE_STAT_INCREMENT = 12
+NDefines.NAir.CARRIER_SIZE_STAT_INCREMENT = 1
 NDefines.NAir.AIR_WING_MAX_STATS_ATTACK = 400					-- Max stats
 NDefines.NAir.AIR_WING_MAX_STATS_DEFENCE = 400
 NDefines.NAir.AIR_WING_MAX_STATS_AGILITY = 150
