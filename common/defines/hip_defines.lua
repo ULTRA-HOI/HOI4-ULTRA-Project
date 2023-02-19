@@ -449,8 +449,8 @@ NDefines.NMilitary.ATTRITION_EQUIPMENT_LOSS_CHANCE = 0.02 --0.05
 NDefines.NMilitary.ATTRITION_EQUIPMENT_PER_TYPE_LOSS_CHANCE = 0.6 -- Chance for loosing equipment when suffer attrition. Scaled up the stronger attrition is. Then scaled down by equipment reliability.
 NDefines.NMilitary.SUPPLY_USE_FACTOR_MOVING = 10                -- supply use when moving/fighting vs inactive
 NDefines.NMilitary.SUPPLY_USE_FACTOR_INACTIVE = 0.95
-NDefines.NMilitary.SUPPLY_GRACE = 120 --108		-- troops always carry 5 days of food and supply
-NDefines.NMilitary.SUPPLY_ORG_MAX_CAP = 0.10                     --0.30 Max organization is factored by this if completely out of supply
+NDefines.NMilitary.SUPPLY_GRACE = 48 --108		-- troops always carry 5 days of food and supply
+NDefines.NMilitary.SUPPLY_ORG_MAX_CAP = 0.1                     --0.30 Max organization is factored by this if completely out of supply
 NDefines.NMilitary.MAX_OUT_OF_SUPPLY_DAYS = 14 				   -- how many days of shitty supply until max penalty achieved
 NDefines.NMilitary.OUT_OF_SUPPLY_ATTRITION = 0.1                -- max attrition when out of supply
 NDefines.NMilitary.OUT_OF_SUPPLY_SPEED = -0.1                    -- -0.8 max speed reduction from supply
@@ -485,13 +485,13 @@ NDefines.NSupply.VP_TO_SUPPLY_BONUS_CONVERSION = 0.02			-- 0.05 -- Bonus to supp
 NDefines.NSupply.SUPPLY_FROM_DAMAGED_INFRA = 0.0                -- 0.15 -- damaged infrastructure counts as this in supply calcs
 NDefines.NSupply.SUPPLY_BASE_MULT = 0.0							-- 0.2 - multiplier on supply base values
 NDefines.NSupply.SUPPLY_FLOW_REDUCTION_THRESHOLD = 0.02 -- 0.1 -- if supply flow is lower than this, it is not applied
-NDefines.NSupply.ARMY_MAX_SUPPLY_RATIO_GAIN_PER_HOUR = 0.05 -- 0.15 the idea is to reduce the rate of supply drop-off when out of supply
+NDefines.NSupply.ARMY_MAX_SUPPLY_RATIO_GAIN_PER_HOUR = 0.50 -- 0.15 the idea is to reduce the rate of supply drop-off when out of supply
 NDefines.NSupply.DAYS_TO_START_GIVING_SUPPLY_AFTER_MOVING_SUPPLY_CAPITAL = 1  --7 all supply doesn't really come from the capital -- the country will start gaining supply after this many days moving its capital
 NDefines.NSupply.SUPPLY_PATH_MAX_DISTANCE = 21	-- 15 -- max time it can take
 NDefines.NSupply.ALERT_VERY_LOW_SUPPLY_LEVEL = 0.25			   --0.2 -- At which point we show up the low and very low supply level alert. Value is in % of supplies supported vs required.
-NDefines.NSupply.SUPPLY_THRESHOLD_FOR_ARMY_ATTRITION = 0.25 --0.35 the main impact of supply is poorer performance, not parts wearing out more quickly -- armies will only get attrition below this supply
+NDefines.NSupply.SUPPLY_THRESHOLD_FOR_ARMY_ATTRITION = 0.66 --0.35 the main impact of supply is poorer performance, not parts wearing out more quickly -- armies will only get attrition below this supply
 NDefines.NSupply.AVAILABLE_MANPOWER_STATE_SUPPLY = 0.0						--  0.18 -- Factor for state supply from max manpower (population)
-NDefines.NSupply.STORED_SUPPLY_CONSUMPTION_RATE_FACTOR = 0.50				-- 0.75 -- Multiplies consumption rate of stored supply (more/less easement)
+NDefines.NSupply.STORED_SUPPLY_CONSUMPTION_RATE_FACTOR = 0.5				-- 0.75 -- Multiplies consumption rate of stored supply (more/less easement)
 NDefines.NAITheatre.AI_THEATRE_SUPPLY_CRISIS_LIMIT = 0.2                              -- 0.1 -- If a unit is standing in an area with this supply ratio it will try to escape
 NDefines.NSupply.TRUCK_ATTRITION = 0.003 -- base truck attrition
 NDefines.NSupply.TRUCK_ATTRITION_FACTOR = 0.45 --a scale on total truck attrition
@@ -505,9 +505,9 @@ NDefines.NSupply.INFRA_TO_SUPPLY = 0.00		--0.3				-- each level of infra gives t
 NDefines.NSupply.NAVAL_BASE_FLOW = 0.0 -- max output/input of a naval node is limited by this base value + additional ratio for each level
 
 NDefines.NMilitary.COMBAT_SUPPLY_LACK_ATTACKER_ATTACK = -0.70     -- attack combat penalty for attacker if out of supply
-NDefines.NMilitary.COMBAT_SUPPLY_LACK_ATTACKER_DEFEND = -0.50     -- defend combat penalty for attacker if out of supply
+NDefines.NMilitary.COMBAT_SUPPLY_LACK_ATTACKER_DEFEND = -0.70     -- defend combat penalty for attacker if out of supply
 NDefines.NMilitary.COMBAT_SUPPLY_LACK_DEFENDER_ATTACK = -0.70     -- attack combat penalty for defender if out of supply
-NDefines.NMilitary.COMBAT_SUPPLY_LACK_DEFENDER_DEFEND = -0.25     -- defend combat penalty for defender if out of supply
+NDefines.NMilitary.COMBAT_SUPPLY_LACK_DEFENDER_DEFEND = -0.70     -- defend combat penalty for defender if out of supply
 
 -- Battleplan Execution Adjustments
 
