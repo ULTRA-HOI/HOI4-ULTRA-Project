@@ -135,13 +135,18 @@ characters={
 		advisor={
 			cost = 150
 			
-			slot = army_theorist
+			slot = theorist
 			idea_token = george_patton
 			ledger = army
 				allowed = {
 					original_tag = USA
 				}
 				
+				available = {
+					no_other_land_theorist = yes
+				}
+				on_add = { THIS = { set_character_flag = current_theorist } }
+				on_remove = { THIS = { clr_character_flag = current_theorist } }
 				traits = {
 					mobile_warfare_expert
 				}
@@ -170,13 +175,18 @@ characters={
 		}
 		advisor={
 			cost = 150
-			slot = army_theorist
+			slot = theorist
 			idea_token = omar_bradley
 			ledger = army
 			allowed = {
 				original_tag = USA
 			}
 			
+			available = {
+				no_other_land_theorist = yes
+			}
+			on_add = { THIS = { set_character_flag = current_theorist } }
+			on_remove = { THIS = { clr_character_flag = current_theorist } }
 			traits = {
 				superior_firepower_expert
 			}
@@ -1002,12 +1012,17 @@ USA_matthew_ridgeway={
 		}
 		advisor={
 			cost = 100
-			slot = navy_theorist
+			slot = theorist
 			idea_token = dewitt_clinton_ramsey
 			ledger = navy
 			allowed = {
 				original_tag = USA
 			}
+			available = {
+				no_other_naval_theorist = yes
+			}
+			on_add = { THIS = { set_character_flag = current_theorist } }
+			on_remove = { THIS = { clr_character_flag = current_theorist } }
 			traits = { naval_theorist }
 		}
 	}
@@ -1021,12 +1036,17 @@ USA_matthew_ridgeway={
 		}
 		advisor={
 			cost = 150
-			slot = navy_theorist
+			slot = theorist
 			idea_token = marc_mitscher
 			ledger = navy
 			allowed = {
 				original_tag = USA
 			}
+			available = {
+				no_other_naval_theorist = yes
+			}
+			on_add = { THIS = { set_character_flag = current_theorist } }
+			on_remove = { THIS = { clr_character_flag = current_theorist } }
 			traits = {
 				naval_aviation_pioneer
 			}
@@ -1042,12 +1062,17 @@ USA_matthew_ridgeway={
 		}
 		advisor={
 			cost = 150
-			slot = air_theorist
+			slot = theorist
 			idea_token = curtis_lemay
 			ledger = air
 			allowed = {
 				original_tag = USA
 			}
+			available = {
+				no_other_air_theorist = yes
+			}
+			on_add = { THIS = { set_character_flag = current_theorist } }
+			on_remove = { THIS = { clr_character_flag = current_theorist } }
 			traits = {
 				victory_through_airpower
 			}
@@ -1063,12 +1088,17 @@ USA_matthew_ridgeway={
 		}
 		advisor={
 			cost = 100	
-			slot = air_theorist
+			slot = theorist
 			idea_token = harold_mcclelland
 			ledger = air
 			allowed = {
 				original_tag = USA
 			}
+			available = {
+				no_other_air_theorist = yes
+			}
+			on_add = { THIS = { set_character_flag = current_theorist } }
+			on_remove = { THIS = { clr_character_flag = current_theorist } }
 			traits = { air_warfare_theorist }
 		}
 	}
@@ -1082,7 +1112,7 @@ USA_matthew_ridgeway={
 		}
 		advisor={
 			cost = 100
-			slot = theorist
+			slot = scientist
 			idea_token = robert_oppenheimer
 			ledger = army
 			allowed = {
@@ -1106,7 +1136,7 @@ USA_matthew_ridgeway={
 		}
 		advisor={
 			cost = 100
-			slot = theorist
+			slot = scientist
 			idea_token = robert_goddard
 			ledger = air
 			allowed = {
@@ -1444,14 +1474,14 @@ USA_matthew_ridgeway={
 					limit  = {
 						has_dlc = "Man the Guns"
 					}
-					has_completed_focus  = USA_reach_out_to_the_ware_group 
+					has_completed_focus  = USA_arsenal_of_democracy 
 				}
 			}
 			visible  = {
 				has_dlc = "Man the Guns"
 			}
 			traits  = {
-				economist 
+				financial_expert 
 			}
 			cost  = 100
 			do_effect  = {
@@ -1611,6 +1641,7 @@ USA_matthew_ridgeway={
 			}
 			traits  = {
 				democratic_reformer 
+				silent_workhorse
 			}
 			do_effect  = {
 				NOT  = {
@@ -1748,7 +1779,7 @@ USA_matthew_ridgeway={
 				original_tag  = USA
 			}
 			traits  = {
-				compassionate_gentleman 
+				smooth_talking_charmer 
 			}
 		}
 	}
@@ -1767,7 +1798,7 @@ USA_matthew_ridgeway={
 				original_tag  = USA
 			}
 			traits  = {
-				smooth_talking_charmer 
+				silent_workhorse 
 			}
 		}		
 	}
@@ -1785,11 +1816,6 @@ USA_matthew_ridgeway={
 			allowed  = {
 				original_tag  = USA
 			}
-			available  = {
-				NOT  = {
-					has_idea  = harry_white 
-				}
-			}
 			traits  = {
 				financial_expert 
 			}
@@ -1806,11 +1832,17 @@ USA_matthew_ridgeway={
 		advisor={
 			slot = political_advisor
 			idea_token = USA_henry_stimson
+			available  = {
+				if  = {
+					has_completed_focus  = USA_arsenal_of_democracy 
+				}
+			}
 			allowed  = {
 				original_tag  = USA
 			}
 			traits  = {
-				war_industrialist 
+				war_industrialist
+				economist
 			}
 		}
 	}
@@ -1825,6 +1857,11 @@ USA_matthew_ridgeway={
 		advisor={
 			slot = political_advisor
 			idea_token = USA_donald_nelson
+			available  = {
+				if  = {
+					has_completed_focus  = USA_arsenal_of_democracy 
+				}
+			}
 			allowed  = {
 				original_tag  = USA
 			}
