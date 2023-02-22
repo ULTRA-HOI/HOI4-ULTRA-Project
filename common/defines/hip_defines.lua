@@ -1032,8 +1032,9 @@ NDefines.NAI.AIR_AI_ENEMY_PROV_RATIO_FOR_COMBAT_REGION = 0.05			 -- if a region 
 --------------------------------------------------------------------------------------------------------------
 -- CHARACTERS
 --------------------------------------------------------------------------------------------------------------
-
-NDefines.NCharacter.OFFICER_CORP_HIGH_COMMAND_SLOTS_IN_MENU = 6 --For Alert manager to count the number of High Command Slots in the UI
+NDefines.NCharacter.OFFICER_CORP_ADVISOR_ENTRIES_IN_MENU = { "high_command", "theorist", "army_theorist", "navy_theorist", "air_theorist", "army_chief", "air_chief", "navy_chief" }
+NDefines.NCharacter.OFFICER_CORP_HIGH_COMMAND_SLOTS_IN_MENU = 8 --For Alert manager to count the number of High Command Slots in the UI
+NDefines.NCharacter.POLITICAL_ADVISOR_SLOTS_IN_MENU = 8 --For Alert manager to count the number of Political Advisor Slots in the UI
 
 NDefines.NCharacter.DEFAULT_PP_COST_FOR_POLITICAL_ADVISOR = 100
 NDefines.NCharacter.SPECIALIST_ADVISOR_MIN_RANK = 3
