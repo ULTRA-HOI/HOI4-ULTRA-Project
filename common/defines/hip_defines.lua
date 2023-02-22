@@ -342,9 +342,9 @@ NDefines.NMilitary.PARACHUTE_ORG_REGAIN_PENALTY_MULT = -0.5	   -- penalty to org
 NDefines.NMilitary.ENEMY_AIR_SUPERIORITY_IMPACT = 0 ---0.35        -- effect on defense due to enemy air superiorty
 NDefines.NMilitary.ENEMY_AIR_SUPERIORITY_SPEED_IMPACT = -0.4     -- was -0.3 - effect on speed due to enemy air superiority
 
-NDefines.NMilitary.MAX_ARMY_EXPERIENCE = 600 					--Max army experience a country can store
-NDefines.NMilitary.MAX_NAVY_EXPERIENCE = 600					--Max navy experience a country can store
-NDefines.NMilitary.MAX_AIR_EXPERIENCE = 600					--Max air experience a country can store
+NDefines.NMilitary.MAX_ARMY_EXPERIENCE = 900 					--Max army experience a country can store
+NDefines.NMilitary.MAX_NAVY_EXPERIENCE = 900					--Max navy experience a country can store
+NDefines.NMilitary.MAX_AIR_EXPERIENCE = 900					--Max air experience a country can store
 
 NDefines.NMilitary.SLOWEST_SPEED = 0.4
 NDefines.NMilitary.DIG_IN_FACTOR = 0.01 -- 0.02
