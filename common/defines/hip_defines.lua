@@ -443,7 +443,7 @@ NDefines.NMilitary.ANTI_AIR_ATTACK_TO_AMOUNT = 0.002 --0.015 --0.005				-- Balan
 -- Supply 
 
 NDefines.NCountry.SUPPLY_CONVOY_FACTOR = 0.5					-- How many convoys each supply needs
-NDefines.NBuildings.SUPPLY_PORT_LEVEL_THROUGHPUT = 3   -- supply throughput per level of naval base
+NDefines.NBuildings.SUPPLY_PORT_LEVEL_THROUGHPUT = 4   -- supply throughput per level of naval base
 NDefines.NMilitary.ATTRITION_DAMAGE_ORG = 0.1
 NDefines.NMilitary.ATTRITION_EQUIPMENT_LOSS_CHANCE = 0.02 --0.05
 NDefines.NMilitary.ATTRITION_EQUIPMENT_PER_TYPE_LOSS_CHANCE = 0.6 -- Chance for loosing equipment when suffer attrition. Scaled up the stronger attrition is. Then scaled down by equipment reliability.
@@ -459,8 +459,8 @@ NDefines.NMilitary.OUT_OF_SUPPLY_MORALE = -0.25                   -- max org reg
 NDefines.NMilitary.LOW_SUPPLY = 0.99							   --0.99 -- When the supply status of an unit becomes low.
 NDefines.NSupply.SUPPLY_HUB_FULL_MOTORIZATION_TRUCK_COST = 1000 --80.0 -- How many trucks does it cost to fully motorize a hub
 NDefines.NSupply.RAILWAY_BASE_FLOW = 0.0 --10.0 		-- how much base flow railway gives when a node connected to its capital/a naval node by a railway
-NDefines.NSupply.RAILWAY_FLOW_PER_LEVEL = 10.0 --5.0 	-- how much additional flow a railway level gives
-NDefines.NSupply.RAILWAY_FLOW_PENALTY_PER_DAMAGED = 5.0 --5.0 -- penalty to flow per damaged railway
+NDefines.NSupply.RAILWAY_FLOW_PER_LEVEL = 12.5 --5.0 	-- how much additional flow a railway level gives
+NDefines.NSupply.RAILWAY_FLOW_PENALTY_PER_DAMAGED = 7.5 --5.0 -- penalty to flow per damaged railway
 NDefines.NSupply.RAILWAY_CONVERSION_COOLDOWN = 5 --10 -- railways will be put on cooldown when they are captured by enemy and will not be usable during the cooldown -- ULtra desactivated because cannot be set separatly depending on invaded countries
 NDefines.NSupply.RAILWAY_CONVERSION_COOLDOWN_CORE = 5 --5 -- Recapturing railways that have been "converted" by the ennemy does not change if core or not....
 NDefines.NSupply.RAILWAY_CONVERSION_COOLDOWN_CIVILWAR = 1
