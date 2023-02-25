@@ -1,5 +1,50 @@
 # Changelog
 
+### 0.16
+
+### Features
+
+- Infantry Squad designer!
+
+### Balance
+- Air Superiority no longer provides combat modifiers
+- Disruption effectiveness has been significantly reduced
+- The number of ground support planes that can be involved in any given battle has been doubled
+- The maximum potential Air Support modifier from planes on ground support missions has been doubled
+- Aircraft deployment is now instant
+- Halved static AA damage (so in line with doubled air sorties)
+- Reworked armor/piercing defines so it is more realistic
+- Reworked supply/attrition
+- Truck use rebalanced
+- More research slots added to consider the new research on infantry equipment
+- Lowered research speed from designers
+- Lowered Cp cost of military advisors
+- Increased naval xp gains
+- Improve critical hit effects on main (ship) batteries depending on the turret's setup
+
+### Database
+- Tizzard Mission correctly gives USA the right radar bonuses
+- Finland starts with some doctrines researched
+- Removed deprecated bataillon types
+- CV wings on land are now units of 48 aircrafts
+- SU can declare on Poland more dynamicaly
+- All templates changed to accomodate to the Infantry Designer
+- Operation Catapult now needs both Suez and Gibraltar
+- Increased number of available designer slot and political advisors
+- Max xp cap increased to 900
+
+### QoL
+- Show army/navy/air theorist in officer corps view
+- Add unique icons for land/navy/air theorists
+- Various improved icons
+
+### Bugfixes
+- Various localisation fixes
+- Fixed more state ID conflicts
+- Disabled Ethiopia event that made Sweden join the Axis
+- Supply consumption is correctly the same for generals and FM
+
+
 ### 0.15.2
 
 ### Balance
