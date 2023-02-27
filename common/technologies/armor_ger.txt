@@ -1,21 +1,30 @@
 @1934 = 0
-@1937 = 2
-@1938 = 4
-@1939 = 6
-@1940 = 8
-@1941 = 10
-@1942 = 12
-@1943 = 14
-@1943_2 = 16
-@1944 = 18
-@1945 = 20
-@1946 = 22
-@1947 = 24
-@1948 = 26
+@1936 = 2
+@1937 = 4
+@1938 = 6
+@1939 = 8
+@1940 = 10
+@1941 = 12
+@1942 = 14
+@1943 = 16
+@1943_2 = 18
+@1944 = 20
+@1945 = 22
+@1946 = 24
+@1947 = 26
+@1948 = 28
+@1949 = 30
+
 technologies = {
 	##Germany
+	
+	############################### No-designer
+	
 	ger_light_0 = {
 		#Panzer I
+		allow_branch = {
+			NOT = { has_dlc = "No Step Back" }
+		}
 		enable_subunits = {
 			light_tank_recon
 		}
@@ -914,6 +923,7 @@ technologies = {
 		enable_equipments = {
 			ger_light_equipment_1
 		}
+		
 		path = {
 			leads_to_tech = ger_light_2
 			research_cost_coeff = 1
@@ -1113,6 +1123,9 @@ technologies = {
 	}
 	ger_light_3 = {
 		#Panzer 38t
+		allow_branch = {
+			NOT = { has_dlc = "No Step Back" }
+		}
 		enable_equipments = {
 			ger_light_equipment_3
 		}
@@ -2950,6 +2963,9 @@ technologies = {
 	############################################################################################################ Heavy
 	ger_heavy_0 = {
 		#Neubaufahrzeug
+		allow_branch = {
+			NOT = { has_dlc = "No Step Back" }
+		}
 		enable_equipments = {
 			ger_heavy_equipment_0
 		}
@@ -3410,4 +3426,1521 @@ technologies = {
 			mio_cat_tech_heavy_armor_and_modules
 		}
 	}
+	
+######################################### Tank Designer
+
+	####### Lights ########
+	
+	ger_light_tank_chassis_1 = { #Panzer I
+
+		allow_branch = {
+			has_dlc = "No Step Back"
+		}
+		enable_subunits = {
+			light_tank_recon
+		}
+		enable_equipments = {
+			ger_light_tank_chassis_1
+			ger_medium_tank_chassis_1
+		}
+		enable_equipment_modules = {
+			ger_medium_tank_chassis_1_closed_turret_0 
+			ger_medium_tank_chassis_1_armor_shape_0 
+			ger_light_tank_chassis_1_closed_turret_0 
+			ger_light_tank_chassis_1_armor_shape_0 
+		}
+		
+
+		path = {
+			leads_to_tech = ger_light_tank_chassis_2
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = panzer_1_open_superstructure
+			research_cost_coeff = 1
+		}
+
+		research_cost = 2.5
+		start_year = 1933
+		folder = {
+			name = ger_armour_folder
+			position = { 
+				x = 0
+				y = @1934 
+			}
+		}
+
+		ai_will_do = {
+			factor = 4
+			modifier = {
+				factor = 35
+				date > "1936.1.1"
+			}
+			modifier = {
+				factor = 35
+				date > "1937.1.1"
+			}
+			modifier = {
+				factor = 35
+				date > "1938.1.1"
+			}
+			modifier = {
+				factor = 0
+				NOT = {
+					OR = {
+						original_tag = GER
+						has_country_flag = german_technologies_tree_flag
+					}
+				}
+			}
+		}
+		
+		categories = {
+			major_technologies
+			armor
+			cat_light_armor
+		}
+	}
+	
+	panzer_1_open_superstructure = {
+	
+		enable_equipment_modules = {
+			ger_medium_tank_chassis_1_open_casemate_0  		
+			ger_light_tank_chassis_1_open_casemate_0  		
+		}
+		
+		research_cost = 0.25
+		start_year = 1940
+		folder = {
+			name = ger_armour_folder
+			position = { 
+				x = -1
+				y = @1936
+			}
+		}
+		
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			major_technologies
+			armor_variant
+		}
+	}
+	
+	ger_light_tank_chassis_2 = { #Panzer II
+
+		enable_equipments = {
+			ger_light_tank_chassis_2
+			ger_medium_tank_chassis_2
+		}
+		enable_equipment_modules = {
+			ger_medium_tank_chassis_2_closed_turret_0 
+			ger_light_tank_chassis_2_closed_turret_0 
+			ger_medium_tank_chassis_2_armor_shape_0
+			ger_light_tank_chassis_2_armor_shape_0 
+		}
+
+		path = {
+			leads_to_tech = ger_medium_tank_chassis_3
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = ger_medium_tank_chassis_4
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = ger_light_tank_chassis_3
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = panzer_2_open_superstructure
+			research_cost_coeff = 1
+		}
+
+		sub_technologies = {
+			ger_amphibious_tank_chassis_2
+		}
+
+		research_cost = 1.5
+		start_year = 1937
+		folder = {
+			name = ger_armour_folder
+			position = {
+				x = 0
+				y = @1937
+			}
+		}
+
+		ai_will_do = {
+			factor = 4
+			modifier = {
+				factor = 35
+				date > "1937.1.1"
+			}
+			modifier = {
+				factor = 35
+				date > "1938.1.1"
+			}
+			modifier = {
+				factor = 35
+				date > "1939.1.1"
+			}
+			modifier = {
+				factor = 0
+				NOT = {
+					OR = {
+						original_tag = GER
+						has_country_flag = german_technologies_tree_flag
+					}
+				}
+			}
+		}
+		
+		categories = {
+			major_technologies
+			armor
+			cat_light_armor
+		}
+	}
+	
+	ger_amphibious_tank_chassis_2 = { #Panzer II amphib
+
+		enable_equipments = {
+			
+			ger_amphibious_tank_chassis_2
+		}
+		
+		enable_equipment_modules = {
+			ger_amphibious_tank_chassis_2_armor_shape_0 
+		}
+
+		research_cost = 1
+		start_year = 1940
+		
+
+		ai_will_do = {
+			factor = 0
+		
+		}
+		
+		categories = {
+			major_technologies
+			armor_variant
+		}
+	}
+	
+	panzer_2_open_superstructure = {
+	
+		enable_equipment_modules = {
+			tank_panzer_2_open_superstructure_turret 		
+		}
+		
+		research_cost = 0.25
+		start_year = 1941
+		
+		folder = {
+			name = ger_armour_folder
+			position = {
+				x = -1
+				y = @1938
+			}
+		}
+		
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			major_technologies
+			armor_variant
+		}
+	}
+	
+	ger_medium_tank_chassis_38 = { #Panzer 38(t)
+	
+		allow_branch = {
+			has_dlc = "No Step Back"
+		}
+		
+		allow = {
+			OR = {
+				has_full_control_of_state = 9
+				GER = {
+					is_in_faction_with = CZE
+				}
+				CZE = {
+					is_puppet_of = GER
+				}
+			}
+		}
+
+		enable_equipments = {
+			ger_medium_tank_chassis_38
+		}
+		enable_equipment_modules = {
+			ger_medium_tank_chassis_38_closed_turret_0
+			ger_medium_tank_chassis_38_armor_shape_0
+		}
+
+		sub_technologies = {
+			ger_amphibious_tank_chassis_38
+		}
+		
+		path = {
+			leads_to_tech = panzer_38_open_superstructure
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = panzer_38_fixed_superstructure
+			research_cost_coeff = 1
+		}
+
+		research_cost = 1
+		start_year = 1939
+		folder = {
+			name = ger_armour_folder
+			position = {
+				x = -2
+				y = @1939
+			}
+		}
+
+		ai_will_do = {
+			factor = 4
+			modifier = {
+				factor = 35
+				date > "1939.1.1"
+			}
+			modifier = {
+				factor = 35
+				date > "1940.1.1"
+			}
+			modifier = {
+				factor = 35
+				date > "1941.1.1"
+			}
+			modifier = {
+				factor = 0
+				NOT = {
+					OR = {
+						original_tag = GER
+						has_country_flag = german_technologies_tree_flag
+					}
+				}
+			}
+		}
+		
+		categories = {
+			major_technologies
+			armor
+			cat_light_armor
+		}
+	}
+	
+	ger_amphibious_tank_chassis_38 = { #Panzer 38t amphib
+
+		enable_equipments = {
+			
+			ger_amphibious_tank_chassis_38
+		}
+		
+		enable_equipment_modules = {
+			ger_amphibious_tank_chassis_38_armor_shape_0
+			ger_amphibious_tank_chassis_38_closed_turret_0
+		}
+
+		research_cost = 1
+		start_year = 1940
+		
+
+		ai_will_do = {
+			factor = 0
+		
+		}
+		
+		categories = {
+			major_technologies
+			armor_variant
+		}
+	}
+	
+	panzer_38_open_superstructure = {
+	
+		enable_equipment_modules = {
+			ger_medium_tank_chassis_38_open_casemate_0 
+		}
+		
+		research_cost = 0.25
+		start_year = 1942
+		folder = {
+			name = ger_armour_folder
+			position = {
+				x = -3
+				y = @1940
+			}
+		}
+		
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			major_technologies
+			armor_variant
+		}
+	}
+	
+	panzer_38_fixed_superstructure = {
+	
+		enable_equipment_modules = {
+			ger_medium_tank_chassis_38_closed_casemate_0
+		}
+		
+		research_cost = 0.25
+		start_year = 1944
+		folder = {
+			name = ger_armour_folder
+			position = {
+				x = -1
+				y = @1940
+			}
+		}
+		
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			major_technologies
+			armor_variant
+		}
+	}
+	
+	ger_light_tank_chassis_3 = { #Luchs
+
+		enable_equipments = {
+			ger_light_tank_chassis_3
+		}
+		enable_equipment_modules = {
+			ger_light_tank_chassis_3_closed_turret_0	
+			ger_light_tank_chassis_3_armor_shape_0
+		}
+
+		
+		path = {
+			leads_to_tech = tank_luchs_turret_2
+			research_cost_coeff = 1
+		}
+
+		sub_technologies = {
+			
+		}
+
+		research_cost = 1.5
+		start_year = 1942
+		folder = {
+			name = ger_armour_folder
+			position = {
+				x = 0
+				y = @1942
+			}
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			major_technologies
+			armor
+			cat_light_armor
+		}
+	}
+	
+	tank_luchs_turret_2 = { #advanced Luchs turret
+
+		
+		enable_equipment_modules = {
+			ger_light_tank_chassis_3_closed_turret_1
+			ger_light_tank_chassis_3_open_casemate_0
+		}
+
+		sub_technologies = {
+			
+		}
+		
+		path = {
+			leads_to_tech = ger_light_tank_chassis_4
+			research_cost_coeff = 1
+		}
+
+		research_cost = 0.25
+		start_year = 1945
+		folder = {
+			name = ger_armour_folder
+			position = {
+				x = 0
+				y = @1943
+			}
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			major_technologies
+			armor_variant
+		}
+	}
+	
+	ger_light_tank_chassis_4 = { #Leopard
+
+		enable_equipments = {
+			ger_light_tank_chassis_4
+		}
+		enable_equipment_modules = {
+			ger_light_tank_chassis_4_closed_turret_0
+			ger_light_tank_chassis_4_armor_shape_0
+		}
+
+		
+		path = {
+			leads_to_tech = ger_light_tank_chassis_5
+			research_cost_coeff = 1
+		}
+
+		sub_technologies = {
+			
+		}
+
+		research_cost = 1.5
+		start_year = 1944
+		folder = {
+			name = ger_armour_folder
+			position = {
+				x = 0
+				y = @1944
+			}
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			major_technologies
+			armor
+			cat_light_armor
+		}
+	}
+	
+	ger_light_tank_chassis_5 = { #E-10
+
+		enable_equipments = {
+			ger_light_tank_chassis_5
+		}
+		enable_equipment_modules = {
+			ger_light_tank_chassis_5_closed_casemate_0
+			ger_light_tank_chassis_5_armor_shape_0
+		}
+
+	
+		sub_technologies = {
+			
+		}
+
+		research_cost = 2.5
+		start_year = 1946
+		folder = {
+			name = ger_armour_folder
+			position = {
+				x = 0
+				y = @1946
+			}
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			major_technologies
+			armor
+			cat_light_armor
+		}
+	}
+	
+	############### Battle Tanks ###################
+	
+	ger_medium_tank_chassis_3 = { #Panzer III
+
+		enable_equipments = {
+			ger_medium_tank_chassis_3
+		}
+		enable_equipment_modules = {
+			ger_medium_tank_chassis_3_closed_turret_0
+			ger_medium_tank_chassis_3_armor_shape_0
+		}
+
+		sub_technologies = {
+			ger_amphibious_tank_chassis_3
+		}
+		
+		path = {
+			leads_to_tech = ger_medium_tank_chassis_5
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = panzer_3_fixed_superstructure
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = panzer_3_open_superstructure
+			research_cost_coeff = 1
+		}
+
+		research_cost = 2.5
+		start_year = 1938
+		folder = {
+			name = ger_armour_folder
+			position = {
+				x = 3
+				y = @1938
+			}
+		}
+
+		ai_will_do = {
+			factor = 4
+			modifier = {
+				factor = 35
+				date > "1938.1.1"
+			}
+			modifier = {
+				factor = 35
+				date > "1939.1.1"
+			}
+			modifier = {
+				factor = 35
+				date > "1940.1.1"
+			}
+			modifier = {
+				factor = 0
+				NOT = {
+					OR = {
+						original_tag = GER
+						has_country_flag = german_technologies_tree_flag
+					}
+				}
+			}
+		}
+		
+		categories = {
+			major_technologies
+			armor
+			cat_medium_armor
+		}
+	}
+	
+	ger_amphibious_tank_chassis_3 = { #Panzer 3 amphib
+
+		enable_equipments = {
+			
+			ger_amphibious_tank_chassis_3
+		}
+		
+		enable_equipment_modules = {
+			ger_amphibious_tank_chassis_3_armor_shape_0
+			ger_amphibious_tank_chassis_3_closed_turret_0
+		}
+
+		research_cost = 1
+		start_year = 1940
+		
+
+		ai_will_do = {
+			factor = 0
+		
+		}
+		
+		categories = {
+			major_technologies
+			armor_variant
+		}
+	}
+	
+	panzer_3_fixed_superstructure = {
+	
+		enable_equipment_modules = {
+			ger_medium_tank_chassis_3_closed_casemate_0
+		}
+		
+		research_cost = 0.25
+		start_year = 1940
+		folder = {
+			name = ger_armour_folder
+			position = {
+				x = 4
+				y = @1939
+			}
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			major_technologies
+			armor_variant
+		}
+	}
+	
+	panzer_3_open_superstructure = {
+	
+		enable_equipment_modules = {
+			ger_medium_tank_chassis_3_open_casemate_0
+		}
+		
+		research_cost = 0.25
+		start_year = 1942
+		folder = {
+			name = ger_armour_folder
+			position = {
+				x = 2
+				y = @1939
+			}
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			major_technologies
+			armor_variant
+		}
+	}
+	
+	ger_medium_tank_chassis_4 = { #Panzer IV
+
+		enable_equipments = {
+			ger_medium_tank_chassis_4
+		}
+		enable_equipment_modules = {
+			ger_medium_tank_chassis_4_closed_turret_0
+			ger_medium_tank_chassis_4_armor_shape_0
+		}
+
+		sub_technologies = {
+			ger_amphibious_tank_chassis_4
+		}
+		
+		path = {
+			leads_to_tech = ger_medium_tank_chassis_5
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = panzer_4_open_superstructure
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = panzer_4_fixed_superstructure
+			research_cost_coeff = 1
+		}
+
+		research_cost = 2.5
+		start_year = 1938
+		folder = {
+			name = ger_armour_folder
+			position = {
+				x = 9
+				y = @1938
+			}
+		}
+
+		ai_will_do = {
+			factor = 4
+			modifier = {
+				factor = 35
+				date > "1938.1.1"
+			}
+			modifier = {
+				factor = 35
+				date > "1939.1.1"
+			}
+			modifier = {
+				factor = 35
+				date > "1940.1.1"
+			}
+			modifier = {
+				factor = 0
+				NOT = {
+					OR = {
+						original_tag = GER
+						has_country_flag = german_technologies_tree_flag
+					}
+				}
+			}
+		}
+		
+		categories = {
+			major_technologies
+			armor
+			cat_medium_armor
+		}
+	}
+	
+	ger_amphibious_tank_chassis_4 = { #Panzer 4 amphib
+
+		enable_equipments = {
+			
+			ger_amphibious_tank_chassis_4
+		}
+		enable_equipment_modules = {
+			ger_amphibious_tank_chassis_4_armor_shape_0
+			ger_amphibious_tank_chassis_4_closed_turret_0
+		}
+
+		research_cost = 1
+		start_year = 1940
+		
+
+		ai_will_do = {
+			factor = 0
+		
+		}
+		
+		categories = {
+			major_technologies
+			armor_variant
+		}
+	}
+	
+	panzer_4_open_superstructure = {
+	
+		enable_equipment_modules = {
+			ger_medium_tank_chassis_4_open_casemate_0
+		}
+		
+		research_cost = 0.25
+		start_year = 1942
+		folder = {
+			name = ger_armour_folder
+			position = {
+				x = 8
+				y = @1939
+			}
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			major_technologies
+			armor_variant
+		}
+	}
+	
+	panzer_4_fixed_superstructure = {
+	
+		enable_equipment_modules = {
+			ger_medium_tank_chassis_4_closed_casemate_0
+		}
+		
+		research_cost = 0.25
+		start_year = 1943
+		folder = {
+			name = ger_armour_folder
+			position = {
+				x = 10
+				y = @1939
+			}
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			major_technologies
+			armor
+			cat_medium_armor
+		}
+	}
+	
+	ger_medium_tank_chassis_5 = { #Panther
+
+		enable_equipments = {
+			ger_medium_tank_chassis_5
+		}
+		enable_equipment_modules = {
+			ger_medium_tank_chassis_5_closed_turret_0
+			ger_medium_tank_chassis_5_armor_shape_0
+		}
+
+		sub_technologies = {
+			
+			
+		}
+		
+		path = {
+			leads_to_tech = tank_panther_turret_2
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = panther_fixed_superstructure
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = panther_open_superstructure
+			research_cost_coeff = 1
+		}
+
+		research_cost = 2.5
+		start_year = 1943
+		folder = {
+			name = ger_armour_folder
+			position = {
+				x = 6
+				y = @1943
+			}
+		}
+
+		ai_will_do = {
+			factor = 4
+			modifier = {
+				factor = 35
+				date > "1943.1.1"
+			}
+			modifier = {
+				factor = 35
+				date > "1944.1.1"
+			}
+			modifier = {
+				factor = 35
+				date > "1945.1.1"
+			}
+			modifier = {
+				factor = 0
+				NOT = {
+					OR = {
+						original_tag = GER
+						has_country_flag = german_technologies_tree_flag
+					}
+				}
+			}
+		}
+		
+		categories = {
+			major_technologies
+			armor
+			cat_medium_armor
+		}
+	}
+	
+	panther_fixed_superstructure = {
+	
+		enable_equipment_modules = {
+			ger_medium_tank_chassis_5_closed_casemate_0 
+		}
+		
+		research_cost = 0.25
+		start_year = 1944
+		folder = {
+			name = ger_armour_folder
+			position = {
+				x = 7
+				y = @1943_2
+			}
+		}
+		
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			major_technologies
+			armor_variant
+		}
+	}
+	
+	panther_open_superstructure = {
+	
+		enable_equipment_modules = {
+			ger_medium_tank_chassis_5_open_casemate_0 
+		}
+		
+		research_cost = 0.25
+		start_year = 1945
+		folder = {
+			name = ger_armour_folder
+			position = {
+				x = 5
+				y = @1943_2
+			}
+		}
+		
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			major_technologies
+			armor_variant
+		}
+	}
+	
+	tank_panther_turret_2 = { #8mm Schmalturm
+
+		
+		enable_equipment_modules = {
+			ger_medium_tank_chassis_5_closed_turret_1
+			
+		}
+
+		sub_technologies = {
+			
+		}
+		
+		path = {
+			leads_to_tech = ger_medium_tank_chassis_6
+			research_cost_coeff = 1
+		}
+
+		research_cost = 0.25
+		start_year = 1945
+		folder = {
+			name = ger_armour_folder
+			position = {
+				x = 6
+				y = @1945
+			}
+		}
+
+		ai_will_do = {
+			factor = 4
+			modifier = {
+				factor = 35
+				date > "1945.1.1"
+			}
+			modifier = {
+				factor = 35
+				date > "1946.1.1"
+			}
+			modifier = {
+				factor = 35
+				date > "1947.1.1"
+			}
+			modifier = {
+				factor = 0
+				NOT = {
+					OR = {
+						original_tag = GER
+						has_country_flag = german_technologies_tree_flag
+					}
+				}
+			}
+		}
+		
+		categories = {
+			major_technologies
+			armor
+			cat_medium_armor
+		}
+	}
+	
+	ger_medium_tank_chassis_6 = { #E-50
+
+		enable_equipments = {
+			ger_medium_tank_chassis_6
+		}
+		enable_equipment_modules = {
+			ger_medium_tank_chassis_6_closed_turret_0
+			ger_medium_tank_chassis_6_armor_shape_0
+		}
+
+		sub_technologies = {
+			
+			
+		}
+		
+		path = {
+			leads_to_tech = tank_e50_turret_2
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = e50_open_superstructure
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = e50_fixed_superstructure
+			research_cost_coeff = 1
+		}
+
+		research_cost = 2.5
+		start_year = 1947
+		folder = {
+			name = ger_armour_folder
+			position = {
+				x = 6
+				y = @1947
+			}
+		}
+
+		ai_will_do = {
+			factor = 4
+			modifier = {
+				factor = 35
+				date > "1947.1.1"
+			}
+			modifier = {
+				factor = 35
+				date > "1948.1.1"
+			}
+			modifier = {
+				factor = 35
+				date > "1949.1.1"
+			}
+			modifier = {
+				factor = 0
+				NOT = {
+					OR = {
+						original_tag = GER
+						has_country_flag = german_technologies_tree_flag
+					}
+				}
+			}
+		}
+		
+		categories = {
+			major_technologies
+			armor
+			cat_medium_armor
+		}
+	}
+	
+	e50_fixed_superstructure = {
+	
+		enable_equipment_modules = {
+			ger_medium_tank_chassis_6_closed_casemate_0 
+		}
+		
+		research_cost = 0.25
+		start_year = 1948
+		folder = {
+			name = ger_armour_folder
+			position = {
+				x = 7
+				y = @1948
+			}
+		}
+		
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			major_technologies
+			armor_variant
+		}
+	}
+	
+	e50_open_superstructure = {
+	
+		enable_equipment_modules = {
+			ger_medium_tank_chassis_6_open_casemate_0 
+		}
+		
+		research_cost = 0.25
+		start_year = 1948
+		folder = {
+			name = ger_armour_folder
+			position = {
+				x = 5
+				y = @1948
+			}
+		}
+		
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			major_technologies
+			armor_variant
+		}
+	}
+	
+	tank_e50_turret_2 = { #advanced E-50 Turret
+
+		
+		enable_equipment_modules = {
+			ger_medium_tank_chassis_6_closed_turret_1
+			
+		}
+
+		sub_technologies = {
+			
+		}
+
+		research_cost = 0.25
+		start_year = 1949
+		folder = {
+			name = ger_armour_folder
+			position = {
+				x = 6
+				y = @1949
+			}
+		}
+
+		ai_will_do = {
+			factor = 4
+			modifier = {
+				factor = 35
+				date > "1949.1.1"
+			}
+			modifier = {
+				factor = 35
+				date > "1950.1.1"
+			}
+			modifier = {
+				factor = 35
+				date > "1951.1.1"
+			}
+			modifier = {
+				factor = 0
+				NOT = {
+					OR = {
+						original_tag = GER
+						has_country_flag = german_technologies_tree_flag
+					}
+				}
+			}
+		}
+		
+		categories = {
+			major_technologies
+			armor
+			cat_medium_armor
+		}
+	}
+	
+	################ Infantry Tank ###################
+	
+	ger_modern_tank_chassis_1 = {
+		#Neubaufahrzeug
+		allow_branch = {
+			has_dlc = "No Step Back" 
+		}
+		enable_equipments = {
+			ger_modern_tank_chassis_1
+		}
+		enable_equipment_modules = {
+			ger_modern_tank_chassis_1_armor_shape_0
+			ger_modern_tank_chassis_1_closed_turret_0
+		}
+		path = {
+			leads_to_tech = ger_heavy_tank_chassis_1
+			research_cost_coeff = 1
+		}
+		research_cost = 2.5
+		start_year = 1934
+		folder = {
+			name = ger_armour_folder
+			position = {
+				x = 14
+				y = @1934
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		categories = {
+			major_technologies
+			armor
+			cat_heavy_armor
+		}
+	}
+	
+	################ Heavy Tank ###################
+	
+	ger_heavy_tank_chassis_1 = {
+		#Tiger I
+		
+		enable_equipments = {
+			ger_heavy_tank_chassis_1
+		}
+		enable_equipment_modules = {
+			ger_heavy_tank_chassis_1_closed_turret_0
+			ger_heavy_tank_chassis_1_armor_shape_0
+		}
+		
+		sub_technologies = {
+			
+			
+		}
+		
+		path = {
+			leads_to_tech = ger_heavy_tank_chassis_2
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = tiger_fixed_superstructure
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = tiger_open_superstructure
+			research_cost_coeff = 1
+		}
+		research_cost = 2.5
+		start_year = 1942
+		folder = {
+			name = ger_armour_folder
+			position = {
+				x = 14
+				y = @1942
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		categories = {
+			major_technologies
+			armor
+			cat_heavy_armor
+		}
+	}
+	
+	tiger_open_superstructure = {
+	
+		enable_equipment_modules = {
+			ger_heavy_tank_chassis_1_open_casemate_0
+		}
+		
+		research_cost = 0.25
+		start_year = 1945
+		folder = {
+			name = ger_armour_folder
+			position = {
+				x = 13
+				y = @1943
+			}
+		}
+		
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			major_technologies
+			armor_variant
+		}
+	}
+	
+	tiger_fixed_superstructure = {
+	
+		enable_equipment_modules = {
+			ger_heavy_tank_chassis_1_closed_casemate_0
+		}
+		
+		research_cost = 0.25
+		start_year = 1943
+		folder = {
+			name = ger_armour_folder
+			position = {
+				x = 15
+				y = @1943
+			}
+		}
+		
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			major_technologies
+			armor_variant
+		}
+	}
+	
+	ger_heavy_tank_chassis_2 = {
+		#Tiger II
+		
+		enable_equipments = {
+			ger_heavy_tank_chassis_2
+		}
+		enable_equipment_modules = {
+			ger_heavy_tank_chassis_2_closed_turret_0
+			ger_heavy_tank_chassis_2_armor_shape_0
+		}
+		path = {
+			leads_to_tech = ger_heavy_tank_chassis_3
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = ger_super_heavy_tank_chassis_1
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = tiger2_fixed_superstructure
+			research_cost_coeff = 1
+		}
+		sub_technologies = {
+			
+		}
+		research_cost = 1.5
+		start_year = 1944
+		folder = {
+			name = ger_armour_folder
+			position = {
+				x = 14
+				y = @1944
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		categories = {
+			major_technologies
+			armor
+			cat_heavy_armor
+		}
+	}
+	
+	tiger2_fixed_superstructure = {
+	
+		enable_equipment_modules = {
+			ger_heavy_tank_chassis_2_closed_casemate_0
+		}
+		
+		research_cost = 0.25
+		start_year = 1944
+		folder = {
+			name = ger_armour_folder
+			position = {
+				x = 15
+				y = @1945
+			}
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			major_technologies
+			armor_variant
+		}
+	}
+	
+	ger_heavy_tank_chassis_3 = {
+		#E-75
+		
+		enable_equipments = {
+			ger_heavy_tank_chassis_3
+		}
+		enable_equipment_modules = {
+			ger_heavy_tank_chassis_3_closed_turret_0
+			ger_heavy_tank_chassis_3_armor_shape_0
+		}
+		
+		research_cost = 1.5
+		start_year = 1947
+		folder = {
+			name = ger_armour_folder
+			position = {
+				x = 14
+				y = @1947
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		categories = {
+			major_technologies
+			armor
+			cat_heavy_armor
+		}
+	}
+	
+	################ Super-heavy Tank ###################
+	
+	ger_super_heavy_tank_chassis_1 = {
+		#Maus
+		
+		enable_equipments = {
+			ger_super_heavy_tank_chassis_1
+		}
+		enable_equipment_modules = {
+			ger_super_heavy_tank_chassis_1_closed_turret_0
+			ger_super_heavy_tank_chassis_1_armor_shape_0
+		}
+		path = {
+			leads_to_tech = ger_super_heavy_tank_chassis_2
+			research_cost_coeff = 1
+		}
+		research_cost = 2.5
+		start_year = 1944
+		folder = {
+			name = ger_armour_folder
+			position = {
+				x = 17
+				y = @1944
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		categories = {
+			major_technologies
+			armor
+			cat_heavy_armor
+		}
+	}
+	
+	ger_super_heavy_tank_chassis_2 = {
+		#E-100
+		
+		enable_equipments = {
+			ger_super_heavy_tank_chassis_2
+		}
+		enable_equipment_modules = {
+			ger_super_heavy_tank_chassis_2_closed_turret_0
+			ger_super_heavy_tank_chassis_2_armor_shape_0
+		}
+		
+		research_cost = 1.5
+		start_year = 1946
+		folder = {
+			name = ger_armour_folder
+			position = {
+				x = 17
+				y = @1946
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		categories = {
+			major_technologies
+			armor
+			cat_heavy_armor
+		}
+	}
+	
+	
+	
 }

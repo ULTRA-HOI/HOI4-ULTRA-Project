@@ -1,7 +1,28 @@
-	technologies = {
+@1934 = 0
+@1936 = 2
+@1937 = 4
+@1938 = 6
+@1939 = 8
+@1940 = 10
+@1941 = 12
+@1942 = 14
+@1943 = 16
+@1944 = 18
+@1945 = 20
+@1946 = 22
+@1947 = 24
+@1948 = 26
+@1949 = 28
+@1950 = 30
+
+technologies = {
 	##Soviet Union
 
 	sov_light_1 = { #T 26 34
+	
+		allow_branch = {
+			NOT = {has_dlc = "No Step Back"}
+		}
 
 		enable_equipments = {
 			sov_light_equipment_1
@@ -587,7 +608,7 @@
 	sov_mechanized_infantry_1 = {
 
 		enable_equipments = {
-			#sov_mechanized_equipment_1
+			motorized_equipment_1
 		}
 		
 		path = {
@@ -1323,6 +1344,10 @@
 	}
 
 	sov_medium_1 = { #T 28
+	
+		allow_branch = {
+			NOT = {has_dlc = "No Step Back"}
+		}
  
 		enable_equipments = {
 			sov_medium_equipment_1
@@ -3024,4 +3049,1554 @@
 	}
 
 	#IS 8M - scrapped
+	
+	######################################### Tank Designer
+	
+	##### Light Tanks ####
+	
+	sov_light_tank_chassis_1 = { #T-26
+
+		allow_branch = {
+			has_dlc = "No Step Back"
+		}
+		enable_subunits = {
+			light_tank_recon
+		}
+		enable_equipments = {
+			sov_light_tank_chassis_1
+		}
+		enable_equipment_modules = {
+			sov_light_tank_chassis_1_armor_shape_0
+			sov_light_tank_chassis_1_closed_turret_0
+		}
+		
+
+		path = {
+			leads_to_tech = sov_light_tank_chassis_2
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = sov_medium_tank_chassis_50
+			research_cost_coeff = 1
+		}
+
+		research_cost = 2.5
+		start_year = 1933
+		folder = {
+			name = sov_armour_folder
+			position = { 
+				x = -4
+				y = @1934 
+			}
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			major_technologies
+			armor
+			cat_light_armor
+		}
+	}
+	
+	sov_light_tank_chassis_2 = { #T-60
+
+		enable_equipments = {
+			sov_light_tank_chassis_2
+		}
+		enable_equipment_modules = {
+			sov_light_tank_chassis_2_armor_shape_0
+			sov_light_tank_chassis_2_closed_turret_0
+		}
+		
+		sub_technologies = {
+			t60_open_superstructure
+			t60_fixed_superstructure
+		}
+		
+		dependencies = {
+			sov_amphibious_tank_2 = 1
+		}
+		
+
+		path = {
+			leads_to_tech = sov_light_tank_chassis_3
+			research_cost_coeff = 1
+		}
+		path = {
+			
+		}
+
+		research_cost = 2.5
+		start_year = 1941
+		folder = {
+			name = sov_armour_folder
+			position = { 
+				x = -4
+				y = @1941
+			}
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			major_technologies
+			armor
+			cat_light_armor
+		}
+	}
+	
+	t60_open_superstructure = {
+	
+		enable_equipment_modules = {
+			sov_light_tank_chassis_2_open_casemate_0 
+		}
+		
+		research_cost = 0.25
+		start_year = 1944
+		
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			major_technologies
+			armor_variant
+		}
+	}
+	
+	t60_fixed_superstructure = {
+	
+		enable_equipment_modules = {
+			sov_light_tank_chassis_2_closed_casemate_0 
+		}
+		
+		research_cost = 0.25
+		start_year = 1942
+		
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			major_technologies
+			armor_variant
+		}
+	}
+	
+	sov_light_tank_chassis_3 = { #T-70
+
+		enable_equipments = {
+			sov_light_tank_chassis_3
+		}
+		enable_equipment_modules = {
+			sov_light_tank_chassis_3_armor_shape_0
+			sov_light_tank_chassis_3_closed_turret_0
+		}
+		
+		sub_technologies = {
+			t70_open_superstructure
+			t70_fixed_superstructure
+		}
+		
+
+		path = {
+			leads_to_tech = sov_light_tank_chassis_4
+			research_cost_coeff = 1
+		}
+		path = {
+			
+		}
+
+		research_cost = 1
+		start_year = 1942
+		folder = {
+			name = sov_armour_folder
+			position = { 
+				x = -4
+				y = @1942
+			}
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			major_technologies
+			armor
+			cat_light_armor
+		}
+	}
+	
+	t70_open_superstructure = {
+	
+		enable_equipment_modules = {
+			sov_light_tank_chassis_3_open_casemate_0 
+		}
+		
+		research_cost = 0.25
+		start_year = 1944
+		
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			major_technologies
+			armor_variant
+		}
+	}
+	
+	t70_fixed_superstructure = {
+	
+		enable_equipment_modules = {
+			sov_light_tank_chassis_3_closed_casemate_0 
+		}
+		
+		research_cost = 0.25
+		start_year = 1943
+		
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			major_technologies
+			armor_variant
+		}
+	}
+	
+	sov_light_tank_chassis_4 = { #T-80
+
+		enable_equipments = {
+			sov_light_tank_chassis_4
+		}
+		enable_equipment_modules = {
+			sov_light_tank_chassis_4_armor_shape_0
+			sov_light_tank_chassis_4_closed_turret_0
+		}
+		
+		sub_technologies = {
+			t80_open_superstructure
+			t80_fixed_superstructure
+		}
+		
+
+		path = {
+			leads_to_tech = sov_light_tank_chassis_5
+			research_cost_coeff = 1
+		}
+		path = {
+			
+		}
+
+		research_cost = 1
+		start_year = 1943
+		folder = {
+			name = sov_armour_folder
+			position = { 
+				x = -4
+				y = @1943
+			}
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			major_technologies
+			armor
+			cat_light_armor
+		}
+	}
+	
+	t80_open_superstructure = {
+	
+		enable_equipment_modules = {
+			sov_light_tank_chassis_4_open_casemate_0 
+		}
+		
+		research_cost = 0.25
+		start_year = 1944
+		
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			major_technologies
+			armor_variant
+		}
+	}
+	
+	t80_fixed_superstructure = {
+	
+		enable_equipment_modules = {
+			sov_light_tank_chassis_4_closed_casemate_0 
+		}
+		
+		research_cost = 0.25
+		start_year = 1943
+		
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			major_technologies
+			armor_variant
+		}
+	}
+	
+	sov_light_tank_chassis_5 = { #PT-76
+
+		enable_equipments = {
+			sov_light_tank_chassis_5
+		}
+		enable_equipment_modules = {
+			sov_light_tank_chassis_5_armor_shape_0
+			sov_light_tank_chassis_5_closed_turret_0
+		}
+		
+		path = {
+			
+		}
+
+		research_cost = 2.5
+		start_year = 1950
+		folder = {
+			name = sov_armour_folder
+			position = { 
+				x = -4
+				y = @1950
+			}
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			major_technologies
+			armor
+			cat_light_armor
+		}
+	}
+	
+	sov_medium_tank_chassis_50 = { #T-50
+
+		enable_equipments = {
+			sov_medium_tank_chassis_50
+		}
+		enable_equipment_modules = {
+			sov_medium_tank_chassis_50_armor_shape_0
+			sov_medium_tank_chassis_50_closed_turret_0
+		}
+		
+		path = {
+			
+		}
+
+		research_cost = 2.5
+		start_year = 1941
+		folder = {
+			name = sov_armour_folder
+			position = { 
+				x = -1
+				y = @1941
+			}
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			major_technologies
+			armor
+			cat_medium_armor
+		}
+	}
+	
+	###### Battle Tanks ######
+	
+	sov_medium_tank_chassis_0 = { #T-28
+	
+		allow_branch = {
+			has_dlc = "No Step Back"
+		}
+
+		enable_equipments = {
+			sov_medium_tank_chassis_0
+		}
+		enable_equipment_modules = {
+			sov_medium_tank_chassis_0_armor_shape_0
+			sov_medium_tank_chassis_0_closed_turret_0
+		}
+
+		sub_technologies = {
+			
+		}
+		
+		path = {
+			leads_to_tech = sov_medium_tank_chassis_1
+			research_cost_coeff = 1
+		}
+		path = {
+			leads_to_tech = sov_heavy_tank_chassis_0
+			research_cost_coeff = 1
+		}
+
+		research_cost = 2.5
+		start_year = 1933
+		folder = {
+			name = sov_armour_folder
+			position = {
+				x = 4
+				y = @1934
+			}
+		}
+
+		ai_will_do = {
+			factor = 4
+			modifier = {
+				factor = 35
+				date > "1933.1.1"
+			}
+			modifier = {
+				factor = 35
+				date > "1934.1.1"
+			}
+			modifier = {
+				factor = 35
+				date > "1935.1.1"
+			}
+			modifier = {
+				factor = 0
+				NOT = {
+					OR = {
+						original_tag = SOV
+						has_country_flag = soviet_technologies_tree_flag
+					}
+				}
+			}
+		}
+		
+		categories = {
+			major_technologies
+			armor
+			cat_medium_armor
+		}
+	}
+	
+	sov_medium_tank_chassis_1 = { #BT-5
+	
+		enable_equipments = {
+			sov_medium_tank_chassis_1
+		}
+		enable_equipment_modules = {
+			sov_medium_tank_chassis_1_armor_shape_0
+			sov_medium_tank_chassis_1_closed_turret_0
+		}
+
+		sub_technologies = {
+			
+		}
+		
+		path = {
+			leads_to_tech = sov_medium_tank_chassis_2
+			research_cost_coeff = 1
+		}
+		path = {
+			
+		}
+
+		research_cost = 2.5
+		start_year = 1933
+		folder = {
+			name = sov_armour_folder
+			position = {
+				x = 0
+				y = @1934
+			}
+		}
+
+		ai_will_do = {
+			factor = 4
+			modifier = {
+				factor = 35
+				date > "1933.1.1"
+			}
+			modifier = {
+				factor = 35
+				date > "1934.1.1"
+			}
+			modifier = {
+				factor = 35
+				date > "1935.1.1"
+			}
+			modifier = {
+				factor = 0
+				NOT = {
+					OR = {
+						original_tag = SOV
+						has_country_flag = soviet_technologies_tree_flag
+					}
+				}
+			}
+		}
+		
+		categories = {
+			major_technologies
+			armor
+			cat_medium_armor
+		}
+	}
+	
+	sov_medium_tank_chassis_2 = { #BT-7
+	
+		enable_equipments = {
+			sov_medium_tank_chassis_2
+		}
+		enable_equipment_modules = {
+			sov_medium_tank_chassis_2_armor_shape_0
+			sov_medium_tank_chassis_2_closed_turret_0
+		}
+
+		sub_technologies = {
+			
+		}
+		
+		path = {
+			leads_to_tech = sov_medium_tank_chassis_3
+			research_cost_coeff = 1
+		}
+		path = {
+			
+		}
+
+		research_cost = 1
+		start_year = 1936
+		folder = {
+			name = sov_armour_folder
+			position = {
+				x = 2
+				y = @1936
+			}
+		}
+
+		ai_will_do = {
+			factor = 4
+			modifier = {
+				factor = 35
+				date > "1936.1.1"
+			}
+			modifier = {
+				factor = 35
+				date > "1937.1.1"
+			}
+			modifier = {
+				factor = 35
+				date > "1938.1.1"
+			}
+			modifier = {
+				factor = 0
+				NOT = {
+					OR = {
+						original_tag = SOV
+						has_country_flag = soviet_technologies_tree_flag
+					}
+				}
+			}
+		}
+		
+		categories = {
+			major_technologies
+			armor
+			cat_medium_armor
+		}
+	}
+	
+	sov_medium_tank_chassis_3 = { #T-34
+	
+		enable_equipments = {
+			sov_medium_tank_chassis_3
+		}
+		enable_equipment_modules = {
+			sov_medium_tank_chassis_3_armor_shape_0
+			sov_medium_tank_chassis_3_closed_turret_0
+		}
+
+		sub_technologies = {
+			t34_fixed_superstructure
+		}
+		
+		path = {
+			leads_to_tech = tank_t34_turret_2
+			research_cost_coeff = 1
+		}
+		path = {
+			
+		}
+
+		research_cost = 2.5
+		start_year = 1940
+		folder = {
+			name = sov_armour_folder
+			position = {
+				x = 2
+				y = @1940
+			}
+		}
+
+		ai_will_do = {
+			factor = 4
+			modifier = {
+				factor = 35
+				date > "1940.1.1"
+			}
+			modifier = {
+				factor = 35
+				date > "1941.1.1"
+			}
+			modifier = {
+				factor = 35
+				date > "1942.1.1"
+			}
+			modifier = {
+				factor = 0
+				NOT = {
+					OR = {
+						original_tag = SOV
+						has_country_flag = soviet_technologies_tree_flag
+					}
+				}
+			}
+		}
+		
+		categories = {
+			major_technologies
+			armor
+			cat_medium_armor
+		}
+	}
+	
+	t34_fixed_superstructure = {
+	
+		enable_equipment_modules = {
+			sov_medium_tank_chassis_3_closed_casemate_0 
+		}
+		
+		research_cost = 0.25
+		start_year = 1943
+		
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			major_technologies
+			armor_variant
+		}
+	}
+	
+	tank_t34_turret_2 = { #T-34 85
+	
+		enable_equipments = {
+			
+		}
+		enable_equipment_modules = {
+			sov_medium_tank_chassis_3_closed_turret_1
+		}
+		
+		path = {
+			leads_to_tech = sov_medium_tank_chassis_4
+			research_cost_coeff = 1
+		}
+		path = {
+			
+		}
+
+		research_cost = 1
+		start_year = 1944 #don't forget to add a 3 month AoT in "They will know Fear" focus
+		folder = {
+			name = sov_armour_folder
+			position = {
+				x = 2
+				y = @1944
+			}
+		}
+
+		ai_will_do = {
+			factor = 4
+			modifier = {
+				factor = 35
+				date > "1944.1.1"
+			}
+			modifier = {
+				factor = 35
+				date > "1945.1.1"
+			}
+			modifier = {
+				factor = 35
+				date > "1946.1.1"
+			}
+			modifier = {
+				factor = 0
+				NOT = {
+					OR = {
+						original_tag = SOV
+						has_country_flag = soviet_technologies_tree_flag
+					}
+				}
+			}
+		}
+		
+		categories = {
+			major_technologies
+			armor
+			cat_medium_armor
+		}
+	}
+	
+	sov_medium_tank_chassis_4 = { #T-44
+	
+		enable_equipments = {
+			sov_medium_tank_chassis_4
+		}
+		enable_equipment_modules = {
+			sov_medium_tank_chassis_4_armor_shape_0
+			sov_medium_tank_chassis_4_closed_turret_0
+		}
+
+		sub_technologies = {
+			t44_open_superstructure
+			t44_fixed_superstructure
+		}
+		
+		path = {
+			leads_to_tech = sov_medium_tank_chassis_5
+			research_cost_coeff = 1
+		}
+		path = {
+			
+		}
+
+		research_cost = 2.5
+		start_year = 1945 #AoT needed from "They will know Fear" focus to be able to get it in late 44
+		folder = {
+			name = sov_armour_folder
+			position = {
+				x = 2
+				y = @1945
+			}
+		}
+
+		ai_will_do = {
+			factor = 4
+			modifier = {
+				factor = 35
+				date > "1944.1.1"
+			}
+			modifier = {
+				factor = 35
+				date > "1945.1.1"
+			}
+			modifier = {
+				factor = 35
+				date > "1946.1.1"
+			}
+			modifier = {
+				factor = 0
+				NOT = {
+					OR = {
+						original_tag = SOV
+						has_country_flag = soviet_technologies_tree_flag
+					}
+				}
+			}
+		}
+		
+		categories = {
+			major_technologies
+			armor
+			cat_medium_armor
+		}
+	}
+	
+	t44_open_superstructure = {
+	
+		enable_equipment_modules = {
+			sov_medium_tank_chassis_4_open_casemate_0 
+		}
+		
+		research_cost = 0.25
+		start_year = 1948
+		
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			major_technologies
+			armor_variant
+		}
+	}
+	
+	t44_fixed_superstructure = {
+	
+		enable_equipment_modules = {
+			sov_medium_tank_chassis_4_closed_casemate_0 
+		}
+		
+		research_cost = 0.25
+		start_year = 1944
+		
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			major_technologies
+			armor_variant
+		}
+	}
+	
+	sov_medium_tank_chassis_5 = { #T-54-1
+	
+		enable_equipments = {
+			sov_medium_tank_chassis_5
+		}
+		enable_equipment_modules = {
+			sov_medium_tank_chassis_5_armor_shape_0
+			sov_medium_tank_chassis_5_closed_turret_0
+		}
+
+		sub_technologies = {
+			
+		}
+		
+		path = {
+			leads_to_tech = sov_medium_tank_chassis_6
+			research_cost_coeff = 1
+		}
+		path = {
+			
+		}
+
+		research_cost = 2.5
+		start_year = 1947 #AoT needed from "They will know Fear" focus to be able to get it in late 46
+		folder = {
+			name = sov_armour_folder
+			position = {
+				x = 2
+				y = @1947
+			}
+		}
+
+		ai_will_do = {
+			factor = 4
+			modifier = {
+				factor = 35
+				date > "1947.1.1"
+			}
+			modifier = {
+				factor = 35
+				date > "1948.1.1"
+			}
+			modifier = {
+				factor = 35
+				date > "1949.1.1"
+			}
+			modifier = {
+				factor = 0
+				NOT = {
+					OR = {
+						original_tag = SOV
+						has_country_flag = soviet_technologies_tree_flag
+					}
+				}
+			}
+		}
+		
+		categories = {
+			major_technologies
+			armor
+			cat_medium_armor
+		}
+	}
+	
+	sov_medium_tank_chassis_6 = { #T-54-2
+	
+		enable_equipments = {
+		}
+		enable_equipment_modules = {
+		}
+
+		sub_technologies = {
+			
+		}
+		
+		path = {
+			
+		}
+
+		research_cost = 1.5
+		start_year = 1949
+		folder = {
+			name = sov_armour_folder
+			position = {
+				x = 2
+				y = @1949
+			}
+		}
+
+		ai_will_do = {
+			factor = 4
+			modifier = {
+				factor = 35
+				date > "1949.1.1"
+			}
+			modifier = {
+				factor = 35
+				date > "1950.1.1"
+			}
+			modifier = {
+				factor = 35
+				date > "1951.1.1"
+			}
+			modifier = {
+				factor = 0
+				NOT = {
+					OR = {
+						original_tag = SOV
+						has_country_flag = soviet_technologies_tree_flag
+					}
+				}
+			}
+		}
+		
+		categories = {
+			major_technologies
+			armor
+			cat_medium_armor
+		}
+	}
+	
+	###### heavy Tanks ######
+	
+	sov_heavy_tank_chassis_0 = { #T-35
+	
+		enable_equipments = {
+			sov_heavy_tank_chassis_0
+		}
+		enable_equipment_modules = {
+			sov_heavy_tank_chassis_0_armor_shape_0
+			sov_heavy_tank_chassis_0_closed_turret_0
+		}
+
+		sub_technologies = {
+			t35_open_superstructure
+		}
+		
+		path = {
+			leads_to_tech = sov_heavy_tank_chassis_1
+			research_cost_coeff = 1
+		}
+
+		research_cost = 2.5
+		start_year = 1933
+		folder = {
+			name = sov_armour_folder
+			position = {
+				x = 8
+				y = @1934
+			}
+		}
+
+		ai_will_do = {
+			factor = 4
+			modifier = {
+				factor = 35
+				date > "1933.1.1"
+			}
+			modifier = {
+				factor = 35
+				date > "1934.1.1"
+			}
+			modifier = {
+				factor = 35
+				date > "1935.1.1"
+			}
+			modifier = {
+				factor = 0
+				NOT = {
+					OR = {
+						original_tag = SOV
+						has_country_flag = soviet_technologies_tree_flag
+					}
+				}
+			}
+		}
+		
+		categories = {
+			major_technologies
+			armor
+			cat_heavy_armor
+		}
+	}
+	
+	t35_open_superstructure = {
+	
+		enable_equipment_modules = {
+			sov_heavy_tank_chassis_0_open_casemate_0 
+		}
+		
+		research_cost = 0.25
+		start_year = 1940
+		
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			major_technologies
+			armor_variant
+		}
+	}
+	
+	sov_heavy_tank_chassis_1 = { #KV-1
+	
+		enable_equipments = {
+			sov_heavy_tank_chassis_1
+		}
+		enable_equipment_modules = {
+			sov_heavy_tank_chassis_1_armor_shape_0
+			sov_heavy_tank_chassis_1_closed_turret_0
+		}
+
+		sub_technologies = {
+			kv2_turret
+		}
+		
+		path = {
+			leads_to_tech = sov_heavy_tank_chassis_2
+			research_cost_coeff = 1
+		}
+
+		research_cost = 2.5
+		start_year = 1940 # Need 6 month AoT from "superior war machine" focus
+		folder = {
+			name = sov_armour_folder
+			position = {
+				x = 8
+				y = @1940
+			}
+		}
+
+		ai_will_do = {
+			factor = 4
+			modifier = {
+				factor = 35
+				date > "1940.1.1"
+			}
+			modifier = {
+				factor = 35
+				date > "1941.1.1"
+			}
+			modifier = {
+				factor = 35
+				date > "1942.1.1"
+			}
+			modifier = {
+				factor = 0
+				NOT = {
+					OR = {
+						original_tag = SOV
+						has_country_flag = soviet_technologies_tree_flag
+					}
+				}
+			}
+		}
+		
+		categories = {
+			major_technologies
+			armor
+			cat_heavy_armor
+		}
+	}
+	
+	kv2_turret = {
+	
+		enable_equipment_modules = {
+			sov_heavy_tank_chassis_1_closed_turret_1 
+		}
+		
+		research_cost = 0.25
+		start_year = 1940
+		
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			major_technologies
+			armor_variant
+		}
+	}
+	
+	sov_heavy_tank_chassis_2 = { #KV-1S
+	
+		enable_equipments = {
+		}
+		enable_equipment_modules = {
+			sov_heavy_tank_chassis_1_armor_shape_1
+			sov_heavy_tank_chassis_1_closed_turret_2
+		}
+
+		sub_technologies = {
+			kv1s_open_superstructure
+			kv1s_fixed_superstructure
+		}
+		
+		path = {
+			leads_to_tech = sov_heavy_tank_chassis_3
+			research_cost_coeff = 1
+		}
+
+		research_cost = 1
+		start_year = 1942 
+		folder = {
+			name = sov_armour_folder
+			position = {
+				x = 8
+				y = @1942
+			}
+		}
+
+		ai_will_do = {
+			factor = 4
+			modifier = {
+				factor = 35
+				date > "1942.1.1"
+			}
+			modifier = {
+				factor = 35
+				date > "1943.1.1"
+			}
+			modifier = {
+				factor = 35
+				date > "1944.1.1"
+			}
+			modifier = {
+				factor = 0
+				NOT = {
+					OR = {
+						original_tag = SOV
+						has_country_flag = soviet_technologies_tree_flag
+					}
+				}
+			}
+		}
+		
+		categories = {
+			major_technologies
+			armor
+			cat_heavy_armor
+		}
+	}
+	
+	kv1s_open_superstructure = {
+	
+		enable_equipment_modules = {
+			sov_heavy_tank_chassis_1_open_casemate_0 
+		}
+		
+		research_cost = 0.25
+		start_year = 1944
+		
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			major_technologies
+			armor_variant
+		}
+	}
+	
+	kv1s_fixed_superstructure = {
+	
+		enable_equipment_modules = {
+			sov_heavy_tank_chassis_1_closed_casemate_0 
+		}
+		
+		research_cost = 0.25
+		start_year = 1943
+		
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			major_technologies
+			armor_variant
+		}
+	}
+	
+	sov_heavy_tank_chassis_3 = { #IS-1
+	
+		enable_equipments = {
+			sov_heavy_tank_chassis_3
+		}
+		enable_equipment_modules = {
+			sov_heavy_tank_chassis_3_armor_shape_0
+			sov_heavy_tank_chassis_3_closed_turret_0
+		}
+
+		sub_technologies = {
+			is1_fixed_superstructure
+		}
+		
+		path = {
+			leads_to_tech = sov_heavy_tank_chassis_4
+			research_cost_coeff = 1
+		}
+
+		research_cost = 2.5
+		start_year = 1943
+		folder = {
+			name = sov_armour_folder
+			position = {
+				x = 8
+				y = @1943
+			}
+		}
+
+		ai_will_do = {
+			factor = 4
+			modifier = {
+				factor = 35
+				date > "1943.1.1"
+			}
+			modifier = {
+				factor = 35
+				date > "1944.1.1"
+			}
+			modifier = {
+				factor = 35
+				date > "1945.1.1"
+			}
+			modifier = {
+				factor = 0
+				NOT = {
+					OR = {
+						original_tag = SOV
+						has_country_flag = soviet_technologies_tree_flag
+					}
+				}
+			}
+		}
+		
+		categories = {
+			major_technologies
+			armor
+			cat_heavy_armor
+		}
+	}
+	
+	is1_fixed_superstructure = {
+	
+		enable_equipment_modules = {
+			sov_heavy_tank_chassis_3_closed_casemate_0 
+		}
+		
+		research_cost = 0.25
+		start_year = 1944
+		
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			major_technologies
+			armor_variant
+		}
+	}
+	
+	sov_heavy_tank_chassis_4 = { #IS-2
+	
+		enable_equipments = {
+			#sov_heavy_tank_chassis_4
+		}
+		enable_equipment_modules = {
+			sov_heavy_tank_chassis_3_armor_shape_1
+			sov_heavy_tank_chassis_3_closed_turret_1
+		}
+		
+		path = {
+			leads_to_tech = sov_heavy_tank_chassis_5
+			research_cost_coeff = 1
+		}
+
+		research_cost = 1
+		start_year = 1944 # Need 3 month AoT bonus from "They will know fear" focus
+		folder = {
+			name = sov_armour_folder
+			position = {
+				x = 8
+				y = @1944
+			}
+		}
+
+		ai_will_do = {
+			factor = 4
+			modifier = {
+				factor = 35
+				date > "1944.1.1"
+			}
+			modifier = {
+				factor = 35
+				date > "1945.1.1"
+			}
+			modifier = {
+				factor = 35
+				date > "1946.1.1"
+			}
+			modifier = {
+				factor = 0
+				NOT = {
+					OR = {
+						original_tag = SOV
+						has_country_flag = soviet_technologies_tree_flag
+					}
+				}
+			}
+		}
+		
+		categories = {
+			major_technologies
+			armor
+			cat_heavy_armor
+		}
+	}
+	
+	sov_heavy_tank_chassis_5 = { #IS-3
+	
+		enable_equipments = {
+			sov_heavy_tank_chassis_5
+		}
+		enable_equipment_modules = {
+			sov_heavy_tank_chassis_5_armor_shape_0
+			sov_heavy_tank_chassis_5_closed_turret_0
+		}
+
+		sub_technologies = {
+			is3_fixed_superstructure
+		}
+		
+		path = {
+			leads_to_tech = sov_heavy_tank_chassis_6
+			research_cost_coeff = 1
+		}
+
+		research_cost = 1
+		start_year = 1945
+		folder = {
+			name = sov_armour_folder
+			position = {
+				x = 8
+				y = @1945
+			}
+		}
+
+		ai_will_do = {
+			factor = 4
+			modifier = {
+				factor = 35
+				date > "1945.1.1"
+			}
+			modifier = {
+				factor = 35
+				date > "1946.1.1"
+			}
+			modifier = {
+				factor = 35
+				date > "1947.1.1"
+			}
+			modifier = {
+				factor = 0
+				NOT = {
+					OR = {
+						original_tag = SOV
+						has_country_flag = soviet_technologies_tree_flag
+					}
+				}
+			}
+		}
+		
+		categories = {
+			major_technologies
+			armor
+			cat_heavy_armor
+		}
+	}
+	
+	is3_fixed_superstructure = {
+	
+		enable_equipment_modules = {
+			
+		}
+		
+		research_cost = 0.25
+		start_year = 1945
+		
+
+		ai_will_do = {
+			factor = 0
+		}
+		
+		categories = {
+			major_technologies
+			armor_variant
+		}
+	}
+	
+	sov_heavy_tank_chassis_6 = { #IS-4
+	
+		enable_equipments = {
+			sov_heavy_tank_chassis_6
+		}
+		enable_equipment_modules = {
+			sov_heavy_tank_chassis_6_armor_shape_0
+			sov_heavy_tank_chassis_6_closed_turret_0
+		}
+
+		sub_technologies = {
+			
+		}
+		
+		path = {
+			leads_to_tech = sov_heavy_tank_chassis_7
+			research_cost_coeff = 1
+		}
+
+		research_cost = 1
+		start_year = 1946
+		folder = {
+			name = sov_armour_folder
+			position = {
+				x = 8
+				y = @1946
+			}
+		}
+
+		ai_will_do = {
+			factor = 4
+			modifier = {
+				factor = 35
+				date > "1946.1.1"
+			}
+			modifier = {
+				factor = 35
+				date > "1947.1.1"
+			}
+			modifier = {
+				factor = 35
+				date > "1948.1.1"
+			}
+			modifier = {
+				factor = 0
+				NOT = {
+					OR = {
+						original_tag = SOV
+						has_country_flag = soviet_technologies_tree_flag
+					}
+				}
+			}
+		}
+		
+		categories = {
+			major_technologies
+			armor
+			cat_heavy_armor
+		}
+	}
+	
+	sov_heavy_tank_chassis_7 = { #IS-7
+	
+		enable_equipments = {
+			sov_heavy_tank_chassis_7
+		}
+		enable_equipment_modules = {
+			sov_heavy_tank_chassis_7_armor_shape_0
+			sov_heavy_tank_chassis_7_closed_turret_0
+		}
+
+		sub_technologies = {
+			
+		}
+		
+
+		research_cost = 1
+		start_year = 1948
+		folder = {
+			name = sov_armour_folder
+			position = {
+				x = 8
+				y = @1948
+			}
+		}
+
+		ai_will_do = {
+			factor = 4
+			modifier = {
+				factor = 35
+				date > "1948.1.1"
+			}
+			modifier = {
+				factor = 35
+				date > "1949.1.1"
+			}
+			modifier = {
+				factor = 35
+				date > "1950.1.1"
+			}
+			modifier = {
+				factor = 0
+				NOT = {
+					OR = {
+						original_tag = SOV
+						has_country_flag = soviet_technologies_tree_flag
+					}
+				}
+			}
+		}
+		
+		categories = {
+			major_technologies
+			armor
+			cat_heavy_armor
+		}
+	}
 }
