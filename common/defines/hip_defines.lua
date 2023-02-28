@@ -563,6 +563,7 @@ NDefines.NAir.TOP_SPEED_DAMAGE_BONUS_FACTOR = 0				-- A factor for scaling the t
 NDefines.NAir.COMBAT_DAMAGE_STATS_MULTILPIER = 0.2
 NDefines.NAir.COMBAT_BETTER_AGILITY_DAMAGE_REDUCTION = 0 		-- How much the better agility (than opponent's) can reduce their damage to us.
 NDefines.NAir.COMBAT_BETTER_SPEED_DAMAGE_INCREASE = 1 		-- How much the better Speed (than opponent's) can reduce increase our damage to them.
+NDefines.NAir.AIR_WING_BOMB_DAMAGE_FACTOR = 1.0 --Was 2					-- Used to balance the damage done while bombing.
 NDefines.NAir.DISRUPTION_FACTOR = 0.05
 NDefines.NAir.DISRUPTION_FACTOR_CARRIER = 4.0
 NDefines.NAir.DISRUPTION_SPEED_FACTOR = 1.0
@@ -643,7 +644,7 @@ NDefines.NAir.ANTI_AIR_MAXIMUM_DAMAGE_REDUCTION_FACTOR = 0.75 --0.5
 
 NDefines.NAir.NAVAL_KAMIKAZE_DAMAGE_MULT = 10.0  -- vanilla is like 20
 
-NDefines.NAir.PORT_STRIKES_DELAY_MULTIPLIER = 0.1  --2					-- multplies HOURS_DELAY_AFTER_EACH_COMBAT if port strikes
+NDefines.NAir.PORT_STRIKES_DELAY_MULTIPLIER = 2  --2					-- multplies HOURS_DELAY_AFTER_EACH_COMBAT if port strikes
 NDefines.NAir.PORT_STRIKE_ENEMY_SUPERIORITY_LIMIT = 1.3 --1.1			-- Min air superiority for performing of naval strike
 NDefines.NAir.NAVAL_STRIKE_BASE_STR_TO_PLANES_RATIO = 1 --0.03		-- Max airbombers to do port strike comparing to strength
 
@@ -655,10 +656,10 @@ NDefines.NAir.FUEL_COST_MULT = 0.6 --0.45 --0.35 --fuel multiplier for all air m
 
 -- Naval strikes
 
-NDefines.NAir.NAVAL_STRIKE_TARGETTING_TO_AMOUNT = 0.1 -- 0.3			-- Balancing value to convert the naval_strike_targetting equipment stats to chances of how many airplanes managed to do successfull strike.
+NDefines.NAir.NAVAL_STRIKE_TARGETTING_TO_AMOUNT = 0.05 -- 0.3			-- Balancing value to convert the naval_strike_targetting equipment stats to chances of how many airplanes managed to do successfull strike.
 NDefines.NAir.NAVAL_STRIKE_DAMAGE_TO_STR = 1.0 --2.0					-- Balancing value to convert damage ( naval_strike_attack * hits ) to Strength reduction.
 NDefines.NAir.NAVAL_STRIKE_DAMAGE_TO_ORG = 0.75					-- Balancing value to convert damage ( naval_strike_attack * hits ) to Organisation reduction.
-NDefines.NAir.NAVAL_STRIKE_DETECTION_BALANCE_FACTOR = 0.5 --0.7		-- Value used to scale the surface_visibility stats to balance the gameplay, so 100% detection chance still won't spam the strikes.
+NDefines.NAir.NAVAL_STRIKE_DETECTION_BALANCE_FACTOR = 0.25 --0.7		-- Value used to scale the surface_visibility stats to balance the gameplay, so 100% detection chance still won't spam the strikes.
 
 
 NDefines.NAir.AA_INDUSTRY_AIR_DAMAGE_FACTOR = -0.12				-- 5x levels = 60% defense from bombing
