@@ -466,6 +466,7 @@ NDefines.NSupply.RAILWAY_CONVERSION_COOLDOWN_CORE = 5 --5 -- Recapturing railway
 NDefines.NSupply.RAILWAY_CONVERSION_COOLDOWN_CIVILWAR = 1
 NDefines.NSupply.RAILWAY_MIN_FLOW = 0.5		-- 5.0 -- minimum railway flow can be reduced to
 NDefines.NSupply.CAPITAL_INITIAL_SUPPLY_FLOW = 3.3 -- 5.0 starting supply from
+NDefines.NSupply.CAPITAL_SUPPLY_BASE = 0.0 --was 5.0 -- base supply for capital
 NDefines.NSupply.CAPITAL_STARTING_PENALTY_PER_PROVINCE = 0.50 -- 0.50 starting penalty that will be added as supply moves away from its origin (modified by stuff like terrain)
 NDefines.NSupply.CAPITAL_ADDED_PENALTY_PER_PROVINCE = 0.66 -- 1.2 -- added penalty as we move away from origin
 NDefines.NSupply.NODE_INITIAL_SUPPLY_FLOW = 2.0    -- 2.8
