@@ -240,7 +240,7 @@ NDefines.INFRASTRUCTURE_MUD_EFFECT = -0.65 -- -0.8 -- multiplicative effect on m
 
 -- Research Stuff 
 
-NDefines.NTechnology.MAX_SUBTECHS = 7						-- Max number of sub technologies a technology can have.
+NDefines.NTechnology.MAX_SUBTECHS = 9						-- Max number of sub technologies a technology can have.
 NDefines.NTechnology.BASE_YEAR_AHEAD_PENALTY_FACTOR = 10 -- was 6 --Base year ahead penalty
 NDefines.NTechnology.BASE_TECH_COST = 110 --100			-- Base cost for a tech. multiplied with tech cost and ahead of time penalties
 NDefines.NTechnology.DEFAULT_XP_RESEARCH_COST = 100			-- default xp cost of a research to speed up the process
