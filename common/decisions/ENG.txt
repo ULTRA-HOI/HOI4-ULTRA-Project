@@ -8470,7 +8470,7 @@ political_actions = {
 			POR = {
 				OR = {
 					has_government = ROOT
-					has_government = neutrality
+					#has_government = neutrality
 				}
 			}
 			POR = { is_in_faction = no }
@@ -8483,6 +8483,7 @@ political_actions = {
 		visible = {
 			has_war = yes
 			NOT = { has_war_with = POR }
+			has_game_rule = { rule = IHMP_HISTORY option = ALLOWED }
 		}
 		
 		complete_effect = {
@@ -9264,7 +9265,12 @@ operations = {
 			tag = ENG
 			has_government = democratic
 			has_war_with = GER
-			IRE = { exists = yes }
+			IRE = { 
+				exists = yes 
+				NOT = {
+					has_government = ROOT
+				}
+			}
 			NOT = { is_in_faction_with = IRE }
 			NOR = { has_capitulated = yes }
 			is_in_faction_with = NOR
@@ -9303,6 +9309,7 @@ operations = {
 			is_in_faction_with = NOR
 			FRA = { has_capitulated = yes }
 			is_in_faction_with = FRA
+			has_game_rule = { rule = IHMP_HISTORY option = ALLOWED }
 		}
 		
 		complete_effect = {
