@@ -8886,6 +8886,76 @@ political_actions = {
 		}
 	}
 
+	ENG_prepare_mulberry = {
+		icon = generic_construction
+	
+		allowed = {
+			tag = ENG			
+		}
+		
+		available = {
+			has_tech = tank_landing_craft
+			has_tech = construction4
+			has_war = yes
+			is_ai = no
+			num_of_civilian_factories_available_for_projects > 100
+		}
+		
+		visible = {
+			has_war = yes
+			NOT = { has_country_flag = mulberry_ready }
+		}
+		fire_only_once = no
+		cost = 50
+		days_remove = 180
+		days_re_enable = 210
+
+		modifier = {
+			industrial_capacity_dockyard = -0.2
+			civilian_factory_use = 100
+		}
+		
+		remove_effect = {
+			set_country_flag = mulberry_ready
+		}
+		
+	}
+	
+	ENG_mulberry = {
+		icon = generic_construction
+	
+		allowed = {
+			tag = ENG
+		}
+		
+		available = {
+			has_country_flag = mulberry_ready
+			has_war = yes
+		}
+		
+		visible = {
+			has_country_flag = mulberry_ready
+			has_war = yes
+		}
+		fire_only_once = no
+		cost = 50
+		days_remove = 3
+		
+		modifier = {
+			production_speed_naval_base_factor = 40
+		}
+			
+		remove_effect = {
+			clr_country_flag = mulberry_ready
+			add_equipment_to_stockpile = {
+				type = convoy_1
+				amount = -100
+				producer = ENG
+			}
+		}
+		
+	}
+
 	ENG_reestablish_eth = {
 		allowed = {
 			original_tag = ENG
