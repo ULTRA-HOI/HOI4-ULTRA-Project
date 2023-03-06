@@ -4,7 +4,7 @@
 
 add_namespace = embargo
 
-# Narvik hostile 
+# Narvik hostile to Germany
 
 country_event = {
 	id = embargo.1
@@ -35,11 +35,91 @@ country_event = {
 	immediate = {
 		hidden_effect = {
 			SWE = {
+				set_country_flag = allied_narvik
+			}
+		}
+	}
+	
+	option = {
+		name = embargo.1.a
+	}
+	
+}
+
+# Narvik friendly to Germany
+
+country_event = {
+	id = embargo.2
+	title = embargo.2.t
+	desc = embargo.2.d
+	picture = GFX_report_event_merchant_ship_01
+	
+	trigger = {
+		original_tag = GER
+		
+		any_country = {		
+			is_in_faction_with  = ROOT	
+			controls_state = 144			
+		}
+		SWE = {
+				has_country_flag = allied_narvik
+		}
+
+		
+	}
+	
+	mean_time_to_happen = {
+		days = 7
+	}
+	
+	immediate = {
+		hidden_effect = {
+			SWE = {
+				clr_country_flag = allied_narvik
+			}
+		}
+	}
+	
+	option = {
+		name = embargo.2.a
+	}
+	
+}
+
+#Trade cut with Sweden
+
+country_event = {
+	id = embargo.3
+	title = embargo.3.t
+	desc = embargo.3.d
+	picture = GFX_report_event_merchant_ship_01
+	
+	trigger = {
+		original_tag = GER
+		
+
+		SWE = {
+				has_country_flag = allied_narvik
+			}
+		SWE = {
+				has_country_flag = lulea_frozen
+			}	
+		}
+
+		
+
+	
+	mean_time_to_happen = {
+		days = 7
+	}
+	
+	immediate = {
+		hidden_effect = {
+			SWE = {
 				add_opinion_modifier = {
 					target = GER
 					modifier = cw_embargo
-				}
-				set_country_flag = allied_narvik
+				}				
 				remove_opinion_modifier = {
 					target = GER 
 					modifier = Reichmark_block
@@ -48,12 +128,1019 @@ country_event = {
 					target = GER 
 					modifier = Reichmark_block_rel
 				}
+				set_country_flag = sweden_embargo
+				
 			}
 		}
 	}
 	
 	option = {
-		name = embargo.1.a
+		name = embargo.3.a
+	}
+	
+}
+
+#Trade reopen with Sweden through Lulea
+
+country_event = {
+	id = embargo.4
+	title = embargo.4.t
+	desc = embargo.4.d
+	picture = GFX_report_event_merchant_ship_01
+	
+	trigger = {
+		original_tag = GER
+		
+			SWE = {
+				has_country_flag =  sweden_embargo
+			}
+			SWE = {
+			NOT = {
+				has_country_flag = lulea_frozen
+			}
+		}
+	}
+		
+	
+	mean_time_to_happen = {
+		days = 7
+	}
+	
+	immediate = {
+		hidden_effect = {
+				SWE = {
+					add_opinion_modifier = {
+						target = GER 
+						modifier = Reichmark_block
+					}
+					add_opinion_modifier = {
+						target = GER 
+						modifier = Reichmark_block_rel
+					}
+				}
+			
+			SWE = {
+				remove_opinion_modifier = {
+					target = GER
+					modifier = cw_embargo
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = embargo.4.a
+	}
+	
+}
+
+#Trade reopen with Sweden through Narvik
+
+country_event = {
+	id = embargo.5
+	title = embargo.5.t
+	desc = embargo.5.d
+	picture = GFX_report_event_merchant_ship_01
+	
+	trigger = {
+		original_tag = GER
+		
+			SWE = {
+				has_country_flag = sweden_embargo
+			}
+			SWE = {
+			NOT = {
+				has_country_flag = allied_narvik
+			}
+		}
+	}
+		
+	
+	mean_time_to_happen = {
+		days = 7
+	}
+	
+	immediate = {
+		hidden_effect = {
+				SWE = {
+					add_opinion_modifier = {
+						target = GER 
+						modifier = Reichmark_block
+					}
+					add_opinion_modifier = {
+						target = GER 
+						modifier = Reichmark_block_rel
+					}
+				}
+			
+			SWE = {
+				remove_opinion_modifier = {
+					target = GER
+					modifier = cw_embargo
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = embargo.5.a
+	}
+	
+}
+
+# Lulea frozen
+
+country_event = {
+	id = embargo.10
+	title = embargo.10.t
+	desc = embargo.10.d
+	picture = GFX_report_event_merchant_ship_01
+	fire_only_once = yes
+	hidden = yes
+
+	
+	trigger = {
+		original_tag = GER
+		date > 1936.10.01
+		
+	}
+	
+	mean_time_to_happen = {
+		days = 7
+	}	
+	
+	
+	immediate = {
+		hidden_effect = {
+			SWE = {
+				set_country_flag = lulea_frozen
+			}
+		}
+	}
+	
+	option = {
+		name = embargo.10.a
+	}
+	
+}
+
+# Lulea unfrozen
+
+country_event = {
+	id = embargo.37
+	title = embargo.11.t
+	desc = embargo.11.d
+	picture = GFX_report_event_merchant_ship_01
+	fire_only_once = yes
+	hidden = yes
+
+
+	
+	trigger = {
+		original_tag = GER
+		date > 1937.01.05
+		
+	}
+	
+	
+	immediate = {
+		hidden_effect = {
+			SWE = {
+				clr_country_flag = lulea_frozen
+			}
+		}
+	}
+	
+	option = {
+		name = embargo.11.a
+	}
+	
+}
+
+# Lulea frozen
+
+country_event = {
+	id = embargo.12
+	title = embargo.10.t
+	desc = embargo.10.d
+	picture = GFX_report_event_merchant_ship_01
+	fire_only_once = yes
+	hidden = yes
+
+	
+	trigger = {
+		original_tag = GER
+		date > 1937.10.01
+		
+	}
+	
+	mean_time_to_happen = {
+		days = 7
+	}	
+	
+	
+	immediate = {
+		hidden_effect = {
+			SWE = {
+				set_country_flag = lulea_frozen
+			}
+		}
+	}
+	
+	option = {
+		name = embargo.10.a
+	}
+	
+}
+
+# Lulea unfrozen
+
+country_event = {
+	id = embargo.13
+	title = embargo.11.t
+	desc = embargo.11.d
+	picture = GFX_report_event_merchant_ship_01
+	fire_only_once = yes
+	hidden = yes
+
+
+	
+	trigger = {
+		original_tag = GER
+		date > 1938.01.05
+		
+	}
+	
+	
+	immediate = {
+		hidden_effect = {
+			SWE = {
+				clr_country_flag = lulea_frozen
+			}
+		}
+	}
+	
+	option = {
+		name = embargo.11.a
+	}
+	
+}
+
+# Lulea frozen
+
+country_event = {
+	id = embargo.14
+	title = embargo.10.t
+	desc = embargo.10.d
+	picture = GFX_report_event_merchant_ship_01
+	fire_only_once = yes
+	hidden = yes
+
+	
+	trigger = {
+		original_tag = GER
+		date > 1938.10.01
+		
+	}
+	
+	mean_time_to_happen = {
+		days = 7
+	}	
+	
+	
+	immediate = {
+		hidden_effect = {
+			SWE = {
+				set_country_flag = lulea_frozen
+			}
+		}
+	}
+	
+	option = {
+		name = embargo.10.a
+	}
+	
+}
+
+# Lulea unfrozen
+
+country_event = {
+	id = embargo.15
+	title = embargo.11.t
+	desc = embargo.11.d
+	picture = GFX_report_event_merchant_ship_01
+	fire_only_once = yes
+	hidden = yes
+
+
+	
+	trigger = {
+		original_tag = GER
+		date > 1939.01.05
+		
+	}
+	
+	
+	immediate = {
+		hidden_effect = {
+			SWE = {
+				clr_country_flag = lulea_frozen
+			}
+		}
+	}
+	
+	option = {
+		name = embargo.11.a
+	}
+	
+}
+
+# Lulea frozen
+
+country_event = {
+	id = embargo.16
+	title = embargo.10.t
+	desc = embargo.10.d
+	picture = GFX_report_event_merchant_ship_01
+	fire_only_once = yes
+	hidden = yes
+
+	
+	trigger = {
+		original_tag = GER
+		date > 1939.10.01
+		
+	}
+	
+	mean_time_to_happen = {
+		days = 7
+	}	
+	
+	
+	immediate = {
+		hidden_effect = {
+			SWE = {
+				set_country_flag = lulea_frozen
+			}
+		}
+	}
+	
+	option = {
+		name = embargo.10.a
+	}
+	
+}
+
+# Lulea unfrozen
+
+country_event = {
+	id = embargo.17
+	title = embargo.11.t
+	desc = embargo.11.d
+	picture = GFX_report_event_merchant_ship_01
+	fire_only_once = yes
+	hidden = yes
+
+
+	
+	trigger = {
+		original_tag = GER
+		date > 1940.01.05
+		
+	}
+	
+	
+	immediate = {
+		hidden_effect = {
+			SWE = {
+				clr_country_flag = lulea_frozen
+			}
+		}
+	}
+	
+	option = {
+		name = embargo.11.a
+	}
+	
+}
+
+# Lulea frozen
+
+country_event = {
+	id = embargo.18
+	title = embargo.10.t
+	desc = embargo.10.d
+	picture = GFX_report_event_merchant_ship_01
+	fire_only_once = yes
+	hidden = yes
+
+	
+	trigger = {
+		original_tag = GER
+		date > 1940.10.01
+		
+	}
+	
+	mean_time_to_happen = {
+		days = 7
+	}	
+	
+	
+	immediate = {
+		hidden_effect = {
+			SWE = {
+				set_country_flag = lulea_frozen
+			}
+		}
+	}
+	
+	option = {
+		name = embargo.10.a
+	}
+	
+}
+
+# Lulea unfrozen
+
+country_event = {
+	id = embargo.19
+	title = embargo.11.t
+	desc = embargo.11.d
+	picture = GFX_report_event_merchant_ship_01
+	fire_only_once = yes
+	hidden = yes
+
+
+	
+	trigger = {
+		original_tag = GER
+		date > 1941.01.05
+		
+	}
+	
+	
+	immediate = {
+		hidden_effect = {
+			SWE = {
+				clr_country_flag = lulea_frozen
+			}
+		}
+	}
+	
+	option = {
+		name = embargo.11.a
+	}
+	
+}
+
+# Lulea frozen
+
+country_event = {
+	id = embargo.20
+	title = embargo.10.t
+	desc = embargo.10.d
+	picture = GFX_report_event_merchant_ship_01
+	fire_only_once = yes
+	hidden = yes
+
+	
+	trigger = {
+		original_tag = GER
+		date > 1941.10.01
+		
+	}
+	
+	mean_time_to_happen = {
+		days = 7
+	}	
+	
+	
+	immediate = {
+		hidden_effect = {
+			SWE = {
+				set_country_flag = lulea_frozen
+			}
+		}
+	}
+	
+	option = {
+		name = embargo.10.a
+	}
+	
+}
+
+# Lulea unfrozen
+
+country_event = {
+	id = embargo.21
+	title = embargo.11.t
+	desc = embargo.11.d
+	picture = GFX_report_event_merchant_ship_01
+	fire_only_once = yes
+	hidden = yes
+
+
+	
+	trigger = {
+		original_tag = GER
+		date > 1942.01.05
+		
+	}
+	
+	
+	immediate = {
+		hidden_effect = {
+			SWE = {
+				clr_country_flag = lulea_frozen
+			}
+		}
+	}
+	
+	option = {
+		name = embargo.11.a
+	}
+	
+}
+
+# Lulea frozen
+
+country_event = {
+	id = embargo.22
+	title = embargo.10.t
+	desc = embargo.10.d
+	picture = GFX_report_event_merchant_ship_01
+	fire_only_once = yes
+	hidden = yes
+
+	
+	trigger = {
+		original_tag = GER
+		date > 1942.10.01
+		
+	}
+	
+	mean_time_to_happen = {
+		days = 7
+	}	
+	
+	
+	immediate = {
+		hidden_effect = {
+			SWE = {
+				set_country_flag = lulea_frozen
+			}
+		}
+	}
+	
+	option = {
+		name = embargo.10.a
+	}
+	
+}
+
+# Lulea unfrozen
+
+country_event = {
+	id = embargo.23
+	title = embargo.11.t
+	desc = embargo.11.d
+	picture = GFX_report_event_merchant_ship_01
+	fire_only_once = yes
+	hidden = yes
+
+
+	
+	trigger = {
+		original_tag = GER
+		date > 1943.01.05
+		
+	}
+	
+	
+	immediate = {
+		hidden_effect = {
+			SWE = {
+				clr_country_flag = lulea_frozen
+			}
+		}
+	}
+	
+	option = {
+		name = embargo.11.a
+	}
+	
+}
+
+# Lulea frozen
+
+country_event = {
+	id = embargo.24
+	title = embargo.10.t
+	desc = embargo.10.d
+	picture = GFX_report_event_merchant_ship_01
+	fire_only_once = yes
+	hidden = yes
+
+	
+	trigger = {
+		original_tag = GER
+		date > 1943.10.01
+		
+	}
+	
+	mean_time_to_happen = {
+		days = 7
+	}	
+	
+	
+	immediate = {
+		hidden_effect = {
+			SWE = {
+				set_country_flag = lulea_frozen
+			}
+		}
+	}
+	
+	option = {
+		name = embargo.10.a
+	}
+	
+}
+
+# Lulea unfrozen
+
+country_event = {
+	id = embargo.25
+	title = embargo.11.t
+	desc = embargo.11.d
+	picture = GFX_report_event_merchant_ship_01
+	fire_only_once = yes
+	hidden = yes
+
+
+	
+	trigger = {
+		original_tag = GER
+		date > 1944.01.05
+		
+	}
+	
+	
+	immediate = {
+		hidden_effect = {
+			SWE = {
+				clr_country_flag = lulea_frozen
+			}
+		}
+	}
+	
+	option = {
+		name = embargo.11.a
+	}
+	
+}
+
+# Lulea frozen
+
+country_event = {
+	id = embargo.26
+	title = embargo.10.t
+	desc = embargo.10.d
+	picture = GFX_report_event_merchant_ship_01
+	fire_only_once = yes
+	hidden = yes
+
+	
+	trigger = {
+		original_tag = GER
+		date > 1944.10.01
+		
+	}
+	
+	mean_time_to_happen = {
+		days = 7
+	}	
+	
+	
+	immediate = {
+		hidden_effect = {
+			SWE = {
+				set_country_flag = lulea_frozen
+			}
+		}
+	}
+	
+	option = {
+		name = embargo.10.a
+	}
+	
+}
+
+# Lulea unfrozen
+
+country_event = {
+	id = embargo.27
+	title = embargo.11.t
+	desc = embargo.11.d
+	picture = GFX_report_event_merchant_ship_01
+	fire_only_once = yes
+	hidden = yes
+
+
+	
+	trigger = {
+		original_tag = GER
+		date > 1945.01.05
+		
+	}
+	
+	
+	immediate = {
+		hidden_effect = {
+			SWE = {
+				clr_country_flag = lulea_frozen
+			}
+		}
+	}
+	
+	option = {
+		name = embargo.11.a
+	}
+	
+}
+
+# Lulea frozen
+
+country_event = {
+	id = embargo.28
+	title = embargo.10.t
+	desc = embargo.10.d
+	picture = GFX_report_event_merchant_ship_01
+	fire_only_once = yes
+	hidden = yes
+
+	
+	trigger = {
+		original_tag = GER
+		date > 1945.10.01
+		
+	}
+	
+	mean_time_to_happen = {
+		days = 7
+	}	
+	
+	
+	immediate = {
+		hidden_effect = {
+			SWE = {
+				set_country_flag = lulea_frozen
+			}
+		}
+	}
+	
+	option = {
+		name = embargo.10.a
+	}
+	
+}
+
+# Lulea unfrozen
+
+country_event = {
+	id = embargo.29
+	title = embargo.11.t
+	desc = embargo.11.d
+	picture = GFX_report_event_merchant_ship_01
+	fire_only_once = yes
+	hidden = yes
+
+
+	
+	trigger = {
+		original_tag = GER
+		date > 1946.01.05
+		
+	}
+	
+	
+	immediate = {
+		hidden_effect = {
+			SWE = {
+				clr_country_flag = lulea_frozen
+			}
+		}
+	}
+	
+	option = {
+		name = embargo.11.a
+	}
+	
+}
+
+# Lulea frozen
+
+country_event = {
+	id = embargo.30
+	title = embargo.10.t
+	desc = embargo.10.d
+	picture = GFX_report_event_merchant_ship_01
+	fire_only_once = yes
+	hidden = yes
+
+	
+	trigger = {
+		original_tag = GER
+		date > 1946.10.01
+		
+	}
+	
+	mean_time_to_happen = {
+		days = 7
+	}	
+	
+	
+	immediate = {
+		hidden_effect = {
+			SWE = {
+				set_country_flag = lulea_frozen
+			}
+		}
+	}
+	
+	option = {
+		name = embargo.10.a
+	}
+	
+}
+
+# Lulea unfrozen
+
+country_event = {
+	id = embargo.31
+	title = embargo.11.t
+	desc = embargo.11.d
+	picture = GFX_report_event_merchant_ship_01
+	fire_only_once = yes
+	hidden = yes
+
+
+	
+	trigger = {
+		original_tag = GER
+		date > 1947.01.05
+		
+	}
+	
+	
+	immediate = {
+		hidden_effect = {
+			SWE = {
+				clr_country_flag = lulea_frozen
+			}
+		}
+	}
+	
+	option = {
+		name = embargo.11.a
+	}
+	
+}
+
+# Lulea frozen
+
+country_event = {
+	id = embargo.32
+	title = embargo.10.t
+	desc = embargo.10.d
+	picture = GFX_report_event_merchant_ship_01
+	fire_only_once = yes
+	hidden = yes
+
+	
+	trigger = {
+		original_tag = GER
+		date > 1947.10.01
+		
+	}
+	
+	mean_time_to_happen = {
+		days = 7
+	}	
+	
+	
+	immediate = {
+		hidden_effect = {
+			SWE = {
+				set_country_flag = lulea_frozen
+			}
+		}
+	}
+	
+	option = {
+		name = embargo.10.a
+	}
+	
+}
+
+# Lulea unfrozen
+
+country_event = {
+	id = embargo.33
+	title = embargo.11.t
+	desc = embargo.11.d
+	picture = GFX_report_event_merchant_ship_01
+	fire_only_once = yes
+	hidden = yes
+
+
+	
+	trigger = {
+		original_tag = GER
+		date > 1948.01.05
+		
+	}
+	
+	
+	immediate = {
+		hidden_effect = {
+			SWE = {
+				clr_country_flag = lulea_frozen
+			}
+		}
+	}
+	
+	option = {
+		name = embargo.11.a
+	}
+	
+}
+
+# Lulea frozen
+
+country_event = {
+	id = embargo.34
+	title = embargo.10.t
+	desc = embargo.10.d
+	picture = GFX_report_event_merchant_ship_01
+	fire_only_once = yes
+	hidden = yes
+
+	
+	trigger = {
+		original_tag = GER
+		date > 1948.10.01
+		
+	}
+	
+	mean_time_to_happen = {
+		days = 7
+	}	
+	
+	
+	immediate = {
+		hidden_effect = {
+			SWE = {
+				set_country_flag = lulea_frozen
+			}
+		}
+	}
+	
+	option = {
+		name = embargo.10.a
+	}
+	
+}
+
+# Lulea unfrozen
+
+country_event = {
+	id = embargo.35
+	title = embargo.11.t
+	desc = embargo.11.d
+	picture = GFX_report_event_merchant_ship_01
+	fire_only_once = yes
+	hidden = yes
+
+
+	
+	trigger = {
+		original_tag = GER
+		date > 1949.01.05
+		
+	}
+	
+	
+	immediate = {
+		hidden_effect = {
+			SWE = {
+				clr_country_flag = lulea_frozen
+			}
+		}
+	}
+	
+	option = {
+		name = embargo.11.a
 	}
 	
 }
