@@ -19,6 +19,22 @@ NDefines.NProduction.MIN_NAVAL_EQUIPMENT_CONVERSION_RESOURCE_COST_FACTOR = 0.2
 NDefines.NNavy.TRAINING_ACCIDENT_CHANCES = 0.005 --0.02						-- Chances one ship get damage each hour while on training
 NDefines.NNavy.TRAINING_ACCIDENT_STRENGTH_LOSS_FACTOR = 0.005 --0.05						-- Amount of strength loss in a training accident, propotional to the maximum strength of the ship
 
+--------------------------------------------------------------------------------------------------------------
+-- DETECTION STUFF
+--------------------------------------------------------------------------------------------------------------
+
+NDefines.NNavy.DETECTION_CHANCE_MULT_BASE = 0.1								-- base multiplier value for detection chance. Later the chance is an average between our detection and enemy visibility, mult by surface/sub detection chance in the following defines.
+NDefines.NNavy.DETECTION_CHANCE_MULT_RADAR_BONUS = 0.1						-- detection chance bonus from radars.
+NDefines.NNavy.DETECTION_CHANCE_MULT_AIR_SUPERIORITY_BONUS = 0.25			-- bonus from air superiority.
+
+NDefines.NNavy.CONVOY_DETECTION_CHANCE_BASE = 4.12							-- regular convoy base chance detection percentage (if this fails, no detection is done on that tick)
+NDefines.NNavy.UNIT_TRANSFER_DETECTION_CHANCE_BASE = 8.0							-- unit transfer and naval invasion base chance detection percentage (if this fails, no detection is done on that tick)
+
+NDefines.NNavy.SUB_DETECTION_CHANCE_BASE = 5									-- to start spotting a submarine, a dice is rolled and checked if it succeeds this percentage. if not, that enemy sub force won't be spotted on this tick
+NDefines.NNavy.SUB_DETECTION_CHANCE_BASE_SPOTTING_EFFECT = 0.5				-- effect of base spotting for initial spotting of pure submarine forces. this along with next value is added together and rolled against a random to start spotting
+NDefines.NNavy.SUB_DETECTION_CHANCE_SPOTTING_SPEED_EFFECT = 2.0				-- effect of spotting speed for initial spotting of pure submarine forces. this along with prev value is added together and rolled against a random to start spotting
+NDefines.NNavy.SUB_DETECTION_CHANCE_BASE_SPOTTING_POW_EFFECT = 1.5			-- effect of spotting speed will be powered by this for initial spotting of pure submarine forces. this along with prev value is added together and rolled against a random to start spotting
+NDefines.NNavy.NAVAL_COMBAT_SUB_DETECTION_FACTOR = 1      -- balance value for sub detection in combat by ships
 
 --------------------------------------------------------------------------------------------------------------
 -- CARRIER STUFF
@@ -340,17 +356,12 @@ NDefines.NAI.MAX_SCREEN_TASKFORCES_FOR_CONVOY_DEFENSE_MAX_CONVOY_THREAT = 1500 -
 -------------------------
 NDefines.NNavy.ESCAPE_SPEED_SUB_BASE = 0.12
 NDefines.NNavy.ESCAPE_SPEED_HIDDEN_SUB = 0.5
-NDefines.NNavy.CONVOY_DETECTION_CHANCE_BASE = 4.17
 
-NDefines.NNavy.SUB_DETECTION_CHANCE_BASE = 5									-- to start spotting a submarine, a dice is rolled and checked if it succeeds this percentage. if not, that enemy sub force won't be spotted on this tick
-NDefines.NNavy.SUB_DETECTION_CHANCE_BASE_SPOTTING_EFFECT = 0.5				-- effect of base spotting for initial spotting of pure submarine forces. this along with next value is added together and rolled against a random to start spotting
-NDefines.NNavy.SUB_DETECTION_CHANCE_SPOTTING_SPEED_EFFECT = 2.0				-- effect of spotting speed for initial spotting of pure submarine forces. this along with prev value is added together and rolled against a random to start spotting
-NDefines.NNavy.SUB_DETECTION_CHANCE_BASE_SPOTTING_POW_EFFECT = 1.5			-- effect of spotting speed will be powered by this for initial spotting of pure submarine forces. this along with prev value is added together and rolled against a random to start spotting
+
 NDefines.NNavy.DEPTH_CHARGES_HIT_PROFILE = 120.0	-- hit profile for depth charges. Stealthier and faster subs should be hit less
 NDefines.NNavy.DEPTH_CHARGES_HIT_CHANCE_MULT = 2 --1   -- Base hit chance is 10% for every guns. 20% for DC in late war, but early war DC should hit enough to deal constant minor damages to subs.
 NDefines.NNavy.DEPTH_CHARGES_DAMAGE_MULT = 1
 
-NDefines.NNavy.NAVAL_COMBAT_SUB_DETECTION_FACTOR = 1      -- balance value for sub detection in combat by ships
 NDefines.NNavy.DEPTH_CHARGE_STAT_FOR_SHIP_TO_BE_SUB_HUNTER = 4
 NDefines.NNavy.SUB_DETECTION_STAT_FOR_SHIP_TO_BE_SUB_HUNTER = 3
 
