@@ -23,7 +23,7 @@ NDefines.NNavy.TRAINING_ACCIDENT_STRENGTH_LOSS_FACTOR = 0.005 --0.05						-- Amo
 -- DETECTION STUFF
 --------------------------------------------------------------------------------------------------------------
 
-NDefines.NNavy.DETECTION_CHANCE_MULT_BASE = 0.1								-- base multiplier value for detection chance. Later the chance is an average between our detection and enemy visibility, mult by surface/sub detection chance in the following defines.
+NDefines.NNavy.DETECTION_CHANCE_MULT_BASE = 0.05 --was 0.1								-- base multiplier value for detection chance. Later the chance is an average between our detection and enemy visibility, mult by surface/sub detection chance in the following defines.
 NDefines.NNavy.DETECTION_CHANCE_MULT_RADAR_BONUS = 0.1						-- detection chance bonus from radars.
 NDefines.NNavy.DETECTION_CHANCE_MULT_AIR_SUPERIORITY_BONUS = 0.25			-- bonus from air superiority.
 
