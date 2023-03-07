@@ -440,6 +440,12 @@ NDefines.NMilitary.PROMOTE_LEADER_CP_COST = 60.0 -- was 40                    --
 NDefines.NMilitary.ANTI_AIR_TARGETTING_TO_CHANCE = 0.045 --0.045 --0.07			-- Balancing value to determine the chance of ground AA hitting an attacking airplane, affecting both the effective average damage done by AA to airplanes, and the reduction of damage done by airplanes due to AA support
 NDefines.NMilitary.ANTI_AIR_ATTACK_TO_AMOUNT = 0.002 --0.015 --0.005				-- Balancing value to convert equipment stat anti_air_attack to the random % value of airplanes being hit.
 
+-- strategic deployment speed
+
+NDefines.NMilitary.STRATEGIC_SPEED_INFRA_BASE = 5.0               -- Base speed of strategic redeployment when not on railways
+NDefines.NMilitary.STRATEGIC_SPEED_INFRA_MAX = 10.0               -- Additional speed of strategic redeployment on max-level infrastructure
+NDefines.NMilitary.STRATEGIC_SPEED_RAIL_BASE = 15.0               -- Base speed of strategic redeployment when on railways
+NDefines.NMilitary.STRATEGIC_SPEED_RAIL_MAX = 25.0                -- Additional speed of strategic redeployment on max-level railways
 
 -- Supply 
 
