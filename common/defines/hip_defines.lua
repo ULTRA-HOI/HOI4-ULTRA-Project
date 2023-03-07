@@ -442,9 +442,9 @@ NDefines.NMilitary.ANTI_AIR_ATTACK_TO_AMOUNT = 0.002 --0.015 --0.005				-- Balan
 
 -- strategic deployment speed
 
-NDefines.NMilitary.STRATEGIC_SPEED_INFRA_BASE = 5.0               -- Base speed of strategic redeployment when not on railways
+NDefines.NMilitary.STRATEGIC_SPEED_INFRA_BASE = 2.5 --was 5.0               -- Base speed of strategic redeployment when not on railways
 NDefines.NMilitary.STRATEGIC_SPEED_INFRA_MAX = 10.0               -- Additional speed of strategic redeployment on max-level infrastructure
-NDefines.NMilitary.STRATEGIC_SPEED_RAIL_BASE = 15.0               -- Base speed of strategic redeployment when on railways
+NDefines.NMilitary.STRATEGIC_SPEED_RAIL_BASE = 7.5 --was 15.0               -- Base speed of strategic redeployment when on railways
 NDefines.NMilitary.STRATEGIC_SPEED_RAIL_MAX = 25.0                -- Additional speed of strategic redeployment on max-level railways
 
 -- Supply 
