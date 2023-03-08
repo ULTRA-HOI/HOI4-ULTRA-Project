@@ -2,8 +2,9 @@
 -- Production STUFF
 --------------------------------------------------------------------------------------------------------------
 
-NDefines.NProduction.DEFAULT_MAX_NAV_FACTORIES_PER_LINE = 10
-NDefines.NProduction.CAPITAL_SHIP_MAX_NAV_FACTORIES_PER_LINE = 10
+NDefines.NProduction.DEFAULT_MAX_NAV_FACTORIES_PER_LINE = 5
+NDefines.NProduction.CAPITAL_SHIP_MAX_NAV_FACTORIES_PER_LINE = 4+6
+NDefines.NProduction.FLOATING_HARBOR_MAX_NAV_FACTORIES_PER_LINE = 5
 NDefines.NProduction.CONVOY_MAX_NAV_FACTORIES_PER_LINE = 15
 NDefines.NProduction.EQUIPMENT_MODULE_ADD_XP_COST = 1.0
 NDefines.NProduction.EQUIPMENT_MODULE_REPLACE_XP_COST = 1.0
