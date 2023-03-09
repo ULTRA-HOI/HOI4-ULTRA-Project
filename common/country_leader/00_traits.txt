@@ -5694,21 +5694,9 @@ leader_traits = {
 	repair_and_refurbishment_plant = { #NSB - Repairs & Refit
 		experience_gain_navy = 0.05
 		random = no
-		equipment_bonus = {
-			screen_ship = {
-				build_cost_ic = -0.05
-			}
-			submarine = {
-				build_cost_ic = -0.05
-			}
-			capital_ship = {
-				build_cost_ic = -0.05
-			}
-			carrier = {
-				build_cost_ic = -0.05
-			}
-		}
-
+		repair_speed_factor = 0.15
+		refit_ic_cost = -0.1
+		refit_speed = 0.1
 		ai_will_do = {
 			factor = 1
 		}
@@ -5738,17 +5726,8 @@ leader_traits = {
 		random = no
 		experience_gain_navy = 0.05
 		equipment_bonus = {
-			carrier = {
-				build_cost_ic = 0.1
-			}
-			capital_ship = {
-				build_cost_ic = 0.1
-			}
-			screen_ship = {
-				build_cost_ic = 0.1
-			}
 			submarine = {
-				build_cost_ic = -0.1 sub_visibility = -0.1 surface_visibility = -0.1 naval_speed = 0.1 naval_range = 0.1
+				build_cost_ic = -0.05 sub_visibility = -0.05 surface_visibility = -0.05 naval_speed = 0.1 naval_range = 0.1
 			}
 		}
 
@@ -5761,17 +5740,8 @@ leader_traits = {
 		random = no
 		experience_gain_navy = 0.05
 		equipment_bonus = {
-			carrier = {
-				build_cost_ic = 0.1
-			}
-			capital_ship = {
-				build_cost_ic = 0.1
-			}
-			screen_ship = {
-				build_cost_ic = 0.1
-			}
 			submarine = {
-				build_cost_ic = -0.15 sub_visibility = -0.1 surface_visibility = -0.1 naval_speed = 0.15 naval_range = 0.1
+				build_cost_ic = -0.1 sub_visibility = -0.05 surface_visibility = -0.05 naval_speed = 0.1 naval_range = 0.1
 			}
 		}
 
@@ -5783,15 +5753,20 @@ leader_traits = {
 	pacific_fleet_naval_manufacturer = { #longer ranged, CVs favor larger hangers over armor
 		random = no
 		experience_gain_navy = 0.05
+		navy_carrier_air_attack_factor = 0.05
+		sortie_efficiency = 0.1
 		equipment_bonus = {
 			carrier = {
 				naval_range = 0.05
+				anti_air_attack = 0.1
 			}
 			capital_ship = {
 				naval_range = 0.05
+				anti_air_attack = 0.1
 			}
 			screen_ship = {
-				naval_range = 0.1
+				naval_range = 0.05
+				anti_air_attack = 0.1
 			}
 			submarine = {
 				naval_range = 0.05
@@ -5806,15 +5781,15 @@ leader_traits = {
 	atlantic_fleet_naval_manufacturer = { #armored carriers, slightly buffed cap ships
 		random = no
 		experience_gain_navy = 0.05
+		navy_carrier_air_targetting_factor = -0.02
+		navy_weather_penalty = -0.25
 		equipment_bonus = {
 			carrier = {
-				armor_value = 0.2
-				max_strength = 0.025
+				armor_value = 0.15
+				max_strength = 0.03
 			}
 			capital_ship = {
-				armor_value = 0.05
-				hg_attack = 0.03
-				lg_attack = 0.03
+				reliability = 0.05
 				max_strength = 0.01
 			}
 		}
@@ -5831,10 +5806,11 @@ leader_traits = {
 			capital_ship = {
 				armor_value = 0.05 
 				hg_attack = 0.05
+				lg_attack = 0.05
 			}
 			screen_ship = {
-				torpedo_attack = 0.10
-				sub_detection = -0.10
+				torpedo_attack = 0.05
+				sub_detection = -0.05
 			}
 		}
 
@@ -5854,7 +5830,7 @@ leader_traits = {
 				surface_visibility = -0.05 naval_range = 0.05
 			}
 			submarine = {
-				sub_visibility = -0.05 naval_range = 0.1 build_cost_ic = -0.05
+				sub_visibility = -0.05 surface_visibility = -0.05 naval_range = 0.1 build_cost_ic = -0.05
 			}
 		}
 
@@ -5867,6 +5843,9 @@ leader_traits = {
 		random = no
 		experience_gain_navy = 0.05
 		equipment_bonus = {
+			carrier = {
+				sub_detection = 0.1
+			}
 			screen_ship = {
 				naval_range = 0.05 sub_detection = 0.1 naval_speed = 0.01 build_cost_ic = -0.05
 			}
@@ -5880,12 +5859,14 @@ leader_traits = {
 	mediterranean_naval_manufacturer = {
 		random = no
 		experience_gain_navy = 0.05
+		navy_carrier_air_targetting_factor = 0.02
+		navy_weather_penalty = 0.40
 		equipment_bonus = {
 			capital_ship = {
-				naval_range = -0.25 naval_speed = 0.1
+				naval_range = -0.20 naval_light_gun_hit_chance_factor = 0.05 naval_heavy_gun_hit_chance_factor = 0.05
 			}
 			screen_ship = {
-				naval_range = -0.25 naval_speed = 0.1
+				naval_range = -0.20 naval_light_gun_hit_chance_factor = 0.05
 			}
 		}
 
@@ -5898,17 +5879,11 @@ leader_traits = {
 		random = no
 		experience_gain_navy = 0.05
 		equipment_bonus = {
-			carrier = {
-				build_cost_ic = -0.03 naval_range = -0.2
-			}
-			capital_ship = {
-				build_cost_ic = -0.03 armor_value = -0.05 hg_attack = -0.05 naval_range = -0.2
-			}
 			screen_ship = {
-				build_cost_ic = -0.03 naval_range = -0.2
+				build_cost_ic = -0.05 max_strength = -0.1 naval_torpedo_hit_chance_factor = 0.15 lg_attack = -0.15 lg_armor_piercing = -0.15 
 			}
 			submarine = {
-				build_cost_ic = -0.03 naval_range = -0.2
+				build_cost_ic = -0.05
 			}
 		}
 
