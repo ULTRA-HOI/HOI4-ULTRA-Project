@@ -1,5 +1,88 @@
 # Changelog
 
+### 0.16.1
+
+### Features
+
+- Old Mulberry decisions reimplemented and improved
+- Improved content for Weserübung/Narvik/Sweden mini-game with german access to swedish resources
+- UK officers reworked and new added
+
+### Balance
+
+- Port Strike effects are now sane
+- Ship range module rebalanced
+- Various balance changes for infantry designer
+- UK can't invade Ireland nor ally Portugal in historical setting
+- German Autarky-led economic crash is less absurd
+- Lowered penalties on german autarky
+- Reduced Nazi penalties to Consumer Goods
+- economic mobilisation laws have more effect on factory efficiency growth
+- switching to an equipment variant is less penalizing
+- Nerfed manpower from collectivist propaganda
+- Slowed Mob speed bonus from military service
+- increased convoy requirement for unit transport/naval invasion by a factor of 10
+- Screening ratio for convoys rebalanced
+- buffs to early british tanks
+- nerf to subs visibility
+- chances to spot ships lowered
+- Ship engine refit increased
+- UK gets more political power with characters/focuses
+- Nat. Spain should correctly have upper hand in the SCW
+- Shallow Seas are less penalizing for ships in terms of visibility
+- Nuclear Reactor cost halved so USA can get the atomic bomb on time
+
+### Database
+
+- long range modules on ships affects naval damages (represent bigger amount of ammo stored )
+- Recalculated treaty ship limits
+- Lower German ship limit to 16k IC
+- Added back a few more option for ship main batteries
+- Capitals no longer gives free supply
+- Added a few resource puppet states of UK/Netherlands as workaround against teleporting oil bug
+- Added a bunch of new naval designers
+- Manpower from conscription laws is lowered accross the board
+- Extra limitations on conscription laws for democratic countries
+- Tanks steel cost uniformized
+- Everything needs more coal to work
+- Airbase and Naval base max lvl increased to 40
+- Ports lvl on map changed to fit with new max lvl
+- Strategic redeployment is slower, especialy with low infra/railroads
+- Snorkels techs are available later
+- Max dockyard for screen ships set to 5
+- UK correctly starts with volunteers only law
+- More coal available in Soviet Union
+
+### Map
+
+- reworked railways/supply hubs in Northern Russia
+- new batch of VP added in Russia
+- Western Siberian coast west of Arkhangelsk is impassable
+
+### QoL
+
+- Added more displayed decimals for designers
+- Better subtech icons for infantry techs
+- Added new subtechs icons
+- Added more country unique localizations for infantry techs
+
+### AI
+
+- AI should no longer suicide fleets in German Bight
+- UK AI should garrison better Malta and Cyprus
+- AI Italy correctly sends more divisions to help Nat. Spain
+- AI Soviet Union should build and use some heavy tanks
+- AI vs AI Eastern Front should be a bit less in Axis favor
+
+### Bugfixes 
+
+- fixed various issues with infantry designer
+- carrier wing bug fixed
+- fixed rockets missiles not working
+- relevant planes can do naval patrol missions
+- removed ghost AFV poluting AI
+- fixed UK starting with manpower shortage
+
 ### 0.16
 
 ### Features
