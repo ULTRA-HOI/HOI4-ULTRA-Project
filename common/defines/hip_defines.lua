@@ -186,7 +186,7 @@ NDefines.NProduction.LICENSE_EQUIPMENT_SPEED_NOT_FACTION = -0.20		-- MIC speed m
 NDefines.NProduction.LICENSE_EQUIPMENT_UPGRADE_XP_FACTOR = 2.0		-- XP cost for upgrading licensed equipment
 NDefines.NProduction.LICENSE_EQUIPMENT_SPEED_NO_LICENSE = -0.80			-- Penalty for producing non licensed equipment
 
-NDefines.NProduction.CONVERSION_SPEED_BONUS = 0						    --Modifier to the production speed when converting equipment
+NDefines.NProduction.CONVERSION_SPEED_BONUS = 4						    --Modifier to the production speed when converting equipment
 
 NDefines.NProduction.CAPITULATE_STOCKPILES_RATIO = 0.75				--How much equipment from deployed divisions will be transferred on capitulation
 NDefines.NProduction.ANNEX_FUEL_RATIO = 0.8			--How much fuel will be transferred on annexation
