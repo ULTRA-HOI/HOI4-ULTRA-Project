@@ -652,7 +652,7 @@ NDefines.NAir.ANTI_AIR_MAXIMUM_DAMAGE_REDUCTION_FACTOR = 0.75 --0.5
 
 NDefines.NAir.NAVAL_KAMIKAZE_DAMAGE_MULT = 10.0  -- vanilla is like 20
 
-NDefines.NAir.PORT_STRIKES_DELAY_MULTIPLIER = 2  --2					-- multplies HOURS_DELAY_AFTER_EACH_COMBAT if port strikes
+NDefines.NAir.PORT_STRIKES_DELAY_MULTIPLIER = 4  --2					-- multplies HOURS_DELAY_AFTER_EACH_COMBAT if port strikes
 NDefines.NAir.PORT_STRIKE_ENEMY_SUPERIORITY_LIMIT = 1.3 --1.1			-- Min air superiority for performing of naval strike
 NDefines.NAir.NAVAL_STRIKE_BASE_STR_TO_PLANES_RATIO = 0.25 --0.03		-- Max airbombers to do port strike comparing to strength
 
