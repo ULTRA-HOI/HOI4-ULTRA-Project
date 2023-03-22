@@ -1,50 +1,51 @@
+# options for map_icon_category:
+# For land units: infantry,armored,other
+# For sea units: ship,transport,uboat
+
 sub_units = {
-	anti_tank_brigade = {
-		abbreviation = "ANT"
-		sprite = anti_tank
+	anti_air_brigade = {
+		abbreviation = "ANA"			  
+		sprite = infantry
 		map_icon_category = infantry
-		priority = 198
-		ai_priority = 100
+		priority = 151
+		ai_priority = 10
 		active = yes
-		
+
 		type = {
 			infantry
-			anti_tank
+			anti_air
 		}
 		
 		group = infantry
 		
 		categories = {
-			category_front_line
 			category_army
 			category_line_artillery
-			category_at
+			category_aa
 		}		
 		
-		combat_width = 2
+		combat_width = 0
+		
+		#Size Definitions
+		max_organisation = 20
+		default_morale = 0.1
+		max_strength = 0.6
+		manpower = 500
+		training_time = 120
+		weight = 5
+		
+		transport = anti_air_equipment
+		
 
 		need = {
-			anti_tank_equipment = 36
+			anti_air_equipment = 36
 		}
-		manpower = 500
-		max_organisation = 20
-		default_morale = 0.0
-		max_strength = 0.6
-		training_time = 120
-		weight = 0.5
-
-		transport = anti_tank_equipment
 
 		plains = {
 			attack = 0
 			defence = 0.4
 			movement = 0
 		}
-		atoll = {
-			attack = 0
-			defence = 0.4
-			movement = 0
-		}		
 		forest = {
 			attack = -0.3
 			defence = 0.05
@@ -75,11 +76,6 @@ sub_units = {
 			defence = -0.05
 			movement = 0
 		}
-		rocky_island = {
-			attack = -0.5
-			defence = -0.05
-			movement = 0
-		}
 		desert = {
 			attack = -0.1
 			defence = 0.35
@@ -94,34 +90,45 @@ sub_units = {
 		}
 	}
 	
-	mot_anti_tank_brigade = {
-		abbreviation = "MAT"
-		sprite = anti_tank
+	mot_anti_air_brigade = {
+		abbreviation = "MAA"			  
+		sprite = infantry
 		map_icon_category = infantry
-		priority = 198
-		ai_priority = 100
+		priority = 151
+		ai_priority = 10
 		active = yes
-		
+
 		type = {
 			infantry
 			motorized
-			anti_tank
+			anti_air
 		}
+		
 		
 		group = mobile
 		
 		categories = {
-			category_front_line
 			category_army
 			category_line_artillery
-			category_at
+			category_aa
 		}		
 		
-		combat_width = 2
+		combat_width = 0
+		
+		#Size Definitions
+		max_organisation = 20
+		default_morale = 0.1
+		max_strength = 0.6
+		manpower = 500
+		training_time = 120
+		weight = 7.5
+		
+		maximum_speed = -0.2
+		
 
 		need = {
-			anti_tank_equipment = 36
-			motorized_equipment = 84
+			anti_air_equipment = 36
+			motorized_equipment = 54
 		}
 		
 		transport = motorized_equipment
@@ -129,15 +136,6 @@ sub_units = {
 		essential = {
 			motorized_equipment
 		}
-		
-		manpower = 500
-		max_organisation = 20
-		default_morale = 0.0
-		max_strength = 0.6
-		training_time = 120
-		weight = 0.75
-
-		maximum_speed = -0.2
 		
 		# motorized buffs combat abilities
 		defense = 0.2
