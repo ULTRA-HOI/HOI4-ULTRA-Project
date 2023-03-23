@@ -1291,8 +1291,58 @@ foreign_politics = {
 		}
 	}
 	
+	pearl_harbor_strike = {
+
+		icon = generic_naval
 	
-	
+		allowed = {
+			tag = JAP
+		}
+		
+		available = {
+			has_completed_focus = JAP_strike_on_the_southern_resource_area
+			has_navy_size = {
+				unit = carrier
+				size > 6
+			}
+			NOT = {
+				has_war_with = USA
+			}
+			IF = {
+				limit = {is_ai = no}
+				command_power > 50
+				has_idea = isoroku_yamamoto
+			}
+			IF = {
+				limit = {is_ai = yes}
+				date > 1941.12.6
+			}
+		}
+
+		cost = 100
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 100
+		}
+		
+		visible = {
+			tag = JAP
+			has_completed_focus = JAP_strike_south_doctrine
+		}
+		
+		complete_effect = {
+			random_other_country = {
+				limit = {
+					original_tag = JAP
+				}
+				country_event = { id = usa.300 hours = 5 }
+			}
+			set_country_flag = pearl_harbor
+			add_command_power = -50
+		}
+	}
 	
 	JAP_us_ultimatum_mission = {
 	

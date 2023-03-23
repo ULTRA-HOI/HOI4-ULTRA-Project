@@ -2847,3 +2847,96 @@ country_event = { #Ask for Nehterland and UK to embargo Japan
 	}
 	
 }
+
+#Pearl Harbor Strike
+country_event = {
+	id = usa.300
+	title = usa.300.t
+	desc = usa.300.d
+	picture = GFX_report_event_generic_sign_treaty1
+
+	is_triggered_only = yes
+	
+	#lost ships
+	option = {
+		ai_chance = {
+			factor = 100
+		}
+		name = usa.300.a
+		JAP = {
+			declare_war_on = {
+				target = USA
+				type = annex_everything
+			}
+		}
+		random_list = {
+			10 = {							
+				random_other_country = {
+					limit = {
+						original_tag = USA
+					}
+					destroy_ships = {
+						type = nrm_ship_hull_destroyer
+						count = 1
+					}
+					destroy_ships = {
+						type = nrm_ship_hull_capital
+						count = 2
+					}
+				}
+			}
+			70 = {
+							
+				random_other_country = {
+					limit = {
+						original_tag = USA
+					}
+					destroy_ships = {
+						type = nrm_ship_hull_destroyer
+						count = 2
+					}
+					destroy_ships = {
+						type = nrm_ship_hull_capital
+						count = 4
+					}
+				}
+			}
+			20 = {
+							
+				random_other_country = {
+					limit = {
+						original_tag = USA
+					}
+					destroy_ships = {
+						type = nrm_ship_hull_destroyer
+						count = 4
+					}
+					destroy_ships = {
+						type = nrm_ship_hull_capital
+						count = 6
+					}
+				}
+			}
+		}
+		USA = { country_event = { id = USA.301 } }
+	}
+}
+
+country_event = {
+	id = usa.301
+	title = usa.301.t
+	desc = usa.301.d
+	picture = GFX_report_event_generic_sign_treaty1
+
+	is_triggered_only = yes
+	
+	option = {
+		ai_chance = {
+			factor = 100
+		}
+		name = usa.301.a
+		add_war_support = 0.1
+		add_stability = 0.1
+		USA_congress_large_support = yes
+	}
+}
