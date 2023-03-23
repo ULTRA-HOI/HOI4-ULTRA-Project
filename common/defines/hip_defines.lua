@@ -220,7 +220,7 @@ NDefines.NTrade.MAX_MONTH_TRADE_FACTOR = 150			-- was 50	-- This is the maximum 
 -- Building Stuff
 
 NDefines.NBuildings.MAX_BUILDING_LEVELS = 200			-- Max levels a building can have.
-NDefines.NBuildings.AIRBASE_CAPACITY_MULT = 96		-- Each level of airbase building multiplied by this, gives capacity (max operational value). Value is int. 1 for each airplane.
+NDefines.NBuildings.AIRBASE_CAPACITY_MULT = 72		-- Each level of airbase building multiplied by this, gives capacity (max operational value). Value is int. 1 for each airplane.
 NDefines.NBuildings.BASE_FACTORY_REPAIR = 0.4			-- Default repair rate before factories are taken into account
 NDefines.NBuildings.BASE_FACTORY_REPAIR_FACTOR = 6.0	-- Factory speed modifier when repairing.
 NDefines.NBuildings.MAX_SHARED_SLOTS = 225				-- Max slots shared by factories
