@@ -5,7 +5,7 @@
 ### Features
 
 - Disabled port strike mission. 
-Due to vanilla issues, we can't balance it right. The issues are in paradox database already. We'll re-enable the mission once paradox have fixed it.
+Due to vanilla issues, we can't balance it right. The issues are in known by pdx. We'll re-enable the mission once paradox have fixed it.
 - Battle of Taranto + Pearl Harbor Attack Decisions added to compensate the previous change
 
 ### Balance
@@ -21,6 +21,7 @@ Due to vanilla issues, we can't balance it right. The issues are in paradox data
 - Reduced night penalty bonus accross the board
 - Ground Mission XP Gain reduced
 - adjustments to org and recovery rate
+- Additional Doctrine Cost Reductions for USA + Canada
 
 ### Database
 
@@ -47,6 +48,7 @@ Due to vanilla issues, we can't balance it right. The issues are in paradox data
 - fixed US starting inf tech
 - Added USA infantry tech bonuses in focuses
 - licensing penalties are back
+- USA Coal Decisions Update
 
 ### Map
 
