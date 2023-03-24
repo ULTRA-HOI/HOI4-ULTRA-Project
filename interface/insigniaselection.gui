@@ -1,0 +1,333 @@
+guiTypes = {
+	
+	containerWindowType = {
+		name = "color_picker_preset_entry2"
+		position = { x = 0 y  = 0 }
+		size = { width = 25 height = 25 }
+		Orientation = upper_left
+		
+		buttonType = {
+			name = "button"
+			quadTextureSprite = "GFX_tiled_window_color_picker"
+			size = { x = 25 y = 25 }
+			position = { x=0 y =0}	
+			scale = 0.8
+		}
+	}
+	
+	containerWindowType = {
+		name = "insignia_list_entry"
+		position = { x = 0 y = 0 }	#MPU
+		size = { width = 77 height = 47 }	#MPU
+
+		buttonType = {
+			name ="button"
+			spriteType = "GFX_theatre_army_shield"	
+			position = { x = 13 y = 5 }	#MPU
+			scale = 1.0
+		}
+	}
+	
+	containerWindowType = {
+		name = "insignia_selection_window"
+		position = {x=-354 y=-369 }	#MPU
+		size = { width = 708 height = 738 }	#MPU
+		Orientation = center
+		clipping = no
+		animation_time = 400
+		moveable = yes
+		
+		background = {
+			name = "Background"
+			spriteType ="GFX_tiled_plain_bg" #MPU
+		}
+		
+		containerWindowType = { #MPU
+			name ="header" #MPU
+			position = { x=0 y = 0} #MPU
+			size = { width = 100%% height = 41 } #MPU
+			clipping = no #MPU
+
+			Background = { #MPU
+				name ="top_bg" #MPU
+				quadTextureSprite = "GFX_mpu_tiled_header" #MPU
+				position = { x=0 y=0 } #MPU
+				alwaysTransparent = yes #MPU
+			} #MPU
+		} #MPU
+		
+		buttonType = {
+			name = "btn_close"
+			position = { x = -40 y = 3 } #MPU
+			spriteType ="GFX_NV_btn_close"
+			pdx_tooltip = "DESELECT_UNIT"
+			shortcut = "ESCAPE"
+			clicksound = click_close
+			pdx_tooltip = "CLOSE"
+
+			Orientation = "UPPER_RIGHT" #MPU
+		}
+		
+		instantTextboxType = {
+			name = "header_text"
+			position = { x = 38 y = 0 }	#MPU
+			textureFile = ""
+			font = "hoi_36header"
+			borderSize = {x = 0 y = 0}
+			text = "CHOOSE_INSIGNIA"
+			maxWidth = 470
+			maxHeight = 20
+			format = left
+		}
+
+		containerWindowType = {
+			name ="group_detail"
+			position = { x=0 y = 36 }	#MPU
+			size = { width=100%% height = 90 }	#MPU
+			clipping = no	#MPU
+		
+			background = {
+				name = "Background"
+				spriteType = "GFX_tiled_window2_1b_border"	#MPU
+				alwaysTransparent = yes	#MPU
+			}
+
+			iconType = {
+				name ="group_icon"
+				spriteType = "GFX_theatre_army_shield"	
+				position = { x = 33 y = 23 }	#MPU
+				scale = 1
+			}
+			
+			iconType = {								#MPU
+				name ="group_name_bgnd"					#MPU
+				spriteType = "GFX_group_name_bg"		#MPU
+				position = { x = 100 y = 33 }			#MPU
+			}
+			
+			editBoxType = {
+				name = "group_name"
+				position = { x = 108 y = 36 }	#MPU
+				size = { x = 260 y = 23 }	#MPU
+				font = "hoi_18"
+				text = ""
+				#maxWidth = 300
+				#maxHeight = 20
+				#format = left
+			}
+		}
+		
+		containerWindowType = {
+			name = "insignia_list"
+			position = { x = 0 y = 120 }	#MPU
+			size = { width = 708 height = 464 }	#MPU
+			verticalScrollbar = "right_vertical_slider"	
+			scroll_wheel_factor = 45		#MPU faster scrolling
+			
+			margin = { top = 6 left = 6 bottom = 6 right = 6 }	#MPU
+			background = {
+				name = "Background"
+				position = { x = 0 y = 0 }	#MPU
+				spriteType ="GFX_mpu_tiled_dialog" #MPU
+			}
+			
+			gridBoxType = {
+				name = "item_grid"
+				position = { x = 0 y = 0 } #MPU move the icon grid
+				size = { width = 100%% height = 630 } #MPU resize the icon grid 14 rows x 45
+				slotsize = { width = 67 height = 45 } #MPU resize the icon slots
+				max_slots_horizontal = 10 #MPU increase the icon slots to 10
+				format = "UPPER_LEFT"
+			}	
+		}
+		
+		containerWindowType = {
+			name = "color_selection_container"
+			position = { x=0 y = 578 }	#MPU
+			size = { width=100%% height = 160 }	#MPU
+			margin = { left = 84 }	#MPU
+			clipping = no	#MPU
+		
+			Background = {	#MPU
+				name ="top_bg"	#MPU
+				spriteType = "GFX_tiled_window2_1b_border"	#MPU
+				alwaysTransparent = yes	#MPU
+			}	#MPU
+			
+			#MPU overwrite presets
+			gridBoxType = {
+				name = "presets"
+				position = { x = 320 y = 43 }	# MPU
+				size = { width = 300 height = 100 } #MPU
+				slotsize = { width = 25 height = 25 }
+				format = "UPPER_LEFT"
+				max_slots_horizontal = 3	#MPU
+				max_slots_vertical = 3		#MPU
+			}
+			
+			iconType = {
+				name = "hue_slider_background"
+				spriteType = "GFX_hue_slider_background"
+				position = { x = 110 y = 48 }	#MPU
+			}
+			
+			scrollbarType = {
+				name = "hue_slider"	
+				slider = "listboxSliderButton"
+				track= "listboxTrackButton"
+				leftbutton = "downButton"
+				rightbutton = "upButton"
+				size = {x =232 y =15 }
+				position = {x= 94 y = 48}	#MPU
+				priority = 100			
+				borderSize = {x = 12 y = 12}	
+				maxValue = 1	#MPU
+				minValue = 0	#MPU
+				stepSize = 0.01	#MPU
+				startValue = 0
+				horizontal = 1
+
+				guiButtonType = {
+					name = "listboxSliderButton"	
+					quadTextureSprite = "GFX_color_picker_scroll_drager"
+					position = { x=0 y =0}
+				}
+
+				guiButtonType = {
+					name = "listboxTrackButton"
+					quadTextureSprite = "GFX_color_picker_scroll_track"
+					position = { x=12 y =12}		
+				}	
+
+				guiButtonType = {
+					parent = "listboxSliderButton"
+					name = "upButton"
+					quadTextureSprite = "GFX_scroll_up"
+					position = { x=0 y =0}	
+				}
+				
+				guiButtonType = {
+					parent = "listboxSliderButton"
+					name = "downButton"
+					quadTextureSprite = "GFX_scroll_down"
+					position = { x=0 y =120}	
+				}
+			}
+			
+			iconType = {
+				name = "sat_slider_background"
+				spriteType = "GFX_sat_slider_background"
+				position = { x = 110 y = 72 }	#MPU
+			}
+			
+			scrollbarType = {
+				name = "sat_slider"	
+				slider = "listboxSliderButton"
+				track= "listboxTrackButton"
+				leftbutton = "downButton"
+				rightbutton = "upButton"
+				size = { x = 232 y = 15 }	#MPU
+				position = { x = 94 y = 72 }	#MPU
+				priority = 100			
+				borderSize = {x = 12 y = 12}	
+				maxValue =1
+				minValue =0
+				stepSize =0.01
+				startValue = 0
+				horizontal = 1
+
+				guiButtonType = {
+					name = "listboxSliderButton"	
+					quadTextureSprite = "GFX_color_picker_scroll_drager"
+					position = { x=0 y =0}
+				}
+
+				guiButtonType = {
+					name = "listboxTrackButton"
+					quadTextureSprite = "GFX_color_picker_scroll_track"
+					position = { x=12 y =12}		
+				}	
+
+				guiButtonType = {
+					parent = "listboxSliderButton"
+					name = "upButton"
+					quadTextureSprite = "GFX_scroll_up"
+					position = { x=0 y =0}	
+				}
+				
+				guiButtonType = {
+					parent = "listboxSliderButton"
+					name = "downButton"
+					quadTextureSprite = "GFX_scroll_down"
+					position = { x=0 y =120}	
+				}
+			}
+			
+			iconType = {
+				name = "val_slider_background"
+				spriteType = "GFX_val_slider_background"
+				position = {x= 110 y = 96 }	#MPU
+			}
+			
+			scrollbarType = {
+				name = "val_slider"	
+				slider = "listboxSliderButton"
+				track= "listboxTrackButton"
+				leftbutton = "downButton"
+				rightbutton = "upButton"
+				size = {x =232 y =15 }
+				position = { x = 94 y = 96 }	#MPU
+				priority = 100			
+				borderSize = {x = 12 y = 12}	
+				maxValue =1
+				minValue =0
+				stepSize =0.01
+				startValue = 0
+				horizontal = 1
+
+				guiButtonType = {
+					name = "listboxSliderButton"	
+					quadTextureSprite = "GFX_color_picker_scroll_drager"
+					position = { x=0 y =0}
+				}
+
+				guiButtonType = {
+					name = "listboxTrackButton"
+					quadTextureSprite = "GFX_color_picker_scroll_track"
+					position = { x=12 y =12}		
+				}	
+
+				guiButtonType = {
+					parent = "listboxSliderButton"
+					name = "upButton"
+					quadTextureSprite = "GFX_scroll_up"
+					position = { x=0 y =0}	
+				}
+
+				guiButtonType = {
+					parent = "listboxSliderButton"
+					name = "downButton"
+					quadTextureSprite = "GFX_scroll_down"
+					position = { x=0 y =120}	
+				}
+			}
+		}
+
+		checkBoxType = {
+			name = "fleet_color_checkbox"
+			position = { x = -198 y = 66 }	#MPU
+			quadTextureSprite ="GFX_generic_checkbox"
+			Orientation = "UPPER_RIGHT"	#MPU
+			clicksound = click_checkbox
+		}
+
+		instantTextboxType = {
+			name = "fleet_color_label"
+			position = { x = -158 y = 71 }	#MPU
+			Orientation = "UPPER_RIGHT"	#MPU
+			font = "hoi_18mbs"
+			text = "USE_FLEET_COLOR"
+		}
+
+	}
+}
