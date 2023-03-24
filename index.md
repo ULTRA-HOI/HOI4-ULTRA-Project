@@ -1,5 +1,83 @@
 # Changelog
 
+### 0.16.2
+
+### Features
+
+- Disabled port strike mission. 
+Due to vanilla issues, we can't balance it right. The issues are in paradox database already. We'll re-enable the mission once paradox have fixed it.
+- Battle of Taranto + Pearl Harbor Attack Decisions added to compensate the previous change
+
+### Balance
+
+- Germany gets first jet fighter a few month earlier to be able to match historical production
+- Theorist cost lowered to 100/75
+- Halve the time required for STRAT bombers to reach full mission efficiency
+- nerf logistics company
+- Remove resources to market bonus from autarky economy
+- reduced base IC output to 1.0
+- increased costs on most infantry equipment
+- Reduced USA conscription focus PP gain
+- Reduced night penalty bonus accross the board
+- Ground Mission XP Gain reduced
+- adjustments to org and recovery rate
+
+### Database
+
+- Some tweaks for US generals
+- USA naval designers added
+- Soviets no longer start with PPD-40
+- Soviet inf starting techs fixed
+- Soviet inf tech focus boosts changed
+- arty brigades now needs 450 manpower
+- light/medium tanks brigade have same brigade as heavy one
+- Added uniforms tech for Finland
+- Carrier Sub Detection added to Base Strike
+- Added night penalty reduction stats on a bunch of aircrafts having historicaly night radars
+- Reduced synth rubber values from techs/focuses
+- Removed the new tech slot added last patch
+- removed menjikinag cores in China to avoid supply issues
+- integrated puppets gets back overlord bonus modifiers
+- UK/Netherland oil-pupetts are now integrated puppets
+- Added minors Localisation
+- Re-introduced a couple of night-fighter aircrafts
+- Air wings reduced to 72/36/6
+- Reduced number of starting aircraft for Germany
+- Swapped places of Fire Brigades and Armoured Infantry doctrines
+- fixed US starting inf tech
+- Added USA infantry tech bonuses in focuses
+- licensing penalties are back
+
+### Map
+
+- Added 2 new terrain types Atoll and Rocky Islands with reduced base combat width
+- Add new naval regions to Central and West Atlantic
+- Chukchi Peninsula is now impassable
+
+### QoL
+
+- Condense ship classes and aircraft types in the intel ledger
+- Fix overlapping text in officer corps
+- Added Tooltip for Dockyard Limits in Production window
+- Updated doctrine names & description
+- Added more fighter group names for Germany
+- MPU icon port finalized
+
+### Fixes
+
+- Fixed political advisors traits for the US
+- Corrected description of GER rocketry focus
+- Fix pre-dreadnought ship designer GUI
+- fixed conversions
+- SOV/US volunteer cap decision fix
+- Fixed Soviets from getting positive encirclement penalty
+- Vichy France Establishment Fixed
+- Beaufort/Beaufighter fix
+
+### AI
+
+- Updated AI preferences naval designers
+
 ### 0.16.1
 
 ### Features
