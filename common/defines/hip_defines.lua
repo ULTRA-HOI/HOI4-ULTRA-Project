@@ -626,8 +626,8 @@ NDefines.NAir.ANTI_AIR_PLANE_DAMAGE_CHANCE = 0.1 --0.1					-- Anti Air Gun hit c
 NDefines.NAir.BOMBING_TARGETING_RANDOM_FACTOR = 0.40						-- was 0.25	-- % of picking the wrong target
 
 NDefines.NAir.AIR_WING_COUNTRY_XP_FROM_TRAINING_FACTOR = 0.005 				-- was 0.005	--Factor on country Air XP gained from wing training
-NDefines.NAir.COMBAT_DAMAGE_SCALE = 0.75				-- was 0.1			-- Higher value = more shot down planes
-NDefines.NAir.COMBAT_DAMAGE_SCALE_CARRIER = 6 --6                    -- same as above but used inside naval combat for carrier battles
+NDefines.NAir.COMBAT_DAMAGE_SCALE = 2				-- was 0.1			-- Higher value = more shot down planes
+NDefines.NAir.COMBAT_DAMAGE_SCALE_CARRIER = 16 --6                    -- same as above but used inside naval combat for carrier battles
 
 NDefines.NAir.AIR_WING_XP_TRAINING_MISSION_GAIN_DAILY = 4.0 --3.3 						--Daily gain when running training exercise mission
 NDefines.NAir.AIR_WING_XP_AIR_VS_AIR_COMBAT_GAIN = 4.0 --0.8 							--Wings in combat gain extra XP	
