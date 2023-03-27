@@ -5,7 +5,6 @@ NDefines.NGame.GAME_SPEED_SECONDS = { 1.0, 0.5, 0.25, 0.1, 0.0 } -- game speeds 
 NDefines.NGame.LAG_DAYS_FOR_PAUSE = 100						-- Days of client lag for pause of gamespeed.
 NDefines.NGame.COMBAT_LOG_MAX_MONTHS = 18
 NDefines.NGame.MESSAGE_TIMEOUT_DAYS = 30					     	 -- WAS 60 	| less messages lying around at the top of your screen
-NDefines.NGame.NAVAL_COMBAT_CONVOY_SIZE = 0.20				-- Size of a convoy in a naval battle. Used to determine the size of the fleet when intercepting convoy.
 
 -- Diplo Stuff
 
