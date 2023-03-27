@@ -28,8 +28,8 @@ NDefines.NNavy.DETECTION_CHANCE_MULT_BASE = 0.05 --was 0.1								-- base multip
 NDefines.NNavy.DETECTION_CHANCE_MULT_RADAR_BONUS = 0.1						-- detection chance bonus from radars.
 NDefines.NNavy.DETECTION_CHANCE_MULT_AIR_SUPERIORITY_BONUS = 0.25			-- bonus from air superiority.
 
-NDefines.NNavy.CONVOY_DETECTION_CHANCE_BASE = 4.12							-- regular convoy base chance detection percentage (if this fails, no detection is done on that tick)
-NDefines.NNavy.UNIT_TRANSFER_DETECTION_CHANCE_BASE = 8.0							-- unit transfer and naval invasion base chance detection percentage (if this fails, no detection is done on that tick)
+NDefines.NNavy.CONVOY_DETECTION_CHANCE_BASE = 2.06 --was 4.12							-- regular convoy base chance detection percentage (if this fails, no detection is done on that tick)
+NDefines.NNavy.UNIT_TRANSFER_DETECTION_CHANCE_BASE = 4.0 --was 8.0							-- unit transfer and naval invasion base chance detection percentage (if this fails, no detection is done on that tick)
 
 NDefines.NNavy.SUB_DETECTION_CHANCE_BASE = 7.5									-- to start spotting a submarine, a dice is rolled and checked if it succeeds this percentage. if not, that enemy sub force won't be spotted on this tick
 NDefines.NNavy.SUB_DETECTION_CHANCE_BASE_SPOTTING_EFFECT = 0.5				-- effect of base spotting for initial spotting of pure submarine forces. this along with next value is added together and rolled against a random to start spotting
