@@ -448,7 +448,7 @@ NDefines.NMilitary.STRATEGIC_SPEED_RAIL_MAX = 25.0                -- Additional 
 
 -- Supply 
 
-NDefines.NCountry.SUPPLY_CONVOY_FACTOR = 0.6					-- How many convoys each supply needs
+NDefines.NCountry.SUPPLY_CONVOY_FACTOR = 0.75					-- How many convoys each supply needs
 NDefines.NBuildings.SUPPLY_PORT_LEVEL_THROUGHPUT = 1.0   -- supply throughput per level of naval base
 NDefines.NMilitary.ATTRITION_DAMAGE_ORG = 0.1
 NDefines.NMilitary.ATTRITION_EQUIPMENT_LOSS_CHANCE = 0.02 --0.05
