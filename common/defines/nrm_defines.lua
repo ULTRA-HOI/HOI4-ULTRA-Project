@@ -87,7 +87,7 @@ NDefines.NNavy.CONVOY_SINKING_SPILLOVER = 1.0 --0.5                 				-- Damag
 --NDefines.NNavy.ANTI_AIR_TARGETTING_TO_CHANCE = 0.02							-- Balancing value to convert averaged equipment stats (anti_air_targetting and naval_strike_agility) to probability chances of airplane being hit by navies AA.
 NDefines.NNavy.ANTI_AIR_ATTACK_TO_AMOUNT = 0.001 						-- Balancing value to convert equipment stat anti_air_attack to the random % value of airplanes being hit. Was .0025 in ultra; Lower this value so that plane lost are less
 NDefines.NNavy.AA_EFFICIENCY_PENALTY_ON_MINIMUM_POSITIONING	= 0.1           -- AA penalty at 0% positioning
-NDefines.NNavy.SCREENING_EFFICIENCY_PENALTY_ON_MINIMUM_POSITIONING = 0.5  		-- was 0.5 -- screening efficiency (screen to capital ratio) at 0% positioning
+NDefines.NNavy.SCREENING_EFFICIENCY_PENALTY_ON_MINIMUM_POSITIONING = 0.75  		-- was 0.5 -- screening efficiency (screen to capital ratio) at 0% positioning
 NDefines.NNavy.NAVAL_TRANSFER_BASE_SPEED = 6                                -- was 6 -- base speed of units on water being transported
 NDefines.NNavy.COMBAT_BASE_HIT_CHANCE = 0.05									-- base chance for hit
 NDefines.NNavy.COMBAT_EVASION_TO_HIT_CHANCE = 0.025							-- we take ship evasion stats, and mult by this value, so it gives hit chance reduction. So if reduction is 0.025 and ship evasion = 10, then there will be 0.25 (25%) lower hit chance. (Fe. 50% base -25% from evasion +10% bcoz it's very close).
@@ -186,10 +186,10 @@ NDefines.NNavy.SPOTTING_ENEMY_SPOTTING_MULTIPLIER_FOR_RUNNING_AWAY = 0.8
 NDefines.NNavy.SPOTTING_SPEED_MULT_FOR_CATCHING_UP = 0.25
 
 NDefines.NNavy.BASE_ESCAPE_SPEED = 0.01
-NDefines.NNavy.SPEED_TO_ESCAPE_SPEED = 1.5
-NDefines.NNavy.ESCAPE_SPEED_PER_COMBAT_DAY = 0.2
+NDefines.NNavy.SPEED_TO_ESCAPE_SPEED = 1.0
+NDefines.NNavy.ESCAPE_SPEED_PER_COMBAT_DAY = 0.01
 
-NDefines.NNavy.MAX_ESCAPE_SPEED_FROM_COMBAT_DURATION = 0.3
+NDefines.NNavy.MAX_ESCAPE_SPEED_FROM_COMBAT_DURATION = 0.15
 
 NDefines.NNavy.BASE_SPOTTING_EFFECT_FOR_INITIAL_CONVOY_SPOTTING = 0.35
 NDefines.NNavy.SPOTTING_SPEED_EFFECT_FOR_INITIAL_CONVOY_SPOTTING = 0.70
@@ -204,7 +204,7 @@ NDefines.NNavy.POSITIONING_PENALTY_HOURLY_DECAY_FOR_NEWLY_JOINED_SHIPS = 0.05
 NDefines.NNavy.DAMAGE_PENALTY_ON_MINIMUM_POSITIONING = 0.75 -- damage penalty at 0% positioning
 NDefines.NNavy.MAX_ANTI_AIR_REDUCTION_EFFECT_ON_INCOMING_AIR_DAMAGE = 0.75 -- was 0.5 in vanilla.
 NDefines.NNavy.SCREEN_RATIO_FOR_FULL_SCREENING_FOR_CAPITALS = 3.0
-NDefines.NNavy.SCREEN_RATIO_FOR_FULL_SCREENING_FOR_CONVOYS = 0.2 --was 0.5	-- this screen ratio to num convoys is needed for full screening beyond screen line
+NDefines.NNavy.SCREEN_RATIO_FOR_FULL_SCREENING_FOR_CONVOYS = 0.25 --was 0.5	-- this screen ratio to num convoys is needed for full screening beyond screen line
 NDefines.NNavy.CAPITAL_RATIO_FOR_FULL_SCREENING_FOR_CARRIERS = 0.125
 NDefines.NNavy.CAPITAL_RATIO_FOR_FULL_SCREENING_FOR_CONVOYS = 0.025  -- this capital ratio to num convoys is needed for full screening beyond screen line
 NDefines.NNavy.NAVAL_COMBAT_AIR_CARRIER_TARGET_SCORE = 500
