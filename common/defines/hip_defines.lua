@@ -604,8 +604,8 @@ NDefines.NAir.MISSION_COMMAND_POWER_COSTS = {  -- command power cost per plane t
 		0.0, -- NAVAL_PATROL
 }
 
-NDefines.NAir.MIN_PLANE_COUNT_PARADROP = 36
-NDefines.NAir.BASE_UNIT_WEIGHT_IN_TRANSPORT_PLANES = 36
+NDefines.NAir.MIN_PLANE_COUNT_PARADROP = 72
+NDefines.NAir.BASE_UNIT_WEIGHT_IN_TRANSPORT_PLANES = 64
 
 -- Night effect (brutal)
 
