@@ -620,7 +620,8 @@ NDefines.NAir.AIR_WING_XP_TRAINING_MISSION_ACCIDENT_FACTOR = 0.5 --1.5 				--Tra
 
 NDefines.NAir.AIR_WING_FLIGHT_SPEED_MULT = 0.02			-- was 0.02	-- Global speed multiplier for airplanes (affects fe.transferring to another base)
 
-NDefines.NAir.ANTI_AIR_PLANE_DAMAGE_FACTOR = 0.8				-- was 0.8	-- Anti Air Gun Damage factor
+NDefines.NAir.AA_INDUSTRY_AIR_DAMAGE_FACTOR = -0.12				-- 5x levels = 60% defense from bombing
+NDefines.NAir.ANTI_AIR_PLANE_DAMAGE_FACTOR = 0.4				-- was 0.8	-- Anti Air Gun Damage factor
 NDefines.NAir.ANTI_AIR_PLANE_DAMAGE_CHANCE = 0.1 --0.1					-- Anti Air Gun hit chance
 NDefines.NAir.BOMBING_TARGETING_RANDOM_FACTOR = 0.40						-- was 0.25	-- % of picking the wrong target
 
@@ -669,8 +670,6 @@ NDefines.NAir.NAVAL_STRIKE_DAMAGE_TO_ORG = 0.75					-- Balancing value to conver
 NDefines.NAir.NAVAL_STRIKE_DETECTION_BALANCE_FACTOR = 0.25 --0.7		-- Value used to scale the surface_visibility stats to balance the gameplay, so 100% detection chance still won't spam the strikes.
 
 
-NDefines.NAir.AA_INDUSTRY_AIR_DAMAGE_FACTOR = -0.12				-- 5x levels = 60% defense from bombing
-NDefines.NAir.ANTI_AIR_PLANE_DAMAGE_FACTOR = 0.4					-- was 0.8 -- Anti Air Gun Damage factor
 
 NDefines.NCountry.AIR_SUPPLY_CONVERSION_SCALE = 0.005	--0.05				-- Conversion scale for planes to air supply
 NDefines.NCountry.AIR_SUPPLY_DROP_EXPIRATION_HOURS = 120  --168            -- Air drop length after being dropped
