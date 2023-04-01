@@ -451,8 +451,10 @@ NDefines.NMilitary.STRATEGIC_SPEED_RAIL_MAX = 25.0                -- Additional 
 NDefines.NCountry.SUPPLY_CONVOY_FACTOR = 0.75					-- How many convoys each supply needs
 NDefines.NBuildings.SUPPLY_PORT_LEVEL_THROUGHPUT = 1.0   -- supply throughput per level of naval base
 NDefines.NMilitary.ATTRITION_DAMAGE_ORG = 0.1
-NDefines.NMilitary.ATTRITION_EQUIPMENT_LOSS_CHANCE = 0.02 --0.05
-NDefines.NMilitary.ATTRITION_EQUIPMENT_PER_TYPE_LOSS_CHANCE = 0.6 -- Chance for loosing equipment when suffer attrition. Scaled up the stronger attrition is. Then scaled down by equipment reliability.
+--DONT TOUCH
+NDefines.NMilitary.ATTRITION_EQUIPMENT_LOSS_CHANCE = 0.02 --DONT TOUCH
+NDefines.NMilitary.ATTRITION_EQUIPMENT_PER_TYPE_LOSS_CHANCE = 0.6 -- DONT TOUCH Attrition is not changed in defines. Do tweaks to terrain or weather attrition if needed
+
 NDefines.NMilitary.SUPPLY_USE_FACTOR_MOVING = 10                -- supply use when moving/fighting vs inactive
 NDefines.NMilitary.SUPPLY_USE_FACTOR_INACTIVE = 0.95
 NDefines.NMilitary.SUPPLY_GRACE = 72 --108		-- troops always carry 5 days of food and supply
