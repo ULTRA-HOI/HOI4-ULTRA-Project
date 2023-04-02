@@ -52,6 +52,9 @@ NDefines.NNavy.ALL_SHIPS_ACTIVATE_TIME = 36 --8                                 
 --NDefines.NNavy.BEST_CAPITALS_TO_SCREENS_RATIO = 0.33 --0.25 							-- capitals / screens ratio used for creating FEX groups in naval combat
 NDefines.NNavy.CARRIER_STACK_PENALTY = 5
 NDefines.NNavy.CARRIER_STACK_PENALTY_EFFECT = 0.075 --0.1
+
+NDefines.NNavy.HIGHER_CARRIER_RATIO_POSITIONING_PENALTY_FACTOR = 0.1 --was 0.2 -- penalty if other side has stronger carrier air force
+NDefines.NNavy.MAX_CARRIER_RATIO_POSITIONING_PENALTY_FACTOR = 0.1 --was 0.2 -- max penalty from stronger carrier air force
 --------------------------------------------------------------------------------------------------------------
 -- MISC NAVY STUFF
 --------------------------------------------------------------------------------------------------------------
