@@ -1,88 +1,272 @@
 equipment_modules = {
-	
+
 	### equipment_type = rocket is the designation for Assault Gun 
 	
 	### Assault Guns and SPG might use the same guns but in a different way, so stats calculations are different!
 	# Every howitzer eligible for both AG and SPG should be clonned to have a version limited to SPG only (can't be used in normal tanks and AG). No need SPG variant under 75mm.
 	
-	########## Small Caliber Machine Guns ############
+	### Small Weapons ###
+	### ATRs, Autocannons, MGs, HMGs, flamethrowers
 	
-	########## Anti Tank Rifles ############
 	
-	########## 20 mm ############
-	
-	tank_20_cannon_1 = {
+	tank_20_autocannon_1 = {
 		abbreviation = "sc1"
 		category = tank_20_cannon_1
-		gui_category = tank_20_cannon_category
+		gui_category = small_armament_category
 		sfx = sfx_ui_sd_module_turret
 		
-		forbid_equipment_type = artillery
-		forbid_equipment_type = rocket
-		forbid_equipment_type = anti_air
-
-		#add_stats = {
-		#	soft_attack = 1.7
-		#	hard_attack = 2.3
-		#	ap_attack = 16
-		#	build_cost_ic = 0.15
-		#	maximum_speed = 0
-		#	reliability = 0
-		#}
+		allowed_module_categories = {
+			tank_shell_type_slot = {
+				shell_tank_20_autocannon_1_category
+			}
+		}
 		
+		
+
 		add_stats = {
-			soft_attack = 6.6
-			hard_attack = 2.3
-			ap_attack = 16
+			#soft_attack = 6.6
+			#hard_attack = 2.3
+			#ap_attack = 16
 			build_cost_ic = 0.55
 			maximum_speed = 0
 			reliability = 0
 		}
 		
-		#stats taken from autocannon as this doesnt represent the anti tank rifle anymore
 		dismantle_cost_ic = 1
 		xp_cost = 1
 	}
 	
-	#tank_20_cannon_2 = {
-	#	abbreviation = "sc2"
-	#	category = tank_20_cannon_2
-	#	gui_category = tank_20_cannon_category
-	#	sfx = sfx_ui_sd_module_turret
-	#	parent = tank_20_cannon_1
-	#	
-	#	forbid_equipment_type = artillery
-	#	forbid_equipment_type = anti_tank
-	#	forbid_equipment_type = anti_air
-	#	
-	#	add_stats = {
-	#		soft_attack = 6.6
-	#		hard_attack = 2.3
-	#		ap_attack = 16
-	#		build_cost_ic = 0.55
-	#		maximum_speed = 0
-	#		reliability = 0
-	#	}
-	#	dismantle_cost_ic = 1
-	#	xp_cost = 1
-	#}
 	
-	########## 37 mm ############
+	### Infantry Guns ###
 	
-	tank_37_howitzer_0 = {
-		abbreviation = "sc0"
-		category = tank_37_howitzer_0
-		gui_category = tank_37_cannon_category
+	tank_75_infantry_gun_0 = {
+		abbreviation = "mc1"
+		category = tank_infantry_support_75_howitzer
+		gui_category = infantry_gun_category
 		sfx = sfx_ui_sd_module_turret
 		
-		forbid_equipment_type = anti_tank
-		forbid_equipment_type = anti_air
-		forbid_equipment_type = artillery
+		allowed_module_categories = {
+			tank_shell_type_slot = {
+				shell_tank_75_infantry_gun_0_category
+			}
+		}
+		
+		allow_equipment_type = rocket
+		forbid_equipment_type = amphibious
+		forbid_equipment_type_exact_match = armor
+		
+		add_stats = {
+			#soft_attack = 15.5
+			#hard_attack = 4.1
+			#ap_attack = 31
+			build_cost_ic = 1.29
+			maximum_speed = 0
+			reliability = 0
+		}
+		dismantle_cost_ic = 1
+		xp_cost = 1
+	}
+	
+	tank_150_infantry_gun_0 = {
+		abbreviation = "sh1"
+		category = tank_infantry_support_150_howitzer
+		gui_category = infantry_gun_category
+		sfx = sfx_ui_sd_module_turret
+		
+		allowed_module_categories = {
+			tank_shell_type_slot = {
+				shell_tank_150_infantry_gun_0_category
+			}
+		}
+		
+		allow_equipment_type = rocket
+		forbid_equipment_type = amphibious
+		forbid_equipment_type_exact_match = armor
+		
+		
+		add_stats = {
+			#soft_attack = 35.6
+			#hard_attack = 9.8
+			#ap_attack = 71
+			build_cost_ic = 2.96
+			maximum_speed = 0
+			reliability = 0
+		}
+		dismantle_cost_ic = 1
+		xp_cost = 1
+	}
+
+	### Artillery Guns ###
+	
+	tank_75_SPG_0 = {
+		abbreviation = "mc1"
+		category = tank_infantry_support_75_howitzer_SPG
+		gui_category = artillery_category
+		sfx = sfx_ui_sd_module_turret
+		
+		allowed_module_categories = {
+			tank_shell_type_slot = {
+				shell_tank_75_SPG_0_category
+			}
+		}
+		
+		allow_equipment_type = artillery
+		forbid_equipment_type = amphibious
+		forbid_equipment_type_exact_match = armor
+		
+		add_stats = {
+			#soft_attack = 15.5
+			#hard_attack = 4.1
+			#ap_attack = 31
+			build_cost_ic = 1.29
+			maximum_speed = 0
+			reliability = 0
+		}
+		dismantle_cost_ic = 1
+		xp_cost = 1
+	}
+	
+	tank_88_SPG_0 = {
+		abbreviation = "hc1"
+		category = tank_88_howitzer_SPG
+		gui_category = artillery_category
+		sfx = sfx_ui_sd_module_turret
+		
+		allowed_module_categories = {
+			tank_shell_type_slot = {
+				shell_tank_88_SPG_0_category
+			}
+		}
+		
+		allow_equipment_type = artillery
+		forbid_equipment_type = amphibious
+		forbid_equipment_type_exact_match = armor
+		
+		
+		
+		add_stats = {
+			#soft_attack = 0
+			#hard_attack = 0
+			#ap_attack = 0
+			build_cost_ic = 0
+			maximum_speed = 0
+			reliability = 0
+		}
+		dismantle_cost_ic = 1
+		xp_cost = 1
+	}
+	
+	tank_105_SPG_0 = {
+		abbreviation = "hc1"
+		category = tank_105_howitzer_SPG
+		gui_category = artillery_category
+		sfx = sfx_ui_sd_module_turret
+		
+		allowed_module_categories = {
+			tank_shell_type_slot = {
+				shell_tank_105_SPG_0_category
+			}
+		}
+		
+		allow_equipment_type = artillery
+		forbid_equipment_type = amphibious
+		forbid_equipment_type_exact_match = armor
+		
+		
+		
+		add_stats = {
+			#soft_attack = 30.0
+			#hard_attack = 7.3
+			#ap_attack = 46
+			build_cost_ic = 2.5
+			maximum_speed = 0
+			reliability = 0
+		}
+		dismantle_cost_ic = 1
+		xp_cost = 1
+	}
+	
+	tank_125_SPG_0 = {
+		abbreviation = "sh1"
+		category = tank_125_howitzer_SPG
+		gui_category = artillery_category
+		sfx = sfx_ui_sd_module_turret
+		
+		allowed_module_categories = {
+			tank_shell_type_slot = {
+				shell_tank_125_SPG_0_category
+			}
+		}
+		
+		allow_equipment_type = artillery
+		forbid_equipment_type = amphibious
+		forbid_equipment_type_exact_match = armor
+		
+		
+		
+		add_stats = {
+			#soft_attack = 34.6
+			#hard_attack = 5.2
+			#ap_attack = 37
+			build_cost_ic = 2.89
+			maximum_speed = 0
+			reliability = 0
+		}
+		dismantle_cost_ic = 1
+		xp_cost = 1
+	}
+	
+	tank_150_SPG_0 = {
+		abbreviation = "sh1"
+		category = tank_infantry_support_150_howitzer_SPG
+		gui_category = artillery_category
+		sfx = sfx_ui_sd_module_turret
+		
+		allowed_module_categories = {
+			tank_shell_type_slot = {
+				shell_tank_150_SPG_0_category
+			}
+		}
+		
+		allow_equipment_type = artillery
+		forbid_equipment_type = amphibious
+		forbid_equipment_type_exact_match = armor
+		
+		
+		add_stats = {
+			#soft_attack = 35.6
+			#hard_attack = 9.8
+			#ap_attack = 71
+			build_cost_ic = 2.96
+			maximum_speed = 0
+			reliability = 0
+		}
+		dismantle_cost_ic = 1
+		xp_cost = 1
+	}
+
+	### Standard Tank Weapons ###
+	### 37mm-40mm Guns
+
+	tank_37_cannon_0 = {
+		abbreviation = "sc0"
+		category = tank_37_howitzer_0
+		gui_category = howitzer_category
+		sfx = sfx_ui_sd_module_turret
+		
+		allowed_module_categories = {
+			tank_shell_type_slot = {
+				shell_tank_37_cannon_0_category
+			}
+		}
+		
+		allow_equipment_type = anti_tank
+		
 
 		add_stats = {
-			soft_attack = 2.9
-			hard_attack = 0.8
-			ap_attack = 8
+			#soft_attack = 2.9
+			#hard_attack = 0.8
+			#ap_attack = 8
 			build_cost_ic = 0.24
 			maximum_speed = 0
 			reliability = 0
@@ -94,13 +278,18 @@ equipment_modules = {
 	tank_37_cannon_1 = {
 		abbreviation = "sc1"
 		category = tank_37_cannon_1
-		gui_category = tank_37_cannon_category
+		gui_category = cannon_category
 		sfx = sfx_ui_sd_module_turret
-		parent = tank_37_howitzer_0
+		#parent = tank_37_howitzer_0
 		
-		forbid_equipment_type = artillery
-		forbid_equipment_type = anti_tank
-		forbid_equipment_type = anti_air
+		allowed_module_categories = {
+			tank_shell_type_slot = {
+				shell_tank_37_cannon_1_category
+			}
+		}
+		
+		allow_equipment_type = anti_tank
+		
 		
 		add_stats = {
 			soft_attack = 6.8
@@ -117,13 +306,18 @@ equipment_modules = {
 	tank_37_cannon_2 = {
 		abbreviation = "sc2"
 		category = tank_37_cannon_2
-		gui_category = tank_37_cannon_category
+		gui_category = high_velocity_category
 		sfx = sfx_ui_sd_module_turret
-		parent = tank_37_cannon_1
+		#parent = tank_37_cannon_1
 		
-		forbid_equipment_type = artillery
+		allowed_module_categories = {
+			tank_shell_type_slot = {
+				shell_tank_37_cannon_2_category
+			}
+		}
 		
-		forbid_equipment_type = anti_air
+		allow_equipment_type = anti_tank
+		
 		
 		add_stats = {
 			soft_attack = 8.3
@@ -136,18 +330,76 @@ equipment_modules = {
 		dismantle_cost_ic = 1
 		xp_cost = 1
 	}
-	
-	########## 50 mm ############
+
+	tank_37_cannon_3 = {
+		abbreviation = "sc2"
+		category = tank_37_cannon_3
+		gui_category = high_velocity_category
+		sfx = sfx_ui_sd_module_turret
+		#parent = tank_37_cannon_1
+		
+		allowed_module_categories = {
+			tank_shell_type_slot = {
+				shell_tank_37_cannon_3_category
+			}
+		}
+		
+		allow_equipment_type = anti_tank
+		
+		
+		add_stats = {
+			soft_attack = 8.3
+			hard_attack = 5.8
+			ap_attack = 32
+			build_cost_ic = 0.69
+			maximum_speed = 0
+			reliability = 0
+		}
+		dismantle_cost_ic = 1
+		xp_cost = 1
+	}
+
+	### 45mm-50mm Guns ### 
+
+	tank_50_cannon_0 = {
+		abbreviation = "mc3"
+		category = tank_50_cannon_1
+		gui_category = howitzer_category
+		sfx = sfx_ui_sd_module_turret
+		
+		allowed_module_categories = {
+			tank_shell_type_slot = {
+				shell_tank_50_cannon_0_category
+			}
+		}
+		
+		allow_equipment_type = anti_tank
+		
+		add_stats = {
+			soft_attack = 7.7
+			hard_attack = 6.6
+			ap_attack = 35
+			build_cost_ic = 0.64
+			maximum_speed = 0
+			reliability = 0
+		}
+		dismantle_cost_ic = 1
+		xp_cost = 1
+	}
 	
 	tank_50_cannon_1 = {
 		abbreviation = "mc3"
 		category = tank_50_cannon_1
-		gui_category = tank_50_cannon_category
+		gui_category = cannon_category
 		sfx = sfx_ui_sd_module_turret
 		
-		forbid_equipment_type = artillery
+		allowed_module_categories = {
+			tank_shell_type_slot = {
+				shell_tank_50_cannon_1_category
+			}
+		}
 		
-		forbid_equipment_type = anti_air
+		allow_equipment_type = anti_tank
 		
 		add_stats = {
 			soft_attack = 7.7
@@ -164,13 +416,19 @@ equipment_modules = {
 	tank_50_cannon_2 = {
 		abbreviation = "mc2"
 		category = tank_50_cannon_2
-		gui_category = tank_50_cannon_category
+		gui_category = high_velocity_category
 		sfx = sfx_ui_sd_module_turret
-		parent = tank_50_cannon_1
+		#parent = tank_50_cannon_1
 		
-		forbid_equipment_type = artillery
+		allowed_module_categories = {
+			tank_shell_type_slot = {
+				shell_tank_50_cannon_2_category
+			}
+		}
 		
-		forbid_equipment_type = anti_air
+		allow_equipment_type = anti_tank
+		
+		
 		
 		add_stats = {
 			soft_attack = 8.8
@@ -187,13 +445,18 @@ equipment_modules = {
 	tank_50_cannon_3 = {
 		abbreviation = "mc3"
 		category = tank_50_cannon_3
-		gui_category = tank_50_cannon_category
+		gui_category = high_velocity_category
 		sfx = sfx_ui_sd_module_turret
-		parent = tank_50_cannon_2
+		#parent = tank_50_cannon_2
 		
-		forbid_equipment_type = artillery
+		allowed_module_categories = {
+			tank_shell_type_slot = {
+				shell_tank_50_cannon_3_category
+			}
+		}
 		
-		forbid_equipment_type = anti_air
+		allow_equipment_type = anti_tank
+		
 		
 		add_stats = {
 			soft_attack = 9.1
@@ -206,20 +469,48 @@ equipment_modules = {
 		dismantle_cost_ic = 1
 		xp_cost = 1
 	}
+
+	### 57mm-65mm Guns ###
 	
-	########## 57 mm ############
-	
-	tank_57_howitzer_1 = {
+	tank_57_cannon_0 = {
 		abbreviation = "mc1"
 		category = tank_57_howitzer_1
-		gui_category = tank_57_cannon_category
+		gui_category = howitzer_category
 		sfx = sfx_ui_sd_module_turret
 		
-		forbid_equipment_type = anti_tank
-		forbid_equipment_type = anti_air
-		forbid_equipment_type = artillery
-		forbid_equipment_type_exact_match = armor
-		allow_equipment_type = amphibious
+		allowed_module_categories = {
+			tank_shell_type_slot = {
+				shell_tank_57_cannon_0_category
+			}
+		}
+		
+		allow_equipment_type = anti_tank
+		
+		add_stats = {
+			soft_attack = 6.6
+			hard_attack = 1.7
+			ap_attack = 0
+			build_cost_ic = 0.55
+			maximum_speed = 0
+			reliability = 0
+		}
+		dismantle_cost_ic = 1
+		xp_cost = 1
+	}
+	
+	tank_57_cannon_1 = {
+		abbreviation = "mc1"
+		category = tank_57_howitzer_1
+		gui_category = howitzer_category
+		sfx = sfx_ui_sd_module_turret
+		
+		allowed_module_categories = {
+			tank_shell_type_slot = {
+				shell_tank_57_cannon_1_category
+			}
+		}
+		
+		allow_equipment_type = anti_tank
 		
 		add_stats = {
 			soft_attack = 6.6
@@ -236,13 +527,17 @@ equipment_modules = {
 	tank_57_cannon_2 = {
 		abbreviation = "mc2"
 		category = tank_57_cannon_2
-		gui_category = tank_57_cannon_category
+		gui_category = cannon_category
 		sfx = sfx_ui_sd_module_turret
-		parent = tank_57_howitzer_1
+		#parent = tank_57_howitzer_1
 		
-		forbid_equipment_type = artillery
+		allowed_module_categories = {
+			tank_shell_type_slot = {
+				shell_tank_57_cannon_2_category
+			}
+		}
 		
-		forbid_equipment_type = anti_air
+		allow_equipment_type = anti_tank
 		
 		add_stats = {
 			soft_attack = 17.4
@@ -259,13 +554,18 @@ equipment_modules = {
 	tank_57_cannon_3 = {
 		abbreviation = "mc3"
 		category = tank_57_cannon_3
-		gui_category = tank_57_cannon_category
+		gui_category = high_velocity_category
 		sfx = sfx_ui_sd_module_turret
-		parent = tank_57_cannon_2
+		#parent = tank_57_cannon_2
 		
-		forbid_equipment_type = artillery
+		allowed_module_categories = {
+			tank_shell_type_slot = {
+				shell_tank_57_cannon_3_category
+			}
+		}
 		
-		forbid_equipment_type = anti_air
+		allow_equipment_type = anti_tank
+		
 		
 		add_stats = {
 			soft_attack = 18.7
@@ -279,67 +579,21 @@ equipment_modules = {
 		xp_cost = 1
 	}
 	
-	########## 75 mm ############
-	
-	tank_infantry_support_75_howitzer = {
-		abbreviation = "mc1"
-		category = tank_infantry_support_75_howitzer
-		gui_category = tank_75_cannon_category
-		sfx = sfx_ui_sd_module_turret
-		
-		forbid_equipment_type = anti_tank
-		forbid_equipment_type = anti_air
-		forbid_equipment_type = artillery
-		forbid_equipment_type_exact_match = armor
-		allow_equipment_type = amphibious
-		
-		add_stats = {
-			soft_attack = 15.5
-			hard_attack = 4.1
-			ap_attack = 31
-			build_cost_ic = 1.29
-			maximum_speed = 0
-			reliability = 0
-		}
-		dismantle_cost_ic = 1
-		xp_cost = 1
-	}
-	
-	tank_infantry_support_75_howitzer_SPG = {
-		abbreviation = "mc1"
-		category = tank_infantry_support_75_howitzer_SPG
-		gui_category = tank_spg_category
-		sfx = sfx_ui_sd_module_turret
-		
-		forbid_equipment_type = anti_tank
-		forbid_equipment_type = anti_air
-		forbid_equipment_type = rocket
-		forbid_equipment_type = amphibious
-		forbid_equipment_type_exact_match = armor
-		
-		add_stats = {
-			soft_attack = 15.5
-			hard_attack = 4.1
-			ap_attack = 31
-			build_cost_ic = 1.29
-			maximum_speed = 0
-			reliability = 0
-		}
-		dismantle_cost_ic = 1
-		xp_cost = 1
-	}
-	
-	tank_75_howitzer_1 = {
+	### 75-80mm Guns ###
+
+	tank_75_cannon_0 = {
 		abbreviation = "mc1"
 		category = tank_75_howitzer_1
-		gui_category = tank_75_cannon_category
+		gui_category = howitzer_category
 		sfx = sfx_ui_sd_module_turret
 		
-		forbid_equipment_type = anti_tank
-		forbid_equipment_type = anti_air
-		forbid_equipment_type = artillery
-		forbid_equipment_type_exact_match = armor
-		allow_equipment_type = amphibious
+		allowed_module_categories = {
+			tank_shell_type_slot = {
+				shell_tank_75_cannon_0_category
+			}
+		}
+		
+		allow_equipment_type = anti_tank
 		
 		add_stats = {
 			soft_attack = 15.5
@@ -353,40 +607,20 @@ equipment_modules = {
 		xp_cost = 1
 	}
 	
-	tank_75_howitzer_SPG = {
-		abbreviation = "mc1"
-		category = tank_75_howitzer_SPG
-		gui_category = tank_spg_category
-		sfx = sfx_ui_sd_module_turret
-		
-		forbid_equipment_type = anti_tank
-		forbid_equipment_type = anti_air
-		forbid_equipment_type = rocket
-		forbid_equipment_type = amphibious
-		forbid_equipment_type_exact_match = armor
-		
-		add_stats = {
-			soft_attack = 15.5
-			hard_attack = 4.1
-			ap_attack = 31
-			build_cost_ic = 1.29
-			maximum_speed = 0
-			reliability = 0
-		}
-		dismantle_cost_ic = 1
-		xp_cost = 1
-	}
-	
-	tank_75_cannon_2 = {
+	tank_75_cannon_1 = {
 		abbreviation = "mc2"
 		category = tank_75_cannon_2
-		gui_category = tank_75_cannon_category
+		gui_category = cannon_category
 		sfx = sfx_ui_sd_module_turret
-		parent = tank_75_howitzer_1
+		#parent = tank_75_howitzer_1
 		
-		forbid_equipment_type = artillery
+		allowed_module_categories = {
+			tank_shell_type_slot = {
+				shell_tank_75_cannon_1_category
+			}
+		}
 		
-		forbid_equipment_type = anti_air
+		allow_equipment_type = anti_tank
 		
 		add_stats = {
 			soft_attack = 21.2
@@ -400,16 +634,19 @@ equipment_modules = {
 		xp_cost = 1
 	}
 	
-	tank_75_cannon_3 = {
+	tank_75_cannon_2 = {
 		abbreviation = "mc3"
 		category = tank_75_cannon_3
-		gui_category = tank_75_cannon_category
+		gui_category = high_velocity_category
 		sfx = sfx_ui_sd_module_turret
-		parent = tank_75_cannon_2
 		
-		forbid_equipment_type = artillery
+		allowed_module_categories = {
+			tank_shell_type_slot = {
+				shell_tank_75_cannon_2_category
+			}
+		}
 		
-		forbid_equipment_type = anti_air
+		allow_equipment_type = anti_tank
 		
 		add_stats = {
 			soft_attack = 21.9
@@ -423,16 +660,19 @@ equipment_modules = {
 		xp_cost = 1
 	}
 	
-	tank_75_cannon_4 = {
+	tank_75_cannon_3 = {
 		abbreviation = "mc4"
 		category = tank_75_cannon_4
-		gui_category = tank_75_cannon_category
+		gui_category = high_velocity_category
 		sfx = sfx_ui_sd_module_turret
-		parent = tank_75_cannon_3
 		
-		forbid_equipment_type = artillery
+		allowed_module_categories = {
+			tank_shell_type_slot = {
+				shell_tank_75_cannon_3_category
+			}
+		}
 		
-		forbid_equipment_type = anti_air
+		allow_equipment_type = anti_tank
 		
 		add_stats = {
 			soft_attack = 27.7
@@ -445,20 +685,22 @@ equipment_modules = {
 		dismantle_cost_ic = 1
 		xp_cost = 1
 	}
-	
-	########## 88 mm ############
-	
-	tank_88_howitzer_1 = {
+
+	### 85mm-88mm Guns
+
+	tank_88_cannon_0 = {
 		abbreviation = "hc1"
 		category = tank_88_howitzer_1
-		gui_category = tank_88_cannon_category
+		gui_category = howitzer_category
 		sfx = sfx_ui_sd_module_turret
 		
-		forbid_equipment_type = anti_tank
-		forbid_equipment_type = anti_air
-		forbid_equipment_type = artillery
-		forbid_equipment_type_exact_match = armor
-		allow_equipment_type = amphibious
+		allowed_module_categories = {
+			tank_shell_type_slot = {
+				shell_tank_88_cannon_0_category
+			}
+		}
+		
+		allow_equipment_type = anti_tank
 		
 		add_stats = {
 			soft_attack = 0
@@ -472,64 +714,19 @@ equipment_modules = {
 		xp_cost = 1
 	}
 	
-	tank_88_howitzer_SPG = {
-		abbreviation = "hc1"
-		category = tank_88_howitzer_SPG
-		gui_category = tank_spg_category
-		sfx = sfx_ui_sd_module_turret
-		
-		forbid_equipment_type = anti_tank
-		forbid_equipment_type = anti_air
-		forbid_equipment_type = rocket
-		forbid_equipment_type = amphibious
-		forbid_equipment_type_exact_match = armor
-		
-		add_stats = {
-			soft_attack = 0
-			hard_attack = 0
-			ap_attack = 0
-			build_cost_ic = 0
-			maximum_speed = 0
-			reliability = 0
-		}
-		dismantle_cost_ic = 1
-		xp_cost = 1
-	}
-	
-	#tank_88_cannon_2 = {
-	#	abbreviation = "hc2"
-	#	category = tank_88_cannon_2
-	#	gui_category = tank_88_cannon_category
-	#	sfx = sfx_ui_sd_module_turret
-	#	parent = tank_88_howitzer_1
-	#	
-	#	forbid_equipment_type = artillery
-	#	
-	#	forbid_equipment_type = anti_air
-	#	
-	#	add_stats = {
-	#		soft_attack = 40.9
-	#		hard_attack = 21.8
-	#		ap_attack = 91
-	#		build_cost_ic = 3.41
-	#		maximum_speed = 0
-	#		reliability = 0
-	#	}
-	#	dismantle_cost_ic = 1
-	#	xp_cost = 1
-	#}
-	
-	tank_88_cannon_3 = {
+	tank_88_cannon_1 = {
 		abbreviation = "hc3"
 		category = tank_88_cannon_3
-		gui_category = tank_88_cannon_category
+		gui_category = cannon_category
 		sfx = sfx_ui_sd_module_turret
-		parent = tank_88_howitzer_1
-		#parent = tank_88_cannon_2
 		
-		forbid_equipment_type = artillery
+		allowed_module_categories = {
+			tank_shell_type_slot = {
+				shell_tank_88_cannon_1_category
+			}
+		}
 		
-		forbid_equipment_type = anti_air
+		allow_equipment_type = anti_tank
 		
 		add_stats = {
 			soft_attack = 46.7
@@ -543,16 +740,49 @@ equipment_modules = {
 		xp_cost = 1
 	}
 	
-	tank_88_cannon_4 = {
+	tank_88_cannon_2 = {
+		abbreviation = "hc3"
+		category = tank_88_cannon_3
+		gui_category = high_velocity_category
+		sfx = sfx_ui_sd_module_turret
+		
+		allowed_module_categories = {
+			tank_shell_type_slot = {
+				shell_tank_88_cannon_2_category
+			}
+		}
+		
+		allow_equipment_type = anti_tank
+		
+		
+		add_stats = {
+			soft_attack = 46.7
+			hard_attack = 27.7
+			ap_attack = 111
+			build_cost_ic = 3.89
+			maximum_speed = 0
+			reliability = 0
+		}
+		dismantle_cost_ic = 1
+		xp_cost = 1
+	}
+	
+	tank_88_cannon_3 = {
 		abbreviation = "hc4"
 		category = tank_88_cannon_4
-		gui_category = tank_88_cannon_category
+		gui_category = high_velocity_category
 		sfx = sfx_ui_sd_module_turret
-		parent = tank_88_cannon_3
 		
-		forbid_equipment_type = artillery
+		allowed_module_categories = {
+			tank_shell_type_slot = {
+				shell_tank_88_cannon_3_category
+			}
+		}
 		
-		forbid_equipment_type = anti_air
+		
+		allow_equipment_type = anti_tank
+		
+		
 		
 		add_stats = {
 			soft_attack = 47.7
@@ -565,20 +795,25 @@ equipment_modules = {
 		dismantle_cost_ic = 1
 		xp_cost = 1
 	}
+
+	### 100mm-105mm Guns
 	
-	########## 105 mm ############
-	
-	tank_105_howitzer_1 = {
+	tank_105_cannon_0 = {
 		abbreviation = "hc1"
 		category = tank_105_howitzer_1
-		gui_category = tank_105_cannon_category
+		gui_category = howitzer_category
 		sfx = sfx_ui_sd_module_turret
 		
-		forbid_equipment_type = anti_tank
-		forbid_equipment_type = anti_air
-		forbid_equipment_type = artillery
-		forbid_equipment_type_exact_match = armor
-		allow_equipment_type = amphibious
+		allowed_module_categories = {
+			tank_shell_type_slot = {
+				shell_tank_105_cannon_0_category
+			}
+		}
+		
+		allow_equipment_type = anti_tank
+		
+		
+		
 		
 		add_stats = {
 			soft_attack = 30.0
@@ -592,23 +827,28 @@ equipment_modules = {
 		xp_cost = 1
 	}
 	
-	tank_105_howitzer_SPG = {
-		abbreviation = "hc1"
-		category = tank_105_howitzer_SPG
-		gui_category = tank_spg_category
+	tank_105_cannon_1 = {
+		abbreviation = "hc2"
+		category = tank_105_cannon_2
+		gui_category = cannon_category
 		sfx = sfx_ui_sd_module_turret
+		#parent = tank_105_howitzer_1
 		
-		forbid_equipment_type = anti_tank
-		forbid_equipment_type = anti_air
-		forbid_equipment_type = rocket
-		forbid_equipment_type = amphibious
-		forbid_equipment_type_exact_match = armor
+		allowed_module_categories = {
+			tank_shell_type_slot = {
+				shell_tank_105_cannon_1_category
+			}
+		}
+		
+		allow_equipment_type = anti_tank
+		
+		
 		
 		add_stats = {
-			soft_attack = 30.0
-			hard_attack = 7.3
-			ap_attack = 46
-			build_cost_ic = 2.5
+			soft_attack = 62.1
+			hard_attack = 38.5
+			ap_attack = 145
+			build_cost_ic = 5.18
 			maximum_speed = 0
 			reliability = 0
 		}
@@ -619,13 +859,19 @@ equipment_modules = {
 	tank_105_cannon_2 = {
 		abbreviation = "hc2"
 		category = tank_105_cannon_2
-		gui_category = tank_105_cannon_category
+		gui_category = cannon_category
 		sfx = sfx_ui_sd_module_turret
-		parent = tank_105_howitzer_1
+		#parent = tank_105_howitzer_1
 		
-		forbid_equipment_type = artillery
+		allowed_module_categories = {
+			tank_shell_type_slot = {
+				shell_tank_105_cannon_2_category
+			}
+		}
 		
-		forbid_equipment_type = anti_air
+		allow_equipment_type = anti_tank
+		
+		
 		
 		add_stats = {
 			soft_attack = 62.1
@@ -642,13 +888,20 @@ equipment_modules = {
 	tank_105_cannon_3 = {
 		abbreviation = "hc3"
 		category = tank_105_cannon_3
-		gui_category = tank_105_cannon_category
+		gui_category = high_velocity_category
 		sfx = sfx_ui_sd_module_turret
-		parent = tank_105_cannon_2
+		#parent = tank_105_cannon_2
 		
-		forbid_equipment_type = artillery
+		allowed_module_categories = {
+			tank_shell_type_slot = {
+				shell_tank_105_cannon_3_category
+			}
+		}
 		
-		forbid_equipment_type = anti_air
+		allow_equipment_type = anti_tank
+		
+		
+		
 		
 		add_stats = {
 			soft_attack = 79.1
@@ -661,20 +914,25 @@ equipment_modules = {
 		dismantle_cost_ic = 1
 		xp_cost = 1
 	}
-	
-	########## 125 mm ############
-	
-	tank_125_howitzer_1 = {
+
+	### 120mm-130mm Guns ###
+
+	tank_125_cannon_0 = {
 		abbreviation = "sh1"
 		category = tank_125_howitzer_1
-		gui_category = tank_125_cannon_category
+		gui_category = howitzer_category
 		sfx = sfx_ui_sd_module_turret
 		
-		forbid_equipment_type = anti_tank
-		forbid_equipment_type = anti_air
-		forbid_equipment_type = artillery
-		forbid_equipment_type_exact_match = armor
-		allow_equipment_type = amphibious
+		allowed_module_categories = {
+			tank_shell_type_slot = {
+				shell_tank_125_cannon_0_category
+			}
+		}
+		
+		allow_equipment_type = anti_tank
+		
+		
+		
 		
 		add_stats = {
 			soft_attack = 34.6
@@ -688,40 +946,23 @@ equipment_modules = {
 		xp_cost = 1
 	}
 	
-	tank_125_howitzer_SPG = {
-		abbreviation = "sh1"
-		category = tank_125_howitzer_SPG
-		gui_category = tank_spg_category
-		sfx = sfx_ui_sd_module_turret
-		
-		forbid_equipment_type = anti_tank
-		forbid_equipment_type = anti_air
-		forbid_equipment_type = rocket
-		forbid_equipment_type = amphibious
-		forbid_equipment_type_exact_match = armor
-		
-		add_stats = {
-			soft_attack = 34.6
-			hard_attack = 5.2
-			ap_attack = 37
-			build_cost_ic = 2.89
-			maximum_speed = 0
-			reliability = 0
-		}
-		dismantle_cost_ic = 1
-		xp_cost = 1
-	}
-	
-	tank_125_cannon_2 = {
+	tank_125_cannon_1 = {
 		abbreviation = "sh2"
 		category = tank_125_cannon_2
-		gui_category = tank_125_cannon_category
+		gui_category = cannon_category
 		sfx = sfx_ui_sd_module_turret
-		parent = tank_125_howitzer_1
+		#parent = tank_125_howitzer_1
 		
-		forbid_equipment_type = artillery
-		forbid_equipment_type = anti_tank
-		forbid_equipment_type = anti_air
+		allowed_module_categories = {
+			tank_shell_type_slot = {
+				shell_tank_125_cannon_1_category
+			}
+		}
+		
+		allow_equipment_type = anti_tank
+		
+		
+		
 		
 		add_stats = {
 			soft_attack = 75.1
@@ -735,16 +976,23 @@ equipment_modules = {
 		xp_cost = 1
 	}
 	
-	tank_125_cannon_3 = {
+	tank_125_cannon_2 = {
 		abbreviation = "sh3"
 		category = tank_125_cannon_3
-		gui_category = tank_125_cannon_category
+		gui_category = high_velocity_category
 		sfx = sfx_ui_sd_module_turret
-		parent = tank_125_cannon_2
+		#parent = tank_125_cannon_2
 		
-		forbid_equipment_type = artillery
+		allowed_module_categories = {
+			tank_shell_type_slot = {
+				shell_tank_125_cannon_2_category
+			}
+		}
 		
-		forbid_equipment_type = anti_air
+		allow_equipment_type = anti_tank
+		
+		
+		
 		
 		add_stats = {
 			soft_attack = 0
@@ -758,16 +1006,23 @@ equipment_modules = {
 		xp_cost = 1
 	}
 	
-	tank_125_cannon_4 = {
+	tank_125_cannon_3 = {
 		abbreviation = "sh3"
 		category = tank_125_cannon_4
-		gui_category = tank_125_cannon_category
+		gui_category = high_velocity_category
 		sfx = sfx_ui_sd_module_turret
-		parent = tank_125_cannon_2
+		#parent = tank_125_cannon_2
 		
-		forbid_equipment_type = artillery
+		allowed_module_categories = {
+			tank_shell_type_slot = {
+				shell_tank_125_cannon_3_category
+			}
+		}
 		
-		forbid_equipment_type = anti_air
+		allow_equipment_type = anti_tank
+		
+		
+		
 		
 		add_stats = {
 			soft_attack = 74.2
@@ -780,20 +1035,26 @@ equipment_modules = {
 		dismantle_cost_ic = 1
 		xp_cost = 1
 	}
+
+	### 150mm Guns ### 
 	
-	########## 150 mm ############
-	
-	tank_infantry_support_150_howitzer = {
+	tank_150_cannon_0 = {
 		abbreviation = "sh1"
 		category = tank_infantry_support_150_howitzer
-		gui_category = tank_150_cannon_category
+		gui_category = howitzer_category
 		sfx = sfx_ui_sd_module_turret
 		
-		forbid_equipment_type = anti_tank
-		forbid_equipment_type = anti_air
-		forbid_equipment_type = artillery
-		forbid_equipment_type_exact_match = armor
-		allow_equipment_type = amphibious
+		allowed_module_categories = {
+			tank_shell_type_slot = {
+				shell_tank_150_cannon_0_category
+			}
+		}
+		
+		allow_equipment_type = anti_tank
+		
+		
+		
+		
 		
 		add_stats = {
 			soft_attack = 35.6
@@ -807,65 +1068,22 @@ equipment_modules = {
 		xp_cost = 1
 	}
 	
-	tank_infantry_support_150_howitzer_SPG = {
-		abbreviation = "sh1"
-		category = tank_infantry_support_150_howitzer_SPG
-		gui_category = tank_spg_category
-		sfx = sfx_ui_sd_module_turret
-		
-		forbid_equipment_type = anti_tank
-		forbid_equipment_type = anti_air
-		forbid_equipment_type = rocket
-		forbid_equipment_type = amphibious
-		forbid_equipment_type_exact_match = armor
-		
-		add_stats = {
-			soft_attack = 35.6
-			hard_attack = 9.8
-			ap_attack = 71
-			build_cost_ic = 2.96
-			maximum_speed = 0
-			reliability = 0
-		}
-		dismantle_cost_ic = 1
-		xp_cost = 1
-	}
-	
-	tank_150_howitzer_1 = {
+	tank_150_cannon_1 = {
 		abbreviation = "sh1"
 		category = tank_150_howitzer_1
-		gui_category = tank_150_cannon_category
+		gui_category = cannon_category
 		sfx = sfx_ui_sd_module_turret
 		
-		forbid_equipment_type = anti_tank
-		forbid_equipment_type = anti_air
-		forbid_equipment_type = artillery
-		forbid_equipment_type_exact_match = armor
-		allow_equipment_type = amphibious
-		
-		add_stats = {
-			soft_attack = 35.6
-			hard_attack = 9.8
-			ap_attack = 71
-			build_cost_ic = 2.96
-			maximum_speed = 0
-			reliability = 0
+		allowed_module_categories = {
+			tank_shell_type_slot = {
+				shell_tank_150_cannon_1_category
+			}
 		}
-		dismantle_cost_ic = 1
-		xp_cost = 1
-	}
-	
-	tank_150_howitzer_SPG = {
-		abbreviation = "sh1"
-		category = tank_150_howitzer_SPG
-		gui_category = tank_spg_category
-		sfx = sfx_ui_sd_module_turret
 		
-		forbid_equipment_type = anti_tank
-		forbid_equipment_type = anti_air
-		forbid_equipment_type = rocket
-		forbid_equipment_type = amphibious
-		forbid_equipment_type_exact_match = armor
+		allow_equipment_type = anti_tank
+		
+		
+		
 		
 		add_stats = {
 			soft_attack = 35.6
@@ -882,13 +1100,21 @@ equipment_modules = {
 	tank_150_cannon_2 = {
 		abbreviation = "sh2"
 		category = tank_150_cannon_2
-		gui_category = tank_150_cannon_category
+		gui_category = cannon_category
 		sfx = sfx_ui_sd_module_turret
-		parent = tank_150_howitzer_1
+		#parent = tank_150_howitzer_1
 		
-		forbid_equipment_type = artillery
+		allowed_module_categories = {
+			tank_shell_type_slot = {
+				shell_tank_150_cannon_2_category
+			}
+		}
 		
-		forbid_equipment_type = anti_air
+		allow_equipment_type = anti_tank
+		
+		
+		
+		
 		
 		add_stats = {
 			soft_attack = 86.1
@@ -901,5 +1127,208 @@ equipment_modules = {
 		dismantle_cost_ic = 1
 		xp_cost = 1
 	}
+
+	tank_150_cannon_3 = {
+		abbreviation = "sh2"
+		category = tank_150_cannon_2
+		gui_category = cannon_category
+		sfx = sfx_ui_sd_module_turret
+		#parent = tank_150_howitzer_1
+		
+		allowed_module_categories = {
+			tank_shell_type_slot = {
+				shell_tank_150_cannon_3_category
+			}
+		}
+		
+		allow_equipment_type = anti_tank
+		
+		
+		
+		
+		
+		add_stats = {
+			soft_attack = 86.1
+			hard_attack = 42.4
+			ap_attack = 166
+			build_cost_ic = 7.17
+			maximum_speed = 0
+			reliability = 0
+		}
+		dismantle_cost_ic = 1
+		xp_cost = 1
+	}
+
+	### AA Guns ###
+
+	tank_20_anti_air_1 = {
+		abbreviation = "laa1"
+		category = tank_20_anti_air_cannon_1
+		gui_category = aa_category
+		sfx = sfx_ui_sd_module_turret
+		
+		allowed_module_categories = {
+			tank_shell_type_slot = {
+				shell_tank_20_anti_air_cannon_1_category
+			}
+		}
+		
+		allow_equipment_type = anti_air
+		
+		forbid_equipment_type = amphibious
+		forbid_equipment_type_exact_match = armor
+		
+
+		add_stats = {
+			soft_attack = 0
+			hard_attack = 0
+			ap_attack = 0
+			air_attack = 0
+			build_cost_ic = 0
+			reliability = -0.0
+		}
+		dismantle_cost_ic = 1
+		xp_cost = 1
+		can_convert_from = {
+			convert_cost_ic = 0
+		}
+	}
+	
+	tank_20_anti_air_2 = {
+		abbreviation = "laa2"
+		category = tank_20_anti_air_cannon_2
+		gui_category = aa_category
+		sfx = sfx_ui_sd_module_turret
+		
+		
+		allowed_module_categories = {
+			tank_shell_type_slot = {
+				shell_tank_20_anti_air_2_category
+			}
+		}
+		
+		allow_equipment_type = anti_air
+		
+		forbid_equipment_type = amphibious
+		forbid_equipment_type_exact_match = armor
+		
+
+		add_stats = {
+			soft_attack = 0
+			hard_attack = 0
+			ap_attack = 0
+			air_attack = 0
+			build_cost_ic = 0
+			reliability = -0.0
+		}
+		dismantle_cost_ic = 1
+		xp_cost = 1
+		can_convert_from = {
+			convert_cost_ic = 0
+		}
+	}
+	
+	tank_20_anti_air_4 = {
+		abbreviation = "laa4"
+		category = tank_20_anti_air_cannon_4
+		gui_category = aa_category
+		sfx = sfx_ui_sd_module_turret
+		
+		
+		allowed_module_categories = {
+			tank_shell_type_slot = {
+				shell_tank_20_anti_air_4_category
+			}
+		}
+		
+		allow_equipment_type = anti_air
+		
+		forbid_equipment_type = amphibious
+		forbid_equipment_type_exact_match = armor
+		
+
+		add_stats = {
+			soft_attack = 0
+			hard_attack = 0
+			ap_attack = 0
+			air_attack = 0
+			build_cost_ic = 0
+			reliability = -0.0
+		}
+		dismantle_cost_ic = 1
+		xp_cost = 1
+		can_convert_from = {
+			convert_cost_ic = 0
+		}
+	}	
+	
+	tank_37_anti_air_1 = {
+		abbreviation = "maa1"
+		category = tank_37_anti_air_cannon_1
+		gui_category = aa_category
+		sfx = sfx_ui_sd_module_turret
+		
+		
+		allowed_module_categories = {
+			tank_shell_type_slot = {
+				shell_tank_37_anti_air_1_category
+			}
+		}
+		
+		allow_equipment_type = anti_air
+		
+		forbid_equipment_type = amphibious
+		forbid_equipment_type_exact_match = armor
+		
+
+		add_stats = {
+			soft_attack = 0
+			hard_attack = 0
+			ap_attack = 0
+			air_attack = 0
+			build_cost_ic = 0
+			reliability = -0.0
+		}
+		dismantle_cost_ic = 1
+		xp_cost = 1
+		can_convert_from = {
+			convert_cost_ic = 0
+		}
+	}	
+	
+	tank_37_anti_air_2 = {
+		abbreviation = "maa2"
+		category = tank_37_anti_air_cannon_2
+		gui_category = aa_category
+		sfx = sfx_ui_sd_module_turret
+		
+		
+		allowed_module_categories = {
+			tank_shell_type_slot = {
+				shell_tank_37_anti_air_2_category
+			}
+		}
+		
+		allow_equipment_type = anti_air
+		
+		forbid_equipment_type = amphibious
+		forbid_equipment_type_exact_match = armor
+		
+
+		add_stats = {
+			soft_attack = 0
+			hard_attack = 0
+			ap_attack = 0
+			air_attack = 0
+			build_cost_ic = 0
+			reliability = -0.0
+		}
+		dismantle_cost_ic = 1
+		xp_cost = 1
+		can_convert_from = {
+			convert_cost_ic = 0
+		}
+	}	
+	
 	
 }
