@@ -147,14 +147,37 @@ NDefines.NNavy.LEADER_EXPERIENCE_SCALE = 1.1  -- was 1.0
 
 -- Armor, piercing and critical chances
 
-NDefines.NNavy.COMBAT_ARMOR_PIERCING_DAMAGE_REDUCTION = -0.9 -- All damage reduction % when target armor is >= then shooter armor piercing.
-NDefines.NNavy.COMBAT_ARMOR_PIERCING_CRITICAL_BONUS = 0.5 --was 1.0 -- Bonus to critical chance when shooter armor piercing is higher then target armor.
-NDefines.NNavy.COMBAT_BASE_CRITICAL_CHANCE = 0.05 -- Base chance for receiving a critical chance. It get's scaled down with ship reliability.
-NDefines.NNavy.COMBAT_CRITICAL_DAMAGE_MULT = 3.0 --was 5.0 -- Multiplier for the critical damage. Scaled down with the ship reliability.
+NDefines.NNavy.COMBAT_ARMOR_PIERCING_DAMAGE_REDUCTION = -0.95 --was -0.9 -- All damage reduction % when target armor is >= then shooter armor piercing.
+NDefines.NNavy.COMBAT_ARMOR_PIERCING_CRITICAL_BONUS = 2.0 --was 1.0 -- Bonus to critical chance when shooter armor piercing is higher then target armor.
+NDefines.NNavy.COMBAT_BASE_CRITICAL_CHANCE = 0.025 --was 0.05 -- Base chance for receiving a critical chance. It get's scaled down with ship reliability.
+NDefines.NNavy.COMBAT_CRITICAL_DAMAGE_MULT = 5.0 --was 5.0 -- Multiplier for the critical damage. Scaled down with the ship reliability.
 NDefines.NNavy.CHANCE_TO_DAMAGE_PART_ON_CRITICAL_HIT = 0.25 --was 0.1 -- the game will roll between 0-1 and will damage a random part if below this val on naval critical hits
 NDefines.NNavy.CHANCE_TO_DAMAGE_PART_ON_CRITICAL_HIT_FROM_AIR = 0.25 --was 0.1 -- the game will roll between 0-1 and will damage a random part if below this val on air critical hits
 NDefines.NNavy.COMBAT_TORPEDO_CRITICAL_CHANCE = 0.25 --was 0.1 -- chance for critical hit from torpedo.
 NDefines.NNavy.COMBAT_TORPEDO_CRITICAL_DAMAGE_MULT = 3.0 --was 2.0 -- multiplier to damage when got critical hit from torpedo. (Critical hits are devastating as usualy torpedo_attack are pretty high base values).
+NDefines.NNavy.NAVY_PIERCING_THRESHOLDS = {	 -- Our piercing / their armor must be this value to deal damage fraction equal to the index in the array below [higher number = higher penetration]. If armor is 0, 1.00 will be returned.
+			3.00, -- new
+			2.00,
+			1.50, -- new
+			1.00,
+			0.75,
+			0.50,
+			0.25, -- new
+			0.10,
+			0.00 --there isn't much point setting this higher than 0
+		}
+NDefines.NNavy.NAVY_PIERCING_THRESHOLD_CRITICAL_VALUES = {	-- 0 armor will always receive maximum damage (so add overmatching at your own peril). the system expects at least 2 values, with no upper limit.
+			3.00, -- new
+			2.00,
+			1,50, -- new
+			1.00,
+			0.75,
+			0.50,
+			0.25, -- new
+			0.10,
+			0.00 -- For criticals, you could reduce crit chance unlike damage in army combat, but we do not for now.
+		}
+
 
 
 NDefines.NNavy.MAX_SUBMARINES_PER_AUTO_TASK_FORCE = 10
