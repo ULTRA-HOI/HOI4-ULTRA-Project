@@ -91,7 +91,6 @@ NDefines.NNavy.SCREENING_EFFICIENCY_PENALTY_ON_MINIMUM_POSITIONING = 0.75  		-- 
 NDefines.NNavy.NAVAL_TRANSFER_BASE_SPEED = 6                                -- was 6 -- base speed of units on water being transported
 NDefines.NNavy.COMBAT_BASE_HIT_CHANCE = 0.05									-- base chance for hit
 NDefines.NNavy.COMBAT_EVASION_TO_HIT_CHANCE = 0.025							-- we take ship evasion stats, and mult by this value, so it gives hit chance reduction. So if reduction is 0.025 and ship evasion = 10, then there will be 0.25 (25%) lower hit chance. (Fe. 50% base -25% from evasion +10% bcoz it's very close).
-NDefines.NNavy.COMBAT_TORPEDO_CRITICAL_DAMAGE_MULT = 3.0						-- multiplier to damage when got critical hit from torpedo. (Critical hits are devastating as usualy torpedo_attack are pretty high base values).
 NDefines.NNavy.COMBAT_CHASE_RESIGNATION_HOURS = 10								-- Before we resign chasing enemy, give them some minimum time so the combat doesn't end instantly.
 NDefines.NNavy.COMBAT_SHIP_SPEED_TO_FIELD_FACTOR = 0.02						-- Modifier to the ships speed in the combat. For better balance, make it lower to slow down the speed of approaching.
 NDefines.NNavy.COMBAT_MAX_GROUPS = 2										-- Max amount of "Fire Exchange" groups (FEX).
@@ -134,7 +133,6 @@ NDefines.NNavy.MISSION_SUPREMACY_RATIOS = { -- supremacy multipliers for differe
 NDefines.NNavy.SHIP_TO_FLEET_ANTI_AIR_RATIO	= 0.50 -- was 0.15
 NDefines.NNavy.ANTI_AIR_MULT_ON_INCOMING_AIR_DAMAGE = 0.1 -- was 0.2 in vanilla; Increase power and reducing multiplier to make damage scale better.
 NDefines.NNavy.ANTI_AIR_POW_ON_INCOMING_AIR_DAMAGE = 0.5 -- was 0.2. PLEASE DO NOT INCREASE THE VALUE ABOVE TOO MUCH. ^0.5 instead of ^0.2 means that AA DISRUPTION SCALE A LOT MORE.
-
 NDefines.NNavy.MIN_HIT_PROFILE_MULT = 0.05
 NDefines.NNavy.HIT_PROFILE_SPEED_FACTOR = 1		-- factors speed value when determining it profile (Vis * HIT_PROFILE_MULT * Ship Hit Profile Mult)
 NDefines.NNavy.HIT_PROFILE_SPEED_BASE											= 0		-- Base value added to hitprofile speed calulation
@@ -147,19 +145,26 @@ NDefines.NNavy.EXPERIENCE_FACTOR_NON_CARRIER_GAIN = 0.05			-- was 0.04				--- Xp
 NDefines.NNavy.EXPERIENCE_FACTOR_CARRIER_GAIN = 0.045			-- was 0.08				-- Xp gain by carrier ships in the combat
 NDefines.NNavy.LEADER_EXPERIENCE_SCALE = 1.1  -- was 1.0
 
+-- Armor, piercing and critical chances
+
+NDefines.NNavy.COMBAT_ARMOR_PIERCING_DAMAGE_REDUCTION = -0.9 -- All damage reduction % when target armor is >= then shooter armor piercing.
+NDefines.NNavy.COMBAT_ARMOR_PIERCING_CRITICAL_BONUS = 0.5 --was 1.0 -- Bonus to critical chance when shooter armor piercing is higher then target armor.
+NDefines.NNavy.COMBAT_BASE_CRITICAL_CHANCE = 0.05 -- Base chance for receiving a critical chance. It get's scaled down with ship reliability.
+NDefines.NNavy.COMBAT_CRITICAL_DAMAGE_MULT = 3.0 --was 5.0 -- Multiplier for the critical damage. Scaled down with the ship reliability.
+NDefines.NNavy.CHANCE_TO_DAMAGE_PART_ON_CRITICAL_HIT = 0.25 --was 0.1 -- the game will roll between 0-1 and will damage a random part if below this val on naval critical hits
+NDefines.NNavy.CHANCE_TO_DAMAGE_PART_ON_CRITICAL_HIT_FROM_AIR = 0.25 --was 0.1 -- the game will roll between 0-1 and will damage a random part if below this val on air critical hits
+NDefines.NNavy.COMBAT_TORPEDO_CRITICAL_CHANCE = 0.25 --was 0.1 -- chance for critical hit from torpedo.
+NDefines.NNavy.COMBAT_TORPEDO_CRITICAL_DAMAGE_MULT = 3.0 --was 2.0 -- multiplier to damage when got critical hit from torpedo. (Critical hits are devastating as usualy torpedo_attack are pretty high base values).
+
 
 NDefines.NNavy.MAX_SUBMARINES_PER_AUTO_TASK_FORCE = 10
 NDefines.NNavy.BEST_CAPITALS_TO_SCREENS_RATIO = 0.33
 NDefines.NNavy.COMBAT_MIN_HIT_CHANCE = 0.01
 NDefines.NNavy.COMBAT_EVASION_TO_HIT_CHANCE_TORPEDO_MULT = 40.0
 NDefines.NNavy.COMBAT_DAMAGE_RANDOMNESS = 0.4
-NDefines.NNavy.COMBAT_TORPEDO_CRITICAL_CHANCE = 0.25
 NDefines.NNavy.COMBAT_DAMAGE_TO_STR_FACTOR = 2.0 -- base game 0.6, ultra 1.2
 NDefines.NNavy.COMBAT_DAMAGE_TO_ORG_FACTOR = 0.5 -- base game 1.0, used to be 1.8
 NDefines.NNavy.COMBAT_RETREAT_DECISION_CHANCE = 0.3
-NDefines.NNavy.COMBAT_CRITICAL_DAMAGE_MULT = 3.0
-NDefines.NNavy.COMBAT_ARMOR_PIERCING_CRITICAL_BONUS = 0.5
-NDefines.NNavy.COMBAT_ARMOR_PIERCING_DAMAGE_REDUCTION = -0.9
 NDefines.NNavy.REPAIR_AND_RETURN_PRIO_LOW = 0.5
 NDefines.NNavy.REPAIR_AND_RETURN_PRIO_MEDIUM = 0.7
 NDefines.NNavy.REPAIR_AND_RETURN_PRIO_HIGH = 0.9
@@ -210,8 +215,7 @@ NDefines.NNavy.CAPITAL_RATIO_FOR_FULL_SCREENING_FOR_CARRIERS = 0.125
 NDefines.NNavy.CAPITAL_RATIO_FOR_FULL_SCREENING_FOR_CONVOYS = 0.025  -- this capital ratio to num convoys is needed for full screening beyond screen line
 NDefines.NNavy.NAVAL_COMBAT_AIR_CARRIER_TARGET_SCORE = 500
 
-NDefines.NNavy.CHANCE_TO_DAMAGE_PART_ON_CRITICAL_HIT = 0.25
-NDefines.NNavy.CHANCE_TO_DAMAGE_PART_ON_CRITICAL_HIT_FROM_AIR	 = 0.25
+
 
 
 NDefines.NNavy.GUN_HIT_PROFILES = { -- hit profiles for guns, if target ih profile is lower the gun will have lower accuracy
