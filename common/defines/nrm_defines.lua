@@ -37,6 +37,9 @@ NDefines.NNavy.SUB_DETECTION_CHANCE_SPOTTING_SPEED_EFFECT = 2.0				-- effect of 
 NDefines.NNavy.SUB_DETECTION_CHANCE_BASE_SPOTTING_POW_EFFECT = 1.5			-- effect of spotting speed will be powered by this for initial spotting of pure submarine forces. this along with prev value is added together and rolled against a random to start spotting
 NDefines.NNavy.NAVAL_COMBAT_SUB_DETECTION_FACTOR = 1      -- balance value for sub detection in combat by ships
 
+NDefines.NNavy.DETECTION_CHANCE_MULT_RADAR_BONUS = 0.1 -- detection chance bonus from radars.
+NDefines.NNavy.BASE_SPOTTING_FROM_RADAR = 5 -- base spotting percentage that comes from full radar coverage
+
 --------------------------------------------------------------------------------------------------------------
 -- CARRIER STUFF
 --------------------------------------------------------------------------------------------------------------
