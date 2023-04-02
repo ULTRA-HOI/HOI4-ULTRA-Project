@@ -687,8 +687,8 @@ NDefines.NAir.MAX_QUICK_WING_SELECTION = 5
 
 --Radar Impact
 
-NDefines.NAir.DETECT_CHANCE_FROM_RADARS = 0.5 -- How much the radars in area affects detection chance.
-NDefines.NAir.DETECT_EFFICIENCY_FROM_RADAR = 0.7 -- How much radars affect the efficiency.
+NDefines.NAir.DETECT_CHANCE_FROM_RADARS = 0.4 --was 0.5 -- How much the radars in area affects detection chance.
+NDefines.NAir.DETECT_EFFICIENCY_FROM_RADAR = 0.5 --was 0.7 -- How much radars affect the efficiency.
 
 --Focus 		
 NDefines.NFocus.MAX_SAVED_FOCUS_PROGRESS = 14
