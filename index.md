@@ -1,5 +1,76 @@
 # Changelog
 
+### 0.16.3
+
+### Balance
+
+- Land techs cannot be stolen anymore by spies
+- Increased air losses
+- Reduced supply per port lvl
+- Increased screening penalty from positionning
+- The % of convoy on a route detected by raiders is more realistic
+- Ship are less fast to escape from naval battles
+- Slightly reduced convoy escort screening ratio
+- Halved chances to detect convoys on a route
+- Increased convoys needed for supply
+- Increased slightly convoys needed for rubber/bauxite trade
+- Poland will properly capitulate after having lost most of its VP
+- Remove output debuff from foreing workers (for Germany)
+- bad weather affects more naval/air combat efficiency
+- bad weather gives extra penalties to naval invasions
+- Ship AA are now more meaningful
+- US war propaganda focus is available as soon as Germany occupy Prag
+- Anschluss is no longer hardlocked but doing it earlier creates more World Tension
+- end of czechoslovakia event gives more war support to France and UK
+- Italy no longer gets 2 research slots on treaty with Germany
+- submarines are more likely to escape hopeless battles even with "no retreat" order
+- divided by 5 convoy requirement for troop transports
+- Germany Propaganda balance tweaks
+
+### Database
+
+- Added modern uniforms for every countries
+- Germany starts with AT riffles
+- OT-34 tanks stats updated and research date delayed
+- South Africa gets resources rights on british resources in south african colonies. Workaround to force resources convoys to take correct path.
+- More realistic weather set for Northern Atlantic, Northern Pacific and Roaring Forties
+- increased VP in southern Norway so Norway is easier to capitulate
+- german screen focus decision no longer need CA
+- increased boston naval base to 20
+- Milan comms industry focus now needs actual radar tech
+- Australia should not take the focus to get Malaysia
+- arctic weather no longer give % attrition but increases accident chances
+- removed speed penalties on motorised arty
+- Added Convoy & Train Stockpile Siam
+
+### Bugfixes
+
+- Air wing average size define fixed
+- Production view icon fix
+- Fixed railway gun production UI
+- Uk should properly get Churchill with Chamberlin resignation event
+
+### QoL
+
+- Improved MPU integration for air squadrons
+- Ships added in construction queue by decisions now requires the maximum possible number of dockyards
+- Different key shortcut for applying research with XP boost
+- Streamlined airwing view to fit more info in less vertical space
+- New names for German Ships
+- Italy Infantry Equipment loc
+- more infantry template decisions
+- Japanese Infantry Equipment loc
+- CAN Inf Eq Loc
+- FIN Inf Eq Loc
+
+### Bugfix
+
+- Fix overlapping icon for SU-85
+
+### AI
+
+- AI gets a submarine detection buff to not be abused too easily
+
 ### 0.16.2
 
 ### Features
