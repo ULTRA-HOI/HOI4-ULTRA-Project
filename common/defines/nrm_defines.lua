@@ -47,8 +47,8 @@ NDefines.NNavy.NAVAL_STRIKE_CARRIER_MULTIPLIER = 1.5 --5.0              -- damag
 
 
 NDefines.NNavy.CARRIER_ONLY_COMBAT_ACTIVATE_TIME = 0							-- hours from start of combat when carriers get to fight
-NDefines.NNavy.CAPITAL_ONLY_COMBAT_ACTIVATE_TIME = 36 --4                          -- hours from start of combat when only carriers, capitals and subs get to attack
-NDefines.NNavy.ALL_SHIPS_ACTIVATE_TIME = 40 --8                                    -- hours where all get to attack
+NDefines.NNavy.CAPITAL_ONLY_COMBAT_ACTIVATE_TIME = 24 --4                          -- hours from start of combat when only carriers, capitals and subs get to attack
+NDefines.NNavy.ALL_SHIPS_ACTIVATE_TIME = 36 --8                                    -- hours where all get to attack
 --NDefines.NNavy.BEST_CAPITALS_TO_SCREENS_RATIO = 0.33 --0.25 							-- capitals / screens ratio used for creating FEX groups in naval combat
 NDefines.NNavy.CARRIER_STACK_PENALTY = 5
 NDefines.NNavy.CARRIER_STACK_PENALTY_EFFECT = 0.075 --0.1
