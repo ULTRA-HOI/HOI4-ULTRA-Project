@@ -1632,11 +1632,25 @@ focus_tree = {
 							casualties > 1000000
 							has_government = democratic
 							has_government = neutrality
+							AND = {
+								strength_ratio = {
+									tag = SOV
+									ratio < 1
+								}
+								SOV = {
+									num_of_military_factories > 750
+								}
+							}
+							strength_ratio = {
+								tag = SOV
+								ratio < 0.66
+							}
 						}
 					}
 				}
 			}
 		}
+		continue_if_invalid = yes
 				
 		completion_reward = {
 			custom_effect_tooltip = available_political_advisor
@@ -1666,18 +1680,11 @@ focus_tree = {
 		}
 		
 		available = {
-			GER = {
-				OR = {
-					has_war_with = USA
-					AND = {
-						has_war_with = SOV 
-						OR = {
-							casualties > 1000000
-							has_government = democratic
-							has_government = neutrality
-						}
-					}
+			IF = {
+				limit = {
+					is_ai = no
 				}
+				has_idea = speer
 			}
 		}
 
