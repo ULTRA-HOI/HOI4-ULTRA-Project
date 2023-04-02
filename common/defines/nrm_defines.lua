@@ -198,10 +198,11 @@ NDefines.NNavy.SPOTTING_SPEED_EFFECT_FOR_INITIAL_NAVAL_INVASION_SPOTTING = 0.70
 
 NDefines.NNavy.RELATIVE_SURFACE_DETECTION_TO_POSITIONING_FACTOR = 0.1
 NDefines.NNavy.MAX_POSITIONING_BONUS_FROM_SURFACE_DETECTION = 0.0
-NDefines.NNavy.HIGHER_SHIP_RATIO_POSITIONING_PENALTY_FACTOR = 0.5 -- if one side has more ships than the other, that side will get this penalty for each +100% ship ratio it has
-NDefines.NNavy.MAX_POSITIONING_PENALTY_FROM_HIGHER_SHIP_RATIO = 0.75 --1.5 -- maximum penalty to get from larger fleets
+NDefines.NNavy.HIGHER_SHIP_RATIO_POSITIONING_PENALTY_FACTOR = 0.75 --0.25 if one side has more ships than the other, that side will get this penalty for each +100% ship ratio it has
+NDefines.NNavy.MAX_POSITIONING_PENALTY_FROM_HIGHER_SHIP_RATIO = 1.0 --0.75 -- maximum penalty to get from larger fleets
 NDefines.NNavy.POSITIONING_PENALTY_HOURLY_DECAY_FOR_NEWLY_JOINED_SHIPS = 0.05
-NDefines.NNavy.DAMAGE_PENALTY_ON_MINIMUM_POSITIONING = 0.75 -- damage penalty at 0% positioning
+NDefines.NNavy.MAX_POSITIONING_PENALTY_FOR_NEWLY_JOINED_SHIPS = 0.75 --0.25 -- the accumulated penalty from new ships will be clamped to this value
+NDefines.NNavy.DAMAGE_PENALTY_ON_MINIMUM_POSITIONING = 0.90 --0.5 damage penalty at 0% positioning
 NDefines.NNavy.MAX_ANTI_AIR_REDUCTION_EFFECT_ON_INCOMING_AIR_DAMAGE = 0.75 -- was 0.5 in vanilla.
 NDefines.NNavy.SCREEN_RATIO_FOR_FULL_SCREENING_FOR_CAPITALS = 3.0
 NDefines.NNavy.SCREEN_RATIO_FOR_FULL_SCREENING_FOR_CONVOYS = 0.25 --was 0.5	-- this screen ratio to num convoys is needed for full screening beyond screen line
