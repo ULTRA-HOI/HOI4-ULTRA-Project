@@ -60,13 +60,14 @@ NDefines.NDiplomacy.PEACE_SCORE_PER_PASS = 1	                    -- When you pas
 
 NDefines.NCountry.BASE_MOBILIZATION_SPEED = 0.04
 NDefines.NCountry.REINFORCEMENT_EQUIPMENT_DELIVERY_SPEED = 0.15 	-- Modifier for army equipment reinforcement speed
+NDefines.NCountry.REINFORCEMENT_DELIVERY_SPEED_MIN = 0.35 			-- The distance from the supply region to capital should affect the speed only a little bit. Main factor for penalty is overcrowded areas, and not the route length.
 NDefines.NCountry.REINFORCEMENT_MANPOWER_DELIVERY_SPEED = 20 		-- Modifier for army manpower reinforcement delivery speed (travel time)
+NDefines.NCountry.REINFORCEMENT_MANPOWER_CHUNK = 0.025				-- Chunk size of manpower reinforcement delivery, in % of total manpower needed by the template.
 
 NDefines.NCountry.BASE_STABILITY_WAR_FACTOR = 0 					-- Default stability war factor # was -0.3	
 NDefines.NCountry.MAJOR_MIN_FACTORIES = 200						-- need at least these many factories to become a major
 NDefines.NCountry.INVASION_REPORT_EXPERATION_DAYS = 10			-- Invasion experation days
 
-NDefines.NCountry.REINFORCEMENT_DELIVERY_SPEED_MIN = 0.35 			-- The distance from the supply region to capital should affect the speed only a little bit. Main factor for penalty is overcrowded areas, and not the route length.
 NDefines.NCountry.EVENT_PROCESS_OFFSET = 25						-- Events are checked every X day per character or province (1 is ideal, but CPU heavy)
 
 NDefines.NCountry.RESOURCE_LENDLEASE_PRIORITY = 0.2				-- Default convoy priority for export lend lease
