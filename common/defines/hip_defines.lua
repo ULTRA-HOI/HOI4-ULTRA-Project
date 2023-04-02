@@ -883,6 +883,8 @@ NDefines.NAI.LENDLEASE_FRACTION_OF_STOCKPILE = 0.5 --0.25
 --NDefines.NAI.DIPLOMACY_SEND_ATTACHE_COST_FACTOR = 1.0	-- Desire to send attache substracts the cost multiplied by this
 --NDefines.NAI.DIPLOMACY_SEND_ATTACHE_PP_FACTOR = 1.0	-- Desire to send attache adds total PP multiplied by this
 
+NDefines.NAI.BASE_RELUCTANCE = 20 -- Base reluctance applied to all diplomatic offers
+
 --------------------------------------------------------------------------------------------------------------
 -- ECONOMY
 --------------------------------------------------------------------------------------------------------------
