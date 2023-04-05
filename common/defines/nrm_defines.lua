@@ -240,7 +240,7 @@ NDefines.NNavy.DAMAGE_PENALTY_ON_MINIMUM_POSITIONING = 0.90 --0.5 damage penalty
 NDefines.NNavy.MAX_ANTI_AIR_REDUCTION_EFFECT_ON_INCOMING_AIR_DAMAGE = 0.75 -- was 0.5 in vanilla.
 NDefines.NNavy.SCREEN_RATIO_FOR_FULL_SCREENING_FOR_CAPITALS = 3.0
 NDefines.NNavy.SCREEN_RATIO_FOR_FULL_SCREENING_FOR_CONVOYS = 0.25 --was 0.5	-- this screen ratio to num convoys is needed for full screening beyond screen line
-NDefines.NNavy.CAPITAL_RATIO_FOR_FULL_SCREENING_FOR_CARRIERS = 0.125
+NDefines.NNavy.CAPITAL_RATIO_FOR_FULL_SCREENING_FOR_CARRIERS = 0.5 --was 1
 NDefines.NNavy.CAPITAL_RATIO_FOR_FULL_SCREENING_FOR_CONVOYS = 0.025  -- this capital ratio to num convoys is needed for full screening beyond screen line
 NDefines.NNavy.NAVAL_COMBAT_AIR_CARRIER_TARGET_SCORE = 500
 
