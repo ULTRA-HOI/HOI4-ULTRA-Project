@@ -43,7 +43,6 @@ NDefines.NNavy.BASE_SPOTTING_FROM_RADAR = 2.5 --was 5 -- base spotting percentag
 -- CARRIER STUFF
 --------------------------------------------------------------------------------------------------------------
 
-NDefines.NNavy.CARRIER_HOURS_DELAY_AFTER_EACH_COMBAT = 2 --4          -- how often carrier planes do battle inside naval combat - seems to not work
 NDefines.NAir.CARRIER_HOURS_DELAY_AFTER_EACH_COMBAT = 2 --8          -- how often carrier planes do battle inside naval combat - seems to not work
 NDefines.NNavy.NAVAL_STRIKE_CARRIER_MULTIPLIER = 1.5 --5.0              -- damage bonus when planes are in naval combat where their carrier is present (and can thus sortie faster and more effectively)
 
