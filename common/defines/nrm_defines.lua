@@ -174,7 +174,7 @@ NDefines.NNavy.NAVY_PIERCING_THRESHOLDS = {	 -- Our piercing / their armor must 
 NDefines.NNavy.NAVY_PIERCING_THRESHOLD_CRITICAL_VALUES = {	-- 0 armor will always receive maximum damage (so add overmatching at your own peril). the system expects at least 2 values, with no upper limit.
 			3.00, -- new
 			2.00,
-			1,50, -- new
+			1.50, -- new
 			1.00,
 			0.75,
 			0.50,
