@@ -128,7 +128,7 @@ NDefines.NNavy.MISSION_SUPREMACY_RATIOS = { -- supremacy multipliers for differe
 		1.0, -- PATROL		
 		0.6, -- STRIKE FORCE 
 		0.5, -- CONVOY RAIDING
-		0.5, -- CONVOY ESCORT
+		0.6, -- CONVOY ESCORT
 		0.3, -- MINES PLANTING	
 		0.3, -- MINES SWEEPING	
 		0.0, -- TRAIN
