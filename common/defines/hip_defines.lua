@@ -322,11 +322,11 @@ NDefines.NMilitary.PIERCING_THRESHOLDS = {					-- Our piercing / their armor mus
 	}
 NDefines.NMilitary.PIERCING_THRESHOLD_DAMAGE_VALUES = {	-- 0 armor will always receive maximum damage (so add overmatching at your own peril). the system expects at least 2 values, with no upper limit.
 		1.00,
+		0.95,
 		0.90,
+		0.85,
 		0.80,
-		0.70,
-		0.60,
-		0.50,
+		0.75,
 	}
 
 NDefines.NMilitary.LAND_COMBAT_STR_ARMOR_ON_SOFT_DICE_SIZE = 2   -- extra damage dice if our armor outclasses enemy
