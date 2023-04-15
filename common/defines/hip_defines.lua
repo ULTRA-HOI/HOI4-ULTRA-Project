@@ -262,7 +262,7 @@ NDefines.NAI.DIPLOMACY_ACCEPT_ATTACHE_OPINION_TRASHHOLD = 0
 
 NDefines.NMilitary.WAR_SCORE_LOSSES_RATIO = 0
 
-NDefines.NMilitary.HOURLY_ORG_MOVEMENT_IMPACT = -0.4		-- how much org is lost every hour while moving an army.
+NDefines.NMilitary.HOURLY_ORG_MOVEMENT_IMPACT = -0.2		-- how much org is lost every hour while moving an army.
 NDefines.NMilitary.ZERO_ORG_MOVEMENT_MODIFIER = -0.2		-- speed impact at 0 org.
 NDefines.NMilitary.INFRA_ORG_IMPACT = 0.4			--0.5	-- scale factor of infra on org regain.
 NDefines.NMilitary.INFRASTRUCTURE_MOVEMENT_SPEED_IMPACT = -0.02	-- speed penalty per infrastucture below maximum.
@@ -362,7 +362,9 @@ NDefines.NMilitary.PLAN_AREA_DEFENSE_FORT_IMPORTANCE = 1.0		-- Used when calcula
 NDefines.NMilitary.COMBAT_OVER_WIDTH_PENALTY = -1.5					-- over combat width penalty per %.
 
 NDefines.NMilitary.FASTER_ORG_REGAIN_LEVEL = 0.2
-NDefines.NMilitary.FASTER_ORG_REGAIN_MULT = 0.8
+NDefines.NMilitary.FASTER_ORG_REGAIN_MULT = 0.2
+NDefines.NMilitary.SLOWER_ORG_REGAIN_LEVEL = 0.8
+NDefines.NMilitary.SLOWER_ORG_REGAIN_MULT = -0.2
 NDefines.NMilitary.ACCLIMATIZATION_SPEED_GAIN = 0.08				-- A variable used to balance the overall speed of gaining the acclimatization
 NDefines.NMilitary.ACCLIMATIZATION_LOSS_SPEED_FACTOR = 1.0		-- Loosing one acclimatization while being under affect of the opposite climate should cause it to drop down much faster than gaining.
 NDefines.NMilitary.UNIT_LEADER_MODIFIER_COOLDOWN_ON_GROUP_CHANGE = 3		-- time in days for a unit leader to regain its modifiers
@@ -451,7 +453,7 @@ NDefines.NMilitary.STRATEGIC_SPEED_RAIL_MAX = 25.0                -- Additional 
 
 NDefines.NCountry.SUPPLY_CONVOY_FACTOR = 0.75					-- How many convoys each supply needs
 NDefines.NBuildings.SUPPLY_PORT_LEVEL_THROUGHPUT = 1.0   -- supply throughput per level of naval base
-NDefines.NMilitary.ATTRITION_DAMAGE_ORG = 0.1
+NDefines.NMilitary.ATTRITION_DAMAGE_ORG = 0.04
 --DONT TOUCH
 NDefines.NMilitary.ATTRITION_EQUIPMENT_LOSS_CHANCE = 0.02 --DONT TOUCH
 NDefines.NMilitary.ATTRITION_EQUIPMENT_PER_TYPE_LOSS_CHANCE = 0.6 -- DONT TOUCH Attrition is not changed in defines. Do tweaks to terrain or weather attrition if needed
@@ -650,8 +652,8 @@ NDefines.NAir.EFFICIENCY_REGION_CHANGE_DAILY_GAIN_MARITIME_PATROL_PLANE = 0.192	
 NDefines.NAir.EFFICIENCY_REGION_CHANGE_PENALTY_FACTOR = 0.99			-- Penalty applied for changing region
 	
 
-NDefines.NAir.ANTI_AIR_ATTACK_TO_DAMAGE_REDUCTION_FACTOR = 0.176 --0.7 -- original 1.00 Balancing value to convert equipment stat anti_air_attack to the damage reduction modifier apply to incoming air attacks against units with AA.
-NDefines.NAir.ANTI_AIR_MAXIMUM_DAMAGE_REDUCTION_FACTOR = 0.75 --0.5
+NDefines.NAir.ANTI_AIR_ATTACK_TO_DAMAGE_REDUCTION_FACTOR = 0.085 --0.7 -- original 1.00 Balancing value to convert equipment stat anti_air_attack to the damage reduction modifier apply to incoming air attacks against units with AA.
+NDefines.NAir.ANTI_AIR_MAXIMUM_DAMAGE_REDUCTION_FACTOR = 0.5 --0.5
 
 NDefines.NAir.NAVAL_KAMIKAZE_DAMAGE_MULT = 10.0  -- vanilla is like 20
 
