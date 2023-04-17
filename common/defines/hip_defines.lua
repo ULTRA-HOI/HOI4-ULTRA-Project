@@ -483,7 +483,7 @@ NDefines.NSupply.CAPITAL_ADDED_PENALTY_PER_PROVINCE = 0.66 -- 1.2 -- added penal
 NDefines.NSupply.NODE_INITIAL_SUPPLY_FLOW = 2.0    -- 2.8
 NDefines.NSupply.NODE_STARTING_PENALTY_PER_PROVINCE = 0.50 -- 0.50
 NDefines.NSupply.NODE_ADDED_PENALTY_PER_PROVINCE = 0.33 --0.70 -- added penalty as we move away from origin
-NDefines.NSupply.NAVAL_BASE_INITIAL_SUPPLY_FLOW = 1.0 --  3.3 
+NDefines.NSupply.NAVAL_BASE_INITIAL_SUPPLY_FLOW = 2.5 --  3.3 
 NDefines.NSupply.NAVAL_BASE_STARTING_PENALTY_PER_PROVINCE = 0.50 --  0.84 -- added penalty as we move away from origin
 NDefines.NSupply.NAVAL_BASE_ADDED_PENALTY_PER_PROVINCE = 0.50 --  1.1
 NDefines.NSupply.NODE_FLOW_BONUS_PER_RAIL_LEVEL = 0.1 -- 0.34  the idea being that trucks are the big way of increasing flow out of the hub, rails are there to increase the max capacity
@@ -516,6 +516,7 @@ NDefines.NSupply.CAPITAL_SUPPLY_MILITARY_FACTORIES = 0.15 --0.6-- supply from on
 NDefines.NSupply.CAPITAL_SUPPLY_DOCKYARDS = 0.1 --0.4--supply from one naval factory
 NDefines.NSupply.INFRA_TO_SUPPLY = 0.00		--0.3				-- each level of infra gives this many supply
 NDefines.NSupply.NAVAL_BASE_FLOW = 0.0 -- max output/input of a naval node is limited by this base value + additional ratio for each level
+NDefines.NSupply.NAVAL_FLOW_PER_LEVEL = 1.5 -- max output/input of a naval node is limited by previous base value + this define per its level
 
 NDefines.NMilitary.COMBAT_SUPPLY_LACK_ATTACKER_ATTACK = -0.70     -- attack combat penalty for attacker if out of supply
 NDefines.NMilitary.COMBAT_SUPPLY_LACK_ATTACKER_DEFEND = -0.70     -- defend combat penalty for attacker if out of supply
