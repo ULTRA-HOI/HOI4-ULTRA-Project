@@ -398,7 +398,7 @@ NDefines.NNavy.DEPTH_CHARGES_DAMAGE_MULT = 1
 NDefines.NNavy.DEPTH_CHARGE_STAT_FOR_SHIP_TO_BE_SUB_HUNTER = 4
 NDefines.NNavy.SUB_DETECTION_STAT_FOR_SHIP_TO_BE_SUB_HUNTER = 3
 
-NDefines.NNavy.SUBMARINE_REVEAL_BASE_CHANCE = 15
+NDefines.NNavy.SUBMARINE_REVEAL_BASE_CHANCE = 13
 NDefines.NNavy.SUBMARINE_BASE_TORPEDO_REVEAL_CHANCE = 0.045
 
 NDefines.NNavy.SUBMARINE_REVEALED_TIMEOUT = 6              --Amount of in-game-hours that makes the submarine visible if it is on the defender side.
