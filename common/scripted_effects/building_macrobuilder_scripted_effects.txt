@@ -4,6 +4,7 @@ init_building_macrobuilder = {
     set_variable = { cic_frame = 1 }
     set_variable = { mic_frame = 2 }
     set_variable = { nic_frame = 3 }
+    set_variable = { infra_frame = 4 }
 }
 macro_build = {
     set_variable = { infra_upper_limit_cur = infra_upper_limit }
@@ -47,6 +48,16 @@ macro_build = {
                 }
                 add_building_construction = {
                     type = dockyard
+                    level = ROOT.amount_buildings
+                    instant_build = no
+                }
+            }
+            if = {
+                limit = {
+                    ROOT = { has_country_flag = infra_macrobuilder }
+                }
+                add_building_construction = {
+                    type = infrastructure
                     level = ROOT.amount_buildings
                     instant_build = no
                 }
