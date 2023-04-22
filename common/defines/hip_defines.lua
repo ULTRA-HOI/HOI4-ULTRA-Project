@@ -291,8 +291,8 @@ NDefines.NMilitary.NUKE_MAX_DAMAGE_PERCENT = 0.09 --0.9					-- Minimum damage fr
 
 -- air impact on land combats
 
-NDefines.NMilitary.LAND_AIR_COMBAT_STR_DAMAGE_MODIFIER = 0.005   -- air global damage modifier
-NDefines.NMilitary.LAND_AIR_COMBAT_ORG_DAMAGE_MODIFIER = 0.005    -- global damage modifier
+NDefines.NMilitary.LAND_AIR_COMBAT_STR_DAMAGE_MODIFIER = 0.004   -- air global damage modifier
+NDefines.NMilitary.LAND_AIR_COMBAT_ORG_DAMAGE_MODIFIER = 0.004    -- global damage modifier
 NDefines.NMilitary.LAND_AIR_COMBAT_MAX_PLANES_PER_ENEMY_WIDTH = 20 --5 -- how many CAS/TAC can enter a combat depending on enemy width there
 
 -- Land combat general regulation
