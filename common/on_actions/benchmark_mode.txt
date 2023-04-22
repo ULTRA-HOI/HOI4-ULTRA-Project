@@ -1,0 +1,71 @@
+on_actions = {
+
+	on_weekly = {
+		effect = {
+			if = {
+				limit = {
+					has_global_flag = benchmark_mode
+				}
+			
+				country_lock_all_division_template = yes
+				every_country_division = {
+					limit = {
+						always = yes
+					}
+					destroy_unit = yes
+				}
+				
+				destroy_ships = {
+					type = nrm_ship_hull_capital
+					count = all
+				}
+				destroy_ships = {
+					type = nrm_ship_hull_carrier
+					count = all
+				}
+				destroy_ships = {
+					type = nrm_ship_hull_cruiser
+					count = all
+				}
+				destroy_ships = {
+					type = nrm_ship_hull_destroyer
+					count = all
+				}
+				destroy_ships = {
+					type = nrm_ship_hull_submarine
+					count = all
+				}
+			}
+			if = {
+				limit = {
+					has_global_flag = benchmark_mode
+					num_of_available_military_factories > 0
+				}
+				
+				add_equipment_production = {
+					equipment = {
+						type = benchmark_equipment_0
+					}
+					requested_factories = 200
+					progress = 0
+				}
+			}
+		}
+	
+	}
+	
+	on_weekly_GER = {
+		effect = {
+			if = {
+				limit = {
+					has_global_flag = benchmark_mode
+				}
+				GER = {
+					log = "[?Global.date.GetDateString] Germany MIL Count:  [?GER.num_of_military_factories], French MIL Count: [?FRA.num_of_military_factories], Soviet MIL Count: [?SOV.num_of_military_factories],"
+					log = "[?Global.date.GetDateString] Germany EQ Count:  [?GER.num_equipment@benchmark_equipment_0], French EQ Count: [?FRA.num_equipment@benchmark_equipment_0], Soviet EQ Count: [?SOV.num_equipment@benchmark_equipment_0],"
+				}
+			}
+		}
+	}
+	
+}
