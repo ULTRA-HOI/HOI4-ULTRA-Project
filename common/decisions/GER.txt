@@ -934,7 +934,54 @@ operations = {
 		}
 		
 	}
+	
+	scapa_flow_raid = {
+
+		icon = generic_naval
+	
+		allowed = {
+			tag = ger
+		}
 		
+		available = {
+			has_navy_size = {
+				unit = submarine
+				size > 55
+			}
+			has_war_with = ENG
+			IF = {
+				limit = {is_ai = no}
+				command_power > 50
+				date < 1940.1.1
+			}
+			IF = {
+				limit = {is_ai = yes}
+				date > 1939.10.13
+			}		
+		}
+
+		cost = 50
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 100
+		}
+		
+		visible = {
+			tag = GER
+			has_war_with = ENG
+		}
+		
+		complete_effect = {
+			GER = {
+				country_event = { id = Germany.300 hours = 5 }
+			}
+			set_country_flag = scapa
+			add_command_power = -50
+		}
+	}
+
 	GER_operation_Barbarossa = {
 	
 		icon = generic_operation
