@@ -10,6 +10,7 @@ units= {
 			location = 241  # Wilhemshaven
 			ship = { name = "Deutschland" pride_of_the_fleet = yes definition = panzerschiff start_experience_factor = 0.04 equipment = { nrm_ship_hull_panzerschiff = { amount = 1 owner = GER version_name = "Deutschland Class" } } }	
 			ship = { name = "Admiral Scheer" definition = panzerschiff start_experience_factor = 0.04 equipment = { nrm_ship_hull_panzerschiff = { amount = 1 owner = GER version_name = "Deutschland Class" } } }
+			ship = ( name = "Graf Spee" definition = panzerschiff start_experience_factor = 0.04 equipment = { nrm_ship_hull_panzerschiff = { amount = 1 owner = GER version_name = "Deutschland Class" } } }
 			ship = { name = "Nürnberg" definition = light_cruiser start_experience_factor = 0.04 equipment = { nrm_ship_hull_cruiser_2 = { amount = 1 owner = GER version_name = "Nürnberg Class" } } } 		
 			ship = { name = "Leipzig" definition = light_cruiser start_experience_factor = 0.04 equipment = { nrm_ship_hull_cruiser_2 = { amount = 1 owner = GER version_name = "Leipzig Class" } } }		
 			ship = { name = "Königsberg" definition = light_cruiser start_experience_factor = 0.04 equipment = { nrm_ship_hull_cruiser_2 = { amount = 1 owner = GER version_name = "Königsberg Class" } } }			
@@ -41,8 +42,8 @@ units= {
 		task_force = {
 			name = "Marineschule Kiel"
 			location = 241  # 6389 	# Kiel
-			ship = { name = "Brummer" definition = light_cruiser start_experience_factor = 0.04 equipment = { nrm_ship_hull_cruiser_1 = { amount = 1 owner = GER version_name = "Bremse Class" } } }			
-			ship = { name = "Bremse" definition = light_cruiser start_experience_factor = 0.04 equipment = { nrm_ship_hull_cruiser_1 = { amount = 1 owner = GER version_name = "Bremse Class" } } }
+			ship = { name = "Brummer" definition = destroyer start_experience_factor = 0.04 equipment = { nrm_ship_hull_destroyer_2 = { amount = 1 owner = GER version_name = "Brummer" } } }			
+			ship = { name = "Bremse" definition = destroyer start_experience_factor = 0.04 equipment = { nrm_ship_hull_destroyer_1 = { amount = 1 owner = GER version_name = "Bremse" } } }
 		}
 	}
 	fleet = {
@@ -88,15 +89,38 @@ instant_effect = {
 
 	### Ships Under Contruction ###
 	
-	# CA: "Graf Spee"
+	## CA: "Graf Spee"
+	#add_equipment_production = {
+	#	equipment = {
+	#		type = nrm_ship_hull_panzerschiff
+	#		creator = "GER"
+	#		version_name = "Deutschland Class"
+	#	}
+	#	requested_factories = 4
+	#	progress = 0.99
+	#	amount = 1
+	#}
+	# Scharnhorst & Gneisenau moved
+	 #Scharnhorst
 	add_equipment_production = {
 		equipment = {
-			type = nrm_ship_hull_panzerschiff
+			type = nrm_ship_hull_capital_3
 			creator = "GER"
-			version_name = "Deutschland Class"
+			version_name = "Scharnhorst Class"
 		}
-		requested_factories = 4
-		progress = 0.98
+		requested_factories = 7
+		progress = 0.15
+		amount = 1
+	}
+	 #Gneisenau
+	add_equipment_production = {
+		equipment = {
+			type = nrm_ship_hull_capital_3
+			creator = "GER"
+			version_name = "Scharnhorst Class"
+		}
+		requested_factories = 6
+		progress = 0.21
 		amount = 1
 	}
 	# Hipper
@@ -107,33 +131,11 @@ instant_effect = {
 			version_name = "Admiral Hipper Class"
 		}
 		name = "Admiral Hipper" 
-		requested_factories = 5
+		requested_factories = 3
 		progress = 0.13
 		amount = 1
 	}
-	# Scharnhorst & Gneisenau moved
-	 #Scharnhorst
-	add_equipment_production = {
-		equipment = {
-			type = nrm_ship_hull_capital_3
-			creator = "GER"
-			version_name = "Scharnhorst Class"
-		}
-		requested_factories = 5
-		progress = 0.35
-		amount = 1
-	}
-	 #Gneisenau
-	add_equipment_production = {
-		equipment = {
-			type = nrm_ship_hull_capital_3
-			creator = "GER"
-			version_name = "Scharnhorst Class"
-		}
-		requested_factories = 5
-		progress = 0.25
-		amount = 1
-	}
+	
 	
 	IF = {
 		limit = {
@@ -150,7 +152,7 @@ instant_effect = {
 				fixed_ship_engine_slot = nrm_capital_engine_S2_160
 				fixed_ship_armor_layout_slot = nrm_armour_layout_BB_2
 				fixed_ship_armor_slot = nrm_capital_armour_13_2
-				fixed_ship_damagecontrol_slot = nrm_damagecontrol_2
+				fixed_ship_damagecontrol_slot = nrm_damagecontrol_3
 				fixed_ship_range_slot = nrm_range_capital_2
 				fixed_ship_radar_slot = empty
 				fixed_ship_fire_control_system_slot = nrm_fire_control_4
@@ -195,7 +197,7 @@ instant_effect = {
 		equipment = {
 			type = nrm_ship_hull_destroyer_2
 			creator = "GER"
-			version_name = "Zerstörer 1934/1934A Class"
+			version_name = "Zerstörer 1934 Class"
 		}
 		requested_factories = 1
 		progress = 0.54
@@ -205,17 +207,17 @@ instant_effect = {
 		equipment = {
 			type = nrm_ship_hull_destroyer_2
 			creator = "GER"
-			version_name = "Zerstörer 1934/1934A Class"
+			version_name = "Zerstörer 1934 Class"
 		}
 		requested_factories = 1
-		progress = 0.54
+		progress = 0.50
 		amount = 1
 	}
 	add_equipment_production = {
 		equipment = {
 			type = nrm_ship_hull_destroyer_2
 			creator = "GER"
-			version_name = "Zerstörer 1934/1934A Class"
+			version_name = "Zerstörer 1934 Class"
 		}
 		requested_factories = 1
 		progress = 0.44
@@ -225,41 +227,89 @@ instant_effect = {
 		equipment = {
 			type = nrm_ship_hull_destroyer_2
 			creator = "GER"
-			version_name = "Zerstörer 1934/1934A Class"
+			version_name = "Zerstörer 1934 Class"
 		}
 		requested_factories = 1
-		progress = 0.43
+		progress = 0.41
 		amount = 1
 	}
 
-	 #DD: 1934A class (x12) ("Z5"-"Z16")
+	#DD: 1934A class (x12) ("Z5"-"Z16")
 	add_equipment_production = {
 		equipment = {
 			type = nrm_ship_hull_destroyer_2
 			creator = "GER"
-			version_name = "Zerstörer 1934/1934A Class"
+			version_name = "Zerstörer 1934A Class"
+		}
+		requested_factories = 1
+		progress = 0.24
+		amount = 1
+	}
+	add_equipment_production = {
+		equipment = {
+			type = nrm_ship_hull_destroyer_2
+			creator = "GER"
+			version_name = "Zerstörer 1934A Class"
 		}
 		requested_factories = 1
 		progress = 0.26
 		amount = 1
 	}
-	# DD: 1934A class (x12) ("Z5"-"Z16")
 	add_equipment_production = {
 		equipment = {
 			type = nrm_ship_hull_destroyer_2
 			creator = "GER"
-			version_name = "Zerstörer 1934/1934A Class"
+			version_name = "Zerstörer 1934A Class"
 		}
 		requested_factories = 1
-		progress = 0.25
+		progress = 0.16
 		amount = 1
 	}
-	# DD: 1934A class (x12) ("Z5"-"Z16")
 	add_equipment_production = {
 		equipment = {
 			type = nrm_ship_hull_destroyer_2
 			creator = "GER"
-			version_name = "Zerstörer 1934/1934A Class"
+			version_name = "Zerstörer 1934A Class"
+		}
+		requested_factories = 1
+		progress = 0.00
+		amount = 1
+	}
+	add_equipment_production = {
+		equipment = {
+			type = nrm_ship_hull_destroyer_2
+			creator = "GER"
+			version_name = "Zerstörer 1934A Class"
+		}
+		requested_factories = 1
+		progress = 0.24
+		amount = 1
+	}
+	add_equipment_production = {
+		equipment = {
+			type = nrm_ship_hull_destroyer_2
+			creator = "GER"
+			version_name = "Zerstörer 1934A Class"
+		}
+		requested_factories = 1
+		progress = 0.22
+		amount = 1
+	}
+	add_equipment_production = {
+		equipment = {
+			type = nrm_ship_hull_destroyer_2
+			creator = "GER"
+			version_name = "Zerstörer 1934A Class"
+		}
+		requested_factories = 1
+		progress = 0.19
+		amount = 1
+	}
+	add_equipment_production = {
+		equipment = {
+			type = nrm_ship_hull_destroyer_2
+			creator = "GER"
+			version_name = "Zerstörer 1934A Class"
 		}
 		requested_factories = 1
 		progress = 0.17
@@ -269,93 +319,37 @@ instant_effect = {
 		equipment = {
 			type = nrm_ship_hull_destroyer_2
 			creator = "GER"
-			version_name = "Zerstörer 1934/1934A Class"
+			version_name = "Zerstörer 1934A Class"
 		}
 		requested_factories = 1
-		progress = 0.02
-		amount = 1
-	}
-	# DD: 1934A class (x12) ("Z5"-"Z16")
-	add_equipment_production = {
-		equipment = {
-			type = nrm_ship_hull_destroyer_2
-			creator = "GER"
-			version_name = "Zerstörer 1934/1934A Class"
-		}
-		requested_factories = 1
-		progress = 0.25
-		amount = 1
-	}
-	# DD: 1934A class (x12) ("Z5"-"Z16")
-	add_equipment_production = {
-		equipment = {
-			type = nrm_ship_hull_destroyer_2
-			creator = "GER"
-			version_name = "Zerstörer 1934/1934A Class"
-		}
-		requested_factories = 1
-		progress = 0.22
+		progress = 0.06
 		amount = 1
 	}
 	add_equipment_production = {
 		equipment = {
 			type = nrm_ship_hull_destroyer_2
 			creator = "GER"
-			version_name = "Zerstörer 1934/1934A Class"
+			version_name = "Zerstörer 1934A Class"
 		}
 		requested_factories = 1
 		progress = 0.21
 		amount = 1
 	}
-	# DD: 1934A class (x12) ("Z5"-"Z16")
 	add_equipment_production = {
 		equipment = {
 			type = nrm_ship_hull_destroyer_2
 			creator = "GER"
-			version_name = "Zerstörer 1934/1934A Class"
+			version_name = "Zerstörer 1934A Class"
 		}
 		requested_factories = 1
-		progress = 0.18
-		amount = 1
-	}
-	# DD: 1934A class (x12) ("Z5"-"Z16")
-	add_equipment_production = {
-		equipment = {
-			type = nrm_ship_hull_destroyer_2
-			creator = "GER"
-			version_name = "Zerstörer 1934/1934A Class"
-		}
-		requested_factories = 1
-		progress = 0.07
+		progress = 0.20
 		amount = 1
 	}
 	add_equipment_production = {
 		equipment = {
 			type = nrm_ship_hull_destroyer_2
 			creator = "GER"
-			version_name = "Zerstörer 1934/1934A Class"
-		}
-		requested_factories = 1
-		progress = 0.23
-		amount = 1
-	}
-	# DD: 1934A class (x12) ("Z5"-"Z16")
-	add_equipment_production = {
-		equipment = {
-			type = nrm_ship_hull_destroyer_2
-			creator = "GER"
-			version_name = "Zerstörer 1934/1934A Class"
-		}
-		requested_factories = 1
-		progress = 0.22
-		amount = 1
-	}
-	# DD: 1934A class (x12) ("Z5"-"Z16")
-	add_equipment_production = {
-		equipment = {
-			type = nrm_ship_hull_destroyer_2
-			creator = "GER"
-			version_name = "Zerstörer 1934/1934A Class"
+			version_name = "Zerstörer 1934A Class"
 		}
 		requested_factories = 1
 		progress = 0.06
@@ -371,7 +365,7 @@ instant_effect = {
 		}
 		name = "U-25"
 		requested_factories = 1
-		progress = 0.63
+		progress = 0.66
 		amount = 1
 	}
 	add_equipment_production = {
@@ -382,7 +376,7 @@ instant_effect = {
 		}
 		name = "U-26"
 		requested_factories = 1
-		progress = 0.50
+		progress = 0.54
 		amount = 1
 	}
 	add_equipment_production = {
@@ -393,8 +387,8 @@ instant_effect = {
 		}
 		name = "U-14"
 		requested_factories = 1
-		progress = 0.88
-		amount = 2
+		progress = 0.91
+		amount = 1
 	}
 	add_equipment_production = {
 		equipment = {
@@ -404,8 +398,8 @@ instant_effect = {
 		}
 		name = "U-15"
 		requested_factories = 1
-		progress = 0.56
-		amount = 2
+		progress = 0.60
+		amount = 1
 	}
 	add_equipment_production = {
 		equipment = {
@@ -415,7 +409,7 @@ instant_effect = {
 		}
 		name = "U-16"
 		requested_factories = 1
-		progress = 0.08
+		progress = 0.52
 		amount = 1
 	}
 	add_equipment_production = {
@@ -426,8 +420,8 @@ instant_effect = {
 		}
 		name = "U-19"
 		requested_factories = 1
-		progress = 0.90
-		amount = 2
+		progress = 0.92
+		amount = 1
 	}
 	add_equipment_production = {
 		equipment = {
@@ -437,8 +431,8 @@ instant_effect = {
 		}
 		name = "U-20"
 		requested_factories = 1
-		progress = 0.79
-		amount = 2
+		progress = 0.83
+		amount = 1
 	}
 	add_equipment_production = {
 		equipment = {
@@ -448,7 +442,7 @@ instant_effect = {
 		}
 		name = "U-33"
 		requested_factories = 1
-		progress = 0.4
+		progress = 0.37
 		amount = 1
 	}
 	add_equipment_production = {
@@ -459,7 +453,7 @@ instant_effect = {
 		}
 		name = "U-34"
 		requested_factories = 1
-		progress = 0.33
+		progress = 0.30
 		amount = 1
 	}
 	add_equipment_production = {
@@ -470,7 +464,7 @@ instant_effect = {
 		}
 		name = "U-27"
 		requested_factories = 1
-		progress = 0.22
+		progress = 0.19
 		amount = 1
 	}
 	add_equipment_production = {
@@ -512,7 +506,7 @@ instant_effect = {
 			creator = "GER" 
 			version_name = "Type VIIA Class"
 		}
-		name = "U-31"
+		name = "U-32"
 		requested_factories = 1
 		progress = 0.0
 		amount = 1
@@ -523,7 +517,7 @@ instant_effect = {
 			creator = "GER" 
 			version_name = "Type VIIA Class"
 		}
-		name = "U-35"
+		name = "U-31"
 		requested_factories = 1
 		progress = 0.0
 		amount = 1
@@ -545,11 +539,56 @@ instant_effect = {
 			creator = "GER" 
 			version_name = "Type VIIA Class"
 		}
-		name = "U-32"
+		name = "U-35"
 		requested_factories = 1
 		progress = 0.0
 		amount = 1
 	}
+	add_equipment_production = {
+		equipment = {
+			type = nrm_ship_hull_submarine_small_2
+			creator = "GER" 
+			version_name = "Type IIB Class"
+		}
+		name = "U-21"
+		requested_factories = 1
+		progress = 0.0
+		amount = 1
+	}
+	add_equipment_production = {
+		equipment = {
+			type = nrm_ship_hull_submarine_small_2
+			creator = "GER" 
+			version_name = "Type IIB Class"
+		}
+		name = "U-22"
+		requested_factories = 1
+		progress = 0.0
+		amount = 1
+	}
+	add_equipment_production = {
+		equipment = {
+			type = nrm_ship_hull_submarine_small_2
+			creator = "GER" 
+			version_name = "Type IIB Class"
+		}
+		name = "U-23"
+		requested_factories = 1
+		progress = 0.0
+		amount = 1
+	}
+	add_equipment_production = {
+		equipment = {
+			type = nrm_ship_hull_submarine_small_2
+			creator = "GER" 
+			version_name = "Type IIB Class"
+		}
+		name = "U-24"
+		requested_factories = 1
+		progress = 0.0
+		amount = 1
+	}
+	
 }
 
 #####################
