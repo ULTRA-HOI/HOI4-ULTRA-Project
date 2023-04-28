@@ -89,7 +89,7 @@ NDefines.NNavy.LIGHT_GUN_ATTACK_TO_SHORE_BOMBARDMENT = 0.04                 -- l
 NDefines.NNavy.TRAINING_DAILY_COUNTRY_EXP_FACTOR = 0.00025						-- was 0.001 -- Factor used to scale the Daily Country Navy XP gain
 NDefines.NNavy.CONVOY_SINKING_SPILLOVER = 1.0 --0.5                 				-- Damaged convoys roll for if they sink in the end of combat by accumulating the damage. This scales that chance. 
 --NDefines.NNavy.ANTI_AIR_TARGETTING_TO_CHANCE = 0.02							-- Balancing value to convert averaged equipment stats (anti_air_targetting and naval_strike_agility) to probability chances of airplane being hit by navies AA.
-NDefines.NNavy.ANTI_AIR_ATTACK_TO_AMOUNT = 0.0025 --was 0.01 						-- Balancing value to convert equipment stat anti_air_attack to the random % value of airplanes being hit. Lower this value so that plane lost are less
+NDefines.NNavy.ANTI_AIR_ATTACK_TO_AMOUNT = 0.0015 --was 0.01 						-- Balancing value to convert equipment stat anti_air_attack to the random % value of airplanes being hit. Lower this value so that plane lost are less
 NDefines.NNavy.AA_EFFICIENCY_PENALTY_ON_MINIMUM_POSITIONING	= 0.1           -- AA penalty at 0% positioning
 NDefines.NNavy.SCREENING_EFFICIENCY_PENALTY_ON_MINIMUM_POSITIONING = 0.75  		-- was 0.5 -- screening efficiency (screen to capital ratio) at 0% positioning
 NDefines.NNavy.NAVAL_TRANSFER_BASE_SPEED = 6                                -- was 6 -- base speed of units on water being transported
@@ -135,7 +135,7 @@ NDefines.NNavy.MISSION_SUPREMACY_RATIOS = { -- supremacy multipliers for differe
 		0.6, -- NAVAL_INVASION_SUPPORT
 }
 NDefines.NNavy.SHIP_TO_FLEET_ANTI_AIR_RATIO	= 0.50 -- was 0.15
-NDefines.NNavy.ANTI_AIR_MULT_ON_INCOMING_AIR_DAMAGE = 0.15 -- was 0.2 in vanilla; Increase power and reducing multiplier to make damage scale better.
+NDefines.NNavy.ANTI_AIR_MULT_ON_INCOMING_AIR_DAMAGE = 0.25 -- was 0.2 in vanilla; Increase power and reducing multiplier to make damage scale better.
 NDefines.NNavy.ANTI_AIR_POW_ON_INCOMING_AIR_DAMAGE = 0.5 -- was 0.2. PLEASE DO NOT INCREASE THE VALUE ABOVE TOO MUCH. ^0.5 instead of ^0.2 means that AA DISRUPTION SCALE A LOT MORE.
 NDefines.NNavy.MIN_HIT_PROFILE_MULT = 0.05
 NDefines.NNavy.HIT_PROFILE_SPEED_FACTOR = 1		-- factors speed value when determining it profile (Vis * HIT_PROFILE_MULT * Ship Hit Profile Mult)
