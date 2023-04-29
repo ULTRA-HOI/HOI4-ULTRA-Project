@@ -1,5 +1,131 @@
 # Changelog
 
+### 0.16.4
+
+### New Content
+
+- Scapa flow raid decision
+
+### Balance
+
+- Reduced supply by naval base lvl
+- Reduced convoys needed for fuel LL
+- German focus to reform war economy gets alternative conditions
+- Positioning penalty increased
+- Torpedoes hit profile increased (so less likely to hit)
+- Increased light attack and decreased heavy attack hit profiles so naval light attack spamming is less efficient
+- BBs gets longer fighting time without screens being able to fire
+- Reworked naval critical hits so armor/piercing is more impactful
+- Reduced naval AA damages on aircraft but increased mitigation given by naval AA
+- Reduced air disruption for naval battles so a few CV fighters can't prevent bombers to hit ships
+- Reduced positioning malus from not having fleet carriers
+- Halved radar effect on spotting/detection
+- Reduced radar impact on air combats
+- Anschluss focus is no longer date-gated but needs Autarky and Anti-Comintern pact
+- added more treaty restrictions for researching the biggest guns
+- rebalanced hullform resiliance to torpedoes
+- increased capital ship requirement to screen carriers (1 BB/BC can screen 2 carriers)
+- Screen ship building is no longer capped to 5 dockyards
+- reduced naval damages lethality
+- Lower naval supremacy multiplier for strike force and naval invasion support
+- Increase naval supremacy multiplier for convoy escort from 0.5 to 0.6
+- Adjusted (land) armor/piercing thresholds
+- increased support bomber damages (CAS and TAC effect on land combats)
+- increased land org damage
+- nerfed thje effect of tactics
+- org define adjustments
+- weaker div AA
+- Ship Supply Made Irrelevant
+- Removed Dönitz from Fix Torp descision
+- Increased chance to spot subs
+- Increased air combat intensity
+- increased strongly spy agency upgrade time
+- considerably increased agency upgrade IC costs
+- Removed PP cost for japanese industry decision
+- JAP amry tech focus gives additional research slot
+- Reduced Strategic Bombing Modifiers From Doctrine
+- Night Air Impact Updated
+- Reduce Convoy Requirements For Transporting Oil
+- made passive repair do something
+- increased air accidents
+- strongly reduced bombing damages on railways
+- removed naval accidents
+- Brandenburger decision gives commando training agency upgrade
+- reduced visibility for fleets returning for repairing
+
+### Database
+
+- Guam added to the limited airbase list
+- Austria starts guaranted by Italy, removed when Italy accepts anti-comintern pact
+- Italy starts guaranted by UK/France, removed when Italy accepts anti-comintern pact
+- Japan starts with 1936 techs on 36 & 40 cm guns
+- Fighter-Bomber wings are now 72 aircraft
+- less reliability for german heavy TDs
+- Bypass Sino-German cooperation if Shanghai falls
+- Disable Greater Germany cosmetic tag decision
+- Added additional inf tech bonus for JAP
+- GER Navy & Air Advisors Reworked
+- JAP Inf tech boosts, missing techs, updated loc
+- improved GER tank loc
+- Corrected HA AA on Omaha, Wyoming & New York Class
+- adjusted german SPGs
+- lowered reliability of Tiger II
+- very slight buff to impr smgs
+- added starting agency upgrades for all majors
+- UK Oil Revamp
+- Adjusted Initial GER Naval Production Queue
+- Rearranged UK Fuel Silos
+- Germany starts out with Do 17 E & F researched
+- Expand Wilhelmshaven construction decisions also add port buildings
+- Updated UK focus inf tech boosts
+- Reduced Number of Doctrine Cost Reductions for USA
+- increased compliance in sudetenland
+
+### Map
+
+- Changed Tyrrhenian sea to ocean
+- Changed Sea of Sicily to water_shallow_sea
+- Changed ionian sea to water_deep_ocean
+- Changed Lybian sea to water_ocean
+- added some strait crossings to the USSR
+- Move Bauxite from Littorale to Istria
+- Updated Railway map to support Caspian Sea Crossing
+- Updated terrain in Saipan and Okinawa
+
+### QoL
+
+- fjords terrain modifiers no longer shows in designer
+- Condense strategic region-theater list again
+- Re-fix planning bar to be red
+- Increase the width of theatre GUI to fit up to 10 armies/taskforces
+- Date-gated propaganda decisions made not visible if the date expired
+- Hide Fall Blau decision if owning Baku and Stalingrad
+- Add Infrastructure to macrobuilder
+- Add coloured air/navy missions
+- Update German portraits
+- added decision to hide infantry template decisions
+- some changes to decision layout
+
+### Fixes
+
+- fixed German MechRocket Hardness
+- Fix nuclear research decision for Germany requiring 2 reactors
+- Fix Taranto/Pearl Harbour Events
+- fixed incorrect soviet light tank cost
+- Removed Old File about Italian Capitulation
+- Lowered Leopard armor to 77,4, rough estimate
+- Correct armor values for UK Heavy Tanks
+- Corrected UK mixed up HT armour value
+- move churchill crocodile to the correct position
+- fixed syntax error for polish starting divisions
+
+### AI
+
+- AI should no longer ping-pong between trade laws
+- Prevent UK AI from taking Scandi/Benelux intervention.
+- Chinese Defence Buffs Increased
+- China should not get too much equipment
+
 ### 0.16.3
 
 ### Balance
