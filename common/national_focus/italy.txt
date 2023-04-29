@@ -8198,7 +8198,7 @@ focus_tree = {
 		id = ITA_battaglioni_d_assalto
 		icon = GFX_focus_ITA_blackshirts
 		prerequisite = { focus = ITA_security_militias }
-		mutually_exclusive = { focus = ITA_strengthen_the_blackshirts }
+		#mutually_exclusive = { focus = ITA_strengthen_the_blackshirts }
 		x = 0
 		y = 2
 		relative_position_id = ITA_security_militias
@@ -8232,65 +8232,65 @@ focus_tree = {
 	}
 
 	#focus = {
-		id = ITA_strengthen_the_blackshirts
-		icon = GFX_focus_generic_manpower
-		prerequisite = { focus = ITA_security_militias }
-		mutually_exclusive = { focus = ITA_battaglioni_d_assalto }
-		x = 2
-		y = 0
-		relative_position_id = ITA_battaglioni_d_assalto
-		cost = 10
-		available = {
-			has_government = fascism
-			any_owned_state = {
-				is_core_of = ROOT
-				is_fully_controlled_by = ROOT
-			}
-			ITA_has_disbanded_blackshirts = no
-		}
-
-		search_filters = {FOCUS_FILTER_MANPOWER}
-
-		completion_reward = {
-			swap_ideas = {
-				remove_idea = ITA_camicie_nere
-				add_idea = ITA_camicie_nere_strengthened
-			}
-
-			custom_effect_tooltip = ITA_strengthen_the_blackshirts_template_tt
-			hidden_effect = {
-				add_to_variable = { ITA_militias_cap = 12 }
-				set_division_template_cap = {  division_template = "Camicie Nere" division_cap = ITA_militias_cap }
-
-				add_units_to_division_template = {
-					template_name = "Camicie Nere"
-					support = { 
-						#artillery = 0
-					}
-				}
-			}
-			random_controlled_state = { #Create a few more Blackshirt Divs
-				limit = {
-					is_core_of = ROOT
-					is_fully_controlled_by = ROOT
-				}
-				prioritize = { 2 }
-				custom_effect_tooltip = ITA_strengthen_the_blackshirts_spawn_divs_tt
-				hidden_effect = {
-					create_unit = {
-						division = "division_template = \"Camicie Nere\" start_experience_factor = 0.4 start_equipment_factor = 1.0"
-						owner = ROOT
-						count = 3
-					}
-				}
-			}
-		}
+	#	id = ITA_strengthen_the_blackshirts
+	#	icon = GFX_focus_generic_manpower
+	#	prerequisite = { focus = ITA_security_militias }
+	#	mutually_exclusive = { focus = ITA_battaglioni_d_assalto }
+	#	x = 2
+	#	y = 0
+	#	relative_position_id = ITA_battaglioni_d_assalto
+	#	cost = 10
+	#	available = {
+	#		has_government = fascism
+	#		any_owned_state = {
+	#			is_core_of = ROOT
+	#			is_fully_controlled_by = ROOT
+	#		}
+	#		ITA_has_disbanded_blackshirts = no
+	#	}
+	#	
+	#	search_filters = {FOCUS_FILTER_MANPOWER}
+#
+#		completion_reward = {
+#			swap_ideas = {
+#				remove_idea = ITA_camicie_nere
+#				add_idea = ITA_camicie_nere_strengthened
+#			}
+#
+#			custom_effect_tooltip = ITA_strengthen_the_blackshirts_template_tt
+#			hidden_effect = {
+#				add_to_variable = { ITA_militias_cap = 12 }
+#				set_division_template_cap = {  division_template = "Camicie Nere" division_cap = ITA_militias_cap }
+#
+#				add_units_to_division_template = {
+#					template_name = "Camicie Nere"
+#					support = { 
+#						#artillery = 0
+#					}
+#				}
+#			}
+#			random_controlled_state = { #Create a few more Blackshirt Divs
+#				limit = {
+#					is_core_of = ROOT
+#					is_fully_controlled_by = ROOT
+#				}
+#				prioritize = { 2 }
+#				custom_effect_tooltip = ITA_strengthen_the_blackshirts_spawn_divs_tt
+#				hidden_effect = {
+#					create_unit = {
+#						division = "division_template = \"Camicie Nere\" start_experience_factor = 0.4 start_equipment_factor = 1.0"
+#						owner = ROOT
+#						count = 3
+#					}
+#				}
+#			}
+#		}
 	#}
 
 	focus = {
 		id = ITA_milizia_coloniale
 		icon = GFX_focus_secret_rearmament
-		prerequisite = { focus = ITA_battaglioni_d_assalto focus = ITA_strengthen_the_blackshirts }
+		prerequisite = { focus = ITA_battaglioni_d_assalto }
 
 		x = 0
 		y = 2
@@ -8305,15 +8305,6 @@ focus_tree = {
 
 		completion_reward = {
 			if = {
-				limit = {
-					has_idea = ITA_camicie_nere_strengthened
-				}
-				swap_ideas = {
-					remove_idea = ITA_camicie_nere_strengthened
-					add_idea = ITA_camicie_nere_milizia_coloniale
-				}
-			}
-			else = {
 				swap_ideas = {
 					remove_idea = ITA_camicie_nere
 					add_idea = ITA_camicie_nere_milizia_coloniale
