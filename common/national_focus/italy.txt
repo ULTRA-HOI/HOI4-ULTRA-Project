@@ -2880,10 +2880,14 @@ focus_tree = {
 			custom_effect_tooltip = Construction_Focus_tt
 			unlock_decision_tooltip = { decision = ITA_brescia_small_arms_industry_decision show_effect_tooltip = yes }		
 			add_tech_bonus = {
-				name = ITA_brescia_small_arms_industry
-				bonus = 0.75
+				bonus = 3
 				uses = 1
-				category = infantry_weapons
+				technology = infantry_guns_impr_bolt_action
+			}
+			add_tech_bonus = {
+				bonus = 2
+				uses = 1
+				technology = infantry_guns_semi_auto
 			}
 		}
 	}
@@ -3071,7 +3075,21 @@ focus_tree = {
 			}
 			custom_effect_tooltip = Construction_Focus_tt
 			unlock_decision_tooltip = { decision = ITA_army_primacy2_decision show_effect_tooltip = yes }			
-			
+			add_tech_bonus = {
+				bonus = 3
+				uses = 1
+				technology = infantry_guns_impr_hmg
+			}
+			add_tech_bonus = {
+				bonus = 3
+				uses = 1
+				technology = infantry_guns_at_rifle_impr
+			}
+			add_tech_bonus = {
+				bonus = 2
+				uses = 1
+				technology = infantry_guns_heavy_at_rifle
+			}
 		}
 	}
 
@@ -3572,8 +3590,7 @@ focus_tree = {
 	focus = {
 		id = ITA_bersaglieri
 		icon = GFX_focus_ITA_bersaglieri
-		prerequisite = { focus = ITA_army_leaders }
-		prerequisite = { focus = ITA_superesercito }
+		prerequisite = { focus = ITA_army_leaders focus = ITA_superesercito }
 
 		x = 1
 		y = 1
@@ -3776,8 +3793,7 @@ focus_tree = {
 	focus = {
 		id = ITA_self_propelled_guns
 		icon = GFX_focus_generic_self_propelled_gun
-		prerequisite = { focus = ITA_superesercito }
-		prerequisite = { focus = ITA_italian_tankettes }
+		prerequisite = { focus = ITA_superesercito focus = ITA_italian_tankettes }
 
 		x = 1
 		y = 1
@@ -8183,7 +8199,7 @@ focus_tree = {
 		icon = GFX_focus_ITA_blackshirts
 		prerequisite = { focus = ITA_security_militias }
 		mutually_exclusive = { focus = ITA_strengthen_the_blackshirts }
-		x = -1
+		x = 0
 		y = 2
 		relative_position_id = ITA_security_militias
 
@@ -8215,7 +8231,7 @@ focus_tree = {
 		}
 	}
 
-	focus = {
+	#focus = {
 		id = ITA_strengthen_the_blackshirts
 		icon = GFX_focus_generic_manpower
 		prerequisite = { focus = ITA_security_militias }
@@ -8269,14 +8285,14 @@ focus_tree = {
 				}
 			}
 		}
-	}
+	#}
 
 	focus = {
 		id = ITA_milizia_coloniale
 		icon = GFX_focus_secret_rearmament
 		prerequisite = { focus = ITA_battaglioni_d_assalto focus = ITA_strengthen_the_blackshirts }
 
-		x = 1
+		x = 0
 		y = 2
 		relative_position_id = ITA_battaglioni_d_assalto
 		cost = 10
@@ -8302,11 +8318,6 @@ focus_tree = {
 					remove_idea = ITA_camicie_nere
 					add_idea = ITA_camicie_nere_milizia_coloniale
 				}
-			}
-			custom_effect_tooltip = ITA_blackshirts_div_cap_12_tt
-			hidden_effect = {
-				add_to_variable = { ITA_militias_cap = 12 }
-				set_division_template_cap = {  division_template = "Camicie Nere" division_cap = ITA_militias_cap }
 			}
 		}
 	}
@@ -13828,23 +13839,6 @@ focus_tree = {
 				}
 				#set_occupation_law = colonial_police #MM: Not working
 				add_compliance = 10
-			}
-
-			custom_effect_tooltip = ITA_blackshirts_div_cap_8_tt
-			hidden_effect = {
-				add_to_variable = { ITA_militias_cap = 8 }
-				set_division_template_cap = {  division_template = "Camicie Nere" division_cap = ITA_militias_cap }
-			}
-
-			44 = {
-				custom_effect_tooltip = ITA_albanian_fascist_militia_spawn_divs_tt
-				hidden_effect = {
-					create_unit = { #Historically 14 battalions
-						division = "division_template = \"Camicie Nere\" start_experience_factor = 0.4 start_equipment_factor = 1.0"
-						owner = ROOT
-						count = 3
-					}
-				}
 			}
 		}
 	}
