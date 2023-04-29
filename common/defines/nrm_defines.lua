@@ -38,6 +38,7 @@ NDefines.NNavy.NAVAL_COMBAT_SUB_DETECTION_FACTOR = 1      -- balance value for s
 
 NDefines.NNavy.DETECTION_CHANCE_MULT_RADAR_BONUS = 0.05 --was 0.1 -- detection chance bonus from radars.
 NDefines.NNavy.BASE_SPOTTING_FROM_RADAR = 2.5 --was 5 -- base spotting percentage that comes from full radar coverage
+NDefines.NNavy.NAVY_VISIBILITY_BONUS_ON_RETURN_FOR_REPAIR = 0.6 --was 0.9 -- Multiplier for the surface/sub visibility when the heavily damaged fleet is returning to the home base for reparation. 1.0 = no bonus. 0.0 = invisible.
 
 --------------------------------------------------------------------------------------------------------------
 -- CARRIER STUFF
