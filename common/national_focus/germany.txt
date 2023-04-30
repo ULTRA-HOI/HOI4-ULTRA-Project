@@ -3043,9 +3043,16 @@ focus_tree = {
 		relative_position_id = GER_four_year_plan
 		cost = 10
 		available = {
-			is_subject = no
-			has_army_manpower = { size > 399999 }
-			has_government = fascism
+			OR = {
+				AND = {
+					is_subject = no
+					has_army_manpower = { size > 399999 }
+					has_government = fascism
+				}
+				hidden_trigger = {
+					has_global_flag = benchmark_mode
+				}
+			}	
 		}
 		bypass = {
 			42 = { is_demilitarized_zone = no }
@@ -3316,8 +3323,15 @@ focus_tree = {
 				limit = {
 					is_ai = no
 				}
-				has_army_manpower = { size > 549999 }
-			}
+				OR = {
+					AND = {
+						has_army_manpower = { size > 549999 }
+					}
+					hidden_trigger = {
+						has_global_flag = benchmark_mode
+					}
+				}	
+			}	
 			IF = {
 				limit = {
 					is_ai = yes 
@@ -3636,7 +3650,14 @@ focus_tree = {
 				limit = {
 					is_ai = no 
 				}
-				has_army_manpower = { size > 749999 } #80 div
+				OR = {
+					AND = {
+						has_army_manpower = { size > 749999 } #80 div
+					}
+					hidden_trigger = {
+						has_global_flag = benchmark_mode
+					}
+				}	
 			}
 			IF = {
 				limit = {
@@ -4038,7 +4059,15 @@ focus_tree = {
 				limit = {
 					is_ai = no 
 				}
-				has_army_manpower = { size > 849999 } #80 div
+				
+				OR = {
+					AND = {
+						has_army_manpower = { size > 849999 } #80 div
+					}
+					hidden_trigger = {
+						has_global_flag = benchmark_mode
+					}
+				}	
 			}
 			IF = {
 				limit = {
@@ -4104,7 +4133,14 @@ focus_tree = {
 				limit = {
 					is_ai = no 
 				}
-				has_army_manpower = { size > 849999 } #80 div
+				OR = {
+					AND = {
+						has_army_manpower = { size > 849999 } #80 div
+					}
+					hidden_trigger = {
+						has_global_flag = benchmark_mode
+					}
+				}	
 			}
 			has_government = fascism
 		}
@@ -4248,7 +4284,15 @@ focus_tree = {
 				limit = {
 					is_ai = no 
 				}
-				has_army_manpower = { size > 949999 } #80 div
+				
+				OR = {
+					AND = {
+						has_army_manpower = { size > 949999 } #80 div
+					}
+					hidden_trigger = {
+						has_global_flag = benchmark_mode
+					}
+				}	
 			}
 			IF = {
 				limit = {
@@ -4504,11 +4548,15 @@ focus_tree = {
 			factor = 10
 			modifier = {
 				factor = 0
-				OR = {
-					has_army_manpower = { size < 1199999 }
-					any_home_area_neighbor_country = {
-						has_war_with = ROOT
+				AND = {
+					OR = {
+						has_army_manpower = { size < 1199999 }
+						any_home_area_neighbor_country = {
+							has_war_with = ROOT
+						}
+						
 					}
+					NOT = { has_global_flag = benchmark_mode }
 				}
 			}
 			modifier = {
@@ -4910,7 +4958,14 @@ focus_tree = {
 				limit = {
 					is_ai = no 
 				}
-				has_army_manpower = { size > 749999 } #80 div
+				OR = {
+					AND = {
+						has_army_manpower = { size > 749999 } #80 div
+					}
+					hidden_trigger = {
+						has_global_flag = benchmark_mode
+					}
+				}	
 			}
 			IF = {
 				limit = {
