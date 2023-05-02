@@ -20,10 +20,12 @@ CZE_unit_production = {
 	enable = {
 		always = yes
 	}
-	abort = {
-		always = no
-	}
 	
+	ai_strategy = {
+		type = role_ratio
+		id = infantry
+		value = 30
+	}
 	ai_strategy = {
 		type = role_ratio
 		id = garrison
@@ -57,7 +59,7 @@ CZE_unit_production = {
 	ai_strategy = {
 		type = role_ratio
 		id = motorized
-		value = 5 #because doctrine this = 2
+		value = 5
 	}
 
 	ai_strategy = {
@@ -69,7 +71,7 @@ CZE_unit_production = {
 	ai_strategy = {
 		type = role_ratio
 		id = armor
-		value = 20 #because doctrine this = 10
+		value = 20
 	}
 
 	ai_strategy = {
@@ -88,7 +90,7 @@ CZE_unit_production = {
 	ai_strategy = {
 		type = unit_ratio
 		id = cas
-		value = 15 #because doctrine this = 15
+		value = 15
 	}
 	
 	ai_strategy = {
@@ -124,13 +126,18 @@ CZE_unit_production = {
 	ai_strategy = {
 		type = equipment_production_factor
 		id = infantry
-		value = 20 #30 to 50
+		value = 20 
 	}
 	
 	ai_strategy = {
 		type = equipment_production_factor
 		id = artillery
-		value = 20 #20 to 40
+		value = 20 
+	}
+	ai_strategy = {
+		type = equipment_production_min_factories
+		id = artillery
+		value = 1
 	}
 	
 	ai_strategy = {
@@ -140,14 +147,9 @@ CZE_unit_production = {
 	}
 	ai_strategy = {
 		type = equipment_production_min_factories
-		id = artillery
+		id = armor
 		value = 5
 	}
-	#ai_strategy = {
-	#	type = equipment_production_min_factories
-	#	id = fighter
-	#	value = 3
-	#}
 	ai_strategy = {
 		type = equipment_variant_production_factor
 		id = strat_bomber_equipment
@@ -193,29 +195,6 @@ CZE_shift_production = {
 	}
 }
 
-CZE_halt_light_armor_production_in_transitioning = {
-	allowed = {
-		original_tag = CZE
-	}
-	enable = {
-		has_template_majority_unit = medium_armor
-		OR = {
-			has_equipment = { light_tank_chassis > 600 }
-			date > 1939.1.1
-		}		
-	}
-	abort = {
-		# once we start we never go back to light armor
-	}
-
-	ai_strategy = {
-		type = equipment_variant_production_factor
-		id = light_tank_chassis
-		value = -100
-	}
-}
-
-
 CZE_highered_armored_production = {
 	allowed = { original_tag = CZE }
 	enable = {
@@ -232,116 +211,10 @@ CZE_highered_armored_production = {
 	}
 }
 
-CZE_dont_waste_xp_until_medium_armor = {
-
-	allowed = { original_tag = CZE	}	
-	enable = {
-		always = yes
-	}
-
-	abort = {	
-		has_template_majority_unit = medium_armor
-	}
-
-	ai_strategy = {
-		type = template_prio
-		id = paratrooper
-		value = -100
-	}
-
-	ai_strategy = {
-		type = template_prio
-		id = mountaineers
-		value = -100
-	}
-}
-
-CZE_super_boost_light_for_med_armor = {
-
-	allowed = { original_tag = CZE }
-	
-	enable = {
-		OR = {
-			has_tech = basic_medium_tank
-			has_tech = basic_medium_tank_chassis
-		}
-		NOT = { has_template_ai_majority_unit = medium_armor }
-	}
-
-	abort = {	
-		has_template_ai_majority_unit = medium_armor
-	}
-
-	# lets do changes more often during this period too
-	ai_strategy = {
-		type = land_xp_spend_priority
-		id = division_template
-		value = 100
-	}
-
-	# this is gateway
-	ai_strategy = {
-		type = template_prio
-		id = light_armor
-		value = 100
-	}
-
-	ai_strategy = {
-		type = template_prio
-		id = medium_armor
-		value = 150
-	}
-	
-	# Germany is set up to change their SS division into medium armor.
-	ai_strategy = {
-		type = template_prio
-		id = motorized
-		value = 200
-	}
-}
-
-CZE_super_boost_light_for_modern_armor = {
-	
-	allowed = { original_tag = CZE }
-	enable = {
-		OR = {
-			has_tech = main_battle_tank
-			has_tech = main_battle_tank_chassis
-		}
-		NOT = { has_template_ai_majority_unit = modern_armor }
-	}
-
-	abort = {	
-		has_template_ai_majority_unit = modern_armor
-	}
-
-	# lets do changes more often during this period too
-	ai_strategy = {
-		type = land_xp_spend_priority
-		id = division_template
-		value = 100
-	}
-
-	# this is gateway
-	ai_strategy = {
-		type = template_prio
-		id = medium_armor
-		value = 100
-	}
-
-	ai_strategy = {
-		type = template_prio
-		id = modern_armor
-		value = 150
-	}
-}
-
-
 CZE_template_design = {
 	allowed = { original_tag = CZE }
 	enable = {
-	
-		date < 1940.1.1				
+		date < 1940.1.1
 	}
 	abort = { 
 		date > 1940.1.1
@@ -386,7 +259,6 @@ CZE_template_design = {
 CZE_industry = {
 	allowed = { original_tag = CZE }
 	enable = {
-		date < 1940.1.1
 		date > 1936.1.1
 	}
 	abort={
