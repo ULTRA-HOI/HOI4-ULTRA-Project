@@ -2080,83 +2080,9 @@
 	}
 	
 	focus = {
-		id = ROM_king_michaels_coup
-		icon = GFX_focus_rom_coup
-		prerequisite = { focus = ROM_iron_guard }
-		mutually_exclusive = { focus = ROM_handle_the_king focus = ROM_force_abdication }
-		x = 0
-		y = 2
-		relative_position_id = ROM_appoint_german_friendly_government
-
-		cost = 10
-
-		ai_will_do = {
-			factor = 1
-			modifier = {
-				factor = 0
-				has_completed_focus = ROM_iron_guard
-			}
-		}
-
-		available = {
-			is_subject = no
-			OR = {
-				has_war = yes
-				threat > 0.25
-			}
-		}
-
-		bypass = {
-
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = no
-
-		completion_reward = {
-			#unlock_decision_category_tooltip = ROM_change_sides
-			create_country_leader = {
-				name = "Michael I"
-				desc = "POLITICS_MICHAEL_I_DESC"
-				picture = GFX_Portrait_romania_michael_i				
-				expire = "1965.1.1"
-				ideology = liberalism
-				traits = {
-				}
-			}
-			set_politics = {
-				ruling_party = democratic
-				elections_allowed = yes
-			}
-			set_political_party = {
-				ideology = democratic
-				popularity = 50
-			}
-			if = {
-				limit = {
-					has_idea = ROM_king_carol_ii_hedonist
-				}
-				remove_ideas = ROM_king_carol_ii_hedonist
-			}
-			remove_ideas = ROM_iron_guard
-			#hidden_effect = {
-			#	news_event = { id = news.322 days = 1 }
-			#	set_country_flag = can_change_sides_dem
-			#	set_country_flag = can_change_sides_com
-			#	set_country_flag = can_change_sides_fas #why is this commented out?
-			#}
-			#unlock_decision_tooltip = ROM_change_sides_to_allies
-			#unlock_decision_tooltip = ROM_change_sides_to_axis
-			#unlock_decision_tooltip = ROM_change_sides_to_commintern
-		}
-	}
-
-	focus = {
 		id = ROM_force_abdication
 		icon = GFX_focus_rom_abdicate
 		prerequisite = { focus = ROM_iron_guard focus = ROM_securitate }
-		mutually_exclusive = { focus = ROM_handle_the_king focus = ROM_king_michaels_coup }
 		x = 0
 		y = 2
 		relative_position_id = ROM_appoint_soviet_friendly_government
@@ -2231,10 +2157,80 @@
 			}
 			remove_ideas = ROM_the_sentinel_of_the_motherland
 			#add_political_power = -120
-			add_timed_idea = { idea = ROM_king_carol_emptied_accounts days = 360 }
+			add_timed_idea = { idea = ROM_king_carol_emptied_accounts days = 30 }
 			hidden_effect = {
 				news_event = { id = news.323 days = 1 }
 			}
+		}
+	}
+
+	focus = {
+		id = ROM_king_michaels_coup
+		icon = GFX_focus_rom_coup
+		prerequisite = { focus = ROM_force_abdication}
+		x = 0
+		y = 3
+		relative_position_id = ROM_appoint_soviet_friendly_government
+
+		cost = 1
+
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				has_completed_focus = ROM_force_abdication
+			}
+		}
+
+		available = {
+			surrender_progress > 0.05
+				has_war = yes
+				threat > 0.25
+		}
+
+		bypass = {
+			surrender_progress > 0.10
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			#unlock_decision_category_tooltip = ROM_change_sides
+			create_country_leader = {
+				name = "Michael I"
+				desc = "POLITICS_MICHAEL_I_DESC"
+				picture = GFX_Portrait_romania_michael_i				
+				expire = "1965.1.1"
+				ideology = liberalism
+				traits = {
+				}
+			}
+			set_politics = {
+				ruling_party = democratic
+				elections_allowed = yes
+			}
+			set_political_party = {
+				ideology = democratic
+				popularity = 40
+			}
+			if = {
+				limit = {
+					has_idea = ROM_king_carol_ii_hedonist
+				}
+				remove_ideas = ROM_king_carol_ii_hedonist
+			}
+			remove_ideas = ROM_iron_guard
+			#hidden_effect = {
+			#	news_event = { id = news.322 days = 1 }
+			#	set_country_flag = can_change_sides_dem
+			#	set_country_flag = can_change_sides_com
+			#	set_country_flag = can_change_sides_fas #why is this commented out?
+			#}
+			#unlock_decision_tooltip = ROM_change_sides_to_allies
+			#unlock_decision_tooltip = ROM_change_sides_to_axis
+			#unlock_decision_tooltip = ROM_change_sides_to_commintern
 		}
 	}
 
@@ -2368,7 +2364,6 @@
 		id = ROM_handle_the_king
 		icon = GFX_focus_rom_handle_king
 		prerequisite = { focus = ROM_constitutional_guarantees }
-		mutually_exclusive = { focus = ROM_force_abdication focus = ROM_king_michaels_coup}
 		x = 0
 		y = 2
 		relative_position_id = ROM_appoint_allied_friendly_government
