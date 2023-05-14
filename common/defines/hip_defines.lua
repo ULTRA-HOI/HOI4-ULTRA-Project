@@ -256,6 +256,7 @@ NDefines.NTechnology.MAX_TECH_SHARING_BONUS	= 10			-- Max technology sharing bon
 NDefines.NPolitics.DEFAULT_OCCUPATION_POLICY = 3		-- Defaullt value for occupation policy
 NDefines.NPolitics.INSTANT_WIN_POPULARITY_WIN = 55 -- New party popularity
 NDefines.NPolitics.ARMY_LEADER_COST = 2						-- was 5 -- cost for recruiting new leaders, 'this value' * number_of_existing_leaders_of_type
+NDefines.NPolitics.NAVY_LEADER_COST = 1						-- was 5 -- cost for recruiting new admirals, 'this value' * number_of_existing_leaders_of_type
 NDefines.NAI.DIPLOMACY_ACCEPT_ATTACHE_OPINION_TRASHHOLD = 0
 
 -- Military Stuff
