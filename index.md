@@ -1,5 +1,69 @@
 # Changelog
 
+### 0.16.5
+
+### Content
+
+- Added some basic Valkyrie stuff
+- UK Commonwealth Investment Decisions Revamp
+- Added content (focus tree, decisions...) for Siam
+
+### Balance
+
+- reworked Submarines (visibility, detection, torpedoes...)
+- Blackshirts Assault Battalion rebalanced
+- Updated ITA focus manpower buffs
+- Rebalanced ITA focus manpower
+- Hub motorization cost lowered from 1000 trucks to 800
+- Medals quick nerf hammer pass
+- Changed Carrier:Capital Ratio to 3:1
+- Reduce CP Cost For New Admirals
+- Divide all infantry weapons research boosts from ideas and manufacturers by 5
+
+### Database
+
+- changed italian focus length
+- Adjusted German historical ship designs
+- Add torpedo reloads module
+- USA Amphibious Mech Preserves Efficiency
+- AI slider buffs tweaked, crucially it includes manpower factor now
+- Updated SOV inf tech focus boosts
+- Adjusted Penal stats
+- Nerfed A 20 strat bombing to 20
+- Use Archaic Equipment decision now requires less than 500 guns in stock
+- Tech stealing changes (no longer allows to unlock techs)
+- Infantry tank manufacturer now also gives bonuses to assault guns
+
+### Map
+
+- Finished Railways in Central Asian
+- added new naval zones in South-East Asia
+
+### QoL
+
+- can hide government in exile divisions
+- Loc update for inf designer
+
+### Fixes
+
+- Fix equipment purchase triggers for China
+- Updated SOV tank loc
+- Remove "Paris lost" modifier when France recaptures Paris
+- fixes to German submarine designs
+- Fix Italian AI bandits war not removing old doctrines
+- Fix infantry equpiment conversions
+- Added missing INF tech to ITA
+- Fix ETH missing some division templates
+- Fix duplicate Eisenhower
+- Fixed ROM focus tree
+- Quick fix for tank design companies showing up in infantry designer
+- Motorized art speed brought in line with other motorized art units
+
+### AI
+
+- Various improvements and changes
+- AI germany should raid better places
+
 ### 0.16.4
 
 ### New Content
