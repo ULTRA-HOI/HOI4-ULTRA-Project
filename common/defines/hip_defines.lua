@@ -627,6 +627,8 @@ NDefines.NAir.AIR_WING_XP_TRAINING_MISSION_ACCIDENT_FACTOR = 0.5 --1.5 				--Tra
 
 NDefines.NAir.AIR_WING_FLIGHT_SPEED_MULT = 0.02			-- was 0.02	-- Global speed multiplier for airplanes (affects fe.transferring to another base)
 
+NDefines.NAir.SUPPLY_NEED_FACTOR = 0.056
+
 NDefines.NAir.AA_INDUSTRY_AIR_DAMAGE_FACTOR = -0.12				-- 5x levels = 60% defense from bombing
 NDefines.NAir.ANTI_AIR_PLANE_DAMAGE_FACTOR = 0.4				-- was 0.8	-- Anti Air Gun Damage factor
 NDefines.NAir.ANTI_AIR_PLANE_DAMAGE_CHANCE = 0.1 --0.1					-- Anti Air Gun hit chance
