@@ -1,5 +1,22 @@
 # Changelog
 
+### 0.16.5b
+
+### Balance
+
+- Mulberry Decision Update
+- Reduced naval positioning negative effects
+- Reduce Plane Supply Usage
+- Increase Fuel/Oil Convoy Usage
+
+### QoL
+
+- Improved localization for Siam
+
+### Fixes
+
+- Commonwealth Investment Decision Fixed
+
 ### 0.16.5
 
 ### Content
