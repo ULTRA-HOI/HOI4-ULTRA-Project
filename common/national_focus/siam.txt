@@ -1,0 +1,1124 @@
+﻿focus_tree = {
+	id = generic_focus
+	
+	country = {
+		factor = 0
+
+		modifier = {
+			add = 10
+			tag = SIA
+		}
+	}
+	
+	default = no
+	reset_on_civilwar = no
+
+	initial_show_position = {
+		focus = industrial_effort
+	}
+
+
+
+	focus = {
+		id = SIA_fight_corruption
+		icon = GFX_focus_generic_court
+		x = 0
+		y = 0
+		cost = 10
+
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = SIA_corruption1
+				add_idea = SIA_corruption2
+			}
+		}
+	}
+
+	focus = {
+		id = SIA_hold_the_1937_election
+		icon = GFX_focus_generic_improve_the_administration
+		x = 2
+		y = 0
+		relative_position_id = SIA_fight_corruption
+		cost = 5
+		available = {
+			date > 1937.8.1
+		}
+
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_political_power = 150
+		}
+	}	
+
+	focus = {
+		id = SIA_a_new_prime_minister
+		icon = GFX_goal_generic_allies_build_infantry
+		x = 1
+		y = 1
+		cost = 5
+		available = {
+			has_stability < 0.3
+		}
+		prerequisite = { focus = SIA_fight_corruption }
+		prerequisite = { focus = SIA_hold_the_1937_election }		
+		relative_position_id = SIA_fight_corruption
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			remove_ideas = {
+			SIA_corruption2
+			}
+		}
+	}	
+	
+	focus = {
+		id = SIA_crush_the_songsuradet_rebellion
+		icon = GFX_goal_generic_political_pressure
+		prerequisite = { focus = SIA_a_new_prime_minister }
+		x = 0
+		y = 1
+		relative_position_id = SIA_a_new_prime_minister
+		cost = 10
+
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+				set_politics = {
+					ruling_party = fascism
+					elections_allowed = no
+				}
+				set_party_name = {
+					ideology = fascism
+					long_name = SIA_khana_ratsadon
+					name = SIA_khana_ratsadon2
+				}
+				add_stability = 0.05
+				add_war_support = 0.05
+
+		}	
+	}	
+
+	focus = {
+		id = SIA_the_cultural_mandates
+		icon = GFX_goal_generic_forceful_treaty
+		prerequisite = { focus = SIA_crush_the_songsuradet_rebellion }
+		x = 1
+		y = 1
+		relative_position_id = SIA_crush_the_songsuradet_rebellion
+		cost = 10
+
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+		set_cosmetic_tag = TAI
+			add_war_support = 0.15
+		}
+	}
+
+	focus = {
+		id = SIA_claim_greater_thailand
+		icon = GFX_goal_generic_position_armies
+		prerequisite = { focus = SIA_the_cultural_mandates }
+		x = 0
+		y = 1
+		relative_position_id = SIA_the_cultural_mandates
+		cost = 10
+
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			custom_effect_tooltip = SIA_claim_greater_thailand_tt
+			add_state_claim = 975
+			add_state_claim = 998
+			add_state_claim = 999
+			add_state_claim = 979
+			add_state_claim = 994
+		}
+	}
+	
+	focus = {
+		id = SIA_thailand_model
+		icon = GFX_goal_generic_position_armies
+		prerequisite = { focus = SIA_claim_greater_thailand }
+		prerequisite = { focus = SIA_new_cities }
+		x = 1
+		y = 2
+		relative_position_id = SIA_claim_greater_thailand
+		cost = 10
+
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_stability = 0.15
+		}
+	}	
+	
+	focus = {
+		id = SIA_siamese_fascism
+		icon = GFX_goal_support_fascism
+		prerequisite = { focus = SIA_crush_the_songsuradet_rebellion }
+		x = -1
+		y = 1
+		relative_position_id = SIA_crush_the_songsuradet_rebellion
+		cost = 10
+
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_timed_idea = {
+				idea = nationalism
+				days = 720
+			}
+	}
+}
+	
+	focus = {
+		id = SIA_phibun_cult_of_personality
+		icon = GFX_focus_prc_remove_chiang_kai_shek
+		prerequisite = { focus = SIA_siamese_fascism }
+		x = 0
+		y = 1
+		relative_position_id = SIA_siamese_fascism
+		cost = 10
+
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_stability = 0.1
+		}
+	}	
+
+	focus = {
+		id = SIA_join_japan
+		icon = GFX_focus_chi_collaboration_with_the_japanese
+		prerequisite = { focus = SIA_claim_greater_thailand }
+		prerequisite = { focus = SIA_phibun_cult_of_personality }
+		available = { 
+			JAP = { is_faction_leader = yes }			
+		}
+		available = { 
+			has_war_support > 0.75
+			fascism > 0.6
+		}		
+			
+			
+		
+		x = -1
+		y = 1
+		relative_position_id = SIA_claim_greater_thailand
+		cost = 10
+
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			JAP = { country_event = generic.2 }
+		}
+	}	
+
+
+	focus = {
+		id = SIA_reduce_western_influence
+		mutually_exclusive = { focus = SIA_harass_chinese_business }
+		icon = GFX_goal_generic_trade
+		x = 7
+		y = 0
+		relative_position_id = SIA_fight_corruption
+		cost = 10
+
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = SIA_foreign_controlled_economy
+				add_idea = SIA_foreign_controlled_economy1
+			}
+			ENG = {
+				add_opinion_modifier = { target = SIA modifier = SIA_reduced_trade }
+			}
+			RAJ = {
+				add_opinion_modifier = { target = SIA modifier = SIA_reduced_trade }
+			}
+			FRA = {
+				add_opinion_modifier = { target = SIA modifier = SIA_reduced_trade }
+			}
+			USA = {
+				add_opinion_modifier = { target = SIA modifier = SIA_reduced_trade }
+			}			
+		}
+	}
+
+	
+	focus = {
+		id = SIA_harass_chinese_business
+		mutually_exclusive = { focus = SIA_reduce_western_influence }
+		icon = GFX_focus_generic_support_the_left_right
+		x = -2
+		y = 0
+		relative_position_id = SIA_reduce_western_influence
+		cost = 10
+
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = SIA_foreign_controlled_economy
+				add_idea = SIA_foreign_controlled_economy2
+			}
+			add_political_power = -50
+			CHI = {
+				add_opinion_modifier = { target = SIA modifier = SIA_harass_chinese_business_opinion }
+			}
+		}
+	}	
+		
+
+	focus = {
+		id = SIA_modernizing_the_country
+		icon = GFX_goal_reichsautobahn
+		prerequisite = { focus = SIA_reduce_western_influence focus = SIA_harass_chinese_business }
+		x = -1
+		y = 1
+		relative_position_id = SIA_reduce_western_influence
+		cost = 10
+
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_ideas = SIA_country_modernization_idea
+			
+		}
+	}	
+	
+	focus = {
+		id = SIA_rice_exports
+		icon = GFX_focus_mex_privatisation
+		prerequisite = { focus = SIA_modernizing_the_country }
+		x = 0
+		y = 1
+		relative_position_id = SIA_modernizing_the_country
+		cost = 10
+
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			swap_ideas = {
+			remove_idea = SIA_country_modernization_idea
+			add_idea = SIA_country_modernization_idea2
+			}
+		}
+	}
+	
+	focus = {
+		id = SIA_trade_deal_with_japan
+		icon = GFX_goal_generic_intelligence_exchange
+		prerequisite = { focus = SIA_rice_exports }
+		x = -1
+		y = 1
+		relative_position_id = SIA_rice_exports
+		cost = 10
+
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_political_power = 50
+			custom_effect_tooltip = SIA_trade_deal_with_japan_tt
+		}
+	}	
+	
+	focus = {
+		id = SIA_improve_regional_infrastructure
+		icon = GFX_goal_generic_construct_infrastructure
+		prerequisite = { focus = SIA_rice_exports }
+		x = 0
+		y = 2
+		relative_position_id = SIA_rice_exports
+		cost = 10
+
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			289 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			1007 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			1006 = {
+				add_building_construction = {
+					type = supply_node
+					level = 1
+					province = 12431
+					instant_build = yes
+					}
+				}
+			add_ideas = SIA_improved_region_supply_idea
+		}
+	}
+
+	focus = {
+		id = SIA_expand_mining_operations
+		icon = GFX_goal_generic_construction2
+		prerequisite = { focus = SIA_improve_regional_infrastructure }
+		x = 0
+		y = 1
+		relative_position_id = SIA_improve_regional_infrastructure
+		cost = 5
+
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 1.0
+				uses = 1
+				category = excavation_tech
+			}
+		}
+	}	
+
+	focus = {
+		id = SIA_developp_tooling_workshop
+		icon = GFX_goal_generic_production2
+		prerequisite = { focus = SIA_modernizing_the_country }
+		x = 2
+		y = 1
+		relative_position_id = SIA_modernizing_the_country
+		cost = 10
+
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = industrial_bonus
+				bonus = 1.0
+				uses = 2
+				category = industry
+			}
+		}
+	}
+
+	focus = {
+		id = SIA_support_local_business
+		icon = GFX_focus_generic_industry_1
+		prerequisite = { focus = SIA_developp_tooling_workshop }
+		prerequisite = { focus = SIA_rice_exports }
+		x = -1
+		y = 1
+		relative_position_id = SIA_developp_tooling_workshop
+		cost = 10
+
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+				289 = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}	
+	
+	focus = {
+		id = SIA_chulalongkorn_university
+		icon = GFX_focus_research
+		prerequisite = { focus = SIA_modernizing_the_country }
+		x = -2
+		y = 1
+		relative_position_id = SIA_modernizing_the_country
+		cost = 10
+
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_research_slot = 1
+		}
+	}
+	
+	focus = {
+		id = SIA_alphabet_reform
+		icon = GFX_focus_research2
+		prerequisite = { focus = SIA_chulalongkorn_university }
+		prerequisite = { focus = SIA_the_cultural_mandates }
+		x = 0
+		y = 2
+		relative_position_id = SIA_chulalongkorn_university
+		cost = 10
+
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_research_slot = 1
+		}
+	}
+
+	focus = {
+		id = SIA_new_cities
+		icon = GFX_focus_spa_the_spanish_miracle
+		prerequisite = { focus = SIA_alphabet_reform }
+		prerequisite = { focus = SIA_improve_regional_infrastructure }
+		x = 0
+		y = 1
+		relative_position_id = SIA_alphabet_reform
+		cost = 40
+
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			set_victory_points = {
+				province = 10221
+				value = 5
+			}
+			set_victory_points = {
+				province = 12373
+				value = 5
+			}			
+		}
+	}	
+
+	focus = {
+		id = SIA_royal_thai_armed_forces
+		icon = GFX_focus_secret_rearmament
+		x = 13
+		y = 0
+		relative_position_id = SIA_harass_chinese_business
+
+		cost = 10
+
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_command_power = 50
+		}
+	}	
+
+	focus = {
+		id = SIA_royal_thai_navy
+		icon = GFX_goal_generic_navy_doctrines_tactics
+		prerequisite = { focus = SIA_royal_thai_armed_forces }
+		x = 6
+		y = 1
+		relative_position_id = SIA_royal_thai_armed_forces
+		cost = 10
+
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			navy_experience = 50
+		}
+	}
+	
+	focus = {
+		id = SIA_purchase_japanese_surface_ships
+		icon = GFX_focus_ETH_an_ethiopian_navy_in_exile
+		prerequisite = { focus = SIA_royal_thai_navy }
+		x = -1
+		y = 1
+		relative_position_id = SIA_royal_thai_navy
+		cost = 10
+
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			custom_effect_tooltip = SIA_purchase_japanese_surface_ships_tt
+		}
+	}	
+	
+	focus = {
+		id = SIA_purchase_japanese_submarines
+		icon = GFX_goal_generic_navy_submarine
+		prerequisite = { focus = SIA_royal_thai_navy }
+		x = 1
+		y = 1
+		relative_position_id = SIA_royal_thai_navy
+		cost = 10
+
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			custom_effect_tooltip = SIA_purchase_japanese_submarines_tt
+		}
+	}
+	
+	focus = {
+		id = SIA_royal_thai_marine_corps
+		icon = GFX_goal_generic_amphibious_assault
+		prerequisite = { focus = SIA_royal_thai_navy }
+		x = 0
+		y = 2
+		relative_position_id = SIA_royal_thai_navy
+		cost = 10
+
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = special_bonus
+				bonus = 1.0
+				uses = 1
+				technology = marines2
+			}
+		}
+	}	
+
+	focus = {
+		id = SIA_royal_thai_air_force
+		icon = GFX_goal_generic_air_doctrine
+		prerequisite = { focus = SIA_royal_thai_armed_forces }
+		x = 2
+		y = 1
+		relative_position_id = SIA_royal_thai_armed_forces
+		cost = 10
+
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			air_experience = 50
+		}
+	}
+	
+	focus = {
+		id = SIA_purchase_foreign_aircrafts
+		icon = GFX_goal_generic_air_fighter
+		prerequisite = { focus = SIA_royal_thai_air_force }
+		x = -1
+		y = 1
+		relative_position_id = SIA_royal_thai_air_force
+		cost = 10
+
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			custom_effect_tooltip = SIA_purchase_foreign_aircrafts_tt
+		}
+	}
+	
+
+	focus = {
+		id = SIA_domestic_aircraft_assembly
+		icon = GFX_focus_generic_aircraft_production
+		prerequisite = { focus = SIA_purchase_foreign_aircrafts }
+		mutually_exclusive = { focus = SIA_armored_repair_workshop }
+		x = 0
+		y = 1
+		relative_position_id = SIA_purchase_foreign_aircrafts
+		cost = 10
+
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+				289 = {
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = SIA_pilot_training
+		icon = GFX_focus_generic_military_academy
+		prerequisite = { focus = SIA_royal_thai_air_force }
+		x = 1
+		y = 1
+		relative_position_id = SIA_royal_thai_air_force
+		cost = 10
+
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_ideas = {
+			effective_training_programs_spirit
+			}
+		}
+	}
+
+	focus = {
+		id = SIA_royal_thai_army
+		icon = GFX_goal_generic_army_doctrines
+		prerequisite = { focus = SIA_royal_thai_armed_forces }
+		x = -4
+		y = 1
+		relative_position_id = SIA_royal_thai_armed_forces
+		cost = 10
+
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+		army_experience = 50
+		}
+	}
+	
+	focus = {
+		id = SIA_modernize_firearms
+		icon = GFX_goal_generic_small_arms
+		prerequisite = { focus = SIA_royal_thai_army }
+		x = -4
+		y = 1
+		relative_position_id = SIA_royal_thai_army
+		cost = 10
+
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = infantry_bonus
+				bonus = 1.0
+				uses = 1
+				category = infantry_weapons
+			}
+		}
+	}
+
+	focus = {
+		id = SIA_modernize_artillery
+		icon = GFX_goal_generic_army_artillery2
+		prerequisite = { focus = SIA_royal_thai_army }
+		x = 2
+		y = 0
+		relative_position_id = SIA_modernize_firearms
+		cost = 10
+
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = artillery_bonus
+				bonus = 1.0
+				uses = 1
+				category = artillery
+			}
+		}
+	}
+
+	focus = {
+		id = SIA_ammunition_assembly_line
+		icon = GFX_goal_generic_construct_mil_factory
+		prerequisite = { focus = SIA_modernize_firearms focus = SIA_modernize_artillery  }
+		prerequisite = { focus = SIA_developp_tooling_workshop }
+		x = -1
+		y = 1
+		relative_position_id = SIA_modernize_firearms
+		cost = 10
+
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+				289 = {
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+	
+	focus = {
+		id = SIA_train_the_junior_soliders
+		icon = GFX_focus_generic_little_entente
+		prerequisite = { focus = SIA_royal_thai_army }
+		x = 0
+		y = 1
+		relative_position_id = SIA_royal_thai_army
+		cost = 10
+
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_ideas = SIA_junior_soldiers
+		}
+	}
+
+	focus = {
+		id = SIA_form_special_forces
+		icon = GFX_goal_generic_special_forces
+		prerequisite = { focus = SIA_train_the_junior_soliders }
+		x = -1
+		y = 1
+		relative_position_id = SIA_train_the_junior_soliders
+		cost = 10
+
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = special_bonus
+				bonus = 2.0
+				uses = 1
+				technology = tech_mountaineers
+			}
+		}
+	}
+
+	focus = {
+		id = SIA_jungle_training
+		icon = GFX_focus_RAJ_indian_gurkhas
+		prerequisite = { focus = SIA_form_special_forces }
+		x = -1
+		y = 1
+		relative_position_id = SIA_form_special_forces
+		cost = 10
+
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			custom_effect_tooltip = RAJ_jungle_training_effect
+			hidden_effect = { set_technology = { jungle_warfare = 1 } }
+		}
+	}
+	
+	focus = {
+		id = SIA_deploy_the_royal_guards
+		icon = GFX_goal_generic_special_forces
+		prerequisite = { focus = SIA_train_the_junior_soliders }
+		x = 1
+		y = 1
+		relative_position_id = SIA_train_the_junior_soliders
+		cost = 10
+
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			custom_effect_tooltip = SIA_royal_guards_divisions_tt
+			hidden_effect = {
+				if = {
+					limit = {
+						has_tech = tech_recon
+					}
+					division_template = {
+						name = "1st King's Guards Division"
+						priority = 2
+						regiments = {
+							heavy_infantry = { x = 0 y = 0 }
+							heavy_infantry = { x = 0 y = 1 }
+							infantry = { x = 0 y = 2 }
+				
+		    	   		 	infantry = { x = 1 y = 0 }
+							artillery_brigade = { x = 1 y = 1 }
+						}
+						support = {
+							DIV_HQ = { x = 0 y = 0 }	
+							engineer = { x = 0 y = 1 }
+							recon = { x = 0 y = 2 }
+						}
+					}
+					else = {
+						division_template = {
+							name = "1st King's Guards Division"
+							priority = 2
+							regiments = {
+							heavy_infantry = { x = 0 y = 0 }
+							heavy_infantry = { x = 0 y = 1 }
+							infantry = { x = 0 y = 2 }
+				
+		    	   		 	infantry = { x = 1 y = 0 }
+							artillery_brigade = { x = 1 y = 1 }
+							}
+							support = {
+								DIV_HQ = { x = 0 y = 0 }	
+								engineer = { x = 0 y = 1 }
+							}
+						}
+					}
+				}
+				random_owned_controlled_state = {
+					limit = { ROOT = { has_full_control_of_state = PREV } }
+					prioritize = { 289 }
+					create_unit = {
+						division = "name = \"Royal Guards Division\" division_template = \"Royal Guards Division\" start_experience_factor = 1.0" 
+						owner = SIA
+					}
+				}
+			}			
+		}
+	}
+
+	focus = {
+		id = SIA_defend_bangkok
+		icon = GFX_focus_generic_coastal_fort
+		prerequisite = { focus = SIA_deploy_the_royal_guards }
+		x = 1
+		y = 1
+		relative_position_id = SIA_deploy_the_royal_guards
+		cost = 10
+
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			289 = {
+				add_building_construction = {
+					type = coastal_bunker
+					level = 2
+					province = 7048
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = bunker
+					level = 2
+					province = 7048
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = anti_air_building
+					level = 2
+					instant_build = yes
+				}
+			}
+			1009 = {
+				add_building_construction = {
+					type = coastal_bunker
+					level = 1
+					province = 7225
+					instant_build = yes
+				}
+			}
+		}
+	}	
+
+	focus = {
+		id = SIA_chulachomklao_royal_military_academy
+		icon = GFX_focus_generic_military_academy
+		prerequisite = { focus = SIA_train_the_junior_soliders }
+		x = 0
+		y = 2
+		relative_position_id = SIA_train_the_junior_soliders
+		cost = 10
+
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			custom_effect_tooltip = SIA_chulachomklao_royal_military_academy_tt
+			hidden_effect = {
+					add_ideas = {
+				political_loyalty_spirit
+				reserve_officers_spirit
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = SIA_army_maneuvers
+		icon = GFX_goal_generic_cavalry
+		prerequisite = { focus = SIA_chulachomklao_royal_military_academy }
+		x = 0
+		y = 1
+		relative_position_id = SIA_chulachomklao_royal_military_academy
+		cost = 10
+
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			army_experience = 25
+			add_doctrine_cost_reduction = {
+				name = land_doc_bonus
+				cost_reduction = 0.25
+				uses = 2
+				category = land_doctrine
+			}
+		}
+	}	
+	
+
+	focus = {
+		id = SIA_light_armor_experimentation
+		icon = GFX_goal_generic_army_tanks
+		prerequisite = { focus = SIA_royal_thai_army }
+		x = 3
+		y = 1
+		relative_position_id = SIA_royal_thai_army
+		cost = 5
+
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_equipment_to_stockpile = {
+					type =  jap_light_equipment_1
+					amount = 60
+					producer = JAP
+				}
+		}
+	}
+
+	focus = {
+		id = SIA_armored_repair_workshop
+		icon = GFX_focus_generic_tank_production
+		prerequisite = { focus = SIA_light_armor_experimentation }
+		mutually_exclusive = { focus = SIA_domestic_aircraft_assembly }
+		x = 0
+		y = 1
+		relative_position_id = SIA_light_armor_experimentation
+		cost = 10
+
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_ideas = SIA_armored_repair_workshop_idea
+			289 = {
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = SIA_siam_at_war
+		icon = GFX_goal_fortify_the_westwall
+		x = 0
+		y = 1
+		relative_position_id = SIA_ammunition_assembly_line
+		cost = 5
+		
+		available = {
+			SIA = {
+				has_war_with = ENG
+			}
+		}		
+
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			if = {
+				limit = {
+					NOT = { has_idea = war_economy }
+					NOT = { has_idea = tot_economic_mobilisation }
+				}
+				add_ideas = war_economy
+			}
+			else = {
+				add_political_power = 150
+			}
+		}
+	}
+	
+	focus = {
+		id = SIA_siam_burma_railway
+		icon = GFX_focus_generic_railroad
+		prerequisite = { focus = SIA_siam_at_war }
+		prerequisite = { focus = SIA_improve_regional_infrastructure }
+		x = -1
+		y = 1
+		relative_position_id = SIA_siam_at_war
+		cost = 10
+
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			build_railway = {
+				path = { 7408 1427 7587 4319 10193 12125 1403 }
+			}
+		}
+	}
+	
+	
+	
+}
