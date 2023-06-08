@@ -35,6 +35,7 @@ NDefines.NDiplomacy.VOLUNTEERS_PER_TARGET_PROVINCE = 0.00			-- Each province own
 NDefines.NDiplomacy.VOLUNTEERS_PER_COUNTRY_ARMY = 0.00				-- Each army unit owned by the source country contributes this amount of volunteers to the limit.
 NDefines.NDiplomacy.VOLUNTEERS_DIVISIONS_REQUIRED = 0				-- This many divisons are required for the country to be able to send volunteers.
 NDefines.NDiplomacy.OPINION_PER_VOLUNTEER = 20						-- Opinion bonus per one sent volunteer division
+NDefines.NDiplomacy.IDEOLOGY_JOIN_FACTION_MIN_LEVEL = -0.01			-- ideology limit required to join faction
 
  -- YAMM
  
