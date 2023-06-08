@@ -10,144 +10,7 @@
 # protect
 # influence
 
-ITA_unit_production = {
-	
-	allowed = {	original_tag = ITA }
-	enable = {
-		always = yes
-	}
-	abort = {
-		always = no
-	}
 
-	ai_strategy = {
-		type = role_ratio
-		id = garrison
-		value = 7
-	}
-
-	ai_strategy = {
-		type = role_ratio
-		id = paratroopers
-		value = 0
-	}
-
-	ai_strategy = {
-		type = role_ratio
-		id = mountaineers
-		value = 2
-	}
-
-	ai_strategy = {
-		type = role_ratio
-		id = marines
-		value = 0
-	}
-
-	ai_strategy = {
-		type = role_ratio
-		id = cavalry
-		value = 0
-	}
-
-	ai_strategy = {
-		type = role_ratio
-		id = armor
-		value = 3
-	}
-
-	ai_strategy = {
-		type = role_ratio
-		id = infantry
-		value = 80
-	}
-
-	#Air unit factors
-	ai_strategy = {
-		type = unit_ratio
-		id = fighter
-		value = 80
-	}
-
-	ai_strategy = {
-		type = unit_ratio
-		id = cas
-		value = 5
-	}
-
-	ai_strategy = {
-		type = unit_ratio
-		id = tactical_bomber
-		value = 10
-	}
-
-	ai_strategy = {
-		type = unit_ratio
-		id = strategic_bomber
-		value = 0
-	}
-
-	ai_strategy = {
-		type = unit_ratio
-		id = naval_bomber
-		value = 5
-	}
-
-	ai_strategy = {
-		type = equipment_production_factor
-		id = heavy_fighter
-		value = -40 #Just build a few slowly
-	}
-
-	ai_strategy = {
-		type = unit_ratio
-		id = heavy_fighter
-		value = 20
-	}
-
-	# Naval unit factors
-	ai_strategy = {
-		type = unit_ratio
-		id = capital_ship
-		value = 10
-	}
-
-	ai_strategy = {
-		type = unit_ratio
-		id = submarine
-		value = 10
-	}
-
-	ai_strategy = {
-		type = unit_ratio
-		id = screen_ship
-		value = 40
-	}
-
-	ai_strategy = {
-		type = unit_ratio
-		id = convoy
-		value = 15
-	}
-
-	ai_strategy = {
-		type = equipment_production_factor
-		id = fighter
-		value = 35
-	}
-
-	ai_strategy = {
-		type = equipment_production_factor
-		id = infantry
-		value = 40
-	}
-
-	ai_strategy = {
-		type = equipment_production_factor
-		id = artillery
-		value = 25
-	}
-}
 
 stresa_front_ita = {
 	allowed = {
@@ -329,11 +192,6 @@ germany_ally = {
 		id = "GER"
 		value = 100
 	}
-	ai_strategy = {
-		type = alliance
-		id = "GER"
-		value = 100
-	}
 }
 
 romania_ally = {
@@ -480,32 +338,6 @@ portugal_ally = {
 	}
 }
 
-#ITA_keep_your_nose_clean_for_a_bit
-#{
-#	enable = {
-#		tag = ITA
-#		date < 1940.5.1
-#	}
-#
-#	ai_strategy = {
- #       type = dont_join_wars_with
-  #      id = GER
-  #      value = 1000000
-  #  }
- #   ai_strategy = {
-#        type = dont_join_wars_with
-#        id = SLO
-#        value = 1000000
-#    }
-#    ai_strategy = {
-#    	type = diplo_action_desire
-#    	target = join_allies
-#    	id = SLO
-#    	value = -1000
-#    }
-#}
-
-
 # extra scaryness around italy, this together with sufficient enemy superiority will make ai avoid transports around its coast
 italy_be_careful_transporting_through_the_med = {
 	allowed = {
@@ -564,70 +396,6 @@ dont_take_claims_on_yug = {
 	}
 }
 
-ITA_naval_role_ratios_historical = {
-	allowed = {
-		has_dlc = "Man the Guns"
-		original_tag = ITA
-	}
-	enable = {
-		always = yes
-	}
-
-	ai_strategy = {
-		type = role_ratio
-		id = naval_capital_bb
-		value = 20   
-	}
-
-	ai_strategy = {
-		type = unit_ratio
-		id = capital_ship
-		value = 10
-	}
-
-	ai_strategy = {
-		type = role_ratio
-		id = naval_carrier
-		value = 0
-	}
-
-	ai_strategy = {
-		type = role_ratio
-		id = naval_submarine
-		value = 5
-	}
-
-	ai_strategy = {
-		type = role_ratio
-		id = naval_screen
-		value = 50
-	}
-
-	ai_strategy = {
-		type = role_ratio
-		id = naval_cruiser_light
-		value = 20
-	}
-
-	ai_strategy = {
-		type = role_ratio
-		id = naval_cruiser_heavy
-		value = 5
-	}
-
-	ai_strategy = {
-		type = role_ratio
-		id = naval_mine_sweeper
-		value = 5 
-	}
-
-	ai_strategy = {
-		type = role_ratio
-		id = naval_mine_layer
-		value = 5
-	}
-}
-
 ITA_share_borders_with_GER_against_SOV = {
 	allowed = {
 		original_tag = ITA
@@ -679,50 +447,6 @@ ITA_share_borders_with_GER_against_SOV = {
 		type = dont_defend_ally_borders
 		id = "FIN"
 		value = 100
-	}
-}
-
-spain_scw_support_ITA_resistance = {
-	allowed = {
-		original_tag = ITA
-		has_dlc = "La Resistance"
-	}
-	enable = {
-		has_government = fascism
-		country_exists = SPA
-	}
-	abort = {
-		OR = {
-			NOT = { country_exists = SPA }
-			SPA = { has_completed_focus = SPA_join_the_allies }
-		}
-	}
-
-	ai_strategy = {
-		type = support
-		id = "SPA"
-		value = 100
-	}
-	ai_strategy = {
-		type = send_volunteers_desire
-		id = "SPA"
-		value = 100
-	}
-}
-
-ITA_stockpile_less_early_game = {
-	allowed = {
-		original_tag = ITA
-	}
-
-	enable = {
-		date < 1939.1.1
-	}
-	abort_when_not_enabled = yes
-
-	ai_strategy = {
-		type = equipment_stockpile_surplus_ratio
-		value = -25		# reduce while we build up troops for africa etc
 	}
 }
 
@@ -779,6 +503,27 @@ ITA_hold_africa = {
 	ai_strategy = {
 		type = theatre_distribution_demand_increase
 		id = 450
+		value = 2
+	}
+
+	# Derna
+	ai_strategy = {
+		type = theatre_distribution_demand_increase
+		id = 451
+		value = 2
+	}
+
+	# Cyrenacia
+	ai_strategy = {
+		type = theatre_distribution_demand_increase
+		id = 663
+		value = 2
+	}
+
+	# Matrouh
+	ai_strategy = {
+		type = theatre_distribution_demand_increase
+		id = 452
 		value = 2
 	}
 
@@ -1214,7 +959,8 @@ ITA_invasion_buffer = {
 			2
 			162
 			161
-			### Oh no we forgot sicily! What could possibly go wrong.
+			115
+			116
 		}
 		ratio = 0.20
 		area = italy
@@ -1259,14 +1005,17 @@ dont_die_in_mountains = {
 		is_historical_focus_on = no
 	}
 	abort = {
-		NOT = { country_exists = FRA }
-		date > 1942.5.1
+		OR = {
+			GER = { has_completed_focus = GER_operation_tannenbaum }
+			NOT = { country_exists = FRA }
+			date > 1942.5.1
+		}
 	}
 
 	ai_strategy = {
 		type = ignore
 		id = "SWI"
-		value = 1000
+		value = 300
 	}
 }
 
@@ -1495,7 +1244,7 @@ ITA_wait_before_joining_the_axis = {
 	ai_strategy = {
 		type = alliance
 		id = "GER"
-		value = -500
+		value = -200
 	}
 }
 
@@ -1541,7 +1290,7 @@ ITA_now_join_the_axis = {
 	ai_strategy = {
 		type = alliance
 		id = "GER"
-		value = 500
+		value = 200
 	}
 }
 
@@ -1588,7 +1337,7 @@ GER_wait_before_inviting_italy = {
 	ai_strategy = {
 		type = alliance
 		id = "ITA"
-		value = -500
+		value = -200
 	}
 }
 
@@ -1634,7 +1383,7 @@ GER_now_invite_italy = {
 	ai_strategy = {
 		type = alliance
 		id = "ITA"
-		value = 500
+		value = 200
 	}
 }
 
@@ -2063,7 +1812,22 @@ ITA_focus_on_north_africa = {
 	}
 	ai_strategy = {
 		type = naval_avoid_region
-		id = 61		#Cap Verde
+		id = 240	#Gibraltar-Azores Ridge
+		value = 500
+	}
+	ai_strategy = {
+		type = naval_avoid_region
+		id = 365	#Alboran Sea
+		value = 500
+	}
+	ai_strategy = {
+		type = naval_avoid_region
+		id = 61		#Sierra Leone Rise
+		value = 500
+	}
+	ai_strategy = {
+		type = naval_avoid_region
+		id = 48		#African Canary Coast
 		value = 500
 	}
 	ai_strategy = {
@@ -2089,7 +1853,26 @@ ITA_Suez_protecc = {
 			447
 			446
 		}
-		ratio = 0.35
+		ratio = 0.25
+		area = north_africa
+		subtract_invasions_from_need = no
+		subtract_fronts_from_need = yes
+	}
+	ai_strategy = {
+		type = put_unit_buffers
+		# Libya
+		states = {
+			448
+			450
+			451
+			449
+			452
+			448
+			816
+			447
+			446
+		}
+		ratio = 0.10
 		area = north_africa
 		subtract_invasions_from_need = no
 		subtract_fronts_from_need = yes
@@ -2116,21 +1899,6 @@ ITA_Suez_protecc = {
 	}
 }
 
-ITA_stockpile_less_early_game = {
-	allowed = {
-		tag = ITA
-	}
-	enable = {
-		tag = ITA
-		date < 1939.1.1
-	}
-	abort_when_not_enabled = yes
-	ai_strategy = {
-		type = equipment_stockpile_surplus_ratio
-		value = -25		# reduce while we build up troops for africa etc
-	}
-}
-
 ITA_dont_want_to_invade_FRA_without_GER = {
 	allowed = {
 		tag = ITA
@@ -2138,22 +1906,11 @@ ITA_dont_want_to_invade_FRA_without_GER = {
 	enable = {
 		tag = ITA
 		is_historical_focus_on = yes
-		date < 1940.4.1
-		HOL = {
-			has_capitulated = no
-		}
-		BEL = {
-			has_capitulated = no
-		}
-		LUX = {
-			has_capitulated = no
-		}
 	}
 	abort = {
 		OR = {
-			date > 1940.4.1
 			FRA = {
-				has_capitulated = yes
+				NOT = { controls_state = 16 } # Paris
 			}
 			AND = {
 				HOL = {
@@ -2408,25 +2165,6 @@ avoid_north = {
 	}
 }
 
-avoid_swiss = {
-	allowed = {
-		tag = ITA
-	}
-	enable = {
-		tag = ITA
-	}
-	abort = {
-		SWI = {
-			is_ai = no
-		}
-	}
-	ai_strategy = {
-		type = ignore
-		id = "SWI"
-		value = 500
-	}
-}
-
 spain_scw_support_ITA_resistance = {
 	allowed = {
 		tag = ITA
@@ -2513,78 +2251,6 @@ ITA_plz_defend_against_FRA = {
 	}
 }
 
-Axis_abandon_iraq = {
-	enable = {
-		OR = {
-			tag = GER
-			tag = HUN
-			tag = ROM
-			tag = HUN
-		}
-		is_in_faction_with = IRQ
-	}
-	abort = {
-		OR = {
-			ITA = {
-				controls_state = 454
-			}
-			GER = {
-				controls_state = 454
-			}
-			date > 1946.1.1
-		}
-	}
-	ai_strategy = {
-		type = dont_defend_ally_borders
-		id = "IRQ"
-		value = 500
-	}
-	ai_strategy = {
-		type = dont_defend_ally_borders
-		id = "PER"
-		value = 500
-	}
-	ai_strategy = {
-		type = area_priority
-		id = asia
-		value = -500
-	}
-}
-
-ITA_abandon_iraq = {
-	allowed = {
-		original_tag = ITA
-	}
-	enable = {
-		is_in_faction_with = IRQ
-	}
-	abort = {
-		OR = {
-			ITA = {
-				controls_state = 454
-			}
-			GER = {
-				controls_state = 454
-			}
-			date > 1946.1.1
-		}
-	}
-	ai_strategy = {
-		type = dont_defend_ally_borders
-		id = "IRQ"
-		value = 500
-	}
-	ai_strategy = {
-		type = dont_defend_ally_borders
-		id = "PER"
-		value = 500
-	}
-	ai_strategy = {
-		type = area_priority
-		id = asia
-		value = -500
-	}
-}
 
 ITA_dont_sacrifice_aircrafts = {
 	allowed = {
@@ -2658,7 +2324,7 @@ ITA_dont_sacrifice_aircrafts = {
 	}
 	ai_strategy = {
 		type = strategic_air_importance
-		id = 223 #Strategic Region ID - South-East England
+		id = 229 #Strategic Region ID - South-West England
 		value = -20000 #Too easy to lose planes here
 	}
 	ai_strategy = {
