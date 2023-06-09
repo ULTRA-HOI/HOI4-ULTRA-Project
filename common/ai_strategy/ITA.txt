@@ -415,6 +415,7 @@ ITA_share_borders_with_GER_against_SOV = {
 				going_war_with_SOV = yes
 			}
 			GER_should_continue_split_SOV_front_with_ITA = yes
+			controls_state = 816 # Suez - focus on MENA
 		}
 	}
 
@@ -1031,7 +1032,7 @@ GER_ignore_vichy_we_will_annex_them_later = {
 	ai_strategy = {
 		type = ignore
 		id = "VIC"
-		value = 100
+		value = 200
 	}
 }
 
@@ -1868,9 +1869,6 @@ ITA_Suez_protecc = {
 			449
 			452
 			448
-			816
-			447
-			446
 		}
 		ratio = 0.10
 		area = north_africa
@@ -1896,6 +1894,53 @@ ITA_Suez_protecc = {
 		execution_type = careful
 		execute_order = no
 		manual_attack = no
+	}
+}
+
+ITA_Palestine_protecc = {
+	allowed = {
+		original_tag = ITA
+	}
+	enable = {
+		controls_state = 454
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = put_unit_buffers
+		# Palestine/Jordan
+		states = {
+			454
+			453
+			455
+		}
+		ratio = 0.10
+		area = middle_east
+		subtract_invasions_from_need = no
+		subtract_fronts_from_need = yes
+	}
+}
+
+ITA_Iraq_protecc = {
+	allowed = {
+		original_tag = ITA
+	}
+	enable = {
+		291 = { is_controlled_by_ROOT_or_ally = yes }
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = put_unit_buffers
+		# Iraq/Kuwait
+		states = {
+			291
+			656
+			675
+			676
+		}
+		ratio = 0.10
+		area = middle_east
+		subtract_invasions_from_need = no
+		subtract_fronts_from_need = yes
 	}
 }
 
@@ -2017,7 +2062,7 @@ ITA_dont_want_to_invade_FRA_without_GER = {
 	}
 }
 
-invading_ireland_is_stupid = {
+ITA_invading_is_stupid = {
 	allowed = {
 		tag = ITA
 	}
@@ -2029,15 +2074,6 @@ invading_ireland_is_stupid = {
 		id = "IRE"
 		value = -500		# that low means not going for islands either
 	}
-}
-
-invading_india_is_stupid = {
-	allowed = {
-		tag = ITA
-	}
-	enable = {
-		always = yes
-	}
 	ai_strategy = {
 		type = invade
 		id = "RAJ"
@@ -2047,15 +2083,6 @@ invading_india_is_stupid = {
 		type = invade
 		id = "SRL"
 		value = -500		# that low means not going for islands either
-	}
-}
-
-invading_france_is_pointless = {
-	allowed = {
-		original_tag = ITA
-	}
-	enable = {
-		always = yes
 	}
 	ai_strategy = {
 		type = invade
