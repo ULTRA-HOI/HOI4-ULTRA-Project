@@ -44,15 +44,15 @@ NDefines.NNavy.NAVY_VISIBILITY_BONUS_ON_RETURN_FOR_REPAIR = 0.6 --was 0.9 -- Mul
 -- CARRIER STUFF
 --------------------------------------------------------------------------------------------------------------
 
-NDefines.NAir.CARRIER_HOURS_DELAY_AFTER_EACH_COMBAT = 2 --8          -- how often carrier planes do battle inside naval combat - seems to not work
-NDefines.NNavy.NAVAL_STRIKE_CARRIER_MULTIPLIER = 1.5 --5.0              -- damage bonus when planes are in naval combat where their carrier is present (and can thus sortie faster and more effectively)
+NDefines.NAir.CARRIER_HOURS_DELAY_AFTER_EACH_COMBAT = 12 --8          -- how often carrier planes do battle inside naval combat - seems to not work
+NDefines.NNavy.NAVAL_STRIKE_CARRIER_MULTIPLIER = 1 --5.0              -- damage bonus when planes are in naval combat where their carrier is present (and can thus sortie faster and more effectively)
 
 
 NDefines.NNavy.CARRIER_ONLY_COMBAT_ACTIVATE_TIME = 0							-- hours from start of combat when carriers get to fight
 NDefines.NNavy.CAPITAL_ONLY_COMBAT_ACTIVATE_TIME = 24 --4                          -- hours from start of combat when only carriers, capitals and subs get to attack
 NDefines.NNavy.ALL_SHIPS_ACTIVATE_TIME = 36 --8                                    -- hours where all get to attack
 --NDefines.NNavy.BEST_CAPITALS_TO_SCREENS_RATIO = 0.33 --0.25 							-- capitals / screens ratio used for creating FEX groups in naval combat
-NDefines.NNavy.CARRIER_STACK_PENALTY = 5
+NDefines.NNavy.CARRIER_STACK_PENALTY = 20
 NDefines.NNavy.CARRIER_STACK_PENALTY_EFFECT = 0.075 --0.1
 
 NDefines.NNavy.HIGHER_CARRIER_RATIO_POSITIONING_PENALTY_FACTOR = 0.1 --was 0.2 -- penalty if other side has stronger carrier air force
@@ -60,7 +60,7 @@ NDefines.NNavy.MAX_CARRIER_RATIO_POSITIONING_PENALTY_FACTOR = 0.1 --was 0.2 -- m
 --------------------------------------------------------------------------------------------------------------
 -- MISC NAVY STUFF
 --------------------------------------------------------------------------------------------------------------
-NDefines.NNavy.UNIT_TRANSFER_SPOTTING_SPEED_MULT = 2.0 -- 5.0						-- spotting speed mult against unit transfers
+NDefines.NNavy.UNIT_TRANSFER_SPOTTING_SPEED_MULT = 1.0 -- 5.0						-- spotting speed mult against unit transfers
 NDefines.NNavy.PRIDE_OF_THE_FLEET_UNASSIGN_COST = 50 --100							-- cost to unassign/replace pride of the fleet
 NDefines.NNavy.SUPPLY_NEED_FACTOR = 0.1										 --was 4, multiplied in modules instead   -- multiplies supply usage  -- was 1, reduced to 0.1 to make ship supply irrelevant until such time as Paradox makes it something that actually works
 NDefines.NNavy.EXPERIENCE_LOSS_FACTOR = 0.25
@@ -90,7 +90,7 @@ NDefines.NNavy.LIGHT_GUN_ATTACK_TO_SHORE_BOMBARDMENT = 0.04                 -- l
 NDefines.NNavy.TRAINING_DAILY_COUNTRY_EXP_FACTOR = 0.00025						-- was 0.001 -- Factor used to scale the Daily Country Navy XP gain
 NDefines.NNavy.CONVOY_SINKING_SPILLOVER = 1.0 --0.5                 				-- Damaged convoys roll for if they sink in the end of combat by accumulating the damage. This scales that chance. 
 --NDefines.NNavy.ANTI_AIR_TARGETTING_TO_CHANCE = 0.02							-- Balancing value to convert averaged equipment stats (anti_air_targetting and naval_strike_agility) to probability chances of airplane being hit by navies AA.
-NDefines.NNavy.ANTI_AIR_ATTACK_TO_AMOUNT = 0.0015 --was 0.01 						-- Balancing value to convert equipment stat anti_air_attack to the random % value of airplanes being hit. Lower this value so that plane lost are less
+NDefines.NNavy.ANTI_AIR_ATTACK_TO_AMOUNT = 0.001 --was 0.01 						-- Balancing value to convert equipment stat anti_air_attack to the random % value of airplanes being hit. Lower this value so that plane lost are less
 NDefines.NNavy.AA_EFFICIENCY_PENALTY_ON_MINIMUM_POSITIONING	= 0.1           -- AA penalty at 0% positioning
 NDefines.NNavy.SCREENING_EFFICIENCY_PENALTY_ON_MINIMUM_POSITIONING = 0.75  		-- was 0.5 -- screening efficiency (screen to capital ratio) at 0% positioning
 NDefines.NNavy.NAVAL_TRANSFER_BASE_SPEED = 6                                -- was 6 -- base speed of units on water being transported
@@ -137,7 +137,7 @@ NDefines.NNavy.MISSION_SUPREMACY_RATIOS = { -- supremacy multipliers for differe
 }
 NDefines.NNavy.SHIP_TO_FLEET_ANTI_AIR_RATIO	= 0.50 -- was 0.15
 NDefines.NNavy.ANTI_AIR_MULT_ON_INCOMING_AIR_DAMAGE = 0.25 -- was 0.2 in vanilla; Increase power and reducing multiplier to make damage scale better.
-NDefines.NNavy.ANTI_AIR_POW_ON_INCOMING_AIR_DAMAGE = 0.5 -- was 0.2. PLEASE DO NOT INCREASE THE VALUE ABOVE TOO MUCH. ^0.5 instead of ^0.2 means that AA DISRUPTION SCALE A LOT MORE.
+NDefines.NNavy.ANTI_AIR_POW_ON_INCOMING_AIR_DAMAGE = 0.3 -- was 0.2. PLEASE DO NOT INCREASE THE VALUE ABOVE TOO MUCH. ^0.5 instead of ^0.2 means that AA DISRUPTION SCALE A LOT MORE.
 NDefines.NNavy.MIN_HIT_PROFILE_MULT = 0.05
 NDefines.NNavy.HIT_PROFILE_SPEED_FACTOR = 1		-- factors speed value when determining it profile (Vis * HIT_PROFILE_MULT * Ship Hit Profile Mult)
 NDefines.NNavy.HIT_PROFILE_SPEED_BASE											= 0		-- Base value added to hitprofile speed calulation
@@ -425,7 +425,10 @@ NDefines.NNavy.NAVAL_COMBAT_AIR_SUB_DETECTION_DECAY_RATE = 1.0					-- Factor to 
 NDefines.NNavy.NAVAL_COMBAT_AIR_SUB_DETECTION_FACTOR = 0.0						-- A global factor that applies after all others, right before the sub detection contributed by plane is added to the global sub detection of a combatant
 
 NDefines.NNavy.NAVAL_COMBAT_AIR_SUB_TARGET_SCORE = 10                             -- scoring for target picking for planes inside naval combat, one define per ship typ
-NDefines.NNavy.NAVAL_COMBAT_AIR_CAPITAL_TARGET_SCORE = 50
+NDefines.NNavy.NAVAL_COMBAT_AIR_CAPITAL_TARGET_SCORE = 100
 NDefines.NNavy.NAVAL_COMBAT_AIR_CONVOY_TARGET_SCORE = 1.0
-NDefines.NNavy.NAVAL_COMBAT_AIR_STRENGTH_TARGET_SCORE = 5                        -- how much score factor from low health (scales between 0->this number)
+NDefines.NNavy.NAVAL_COMBAT_AIR_STRENGTH_TARGET_SCORE = 0.1                        -- how much score factor from low health (scales between 0->this number)
 NDefines.NNavy.NAVAL_COMBAT_AIR_LOW_AA_TARGET_SCORE = 5                           -- how much score factor from low AA guns (scales between 0->this number)
+
+NDefines.NNavy.NAVAL_COMBAT_EXTERNAL_PLANES_JOIN_RATIO = 10
+NDefines.NNavy.NAVAL_COMBAT_EXTERNAL_PLANES_JOIN_RATIO_PER_DAY = 10

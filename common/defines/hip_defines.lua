@@ -580,7 +580,7 @@ NDefines.NAir.COMBAT_BETTER_AGILITY_DAMAGE_REDUCTION = 0 		-- How much the bette
 NDefines.NAir.COMBAT_BETTER_SPEED_DAMAGE_INCREASE = 1 		-- How much the better Speed (than opponent's) can reduce increase our damage to them.
 NDefines.NAir.AIR_WING_BOMB_DAMAGE_FACTOR = 1.0 --Was 2					-- Used to balance the damage done while bombing.
 NDefines.NAir.DISRUPTION_FACTOR = 0.05
-NDefines.NAir.DISRUPTION_FACTOR_CARRIER = 0.1
+NDefines.NAir.DISRUPTION_FACTOR_CARRIER = 1
 NDefines.NAir.DISRUPTION_SPEED_FACTOR = 1.0
 NDefines.NAir.DISRUPTION_AGILITY_FACTOR = 0.0
 NDefines.NAir.DISRUPTION_ATTACK_FACTOR = 1.0
@@ -637,7 +637,7 @@ NDefines.NAir.BOMBING_TARGETING_RANDOM_FACTOR = 0.40						-- was 0.25	-- % of pi
 
 NDefines.NAir.AIR_WING_COUNTRY_XP_FROM_TRAINING_FACTOR = 0.005 				-- was 0.005	--Factor on country Air XP gained from wing training
 NDefines.NAir.COMBAT_DAMAGE_SCALE = 0.45				-- was 0.1			-- Higher value = more shot down planes
-NDefines.NAir.COMBAT_DAMAGE_SCALE_CARRIER = 3.6 --6                    -- same as above but used inside naval combat for carrier battles
+NDefines.NAir.COMBAT_DAMAGE_SCALE_CARRIER = 48 --6                    -- same as above but used inside naval combat for carrier battles
 
 NDefines.NAir.AIR_WING_XP_TRAINING_MISSION_GAIN_DAILY = 4.0 --3.3 						--Daily gain when running training exercise mission
 NDefines.NAir.AIR_WING_XP_AIR_VS_AIR_COMBAT_GAIN = 4.0 --0.8 							--Wings in combat gain extra XP	
@@ -663,7 +663,7 @@ NDefines.NAir.ANTI_AIR_MAXIMUM_DAMAGE_REDUCTION_FACTOR = 0.5 --0.5
 NDefines.NAir.NAVAL_KAMIKAZE_DAMAGE_MULT = 10.0  -- vanilla is like 20
 
 NDefines.NAir.PORT_STRIKES_DELAY_MULTIPLIER = 4  --2					-- multplies HOURS_DELAY_AFTER_EACH_COMBAT if port strikes
-NDefines.NAir.NAVAL_STRIKE_BASE_STR_TO_PLANES_RATIO = 0.25 --0.03		-- Max airbombers to do port strike comparing to strength
+NDefines.NAir.NAVAL_STRIKE_BASE_STR_TO_PLANES_RATIO = 0.01 --0.03		-- Max airbombers to do port strike comparing to strength
 
 NDefines.NAir.HOURS_DELAY_AFTER_EACH_COMBAT = 2
 
@@ -674,8 +674,8 @@ NDefines.NAir.FUEL_COST_MULT = 0.6 --0.45 --0.35 --fuel multiplier for all air m
 -- Naval strikes
 
 NDefines.NAir.NAVAL_STRIKE_TARGETTING_TO_AMOUNT = 0.05 -- 0.3			-- Balancing value to convert the naval_strike_targetting equipment stats to chances of how many airplanes managed to do successfull strike.
-NDefines.NAir.NAVAL_STRIKE_DAMAGE_TO_STR = 1.0 --2.0					-- Balancing value to convert damage ( naval_strike_attack * hits ) to Strength reduction.
-NDefines.NAir.NAVAL_STRIKE_DAMAGE_TO_ORG = 0.75					-- Balancing value to convert damage ( naval_strike_attack * hits ) to Organisation reduction.
+NDefines.NAir.NAVAL_STRIKE_DAMAGE_TO_STR = 2.5 --2.0					-- Balancing value to convert damage ( naval_strike_attack * hits ) to Strength reduction.
+NDefines.NAir.NAVAL_STRIKE_DAMAGE_TO_ORG = 0.1					-- Balancing value to convert damage ( naval_strike_attack * hits ) to Organisation reduction.
 NDefines.NAir.NAVAL_STRIKE_DETECTION_BALANCE_FACTOR = 0.25 --0.7		-- Value used to scale the surface_visibility stats to balance the gameplay, so 100% detection chance still won't spam the strikes.
 
 
