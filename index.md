@@ -1,5 +1,56 @@
 # Changelog
 
+### 0.16.6
+
+### Features
+
+- Switzerland focus tree is back and correctly nerfed
+
+### Balance
+
+- Increase Assault Gun bonus against forts
+- Denmark surrender is now faster
+- armoured infantry doctrine is buffed
+- Indian manpower reduced
+- Reworked artillery bonuses to correctly favor the allies
+- Carrier rebalance
+- Germany can't go Total War if they are still performing Operation Barbarossa
+- Temporary disabling damages on train with logistic bombing (until a fix is found for OP logistic strike)
+
+### Database
+
+- rocket arty and SPG stats adjusted
+- Improve german decision to reorganise the balkans
+- removed ideology requirement from joining factions
+- Updated soviet amphibious tank stats
+- Rework of german mechanized
+- Added pictures for german armored cars
+- Added 8 startng CIC to Malaya
+- Transfers 150 convoy from UK to Malaya
+- Added 50 trains to Malaya
+- Updated german ship names list
+- Aircraft cost scaling changed
+
+### Fixes
+
+- CV fighter-bombers can nom properly naval strike
+- workaround for France Cpitulation bug
+- british dockyard colonial decisions now only targets core territories
+- Fighter bombers can now correctly perform naval strikes
+- Fix siam submarine designs
+- Persia and Iraq should not join Japanese Faction
+- Super Heavy bombers are now able to have other missions than strat bombing
+- A-20G research year fixed
+- Fix Operation Countenance and Persian Corridor so Soviet can get LL through Persia
+
+### QOL
+
+- influence decisions are hidden under utility category
+
+### AI
+
+- Various AI tweaks
+
 ### 0.16.5b
 
 ### Balance
