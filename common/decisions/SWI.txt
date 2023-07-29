@@ -3263,6 +3263,7 @@ SWI_absolute_neutrality_decisions_category = {
 
 		visible = {
 			has_completed_focus = SWI_axis_gold
+			always = no
 		}
 		
 		target_trigger = {
@@ -3314,6 +3315,7 @@ SWI_absolute_neutrality_decisions_category = {
 
 		visible = {
 			has_completed_focus = SWI_allied_gold
+			always = no
 		}
 		
 		target_trigger = {
@@ -3362,8 +3364,7 @@ SWI_absolute_neutrality_decisions_category = {
 		allowed = { original_tag = SWI }
 		
 		visible = {
-			always = yes 
-			check_variable = { SWI.SWI_gold_trade < SWI.SWI_max_gold_trade }
+			always = no
 		}
 		target_trigger = {
 			FROM = {											
@@ -3472,6 +3473,29 @@ SWI_absolute_neutrality_decisions_category = {
 				FROM = { SWI_country_about_to_be_angry = no }
 			} 
 		}	
+	}
+
+	SWI_cancel_gold_modifier = {
+		icon = GFX_decision_gre_investment_decisions
+
+		allowed = { original_tag = SWI }
+		
+		visible = {
+			always = yes
+		}
+		available = {
+			always = yes
+		}
+		cost = 0
+
+		complete_effect = {
+			SWI = {
+		 		remove_dynamic_modifier = { modifier = SWI_seized_gold days } 
+			}
+		}
+		ai_will_do = {
+			base = 0
+		}
 	}
 
 	SWI_purchase_democratic_planes_fighters = {
