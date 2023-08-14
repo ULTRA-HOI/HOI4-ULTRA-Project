@@ -680,7 +680,7 @@ NDefines.NAir.NAVAL_STRIKE_DETECTION_BALANCE_FACTOR = 0.25 --0.7		-- Value used 
 
 
 
-NDefines.NCountry.AIR_SUPPLY_CONVERSION_SCALE = 0.005	--0.05				-- Conversion scale for planes to air supply
+NDefines.NCountry.AIR_SUPPLY_CONVERSION_SCALE = 0.015	--0.05				-- Conversion scale for planes to air supply
 NDefines.NCountry.AIR_SUPPLY_DROP_EXPIRATION_HOURS = 120  --168            -- Air drop length after being dropped
 
 -- logistic strikes
