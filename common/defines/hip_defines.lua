@@ -408,6 +408,7 @@ NDefines.NMilitary.ENCIRCLED_PENALTY = 0                   -- penalty when compl
 NDefines.NMilitary.UNIT_DIGIN_CAP = 5 --10                           -- how "deep" you can dig you can dig in until hitting max bonus
 NDefines.NMilitary.UNIT_DIGIN_SPEED = 0.5 --1						   -- how "deep" you can dig a day.
 NDefines.NMilitary.ORG_LOSS_FACTOR_ON_CONQUER = 0.15 --0.05             -- percentage of (max) org loss on takign enemy province
+NDefines.NMilitary.RELIABILTY_RECOVERY = 0.0							-- broken currently
 
 
 -- leaders / xp
