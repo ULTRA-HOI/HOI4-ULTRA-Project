@@ -226,7 +226,7 @@ NDefines.NBuildings.BASE_FACTORY_REPAIR = 25			-- Default repair rate before fac
 NDefines.NBuildings.BASE_FACTORY_REPAIR_FACTOR = 6.0	-- Factory speed modifier when repairing.
 NDefines.NBuildings.MAX_SHARED_SLOTS = 225				-- Max slots shared by factories
 NDefines.NBuildings.NAVALBASE_CAPACITY_MULT = 15.0		-- Each level of navalbase building multiplied by this, gives max capacity. Value is float. Each ship takes port_capacity_usage space.
-NDefines.NBuildings.NAVALBASE_REPAIR_MULT = 0.025	--0.05	-- Each level of navalbase building repairs X strength. The value is spread on all ships needed reparation. Fe Navalbase lvl 5 x 0.5 str repair = 2.5 str repaired over 10 ships, so each ship repair hourly 0.25 str.
+NDefines.NBuildings.NAVALBASE_REPAIR_MULT = 0.04	--0.05	-- Each level of navalbase building repairs X strength. The value is spread on all ships needed reparation. Fe Navalbase lvl 5 x 0.5 str repair = 2.5 str repaired over 10 ships, so each ship repair hourly 0.25 str.
 NDefines.NBuildings.RADAR_RANGE_BASE = 15				-- Radar range base, first level radar will be this + min, best radar will be this + max
 NDefines.NBuildings.RADAR_RANGE_MIN = 15				-- Radar range (from state center to province center) in measure of map pixels. Exluding techs.
 NDefines.NBuildings.RADAR_RANGE_MAX = 120				-- Range is interpolated between building levels 1-15.
