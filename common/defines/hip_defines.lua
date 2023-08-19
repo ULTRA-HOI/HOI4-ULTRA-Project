@@ -35,6 +35,7 @@ NDefines.NDiplomacy.VOLUNTEERS_PER_TARGET_PROVINCE = 0.00			-- Each province own
 NDefines.NDiplomacy.VOLUNTEERS_PER_COUNTRY_ARMY = 0.00				-- Each army unit owned by the source country contributes this amount of volunteers to the limit.
 NDefines.NDiplomacy.VOLUNTEERS_DIVISIONS_REQUIRED = 0				-- This many divisons are required for the country to be able to send volunteers.
 NDefines.NDiplomacy.OPINION_PER_VOLUNTEER = 20						-- Opinion bonus per one sent volunteer division
+NDefines.NDiplomacy.IDEOLOGY_JOIN_FACTION_MIN_LEVEL = -0.01			-- ideology limit required to join faction
 
  -- YAMM
  
@@ -92,7 +93,7 @@ NDefines.NCountry.SPECIAL_FORCES_CAP_BASE = 0.03					-- Max ammount of special f
 NDefines.NCountry.SPECIAL_FORCES_CAP_MIN = 18					-- You can have a minimum of this many special forces battalions, regardless of the number of non-special forces battalions you have, this can also be modified by a country modifier
 NDefines.NCountry.BASE_FUEL_LAND_LEASE_SPEED = 50				-- base value for maximum fuel that can be land leased per hour
 NDefines.NCountry.FUEL_LAND_LEASE_RATIO = 1.0					-- multiplier for guel gain that is added to maximum fuel that can be land leased per hour
-NDefines.NCountry.FUEL_LEASE_CONVOY_RATIO = 0.00005				-- was 0.0005 -- num convoys needed per fuel land lease 
+NDefines.NCountry.FUEL_LEASE_CONVOY_RATIO = 0.000075				-- was 0.0005 -- num convoys needed per fuel land lease 
 
 
 
@@ -225,7 +226,7 @@ NDefines.NBuildings.BASE_FACTORY_REPAIR = 25			-- Default repair rate before fac
 NDefines.NBuildings.BASE_FACTORY_REPAIR_FACTOR = 6.0	-- Factory speed modifier when repairing.
 NDefines.NBuildings.MAX_SHARED_SLOTS = 225				-- Max slots shared by factories
 NDefines.NBuildings.NAVALBASE_CAPACITY_MULT = 15.0		-- Each level of navalbase building multiplied by this, gives max capacity. Value is float. Each ship takes port_capacity_usage space.
-NDefines.NBuildings.NAVALBASE_REPAIR_MULT = 0.025	--0.05	-- Each level of navalbase building repairs X strength. The value is spread on all ships needed reparation. Fe Navalbase lvl 5 x 0.5 str repair = 2.5 str repaired over 10 ships, so each ship repair hourly 0.25 str.
+NDefines.NBuildings.NAVALBASE_REPAIR_MULT = 0.04	--0.05	-- Each level of navalbase building repairs X strength. The value is spread on all ships needed reparation. Fe Navalbase lvl 5 x 0.5 str repair = 2.5 str repaired over 10 ships, so each ship repair hourly 0.25 str.
 NDefines.NBuildings.RADAR_RANGE_BASE = 15				-- Radar range base, first level radar will be this + min, best radar will be this + max
 NDefines.NBuildings.RADAR_RANGE_MIN = 15				-- Radar range (from state center to province center) in measure of map pixels. Exluding techs.
 NDefines.NBuildings.RADAR_RANGE_MAX = 120				-- Range is interpolated between building levels 1-15.
@@ -256,6 +257,7 @@ NDefines.NTechnology.MAX_TECH_SHARING_BONUS	= 10			-- Max technology sharing bon
 NDefines.NPolitics.DEFAULT_OCCUPATION_POLICY = 3		-- Defaullt value for occupation policy
 NDefines.NPolitics.INSTANT_WIN_POPULARITY_WIN = 55 -- New party popularity
 NDefines.NPolitics.ARMY_LEADER_COST = 2						-- was 5 -- cost for recruiting new leaders, 'this value' * number_of_existing_leaders_of_type
+NDefines.NPolitics.NAVY_LEADER_COST = 1						-- was 5 -- cost for recruiting new admirals, 'this value' * number_of_existing_leaders_of_type
 NDefines.NAI.DIPLOMACY_ACCEPT_ATTACHE_OPINION_TRASHHOLD = 0
 
 -- Military Stuff
@@ -297,7 +299,7 @@ NDefines.NMilitary.LAND_AIR_COMBAT_MAX_PLANES_PER_ENEMY_WIDTH = 20 --5 -- how ma
 
 -- Land combat general regulation
 
-NDefines.NMilitary.LAND_COMBAT_STR_DAMAGE_MODIFIER = 0.2 --0.06        -- global damage modifier... but some equipment is returned at end of battles see : EQUIPMENT_COMBAT_LOSS_FACTOR
+NDefines.NMilitary.LAND_COMBAT_STR_DAMAGE_MODIFIER = 0.18 --0.06        -- global damage modifier... but some equipment is returned at end of battles see : EQUIPMENT_COMBAT_LOSS_FACTOR
 NDefines.NMilitary.LAND_COMBAT_ORG_DAMAGE_MODIFIER = 0.12 --0.04        -- global damage modifier
 NDefines.NMilitary.BASE_CHANCE_TO_AVOID_HIT = 80              -- Base chance to avoid hit if defences left.
 NDefines.NMilitary.CHANCE_TO_AVOID_HIT_AT_NO_DEF = 60	           -- chance to avoid hit if no defences left.
@@ -468,7 +470,7 @@ NDefines.NMilitary.OUT_OF_SUPPLY_SPEED = -0.1                    -- -0.8 max spe
 NDefines.NMilitary.NON_CORE_SUPPLY_SPEED = -0.1				   -- we are not running on our own VP supply so need to steal stuff along the way
 NDefines.NMilitary.OUT_OF_SUPPLY_MORALE = -0.25                   -- max org regain reduction from supply
 NDefines.NMilitary.LOW_SUPPLY = 0.99							   --0.99 -- When the supply status of an unit becomes low.
-NDefines.NSupply.SUPPLY_HUB_FULL_MOTORIZATION_TRUCK_COST = 1000 --80.0 -- How many trucks does it cost to fully motorize a hub
+NDefines.NSupply.SUPPLY_HUB_FULL_MOTORIZATION_TRUCK_COST = 800 --80.0 -- How many trucks does it cost to fully motorize a hub
 NDefines.NSupply.RAILWAY_BASE_FLOW = 0.0 --10.0 		-- how much base flow railway gives when a node connected to its capital/a naval node by a railway
 NDefines.NSupply.RAILWAY_FLOW_PER_LEVEL = 12.5 --5.0 	-- how much additional flow a railway level gives
 NDefines.NSupply.RAILWAY_FLOW_PENALTY_PER_DAMAGED = 7.5 --5.0 -- penalty to flow per damaged railway
@@ -578,7 +580,7 @@ NDefines.NAir.COMBAT_BETTER_AGILITY_DAMAGE_REDUCTION = 0 		-- How much the bette
 NDefines.NAir.COMBAT_BETTER_SPEED_DAMAGE_INCREASE = 1 		-- How much the better Speed (than opponent's) can reduce increase our damage to them.
 NDefines.NAir.AIR_WING_BOMB_DAMAGE_FACTOR = 1.0 --Was 2					-- Used to balance the damage done while bombing.
 NDefines.NAir.DISRUPTION_FACTOR = 0.05
-NDefines.NAir.DISRUPTION_FACTOR_CARRIER = 0.1
+NDefines.NAir.DISRUPTION_FACTOR_CARRIER = 1
 NDefines.NAir.DISRUPTION_SPEED_FACTOR = 1.0
 NDefines.NAir.DISRUPTION_AGILITY_FACTOR = 0.0
 NDefines.NAir.DISRUPTION_ATTACK_FACTOR = 1.0
@@ -626,6 +628,8 @@ NDefines.NAir.AIR_WING_XP_TRAINING_MISSION_ACCIDENT_FACTOR = 0.5 --1.5 				--Tra
 
 NDefines.NAir.AIR_WING_FLIGHT_SPEED_MULT = 0.02			-- was 0.02	-- Global speed multiplier for airplanes (affects fe.transferring to another base)
 
+NDefines.NAir.SUPPLY_NEED_FACTOR = 0.056
+
 NDefines.NAir.AA_INDUSTRY_AIR_DAMAGE_FACTOR = -0.12				-- 5x levels = 60% defense from bombing
 NDefines.NAir.ANTI_AIR_PLANE_DAMAGE_FACTOR = 0.4				-- was 0.8	-- Anti Air Gun Damage factor
 NDefines.NAir.ANTI_AIR_PLANE_DAMAGE_CHANCE = 0.1 --0.1					-- Anti Air Gun hit chance
@@ -633,7 +637,7 @@ NDefines.NAir.BOMBING_TARGETING_RANDOM_FACTOR = 0.40						-- was 0.25	-- % of pi
 
 NDefines.NAir.AIR_WING_COUNTRY_XP_FROM_TRAINING_FACTOR = 0.005 				-- was 0.005	--Factor on country Air XP gained from wing training
 NDefines.NAir.COMBAT_DAMAGE_SCALE = 0.45				-- was 0.1			-- Higher value = more shot down planes
-NDefines.NAir.COMBAT_DAMAGE_SCALE_CARRIER = 3.6 --6                    -- same as above but used inside naval combat for carrier battles
+NDefines.NAir.COMBAT_DAMAGE_SCALE_CARRIER = 48 --6                    -- same as above but used inside naval combat for carrier battles
 
 NDefines.NAir.AIR_WING_XP_TRAINING_MISSION_GAIN_DAILY = 4.0 --3.3 						--Daily gain when running training exercise mission
 NDefines.NAir.AIR_WING_XP_AIR_VS_AIR_COMBAT_GAIN = 4.0 --0.8 							--Wings in combat gain extra XP	
@@ -659,7 +663,7 @@ NDefines.NAir.ANTI_AIR_MAXIMUM_DAMAGE_REDUCTION_FACTOR = 0.5 --0.5
 NDefines.NAir.NAVAL_KAMIKAZE_DAMAGE_MULT = 10.0  -- vanilla is like 20
 
 NDefines.NAir.PORT_STRIKES_DELAY_MULTIPLIER = 4  --2					-- multplies HOURS_DELAY_AFTER_EACH_COMBAT if port strikes
-NDefines.NAir.NAVAL_STRIKE_BASE_STR_TO_PLANES_RATIO = 0.25 --0.03		-- Max airbombers to do port strike comparing to strength
+NDefines.NAir.NAVAL_STRIKE_BASE_STR_TO_PLANES_RATIO = 0.01 --0.03		-- Max airbombers to do port strike comparing to strength
 
 NDefines.NAir.HOURS_DELAY_AFTER_EACH_COMBAT = 2
 
@@ -670,20 +674,20 @@ NDefines.NAir.FUEL_COST_MULT = 0.6 --0.45 --0.35 --fuel multiplier for all air m
 -- Naval strikes
 
 NDefines.NAir.NAVAL_STRIKE_TARGETTING_TO_AMOUNT = 0.05 -- 0.3			-- Balancing value to convert the naval_strike_targetting equipment stats to chances of how many airplanes managed to do successfull strike.
-NDefines.NAir.NAVAL_STRIKE_DAMAGE_TO_STR = 1.0 --2.0					-- Balancing value to convert damage ( naval_strike_attack * hits ) to Strength reduction.
-NDefines.NAir.NAVAL_STRIKE_DAMAGE_TO_ORG = 0.75					-- Balancing value to convert damage ( naval_strike_attack * hits ) to Organisation reduction.
+NDefines.NAir.NAVAL_STRIKE_DAMAGE_TO_STR = 2.5 --2.0					-- Balancing value to convert damage ( naval_strike_attack * hits ) to Strength reduction.
+NDefines.NAir.NAVAL_STRIKE_DAMAGE_TO_ORG = 0.1					-- Balancing value to convert damage ( naval_strike_attack * hits ) to Organisation reduction.
 NDefines.NAir.NAVAL_STRIKE_DETECTION_BALANCE_FACTOR = 0.25 --0.7		-- Value used to scale the surface_visibility stats to balance the gameplay, so 100% detection chance still won't spam the strikes.
 
 
 
-NDefines.NCountry.AIR_SUPPLY_CONVERSION_SCALE = 0.005	--0.05				-- Conversion scale for planes to air supply
+NDefines.NCountry.AIR_SUPPLY_CONVERSION_SCALE = 0.015	--0.05				-- Conversion scale for planes to air supply
 NDefines.NCountry.AIR_SUPPLY_DROP_EXPIRATION_HOURS = 120  --168            -- Air drop length after being dropped
 
 -- logistic strikes
 
 NDefines.NAir.AIR_WING_ATTACK_LOGISTICS_TRUCK_DAMAGE_FACTOR = 0.125
 NDefines.NAir.AIR_WING_ATTACK_LOGISTICS_INFRA_DAMAGE_SPILL_FACTOR = 0.001
-NDefines.NAir.AIR_WING_ATTACK_LOGISTICS_TRAIN_DAMAGE_FACTOR = 0.025
+NDefines.NAir.AIR_WING_ATTACK_LOGISTICS_TRAIN_DAMAGE_FACTOR = 0.00
 
 NDefines.NAir.MAX_QUICK_WING_SELECTION = 5
 

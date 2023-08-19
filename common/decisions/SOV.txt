@@ -6304,7 +6304,12 @@ SOV_diplomacy_middle_east_decision_category = {
 		}
 
 		available =  {
-			PER = { has_capitulated = yes }
+			PER = { 
+				OR = {	
+					is_in_faction_with = ENG
+					is_in_faction_with = SOV
+				}
+			}
 			all_of_scopes = {
 				array = SOV_iranian_initial_states
 				OR = {
@@ -6375,10 +6380,12 @@ SOV_diplomacy_middle_east_decision_category = {
 						transfer_state = 419 #Tibriz (AZB)
 						transfer_state = 420 #Gilan (AZB)
 						transfer_state = 416 #Khorasan
+						transfer_state = 421 #Kurdistan
+						transfer_state = 413 #Khuzestan
 					}
 					give_resource_rights = { receiver = SOV state = 411 }
 					give_resource_rights = { receiver = SOV state = 412 }
-					give_resource_rights = { receiver = SOV state = 413 }
+
 				}
 				else_if = {
 					limit = {
@@ -6391,11 +6398,12 @@ SOV_diplomacy_middle_east_decision_category = {
 						transfer_state = 419 #Tibriz (AZB)
 						transfer_state = 420 #Gilan (AZB)
 						transfer_state = 416 #Khorasan
+						transfer_state = 421 #Kurdistan
+						transfer_state = 413 #Khuzestan
 					}
 					FROM = {
 						give_resource_rights = { receiver = SOV state = 411 }
 						give_resource_rights = { receiver = SOV state = 412 }
-						give_resource_rights = { receiver = ENG state = 413 }
 						give_military_access = ROOT
 					}
 				}
@@ -11587,7 +11595,7 @@ SOV_great_patriotic_war = {
 							infantry = { x = 2 y = 0 }
 						}
 						support = {
-						DIV_HQ = { x = 0 y = 0 }
+							DIV_HQ = { x = 0 y = 0 }
 						}
 						is_locked = yes 
 					}

@@ -87,90 +87,82 @@ purchase_available = {
 	OR = {
 		is_in_faction_with = FROM
 		is_in_faction = no
-		is_literally_china = yes
+		is_literally_china_tooltip = yes
 	}
 	OR = {
 		has_war = no
-		AND = {
-			is_literally_china = yes
-			controls_state = 747 #Dali
+		if = {
+			limit = { is_literally_china = yes }
 			OR = {
 				AND = {
-					#Hanoi Road
-					OR = {
-						CHI = {
-							controls_state = 594 #Nanning
+					if = {
+						limit = { has_completed_focus = CHI_guarantee_the_hanoi_route }
+						594 = { #Nanning
+							is_controlled_by_ROOT_or_ally = yes
 						}
-						any_allied_country = {
-							controls_state = 594
+						FRA = {
+							controls_state = 1011 # Dong Bac
+							controls_state = 1015 # Red River Delta
+							has_capitulated = no
 						}
-					}
-					CHI = {
+					} else = {
 						has_completed_focus = CHI_guarantee_the_hanoi_route
 					}
-					FRA = {
-						controls_state = 1011
-						controls_state = 1015
-						has_capitulated = no
-					}
 				}
 				AND = {
-					#Burma Road
-					OR = {
-						CHI = {
-							controls_state = 747 #Dali
+					if = {
+						limit = { has_completed_focus = CHI_burma_road }
+						747 = { #Dali
+							is_controlled_by_ROOT_or_ally = yes
 						}
-						any_allied_country = {
-							controls_state = 747
+						751 = { #Liangshan
+							is_controlled_by_ROOT_or_ally = yes
 						}
-					}
-					CHI = {
+						RAJ = {
+							controls_state = 974 #Kachin
+							controls_state = 640 #Mandalay
+							controls_state = 288 #Rangoon
+							controls_state = 978 #Upper Shan
+							has_capitulated = no
+							is_in_faction_with = ENG
+						}
+					} else = {
 						has_completed_focus = CHI_burma_road
-						controls_state = 751 #Liangshan
-					}
-					RAJ = {
-						controls_state = 878
-						controls_state = 640
-						has_capitulated = no
-						is_in_faction_with = ENG
 					}
 				}
 				AND = {
-					#Ledo Road
-					OR = {
-						CHI = {
-							controls_state = 747 #Dali
+					if = {
+						limit = { has_completed_focus = CHI_ledo_road }
+						747 = { #Dali
+							is_controlled_by_ROOT_or_ally = yes
 						}
-						any_allied_country = {
-							controls_state = 747
+						751 = { #Liangshan
+							is_controlled_by_ROOT_or_ally = yes
 						}
-					}
-					CHI = {
+						RAJ = {
+							controls_state = 432 #Assam
+							controls_state = 974 #Kachin
+							controls_state = 978 #Upper Shan
+							has_capitulated = no
+							is_in_faction_with = ENG
+						}
+					} else = {
 						has_completed_focus = CHI_ledo_road
-						controls_state = 751 #Liangshan
-					}
-					RAJ = {
-						controls_state = 432
-						controls_state = 974
-						has_capitulated = no
-						is_in_faction_with = ENG
 					}
 				}
 				AND = {
-					#The Hump
-					CHI = {
-						has_completed_focus = CHI_the_hump
-						OR = {
-							controls_state = 753 #Chengtu
-							any_allied_country = {
-								controls_state = 753
-							}
+					if = {
+						limit = { has_completed_focus = CHI_the_hump }
+						753 = { #Chengtu
+							is_controlled_by_ROOT_or_ally = yes
 						}
-					}
-					RAJ = {
-						controls_state = 432
-						has_capitulated = no
-						is_in_faction_with = ENG
+						RAJ = {
+							controls_state = 432 #Assam
+							has_capitulated = no
+							is_in_faction_with = ENG
+						}
+					} else = {
+						has_completed_focus = CHI_the_hump
 					}
 				}
 			}
