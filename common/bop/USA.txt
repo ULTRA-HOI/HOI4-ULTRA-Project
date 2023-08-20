@@ -1,0 +1,81 @@
+USA_isolationism_bop = {
+	initial_value = 1
+	left_side = USA_isolationism_bop_isolationist 
+	right_side = USA_isolationism_bop_interventionist
+	decision_category = USA_isolationism_power_balance_decisions
+
+	range = { #Balanced Range, neither isolationist nor interventionist
+		id = USA_isolationism_bop_balanced 
+		min = -0.25
+		max = 0.25
+		modifier = {
+            political_power_factor = 0.1
+            stability_factor = 0.1
+		}
+	}
+
+	side = {
+		id = USA_isolationism_bop_isolationist
+		icon = GFX_bop_SWI_centralization_canton_side
+		range = {
+			id = USA_isolationism_bop_fully_isolationist
+			min = -1
+			max = -0.75
+			modifier = {	
+                army_core_attack_factor	= 0.3
+                army_attack_factor = -0.20
+                war_support_factor = -0.2
+                political_power_factor = 0.2
+			}
+			on_activate = {
+				log = "Fully Isolationist activated"
+			}
+		}
+
+		range = {
+			id = USA_isolationism_bop_very_isolationist
+			min = -0.75
+			max = -0.25
+			modifier = {
+				army_core_attack_factor	= 0.15
+                army_attack_factor = -0.10
+                war_support_factor = -0.1
+                political_power_factor = 0.3
+			}
+			on_activate = {
+				log = "Very Isolationist activated"
+			}
+		}
+	}
+
+    side = {
+		id = USA_isolationism_bop_Interventionist
+		icon = GFX_bop_SWI_centralization_council_side
+		range = {
+			id = USA_isolationism_bop_fully_Interventionist
+			min = 0.75
+			max = 1
+			modifier = {
+                war_support_factor = 0.15
+                political_power_factor = -0.1
+                max_command_power_mult = 0.2	
+			}
+			on_activate = {
+				log = "Fully Interventionist activated"
+			}
+		}
+		
+		range = {
+			id = USA_isolationism_bop_very_interventionist
+			min = 0.25
+			max = 0.75
+			modifier = {
+                war_support_factor = 0.1
+                max_command_power_mult = 0.1
+			}
+			on_activate = {
+				log = "Very Interventionist activated"
+			}
+		}
+	}
+} 
