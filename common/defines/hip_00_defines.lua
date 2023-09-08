@@ -877,8 +877,8 @@ NMilitary = {
 	FIELD_EXPERIENCE_SCALE = 0.2, --was 0.0015
 	FIELD_EXPERIENCE_MAX_PER_DAY = 2.0, --was 1.2 --Most xp you can gain per day
 	EXPEDITIONARY_FIELD_EXPERIENCE_SCALE = 0.2, --was 0.3 --reduction factor in Xp from expeditionary forces
-	LEND_LEASE_FIELD_EXPERIENCE_SCALE = 0.2, --was 0.0005 --was 0.0005 --Experience scale for lend leased equipment used in combat.
-	LEADER_EXPERIENCE_SCALE = 1.1, --was 0.9 --was 1.0
+	LEND_LEASE_FIELD_EXPERIENCE_SCALE = 0.0005, --was 0.0005 --Experience scale for lend leased equipment used in combat.
+	LEADER_EXPERIENCE_SCALE = 0.9, --was 1.0
 	SLOWEST_SPEED = 0.4, --was 4
 	REINFORCEMENT_REQUEST_MAX_WAITING_DAYS = 14,   -- Every X days the equipment will be sent, regardless if still didn't produced all that has been requested.
 	REINFORCEMENT_REQUEST_DAYS_FREQUENCY = 7,	   -- How many days must pass until we may give another reinforcement request
@@ -900,7 +900,7 @@ NMilitary = {
 	BASE_NIGHT_ATTACK_PENALTY = -0.5,
 	EXILE_EQUIPMENT = 1.0,						   -- Amount of equipment to keep
 	EXILE_ORG = 0.0,							   -- Amount of org to keep
-	EXPERIENCE_LOSS_FACTOR = 0.25, --was 0.75 --was 1.00 --percentage of experienced solders who die when manpower is removed
+	EXPERIENCE_LOSS_FACTOR = 0.75, --was 1.00 --percentage of experienced solders who die when manpower is removed
 	EQUIPMENT_COMBAT_LOSS_FACTOR = 0.95, --was 0.70 --% of equipment lost to strength ratio in combat, so some % is returned if below 1
 	SUPPLY_USE_FACTOR_MOVING = 10, --was 1.5 --Deprecated/Unused
 	SUPPLY_USE_FACTOR_INACTIVE = 0.95, --was 0.95 --Deprecated/Unused
@@ -1134,7 +1134,7 @@ NMilitary = {
 
 	ARMY_MAX_FUEL_FLOW_MULT = 0.9, --was 2.0 --max fuel ratio that an army can get per hour, multiplied by supply situation
 
-	ARMY_FUEL_COST_MULT = 0.30, --was 1.1 --was 0.5 --fuel cost multiplier for all army related stuff
+	ARMY_FUEL_COST_MULT = 1.1, --was 0.5 --fuel cost multiplier for all army related stuff
 	ARMY_COMBAT_FUEL_MULT = 0.5, --was 1.0 --fuel consumption ratio in combat (plus ARMY_MOVEMENT_FUEL_MULT if you are also moving. ie offensive combat)
 	ARMY_TRAINING_FUEL_MULT = 0.67, --was 1.0 --fuel consumption ratio while training
 	ARMY_MOVEMENT_FUEL_MULT = 0.8, --was 1.0 --fuel consumption ratio while moving
@@ -1373,7 +1373,7 @@ NAir = {
 	},
 	MAX_FUEL_FLOW_MULT = 1.0, -- max fuel flow ratio for planes, which will be multiplied by supply
 
-	FUEL_COST_MULT = 0.30, --was 0.6 --was 0.35 --fuel multiplier for all air missions
+	FUEL_COST_MULT = 0.6, --was 0.35 --fuel multiplier for all air missions
 
 	MISSION_EFFICIENCY_MULT_AT_LACK_OF_FUEL = 0.25, 				-- multiplier for mission efficiency when a base lacks fuel
 
@@ -1459,7 +1459,7 @@ NNavy = {
 	REPAIR_AND_RETURN_AMOUNT_SHIPS_MEDIUM = 0.6, --was 0.4 --% of total damaged ships, that will be sent for repair-and-return in one call.
 	REPAIR_AND_RETURN_AMOUNT_SHIPS_HIGH = 0.8,						-- % of total damaged ships, that will be sent for repair-and-return in one call.
 	REPAIR_AND_RETURN_UNIT_DYING_STR = 0.35, --was 0.2 --Str below this point is considering a single ship "dying", and a high priority to send to repair.
-	EXPERIENCE_LOSS_FACTOR = 0.25, --was 0.75 --was 1.00 --percentage of experienced solders who die when manpower is removed
+	EXPERIENCE_LOSS_FACTOR = 0.25, --was 1.00 --percentage of experienced solders who die when manpower is removed
 	NAVY_EXPENSIVE_IC = 8000, --was 5500 --How much IC is considering the fleet to be expensive. Those expensive will triger the alert, when are on low STR.
 	MISSION_MAX_REGIONS = 10, --was 0 --Limit of the regions that can be assigned to naval mission. Set to 0 for unlimited.
 	CONVOY_EFFICIENCY_LOSS_MODIFIER = 1.0, --was 1.25 --How much efficiency drops when losing convoys. If modifier is 0.5, then losing 100% of convoys in short period, the efficiency will drop by 50%.
@@ -1467,8 +1467,8 @@ NNavy = {
 	CONVOY_EFFICIENCY_REGAIN_BASE_SPEED = 0.04, --was 0.04 --How much efficiency regains every day.
 	CONVOY_EFFICIENCY_MIN_VALUE = 0.05,								-- To avoid complete 0% efficiency, set the lower limit.
 	CONVOY_ROUTE_SIZE_CONVOY_SCALE = 0.5,                           -- scales impact of convoy route size (0 to turn off)
-	ANTI_AIR_TARGETTING_TO_CHANCE = 0.5, --was 0.045 --was 0.2 --Balancing value to convert averaged equipment stats (anti_air_targetting and naval_strike_agility) to probability chances of airplane being hit by navies AA.
-	ANTI_AIR_ATTACK_TO_AMOUNT = 0.001, --was 0.002 --was 0.01 --Balancing value to convert equipment stat anti_air_attack to the random % value of airplanes being hit.
+	ANTI_AIR_TARGETTING_TO_CHANCE = 0.02, --was 0.2 --Balancing value to convert averaged equipment stats (anti_air_targetting and naval_strike_agility) to probability chances of airplane being hit by navies AA.
+	ANTI_AIR_ATTACK_TO_AMOUNT = 0.001, --was 0.01 --Balancing value to convert equipment stat anti_air_attack to the random % value of airplanes being hit.
 	CONVOY_SINKING_SPILLOVER = 1.0, --was 0.5 --Damaged convoys roll for if they sink in the end of combat by accumulating the damage. This scales that chance.
 	UNIT_EXPERIENCE_PER_COMBAT_HOUR = 2.5, --was 0.00025 --was 10
 	UNIT_EXPERIENCE_SCALE = 0.85, --was 0.5 --was 1
@@ -1500,7 +1500,7 @@ NNavy = {
 	NAVAL_TRANSFER_BASE_NAVAL_DIST_MULT = 20,						-- Multiplier for the cost of naval movement ( compared to land movement ) when deciding what ports to use for naval transfer
 	NAVAL_SUPREMACY_CAN_INVADE = 0.6, --was 0.5 --required naval supremacy to perform invasions on an area
 	CARRIER_STACK_PENALTY = 20, --was 4 --The most efficient is 4 carriers in combat. 5+ brings the penalty to the amount of wings in battle.
-	CARRIER_STACK_PENALTY_EFFECT = 20, --was 0.2 --Each carrier above the optimal amount decreases the amount of airplanes being able to takeoff by such %.
+	CARRIER_STACK_PENALTY_EFFECT = 0.075, --was 0.2 --Each carrier above the optimal amount decreases the amount of airplanes being able to takeoff by such %.
 	SHORE_BOMBARDMENT_CAP = 0.5, --was 0.25
 	ANTI_AIR_TARGETING = 0.9,                                       -- how good ships are at hitting aircraft
 	MIN_TRACTED_ASSIST_DAMAGE_RATIO = 0.05,							-- How much damage counts as assist damage
@@ -1552,7 +1552,7 @@ NNavy = {
 	TRAINING_FUEL_COST_FOR_ESCORT_SHIPS = 0.15,						-- ships that are on training mission but not training (ie they are at max xp and training will cancel at max xp) will consume this ratio of fuel
 
 	MAX_FUEL_FLOW_MULT = 2.0, -- max fuel flow ratio for ships, which will be multiplied by supply
-	FUEL_COST_MULT = 0.30, --was 0.6 --was 0.10 --fuel multiplier for all naval missions
+	FUEL_COST_MULT = 0.30, --was 0.10 --fuel multiplier for all naval missions
 
 	OUT_OF_FUEL_SPEED_FACTOR = -0.75,
 	OUT_OF_FUEL_RANGE_FACTOR = -0.75,
