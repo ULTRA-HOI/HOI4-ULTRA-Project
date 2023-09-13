@@ -874,9 +874,9 @@ NMilitary = {
 	0.800, -- 11 Immortal		-- gold star with leaves
 								-- skull
 	}, 		-- Experience needed to progress to the next level
-	FIELD_EXPERIENCE_SCALE = 0.2, --was 0.0015
+	FIELD_EXPERIENCE_SCALE = 0.0015,
 	FIELD_EXPERIENCE_MAX_PER_DAY = 2.0, --was 1.2 --Most xp you can gain per day
-	EXPEDITIONARY_FIELD_EXPERIENCE_SCALE = 0.2, --was 0.3 --reduction factor in Xp from expeditionary forces
+	EXPEDITIONARY_FIELD_EXPERIENCE_SCALE = 0.3, --reduction factor in Xp from expeditionary forces
 	LEND_LEASE_FIELD_EXPERIENCE_SCALE = 0.0005, --was 0.0005 --Experience scale for lend leased equipment used in combat.
 	LEADER_EXPERIENCE_SCALE = 0.9, --was 1.0
 	SLOWEST_SPEED = 0.4, --was 4
@@ -1186,7 +1186,7 @@ NAir = {
 	AIR_REGION_SUPERIORITY_PIXEL_SCALE = 0.04,           -- air superiority scale = superiority/(pixels*this)
 	COMBAT_MULTIPLANE_CAP = 3.0, --was 3.0 --How many planes can shoot at each plane on other side ( if there are 100 planes we are atttacking COMBAT_MULTIPLANE_CAP * 100 of our planes can shoot )
 	COMBAT_DAMAGE_SCALE = 0.45, --was 1 --Higher value = more shot down planes
-	COMBAT_DAMAGE_SCALE_CARRIER = 0.45, --was 5 --same as above but used inside naval combat for carrier battles
+	COMBAT_DAMAGE_SCALE_CARRIER = 48.0, --was 5 --same as above but used inside naval combat for carrier battles
 	DETECT_CHANCE_FROM_OCCUPATION = 0.10, 				-- How much the controlled provinces in area affects the air detection base value.
 	DETECT_CHANCE_FROM_RADARS = 0.4, --was 0.5 --How much the radars in area affects detection chance.
 	DETECT_CHANCE_FROM_AIRCRAFTS_EFFECTIVE_COUNT = 3000, -- Max amount of aircrafts in region to give full detection bonus.
@@ -1204,7 +1204,7 @@ NAir = {
 	NAVAL_STRIKE_DAMAGE_TO_STR = 2.5, --was 1.0 --Balancing value to convert damage ( naval_strike_attack * hits ) to Strength reduction.
 	NAVAL_STRIKE_DAMAGE_TO_ORG = 0.1, --was 1.5 --Balancing value to convert damage ( naval_strike_attack * hits ) to Organisation reduction.
 	NAVAL_STRIKE_CARRIER_MULTIPLIER = 1, --was 10.0 --damage bonus when planes are in naval combat where their carrier is present (and can thus sortie faster and more effectively)
-	FIELD_EXPERIENCE_SCALE = 0.2, --was 0.0004
+	FIELD_EXPERIENCE_SCALE = 0.0004,
 	FIELD_EXPERIENCE_MAX_PER_DAY = 2.0, --was 2 --Most xp you can gain per day
 	CLOSE_AIR_SUPPORT_EXPERIENCE_SCALE = 0.0005,		-- How much the experinence gained by CAS is scaled
 	PARADROP_EXPERIENCE_SCALE = 0.03,					-- How much the experinence gained by paradropping is scaled
@@ -1291,7 +1291,7 @@ NAir = {
 	AIR_WING_XP_LOSS_REDUCTION_OVER_FRIENDLY_TERRITORY_FACTOR = 0.75, --was 0.3 --Reduction on XP loss over friendly territory
 
 	DISRUPTION_FACTOR = 0.05, --was 4.0 --multiplier on disruption damage to scale its effects on planes
-	DISRUPTION_FACTOR_CARRIER = 0.05, --was 6.0 --multiplier on disruption damage to scale its effects on carrier vs carrier planes
+	DISRUPTION_FACTOR_CARRIER = 1.00, --was 6.0 --multiplier on disruption damage to scale its effects on carrier vs carrier planes
 	DISRUPTION_SPEED_FACTOR = 1.0, --was 1.0
 	DISRUPTION_AGILITY_FACTOR = 0.0, --was 0.0
 	DISRUPTION_ATTACK_FACTOR = 1.0, --was 0.0
@@ -1425,7 +1425,7 @@ NNavy = {
 
 	COMBAT_MIN_HIT_CHANCE = 0.01, --was 0.05 --never less hit chance then this?
 	COMBAT_EVASION_TO_HIT_CHANCE = 0.025, --was 0.007 --we take ship evasion stats, and mult by this value, so it gives hit chance reduction. So if reduction is 0.025 and ship evasion = 10, then there will be 0.25 (25%) lower hit chance. (Fe. 50% base -25% from evasion +10% bcoz it's very close).
-	COMBAT_EVASION_TO_HIT_CHANCE_TORPEDO_MULT = 0.025, --was 10.0 --the above evasion hit chance is multiplied by 400% if shooting with torpedoes. Torpedoes are slow, so evasion matters more.
+	COMBAT_EVASION_TO_HIT_CHANCE_TORPEDO_MULT = 40.0, --was 10.0 --the above evasion hit chance is multiplied by 400% if shooting with torpedoes. Torpedoes are slow, so evasion matters more.
 	MIN_HIT_PROFILE_MULT = 0.05, --was 0.0 --largest hit profile penalty to hitting
 	COMBAT_LOW_ORG_HIT_CHANCE_PENALTY = -0.5,						-- % of penalty applied to hit chance when ORG is very low.
 	COMBAT_LOW_MANPOWER_HIT_CHANCE_PENALTY = -0.25,					-- % of penalty applied to hit chance when manpower is very low.
