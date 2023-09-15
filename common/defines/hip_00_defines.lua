@@ -1476,7 +1476,7 @@ NNavy = {
 	EXPERIENCE_FACTOR_NON_CARRIER_GAIN = 0.05, --was 0.04 --Xp gain by non-carrier ships in the combat
 	EXPERIENCE_FACTOR_CARRIER_GAIN = 0.045, --was 0.08 --Xp gain by carrier ships in the combat
 	FIELD_EXPERIENCE_SCALE = 0.2, --was 0.075
-	FIELD_EXPERIENCE_MAX_PER_DAY = 2.0, --was 50 --Most xp you can gain per day
+	FIELD_EXPERIENCE_MAX_PER_DAY = 50, --Most xp you can gain per day
 	LEADER_EXPERIENCE_SCALE = 1.1, --was 0.9 --was 1.0
 	BATTLE_NAME_VP_FACTOR = 100,									-- Name is given by ((VP value) * BATTLE_NAME_VP_FACTOR) / (Distance VP -> battle)
 	BATTLE_NAME_VP_CUTOFF = 1.0,									-- If best score of above calculation is below this, name will be that of region.
@@ -1504,7 +1504,7 @@ NNavy = {
 	SHORE_BOMBARDMENT_CAP = 0.5, --was 0.25
 	ANTI_AIR_TARGETING = 0.9,                                       -- how good ships are at hitting aircraft
 	MIN_TRACTED_ASSIST_DAMAGE_RATIO = 0.05,							-- How much damage counts as assist damage
-	SUPPLY_NEED_FACTOR = 4, --multiplies supply usage
+	SUPPLY_NEED_FACTOR = 0.1, --multiplies supply usage
 	DECRYPTION_SPOTTING_BONUS = 0.15, --was 0.2
 	DISBAND_MANPOWER_LOSS = 0.0, --was 0.0
 	MANPOWER_LOSS_RATIO_ON_SUNK = 0.5,								-- sunk ships will lose this ratio of their current manpower
@@ -1670,7 +1670,7 @@ NNavy = {
 	NAVAL_MINES_NAVAL_SUPREMACY_FACTOR = 0.5, --was 1.0 --Factor for max amount of mines increasing naval supremacy
 
 	ATTRITION_WHILE_MOVING_FACTOR = 1.5,							-- attrition multiplier while moving & doing missions
-	ATTRITION_DAMAGE_ORG = 0.04, --was 0.01 --damage from attrition to Organisation (relative to max org)
+	ATTRITION_DAMAGE_ORG = 0.01, --damage from attrition to Organisation (relative to max org)
 	ATTRITION_DAMAGE_STR = 0.03,					   				-- damage from attrition to str (relative to max str)
 	ATTRITION_STR_DAMAGE_CHANCE = 0.2,								-- chance to get damaged at highest attrition
 
