@@ -809,8 +809,12 @@ NMilitary = {
 	LAND_COMBAT_COLLATERAL_INFRA_FACTOR = 0.0022,	-- Factor to scale collateral damage to infra with.
 	LAND_COMBAT_FORT_DAMAGE_CHANCE = 1, --was 5 --chance to get a hit to damage on forts. (out of 100)
 	ATTRITION_DAMAGE_ORG = 0.04, --was 0.08 --damage from attrition to Organisation
+	
+	--DONT CHANGE THESE DEFINES:
 	ATTRITION_EQUIPMENT_LOSS_CHANCE = 0.02, --was 0.1 --Chance for loosing equipment when suffer attrition. Scaled up the stronger attrition is. Then scaled down by equipment reliability.
 	ATTRITION_EQUIPMENT_PER_TYPE_LOSS_CHANCE = 0.6, --was 0.1 --Chance for loosing equipment when suffer attrition. Scaled up the stronger attrition is. Then scaled down by equipment reliability.
+	--These defines need to remain as is for the attrition formula to work properly. Changes to attrition is done to weather or terrain modifiers.
+	
 	ATTRITION_WHILE_MOVING_FACTOR = 1,
 	RELIABILITY_ORG_REGAIN = -0.3,                 -- how much reliability affects org regain
 	RELIABILITY_ORG_MOVING = -1.0,                 -- how much reliability affects org loss on moving
@@ -3805,40 +3809,40 @@ NSupply = {
 
 	--defines to calculate the capitals supply. This will be also used for max supply of other nodes depending on how well they are connected to capital. Using the formula:
 	--CapitalSupply = 0.0, --was CAPITAL_SUPPLY_BASE + (NumberOfCivilianFactories * CAPITAL_SUPPLY_CIVILIAN_FACTORIES) + (NumberOfMilitaryFactories * CAPITAL_SUPPLY_MILITARY_FACTORIES) + (NumberOfDockyards * CAPITAL_SUPPLY_DOCKYARDS)
-	CAPITAL_SUPPLY_BASE = 0.0, --was 5.0 --base supply for capital
-	CAPITAL_SUPPLY_CIVILIAN_FACTORIES = 0.075, --was 0.3 --supply from one civilian factory
-	CAPITAL_SUPPLY_MILITARY_FACTORIES = 0.15, --was 0.6 --supply from one military factory
-	CAPITAL_SUPPLY_DOCKYARDS = 0.1, --was 0.4 --supply from one naval factory
+	CAPITAL_SUPPLY_BASE = 3.0, --was 5.0 --base supply for capital
+	CAPITAL_SUPPLY_CIVILIAN_FACTORIES = 0.06, --was 0.3 --supply from one civilian factory
+	CAPITAL_SUPPLY_MILITARY_FACTORIES = 0.12, --was 0.6 --supply from one military factory
+	CAPITAL_SUPPLY_DOCKYARDS = 0.06, --was 0.4 --supply from one naval factory
 
 	-- defines that are used for supply reach for capital
 	-- supply flow will start from INITIAL_SUPPLY_FLOW and will be reduced by a penalty on each province it travels (which depends on how far we are from our origin, terrain etc)
 	-- a supply reach >= 1.0 considered "perfect" and will be able to fully support units on that particular province (assuming you are not over capacity)
-	CAPITAL_INITIAL_SUPPLY_FLOW = 3.3, --was 5.0 --starting supply from
-	CAPITAL_STARTING_PENALTY_PER_PROVINCE = 0.50, --was 0.5 --starting penalty that will be added as supply moves away from its origin (modified by stuff like terrain)
-	CAPITAL_ADDED_PENALTY_PER_PROVINCE = 0.66, --was 1.2 --added penalty as we move away from origin
+	CAPITAL_INITIAL_SUPPLY_FLOW = 22.0, --was 5.0 --starting supply from
+	CAPITAL_STARTING_PENALTY_PER_PROVINCE = 7.6, --was 0.5 --starting penalty that will be added as supply moves away from its origin (modified by stuff like terrain)
+	CAPITAL_ADDED_PENALTY_PER_PROVINCE = 4.2, --was 1.2 --added penalty as we move away from origin
 
 	-- defines that are used for supply reach for built nodes
-	NODE_INITIAL_SUPPLY_FLOW = 2.0, --was 2.8
-	NODE_STARTING_PENALTY_PER_PROVINCE = 0.50, --was 0.50
-	NODE_ADDED_PENALTY_PER_PROVINCE = 0.33, --was 0.70
+	NODE_INITIAL_SUPPLY_FLOW = 18.0, --was 2.8
+	NODE_STARTING_PENALTY_PER_PROVINCE = 7.6, --was 0.50
+	NODE_ADDED_PENALTY_PER_PROVINCE = 4.2, --was 0.70
 
 	-- defines that are used for supply reach for dockyards
-	NAVAL_BASE_INITIAL_SUPPLY_FLOW = 2.5, --was 3.3
-	NAVAL_BASE_STARTING_PENALTY_PER_PROVINCE = 0.50, --was 0.84
-	NAVAL_BASE_ADDED_PENALTY_PER_PROVINCE = 0.50, --was 1.1
+	NAVAL_BASE_INITIAL_SUPPLY_FLOW = 18.0, --was 3.3
+	NAVAL_BASE_STARTING_PENALTY_PER_PROVINCE = 7.6, --was 0.84
+	NAVAL_BASE_ADDED_PENALTY_PER_PROVINCE = 4.2, --was 1.1
 
 	-- Node Flow (i.e. province caps) increase by this amount per railway level of the node's bottleneck
-	NODE_FLOW_BONUS_PER_RAIL_LEVEL = 0.1, --was 0.34
+	NODE_FLOW_BONUS_PER_RAIL_LEVEL = 0.4, --was 0.34
 
 	-- rivers will transfer in between nodes as if they were this level
-	RIVER_RAILWAY_LEVEL = 1,
+	RIVER_RAILWAY_LEVEL = 2,
 
 	-- defines that are used for supply reach for floating harbors
-	FLOATING_HARBOR_INITIAL_SUPPLY_FLOW = 2.6,
-	FLOATING_HARBOR_STARTING_PENALTY_PER_PROVINCE = 0.8,
-	FLOATING_HARBOR_ADDED_PENALTY_PER_PROVINCE = 0.8,
+	FLOATING_HARBOR_INITIAL_SUPPLY_FLOW = 18.0,
+	FLOATING_HARBOR_STARTING_PENALTY_PER_PROVINCE = 7.6,
+	FLOATING_HARBOR_ADDED_PENALTY_PER_PROVINCE = 4.2,
 
-	FLOATING_HARBOR_BASE_SUPPLY = 15.0, -- supply given by a floating harbor
+	FLOATING_HARBOR_BASE_SUPPLY = 8.0, -- supply given by a floating harbor
 	FLOATING_HARBOR_BASE_DURATION = 21, -- duration of a full hp floating harbor
 	FLOATING_HARBOR_DURATION_RATIO_AT_MIN_HP = 0.0,  -- duration mult for a harbor that was reduced to 0 hp
 
@@ -3850,39 +3854,39 @@ NSupply = {
 	FLOATING_HARBOR_DECAY_NO_CONTROL_PENALTY = 1.0, -- If adjacent land province is not held, change decay rate by this many "hours" per hour
 
 	SUPPLY_FLOW_DROP_REDUCTION_AT_MAX_INFRA = 0.50, --was 0.30 --max infrastructure level will reduce the supply flow drop off by this ratio
-	SUPPLY_FLOW_PENALTY_CROSSING_RIVERS = 0.10, --was 0.20 --crossing rivers introduces additional penalty
+	SUPPLY_FLOW_PENALTY_CROSSING_RIVERS = 2.80, --was 0.20 --crossing rivers introduces additional penalty
 
 	 -- node flow terrain falloff is scaled by logistics curve based on distance(d) (scalar / (1+e^(-k(d-midpoint))))
-	SUPPLY_FLOW_DIST_LOGISTICS_FALLOFF_K = 1.3, --was 1.3 --How steep the curve is
-	SUPPLY_FLOW_DIST_LOGISTICS_FALLOFF_MIDPOINT = 2.3, -- sigmoid inflection point
-	SUPPLY_FLOW_DIST_LOGISTICS_FALLOFF_SCALAR = 0.9, -- Max Penalty adjustment due to distance
+	SUPPLY_FLOW_DIST_LOGISTICS_FALLOFF_K = 1.8, --was 1.3 --How steep the curve is
+	SUPPLY_FLOW_DIST_LOGISTICS_FALLOFF_MIDPOINT = 2.6, -- sigmoid inflection point
+	SUPPLY_FLOW_DIST_LOGISTICS_FALLOFF_SCALAR = 0.95, -- Max Penalty adjustment due to distance
 	SUPPLY_FLOW_DIST_LOGISTICS_FALLOFF_MIN_PENALTY_SCALE = 0.05, --was 0.25 --Logistics curve never reduces penalty facor below this limit
 
 	-- The range bonus added to a fully motorized hub. This supply is added on top of the XXX_INITIAL_SUPPLY_FLOW defined above.
-	SUPPLY_HUB_FULL_MOTORIZATION_BONUS = 2.2,
+	SUPPLY_HUB_FULL_MOTORIZATION_BONUS = 40.0,
 	-- How many trucks does it cost to fully motorize a hub
 	SUPPLY_HUB_FULL_MOTORIZATION_TRUCK_COST = 800, --was 80.0
 	-- For each additional level of motorization on a hub (i.e. contry with set motoriazation) reduce max bonus for next level by this amount
-	SUPPLY_HUB_MOTORIZATION_MARGINAL_EFFECT_DECAY = 1.6,
+	SUPPLY_HUB_MOTORIZATION_MARGINAL_EFFECT_DECAY = 15.0,
 
 
 	-- used for calculating "flow" for railways.
 	RAILWAY_BASE_FLOW = 0.0, --was 10.0 --how much base flow railway gives when a node connected to its capital/a naval node by a railway
-	RAILWAY_FLOW_PER_LEVEL = 12.5, --was 5.0 --how much additional flow a railway level gives
-	RAILWAY_FLOW_PENALTY_PER_DAMAGED = 7.5, --was 5.0 --penalty to flow per damaged railway
+	RAILWAY_FLOW_PER_LEVEL = 4, --was 5.0 --how much additional flow a railway level gives
+	RAILWAY_FLOW_PENALTY_PER_DAMAGED = 3.9, --was 5.0 --penalty to flow per damaged railway
 	RAILWAY_MIN_FLOW = 0.5, --was 5.0 --minimum railway flow can be reduced to
 
 	-- used for calculating "flow" from a naval node to another naval node when it is connected via a convoy route
 	-- NAVAL_BASE_MAX_SUPPLY_FLOW_FACTOR = 0.9, -- flow of the parent node is factored to this ratio (so at most it can transfer parent naval node flow * this define)
-	NAVAL_BASE_FLOW = 0.0, --was 5.0 --max output/input of a naval node is limited by this base value + additional ratio for each level
-	NAVAL_FLOW_PER_LEVEL = 1.5, --was 3.0 --max output/input of a naval node is limited by previous base value + this define per its level
+	NAVAL_BASE_FLOW = 2.0, --was 5.0 --max output/input of a naval node is limited by this base value + additional ratio for each level
+	NAVAL_FLOW_PER_LEVEL = 0.45, --was 3.0 --max output/input of a naval node is limited by previous base value + this define per its level
 
 	SUPPLY_NODE_MIN_SUPPLY_THRESHOLD = 0.5, --was 1.0 --if supply of a node is below this value it will be set to 0 -- Currently unused? This should happen when enough damage occurs
 
-	INFRA_TO_SUPPLY = 0.00, --was 0.3 --each level of infra gives this many supply
+	INFRA_TO_SUPPLY = 0.05, --was 0.3 --each level of infra gives this many supply
 	VP_TO_SUPPLY_BASE = 0.0, --was 0.2 --Bonus to supply from a VP, no matter the level
 	VP_TO_SUPPLY_BONUS_CONVERSION = 0.02, --was 0.05 --Bonus to supply local supplies from Victory Points, multiplied by this aspect and rounded to closest integer
-	SUPPLY_FROM_DAMAGED_INFRA = 0.0, --was 0.15 --damaged infrastructure counts as this in supply calcs
+	SUPPLY_FROM_DAMAGED_INFRA = 0.025, --was 0.15 --damaged infrastructure counts as this in supply calcs
 	SUPPLY_BASE_MULT = 0.0, --was 0.2 --multiplier on supply base values
 	SUPPLY_DISRUPTION_DAILY_RECOVERY = 1.5,		-- every day nodes recover this much of their accumulated disruption.
 
@@ -3915,7 +3919,7 @@ NSupply = {
 	MIN_TRAIN_SUPPLY_FACTOR = 0.5, -- Having 0 trains in stockpile only applies this penalty factor, scaling up to 1.0 when need is met
 	MIN_TRAIN_REQUIREMENT = 2, -- If total train need <= this, then don't apply any supply penalty, even if stockpile is insufficient
 
-	SUPPLY_FLOW_REDUCTION_THRESHOLD = 0.02, --was 0.1 --if supply flow is lower than this, it is not applied
+	SUPPLY_FLOW_REDUCTION_THRESHOLD = 0.15, --was 0.1 --if supply flow is lower than this, it is not applied
 
 	-- following values are used for calculating potential truck usage
 	-- generally potential is ~= current usage but as units moves along the map
@@ -3932,19 +3936,19 @@ NSupply = {
 
 	-- armies slowly gains and buffers supply above >100% up to their supply grace if they have efficent supply flow
 	-- otherwuse they will lose up to 100% supply every day depending on how bad supply flow is
-	ARMY_SUPPLY_RATIO_STARTING_GAIN = 0.0,
+	ARMY_SUPPLY_RATIO_STARTING_GAIN = 0.1,
 	ARMY_SUPPLY_RATIO_SPEED_GAIN_PER_HOUR = 0.04, --was 0.01
 	ARMY_MAX_SUPPLY_RATIO_GAIN_PER_HOUR = 1, --was 0.15
 
 	MIN_SURRENDER_LIMIT_TO_MOVE_SUPPLY_CAPITAL = 0.15, -- country needs to be above thos surrender ratio to be able to move its capital
 	COOLDOWN_DAYS_AFTER_MOVING_SUPPLY_CAPITAL = 30, -- cooldown for moving supply again after last move
-	DAYS_TO_START_GIVING_SUPPLY_AFTER_MOVING_SUPPLY_CAPITAL = 1, --was 7 --the country will start gaining supply after this many days moving its capital
+	DAYS_TO_START_GIVING_SUPPLY_AFTER_MOVING_SUPPLY_CAPITAL = 4, --was 7 --the country will start gaining supply after this many days moving its capital
 	DAYS_TO_START_GIVING_FULL_SUPPLY_AFTER_MOVING_SUPPLY_CAPITAL =  21, -- the country will reach max supply after this many days moving its capital
 
 	MIN_DIFF_FOR_AUTO_UPDATING_EXISTING_RAILWAYS = 5, -- while building railways, the system will prefer updating existing railway if new railway is close enough to existing one
 
 	-- reinforcements depends on distance to capital and following defines are used for calculating reinforcement time
-	SUPPLY_PATH_MAX_DISTANCE = 21, --was 15 --max time it can take
+	SUPPLY_PATH_MAX_DISTANCE = 24, --was 15 --max time it can take
 	RAILWAY_DISTANCE_FACTOR_FOR_REINFORCEMENT_SPEED = 0.3, -- time factor for total railway distance
 	TRUCK_DISTANCE_FACTOR_FOR_REINFORCEMENT_SPEED = 0.01, -- time factor for total truck distance
 	NAVAL_DISTANCE_FACTOR_FOR_REINFORCEMENT_SPEED = 0.08, -- time factor for total naval distance
@@ -3958,7 +3962,7 @@ NSupply = {
 	SUPPLY_THRESHOLD_FOR_ARMY_ATTRITION = 0.66, --was 0.35 --armies will only get attrition below this supply
 	NUMBER_OF_SHOWN_SUPPLY_SOURCES_IN_SUPPLY_MAPMODE = 3, -- number of supply flow sources shown in breakdown tooltip
 	ESTIMATED_DIVISION_WEIGHT_FOR_SUPPLY_ESTIMATIONS_GUI = 1.0,	--Division supply consumption used for estimating frontline weight for order tooltips
-	AVAILABLE_MANPOWER_STATE_SUPPLY = 0.0, --was 0.18 --Factor for state supply from max manpower (population)
+	AVAILABLE_MANPOWER_STATE_SUPPLY = 0.06, --was 0.18 --Factor for state supply from max manpower (population)
 	NON_CORE_MANPOWER_STATE_SUPPLY = 0.2,						--Factor for population sttate supply when controlled by an occupier (NO TAKE FOOD)
 	STORED_SUPPLY_CONSUMPTION_RATE_FACTOR = 1, --was 0.75 --Multiplies consumption rate of stored supply (more/less easement)
 },
@@ -3983,7 +3987,7 @@ NAITheatre = {
 	AI_THEATRE_PERCENTAGE_OF_UNITS_TO_KEEP_IN_NEIGHBOR_DEFENSIVE_ORDERS = 0.05, -- Percentage of units to keep in neighbor defensive orders from war fronts
 
 	AI_THEATRE_SEARCH_SUPPLY_NODE_MAX_DEPTH = 5,						-- Max depth of breadth-first search while looking for supply nodes when out of supply
-	AI_THEATRE_SUPPLY_CRISIS_LIMIT = 0.2, --was 0.1 --If a unit is standing in an area with this supply ratio it will try to escape
+	AI_THEATRE_SUPPLY_CRISIS_LIMIT = 0.4, --was 0.1 --If a unit is standing in an area with this supply ratio it will try to escape
 	AI_THEATRE_AI_FRONT_MIN_DESIRED_RATIO = 0.18,						-- Fronts are sorted based on priority, we nudge unit demand based on this sorting, the higher the value the more units the most important front gets
 },
 }
