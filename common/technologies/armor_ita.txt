@@ -195,7 +195,7 @@ technologies = {
 		start_year = 1941
 		folder = {
 		name = ita_armour_folder
-			position = { x = -7 y = 10 }
+			position = { x = -7 y = 12 }
 		}
 
 		categories = {
@@ -414,12 +414,12 @@ technologies = {
 			motorised_infantry = 1
 		}
 
-		research_cost = 2.5
-		start_year = 1942
+		research_cost = 1
+		start_year = 1941
 
 		folder = {
 			name = ita_armour_folder
-			position = { x = -10 y = 14 }
+			position = { x = -10 y = 12 }
 		}
 		
 		categories = {
@@ -467,8 +467,69 @@ technologies = {
 		enable_equipments = {
 			ita_mechanized_equipment_2
 		}
-
 		
+		path = {
+			leads_to_tech = ita_mechanized_infantry_3
+			research_cost_coeff = 1
+		}
+
+		dependencies = {
+			motorised_infantry = 1
+		}
+
+		research_cost = 1
+		start_year = 1942
+
+		folder = {
+			name = ita_armour_folder
+			position = { x = -10 y = 14 }
+		}
+		
+		categories = {
+			major_technologies
+			motorized_equipment
+			infantry_tech
+			cat_mechanized_equipment
+		}
+		
+		ai_will_do = {
+			factor = 4
+			modifier = {
+				factor = 0
+				date < "1942.1.1"
+			}
+			modifier = {
+				factor = 30
+				date > "1942.1.1"
+			}
+			
+			modifier = {
+				factor = 30
+				date > "1943.1.1"
+			}
+			
+			modifier = {
+				factor = 30
+				date > "1944.1.1"
+			}
+			
+			modifier = {
+				factor = 0
+				NOT = {
+					OR = {
+						original_tag = ITA
+						has_country_flag = italian_technologies_tree_flag
+					}
+				}
+			}
+		}
+	}
+
+	ita_mechanized_infantry_3 = {
+
+		enable_equipments = {
+			ita_mechanized_equipment_3
+		}
 
 		research_cost = 1
 		start_year = 1944
@@ -516,13 +577,6 @@ technologies = {
 				}
 			}
 		}
-	}
-
-	ita_mechanized_infantry_3 = {
-		ai_will_do = {
-			factor = 0
-		}
-		research_cost = 1
 	}
 
 	ita_light_1 = { #L3
