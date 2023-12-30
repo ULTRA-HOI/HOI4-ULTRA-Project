@@ -3520,6 +3520,41 @@ on_actions = {
 		    set_country_flag = has_paradropped_flag
 		}
 	}
+
+	on_units_paradropped_in_state = {
+		effect = {
+			if = {
+				limit = { 
+					ROOT = {
+						divisions_in_state = {
+							 unit = paratrooper
+							 size > 0
+							 state = PREV
+						}
+					}
+					FROM = { has_tech = paras_dispersed_drop } 
+					NOT = { has_state_flag = para_drop_effect }
+					CONTROLLER = { NOT = { tag = FROM } }
+				}
+				SF_PARA_sabotage_effect = yes
+			}
+			if = {
+				limit = { 
+					FROM = { has_tech = paras_combat_drop } 
+					NOT = { has_state_flag = para_drop_effect }
+					ROOT = {
+						divisions_in_state = {
+							 unit = paratrooper
+							 size > 0
+							 state = PREV
+						}
+					}
+				}
+				SF_PARA_combat_effect = yes
+			}
+		}
+	}
+
 	on_ruling_party_change = {
 		# temp var old_ideology_token is available for effects
 		effect = {
