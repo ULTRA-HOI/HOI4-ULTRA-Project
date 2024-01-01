@@ -1096,87 +1096,6 @@ NOR_trotsky_not_in_mex = {
 	} 
 }
 
-has_any_tank_tech = {
-	if = {
-		limit = {
-			has_dlc = "No Step Back"
-		}
-		OR = {
-			has_tech = basic_light_tank_chassis
-			has_tech = basic_medium_tank_chassis
-			has_tech = basic_heavy_tank_chassis
-		}
-	}
-	else = {
-		has_tech = gwtank
-	}
-}
-
-has_any_tanks = {
-	if = {
-		limit = {
-			has_dlc = "No Step Back"
-		}
-		OR = {
-			has_equipment = { light_tank_chassis_0 > 0}
-			has_equipment = { medium_tank_chassis > 0 }
-			has_equipment = { light_tank_chassis > 0 }
-			has_equipment = { heavy_tank_chassis > 0 }
-		}
-	}
-	else = {
-		OR = {
-			has_equipment = { gw_tank_equipment > 0	}
-			has_equipment = { light_tank_equipment_1 > 0	}
-			has_equipment = { light_tank_equipment_2 > 0	}
-			has_equipment = { light_tank_equipment_3 > 0	}
-			has_equipment = { medium_tank_equipment_1 > 0	}
-			has_equipment = { medium_tank_equipment_2 > 0	}
-			has_equipment = { medium_tank_equipment_3 > 0	}
-			has_equipment = { modern_tank_equipment_1 > 0	}
-			has_equipment = { heavy_tank_equipment_1 > 0	}
-			has_equipment = { heavy_tank_equipment_2 > 0	}
-			has_equipment = { heavy_tank_equipment_3 > 0	}
-			has_equipment = { super_heavy_tank_equipment_1 > 0	}
-		}
-	}
-}
-
-is_danish_belt_state = { # Checks if state should be considered to be around the Danish Belt  
-	OR = {
-		state = 922 # Agder
-		state = 921 # Telemark
-		state = 110 # Oslofjord
-		state = 915 # Bohuslan
-		state = 140 # Vastergotland 
-		state = 138 # Skane 
-		state = 99 # Norrejylland
-		state = 911 # Fyn
-		state = 912 # Sonderjylland 
-		state = 37 # Sjaelland 
-		state = 909 # Schleswig 
-		state = 58 # Holstein 
-		state = 61 # Mecklenburg
-		state = 62 # Vorpommern   
-	}
-} 
-
-is_scandinavian_northern_sea_state = {
-	OR = {
-		state = 909 # Schleswig 
-		state = 58 # Holstein 
-		state = 912 # Sonderjylland		
-		state = 99 # Norrejylland
-		state = 922 # Agder
-		state = 142 # Vestlandet 
-		state = 143 # Trondelag
-		state = 923 # Helgeland
-		state = 144 # Nordland 
-		state = 924 # Troms 
-		state = 925 # Finnmark
-	}
-}
-
 is_germanic = {
 	OR = {
 		original_tag = GER
@@ -1266,22 +1185,32 @@ FROM_is_twice_as_weak = {
 ai_has_completed_army_doctrine = {
 	is_ai = yes
 	OR = {
-		has_tech = werwolf_guerillas
-		has_tech = modern_blitzkrieg
-		has_tech = air_land_battle
-		has_tech = shock_and_awe
-		has_tech = c3i_theory
-		has_tech = infiltration_in_depth
-		has_tech = continuous_offensive
-		has_tech = guerilla_warfare
+		AND = {
+			has_tech = concealment_doctrine
+			has_tech = modern_blitzkrieg
+		}
+		AND = {
+			has_tech = sup_mechanized_offensive
+			has_tech = shock_and_awe
+		}
+		AND = {
+			has_tech = great_vast_offensives
+			has_tech = infiltration_in_depth
+		}
+		AND = {
+			has_tech = continuous_offensive
+			has_tech = guerilla_warfare
+		}
 	}
 }
 
 ai_has_completed_air_doctrine = {
 	is_ai = yes
 	OR = {
-		has_tech = offensive_formations
-		has_tech = mass_destruction
+		AND = {
+			has_tech = offensive_formations
+			has_tech = mass_destruction
+		}
 		has_tech = forward_interception
 		has_tech = high_level_bombing
 	}
@@ -1290,13 +1219,19 @@ ai_has_completed_air_doctrine = {
 ai_has_completed_naval_doctrine = {
 	is_ai = yes
 	OR = {
-		has_tech = grand_battlefleet
-		has_tech = submarine_offensive
-		has_tech = floating_airfield
-		has_tech = combined_operations_raiding
-		has_tech = integrated_convoy_defence
-		has_tech = submarine_offensive_bs
-		has_tech = carrier_battlegroups
+		AND = {
+			has_tech = grand_battlefleet
+			has_tech = submarine_offensive
+		}
+		AND = {
+			has_tech = floating_airfield
+			has_tech = combined_operations_raiding
+		}
+		AND = {
+			has_tech = integrated_convoy_defence
+			has_tech = submarine_offensive_bs
+			has_tech = carrier_battlegroups
+		}
 	}
 }
 
