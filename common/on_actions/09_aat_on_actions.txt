@@ -185,19 +185,19 @@ on_actions = {
 	# ROOT is the government in exile
 	on_government_exiled = {   
 		#FINLAND - Remove BoP (agendas should not take effect while in exile)
-		effect = {
-			if = {
-				limit = {
-					original_tag = FIN
-					has_power_balance = {
-						id = FIN_power_balance
-					}
-				}
-				remove_power_balance = {
-					id = FIN_power_balance
-				}
-			}
-		}
+		# effect = {
+		# 	if = {
+		# 		limit = {
+		# 			original_tag = FIN
+		# 			has_power_balance = {
+		# 				id = FIN_power_balance
+		# 			}
+		# 		}
+		# 		remove_power_balance = {
+		# 			id = FIN_power_balance
+		# 		}
+		# 	}
+		# }
 		effect = { # Telling the player they have the good exiled decisions 
 			if = {
 				limit = {
@@ -221,83 +221,83 @@ on_actions = {
 	#From is old host 
 	on_exile_government_reinstated = {
 		#FINLAND - Bring back BoP
-		effect = {
-			if = {
-				limit = {
-					original_tag = FIN
-					NOT = {
-						has_power_balance = {
-							id = FIN_power_balance
-						}
-					}
-				}
-				#Value based on present Sisu NS
-				if = {
-					limit = {
-						has_idea = FIN_sisu_1
-					}
-					set_power_balance = {
-						id = FIN_power_balance
-						left_side = FIN_bad_side
-						right_side = FIN_good_side
-						set_value = -0.8
-					}
-				}
-				else_if = {
-					limit = {
-						has_idea = FIN_sisu_2
-					}
-					set_power_balance = {
-						id = FIN_power_balance
-						left_side = FIN_bad_side
-						right_side = FIN_good_side
-						set_value = -0.3
-					}
-				}
-				else_if = {
-					limit = {
-						has_idea = FIN_sisu_3
-					}
-					set_power_balance = {
-						id = FIN_power_balance
-						left_side = FIN_bad_side
-						right_side = FIN_good_side
-						set_value = 0
-					}
-				}
-				else_if = {
-					limit = {
-						has_idea = FIN_sisu_4
-					}
-					set_power_balance = {
-						id = FIN_power_balance
-						left_side = FIN_bad_side
-						right_side = FIN_good_side
-						set_value = 0.3
-					}
-				}
-				else_if = {
-					limit = {
-						has_idea = FIN_sisu_5
-					}
-					set_power_balance = {
-						id = FIN_power_balance
-						left_side = FIN_bad_side
-						right_side = FIN_good_side
-						set_value = 0.8
-					}
-				}
-				else = { #Something weird happened and FIN doesn't have the Sisu NS -> Mid BoP and add Sisu NS
-					set_power_balance = {
-						id = FIN_power_balance
-						left_side = FIN_bad_side
-						right_side = FIN_good_side
-						set_value = 0
-					}
-					add_ideas = FIN_sisu_3
-				}
-			}
-		}
+		# effect = {
+		# 	if = {
+		# 		limit = {
+		# 			original_tag = FIN
+		# 			NOT = {
+		# 				has_power_balance = {
+		# 					id = FIN_power_balance
+		# 				}
+		# 			}
+		# 		}
+		# 		#Value based on present Sisu NS
+		# 		if = {
+		# 			limit = {
+		# 				has_idea = FIN_sisu_1
+		# 			}
+		# 			set_power_balance = {
+		# 				id = FIN_power_balance
+		# 				left_side = FIN_bad_side
+		# 				right_side = FIN_good_side
+		# 				set_value = -0.8
+		# 			}
+		# 		}
+		# 		else_if = {
+		# 			limit = {
+		# 				has_idea = FIN_sisu_2
+		# 			}
+		# 			set_power_balance = {
+		# 				id = FIN_power_balance
+		# 				left_side = FIN_bad_side
+		# 				right_side = FIN_good_side
+		# 				set_value = -0.3
+		# 			}
+		# 		}
+		# 		else_if = {
+		# 			limit = {
+		# 				has_idea = FIN_sisu_3
+		# 			}
+		# 			set_power_balance = {
+		# 				id = FIN_power_balance
+		# 				left_side = FIN_bad_side
+		# 				right_side = FIN_good_side
+		# 				set_value = 0
+		# 			}
+		# 		}
+		# 		else_if = {
+		# 			limit = {
+		# 				has_idea = FIN_sisu_4
+		# 			}
+		# 			set_power_balance = {
+		# 				id = FIN_power_balance
+		# 				left_side = FIN_bad_side
+		# 				right_side = FIN_good_side
+		# 				set_value = 0.3
+		# 			}
+		# 		}
+		# 		else_if = {
+		# 			limit = {
+		# 				has_idea = FIN_sisu_5
+		# 			}
+		# 			set_power_balance = {
+		# 				id = FIN_power_balance
+		# 				left_side = FIN_bad_side
+		# 				right_side = FIN_good_side
+		# 				set_value = 0.8
+		# 			}
+		# 		}
+		# 		else = { #Something weird happened and FIN doesn't have the Sisu NS -> Mid BoP and add Sisu NS
+		# 			set_power_balance = {
+		# 				id = FIN_power_balance
+		# 				left_side = FIN_bad_side
+		# 				right_side = FIN_good_side
+		# 				set_value = 0
+		# 			}
+		# 			add_ideas = FIN_sisu_3
+		# 		}
+		# 	}
+		# }
 	}
 
 	on_create_faction = {
@@ -441,80 +441,80 @@ on_actions = {
 					}
 				}
 				load_focus_tree = finnish_focus
-				if = {
-					limit = {
-						FROM = { has_government = communism }
-						ROOT = { has_government = neutrality }
-					}
-					uncomplete_national_focus = {
-						focus = FIN_suomalainen_sosialismi
-						uncomplete_children = yes
-						refund_political_power = no
-					}
-					unlock_national_focus = FIN_finnish_neutrality
-					unlock_national_focus = FIN_political_unity
-					unlock_national_focus = FIN_national_unity
-				}
-				else_if = {
-					limit = {
-						FROM = { has_government = fascism }
-						ROOT = { has_government = neutrality }
-					}
-					uncomplete_national_focus = {
-						focus = FIN_right_wing_policies
-						uncomplete_children = yes
-						refund_political_power = no
-					}
-					unlock_national_focus = FIN_finnish_neutrality
-					unlock_national_focus = FIN_political_unity
-					unlock_national_focus = FIN_national_unity
-				}
-				else_if = {
-					limit = {
-						ROOT = { has_government = fascism }
-					}
-					if = {
-						limit = {
-							has_completed_focus = FIN_finnish_neutrality
-						}
-						uncomplete_national_focus = {
-							focus = FIN_right_wing_policies
-							uncomplete_children = yes
-							refund_political_power = no
-						}
-					}
-					else_if = {
-						limit = {
-							has_completed_focus = FIN_suomalainen_sosialismi
-						}
-						uncomplete_national_focus = {
-							focus = FIN_suomalainen_sosialismi
-							uncomplete_children = yes
-							refund_political_power = no
-						}
-					}
+				# if = {
+				# 	limit = {
+				# 		FROM = { has_government = communism }
+				# 		ROOT = { has_government = neutrality }
+				# 	}
+				# 	uncomplete_national_focus = {
+				# 		focus = FIN_suomalainen_sosialismi
+				# 		uncomplete_children = yes
+				# 		refund_political_power = no
+				# 	}
+				# 	unlock_national_focus = FIN_finnish_neutrality
+				# 	unlock_national_focus = FIN_political_unity
+				# 	unlock_national_focus = FIN_national_unity
+				# }
+				# else_if = {
+				# 	limit = {
+				# 		FROM = { has_government = fascism }
+				# 		ROOT = { has_government = neutrality }
+				# 	}
+				# 	uncomplete_national_focus = {
+				# 		focus = FIN_right_wing_policies
+				# 		uncomplete_children = yes
+				# 		refund_political_power = no
+				# 	}
+				# 	unlock_national_focus = FIN_finnish_neutrality
+				# 	unlock_national_focus = FIN_political_unity
+				# 	unlock_national_focus = FIN_national_unity
+				# }
+				# else_if = {
+				# 	limit = {
+				# 		ROOT = { has_government = fascism }
+				# 	}
+				# 	if = {
+				# 		limit = {
+				# 			has_completed_focus = FIN_finnish_neutrality
+				# 		}
+				# 		uncomplete_national_focus = {
+				# 			focus = FIN_right_wing_policies
+				# 			uncomplete_children = yes
+				# 			refund_political_power = no
+				# 		}
+				# 	}
+				# 	else_if = {
+				# 		limit = {
+				# 			has_completed_focus = FIN_suomalainen_sosialismi
+				# 		}
+				# 		uncomplete_national_focus = {
+				# 			focus = FIN_suomalainen_sosialismi
+				# 			uncomplete_children = yes
+				# 			refund_political_power = no
+				# 		}
+				# 	}
 
-					if = {
-						limit = {
-							NOT = { has_completed_focus = FIN_right_wing_policies }
-						}
-						unlock_national_focus = FIN_right_wing_policies
-					}
-					if = {
-						limit = {
-							NOT = { has_completed_focus = FIN_prepare_a_military_coup }
-						}
-						unlock_national_focus = FIN_prepare_a_military_coup
-					}
-					if = {
-						limit = {
-							NOT = { has_completed_focus = FIN_a_fascist_regime }
-						}
-						unlock_national_focus = FIN_a_fascist_regime
-					}
-				}
+				# 	if = {
+				# 		limit = {
+				# 			NOT = { has_completed_focus = FIN_right_wing_policies }
+				# 		}
+				# 		unlock_national_focus = FIN_right_wing_policies
+				# 	}
+				# 	if = {
+				# 		limit = {
+				# 			NOT = { has_completed_focus = FIN_prepare_a_military_coup }
+				# 		}
+				# 		unlock_national_focus = FIN_prepare_a_military_coup
+				# 	}
+				# 	if = {
+				# 		limit = {
+				# 			NOT = { has_completed_focus = FIN_a_fascist_regime }
+				# 		}
+				# 		unlock_national_focus = FIN_a_fascist_regime
+				# 	}
+				# }
 				
-				FIN_initiate_balance_of_power_effect = yes
+				# FIN_initiate_balance_of_power_effect = yes
 			}
 		}
 	}
@@ -2371,18 +2371,18 @@ on_actions = {
 		#}
 
 		#FINLAND LONE WOLF STUFF - Remove from tech group
-		effect = {
-			if = {
-				limit = {
-					is_in_tech_sharing_group = FIN_joint_research_and_development_program
-					FROM = {
-						original_tag = FIN
-						has_idea = FIN_the_lone_wolf
-					}
-				}
-				remove_from_tech_sharing_group = FIN_joint_research_and_development_program
-			}
-		}
+		# effect = {
+		# 	if = {
+		# 		limit = {
+		# 			is_in_tech_sharing_group = FIN_joint_research_and_development_program
+		# 			FROM = {
+		# 				original_tag = FIN
+		# 				has_idea = FIN_the_lone_wolf
+		# 			}
+		# 		}
+		# 		remove_from_tech_sharing_group = FIN_joint_research_and_development_program
+		# 	}
+		# }
 		#DENMARK becomes free without completing DEN_declare_independence
 		#effect = {
 		#	if = {
@@ -2738,1055 +2738,1055 @@ on_actions = {
 
 	on_weekly_FIN = {
 		#FINLAND BOP
-		effect = {
-			##################
-			### SVINHUFVUD ###
-			##################
-			if = { #SVINHUFVUD - GOOD = No Democ & No Commie |||| BAD = Some Democ OR Commie // Losing Cores
-				limit = {
-					has_country_leader = {
-						ruling_only = yes
-						character = FIN_pehr_evind_svinhufvud
-					}
-				}
-				#### BAD ####
-				#LOSING CORES
-				FIN_check_and_manage_losing_cores_for_bop_effect = yes
+		# effect = {
+		# 	##################
+		# 	### SVINHUFVUD ###
+		# 	##################
+		# 	if = { #SVINHUFVUD - GOOD = No Democ & No Commie |||| BAD = Some Democ OR Commie // Losing Cores
+		# 		limit = {
+		# 			has_country_leader = {
+		# 				ruling_only = yes
+		# 				character = FIN_pehr_evind_svinhufvud
+		# 			}
+		# 		}
+		# 		#### BAD ####
+		# 		#LOSING CORES
+		# 		FIN_check_and_manage_losing_cores_for_bop_effect = yes
 
-				#CONCERNING SUPPORT FOR SOCIALISTS
-				if = {
-					limit = {
-						OR = {
-							communism > 0.09
-							democratic > 0.09
-						}
-					}
-					#Add modifier (only once)
-					if = {
-						limit = {
-							NOT = {
-								has_power_balance_modifier = {
-									id = FIN_power_balance
-									modifier = FIN_bop_modifier_concerning_support_for_socialists
-								}
-							}
-						}
-						add_power_balance_modifier = {
-							id = FIN_power_balance
-							modifier = FIN_bop_modifier_concerning_support_for_socialists
-						}
-					}
-					#Remove opposite modifier if necessary
-					if = {
-						limit = {
-							has_power_balance_modifier = {
-								id = FIN_power_balance
-								modifier = FIN_bop_modifier_eradicate_socialism
-							}
-						}
-						remove_power_balance_modifier = {
-							id = FIN_power_balance
-							modifier = FIN_bop_modifier_eradicate_socialism
-						}
-					}
-				}
-				else = {
-					if = {
-						limit = {
-							has_power_balance_modifier = {
-								id = FIN_power_balance
-								modifier = FIN_bop_modifier_concerning_support_for_socialists
-							}
-						}
-						remove_power_balance_modifier = {
-							id = FIN_power_balance
-							modifier = FIN_bop_modifier_concerning_support_for_socialists
-						}
-					}
-				}
-				#### GOOD ####
-				#ERADICATE SOCIALISM
-				if = {
-					limit = {
-						democratic < 0.01
-						communism < 0.01
-					}
-					if = {
-						limit = {
-							NOT = {
-								has_power_balance_modifier = {
-									id = FIN_power_balance
-									modifier = FIN_bop_modifier_eradicate_socialism
-								}
-							}
-						}
-						add_power_balance_modifier = {
-							id = FIN_power_balance
-							modifier = FIN_bop_modifier_eradicate_socialism
-						}
-					}
-					if = {
-						limit = {
-							has_power_balance_modifier = {
-								id = FIN_power_balance
-								modifier = FIN_bop_modifier_concerning_support_for_socialists
-							}
-						}
-						remove_power_balance_modifier = {
-							id = FIN_power_balance
-							modifier = FIN_bop_modifier_concerning_support_for_socialists
-						}
-					}
-				}
-				else = {
-					if = {
-						limit = {
-							has_power_balance_modifier = {
-								id = FIN_power_balance
-								modifier = FIN_bop_modifier_eradicate_socialism
-							}
-						}
-						remove_power_balance_modifier = {
-							id = FIN_power_balance
-							modifier = FIN_bop_modifier_eradicate_socialism
-						}
-					}
-				}
-			}
-			##################
-			##### KALLIO #####
-			##################
-			else_if = { #KALLIO - GOOD = No Fascist & No Commie |||| BAD = Some Fascist OR Commie // Losing Cores
-				limit = {
-					has_country_leader = {
-						ruling_only = yes
-						character = FIN_kyosti_kallio
-					}
-				}
-				#### BAD ####
-				#LOSING CORES
-				FIN_check_and_manage_losing_cores_for_bop_effect = yes
+		# 		#CONCERNING SUPPORT FOR SOCIALISTS
+		# 		if = {
+		# 			limit = {
+		# 				OR = {
+		# 					communism > 0.09
+		# 					democratic > 0.09
+		# 				}
+		# 			}
+		# 			#Add modifier (only once)
+		# 			if = {
+		# 				limit = {
+		# 					NOT = {
+		# 						has_power_balance_modifier = {
+		# 							id = FIN_power_balance
+		# 							modifier = FIN_bop_modifier_concerning_support_for_socialists
+		# 						}
+		# 					}
+		# 				}
+		# 				add_power_balance_modifier = {
+		# 					id = FIN_power_balance
+		# 					modifier = FIN_bop_modifier_concerning_support_for_socialists
+		# 				}
+		# 			}
+		# 			#Remove opposite modifier if necessary
+		# 			if = {
+		# 				limit = {
+		# 					has_power_balance_modifier = {
+		# 						id = FIN_power_balance
+		# 						modifier = FIN_bop_modifier_eradicate_socialism
+		# 					}
+		# 				}
+		# 				remove_power_balance_modifier = {
+		# 					id = FIN_power_balance
+		# 					modifier = FIN_bop_modifier_eradicate_socialism
+		# 				}
+		# 			}
+		# 		}
+		# 		else = {
+		# 			if = {
+		# 				limit = {
+		# 					has_power_balance_modifier = {
+		# 						id = FIN_power_balance
+		# 						modifier = FIN_bop_modifier_concerning_support_for_socialists
+		# 					}
+		# 				}
+		# 				remove_power_balance_modifier = {
+		# 					id = FIN_power_balance
+		# 					modifier = FIN_bop_modifier_concerning_support_for_socialists
+		# 				}
+		# 			}
+		# 		}
+		# 		#### GOOD ####
+		# 		#ERADICATE SOCIALISM
+		# 		if = {
+		# 			limit = {
+		# 				democratic < 0.01
+		# 				communism < 0.01
+		# 			}
+		# 			if = {
+		# 				limit = {
+		# 					NOT = {
+		# 						has_power_balance_modifier = {
+		# 							id = FIN_power_balance
+		# 							modifier = FIN_bop_modifier_eradicate_socialism
+		# 						}
+		# 					}
+		# 				}
+		# 				add_power_balance_modifier = {
+		# 					id = FIN_power_balance
+		# 					modifier = FIN_bop_modifier_eradicate_socialism
+		# 				}
+		# 			}
+		# 			if = {
+		# 				limit = {
+		# 					has_power_balance_modifier = {
+		# 						id = FIN_power_balance
+		# 						modifier = FIN_bop_modifier_concerning_support_for_socialists
+		# 					}
+		# 				}
+		# 				remove_power_balance_modifier = {
+		# 					id = FIN_power_balance
+		# 					modifier = FIN_bop_modifier_concerning_support_for_socialists
+		# 				}
+		# 			}
+		# 		}
+		# 		else = {
+		# 			if = {
+		# 				limit = {
+		# 					has_power_balance_modifier = {
+		# 						id = FIN_power_balance
+		# 						modifier = FIN_bop_modifier_eradicate_socialism
+		# 					}
+		# 				}
+		# 				remove_power_balance_modifier = {
+		# 					id = FIN_power_balance
+		# 					modifier = FIN_bop_modifier_eradicate_socialism
+		# 				}
+		# 			}
+		# 		}
+		# 	}
+		# 	##################
+		# 	##### KALLIO #####
+		# 	##################
+		# 	else_if = { #KALLIO - GOOD = No Fascist & No Commie |||| BAD = Some Fascist OR Commie // Losing Cores
+		# 		limit = {
+		# 			has_country_leader = {
+		# 				ruling_only = yes
+		# 				character = FIN_kyosti_kallio
+		# 			}
+		# 		}
+		# 		#### BAD ####
+		# 		#LOSING CORES
+		# 		FIN_check_and_manage_losing_cores_for_bop_effect = yes
 
-				#CONCERNING SUPPORT FOR EXTREMISTS
-				if = {
-					limit = {
-						OR = {
-							communism > 0.09
-							fascism > 0.09
-						}
-					}
-					#Add modifier (only once)
-					if = {
-						limit = {
-							NOT = {
-								has_power_balance_modifier = {
-									id = FIN_power_balance
-									modifier = FIN_bop_modifier_concerning_support_for_extremists
-								}
-							}
-						}
-						add_power_balance_modifier = {
-							id = FIN_power_balance
-							modifier = FIN_bop_modifier_concerning_support_for_extremists
-						}
-					}
-					#Remove opposite modifier if necessary
-					if = {
-						limit = {
-							has_power_balance_modifier = {
-								id = FIN_power_balance
-								modifier = FIN_bop_modifier_eradicate_extremists
-							}
-						}
-						remove_power_balance_modifier = {
-							id = FIN_power_balance
-							modifier = FIN_bop_modifier_eradicate_extremists
-						}
-					}
-				}
-				else = {
-					if = {
-						limit = {
-							has_power_balance_modifier = {
-								id = FIN_power_balance
-								modifier = FIN_bop_modifier_concerning_support_for_extremists
-							}
-						}
-						remove_power_balance_modifier = {
-							id = FIN_power_balance
-							modifier = FIN_bop_modifier_concerning_support_for_extremists
-						}
-					}
-				}
-				#### GOOD ####
-				#ERADICATE EXTREMISTS
-				if = {
-					limit = {
-						fascism < 0.01
-						communism < 0.01
-					}
-					if = {
-						limit = {
-							NOT = {
-								has_power_balance_modifier = {
-									id = FIN_power_balance
-									modifier = FIN_bop_modifier_eradicate_extremists
-								}
-							}
-						}
-						add_power_balance_modifier = {
-							id = FIN_power_balance
-							modifier = FIN_bop_modifier_eradicate_extremists
-						}
-					}
-					if = {
-						limit = {
-							has_power_balance_modifier = {
-								id = FIN_power_balance
-								modifier = FIN_bop_modifier_concerning_support_for_extremists
-							}
-						}
-						remove_power_balance_modifier = {
-							id = FIN_power_balance
-							modifier = FIN_bop_modifier_concerning_support_for_extremists
-						}
-					}
-				}
-				else = {
-					if = {
-						limit = {
-							has_power_balance_modifier = {
-								id = FIN_power_balance
-								modifier = FIN_bop_modifier_eradicate_extremists
-							}
-						}
-						remove_power_balance_modifier = {
-							id = FIN_power_balance
-							modifier = FIN_bop_modifier_eradicate_extremists
-						}
-					}
-				}
-			}
-			###########################################################
-			###### RYTI ############################## VON HESSE ######
-			###########################################################
-			else_if = { #RYTI - GOOD = Control Cores owned by enemies |||| BAD = Some Democ OR Commie // Losing Cores  ######## Also used for King von Hesse
-				limit = {
-					OR = {
-						has_country_leader = {
-							ruling_only = yes
-							character = FIN_risto_ryti
-						}
-						has_country_leader = {
-							ruling_only = yes
-							character = FIN_prince_wolfgang_von_hesse
-						}
-					}
-				}
-				#### BAD ####
-				#LOSING CORES
-				FIN_check_and_manage_losing_cores_for_bop_effect = yes
+		# 		#CONCERNING SUPPORT FOR EXTREMISTS
+		# 		if = {
+		# 			limit = {
+		# 				OR = {
+		# 					communism > 0.09
+		# 					fascism > 0.09
+		# 				}
+		# 			}
+		# 			#Add modifier (only once)
+		# 			if = {
+		# 				limit = {
+		# 					NOT = {
+		# 						has_power_balance_modifier = {
+		# 							id = FIN_power_balance
+		# 							modifier = FIN_bop_modifier_concerning_support_for_extremists
+		# 						}
+		# 					}
+		# 				}
+		# 				add_power_balance_modifier = {
+		# 					id = FIN_power_balance
+		# 					modifier = FIN_bop_modifier_concerning_support_for_extremists
+		# 				}
+		# 			}
+		# 			#Remove opposite modifier if necessary
+		# 			if = {
+		# 				limit = {
+		# 					has_power_balance_modifier = {
+		# 						id = FIN_power_balance
+		# 						modifier = FIN_bop_modifier_eradicate_extremists
+		# 					}
+		# 				}
+		# 				remove_power_balance_modifier = {
+		# 					id = FIN_power_balance
+		# 					modifier = FIN_bop_modifier_eradicate_extremists
+		# 				}
+		# 			}
+		# 		}
+		# 		else = {
+		# 			if = {
+		# 				limit = {
+		# 					has_power_balance_modifier = {
+		# 						id = FIN_power_balance
+		# 						modifier = FIN_bop_modifier_concerning_support_for_extremists
+		# 					}
+		# 				}
+		# 				remove_power_balance_modifier = {
+		# 					id = FIN_power_balance
+		# 					modifier = FIN_bop_modifier_concerning_support_for_extremists
+		# 				}
+		# 			}
+		# 		}
+		# 		#### GOOD ####
+		# 		#ERADICATE EXTREMISTS
+		# 		if = {
+		# 			limit = {
+		# 				fascism < 0.01
+		# 				communism < 0.01
+		# 			}
+		# 			if = {
+		# 				limit = {
+		# 					NOT = {
+		# 						has_power_balance_modifier = {
+		# 							id = FIN_power_balance
+		# 							modifier = FIN_bop_modifier_eradicate_extremists
+		# 						}
+		# 					}
+		# 				}
+		# 				add_power_balance_modifier = {
+		# 					id = FIN_power_balance
+		# 					modifier = FIN_bop_modifier_eradicate_extremists
+		# 				}
+		# 			}
+		# 			if = {
+		# 				limit = {
+		# 					has_power_balance_modifier = {
+		# 						id = FIN_power_balance
+		# 						modifier = FIN_bop_modifier_concerning_support_for_extremists
+		# 					}
+		# 				}
+		# 				remove_power_balance_modifier = {
+		# 					id = FIN_power_balance
+		# 					modifier = FIN_bop_modifier_concerning_support_for_extremists
+		# 				}
+		# 			}
+		# 		}
+		# 		else = {
+		# 			if = {
+		# 				limit = {
+		# 					has_power_balance_modifier = {
+		# 						id = FIN_power_balance
+		# 						modifier = FIN_bop_modifier_eradicate_extremists
+		# 					}
+		# 				}
+		# 				remove_power_balance_modifier = {
+		# 					id = FIN_power_balance
+		# 					modifier = FIN_bop_modifier_eradicate_extremists
+		# 				}
+		# 			}
+		# 		}
+		# 	}
+		# 	###########################################################
+		# 	###### RYTI ############################## VON HESSE ######
+		# 	###########################################################
+		# 	else_if = { #RYTI - GOOD = Control Cores owned by enemies |||| BAD = Some Democ OR Commie // Losing Cores  ######## Also used for King von Hesse
+		# 		limit = {
+		# 			OR = {
+		# 				has_country_leader = {
+		# 					ruling_only = yes
+		# 					character = FIN_risto_ryti
+		# 				}
+		# 				has_country_leader = {
+		# 					ruling_only = yes
+		# 					character = FIN_prince_wolfgang_von_hesse
+		# 				}
+		# 			}
+		# 		}
+		# 		#### BAD ####
+		# 		#LOSING CORES
+		# 		FIN_check_and_manage_losing_cores_for_bop_effect = yes
 
-				#CONCERNING SUPPORT FOR SOCIALISTS
-				if = {
-					limit = {
-						OR = {
-							communism > 0.09
-							democratic > 0.09
-						}
-					}
-					#Add modifier (only once)
-					if = {
-						limit = {
-							NOT = {
-								has_power_balance_modifier = {
-									id = FIN_power_balance
-									modifier = FIN_bop_modifier_concerning_support_for_socialists
-								}
-							}
-						}
-						add_power_balance_modifier = {
-							id = FIN_power_balance
-							modifier = FIN_bop_modifier_concerning_support_for_socialists
-						}
-					}
-				}
-				else_if = {
-					limit = {
-						has_power_balance_modifier = {
-							id = FIN_power_balance
-							modifier = FIN_bop_modifier_concerning_support_for_socialists
-						}
-					}
-					remove_power_balance_modifier = {
-						id = FIN_power_balance
-						modifier = FIN_bop_modifier_concerning_support_for_socialists
-					}
-				}
-				#### GOOD ####
-				#DREAM OF GREATER FINLAND
-				if = {
-					limit = {
-						any_core_state = {
-							NOT = { is_owned_by = ROOT }
-							is_controlled_by = ROOT
-						}
-					}
-					if = {
-						limit = {
-							NOT = {
-								has_power_balance_modifier = {
-									id = FIN_power_balance
-									modifier = FIN_bop_modifier_dream_of_greater_finland
-								}
-							}
-						}
-						add_power_balance_modifier = {
-							id = FIN_power_balance
-							modifier = FIN_bop_modifier_dream_of_greater_finland
-						}
-					}
-				}
-				else_if = {
-					limit = {
-						has_power_balance_modifier = {
-							id = FIN_power_balance
-							modifier = FIN_bop_modifier_dream_of_greater_finland
-						}
-					}
-					remove_power_balance_modifier = {
-						id = FIN_power_balance
-						modifier = FIN_bop_modifier_dream_of_greater_finland
-					}
-				}
-			}
-			##################
-			### MANNERHEIM ###
-			##################
-			else_if = { #MANNERHEIM - GOOD = War |||| BAD = Peace
-				limit = {
-					has_country_leader = {
-						ruling_only = yes
-						character = FIN_carl_mannerheim
-					}
-				}
-				#### BAD ####
-				#PEACE
-				if = {
-					limit = {
-						has_war = no
-					}
-					#Add modifier (only once)
-					if = {
-						limit = {
-							NOT = {
-								has_power_balance_modifier = {
-									id = FIN_power_balance
-									modifier = FIN_bop_modifier_appointed_regent
-								}
-							}
-						}
-						add_power_balance_modifier = {
-							id = FIN_power_balance
-							modifier = FIN_bop_modifier_appointed_regent
-						}
-					}
-					#Remove opposite modifier if necessary
-					if = {
-						limit = {
-							has_power_balance_modifier = {
-								id = FIN_power_balance
-								modifier = FIN_bop_modifier_reliable_leader
-							}
-						}
-						remove_power_balance_modifier = {
-							id = FIN_power_balance
-							modifier = FIN_bop_modifier_reliable_leader
-						}
-					}
-				}
-				#### GOOD ####
-				#WAR
-				else = {
-					#Add modifier (only once)
-					if = {
-						limit = {
-							NOT = {
-								has_power_balance_modifier = {
-									id = FIN_power_balance
-									modifier = FIN_bop_modifier_reliable_leader
-								}
-							}
-						}
-						add_power_balance_modifier = {
-							id = FIN_power_balance
-							modifier = FIN_bop_modifier_reliable_leader
-						}
-					}
-					#Remove opposite modifier if necessary
-					if = {
-						limit = {
-							has_power_balance_modifier = {
-								id = FIN_power_balance
-								modifier = FIN_bop_modifier_appointed_regent
-							}
-						}
-						remove_power_balance_modifier = {
-							id = FIN_power_balance
-							modifier = FIN_bop_modifier_appointed_regent
-						}
-					}
-				}
-			}
-			##################
-			#### PAASIKIVI ###
-			##################
-			else_if = { #PAASIKIVI - GOOD = Very High Stab |||| BAD = Low Stab // Losing Cores
-				limit = {
-					has_country_leader = {
-						ruling_only = yes
-						character = FIN_juho_kusti_paasikivi
-					}
-				}
-				#### BAD ####
-				#LOSING CORES
-				FIN_check_and_manage_losing_cores_for_bop_effect = yes
+		# 		#CONCERNING SUPPORT FOR SOCIALISTS
+		# 		if = {
+		# 			limit = {
+		# 				OR = {
+		# 					communism > 0.09
+		# 					democratic > 0.09
+		# 				}
+		# 			}
+		# 			#Add modifier (only once)
+		# 			if = {
+		# 				limit = {
+		# 					NOT = {
+		# 						has_power_balance_modifier = {
+		# 							id = FIN_power_balance
+		# 							modifier = FIN_bop_modifier_concerning_support_for_socialists
+		# 						}
+		# 					}
+		# 				}
+		# 				add_power_balance_modifier = {
+		# 					id = FIN_power_balance
+		# 					modifier = FIN_bop_modifier_concerning_support_for_socialists
+		# 				}
+		# 			}
+		# 		}
+		# 		else_if = {
+		# 			limit = {
+		# 				has_power_balance_modifier = {
+		# 					id = FIN_power_balance
+		# 					modifier = FIN_bop_modifier_concerning_support_for_socialists
+		# 				}
+		# 			}
+		# 			remove_power_balance_modifier = {
+		# 				id = FIN_power_balance
+		# 				modifier = FIN_bop_modifier_concerning_support_for_socialists
+		# 			}
+		# 		}
+		# 		#### GOOD ####
+		# 		#DREAM OF GREATER FINLAND
+		# 		if = {
+		# 			limit = {
+		# 				any_core_state = {
+		# 					NOT = { is_owned_by = ROOT }
+		# 					is_controlled_by = ROOT
+		# 				}
+		# 			}
+		# 			if = {
+		# 				limit = {
+		# 					NOT = {
+		# 						has_power_balance_modifier = {
+		# 							id = FIN_power_balance
+		# 							modifier = FIN_bop_modifier_dream_of_greater_finland
+		# 						}
+		# 					}
+		# 				}
+		# 				add_power_balance_modifier = {
+		# 					id = FIN_power_balance
+		# 					modifier = FIN_bop_modifier_dream_of_greater_finland
+		# 				}
+		# 			}
+		# 		}
+		# 		else_if = {
+		# 			limit = {
+		# 				has_power_balance_modifier = {
+		# 					id = FIN_power_balance
+		# 					modifier = FIN_bop_modifier_dream_of_greater_finland
+		# 				}
+		# 			}
+		# 			remove_power_balance_modifier = {
+		# 				id = FIN_power_balance
+		# 				modifier = FIN_bop_modifier_dream_of_greater_finland
+		# 			}
+		# 		}
+		# 	}
+		# 	##################
+		# 	### MANNERHEIM ###
+		# 	##################
+		# 	else_if = { #MANNERHEIM - GOOD = War |||| BAD = Peace
+		# 		limit = {
+		# 			has_country_leader = {
+		# 				ruling_only = yes
+		# 				character = FIN_carl_mannerheim
+		# 			}
+		# 		}
+		# 		#### BAD ####
+		# 		#PEACE
+		# 		if = {
+		# 			limit = {
+		# 				has_war = no
+		# 			}
+		# 			#Add modifier (only once)
+		# 			if = {
+		# 				limit = {
+		# 					NOT = {
+		# 						has_power_balance_modifier = {
+		# 							id = FIN_power_balance
+		# 							modifier = FIN_bop_modifier_appointed_regent
+		# 						}
+		# 					}
+		# 				}
+		# 				add_power_balance_modifier = {
+		# 					id = FIN_power_balance
+		# 					modifier = FIN_bop_modifier_appointed_regent
+		# 				}
+		# 			}
+		# 			#Remove opposite modifier if necessary
+		# 			if = {
+		# 				limit = {
+		# 					has_power_balance_modifier = {
+		# 						id = FIN_power_balance
+		# 						modifier = FIN_bop_modifier_reliable_leader
+		# 					}
+		# 				}
+		# 				remove_power_balance_modifier = {
+		# 					id = FIN_power_balance
+		# 					modifier = FIN_bop_modifier_reliable_leader
+		# 				}
+		# 			}
+		# 		}
+		# 		#### GOOD ####
+		# 		#WAR
+		# 		else = {
+		# 			#Add modifier (only once)
+		# 			if = {
+		# 				limit = {
+		# 					NOT = {
+		# 						has_power_balance_modifier = {
+		# 							id = FIN_power_balance
+		# 							modifier = FIN_bop_modifier_reliable_leader
+		# 						}
+		# 					}
+		# 				}
+		# 				add_power_balance_modifier = {
+		# 					id = FIN_power_balance
+		# 					modifier = FIN_bop_modifier_reliable_leader
+		# 				}
+		# 			}
+		# 			#Remove opposite modifier if necessary
+		# 			if = {
+		# 				limit = {
+		# 					has_power_balance_modifier = {
+		# 						id = FIN_power_balance
+		# 						modifier = FIN_bop_modifier_appointed_regent
+		# 					}
+		# 				}
+		# 				remove_power_balance_modifier = {
+		# 					id = FIN_power_balance
+		# 					modifier = FIN_bop_modifier_appointed_regent
+		# 				}
+		# 			}
+		# 		}
+		# 	}
+		# 	##################
+		# 	#### PAASIKIVI ###
+		# 	##################
+		# 	else_if = { #PAASIKIVI - GOOD = Very High Stab |||| BAD = Low Stab // Losing Cores
+		# 		limit = {
+		# 			has_country_leader = {
+		# 				ruling_only = yes
+		# 				character = FIN_juho_kusti_paasikivi
+		# 			}
+		# 		}
+		# 		#### BAD ####
+		# 		#LOSING CORES
+		# 		FIN_check_and_manage_losing_cores_for_bop_effect = yes
 
-				#CARETAKER
-				if = {
-					limit = {
-						has_stability < 0.6
-					}
-					#Add modifier (only once)
-					if = {
-						limit = {
-							NOT = {
-								has_power_balance_modifier = {
-									id = FIN_power_balance
-									modifier = FIN_bop_modifier_caretaker
-								}
-							}
-						}
-						add_power_balance_modifier = {
-							id = FIN_power_balance
-							modifier = FIN_bop_modifier_caretaker
-						}
-					}
-					#Remove opposite modifier if necessary
-					if = {
-						limit = {
-							has_power_balance_modifier = {
-								id = FIN_power_balance
-								modifier = FIN_bop_modifier_realist_conservative
-							}
-						}
-						remove_power_balance_modifier = {
-							id = FIN_power_balance
-							modifier = FIN_bop_modifier_realist_conservative
-						}
-					}
-				}
-				#### GOOD ####
-				#WAR
-				else_if = {
-					limit = {
-						has_stability > 0.95 
-					}
-					#Add modifier (only once)
-					if = {
-						limit = {
-							NOT = {
-								has_power_balance_modifier = {
-									id = FIN_power_balance
-									modifier = FIN_bop_modifier_realist_conservative
-								}
-							}
-						}
-						add_power_balance_modifier = {
-							id = FIN_power_balance
-							modifier = FIN_bop_modifier_realist_conservative
-						}
-					}
-					#Remove opposite modifier if necessary
-					if = {
-						limit = {
-							has_power_balance_modifier = {
-								id = FIN_power_balance
-								modifier = FIN_bop_modifier_caretaker
-							}
-						}
-						remove_power_balance_modifier = {
-							id = FIN_power_balance
-							modifier = FIN_bop_modifier_caretaker
-						}
-					}
-				}
-				else = {
-					if = {
-						limit = {
-							has_power_balance_modifier = {
-								id = FIN_power_balance
-								modifier = FIN_bop_modifier_realist_conservative
-							}
-						}
-						remove_power_balance_modifier = {
-							id = FIN_power_balance
-							modifier = FIN_bop_modifier_realist_conservative
-						}
-					}
-					if = {
-						limit = {
-							has_power_balance_modifier = {
-								id = FIN_power_balance
-								modifier = FIN_bop_modifier_caretaker
-							}
-						}
-						remove_power_balance_modifier = {
-							id = FIN_power_balance
-							modifier = FIN_bop_modifier_caretaker
-						}
-					}
-				}
-			}
-			##################
-			##### ANNALA #####
-			##################
-			else_if = { #ANNALA - GOOD = Deployed MP and winning war |||| BAD = Some Democratic OR Commie // Losing Cores
-				limit = {
-					has_country_leader = {
-						ruling_only = yes
-						character = FIN_vilho_annala
-					}
-				}
-				#### BAD ####
-				#LOSING CORES
-				FIN_check_and_manage_losing_cores_for_bop_effect = yes
+		# 		#CARETAKER
+		# 		if = {
+		# 			limit = {
+		# 				has_stability < 0.6
+		# 			}
+		# 			#Add modifier (only once)
+		# 			if = {
+		# 				limit = {
+		# 					NOT = {
+		# 						has_power_balance_modifier = {
+		# 							id = FIN_power_balance
+		# 							modifier = FIN_bop_modifier_caretaker
+		# 						}
+		# 					}
+		# 				}
+		# 				add_power_balance_modifier = {
+		# 					id = FIN_power_balance
+		# 					modifier = FIN_bop_modifier_caretaker
+		# 				}
+		# 			}
+		# 			#Remove opposite modifier if necessary
+		# 			if = {
+		# 				limit = {
+		# 					has_power_balance_modifier = {
+		# 						id = FIN_power_balance
+		# 						modifier = FIN_bop_modifier_realist_conservative
+		# 					}
+		# 				}
+		# 				remove_power_balance_modifier = {
+		# 					id = FIN_power_balance
+		# 					modifier = FIN_bop_modifier_realist_conservative
+		# 				}
+		# 			}
+		# 		}
+		# 		#### GOOD ####
+		# 		#WAR
+		# 		else_if = {
+		# 			limit = {
+		# 				has_stability > 0.95 
+		# 			}
+		# 			#Add modifier (only once)
+		# 			if = {
+		# 				limit = {
+		# 					NOT = {
+		# 						has_power_balance_modifier = {
+		# 							id = FIN_power_balance
+		# 							modifier = FIN_bop_modifier_realist_conservative
+		# 						}
+		# 					}
+		# 				}
+		# 				add_power_balance_modifier = {
+		# 					id = FIN_power_balance
+		# 					modifier = FIN_bop_modifier_realist_conservative
+		# 				}
+		# 			}
+		# 			#Remove opposite modifier if necessary
+		# 			if = {
+		# 				limit = {
+		# 					has_power_balance_modifier = {
+		# 						id = FIN_power_balance
+		# 						modifier = FIN_bop_modifier_caretaker
+		# 					}
+		# 				}
+		# 				remove_power_balance_modifier = {
+		# 					id = FIN_power_balance
+		# 					modifier = FIN_bop_modifier_caretaker
+		# 				}
+		# 			}
+		# 		}
+		# 		else = {
+		# 			if = {
+		# 				limit = {
+		# 					has_power_balance_modifier = {
+		# 						id = FIN_power_balance
+		# 						modifier = FIN_bop_modifier_realist_conservative
+		# 					}
+		# 				}
+		# 				remove_power_balance_modifier = {
+		# 					id = FIN_power_balance
+		# 					modifier = FIN_bop_modifier_realist_conservative
+		# 				}
+		# 			}
+		# 			if = {
+		# 				limit = {
+		# 					has_power_balance_modifier = {
+		# 						id = FIN_power_balance
+		# 						modifier = FIN_bop_modifier_caretaker
+		# 					}
+		# 				}
+		# 				remove_power_balance_modifier = {
+		# 					id = FIN_power_balance
+		# 					modifier = FIN_bop_modifier_caretaker
+		# 				}
+		# 			}
+		# 		}
+		# 	}
+		# 	##################
+		# 	##### ANNALA #####
+		# 	##################
+		# 	else_if = { #ANNALA - GOOD = Deployed MP and winning war |||| BAD = Some Democratic OR Commie // Losing Cores
+		# 		limit = {
+		# 			has_country_leader = {
+		# 				ruling_only = yes
+		# 				character = FIN_vilho_annala
+		# 			}
+		# 		}
+		# 		#### BAD ####
+		# 		#LOSING CORES
+		# 		FIN_check_and_manage_losing_cores_for_bop_effect = yes
 
-				#CONCERNING SUPPORT FOR SOCIALISTS
-				if = {
-					limit = {
-						OR = {
-							communism > 0.09
-							democratic > 0.09
-						}
-					}
-					#Add modifier (only once)
-					if = {
-						limit = {
-							NOT = {
-								has_power_balance_modifier = {
-									id = FIN_power_balance
-									modifier = FIN_bop_modifier_concerning_support_for_socialists
-								}
-							}
-						}
-						add_power_balance_modifier = {
-							id = FIN_power_balance
-							modifier = FIN_bop_modifier_concerning_support_for_socialists
-						}
-					}
-				}
-				else_if = {
-					limit = {
-						has_power_balance_modifier = {
-							id = FIN_power_balance
-							modifier = FIN_bop_modifier_concerning_support_for_socialists
-						}
-					}
-					remove_power_balance_modifier = {
-						id = FIN_power_balance
-						modifier = FIN_bop_modifier_concerning_support_for_socialists
-					}
-				}
+		# 		#CONCERNING SUPPORT FOR SOCIALISTS
+		# 		if = {
+		# 			limit = {
+		# 				OR = {
+		# 					communism > 0.09
+		# 					democratic > 0.09
+		# 				}
+		# 			}
+		# 			#Add modifier (only once)
+		# 			if = {
+		# 				limit = {
+		# 					NOT = {
+		# 						has_power_balance_modifier = {
+		# 							id = FIN_power_balance
+		# 							modifier = FIN_bop_modifier_concerning_support_for_socialists
+		# 						}
+		# 					}
+		# 				}
+		# 				add_power_balance_modifier = {
+		# 					id = FIN_power_balance
+		# 					modifier = FIN_bop_modifier_concerning_support_for_socialists
+		# 				}
+		# 			}
+		# 		}
+		# 		else_if = {
+		# 			limit = {
+		# 				has_power_balance_modifier = {
+		# 					id = FIN_power_balance
+		# 					modifier = FIN_bop_modifier_concerning_support_for_socialists
+		# 				}
+		# 			}
+		# 			remove_power_balance_modifier = {
+		# 				id = FIN_power_balance
+		# 				modifier = FIN_bop_modifier_concerning_support_for_socialists
+		# 			}
+		# 		}
 
-				#### GOOD ####
-				#STRONG NATION
-				if = {
-					limit = {
-						has_war = yes
-						surrender_progress < 0.05
-						has_army_manpower = { size > 299999 }
-					}
-					if = {
-						limit = {
-							NOT = {
-								has_power_balance_modifier = {
-									id = FIN_power_balance
-									modifier = FIN_bop_modifier_strong_nation
-								}
-							}
-						}
-						add_power_balance_modifier = {
-							id = FIN_power_balance
-							modifier = FIN_bop_modifier_strong_nation
-						}
-					}
-				}
-				else = {
-					if = {
-						limit = {
-							has_power_balance_modifier = {
-								id = FIN_power_balance
-								modifier = FIN_bop_modifier_strong_nation
-							}
-						}
-						remove_power_balance_modifier = {
-							id = FIN_power_balance
-							modifier = FIN_bop_modifier_strong_nation
-						}
-					}
-				}
-			}
-			##################
-			##### TANNER #####
-			##################
-			else_if = { #TANNER - GOOD = High Democ Support |||| BAD = Some Fascist OR Commie // Losing Cores
-				limit = {
-					has_country_leader = {
-						ruling_only = yes
-						character = FIN_vaino_tanner
-					}
-				}
-				#### BAD ####
-				#LOSING CORES
-				FIN_check_and_manage_losing_cores_for_bop_effect = yes
+		# 		#### GOOD ####
+		# 		#STRONG NATION
+		# 		if = {
+		# 			limit = {
+		# 				has_war = yes
+		# 				surrender_progress < 0.05
+		# 				has_army_manpower = { size > 299999 }
+		# 			}
+		# 			if = {
+		# 				limit = {
+		# 					NOT = {
+		# 						has_power_balance_modifier = {
+		# 							id = FIN_power_balance
+		# 							modifier = FIN_bop_modifier_strong_nation
+		# 						}
+		# 					}
+		# 				}
+		# 				add_power_balance_modifier = {
+		# 					id = FIN_power_balance
+		# 					modifier = FIN_bop_modifier_strong_nation
+		# 				}
+		# 			}
+		# 		}
+		# 		else = {
+		# 			if = {
+		# 				limit = {
+		# 					has_power_balance_modifier = {
+		# 						id = FIN_power_balance
+		# 						modifier = FIN_bop_modifier_strong_nation
+		# 					}
+		# 				}
+		# 				remove_power_balance_modifier = {
+		# 					id = FIN_power_balance
+		# 					modifier = FIN_bop_modifier_strong_nation
+		# 				}
+		# 			}
+		# 		}
+		# 	}
+		# 	##################
+		# 	##### TANNER #####
+		# 	##################
+		# 	else_if = { #TANNER - GOOD = High Democ Support |||| BAD = Some Fascist OR Commie // Losing Cores
+		# 		limit = {
+		# 			has_country_leader = {
+		# 				ruling_only = yes
+		# 				character = FIN_vaino_tanner
+		# 			}
+		# 		}
+		# 		#### BAD ####
+		# 		#LOSING CORES
+		# 		FIN_check_and_manage_losing_cores_for_bop_effect = yes
 
-				#CONCERNING SUPPORT FOR EXTREMISTS
-				if = {
-					limit = {
-						OR = {
-							communism > 0.09
-							fascism > 0.09
-						}
-					}
-					#Add modifier (only once)
-					if = {
-						limit = {
-							NOT = {
-								has_power_balance_modifier = {
-									id = FIN_power_balance
-									modifier = FIN_bop_modifier_concerning_support_for_extremists
-								}
-							}
-						}
-						add_power_balance_modifier = {
-							id = FIN_power_balance
-							modifier = FIN_bop_modifier_concerning_support_for_extremists
-						}
-					}
-				}
-				else = {
-					if = {
-						limit = {
-							has_power_balance_modifier = {
-								id = FIN_power_balance
-								modifier = FIN_bop_modifier_concerning_support_for_extremists
-							}
-						}
-						remove_power_balance_modifier = {
-							id = FIN_power_balance
-							modifier = FIN_bop_modifier_concerning_support_for_extremists
-						}
-					}
-				}
+		# 		#CONCERNING SUPPORT FOR EXTREMISTS
+		# 		if = {
+		# 			limit = {
+		# 				OR = {
+		# 					communism > 0.09
+		# 					fascism > 0.09
+		# 				}
+		# 			}
+		# 			#Add modifier (only once)
+		# 			if = {
+		# 				limit = {
+		# 					NOT = {
+		# 						has_power_balance_modifier = {
+		# 							id = FIN_power_balance
+		# 							modifier = FIN_bop_modifier_concerning_support_for_extremists
+		# 						}
+		# 					}
+		# 				}
+		# 				add_power_balance_modifier = {
+		# 					id = FIN_power_balance
+		# 					modifier = FIN_bop_modifier_concerning_support_for_extremists
+		# 				}
+		# 			}
+		# 		}
+		# 		else = {
+		# 			if = {
+		# 				limit = {
+		# 					has_power_balance_modifier = {
+		# 						id = FIN_power_balance
+		# 						modifier = FIN_bop_modifier_concerning_support_for_extremists
+		# 					}
+		# 				}
+		# 				remove_power_balance_modifier = {
+		# 					id = FIN_power_balance
+		# 					modifier = FIN_bop_modifier_concerning_support_for_extremists
+		# 				}
+		# 			}
+		# 		}
 
-				#### GOOD ####
-				#UNITED NATION
-				if = {
-					limit = {
-						democratic > 0.95
-						all_owned_state = {
-							is_controlled_by = ROOT
-						}
-						controls_state = 146 #KARJALA
-					}
-					if = {
-						limit = {
-							NOT = {
-								has_power_balance_modifier = {
-									id = FIN_power_balance
-									modifier = FIN_bop_modifier_united_nation
-								}
-							}
-						}
-						add_power_balance_modifier = {
-							id = FIN_power_balance
-							modifier = FIN_bop_modifier_united_nation
-						}
-					}
-				}
-				else = {
-					if = {
-						limit = {
-							has_power_balance_modifier = {
-								id = FIN_power_balance
-								modifier = FIN_bop_modifier_united_nation
-							}
-						}
-						remove_power_balance_modifier = {
-							id = FIN_power_balance
-							modifier = FIN_bop_modifier_united_nation
-						}
-					}
-				}
-			}
-			####################
-			##### AALTONEN #####
-			####################
-			else_if = { #AALTONEN - GOOD = Winning war against Fascists |||| BAD = Not high Commie // Losing Cores
-				limit = {
-					has_country_leader = {
-						ruling_only = yes
-						character = FIN_aimo_aaltonen
-					}
-				}
-				#### BAD ####
-				#LOSING CORES
-				FIN_check_and_manage_losing_cores_for_bop_effect = yes
+		# 		#### GOOD ####
+		# 		#UNITED NATION
+		# 		if = {
+		# 			limit = {
+		# 				democratic > 0.95
+		# 				all_owned_state = {
+		# 					is_controlled_by = ROOT
+		# 				}
+		# 				controls_state = 146 #KARJALA
+		# 			}
+		# 			if = {
+		# 				limit = {
+		# 					NOT = {
+		# 						has_power_balance_modifier = {
+		# 							id = FIN_power_balance
+		# 							modifier = FIN_bop_modifier_united_nation
+		# 						}
+		# 					}
+		# 				}
+		# 				add_power_balance_modifier = {
+		# 					id = FIN_power_balance
+		# 					modifier = FIN_bop_modifier_united_nation
+		# 				}
+		# 			}
+		# 		}
+		# 		else = {
+		# 			if = {
+		# 				limit = {
+		# 					has_power_balance_modifier = {
+		# 						id = FIN_power_balance
+		# 						modifier = FIN_bop_modifier_united_nation
+		# 					}
+		# 				}
+		# 				remove_power_balance_modifier = {
+		# 					id = FIN_power_balance
+		# 					modifier = FIN_bop_modifier_united_nation
+		# 				}
+		# 			}
+		# 		}
+		# 	}
+		# 	####################
+		# 	##### AALTONEN #####
+		# 	####################
+		# 	else_if = { #AALTONEN - GOOD = Winning war against Fascists |||| BAD = Not high Commie // Losing Cores
+		# 		limit = {
+		# 			has_country_leader = {
+		# 				ruling_only = yes
+		# 				character = FIN_aimo_aaltonen
+		# 			}
+		# 		}
+		# 		#### BAD ####
+		# 		#LOSING CORES
+		# 		FIN_check_and_manage_losing_cores_for_bop_effect = yes
 
-				#DIVIDED PROLETARIAT
-				if = {
-					limit = {
-						communism < 0.8
-					}
-					#Add modifier (only once)
-					if = {
-						limit = {
-							NOT = {
-								has_power_balance_modifier = {
-									id = FIN_power_balance
-									modifier = FIN_bop_modifier_divided_proletariat
-								}
-							}
-						}
-						add_power_balance_modifier = {
-							id = FIN_power_balance
-							modifier = FIN_bop_modifier_divided_proletariat
-						}
-					}
-				}
-				else = {
-					if = {
-						limit = {
-							has_power_balance_modifier = {
-								id = FIN_power_balance
-								modifier = FIN_bop_modifier_divided_proletariat
-							}
-						}
-						remove_power_balance_modifier = {
-							id = FIN_power_balance
-							modifier = FIN_bop_modifier_divided_proletariat
-						}
-					}
-				}
+		# 		#DIVIDED PROLETARIAT
+		# 		if = {
+		# 			limit = {
+		# 				communism < 0.8
+		# 			}
+		# 			#Add modifier (only once)
+		# 			if = {
+		# 				limit = {
+		# 					NOT = {
+		# 						has_power_balance_modifier = {
+		# 							id = FIN_power_balance
+		# 							modifier = FIN_bop_modifier_divided_proletariat
+		# 						}
+		# 					}
+		# 				}
+		# 				add_power_balance_modifier = {
+		# 					id = FIN_power_balance
+		# 					modifier = FIN_bop_modifier_divided_proletariat
+		# 				}
+		# 			}
+		# 		}
+		# 		else = {
+		# 			if = {
+		# 				limit = {
+		# 					has_power_balance_modifier = {
+		# 						id = FIN_power_balance
+		# 						modifier = FIN_bop_modifier_divided_proletariat
+		# 					}
+		# 				}
+		# 				remove_power_balance_modifier = {
+		# 					id = FIN_power_balance
+		# 					modifier = FIN_bop_modifier_divided_proletariat
+		# 				}
+		# 			}
+		# 		}
 
-				#### GOOD ####
-				#ANTI-FASCIST CRUSADE
-				if = {
-					limit = {
-						has_war = yes
-						any_enemy_country = {
-							has_government = fascism
-						}
-						surrender_progress < 0.05
-						NOT = {
-							any_war_score < 10
-						}
-					}
-					if = {
-						limit = {
-							NOT = {
-								has_power_balance_modifier = {
-									id = FIN_power_balance
-									modifier = FIN_bop_modifier_anti_fascist_crusade
-								}
-							}
-						}
-						add_power_balance_modifier = {
-							id = FIN_power_balance
-							modifier = FIN_bop_modifier_anti_fascist_crusade
-						}
-					}
-				}
-				else = {
-					if = {
-						limit = {
-							has_power_balance_modifier = {
-								id = FIN_power_balance
-								modifier = FIN_bop_modifier_anti_fascist_crusade
-							}
-						}
-						remove_power_balance_modifier = {
-							id = FIN_power_balance
-							modifier = FIN_bop_modifier_anti_fascist_crusade
-						}
-					}
-				}
-			}
-			#################
-			##### LEINO #####
-			#################
-			else_if = { #LEINO - GOOD = No Fascism in Europe |||| BAD = Not high Commie // Losing Cores
-				limit = {
-					has_country_leader = {
-						ruling_only = yes
-						character = FIN_yrjo_leino
-					}
-				}
-				#### BAD ####
-				#LOSING CORES
-				FIN_check_and_manage_losing_cores_for_bop_effect = yes
+		# 		#### GOOD ####
+		# 		#ANTI-FASCIST CRUSADE
+		# 		if = {
+		# 			limit = {
+		# 				has_war = yes
+		# 				any_enemy_country = {
+		# 					has_government = fascism
+		# 				}
+		# 				surrender_progress < 0.05
+		# 				NOT = {
+		# 					any_war_score < 10
+		# 				}
+		# 			}
+		# 			if = {
+		# 				limit = {
+		# 					NOT = {
+		# 						has_power_balance_modifier = {
+		# 							id = FIN_power_balance
+		# 							modifier = FIN_bop_modifier_anti_fascist_crusade
+		# 						}
+		# 					}
+		# 				}
+		# 				add_power_balance_modifier = {
+		# 					id = FIN_power_balance
+		# 					modifier = FIN_bop_modifier_anti_fascist_crusade
+		# 				}
+		# 			}
+		# 		}
+		# 		else = {
+		# 			if = {
+		# 				limit = {
+		# 					has_power_balance_modifier = {
+		# 						id = FIN_power_balance
+		# 						modifier = FIN_bop_modifier_anti_fascist_crusade
+		# 					}
+		# 				}
+		# 				remove_power_balance_modifier = {
+		# 					id = FIN_power_balance
+		# 					modifier = FIN_bop_modifier_anti_fascist_crusade
+		# 				}
+		# 			}
+		# 		}
+		# 	}
+		# 	#################
+		# 	##### LEINO #####
+		# 	#################
+		# 	else_if = { #LEINO - GOOD = No Fascism in Europe |||| BAD = Not high Commie // Losing Cores
+		# 		limit = {
+		# 			has_country_leader = {
+		# 				ruling_only = yes
+		# 				character = FIN_yrjo_leino
+		# 			}
+		# 		}
+		# 		#### BAD ####
+		# 		#LOSING CORES
+		# 		FIN_check_and_manage_losing_cores_for_bop_effect = yes
 
-				#DIVIDED PROLETARIAT
-				if = {
-					limit = {
-						communism < 0.8
-					}
-					#Add modifier (only once)
-					if = {
-						limit = {
-							NOT = {
-								has_power_balance_modifier = {
-									id = FIN_power_balance
-									modifier = FIN_bop_modifier_divided_proletariat
-								}
-							}
-						}
-						add_power_balance_modifier = {
-							id = FIN_power_balance
-							modifier = FIN_bop_modifier_divided_proletariat
-						}
-					}
-				}
-				else = {
-					if = {
-						limit = {
-							has_power_balance_modifier = {
-								id = FIN_power_balance
-								modifier = FIN_bop_modifier_divided_proletariat
-							}
-						}
-						remove_power_balance_modifier = {
-							id = FIN_power_balance
-							modifier = FIN_bop_modifier_divided_proletariat
-						}
-					}
-				}
+		# 		#DIVIDED PROLETARIAT
+		# 		if = {
+		# 			limit = {
+		# 				communism < 0.8
+		# 			}
+		# 			#Add modifier (only once)
+		# 			if = {
+		# 				limit = {
+		# 					NOT = {
+		# 						has_power_balance_modifier = {
+		# 							id = FIN_power_balance
+		# 							modifier = FIN_bop_modifier_divided_proletariat
+		# 						}
+		# 					}
+		# 				}
+		# 				add_power_balance_modifier = {
+		# 					id = FIN_power_balance
+		# 					modifier = FIN_bop_modifier_divided_proletariat
+		# 				}
+		# 			}
+		# 		}
+		# 		else = {
+		# 			if = {
+		# 				limit = {
+		# 					has_power_balance_modifier = {
+		# 						id = FIN_power_balance
+		# 						modifier = FIN_bop_modifier_divided_proletariat
+		# 					}
+		# 				}
+		# 				remove_power_balance_modifier = {
+		# 					id = FIN_power_balance
+		# 					modifier = FIN_bop_modifier_divided_proletariat
+		# 				}
+		# 			}
+		# 		}
 
-				#### GOOD ####
-				#OBLITERATED EUROPEAN FASCISM
-				if = {
-					limit = {
-						fascism < 0.01
-						all_country = { #No Fascist country in Europe
-							OR = {
-								NOT = { has_government = fascism }
-								capital_scope = {
-									NOT = { is_on_continent = europe }
-								}
-							}
-						}
-					}
-					if = {
-						limit = {
-							NOT = {
-								has_power_balance_modifier = {
-									id = FIN_power_balance
-									modifier = FIN_bop_modifier_obliterated_european_fascism
-								}
-							}
-						}
-						add_power_balance_modifier = {
-							id = FIN_power_balance
-							modifier = FIN_bop_modifier_obliterated_european_fascism
-						}
-					}
-				}
-				else = {
-					if = {
-						limit = {
-							has_power_balance_modifier = {
-								id = FIN_power_balance
-								modifier = FIN_bop_modifier_obliterated_european_fascism
-							}
-						}
-						remove_power_balance_modifier = {
-							id = FIN_power_balance
-							modifier = FIN_bop_modifier_obliterated_european_fascism
-						}
-					}
-				}
-			}
-			####################
-			##### KUUSINEN #####
-			####################
-			else_if = { #KUUSINEN - GOOD = Scandinavian and Baltic allies |||| BAD = No Kola & Karelia // Losing Cores
-				limit = {
-					has_country_leader = {
-						ruling_only = yes
-						character = FIN_otto_wille_kuusinen
-					}
-				}
-				#### BAD ####
-				#LOSING CORES
-				FIN_check_and_manage_losing_cores_for_bop_effect = yes
+		# 		#### GOOD ####
+		# 		#OBLITERATED EUROPEAN FASCISM
+		# 		if = {
+		# 			limit = {
+		# 				fascism < 0.01
+		# 				all_country = { #No Fascist country in Europe
+		# 					OR = {
+		# 						NOT = { has_government = fascism }
+		# 						capital_scope = {
+		# 							NOT = { is_on_continent = europe }
+		# 						}
+		# 					}
+		# 				}
+		# 			}
+		# 			if = {
+		# 				limit = {
+		# 					NOT = {
+		# 						has_power_balance_modifier = {
+		# 							id = FIN_power_balance
+		# 							modifier = FIN_bop_modifier_obliterated_european_fascism
+		# 						}
+		# 					}
+		# 				}
+		# 				add_power_balance_modifier = {
+		# 					id = FIN_power_balance
+		# 					modifier = FIN_bop_modifier_obliterated_european_fascism
+		# 				}
+		# 			}
+		# 		}
+		# 		else = {
+		# 			if = {
+		# 				limit = {
+		# 					has_power_balance_modifier = {
+		# 						id = FIN_power_balance
+		# 						modifier = FIN_bop_modifier_obliterated_european_fascism
+		# 					}
+		# 				}
+		# 				remove_power_balance_modifier = {
+		# 					id = FIN_power_balance
+		# 					modifier = FIN_bop_modifier_obliterated_european_fascism
+		# 				}
+		# 			}
+		# 		}
+		# 	}
+		# 	####################
+		# 	##### KUUSINEN #####
+		# 	####################
+		# 	else_if = { #KUUSINEN - GOOD = Scandinavian and Baltic allies |||| BAD = No Kola & Karelia // Losing Cores
+		# 		limit = {
+		# 			has_country_leader = {
+		# 				ruling_only = yes
+		# 				character = FIN_otto_wille_kuusinen
+		# 			}
+		# 		}
+		# 		#### BAD ####
+		# 		#LOSING CORES
+		# 		FIN_check_and_manage_losing_cores_for_bop_effect = yes
 
-				#FORGOTTEN FINNO-KARELIANS
-				if = {
-					limit = {
-						OR = {
-							NOT = { controls_state = 146 } #KARJALA
-							NOT = { controls_state = 213 } #KOLA
-							NOT = { controls_state = 215 } #ONEGA
-							NOT = { controls_state = 216 } #OLONETS
-						}
-					}
-					#Add modifier (only once)
-					if = {
-						limit = {
-							NOT = {
-								has_power_balance_modifier = {
-									id = FIN_power_balance
-									modifier = FIN_bop_modifier_forgotten_finno_karelians
-								}
-							}
-						}
-						add_power_balance_modifier = {
-							id = FIN_power_balance
-							modifier = FIN_bop_modifier_forgotten_finno_karelians
-						}
-					}
-				}
-				else = {
-					if = {
-						limit = {
-							has_power_balance_modifier = {
-								id = FIN_power_balance
-								modifier = FIN_bop_modifier_forgotten_finno_karelians
-							}
-						}
-						remove_power_balance_modifier = {
-							id = FIN_power_balance
-							modifier = FIN_bop_modifier_forgotten_finno_karelians
-						}
-					}
-				}
+		# 		#FORGOTTEN FINNO-KARELIANS
+		# 		if = {
+		# 			limit = {
+		# 				OR = {
+		# 					NOT = { controls_state = 146 } #KARJALA
+		# 					NOT = { controls_state = 213 } #KOLA
+		# 					NOT = { controls_state = 215 } #ONEGA
+		# 					NOT = { controls_state = 216 } #OLONETS
+		# 				}
+		# 			}
+		# 			#Add modifier (only once)
+		# 			if = {
+		# 				limit = {
+		# 					NOT = {
+		# 						has_power_balance_modifier = {
+		# 							id = FIN_power_balance
+		# 							modifier = FIN_bop_modifier_forgotten_finno_karelians
+		# 						}
+		# 					}
+		# 				}
+		# 				add_power_balance_modifier = {
+		# 					id = FIN_power_balance
+		# 					modifier = FIN_bop_modifier_forgotten_finno_karelians
+		# 				}
+		# 			}
+		# 		}
+		# 		else = {
+		# 			if = {
+		# 				limit = {
+		# 					has_power_balance_modifier = {
+		# 						id = FIN_power_balance
+		# 						modifier = FIN_bop_modifier_forgotten_finno_karelians
+		# 					}
+		# 				}
+		# 				remove_power_balance_modifier = {
+		# 					id = FIN_power_balance
+		# 					modifier = FIN_bop_modifier_forgotten_finno_karelians
+		# 				}
+		# 			}
+		# 		}
 
-				#### GOOD ####
-				#SOLAR SYSTEM OF ORGANIZATIONS
-				if = {
-					limit = {
-						SWE = {
-							all_core_state = {
-								OR = {
-									is_controlled_by = ROOT
-									controller = {
-										is_in_faction_with = ROOT
-									}
-								}
-							}
-						}
-						NOR = {
-							all_core_state = {
-								OR = {
-									is_controlled_by = ROOT
-									controller = {
-										is_in_faction_with = ROOT
-									}
-								}
-							}
-						}
-						DEN = {
-							all_core_state = {
-								OR = {
-									is_controlled_by = ROOT
-									controller = {
-										is_in_faction_with = ROOT
-									}
-								}
-							}
-						}
-						ICE = {
-							all_core_state = {
-								OR = {
-									is_controlled_by = ROOT
-									controller = {
-										is_in_faction_with = ROOT
-									}
-								}
-							}
-						}
-						EST = {
-							all_core_state = {
-								OR = {
-									is_controlled_by = ROOT
-									controller = {
-										is_in_faction_with = ROOT
-									}
-								}
-							}
-						}
-						LAT = {
-							all_core_state = {
-								OR = {
-									is_controlled_by = ROOT
-									controller = {
-										is_in_faction_with = ROOT
-									}
-								}
-							}
-						}
-						LIT = {
-							all_core_state = {
-								OR = {
-									is_controlled_by = ROOT
-									controller = {
-										is_in_faction_with = ROOT
-									}
-								}
-							}
-						}
-					}
-					if = {
-						limit = {
-							NOT = {
-								has_power_balance_modifier = {
-									id = FIN_power_balance
-									modifier = FIN_bop_modifier_a_solar_system_of_organizations
-								}
-							}
-						}
-						add_power_balance_modifier = {
-							id = FIN_power_balance
-							modifier = FIN_bop_modifier_a_solar_system_of_organizations
-						}
-					}
-				}
-				else = {
-					if = {
-						limit = {
-							has_power_balance_modifier = {
-								id = FIN_power_balance
-								modifier = FIN_bop_modifier_a_solar_system_of_organizations
-							}
-						}
-						remove_power_balance_modifier = {
-							id = FIN_power_balance
-							modifier = FIN_bop_modifier_a_solar_system_of_organizations
-						}
-					}
-				}
-			}
-			# UNKNOWN LEADER -> KILL BOP
-			else = {
-				remove_power_balance = {
-					id = FIN_power_balance
-				}
-			}
+		# 		#### GOOD ####
+		# 		#SOLAR SYSTEM OF ORGANIZATIONS
+		# 		if = {
+		# 			limit = {
+		# 				SWE = {
+		# 					all_core_state = {
+		# 						OR = {
+		# 							is_controlled_by = ROOT
+		# 							controller = {
+		# 								is_in_faction_with = ROOT
+		# 							}
+		# 						}
+		# 					}
+		# 				}
+		# 				NOR = {
+		# 					all_core_state = {
+		# 						OR = {
+		# 							is_controlled_by = ROOT
+		# 							controller = {
+		# 								is_in_faction_with = ROOT
+		# 							}
+		# 						}
+		# 					}
+		# 				}
+		# 				DEN = {
+		# 					all_core_state = {
+		# 						OR = {
+		# 							is_controlled_by = ROOT
+		# 							controller = {
+		# 								is_in_faction_with = ROOT
+		# 							}
+		# 						}
+		# 					}
+		# 				}
+		# 				ICE = {
+		# 					all_core_state = {
+		# 						OR = {
+		# 							is_controlled_by = ROOT
+		# 							controller = {
+		# 								is_in_faction_with = ROOT
+		# 							}
+		# 						}
+		# 					}
+		# 				}
+		# 				EST = {
+		# 					all_core_state = {
+		# 						OR = {
+		# 							is_controlled_by = ROOT
+		# 							controller = {
+		# 								is_in_faction_with = ROOT
+		# 							}
+		# 						}
+		# 					}
+		# 				}
+		# 				LAT = {
+		# 					all_core_state = {
+		# 						OR = {
+		# 							is_controlled_by = ROOT
+		# 							controller = {
+		# 								is_in_faction_with = ROOT
+		# 							}
+		# 						}
+		# 					}
+		# 				}
+		# 				LIT = {
+		# 					all_core_state = {
+		# 						OR = {
+		# 							is_controlled_by = ROOT
+		# 							controller = {
+		# 								is_in_faction_with = ROOT
+		# 							}
+		# 						}
+		# 					}
+		# 				}
+		# 			}
+		# 			if = {
+		# 				limit = {
+		# 					NOT = {
+		# 						has_power_balance_modifier = {
+		# 							id = FIN_power_balance
+		# 							modifier = FIN_bop_modifier_a_solar_system_of_organizations
+		# 						}
+		# 					}
+		# 				}
+		# 				add_power_balance_modifier = {
+		# 					id = FIN_power_balance
+		# 					modifier = FIN_bop_modifier_a_solar_system_of_organizations
+		# 				}
+		# 			}
+		# 		}
+		# 		else = {
+		# 			if = {
+		# 				limit = {
+		# 					has_power_balance_modifier = {
+		# 						id = FIN_power_balance
+		# 						modifier = FIN_bop_modifier_a_solar_system_of_organizations
+		# 					}
+		# 				}
+		# 				remove_power_balance_modifier = {
+		# 					id = FIN_power_balance
+		# 					modifier = FIN_bop_modifier_a_solar_system_of_organizations
+		# 				}
+		# 			}
+		# 		}
+		# 	}
+		# 	# UNKNOWN LEADER -> KILL BOP
+		# 	else = {
+		# 		remove_power_balance = {
+		# 			id = FIN_power_balance
+		# 		}
+		# 	}
 
-			#### CLEAN ANY OBSOLETE BOP MODIFIERS (based on country leader)
-			FIN_clean_all_obsolete_bop_modifiers_effect = yes
-		}
+		# 	#### CLEAN ANY OBSOLETE BOP MODIFIERS (based on country leader)
+		# 	FIN_clean_all_obsolete_bop_modifiers_effect = yes
+		# }
 	}
 
   	#FROM is faction leader on join faction requests. THIS DOES NOT FIRE ON ADD_TO_FACTION EFFECT! USE ON_OFFER_JOIN_FACTION!
