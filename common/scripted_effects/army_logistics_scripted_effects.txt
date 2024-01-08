@@ -1,0 +1,152 @@
+logistical_calculations = {
+	#Calculates variables used for dynamic modifiers
+	
+	#when modifying the factors below also adjust technologies/army_logistics.txt
+	@light_trucks_needed = 2
+	@trucks_needed = 5
+	@mot_trucks_needed = 10
+	@support_trucks_needed = 5
+
+	#Calculate Equipment needs
+	set_variable = { light_trucks_needed = light_weapon_transports_level }
+	set_variable = { trucks_needed = light_weapon_transports_level }
+	set_variable = { mot_trucks_needed = logistics_level }
+	set_variable = { sup_trucks_needed = logistics_level }
+	multiply_variable = { light_trucks_needed = @light_trucks_needed } 
+	multiply_variable = { trucks_needed = @trucks_needed }
+	multiply_variable = { mot_trucks_needed = @mot_trucks_needed }
+	multiply_variable = { support_trucks_needed = @support_trucks_needed }
+	
+	#Applies equipment needs
+	clear_weapon_transports_techs = yes
+	set_weapon_transports_techs = yes
+	clear_logistics_techs = yes
+	set_logistics_techs = yes
+}
+
+
+clear_weapon_transports_techs = {
+	set_technology  = { light_weapon_transports_0 = 0 popup = no }
+	set_technology  = { light_weapon_transports_1 = 0 popup = no }
+	set_technology  = { light_weapon_transports_2 = 0 popup = no }
+	set_technology  = { light_weapon_transports_3 = 0 popup = no }
+	set_technology  = { light_weapon_transports_4 = 0 popup = no }
+
+	set_technology  = { heavy_weapon_transports_0 = 0 popup = no }
+	set_technology  = { heavy_weapon_transports_1 = 0 popup = no }
+	set_technology  = { heavy_weapon_transports_2 = 0 popup = no }
+	set_technology  = { heavy_weapon_transports_3 = 0 popup = no }
+	set_technology  = { heavy_weapon_transports_4 = 0 popup = no }
+
+	set_technology  = { mot_weapon_transports_0 = 0 popup = no }
+	set_technology  = { mot_weapon_transports_1 = 0 popup = no }
+	set_technology  = { mot_weapon_transports_2 = 0 popup = no }
+	set_technology  = { mot_weapon_transports_3 = 0 popup = no }
+	set_technology  = { mot_weapon_transports_4 = 0 popup = no }
+
+	set_technology  = { sup_weapon_transports_0 = 0 popup = no }
+	set_technology  = { sup_weapon_transports_1 = 0 popup = no }
+	set_technology  = { sup_weapon_transports_2 = 0 popup = no }
+	set_technology  = { sup_weapon_transports_3 = 0 popup = no }
+	set_technology  = { sup_weapon_transports_4 = 0 popup = no }
+}
+
+set_weapon_transports_techs = {
+	meta_effect = {
+		text = {
+			set_technology  = { light_weapon_transports_[LEVEL] = 1 popup = no }
+		}
+		LEVEL = "[?light_weapon_transports_level]"
+	}
+	meta_effect = {
+		text = {
+			set_technology  = { heavy_weapon_transports_[LEVEL] = 1 popup = no }
+		}
+		LEVEL = "[?heavy_weapon_transports_level]"
+	}
+	meta_effect = {
+		text = {
+			set_technology  = { mot_weapon_transports_[LEVEL] = 1 popup = no }
+		}
+		LEVEL = "[?mot_weapon_transports_level]"
+	}
+	meta_effect = {
+		text = {
+			set_technology  = { sup_weapon_transports_[LEVEL] = 1 popup = no }
+		}
+		LEVEL = "[?sup_weapon_transports_level]"
+	}
+}
+
+clear_logistics_techs = {
+	set_technology  = { light_logistics_motorisation_0 = 0 popup = no }
+	set_technology  = { light_logistics_motorisation_1 = 0 popup = no }
+	set_technology  = { light_logistics_motorisation_2 = 0 popup = no }
+	set_technology  = { light_logistics_motorisation_3 = 0 popup = no }
+	set_technology  = { light_logistics_motorisation_4 = 0 popup = no }
+	set_technology  = { light_logistics_motorisation_5 = 0 popup = no }
+
+	set_technology  = { heavy_logistics_motorisation_0 = 0 popup = no }
+	set_technology  = { heavy_logistics_motorisation_1 = 0 popup = no }
+	set_technology  = { heavy_logistics_motorisation_2 = 0 popup = no }
+	set_technology  = { heavy_logistics_motorisation_3 = 0 popup = no }
+	set_technology  = { heavy_logistics_motorisation_4 = 0 popup = no }
+	set_technology  = { heavy_logistics_motorisation_5 = 0 popup = no }
+
+	set_technology  = { mot_logistics_motorisation_0 = 0 popup = no }
+	set_technology  = { mot_logistics_motorisation_1 = 0 popup = no }
+	set_technology  = { mot_logistics_motorisation_2 = 0 popup = no }
+	set_technology  = { mot_logistics_motorisation_3 = 0 popup = no }
+	set_technology  = { mot_logistics_motorisation_4 = 0 popup = no }
+	set_technology  = { mot_logistics_motorisation_5 = 0 popup = no }
+
+	set_technology  = { sup_logistics_motorisation_0 = 0 popup = no }
+	set_technology  = { sup_logistics_motorisation_1 = 0 popup = no }
+	set_technology  = { sup_logistics_motorisation_2 = 0 popup = no }
+	set_technology  = { sup_logistics_motorisation_3 = 0 popup = no }
+	set_technology  = { sup_logistics_motorisation_4 = 0 popup = no }
+	set_technology  = { sup_logistics_motorisation_5 = 0 popup = no }
+}
+
+set_logistics_techs = {
+	meta_effect = {
+		text = {
+			set_technology  = { light_logistics_motorisation_[LEVEL] = 1 popup = no }
+		}
+		LEVEL = "[?light_logistics_motorisation_level]"
+		debug = yes
+	}
+	meta_effect = {
+		text = {
+			set_technology  = { heavy_logistics_motorisation_[LEVEL] = 1 popup = no }
+		}
+		LEVEL = "[?heavy_logistics_motorisation_level]"
+		debug = yes
+	}
+	meta_effect = {
+		text = {
+			set_technology  = { mot_logistics_motorisation_[LEVEL] = 1 popup = no }
+		}
+		LEVEL = "[?mot_logistics_motorisation_level]"
+		debug = yes
+	}
+	meta_effect = {
+		text = {
+			set_technology  = { sup_logistics_motorisation_[LEVEL] = 1 popup = no }
+		}
+		LEVEL = "[?sup_logistics_motorisation_level]"
+		debug = yes
+	}
+	set_variable = { light_logistics_motorisation_level_display = light_logistics_motorisation_level }
+	multiply_variable = { light_logistics_motorisation_level_display = 20 }
+	
+	set_variable = { heavy_logistics_motorisation_level_display = heavy_logistics_motorisation_level }
+	multiply_variable = { heavy_logistics_motorisation_level_display = 20 }
+	
+	set_variable = { mot_logistics_motorisation_level_display = mot_logistics_motorisation_level }
+	multiply_variable = { mot_logistics_motorisation_level_display = 20 }
+	add_to_variable = { mot_logistics_motorisation_level_display = 100 }
+	
+	set_variable = { sup_logistics_motorisation_level_display = sup_logistics_motorisation_level }
+	multiply_variable = { sup_logistics_motorisation_level_display = 20 }
+}
