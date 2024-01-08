@@ -1,6 +1,6 @@
 logistical_calculations = {
-	#Calculates variables used for dynamic modifiers
-	
+	reset_weapons_transports_display = yes
+
 	#when modifying the factors below also adjust technologies/army_logistics.txt
 	@light_trucks_needed = 2
 	@trucks_needed = 5
@@ -20,8 +20,10 @@ logistical_calculations = {
 	#Applies equipment needs
 	clear_weapon_transports_techs = yes
 	set_weapon_transports_techs = yes
-	clear_logistics_techs = yes
-	set_logistics_techs = yes
+	update_weapon_transports_display = yes
+	clear_motorisation_techs = yes
+	set_motorisation_techs = yes
+	set_motorisation_techs = yes
 }
 
 
@@ -78,7 +80,19 @@ set_weapon_transports_techs = {
 	}
 }
 
-clear_logistics_techs = {
+update_weapon_transports_display = {
+	reset_weapons_transports_display = yes
+	if = {
+		limit = { check_variable = { light_weapon_transports_level = 0 } }
+		set_variable = { light_weapon_transports_checkbox_frame = 2 }
+	}
+}
+
+reset_weapons_transports_display = {
+	set_variable = { light_weapon_transports_checkbox_frame = 1 }
+}
+
+clear_motorisation_techs = {
 	set_technology  = { light_logistics_motorisation_0 = 0 popup = no }
 	set_technology  = { light_logistics_motorisation_1 = 0 popup = no }
 	set_technology  = { light_logistics_motorisation_2 = 0 popup = no }
@@ -108,7 +122,7 @@ clear_logistics_techs = {
 	set_technology  = { sup_logistics_motorisation_5 = 0 popup = no }
 }
 
-set_logistics_techs = {
+set_motorisation_techs = {
 	meta_effect = {
 		text = {
 			set_technology  = { light_logistics_motorisation_[LEVEL] = 1 popup = no }
@@ -149,4 +163,8 @@ set_logistics_techs = {
 	
 	set_variable = { sup_logistics_motorisation_level_display = sup_logistics_motorisation_level }
 	multiply_variable = { sup_logistics_motorisation_level_display = 20 }
+}
+
+update_motorisation_display = {
+
 }
