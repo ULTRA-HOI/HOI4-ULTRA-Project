@@ -1,3 +1,60 @@
+ENG_trade_with_poland = {
+	# Poland has a mirrored version of this
+	allowed = {
+		original_tag = ENG
+	}
+	enable = {
+		OR = {
+			POL = { has_government = neutrality }
+			POL = { has_government = democratic }
+		}
+		has_government = democratic
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = equipment_market_trade_desire
+		id = POL
+		value = 60
+	}
+}
+
+ENG_less_weapon_purchases_more_for_construction = {
+	allowed = {
+		original_tag = ENG
+	}
+	enable = {
+		date < 1939.1.1
+		has_war = no
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = equipment_market_spend_factories
+		value = -80  # 80 % less factories
+	}
+	ai_strategy = {  # Don't even try buying infantry equipment too early
+		type = equipment_market_buying_threshold
+		id = infantry_equipment
+		value = -20000  # Absolute number of units
+	}
+}
+
+ENG_fewer_factories_for_purchases_please = {
+	allowed = {
+		original_tag = ENG
+	}
+	enable = {
+		date > 1939.1.1
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = equipment_market_spend_factories
+		value = -50  # 50 % less factories
+	}
+}
+
 protect_poland_against_germany = {
 	allowed = {
 		original_tag = ENG
