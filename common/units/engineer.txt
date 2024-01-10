@@ -75,84 +75,67 @@ sub_units = {
 			defence = 0.05
 		}
 	}
+	
+	amphibious_transport = {
+		abbreviation = "AMT"
+		sprite = infantry
+		map_icon_category = infantry
+		priority = 0
+		ai_priority = 0
+		active = no
+		affects_speed = no	
+		special_forces = yes    
+        mountaineers = yes	#Support unit special forces cap
 
-	#pioneer_support = {  #Disabled for now, Pioneers will be integrated into regular engineers(giving buffs to marines only) Pioneers will be replaced by a amphibious transport unit that will allow units to be decent at naval invasions without being marines
-	#	abbreviation = "PIO"
-	#	sprite = infantry
-	#	map_icon_category = infantry
-	#	priority = 0
-	#	ai_priority = 0
-	#	active = no
-	#	affects_speed = no
-    #
-	#	type = {
-	#		infantry
-	#		support
-	#	}
-	#	
-	#	group = support
-	#	
-	#	categories = {
-	#		#todo
-	#	}
-    #
-	#
-	#	combat_width = 0
-	#
-	#	#Size Definitions
-	#	max_strength = 2
-	#	max_organisation = 0
-	#	default_morale = 0.3
-	#	manpower = 300
-	#	training_time = 120
-    #
-	#	#Misc Abilities
-	#	weight = 0.1
-	#	supply_consumption = 0.02
-	#	
-	#	entrenchment = 2
-	#	
-	#	battalion_mult = {
-	#		category = category_marines
-	#		breakthrough = 0.15
-	#		#add = yes
-	#	}
-    #
-	#	
-	#	entrenchment = 2.5
-	#	defense = 0.1
-	#	breakthrough = 0.5
-    #
-	#	# Support nerfs to combat abilities
-	#	soft_attack = -0.5
-    #
-	#	essential = {
-	#		support_equipment
-	#	}
-    #
-	#	need = {
-	#		infantry_equipment = 10
-	#		support_equipment = 40
-	#	}
-    #
-	#	can_be_parachuted = yes
-    #
-	#	marsh = {
-	#		attack = 0.10
-	#		defence = 0.20
-	#		movement = 0.2
-	#	}
-    #
-	#	fort = {
-	#		attack = 0.15
-	#		defence = 0.20
-	#	}
-    #
-	#	river = {
-	#		attack = 0.10
-	#		defence = 0.20
-	#		movement = 0.25
-	#	}
-	#	
-	#}
+		type = {
+			infantry
+			support
+		}
+		
+		group = support
+		
+		categories = {
+			category_army
+			category_support_battalions
+		}
+		
+		battalion_mult = { #not supposed to be used together with marines
+			category = category_marines
+			soft_attack = -1
+			hard_attack = -1
+		}
+		
+		combat_width = 0
+	
+		#Size Definitions
+		#max_strength = 20
+		max_organisation = 30
+		default_morale = 0.3
+		manpower = 1000
+		training_time = 120
+
+		#Misc Abilities
+		weight = 1
+		supply_consumption = 0.03
+
+		breakthrough = 1
+		own_equipment_fuel_consumption_mult = 0.0
+		essential = {
+			landing_craft_equipment
+		}
+
+		need = {
+			landing_craft_equipment = 216
+		}
+
+		river = {
+			attack = 0.1
+			movement = 0.01
+		}
+		amphibious = {
+			attack = 0.2
+			defence = 0.2
+			movement = 0.1
+		}
+	}
 }
