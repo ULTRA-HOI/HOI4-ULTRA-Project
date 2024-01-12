@@ -67,12 +67,11 @@ technologies = {
 		xp_research_bonus = 1.50
 	
 		enable_subunits = {
-			paratrooper_light
+			airlanding_infantry
 		}
 		
-		path = {
-			leads_to_tech = paratrooper_heavy
-			research_cost_coeff = 1
+		enable_equipments = {
+			airborne_heavy_infantry_equipment_0
 		}
 	
 		research_cost = 4
@@ -81,6 +80,8 @@ technologies = {
 			name = support_folder
 			position = { x = -1 y = 0 }
 		}
+		
+		force_use_small_tech_layout = yes
 		
 		on_research_complete_limit = {
 			NOT = {
@@ -202,7 +203,7 @@ technologies = {
 			leads_to_tech = marines2
 			research_cost_coeff = 1
 		}
-	
+
 		research_cost = 4
 		start_year = 1936
 		folder = {
@@ -326,25 +327,27 @@ technologies = {
 		xp_research_bonus = 1.50
 	
 		enable_subunits = {
-			rangers_support
+			mountain_infantry
 		}
-	
+		
+		enable_equipments = {
+			pack_heavy_infantry_equipment_0
+		}
+		
+		force_use_small_tech_layout = yes
+		
 		on_research_complete_limit = {
 			
 				NOT = {
 					has_template_containing_unit = mountaineers
 				}
 		}
+	
 		on_research_complete = {
 			hidden_effect = {
 				load_oob = "unlock_mountineers"
 			}
 			custom_effect_tooltip = UNLOCK_DIVISION_TEMPLATE
-		}
-		
-		path = {
-			leads_to_tech = mountaineer_heavy
-			research_cost_coeff = 1
 		}
 	
 		research_cost = 4
@@ -640,45 +643,48 @@ technologies = {
 #	}
 #	
 #	
-#	elite_forces = {
-#		
-#		xp_research_type = army
-#		xp_boost_cost = 150
-#		xp_research_bonus = 2
-#		
-#		category_special_forces = {
-#			acclimatization_hot_climate_gain_factor = 0.5
-#			acclimatization_cold_climate_gain_factor = 0.5
-#			max_organisation = 10
-#			soft_attack = 0.2
-#			breakthrough = 0.2
-#		}
-#		
-#		special_forces_no_supply_grace = 72
-#	
-#		research_cost = 4
-#		start_year = 1936
-#		
-#		folder = {
-#			name = support_folder
-#			position = { x = 2 y = 6 }
-#		}
-#		
-#		categories = {
-#			mountaineers_tech
-#			marine_tech
-#			para_tech
-#		}
-#		
-#		ai_will_do = {
-#			factor = 0.7
-#			
-#			modifier = {
-#				factor = 0
-#				date < "1944.1.1"
-#			}
-#		}
-#	}
+	elite_forces = {
+		
+		xp_research_type = army
+		xp_boost_cost = 150
+		xp_research_bonus = 2
+		
+		allow = {
+			count_triggers = {
+				amount = 2
+				has_tech = special_forces_paratroopers
+				has_tech = special_forces_marines
+				has_tech = special_forces_mountaineers
+			}
+		}
+	
+		research_cost = 4
+		start_year = 1936
+		
+		folder = {
+			name = support_folder
+			position = { x = 0 y = 0 }
+		}
+		
+		enable_subunits = {
+			commandos
+		}
+		
+		categories = {
+			mountaineers_tech
+			marine_tech
+			para_tech
+		}
+		
+		ai_will_do = {
+			factor = 0.7
+			
+			modifier = {
+				factor = 0
+				date < "1944.1.1"
+			}
+		}
+	}
 	
 	jungle_warfare = {
 	

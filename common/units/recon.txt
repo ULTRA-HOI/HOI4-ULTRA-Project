@@ -530,78 +530,153 @@ sub_units = {
 	#	}
 	#}
 	#
-	#rangers_support = { #independent recon
-	#	abbreviation = "RAN"
-	#	sprite = infantry
-	#	map_icon_category = infantry
-	#	special_forces = yes
-	#	priority = 0
-	#	ai_priority = 0
-	#	active = no
-    #
-	#	type = {
-	#		infantry
-	#		support
-	#	}
-	#	
-	#	group = support
-	#	
-	#	categories = {
-	#		category_line_battalions
-	#		category_support_battalions
-	#		category_army
-	#		category_recon
-	#		category_mountaineers
-	#	}
-    #
-	#
-	#	combat_width = 0
-	#
-	#	#Size Definitions
-	#	max_strength = 2
-	#	max_organisation = 0
-	#	default_morale = 0.3
-	#	manpower = 500
-	#	training_time = 120
-    #
-	#	#Misc Abilities
-	#	weight = 0.1
-	#	supply_consumption = 0.06
-	#	recon = 1
-	#	can_be_parachuted = yes
-    #
-	#	# Support nerfs to combat abilities
-    #
-	#	maximum_speed = 0.6 # move at horsie speeds
-	#	
-	#	essential = {
-	#		infantry_equipment
-	#		support_equipment
-	#	}
-    #
-	#	need = {
-	#		infantry_equipment = 40
-	#		support_equipment = 15
-	#	}
-	#	
-	#	forest = {
-	#		movement = 0.15
-	#		attack = 0.05
-	#	}
-	#	hills = {
-	#		movement = 0.15
-	#		attack = 0.05
-	#	}
-	#	mountain = {
-	#		movement = 0.10
-	#		defence = 0.05
-	#	}
-	#	jungle = {
-	#		movement = 0.10
-	#	}
-	#	plains = {
-	#		movement = 0.1
-	#		attack = 0.05
-	#	}
-	#}
+	commandos = { #Ultra: Commando Unit attached to divisions. Gives small recon bonus and a boost to combat abilities of the whole unit and terrain bonuses
+		abbreviation = "CMO"
+		sprite = infantry
+		map_icon_category = infantry
+		priority = 0
+		ai_priority = 0
+		active = no
+		affects_speed = no	
+		special_forces = yes
+		mountaineers = yes	#Support unit special forces cap
+    
+		type = {
+			infantry
+			support
+		}
+		
+		group = support
+		
+		categories = {
+			category_army
+			category_support_battalions
+			category_special_forces #Commandos should get special forces bonuses
+			#category_recon #Commandos dont want recon as the recon bonuses would be over the top
+			category_commando
+		}
+    
+	
+		combat_width = 0
+	
+		#Size Definitions
+		#max_strength = 2
+		max_organisation = 10
+		default_morale = 0.3
+		manpower = 500
+		training_time = 240
+    
+		#Misc Abilities
+		weight = 0.1
+		supply_consumption = 0.06
+		recon = 1
+		can_be_parachuted = yes
+		
+		#Support nerfs to combat abilities
+		defense = -0.5
+		breakthrough = -0.25
+		soft_attack = -0.25
+		hard_attack = -0.25
+    
+		
+		essential = {
+			infantry_equipment
+			support_equipment
+		}
+    
+		need = {
+			infantry_equipment = 24
+			support_equipment = 40 #Needs a lot of equipment for Commando Tasks
+		}
+		
+		forest = {  #Difficult Terrain Specialists. Have a basis of 5% on all types and gain various bonuses from different special forces doctrines
+			attack = 0.05
+			defence = 0.05
+			movement = 0
+		}
+		plains = { #No Plain bonuses
+			attack = 0
+			defence = 0
+			movement = 0
+		}
+		atoll = {
+			attack = 0.05
+			defence = 0.05
+			movement = 0
+		}
+		hills = {
+			attack = 0.05
+			defence = 0.05
+			movement = 0
+		}
+		jungle = {
+			attack = 0.05
+			defence = 0.05
+			movement = 0
+		}
+		desert_hills = {
+			attack = 0.05
+			defence = 0.05
+			movement = 0
+		}
+        mountain = {
+			attack = 0.05
+			defence = 0.05
+			movement = 0
+		}
+		marsh = {
+			attack = 0.05
+			defence = 0.05
+			movement = 0
+		}
+		urban = {
+			attack = 0.05
+			defence = 0.05
+			movement = 0
+		}
+		rocky_island = {
+			attack = 0.05
+			defence = 0.05
+			movement = 0
+		}
+		jungle_hills = {
+			attack = 0.05
+			defence = 0.05
+			movement = 0
+		}
+		desert_mountain = {
+			attack = 0.05
+			defence = 0.05
+			movement = 0
+		}
+		light_jungle = {
+			attack = 0.05
+			defence = 0.05
+			movement = 0
+		}
+		mountainous_jungle = {
+			attack = 0.05
+			defence = 0.05
+			movement = 0
+		}
+		desert = {
+			attack = 0.05
+			defence = 0.05
+			movement = 0
+		}
+		river = {
+			attack = 0.05
+			defence = 0.05
+			movement = 0
+		}
+		fort = {
+			attack = 0.05
+			defence = 0.05
+		}
+		amphibious = {
+			attack = 0.05
+			defence = 0.05
+			movement = 0
+		}
+	}
 }
