@@ -6,15 +6,12 @@ technologies = {
 		doctrine_name = "TITLE_SPECIAL_FORCES"
 		
 		on_research_complete = {
-			add_timed_idea = { idea = recent_special_forces_doctrine_idea days = 90 }
+			add_timed_idea = { idea = recent_land_doctrine_idea days = 90 }
 		}
 		
 		# EFFECT ########
-		category_mountaineers = {
+		mountaineers = {
 			supply_consumption = -0.02
-			max_organisation = 5
-			soft_attack = 0.05
-			hard_attack = 0.05
 		}
 		enable_subunits = {
 			mountaineers
@@ -83,7 +80,7 @@ technologies = {
 	ski_troops = {
 		
 		on_research_complete = {
-			add_timed_idea = { idea = recent_special_forces_doctrine_idea days = 90 }
+			add_timed_idea = { idea = recent_land_doctrine_idea days = 90 }
 		}
 		
 		xp_research_type = army
@@ -96,16 +93,17 @@ technologies = {
 			research_cost_coeff = 1
 		}
 
-		xor = { rangers }
+		#xor = { rangers }
 		
-		#rangers_support = {
-		#	acclimatization_cold_climate_gain_factor = 0.25
-		#	snow = {
-		#		attack = 0.15
-		#		defence = 0.20
-		#		movement = 0.15
-		#	}
-		#}
+		mountaineers = {
+			acclimatization_cold_climate_gain_factor = 0.5
+			snow = {
+				attack = 0.30
+				defence = 0.05
+				movement = 0.25
+			}
+			
+		}
 		
 		doctrine = yes	
 		research_cost = 4.5
@@ -133,7 +131,7 @@ technologies = {
 	rangers = {
 		
 		on_research_complete = {
-			add_timed_idea = { idea = recent_special_forces_doctrine_idea days = 90 }
+			add_timed_idea = { idea = recent_land_doctrine_idea days = 90 }
 		}
 		
 		xp_research_type = army
@@ -146,15 +144,46 @@ technologies = {
 			research_cost_coeff = 1
 		}
 
-		xor = { ski_troops }
+		#xor = { ski_troops }
 		
-		#rangers_support = {
-		#	mountain = {
-		#		attack = 0.20
-		#		defence = 0.10
-		#		movement = 0.10
-		#	}
-		#}
+		mountaineers = {
+			acclimatization_hot_climate_gain_factor = 0.5
+			desert_mountain = {
+				attack = 0.05
+				defence = 0.05
+				movement = 0.025
+			}
+			desert_hills = {
+				attack = 0.05
+				defence = 0.05
+				movement = 0.025
+			}
+			desert = {
+				attack = 0.1
+				defence = 0.1
+				movement = 0.05
+			}
+			mountainous_jungle = {
+				attack = 0.05
+				defence = 0.05
+				movement = 0.025
+			}
+			jungle_hills = {
+				attack = 0.05
+				defence = 0.05
+				movement = 0.025
+			}
+			light_jungle = {
+				attack = 0.05
+				defence = 0.05
+				movement = 0.025
+			}
+			jungle = {
+				attack = 0.1
+				defence = 0.1
+				movement = 0.025
+			}
+		}
 		
 		doctrine = yes	
 		research_cost = 4.5
@@ -182,17 +211,41 @@ technologies = {
 	special_forces_recon = {
 		
 		on_research_complete = {
-			add_timed_idea = { idea = recent_special_forces_doctrine_idea days = 90 }
+			add_timed_idea = { idea = recent_land_doctrine_idea days = 90 }
 		}
 		
 		xp_research_type = army
 		xp_unlock_cost = 60
 		
-		category_mountaineers = {
-			initiative = 0.01
+		recon = {	
+			battalion_mult = {
+				category = category_mountaineers
+				recon = 0.1
+				add = yes
+			}
 		}
-		unit_mountaineers_design_cost_factor = -0.50
-		#unit_rangers_support_design_cost_factor = -0.50
+		
+		mot_recon = {	
+			battalion_mult = {
+				category = category_mountaineers
+				recon = 0.1
+				add = yes
+			}
+		}
+		
+		armored_car_recon = {	
+			battalion_mult = {
+				category = category_mountaineers
+				recon = 0.1
+				add = yes
+			}
+		}
+		
+		category_mountaineers = {
+			soft_attack = 0.05
+			hard_attack = 0.05
+			defense = 0.05
+		}
 		
 		force_use_small_tech_layout = yes
 		
@@ -232,7 +285,7 @@ technologies = {
 	mountaineers_combat_1 = {
 		
 		on_research_complete = {
-			add_timed_idea = { idea = recent_special_forces_doctrine_idea days = 90 }
+			add_timed_idea = { idea = recent_land_doctrine_idea days = 90 }
 		}
 		
 		xp_research_type = army
@@ -240,11 +293,8 @@ technologies = {
 		
 		force_use_small_tech_layout = yes
 		
-		category_mountaineers = {
-			defense = 0.10
-		}
 		mountaineers = {
-			combat_width = -0.2
+			max_organisation = 15
 		}
 		
 		path = {
@@ -280,7 +330,7 @@ technologies = {
 	mountaineers_combat_2 = {
 		
 		on_research_complete = {
-			add_timed_idea = { idea = recent_special_forces_doctrine_idea days = 90 }
+			add_timed_idea = { idea = recent_land_doctrine_idea days = 90 }
 		}
 		
 		xp_research_type = army
@@ -293,19 +343,9 @@ technologies = {
 			research_cost_coeff = 1
 		}
 		
-		category_all_artillery = {
-			battalion_mult = {
-				category = category_mountaineers
-				breakthrough = 0.15
-			}
+		mountaineers = {
+			breakthrough = 0.25
 		}
-		
-		#rangers_support = {
-		#	battalion_mult = {
-		#		category = category_all_artillery
-		#		soft_attack = 0.20
-		#	}
-		#}
 		
 		xor = { mountaineers_combat_1 }
 		
@@ -335,17 +375,23 @@ technologies = {
 	mountaineers_combat_3 = {
 		
 		on_research_complete = {
-			add_timed_idea = { idea = recent_special_forces_doctrine_idea days = 90 }
+			add_timed_idea = { idea = recent_land_doctrine_idea days = 90 }
 		}
 		
 		xp_research_type = army
 		xp_unlock_cost = 60
 		
+		force_use_small_tech_layout = yes
+		
 		category_mountaineers = {
-			max_organisation = 10
+			max_organisation = 5
+			defense = 0.05
+			acclimatization_hot_climate_gain_factor = 0.5
+			acclimatization_cold_climate_gain_factor = 0.5
 		}
 		
-		force_use_small_tech_layout = yes
+		special_forces_no_supply_grace = 48
+		special_forces_out_of_supply_factor = -0.2
 		
 		path = {
 			leads_to_tech = mountaineers_keystone_1
@@ -383,7 +429,7 @@ technologies = {
 	mountaineers_keystone_1 = {
 		
 		on_research_complete = {
-			add_timed_idea = { idea = recent_special_forces_doctrine_idea days = 90 }
+			add_timed_idea = { idea = recent_land_doctrine_idea days = 90 }
 		}
 		
 		xp_research_type = army
@@ -392,10 +438,11 @@ technologies = {
 		force_use_small_tech_layout = yes
 		
 		category_mountaineers = {
-			soft_attack = 0.10
+			soft_attack = 0.05
+			hard_attack = 0.05
 		}
 		
-		mountaineers_special_forces_contribution_factor = -0.25
+		mountaineers_special_forces_contribution_factor = -2
 		special_forces_training_time_factor = -0.20
 		
 		xor = { mountaineers_keystone_2 }
@@ -426,17 +473,19 @@ technologies = {
 	mountaineers_keystone_2 = {
 		
 		on_research_complete = {
-			add_timed_idea = { idea = recent_special_forces_doctrine_idea days = 90 }
+			add_timed_idea = { idea = recent_land_doctrine_idea days = 90 }
 		}
 		
 		xp_research_type = army
 		xp_unlock_cost = 60
 		
 		special_forces_cap = 0.20
-		special_forces_out_of_supply_factor = -0.1
-		special_forces_attack_factor = 0.10
-		acclimatization_hot_climate_gain_factor = 0.10
-		acclimatization_cold_climate_gain_factor = 0.10
+		special_forces_attack_factor = 0.05
+		special_forces_training_time_factor = 0.2
+		category_mountaineers = {
+		acclimatization_hot_climate_gain_factor = 0.5
+		acclimatization_cold_climate_gain_factor = 0.5
+		}
 		
 		force_use_small_tech_layout = yes
 
@@ -471,7 +520,7 @@ technologies = {
 		doctrine_name = "MARINES_DOCTRINE"
 		
 		on_research_complete = {
-			add_timed_idea = { idea = recent_special_forces_doctrine_idea days = 90 }
+			add_timed_idea = { idea = recent_naval_doctrine_idea days = 90 }
 		}
 		
 		xp_research_type = navy
@@ -502,12 +551,7 @@ technologies = {
 			research_cost_coeff = 1
 		}
 		
-		marines_special_forces_contribution_factor = -0.25
-		naval_invasion_capacity = 5
-		category_special_forces = {
-			max_organisation = 5
-			soft_attack = 0.05
-		}
+		naval_invasion_capacity = 1
 		
 		enable_subunits = {
 			marine
@@ -549,23 +593,41 @@ technologies = {
 	marines_jungle_troops = {
 		
 		on_research_complete = {
-			add_timed_idea = { idea = recent_special_forces_doctrine_idea days = 90 }
+			add_timed_idea = { idea = recent_naval_doctrine_idea days = 90 }
 		}
 		
 		xp_research_type = navy
 		xp_unlock_cost = 60
 		
-		xor = { marines_shore_parties }
+		#xor = { marines_shore_parties }
 		
 		force_use_small_tech_layout = yes
 		
-		#pioneer_support = {
-		#	jungle = {
-		#		attack = 0.15
-		#		defence = 0.10
-		#		movement = 0.10
-		#	}
-		#}
+		category_marines = {
+			acclimatization_hot_climate_gain_factor = 0.5
+		}
+		marine = {
+			jungle = {
+				attack = 0.2
+				defence = 0.10
+				movement = 0.05
+			}
+			mountainous_jungle = {
+				attack = 0.1
+				defence = 0.05
+				movement = 0.025
+			}
+			jungle_hills = {
+				attack = 0.1
+				defence = 0.05
+				movement = 0.025
+			}
+			light_jungle = {
+				attack = 0.1
+				defence = 0.05
+				movement = 0.025
+			}
+		}
 		
 		path = {
 			leads_to_tech = marines_recon 
@@ -599,28 +661,37 @@ technologies = {
 	marines_shore_parties = {
 		
 		on_research_complete = {
-			add_timed_idea = { idea = recent_special_forces_doctrine_idea days = 90 }
+			add_timed_idea = { idea = recent_naval_doctrine_idea days = 90 }
 		}
 		
 		xp_research_type = navy
 		xp_unlock_cost = 60
 		
-		xor = { marines_jungle_troops }
+		#xor = { marines_jungle_troops }
 		
 		force_use_small_tech_layout = yes
+		
+		category_marines = {
+			acclimatization_cold_climate_gain_factor = 0.5
+		}
+		
+		marine = {
+			rocky_island = {
+				attack = 0.25
+				defence = 0.15
+				movement = 0.05
+			}
+			atoll = {
+				attack = 0.25
+				defence = 0.15
+				movement = 0.05
+			}
+		}
 		
 		path = {
 			leads_to_tech = marines_recon 
 			research_cost_coeff = 1
 		}
-		
-		#pioneer_support = {
-		#	amphibious = {
-		#		attack = 0.25
-		#		defence = 0.15
-		#		movement = 0.20
-		#	}
-		#}
 		
 		doctrine = yes	
 		research_cost = 2.25
@@ -649,7 +720,7 @@ technologies = {
 	marines_recon = {
 		
 		on_research_complete = {
-			add_timed_idea = { idea = recent_special_forces_doctrine_idea days = 90 }
+			add_timed_idea = { idea = recent_naval_doctrine_idea days = 90 }
 		}
 		
 		xp_research_type = navy
@@ -667,10 +738,13 @@ technologies = {
 			research_cost_coeff = 1
 		}
 		
-		unit_marine_design_cost_factor = -0.50
 
-		marine = {
+		category_marines = {
 			max_organisation = 5
+			soft_attack = 0.05
+			hard_attack = 0.05
+			acclimatization_hot_climate_gain_factor = 0.5
+			acclimatization_cold_climate_gain_factor = 0.5
 		}
 			
 		doctrine = yes	
@@ -697,10 +771,10 @@ technologies = {
 		}
 	}
 	
-	marines_commandoes = {
+	marines_commandoes = { #Currently without effect. Spy missions planned on spy rework
 		
 		on_research_complete = {
-			add_timed_idea = { idea = recent_special_forces_doctrine_idea days = 90 }
+			add_timed_idea = { idea = recent_naval_doctrine_idea days = 90 }
 		}
 		
 		xp_research_type = navy
@@ -714,17 +788,8 @@ technologies = {
 		}
 		
 		xor = { marines_expeditionary }
-		
-		enable_subunits = {
-			marine_commando
-		}
-		
-		on_research_complete = {
-			custom_effect_tooltip = SF_MARINES_exfiltration_effect_tt
-		}
-		
-		acclimatization_cold_climate_gain_factor = 0.1
-		acclimatization_hot_climate_gain_factor = 0.1
+
+		#NO EFFECT
 			
 		doctrine = yes	
 		research_cost = 2.25
@@ -753,7 +818,7 @@ technologies = {
 	marines_expeditionary = {
 		
 		on_research_complete = {
-			add_timed_idea = { idea = recent_special_forces_doctrine_idea days = 90 }
+			add_timed_idea = { idea = recent_naval_doctrine_idea days = 90 }
 		}
 		
 		xp_research_type = navy
@@ -762,16 +827,16 @@ technologies = {
 		force_use_small_tech_layout = yes
 
 		path = {
-			leads_to_tech = marines_expeditionary_blowtorch 
+			leads_to_tech = marines_expeditionary_support 
 			research_cost_coeff = 1
 		}
 		
 		xor = { marines_commandoes }
-
-		special_forces_cap = 0.10
-		naval_invasion_planning_bonus_speed = 0.2
 		
-		army_bonus_air_superiority_factor = 0.10
+		category_marines = {
+			default_morale = 0.05
+			breakthrough = 0.2
+		}
 		
 		doctrine = yes	
 		research_cost = 2.25
@@ -800,7 +865,7 @@ technologies = {
 	marines_commandos_demolition = {
 		
 		on_research_complete = {
-			add_timed_idea = { idea = recent_special_forces_doctrine_idea days = 90 }
+			add_timed_idea = { idea = recent_naval_doctrine_idea days = 90 }
 		}
 		
 		xp_research_type = navy
@@ -809,19 +874,11 @@ technologies = {
 		force_use_small_tech_layout = yes
 
 		path = {
-			leads_to_tech = marines_commandoes_mechanised 
+			leads_to_tech = marines_expeditionary_blowtorch 
 			research_cost_coeff = 1
 		}
 		
-		path = {
-			leads_to_tech = marines_commandoes_mechanised_non_mtg
-			research_cost_coeff = 1
-		}
-		
-		#Ultra: commented out for now to add back later
-		#marine_commando = {
-		#	breakthrough = 0.15
-		#}
+		#NO EFFECT
 		
 		doctrine = yes	
 		research_cost = 2.25
@@ -830,10 +887,6 @@ technologies = {
 			special_forces_doctrine
 			marine_tech
 			cat_marines_doctrine
-		}
-		
-		on_research_complete = {
-			custom_effect_tooltip = SF_marine_demoliton_effect_TT
 		}
 		
 		folder = {
@@ -850,10 +903,10 @@ technologies = {
 		}
 	}
 	
-	marines_expeditionary_blowtorch = {
+	marines_expeditionary_support = {
 		
 		on_research_complete = {
-			add_timed_idea = { idea = recent_special_forces_doctrine_idea days = 90 }
+			add_timed_idea = { idea = recent_naval_doctrine_idea days = 90 }
 		}
 		
 		xp_research_type = navy
@@ -861,24 +914,26 @@ technologies = {
 		
 		force_use_small_tech_layout = yes
 		
+		category_marines = {
+			acclimatization_hot_climate_gain_factor = 0.5
+			acclimatization_cold_climate_gain_factor = 0.5
+		}
+		
+		special_forces_no_supply_grace = 48
+		special_forces_out_of_supply_factor = -0.2
+		
+		naval_invasion_capacity = 1
 		
 		path = {
-			leads_to_tech = marines_expeditionary_support 
+			leads_to_tech = marines_commandoes_mechanised 
 			research_cost_coeff = 1
 		}
-
 		
-		#pioneer_support = {
-		#	battalion_mult = {
-		#		category = category_all_artillery
-		#		max_organisation = 2
-		#		add = yes
-		#	}
-		#}
+		path = {
+			leads_to_tech = marines_commandoes_mechanised_non_mtg
+			research_cost_coeff = 1
+		}
 		
-		shore_bombardment_bonus = 0.15
-		special_forces_attack_factor = 0.10
-			
 		doctrine = yes	
 		research_cost = 2.25
 		
@@ -903,10 +958,49 @@ technologies = {
 		}
 	}
 	
+	marines_expeditionary_blowtorch = {
+		
+		on_research_complete = {
+			add_timed_idea = { idea = recent_naval_doctrine_idea days = 90 }
+		}
+		
+		xp_research_type = navy
+		xp_unlock_cost = 60
+		
+		force_use_small_tech_layout = yes
+
+		#MISSING SPY OPERATION EFFECT
+		mountaineers_special_forces_contribution_factor = -2
+		special_forces_training_time_factor = -0.20
+			
+		doctrine = yes	
+		research_cost = 2.25
+		
+		categories = {
+			special_forces_doctrine
+			marine_tech
+			cat_marines_doctrine
+		}
+
+		
+		folder = {
+			name = special_forces_doctrine_folder
+			position = { x = -1 y = 10 }
+		}
+		
+		ai_will_do = {
+			factor = 20
+		}
+		
+		ai_research_weights = {
+			#artillery = 4.0
+		}
+	}
+	
 	marines_commandoes_mechanised = {
 		
 		on_research_complete = {
-			add_timed_idea = { idea = recent_special_forces_doctrine_idea days = 90 }
+			add_timed_idea = { idea = recent_naval_doctrine_idea days = 90 }
 		}
 		
 		xp_research_type = navy
@@ -916,18 +1010,13 @@ technologies = {
 		allow_branch = { has_dlc = "Man the Guns" }
 		
 		amphibious_mechanized = {
-			 soft_attack = 0.1
-			 breakthrough = 0.1
+			 defense = 0.1
 			 max_organisation = 5
 		}
 		
-		#pioneer_support = {
-		#	battalion_mult = {
-		#		category = category_amphibious_tanks
-		#		armor = 0.15
-		#		breakthrough = 0.15
-		#	}
-		#}
+		special_forces_cap = 0.20
+		special_forces_attack_factor = 0.05
+		special_forces_training_time_factor = 0.2
 		
 		
 		on_research_complete = {
@@ -946,7 +1035,7 @@ technologies = {
 		
 		folder = {
 			name = special_forces_doctrine_folder
-			position = { x = -1 y = 10 }
+			position = { x = 1 y = 10 }
 		}
 		
 		ai_will_do = {
@@ -961,7 +1050,7 @@ technologies = {
 	marines_commandoes_mechanised_non_mtg = {
 		
 		on_research_complete = {
-			add_timed_idea = { idea = recent_special_forces_doctrine_idea days = 90 }
+			add_timed_idea = { idea = recent_naval_doctrine_idea days = 90 }
 		}
 		
 		xp_research_type = navy
@@ -972,51 +1061,6 @@ technologies = {
 		
 		special_forces_attack_factor = 0.15
 		
-		doctrine = yes	
-		research_cost = 2.25
-		
-		categories = {
-			special_forces_doctrine
-			marine_tech
-			cat_marines_doctrine
-		}
-
-		
-		folder = {
-			name = special_forces_doctrine_folder
-			position = { x = -1 y = 10 }
-		}
-		
-		ai_will_do = {
-			factor = 20
-		}
-		
-		ai_research_weights = {
-			#artillery = 4.0
-		}
-	}
-	
-	marines_expeditionary_support = {
-		
-		on_research_complete = {
-			add_timed_idea = { idea = recent_special_forces_doctrine_idea days = 90 }
-		}
-		
-		xp_research_type = navy
-		xp_unlock_cost = 60
-		
-		force_use_small_tech_layout = yes
-		
-		category_all_artillery = {
-			 battalion_mult = {
-				category = category_marines
-				defense = 0.05
-			}
-		}
-
-		extra_marine_supply_grace = 24
-		naval_invasion_capacity = 10
-			
 		doctrine = yes	
 		research_cost = 2.25
 		
@@ -1047,7 +1091,7 @@ technologies = {
 		doctrine_name = "PARATROOPERS_DOCTRINE"
 
 		on_research_complete = {
-			add_timed_idea = { idea = recent_special_forces_doctrine_idea days = 90 }
+			add_timed_idea = { idea = recent_air_doctrine_idea days = 90 }
 		}
 		
 		xp_research_type = air
@@ -1127,7 +1171,7 @@ technologies = {
 	paras_dispersed_drop = {
 
 		on_research_complete = {
-			add_timed_idea = { idea = recent_special_forces_doctrine_idea days = 90 }
+			add_timed_idea = { idea = recent_air_doctrine_idea days = 90 }
 		}
 		
 		xp_research_type = air
@@ -1174,7 +1218,7 @@ technologies = {
 	paras_airborne_light_armor = {
 		
 		on_research_complete = {
-			add_timed_idea = { idea = recent_special_forces_doctrine_idea days = 90 }
+			add_timed_idea = { idea = recent_air_doctrine_idea days = 90 }
 		}
 		
 		xp_research_type = air
@@ -1226,7 +1270,7 @@ technologies = {
 	paras_combat_1 = {
 		
 		on_research_complete = {
-			add_timed_idea = { idea = recent_special_forces_doctrine_idea days = 90 }
+			add_timed_idea = { idea = recent_air_doctrine_idea days = 90 }
 		}
 		
 		xp_research_type = air
@@ -1275,7 +1319,7 @@ technologies = {
 	paras_combat_2 = {
 		
 		on_research_complete = {
-			add_timed_idea = { idea = recent_special_forces_doctrine_idea days = 90 }
+			add_timed_idea = { idea = recent_air_doctrine_idea days = 90 }
 		}
 		
 		xp_research_type = air
@@ -1324,7 +1368,7 @@ technologies = {
 	paras_bonus_1 = {
 		
 		on_research_complete = {
-			add_timed_idea = { idea = recent_special_forces_doctrine_idea days = 90 }
+			add_timed_idea = { idea = recent_air_doctrine_idea days = 90 }
 		}
 		
 		xp_research_type = air
@@ -1372,7 +1416,7 @@ technologies = {
 	paras_bonus_2 = {
 		
 		on_research_complete = {
-			add_timed_idea = { idea = recent_special_forces_doctrine_idea days = 90 }
+			add_timed_idea = { idea = recent_air_doctrine_idea days = 90 }
 		}
 		
 		xp_research_type = air
@@ -1415,7 +1459,7 @@ technologies = {
 	paras_keystone_1 = {
 		
 		on_research_complete = {
-			add_timed_idea = { idea = recent_special_forces_doctrine_idea days = 90 }
+			add_timed_idea = { idea = recent_air_doctrine_idea days = 90 }
 		}
 		
 		xp_research_type = air
@@ -1462,7 +1506,7 @@ technologies = {
 	paras_keystone_2 = {
 		
 		on_research_complete = {
-			add_timed_idea = { idea = recent_special_forces_doctrine_idea days = 90 }
+			add_timed_idea = { idea = recent_air_doctrine_idea days = 90 }
 		}
 		
 		xp_research_type = air
@@ -1506,7 +1550,7 @@ technologies = {
 	paras_combat_drop = {
 		
 		on_research_complete = {
-			add_timed_idea = { idea = recent_special_forces_doctrine_idea days = 90 }
+			add_timed_idea = { idea = recent_air_doctrine_idea days = 90 }
 		}
 		
 		xp_research_type = air
