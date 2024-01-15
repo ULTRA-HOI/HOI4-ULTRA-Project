@@ -2003,91 +2003,6 @@ political_actions = {
 			add_manpower = -5000
 		}
 	}
-
-	GER_lessons_of_polish_campaign = {
-		icon = generic_operation
-		
-		allowed = {
-			original_tag = GER
-		}
-
-		visible = {
-			has_completed_focus = GER_danzig_or_war
-		}
-
-		available = {
-			has_tech = elastic_defence
-			OR = {
-				POL = {has_capitulated = yes}
-				POL = { exists = no }
-			}
-			controls_state = 10 #Warsawa
-			has_army_experience > 100
-		}
-
-		fire_only_once = yes
-		ai_will_do = {
-			factor = 100
-		}
-
-		cost = 20
-
-		days_remove = 120
-
-		modifier = {
-			army_attack_factor = -0.33
-			experience_gain_army_factor = -0.8
-			land_doctrine_cost_factor = 0.75
-		}
-
-		complete_effect = {
-			army_experience = -100
-			set_country_flag = GER_lessons_of_polish_campaign_flag
-		}
-
-		remove_effect = {
-			if = {
-				limit = {
-					NOT = {
-						has_tech = flak_88
-					}
-				}
-				set_technology = {
-					flak_88 = 1
-				}		
-			}
-			if = {
-				limit = {
-					NOT = {
-						has_tech = motorized_substitutes
-					}
-				}
-				set_technology = {
-					motorized_substitutes = 1
-				}
-			}
-			if = {
-				limit = {
-					NOT = {
-						has_tech = armored_spearhead
-					}
-				}
-				set_technology = {
-					armored_spearhead = 1
-				}
-			}
-			if = {
-				limit = {
-					NOT = {
-						has_tech = schwerpunk
-					}
-				}
-				set_technology = {
-					schwerpunk = 1
-				}
-			}
-		}
-	}
 	
 	GER_purge_abwehr = {
 		icon = generic_political_discourse
@@ -4539,6 +4454,92 @@ GER_military_buildup = {
 			}
 		}
 		
+	}
+
+	GER_lessons_of_polish_campaign = {
+		icon = generic_operation
+		
+		allowed = {
+			original_tag = GER
+		}
+
+		visible = {
+			original_tag = GER
+		}
+
+		available = {
+			has_completed_focus = GER_danzig_or_war 
+			has_tech = elastic_defence
+			OR = {
+				POL = {has_capitulated = yes}
+				POL = { exists = no }
+			}
+			controls_state = 10 #Warsawa
+			has_army_experience > 100
+		}
+
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 100
+		}
+
+		cost = 20
+
+		days_remove = 120
+
+		modifier = {
+			army_attack_factor = -0.33
+			experience_gain_army_factor = -0.8
+			land_doctrine_cost_factor = 0.75
+		}
+
+		complete_effect = {
+			army_experience = -100
+			set_country_flag = GER_lessons_of_polish_campaign_flag
+		}
+
+		remove_effect = {
+			if = {
+				limit = {
+					NOT = {
+						has_tech = flak_88
+					}
+				}
+				set_technology = {
+					flak_88 = 1
+				}		
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_tech = motorized_substitutes
+					}
+				}
+				set_technology = {
+					motorized_substitutes = 1
+				}
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_tech = armored_spearhead
+					}
+				}
+				set_technology = {
+					armored_spearhead = 1
+				}
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_tech = schwerpunk
+					}
+				}
+				set_technology = {
+					schwerpunk = 1
+				}
+			}
+		}
 	}
 }
 
