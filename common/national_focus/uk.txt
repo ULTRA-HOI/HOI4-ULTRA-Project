@@ -789,12 +789,39 @@ focus_tree = {
 	}
 	
 	
-	
+	focus = {
+		id = ENG_british_commandos
+		prerequisite = { focus = uk_extra_tech_slot }
+		allow_branch = {
+			has_dlc = "Arms Against Tyranny"
+		}
+		continue_if_invalid = yes
+
+		icon = GFX_goal_generic_special_forces
+		x = 0
+		y = 1
+		relative_position_id = uk_extra_tech_slot
+		cost = 5
+
+		available = {
+			GER = {
+				controls_state = 16
+			}
+		}
+
+		ai_will_do = {
+			factor = 1
+		}	
+		completion_reward = {
+			set_technology = { elite_forces = 1 popup = no }
+			add_ideas = ENG_british_commandos_idea
+		}
+	}
 	
 
 	focus = {
 		id = ENG_special_air_service
-		prerequisite = { focus = uk_extra_tech_slot }
+		prerequisite = { focus = ENG_british_commandos }
 		available = { 
 			
 		}
@@ -804,7 +831,7 @@ focus_tree = {
 		icon = GFX_focus_eng_special_air_service
 		x = 0
 		y = 1
-		relative_position_id = uk_extra_tech_slot
+		relative_position_id = ENG_british_commandos
 		cost = 5
 		ai_will_do = {
 			factor = 1
@@ -816,7 +843,6 @@ focus_tree = {
 				uses = 1
 				category = para_tech
 			}
-			add_ideas = ENG_special_air_service_idea
 			custom_effect_tooltip = available_political_advisor
 			show_ideas_tooltip = ENG_david_stirling
 			
@@ -825,26 +851,6 @@ focus_tree = {
 				uses = 1
 				technology = infantry_guns_smg
 			}
-		}
-	}
-	
-	focus = {
-		id = ENG_parachute_regiments
-		prerequisite = { focus = ENG_special_air_service }
-		allow_branch = {
-			has_dlc = "Arms Against Tyranny"
-		}
-		continue_if_invalid = yes
-
-		icon = GFX_focus_generic_paratrooper
-		x = 0
-		y = 1
-		relative_position_id = ENG_special_air_service
-		cost = 5
-		ai_will_do = {
-			factor = 1
-		}	
-		completion_reward = {
 			add_potential_special_forces_tree = yes
 			add_doctrine_cost_reduction = {
 				name = ENG_parachute_regiments
