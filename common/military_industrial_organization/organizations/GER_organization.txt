@@ -618,3 +618,23 @@ GER_opel_organization = {
 		}	
 	}
 }
+
+GER_walther_organisation = {
+	include = generic_support_equipment_organization
+	name = Walther
+	icon = GFX_idea_walther
+	
+	allowed = {	
+				tag = GER 
+	}
+
+	available = {
+		# When in a Foreign MIO, countries need to be at peace with original country
+		IF = {
+			limit = {
+				FROM = { NOT = { original_tag = GER } }
+			}
+			FROM = { NOT = { has_war_with = GER } }
+		}
+	}
+}
