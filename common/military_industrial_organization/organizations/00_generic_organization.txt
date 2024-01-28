@@ -1676,7 +1676,7 @@ generic_tank_refurbishment_plant_organization = {
 ###
 
 #BATTLEFLEET CAPITAL MANUFACTURER #UK USA JAP FRA #Battleships have battle focus traits. Carriers based on large carrier operations
-generic_battle_line_ship_organization = {
+generic_battle_fleet_ship_organization = {
 	icon = GFX_idea_generic_naval_manufacturer_1
 
 	allowed = {
@@ -2017,8 +2017,8 @@ generic_battle_line_ship_organization = {
 }
 
 #CAPITAL RAIDERS MANUFACTURER #GER ITA SOV #Battleships focus on hit and run. Carriers more in a supporting role
-generic_raider_ship_organization = {
-	include = generic_battle_line_ship_organization
+generic_capital_raider_ship_organization = {
+	include = generic_battle_fleet_ship_organization
 	icon = GFX_idea_generic_naval_manufacturer_3
 	
 	allowed = {
@@ -2085,7 +2085,7 @@ generic_raider_ship_organization = {
 
 #TASK FORCE MANUFACTURER #Focuses on escort cruisers and light carriers
 generic_task_force_ship_organization = {
-	include = generic_battle_line_ship_organization
+	include = generic_battle_fleet_ship_organization
 	icon = GFX_idea_generic_naval_manufacturer_2
 	
 	allowed = {
@@ -2709,7 +2709,7 @@ generic_torpedo_ship_organization = {
 ###
 
 #SUBMARINE MANUFACTURER
-generic_submarine_organization = {
+generic_submarine_ship_organization = {
 	icon = GFX_idea_generic_naval_manufacturer_1
 
 	allowed = {
@@ -2958,7 +2958,7 @@ generic_submarine_organization = {
 ###
 
 #SHIP DESIGN BUREAU #No bonuses on production or equipment. Sole purpose is researching
-generic_refurbishment_repair_organization = {
+generic_research_ship_organization = {
 	icon = GFX_idea_generic_naval_manufacturer_1
 
 	allowed = {
@@ -3192,12 +3192,19 @@ generic_refurbishment_repair_organization = {
 ###
 
 #MINOR MANUFACTURER #Allows for Cruisers, Destroyers, Submarine and Transports. No Capitals or Floating Harbors
-generic_black_sea_fleet_organization = {
+generic_minor_ship_organization = {
 	include = generic_task_force_ship_organization
 	icon = GFX_idea_generic_naval_manufacturer_2
 
 	allowed = { # Generic MIO for all minors. Majors should not have access
-		NOT = { OR = { tag = GER tag = ENG tag = SOV tag = FRA tag = ITA tag = JAP tag = USA tag = CAN} }
+		NOT = { 
+			OR = { 
+				tag = GER tag = ENG tag = SOV tag = FRA tag = ITA tag = JAP tag = USA tag = CAN
+				
+				#Also add minors that have uniquely named MIOs
+				tag = AST tag = BEL tag = BUL tag = CHI tag = CZE tag = DEN tag = EST tag = FIN tag = GRE tag = HOL tag = HUN tag = LAT tag = MEX tag = NOR tag = NZL tag = POL tag = POR tag = RAJ tag = ROM tag = SPR tag = SWE tag = SWI tag = TUR tag = YUG
+			} 
+		}
 	}
 
 	equipment_type = {
@@ -3209,6 +3216,8 @@ generic_black_sea_fleet_organization = {
 	research_categories = {
 		naval_equipment
 	}
+	
+	task_capacity = 3
 	
 	tree_header_text = {
 		text = mio_header_hull_systems

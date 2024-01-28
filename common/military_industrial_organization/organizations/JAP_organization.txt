@@ -30,19 +30,11 @@ JAP_osaka_army_arsenal_organization = {
 
 
 JAP_kure_naval_arsenal_organization = {
-	include = generic_battle_line_ship_organization
+	include = generic_battle_fleet_ship_organization
 	icon = GFX_idea_kure_naval_arsenal
 	allowed = {	
 		tag = JAP
 		has_dlc = "Arms Against Tyranny"
-	}
-	available = {
-		FROM = {
-			OR = {
-				has_completed_focus = JAP_supremacy_of_the_battlefleet
-				has_completed_focus = JAP_ultimate_battleship
-			}
-		}
 	}
 }
 
@@ -56,54 +48,36 @@ JAP_yokosuka_naval_arsenal_organization = {
 }
 
 JAP_maizuru_naval_arsenal_organization = {
-	include = generic_escort_ship_organization
+	include = generic_torpedo_ship_organization
 	icon = GFX_idea_maizuru_naval_arsenal
 	
-	allowed = {	 
-		OR = {
-			tag = JAP 
-			AND = {
-				tag = ETH
-				has_dlc = "By Blood Alone"
-			}
-		}
-	}
-	
-	visible = {
-		IF = {
-			limit = {
-				FROM = { original_tag = ETH }
-			}
-			FROM = { has_completed_focus = ETH_invite_foreign_industrialists }
-		}
-	}
-	
-	available = {
-		# When in a Foreign MIO, countries need to be at peace with original country
-		IF = {
-			limit = {
-				FROM = { NOT = { original_tag = JAP } }
-			}
-			FROM = { NOT = { has_war_with = JAP } }
-		}
-
-		IF = {
-			limit = {
-				FROM = { original_tag = ETH }
-			}
-			custom_trigger_tooltip = {
-				tooltip = has_invited_mio_tt
-				FROM = {
-					has_country_flag = has_invited_JAP_maizuru_naval_arsenal_organization_flag
-				}
-			}
-		}
+	allowed = {	
+		tag = JAP
+		has_dlc = "Arms Against Tyranny"
 	}
 }
 
 JAP_sasebo_naval_arsenal_organization = {
-	include = generic_raider_ship_organization
+	include = generic_escort_ship_organization
 	icon = GFX_idea_sasebo_naval_arsenal
+	allowed = {	 
+		tag = JAP
+		has_dlc = "Arms Against Tyranny"
+	}
+}
+
+JAP_mitsubishi_heavy_industries_organization = {
+	include = generic_research_ship_organization
+	icon = GFX_idea_mitsubishi_heavy_industries
+	allowed = {	 
+		tag = JAP
+		has_dlc = "Arms Against Tyranny"
+	}
+}
+
+JAP_kawasaki_shipbuilding_organization = {
+	include = generic_submarine_ship_organization
+	icon = GFX_idea_kawasaki_shipbuilding_corporation
 	allowed = {	 
 		tag = JAP
 		has_dlc = "Arms Against Tyranny"

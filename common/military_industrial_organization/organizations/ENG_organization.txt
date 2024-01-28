@@ -216,105 +216,34 @@ ENG_vauxhall_organization = {
 
 
 
-ENG_harland_wolff_organization = {
+ENG_vickers-armstrong_shipbuilders_organization = {
 	include = generic_task_force_ship_organization
+	icon = GFX_idea_vickers-armstrong_shipbuilders
+	
+	allowed = {	
+		tag = ENG
+		has_dlc = "Arms Against Tyranny"
+	}
+}
+
+ENG_harland_wolff_organization = {
+	include = generic_battle_fleet_ship_organization
 	icon = GFX_idea_harland_wolff
 	
 	allowed = {	
 		tag = ENG
 		has_dlc = "Arms Against Tyranny"
 	}
-
-	override_trait = {
-		token = generic_mio_trait_underway_replenishment_equipment
-
-		position = { x=1 y=0 }
-		relative_position_id = generic_mio_trait_transom_stern
-	}
-
-	add_trait = { 
-		token = ENG_mio_trait_flared_bow
-		name = ENG_mio_trait_flared_bow
-		icon = GFX_generic_mio_department_icon_ship_general_quality
-		special_trait_background = yes
-
-		position = { x=1 y=0 }
-		relative_position_id = generic_mio_trait_underway_replenishment_equipment
-
-		any_parent = { generic_mio_trait_splinter_protection }
-
-		equipment_bonus = {
-			naval_weather_penalty_factor = -0.1
-		}
-	}
-
-	add_trait = { 
-		token = generic_mio_trait_semi_armor_piercing_shells
-		name = generic_mio_trait_semi_armor_piercing_shells
-		icon = GFX_generic_mio_trait_icon_lg_attack
-		special_trait_background = yes
-
-		any_parent = { generic_mio_trait_secondary_fire_director_control }
-		position = { x=0 y=1 }
-		relative_position_id = generic_mio_trait_secondary_fire_director_control
-
-		equipment_bonus = {
-			lg_attack = 0.05
-			lg_armor_piercing = 0.05
-		}
-	}
 }
 
 
 ENG_cammell_laird_organization = {
-	include = generic_battle_line_ship_organization
+	include = generic_submarine_ship_organization
 	icon = GFX_idea_cammell_laird
 	
 	allowed = {	
 		tag = ENG
 		has_dlc = "Arms Against Tyranny"
-	}
-
-	override_trait = {
-		token = generic_mio_trait_advanced_armor_design
-
-		position = { x=1 y=0 }
-		relative_position_id = generic_mio_trait_advanced_hydrodynamic_design
-	}
-
-	add_trait = { 
-		token = ENG_mio_trait_flared_bow
-		name = ENG_mio_trait_flared_bow
-		icon = GFX_generic_mio_department_icon_ship_general_quality
-		special_trait_background = yes
-
-		position = { x=1 y=0 }
-		relative_position_id = generic_mio_trait_advanced_armor_design
-
-		any_parent = { generic_mio_trait_hardened_critical_components}
-		
-		equipment_bonus = {
-			naval_weather_penalty_factor = -0.1
-		}
-	}
-
-	add_trait = { 
-		token = ENG_mio_trait_super_charges
-		name = ENG_mio_trait_super_charges
-		icon = GFX_generic_mio_department_icon_ship_capital_ship_weapons
-		special_trait_background = yes
-
-		position = { x=0 y=2 }
-		relative_position_id = generic_mio_trait_semi_armor_piercing_shells
-
-		any_parent = { generic_mio_trait_super_heavy_shells generic_mio_trait_semi_armor_piercing_shells generic_mio_trait_high_velocity_guns }
-
-		limit_to_equipment_type = { capital_ship }
-
-		equipment_bonus = {
-			hg_armor_piercing = 0.05
-			lg_armor_piercing = 0.05
-		}
 	}
 }
 
@@ -323,90 +252,38 @@ ENG_yarrow_shipbuilders_organization = {
 	icon = GFX_idea_yarrow_shipbuilders
 	
 	allowed = {	
-		OR = {
-			tag = ENG 
-			AND = {
-				tag = BUL
-				has_dlc = "Battle for the Bosporus"
-			}
-		}
-	}
-	
-	available = {
-		# When in a Foreign MIO, countries need to be at peace with original country
-		IF = {
-			limit = {
-				FROM = { NOT = { original_tag = ENG } }
-			}
-			FROM = { NOT = { has_war_with = ENG } }
-		}
-
-		IF = {
-			limit = { FROM = { original_tag = BUL } }
-			custom_trigger_tooltip = {
-				tooltip = has_invited_mio_tt
-				FROM = {
-					has_country_flag = has_invited_yarrow_mio_flag 
-				}
-			}
-			FROM = {
-				OR = {
-					is_subject = no
-					is_subject_of = ENG
-				}
-				#is_in_faction_with = ENG
-				NOT = { has_completed_focus = BUL_nationalization }
-			}
-		}
+		tag = ENG
+		has_dlc = "Arms Against Tyranny"
 	}
 }
 
 ENG_john_brown_organization = {
-	include = generic_raider_ship_organization
+	include = generic_escort_ship_organization
 	icon = GFX_idea_john_brown_company
 	
 	allowed = {	
-		OR = {
-			tag = ENG
-			AND = {
-				tag = BUL #This one is an additional option for Bulgaria with AAT 
-				has_dlc = "Battle for the Bosporus"
-			}
-
-			AND = {
-				tag = ETH 
-				has_dlc = "By Blood Alone"
-			}
-		}
+		tag = ENG
+		has_dlc = "Arms Against Tyranny"
 	}
+}
 
-	visible = {
-		IF = {
-			limit = { FROM = { original_tag = ETH } }
-			FROM = { has_completed_focus = ETH_invite_foreign_industrialists }
-		}
-	}
+ENG_devonport_organization = {
+	include = generic_research_ship_organization
+	icon = GFX_idea_devonport
 	
-	available = {
-		# When in a Foreign MIO, countries need to be at peace with original country
-		IF = {
-			limit = {
-				FROM = { NOT = { original_tag = ENG } }
-			}
-			FROM = { NOT = { has_war_with = ENG } }
-		}
+	allowed = {	
+		tag = ENG
+		has_dlc = "Arms Against Tyranny"
+	}
+}
 
-		IF = {
-			limit = {
-				FROM = { NOT  = { original_tag = ENG } }
-			}
-			custom_trigger_tooltip = {
-				tooltip = has_invited_mio_tt
-				FROM = {
-					has_country_flag = has_invited_ENG_john_brown_organization_flag
-				}
-			}
-		}
+ENG_fairfield_shipbuilding_organization = {
+	include = generic_battle_fleet_ship_organization
+	icon = GFX_idea_fairfield_shipbuilding
+	
+	allowed = {	
+		tag = ENG
+		has_dlc = "Arms Against Tyranny"
 	}
 }
 
