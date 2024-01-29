@@ -3883,47 +3883,7 @@ focus_tree = {
 			}
 		}
 	}
-	focus = {
-		id = USA_first_special_service_force
-		icon = GFX_goal_generic_special_forces
-		prerequisite = { focus = USA_war_department }
-		x = 0
-		y = 1
-		relative_position_id = USA_war_department
-		cost = 5
-		ai_will_do = {
-			factor = 1
-		}
 
-		available_if_capitulated = yes
-		search_filters = {FOCUS_FILTER_RESEARCH}
-		completion_reward = {
-			army_experience = 25
-			add_tech_bonus = {
-				name = special_bonus
-				bonus = 1.0
-				uses = 1
-				technology = tech_engineers
-				technology = tech_engineers2
-				technology = tech_engineers3
-				technology = tech_recon
-				technology = tech_recon2
-				technology = tech_recon3
-			}
-			add_doctrine_cost_reduction = {
-				name = special_bonus
-				cost_reduction = 0.5
-				uses = 1
-				category = special_forces_doctrine
-			}
-			add_tech_bonus = {
-				name = special_bonus
-				bonus = 2.0
-				uses = 1
-				technology = tech_mountaineers
-			}
-		}
-	}
 	focus = {
 		id = USA_louisiana_maneuvers
 		icon = GFX_goal_generic_cavalry
@@ -3938,7 +3898,9 @@ focus_tree = {
 		}
 
 		available = {
-
+			GER = {
+				controls_state = 16
+			}
 		}
 		
 		bypass = {
@@ -3997,10 +3959,9 @@ focus_tree = {
 		available_if_capitulated = no
 
 		completion_reward = {
-			set_technology = { paratroopers = 1 popup = no }
 			add_tech_bonus = {
 				name = HUN_form_parachute_battalions
-				bonus = 1.5
+				bonus = 2
 				uses = 1
 				category = para_tech
 			}
@@ -4035,6 +3996,56 @@ focus_tree = {
 			}
 		}
 	}
+
+	focus = {
+		id = USA_first_special_service_force
+		icon = GFX_goal_generic_special_forces
+		prerequisite = { focus = USA_airborne_divisions }
+		x = 0
+		y = 1
+		relative_position_id = USA_airborne_divisions
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+
+		available = {
+			UK = {
+				has_completed_focus = ENG_british_commandos
+			}
+		}
+
+		search_filters = {FOCUS_FILTER_RESEARCH}
+		completion_reward = {
+			army_experience = 25
+			add_tech_bonus = {
+				name = special_bonus
+				bonus = 1.0
+				uses = 1
+				technology = tech_engineers2
+				technology = tech_engineers3
+				technology = tech_engineers4
+				technology = tech_recon2
+				technology = tech_recon3
+				technology = tech_recon4
+			}
+			add_doctrine_cost_reduction = {
+				name = special_bonus
+				cost_reduction = 0.5
+				uses = 1
+				category = special_forces_doctrine
+			}
+			add_tech_bonus = {
+				name = special_bonus
+				bonus = 2.0
+				uses = 1
+				technology = elite_forces
+			}
+		}
+	}
+
 	focus = {
 		id = USA_army_of_the_united_states
 		icon = GFX_focus_generic_little_entente
