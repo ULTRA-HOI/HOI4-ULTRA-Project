@@ -362,16 +362,6 @@ ENG_nuffield_organisation = {
 
 
 
-ENG_vickers-armstrong_shipbuilders_organization = {
-	include = generic_task_force_ship_organization
-	icon = GFX_idea_vickers-armstrong_shipbuilders
-	
-	allowed = {	
-		tag = ENG
-		has_dlc = "Arms Against Tyranny"
-	}
-}
-
 ENG_harland_wolff_organization = {
 	include = generic_battle_fleet_ship_organization
 	icon = GFX_idea_harland_wolff
@@ -382,10 +372,19 @@ ENG_harland_wolff_organization = {
 	}
 }
 
+ENG_fairfield_shipbuilding_organization = {
+	include = generic_battle_fleet_ship_organization
+	icon = GFX_idea_fairfield_shipbuilding
+	
+	allowed = {	
+		tag = ENG
+		has_dlc = "Arms Against Tyranny"
+	}
+}
 
-ENG_cammell_laird_organization = {
-	include = generic_submarine_ship_organization
-	icon = GFX_idea_cammell_laird
+ENG_vickers-armstrong_shipbuilders_organization = {
+	include = generic_task_force_ship_organization
+	icon = GFX_idea_vickers-armstrong_shipbuilders
 	
 	allowed = {	
 		tag = ENG
@@ -401,6 +400,84 @@ ENG_yarrow_shipbuilders_organization = {
 		tag = ENG
 		has_dlc = "Arms Against Tyranny"
 	}
+	
+	equipment_type = {
+		mio_cat_eq_all_destroyer
+		mio_cat_eq_all_transport_ship
+	}
+	
+	tree_header_text = {
+		text = mio_header_hull_systems
+		x = 2
+	}
+
+	tree_header_text = {
+		text = mio_header_destroyer_guns
+		x = 6
+	}
+	
+	tree_header_text = {
+		text = mio_header_torpedos
+		x = 8
+	}
+	
+	remove_trait = { generic_mio_trait_enable_light_carriers generic_mio_trait_anti_submarine_carriers generic_mio_trait_submarine_hunters }
+	
+	add_trait = {
+		token = ENG_mio_trait_yarrow_legacy
+		name = ENG_mio_trait_yarrow_legacy
+		icon = GFX_generic_mio_department_icon_ship_screen_ship_production
+		
+		special_trait_background = yes
+		
+		available = {
+			FROM = {
+				has_completed_focus = uk_destroyer_focus
+			}
+			OR = {
+				FROM = {
+					has_war_with = GER
+				}
+				date > 1940.01.01
+			}
+		}
+		
+		position = { x=-2 y=1 }
+		relative_position_id = generic_mio_trait_improved_bulkheads
+
+		any_parent = { generic_mio_trait_improved_bulkheads }
+
+		limit_to_equipment_type = { mio_cat_eq_all_destroyer }
+		
+		equipment_bonus = {
+			naval_speed = 0.01
+		}
+		
+		production_bonus = {
+			production_capacity_factor = 0.05
+		}
+	}
+	
+	add_trait = {
+		token = generic_mio_trait_electric_aa_mounts
+		name = generic_mio_trait_electric_aa_mounts
+		icon = GFX_generic_mio_trait_icon_anti_air_attack
+
+		position = { x=-1 y=2 }
+		relative_position_id = generic_mio_trait_secondary_rangefinders
+		
+		any_parent = { generic_mio_trait_secondary_rangefinders }
+
+		equipment_bonus = {
+			anti_air_attack = 0.05
+		}
+	}
+	
+	override_trait = {
+		token = generic_mio_trait_electric_secondary_turrets
+		
+		position = { x=1 y=2 }
+	}
 }
 
 ENG_john_brown_organization = {
@@ -411,11 +488,48 @@ ENG_john_brown_organization = {
 		tag = ENG
 		has_dlc = "Arms Against Tyranny"
 	}
+	
+	equipment_type = {
+		mio_cat_eq_all_destroyer
+		mio_cat_eq_light_carrier
+	}
+	
+	initial_trait = {
+		name = generic_mio_initial_trait_submarine_hunter_ship_builders
+	}
+	
+	remove_trait = { generic_mio_trait_aa_stablized_mounts }
+	
+	override_trait = {
+		token = generic_mio_trait_enable_light_carriers
+		
+		available = {
+			has_mio_size > 7
+			FROM = {
+				has_war_with = GER
+			}
+			date > 1941.01.01
+		}
+	}
+	override_trait = {
+		token = generic_mio_trait_improved_naval_gun_construction
+		
+		position = { x=6 y=0 }
+	}
+	
+	override_trait = {
+		token = generic_mio_trait_secondary_rangefinders
+		
+		position = { x=0 y=2 }
+		relative_position_id = generic_mio_trait_improved_naval_gun_construction
+		
+		any_parent = { generic_mio_trait_improved_naval_gun_construction}
+	}
 }
 
-ENG_devonport_organization = {
-	include = generic_research_ship_organization
-	icon = GFX_idea_devonport
+ENG_cammell_laird_organization = {
+	include = generic_submarine_ship_organization
+	icon = GFX_idea_cammell_laird
 	
 	allowed = {	
 		tag = ENG
@@ -423,9 +537,9 @@ ENG_devonport_organization = {
 	}
 }
 
-ENG_fairfield_shipbuilding_organization = {
-	include = generic_battle_fleet_ship_organization
-	icon = GFX_idea_fairfield_shipbuilding
+ENG_devonport_organization = {
+	include = generic_research_ship_organization
+	icon = GFX_idea_devonport
 	
 	allowed = {	
 		tag = ENG
