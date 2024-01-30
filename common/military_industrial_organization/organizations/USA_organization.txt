@@ -208,20 +208,348 @@ USA_tank_destroyer_board_organization = {
  
 #####################
 
+USA_newport_news_shipbuilding_organization = {
+	include = generic_battle_fleet_ship_organization
+	icon = GFX_idea_newport_news_shipbuilding
+	allowed = {	
+		tag = USA 
+	}
+	
+	tree_header_text = {
+		text = mio_header_hull_systems
+		x = 1
+	}
+	
+	tree_header_text = {
+		text = mio_header_carrier_systems
+		x = 3
+	}
+
+	tree_header_text = {
+		text = mio_header_secondary_guns
+		x = 6
+	}
+	
+	initial_trait = {
+		name = generic_mio_initial_trait_carrier_ship_builders
+	}
+	
+	remove_trait = { generic_mio_trait_armored_carrier generic_mio_trait_primary_rangefinders generic_mio_trait_electric_primary_turrets }
+	
+	override_trait = {
+		token = generic_mio_trait_deck_parks
+		
+		position = { x=0 y=2 }
+		
+		delete_included_values = { mutually_exclusive }
+	}
+	add_trait = {
+		token = USA_mio_trait_nns_slipways
+		name = USA_mio_trait_nns_slipways
+		icon = GFX_generic_mio_department_icon_ship_carrier_production
+		
+		special_trait_background = yes
+		
+		available = {
+			FROM = {
+				has_completed_focus = USA_two_ocean_navy_act
+				has_war_with = JAP
+			}
+			date > 1941.01.01
+		}
+		
+		position = { x=0 y=1 }
+		relative_position_id = generic_mio_trait_deck_parks
+
+		any_parent = { generic_mio_trait_deck_parks }
+
+		limit_to_equipment_type = { mio_cat_eq_fleet_carrier }
+		
+		production_bonus = {
+			production_capacity_factor = 0.15
+		}
+	}
+}
+
+USA_philadelphia_naval_shipyard_organization = {
+	include = generic_battle_fleet_ship_organization
+	icon = GFX_idea_philadelphia_naval_shipyard
+	allowed = {	
+		tag = USA 
+	}
+	
+	tree_header_text = {
+		text = mio_header_hull_systems
+		x = 1
+	}
+	
+	tree_header_text = {
+		text = mio_header_construction
+		x = 3
+	}
+
+	tree_header_text = {
+		text = mio_header_secondary_guns
+		x = 5.5
+	}
+	
+	tree_header_text = {
+		text = mio_header_primary_guns
+		x = 8
+	}
+	
+	initial_trait = {
+		name = generic_mio_initial_trait_battleship_ship_builders
+	}
+	
+	remove_trait = { generic_mio_trait_foldable_carrier_plane_wings generic_mio_trait_deck_parks generic_mio_trait_armored_carrier }
+	
+	add_trait = {
+		token = USA_mio_trait_league_island
+		name = USA_mio_trait_league_island
+		icon = GFX_generic_mio_department_icon_ship_capital_ship_production
+		
+		special_trait_background = yes
+		
+		position = { x=3 y=1 }
+
+		limit_to_equipment_type = { mio_cat_eq_all_battleship }
+		
+		production_bonus = {
+			production_capacity_factor = 0.10
+		}
+	}
+	
+	add_trait = {
+		token = USA_mio_trait_mainstay
+		name = USA_mio_trait_mainstay
+		icon = GFX_generic_mio_department_icon_ship_capital_ship_production
+		
+		special_trait_background = yes
+		
+		available = {
+			FROM = {
+				has_completed_focus = USA_two_ocean_navy_act
+				has_war_with = JAP
+			}
+			date > 1941.01.01
+		}
+		
+		position = { x=0 y=3 }
+		relative_position_id = USA_mio_trait_league_island
+		
+		any_parent = { USA_mio_trait_league_island }
+
+		limit_to_equipment_type = { mio_cat_eq_all_battleship }
+		
+		production_bonus = {
+			production_capacity_factor = 0.15
+		}
+	}
+}
 
 USA_bethlehem_steel_organization = {
-	include = generic_battle_fleet_ship_organization
+	include = generic_task_force_ship_organization
 	icon = GFX_idea_bethlehem_steel
 	allowed = {	
 		tag = USA 
 	}
+	
+	equipment_type = {
+		mio_cat_eq_all_cruiser
+	}
+	
+	tree_header_text = {
+		text = mio_header_hull_systems
+		x = 1
+	}
+	
+	tree_header_text = {
+		text = mio_header_construction
+		x = 4
+	}
+
+	tree_header_text = {
+		text = mio_header_destroyer_guns
+		x = 7
+	}
+	
+	remove_trait = { generic_mio_trait_enable_light_carriers generic_mio_trait_foldable_carrier_plane_wings generic_mio_trait_electric_torpedo_hoists }
+	
+	add_trait = {
+		token = USA_mio_trait_fore_river_yard
+		name = USA_mio_trait_fore_river_yard
+		icon = GFX_generic_mio_department_icon_ship_heavy_cruiser_ship_production
+		
+		special_trait_background = yes
+		
+		available = {
+			FROM = {
+				has_completed_focus = USA_two_ocean_navy_act
+				has_war_with = JAP
+			}
+			date > 1943.01.01
+		}
+		
+		position = { x=4 y=2 }
+
+		limit_to_equipment_type = { mio_cat_eq_all_cruiser }
+		
+		production_bonus = {
+			production_capacity_factor = 0.15
+		}
+	}
 }
 
-USA_norfolk_naval_yard_organization = {
-	include = generic_research_ship_organization
-	icon = GFX_idea_norfolk_naval_yard
+USA_new_york_shipbuilding_organization = {
+	include = generic_task_force_ship_organization
+	icon = GFX_idea_new_york_shipbuilding
 	allowed = {	
 		tag = USA 
+	}
+	
+	tree_header_text = {
+		text = mio_header_hull_systems
+		x = 1
+	}
+	
+	tree_header_text = {
+		text = mio_header_light_carrier
+		x = 4
+	}
+
+	tree_header_text = {
+		text = mio_header_destroyer_guns
+		x = 7
+	}
+	
+	initial_trait = {
+		name = generic_mio_initial_trait_multi_purposed_cruiser_ship_builders
+	}
+	
+	remove_trait = { generic_mio_trait_electric_torpedo_hoists generic_mio_trait_electric_secondary_turrets }
+	
+	override_trait = {
+		token = generic_mio_trait_enable_light_carriers
+		
+		available = {
+			has_mio_size > 7
+			date > 1941.05.01
+		}
+	}
+}
+
+USA_brooklyn_naval_yard_organization = {
+	include = generic_escort_ship_organization
+	icon = GFX_idea_brooklyn_naval_yard
+	allowed = {	
+		tag = USA 
+	}
+	
+	equipment_type = {
+		mio_cat_eq_all_destroyer
+		mio_cat_eq_all_transport_ship
+	}
+	
+	tree_header_text = {
+		text = mio_header_construction
+		x = 0
+	}
+	
+	tree_header_text = {
+		text = mio_header_hull_systems
+		x = 2
+	}
+
+	tree_header_text = {
+		text = mio_header_destroyer_guns
+		x = 6
+	}
+	
+	tree_header_text = {
+		text = mio_header_torpedos
+		x = 8
+	}
+	
+	remove_trait = { generic_mio_trait_enable_light_carriers generic_mio_trait_anti_submarine_carriers generic_mio_trait_submarine_hunters }
+	
+	add_trait = {
+		token = USA_mio_trait_cando_yard
+		name = USA_mio_trait_cando_yard
+		icon = GFX_generic_mio_department_icon_ship_screen_ship_production
+		
+		special_trait_background = yes
+		
+		available = {
+			FROM = {
+				has_completed_focus = USA_two_ocean_navy_act
+				has_war_with = JAP
+			}
+			date > 1942.06.01
+		}
+		
+		position = { x=0 y=1 }
+
+		limit_to_equipment_type = { mio_cat_eq_all_destroyer }
+		
+		production_bonus = {
+			production_capacity_factor = 0.15
+		}
+	}
+	
+	add_trait = {
+		token = generic_mio_trait_electric_aa_mounts
+		name = generic_mio_trait_electric_aa_mounts
+		icon = GFX_generic_mio_trait_icon_anti_air_attack
+
+		position = { x=-1 y=2 }
+		relative_position_id = generic_mio_trait_secondary_rangefinders
+		
+		any_parent = { generic_mio_trait_secondary_rangefinders }
+
+		equipment_bonus = {
+			anti_air_attack = 0.05
+		}
+	}
+	
+	override_trait = {
+		token = generic_mio_trait_electric_secondary_turrets
+		
+		position = { x=1 y=2 }
+	}
+}
+
+USA_todd_pacific_organization = {
+	include = generic_escort_ship_organization
+	icon = GFX_idea_todd_pacific
+	allowed = {	
+		tag = USA 
+	}
+	
+	equipment_type = {
+		mio_cat_eq_all_destroyer
+		mio_cat_eq_light_carrier
+	}
+	
+	initial_trait = {
+		name = generic_mio_initial_trait_submarine_hunter_ship_builders
+	}
+	
+	remove_trait = { generic_mio_trait_aa_stablized_mounts }
+	
+	override_trait = {
+		token = generic_mio_trait_improved_naval_gun_construction
+		
+		position = { x=6 y=0 }
+	}
+	
+	override_trait = {
+		token = generic_mio_trait_secondary_rangefinders
+		
+		position = { x=0 y=2 }
+		relative_position_id = generic_mio_trait_improved_naval_gun_construction
+		
+		any_parent = { generic_mio_trait_improved_naval_gun_construction}
 	}
 }
 
@@ -233,41 +561,9 @@ USA_electric_boat_company_organization = {
 	}
 }
 
-USA_brooklyn_naval_yard_organization = {
-	include = generic_task_force_ship_organization
-	icon = GFX_idea_brooklyn_naval_yard
-	allowed = {	
-		tag = USA 
-	}
-}
-
-USA_newport_news_shipbuilding_organization = {
-	include = generic_battle_fleet_ship_organization
-	icon = GFX_idea_newport_news_shipbuilding
-	allowed = {	
-		tag = USA 
-	}
-}
-
-USA_todd_pacific_organization = {
-	include = generic_escort_ship_organization
-	icon = GFX_idea_todd_pacific
-	allowed = {	
-		tag = USA 
-	}
-}
-
-USA_new_york_shipbuilding_organization = {
-	include = generic_task_force_ship_organization
-	icon = GFX_idea_new_york_shipbuilding
-	allowed = {	
-		tag = USA 
-	}
-}
-
-USA_philadelphia_naval_shipyard_organization = {
-	include = generic_escort_ship_organization
-	icon = GFX_idea_philadelphia_naval_shipyard
+USA_norfolk_naval_yard_organization = {
+	include = generic_research_ship_organization
+	icon = GFX_idea_norfolk_naval_yard
 	allowed = {	
 		tag = USA 
 	}
