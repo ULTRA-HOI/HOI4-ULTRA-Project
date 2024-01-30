@@ -36,6 +36,26 @@ JAP_kure_naval_arsenal_organization = {
 		tag = JAP
 		has_dlc = "Arms Against Tyranny"
 	}
+	
+	special_trait_background = yes
+	
+	remove_trait = { generic_mio_trait_electric_aa_mounts }
+	
+	add_trait = {
+		token = JAP_mio_trait_copper_armor
+		name = JAP_mio_trait_copper_armor
+		icon = GFX_generic_mio_trait_icon_resources
+
+		position = { x=-1 y=0 }
+		relative_position_id = generic_mio_trait_improved_bulkheads
+		
+		any_parent = { generic_mio_trait_improved_bulkheads }
+
+		production_bonus = {
+			production_resource_need_factor = -0.1
+			production_resource_penalty_factor = -0.15
+		}
+	}
 }
 
 JAP_yokosuka_naval_arsenal_organization = {
@@ -45,21 +65,118 @@ JAP_yokosuka_naval_arsenal_organization = {
 		tag = JAP
 		has_dlc = "Arms Against Tyranny"
 	}
-}
-
-JAP_maizuru_naval_arsenal_organization = {
-	include = generic_torpedo_ship_organization
-	icon = GFX_idea_maizuru_naval_arsenal
 	
-	allowed = {	
-		tag = JAP
-		has_dlc = "Arms Against Tyranny"
+	remove_trait = { generic_mio_trait_electric_aa_mounts }
+	
+	add_trait = {
+		token = JAP_mio_trait_copper_armor
+		name = JAP_mio_trait_copper_armor
+		icon = GFX_generic_mio_trait_icon_resources
+
+		position = { x=-1 y=0 }
+		relative_position_id = generic_mio_trait_improved_bulkheads
+		
+		any_parent = { generic_mio_trait_improved_bulkheads }
+
+		production_bonus = {
+			production_resource_need_factor = -0.1
+			production_resource_penalty_factor = -0.15
+		}
+	}
+	
+	override_trait = {
+		token = generic_mio_trait_enable_light_carriers
+		
+		delete_included_values = { available }
 	}
 }
 
 JAP_sasebo_naval_arsenal_organization = {
 	include = generic_escort_ship_organization
 	icon = GFX_idea_sasebo_naval_arsenal
+	allowed = {	 
+		tag = JAP
+		has_dlc = "Arms Against Tyranny"
+	}
+	
+	tree_header_text = {
+		text = mio_header_escort_carrier
+		x = 0
+	}
+	
+	tree_header_text = {
+		text = mio_header_hull_systems
+		x = 2
+	}
+	
+	tree_header_text = {
+		text = mio_header_destroyer_guns
+		x = 6
+	}
+	
+	tree_header_text = {
+		text = mio_header_torpedos
+		x = 8
+	}
+	
+	remove_trait = { generic_mio_trait_submarine_hunters }
+	
+	override_trait = {
+		token = generic_mio_trait_anti_submarine_carriers
+		
+		equipment_bonus = {
+			sub_detection = 0.1
+			sub_attack = 0.05
+		}
+	}
+	
+	add_trait = {
+		token = JAP_mio_trait_copper_armor
+		name = JAP_mio_trait_copper_armor
+		icon = GFX_generic_mio_trait_icon_resources
+
+		position = { x=-1 y=0 }
+		relative_position_id = generic_mio_trait_improved_bulkheads
+		
+		any_parent = { generic_mio_trait_improved_bulkheads }
+
+		limit_to_equipment_type = { mio_cat_eq_all_destroyer mio_cat_eq_light_carrier }
+		
+		production_bonus = {
+			production_resource_need_factor = -0.1
+			production_resource_penalty_factor = -0.15
+		}
+	}
+}
+
+JAP_maizuru_naval_arsenal_organization = {
+	include = generic_torpedo_ship_organization
+	icon = GFX_idea_maizuru_naval_arsenal
+	allowed = {	
+		tag = JAP
+		has_dlc = "Arms Against Tyranny"
+	}
+	
+	add_trait = {
+		token = JAP_mio_trait_copper_armor
+		name = JAP_mio_trait_copper_armor
+		icon = GFX_generic_mio_trait_icon_resources
+
+		position = { x=-1 y=0 }
+		relative_position_id = generic_mio_trait_improved_bulkheads
+		
+		any_parent = { generic_mio_trait_improved_bulkheads }
+		
+		production_bonus = {
+			production_resource_need_factor = -0.1
+			production_resource_penalty_factor = -0.15
+		}
+	}
+}
+
+JAP_kawasaki_shipbuilding_organization = {
+	include = generic_submarine_ship_organization
+	icon = GFX_idea_kawasaki_shipbuilding_corporation
 	allowed = {	 
 		tag = JAP
 		has_dlc = "Arms Against Tyranny"
@@ -75,14 +192,6 @@ JAP_mitsubishi_heavy_industries_organization = {
 	}
 }
 
-JAP_kawasaki_shipbuilding_organization = {
-	include = generic_submarine_ship_organization
-	icon = GFX_idea_kawasaki_shipbuilding_corporation
-	allowed = {	 
-		tag = JAP
-		has_dlc = "Arms Against Tyranny"
-	}
-}
 
 ###########################
 
