@@ -121,11 +121,124 @@ ITA_crda_organization = {
 	allowed = {	
 		tag = ITA 
 	}
+	
+	remove_trait = { generic_mio_trait_triple_bottom_hull generic_mio_trait_quadruple_torpedo_bulkheads generic_mio_trait_deck_parks }
+	
+	add_trait = {
+		token = ITA_mio_trait_pugliese
+		name = ITA_mio_trait_pugliese
+		icon = GFX_generic_mio_trait_icon_naval_torpedo_damage_reduction_factor
+
+		position = { x=1 y=0 }
+
+		equipment_bonus = {
+			naval_torpedo_damage_reduction_factor = 0.35
+			naval_torpedo_enemy_critical_chance_factor = 0.2
+		}
+	}
+	
+	override_trait = {
+		token = generic_mio_trait_improved_vertical_armor
+		
+		position = { x=-1 y=1 }
+		relative_position_id = ITA_mio_trait_pugliese
+
+		any_parent = { ITA_mio_trait_pugliese  }
+	}
+	
+	override_trait = {
+		token = generic_mio_trait_improved_horizontal_armor
+		
+		position = { x=1 y=1 }
+		relative_position_id = ITA_mio_trait_pugliese
+
+		any_parent = { ITA_mio_trait_pugliese  }
+	}
+	
+	override_trait = {
+		token = generic_mio_trait_armored_carrier
+		
+		delete_included_values = { relative_position_id any_parent mutually_exclusive }
+		
+		position = { x=3 y=1 }
+		
+		available = {
+			has_mio_size > 6
+		}
+	}
+	
+	override_trait = {
+		token = generic_mio_trait_foldable_carrier_plane_wings
+
+		position = { x=0 y=3 }
+		relative_position_id = generic_mio_trait_armored_carrier
+		
+		any_parent = { generic_mio_trait_armored_carrier }
+	}
 }
 
 ITA_cantiere_oto_organization = {
 	include = generic_cruiser_raider_ship_organization
 	icon = GFX_idea_ITA_oto
+	
+	allowed = {	
+		tag = ITA 
+	}
+	
+	remove_trait = { generic_mio_trait_torpedo_aiming_mechanism }
+	
+	override_trait = {
+		token = generic_mio_trait_enable_light_carriers
+		
+		available = {
+			has_mio_size > 7
+			FROM = {
+				has_war_with = ENG
+			}
+			date > 1942.01.01
+		}
+	}
+	
+	add_trait = {
+		token = generic_mio_trait_electric_aa_mounts
+		name = generic_mio_trait_electric_aa_mounts
+		icon = GFX_generic_mio_trait_icon_anti_air_attack
+
+		position = { x=-1 y=2 }
+		relative_position_id = generic_mio_trait_secondary_rangefinders
+		
+		any_parent = { generic_mio_trait_secondary_rangefinders }
+
+		equipment_bonus = {
+			anti_air_attack = 0.05
+		}
+	}
+}
+
+ITA_cantiere_navale_di_ancona_organization = {
+	include = generic_escort_ship_organization
+	icon = GFX_idea_ITA_cantera_navale_di_ancona
+	
+	allowed = {	
+		tag = ITA 
+	}
+	
+	override_trait = {
+		token = generic_mio_trait_enable_light_carriers
+		
+		available = {
+			has_mio_size > 7
+			FROM = {
+				has_war_with = ENG
+			}
+			date > 1942.01.01
+		}
+	}
+}
+
+ITA_cantieri_navali_tosi_organization = {
+	include = generic_submarine_ship_organization
+	icon = GFX_idea_ITA_cantieri_navali_tosi
 	
 	allowed = {	
 		tag = ITA 
@@ -139,26 +252,7 @@ ITA_navalmeccanica_organization = {
 	allowed = {	
 		tag = ITA 
 	}	
-} 
-
-ITA_cantiere_navale_di_ancona_organization = {
-	include = generic_escort_ship_organization
-	icon = GFX_idea_ITA_cantera_navale_di_ancona
-	
-	allowed = {	
-		tag = ITA 
-	}
 }
-
-ITA_cantieri_navali_tosi_organization = {
-	include = generic_submarine_ship_organization
-	icon = GFX_idea_ITA_cantieri_navali_tosi
-	
-	allowed = {	
-		tag = ITA 
-	}
-}
-
 
 
 ###########################
