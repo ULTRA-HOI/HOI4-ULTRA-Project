@@ -58,19 +58,6 @@ USA_chrysler_organization = {
 		# }
 	}
 
-	initial_trait = {
-		name = USA_mio_trait_medium_tank_organization
-
-		limit_to_equipment_type = { mio_cat_eq_all_medium_tank }
-
-		equipment_bonus = {
-			reliability = 0.1
-			soft_attack = 0.02
-			hard_attack = 0.03
-			defense = -0.15
-		}
-	}
-
 	add_trait = { 
 		token = USA_mio_trait_strict_design_specifications
 		name = USA_mio_trait_strict_design_specifications
@@ -84,7 +71,7 @@ USA_chrysler_organization = {
 		limit_to_equipment_type = { mio_cat_eq_all_medium_tank }
 
 		equipment_bonus = {
-			reliability = 0.1
+			reliability = 0.01
 		}
 	}
 
@@ -99,35 +86,35 @@ USA_chrysler_organization = {
 
 		all_parents = { USA_mio_trait_strict_design_specifications }
 		production_bonus = {
-			production_cost_factor = -0.1
+			production_cost_factor = -0.05
 			production_capacity_factor = 0.05
 		}
 	}
 }
 
 USA_army_ordnance_department_organization = {
-	include = generic_medium_tank_organization
+	include = generic_infantry_tank_organization
 	icon = GFX_idea_army_ordnance_department
 	
 	allowed = {	
 		tag = USA
 	}
 
-	add_trait = { 
-		token = USA_mio_trait_periscope_sights
-		name = USA_mio_trait_periscope_sights
-		icon = GFX_generic_mio_department_icon_tank_medium_tank_armor
-		special_trait_background = yes
-
-		position = { x=1 y=1 }
-		relative_position_id = generic_mio_trait_all_round_cupola
-
-		all_parents = { generic_mio_trait_all_round_cupola }
-		equipment_bonus = {
-			breakthrough = 0.1
-			defense = 0.05
-		}
-	}
+#	add_trait = { 
+#		token = USA_mio_trait_periscope_sights
+#		name = USA_mio_trait_periscope_sights
+#		icon = GFX_generic_mio_department_icon_tank_medium_tank_armor
+#		special_trait_background = yes
+#
+#		position = { x=1 y=1 }
+#		relative_position_id = generic_mio_trait_all_round_cupola
+#
+#		all_parents = { generic_mio_trait_all_round_cupola }
+#		equipment_bonus = {
+#			breakthrough = 0.1
+#			defense = 0.05
+#		}
+#	}
 
 	add_trait = { 
 		token = USA_mio_trait_mass_production_of_armor
@@ -135,10 +122,10 @@ USA_army_ordnance_department_organization = {
 		icon = GFX_generic_mio_department_icon_tank_medium_tank_line_efficiency
 		special_trait_background = yes
 
-		position = { x=2 y=1 }
-		relative_position_id = generic_mio_trait_simplified_turret_design
+		position = { x=1 y=0 }
+		relative_position_id = generic_mio_trait_standardized_turrets
 
-		all_parents = { generic_mio_trait_simplified_turret_design generic_mio_trait_armor_steel_working }
+		all_parents = { generic_mio_trait_standardized_turrets }
 		production_bonus = {
 			production_efficiency_cap_factor = 0.05
 			production_efficiency_gain_factor = 0.1
@@ -156,44 +143,60 @@ USA_detroit_arsenal_organization = {
 	available = {
 		FROM = { has_completed_focus = USA_main_battle_tanks }
 	}
-}
 
-USA_tank_destroyer_board_organization = {
-	name = tank_destroyer_board
-	include = generic_mobile_tank_organization
-	icon = GFX_idea_usa_tank_destroyer_board
-	allowed = {	
-		tag = USA 
-	}
-	available = {
-		FROM = { has_completed_focus = USA_tank_destroyer_doctrine }
-	}
-	initial_trait = {
-		name = ROM_mio_trait_mobile_tank_destroyers
-		
-		limit_to_equipment_type = { 
-			mio_cat_eq_all_tank_destroyers
-		}
-		
-		equipment_bonus = {
-			reliability = 0.05
-			hard_attack = 0.05
-			ap_attack = 0.05
-		}
-	}
-
-	override_trait = {
-		token = generic_mio_enlarged_breech
-		limit_to_equipment_type = { 
-			mio_cat_eq_all_tank_destroyers
-		}
-		equipment_bonus = {
-			hard_attack = 0.05
-			ap_attack = 0.1
-		}
+	add_trait = { 
+		token = USA_mio_trait_mass_production_of_armor
+		name = USA_mio_trait_mass_production_of_armor
+		icon = GFX_generic_mio_department_icon_tank_medium_tank_line_efficiency
 		special_trait_background = yes
+
+		position = { x=1 y=0 }
+		relative_position_id = generic_mio_trait_standardized_components
+
+		all_parents = { generic_mio_trait_standardized_components }
+		production_bonus = {
+			production_efficiency_cap_factor = 0.05
+			production_efficiency_gain_factor = 0.1
+		}
 	}
 }
+
+#USA_tank_destroyer_board_organization = {
+#	name = tank_destroyer_board
+#	include = generic_mobile_tank_organization
+#	icon = GFX_idea_usa_tank_destroyer_board
+#	allowed = {	
+#		tag = USA 
+#	}
+#	available = {
+#		FROM = { has_completed_focus = USA_tank_destroyer_doctrine }
+#	}
+#	initial_trait = {
+#		name = ROM_mio_trait_mobile_tank_destroyers
+#		
+#		limit_to_equipment_type = { 
+#			mio_cat_eq_all_tank_destroyers
+#		}
+#		
+#		equipment_bonus = {
+#			reliability = 0.05
+##			hard_attack = 0.05
+#			ap_attack = 0.05
+#		}
+#	}
+#
+#	override_trait = {
+#		token = generic_mio_enlarged_breech
+#		limit_to_equipment_type = { 
+#			mio_cat_eq_all_tank_destroyers
+#		}
+#		equipment_bonus = {
+#			hard_attack = 0.05
+#			ap_attack = 0.1
+#		}
+#		special_trait_background = yes
+#	}
+#}
 
 
 
