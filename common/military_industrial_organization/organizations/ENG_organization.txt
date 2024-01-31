@@ -598,17 +598,6 @@ ENG_supermarine_organization = {
 		has_dlc = "Arms Against Tyranny"
 	}
 
-	equipment_type = {
-		mio_cat_eq_all_small_plane
-		maritime_patrol_plane
-	}	
-
-	research_categories = {	
-		mio_cat_all_light_fighter_and_modules 
-#		mio_cat_all_naval_bomber_and_modules 
-			#Could be used to allow Supermarine to research naval bombs, but this could overpower English fighter MIO trait gain early on.
-	}
-
 	override_trait = {
 		token = generic_mio_trait_fuel_injection_engines
 		
@@ -628,26 +617,6 @@ ENG_supermarine_organization = {
 		
 		position = { x=0 y=2 }
 		relative_position_id = generic_mio_trait_fuel_injection_engines
-	}
-
-	add_trait = { 
-		token = ENG_mio_trait_seaplane_origins
-		name = ENG_mio_trait_seaplane_origins
-		icon = GFX_generic_mio_trait_icon_detection
-		special_trait_background = yes
-
-		position = { x=2 y=0 }
-		relative_position_id = generic_mio_trait_minimum_weapon_requirements
-
-		#any_parent = { generic_mio_trait_super_heavy_shells generic_mio_trait_semi_armor_piercing_shells generic_mio_trait_high_velocity_guns }
-
-		limit_to_equipment_type = { mio_cat_eq_all_small_plane mio_cat_eq_all_large_plane }
-
-		equipment_bonus = {
-			sub_detection = 0.05
-			surface_detection = 0.05
-			naval_strike_targetting = 0.1
-		}
 	}
 
 	add_trait = { 
@@ -720,6 +689,23 @@ ENG_de_havilland_organization = {
 		# 		has_completed_focus = NOR_invite_transnational_manufacturers
 		# 	}
 		# }
+	}
+	add_trait = { 
+		token = ENG_mio_trait_wood_construction_experts
+		name = ENG_mio_wood_construction_experts
+		icon = GFX_generic_mio_trait_icon_resources
+		special_trait_background = yes
+
+		position = { x=1 y=0 }
+		relative_position_id = generic_mio_trait_mixed_material_construction
+
+		equipment_bonus = {
+			air_defence = -0.05	
+		}
+		production_bonus = {
+			production_resource_need_factor = -0.1
+			production_cost_factor = -0.05
+		}
 	}
 }
 
@@ -975,6 +961,94 @@ ENG_vauxhall_automotive_organization = {
 ENG_royal_arsenal_organization = {
 	include = generic_artillery_organization
 	icon = GFX_idea_royal_arsenal
+	allowed = {
+		OR = {
+			tag = ENG
+			AND = {
+				OR = {
+					original_TAG = LAT
+					original_TAG = LIT
+					original_TAG = EST
+				}
+				has_dlc = "No Step Back"
+			}
+		}
+	}
+
+	available = {
+		# When in a Foreign MIO, countries need to be at peace with original country
+		IF = {
+			limit = {
+				FROM = { NOT = { original_tag = ENG } }
+			}
+			FROM = { NOT = { has_war_with = ENG } }
+		}
+
+		if = {
+			limit = {
+				FROM = {
+					OR = {
+						original_TAG = LAT
+						original_TAG = LIT
+						original_TAG = EST
+					}
+				}
+			}
+			FROM = {
+				has_completed_focus = BALTIC_british_designers
+			}
+		}
+	}
+}
+
+ENG_sterling_organisation = {
+	include = generic_support_equipment_organization
+	icon = GFX_idea_generic_infantry_equipment_manufacturer_2
+	name = ENG_sterling_organisation
+	allowed = {
+		OR = {
+			tag = ENG
+			AND = {
+				OR = {
+					original_TAG = LAT
+					original_TAG = LIT
+					original_TAG = EST
+				}
+				has_dlc = "No Step Back"
+			}
+		}
+	}
+
+	available = {
+		# When in a Foreign MIO, countries need to be at peace with original country
+		IF = {
+			limit = {
+				FROM = { NOT = { original_tag = ENG } }
+			}
+			FROM = { NOT = { has_war_with = ENG } }
+		}
+
+		if = {
+			limit = {
+				FROM = {
+					OR = {
+						original_TAG = LAT
+						original_TAG = LIT
+						original_TAG = EST
+					}
+				}
+			}
+			FROM = {
+				has_completed_focus = BALTIC_british_designers
+			}
+		}
+	}
+}
+
+ENG_daimer_organisation = {
+	include = generic_armored_car_organization
+	icon = GFX_idea_generic_motorized_equipment_manufacturer_1
+	name = ENG_daimler_organisation
 	allowed = {
 		OR = {
 			tag = ENG
