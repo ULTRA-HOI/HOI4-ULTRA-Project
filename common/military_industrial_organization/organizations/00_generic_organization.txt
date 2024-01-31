@@ -2266,7 +2266,7 @@ generic_cruiser_raider_ship_organization = {
 	}
 	
 	initial_trait = {
-		name = generic_mio_initial_cruiser_ship_builders
+		name = generic_mio_initial_trait_cruiser_ship_builders
 	}
 	
 	remove_trait = { generic_mio_trait_triple_bottom_hull generic_mio_trait_quadruple_torpedo_bulkheads generic_mio_trait_electric_aa_mounts }
@@ -3247,8 +3247,6 @@ generic_minor_ship_organization = {
 	initial_trait = {
 		name = generic_mio_initial_trait_minor_ship_builders
 		
-		limit_to_equipment_type = { mio_cat_eq_all_screens mio_cat_eq_all_submarine mio_cat_eq_transport_ship }
-		
 		production_bonus = {
 			production_capacity_factor = 3
 		}
@@ -3328,7 +3326,7 @@ generic_minor_ship_organization = {
 		all_parents = { generic_mio_trait_lookouts generic_mio_trait_mining_operations }
 		
 		organization_modifier = {
-			military_industrial_organization_research_bonus = 0.15
+			military_industrial_organization_research_bonus = 0.1
 		}
 	}
 	
@@ -3427,6 +3425,103 @@ generic_minor_ship_organization = {
 	}
 }
 
+#SCREEN SHIP MANUFACTURER #Combines Cruisers and Destroyers into one MIO for France and Russia
+generic_screen_ship_organization = {
+	include = generic_minor_ship_organization
+	icon = GFX_idea_generic_naval_manufacturer_1
+
+	allowed = {
+		always = no # Archetype only - countries using it have their own verisons
+	}
+
+	equipment_type = {
+		mio_cat_eq_all_screens
+		mio_cat_eq_transport_ship
+	}
+
+	research_categories = {
+	}
+	
+	tree_header_text = {
+		text = mio_header_hull_systems
+		x = 1
+	}
+	
+	tree_header_text = {
+		text = mio_header_destroyer_equipment
+		x = 4
+	}
+
+	tree_header_text = {
+		text = mio_header_secondary_equipment
+		x = 6
+	}
+	
+	tree_header_text = {
+		text = mio_header_primary_guns
+		x = 8
+	}
+
+	initial_trait = {
+		name = generic_mio_initial_trait_screen_ship_builders
+		
+		delete_included_values = { limit_to_equipment_type }
+		
+		production_bonus = {
+			production_capacity_factor = 3
+		}
+	}
+	
+	remove_trait = { generic_mio_trait_research_efficiency generic_mio_trait_hydrodynamic_hull generic_mio_trait_long_range_raiding }
+	
+	override_trait = {
+		token = generic_mio_trait_improved_armor
+		
+		limit_to_equipment_type = { mio_cat_eq_all_screens }
+	}
+	
+	override_trait = {
+		token = generic_mio_trait_improved_bulkheads
+		
+		limit_to_equipment_type = { mio_cat_eq_all_screens }
+	}
+	
+	override_trait = {
+		token = generic_mio_trait_lookouts
+		
+		limit_to_equipment_type = { mio_cat_eq_all_screens }
+	}
+	
+	add_trait = {
+		token = generic_mio_trait_submarine_hunters
+		name = generic_mio_trait_submarine_hunters
+		icon = GFX_generic_mio_trait_icon_sub_attack
+
+		position = { x=4 y=1 }
+
+		limit_to_equipment_type = { mio_cat_eq_all_destroyer }
+		
+		equipment_bonus = {
+			sub_detection = 0.05
+			sub_attack = 0.05
+		}
+	}
+	
+	override_trait = {
+		token = generic_mio_trait_improved_torpedo_hoists
+
+		position = { x=0 y=2 }
+		relative_position_id = generic_mio_trait_electric_torpedo_hoists
+
+		any_parent = { generic_mio_trait_electric_torpedo_hoists }
+		
+		limit_to_equipment_type = { mio_cat_eq_all_screens }
+		
+		equipment_bonus = {
+			naval_torpedo_hit_chance_factor = 0.05
+		}
+	}
+}
 
 
 
