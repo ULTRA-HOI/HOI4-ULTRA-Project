@@ -3666,7 +3666,7 @@ focus_tree = {
 		relative_position_id = ITA_bersaglieri
 		cost = 10
 		available = {
-			has_tech = paratroopers
+			
 		}
 
 		search_filters = {FOCUS_FILTER_RESEARCH FOCUS_FILTER_ARMY_XP FOCUS_FILTER_MANPOWER}
@@ -3674,91 +3674,9 @@ focus_tree = {
 		completion_reward = {
 			add_to_variable = { ITA_re_special_forces_cap = 0.01 }
 			add_to_variable = { ITA_re_special_forces_out_of_supply_factor = -0.1 }
-			add_to_variable = { ITA_re_modifier_army_sub_unit_paratrooper_max_org_factor = 0.05 }
 			custom_effect_tooltip = ITA_fanti_dell_aria_re_tt
 
 			army_experience = 15
-
-			hidden_effect = {
-				if = {
-					limit = {
-						NOT = { has_template = "Paratroopers" }
-					}
-					load_oob = "unlock_paratroopers"
-				}
-			}
-			random_owned_controlled_state = {
-				limit = {
-					is_core_of = ROOT
-					is_fully_controlled_by = ROOT
-				}
-				prioritize = { 2 162 117 158 }
-				custom_effect_tooltip = ITA_fanti_dell_aria_spawn_divs_tt
-				hidden_effect = {
-					create_unit = {
-						division = "division_template = \"Paratroopers\" start_experience_factor = 0.4 start_equipment_factor = 1.0"
-						owner = ROOT
-						count = 3
-					}
-				}
-			}
-			#ASCARI
-			if = {
-				limit = {
-					any_owned_state = {
-						is_core_of = LBA
-						is_fully_controlled_by = ROOT
-					}
-				}
-				random_owned_controlled_state = {
-					limit = {
-						is_core_of = LBA
-						is_fully_controlled_by = ROOT
-					}
-					prioritize = { 448 450 }
-					custom_effect_tooltip = ITA_fanti_dell_aria_spawn_divs_libya_tt
-					hidden_effect = {
-						create_unit = {
-							division = "name = \"Ascari del Cielo\" division_template = \"Paratroopers\" start_experience_factor = 0.4 start_equipment_factor = 1.0"
-							owner = ROOT
-							count = 1
-						}
-					}
-				}
-			}
-			else_if = {
-				limit = {
-					any_subject_country = {
-						any_controlled_state = {
-							is_core_of = LBA
-							is_fully_controlled_by = PREV
-						}
-					}
-				}
-				random_subject_country = {
-					limit = {
-						any_controlled_state = {
-							is_core_of = LBA
-							is_fully_controlled_by = PREV
-						}
-					}
-					random_owned_controlled_state = {
-						limit = {
-							is_core_of = LBA
-							is_fully_controlled_by = ROOT
-						}
-						prioritize = { 448 450 }
-						custom_effect_tooltip = ITA_fanti_dell_aria_spawn_divs_libya_tt
-						hidden_effect = {
-							create_unit = {
-								division = "name = \"Ascari del Cielo\" division_template = \"Paratroopers\" start_experience_factor = 0.4 start_equipment_factor = 1.0"
-								owner = ROOT
-								count = 1
-							}
-						}
-					}
-				}
-			}
 
 			add_tech_bonus = {
 				name = ITA_fanti_dell_aria
@@ -5097,148 +5015,148 @@ focus_tree = {
 			add_to_variable = { ITA_rm_invasion_preparation = -0.1 }
 			custom_effect_tooltip = ITA_forza_navale_especiale_rm_tt
 
-			hidden_effect = {
-				if = {
-					limit = {
-						NOT = { has_template = "Marines" }
-					}
-					load_oob = "unlock_marines"
-				}
-			}
-			random_owned_controlled_state = {
-				limit = {
-					is_core_of = ROOT
-					is_fully_controlled_by = ROOT
-				}
-				prioritize = { 2 162 117 158 }
-				create_unit = {
-					division = "division_template = \"Marines\" start_experience_factor = 0.4 start_equipment_factor = 1.0"
-					owner = ROOT
-					count = 2
-				}
-			}
+#			hidden_effect = {
+#				if = {
+#					limit = {
+#						NOT = { has_template = "Marines" }
+#					}
+#					load_oob = "unlock_marines"
+#				}
+#			}
+#			random_owned_controlled_state = {
+#				limit = {
+#					is_core_of = ROOT
+#					is_fully_controlled_by = ROOT
+#				}
+#				prioritize = { 2 162 117 158 }
+#				create_unit = {
+#					division = "division_template = \"Marines\" start_experience_factor = 0.4 start_equipment_factor = 1.0"
+#					owner = ROOT
+#					count = 2
+#				}
+#			}
 			#ASCARI
-			if = {
-				limit = {
-					any_owned_state = {
-						is_core_of = ERI
-						is_fully_controlled_by = ROOT
-					}
-				}
-				hidden_effect = {
-					if = {
-						limit = {
-							has_tech = improved_infantry_weapons
-						}
-						division_template = {
-							name = "Ascari di Marina"
-							override_model = ITA_marine_2_alt_0_entity
-							template_counter = 34
-							obsolete = yes
-							regiments = {
-								marine = { x = 0 y = 0 }
-								marine = { x = 0 y = 1 }
-								marine = { x = 1 y = 0 }
-								marine = { x = 1 y = 1 }
-							}
-						}
-					}
-					else = {		
-						division_template = {
-							name = "Ascari di Marina"
-							override_model = ITA_marine_alt_0_entity
-							template_counter = 34
-							obsolete = yes
-							regiments = {
-								marine = { x = 0 y = 0 }
-								marine = { x = 0 y = 1 }
-								marine = { x = 1 y = 0 }
-								marine = { x = 1 y = 1 }
-							}
-						}
-					}
-				}
-				random_owned_controlled_state = {
-					limit = {
-						is_core_of = ERI
-						is_fully_controlled_by = ROOT
-					}
-					prioritize = { 550 }
-					create_unit = {
-						division = "name = \"1a Divisione Ascari di Marina\" division_template = \"Ascari di Marina\" start_experience_factor = 0.4 start_equipment_factor = 1.0"
-						owner = ROOT
-						count = 1
-					}
-				}
-			}
-			else_if = {
-				limit = {
-					any_subject_country = {
-						any_controlled_state = {
-							is_core_of = ERI
-							is_fully_controlled_by = PREV
-						}
-					}
-				}
-				hidden_effect = {
-					if = {
-						limit = {
-							has_tech = improved_infantry_weapons
-						}
-						division_template = {
-							name = "Ascari di Marina"
-							override_model = ITA_marine_2_alt_0_entity
-							template_counter = 34
-							obsolete = yes
-							regiments = {
-								marine = { x = 0 y = 0 }
-								marine = { x = 0 y = 1 }
-								marine = { x = 1 y = 0 }
-								marine = { x = 1 y = 1 }
-							}
-						}
-					}
-					else = {		
-						division_template = {
-							name = "Ascari di Marina"
-							override_model = ITA_marine_alt_0_entity
-							template_counter = 34
-							obsolete = yes
-							regiments = {
-								marine = { x = 0 y = 0 }
-								marine = { x = 0 y = 1 }
-								marine = { x = 1 y = 0 }
-								marine = { x = 1 y = 1 }
-							}
-						}
-					}
-				}
-				random_subject_country = {
-					limit = {
-						any_controlled_state = {
-							is_core_of = ERI
-							is_fully_controlled_by = PREV
-						}
-					}
-					random_owned_controlled_state = {
-						limit = {
-							is_core_of = ERI
-							is_fully_controlled_by = ROOT
-						}
-						prioritize = { 550 }
-						create_unit = {
-							division = "name = \"1a Divisione Ascari di Marina\" division_template = \"Ascari di Marina\" start_experience_factor = 0.4 start_equipment_factor = 1.0"
-							owner = ROOT
-							count = 1
-						}
-					}
-				}
-			}
+#			if = {
+#				limit = {
+#					any_owned_state = {
+#						is_core_of = ERI
+#						is_fully_controlled_by = ROOT
+#					}
+#				}
+#				hidden_effect = {
+#					if = {
+#						limit = {
+#							has_tech = improved_infantry_weapons
+#						}
+#						division_template = {
+#							name = "Ascari di Marina"
+#							override_model = ITA_marine_2_alt_0_entity
+#							template_counter = 34
+#							obsolete = yes
+#							regiments = {
+#								marine = { x = 0 y = 0 }
+#								marine = { x = 0 y = 1 }
+#								marine = { x = 1 y = 0 }
+#								marine = { x = 1 y = 1 }
+#							}
+#						}
+#					}
+#					else = {		
+#						division_template = {
+#							name = "Ascari di Marina"
+#							override_model = ITA_marine_alt_0_entity
+#							template_counter = 34
+#							obsolete = yes
+#							regiments = {
+#								marine = { x = 0 y = 0 }
+#								marine = { x = 0 y = 1 }
+#								marine = { x = 1 y = 0 }
+#								marine = { x = 1 y = 1 }
+#							}
+#						}
+#					}
+#				}
+#				random_owned_controlled_state = {
+#					limit = {
+#						is_core_of = ERI
+#						is_fully_controlled_by = ROOT
+#					}
+#					prioritize = { 550 }
+#					create_unit = {
+#						division = "name = \"1a Divisione Ascari di Marina\" division_template = \"Ascari di Marina\" start_experience_factor = 0.4 start_equipment_factor = 1.0"
+#						owner = ROOT
+#						count = 1
+#					}
+#				}
+#			}
+#			else_if = {
+#				limit = {
+#					any_subject_country = {
+#						any_controlled_state = {
+#							is_core_of = ERI
+#							is_fully_controlled_by = PREV
+#						}
+#					}
+#				}
+#				hidden_effect = {
+#					if = {
+#						limit = {
+#							has_tech = improved_infantry_weapons
+#						}
+#						division_template = {
+#							name = "Ascari di Marina"
+#							override_model = ITA_marine_2_alt_0_entity
+#							template_counter = 34
+#							obsolete = yes
+#							regiments = {
+#								marine = { x = 0 y = 0 }
+#								marine = { x = 0 y = 1 }
+#								marine = { x = 1 y = 0 }
+#								marine = { x = 1 y = 1 }
+#							}
+#						}
+#					}
+#					else = {		
+#						division_template = {
+#							name = "Ascari di Marina"
+#							override_model = ITA_marine_alt_0_entity
+#							template_counter = 34
+#							obsolete = yes
+#							regiments = {
+#								marine = { x = 0 y = 0 }
+#								marine = { x = 0 y = 1 }
+#								marine = { x = 1 y = 0 }
+#								marine = { x = 1 y = 1 }
+#							}
+#						}
+#					}
+#				}
+#				random_subject_country = {
+#					limit = {
+#						any_controlled_state = {
+#							is_core_of = ERI
+#							is_fully_controlled_by = PREV
+#						}
+#					}
+#					random_owned_controlled_state = {
+#						limit = {
+#							is_core_of = ERI
+#							is_fully_controlled_by = ROOT
+#						}
+#						prioritize = { 550 }
+#						create_unit = {
+#							division = "name = \"1a Divisione Ascari di Marina\" division_template = \"Ascari di Marina\" start_experience_factor = 0.4 start_equipment_factor = 1.0"
+#							owner = ROOT
+#							count = 1
+#						}
+#					}
+#				}
+#			}
 
 			add_tech_bonus = {
 				name = ITA_forza_navale_especiale
 				bonus = 1.0
-				uses = 2
+				uses = 1
 				category = marine_tech
 				category = tp_tech
 			}
@@ -5332,6 +5250,18 @@ focus_tree = {
 			show_unit_leaders_tooltip = ITA_junio_valerio_borghese
 
 			unlock_decision_tooltip = ITA_human_torpedo_raid
+
+			add_tech_bonus = {
+				bonus = 1
+				uses = 1
+				technology = elite_forces
+			}
+			add_potential_special_forces_tree = yes
+			add_doctrine_cost_reduction = {
+				cost_reduction = 0.25
+				uses = 1
+				category = cat_marines_doctrine
+			}
 
 			#TODO_Manu: Nice to have -> New Operation for damaging enemy ships docked in nearby docks with human torpedoes
 		}
