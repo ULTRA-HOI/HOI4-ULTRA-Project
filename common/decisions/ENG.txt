@@ -10003,3 +10003,204 @@ ENG_pressure_norway_trade = {
 		
 	}
 }
+
+special_projects = {
+	ENG_1936_naval_programme = {
+		icon = generic_naval
+		
+		allowed = {
+			tag = ENG
+		}
+		
+		available = {
+			hidden_trigger = {
+				always = no
+			}
+		}
+		
+		is_good = yes
+		
+		days_mission_timeout = 365
+		
+		fire_only_once = yes
+		
+		timeout_effect = {
+			mio:ENG_fairfield_shipbuilding_organization = {
+				add_mio_task_capacity = 2
+			}
+			activate_mission = ENG_1936_naval_programme_second_batch
+		}
+	}
+	
+	ENG_1936_naval_programme_second_batch = {
+		icon = generic_naval
+		
+		allowed = {
+			tag = ENG
+		}
+		
+		available = {
+			hidden_trigger = {
+				always = no
+			}
+		}
+		
+		activation = {
+			always = no
+		}
+		
+		is_good = yes
+		
+		days_mission_timeout = 120
+		
+		fire_only_once = yes
+		
+		timeout_effect = {
+			mio:ENG_harland_wolff_organization = {
+				add_mio_task_capacity = 3
+			}
+			mio:ENG_fairfield_shipbuilding_organization = {
+				add_mio_task_capacity = 3
+			}
+			activate_mission = ENG_1936_naval_programme_third_batch
+		}
+	}
+	
+	ENG_1936_naval_programme_third_batch = {
+		icon = generic_naval
+		
+		allowed = {
+			tag = ENG
+		}
+		
+		available = {
+			hidden_trigger = {
+				always = no
+			}
+		}
+		
+		activation = {
+			always = no
+		}
+		
+		is_good = yes
+		
+		days_mission_timeout = 184
+		
+		fire_only_once = yes
+		
+		timeout_effect = {
+			mio:ENG_harland_wolff_organization = {
+				add_mio_task_capacity = 1
+			}
+		}
+	}
+	
+	ENG_1938_naval_programme = {
+		icon = generic_naval
+		
+		allowed = {
+			tag = ENG
+		}
+		
+		available = {
+			hidden_trigger = {
+				always = no
+			}
+		}
+		
+		activation = {
+			has_completed_focus = naval_rearmament_focus
+			date > 1938.12.31
+		}
+		
+		is_good = yes
+		
+		days_mission_timeout = 151
+		
+		fire_only_once = yes
+		
+		timeout_effect = {
+			mio:ENG_harland_wolff_organization = {
+				add_mio_task_capacity = 1
+			}
+			mio:ENG_fairfield_shipbuilding_organization = {
+				add_mio_task_capacity = 1
+			}
+		}
+	}
+	
+	ENG_slot_restrictions = {
+		icon = generic_naval
+		
+		allowed = {
+			tag = ENG
+		}
+		
+		available = {
+			hidden_trigger = {
+				always = no
+			}
+		}
+		
+		activation = {
+			OR = {
+				has_idea = service_by_requirement
+				has_idea = massive_conscription
+				has_idea = massive_draft
+				has_idea = all_adults_serve
+				has_idea = scraping_the_barrel
+			}
+			date > 1939.12.31
+		}
+		
+		is_good = yes
+		
+		days_mission_timeout = 180
+		
+		fire_only_once = yes
+		
+		timeout_effect = {
+			mio:ENG_harland_wolff_organization = {
+				add_mio_task_capacity = -1
+			}
+			mio:ENG_fairfield_shipbuilding_organization = {
+				add_mio_task_capacity = -1
+			}
+		}
+	}
+	
+	ENG_slot_restrictions_prolonged = {
+		icon = generic_naval
+		
+		allowed = {
+			tag = ENG
+		}
+		
+		visible = {
+			has_active_mission = ENG_slot_restrictions
+		}
+		
+		available = {
+			has_active_mission = ENG_slot_restrictions
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+		
+		cost = dockyard_prolonging_cost
+		
+		complete_effect = {
+			add_days_mission_timeout = {
+				mission = ENG_slot_restrictions
+				days = 90
+			}
+			add_to_variable = {
+				var = dockyard_prolonging_cost
+				value = 50 #change tooltip as well
+				tooltip = ENG_add_to_dockyard_prolonging_cost_tt 
+			}
+		}
+	}
+}
