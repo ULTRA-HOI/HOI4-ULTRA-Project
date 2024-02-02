@@ -215,8 +215,14 @@ JAP_mitsubishi_heavy_industries_organization = {
 
 
 JAP_mitsubishi_organization = {
-	include = generic_high_agility_fighter_aircraft_organization
+	include = generic_naval_aircraft_organization
 	icon = GFX_idea_mitsubishi
+
+	equipment_type = {
+		mio_cat_eq_all_cv_aircraft
+		mio_cat_eq_all_maritime_aircraft
+		mio_cat_eq_only_tactical_bomber
+	}
 	
 	allowed = {	 
 		OR = {
@@ -263,19 +269,19 @@ JAP_mitsubishi_organization = {
 	}
 } 
 
-JAP_aichi_organization = {
-	include = generic_range_focused_aircraft_organization
-	icon = GFX_idea_aichi
-	allowed = {	
-		tag = JAP
-	}
-	available = {
-		FROM = { has_completed_focus = JAP_range_focus }
-	}
-}
+#JAP_aichi_organization = {
+#	include = generic_range_focused_aircraft_organization
+#	icon = GFX_idea_aichi
+#	allowed = {	
+#		tag = JAP
+#	}
+#	available = {
+#		FROM = { has_completed_focus = JAP_range_focus }
+#	}
+#}
 
 JAP_nakajima_organization = {
-	include = generic_heavy_aircraft_organization
+	include = generic_general_aircraft_organization
 	icon = GFX_idea_nakajima
 	allowed = {	
 		tag = JAP
@@ -284,8 +290,29 @@ JAP_nakajima_organization = {
 }
 
 JAP_yokosuka_organization = {
-	include = generic_naval_aircraft_organization 
+	include = generic_cas_aircraft_organization
 	icon = GFX_idea_yokosuka
+
+	equipment_type = {
+		cas_equipment
+		mio_cat_eq_all_maritime_aircraft
+	}
+
+	allowed = {	
+		tag = JAP
+		has_dlc = "Arms Against Tyranny"
+	}
+}
+JAP_kawasaki_aircraft_organization = {
+	include = generic_light_aircraft_organization
+	icon = GFX_idea_kawasaki_shipbuilding_corporation
+
+	equipment_type = {
+		mio_cat_eq_only_light_fighter_no_cv 
+		light_bomber_equipment
+		heavy_fighter_equipment
+	}
+
 	allowed = {	
 		tag = JAP
 		has_dlc = "Arms Against Tyranny"
@@ -365,5 +392,15 @@ JAP_nissan_organization = {
 				}
 			}
 		}
+	}
+}
+
+JAP_radio_organization = {
+	include = generic_support_equipment_organization
+	icon = idea_generic_electronics_concern_1
+	
+	allowed = {	 
+		tag = JAP
+
 	}
 }
