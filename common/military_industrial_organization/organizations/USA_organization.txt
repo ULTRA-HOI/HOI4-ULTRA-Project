@@ -854,6 +854,7 @@ USA_ford_motor_company_organization = {
 	allowed = {	 
 		OR = {
 			tag = USA 
+			tag = CAN
 			AND = {
 				tag = POL # If Poland sets up a local one
 				OR = {
@@ -919,11 +920,40 @@ USA_ford_motor_company_organization = {
 				has_completed_focus = BALTIC_ford_motors
 			}
 		}
+		if = {
+			limit = {
+				FROM = {
+					original_tag = CAN
+				}
+			}
+			FROM = {
+				has_completed_focus = CAN_cmp_truck
+			}
+		}
 	}
 	
 	initial_trait = {
 		equipment_bonus = {
-			build_cost_ic = -0.05
+			build_cost_ic = -0.25
+		}
+	}
+
+	add_trait = {
+		token = CAN_mio_trait_CMP_truck
+		name = CAN_mio_trait_CMP_truck
+		icon = GFX_generic_mio_department_icon_motorized_production
+		
+		special_trait_background = yes
+		
+		position = { x=1.5 y=1 }
+		relative_position_id = generic_mio_trait_steel_cargo_bed
+
+		available = {
+			original_TAG = CAN
+		}
+		
+		equipment_bonus = {
+			build_cost_ic = -0.25
 		}
 	}
 }
