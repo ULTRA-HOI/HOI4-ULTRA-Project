@@ -660,7 +660,7 @@ USA_lockheed_organization = {
 	}
 	
 	equipment_type = {
-		mio_cat_eq_all_small_plane
+		jet_fighter_equipment
 		mio_cat_eq_all_medium_plane 
 		transport_plane_equipment
 	}
@@ -670,8 +670,8 @@ USA_lockheed_organization = {
 		limit_to_equipment_type = { mio_cat_eq_all_medium_plane }
 
 		equipment_bonus = {
-			air_range = 0.15
-			air_attack = 0.05
+			air_range = 0.1
+			air_attack = 0.02
 		}
 	}
 	
@@ -697,17 +697,36 @@ USA_lockheed_organization = {
 		token = generic_mio_trait_heavy_fighter_specialization
 		equipment_bonus = {
 			air_range = 0.1
-			air_attack = 0.05
 		}
 	}
 }
 
 USA_douglas_aircraft_company_organization = {
-	include = generic_cas_aircraft_organization
+	include = generic_general_aircraft_organization
 	icon = GFX_idea_douglas_aircraft_company
 	
 	allowed = {	
 		tag = USA 
+	}
+	equipment_type = {
+		mio_cat_eq_all_small_plane
+		mio_cat_eq_all_medium_plane
+		mio_cat_eq_all_large_plane
+		transport_plane_equipment
+	}
+	add_trait = {
+		token = generic_mio_trait_multi_role_transport
+		name = generic_mio_trait_multi_role_transport
+		icon = GFX_generic_mio_department_icon_air_transport_technology
+
+		position = { x=1 y=0 }
+
+		limit_to_equipment_type = { transport_plane_equipment }
+
+		production_bonus = {
+			production_efficiency_gain_factor = 0.05
+			production_efficiency_cap_factor = 0.1
+		}
 	}
 }
 
@@ -799,7 +818,10 @@ USA_grumman_organization = {
 		limit_to_equipment_type = { mio_cat_eq_all_cv_aircraft }
 			
 		equipment_bonus = {
-			maximum_speed = 0.1
+			air_agility = 0.05
+		}
+		organization_modifier = {
+			military_industrial_organization_research_bonus = 0.05
 		}
 	}
 }
@@ -911,6 +933,16 @@ USA_ford_motor_company_organization = {
 USA_rock_island_arsenal_organization = {
 	include = generic_artillery_organization
 	icon = GFX_idea_rock_island_arsenal
+	
+	allowed = {	 
+		tag = USA 
+
+	}
+}
+
+USA_motorola_organization = {
+	include = generic_support_equipment_organization
+	icon = idea_generic_electronics_concern_3
 	
 	allowed = {	 
 		tag = USA 
