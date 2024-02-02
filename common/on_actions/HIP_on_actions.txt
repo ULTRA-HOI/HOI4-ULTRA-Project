@@ -684,6 +684,69 @@ on_actions = {
 			}
 		}
 	}
+	
+	on_weekly_USA = {
+		effect = {
+			if = { #USA carrier treaty limitation
+				limit = {
+					date < 1940.01.01
+					GER = {
+						has_war = no
+					}
+				}
+				if = {
+					limit = {
+						has_navy_size = {
+							size > 5
+							archetype = nrm_ship_hull_carrier
+						}
+					}
+					remove_ideas = {
+						USA_carrier_treaty_limit_3
+						USA_carrier_treaty_limit_2
+						USA_carrier_treaty_limit
+					}
+					add_ideas = USA_carrier_treaty_limit_4
+				}
+				else_if = {
+					limit = {
+						has_navy_size = {
+							size > 4
+							archetype = nrm_ship_hull_carrier
+						}
+					}
+					remove_ideas = {
+						USA_carrier_treaty_limit_4
+						USA_carrier_treaty_limit_2
+						USA_carrier_treaty_limit
+					}
+					add_ideas = USA_carrier_treaty_limit_3
+				}
+				else_if = {
+					limit = {
+						has_navy_size = {
+							size > 3
+							archetype = nrm_ship_hull_carrier
+						}
+					}
+					remove_ideas = {
+						USA_carrier_treaty_limit_4
+						USA_carrier_treaty_limit_3
+						USA_carrier_treaty_limit
+					}
+					add_ideas = USA_carrier_treaty_limit_2
+				}
+				else = {
+					remove_ideas = {
+						USA_carrier_treaty_limit_4
+						USA_carrier_treaty_limit_3
+						USA_carrier_treaty_limit_2
+					}
+					add_ideas = USA_carrier_treaty_limit
+				}
+			}
+		}
+	}
 
 	on_weekly = {
 		effect = {

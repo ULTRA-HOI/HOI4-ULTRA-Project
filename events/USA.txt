@@ -2935,3 +2935,46 @@ country_event = {
 		set_country_flag = pearl_harbor_ship_repair
 	}
 }
+
+country_event = { #US gets additional capital slot when Germany attacks
+	id = usa.302
+	title = usa.302.t
+	desc = usa.302.d
+	picture = GFX_report_event_us_dockyard
+	
+	trigger = {
+		original_tag = USA
+		GER ={
+			has_war = yes
+		}
+	}
+	
+	fire_only_once = yes
+	
+	option = {
+		name = usa.302.a
+		ai_chance = { factor = 100 }
+		mio:USA_newport_news_shipbuilding_organization = {
+			add_mio_task_capacity = 1
+		}
+	}
+}
+
+country_event = { #US gets additional capital slots after Pearl Harbor
+	id = usa.303
+	title = usa.303.t
+	desc = usa.303.d
+	picture = GFX_report_event_us_dockyard
+	
+	is_triggered_only = yes
+	
+	fire_only_once = yes
+	
+	option = {
+		name = usa.303.a
+		ai_chance = { factor = 100 }
+		mio:USA_newport_news_shipbuilding_organization = {
+			add_mio_task_capacity = 5
+		}
+	}
+}
