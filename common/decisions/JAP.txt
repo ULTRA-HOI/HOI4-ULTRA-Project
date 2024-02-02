@@ -3404,3 +3404,160 @@ prospect_for_resources = {
 	}
 
 }
+special_projects = {
+	JAP_maru_2_keikaku = {
+		icon = generic_naval
+		
+		allowed = {
+			tag = JAP
+		}
+		
+		available = {
+			hidden_trigger = {
+				always = no
+			}
+		}
+		
+		is_good = yes
+		
+		days_mission_timeout = 181
+		
+		fire_only_once = yes
+		
+		timeout_effect = {
+			mio:JAP_kure_naval_arsenal_organization = {
+				add_mio_task_capacity = 1
+			}
+		}
+	}
+	
+	JAP_maru_3_keikaku = {
+		icon = generic_naval
+		
+		allowed = {
+			tag = JAP
+		}
+		
+		available = {
+			hidden_trigger = {
+				always = no
+			}
+		}
+		
+		activation = {
+			has_completed_focus = JAP_new_naval_estimates
+			date > 1936.12.31
+		}
+		
+		is_good = yes
+		
+		days_mission_timeout = 304
+		
+		fire_only_once = yes
+		
+		timeout_effect = {
+			mio:JAP_kure_naval_arsenal_organization = {
+				add_mio_task_capacity = 3
+			}
+		}
+	}
+	
+	JAP_maru_4_keikaku = {
+		icon = generic_naval
+		
+		allowed = {
+			tag = JAP
+		}
+		
+		available = {
+			hidden_trigger = {
+				always = no
+			}
+		}
+		
+		activation = {
+			has_completed_focus = JAP_new_naval_estimates
+			date > 1939.12.31
+		}
+		
+		is_good = yes
+		
+		days_mission_timeout = 304
+		
+		fire_only_once = yes
+		
+		timeout_effect = {
+			mio:JAP_kure_naval_arsenal_organization = {
+				add_mio_task_capacity = 2
+			}
+		}
+	}
+	
+	JAP_maru_5_keikaku = {
+		icon = generic_naval
+		
+		allowed = {
+			tag = JAP
+		}
+		
+		available = {
+			hidden_trigger = {
+				always = no
+			}
+		}
+		
+		activation = {
+			OR = {
+				date > 1942.12.31
+				has_navy_size = {
+					size < 5
+					archetype = nrm_ship_hull_carrier
+				}
+			}
+			has_completed_focus = JAP_new_naval_estimates
+		}
+		
+		is_good = yes
+		
+		days_mission_timeout = 181
+		
+		fire_only_once = yes
+		
+		timeout_effect = {
+			mio:JAP_kure_naval_arsenal_organization = {
+				add_mio_task_capacity = 3
+			}
+			activate_mission = JAP_maru_5_keikaku_second_batch
+		}
+	}
+	
+	JAP_maru_5_keikaku_second_batch = {
+		icon = generic_naval
+		
+		allowed = {
+			tag = JAP
+		}
+		
+		available = {
+			hidden_trigger = {
+				always = no
+			}
+		}
+		
+		activation = {
+			always = no
+		}
+		
+		is_good = yes
+		
+		days_mission_timeout = 335
+		
+		fire_only_once = yes
+		
+		timeout_effect = {
+			mio:JAP_kure_naval_arsenal_organization = {
+				add_mio_task_capacity = 3
+			}
+		}
+	}
+}
