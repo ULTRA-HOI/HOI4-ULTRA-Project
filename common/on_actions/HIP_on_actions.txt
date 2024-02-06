@@ -16,6 +16,8 @@ on_actions = {
 				add_dynamic_modifier = {
 					modifier = mio_fund_scale
 				}
+				ship_repair_speed_set_var = yes
+				ship_repair_speed_calc = yes
 				add_dynamic_modifier = {
 					modifier = modifier_dockyard_limitation_for_mios
 				}
@@ -772,11 +774,18 @@ on_actions = {
 						modifier = mio_fund_scale
 					}
 				}
+				ship_repair_speed_calc = yes
 				if = {
 					limit = { NOT = { has_dynamic_modifier = { modifier = modifier_dockyard_limitation_for_mios } } }
 					add_dynamic_modifier = {
 						modifier = modifier_dockyard_limitation_for_mios
 					}
+				}
+				if = {
+					limit = { 
+						NOT = { has_variable = var_base_repair_speed_bonus }
+					}
+					ship_repair_speed_set_var = yes
 				}
 			}
 		}

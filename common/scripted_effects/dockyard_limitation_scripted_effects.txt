@@ -1,0 +1,12 @@
+ship_repair_speed_set_var = {
+	set_variable = { var_base_repair_speed_bonus = 0.15 } #Basic Global Repair Speed Bonus from old Refit Designer. Also used now to collect all repair speed bonuses here
+}
+#Necessary Calculation for Repair Speed
+ship_repair_speed_calc = {
+	set_variable = { var_base_dockyard_output = -4 } #Basic Dockyard Output malus set up here
+	set_temp_variable = { temp_ship_repair = var_base_dockyard_output }
+	subtract_from_temp_variable = { temp_ship_repair = modifier@industrial_capacity_dockyard } #Defines actual dockyard output as a negative value
+	multiply_temp_variable = { temp_ship_repair = 2 } #Doubles Dockyard Output. Necessary since repair now scales with negative dockyard output where base_dockyard_output is 0
+	subtract_from_temp_variable = { temp_ship_repair = var_base_repair_speed_bonus } #Adds all repair bonuses a nation has on top
+	set_variable = { var_repair_speed_bonus = temp_ship_repair }
+}
