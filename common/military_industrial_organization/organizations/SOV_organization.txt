@@ -1971,3 +1971,47 @@ SOV_gaz_organization = {
 		}
 	}
 }
+
+SOV_izhora_organization = {
+	include = generic_armored_car_organization
+	icon = GFX_idea_generic_tank_manufacturer_3
+	
+	allowed = {	
+				tag = SOV 
+	}
+
+	available = {
+		# When in a Foreign MIO, countries need to be at peace with original country
+		IF = {
+			limit = {
+				FROM = { NOT = { original_tag = SOV } }
+			}
+			FROM = { NOT = { has_war_with = SOV } }
+		}
+	}
+}
+
+SOV_radio_organisation = {
+	include = generic_support_equipment_organization
+	icon = GFX_idea_generic_industrial_concern_2
+	
+	available = {
+		FROM = {
+			has_completed_focus = SOV_lessons_of_war
+		}
+	}
+
+	allowed = {	
+				tag = SOV
+	}
+
+	available = {
+		# When in a Foreign MIO, countries need to be at peace with original country
+		IF = {
+			limit = {
+				FROM = { NOT = { original_tag = SOV } }
+			}
+			FROM = { NOT = { has_war_with = SOV } }
+		}
+	}
+}
