@@ -838,6 +838,25 @@ SOV_nevskoye_design_bureau_organization = {
 			is_ai = no
 		}
 	}
+	
+	initial_trait = {
+		limit_to_equipment_type = { mio_cat_eq_all_battleship } #Russia cannot go into Carriers initially
+	}
+	
+	override_trait = {
+		token = generic_mio_trait_armored_carrier
+		
+		available = {
+			has_mio_size > 6
+			FROM = {
+				has_completed_focus = SOV_expand_the_morskaya_aviatsiya #When Russia completed Carrier Focus, it gets the ability to build carriers
+			}
+		}
+		
+		production_bonus = {
+			production_capacity_factor = 4
+		}
+	}
 }
 
 SOV_sevastopol_marine_plant_organization = {
