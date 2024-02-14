@@ -906,4 +906,169 @@ on_actions = {
 			}
 		}
 	}
+	
+	on_state_control_changed = {
+		effect = {
+			if = {
+				limit = {
+					FROM.FROM = { #Leningrad Contested, Soviets loose Shipyards. When secured again, Soviets regain them
+						OR = {
+							state = 146
+							state = 195
+							state = 208
+						}
+					}
+				}
+				if =  {
+					limit = {
+						FROM = {
+							original_tag = SOV
+							NOT = {
+								has_country_flag = SOV_Leningrad_dockyards_contested
+							}
+						}
+					}
+					FROM = {
+						set_country_flag = SOV_Leningrad_dockyards_contested
+						if = {
+							limit = {
+								FROM = {
+									has_country_flag = SOV.project_23
+								}
+							}
+							mio:SOV_nevskoye_design_bureau_organization = {
+								add_mio_task_capacity = -2
+							}
+						}
+					}
+				}
+				else_if =  {
+					limit = {
+						ROOT = {
+							original_tag = SOV
+							has_country_flag = SOV_Leningrad_dockyards_contested
+							controls_state = 146
+							controls_state = 195
+							controls_state = 208
+						}
+					}
+					ROOT = {
+						clr_country_flag = SOV_Leningrad_dockyards_contested
+						if = {
+							limit = {
+								ROOT = {
+									has_country_flag = SOV.project_23
+								}
+							}
+							mio:SOV_nevskoye_design_bureau_organization = {
+								add_mio_task_capacity = 2
+							}
+						}
+					}
+				}
+			}
+			
+			if = {
+				limit = {
+					FROM.FROM = { #Mykolaiv captured, Soviets loose dockyards, on recapture, they regain them
+						OR = {
+							state = 197
+						}
+					}
+				}
+				if =  {
+					limit = {
+						FROM = {
+							original_tag = SOV
+						}
+					}
+					FROM = {
+						set_country_flag = SOV_Mykolaiv_dockyards_captured
+						if = {
+							limit = {
+								FROM = {
+									has_country_flag = SOV.project_69
+								}
+							}
+							mio:SOV_nevskoye_design_bureau_organization = {
+								add_mio_task_capacity = -2
+							}
+						}
+					}
+				}
+				else_if =  {
+					limit = {
+						ROOT = {
+							original_tag = SOV
+							has_country_flag = SOV_Mykolaiv_dockyards_captured
+						}
+					}
+					ROOT = {
+						clr_country_flag = SOV_Mykolaiv_dockyards_captured
+						if = {
+							limit = {
+								ROOT = {
+									has_country_flag = SOV.project_69
+								}
+							}
+							mio:SOV_nevskoye_design_bureau_organization = {
+								add_mio_task_capacity = 2
+							}
+						}
+					}
+				}
+			}
+			
+			if = {
+				limit = {
+					FROM.FROM = { #Arkhangelsk captured, Soviets loose dockyards, on recapture, they regain them
+						OR = {
+							state = 214
+						}
+					}
+				}
+				if =  {
+					limit = {
+						FROM = {
+							original_tag = SOV
+						}
+					}
+					FROM = {
+						set_country_flag = SOV_Arkhangelsk_dockyards_captured
+						if = {
+							limit = {
+								FROM = {
+									has_country_flag = SOV.project_69
+								}
+							}
+							mio:SOV_nevskoye_design_bureau_organization = {
+								add_mio_task_capacity = -2
+							}
+						}
+					}
+				}
+				else_if =  {
+					limit = {
+						ROOT = {
+							original_tag = SOV
+							has_country_flag = SOV_Arkhangelsk_dockyards_captured
+						}
+					}
+					ROOT = {
+						clr_country_flag = SOV_Arkhangelsk_dockyards_captured
+						if = {
+							limit = {
+								ROOT = {
+									has_country_flag = SOV.project_69
+								}
+							}
+							mio:SOV_nevskoye_design_bureau_organization = {
+								add_mio_task_capacity = 2
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 }

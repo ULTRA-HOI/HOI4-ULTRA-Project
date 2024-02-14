@@ -824,10 +824,25 @@ SOV_nevskoye_design_bureau_organization = {
 	icon = GFX_idea_nevskoye_design_bureau
 	
 	allowed = {	
-		tag = SOV 
+		OR = {
+			tag = SOV
+			tag = GER
+		}
 	}
 	
 	visible = {
+		IF = {
+			limit = {
+				FROM = {
+					original_tag = GER
+				}
+			}
+			SOV = {
+				any_core_state = {
+					is_controlled_by = GER
+				}
+			}
+		}
 		FROM = {
 			is_ai = no
 		}
@@ -836,6 +851,21 @@ SOV_nevskoye_design_bureau_organization = {
 	available = {
 		FROM = {
 			is_ai = no
+			OR = {
+				has_full_control_of_state = 195
+				has_full_control_of_state = 197
+				has_full_control_of_state = 214
+			}
+		}
+		IF = {
+			limit = {
+				FROM = {
+					original_tag = GER
+				}
+			}
+			FROM = {
+				has_country_flag = GER_soviet_dockyards
+			}
 		}
 	}
 	
@@ -847,9 +877,16 @@ SOV_nevskoye_design_bureau_organization = {
 		token = generic_mio_trait_armored_carrier
 		
 		available = {
-			has_mio_size > 6
-			FROM = {
-				has_completed_focus = SOV_expand_the_morskaya_aviatsiya #When Russia completed Carrier Focus, it gets the ability to build carriers
+			IF = {
+				limit = {
+					FROM = {
+						original_tag = SOV
+					}
+				}
+				has_mio_size > 6
+				FROM = {
+					has_completed_focus = SOV_expand_the_morskaya_aviatsiya #When Russia completed Carrier Focus, it gets the ability to build carriers
+				}
 			}
 		}
 		
