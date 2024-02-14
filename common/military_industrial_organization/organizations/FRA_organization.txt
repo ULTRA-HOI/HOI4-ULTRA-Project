@@ -156,11 +156,26 @@ FRA_acl_organization = {
 	include = generic_battle_fleet_ship_organization
 	icon = GFX_idea_FRA_acl
 	allowed = {	
-		tag = FRA 
+		OR = {
+			tag = FRA
+			tag = GER
+		}
 		has_dlc = "Arms Against Tyranny"
 	}
 	
 	visible = {
+		IF = {
+			limit = {
+				FROM = {
+					original_tag = GER
+				}
+			}
+			FRA = {
+				any_core_state = {
+					is_controlled_by = GER
+				}
+			}
+		}
 		FROM = {
 			is_ai = no
 		}
@@ -169,6 +184,18 @@ FRA_acl_organization = {
 	available = {
 		FROM = {
 			is_ai = no
+			has_full_control_of_state = 30
+			has_full_control_of_state = 14
+		}
+		IF = {
+			limit = {
+				FROM = {
+					original_tag = GER
+				}
+			}
+			FROM = {
+				has_country_flag = GER_french_dockyards
+			}
 		}
 	}
 	
