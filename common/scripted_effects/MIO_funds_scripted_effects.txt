@@ -8,3 +8,18 @@ fund_scale_calc = {
 	subtract_from_temp_variable = {fund_scale_TEMP = 1}
 	set_variable = { fund_scale = fund_scale_TEMP }
 }
+
+@mio_level_k = 12
+mio_level_scale_calc = {
+	clear_variable = global.mio_level_scale
+	set_temp_variable = {mio_level_scale_TEMP = global.num_days}
+	subtract_from_temp_variable = {mio_level_scale_TEMP = 706640}
+	divide_temp_variable = {mio_level_scale_TEMP = 365}
+	subtract_from_temp_variable = {mio_level_scale_TEMP = @mio_level_k}
+	multiply_temp_variable = {mio_level_scale_TEMP = mio_level_scale_TEMP}
+	multiply_temp_variable = {mio_level_scale_TEMP = -1}
+	divide_temp_variable = {mio_level_scale_TEMP = @mio_level_k}
+	add_to_temp_variable = {mio_level_scale_TEMP = @mio_level_k}
+	set_variable = {global.mio_level_scale = mio_level_scale_TEMP}
+}
+	
