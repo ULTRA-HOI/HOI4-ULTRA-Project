@@ -904,7 +904,7 @@ NMilitary = {
 	ENCIRCLED_PENALTY = 0, --was -0.3 --penalty when completely encircled
 
 	UNIT_EXPERIENCE_PER_COMBAT_HOUR = 0.00025, --was 0.0001
-	UNIT_EXPERIENCE_SCALE = 0.5, --was 1.0
+	UNIT_EXPERIENCE_SCALE = 1.0, --was 1.0
 	UNIT_EXPERIENCE_PER_TRAINING_DAY = 0.0025, --was 0.0015
 	TRAINING_MAX_LEVEL = 6, --was 2
 	DEPLOY_TRAINING_MAX_LEVEL = 4, --was 1
@@ -933,7 +933,7 @@ NMilitary = {
 	SLOWEST_SPEED = 0.4, --was 4
 	REINFORCEMENT_REQUEST_MAX_WAITING_DAYS = 14,   -- Every X days the equipment will be sent, regardless if still didn't produced all that has been requested.
 	REINFORCEMENT_REQUEST_DAYS_FREQUENCY = 7,	   -- How many days must pass until we may give another reinforcement request
-	EXPERIENCE_COMBAT_FACTOR = 0.05, --was 0.25
+	EXPERIENCE_COMBAT_FACTOR = 0.025, --was 0.25
 	UNIT_DIGIN_CAP = 5, --was 5 --how "deep" you can dig you can dig in until hitting max bonus
 	UNIT_DIGIN_SPEED = 0.5, --was 1 --how "deep" you can dig a day.
 	PARACHUTE_FAILED_EQUIPMENT_DIV = 50.0,		   -- When the transport plane was shot down, we drop unit with almost NONE equipment
