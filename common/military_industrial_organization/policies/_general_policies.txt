@@ -26,6 +26,7 @@ mio_policy_general_assembly_line_optimisers = {
 			has_mio_equipment_type = mio_cat_eq_all_heavy_tank
 			has_mio_equipment_type = mio_cat_eq_all_tank_destroyers
 			has_mio_equipment_type = motorized
+			has_mio_equipment_type = mio_cat_eq_armored_car_equipment
 			has_mio_equipment_type = motorized_equipment
 			has_mio_equipment_type = motorized_rocket_equipment
 			has_mio_equipment_type = mechanized
@@ -55,7 +56,11 @@ mio_policy_general_assembly_line_optimisers = {
 
 mio_policy_general_vertical_integration = {
 	icon = GFX_mio_policy_vertical_integration
-	allowed = { always = yes }
+	allowed = { 
+		NOT = {
+			has_mio_equipment_type = mio_cat_eq_ship_research
+		}
+	}
 	available = { has_mio_size > 5}
 	production_bonus = {
 		same_as_mio = {
