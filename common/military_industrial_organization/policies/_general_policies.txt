@@ -3,7 +3,7 @@ mio_policy_general_ruthless_contracts = {
 	allowed = { always = yes  }
 	available = { has_mio_size > 5}
 	organization_modifier = {
-		military_industrial_organization_size_up_requirement = -0.1
+		military_industrial_organization_size_up_requirement = -0.15
 	}
 }
 
@@ -11,23 +11,35 @@ mio_policy_general_assembly_line_optimisers = {
 	icon = GFX_mio_policy_assembly_line_optimisers
 	allowed = { 
 		OR = {
-			has_mio_equipment_type = small_plane_airframe
-			has_mio_equipment_type = medium_plane_airframe
-			has_mio_equipment_type = large_plane_airframe
-			has_mio_equipment_type = small_plane_cas_airframe
-			has_mio_equipment_type = small_plane_naval_bomber_airframe
-			has_mio_equipment_type = medium_plane_fighter_airframe
-			has_mio_equipment_type = medium_plane_scout_plane_airframe
-			has_mio_equipment_type = large_plane_maritime_patrol_plane_airframe
+			has_mio_equipment_type = mio_cat_eq_all_small_plane
+			has_mio_equipment_type = mio_cat_eq_only_light_fighter
+			has_mio_equipment_type = mio_cat_eq_only_light_fighter_no_cv
+			has_mio_equipment_type = mio_cat_eq_all_cv_aircraft
+			has_mio_equipment_type = mio_cat_eq_only_tactical_bomber
+			has_mio_equipment_type = mio_cat_eq_all_medium_plane
+			has_mio_equipment_type = mio_cat_eq_all_maritime_aircraft
+			has_mio_equipment_type = mio_cat_eq_all_large_plane
+			has_mio_equipment_type = mio_cat_eq_only_strategic_bomber
 			has_mio_equipment_type = mio_cat_eq_all_tank
+			has_mio_equipment_type = mio_cat_eq_all_light_tank
+			has_mio_equipment_type = mio_cat_eq_all_medium_tank
+			has_mio_equipment_type = mio_cat_eq_all_heavy_tank
+			has_mio_equipment_type = mio_cat_eq_all_tank_destroyers
 			has_mio_equipment_type = motorized
+			has_mio_equipment_type = motorized_equipment
+			has_mio_equipment_type = motorized_rocket_equipment
 			has_mio_equipment_type = mechanized
 			has_mio_equipment_type = anti_tank
+			has_mio_equipment_type = mio_cat_eq_all_at_equipment
 			has_mio_equipment_type = flame
 			has_mio_equipment_type = anti_air
+			has_mio_equipment_type = mio_cat_eq_all_aa_equipment
 			has_mio_equipment_type = artillery
+			has_mio_equipment_type = mio_cat_eq_all_art_equipment
 			has_mio_equipment_type = rocket
+			has_mio_equipment_type = mio_cat_eq_support_equipment
 			has_mio_equipment_type = infantry
+			has_mio_equipment_type = mio_cat_eq_all_infantry_equipment
 			has_mio_equipment_type = railway_gun
 			has_mio_equipment_type = train
 		} 
@@ -67,9 +79,22 @@ mio_policy_general_vertical_integration = {
 mio_policy_general_experimental_development_teams = {
 	icon = GFX_mio_policy_experimental_development_teams
 	allowed = { always = yes }
-	available = { has_mio_size > 5}
+	available = {
+		has_mio_size > 5
+		NOT = {
+			has_mio_equipment_type = capital_ship
+			has_mio_equipment_type = screen_ship
+			has_mio_equipment_type = submarine
+			has_mio_equipment_type = carrier
+			has_mio_equipment_type = mio_cat_eq_all_carrier
+			has_mio_equipment_type = mio_cat_eq_all_cruiser
+			has_mio_equipment_type = mio_cat_eq_all_destroyer
+			has_mio_equipment_type = mio_cat_eq_all_battleship
+			has_mio_equipment_type = mio_cat_eq_all_screens
+		}
+	}
 	organization_modifier = {
-		military_industrial_organization_research_bonus = 0.05
+		military_industrial_organization_research_bonus = 0.15
 	}
 }
 
