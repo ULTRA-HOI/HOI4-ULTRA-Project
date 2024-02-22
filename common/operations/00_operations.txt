@@ -40,6 +40,10 @@ operation_rescue_operative = { ### 0 1/35
 	experience = 2
 	cost_multiplier = 0 # we dont scale in cost for rescues
 
+	risk_modifiers = { operation_infiltrate_risk operation_risk }
+	outcome_modifiers = { operation_infiltrate_outcome operation_outcome }
+	cost_modifiers = { operation_infiltrate_cost operation_cost }
+
 	outcome_execute = { # SCOPE_OPERATION
 		ROOT = {
 			free_random_operative = {
@@ -160,9 +164,11 @@ operation_infiltrate_civilian = { ### 1 1/35
 	}
 	risk_chance = 0.15
 	outcome_extra_chance = 0.25
+
 	risk_modifiers = { operation_infiltrate_risk operation_risk }
 	outcome_modifiers = { operation_infiltrate_outcome operation_outcome }
 	cost_modifiers = { operation_infiltrate_cost operation_cost }
+
 	outcome_execute = {
 		ROOT = {
 			add_operation_token = {
@@ -322,6 +328,11 @@ operation_fake_intel = { ### 2 1/40
 	}
 	risk_chance = 0 #there shouldn't be any risk
 	experience = 0.5
+	
+	risk_modifiers = { operation_fake_intel_risk operation_risk }
+	outcome_modifiers = { operation_fake_intel_outcome operation_outcome }
+	cost_modifiers = { operation_fake_intel_cost operation_cost }
+
 	outcome_execute = { # SCOPE_OPERATION
 		ROOT = {
 			hidden_effect = {
@@ -432,6 +443,11 @@ operation_capture_cipher = { ### 3 1/55
 	}
 	risk_chance = 0.3
 	outcome_extra_chance = 0.25
+
+	risk_modifiers = { operation_capture_cipher_risk operation_risk }
+	outcome_modifiers = { operation_capture_cipher_outcome operation_outcome }
+	cost_modifiers = { operation_capture_cipher_cost operation_cost }
+
 	outcome_execute = {
 		ROOT = {
 			add_decryption = {
@@ -596,10 +612,12 @@ operation_infiltrate_armed_forces_army = { ### 4 1/55
 	}
 
 	risk_chance = 0.15
-	risk_modifiers = { operation_infiltrate_risk operation_risk }
 	outcome_extra_chance = 0.25
+
+	risk_modifiers = { operation_infiltrate_risk operation_risk }
 	outcome_modifiers = { operation_infiltrate_outcome operation_outcome }
 	cost_modifiers = { operation_infiltrate_cost operation_cost }
+	
 	outcome_execute = {
 		ROOT = {
 			add_operation_token = {
@@ -759,9 +777,11 @@ operation_infiltrate_armed_forces_navy = { ### 5 1/55
 	}
 	risk_chance = 0.15
 	outcome_extra_chance = 0.25
+
 	risk_modifiers = { operation_infiltrate_risk operation_risk }
 	outcome_modifiers = { operation_infiltrate_outcome operation_outcome }
 	cost_modifiers = { operation_infiltrate_cost operation_cost }
+
 	outcome_execute = {
 		ROOT = {
 			add_operation_token = {
@@ -911,9 +931,11 @@ operation_infiltrate_armed_forces_airforce = { ### 6 1/55
 	}
 	risk_chance = 0.15
 	outcome_extra_chance = 0.25
+
 	risk_modifiers = { operation_infiltrate_risk operation_risk }
 	outcome_modifiers = { operation_infiltrate_outcome operation_outcome }
 	cost_modifiers = { operation_infiltrate_cost operation_cost }
+	
 	outcome_execute = {
 		ROOT = {
 			add_operation_token = {
@@ -1134,7 +1156,11 @@ operation_coup_government = { ### 7 1/70
 	}
 	risk_chance = 0.6
 	experience = 2.5
-	cost_modifiers = { operation_coup_cost }
+	
+	risk_modifiers = { operation_coup_government_risk operation_risk }
+	outcome_modifiers = { operation_coup_government_outcome operation_outcome }
+	cost_modifiers = { operation_coup_government_cost operation_cost }
+	
 	outcome_execute = { # SCOPE_OPERATION
 		FROM = {
 			if = {
@@ -1327,7 +1353,11 @@ operation_boost_resistance = { ### 8 2/40
 	risk_chance = 0.3
 	experience = 1.5
 	outcome_extra_chance = 0.1
-	outcome_modifiers = { boost_resistance_factor }
+
+	risk_modifiers = { operation_boost_resistance_risk operation_risk }
+	outcome_modifiers = { boost_resistance_factor operation_boost_resistance_outcome operation_outcome }
+	cost_modifiers = { operation_boost_resistance_cost operation_cost }
+	
 	outcome_execute = {
 		FROM.FROM = {
 			if = {
@@ -1515,9 +1545,11 @@ operation_make_resistance_contacts = { ### 9 2/40
 	}
 	risk_chance = 0.15
 	outcome_extra_chance = 0.25
+
 	risk_modifiers = { operation_infiltrate_risk operation_risk }
 	outcome_modifiers = { operation_infiltrate_outcome operation_outcome }
 	cost_modifiers = { operation_infiltrate_cost operation_cost }
+
 	outcome_execute = {
 		ROOT = {
 			add_operation_token = {
@@ -1676,6 +1708,11 @@ operation_coordinated_strike = { ### 11 2/70
 	will_lead_to_war_with = yes
 	risk_chance = 0.3
 	experience = 2
+	
+	risk_modifiers = { operation_coordinated_strike_risk operation_risk }
+	outcome_modifiers = { operation_coordinated_strike_outcome operation_outcome }
+	cost_modifiers = { operation_coordinated_strike_cost operation_cost }
+	
 	outcome_execute = { # SCOPE_OPERATION
 		ROOT = {
 			declare_war_on = { target = FROM type = annex_everything }
@@ -1783,9 +1820,10 @@ operation_steal_tech_civilian = { ### 12 3/35
 	risk_chance = @STEAL_TECH_RISK_CHANCE
 	experience = 2
 	outcome_extra_chance = @STEAL_TECH_OUTCOME_EXTRA_CHANCE
+
 	risk_modifiers = { operation_steal_tech_risk operation_risk }
 	outcome_modifiers = { operation_steal_tech_outcome operation_outcome }
-	cost_modifiers = { operation_cost }
+	cost_modifiers = { operation_steal_tech_cost operation_cost }
 
 	outcome_execute = {
 		ROOT = {
@@ -2095,6 +2133,7 @@ operation_targeted_sabotage_infrastructure = { ### 14 3/35
 	risk_chance = 0.3
 	experience = 2
 	outcome_extra_chance = 0.25
+
 	outcome_modifiers = { target_sabotage_factor operation_risk }
 	risk_modifiers = { target_sabotage_risk operation_outcome }
 	cost_modifiers = { target_sabotage_cost operation_cost }
@@ -2228,9 +2267,11 @@ operation_targeted_sabotage_resources = { ### 15 3/35
 	risk_chance = 0.3
 	experience = 2
 	outcome_extra_chance = 0.25
+
 	outcome_modifiers = { target_sabotage_factor operation_outcome }
 	risk_modifiers = { target_sabotage_risk operation_risk }
 	cost_modifiers = { target_sabotage_cost operation_cost }
+
 	outcome_execute = {
 		FROM.FROM = {
 			add_to_variable = {
@@ -2348,10 +2389,12 @@ operation_steal_tech_army = { ### 16 3/55
 	}
 	risk_chance = 0.3
 	experience = 2
-	risk_modifiers = { operation_steal_tech_risk operation_risk }
 	outcome_extra_chance = 0.25
+
+	risk_modifiers = { operation_steal_tech_risk operation_risk }
 	outcome_modifiers = { operation_steal_tech_outcome operation_outcome }
-	cost_modifiers = { operation_cost }
+	cost_modifiers = { operation_steal_tech_cost operation_cost }
+
 	outcome_execute = {
 		ROOT = {
 			steal_random_tech_bonus = {
@@ -2522,9 +2565,11 @@ operation_steal_tech_navy = { ### 17 3/55
 	risk_chance = 0.3
 	experience = 2
 	outcome_extra_chance = 0.25
+	
 	risk_modifiers = { operation_steal_tech_risk operation_risk }
 	outcome_modifiers = { operation_steal_tech_outcome operation_outcome }
-	cost_modifiers = { operation_cost }
+	cost_modifiers = { operation_steal_tech_cost operation_cost }
+
 	outcome_execute = {
 
 		if = {
@@ -2755,9 +2800,11 @@ operation_steal_tech_airforce = { ### 18 3/55
 	risk_chance = 0.3
 	experience = 2
 	outcome_extra_chance = 0.25
-	risk_modifiers = { operation_steal_tech_risk operation_risk }	
+
+	risk_modifiers = { operation_steal_tech_risk operation_risk }
 	outcome_modifiers = { operation_steal_tech_outcome operation_outcome }
-	cost_modifiers = { operation_cost }
+	cost_modifiers = { operation_steal_tech_cost operation_cost }
+	
 	outcome_execute = {
 		ROOT = {
 			steal_random_tech_bonus = {
