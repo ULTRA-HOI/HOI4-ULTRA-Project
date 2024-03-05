@@ -2096,11 +2096,6 @@ prepare_for_war_with_germany = {
 	}
 	ai_strategy = {
 		type = conquer
-		id = "HUN"
-		value = 10
-	}
-	ai_strategy = {
-		type = conquer
 		id = "ROM"
 		value = 250
 	}
@@ -2168,6 +2163,47 @@ prepare_for_war_with_germany = {
 		type = area_priority
 		id = west_china
 		value = -200		#less focus here
+	}
+}
+
+avoid_carpathian_pocket = {
+	allowed = {
+		original_tag = SOV
+	}
+	enable = {
+		country_exists = GER
+		has_completed_focus = SOV_anti_fascist_diplomacy
+		controls_state = 146
+	}
+	abort = {
+		has_war_with = GER
+	}
+	ai_strategy = {
+		type = ignore
+		id = "HUN"
+		value = 200
+	}
+	ai_strategy = {
+		type = conquer
+		id = "HUN"
+		value = -200
+	}
+	ai_strategy = {
+		type = front_unit_request
+		tag = "HUN"
+		value = -200
+	}
+	ai_strategy = {
+		type = put_unit_buffers
+		#order_id = 2
+		# riverline
+		states = {
+			91 #Lwów
+		}
+		ratio = 0.1
+		area = west_russia
+		subtract_invasions_from_need = no
+		subtract_fronts_from_need = no
 	}
 }
 
