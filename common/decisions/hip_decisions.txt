@@ -574,6 +574,18 @@ special_projects ={
 				size > 0
 				type = carrier 
 			}
+			num_of_civilian_factories_available_for_projects > 9
+		}
+		
+		modifier = {
+			civilian_factory_use = 10
+			industrial_capacity_dockyard = -0.025
+		}
+		
+		days_remove = 180
+		fire_only_once = yes
+		
+		custom_cost_trigger = {
 			IF = {
 				limit = {
 					has_tech = advanced_ship_hull_carrier
@@ -592,35 +604,29 @@ special_projects ={
 				has_air_experience > 150
 				has_navy_experience > 150
 			}
-			num_of_civilian_factories > 10
 		}
-		
-		modifier = {
-			civilian_factory_use = 10
-			industrial_capacity_dockyard = -0.025
-		}
-		
-		days_remove = 180
-		fire_only_once = yes
-		
+		custom_cost_text = carrier_practical_experience_cost_high
+
 		complete_effect = {
-			IF = {
-				limit = {
-					has_tech = advanced_ship_hull_carrier
+			hidden_effect = {
+				IF = {
+					limit = {
+						has_tech = advanced_ship_hull_carrier
+					}
+					navy_experience = -100
+					air_experience = -100
 				}
-				navy_experience = -100
-				air_experience = -100
-			}
-			ELSE_IF = {
-				limit = {
-					has_tech = improved_ship_hull_carrier
+				ELSE_IF = {
+					limit = {
+						has_tech = improved_ship_hull_carrier
+					}
+					navy_experience = -125
+					air_experience = -125
 				}
-				navy_experience = -125
-				air_experience = -125
-			}
-			ELSE = {
-				navy_experience = -150
-				air_experience = -150
+				ELSE = {
+					navy_experience = -150
+					air_experience = -150
+				}
 			}
 		}
 		
@@ -645,6 +651,10 @@ special_projects ={
 				size > 0
 				type = carrier 
 			}
+			num_of_civilian_factories_available_for_projects > 9
+		}
+		
+		custom_cost_trigger = {
 			IF = {
 				limit = {
 					has_tech = advanced_ship_hull_carrier
@@ -663,8 +673,8 @@ special_projects ={
 				has_air_experience > 125
 				has_navy_experience > 125
 			}
-			num_of_civilian_factories > 10
 		}
+		custom_cost_text = carrier_practical_experience_cost_low
 		
 		modifier = {
 			civilian_factory_use = 10
@@ -675,23 +685,25 @@ special_projects ={
 		fire_only_once = yes
 		
 		complete_effect = {
-			IF = {
-				limit = {
-					has_tech = advanced_ship_hull_carrier
+			hidden_effect = {
+				IF = {
+					limit = {
+						has_tech = advanced_ship_hull_carrier
+					}
+					navy_experience = -75
+					air_experience = -75
 				}
-				navy_experience = -75
-				air_experience = -75
-			}
-			ELSE_IF = {
-				limit = {
-					has_tech = improved_ship_hull_carrier
+				ELSE_IF = {
+					limit = {
+						has_tech = improved_ship_hull_carrier
+					}
+					navy_experience = -100
+					air_experience = -100
 				}
-				navy_experience = -100
-				air_experience = -100
-			}
-			ELSE = {
-				navy_experience = -125
-				air_experience = -125
+				ELSE = {
+					navy_experience = -125
+					air_experience = -125
+				}
 			}
 		}
 		
@@ -716,26 +728,30 @@ special_projects ={
 				size > 0
 				type = carrier 
 			}
+			num_of_civilian_factories_available_for_projects > 9
+		}
+		
+		custom_cost_trigger = {
 			IF = {
 				limit = {
 					has_tech = advanced_ship_hull_carrier
 				}
-				has_air_experience > 50
-				has_navy_experience > 50
+				has_air_experience > 75
+				has_navy_experience > 75
 			}
 			ELSE_IF = {
 				limit = {
 					has_tech = improved_ship_hull_carrier
 				}
-				has_air_experience > 75
-				has_navy_experience > 75
-			}
-			ELSE = {
 				has_air_experience > 100
 				has_navy_experience > 100
 			}
-			num_of_civilian_factories > 10
+			ELSE = {
+				has_air_experience > 125
+				has_navy_experience > 125
+			}
 		}
+		custom_cost_text = carrier_practical_experience_cost_low
 		
 		modifier = {
 			civilian_factory_use = 10
@@ -746,23 +762,25 @@ special_projects ={
 		fire_only_once = yes
 		
 		complete_effect = {
-			IF = {
-				limit = {
-					has_tech = advanced_ship_hull_carrier
+			hidden_effect = {
+				IF = {
+					limit = {
+						has_tech = advanced_ship_hull_carrier
+					}
+					navy_experience = -50
+					air_experience = -50
 				}
-				navy_experience = -50
-				air_experience = -50
-			}
-			ELSE_IF = {
-				limit = {
-					has_tech = improved_ship_hull_carrier
+				ELSE_IF = {
+					limit = {
+						has_tech = improved_ship_hull_carrier
+					}
+					navy_experience = -75
+					air_experience = -75
 				}
-				navy_experience = -75
-				air_experience = -75
-			}
-			ELSE = {
-				navy_experience = -100
-				air_experience = -100
+				ELSE = {
+					navy_experience = -100
+					air_experience = -100
+				}
 			}
 		}
 		
@@ -773,8 +791,9 @@ special_projects ={
 
 	build_railway_gun = {
 		icon = GFX_decision_generic_special_project
-		visible = { has_tech = railway_gun
-					num_of_civilian_factories_available_for_projects > 30
+		visible = { 
+			has_tech = railway_gun
+			num_of_civilian_factories_available_for_projects > 29
 		}
 		cost = 15
 		ai_will_do = {
@@ -788,13 +807,12 @@ special_projects ={
 		remove_effect = { 
 			add_equipment_production = {
     			equipment = {
-        		type = railway_gun_equipment_1
-    		}
-    		requested_factories = 5
-    		progress = 0.98
-    		amount = 1
+					type = railway_gun_equipment_1
+				}
+				requested_factories = 5
+				progress = 0.98
+				amount = 1
 			}
-			
 		}
 	}
 }

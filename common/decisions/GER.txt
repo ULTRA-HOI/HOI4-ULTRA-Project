@@ -4384,16 +4384,19 @@ GER_military_buildup = {
 			tag = GER
 		}
 		visible = {
-			has_idea = GER_bad_torpedoes
+			always = yes
 		}
 		
 		available = {
-			has_navy_experience > 150
-			command_power > 50
-			#has_idea = donitz
+			has_idea = GER_bad_torpedoes
 		}
 		fire_only_once = yes
-		cost = 50
+		custom_cost_trigger = {
+			has_political_power > 49
+			command_power > 49
+			has_army_experience > 149
+		}
+		custom_cost_text = decision_cost_pp_50_NavXP_150_cp_50
 		days_remove = 90
 		
 		ai_will_do = {
@@ -4401,8 +4404,11 @@ GER_military_buildup = {
 		}
 		
 		complete_effect = {
-			navy_experience = -150
-			add_command_power = -50
+			hidden_effect = {
+				navy_experience = -150
+				add_political_power = -50
+				add_command_power = -50
+			}
 		}
 		
 		modifier = {
@@ -4411,7 +4417,6 @@ GER_military_buildup = {
 		
 		remove_effect = {
 			remove_ideas = GER_bad_torpedoes
-			
 		}
 	}
 	
@@ -4472,7 +4477,6 @@ GER_military_buildup = {
 				POL = { exists = no }
 			}
 			controls_state = 10 #Warsawa
-			has_army_experience > 100
 		}
 
 		fire_only_once = yes
@@ -4480,7 +4484,12 @@ GER_military_buildup = {
 			factor = 100
 		}
 
-		cost = 20
+		
+		custom_cost_trigger = {
+			has_political_power > 19
+			has_army_experience > 99
+		}
+		custom_cost_text = decision_cost_pp_20_ArmXP_100
 
 		days_remove = 120
 
@@ -4491,7 +4500,10 @@ GER_military_buildup = {
 		}
 
 		complete_effect = {
-			army_experience = -100
+			hidden_effect = {
+				add_political_power = -20
+				army_experience = -100
+			}
 		}
 
 		remove_effect = {
