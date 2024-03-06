@@ -6024,83 +6024,83 @@ ITA_naval_cooperation_programs_dec_cat = {
 
 
 ITA_diplomacy_balkan_decision_category = {
-	ITA_pressure_country_government_balkan = {
-		priority = 50
-
-		icon = generic_political_discourse
-
-		ai_will_do = {
-			base = 0.8
-			modifier = {
-				factor = 2
-				has_political_power > 160
-			}
-			modifier = { #If ideological rallies happened, then it's better
-				factor = 4
-				FROM = { has_country_flag = ITA_ideological_rallies_promoted_flag }
-			}
-			modifier = { #Do it only once, don't spam
-				factor = 0
-				FROM = { has_country_flag = ITA_government_pressured_flag }
-			}
-		}
-
-		targets = { YUG BUL ROM }
-		#targets = { BUL GRE YUG ALB ROM TUR SLV BOS HRZ MAC SER CRO KOS MNT TRA } #These are all tags included in scripted trigger "BUL_is_balkan_nation = yes"
-
-		target_trigger = {
-			SOV_basic_pressure_government_triggers = yes
-		}
-
-#		target_root_trigger = {
-#			has_completed_focus = ITA_potential_allies_in_the_balkans
-#			is_subject = no
+#	ITA_pressure_country_government_balkan = {
+#		priority = 50
+#
+#		icon = generic_political_discourse
+#
+#		ai_will_do = {
+#			base = 0.8
+#			modifier = {
+#				factor = 2
+#				has_political_power > 160
+#			}
+#			modifier = { #If ideological rallies happened, then it's better
+#				factor = 4
+#				FROM = { has_country_flag = ITA_ideological_rallies_promoted_flag }
+#			}
+#			modifier = { #Do it only once, don't spam
+#				factor = 0
+#				FROM = { has_country_flag = ITA_government_pressured_flag }
+#			}
 #		}
-
-		allowed = {
-			original_tag = ITA
-		}
-
-		available = {
-			is_faction_leader = yes
-			FROM = {
-				has_opinion = {
-					target = ROOT
-					value > 49
-				}
-				SOV_is_valid_subject = yes # Italy might not give a sh*t about their petty overlord ;)
-				NOT = { has_war_with = ROOT }
-			}
-			NOT = { has_country_flag = ITA_pressure_government_active_flag }
-		}
-
-		visible = {
-		}
-
-		days_remove = ITA_pressure_government_days
-
-		days_re_enable = ITA_pressure_government_cd
-
-		cost = ITA_pressure_country_government_cost
-
-		modifier = {
-			political_power_gain = -0.25
-		}
-
-		complete_effect = {
-			set_country_flag = ITA_pressure_government_active_flag
-		}
-
-		remove_effect = {
-			FROM = {
-				country_event = { id = NSB_soviet_foreign_politics_events.1 hours = 4 random_hours = 2 }
-				set_country_flag = ITA_government_pressured_flag #For AI weights - don't spam
-			}
-			clr_country_flag = ITA_pressure_government_active_flag
-			custom_effect_tooltip = SOV_pressure_government_effects_tt
-			custom_effect_tooltip = ITA_pressure_government_cd_tt
-		}
-	}
+#
+#		targets = { YUG BUL ROM }
+#		#targets = { BUL GRE YUG ALB ROM TUR SLV BOS HRZ MAC SER CRO KOS MNT TRA } #These are all tags included in scripted trigger "BUL_is_balkan_nation = yes"
+#
+#		target_trigger = {
+#			SOV_basic_pressure_government_triggers = yes
+#		}
+#
+##		target_root_trigger = {
+##			has_completed_focus = ITA_potential_allies_in_the_balkans
+##			is_subject = no
+##		}
+#
+#		allowed = {
+#			original_tag = ITA
+#		}
+#
+#		available = {
+#			is_faction_leader = yes
+#			FROM = {
+#				has_opinion = {
+#					target = ROOT
+#					value > 49
+#				}
+#				SOV_is_valid_subject = yes # Italy might not give a sh*t about their petty overlord ;)
+#				NOT = { has_war_with = ROOT }
+#			}
+#			NOT = { has_country_flag = ITA_pressure_government_active_flag }
+#		}
+#
+#		visible = {
+#		}
+#
+#		days_remove = ITA_pressure_government_days
+#
+#		days_re_enable = ITA_pressure_government_cd
+#
+#		cost = ITA_pressure_country_government_cost
+#
+#		modifier = {
+#			political_power_gain = -0.25
+#		}
+#
+#		complete_effect = {
+#			set_country_flag = ITA_pressure_government_active_flag
+#		}
+#
+#		remove_effect = {
+#			FROM = {
+#				country_event = { id = NSB_soviet_foreign_politics_events.1 hours = 4 random_hours = 2 }
+#				set_country_flag = ITA_government_pressured_flag #For AI weights - don't spam
+#			}
+#			clr_country_flag = ITA_pressure_government_active_flag
+#			custom_effect_tooltip = SOV_pressure_government_effects_tt
+#			custom_effect_tooltip = ITA_pressure_government_cd_tt
+#		}
+#	}
 
 	ITA_promote_ideology_rallies_balkan = {
 		priority = 50
@@ -6162,84 +6162,84 @@ ITA_diplomacy_balkan_decision_category = {
 		}
 	}
 
-	ITA_send_ultimatum_to_country_balkan = {
-		priority = 50
-
-		icon = eng_trade_unions_demand
-
-		ai_will_do = {
-			base = 20
-			modifier = {
-				factor = 10
-				has_political_power > 160
-			}
-			modifier = {
-				factor = 10
-				date > 1940.6.1
-			}
-			modifier = {
-				factor = 0
-				is_in_faction_with = FROM
-			}
-			modifier = {
-				factor = 0.5
-				original_tag = ITA
-				FROM = {
-					original_tag = YUG
-					any_other_country = {
-						has_guaranteed = PREV
-						is_major = yes
-					}
-				}
-			}
-		}
-
-		targets = { YUG CRO MNT SLV BOS HRZ MAC SER KOS TRA } #These are all tags included in scripted trigger "BUL_is_balkan_nation = yes"
-
-		target_trigger = {
-			ITA_basic_ultimatum_triggers = yes
-			FROM = {
-				NOT = {
-					is_subject_of = ITA
-				}
-			}
-		}
-
-		target_root_trigger = {
-			has_completed_focus = ITA_balkan_ambition
-			is_Subject = no
-		}
-
-		allowed = {
-			original_tag = ITA
-		}
-
-		available = {
-			FROM = {
-				NOT = { 
-					has_war_with = ROOT 
-				}
-				is_subject = no
-			}
-		}
-
-		visible = {
-
-		}
-
-		cost = ITA_send_ultimatum_to_country_cost
-
-		days_remove = ITA_ultimatum_days
-
-		remove_effect = {
-			FROM = {
-				set_country_flag = ITA_ultimatum_sent_flag
-				country_event = { id = NSB_soviet_foreign_politics_events.200 hours = 16 random_hours = 8 }
-			}
-			custom_effect_tooltip = SOV_ultimatum_generic_effects_tt
-			custom_effect_tooltip = SOV_decision_will_be_locked_tt
-		}
-	}
+#	ITA_send_ultimatum_to_country_balkan = {
+#		priority = 50
+#
+#		icon = eng_trade_unions_demand
+#
+#		ai_will_do = {
+#			base = 20
+#			modifier = {
+#				factor = 10
+#				has_political_power > 160
+#			}
+#			modifier = {
+#				factor = 10
+#				date > 1940.6.1
+#			}
+#			modifier = {
+#				factor = 0
+#				is_in_faction_with = FROM
+#			}
+#			modifier = {
+#				factor = 0.5
+#				original_tag = ITA
+#				FROM = {
+#					original_tag = YUG
+#					any_other_country = {
+#						has_guaranteed = PREV
+#						is_major = yes
+#					}
+#				}
+#			}
+#		}
+#
+#		targets = { YUG CRO MNT SLV BOS HRZ MAC SER KOS TRA } #These are all tags included in scripted trigger "BUL_is_balkan_nation = yes"
+#
+#		target_trigger = {
+#			ITA_basic_ultimatum_triggers = yes
+#			FROM = {
+#				NOT = {
+#					is_subject_of = ITA
+#				}
+#			}
+#		}
+#
+#		target_root_trigger = {
+#			has_completed_focus = ITA_balkan_ambition
+#			is_Subject = no
+#		}
+#
+#		allowed = {
+#			original_tag = ITA
+#		}
+#
+#		available = {
+#			FROM = {
+#				NOT = { 
+#					has_war_with = ROOT 
+#				}
+#				is_subject = no
+#			}
+#		}
+#
+#		visible = {
+#
+#		}
+#
+#		cost = ITA_send_ultimatum_to_country_cost
+#
+#		days_remove = ITA_ultimatum_days
+#
+#		remove_effect = {
+#			FROM = {
+#				set_country_flag = ITA_ultimatum_sent_flag
+#				country_event = { id = NSB_soviet_foreign_politics_events.200 hours = 16 random_hours = 8 }
+#			}
+#			custom_effect_tooltip = SOV_ultimatum_generic_effects_tt
+#			custom_effect_tooltip = SOV_decision_will_be_locked_tt
+#		}
+#	}
 
 	ITA_fight_alongside_country_comrades_balkan = {
 		priority = 100
@@ -6796,75 +6796,75 @@ ITA_diplomacy_balkan_decision_category = {
 		}
 	}
 
-	ITA_demand_dalmatia = {
-		priority = 38
-
-		icon = GFX_decision_generic_civil_support
-
-		ai_will_do = {
-			base = 10
-			modifier = {
-				factor = 0
-				is_historical_focus_on = yes
-			}
-		}
-
-		allowed = {
-			original_tag = ITA
-		}
-
-		target_trigger = {
-			FROM = {
-				NOT = {
-					has_war_with = ROOT
-				}
-				NOT = {
-					has_country_flag = ITA_refused_dalmatian_demands
-					has_country_flag = ITA_sent_dalmatian_demands
-				}
-				OR = {
-					controls_state = 1082
-					controls_state = 103
-					controls_state = 163
-					any_subject_country = {
-						is_ai = yes
-						OR = {
-							controls_state = 1082
-							controls_state = 103
-							controls_state = 163
-						}
-					}
-				}
-			}
-		}
-
-		available = {
-		}
-
-		target_root_trigger = {
-			ITA = {
-				OR = {
-					has_government = neutrality
-					has_government = fascism
-				}
-			}
-		}
-
-		cost = 75
-
-		complete_effect = {
-			FROM = {
-				country_event = {
-				    id = BBA_italy_interaction_events.8
-				    days = 2
-				    random = 3
-				}
-				hidden_effect = {
-					set_country_flag = ITA_sent_dalmatian_demands
-				}
-			}
-		}
-	}
+#	ITA_demand_dalmatia = {
+#		priority = 38
+#
+#		icon = GFX_decision_generic_civil_support
+#
+#		ai_will_do = {
+#			base = 10
+#			modifier = {
+#				factor = 0
+#				is_historical_focus_on = yes
+#			}
+#		}
+#
+#		allowed = {
+#			original_tag = ITA
+#		}
+#
+#		target_trigger = {
+#			FROM = {
+#				NOT = {
+#					has_war_with = ROOT
+#				}
+#				NOT = {
+#					has_country_flag = ITA_refused_dalmatian_demands
+#					has_country_flag = ITA_sent_dalmatian_demands
+#				}
+#				OR = {
+#					controls_state = 1082
+#					controls_state = 103
+#					controls_state = 163
+#					any_subject_country = {
+#						is_ai = yes
+#						OR = {
+#							controls_state = 1082
+#							controls_state = 103
+#							controls_state = 163
+#						}
+#					}
+#				}
+#			}
+#		}
+#
+#		available = {
+#		}
+#
+#		target_root_trigger = {
+#			ITA = {
+#				OR = {
+#					has_government = neutrality
+#					has_government = fascism
+#				}
+#			}
+#		}
+#
+#		cost = 75
+#
+#		complete_effect = {
+#			FROM = {
+#				country_event = {
+#				    id = BBA_italy_interaction_events.8
+#				    days = 2
+#				    random = 3
+#				}
+#				hidden_effect = {
+#					set_country_flag = ITA_sent_dalmatian_demands
+#				}
+#			}
+#		}
+#	}
 
 	ITA_claim_the_montengrin_throne = {
 		priority = 37
@@ -7092,156 +7092,156 @@ ITA_diplomacy_balkan_decision_category = {
 	}
 
 
-	ITA_give_the_dodecanese_islands_to_greece_for_an_alliance = {
-		priority = 25
+#	ITA_give_the_dodecanese_islands_to_greece_for_an_alliance = {
+#		priority = 25
+#
+#		icon = GFX_decision_eng_trade_unions_support
+#
+#		ai_will_do = {
+#			base = 10
+#			modifier = {
+#				factor = 10
+#				GRE = { is_ai = no }
+#			}
+#		}
+#
+#		allowed = {
+#			original_tag = ITA
+#		}
+#
+#		available = {
+#			ITA = {
+#				has_completed_focus = ITA_befriend_greece
+#				is_faction_leader = yes
+#				controls_state = 164
+#			}
+#			GRE = {
+#				is_subject = no
+#				has_civil_war = no
+#				NOT = {
+#					has_government = communism
+#				}
+#			}
+#		}
+#
+#		visible = {
+#			GRE = {
+#				exists = yes
+#				NOT = { is_in_faction_with = ROOT }
+#			}
+#			ITA = {
+#				OR = {
+#					has_government = neutrality
+#					has_government = fascism
+#				}
+#				controls_state = 164
+#			}
+#			NOT = {
+#				has_country_flag = ITA_dodecanese_offered_to_greece
+#			}
+#		}
+#
+#		cost = 75
+#
+#		complete_effect = {
+#
+#			random_country = {
+#				limit = {
+#					original_tag = GRE
+#					is_subject = no
+#					has_civil_war = no
+#					NOT = {
+#						has_government = communism
+#					}
+#				}
+#				country_event = {
+#				    id = BBA_italy_interaction_events.18
+#				    days = 1
+#				    random = 4
+#				}
+#			}
+#
+#			hidden_effect = {
+#				set_country_flag = ITA_dodecanese_offered_to_greece
+#			}
+#		}
+#	}
 
-		icon = GFX_decision_eng_trade_unions_support
 
-		ai_will_do = {
-			base = 10
-			modifier = {
-				factor = 10
-				GRE = { is_ai = no }
-			}
-		}
-
-		allowed = {
-			original_tag = ITA
-		}
-
-		available = {
-			ITA = {
-				has_completed_focus = ITA_befriend_greece
-				is_faction_leader = yes
-				controls_state = 164
-			}
-			GRE = {
-				is_subject = no
-				has_civil_war = no
-				NOT = {
-					has_government = communism
-				}
-			}
-		}
-
-		visible = {
-			GRE = {
-				exists = yes
-				NOT = { is_in_faction_with = ROOT }
-			}
-			ITA = {
-				OR = {
-					has_government = neutrality
-					has_government = fascism
-				}
-				controls_state = 164
-			}
-			NOT = {
-				has_country_flag = ITA_dodecanese_offered_to_greece
-			}
-		}
-
-		cost = 75
-
-		complete_effect = {
-
-			random_country = {
-				limit = {
-					original_tag = GRE
-					is_subject = no
-					has_civil_war = no
-					NOT = {
-						has_government = communism
-					}
-				}
-				country_event = {
-				    id = BBA_italy_interaction_events.18
-				    days = 1
-				    random = 4
-				}
-			}
-
-			hidden_effect = {
-				set_country_flag = ITA_dodecanese_offered_to_greece
-			}
-		}
-	}
-
-
-	ITA_give_the_dodecanese_islands_to_turkey_for_an_alliance = {
-		priority = 24
-
-		icon = GFX_decision_eng_trade_unions_support
-
-		ai_will_do = {
-			base = 7
-			modifier = {
-				factor = 10
-				TUR = { is_ai = no }
-			}
-		}
-
-		allowed = {
-			original_tag = ITA
-		}
-
-		available = {
-			ITA = {
-				has_completed_focus = ITA_befriend_turkey
-				is_faction_leader = yes
-				controls_state = 164
-			}
-			TUR = {
-				is_subject = no
-				has_civil_war = no
-				NOT = {
-					has_government = communism
-				}
-			}
-		}
-
-		visible = {
-			TUR = {
-				exists = yes
-				NOT = { is_in_faction_with = ROOT }
-			}
-			ITA = {
-				OR = {
-					has_government = neutrality
-					has_government = fascism
-				}
-				controls_state = 164
-			}
-			NOT = {
-				has_country_flag = ITA_dodecanese_offered_to_turkey
-			}
-		}
-
-		cost = 75
-
-		complete_effect = {
-
-			random_country = {
-				limit = {
-					original_tag = TUR
-					is_subject = no
-					has_civil_war = no
-					NOT = {
-						has_government = communism
-					}
-				}
-				country_event = {
-				    id = BBA_italy_interaction_events.21
-				    days = 1
-				    random = 4
-				}
-			}
-
-			hidden_effect = {
-				set_country_flag = ITA_dodecanese_offered_to_turkey
-			}
-		}
-	}
+#	ITA_give_the_dodecanese_islands_to_turkey_for_an_alliance = {
+#		priority = 24
+#
+#		icon = GFX_decision_eng_trade_unions_support
+#
+#		ai_will_do = {
+#			base = 7
+#			modifier = {
+#				factor = 10
+#				TUR = { is_ai = no }
+#			}
+#		}
+#
+#		allowed = {
+#			original_tag = ITA
+#		}
+#
+#		available = {
+#			ITA = {
+#				has_completed_focus = ITA_befriend_turkey
+#				is_faction_leader = yes
+#				controls_state = 164
+#			}
+#			TUR = {
+#				is_subject = no
+#				has_civil_war = no
+#				NOT = {
+#					has_government = communism
+#				}
+#			}
+#		}
+#
+#		visible = {
+#			TUR = {
+#				exists = yes
+#				NOT = { is_in_faction_with = ROOT }
+#			}
+#			ITA = {
+#				OR = {
+#					has_government = neutrality
+#					has_government = fascism
+#				}
+#				controls_state = 164
+#			}
+#			NOT = {
+#				has_country_flag = ITA_dodecanese_offered_to_turkey
+#			}
+#		}
+#
+#		cost = 75
+#
+#		complete_effect = {
+#
+#			random_country = {
+#				limit = {
+#					original_tag = TUR
+#					is_subject = no
+#					has_civil_war = no
+#					NOT = {
+#						has_government = communism
+#					}
+#				}
+#				country_event = {
+#				    id = BBA_italy_interaction_events.21
+#				    days = 1
+#				    random = 4
+#				}
+#			}
+#
+#			hidden_effect = {
+#				set_country_flag = ITA_dodecanese_offered_to_turkey
+#			}
+#		}
+#	}
 
 }
 
