@@ -1078,4 +1078,61 @@ on_actions = {
 			}
 		}
 	}
+	
+	on_mio_size_increased = {
+		effect = {
+			#Calculating Max Level for Mios without any debuff. Calculation follows: -1/a(x/365-a)^2+a with a=12 and x number of days passed since the beginning of the game
+			set_temp_variable = {mio_level_scale_TEMP = global.num_days}
+			subtract_from_temp_variable = {mio_level_scale_TEMP = 706640} #global.num_days starts counting on 01.01.0000, therefore need to substract 1936*365 = 706640
+			divide_temp_variable = {mio_level_scale_TEMP = 365}
+			subtract_from_temp_variable = {mio_level_scale_TEMP = 12}
+			multiply_temp_variable = {mio_level_scale_TEMP = mio_level_scale_TEMP}
+			multiply_temp_variable = {mio_level_scale_TEMP = -1}
+			divide_temp_variable = {mio_level_scale_TEMP = 12}
+			add_to_temp_variable = {mio_level_scale_TEMP = 12}
+			if = {
+				limit = {
+					THIS = {
+						has_mio_flag = starting_mio_level_1
+					}
+				}
+				add_to_temp_variable = {mio_level_scale_TEMP = 1} #If the mio starts at level 1, the mio gets an additional level before a malus is applied
+			}
+			else_if = {
+				limit = {
+					THIS = {
+						has_mio_flag = starting_mio_level_2
+					}
+				}
+				add_to_temp_variable = {mio_level_scale_TEMP = 2} #If the mio starts at level 2 or higher, the mio gets an additional level before a malus is applied
+			}
+
+			if = {
+				limit = {
+					THIS = {
+						has_mio_size > mio_level_scale_TEMP
+					}
+				}
+				if = {
+					limit = {
+						THIS = {
+							NOT = {
+								has_mio_flag = mio_overleveled
+							}
+						}
+					}
+					set_mio_flag = mio_overleveled
+				}
+				THIS = {
+					add_mio_size_up_requirement_factor = 0.3
+				}
+			}
+			else = {
+				THIS = {
+					set_mio_size_up_requirement_factor = 1
+					clr_mio_flag = mio_overleveled
+				}
+			}
+		}
+	}
 }
