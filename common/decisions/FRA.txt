@@ -3123,3 +3123,76 @@ FRA_decolonization = {
 		}
 	}
 }
+FRA_fall_france_category = {
+	FRA_fall_france = { #Fall of France Trigger
+		allowed = {
+			original_tag = FRA		
+		}
+		activation = {
+			FRA = {
+				has_war_with = GER
+				has_government = democratic
+				16 = { is_controlled_by = GER }
+				is_in_faction_with = ENG
+				ENG = { has_war_with = GER }
+				OR = {
+					surrender_progress > 0.55
+					has_capitulated = yes
+				}
+				GER = {
+					OR = {
+						is_faction_leader = yes
+						has_government = neutrality
+					}
+				}
+				has_civil_war = no
+				#Don't fire if France has pushed pretty far into ITA or GER
+				NOT = {
+					any_state = {
+						is_on_continent = europe
+						NOT = { state = 158 }
+						NOT = { state = 114 }
+						NOT = { state = 50 }
+						NOT = { state = 42 }
+						is_controlled_by = FRA
+						OR = {
+							is_owned_by = GER
+							AND = {
+								FRA = { has_War_with = ITA }
+								is_owned_by = ITA
+							}
+						}
+					}
+				}		
+
+				#Don't fire if any states in France are controlled by a different human player
+				NOT = {
+					any_country = {
+						is_ai = no
+						NOT = { tag = GER }
+						NOT = { is_in_faction_with = GER }
+						has_war_with = FRA
+						any_state = {
+							is_on_continent = europe
+							NOT = { state = 1 }
+							NOT = { state = 735 }
+							NOT = { state = 21 }
+							NOT = { state = 1081 }
+							NOT = { state = 31 }
+							is_owned_by = FRA
+							is_controlled_by = PREV
+						}
+					}
+				}
+			}
+		}
+		available = { always = no }
+		days_mission_timeout = 0
+		timeout_effect = {
+			FRA = {
+				country_event = france.10 
+				remove_ideas = FRA_paris_lost
+			}
+		}
+	}
+}
