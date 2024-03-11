@@ -2471,7 +2471,7 @@ NAI = {
 	NUM_AI_MESSAGES = 10,				-- Set to whatever category has the highest number of messages
 
 	DIPLOMACY_FACTION_WAR_WANTS_HELP = 50,	-- Desire to send to nations to join a faction if you are at war
-	DIPLOMACY_FACTION_CIVILWAR_WANTS_HELP = -50,
+	DIPLOMACY_FACTION_CIVILWAR_WANTS_HELP = -100,
 	FACTION_UNSTABLE_ACCEPTANCE = -100,
 	DIPLOMACY_AT_WAR_WITH_ALLY_RELUCTANCE = -1000,
 	DIPLOMACY_FACTION_JOIN_COUP_INITIATOR_BONUS = 70,	-- If a country initiated coup on an another country, civil war revolter is more likely to join initiator's faction
