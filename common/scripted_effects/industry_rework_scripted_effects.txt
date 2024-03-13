@@ -4,18 +4,18 @@ on_daily_labour_calculations = {
 		
 	#Calculates total population (in 1000s) 
 	set_variable = { total_core_population_k = max_manpower_k } 
-	set_temp_variable = { total_non_core_population_k = 0 } 
+	set_variable = { total_non_core_population_k = 0 } 
 	set_temp_variable = { avaliable_non_core_population_k = 0 } 
 	
 	# Loop through every non-core state, add non-core pop to total_non_core_population_k and available non-core pop to avaliable_non_core_population_k modified by agricultural penalty of state 
 	every_controlled_state = {
 		limit = {
-			NOT = { is_core_of = PREV }
+			NOT = { is_core_of = ROOT }
 		}
 		set_variable = { state_avaliable_labour_k = state_population_k }
 		multiply_variable = { state_avaliable_labour_k = state_level_agriculture_penalty }
-		add_to_temp_variable = { PREV.total_non_core_population_k = THIS.state_population_k }
-		add_to_temp_variable = { PREV.avaliable_non_core_population_k = THIS.state_avaliable_labour_k }
+		add_to_variable = { PREV.total_non_core_population_k = state_population_k }
+		add_to_temp_variable = { PREV.avaliable_non_core_population_k = state_avaliable_labour_k }
 	}
 
 	subtract_from_variable = { total_core_population_k = total_non_core_population_k } 
@@ -37,8 +37,8 @@ on_daily_labour_calculations = {
 	multiply_variable = { female_penalty_calculation = 0.5 } #50% females in society
 	
 	#Calculate penalty from females to apply to total labourpower
-	set_temp_variable = { female_penalty_applied = 1 }
-	subtract_from_temp_variable = { female_penalty_applied = female_penalty_calculation }
+	set_variable = { female_penalty_applied = 1 }
+	subtract_from_variable = { female_penalty_applied = female_penalty_calculation }
 	
 	#Apply female penalty to total labourpower
 	set_variable = { total_labour_population_k = total_core_non_core_population_k }
@@ -46,6 +46,8 @@ on_daily_labour_calculations = {
 	
 	#Calculate additional female penalty
 	multiply_variable = { female_penalty_calculation = -1 }
+
+	set_variable = { total_free_labour_k = total_labour_population_k }
 	
 	calculate_argriculture_labour = yes
 	calculate_resources_labour = yes
@@ -54,9 +56,9 @@ on_daily_labour_calculations = {
 	calculate_logistics_labour = yes
 	
 	#actually remove needed manpower from pool
-	subtract_from_variable = { total_labour_population_k = factories_labour_k }
-	subtract_from_variable = { total_labour_population_k = resources_labour_k }
-	subtract_from_variable = { total_labour_population_k = civilian_services_labour_k }
+	subtract_from_variable = { total_free_labour_k = factories_labour_k }
+	subtract_from_variable = { total_free_labour_k = resources_labour_k }
+	subtract_from_variable = { total_free_labour_k = civilian_services_labour_k }
 	
 	#Calculates penalty to apply to total population
 	set_variable = { factories_labour_penalty_calculation = factories_labour_k }
@@ -216,7 +218,7 @@ calculate_logistics_labour = {
     divide_variable = { army_logistics_labour_k = 1000 } # (in 1000s)
 	
 	#actually remove needed manpower from pool
-	subtract_from_variable = { total_labour_population_k = army_logistics_labour_k }
+	subtract_from_variable = { total_free_labour_k = army_logistics_labour_k }
 	
 	set_variable = { army_logistics_penalty_calculation = army_logistics_labour_k }
     divide_variable = { army_logistics_penalty_calculation = total_population_with_foreign_workers_k }
