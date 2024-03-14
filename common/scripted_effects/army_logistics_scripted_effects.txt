@@ -9,23 +9,10 @@ logistical_calculations = {
 	multiply_temp_variable = { mot_logistics_trucks_needed = 10 }
 	multiply_temp_variable = { support_logistics_trucks_needed = 5 }
 
-	set_temp_variable = { light_weapon_transports_trucks_needed = light_weapon_transports_level }
-	set_temp_variable = { heavy_weapon_transports_trucks_needed = heavy_logistics_motorisation_level }
-	set_temp_variable = { mot_weapon_transports_trucks_needed = mot_logistics_motorisation_level }
-	set_temp_variable = { support_weapon_transports_trucks_needed = sup_logistics_motorisation_level }
-	multiply_temp_variable = { light_weapon_transports_trucks_needed = 2 } 
-	multiply_temp_variable = { heavy_weapon_transports_trucks_needed = 2 }
-	multiply_temp_variable = { mot_weapon_transports_trucks_needed = 2 }
-	multiply_temp_variable = { support_weapon_transports_trucks_needed = 2 }
-	
 	set_temp_variable = { light_multiplier = light_logistics_trucks_needed }
 	set_temp_variable = { heavy_multiplier = heavy_logistics_trucks_needed }
 	set_temp_variable = { mot_multiplier = mot_logistics_trucks_needed }
 	set_temp_variable = { support_multiplier = support_logistics_trucks_needed }
-	add_to_temp_variable = { light_multiplier = light_weapon_transports_trucks_needed }
-	add_to_temp_variable = { heavy_multiplier = heavy_weapon_transports_trucks_needed }
-	add_to_temp_variable = { mot_multiplier = mot_weapon_transports_trucks_needed }
-	add_to_temp_variable = { support_multiplier = support_weapon_transports_trucks_needed }
 
 	#when modifying the categories below also adjust unit_tags/00_categories.txt
 	set_temp_variable = { total_light = num_battalions_with_type@infantry }
@@ -105,100 +92,9 @@ logistical_calculations = {
 	add_to_variable = { total_trucks = total_support }
 	
 	#Applies equipment needs
-	clear_weapon_transports_techs = yes
-	set_weapon_transports_techs = yes
-
-	update_weapon_transports_display = yes
-
 	clear_motorisation_techs = yes
 	set_motorisation_techs = yes
 }
-
-
-clear_weapon_transports_techs = {
-	set_technology  = { light_weapon_transports_0 = 0 popup = no }
-	set_technology  = { light_weapon_transports_1 = 0 popup = no }
-	set_technology  = { light_weapon_transports_2 = 0 popup = no }
-	set_technology  = { light_weapon_transports_3 = 0 popup = no }
-	set_technology  = { light_weapon_transports_4 = 0 popup = no }
-
-	set_technology  = { heavy_weapon_transports_0 = 0 popup = no }
-	set_technology  = { heavy_weapon_transports_1 = 0 popup = no }
-	set_technology  = { heavy_weapon_transports_2 = 0 popup = no }
-	set_technology  = { heavy_weapon_transports_3 = 0 popup = no }
-	set_technology  = { heavy_weapon_transports_4 = 0 popup = no }
-
-	set_technology  = { mot_weapon_transports_0 = 0 popup = no }
-	set_technology  = { mot_weapon_transports_1 = 0 popup = no }
-	set_technology  = { mot_weapon_transports_2 = 0 popup = no }
-	set_technology  = { mot_weapon_transports_3 = 0 popup = no }
-	set_technology  = { mot_weapon_transports_4 = 0 popup = no }
-
-	set_technology  = { sup_weapon_transports_0 = 0 popup = no }
-	set_technology  = { sup_weapon_transports_1 = 0 popup = no }
-	set_technology  = { sup_weapon_transports_2 = 0 popup = no }
-	set_technology  = { sup_weapon_transports_3 = 0 popup = no }
-	set_technology  = { sup_weapon_transports_4 = 0 popup = no }
-}
-
-set_weapon_transports_techs = {
-	meta_effect = {
-		text = {
-			set_technology  = { light_weapon_transports_[LEVEL] = 1 popup = no }
-		}
-		LEVEL = "[?light_weapon_transports_level]"
-	}
-	meta_effect = {
-		text = {
-			set_technology  = { heavy_weapon_transports_[LEVEL] = 1 popup = no }
-		}
-		LEVEL = "[?heavy_weapon_transports_level]"
-	}
-	meta_effect = {
-		text = {
-			set_technology  = { mot_weapon_transports_[LEVEL] = 1 popup = no }
-		}
-		LEVEL = "[?mot_weapon_transports_level]"
-	}
-	meta_effect = {
-		text = {
-			set_technology  = { sup_weapon_transports_[LEVEL] = 1 popup = no }
-		}
-		LEVEL = "[?sup_weapon_transports_level]"
-	}
-}
-
-update_weapon_transports_display = {
-	reset_weapons_transports_display = yes
-	if = {
-		limit = { check_variable = { light_weapon_transports_level = 0 } }
-		set_variable = { light_weapon_transports_none_checkbox_frame = 2 }
-	}
-}
-
-reset_weapons_transports_display = {
-	set_variable = { light_weapon_transports_none_checkbox_frame = 1 }
-	set_variable = { light_weapon_transports_only_very_heavy_checkbox_frame = 1 }
-	set_variable = { light_weapon_transports_all_very_heavy_checkbox_frame = 1 }
-	set_variable = { light_weapon_transports_heavy_and_light_checkbox_frame = 1 }
-	set_variable = { light_weapon_transports_all_button_frame = 1 }
-	set_variable = { heavy_weapon_transports_none_checkbox_frame = 1 }
-	set_variable = { heavy_weapon_transports_only_very_heavy_checkbox_frame = 1 }
-	set_variable = { heavy_weapon_transports_all_very_heavy_checkbox_frame = 1 }
-	set_variable = { heavy_weapon_transports_heavy_and_light_checkbox_frame = 1 }
-	set_variable = { heavy_weapon_transports_all_button_frame = 1 }
-	set_variable = { mot_weapon_transports_none_checkbox_frame = 1 }
-	set_variable = { mot_weapon_transports_only_very_heavy_checkbox_frame = 1 }
-	set_variable = { mot_weapon_transports_all_very_heavy_checkbox_frame = 1 }
-	set_variable = { mot_weapon_transports_heavy_and_light_checkbox_frame = 1 }
-	set_variable = { mot_weapon_transports_all_checkbox_frame = 1 }
-	set_variable = { sup_weapon_transports_none_checkbox_frame = 1 }
-	set_variable = { sup_weapon_transports_only_very_heavy_checkbox_frame = 1 }
-	set_variable = { sup_weapon_transports_all_very_heavy_checkbox_frame = 1 }
-	set_variable = { sup_weapon_transports_heavy_and_light_checkbox_frame = 1 }
-	set_variable = { sup_weapon_transports_all_checkbox_frame = 1 }
-}
-
 clear_motorisation_techs = {
 	set_technology  = { light_logistics_motorisation_0 = 0 popup = no }
 	set_technology  = { light_logistics_motorisation_1 = 0 popup = no }
