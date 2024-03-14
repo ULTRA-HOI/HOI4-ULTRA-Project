@@ -3983,7 +3983,7 @@ NSupply = {
 	-- The range bonus added to a fully motorized hub. This supply is added on top of the XXX_INITIAL_SUPPLY_FLOW defined above.
 	SUPPLY_HUB_FULL_MOTORIZATION_BONUS = 36.0,
 	-- How many trucks does it cost to fully motorize a hub
-	SUPPLY_HUB_FULL_MOTORIZATION_TRUCK_COST = 800, --was 80.0
+	SUPPLY_HUB_FULL_MOTORIZATION_TRUCK_COST = 200, --was 80.0
 	-- For each additional level of motorization on a hub (i.e. contry with set motoriazation) reduce max bonus for next level by this amount
 	SUPPLY_HUB_MOTORIZATION_MARGINAL_EFFECT_DECAY = 15.0,
 
