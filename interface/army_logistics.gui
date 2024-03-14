@@ -13,8 +13,9 @@ guiTypes = {
 	}
 	containerWindowType = {
 		name = army_logistics_details_window
-		position = { x = 0 y = 0 }
-		size = { width = 1092 height = 789 } # uses max_window_size for clamping
+		position = { x = 300 y = 0 }
+		show_position = { x = 300 y = 0 }
+		size = { width = 1091 height = 489 }
 		moveable = yes
 		fade_time = 500
 		fade_type = linear
@@ -22,18 +23,13 @@ guiTypes = {
 		origo = center
 		show_sound = Spy_Agency_Branch_Upgrade_Window_Show_Sound
 		
-		positionType = {
-			name = "max_window_size"
-			position = { x = 1092 y = 789 }
-		}
-		
 		background = {
 			name = "army_logistics_header_bg"
 			spriteType = "GFX_army_logistics_popup_bg"
-			position = { x = 0 y = 0 }
+			position = { x = 2 y = 0 }
 		}
 		instantTextboxType = {
-			name = "designer_upgrades_title"
+			name = "title"
 			position = { x = 265 y = 6 }
 			textureFile = ""
 			font = "hoi_36header"
@@ -58,22 +54,13 @@ guiTypes = {
 		containerWindowType = {
 			name = "branches"
 			position = { x = 4 y = 75 }	
-			size = { width = 1084 height = 500 }
+			size = { width = 1084 height = 260 }
 			margin = { top = 8 bottom = 8 }
 			verticalScrollbar = "right_vertical_slider"
 
 			background = {
 				name = "Background"
 				spriteType ="GFX_tiled_window_1b_thin_border"
-			}
-
-			gridboxtype = {
-				name = "branches_grid"
-				position = { x = 12 y = 5 }
-				size = { width = 100%% height = 100%% }
-				slotsize = { width = 100%% height = 137 }
-				max_slots_horizontal = 1
-				format = "UPPER_LEFT"
 			}
 		}
 	}
@@ -85,24 +72,60 @@ guiTypes = {
 		background = {
 			name = "Background"
 			spriteType = "GFX_army_logistics_department_logistics_bg"
+			alwaystransparent = yes
+		}
+
+		@LIGHT_TRANSPORT_HEADER_TEXT_X = 185
+		@HEAVY_TRANSPORT_HEADER_TEXT_X = 405
+		@MOT_TRANSPORT_HEADER_TEXT_X = 625
+		@SUP_TRANSPORT_HEADER_TEXT_X = 845
+		@HEADER_TEXT_Y = 60
+		
+		instantTextBoxType = {
+			name = light_weapon_transports_text
+			text = "Light Forces"
+			font = "hoi_24header"
+			format = center
+			position = { x = @LIGHT_TRANSPORT_HEADER_TEXT_X y = @HEADER_TEXT_Y }
+		}
+		instantTextBoxType = {
+			name = heavy_weapon_transports_text
+			text = "Heavy Forces"
+			font = "hoi_24header"
+			format = center
+			position = { x = @HEAVY_TRANSPORT_HEADER_TEXT_X y = @HEADER_TEXT_Y }
+		}
+		instantTextBoxType = {
+			name = mot_weapon_transports_text
+			text = "Motorised Forces"
+			font = "hoi_24header"
+			format = center
+			position = { x = @MOT_TRANSPORT_HEADER_TEXT_X y = @HEADER_TEXT_Y }
+		}
+		instantTextBoxType = {
+			name = sup_weapon_transports_text
+			text = "Support Units"
+			font = "hoi_24header"
+			format = center
+			position = { x = @SUP_TRANSPORT_HEADER_TEXT_X y = @HEADER_TEXT_Y }
 		}
 
 		@LIGHT_X = 271
-		@LIGHT_X_TXT = 184
+		@LIGHT_X_TXT = 250
 		@HEAVY_X = 491
-		@HEAVY_X_TXT = 404
+		@HEAVY_X_TXT = 470
 		@MOT_X = 712
-		@MOT_X_TXT = 625
+		@MOT_X_TXT = 690
 		@SUP_X = 931
-		@SUP_X_TXT = 844
-		@INCREASE_Y = 250
-		@DECREASE_Y = 300
-		@TEXT_Y = 279
+		@SUP_X_TXT = 910
+		@INCREASE_Y = 90
+		@DECREASE_Y = 160
+		@TEXT_Y = 129
 
 		iconType = {
 			name = supply_icon
 			spriteType = "GFX_army_logistics_logistics"
-			position = { x = 13 y = 254 }
+			position = { x = 13 y = 104 }
 		}
 
 		instantTextBoxType = {
@@ -112,25 +135,52 @@ guiTypes = {
 			format = left
 			position = { x = 80 y = @TEXT_Y }
 		}
+		instantTextboxType = {
+			name = "light_logistics_into"
+			position = { x = @LIGHT_X_TXT y = @TEXT_Y }
+			font = "hoi_16mbs"
+			maxWidth = 70
+			text = "[light_logistics_motorisation_level_display]"
+			format = center
+		}
+		instantTextboxType = {
+			name = "heavy_logistics_into"
+			position = { x = @HEAVY_X_TXT y = @TEXT_Y }
+			font = "hoi_16mbs"
+			maxWidth = 70
+			text = "[heavy_logistics_motorisation_level_display]"
+			format = center
+		}
+		instantTextboxType = {
+			name = "mot_logistics_into"
+			position = { x = @MOT_X_TXT y = @TEXT_Y }
+			font = "hoi_16mbs"
+			maxWidth = 70
+			text = "[mot_logistics_motorisation_level_display]"
+			format = center
+		}
+		instantTextboxType = {
+			name = "sup_logistics_into"
+			position = { x = @SUP_X_TXT y = @TEXT_Y }
+			font = "hoi_16mbs"
+			maxWidth = 70
+			text = "[sup_logistics_motorisation_level_display]"
+			format = center
+		}
 
 		buttonType = {
 			name = increase_light_logistics_motorisation_button
 			position = { x = @LIGHT_X y = @INCREASE_Y }
 			quadTextureSprite ="GFX_zoom_in"
 			clicksound = click_default
+			pdx_tooltip = "increase_light_tt"
 		}
 		buttonType = {
 			name = decrease_light_logistics_motorisation_button
 			position = { x = @LIGHT_X y = @DECREASE_Y }
 			quadTextureSprite ="GFX_zoom_out"
 			clicksound = click_default
-		}
-		instantTextboxType = {
-			name = "light_logistics_into"
-			position = { x = @LIGHT_X_TXT y = @TEXT_Y }
-			font = "hoi_18mbs"
-			text = "[light_logistics_motorisation_level_display]"
-			format = center
+			pdx_tooltip = "decrease_light_tt"
 		}
 
 		buttonType = {
@@ -138,19 +188,14 @@ guiTypes = {
 			position = { x = @HEAVY_X y = @INCREASE_Y }
 			quadTextureSprite ="GFX_zoom_in"
 			clicksound = click_default
+			pdx_tooltip = "increase_heavy_tt"
 		}
 		buttonType = {
 			name = decrease_heavy_logistics_motorisation_button
 			position = { x = @HEAVY_X y = @DECREASE_Y }
 			quadTextureSprite ="GFX_zoom_out"
 			clicksound = click_default
-		}
-		instantTextboxType = {
-			name = "heavy_logistics_into"
-			position = { x = @HEAVY_X_TXT y = @TEXT_Y }
-			font = "hoi_18mbs"
-			text = "[heavy_logistics_motorisation_level_display]"
-			format = center
+			pdx_tooltip = "decrease_heavy_tt"
 		}
 
 		buttonType = {
@@ -158,19 +203,14 @@ guiTypes = {
 			position = { x = @MOT_X y = @INCREASE_Y }
 			quadTextureSprite ="GFX_zoom_in"
 			clicksound = click_default
+			pdx_tooltip = "increase_mot_tt"
 		}
 		buttonType = {
 			name = decrease_mot_logistics_motorisation_button
 			position = { x = @MOT_X y = @DECREASE_Y }
 			quadTextureSprite ="GFX_zoom_out"
 			clicksound = click_default
-		}
-		instantTextboxType = {
-			name = "mot_logistics_into"
-			position = { x = @MOT_X_TXT y = @TEXT_Y }
-			font = "hoi_18mbs"
-			text = "[mot_logistics_motorisation_level_display]"
-			format = center
+			pdx_tooltip = "decrease_mot_tt"
 		}
 
 		buttonType = {
@@ -178,19 +218,15 @@ guiTypes = {
 			position = { x = @SUP_X y = @INCREASE_Y }
 			quadTextureSprite ="GFX_zoom_in"
 			clicksound = click_default
+			pdx_tooltip = "increase_sup_tt"
+		
 		}
 		buttonType = {
 			name = decrease_sup_logistics_motorisation_button
 			position = { x = @SUP_X y = @DECREASE_Y }
 			quadTextureSprite ="GFX_zoom_out"
 			clicksound = click_default
-		}
-		instantTextboxType = {
-			name = "sup_logistics_into"
-			position = { x = @SUP_X_TXT y = @TEXT_Y }
-			font = "hoi_18mbs"
-			text = "[sup_logistics_motorisation_level_display]"
-			format = center
+			pdx_tooltip = "decrease_sup_tt"
 		}
 	}
 }
