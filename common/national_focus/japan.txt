@@ -395,12 +395,58 @@
 	}
 
 	focus = {
-		id = JAP_secure_china
-		icon = GFX_goal_generic_demand_territory
+		id = JAP_expand_chinese_railways
+		icon = GFX_goal_generic_construct_infrastructure
 		prerequisite = { focus = JAP_intervene_in_china }
 		x = -1
 		y = 1
 		relative_position_id = JAP_intervene_in_china
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 5
+		}
+
+		available = {
+			has_completed_focus = JAP_expand_manchurian_railways
+		}
+
+		bypass = {
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+
+		completion_reward = {
+			custom_effect_tooltip = Construction_Focus_Start_tt
+			unlock_decision_tooltip = { decision = JAP_tientsin_tsinan_railways_decision show_effect_tooltip = no }
+			unlock_decision_tooltip = { decision = JAP_tsinan_suchow_railways_decision show_effect_tooltip = no }
+			unlock_decision_tooltip = { decision = JAP_suchow_nanking_railways_decision show_effect_tooltip = no }
+			unlock_decision_tooltip = { decision = JAP_nanking_hangchow_railways_decision show_effect_tooltip = no }
+			unlock_decision_tooltip = { decision = JAP_hangchow_nanchang_railways_decision show_effect_tooltip = no }
+			unlock_decision_tooltip = { decision = JAP_nanchang_changsha_railways_decision show_effect_tooltip = no }
+			unlock_decision_tooltip = { decision = JAP_tientsin_shihkiachwang_railways_decision show_effect_tooltip = no }
+			unlock_decision_tooltip = { decision = JAP_shihkiachwang_chengchow_railways_decision show_effect_tooltip = no }
+			unlock_decision_tooltip = { decision = JAP_chengchow_hankow_railways_decision show_effect_tooltip = no }
+			unlock_decision_tooltip = { decision = JAP_hankow_changsha_railways_decision show_effect_tooltip = no }
+			unlock_decision_tooltip = { decision = JAP_chengchow_sianfu_railways_decision show_effect_tooltip = no }
+			unlock_decision_tooltip = { decision = JAP_sianfu_tsinchow_railways_decision show_effect_tooltip = no }
+			unlock_decision_tooltip = { decision = JAP_changsha_hengchow_railways_decision show_effect_tooltip = no }
+			unlock_decision_tooltip = { decision = JAP_hengchow_hongkong_railways_decision show_effect_tooltip = no }
+		}
+	}
+	
+	focus = {
+		id = JAP_secure_china
+		icon = GFX_goal_generic_demand_territory
+		prerequisite = { focus = JAP_expand_chinese_railways }
+		x = 0
+		y = 1
+		relative_position_id = JAP_expand_chinese_railways
 
 		cost = 5
 
@@ -3566,7 +3612,9 @@
 		}
 
 		bypass = {
-
+			MAN = {
+				has_completed_focus = MAN_expand_the_railways
+			}
 		}
 
 		cancel_if_invalid = yes

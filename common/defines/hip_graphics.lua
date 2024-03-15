@@ -954,9 +954,9 @@ NGraphics = {
 
 	PRIDE_OF_THE_FLEET_MODULATE = { 1.0, 0.95, 0.0, 1.0 }, -- pride of the fleet color
 
-	RAILWAY_MAP_ARROW_THIN_LEVEL_THRESHOLD = 1, -- Railway level 1 uses thin map arrow in supply map mode
-	RAILWAY_MAP_ARROW_MEDIUM_LEVEL_THRESHOLD = 3, -- Railway level 2-3 uses medium map arrow in supply map mode
-	RAILWAY_MAP_ARROW_THICK_LEVEL_THRESHOLD = 5, -- Railway level 4-5 uses thick map arrow in supply map mode
+	RAILWAY_MAP_ARROW_THIN_LEVEL_THRESHOLD = 3, -- Railway level 1-3 uses thin map arrow in supply map mode
+	RAILWAY_MAP_ARROW_MEDIUM_LEVEL_THRESHOLD = 7, -- Railway level 4-7 uses medium map arrow in supply map mode
+	RAILWAY_MAP_ARROW_THICK_LEVEL_THRESHOLD = 8, -- Railway level 8 uses thick map arrow in supply map mode
 
 	RAILWAY_MAP_ARROW_COLOR_DEFAULT = { 1.0, 1.0, 1.0, 1.0 }, -- white, default railway maparrow color
 	RAILWAY_MAP_ARROW_COLOR_CONSTRUCTION = { 1.0, 0.80, 0.0, 1.0 }, -- orange, railways that are currently under construction
