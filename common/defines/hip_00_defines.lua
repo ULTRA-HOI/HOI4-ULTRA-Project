@@ -980,8 +980,8 @@ NMilitary = {
 	LOW_ORG_FOR_ATTACK = -0.2, --was 0.3 --at what org % we start affecting speed when doign hostile moves. scales down ZERO_ORG_MOVEMENT_MODIFIER
 
 	PLANNING_DECAY = 0.02, --was 0.01
-	PLAYER_ORDER_PLANNING_DECAY = 0.02, --was 0.03 --Amount of planning lost due to player manual order
-	PLANNING_GAIN = 0.02,
+	PLAYER_ORDER_PLANNING_DECAY = 0.06, --was 0.03 --Amount of planning lost due to player manual order
+	PLANNING_GAIN = 0.001,
 	NAVAL_INVASION_PLANNING_BONUS_GAIN = 0.02,		-- Planning Bonus gain per day for naval invasions
 	NAVAL_INVASION_PLANNING_BONUS_MALUS = -1,		-- Malus in percentage for the planning bonus gain for naval invasions
 	PLANNING_MAX = 0.1, --was 0.3 --can get more from techs
@@ -1106,7 +1106,7 @@ NMilitary = {
 
 	FIELD_MARSHAL_XP_RATIO = 0.6, --was 0.3 --xp gain ratio for army group leaders
 
-	GARRISON_ORDER_ARMY_CAP_FACTOR = 3.0,			-- armies gets increased cap when they are garrisoned
+	GARRISON_ORDER_ARMY_CAP_FACTOR = 1.0,			-- armies gets increased cap when they are garrisoned
 
 	COMMANDER_LEVEL_UP_STAT_COUNT = 3, --was 3 --num stats gained on level up
 	COMMANDER_LEVEL_UP_STAT_WEIGHTS = {8, 4, 1, 2}, --was {5 5 5 5} --level up stat random base weights attack, defense, planning, logistics

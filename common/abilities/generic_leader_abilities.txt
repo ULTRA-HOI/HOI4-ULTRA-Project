@@ -119,13 +119,19 @@ ability = {
 		
 		allowed = {
 			is_border_war = no
+			OWNER = {
+				NOT = {
+					has_tech = mobile_warfare
+					has_tech = fast_reaction
+				}
+			}
 		}
 		
 		cost = 0.12
 		duration = 336
 		
 		unit_modifiers = {
-			planning_speed = 1.0
+			planning_speed = 9.0
 		}
 		
 		
@@ -144,6 +150,81 @@ ability = {
 		}
 	}
 	
+	staff_office_plan_mobile_warfare = {
+		name = ABILITY_STAFF_OFFICE_PLAN
+		desc = ABILITY_STAFF_OFFICE_PLAN_DESC
+		
+		sound_effect = command_power_ability_defensive
+		
+		type = army_leader
+		
+		allowed = {
+			is_border_war = no
+			OWNER = {
+				has_tech = mobile_warfare
+			}
+		}
+		
+		cost = 0.12
+		duration = 336
+		
+		unit_modifiers = {
+			planning_speed = 14.0
+		}
+		
+		
+		ai_will_do = {
+			factor = -1
+			modifier = {
+				FROM = {
+					command_power > 2.0
+				}
+				check_variable = { num_units > 6 }
+				check_variable = { unit_ratio_ready_for_plan > 0.55 }
+				check_variable = { avg_unit_planning_ratio < 0.4 }
+				
+				add = 2
+			}
+		}
+	}
+	
+	staff_office_plan_fast_reaction = {
+		name = ABILITY_STAFF_OFFICE_PLAN
+		desc = ABILITY_STAFF_OFFICE_PLAN_DESC
+		
+		sound_effect = command_power_ability_defensive
+		
+		type = army_leader
+		
+		allowed = {
+			is_border_war = no
+			OWNER = {
+				has_tech = fast_reaction
+			}
+		}
+		
+		cost = 0.12
+		duration = 336
+		
+		unit_modifiers = {
+			planning_speed = 12.0
+		}
+		
+		
+		ai_will_do = {
+			factor = -1
+			modifier = {
+				FROM = {
+					command_power > 2.0
+				}
+				check_variable = { num_units > 6 }
+				check_variable = { unit_ratio_ready_for_plan > 0.55 }
+				check_variable = { avg_unit_planning_ratio < 0.4 }
+				
+				add = 2
+			}
+		}
+	}
 	
 	siege_artillery = {
 		name = ABILITY_SIEGE_ARTILLERY
