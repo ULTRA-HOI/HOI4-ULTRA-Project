@@ -63,11 +63,16 @@ on_daily_labour_calculations = {
 	calculate_logistics_labour = yes
 	
 	#actually remove needed manpower from pool
+	subtract_from_variable = { total_free_labour_k = agriculture_labour_k }
 	subtract_from_variable = { total_free_labour_k = factories_labour_k }
 	subtract_from_variable = { total_free_labour_k = resources_labour_k }
 	subtract_from_variable = { total_free_labour_k = civilian_services_labour_k }
+	subtract_from_variable = { total_free_labour_k = army_logistics_labour_k }
 	
 	#Calculates penalty to apply to total population
+	set_variable = { agricultural_penalty_calculation = agriculture_labour_k }
+	divide_variable = { agricultural_penalty_calculation = total_population_with_foreign_workers_k }
+	multiply_variable = { agricultural_penalty_calculation = -1 }
 	set_variable = { factories_labour_penalty_calculation = factories_labour_k }
 	divide_variable = { factories_labour_penalty_calculation = total_population_with_foreign_workers_k }
 	multiply_variable = { factories_labour_penalty_calculation = -1 }
@@ -77,44 +82,19 @@ on_daily_labour_calculations = {
 	set_variable = { civilian_services_labour_penalty_calculation = civilian_services_labour_k }
 	divide_variable = { civilian_services_labour_penalty_calculation = total_population_with_foreign_workers_k }
 	multiply_variable = { civilian_services_labour_penalty_calculation = -1 }
+	set_variable = { army_logistics_penalty_calculation = army_logistics_labour_k }
+    divide_variable = { army_logistics_penalty_calculation = total_population_with_foreign_workers_k }
+    multiply_variable = { army_logistics_penalty_calculation = -1 }
 }
 
 calculate_argriculture_labour = {
-	#Apply Agricultural Burden to States / Record it
-	set_variable = { agriculture_penalty_temp = 0 }
-
+	set_variable = { agriculture_labour_k = 0 }
 	every_controlled_state = {
-		set_variable = { agriculture_modifier = state_level_agriculture_penalty }
-		multiply_variable = { agriculture_modifier = state_population_k }
-		add_to_variable = { PREV.agriculture_penalty_temp = agriculture_modifier }
+		limit = { is_core_of = PREV }
+		set_temp_variable = { state_agriculture_labour_k = state_population_k }
+		multiply_temp_variable = { state_agriculture_labour_k = state_level_agriculture_penalty }
+		add_to_variable = { PREV.agriculture_labour_k = state_agriculture_labour_k }
 	}
-
-	set_variable = { agriculture_percentage_core = agriculture_penalty_temp}
-	set_variable = { agriculture_total_temp = total_core_population_k }
-
-	divide_variable = { agriculture_percentage_core = total_core_population_k }
-	
-	every_controlled_state = {		
-		if = {
-			limit = { 
-				NOT = { is_core_of = PREV }
-				check_variable = { state_level_agriculture_penalty < PREV.agriculture_percentage_core } 	
-			}
-			add_to_variable = { PREV.agriculture_total_temp = state_population_k }
-		}		
-	}
-
-	set_variable = { agricultural_penalty_calculation = agriculture_penalty_temp }
-	divide_variable = { agricultural_penalty_calculation = agriculture_total_temp }
-	multiply_variable = { agricultural_penalty_calculation = -1 } 
-
-	# For display
-	set_variable = { agriculture_occupation_bonus = agriculture_percentage_core }
-	add_to_variable = { agriculture_occupation_bonus = agricultural_penalty_calculation }
-	multiply_variable = { agriculture_occupation_bonus = total_labour_population_k }
-	set_variable = { agriculture_labour_k = agricultural_penalty_calculation }
-	multiply_variable = { agriculture_labour_k = -1 }
-	multiply_variable = { agriculture_labour_k = total_labour_population_k }
 }
 
 calculate_resources_labour = {
@@ -223,13 +203,6 @@ calculate_logistics_labour = {
 	set_variable = { army_logistics_labour_k = total_trucks } # calculated in scripted_effects/army_logisitcs_scripted_effects.txt#logistical_calculations
 	multiply_variable = { army_logistics_labour_k = 10.0 } # 10 manpower per truck 
     divide_variable = { army_logistics_labour_k = 1000 } # (in 1000s)
-	
-	#actually remove needed manpower from pool
-	subtract_from_variable = { total_free_labour_k = army_logistics_labour_k }
-	
-	set_variable = { army_logistics_penalty_calculation = army_logistics_labour_k }
-    divide_variable = { army_logistics_penalty_calculation = total_population_with_foreign_workers_k }
-    multiply_variable = { army_logistics_penalty_calculation = -1 }
 }
 
 init_default_logistics_and_women = {
