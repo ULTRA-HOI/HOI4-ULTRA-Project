@@ -7676,9 +7676,6 @@ generic_motorized_mechanized_organization = {
 			reliability = -0.03
 			build_cost_ic = -0.05
 		}
-		organization_modifier = {
-			military_industrial_organization_task_capacity = 1
-		}
 	}
 
 	trait = {
@@ -7699,18 +7696,34 @@ generic_motorized_mechanized_organization = {
 		production_bonus = {
 			production_resource_need_factor = 0.01
 		}
-		organization_modifier = {
-			military_industrial_organization_task_capacity = 1
-		}
 	}
 
 	trait = {
 		token = generic_mio_trait_all_wheel_drive
 		name = generic_mio_trait_all_wheel_drive
+		icon = GFX_generic_mio_department_icon_motorized_engine
+		
+		position = { x=0 y=1 }
+		relative_position_id = generic_mio_trait_composite_cargo_bed
+		
+		any_parent = { generic_mio_trait_composite_cargo_bed generic_mio_trait_steel_cargo_bed }
+
+		limit_to_equipment_type = { motorized_equipment motorized_rocket_equipment }
+		
+		equipment_bonus = {
+			breakthrough = 0.035
+			fuel_consumption = 0.01
+			maximum_speed = 0.01
+		}
+	}
+
+	trait = {
+		token = generic_mio_trait_terrain_test_track
+		name = generic_mio_trait_terrain_test_track
 		icon = GFX_generic_mio_trait_icon_breakthrough
 		
-		position = { x=1 y=2 }
-		relative_position_id = generic_mio_trait_composite_cargo_bed
+		position = { x=2 y=0 }
+		relative_position_id = generic_mio_trait_all_wheel_drive
 		
 		any_parent = { generic_mio_trait_composite_cargo_bed generic_mio_trait_steel_cargo_bed }
 
@@ -7722,6 +7735,51 @@ generic_motorized_mechanized_organization = {
 		}
 		organization_modifier = {
 			military_industrial_organization_research_bonus = 0.05
+			military_industrial_organization_task_capacity = 1
+		}
+	}
+
+	trait = {
+		token = generic_mio_trait_heavy_duty_transmission
+		name = generic_mio_trait_heavy_duty_transmission
+		icon = GFX_generic_mio_trait_icon_weight
+		
+		position = { x=0 y=1}
+		relative_position_id = generic_mio_trait_all_wheel_drive
+		
+		any_parent = { generic_mio_trait_terrain_test_track generic_mio_trait_all_wheel_drive }
+		
+		mutually_exclusive = { generic_mio_trait_simplified_transmission }
+
+		limit_to_equipment_type = { motorized_equipment motorized_rocket_equipment }
+		
+		equipment_bonus = {
+			breakthrough = 0.035
+			defense = 0.02
+			fuel_consumption = 0.01
+		}
+	}
+
+	trait = {
+		token = generic_mio_trait_simplified_transmission
+		name = generic_mio_trait_simplified_transmission
+		icon = GFX_generic_mio_department_icon_motorized_line_efficiency
+		
+		position = { x=2 y=0 }
+		relative_position_id = generic_mio_trait_heavy_duty_transmission
+		
+		any_parent = { generic_mio_trait_terrain_test_track generic_mio_trait_all_wheel_drive }
+
+		mutually_exclusive = { generic_mio_trait_heavy_duty_transmission }
+
+		limit_to_equipment_type = { motorized_equipment motorized_rocket_equipment }
+		
+		equipment_bonus = {
+			reliability = -0.02
+			build_cost_ic = -0.01
+		}
+		production_bonus = {
+			production_efficiency_gain_factor = 0.05
 		}
 	}
 
@@ -7730,10 +7788,10 @@ generic_motorized_mechanized_organization = {
 		name = generic_mio_trait_attached_wood_gas_generator
 		icon = GFX_generic_mio_trait_icon_fuel_consumption
 		
-		position = { x=-1 y=2 }
-		relative_position_id = generic_mio_trait_all_wheel_drive
+		position = { x=0 y=1 }
+		relative_position_id = generic_mio_trait_simplified_transmission
 		
-		all_parents = { generic_mio_trait_all_wheel_drive }
+		any_parent = { generic_mio_trait_simplified_transmission generic_mio_trait_heavy_duty_transmission }
 		
 		mutually_exclusive = { generic_mio_trait_high_powered_engine }
 
@@ -7749,10 +7807,10 @@ generic_motorized_mechanized_organization = {
 		name = generic_mio_trait_high_powered_engine
 		icon = GFX_generic_mio_trait_icon_maximum_speed
 		
-		position = { x=2 y=0 }
-		relative_position_id = generic_mio_trait_attached_wood_gas_generator
+		position = { x=0 y=1 }
+		relative_position_id = generic_mio_trait_heavy_duty_transmission
 		
-		all_parents = { generic_mio_trait_all_wheel_drive }
+		any_parent = { generic_mio_trait_simplified_transmission generic_mio_trait_heavy_duty_transmission }
 		
 		mutually_exclusive = { generic_mio_trait_attached_wood_gas_generator }
 
@@ -7761,6 +7819,24 @@ generic_motorized_mechanized_organization = {
 		equipment_bonus = {
 			fuel_consumption = 0.02
 			maximum_speed = 0.03
+		}
+	}
+
+	trait = {
+		token = generic_mio_trait_modular_assembly
+		name = generic_mio_trait_modular_assembly
+		icon = GFX_generic_mio_department_icon_motorized_technology
+		
+		position = { x=1 y=1 }
+		relative_position_id = generic_mio_trait_high_powered_engine
+		
+		any_parent = { generic_mio_trait_high_powered_engine generic_mio_trait_attached_wood_gas_generator }
+		
+		limit_to_equipment_type = { motorized_equipment motorized_rocket_equipment }
+
+		production_bonus = {
+			production_capacity_factor = 0.05
+			production_efficiency_gain_factor = 0.05
 		}
 	}
 
@@ -7789,7 +7865,7 @@ generic_motorized_mechanized_organization = {
 		all_parents = { generic_mio_trait_medium_machinegun_mounts }
 
 		equipment_bonus = {
-			hardness = 0.02
+			hardness = 0.05
 		}
 	}
 
@@ -7913,7 +7989,7 @@ generic_motorized_mechanized_organization = {
 		any_parent = { generic_mio_trait_closed_chassi generic_mio_trait_open_chassi }
 
 		equipment_bonus = {
-			hardness = 0.02
+			hardness = 0.05
 		}
 		organization_modifier = {
 			military_industrial_organization_research_bonus = 0.05
