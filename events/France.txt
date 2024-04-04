@@ -1681,3 +1681,184 @@ country_event = { #France Carrier Programm
 		}
 	}
 }
+
+country_event = { #Transfer Jean Bart and Richelieu
+	id = france.300
+	title = france.300.t
+	desc = france.300.d
+	picture = GFX_report_event_generic_sign_treaty1
+
+	is_triggered_only = yes
+	
+	#lost ships
+	option = {
+		ai_chance = {
+			factor = 100
+		}
+		name = france.300.a
+		
+		IF = {
+			limit = {
+				has_navy_size = {
+					unit = battleship
+					size > 8
+				}
+			}
+			VIC = {
+				transfer_ship = {
+					prefer_name = "Richelieu"
+					type = battleship
+					target = ENG
+				}
+				transfer_ship = {
+					prefer_name = "Jean Bart"
+					type = battleship
+					target = FRA
+				}
+				transfer_ship = {
+					prefer_name = "Montcalm"
+					type = light_cruiser
+					target = FRA
+				}
+				transfer_ship = {
+					prefer_name = "Gloire"
+					type = light_cruiser
+					target = FRA
+				}
+				transfer_ship = {
+					prefer_name = "Georges Leygues"
+					type = light_cruiser
+					target = FRA
+				}
+				transfer_ship = {
+					prefer_name = "Le Terrible"
+					type = destroyer
+					target = FRA
+				}
+				transfer_ship = {
+					prefer_name = "L'Alcyon"
+					type = destroyer
+					target = FRA
+				}
+				transfer_ship = {
+					prefer_name = "Simoun"
+					type = destroyer
+					target = FRA
+				}
+				transfer_ship = {
+					prefer_name = "Tempête"
+					type = destroyer
+					target = FRA
+				}
+				transfer_ship = {
+					prefer_name = "Le Fantasque"
+					type = destroyer
+					target = FRA
+				}
+				transfer_ship = {
+					prefer_name = "Le Malin"
+					type = destroyer
+					target = FRA
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				has_navy_size = {
+					unit = battleship
+					size < 9
+				}
+			}
+			VIC = {
+				transfer_ship = {
+					prefer_name = "Richelieu"
+					type = battleship
+					target = ENG
+				}
+				transfer_ship = {
+					prefer_name = "Montcalm"
+					type = light_cruiser
+					target = FRA
+				}
+				transfer_ship = {
+					prefer_name = "Gloire"
+					type = light_cruiser
+					target = FRA
+				}
+				transfer_ship = {
+					prefer_name = "Georges Leygues"
+					type = light_cruiser
+					target = FRA
+				}
+				transfer_ship = {
+					prefer_name = "Le Terrible"
+					type = destroyer
+					target = FRA
+				}
+				transfer_ship = {
+					prefer_name = "L'Alcyon"
+					type = destroyer
+					target = FRA
+				}
+				transfer_ship = {
+					prefer_name = "Simoun"
+					type = destroyer
+					target = FRA
+				}
+				transfer_ship = {
+					prefer_name = "Tempête"
+					type = destroyer
+					target = FRA
+				}
+				transfer_ship = {
+					prefer_name = "Le Fantasque"
+					type = destroyer
+					target = FRA
+				}
+				transfer_ship = {
+					prefer_name = "Le Malin"
+					type = destroyer
+					target = FRA
+				}
+			}
+		}
+		ENG = { country_event = { id = france.301 } }
+		FRA = { country_event = { id = france.302 } }
+	}
+}
+
+country_event = {
+	id = france.301
+	title = france.301.t
+	desc = france.301.d
+	picture = GFX_report_event_generic_sign_treaty1
+
+	is_triggered_only = yes
+	
+	option = {
+		ai_chance = {
+			factor = 100
+		}
+		name = france.301.a
+		add_war_support = 0.05
+		add_stability = 0.05
+	}
+}
+
+country_event = {
+	id = france.302
+	title = france.302.t
+	desc = france.302.d
+	picture = GFX_report_event_generic_sign_treaty1
+
+	is_triggered_only = yes
+	
+	option = {
+		ai_chance = {
+			factor = 100
+		}
+		name = france.302.a
+		add_war_support = 0.1
+		add_stability = 0.1
+	}
+}
