@@ -4185,8 +4185,9 @@
 
 
 		completion_reward = {
-			custom_effect_tooltip = available_designer
-			show_ideas_tooltip = aichi
+			mio:JAP_nakajima_organization = {
+				add_mio_size = 2
+			}
 		}
 	}
 
@@ -4222,8 +4223,9 @@
 
 
 		completion_reward = {
-			custom_effect_tooltip = available_designer
-			show_ideas_tooltip = mitsubishi
+			mio:JAP_mitsubishi_organization = {
+				add_mio_size = 2
+			}
 		}
 	}
 
@@ -4480,6 +4482,8 @@
 			}
 			
 			custom_effect_tooltip = extra_capital_slots_mission_tt
+			unlock_decision_tooltip = { decision = JAP_maru_3_keikaku show_effect_tooltip = yes }
+			unlock_decision_tooltip = { decision = JAP_maru_4_keikaku show_effect_tooltip = yes }
 			custom_effect_tooltip = Construction_Focus_Middle_tt
 			unlock_decision_tooltip = { decision = JAP_new_naval_estimates_decision show_effect_tooltip = yes }
 		}
@@ -4530,7 +4534,7 @@
 	focus = {
 		id = JAP_expand_the_snlf
 		icon = GFX_goal_generic_amphibious_assault
-		prerequisite = { focus = JAP_carrier_warfare_experiments focus = JAP_supremacy_of_the_battlefleet }
+		prerequisite = { focus = JAP_carrier_warfare_experiments focus = JAP_ultimate_battleship }
 		x = 0
 		y = 2
 		relative_position_id = JAP_new_naval_estimates
@@ -4632,8 +4636,9 @@
 	focus = {
 		id = JAP_modern_escorts
 		icon = GFX_goal_generic_navy_anti_submarine
-		prerequisite = { focus = JAP_first_air_fleet focus = JAP_ultimate_battleship }
-		x = 1
+		prerequisite = { focus = JAP_first_air_fleet }
+		prerequisite = { focus = JAP_ultimate_battleship }
+		x = 2
 		y = 1
 		relative_position_id = JAP_first_air_fleet
 
@@ -4670,8 +4675,53 @@
 	focus = {
 		id = JAP_supremacy_of_the_battlefleet
 		icon = GFX_goal_generic_navy_doctrines_tactics
-		prerequisite = { focus = JAP_new_naval_estimates }
+		prerequisite = { focus = JAP_first_air_fleet }
+		prerequisite = { focus = JAP_torpedo_cruisers }
 		#mutually_exclusive = { focus = JAP_carrier_warfare_experiments }
+		x = 0
+		y = 2
+		relative_position_id = JAP_torpedo_cruisers
+
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			has_war_with = USA
+			OR = {
+				has_navy_size = {
+					size < 5
+					archetype = nrm_ship_hull_carrier
+				}
+				surrender_progress > 0.1
+				date > 1942.07.01
+			}
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		completion_reward = {
+			custom_effect_tooltip = extra_capital_slots_mission_tt
+			unlock_decision_tooltip = { decision = JAP_maru_5_keikaku show_effect_tooltip = yes }
+			unlock_decision_tooltip = { decision = JAP_maru_5_keikaku_second_batch show_effect_tooltip = yes }
+			custom_effect_tooltip = Construction_Focus_Middle_tt
+			unlock_decision_tooltip = { decision = JAP_emergency_dockyards_decision show_effect_tooltip = yes }
+		}
+	}
+
+	focus = {
+		id = JAP_ultimate_battleship
+		icon = GFX_goal_generic_navy_battleship
+		prerequisite = { focus = JAP_new_naval_estimates }
 		x = 1
 		y = 1
 		relative_position_id = JAP_new_naval_estimates
@@ -4683,11 +4733,6 @@
 		}
 
 		available = {
-
-		}
-
-		bypass = {
-
 		}
 
 		cancel_if_invalid = yes
@@ -4702,34 +4747,6 @@
 				uses = 1
 				category = bb_tech
 			}
-			custom_effect_tooltip = available_designer
-			show_ideas_tooltip = kure_naval_arsenal
-		}
-	}
-
-	focus = {
-		id = JAP_ultimate_battleship
-		icon = GFX_goal_generic_navy_battleship
-		prerequisite = { focus = JAP_supremacy_of_the_battlefleet }
-		x = 0
-		y = 2
-		relative_position_id = JAP_supremacy_of_the_battlefleet
-
-		cost = 5
-
-		ai_will_do = {
-			factor = 1
-		}
-
-		available = {
-		}
-
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = no
-
-		search_filters = { FOCUS_FILTER_RESEARCH }
-		completion_reward = {
 			add_ideas = {
 				JAP_battleship_parity_idea
 			}
