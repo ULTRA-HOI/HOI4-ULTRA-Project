@@ -579,6 +579,42 @@ country_event = {
 					limit = { FRA = { has_country_flag = become_vichy } }
 					change_tag_from = FRA
 				}
+				if = {
+					limit = {
+						has_navy_size = {
+							unit = battleship
+							size > 5
+						}
+					}
+					set_country_flag = richelieu_built_bb
+				}
+				else_if = {
+					limit = {
+						has_navy_size = {
+							unit = battle_cruiser
+							size > 2
+						}
+					}
+					set_country_flag = richelieu_built_bc
+				}
+				if = {
+					limit = {
+						has_navy_size = {
+							unit = battleship
+							size > 6
+						}
+					}
+					set_country_flag = jean_bart_built_bb
+				}
+				else_if = {
+					limit = {
+						has_navy_size = {
+							unit = battle_cruiser
+							size > 3
+						}
+					}
+					set_country_flag = jean_bart_built_bc
+				}
 			}
 		}
 		random_country = {
@@ -618,6 +654,7 @@ country_event = {
 				to_state = 772
 			}
 		}
+		
 	}
 	option = { # Conquer everything!
 		name = france.14.b
@@ -1696,130 +1733,91 @@ country_event = { #Transfer Jean Bart and Richelieu
 			factor = 100
 		}
 		name = france.300.a
-		
-		IF = {
-			limit = {
-				has_navy_size = {
-					unit = battleship
-					size > 8
+		VIC = {
+			if = {
+				limit = {
+					has_country_flag = richelieu_built_bb
 				}
-			}
-			VIC = {
 				transfer_ship = {
 					prefer_name = "Richelieu"
 					type = battleship
-					target = ENG
+					target = FRA
+				}
+			}
+			if = {
+				limit = {
+					has_country_flag = richelieu_built_bc
+				}
+				transfer_ship = {
+					prefer_name = "Richelieu"
+					type = battle_cruiser
+					target = FRA
+				}
+			}
+			if = {
+				limit = {
+					has_country_flag = jean_bart_built_bb
 				}
 				transfer_ship = {
 					prefer_name = "Jean Bart"
 					type = battleship
 					target = FRA
 				}
-				transfer_ship = {
-					prefer_name = "Montcalm"
-					type = light_cruiser
-					target = FRA
+			}
+			if = {
+				limit = {
+					has_country_flag = jean_bart_built_bc
 				}
 				transfer_ship = {
-					prefer_name = "Gloire"
-					type = light_cruiser
-					target = FRA
-				}
-				transfer_ship = {
-					prefer_name = "Georges Leygues"
-					type = light_cruiser
-					target = FRA
-				}
-				transfer_ship = {
-					prefer_name = "Le Terrible"
-					type = destroyer
-					target = FRA
-				}
-				transfer_ship = {
-					prefer_name = "L'Alcyon"
-					type = destroyer
-					target = FRA
-				}
-				transfer_ship = {
-					prefer_name = "Simoun"
-					type = destroyer
-					target = FRA
-				}
-				transfer_ship = {
-					prefer_name = "Tempête"
-					type = destroyer
-					target = FRA
-				}
-				transfer_ship = {
-					prefer_name = "Le Fantasque"
-					type = destroyer
-					target = FRA
-				}
-				transfer_ship = {
-					prefer_name = "Le Malin"
-					type = destroyer
+					prefer_name = "Jean Bart"
+					type = battle_cruiser
 					target = FRA
 				}
 			}
-		}
-		else_if = {
-			limit = {
-				has_navy_size = {
-					unit = battleship
-					size < 9
-				}
+			transfer_ship = {
+				prefer_name = "Montcalm"
+				type = light_cruiser
+				target = FRA
 			}
-			VIC = {
-				transfer_ship = {
-					prefer_name = "Richelieu"
-					type = battleship
-					target = ENG
-				}
-				transfer_ship = {
-					prefer_name = "Montcalm"
-					type = light_cruiser
-					target = FRA
-				}
-				transfer_ship = {
-					prefer_name = "Gloire"
-					type = light_cruiser
-					target = FRA
-				}
-				transfer_ship = {
-					prefer_name = "Georges Leygues"
-					type = light_cruiser
-					target = FRA
-				}
-				transfer_ship = {
-					prefer_name = "Le Terrible"
-					type = destroyer
-					target = FRA
-				}
-				transfer_ship = {
-					prefer_name = "L'Alcyon"
-					type = destroyer
-					target = FRA
-				}
-				transfer_ship = {
-					prefer_name = "Simoun"
-					type = destroyer
-					target = FRA
-				}
-				transfer_ship = {
-					prefer_name = "Tempête"
-					type = destroyer
-					target = FRA
-				}
-				transfer_ship = {
-					prefer_name = "Le Fantasque"
-					type = destroyer
-					target = FRA
-				}
-				transfer_ship = {
-					prefer_name = "Le Malin"
-					type = destroyer
-					target = FRA
-				}
+			transfer_ship = {
+				prefer_name = "Gloire"
+				type = light_cruiser
+				target = FRA
+			}
+			transfer_ship = {
+				prefer_name = "Georges Leygues"
+				type = light_cruiser
+				target = FRA
+			}
+			transfer_ship = {
+				prefer_name = "Le Terrible"
+				type = destroyer
+				target = FRA
+			}
+			transfer_ship = {
+				prefer_name = "L'Alcyon"
+				type = destroyer
+				target = FRA
+			}
+			transfer_ship = {
+				prefer_name = "Simoun"
+				type = destroyer
+				target = FRA
+			}
+			transfer_ship = {
+				prefer_name = "Tempête"
+				type = destroyer
+				target = FRA
+			}
+			transfer_ship = {
+				prefer_name = "Le Fantasque"
+				type = destroyer
+				target = FRA
+			}
+			transfer_ship = {
+				prefer_name = "Le Malin"
+				type = destroyer
+				target = FRA
 			}
 		}
 		ENG = { country_event = { id = france.301 } }
