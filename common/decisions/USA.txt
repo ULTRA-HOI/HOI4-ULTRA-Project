@@ -3363,13 +3363,78 @@ foreign_politics = {
 					target = VIC
 					type = annex_everything
 				}
-				country_event = { id = france.300 days = 7 }
 			}
 			set_global_flag = operation_torch
+			set_country_flag = operation_torch_country_flag
 			
 			hidden_effect = {
 				news_event = {id = news.804 days = 1}
 			}
+		}
+	}
+
+	USA_french_fleet_defection = {
+
+		icon = generic_political_discourse	
+		
+		allowed = {
+			OR = {
+				AND = {
+					tag = ENG
+					has_country_flag = operation_super-gymnast_flag
+				}
+				AND = {
+					tag = USA
+					has_country_flag = operation_torch_country_flag
+				}
+			}
+		}
+		
+		available = {
+			OR = {
+				461 = { is_controlled_by_ROOT_or_ally = yes }
+				458 = { is_controlled_by_ROOT_or_ally = yes }
+			}
+		}
+		days_mission_timeout = 45
+		
+		fire_only_once = yes
+
+		activation = {
+			OR = {
+				AND = {
+					tag = ENG
+					has_country_flag = operation_super-gymnast_flag
+				}
+				AND = {
+					tag = USA
+					has_country_flag = operation_torch_country_flag
+				}
+			}
+			has_global_flag = operation_torch
+		}
+	
+		visible = {
+			OR = {
+				AND = {
+					tag = ENG
+					has_country_flag = operation_super-gymnast_flag
+				}
+				AND = {
+					tag = USA
+					has_country_flag = operation_torch_country_flag
+				}
+			}
+			always = yes
+			has_global_flag = operation_torch
+		}
+		timeout_effect = {
+			
+		}
+
+		complete_effect = {
+			country_event = { id = france.300 hours = 6 }
+			set_global_flag = USA_french_fleet_defection_flag
 		}
 	}
 	
