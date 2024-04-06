@@ -442,6 +442,7 @@ country_event = {
 				original_tag = FRA
 				save_event_target_as = vichy_france
 				set_country_flag = vichy_france
+				load_focus_tree = vichy_french_focus
 				every_state = { #transfer French colonial empire
 					limit = {
 						is_controlled_by = FRA
@@ -467,7 +468,7 @@ country_event = {
 							state = 694
 						}
 					}
-					event_target:vichy_france = { transfer_state = PREV }
+					VIC = { transfer_state = PREV }
 				}
 				every_state = {
 					limit = { #set up Vichy continental holdings
@@ -494,13 +495,13 @@ country_event = {
 						} #failsafe for weird shit (tm)
 					}
 					add_core_of = PREV
-					event_target:vichy_france = { transfer_state = PREV }
+					VIC = { transfer_state = PREV }
 				}
 				every_state = { #set up cores for French cores
 					limit = {
 						is_core_of = FRA
 						NOT = {
-							is_controlled_by = event_target:vichy_france
+							is_controlled_by = VIC
 						}
 					}
 					add_core_of = PREV
@@ -546,28 +547,24 @@ country_event = {
 				set_cosmetic_tag = FRA_VICHY
 				FRA = {
 					FRA_philippe_petain= {
-						set_nationality = event_target:vichy_france	
-					}
-				}
-
-				FRA_philippe_petain= {
-					add_country_leader_role = {
-						country_leader = {
-							expire = "1965.1.1"
-							ideology = fascism_ideology
-							traits = {
-								
+						set_nationality = VIC
+						add_country_leader_role = {
+							country_leader = {
+								expire = "1965.1.1"
+								ideology = fascism_ideology
+								traits = {
+									
+								}
 							}
+							promote_leader = yes
 						}
-						promote_leader = yes
+					
 					}
 				}
-				
 				add_ideas = FRA_occupation_costs_4
-				load_focus_tree = vichy_french_focus
 				FRA = {
 					transfer_units_fraction = {
-						target = event_target:vichy_france
+						target = VIC
 						size = 1
 						stockpile_ratio = 0.33
 						army_ratio = 0.33
@@ -693,15 +690,9 @@ country_event = {
 				}
 			}
 		}
-		random_country = {
-			limit = {
-				has_focus_tree = vichy_french_focus
-			}
+		VIC = {
 			GER = {
 				give_guarantee = PREV
-			}
-			FRA_charles_de_gaulle = {
-				set_nationality = FRA
 			}
 			every_army_leader = {
 				limit = {
@@ -717,10 +708,10 @@ country_event = {
 							has_trait = old_guard_navy
 						}
 					}
-					set_nationality = PREV.PREV
+					set_nationality = VIC
 				}
 				FRA_francois_darlan = {
-					set_nationality = PREV.PREV
+					set_nationality = VIC
 				}
 			}
 		}
@@ -730,7 +721,6 @@ country_event = {
 				to_state = 772
 			}
 		}
-		
 	}
 	option = { # Conquer everything!
 		name = france.14.b
