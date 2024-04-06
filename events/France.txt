@@ -615,6 +615,82 @@ country_event = {
 					}
 					set_country_flag = jean_bart_built_bc
 				}
+				#Force X and Martinique ships
+				transfer_ship = {
+					prefer_name = "Lorraine"
+					type = battleship
+					target = NIC
+				}
+				transfer_ship = {
+					prefer_name = "Tourville"
+					type = heavy_cruiser
+					target = NIC
+				}
+				transfer_ship = {
+					prefer_name = "Duquesne"
+					type = heavy_cruiser
+					target = NIC
+				}
+				transfer_ship = {
+					prefer_name = "Suffren"
+					type = heavy_cruiser
+					target = NIC
+				}
+				transfer_ship = {
+					prefer_name = "Émile Bertin"
+					type = light_cruiser
+					target = NIC
+				}
+				transfer_ship = {
+					prefer_name = "Duguay-Trouin"
+					type = light_cruiser
+					target = NIC
+				}
+				transfer_ship = {
+					prefer_name = "Jeanne d'Arc"
+					type = light_cruiser
+					target = NIC
+				}
+				transfer_ship = {
+					prefer_name = "Basque"
+					type = destroyer
+					target = NIC
+				}
+				transfer_ship = {
+					prefer_name = "Forbin"
+					type = destroyer
+					target = NIC
+				}
+				transfer_ship = {
+					prefer_name = "Le Fortune"
+					type = destroyer
+					target = NIC
+				}
+				transfer_ship = { #taken by UK immediately after BoF
+					prefer_name = "Ouragan"
+					type = destroyer
+					target = ENG
+				}
+				transfer_ship = { #beached near Martinique
+					prefer_name = "Béarn"
+					type = carrier
+					target = HAI
+				}
+				transfer_ship = { #Japan stopped the ship from doing anything
+					prefer_name = "Lamotte-Picquet" 
+					type = light_cruiser
+					target = HAI
+				}
+				HAI = {
+					destroy_ships = {
+						type = nrm_ship_hull_carrier
+						count = 1
+					}
+					destroy_ships = {
+						type = nrm_ship_hull_cruiser
+						count = 1
+					}
+				}
 			}
 		}
 		random_country = {
@@ -1822,6 +1898,9 @@ country_event = { #Transfer Jean Bart and Richelieu
 		}
 		ENG = { country_event = { id = france.301 } }
 		FRA = { country_event = { id = france.302 } }
+		hidden_effect = {
+			ENG = { country_event = { id = france.311 days = 200 } }
+		}
 	}
 }
 
@@ -1899,6 +1978,29 @@ country_event = { #Transfer ships seized in Catapult
 				prefer_name = "Mistral"
 				type = destroyer
 				target = ENG
+			}
+		}
+	}
+}
+
+country_event = { #Transfer ships in Force X and Martinique
+	id = france.311
+	title = france.311.t
+	desc = france.311.d
+	picture = GFX_report_event_generic_sign_treaty1
+	
+	is_triggered_only = yes
+	
+	option = {
+		ai_chance = {
+			factor = 100
+		}
+		name = france.311.a
+		hidden_effect = {
+			NIC = {
+				transfer_navy = {
+					target = ENG
+				}
 			}
 		}
 	}
