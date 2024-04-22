@@ -345,6 +345,11 @@ CHI_industrial_evacuations = {
 
 		target_trigger = {
 			FROM = {
+				NOT = {
+					state = 605
+					state = 753
+					state = 901
+				}
 				is_controlled_by = ROOT
 				OR = {
 					arms_factory > 0
@@ -378,10 +383,6 @@ CHI_industrial_evacuations = {
 						var = af_to_move
 						value = arms_factory_level
 					}
-					multiply_variable = {
-						var = af_to_move
-						value = global.CHI_industrial_evacuations_amount_factor
-					}
 	
 					set_variable = {
 						var = ic_level
@@ -390,10 +391,6 @@ CHI_industrial_evacuations = {
 					set_variable = {
 						var = ic_to_move
 						value = industrial_complex_level
-					}
-					multiply_variable = {
-						var = ic_to_move
-						value = global.CHI_industrial_evacuations_amount_factor
 					}
 	
 					custom_effect_tooltip = CHI_industrial_evacuations_remove_AF
@@ -411,145 +408,53 @@ CHI_industrial_evacuations = {
 	
 					#Move AF
 					CONTROLLER = {
-						random_owned_controlled_state = {
-							prioritize = { 605 603 601 }
-							limit = {
-								is_fully_controlled_by = ROOT
-								any_neighbor_state = {
-									is_controlled_by = ROOT
-								}
-								free_building_slots = {
-									building = arms_factory
-									size > 2
-									include_locked = yes
-								}
-							}
-	
-							custom_effect_tooltip = CHI_industrial_evacuations_add_AF						
-							hidden_effect = {
-								add_extra_state_shared_building_slots = af_to_move
-								add_building_construction = {
-									type = arms_factory
-									level = af_to_move
-									instant_build = yes
-								}
-								CONTROLLER = { set_country_flag = CHI_industrial_evacuations_moved_AF }
-							}
-						}
-	
-						#If no states are really safe or all safe are filled
-						#Move to random controlled state
-						if = {
-							limit = {
-								NOT = { has_country_flag = CHI_industrial_evacuations_moved_AF }
-								NOT = {
-									any_controlled_state = {
-										is_fully_controlled_by = ROOT
-										any_neighbor_state = {
-											is_controlled_by = ROOT
-										}
-										free_building_slots = {
-											building = arms_factory
-											size > 2
-											include_locked = yes
-										}
-									}
-								}
-							}
+						ROOT = {
 							random_owned_controlled_state = {
-								prioritize = { 605 603 601 }
+								prioritize = { 605 753 901 }
 								limit = {
-									is_controlled_by = ROOT
+									is_fully_controlled_by = ROOT
+									
 									free_building_slots = {
 										building = arms_factory
 										size > 2
 										include_locked = yes
 									}
 								}
-	
+		
 								custom_effect_tooltip = CHI_industrial_evacuations_add_AF						
 								hidden_effect = {
 									add_extra_state_shared_building_slots = af_to_move
 									add_building_construction = {
 										type = arms_factory
-										level = af_to_move
+										level = FROM.af_to_move
 										instant_build = yes
 									}
 								}
 							}
-						}
-						clr_country_flag = CHI_industrial_evacuations_moved_AF
-	
-	
-						#Move IC
-						random_owned_controlled_state = {
-							prioritize = { 605 603 601 }
-							limit = {
-								is_fully_controlled_by = ROOT
-								any_neighbor_state = {
-									is_controlled_by = ROOT
-								}
-								free_building_slots = {
-									building = industrial_complex
-									size > 2
-									include_locked = yes
-								}
-							}
 							
-							custom_effect_tooltip = CHI_industrial_evacuations_add_IC
-							hidden_effect = {
-								add_extra_state_shared_building_slots = ic_to_move
-								add_building_construction = {
-									type = industrial_complex
-									level = ic_to_move
-									instant_build = yes
-								}
-								CONTROLLER = { set_country_flag = CHI_industrial_evacuations_moved_IC }
-							}
-						}
-	
-						#If no states are really safe or all safe are filled
-						#Move to random controlled state
-						if = {
-							limit = {
-								NOT = { has_country_flag = CHI_industrial_evacuations_moved_IC }
-								NOT = {
-									any_controlled_state = {
-										is_fully_controlled_by = ROOT
-										any_neighbor_state = {
-											is_controlled_by = ROOT
-										}
-										free_building_slots = {
-											building = industrial_complex
-											size > 2
-											include_locked = yes
-										}
-									}
-								}
-							}
+							#Move IC
 							random_owned_controlled_state = {
-								prioritize = { 605 603 601 }
+								prioritize = { 605 753 901 }
 								limit = {
-									is_controlled_by = ROOT
+									is_fully_controlled_by = ROOT
 									free_building_slots = {
 										building = industrial_complex
 										size > 2
 										include_locked = yes
 									}
 								}
-	
+								
 								custom_effect_tooltip = CHI_industrial_evacuations_add_IC
 								hidden_effect = {
 									add_extra_state_shared_building_slots = ic_to_move
 									add_building_construction = {
 										type = industrial_complex
-										level = ic_to_move
+										level = FROM.ic_to_move
 										instant_build = yes
 									}
 								}
 							}
 						}
-						clr_country_flag = CHI_industrial_evacuations_moved_IC
 					}			
 				}
 			}
