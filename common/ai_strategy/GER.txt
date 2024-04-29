@@ -1317,6 +1317,11 @@ GER_market_management_after_sudetenland = {
 		id = train
 		value = 200
 	}
+	ai_strategy = {
+		type = equipment_market_for_sale_threshold
+		id = convoy
+		value = 1000
+	}
 }
 
 spain_scw_support_GER_ITA_resistance = {
@@ -4615,36 +4620,38 @@ GER_we_dont_believe_in_mountain_tanks = {
 	}
 }
 
+#GER_make_some_radar_1 = { #Removed as Germany start with Radio Detection
+#	allowed = {
+#		original_tag = GER
+#	}
+#	enable = {
+#		OR = {
+#			has_war_with = POL
+#			POL = {
+#				has_capitulated = yes
+#			}
+#		}
+#	}
+#
+#	abort = {
+#		has_tech = radio_detection
+#	}
+#
+#	ai_strategy = {
+#		type = research_tech
+#		id = radio_detection
+#		value = 2000
+#	}
+#}
+
 GER_make_some_radar_1 = {
 	allowed = {
 		original_tag = GER
 	}
 	enable = {
-		OR = {
-			has_war_with = POL
-			POL = {
-				has_capitulated = yes
-			}
-		}
-	}
-
-	abort = {
 		has_tech = radio_detection
-	}
-
-	ai_strategy = {
-		type = research_tech
-		id = radio_detection
-		value = 2000
-	}
-}
-
-GER_make_some_radar_2 = {
-	allowed = {
-		original_tag = GER
-	}
-	enable = {
-		has_tech = radio_detection
+		has_completed_focus = GER_air_innovation_2
+		date > 1940.1.1
 	}
 
 	abort = {
@@ -4658,12 +4665,14 @@ GER_make_some_radar_2 = {
 	}
 }
 
-GER_make_some_radar_3 = {
+GER_make_some_radar_2 = {
 	allowed = {
 		original_tag = GER
 	}
 	enable = {
 		has_tech = decimetric_radar
+		has_completed_focus = GER_air_innovation_2
+		date > 1941.6.1
 	}
 
 	abort = {
@@ -4673,6 +4682,27 @@ GER_make_some_radar_3 = {
 	ai_strategy = {
 		type = research_tech
 		id = improved_decimetric_radar
+		value = 200
+	}
+}
+	
+GER_make_some_radar_3 = {
+	allowed = {
+		original_tag = GER
+	}
+	enable = {
+		has_tech = improved_decimetric_radar
+		has_completed_focus = GER_air_innovation_2
+		date > 1943.6.1
+	}
+
+	abort = {
+		has_tech = advanced_decimetric_radar
+	}
+
+	ai_strategy = {
+		type = research_tech
+		id = advanced_decimetric_radar
 		value = 200
 	}
 } #After this, you're on your own chaps
