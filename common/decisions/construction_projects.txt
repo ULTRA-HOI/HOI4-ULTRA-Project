@@ -2138,6 +2138,116 @@ focus_construction_project = {
 			}
 		}
 	}
+	
+	GER_finish_warsaw_main_station_decision = {
+	
+		icon = generic_construction
+		
+		allowed = {
+			original_tag = GER
+		}
+		
+		visible = {
+			POL = {
+				has_capitulated = yes
+				OR = {
+					NOT = {
+						has_country_flag = POL_fill_the_gaps_completed	
+					}
+					NOT = {
+						has_country_flag = POL_warsaw_main_railway_station_completed
+					}
+				}
+			}
+		}
+		
+		available = {
+			POL = {
+				has_capitulated = yes
+				OR = {
+					NOT = {
+						has_country_flag = POL_fill_the_gaps_completed	
+					}
+					NOT = {
+						has_country_flag = POL_warsaw_main_railway_station_completed
+					}
+				}
+			}
+		}
+		
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 100
+		}
+		
+		cost = 0
+		
+		days_remove = 120
+		
+		modifier = {
+			civilian_factory_use = 30
+		}
+		
+		remove_effect = {
+			random_owned_controlled_state = {
+				prioritize = { 10 }
+				limit = {
+					free_building_slots = {
+						building = infrastructure
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+				}
+				set_state_flag = POL_warsaw_main_railway_station_1
+			}
+			
+			if = {
+				limit = {
+					POL = { 
+						NOT = { has_country_flag = POL_fill_the_gaps_completed }
+					}
+				}
+				
+				build_railway = {
+					level = 2
+					path = { 9427 11413 442 6499 11507 9494 9468 11479 }
+				}
+				
+				build_railway = {
+					level = 2
+					path = { 6558 17 11515 548 9508 }
+				}
+			}
+			
+			if = {
+				limit = {
+					POL = { 
+						NOT = { has_country_flag = POL_warsaw_main_railway_station_completed }
+					}
+				}
+				
+				build_railway = { #Warsaw to Krakow 
+					path = { 3544 6511 3458 }
+				}
+				
+				build_railway = { #Warsaw to Danzig 
+					level = 2
+					path = { 3544 11492 548 }
+				}
+
+				build_railway = { #Warsaw to Wilno
+					level = 2
+					path = { 3544 524 402 290 }
+				}
+			}
+		}
+	}
 
 ####### Soviet focus tree ########
 
@@ -15050,14 +15160,14 @@ focus_construction_project = {
 				}
 			}
 			build_railway = {
+				level = 2
 				path = { 9427 11413 442 6499 11507 9494 9468 11479 }
 			}
 			build_railway = {
-				path = { 17 11515 548 }
+				level = 2
+				path = { 6558 17 11515 548 9508 }
 			}
-			build_railway = {
-				path = { 3544 9400 9508 }
-			}
+			set_country_flag = POL_fill_the_gaps_completed
 		}
 	}
 	
@@ -15120,6 +15230,7 @@ focus_construction_project = {
 				limit = { ROOT = { controls_state = 817 } }
 			
 				build_railway = { #Warsaw to Danzig 
+					level = 2
 					path = { 3544 11492 548 }
 				}
 			}	
@@ -15128,9 +15239,10 @@ focus_construction_project = {
 
 				build_railway = { #Warsaw to Wilno
 					level = 2
-					path = { 3544 524 402 }
+					path = { 3544 524 402 290 }
 				}
 			}
+			set_country_flag = POL_warsaw_main_railway_station_completed
 		}
 	}
 
