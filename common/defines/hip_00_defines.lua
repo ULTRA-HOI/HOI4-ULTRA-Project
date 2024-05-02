@@ -300,7 +300,7 @@ NCountry = {
 	NUCLEAR_BOMB_DROP_WAR_SUPPORT_EFFECT_MAX_VP = 3,-- War support will be scaled down if there's less VP than this in the province
 	WEEKLY_STABILITY_GAIN = 0.0,
 	WEEKLY_WAR_SUPPORT_GAIN = 0.0,
-	SUPPLY_CONVOY_FACTOR = 0.75, --was 0.25 --How many convoys each supply needs
+	SUPPLY_CONVOY_FACTOR = 0.0075, --was 0.25 --How many convoys each supply needs
 	CONVOY_RANGE_FACTOR = 1,                        -- how much range affects convoy need
 	CONVOY_LENDLEASE_RANGE_FACTOR = 1,				-- How much range affects convoy need for lend lease
 	CONVOY_INTERNATIONAL_MARKET_RANGE_FACTOR = 1,	-- How much range affects convoy need for international market
@@ -1181,16 +1181,16 @@ NMilitary = {
 
 	FUEL_PENALTY_START_RATIO = 0.33, --was 0.25 --ratio of fuel in an army to start getting penalties
 
-	SURPLUS_SUPPLY_RATIO_FOR_ZERO_FUEL_FLOW = 1.5, --was 0.5 --if a supply chunk has more supply needed than this ratio + 1 compared to its max supply flow, the units inside the chiunk will get no fuel
+	SURPLUS_SUPPLY_RATIO_FOR_ZERO_FUEL_FLOW = 0.5, --was 0.5 --if a supply chunk has more supply needed than this ratio + 1 compared to its max supply flow, the units inside the chiunk will get no fuel
 
-	ARMY_MAX_FUEL_FLOW_MULT = 0.9, --was 2.0 --max fuel ratio that an army can get per hour, multiplied by supply situation
+	ARMY_MAX_FUEL_FLOW_MULT = 1.1, --was 2.0 --max fuel ratio that an army can get per hour, multiplied by supply situation
 
 	ARMY_FUEL_COST_MULT = 1.1, --was 0.5 --fuel cost multiplier for all army related stuff
 	ARMY_COMBAT_FUEL_MULT = 0.5, --was 1.0 --fuel consumption ratio in combat (plus ARMY_MOVEMENT_FUEL_MULT if you are also moving. ie offensive combat)
 	ARMY_TRAINING_FUEL_MULT = 0.67, --was 1.0 --fuel consumption ratio while training
 	ARMY_MOVEMENT_FUEL_MULT = 0.8, --was 1.0 --fuel consumption ratio while moving
-	ARMY_NAVAL_TRANSFER_FUEL_MULT = 0.1, --was 0.0 --fuel consumption ratio while naval transferring
-	ARMY_STRATEGIC_DEPLOYMENT_FUEL_MULT = 0.1, --was 0.0 --fuel consumption ratio while doing strategic deployment
+	ARMY_NAVAL_TRANSFER_FUEL_MULT = 0.0, --was 0.0 --fuel consumption ratio while naval transferring
+	ARMY_STRATEGIC_DEPLOYMENT_FUEL_MULT = 0.0, --was 0.0 --fuel consumption ratio while doing strategic deployment
 	ARMY_IDLE_FUEL_MULT = 0.1, --was 0.0 --fuel consumption ratio while just existing
 	FUEL_EFFICIENCY_RAID_MULTIPLIER = 1.0,			-- convoy raid multiplier for fuel sunk
 
@@ -1295,7 +1295,7 @@ NAir = {
 	ACE_WING_SIZE =	100,								-- size of wing ace bonuses are set up for. if lower more bonus, if higher less bonus
 	ACE_WING_SIZE_MAX_BONUS = 2,               	        -- biggest bonus we can get from having a small wing with an ace on
 	NO_SEARCH_MISSION_DETECT_FACTOR = -0.5,				-- value of planes not on active search missions for detection
-	SUPPLY_NEED_FACTOR = 0.056, --was 0.28 --multiplies supply usage
+	SUPPLY_NEED_FACTOR = 2.80, --was 0.28 --multiplies supply usage
 	SUPPLY_PRIO_FACTOR = 100.0,							-- Effect of supply need per unit for target province picking for air supply
 	CAPACITY_PENALTY = 2,								-- scales penalty of having overcrowded bases.
 	AIR_COMBAT_FINAL_DAMAGE_SCALE = 0.015,               -- % how many max disrupted only planes are alloed to die in a single combat
@@ -2153,7 +2153,7 @@ NAI = {
 	SEA_PATH_LENGTH_SCORE_BASE = -30,           -- scoring reduction from naval paths for AI when picking trade partners
 	MINIMUM_GOOD_TRADE_RATIO_PER_CIV = 0.005,   -- for each civ factory we have mul with this we are allowed to trade under % of resource on a trade
 	NAVAL_DOCKYARDS_SHIP_FACTOR = 15, --was 1.5 --The extent to which number of dockyards play into amount of sips a nation wants
-	PRODUCTION_EQUIPMENT_SURPLUS_FACTOR = 0.1, --was 0.4 --Base value for how much of currently used equipment the AI will at least strive to have in stock
+	PRODUCTION_EQUIPMENT_SURPLUS_FACTOR = 0.15, --was 0.4 --Base value for how much of currently used equipment the AI will at least strive to have in stock
 	PRODUCTION_EQUIPMENT_SURPLUS_FACTOR_GARRISON = 0.1, --was 0.3 --Base value for how much of currently used equipment the AI will at least strive to have in stock for garrison forces
 	AIR_SUPERIORITY_FACTOR = 2.5, --was 2.5 --Factor for air superiority score
 	ROCKET_MIN_ASSIGN_SCORE = 10,				-- Minimum total score for region to be considered for rocket air missions
@@ -2660,7 +2660,7 @@ NAI = {
 	COMBINED_ARMS_LEVEL = 1,							-- 0 = Never, 1 = Infantry/Artillery, 2 = Go wild
 	MAX_DISTANCE_NAVAL_INVASION = 200.0,				-- AI is extremely unwilling to plan naval invasions above this naval distance limit.
 	ENEMY_NAVY_STRENGTH_DONT_BOTHER = 1000, --was 2.5 --If the enemy has a navy at least these many times stronger that the own, don't bother invading
-	MIN_SUPPLY_USE_SANITY_CAP = 100,					-- Ignore supply cap if below this value when deciding on how many divisions to produce.
+	MIN_SUPPLY_USE_SANITY_CAP = 10000,					-- Ignore supply cap if below this value when deciding on how many divisions to produce.
 	MAX_SUPPLY_DIVISOR = 0.75, --was 1.75 --To make sure the AI does not overdeploy divisions. Higher number means more supply per unit.
 	MISSING_CONVOYS_BOOST_FACTOR = 2, --was 18.0 --The more convoys a country is missing, the more resources it diverts to cover this.
 	TRANSPORTS_PER_PARATROOPER = 20,					-- Currently unused.
@@ -2760,10 +2760,10 @@ NAI = {
 	BEFRIEND_FACTOR_FOR_KICKING_COUNTRIES = 7.5,		-- World threat difference addition per 100 befriend against a country, democratic leaders will forgive allies if they are befriending them
 
 	LAND_DEFENSE_AIR_SUPERIORITY_IMPORTANCE = 0.1, --was 1.0 --Strategic importance of air superiority ( amount of enemy planes in area )
-	LAND_DEFENSE_CIVIL_FACTORY_IMPORTANCE = 50, --was 50 --Strategic importance of civil factories
-	LAND_DEFENSE_MILITARY_FACTORY_IMPORTANCE = 70, --was 70 --Strategic importance of military factories
-	LAND_DEFENSE_NAVAL_FACTORY_IMPORTANCE = 60, --was 30 --Strategic importance of naval factories
-	LAND_DEFENSE_SUPPLY_HUB_IMPORTANCE = 4,             -- Strategic importance of supply hubs
+	LAND_DEFENSE_CIVIL_FACTORY_IMPORTANCE = 5, --was 50 --Strategic importance of civil factories
+	LAND_DEFENSE_MILITARY_FACTORY_IMPORTANCE = 20, --was 70 --Strategic importance of military factories
+	LAND_DEFENSE_NAVAL_FACTORY_IMPORTANCE = 10, --was 30 --Strategic importance of naval factories
+	LAND_DEFENSE_SUPPLY_HUB_IMPORTANCE = 75,             -- Strategic importance of supply hubs
 	LAND_DEFENSE_AA_IMPORTANCE_FACTOR = 1, --was 1.0 --Factor of AA influence on strategic importance ( 0.0 - 1.0 )
 	LAND_DEFENSE_INFRA_IMPORTANCE_FACTOR = 0.5, --was 0.5 --Factor of infrastructure influence on strategic importance ( 0.0 - 1.0 )
 	LAND_DEFENSE_IMPORTANCE_SCALE = 5, --was 3.0 --Lend defence total importance scale (every land defence score get's multiplied by it)
@@ -3006,12 +3006,12 @@ NAI = {
 	-- <start> construction prioritization
 	CONSTRUCTION_PRIO_INFRASTRUCTURE = 0.10,                        --was 0.20  -- base prio for infrastructure in the construction queue
 	CONSTRUCTION_PRIO_CIV_FACTORY = 0.60,                           --was 0.80  -- base prio for civilian factories in the construction queue
-	CONSTRUCTION_PRIO_MIL_FACTORY = 0.90,                           --was 0.70  -- base prio for military factories in the construction queue
+	CONSTRUCTION_PRIO_MIL_FACTORY = 15.00,                           --was 0.70  -- base prio for military factories in the construction queue
 	CONSTRUCTION_PRIO_RAILWAY = 0.20,                               --was 4.00  -- base prio for railways in the construction queue
-	CONSTRUCTION_PRIO_RAILWAY_GUN_REPAIR = 15.00,                               -- base prio for railway gun repairs in the construction queue
+	CONSTRUCTION_PRIO_RAILWAY_GUN_REPAIR = 30.00,                               -- base prio for railway gun repairs in the construction queue
 	CONSTRUCTION_PRIO_UNSPECIFIED = 0.50,                                       -- base prio for unspecified buildings (none of the categories above) in the construction queue
-	CONSTRUCTION_PRIO_FACTOR_OCCUPIED_TERRITORY = 0.10,             --was 1.00  -- factor prio with this if occupied territory
-	CONSTRUCTION_PRIO_FACTOR_OWNED_NONCORE = 0.50,                  --was 1.50  -- factor prio with this if owned non-core territory
+	CONSTRUCTION_PRIO_FACTOR_OCCUPIED_TERRITORY = 0.01,             --was 1.00  -- factor prio with this if occupied territory
+	CONSTRUCTION_PRIO_FACTOR_OWNED_NONCORE = 0.25,                  --was 1.50  -- factor prio with this if owned non-core territory
 	CONSTRUCTION_PRIO_FACTOR_OWNED_CORE = 2.00,                                 -- factor prio with this if owned core territory
 	CONSTRUCTION_PRIO_FACTOR_REPAIRING = 0.30,                                  -- factor prio with this if building is being repaired
 	-- <end> construction prioritization
@@ -3184,7 +3184,7 @@ NAI = {
 	AI_UPDATE_ROLES_FREQUENCY_HOURS = 48,               -- Update the roles for a country AI this often (affects performance)
 
 	UPDATE_SUPPLY_BOTTLENECKS_FREQUENCY_HOURS = 72, --was 168; --Check for and try to fix supply bottlenecks this often. (168 hours = 1 week)
-	FIX_SUPPLY_BOTTLENECK_SATURATION_THRESHOLD = 0.95, --was 0.85; --Try to fix supply bottlenecks if supply node saturation exceeds this value.
+	FIX_SUPPLY_BOTTLENECK_SATURATION_THRESHOLD = 1.2, --was 0.85; --Try to fix supply bottlenecks if supply node saturation exceeds this value.
 
 	UPDATE_SUPPLY_MOTORIZATION_FREQUENCY_HOURS = 36, --was 52; --Check if activating motorization would improve supply situation this often.
 
@@ -3271,7 +3271,7 @@ NAI = {
 	INDUSTRIAL_ORG_RESEARCH_BONUS_FACTOR = 1.0,		-- Research bonus will be multiplied by this factor when evaluating design teams
 	
 	AI_WANTED_LAND_BASED_PLANES_FACTOR = 0.50,		-- Factor applied to desire for land based planes (total airbase space * define)
-	AI_WANTED_CARRIER_BASED_PLANES_FACTOR = 1.0,	-- Factor applied to desire for carrier based planes (total carrier space * define)
+	AI_WANTED_CARRIER_BASED_PLANES_FACTOR = 2.0,	-- Factor applied to desire for carrier based planes (total carrier space * define)
 	
 },
 
@@ -3927,27 +3927,27 @@ NSupply = {
 
 	--defines to calculate the capitals supply. This will be also used for max supply of other nodes depending on how well they are connected to capital. Using the formula:
 	--CapitalSupply = 0.0, --was CAPITAL_SUPPLY_BASE + (NumberOfCivilianFactories * CAPITAL_SUPPLY_CIVILIAN_FACTORIES) + (NumberOfMilitaryFactories * CAPITAL_SUPPLY_MILITARY_FACTORIES) + (NumberOfDockyards * CAPITAL_SUPPLY_DOCKYARDS)
-	CAPITAL_SUPPLY_BASE = 3.0, --was 5.0 --base supply for capital
-	CAPITAL_SUPPLY_CIVILIAN_FACTORIES = 0.06, --was 0.3 --supply from one civilian factory
-	CAPITAL_SUPPLY_MILITARY_FACTORIES = 0.12, --was 0.6 --supply from one military factory
-	CAPITAL_SUPPLY_DOCKYARDS = 0.06, --was 0.4 --supply from one naval factory
+	CAPITAL_SUPPLY_BASE = 300.0, --was 5.0 --base supply for capital
+	CAPITAL_SUPPLY_CIVILIAN_FACTORIES = 6.00, --was 0.3 --supply from one civilian factory
+	CAPITAL_SUPPLY_MILITARY_FACTORIES = 12.00, --was 0.6 --supply from one military factory
+	CAPITAL_SUPPLY_DOCKYARDS = 6.00, --was 0.4 --supply from one naval factory
 
 	-- defines that are used for supply reach for capital
 	-- supply flow will start from INITIAL_SUPPLY_FLOW and will be reduced by a penalty on each province it travels (which depends on how far we are from our origin, terrain etc)
 	-- a supply reach >= 1.0 considered "perfect" and will be able to fully support units on that particular province (assuming you are not over capacity)
-	CAPITAL_INITIAL_SUPPLY_FLOW = 22.0, --was 5.0 --starting supply from
-	CAPITAL_STARTING_PENALTY_PER_PROVINCE = 7.5, --was 0.5 --starting penalty that will be added as supply moves away from its origin (modified by stuff like terrain)
-	CAPITAL_ADDED_PENALTY_PER_PROVINCE = 2.5, --was 1.2 --added penalty as we move away from origin
+	CAPITAL_INITIAL_SUPPLY_FLOW = 2400.0, --was 5.0 --starting supply from
+	CAPITAL_STARTING_PENALTY_PER_PROVINCE = 460.0, --was 0.5 --starting penalty that will be added as supply moves away from its origin (modified by stuff like terrain)
+	CAPITAL_ADDED_PENALTY_PER_PROVINCE = 120.0, --was 1.2 --added penalty as we move away from origin
 
 	-- defines that are used for supply reach for built nodes
-	NODE_INITIAL_SUPPLY_FLOW = 18.0, --was 2.8
-	NODE_STARTING_PENALTY_PER_PROVINCE = 7.5, --was 0.50
-	NODE_ADDED_PENALTY_PER_PROVINCE = 2.5, --was 0.70
+	NODE_INITIAL_SUPPLY_FLOW = 1600.0, --was 2.8
+	NODE_STARTING_PENALTY_PER_PROVINCE = 460.0, --was 0.50
+	NODE_ADDED_PENALTY_PER_PROVINCE = 120.0, --was 0.70
 
 	-- defines that are used for supply reach for dockyards
-	NAVAL_BASE_INITIAL_SUPPLY_FLOW = 18.0, --was 3.3
-	NAVAL_BASE_STARTING_PENALTY_PER_PROVINCE = 7.5, --was 0.84
-	NAVAL_BASE_ADDED_PENALTY_PER_PROVINCE = 2.5, --was 1.1
+	NAVAL_BASE_INITIAL_SUPPLY_FLOW = 1600.0, --was 3.3
+	NAVAL_BASE_STARTING_PENALTY_PER_PROVINCE = 460.0, --was 0.84
+	NAVAL_BASE_ADDED_PENALTY_PER_PROVINCE = 120.0, --was 1.1
 
 	-- Node Flow (i.e. province caps) increase by this amount per railway level of the node's bottleneck
 	NODE_FLOW_BONUS_PER_RAIL_LEVEL = 0.0, --was 0.34
@@ -3956,11 +3956,11 @@ NSupply = {
 	RIVER_RAILWAY_LEVEL = 2,
 
 	-- defines that are used for supply reach for floating harbors
-	FLOATING_HARBOR_INITIAL_SUPPLY_FLOW = 18.0,
-	FLOATING_HARBOR_STARTING_PENALTY_PER_PROVINCE = 7.5,
-	FLOATING_HARBOR_ADDED_PENALTY_PER_PROVINCE = 2.5,
+	FLOATING_HARBOR_INITIAL_SUPPLY_FLOW = 1600.0,
+	FLOATING_HARBOR_STARTING_PENALTY_PER_PROVINCE = 460.0,
+	FLOATING_HARBOR_ADDED_PENALTY_PER_PROVINCE = 120.0,
 
-	FLOATING_HARBOR_BASE_SUPPLY = 8.0, -- supply given by a floating harbor
+	FLOATING_HARBOR_BASE_SUPPLY = 800.0, -- supply given by a floating harbor
 	FLOATING_HARBOR_BASE_DURATION = 21, -- duration of a full hp floating harbor
 	FLOATING_HARBOR_DURATION_RATIO_AT_MIN_HP = 0.0,  -- duration mult for a harbor that was reduced to 0 hp
 
@@ -3972,16 +3972,16 @@ NSupply = {
 	FLOATING_HARBOR_DECAY_NO_CONTROL_PENALTY = 1.0, -- If adjacent land province is not held, change decay rate by this many "hours" per hour
 
 	SUPPLY_FLOW_DROP_REDUCTION_AT_MAX_INFRA = 0.50, --was 0.30 --max infrastructure level will reduce the supply flow drop off by this ratio
-	SUPPLY_FLOW_PENALTY_CROSSING_RIVERS = 1.60, --was 0.20 --crossing rivers introduces additional penalty
+	SUPPLY_FLOW_PENALTY_CROSSING_RIVERS = 160.00, --was 0.20 --crossing rivers introduces additional penalty
 
 	 -- node flow terrain falloff is scaled by logistics curve based on distance(d) (scalar / (1+e^(-k(d-midpoint))))
-	SUPPLY_FLOW_DIST_LOGISTICS_FALLOFF_K = 1.8, --was 1.3 --How steep the curve is
-	SUPPLY_FLOW_DIST_LOGISTICS_FALLOFF_MIDPOINT = 2.6, -- sigmoid inflection point
-	SUPPLY_FLOW_DIST_LOGISTICS_FALLOFF_SCALAR = 0.95, -- Max Penalty adjustment due to distance
+	SUPPLY_FLOW_DIST_LOGISTICS_FALLOFF_K = 0.8, --was 1.3 --How steep the curve is
+	SUPPLY_FLOW_DIST_LOGISTICS_FALLOFF_MIDPOINT = 3.6, -- sigmoid inflection point
+	SUPPLY_FLOW_DIST_LOGISTICS_FALLOFF_SCALAR = 1, -- Max Penalty adjustment due to distance
 	SUPPLY_FLOW_DIST_LOGISTICS_FALLOFF_MIN_PENALTY_SCALE = 0.05, --was 0.25 --Logistics curve never reduces penalty facor below this limit
 
 	-- The range bonus added to a fully motorized hub. This supply is added on top of the XXX_INITIAL_SUPPLY_FLOW defined above.
-	SUPPLY_HUB_FULL_MOTORIZATION_BONUS = 36.0,
+	SUPPLY_HUB_FULL_MOTORIZATION_BONUS = 1600.0,
 	-- How many trucks does it cost to fully motorize a hub
 	SUPPLY_HUB_FULL_MOTORIZATION_TRUCK_COST = 800, --was 80.0
 	-- For each additional level of motorization on a hub (i.e. contry with set motoriazation) reduce max bonus for next level by this amount
@@ -3990,23 +3990,23 @@ NSupply = {
 
 	-- used for calculating "flow" for railways.
 	RAILWAY_BASE_FLOW = 0.0, --was 10.0 --how much base flow railway gives when a node connected to its capital/a naval node by a railway
-	RAILWAY_FLOW_PER_LEVEL = 4, --was 5.0 --how much additional flow a railway level gives
-	RAILWAY_FLOW_PENALTY_PER_DAMAGED = 3.9, --was 5.0 --penalty to flow per damaged railway
-	RAILWAY_MIN_FLOW = 0.5, --was 5.0 --minimum railway flow can be reduced to
+	RAILWAY_FLOW_PER_LEVEL = 400, --was 5.0 --how much additional flow a railway level gives
+	RAILWAY_FLOW_PENALTY_PER_DAMAGED = 390, --was 5.0 --penalty to flow per damaged railway
+	RAILWAY_MIN_FLOW = 50.0, --was 5.0 --minimum railway flow can be reduced to
 
 	-- used for calculating "flow" from a naval node to another naval node when it is connected via a convoy route
 	-- NAVAL_BASE_MAX_SUPPLY_FLOW_FACTOR = 0.9, -- flow of the parent node is factored to this ratio (so at most it can transfer parent naval node flow * this define)
-	NAVAL_BASE_FLOW = 2.0, --was 5.0 --max output/input of a naval node is limited by this base value + additional ratio for each level
-	NAVAL_FLOW_PER_LEVEL = 0.75, --was 3.0 --max output/input of a naval node is limited by previous base value + this define per its level
+	NAVAL_BASE_FLOW = 0.0, --was 5.0 --max output/input of a naval node is limited by this base value + additional ratio for each level
+	NAVAL_FLOW_PER_LEVEL = 80.0, --was 3.0 --max output/input of a naval node is limited by previous base value + this define per its level
 
-	SUPPLY_NODE_MIN_SUPPLY_THRESHOLD = 0.5, --was 1.0 --if supply of a node is below this value it will be set to 0 -- Currently unused? This should happen when enough damage occurs
+	SUPPLY_NODE_MIN_SUPPLY_THRESHOLD = 50.0, --was 1.0 --if supply of a node is below this value it will be set to 0 -- Currently unused? This should happen when enough damage occurs
 
-	INFRA_TO_SUPPLY = 0.05, --was 0.3 --each level of infra gives this many supply
+	INFRA_TO_SUPPLY = 5.00, --was 0.3 --each level of infra gives this many supply
 	VP_TO_SUPPLY_BASE = 0.0, --was 0.2 --Bonus to supply from a VP, no matter the level
-	VP_TO_SUPPLY_BONUS_CONVERSION = 0.02, --was 0.05 --Bonus to supply local supplies from Victory Points, multiplied by this aspect and rounded to closest integer
-	SUPPLY_FROM_DAMAGED_INFRA = 0.025, --was 0.15 --damaged infrastructure counts as this in supply calcs
+	VP_TO_SUPPLY_BONUS_CONVERSION = 2.00, --was 0.05 --Bonus to supply local supplies from Victory Points, multiplied by this aspect and rounded to closest integer
+	SUPPLY_FROM_DAMAGED_INFRA = 2.500, --was 0.15 --damaged infrastructure counts as this in supply calcs
 	SUPPLY_BASE_MULT = 0.0, --was 0.2 --multiplier on supply base values
-	SUPPLY_DISRUPTION_DAILY_RECOVERY = 1.5,		-- every day nodes recover this much of their accumulated disruption.
+	SUPPLY_DISRUPTION_DAILY_RECOVERY = 150.0,		-- every day nodes recover this much of their accumulated disruption.
 
 	RAILWAY_CONVERSION_COOLDOWN = 5, --was 10 --railways will be put on cooldown when they are captured by enemy and will not be usable during the cooldown
 	RAILWAY_CONVERSION_COOLDOWN_CORE = 5, --was 5
@@ -4015,7 +4015,7 @@ NSupply = {
 	DEFAULT_STARTING_TRUCK_RATIO = 1.5, -- countries get this ratio of starting truck in their buffers compared to their need
 	DEFAULT_STARTING_TRAIN_RATIO = 1, -- countries get this ratio of starting trains in their buffers compared to their need
 
-	SUPPLY_POINTS_PER_TRAIN = 0.1, --was 1.0 --old default 1.25 -- Amount of supply that can fit in a train. (Trains distribute supply from capital to a supply node.)
+	SUPPLY_POINTS_PER_TRAIN = 10.0, --was 1.0 --old default 1.25 -- Amount of supply that can fit in a train. (Trains distribute supply from capital to a supply node.)
 	NUM_RAILWAYS_TRAIN_FACTOR = 0.03, -- the train usage is scaled by railway distance between the supply node and the capital multiplied by this factor
 
 	BASE_SUPPLY_MULT_FOR_TRUCK_DEFAULT_BUFFER = 1.0,  -- initial value for wanted buffers over potential truck usage
@@ -4037,7 +4037,7 @@ NSupply = {
 	MIN_TRAIN_SUPPLY_FACTOR = 0.5, -- Having 0 trains in stockpile only applies this penalty factor, scaling up to 1.0 when need is met
 	MIN_TRAIN_REQUIREMENT = 2, -- If total train need <= this, then don't apply any supply penalty, even if stockpile is insufficient
 
-	SUPPLY_FLOW_REDUCTION_THRESHOLD = 0.15, --was 0.1 --if supply flow is lower than this, it is not applied
+	SUPPLY_FLOW_REDUCTION_THRESHOLD = 15.00, --was 0.1 --if supply flow is lower than this, it is not applied
 
 	-- following values are used for calculating potential truck usage
 	-- generally potential is ~= current usage but as units moves along the map
@@ -4075,13 +4075,13 @@ NSupply = {
 	ALERT_LOW_SUPPLY_LEVEL = 0.90, --was 0.5
 
 	AI_FRONT_MINIMUM_UNITS_PER_PROVINCE_FOR_SUPPLY_CALCULATIONS = 1,    -- AI will try to keep this amount of divisions per province as a minimum when evaluating supply limitations for war fronts
-	AI_FRONT_DIVISIONS_PER_SUPPLY_POINT = 1.0, -- How many divisions should the AI consider it can supply per available supply point
-	AI_FRONT_MAX_UNITS_ENEMY_COUNT_FACTOR = 1.2, -- Make sure AI front MaxNrUnits is at least EnemyCount multiplied by this factor
+	AI_FRONT_DIVISIONS_PER_SUPPLY_POINT = 0.006, -- How many divisions should the AI consider it can supply per available supply point
+	AI_FRONT_MAX_UNITS_ENEMY_COUNT_FACTOR = 0.99, -- Make sure AI front MaxNrUnits is at least EnemyCount multiplied by this factor
 	SUPPLY_THRESHOLD_FOR_ARMY_ATTRITION = 0.66, --was 0.35 --armies will only get attrition below this supply
-	NUMBER_OF_SHOWN_SUPPLY_SOURCES_IN_SUPPLY_MAPMODE = 3, -- number of supply flow sources shown in breakdown tooltip
-	ESTIMATED_DIVISION_WEIGHT_FOR_SUPPLY_ESTIMATIONS_GUI = 1.0,	--Division supply consumption used for estimating frontline weight for order tooltips
-	AVAILABLE_MANPOWER_STATE_SUPPLY = 0.06, --was 0.18 --Factor for state supply from max manpower (population)
-	NON_CORE_MANPOWER_STATE_SUPPLY = 0.2,						--Factor for population sttate supply when controlled by an occupier (NO TAKE FOOD)
+	NUMBER_OF_SHOWN_SUPPLY_SOURCES_IN_SUPPLY_MAPMODE = 5, -- number of supply flow sources shown in breakdown tooltip
+	ESTIMATED_DIVISION_WEIGHT_FOR_SUPPLY_ESTIMATIONS_GUI = 160.0,	--Division supply consumption used for estimating frontline weight for order tooltips
+	AVAILABLE_MANPOWER_STATE_SUPPLY = 6.00, --was 0.18 --Factor for state supply from max manpower (population)
+	NON_CORE_MANPOWER_STATE_SUPPLY = 20.0,						--Factor for population sttate supply when controlled by an occupier (NO TAKE FOOD)
 	STORED_SUPPLY_CONSUMPTION_RATE_FACTOR = 1, --was 0.75 --Multiplies consumption rate of stored supply (more/less easement)
 },
 NAITheatre = {
