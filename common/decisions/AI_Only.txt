@@ -2198,6 +2198,8 @@ CHI_defend_AI_2 = {
 
 @open_threshold = 100
 @close_threshold = 200
+@open_threshold_rubber = 50
+@close_threshold_rubber = 100
 @close_foreign_threshold = 25
 @min_raw_resources_threshold = -1
 prospect_for_resources = {
@@ -2240,7 +2242,7 @@ prospect_for_resources = {
 				}
 			}
 		}
-		days_re_enable = 2
+		days_re_enable = 1
 		ai_will_do = {
 			base = 1000
 		}
@@ -2288,7 +2290,7 @@ prospect_for_resources = {
 				}
 			}
 		}
-		days_re_enable = 2
+		days_re_enable = 1
 		ai_will_do = {
 			base = 1000
 		}
@@ -2340,7 +2342,7 @@ prospect_for_resources = {
 				}
 			}
 		}
-		days_re_enable = 2
+		days_re_enable = 1
 		ai_will_do = {
 			base = 1000
 		}
@@ -2382,7 +2384,7 @@ prospect_for_resources = {
 				}
 			}
 		}
-		days_re_enable = 2
+		days_re_enable = 1
 		ai_will_do = {
 			base = 1000
 		}
@@ -2407,7 +2409,6 @@ prospect_for_resources = {
 		}
 		fire_only_once = no
 		cost = 0
-		days_remove = 10
 		complete_effect = {
 			random_state = {
 				limit = {
@@ -2431,7 +2432,7 @@ prospect_for_resources = {
 				}
 			}
 		}
-		days_re_enable = 2
+		days_re_enable = 1
 		ai_will_do = {
 			base = 1000
 		}
@@ -2480,7 +2481,98 @@ prospect_for_resources = {
 				}
 			}
 		}
-		days_re_enable = 2
+		days_re_enable = 1
+		ai_will_do = {
+			base = 1000
+		}
+	}
+	#close rubber refinery
+	close_synthetic_rubber_refinery_ai = {
+		icon = rubber
+		available = {
+			is_ai = yes
+			check_variable = {
+				resource@rubber > @close_threshold_rubber
+			}
+		}
+		visible = {
+			is_ai = yes
+			any_state = {
+				synthetic_rubber_refinery > 0
+				is_owned_and_controlled_by = ROOT
+			}
+		}
+		fire_only_once = no
+		cost = 0
+		complete_effect = {
+			random_state = {
+				limit = {
+					synthetic_rubber_refinery > 0
+					is_owned_and_controlled_by = ROOT
+				}
+				custom_effect_tooltip = close_synthetic_rubber_refinery
+				hidden_effect = {
+					remove_building = {
+						type = synthetic_rubber_refinery
+						level = 1
+					}
+					add_building_construction = {
+						type = synthetic_rubber_refinery_inactive
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+		}
+		days_re_enable = 1
+		ai_will_do = {
+			base = 1000
+		}
+	}
+	close_foreign_synthetic_rubber_refinery_ai = {
+		icon = rubber
+		available = {
+			is_ai = yes
+			check_variable = {
+				resource@rubber > @close_foreign_threshold
+			}
+		}
+		visible = {
+			is_ai = yes
+			any_state = {
+				synthetic_rubber_refinery > 0
+				is_controlled_by = ROOT
+				NOT = {
+					is_owned_by = ROOT
+				}
+			}
+		}
+		fire_only_once = no
+		cost = 0
+		complete_effect = {
+			random_state = {
+				limit = {
+					synthetic_rubber_refinery > 0
+					is_controlled_by = ROOT
+					NOT = {
+						is_owned_by = ROOT
+					}
+				}
+				custom_effect_tooltip = close_foreign_synthetic_rubber_refinery
+				hidden_effect = {
+					remove_building = {
+						type = synthetic_rubber_refinery
+						level = 1
+					}
+					add_building_construction = {
+						type = synthetic_rubber_refinery_inactive
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+		}
+		days_re_enable = 1
 		ai_will_do = {
 			base = 1000
 		}
@@ -2491,13 +2583,16 @@ prospect_for_resources = {
 		available = {
 			is_ai = yes
 			check_variable = {
+				resource@rubber < @open_threshold_rubber
+			}
+			check_variable = {
 				resource@coal > @min_raw_resources_threshold
 			}
 		}
 		visible = {
 			is_ai = yes
 			any_state = {
-				synthetic_rubber_refinery > 0
+				synthetic_rubber_refinery_inactive > 0
 				is_controlled_by = ROOT
 			}
 		}
@@ -2523,24 +2618,167 @@ prospect_for_resources = {
 				}
 			}
 		}
-		days_re_enable = 2
+		days_re_enable = 1
 		ai_will_do = {
 			base = 1000
 		}
 	}
-	#reopen synth refinery after being closed
-	reopen_synthetic_refinery_ai = {
-		icon = rubber
+	#close refinery
+	close_synthetic_refinery_ai = {
+		icon = oil
 		available = {
 			is_ai = yes
-			check_variable = {
-				resource@coal > @min_raw_resources_threshold
+			OR = {
+				AND = {
+					check_variable = {
+						fuel_ratio > 0.99
+					}
+					check_variable = {
+						resource_imported@oil < 1
+					}
+				}
+				AND = {
+					check_variable = {
+						fuel_ratio > 0.5
+					}
+					check_variable = {
+						resource@coal < @min_raw_resources_threshold
+					}
+				}
+				AND = {
+					check_variable = {
+						fuel_ratio > 0.6
+					}
+					check_variable = {
+						resource_imported@coal > 0
+					}
+				}
 			}
 		}
 		visible = {
 			is_ai = yes
 			any_state = {
 				synthetic_refinery > 0
+				is_owned_and_controlled_by = ROOT
+			}
+		}
+		fire_only_once = no
+		cost = 0
+		complete_effect = {
+			random_state = {
+				limit = {
+					synthetic_refinery > 0
+					is_owned_and_controlled_by = ROOT
+				}
+				custom_effect_tooltip = close_synthetic_refinery
+				hidden_effect = {
+					remove_building = {
+						type = synthetic_refinery
+						level = 1
+					}
+					add_building_construction = {
+						type = synthetic_refinery_inactive
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+		}
+		days_re_enable = 1
+		ai_will_do = {
+			base = 1000
+		}
+	}
+	close_foreign_synthetic_refinery_ai = {
+		icon = oil
+		available = {
+			is_ai = yes
+			check_variable = {
+				fuel_ratio > 0.15
+			}
+		}
+		visible = {
+			is_ai = yes
+			any_state = {
+				synthetic_refinery > 0
+				is_controlled_by = ROOT
+				NOT = {
+					is_owned_by = ROOT
+				}
+			}
+		}
+		fire_only_once = no
+		cost = 0
+		complete_effect = {
+			random_state = {
+				limit = {
+					synthetic_refinery > 0
+					is_controlled_by = ROOT
+					NOT = {
+						is_owned_by = ROOT
+					}
+				}
+				custom_effect_tooltip = close_foreign_synthetic_refinery
+				hidden_effect = {
+					remove_building = {
+						type = synthetic_refinery
+						level = 1
+					}
+					add_building_construction = {
+						type = synthetic_refinery_inactive
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+		}
+		days_re_enable = 1
+		ai_will_do = {
+			base = 1000
+		}
+	}
+	#reopen synth refinery after being closed
+	reopen_synthetic_refinery_ai = {
+		icon = oil
+		available = {
+			is_ai = yes
+			OR = {
+				AND = {
+					check_variable = {
+						resource_imported@oil > 0
+					}
+					check_variable = {
+						resource@coal > 500
+					}
+				}
+				AND = {
+					check_variable = {
+						fuel_ratio < 0.8
+					}
+					check_variable = {
+						resource_imported@coal < 1
+					}
+					check_variable = {
+						resource@coal > @min_raw_resources_threshold
+					}
+				}
+				AND = {
+					check_variable = {
+						fuel_ratio < 0.4
+					}
+					check_variable = {
+						resource@coal > @min_raw_resources_threshold
+					}
+				}
+				check_variable = {
+					fuel_ratio < 0.2
+				}
+			}
+		}
+		visible = {
+			is_ai = yes
+			any_state = {
+				synthetic_refinery_inactive > 0
 				is_controlled_by = ROOT
 			}
 		}
@@ -2566,7 +2804,7 @@ prospect_for_resources = {
 				}
 			}
 		}
-		days_re_enable = 2
+		days_re_enable = 1
 		ai_will_do = {
 			base = 1000
 		}
