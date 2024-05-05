@@ -89,7 +89,7 @@ NMapMode = {
 		0.8,   0.47, 0.8, 0.73, 1.0,		-- #78CCBA light teal
 		1.0,   0.6, 0.82, 0.6, 1.0,			-- #99D199 light green
 	}, -- (last shown when supply flow is >= SUPPLY_MAP_MODE_BEST_FLOW_DISPLAY)
-	SUPPLY_MAP_MODE_BEST_FLOW_DISPLAY = 6400.0, -- Which supply cap availibility corresponds to best heatmap color
+	SUPPLY_MAP_MODE_BEST_FLOW_DISPLAY = 4800.0, -- Which supply cap availibility corresponds to best heatmap color
 	SUPPLY_MAP_MODE_STATUS_COLOR = {
 		0.0,   0.9, 0.0, 0.0, 1.0,			-- #E60000 red
 		0.35,   0.98, 0.4, 0.1, 1.0,			-- #FA661A orange
