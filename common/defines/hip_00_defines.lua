@@ -1224,11 +1224,11 @@ NAir = {
 	AIR_WING_MAX_SIZE = 1600, --was 1000 --Max amount of airplanes in wing
 	AIR_WING_AVERAGE_SIZE = 72, --was 100 --Eyeballed average amount of airplanes in wing. Used when calculating air volunteer.
 	AIR_WING_BOMB_DAMAGE_FACTOR = 1.0, --was 2 --Used to balance the damage done while bombing.
-	BIGGEST_AGILITY_FACTOR_DIFF = 1.4,					-- biggest factor difference in agility for doing damage (caps to this)
+	BIGGEST_AGILITY_FACTOR_DIFF = 1.5,					-- biggest factor difference in agility for doing damage (caps to this)
 	BIGGEST_SPEED_FACTOR_DIFF = 1.2, --was 3.5 --biggest factor difference in speed for doing damage (caps to this)
 	TOP_SPEED_DAMAGE_BONUS_FACTOR = 0, --was 0.025 --A factor for scaling the top speed of a plane into damage buff. If an attacking wing has a speed advantage of any form their speed value will be converted into a percentage bonus with this modifier
 	COMBAT_DAMAGE_STATS_MULTILPIER = 1, --was 0.2
-	COMBAT_BETTER_AGILITY_DAMAGE_REDUCTION = 1.25, --was 0.30 --How much the better agility (than opponent's) can reduce their damage to us.
+	COMBAT_BETTER_AGILITY_DAMAGE_REDUCTION = 1.2, --was 0.30 --How much the better agility (than opponent's) can reduce their damage to us.
 	COMBAT_BETTER_SPEED_DAMAGE_INCREASE = 2, --was 0.60 --How much the better Speed (than opponent's) can reduce increase our damage to them.
 														-- Both of these defines are combined with their sister FACTOR_DIFF defines to create defense or offensive buffs
 														-- In both cases the maximum bonus or reduction is (BIGGEST_X_FACTOR_DIFF - 1) * COMBAT_BETTER_X_DAMAGE_Y * Damage
