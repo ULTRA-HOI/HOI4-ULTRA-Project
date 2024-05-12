@@ -2129,8 +2129,8 @@ focus_tree = {
 				}
 			}
 			
-			custom_effect_tooltip = available_chief_of_army
-			show_ideas_tooltip = walther_von_brauchitsch
+#			custom_effect_tooltip = available_chief_of_army
+#			show_ideas_tooltip = walther_von_brauchitsch
 			custom_effect_tooltip = available_military_high_command
 			show_ideas_tooltip = manstein
 		}
@@ -3289,10 +3289,57 @@ focus_tree = {
 	}
 
 	focus = {
+		id = GER_blomberg_fritsch_crisis
+		icon = GFX_goal_ger_blomberg_fritsch_crisis
+		prerequisite = { focus = GER_rhineland }
+		prerequisite = { focus = GER_autarky }
+		prerequisite = { focus = GER_anti_comitern_pact }
+		x = -4
+		y = 2
+		relative_position_id = GER_rhineland
+		cost = 5
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 0
+				date < 1938.1.1
+			}
+		}
+		
+		available = {
+			is_subject = no
+			IF = {
+				limit = {
+					is_ai = yes
+				}
+				date > 1937.12.31
+			}
+			
+			IF = {
+				limit = {
+					is_ai = no
+				}
+				date > 1937.12.31
+			}
+			has_government = fascism
+		}
+
+		available_if_capitulated = no
+		search_filters = { FOCUS_FILTER_POLITICAL }
+
+		completion_reward = {
+			add_political_power = 50
+
+			custom_effect_tooltip = available_chief_of_army
+			show_ideas_tooltip = walther_von_brauchitsch
+		}
+	}
+
+	focus = {
 		id = GER_anschluss
 		icon = GFX_goal_anschluss
 		prerequisite = { focus = GER_rhineland }
-		prerequisite = { focus = GER_autarky } #Economic reasons
+		prerequisite = { focus = GER_blomberg_fritsch_crisis } #Economic reasons -> changed to bfc in Ultra
 		prerequisite = { focus = GER_anti_comitern_pact } #Need Italy to approve
 		available_if_capitulated = no
 		available = {
@@ -3340,7 +3387,7 @@ focus_tree = {
 			y = 0 
 		}
 		relative_position_id = GER_rhineland
-		cost = 10
+		cost = 5
 		ai_will_do = {
 			factor = 10
 			modifier = {
