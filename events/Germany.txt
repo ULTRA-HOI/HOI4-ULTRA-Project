@@ -8169,6 +8169,93 @@ country_event = {
 	}
 }
 
+#Fall Gelb event without Lessons of the Polish Campaign
+country_event = { 
+	id = germany.1015
+	title = germany.1015.t
+	desc = germany.1015.d
+	picture = GFX_report_event_german_troops
+	fire_only_once = no
+	is_triggered_only = yes
+
+	option = { #Start the Lessons of the Polish Campaign Mission
+		name = germany.1015.a
+		ai_chance = { 
+			base = 0 
+		}
+		trigger = {
+			has_completed_focus = GER_danzig_or_war 
+			has_tech = elastic_defence
+			OR = {
+				POL = {has_capitulated = yes}
+				POL = { exists = no }
+			}
+			controls_state = 10 #Warsawa
+			has_political_power > 19
+			has_army_experience > 99
+		}
+		activate_decision = GER_lessons_of_polish_campaign
+	}
+	
+	option = { #Back down
+		name = germany.1015.b
+		ai_chance = { 
+			base = 100 
+		}
+	}
+	
+	option = { #Declare war
+		name = germany.1015.c
+		ai_chance = { 
+			base = 0 
+		}
+		if = { 
+			limit = {
+				country_exists = BEL
+				NOT = { BEL = { is_in_faction_with = GER } }
+				NOT = { has_war_with = BEL }
+			}
+			declare_war_on = {
+				target = BEL
+				type = annex_everything
+			}
+			ENG = {
+				add_to_faction = BEL
+			}
+		}
+		if =  {
+			limit = {
+				country_exists = HOL
+				NOT = { HOL = { is_in_faction_with = GER } }
+				NOT = { has_war_with = HOL }
+			}
+			declare_war_on = {
+				target = HOL
+				type = annex_everything
+			}
+			ENG = {
+				add_to_faction = HOL
+			}
+		}
+		if = {
+			limit = {
+				country_exists = LUX
+				NOT = { LUX = { is_in_faction_with = GER } }
+				NOT = { has_war_with = LUX }
+				is_ai = no
+			}
+			declare_war_on = {
+				target = LUX
+				type = annex_everything
+			}
+			ENG = {
+				add_to_faction = LUX
+			}
+		}
+		set_country_flag = GER_fall_gelb_started
+	}
+}
+
 ######################Trade in Scandinavia######################################
 ##UK starts mining coast of Norway
 country_event = { 

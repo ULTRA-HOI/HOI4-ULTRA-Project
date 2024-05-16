@@ -794,9 +794,12 @@ operations = {
 				exists = yes
 				#has_capitulated = no 
 			}
+			NOT = {
+				has_country_flag = GER_fall_gelb_started
+			}
 		}
 		
-		fire_only_once = yes
+		fire_only_once = no #If yes, you cannot cancel the attack after the event fired, so instead the attack will trigger a flag making it unavailable
 		
 		ai_will_do = {
 			factor = 100
@@ -807,6 +810,9 @@ operations = {
 			has_completed_focus = GER_around_maginot
 			NOT = {
 				has_idea = blitzkrieg_idea
+			}
+			NOT = {
+				has_decision = GER_lessons_of_polish_campaign
 			}
 			IF = {
 				limit = {
@@ -846,101 +852,107 @@ operations = {
 		}
 		
 		complete_effect = {
-			if = { 
-				limit = {
-					country_exists = BEL
-					NOT = { BEL = { is_in_faction_with = GER } }
-					NOT = { has_war_with = BEL }
-				}
-				declare_war_on = {
-					target = BEL
-					type = annex_everything
-				}
-				ENG = {
-					add_to_faction = BEL
-				}
-			}
-			if =  {
-				limit = {
-					country_exists = HOL
-					NOT = { HOL = { is_in_faction_with = GER } }
-					NOT = { has_war_with = HOL }
-				}
-				declare_war_on = {
-					target = HOL
-					type = annex_everything
-				}
-				ENG = {
-					add_to_faction = HOL
-				}
-			}
-			if = {
-				limit = {
-					country_exists = LUX
-					NOT = { LUX = { is_in_faction_with = GER } }
-					NOT = { has_war_with = LUX }
-					is_ai = no
-				}
-				declare_war_on = {
-					target = LUX
-					type = annex_everything
-				}
-				ENG = {
-					add_to_faction = LUX
-				}
-			}
-			add_timed_idea = {
-				idea = blitzkrieg_idea
-				days = 30
-			}
 			IF = {
 				limit = {
-					FRA = {
-						has_idea = FRA_victors_of_wwi
-					}
+					has_country_flag = GER_lessons_of_polish_campaign_flag
 				}
-				FRA = {
-					country_event = {
-						id = france.264
-						days = 1
-					}
-				}
-			}
-			IF = {
-				limit = {
-					GER = {
-						is_ai = yes
-					}
-				}
-				GER = {
-					add_timed_idea = {
-						idea = GER_AI_gelb
-						days = 90
-					}
-				}
-			}
-			effect_tooltip = {
-				IF = {
+				if = { 
 					limit = {
+						country_exists = BEL
+						NOT = { BEL = { is_in_faction_with = GER } }
+						NOT = { has_war_with = BEL }
+					}
+					declare_war_on = {
+						target = BEL
+						type = annex_everything
+					}
+					ENG = {
+						add_to_faction = BEL
+					}
+				}
+				if =  {
+					limit = {
+						country_exists = HOL
+						NOT = { HOL = { is_in_faction_with = GER } }
+						NOT = { has_war_with = HOL }
+					}
+					declare_war_on = {
+						target = HOL
+						type = annex_everything
+					}
+					ENG = {
+						add_to_faction = HOL
+					}
+				}
+				if = {
+					limit = {
+						country_exists = LUX
+						NOT = { LUX = { is_in_faction_with = GER } }
+						NOT = { has_war_with = LUX }
 						is_ai = no
 					}
+					declare_war_on = {
+						target = LUX
+						type = annex_everything
+					}
+					ENG = {
+						add_to_faction = LUX
+					}
+				}
+				add_timed_idea = {
+					idea = blitzkrieg_idea
+					days = 30
+				}
+				IF = {
+					limit = {
+						FRA = {
+							has_idea = FRA_victors_of_wwi
+						}
+					}
 					FRA = {
-						IF = {
-							limit = {
-								has_idea = FRA_victors_of_wwi
-							}
-							add_timed_idea = {
-								idea = FRA_disorganized_army
-								days = 21
+						country_event = {
+							id = france.264
+							days = 1
+						}
+					}
+				}
+				IF = {
+					limit = {
+						GER = {
+							is_ai = yes
+						}
+					}
+					GER = {
+						add_timed_idea = {
+							idea = GER_AI_gelb
+							days = 90
+						}
+					}
+				}
+				effect_tooltip = {
+					IF = {
+						limit = {
+							is_ai = no
+						}
+						FRA = {
+							IF = {
+								limit = {
+									has_idea = FRA_victors_of_wwi
+								}
+								add_timed_idea = {
+									idea = FRA_disorganized_army
+									days = 21
+								}
 							}
 						}
 					}
 				}
+				set_country_flag = GER_fall_gelb_started
 			}
-			
-			
-		}
-		
+			Else = {
+				country_event = germany.1015
+			}
+		}	
 	}
 	
 	scapa_flow_raid = {
@@ -4503,7 +4515,7 @@ GER_military_buildup = {
 		}
 
 		
-		custom_cost_trigger = {
+		custom_cost_trigger = { #Cost triggers are also needed in event germany.1015 so if changed here, change them there as well
 			has_political_power > 19
 			has_army_experience > 99
 		}
@@ -4532,6 +4544,8 @@ GER_military_buildup = {
 				armored_spearhead = 1
 				schwerpunk = 1
 			}
+			custom_effect_tooltip = available_chief_of_army
+			show_ideas_tooltip = manstein
 		}
 	}
 }
