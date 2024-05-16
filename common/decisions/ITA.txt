@@ -4264,439 +4264,439 @@ ETH_italian_occupation_category = {
 
 ITA_colonial_management_dec_cat = {
 	# Train Irregulars
-	ITA_train_irregulars = {
-		icon = GFX_decision_generic_prepare_civil_war
-		allowed = {
-			tag = ITA
-		}
-
-		available = {
-			has_war = yes
-			NOT = { has_global_flag = second_italo_ethiopian_war_flag }
-			any_controlled_state = {
-				OR = {
-					is_core_of = LBA
-					is_core_of = ERI
-					is_core_of = SOM
-					is_core_of = ETH
-				}
-			}
-		}
-
-		visible = {
-			has_completed_focus = ITA_ministry_of_italian_africa
-		}
-
-		ai_hint_pp_cost = 50
-		custom_cost_trigger = {
-			command_power > 49
-			has_political_power > 49
-		}
-		custom_cost_text = decision_cost_CP_50_pp_50
-
-		days_remove = ITA_colonial_management_days
-
-		days_re_enable = ITA_colonial_management_cd
-
-		complete_effect = {
-			hidden_effect = {
-				add_command_power = -50
-				add_political_power = -50
-			}
-		}
-
-		remove_effect = {
-			if = {
-				limit = {
-					NOT = { has_template = "Truppe Irregolari a Cavallo" }
-				}
-				if = {
-					limit = {
-						NOT = { has_country_flag = ITA_improved_irregular_templates_flag }
-					}
-					division_template = { #Improve Irregular template
-						name = "Truppe Irregolari a Cavallo"
-						division_names_group = ITA_CAV_05
-						is_locked = yes
-						regiments = {
-							cavalry = { x = 0 y = 0 }
-							cavalry = { x = 0 y = 1 }
-							cavalry = { x = 1 y = 0 }
-							cavalry = { x = 1 y = 1 }
-						}
-						priority = 0
-					}
-				}
-				else = {
-					division_template = { #Basic irregular template
-						name = "Truppe Irregolari a Cavallo"
-						division_names_group = ITA_CAV_05
-						is_locked = yes
-						regiments = {
-							cavalry = { x = 0 y = 0 }
-							cavalry = { x = 0 y = 1 }
-							cavalry = { x = 1 y = 0 }
-							cavalry = { x = 1 y = 1 }
-							cavalry = { x = 2 y = 0 }
-							cavalry = { x = 2 y = 1 }
-						}
-						support = {
-							recon = { x = 0 y = 0 }
-						}
-						priority = 0
-					}
-				}
-			}
-
-			if = {
-				limit = {
-					NOT = { has_template = "Truppe Irregolari di Cammelli" }
-				}
-				if = {
-					limit = {
-						NOT = { has_country_flag = ITA_improved_irregular_templates_flag }
-					}
-					division_template = { #Improve Irregular template
-						name = "Truppe Irregolari di Cammelli"
-						division_names_group = ITA_CAM_02
-						is_locked = yes
-						regiments = {
-							camelry = { x = 0 y = 0 }
-							camelry = { x = 0 y = 1 }
-							camelry = { x = 1 y = 0 }
-							camelry = { x = 1 y = 1 }
-						}
-						priority = 0
-					}
-				}
-				else = {
-					division_template = { #Basic irregular template
-						name = "Truppe Irregolari di Cammelli"
-						division_names_group = ITA_CAM_02
-						is_locked = yes
-						regiments = {
-							camelry = { x = 0 y = 0 }
-							camelry = { x = 0 y = 1 }
-							camelry = { x = 1 y = 0 }
-							camelry = { x = 1 y = 1 }
-							camelry = { x = 2 y = 0 }
-							camelry = { x = 2 y = 1 }
-						}
-						support = {
-							recon = { x = 0 y = 0 }
-						}
-						priority = 0
-					}
-				}
-			}
-
-			custom_effect_tooltip = ITA_train_irregulars_create_units_tt
-
-			#ERITREA
-			if = {
-				limit = {
-					any_owned_state = {
-						is_core_of = ERI
-						is_fully_controlled_by = ROOT
-					}
-				}
-				random_owned_controlled_state = {
-					limit = {
-						is_core_of = ERI
-						is_fully_controlled_by = ROOT
-					}
-					prioritize = { 550 } # ERITREA (In case at some point this gets split or tag gets more cores)
-					custom_effect_tooltip = ITA_train_irregulars_eritrea_tt
-					hidden_effect = {
-						create_unit = {
-							division = "division_template = \"Banda Irregolare Libica\" start_experience_factor = 0.1 start_equipment_factor = 1.0"
-							owner = ROOT
-							count = 1
-						}
-						create_unit = {
-							division = "division_template = \"Truppe Irregolari a Cavallo\" start_experience_factor = 0.1 start_equipment_factor = 1.0"
-							owner = ROOT
-							count = 1
-						}
-					}
-				}
-			}
-
-			#LIBYA
-			if = {
-				limit = {
-					any_owned_state = {
-						is_core_of = LBA
-						is_fully_controlled_by = ROOT
-					}
-				}
-				random_owned_controlled_state = {
-					limit = {
-						is_core_of = LBA
-						is_fully_controlled_by = ROOT
-					}
-					prioritize = { 448 } # TRIPOLI (In case at some point this gets split or tag gets more cores)
-					custom_effect_tooltip = ITA_train_irregulars_libya_tt
-					hidden_effect = {
-						create_unit = {
-							division = "division_template = \"Truppe Irregolari a Cavallo\" start_experience_factor = 0.15 start_equipment_factor = 1.0"
-							owner = ROOT
-							count = 1
-						}
-						create_unit = {
-							division = "division_template = \"Truppe Irregolari di Cammelli\" start_experience_factor = 0.15 start_equipment_factor = 1.0"
-							owner = ROOT
-							count = 1
-						}
-					}
-				}
-			}
-
-			#SOMALIA
-			if = {
-				limit = {
-					any_owned_state = {
-						is_core_of = SOM
-						is_fully_controlled_by = ROOT
-					}
-				}
-				random_owned_controlled_state = {
-					limit = {
-						is_core_of = SOM
-						is_fully_controlled_by = ROOT
-					}
-					prioritize = { 559 } # SOMALILAND (In case at some point this gets split or tag gets more cores)
-					custom_effect_tooltip = ITA_train_irregulars_somalia_tt
-					hidden_effect = {
-						create_unit = {
-							division = "division_template = \"Banda Irregolare Somala\" start_experience_factor = 0.1 start_equipment_factor = 1.0"
-							owner = ROOT
-							count = 2
-						}
-						create_unit = {
-							division = "division_template = \"Truppe Irregolari a Cavallo\" start_experience_factor = 0.1 start_equipment_factor = 1.0"
-							owner = ROOT
-							count = 1
-						}
-					}
-				}
-			}
-
-			#ETHIOPIA
-			if = {
-				limit = {
-					any_owned_state = {
-						is_core_of = ETH
-						is_fully_controlled_by = ROOT
-					}
-				}
-				random_owned_controlled_state = {
-					limit = {
-						is_core_of = ETH
-						is_fully_controlled_by = ROOT
-					}
-					prioritize = { 271 } # ADDIS ABABA (In case at some point this gets split or tag gets more cores)
-					custom_effect_tooltip = ITA_train_irregulars_ethiopia_tt
-					hidden_effect = {
-						create_unit = {
-							division = "division_template = \"Banda Irregolare Eritrea\" start_experience_factor = 0.1 start_equipment_factor = 1.0"
-							owner = ROOT
-							count = 1
-						}
-						create_unit = {
-							division = "division_template = \"Truppe Irregolari di Cammelli\" start_experience_factor = 0.1 start_equipment_factor = 1.0"
-							owner = ROOT
-							count = 1
-						}
-					}
-				}
-			}
-
-			custom_effect_tooltip = ITA_train_irregulars_cd_tt
-		}
-
-		ai_will_do = {
-			base = 0.05
-		}
-	}
-
-	#Disband Irregulars
-	ITA_disband_irregulars = {
-		icon = GFX_decision_generic_disband_irregulars
-		allowed = {
-			tag = ITA
-		}
-
-		available = {
-			NOT = { has_global_flag = second_italo_ethiopian_war_flag }
-			any_country_division = {
-				division_has_majority_template = irregular_infantry
-			}
-		}
-
-		visible = {
-			has_completed_focus = ITA_ministry_of_italian_africa
-		}
-
-		cost = 5
-
-		complete_effect = {
-			custom_effect_tooltip = ITA_disband_irregulars_tt
-
-			hidden_effect = {
-				delete_units = {
-					division_template = "Banda Indigena Irregolare"
-					disband = no #MP or weapons are not ours to take
-				}
-				delete_units = {
-					division_template = "Truppe Irregolari a Cavallo"
-					disband = no #MP or weapons are not ours to take
-				}
-				delete_units = {
-					division_template = "Banda Irregolare Libica"
-					disband = no #MP or weapons are not ours to take
-				}
-				delete_units = {
-					division_template = "Banda Irregolare Eritrea"
-					disband = no #MP or weapons are not ours to take
-				}
-				delete_units = {
-					division_template = "Banda Irregolare Somala"
-					disband = no #MP or weapons are not ours to take
-				}
-				delete_units = {
-					division_template = "Truppe Irregolari di Cammelli"
-					disband = no #MP or weapons are not ours to take
-				}
-			}
-		}
-
-		ai_will_do = {
-			base = 0
-		}
-	}
-
-	#Re-organize Irregulars
-	ITA_reorganize_irregulars = {
-		icon = GFX_decision_generic_reorganize_irregulars
-		allowed = {
-			tag = ITA
-		}
-
-		visible = {
-			has_completed_focus = ITA_ministry_of_italian_africa
-			NOT = { has_country_flag = ITA_improved_irregular_templates_flag }
-		}
-
-		available = {
-			has_tech = tech_recon
-		}
-
-		ai_hint_pp_cost = 50
-		custom_cost_trigger = {
-			command_power > 49
-			has_political_power > 49
-			has_army_experience > 14
-		}
-		custom_cost_text = decision_cost_CP_50_pp_50_ArmXP_15
-
-		days_remove = ITA_reorganize_irregulars_days
-
-		complete_effect = {
-			hidden_effect = {
-				add_command_power = -50
-				add_political_power = -50
-				army_experience = -15
-			}
-		}
-
-		remove_effect = {
-			set_country_flag = ITA_improved_irregular_templates_flag
-
-			custom_effect_tooltip = ITA_reorganize_irregulars_tt
-
-			hidden_effect = {
-				add_units_to_division_template = {
-					template_name = "Banda Indigena Irregolare"
-					regiments = {
-						irregular_infantry = 0
-						irregular_infantry = 1
-
-					}
-					support = {
-						recon = 0
-					}
-				}
-
-				add_units_to_division_template = {
-					template_name = "Truppe Irregolari a Cavallo"
-					regiments = {
-						cavalry = 0
-						cavalry = 1
-					}
-					support = {
-						recon = 0
-					}
-				}
-
-				add_units_to_division_template = {
-					template_name = "Truppe Irregolari di Cammelli"
-					regiments = {
-						camelry = 0
-						camelry = 1
-					}
-					support = {
-						recon = 0
-					}
-				}
-
-				add_units_to_division_template = {
-					template_name = "Banda Irregolare Eritrea"
-					regiments = {
-						irregular_infantry = 0
-						irregular_infantry = 1
-					}
-					support = {
-						recon = 0
-					}
-				}
-
-				add_units_to_division_template = {
-					template_name = "Banda Irregolare Libica"
-					regiments = {
-						irregular_infantry = 0
-						irregular_infantry = 1
-					}
-					support = {
-						recon = 0
-					}
-				}
-
-				add_units_to_division_template = {
-					template_name = "Banda Irregolare Somala"
-					regiments = {
-						irregular_infantry = 0
-						irregular_infantry = 1
-					}
-					support = {
-						recon = 0
-					}
-				}
-			}
-		}
-
-		ai_will_do = {
-			base = 0.5
-			modifier = {
-				factor = 3
-				OR = {
-					has_completed_focus = ITA_comandante_diavolo
-					has_completed_focus = ITA_irregulars
-				}
-			}
-		}
-	}
-
+#	ITA_train_irregulars = {
+#		icon = GFX_decision_generic_prepare_civil_war
+#		allowed = {
+#			tag = ITA
+#		}
+#
+#		available = {
+#			has_war = yes
+#			NOT = { has_global_flag = second_italo_ethiopian_war_flag }
+#			any_controlled_state = {
+#				OR = {
+#					is_core_of = LBA
+#					is_core_of = ERI
+#					is_core_of = SOM
+#					is_core_of = ETH
+#				}
+#			}
+#		}
+#
+#		visible = {
+#			has_completed_focus = ITA_ministry_of_italian_africa
+#		}
+#
+#		ai_hint_pp_cost = 50
+#		custom_cost_trigger = {
+#			command_power > 49
+#			has_political_power > 49
+#		}
+#		custom_cost_text = decision_cost_CP_50_pp_50
+#
+#		days_remove = ITA_colonial_management_days
+#
+#		days_re_enable = ITA_colonial_management_cd
+#
+#		complete_effect = {
+#			hidden_effect = {
+#				add_command_power = -50
+#				add_political_power = -50
+#			}
+#		}
+#
+#		remove_effect = {
+#			if = {
+#				limit = {
+#					NOT = { has_template = "Truppe Irregolari a Cavallo" }
+#				}
+#				if = {
+#					limit = {
+#						NOT = { has_country_flag = ITA_improved_irregular_templates_flag }
+#					}
+#					division_template = { #Improve Irregular template
+#						name = "Truppe Irregolari a Cavallo"
+#						division_names_group = ITA_CAV_05
+#						is_locked = yes
+#						regiments = {
+#							cavalry = { x = 0 y = 0 }
+#							cavalry = { x = 0 y = 1 }
+#							cavalry = { x = 1 y = 0 }
+#							cavalry = { x = 1 y = 1 }
+#						}
+#						priority = 0
+#					}
+#				}
+#				else = {
+#					division_template = { #Basic irregular template
+#						name = "Truppe Irregolari a Cavallo"
+#						division_names_group = ITA_CAV_05
+#						is_locked = yes
+##						regiments = {
+#							cavalry = { x = 0 y = 0 }
+#							cavalry = { x = 0 y = 1 }
+#							cavalry = { x = 1 y = 0 }
+#							cavalry = { x = 1 y = 1 }
+#							cavalry = { x = 2 y = 0 }
+#							cavalry = { x = 2 y = 1 }
+#						}
+#						support = {
+#							recon = { x = 0 y = 0 }
+#						}
+#						priority = 0
+#					}
+#				}
+#			}
+#
+#			if = {
+#				limit = {
+#					NOT = { has_template = "Truppe Irregolari di Cammelli" }
+#				}
+#				if = {
+#					limit = {
+#						NOT = { has_country_flag = ITA_improved_irregular_templates_flag }
+##					}
+#					division_template = { #Improve Irregular template
+#						name = "Truppe Irregolari di Cammelli"
+#						division_names_group = ITA_CAM_02
+#						is_locked = yes
+#						regiments = {
+#							camelry = { x = 0 y = 0 }
+#							camelry = { x = 0 y = 1 }
+#							camelry = { x = 1 y = 0 }
+#							camelry = { x = 1 y = 1 }
+#						}
+#						priority = 0
+#					}
+#				}
+#				else = {
+#					division_template = { #Basic irregular template
+#						name = "Truppe Irregolari di Cammelli"
+#						division_names_group = ITA_CAM_02
+#						is_locked = yes
+#						regiments = {
+#							camelry = { x = 0 y = 0 }
+#							camelry = { x = 0 y = 1 }
+#							camelry = { x = 1 y = 0 }
+#							camelry = { x = 1 y = 1 }
+#							camelry = { x = 2 y = 0 }
+#							camelry = { x = 2 y = 1 }
+#						}
+#						support = {
+#							recon = { x = 0 y = 0 }
+#						}
+#						priority = 0
+#					}
+#				}
+#			}
+#
+#			custom_effect_tooltip = ITA_train_irregulars_create_units_tt
+#
+#			#ERITREA
+#			if = {
+#				limit = {
+#					any_owned_state = {
+#						is_core_of = ERI
+#						is_fully_controlled_by = ROOT
+#					}
+#				}
+#				random_owned_controlled_state = {
+#					limit = {
+#						is_core_of = ERI
+#						is_fully_controlled_by = ROOT
+#					}
+#					prioritize = { 550 } # ERITREA (In case at some point this gets split or tag gets more cores)
+#					custom_effect_tooltip = ITA_train_irregulars_eritrea_tt
+#					hidden_effect = {
+#						create_unit = {
+#							division = "division_template = \"Banda Irregolare Libica\" start_experience_factor = 0.1 start_equipment_factor = 1.0"
+#							owner = ROOT
+#							count = 1
+#						}
+#						create_unit = {
+#							division = "division_template = \"Truppe Irregolari a Cavallo\" start_experience_factor = 0.1 start_equipment_factor = 1.0"
+#							owner = ROOT
+#							count = 1
+#						}
+#					}
+#				}
+#			}
+#
+#			#LIBYA
+#			if = {
+#				limit = {
+#					any_owned_state = {
+#						is_core_of = LBA
+#						is_fully_controlled_by = ROOT
+#					}
+#				}
+#				random_owned_controlled_state = {
+#					limit = {
+#						is_core_of = LBA
+#						is_fully_controlled_by = ROOT
+#					}
+#					prioritize = { 448 } # TRIPOLI (In case at some point this gets split or tag gets more cores)
+#					custom_effect_tooltip = ITA_train_irregulars_libya_tt
+#					hidden_effect = {
+#						create_unit = {
+#							division = "division_template = \"Truppe Irregolari a Cavallo\" start_experience_factor = 0.15 start_equipment_factor = 1.0"
+#							owner = ROOT
+#							count = 1
+#						}
+#						create_unit = {
+#							division = "division_template = \"Truppe Irregolari di Cammelli\" start_experience_factor = 0.15 start_equipment_factor = 1.0"
+#							owner = ROOT
+#							count = 1
+#						}
+#					}
+#				}
+#			}
+#
+#			#SOMALIA
+#			if = {
+#				limit = {
+#					any_owned_state = {
+#						is_core_of = SOM
+#						is_fully_controlled_by = ROOT
+#					}
+#				}
+#				random_owned_controlled_state = {
+#					limit = {
+#						is_core_of = SOM
+#						is_fully_controlled_by = ROOT
+#					}
+#					prioritize = { 559 } # SOMALILAND (In case at some point this gets split or tag gets more cores)
+#					custom_effect_tooltip = ITA_train_irregulars_somalia_tt
+#					hidden_effect = {
+#						create_unit = {
+#							division = "division_template = \"Banda Irregolare Somala\" start_experience_factor = 0.1 start_equipment_factor = 1.0"
+#							owner = ROOT
+#							count = 2
+#						}
+#						create_unit = {
+#							division = "division_template = \"Truppe Irregolari a Cavallo\" start_experience_factor = 0.1 start_equipment_factor = 1.0"
+#							owner = ROOT
+#							count = 1
+#						}
+#					}
+#				}
+#			}
+#
+#			#ETHIOPIA
+#			if = {
+#				limit = {
+#					any_owned_state = {
+#						is_core_of = ETH
+#						is_fully_controlled_by = ROOT
+#					}
+#				}
+#				random_owned_controlled_state = {
+#					limit = {
+#						is_core_of = ETH
+#						is_fully_controlled_by = ROOT
+#					}
+#					prioritize = { 271 } # ADDIS ABABA (In case at some point this gets split or tag gets more cores)
+#					custom_effect_tooltip = ITA_train_irregulars_ethiopia_tt
+#					hidden_effect = {
+#						create_unit = {
+#							division = "division_template = \"Banda Irregolare Eritrea\" start_experience_factor = 0.1 start_equipment_factor = 1.0"
+#							owner = ROOT
+#							count = 1
+#						}
+#						create_unit = {
+#							division = "division_template = \"Truppe Irregolari di Cammelli\" start_experience_factor = 0.1 start_equipment_factor = 1.0"
+#							owner = ROOT
+#							count = 1
+#						}
+#					}
+#				}
+#			}
+#
+#			custom_effect_tooltip = ITA_train_irregulars_cd_tt
+#		}
+#
+#		ai_will_do = {
+#			base = 0.05
+#		}
+#	}
+#
+#	#Disband Irregulars
+#	ITA_disband_irregulars = {
+#		icon = GFX_decision_generic_disband_irregulars
+#		allowed = {
+#			tag = ITA
+#		}
+#
+#		available = {
+#			NOT = { has_global_flag = second_italo_ethiopian_war_flag }
+#			any_country_division = {
+#				division_has_majority_template = irregular_infantry
+#			}
+#		}
+#
+#		visible = {
+#			has_completed_focus = ITA_ministry_of_italian_africa
+#		}
+#
+#		cost = 5
+#
+#		complete_effect = {
+#			custom_effect_tooltip = ITA_disband_irregulars_tt
+#
+#			hidden_effect = {
+#				delete_units = {
+#					division_template = "Banda Indigena Irregolare"
+#					disband = no #MP or weapons are not ours to take
+#				}
+#				delete_units = {
+#					division_template = "Truppe Irregolari a Cavallo"
+#					disband = no #MP or weapons are not ours to take
+#				}
+#				delete_units = {
+#					division_template = "Banda Irregolare Libica"
+#					disband = no #MP or weapons are not ours to take
+#				}
+#				delete_units = {
+#					division_template = "Banda Irregolare Eritrea"
+#					disband = no #MP or weapons are not ours to take
+#				}
+#				delete_units = {
+#					division_template = "Banda Irregolare Somala"
+#					disband = no #MP or weapons are not ours to take
+#				}
+#				delete_units = {
+#					division_template = "Truppe Irregolari di Cammelli"
+#					disband = no #MP or weapons are not ours to take
+#				}
+#			}
+#		}
+#
+#		ai_will_do = {
+#			base = 0
+#		}
+#	}
+#
+#	#Re-organize Irregulars
+#	ITA_reorganize_irregulars = {
+#		icon = GFX_decision_generic_reorganize_irregulars
+#		allowed = {
+#			tag = ITA
+#		}
+#
+#		visible = {
+#			has_completed_focus = ITA_ministry_of_italian_africa
+#			NOT = { has_country_flag = ITA_improved_irregular_templates_flag }
+#		}
+#
+#		available = {
+#			has_tech = tech_recon
+#		}
+#
+#		ai_hint_pp_cost = 50
+#		custom_cost_trigger = {
+#			command_power > 49
+#			has_political_power > 49
+#			has_army_experience > 14
+#		}
+#		custom_cost_text = decision_cost_CP_50_pp_50_ArmXP_15
+#
+#		days_remove = ITA_reorganize_irregulars_days
+#
+#		complete_effect = {
+#			hidden_effect = {
+#				add_command_power = -50
+#				add_political_power = -50
+#				army_experience = -15
+#			}
+#		}
+#
+#		remove_effect = {
+#			set_country_flag = ITA_improved_irregular_templates_flag
+#
+#			custom_effect_tooltip = ITA_reorganize_irregulars_tt
+#
+#			hidden_effect = {
+#				add_units_to_division_template = {
+#					template_name = "Banda Indigena Irregolare"
+#					regiments = {
+#						irregular_infantry = 0
+#						irregular_infantry = 1
+#
+#					}
+#					support = {
+#						recon = 0
+#					}
+#				}
+#
+#				add_units_to_division_template = {
+#					template_name = "Truppe Irregolari a Cavallo"
+#					regiments = {
+#						cavalry = 0
+#						cavalry = 1
+#					}
+#					support = {
+#						recon = 0
+#					}
+#				}
+#
+#				add_units_to_division_template = {
+#					template_name = "Truppe Irregolari di Cammelli"
+#					regiments = {
+#						camelry = 0
+#						camelry = 1
+#					}
+#					support = {
+#						recon = 0
+#					}
+#				}
+#
+#				add_units_to_division_template = {
+#					template_name = "Banda Irregolare Eritrea"
+#					regiments = {
+#						irregular_infantry = 0
+#						irregular_infantry = 1
+#					}
+#					support = {
+#						recon = 0
+#					}
+#				}
+#
+#				add_units_to_division_template = {
+#					template_name = "Banda Irregolare Libica"
+#					regiments = {
+#						irregular_infantry = 0
+#						irregular_infantry = 1
+#					}
+#					support = {
+#						recon = 0
+#					}
+#				}
+#
+#				add_units_to_division_template = {
+#					template_name = "Banda Irregolare Somala"
+#					regiments = {
+#						irregular_infantry = 0
+#						irregular_infantry = 1
+#					}
+#					support = {
+#						recon = 0
+#					}
+#				}
+#			}
+#		}
+#
+#		ai_will_do = {
+#			base = 0.5
+#			modifier = {
+#				factor = 3
+#				OR = {
+#					has_completed_focus = ITA_comandante_diavolo
+#					has_completed_focus = ITA_irregulars
+#				}
+#			}
+#		}
+#	}
+#
 	#Re-organize Ascari
 	ITA_reorganize_ascari = {
 		icon = GFX_decision_ITA_reorganize_ascari
@@ -5296,7 +5296,7 @@ ITA_colonial_management_dec_cat = {
 					add_offsite_building = { type = industrial_complex level = 4 }
 					add_offsite_building = { type = arms_factory level = 4 }
 					add_equipment_to_stockpile = {
-					    type = infantry_equipment
+					    type = infantry_squad_0
 					    amount = 5000
 					    producer = ITA
 					}
