@@ -474,34 +474,34 @@ country_event = {
 }
 
 # Safo recalled
-unit_leader_event = {
-	id = BBA_ethiopia_balance_of_power_events.30
-	title = BBA_ethiopia_balance_of_power_events.30.t
-	desc = BBA_ethiopia_balance_of_power_events.30.desc
-	is_triggered_only = yes
-	option = {
-		name = BBA_ethiopia_balance_of_power_events.30.a
-		ai_chance = {
-			base = 10
-		}
-		ETH_balcho_safo = {
-			set_character_flag = safo_active_flag
-		}
-		random_owned_controlled_state = {
-			limit = {
-				is_core_of = ROOT
-			}
-			prioritize = { 1067 } 
-			create_unit = {
-				division = "name = \"Sidamo levies\" division_template = \"Chitet Sefari\" start_experience_factor = 0.06 start_equipment_factor = 1 start_manpower_factor = 1"
-				owner = ROOT
-				allow_spawning_on_enemy_provs = no 	
-				count = 1
-			}
-
-		}
-	}
-}
+#unit_leader_event = {
+#	id = BBA_ethiopia_balance_of_power_events.30
+#	title = BBA_ethiopia_balance_of_power_events.30.t
+#	desc = BBA_ethiopia_balance_of_power_events.30.desc
+#	is_triggered_only = yes
+#	option = {
+#		name = BBA_ethiopia_balance_of_power_events.30.a
+#		ai_chance = {
+#			base = 10
+#		}
+#		ETH_balcho_safo = {
+#			set_character_flag = safo_active_flag
+#		}
+#		random_owned_controlled_state = {
+#			limit = {
+#				is_core_of = ROOT
+#			}
+#			prioritize = { 1067 } 
+#			create_unit = {
+#				division = "name = \"Sidamo levies\" division_template = \"Chitet Sefari\" start_experience_factor = 0.06 start_equipment_factor = 1 start_manpower_factor = 1"
+#				owner = ROOT
+#				allow_spawning_on_enemy_provs = no 	
+#				count = 1
+#			}
+#
+#		}
+#	}
+#}
 
 
 # BoP random events - trigger 
@@ -4232,350 +4232,350 @@ country_event = {
 }
 
 # Start of the Civil War
-country_event = {
-	id = BBA_ethiopia_fascist_events.07
-	title = BBA_ethiopia_fascist_events.07.t
-	desc = BBA_ethiopia_fascist_events.07.desc
-	picture = GFX_report_event_gre_city_devastated
-	is_triggered_only = yes
-	# Yes 
-	option = {
-		name = BBA_ethiopia_fascist_events.07.a
-		ai_chance = {
-			base = 10
-		}		
-
-		IF = {
-			limit = { # Gugsa rising up 
-				has_country_flag = gugsa_rising_planned_flag
-			}
-			IF = { 
-				limit = {
-					1072 = { NOT = { is_controlled_by = ROOT } } # Tigray
-				}
-				1072 = {
-					set_state_controller_to = ROOT 
-				}
-			}
-
-			set_capital = {
-				state = 1072 
-				remember_old_capital = yes
-			}	
-		}
-		ELSE_IF = {
-			limit = { # Hayamot rising up 
-				has_country_flag = hayamot_rising_planned_flag
-			}
-			IF = { 
-				limit = {
-					1070 = { NOT = { is_controlled_by = ROOT } }
-				}
-				1070 = {
-					set_state_controller_to = ROOT 
-				}
-			}
-			set_capital = {
-				state = 1070 
-				remember_old_capital = no
-			}	
-			ETH_promote_ETH_hailu_tekle_haymanot = yes 
-			set_party_name = {
-				ideology = fascism
-				long_name = ETH_gojjam_haymanot_fascism_party_long
-				name = ETH_gojjam_haymanot_fascism_party
-			}
-		}
-
-		ELSE_IF = {
-			limit = { # Jofir rising up 
-				has_country_flag = jofir_rising_planned_flag
-			}
-			IF = { 
-				limit = {
-					1068 = { NOT = { is_controlled_by = ROOT } }
-				}
-				1068 = {
-					set_state_controller_to = ROOT 
-				}
-			}
-			add_victory_points = {
-				province = 7912
-				value = 6
-			}
-			set_capital = {
-				state = 1068 
-				remember_old_capital = no
-			}	
-			ETH_promote_ETH_abba_jofir = yes 
-			set_party_name = {
-				ideology = fascism
-				long_name = ETH_jimma_jofir_fascism_party_long
-				name = ETH_jimma_jofir_fascism_party
-			}
-		}
-
-		start_civil_war = {
-			ideology = neutrality
-			ruling_party = fascism
-			size = ETH_civil_war_size
-			army_ratio = ETH_civil_war_army
-			capital = 271
-			keep_political_leader = no
-			keep_political_party_members = no 
-			
-			# Haile Selassie 
-			uncomplete_national_focus = {
-				focus = ETH_reach_out_to_the_italians
-				uncomplete_children = yes
-			}
-			complete_national_focus = ETH_rally_around_the_emperor
-			hidden_effect = {
-				IF = {
-					limit = {
-						ETH = { has_character = ETH_ayalew_birru }
-					}
-					ETH = { ETH_ayalew_birru = { set_nationality = PREV.PREV } }
-				}
-				IF = {
-					limit = {
-						ETH = { has_character = ETH_beyene_merid }
-					}
-					ETH = { ETH_beyene_merid = { set_nationality = PREV.PREV } }
-				}
-				IF = {
-					limit = {
-						ETH = { has_character = ETH_balcho_safo }
-					}
-					ETH = { ETH_balcho_safo = { set_nationality = PREV.PREV } }
-				}
-				# Set up Dynamic Modifiers for Haile Selassie
-				add_dynamic_modifier = {
-					modifier = ETH_army_1_dynamic_modifier
-				}
-				set_variable = { ETH_army_max_dig_in_factor = ETH.ETH_army_max_dig_in_factor }
-				set_variable = { ETH_army_dig_in_speed_factor = ETH.ETH_army_dig_in_speed_factor }
-				set_variable = { ETH_army_experience_gain_army_factor = ETH.ETH_army_experience_gain_army_factor }
-				set_variable = { ETH_army_army_defence_factor = ETH.ETH_army_army_defence_factor }
-				set_variable = { ETH_army_army_org_factor = ETH.ETH_army_army_org_factor }
-				set_variable = { ETH_army_modifier_army_sub_unit_infantry_attack_factor = ETH.ETH_army_modifier_army_sub_unit_infantry_attack_factor }
-				set_variable = { ETH_army_modifier_army_sub_unit_infantry_defence_factor = ETH.ETH_army_modifier_army_sub_unit_infantry_defence_factor }
-				set_variable = { ETH_army_modifier_army_sub_unit_infantry_speed_factor = ETH.ETH_army_modifier_army_sub_unit_infantry_speed_factor }
-				set_variable = { ETH_army_modifier_army_sub_unit_irregular_infantry_attack_factor = ETH.ETH_army_modifier_army_sub_unit_irregular_infantry_attack_factor }
-				set_variable = { ETH_army_supply_consumption_factor = ETH.ETH_army_supply_consumption_factor }
-				set_variable = { ETH_army_cas_damage_reduction  = ETH.ETH_army_cas_damage_reduction  }
-				set_variable = { ETH_army_equipment_capture_factor  = ETH.ETH_army_equipment_capture_factor  }
-				set_variable = { ETH_modifier_army_sub_unit_irregular_infantry_defence_factor = ETH.ETH_modifier_army_sub_unit_irregular_infantry_defence_factor }
-				set_variable = { ETH_modifier_army_sub_unit_irregular_infantry_speed_factor = ETH.ETH_modifier_army_sub_unit_irregular_infantry_speed_factor }
-				set_variable = { ETH_modifier_army_sub_unit_irregular_infantry_max_org_factor = ETH.ETH_modifier_army_sub_unit_irregular_infantry_max_org_factor }
-
-				add_dynamic_modifier = {
-					modifier = ETH_navy_1_dynamic_modifier
-				}
-				set_variable = { ETH_navy_repair_speed_factor = ETH.ETH_navy_repair_speed_factor }
-				set_variable = { ETH_navy_naval_doctrine_cost_factor = ETH.ETH_navy_naval_doctrine_cost_factor }
-				set_variable = { ETH_navy_refit_ic_cost = ETH.ETH_navy_refit_ic_cost }
-
-				add_dynamic_modifier = {
-					modifier = ETH_airforce_1_dynamic_modifier
-				}
-				set_variable = { ETH_airforce_enemy_army_bonus_air_superiority_factor = ETH.ETH_airforce_enemy_army_bonus_air_superiority_factor }
-				set_variable = { ETH_airforce_air_doctrine_cost_factor = ETH.ETH_airforce_air_doctrine_cost_factor }
-				set_variable = { ETH_airforce_air_accidents_factor = ETH.ETH_airforce_air_accidents_factor }
-				set_variable = { ETH_airforce_air_attack_factor = ETH.ETH_airforce_air_attack_factor }
-
-				add_dynamic_modifier = {
-					modifier = ETH_corrupt_bureaucracy_dynamic_modifier
-				}
-				set_variable = { ETH_bureaucracy_research_speed_factor = ETH.ETH_bureaucracy_research_speed_factor}
-				set_variable = { ETH_bureaucracy_production_speed_buildings_factor = ETH.ETH_bureaucracy_production_speed_buildings_factor}
-				set_variable = { ETH_bureaucracy_production_factory_max_efficiency_factor = ETH.ETH_bureaucracy_production_factory_max_efficiency_factor}
-
-				add_dynamic_modifier = {
-					modifier = ETH_industrialization_dynamic_modifier 
-				}
-				set_variable = { ETH_industrialization_industrial_capacity_dockyard = ETH.ETH_industrialization_industrial_capacity_dockyard } 
-				set_variable = { ETH_industrialization_industrial_capacity_factory = ETH.ETH_industrialization_industrial_capacity_factory } 
-				set_variable = { ETH_industrialization_line_change_production_efficiency_factor = ETH.ETH_industrialization_line_change_production_efficiency_factor } 
-				set_variable = { ETH_industrialization_consumer_goods_expected_value = ETH.ETH_industrialization_consumer_goods_expected_value } 
-				set_variable = { ETH_industrialization_industry_air_damage_factor = ETH.ETH_industrialization_industry_air_damage_factor } 
-				set_variable = { ETH_industrialization_industry_repair_factor = ETH.ETH_industrialization_industry_repair_factor } 
-				set_variable = { ETH_production_factory_max_efficiency_factor = ETH.ETH_production_factory_max_efficiency_factor } 
-				set_variable = { ETH_air_equipment_upgrade_xp_cost = ETH.ETH_air_equipment_upgrade_xp_cost } 
-				set_variable = { ETH_land_equipment_upgrade_xp_cost = ETH.ETH_land_equipment_upgrade_xp_cost } 
-				set_variable = { ETH_production_speed_buildings_factor = ETH.ETH_production_speed_buildings_factor }
-
-				add_dynamic_modifier = {
-					modifier = ETH_international_red_cross_dynamic_modifier 
-				}
-				set_variable = { ETH_irc_morale_factor = ETH.ETH_irc_morale_factor }
-				set_variable = { ETH_irc_enemy_army_bonus_air_superiority_factor = ETH.ETH_irc_enemy_army_bonus_air_superiority_factor }
-				
-			}
-		}
-		IF = {
-			limit = { # hayamot rising up 
-				has_country_flag = hayamot_rising_planned_flag
-			}
-			set_cosmetic_tag = gojjam
-		}
-		ELSE_IF = {
-			limit = { # Jofir rising up 
-				has_country_flag = jofir_rising_planned_flag
-			}
-			set_cosmetic_tag = jimma
-		}
-		IF = {
-			limit = { has_dlc = "Death or Dishonor" }
-			ITA = {
-				set_autonomy = {
-					target = ROOT
-					autonomy_state = autonomy_reichsprotectorate
-					freedom_level = 0.75
-					end_wars = no
-					end_civil_wars = no
-				}
-			}
-		}
-		ELSE = {
-			ITA = { puppet = ROOT }
-		}
-		every_state = {
-			limit = {
-				is_core_of = ETH 
-				OR = {
-					is_controlled_by = ITA
-					is_controlled_by = ETH
-				}
-			}
-			set_state_controller_to = ETH
-		}
-		add_ideas = ETH_victor_emanuel_of_ethiopia_idea
-		hidden_effect = {
-			# Remove Red Cross - they stay with haile Selassie
-			ETH = {
-				remove_dynamic_modifier = {
-					modifier = ETH_international_red_cross_dynamic_modifier
-				}
-			}
-
-			IF = { # safety for if ITA has changed ideology - we still want to keep that ideology here regardless 
-				limit = {
-					ROOT = {
-						NOT = { has_government = fascism }
-					}	
-				}
-				set_politics = {
-					ruling_party = fascism
-				}
-			}
-			IF = {
-				limit = {
-					has_completed_focus = ETH_expand_the_bodyguard
-				}
-				division_template = {
-					name = "Guards"
-					is_locked = yes
-					priority = 2
-					regiments = {
-						infantry = { x = 0 y = 0 }
-						infantry = { x = 0 y = 1 }
-						infantry = { x = 0 y = 2 }
-						infantry = { x = 1 y = 0 }
-						infantry = { x = 1 y = 1 }
-						infantry = { x = 1 y = 2 }
-					}
-					
-				}
-				IF = {
-					limit = {
-						has_cosmetic_tag = jimma
-					}
-					random_owned_controlled_state = {
-						create_unit = {
-							division = "name = \"Jimma Guards Division\" division_template = \"Guards\" start_experience_factor = 0.1 start_equipment_factor = 1 start_manpower_factor = 1"
-							owner = ROOT
-						}
-					}
-				}
-				ELSE_IF = {
-					limit = {
-						has_cosmetic_tag = gojjam
-					}
-					random_owned_controlled_state = {
-						create_unit = {
-							division = "name = \"Gojjam Guards Division\" division_template = \"Guards\" start_experience_factor = 0.1 start_equipment_factor = 1 start_manpower_factor = 1"
-							owner = ROOT
-						}
-					}
-				}
-				ElSE = {
-					random_owned_controlled_state = {
-						create_unit = {
-							division = "name = \"Imperial Guards Division\" division_template = \"Guards\" start_experience_factor = 0.1 start_equipment_factor = 1 start_manpower_factor = 1"
-							owner = ROOT
-						}
-					}
-				}
-			}
-		}
-	}
-}
+#country_event = {
+#	id = BBA_ethiopia_fascist_events.07
+#	title = BBA_ethiopia_fascist_events.07.t
+#	desc = BBA_ethiopia_fascist_events.07.desc
+#	picture = GFX_report_event_gre_city_devastated
+#	is_triggered_only = yes
+#	# Yes 
+#	option = {
+#		name = BBA_ethiopia_fascist_events.07.a
+#		ai_chance = {
+#			base = 10
+#		}		
+#
+#		IF = {
+#			limit = { # Gugsa rising up 
+#				has_country_flag = gugsa_rising_planned_flag
+#			}
+#			IF = { 
+#				limit = {
+#					1072 = { NOT = { is_controlled_by = ROOT } } # Tigray
+#				}
+#				1072 = {
+#					set_state_controller_to = ROOT 
+#				}
+#			}
+#
+#			set_capital = {
+#				state = 1072 
+#				remember_old_capital = yes
+#			}	
+#		}
+#		ELSE_IF = {
+#			limit = { # Hayamot rising up 
+#				has_country_flag = hayamot_rising_planned_flag
+#			}
+#			IF = { 
+#				limit = {
+#					1070 = { NOT = { is_controlled_by = ROOT } }
+#				}
+#				1070 = {
+#					set_state_controller_to = ROOT 
+#				}
+#			}
+#			set_capital = {
+#				state = 1070 
+#				remember_old_capital = no
+#			}	
+#			ETH_promote_ETH_hailu_tekle_haymanot = yes 
+#			set_party_name = {
+#				ideology = fascism
+#				long_name = ETH_gojjam_haymanot_fascism_party_long
+#				name = ETH_gojjam_haymanot_fascism_party
+#			}
+#		}
+#
+#		ELSE_IF = {
+#			limit = { # Jofir rising up 
+#				has_country_flag = jofir_rising_planned_flag
+#			}
+#			IF = { 
+#				limit = {
+#					1068 = { NOT = { is_controlled_by = ROOT } }
+#				}
+#				1068 = {
+#					set_state_controller_to = ROOT 
+#				}
+#			}
+#			add_victory_points = {
+#				province = 7912
+#				value = 6
+#			}
+#			set_capital = {
+#				state = 1068 
+#				remember_old_capital = no
+#			}	
+#			ETH_promote_ETH_abba_jofir = yes 
+#			set_party_name = {
+#				ideology = fascism
+#				long_name = ETH_jimma_jofir_fascism_party_long
+#				name = ETH_jimma_jofir_fascism_party
+#			}
+#		}
+#
+#		start_civil_war = {
+#			ideology = neutrality
+#			ruling_party = fascism
+#			size = ETH_civil_war_size
+#			army_ratio = ETH_civil_war_army
+#			capital = 271
+#			keep_political_leader = no
+#			keep_political_party_members = no 
+#			
+#			# Haile Selassie 
+#			uncomplete_national_focus = {
+#				focus = ETH_reach_out_to_the_italians
+#				uncomplete_children = yes
+#			}
+#			complete_national_focus = ETH_rally_around_the_emperor
+#			hidden_effect = {
+#				IF = {
+#					limit = {
+#						ETH = { has_character = ETH_ayalew_birru }
+#					}
+#					ETH = { ETH_ayalew_birru = { set_nationality = PREV.PREV } }
+#				}
+#				IF = {
+#					limit = {
+#						ETH = { has_character = ETH_beyene_merid }
+#					}
+#					ETH = { ETH_beyene_merid = { set_nationality = PREV.PREV } }
+#				}
+#				IF = {
+#					limit = {
+#						ETH = { has_character = ETH_balcho_safo }
+#					}
+#					ETH = { ETH_balcho_safo = { set_nationality = PREV.PREV } }
+#				}
+#				# Set up Dynamic Modifiers for Haile Selassie
+#				add_dynamic_modifier = {
+#					modifier = ETH_army_1_dynamic_modifier
+#				}
+#				set_variable = { ETH_army_max_dig_in_factor = ETH.ETH_army_max_dig_in_factor }
+#				set_variable = { ETH_army_dig_in_speed_factor = ETH.ETH_army_dig_in_speed_factor }
+#				set_variable = { ETH_army_experience_gain_army_factor = ETH.ETH_army_experience_gain_army_factor }
+#				set_variable = { ETH_army_army_defence_factor = ETH.ETH_army_army_defence_factor }
+#				set_variable = { ETH_army_army_org_factor = ETH.ETH_army_army_org_factor }
+#				set_variable = { ETH_army_modifier_army_sub_unit_infantry_attack_factor = ETH.ETH_army_modifier_army_sub_unit_infantry_attack_factor }
+#				set_variable = { ETH_army_modifier_army_sub_unit_infantry_defence_factor = ETH.ETH_army_modifier_army_sub_unit_infantry_defence_factor }
+#				set_variable = { ETH_army_modifier_army_sub_unit_infantry_speed_factor = ETH.ETH_army_modifier_army_sub_unit_infantry_speed_factor }
+#				set_variable = { ETH_army_modifier_army_sub_unit_irregular_infantry_attack_factor = ETH.ETH_army_modifier_army_sub_unit_irregular_infantry_attack_factor }
+#				set_variable = { ETH_army_supply_consumption_factor = ETH.ETH_army_supply_consumption_factor }
+#				set_variable = { ETH_army_cas_damage_reduction  = ETH.ETH_army_cas_damage_reduction  }
+#				set_variable = { ETH_army_equipment_capture_factor  = ETH.ETH_army_equipment_capture_factor  }
+#				set_variable = { ETH_modifier_army_sub_unit_irregular_infantry_defence_factor = ETH.ETH_modifier_army_sub_unit_irregular_infantry_defence_factor }
+#				set_variable = { ETH_modifier_army_sub_unit_irregular_infantry_speed_factor = ETH.ETH_modifier_army_sub_unit_irregular_infantry_speed_factor }
+#				set_variable = { ETH_modifier_army_sub_unit_irregular_infantry_max_org_factor = ETH.ETH_modifier_army_sub_unit_irregular_infantry_max_org_factor }
+#
+#				add_dynamic_modifier = {
+#					modifier = ETH_navy_1_dynamic_modifier
+#				}
+#				set_variable = { ETH_navy_repair_speed_factor = ETH.ETH_navy_repair_speed_factor }
+#				set_variable = { ETH_navy_naval_doctrine_cost_factor = ETH.ETH_navy_naval_doctrine_cost_factor }
+#				set_variable = { ETH_navy_refit_ic_cost = ETH.ETH_navy_refit_ic_cost }
+#
+#				add_dynamic_modifier = {
+#					modifier = ETH_airforce_1_dynamic_modifier
+#				}
+#				set_variable = { ETH_airforce_enemy_army_bonus_air_superiority_factor = ETH.ETH_airforce_enemy_army_bonus_air_superiority_factor }
+#				set_variable = { ETH_airforce_air_doctrine_cost_factor = ETH.ETH_airforce_air_doctrine_cost_factor }
+#				set_variable = { ETH_airforce_air_accidents_factor = ETH.ETH_airforce_air_accidents_factor }
+#				set_variable = { ETH_airforce_air_attack_factor = ETH.ETH_airforce_air_attack_factor }
+#
+#				add_dynamic_modifier = {
+#					modifier = ETH_corrupt_bureaucracy_dynamic_modifier
+#				}
+#				set_variable = { ETH_bureaucracy_research_speed_factor = ETH.ETH_bureaucracy_research_speed_factor}
+#				set_variable = { ETH_bureaucracy_production_speed_buildings_factor = ETH.ETH_bureaucracy_production_speed_buildings_factor}
+#				set_variable = { ETH_bureaucracy_production_factory_max_efficiency_factor = ETH.ETH_bureaucracy_production_factory_max_efficiency_factor}
+#
+#				add_dynamic_modifier = {
+#					modifier = ETH_industrialization_dynamic_modifier 
+#				}
+#				set_variable = { ETH_industrialization_industrial_capacity_dockyard = ETH.ETH_industrialization_industrial_capacity_dockyard } 
+#				set_variable = { ETH_industrialization_industrial_capacity_factory = ETH.ETH_industrialization_industrial_capacity_factory } 
+#				set_variable = { ETH_industrialization_line_change_production_efficiency_factor = ETH.ETH_industrialization_line_change_production_efficiency_factor } 
+#				set_variable = { ETH_industrialization_consumer_goods_expected_value = ETH.ETH_industrialization_consumer_goods_expected_value } 
+#				set_variable = { ETH_industrialization_industry_air_damage_factor = ETH.ETH_industrialization_industry_air_damage_factor } 
+#				set_variable = { ETH_industrialization_industry_repair_factor = ETH.ETH_industrialization_industry_repair_factor } 
+#				set_variable = { ETH_production_factory_max_efficiency_factor = ETH.ETH_production_factory_max_efficiency_factor } 
+#				set_variable = { ETH_air_equipment_upgrade_xp_cost = ETH.ETH_air_equipment_upgrade_xp_cost } 
+#				set_variable = { ETH_land_equipment_upgrade_xp_cost = ETH.ETH_land_equipment_upgrade_xp_cost } 
+#				set_variable = { ETH_production_speed_buildings_factor = ETH.ETH_production_speed_buildings_factor }
+#
+#				add_dynamic_modifier = {
+#					modifier = ETH_international_red_cross_dynamic_modifier 
+#				}
+#				set_variable = { ETH_irc_morale_factor = ETH.ETH_irc_morale_factor }
+#				set_variable = { ETH_irc_enemy_army_bonus_air_superiority_factor = ETH.ETH_irc_enemy_army_bonus_air_superiority_factor }
+#				
+#			}
+#		}
+#		IF = {
+#			limit = { # hayamot rising up 
+#				has_country_flag = hayamot_rising_planned_flag
+#			}
+#			set_cosmetic_tag = gojjam
+#		}
+#		ELSE_IF = {
+#			limit = { # Jofir rising up 
+#				has_country_flag = jofir_rising_planned_flag
+#			}
+#			set_cosmetic_tag = jimma
+#		}
+#		IF = {
+#			limit = { has_dlc = "Death or Dishonor" }
+#			ITA = {
+#				set_autonomy = {
+#					target = ROOT
+#					autonomy_state = autonomy_reichsprotectorate
+#					freedom_level = 0.75
+#					end_wars = no
+#					end_civil_wars = no
+#				}
+#			}
+#		}
+#		ELSE = {
+#			ITA = { puppet = ROOT }
+#		}
+#		every_state = {
+#			limit = {
+#				is_core_of = ETH 
+#				OR = {
+#					is_controlled_by = ITA
+#					is_controlled_by = ETH
+#				}
+#			}
+#			set_state_controller_to = ETH
+#		}
+#		add_ideas = ETH_victor_emanuel_of_ethiopia_idea
+#		hidden_effect = {
+#			# Remove Red Cross - they stay with haile Selassie
+#			ETH = {
+#				remove_dynamic_modifier = {
+#					modifier = ETH_international_red_cross_dynamic_modifier
+#				}
+#			}
+#
+#			IF = { # safety for if ITA has changed ideology - we still want to keep that ideology here regardless 
+#				limit = {
+#					ROOT = {
+#						NOT = { has_government = fascism }
+#					}	
+#				}
+#				set_politics = {
+#					ruling_party = fascism
+#				}
+#			}
+#			IF = {
+#				limit = {
+#					has_completed_focus = ETH_expand_the_bodyguard
+#				}
+#				division_template = {
+#					name = "Guards"
+#					is_locked = yes
+#					priority = 2
+#					regiments = {
+#						infantry = { x = 0 y = 0 }
+#						infantry = { x = 0 y = 1 }
+#						infantry = { x = 0 y = 2 }
+#						infantry = { x = 1 y = 0 }
+#						infantry = { x = 1 y = 1 }
+#						infantry = { x = 1 y = 2 }
+#					}
+#					
+#				}
+#				IF = {
+#					limit = {
+#						has_cosmetic_tag = jimma
+#					}
+#					random_owned_controlled_state = {
+#						create_unit = {
+#							division = "name = \"Jimma Guards Division\" division_template = \"Guards\" start_experience_factor = 0.1 start_equipment_factor = 1 start_manpower_factor = 1"
+#							owner = ROOT
+#						}
+#					}
+#				}
+#				ELSE_IF = {
+#					limit = {
+#						has_cosmetic_tag = gojjam
+#					}
+#					random_owned_controlled_state = {
+#						create_unit = {
+#							division = "name = \"Gojjam Guards Division\" division_template = \"Guards\" start_experience_factor = 0.1 start_equipment_factor = 1 start_manpower_factor = 1"
+#							owner = ROOT
+#						}
+#					}
+#				}
+#				ElSE = {
+#					random_owned_controlled_state = {
+#						create_unit = {
+#							division = "name = \"Imperial Guards Division\" division_template = \"Guards\" start_experience_factor = 0.1 start_equipment_factor = 1 start_manpower_factor = 1"
+#							owner = ROOT
+#						}
+#					}
+#				}
+#			}
+#		}
+#	}
+#}
 
 # Imperial Capitulation
-country_event = {
-	id = BBA_ethiopia_fascist_events.10
-	title = BBA_ethiopia_fascist_events.10.t
-	desc = BBA_ethiopia_fascist_events.10.desc
-	picture = GFX_report_event_gre_city_devastated
-	is_triggered_only = yes
-	
-	option = {
-		name = BBA_ethiopia_fascist_events.10.a
-		ai_chance = {
-			base = 10
-		}
-		IF = {
-			limit = { has_cosmetic_tag = jimma}
-			custom_effect_tooltip = captured_ethiopian_commanders_jimma_tt
-		}
-		ELSE = {
-			custom_effect_tooltip = captured_ethiopian_commanders_tt
-		}
-		hidden_effect = {
-			var:ETH_haile_selassie_country = {
-				ETH_seyoum_mengesha = {
-					set_nationality = ROOT
-					set_character_flag = ETH_imprisoned_flag 
-				}
-				ETH_ayalew_birru = {
-					set_nationality = ROOT
-					set_character_flag = ETH_imprisoned_flag 
-				}
-				ETH_ras_kassa = {
-					set_nationality = ROOT
-					set_character_flag = ETH_imprisoned_flag 
-				}
-			}
-			IF = {
-				limit = {
-					has_cosmetic_tag = jimma
-				}
-				var:ETH_haile_selassie_country = {
-					ETH_balcho_safo = {
-						set_nationality = ROOT
-						set_character_flag = ETH_imprisoned_flag 
-					}
-					ETH_tadesse_birru = {
-						set_nationality = ROOT
-						set_character_flag = ETH_imprisoned_flag 
-					}
-				}
-			}
-
-		}
-	}
-}
+#country_event = {
+#	id = BBA_ethiopia_fascist_events.10
+#	title = BBA_ethiopia_fascist_events.10.t
+#	desc = BBA_ethiopia_fascist_events.10.desc
+#	picture = GFX_report_event_gre_city_devastated
+#	is_triggered_only = yes
+#	
+#	option = {
+#		name = BBA_ethiopia_fascist_events.10.a
+#		ai_chance = {
+#			base = 10
+#		}
+#		IF = {
+#			limit = { has_cosmetic_tag = jimma}
+#			custom_effect_tooltip = captured_ethiopian_commanders_jimma_tt
+#		}
+#		ELSE = {
+#			custom_effect_tooltip = captured_ethiopian_commanders_tt
+#		}
+#		hidden_effect = {
+#			var:ETH_haile_selassie_country = {
+#				ETH_seyoum_mengesha = {
+#					set_nationality = ROOT
+#					set_character_flag = ETH_imprisoned_flag 
+#				}
+#				ETH_ayalew_birru = {
+#					set_nationality = ROOT
+#					set_character_flag = ETH_imprisoned_flag 
+#				}
+#				ETH_ras_kassa = {
+#					set_nationality = ROOT
+#					set_character_flag = ETH_imprisoned_flag 
+#				}
+#			}
+#			IF = {
+#				limit = {
+#					has_cosmetic_tag = jimma
+#				}
+#				var:ETH_haile_selassie_country = {
+#					ETH_balcho_safo = {
+#						set_nationality = ROOT
+#						set_character_flag = ETH_imprisoned_flag 
+#					}
+#					ETH_tadesse_birru = {
+#						set_nationality = ROOT
+#						set_character_flag = ETH_imprisoned_flag 
+#					}
+#				}
+#			}
+#
+#		}
+#	}
+#}
 
 # Ethiopian independence
 # For Italy - Ethiopia declares independence

@@ -193,39 +193,39 @@ on_actions = {
 	on_civil_war_end = { # ROOT is civil war winner, FROM gets annexed.
 		# End of Collaborationalist Civil War
 		effect = {
-			IF = {
-				limit = {
-					original_tag = ETH
-					has_completed_focus = ETH_declare_for_italy
-					ITA = {
-						NOT = {
-							OR = {
-								has_government = communism
-								has_government = democratic
-							}
-						}
-					}
-				}
-				every_owned_state = { #TODO_TA Make an event out this?
-					limit = {
-						has_state_flag = ETH_cede_state_flag
-					}
-					ITA = { transfer_state = PREV }
-					remove_core_of = ROOT
-				}
-			}
-			else_if = {
-				limit = {
-					original_tag = ETH
-					has_completed_focus = ETH_declare_for_italy
-					}
-				every_owned_state = { #TODO_TA Make an event out this?
-					limit = {
-						has_state_flag = ETH_cede_state_flag
-					}
-					clr_state_flag = ETH_cede_state_flag
-				}
-			}
+			#IF = {
+			#	limit = {
+			#		original_tag = ETH
+			#		has_completed_focus = ETH_declare_for_italy
+			#		ITA = {
+			#			NOT = {
+			#				OR = {
+			#					has_government = communism
+			#					has_government = democratic
+			#				}
+			#			}
+			#		}
+			#	}
+			#	every_owned_state = { #TODO_TA Make an event out this?
+			#		limit = {
+			#			has_state_flag = ETH_cede_state_flag
+			#		}
+			#		ITA = { transfer_state = PREV }
+			#		remove_core_of = ROOT
+			#	}
+			#}
+			#else_if = {
+			#	limit = {
+			#		original_tag = ETH
+			#		has_completed_focus = ETH_declare_for_italy
+			#		}
+			#	every_owned_state = { #TODO_TA Make an event out this?
+			#		limit = {
+			#			has_state_flag = ETH_cede_state_flag
+			#		}
+			#		clr_state_flag = ETH_cede_state_flag
+			#	}
+			#}
 		}
 	
 
@@ -353,12 +353,12 @@ on_actions = {
 						tag = ITA
 						tag = ETH
 					}
-					NOT = {
-						AND = {
-							ETH = { has_completed_focus = ETH_declare_for_italy }
-							has_civil_war = yes
-						}
-					}
+					#NOT = {
+					#	AND = {
+					#		ETH = { has_completed_focus = ETH_declare_for_italy }
+					#		has_civil_war = yes
+					#	}
+					#}
 				}
 				ITA_end_the_italo_ethiopian_war = yes
 			}
@@ -594,27 +594,27 @@ on_actions = {
 				clr_country_flag = ETH_selassie_left_ethiopia_flag # He's now the government in exile, not personally left the country, so no need for this flag anymore.
 			}
 			# Ethiopian civil war capitulation
-			IF = {
-				limit = {
-					ROOT = {
-						original_tag = ETH
-						has_government = neutrality
-					}
-					FROM = {
-						original_tag = ETH
-						has_government = fascism
-						has_completed_focus = ETH_sway_the_warlords
-					}
-				}
-				set_variable = { FROM.ETH_haile_selassie_country = ROOT }
-				FROM  ={
-					country_event = {
-						id = BBA_ethiopia_fascist_events.10
-						hours = 4
-						random_hours = 4
-					}
-				}
-			}
+			#IF = {
+			#	limit = {
+			#		ROOT = {
+			#			original_tag = ETH
+			#			has_government = neutrality
+			#		}
+			#		FROM = {
+			#			original_tag = ETH
+			#			has_government = fascism
+			#			has_completed_focus = ETH_sway_the_warlords
+			#		}
+			#	}
+			#	set_variable = { FROM.ETH_haile_selassie_country = ROOT }
+			#	FROM  ={
+			#		country_event = {
+			#			id = BBA_ethiopia_fascist_events.10
+			#			hours = 4
+			#			random_hours = 4
+			#		}
+			#	}
+			#}
 			# Italy capitulates to Ethiopian host with liberate wargoal
 			IF = {
 				limit = {
@@ -1591,31 +1591,31 @@ on_actions = {
 	}
 	on_puppet = { #ROOT = nation being puppeted, FROM = overlord
 		effect = {
-			IF = {
-				limit = {
-					has_dlc = "By Blood Alone"
-					original_tag = ETH
-					has_completed_focus = ETH_rally_around_the_emperor
-					FROM = {
-						original_tag = ITA
-						OR = {
-							has_government = fascism
-							has_government = neutrality
-						}
-					}
-				}
-				ROOT = {
-					uncomplete_national_focus = {
-						focus = ETH_rally_around_the_emperor
-						uncomplete_children = yes
-						refund_political_power = no
-					}
-
-					unlock_national_focus = ETH_reach_out_to_the_italians
-					unlock_national_focus = ETH_sway_the_warlords
-					unlock_national_focus = ETH_declare_for_italy
-				}
-			}
+			#IF = {
+			#	limit = {
+			#		has_dlc = "By Blood Alone"
+			#		original_tag = ETH
+			#		has_completed_focus = ETH_rally_around_the_emperor
+			#		FROM = {
+			#			original_tag = ITA
+			#			OR = {
+			#				has_government = fascism
+			#				has_government = neutrality
+			#			}
+			#		}
+			#	}
+			#	ROOT = {
+			#		uncomplete_national_focus = {
+			#			focus = ETH_rally_around_the_emperor
+			#			uncomplete_children = yes
+			#			refund_political_power = no
+			#		}
+            #
+			#		unlock_national_focus = ETH_reach_out_to_the_italians
+			#		unlock_national_focus = ETH_sway_the_warlords
+			#		unlock_national_focus = ETH_declare_for_italy
+			#	}
+			#}
 		}
 
 		effect = {
@@ -1834,21 +1834,21 @@ on_actions = {
 	#on_unit_leader_promote_from_ranks_green
 	on_unit_leader_promote_from_ranks_green = { # This uses the UNIT LEADER sub scope of a character, FROM == country
 		effect = {
-			IF = {
-				limit = {
-					OWNER = {
-						original_tag = ETH
-						has_completed_focus = ETH_expand_the_officer_corps
-					}
-				}
-				if = {
-					limit = {
-						is_army_leader = yes
-					}
-					add_defense = 1
-					add_attack= 1
-				}
-			}
+			#IF = {
+			#	limit = {
+			#		OWNER = {
+			#			original_tag = ETH
+			#			has_completed_focus = ETH_expand_the_officer_corps
+			#		}
+			#	}
+			#	if = {
+			#		limit = {
+			#			is_army_leader = yes
+			#		}
+			#		add_defense = 1
+			#		add_attack= 1
+			#	}
+			#}
 		}
 	}
 
