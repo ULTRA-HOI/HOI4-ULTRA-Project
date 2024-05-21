@@ -97,3 +97,45 @@ ETH_second_italo_ethiopian_war_category = {
 	}
 	visible_when_empty = yes 
 }
+
+ETH_improve_country_category = { 
+	
+	icon = GFX_decision_category_generic_economy
+	#picture = 
+	
+	allowed = {
+		original_tag = ETH
+		
+	}
+
+	priority = {
+		base = 5 # TODO_TA set correct position 
+	}
+
+	visible = {
+		has_dlc = "By Blood Alone"
+		OR = {
+			# We can develop a state 
+			any_owned_state = {  
+				OR = {
+					has_state_flag = ETH_can_electrify_state_flag
+					has_state_flag = ETH_can_improve_communication_state_flag
+				}
+			}
+			# a state is expanding on it's own 
+			has_active_mission = ETH_local_development_improved_production_mission
+			has_active_mission = ETH_local_development_state_grows_mission
+			has_active_mission = ETH_local_development_industry_grows_mission
+			has_active_mission = ETH_local_development_arms_industry_grows_mission
+			#AND = {
+			#	has_completed_focus = ETH_the_lion_and_the_sun
+			#	any_owned_state = { 
+			#		is_on_continent = africa 
+			#		is_controlled_by = ROOT 
+			#	}
+			#	check_variable = { ETH_japanese_invesment_states < 3 }
+			#}
+		}
+	}
+	visible_when_empty = yes 
+}
