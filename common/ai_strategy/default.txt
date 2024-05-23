@@ -1101,99 +1101,153 @@ default_market_stockpile_management = {
 	ai_strategy = {
 		type = equipment_market_for_sale_threshold
 		id = train
-		value = 200  # only start considering selling trains if surplus more than 20
+		value = 500  # only start considering selling trains if surplus more than 500
 	}
 	ai_strategy = {
 		type = equipment_market_min_for_sale
 		id = train
-		value = 25  # only put up for sale in chunks of 5
+		value = 50  # only put up for sale in chunks of 5
 	}
 	ai_strategy = {
 		type = equipment_market_for_sale_factor
 		id = train
-		value = -50  # put fewer trains up for sale
+		value = -200  # put fewer trains up for sale
 	}
-
-	# Better not put all your boats up for sail
-	# ai_strategy = {  # Commented because handled dynamically in code through the EQUIPMENT_MARKET_WANTED_CONVOY_USAGE_RATIO define
-	# 	type = equipment_market_for_sale_threshold
-	# 	id = convoy
-	# 	value = 100  # only start considering selling convoys if surplus more than 100
-	# }
+	
+	ai_strategy = {
+		type = equipment_market_for_sale_threshold
+		id = convoy
+		value = 1000
+	}
 	ai_strategy = {
 		type = equipment_market_min_for_sale
 		id = convoy
-		value = 20  # only put up for sale in chunks of 20
+		value = 25  # only put up for sale in chunks of 25
 	}
-
-		# Don't sell stuff that we need for the war
-		ai_strategy = {
-			type = equipment_market_for_sale_threshold
-			id = infantry
-			value = 10000
-		}
-		ai_strategy = {
-			type = equipment_market_for_sale_threshold
-			id = support
-			value = 3000
-		}
-		ai_strategy = {
-			type = equipment_market_for_sale_threshold
-			id = artillery
-			value = 1000
-		}
-		ai_strategy = {
-			type = equipment_market_for_sale_threshold
-			id = fighter
-			value = 200
-		}
-		ai_strategy = {
-			type = equipment_market_for_sale_threshold
-			id = motorized
-			value = 2500
-		}
-		ai_strategy = {
-			type = equipment_market_for_sale_threshold
-			id = train
-			value = 250
-		}
-		ai_strategy = {
-			type = equipment_market_for_sale_threshold
-			id = convoy
-			value = 50
-		}
+	
+	# Don't sell stuff that we need for the war
+	ai_strategy = {
+		type = equipment_market_for_sale_threshold
+		id = infantry
+		value = 25000
+	}
+	ai_strategy = {
+		type = equipment_market_min_for_sale
+		id = infantry
+		value = 100  
+	}
+	
+	ai_strategy = {
+		type = equipment_market_for_sale_threshold
+		id = support
+		value = 5000
+	}
+	ai_strategy = {
+		type = equipment_market_min_for_sale
+		id = support
+		value = 50 
+	}
+	
+	ai_strategy = {
+		type = equipment_market_for_sale_threshold
+		id = artillery
+		value = 1200
+	}
+	ai_strategy = {
+		type = equipment_market_min_for_sale
+		id = artillery
+		value = 12 #Always put whole batteries on the market
+	}
+	
+	ai_strategy = {
+		type = equipment_market_for_sale_threshold
+		id = armor
+		value = 3600
+	}
+	ai_strategy = {
+		type = equipment_market_min_for_sale
+		id = armor
+		value = 36 #Always put whole batallions on the market
+	}
+	
+	ai_strategy = {
+		type = equipment_market_for_sale_threshold
+		id = motorized
+		value = 25000
+	}
+	ai_strategy = {
+		type = equipment_market_min_for_sale
+		id = motorized
+		value = 100
+	}
+	
 
 	# Don't let all your planes just fly out the window.
 	# Only sell planes if we have more than one airwing in surplus.
 	ai_strategy = {
 		type = equipment_market_for_sale_threshold
 		id = fighter
-		value = 200
+		value = 3600
 	}
+	ai_strategy = {
+		type = equipment_market_min_for_sale
+		id = fighter
+		value = 72 #always put whole squadrons
+	}
+	
 	ai_strategy = {
 		type = equipment_market_for_sale_threshold
 		id = cas
-		value = 200
+		value = 1800
 	}
+	ai_strategy = {
+		type = equipment_market_min_for_sale
+		id = cas
+		value = 72 #always put whole squadrons
+	}
+	
 	ai_strategy = {
 		type = equipment_market_for_sale_threshold
 		id = cv_fighter
-		value = 100
+		value = 720
 	}
+	ai_strategy = {
+		type = equipment_market_min_for_sale
+		id = cv_fighter
+		value = 36 #always put whole squadrons
+	}
+	
 	ai_strategy = {
 		type = equipment_market_for_sale_threshold
 		id = cv_cas
-		value = 100
+		value = 360
 	}
+	ai_strategy = {
+		type = equipment_market_min_for_sale
+		id = cv_cas
+		value = 36 #always put whole squadrons
+	}
+	
 	ai_strategy = {
 		type = equipment_market_for_sale_threshold
 		id = tactical_bomber
-		value = 100
+		value = 360
 	}
+	ai_strategy = {
+		type = equipment_market_min_for_sale
+		id = tactical_bomber
+		value = 72 #always put whole squadrons
+	}
+	
 	ai_strategy = {
 		type = equipment_market_for_sale_threshold
 		id = strategic_bomber
-		value = 100
+		value = 360
+	}
+	ai_strategy = {
+		type = equipment_market_min_for_sale
+		id = strategic_bomber
+		value = 72 #always put whole squadrons
 	}
 }
 
@@ -1209,37 +1263,22 @@ default_market_stockpile_management_if_at_war = {
 	ai_strategy = {
 		type = equipment_market_for_sale_threshold
 		id = infantry
-		value = 20000
+		value = 50000
 	}
 	ai_strategy = {
 		type = equipment_market_for_sale_threshold
 		id = support
-		value = 6000
+		value = 10000
 	}
 	ai_strategy = {
 		type = equipment_market_for_sale_threshold
 		id = artillery
-		value = 2000
-	}
-	ai_strategy = {
-		type = equipment_market_for_sale_threshold
-		id = fighter
-		value = 200
+		value = 2400
 	}
 	ai_strategy = {
 		type = equipment_market_for_sale_threshold
 		id = motorized
-		value = 5000
-	}
-	ai_strategy = {
-		type = equipment_market_for_sale_threshold
-		id = train
-		value = 500
-	}
-	ai_strategy = {
-		type = equipment_market_for_sale_threshold
-		id = convoy
-		value = 100
+		value = 50000
 	}
 }
 
@@ -1252,7 +1291,7 @@ default_market_convoy_purchases = {
 	ai_strategy = {
 		type = equipment_market_buying_threshold
 		id = convoy
-		value = 20  # Consider buying if we have too few (less than 30) convoys. Also interacts with the EQUIPMENT_MARKET_WANTED_CONVOY_USAGE_RATIO define.
+		value = 10  # Consider buying if we have too few (less than 30) convoys. Also interacts with the EQUIPMENT_MARKET_WANTED_CONVOY_USAGE_RATIO define.
 	}
 }
 
