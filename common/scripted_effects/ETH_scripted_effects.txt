@@ -63,19 +63,19 @@ ETH_electrify_state_remove_effect = {
 }
 
 # Effect for removing the Dynamic modifier when it no longer has any impact on things
-ETH_check_remove_corrupt_bureaucracy = {
-	IF = {
-		limit = {
-			check_variable = { ETH_bureaucracy_research_speed_factor = 0 }
-			check_variable = { ETH_bureaucracy_production_speed_buildings_factor = 0 }
-			check_variable = { ETH_bureaucracy_production_factory_max_efficiency_factor = 0 }
-		}
-		# No need to show, as it will then pop up in every place where it might have been used 
-		hidden_effect = {
-			remove_dynamic_modifier = { modifier = ETH_corrupt_bureaucracy_dynamic_modifier } 
-		}
-	}
-}
+#ETH_check_remove_corrupt_bureaucracy = {
+#	IF = {
+#		limit = {
+#			check_variable = { ETH_bureaucracy_research_speed_factor = 0 }
+#			check_variable = { ETH_bureaucracy_production_speed_buildings_factor = 0 }
+#			check_variable = { ETH_bureaucracy_production_factory_max_efficiency_factor = 0 }
+#		}
+#		# No need to show, as it will then pop up in every place where it might have been used 
+#		hidden_effect = {
+#			remove_dynamic_modifier = { modifier = ETH_corrupt_bureaucracy_dynamic_modifier } 
+#		}
+#	}
+#}
 
 ETH_random_character = {
 	random_character = {
@@ -214,231 +214,231 @@ ETH_random_general_male_only = {
 #		}
 #}
 
-ETH_improve_army_spirit_effect = {
-	add_to_variable = { ETH_army_improvements = 1 }
-	IF = {
-		limit = {
-			check_variable = { ETH_army_improvements > 1 }
-			has_dynamic_modifier = {
-				modifier = ETH_army_1_dynamic_modifier
-			}
-		}
-		hidden_effect = {
-			remove_dynamic_modifier = { modifier = ETH_army_1_dynamic_modifier }
-			add_dynamic_modifier = {
-				modifier = ETH_army_2_dynamic_modifier
-			}
-			# Fake update to get the other ones in the correct place 
-			# Navy
-			IF = {
-				limit = {
-					has_dynamic_modifier = { modifier = ETH_navy_1_dynamic_modifier	}
-				}
-				remove_dynamic_modifier = { modifier = ETH_navy_1_dynamic_modifier }
-				add_dynamic_modifier = { modifier = ETH_navy_1_dynamic_modifier }
-			}
-			ELSE_IF = {
-				limit = {
-					has_dynamic_modifier = { modifier = ETH_navy_2_dynamic_modifier	}
-				}
-				remove_dynamic_modifier = { modifier = ETH_navy_2_dynamic_modifier }
-				add_dynamic_modifier = { modifier = ETH_navy_2_dynamic_modifier }
-			}
-			ELSE_IF = {
-				limit = {
-					has_dynamic_modifier = { modifier = ETH_navy_3_dynamic_modifier	}
-				}
-				remove_dynamic_modifier = { modifier = ETH_navy_3_dynamic_modifier }
-				add_dynamic_modifier = { modifier = ETH_navy_3_dynamic_modifier }
-			}
-			# Airforce
-			IF = {
-				limit = {
-					has_dynamic_modifier = { modifier = ETH_airforce_1_dynamic_modifier	}
-				}
-				remove_dynamic_modifier = { modifier = ETH_airforce_1_dynamic_modifier }
-				add_dynamic_modifier = { modifier = ETH_airforce_1_dynamic_modifier }
-			}
-			ELSE_IF = {
-				limit = {
-					has_dynamic_modifier = { modifier = ETH_airforce_2_dynamic_modifier	}
-				}
-				remove_dynamic_modifier = { modifier = ETH_airforce_2_dynamic_modifier }
-				add_dynamic_modifier = { modifier = ETH_airforce_2_dynamic_modifier }
-			}
-			ELSE_IF = {
-				limit = {
-					has_dynamic_modifier = { modifier = ETH_airforce_3_dynamic_modifier	}
-				}
-				remove_dynamic_modifier = { modifier = ETH_airforce_3_dynamic_modifier }
-				add_dynamic_modifier = { modifier = ETH_airforce_3_dynamic_modifier }
-			}
-		}
-	}
-	ELSE_IF = {
-		limit = {
-			check_variable = { ETH_army_improvements > 3 }
-			has_dynamic_modifier = {
-				modifier = ETH_army_2_dynamic_modifier
-			}
-		}
-		hidden_effect = {
-			remove_dynamic_modifier = { modifier = ETH_army_2_dynamic_modifier }
-			add_dynamic_modifier = { modifier = ETH_army_3_dynamic_modifier	}
-			# Fake update to get the other ones in the correct place 
-			# Navy
-			IF = {
-				limit = {
-					has_dynamic_modifier = { modifier = ETH_navy_1_dynamic_modifier	}
-				}
-				remove_dynamic_modifier = { modifier = ETH_navy_1_dynamic_modifier }
-				add_dynamic_modifier = { modifier = ETH_navy_1_dynamic_modifier }
-			}
-			ELSE_IF = {
-				limit = {
-					has_dynamic_modifier = { modifier = ETH_navy_2_dynamic_modifier	}
-				}
-				remove_dynamic_modifier = { modifier = ETH_navy_2_dynamic_modifier }
-				add_dynamic_modifier = { modifier = ETH_navy_2_dynamic_modifier }
-			}
-			ELSE_IF = {
-				limit = {
-					has_dynamic_modifier = { modifier = ETH_navy_3_dynamic_modifier	}
-				}
-				remove_dynamic_modifier = { modifier = ETH_navy_3_dynamic_modifier }
-				add_dynamic_modifier = { modifier = ETH_navy_3_dynamic_modifier }
-			}
-			# Airforce
-			IF = {
-				limit = {
-					has_dynamic_modifier = { modifier = ETH_airforce_1_dynamic_modifier	}
-				}
-				remove_dynamic_modifier = { modifier = ETH_airforce_1_dynamic_modifier }
-				add_dynamic_modifier = { modifier = ETH_airforce_1_dynamic_modifier }
-			}
-			ELSE_IF = {
-				limit = {
-					has_dynamic_modifier = { modifier = ETH_airforce_2_dynamic_modifier	}
-				}
-				remove_dynamic_modifier = { modifier = ETH_airforce_2_dynamic_modifier }
-				add_dynamic_modifier = { modifier = ETH_airforce_2_dynamic_modifier }
-			}
-			ELSE_IF = {
-				limit = {
-					has_dynamic_modifier = { modifier = ETH_airforce_3_dynamic_modifier	}
-				}
-				remove_dynamic_modifier = { modifier = ETH_airforce_3_dynamic_modifier }
-				add_dynamic_modifier = { modifier = ETH_airforce_3_dynamic_modifier }
-			}
-		}
-	}
-}
-ETH_improve_navy_spirit_effect = {
-	add_to_variable = { ETH_navy_improvements = 1 }
-	IF = {
-		limit = {
-			check_variable = { ETH_navy_improvements > 1 }
-			has_dynamic_modifier = {
-				modifier = ETH_navy_1_dynamic_modifier
-			}
-		}
-		hidden_effect = {
-			remove_dynamic_modifier = { modifier = ETH_navy_1_dynamic_modifier }
-			add_dynamic_modifier = { modifier = ETH_navy_2_dynamic_modifier }
-			# Fake update to get the other ones in the correct place 
-			# Airforce
-			IF = {
-				limit = {
-					has_dynamic_modifier = { modifier = ETH_airforce_1_dynamic_modifier	}
-				}
-				remove_dynamic_modifier = { modifier = ETH_airforce_1_dynamic_modifier }
-				add_dynamic_modifier = { modifier = ETH_airforce_1_dynamic_modifier }
-			}
-			ELSE_IF = {
-				limit = {
-					has_dynamic_modifier = { modifier = ETH_airforce_2_dynamic_modifier	}
-				}
-				remove_dynamic_modifier = { modifier = ETH_airforce_2_dynamic_modifier }
-				add_dynamic_modifier = { modifier = ETH_airforce_2_dynamic_modifier }
-			}
-			ELSE_IF = {
-				limit = {
-					has_dynamic_modifier = { modifier = ETH_airforce_3_dynamic_modifier	}
-				}
-				remove_dynamic_modifier = { modifier = ETH_airforce_3_dynamic_modifier }
-				add_dynamic_modifier = { modifier = ETH_airforce_3_dynamic_modifier }
-			}
-		}
-	}
-	ELSE_IF = {
-		limit = {
-			check_variable = { ETH_navy_improvements > 3 }
-			has_dynamic_modifier = {
-				modifier = ETH_navy_2_dynamic_modifier
-			}
-		}
-		hidden_effect = {
-			remove_dynamic_modifier = { modifier = ETH_navy_2_dynamic_modifier }
-			add_dynamic_modifier = {
-				modifier = ETH_navy_3_dynamic_modifier
-			}
-			# Fake update to get the other ones in the correct place 
-			# Airforce
-			IF = {
-				limit = {
-					has_dynamic_modifier = { modifier = ETH_airforce_1_dynamic_modifier	}
-				}
-				remove_dynamic_modifier = { modifier = ETH_airforce_1_dynamic_modifier }
-				add_dynamic_modifier = { modifier = ETH_airforce_1_dynamic_modifier }
-			}
-			ELSE_IF = {
-				limit = {
-					has_dynamic_modifier = { modifier = ETH_airforce_2_dynamic_modifier	}
-				}
-				remove_dynamic_modifier = { modifier = ETH_airforce_2_dynamic_modifier }
-				add_dynamic_modifier = { modifier = ETH_airforce_2_dynamic_modifier }
-			}
-			ELSE_IF = {
-				limit = {
-					has_dynamic_modifier = { modifier = ETH_airforce_3_dynamic_modifier	}
-				}
-				remove_dynamic_modifier = { modifier = ETH_airforce_3_dynamic_modifier }
-				add_dynamic_modifier = { modifier = ETH_airforce_3_dynamic_modifier }
-			}
-		}
-	}
-}
-ETH_improve_airforce_spirit_effect = {
-	add_to_variable = { ETH_airforce_improvements = 1 }
-	IF = {
-		limit = {
-			check_variable = { ETH_airforce_improvements > 1 }
-			has_dynamic_modifier = {
-				modifier = ETH_airforce_1_dynamic_modifier
-			}
-		}
-		hidden_effect = {
-			remove_dynamic_modifier = { modifier = ETH_airforce_1_dynamic_modifier }
-			add_dynamic_modifier = {
-				modifier = ETH_airforce_2_dynamic_modifier
-			}
-		}
-	}
-	ELSE_IF = {
-		limit = {
-			check_variable = { ETH_airforce_improvements > 3 }
-			has_dynamic_modifier = {
-				modifier = ETH_airforce_2_dynamic_modifier
-			}
-		}
-		hidden_effect = {
-			remove_dynamic_modifier = { modifier = ETH_airforce_2_dynamic_modifier }
-			add_dynamic_modifier = {
-				modifier = ETH_airforce_3_dynamic_modifier
-			}
-		}
-	}
-}
+#ETH_improve_army_spirit_effect = {
+#	add_to_variable = { ETH_army_improvements = 1 }
+#	IF = {
+#		limit = {
+#			check_variable = { ETH_army_improvements > 1 }
+#			has_dynamic_modifier = {
+#				modifier = ETH_army_1_dynamic_modifier
+#			}
+#		}
+#		hidden_effect = {
+#			remove_dynamic_modifier = { modifier = ETH_army_1_dynamic_modifier }
+#			add_dynamic_modifier = {
+#				modifier = ETH_army_2_dynamic_modifier
+#			}
+#			# Fake update to get the other ones in the correct place 
+#			# Navy
+#			IF = {
+#				limit = {
+#					has_dynamic_modifier = { modifier = ETH_navy_1_dynamic_modifier	}
+#				}
+#				remove_dynamic_modifier = { modifier = ETH_navy_1_dynamic_modifier }
+#				add_dynamic_modifier = { modifier = ETH_navy_1_dynamic_modifier }
+#			}
+#			ELSE_IF = {
+#				limit = {
+#					has_dynamic_modifier = { modifier = ETH_navy_2_dynamic_modifier	}
+#				}
+#				remove_dynamic_modifier = { modifier = ETH_navy_2_dynamic_modifier }
+#				add_dynamic_modifier = { modifier = ETH_navy_2_dynamic_modifier }
+#			}
+#			ELSE_IF = {
+#				limit = {
+#					has_dynamic_modifier = { modifier = ETH_navy_3_dynamic_modifier	}
+#				}
+#				remove_dynamic_modifier = { modifier = ETH_navy_3_dynamic_modifier }
+#				add_dynamic_modifier = { modifier = ETH_navy_3_dynamic_modifier }
+#			}
+#			# Airforce
+#			IF = {
+#				limit = {
+#					has_dynamic_modifier = { modifier = ETH_airforce_1_dynamic_modifier	}
+#				}
+#				remove_dynamic_modifier = { modifier = ETH_airforce_1_dynamic_modifier }
+#				add_dynamic_modifier = { modifier = ETH_airforce_1_dynamic_modifier }
+#			}
+#			ELSE_IF = {
+#				limit = {
+#					has_dynamic_modifier = { modifier = ETH_airforce_2_dynamic_modifier	}
+#				}
+#				remove_dynamic_modifier = { modifier = ETH_airforce_2_dynamic_modifier }
+#				add_dynamic_modifier = { modifier = ETH_airforce_2_dynamic_modifier }
+#			}
+#			ELSE_IF = {
+#				limit = {
+#					has_dynamic_modifier = { modifier = ETH_airforce_3_dynamic_modifier	}
+#				}
+#				remove_dynamic_modifier = { modifier = ETH_airforce_3_dynamic_modifier }
+#				add_dynamic_modifier = { modifier = ETH_airforce_3_dynamic_modifier }
+#			}
+#		}
+#	}
+#	ELSE_IF = {
+#		limit = {
+#			check_variable = { ETH_army_improvements > 3 }
+#			has_dynamic_modifier = {
+#				modifier = ETH_army_2_dynamic_modifier
+#			}
+#		}
+#		hidden_effect = {
+#			remove_dynamic_modifier = { modifier = ETH_army_2_dynamic_modifier }
+#			add_dynamic_modifier = { modifier = ETH_army_3_dynamic_modifier	}
+#			# Fake update to get the other ones in the correct place 
+#			# Navy
+#			IF = {
+#				limit = {
+#					has_dynamic_modifier = { modifier = ETH_navy_1_dynamic_modifier	}
+#				}
+#				remove_dynamic_modifier = { modifier = ETH_navy_1_dynamic_modifier }
+#				add_dynamic_modifier = { modifier = ETH_navy_1_dynamic_modifier }
+#			}
+#			ELSE_IF = {
+#				limit = {
+#					has_dynamic_modifier = { modifier = ETH_navy_2_dynamic_modifier	}
+#				}
+#				remove_dynamic_modifier = { modifier = ETH_navy_2_dynamic_modifier }
+#				add_dynamic_modifier = { modifier = ETH_navy_2_dynamic_modifier }
+#			}
+#			ELSE_IF = {
+#				limit = {
+#					has_dynamic_modifier = { modifier = ETH_navy_3_dynamic_modifier	}
+#				}
+#				remove_dynamic_modifier = { modifier = ETH_navy_3_dynamic_modifier }
+#				add_dynamic_modifier = { modifier = ETH_navy_3_dynamic_modifier }
+#			}
+#			# Airforce
+#			IF = {
+#				limit = {
+#					has_dynamic_modifier = { modifier = ETH_airforce_1_dynamic_modifier	}
+#				}
+#				remove_dynamic_modifier = { modifier = ETH_airforce_1_dynamic_modifier }
+#				add_dynamic_modifier = { modifier = ETH_airforce_1_dynamic_modifier }
+#			}
+#			ELSE_IF = {
+#				limit = {
+#					has_dynamic_modifier = { modifier = ETH_airforce_2_dynamic_modifier	}
+#				}
+#				remove_dynamic_modifier = { modifier = ETH_airforce_2_dynamic_modifier }
+#				add_dynamic_modifier = { modifier = ETH_airforce_2_dynamic_modifier }
+#			}
+#			ELSE_IF = {
+#				limit = {
+#					has_dynamic_modifier = { modifier = ETH_airforce_3_dynamic_modifier	}
+#				}
+#				remove_dynamic_modifier = { modifier = ETH_airforce_3_dynamic_modifier }
+#				add_dynamic_modifier = { modifier = ETH_airforce_3_dynamic_modifier }
+#			}
+#		}
+#	}
+#}
+#ETH_improve_navy_spirit_effect = {
+#	add_to_variable = { ETH_navy_improvements = 1 }
+#	IF = {
+#		limit = {
+#			check_variable = { ETH_navy_improvements > 1 }
+#			has_dynamic_modifier = {
+#				modifier = ETH_navy_1_dynamic_modifier
+#			}
+#		}
+#		hidden_effect = {
+#			remove_dynamic_modifier = { modifier = ETH_navy_1_dynamic_modifier }
+#			add_dynamic_modifier = { modifier = ETH_navy_2_dynamic_modifier }
+#			# Fake update to get the other ones in the correct place 
+#			# Airforce
+#			IF = {
+#				limit = {
+#					has_dynamic_modifier = { modifier = ETH_airforce_1_dynamic_modifier	}
+#				}
+#				remove_dynamic_modifier = { modifier = ETH_airforce_1_dynamic_modifier }
+#				add_dynamic_modifier = { modifier = ETH_airforce_1_dynamic_modifier }
+#			}
+#			ELSE_IF = {
+#				limit = {
+#					has_dynamic_modifier = { modifier = ETH_airforce_2_dynamic_modifier	}
+#				}
+#				remove_dynamic_modifier = { modifier = ETH_airforce_2_dynamic_modifier }
+#				add_dynamic_modifier = { modifier = ETH_airforce_2_dynamic_modifier }
+#			}
+#			ELSE_IF = {
+#				limit = {
+#					has_dynamic_modifier = { modifier = ETH_airforce_3_dynamic_modifier	}
+#				}
+#				remove_dynamic_modifier = { modifier = ETH_airforce_3_dynamic_modifier }
+#				add_dynamic_modifier = { modifier = ETH_airforce_3_dynamic_modifier }
+#			}
+#		}
+#	}
+#	ELSE_IF = {
+#		limit = {
+#			check_variable = { ETH_navy_improvements > 3 }
+#			has_dynamic_modifier = {
+#				modifier = ETH_navy_2_dynamic_modifier
+#			}
+#		}
+#		hidden_effect = {
+#			remove_dynamic_modifier = { modifier = ETH_navy_2_dynamic_modifier }
+#			add_dynamic_modifier = {
+#				modifier = ETH_navy_3_dynamic_modifier
+#			}
+#			# Fake update to get the other ones in the correct place 
+#			# Airforce
+#			IF = {
+#				limit = {
+#					has_dynamic_modifier = { modifier = ETH_airforce_1_dynamic_modifier	}
+#				}
+#				remove_dynamic_modifier = { modifier = ETH_airforce_1_dynamic_modifier }
+#				add_dynamic_modifier = { modifier = ETH_airforce_1_dynamic_modifier }
+#			}
+#			ELSE_IF = {
+#				limit = {
+#					has_dynamic_modifier = { modifier = ETH_airforce_2_dynamic_modifier	}
+#				}
+#				remove_dynamic_modifier = { modifier = ETH_airforce_2_dynamic_modifier }
+#				add_dynamic_modifier = { modifier = ETH_airforce_2_dynamic_modifier }
+#			}
+#			ELSE_IF = {
+#				limit = {
+#					has_dynamic_modifier = { modifier = ETH_airforce_3_dynamic_modifier	}
+#				}
+#				remove_dynamic_modifier = { modifier = ETH_airforce_3_dynamic_modifier }
+#				add_dynamic_modifier = { modifier = ETH_airforce_3_dynamic_modifier }
+#			}
+#		}
+#	}
+#}
+#ETH_improve_airforce_spirit_effect = {
+#	add_to_variable = { ETH_airforce_improvements = 1 }
+#	IF = {
+#		limit = {
+#			check_variable = { ETH_airforce_improvements > 1 }
+#			has_dynamic_modifier = {
+#				modifier = ETH_airforce_1_dynamic_modifier
+#			}
+#		}
+#		hidden_effect = {
+#			remove_dynamic_modifier = { modifier = ETH_airforce_1_dynamic_modifier }
+#			add_dynamic_modifier = {
+#				modifier = ETH_airforce_2_dynamic_modifier
+#			}
+#		}
+#	}
+#	ELSE_IF = {
+#		limit = {
+#			check_variable = { ETH_airforce_improvements > 3 }
+#			has_dynamic_modifier = {
+#				modifier = ETH_airforce_2_dynamic_modifier
+#			}
+#		}
+#		hidden_effect = {
+#			remove_dynamic_modifier = { modifier = ETH_airforce_2_dynamic_modifier }
+#			add_dynamic_modifier = {
+#				modifier = ETH_airforce_3_dynamic_modifier
+#			}
+#		}
+#	}
+#}
 
 
 ETH_upgrade_state_category = {
@@ -710,292 +710,292 @@ ETH_set_up_middle_east_resistance_states = {
 	}
 }
 
-ETH_create_federation = {
-	hidden_effect = {
-		every_owned_state = {
-			limit = {
-				has_dynamic_modifier = {
-					modifier = ETH_state_decentralization_dynamic_modifier
-					scope = ROOT 
-				}
-			}
-			remove_dynamic_modifier = { modifier = ETH_state_decentralization_dynamic_modifier } 
-		}
-		# Doing this one by one rather than "every_country" to manage state core overlaps in the "right" way
-		IF = {
-			limit = { HAR = { exists = no } any_owned_state = {is_core_of = HAR }}
-			every_owned_state = {
-				limit = {
-					is_core_of = HAR 
-				}
-				HAR = {
-					transfer_state = PREV 
-				}
-			
-			}
-			IF = {
-				limit = { has_dlc = "Together for Victory" }
-				set_autonomy = {
-					target = HAR
-					autonomy_state = autonomy_integrated_puppet
-					freedom_level = 0.2
-					end_wars = no
-					end_civil_wars = no
-				}
-			}
-			ELSE = {
-				puppet = HAR
-			}
-			HAR = { set_cosmetic_tag = ETH_Ethiopian_Federation }
-		}
-		IF = {
-			limit = { TIG = { exists = no } any_owned_state = {is_core_of = TIG }}
-			every_owned_state = {
-				limit = {
-					is_core_of = TIG 
-				}
-				TIG = {
-					transfer_state = PREV 
-				}
-			}
-			IF = {
-				limit = { has_dlc = "Together for Victory" }
-				set_autonomy = {
-					target = TIG
-					autonomy_state = autonomy_integrated_puppet
-					freedom_level = 0.2
-					end_wars = no
-					end_civil_wars = no
-				}
-			}
-			ELSE = {
-				puppet = TIG
-			}
-			TIG = { set_cosmetic_tag = ETH_Ethiopian_Federation }
-		}
-		IF = {
-			limit = { AFA = { exists = no }any_owned_state = {is_core_of = AFA }}
-			every_owned_state = {
-				limit = {
-					is_core_of = AFA 
-				}
-				AFA = {
-					transfer_state = PREV 
-				}
-			}
-			IF = {
-				limit = { has_dlc = "Together for Victory" }
-				set_autonomy = {
-					target = AFA
-					autonomy_state = autonomy_integrated_puppet
-					freedom_level = 0.2
-					end_wars = no
-					end_civil_wars = no
-				}
-			}
-			ELSE = {
-				puppet = AFA
-			}
-			AFA = { set_cosmetic_tag = ETH_Ethiopian_Federation }
-		}
-		IF = {
-			limit = { BEG = { exists = no }any_owned_state = {is_core_of = BEG }}
-			every_owned_state = {
-				limit = {
-					is_core_of = BEG 
-				}
-				BEG = {
-					transfer_state = PREV 
-				}
-			}
-			IF = {
-				limit = { has_dlc = "Together for Victory" }
-				set_autonomy = {
-					target = BEG
-					autonomy_state = autonomy_integrated_puppet
-					freedom_level = 0.2
-					end_wars = no
-					end_civil_wars = no
-				}
-			}
-			ELSE = {
-				puppet = BEG
-			}
-			BEG = { set_cosmetic_tag = ETH_Ethiopian_Federation }
-		}
-		IF = {
-			limit = { GBA = { exists = no } any_owned_state = {is_core_of = GBA }}
-			every_owned_state = {
-				limit = {
-					is_core_of = GBA 
-				}
-				GBA = {
-					transfer_state = PREV 
-				}
-			}
-			IF = {
-				limit = { has_dlc = "Together for Victory" }
-				set_autonomy = {
-					target = GBA
-					autonomy_state = autonomy_integrated_puppet
-					freedom_level = 0.2
-					end_wars = no
-					end_civil_wars = no
-				}
-			}
-			ELSE = {
-				puppet = GBA
-			}
-			GBA = { set_cosmetic_tag = ETH_Ethiopian_Federation }
-		}
-		IF = {
-			limit = { SID = { exists = no } any_owned_state = {is_core_of = SID }}
-			every_owned_state = {
-				limit = {
-					is_core_of = SID 
-				}
-				SID = {
-					transfer_state = PREV 
-				}
-			}
-			IF = {
-				limit = { has_dlc = "Together for Victory" }
-				set_autonomy = {
-					target = SID
-					autonomy_state = autonomy_integrated_puppet
-					freedom_level = 0.2
-					end_wars = no
-					end_civil_wars = no
-				}
-			}
-			ELSE = {
-				puppet = SID
-			}
-			SID = { set_cosmetic_tag = ETH_Ethiopian_Federation }
-		}
-		IF = {
-			limit = { QEM = { exists = no }any_owned_state = {is_core_of = QEM }}	
-			every_owned_state = {
-				limit = {
-					is_core_of = QEM 
-				}
-				QEM = {
-					transfer_state = PREV 
-				}
-			}
-			IF = {
-				limit = { has_dlc = "Together for Victory" }
-				set_autonomy = {
-					target = QEM
-					autonomy_state = autonomy_integrated_puppet
-					freedom_level = 0.2
-					end_wars = no
-					end_civil_wars = no
-				}
-			}
-			ELSE = {
-				puppet = QEM
-			}
-			QEM = { set_cosmetic_tag = ETH_Ethiopian_Federation }
-		}
-		IF = {
-			limit = { ORO = { exists = no } any_owned_state = {is_core_of = ORO }}
-			every_owned_state = {
-				limit = {
-					is_core_of = ORO 
-					NOT = { state = 271 } # Avoid transferring Addis
-				}
-				ORO = {
-					transfer_state = PREV 
-				}
-			}
-			IF = {
-				limit = { has_dlc = "Together for Victory" }
-				set_autonomy = {
-					target = ORO
-					autonomy_state = autonomy_integrated_puppet
-					freedom_level = 0.2
-					end_wars = no
-					end_civil_wars = no
-				}
-			}
-			ELSE = {
-				puppet = ORO
-			}
-			ORO = { set_cosmetic_tag = ETH_Ethiopian_Federation }
-		}
-		IF = {
-			limit = { SOM = { exists = no }any_owned_state = {is_core_of = SOM }}
-			every_owned_state = {
-				limit = {
-					is_core_of = SOM 
-				}
-				SOM = {
-					transfer_state = PREV 
-				}
-			}
-			IF = {
-				limit = { has_dlc = "Together for Victory" }
-				set_autonomy = {
-					target = SOM
-					autonomy_state = autonomy_integrated_puppet
-					freedom_level = 0.2
-					end_wars = no
-					end_civil_wars = no
-				}
-			}
-			ELSE = {
-				puppet = SOM
-			}
-			SOM = { set_cosmetic_tag = ETH_Ethiopian_Federation }
-		}
-		IF = {
-			limit = { ERI = { exists = no } any_owned_state = {is_core_of = ERI }}
-			every_owned_state = {
-				limit = {
-					is_core_of = ERI 
-				}
-				ERI = {
-					transfer_state = PREV 
-				}
-			}
-			IF = {
-				limit = { has_dlc = "Together for Victory" }
-				set_autonomy = {
-					target = ERI
-					autonomy_state = autonomy_integrated_puppet
-					freedom_level = 0.2
-					end_wars = no
-					end_civil_wars = no
-				}
-			}
-			ELSE = {
-				puppet = ERI
-			}
-			ERI = { set_cosmetic_tag = ETH_Ethiopian_Federation }
-		}
-		every_other_country = {
-			limit = {
-				has_cosmetic_tag = ETH_Ethiopian_Federation
-			}
-			random_owned_controlled_state = {
-				limit = {
-					free_building_slots = {
-						building = industrial_complex
-						size > 0
-						include_locked = yes
-					}
-				}
-				add_extra_state_shared_building_slots = 1
-				add_building_construction = {
-					type = industrial_complex
-					level = 1
-					instant_build = yes
-				}
-			}
-		}
-	}
-}
+#ETH_create_federation = {
+#	hidden_effect = {
+#		every_owned_state = {
+#			limit = {
+#				has_dynamic_modifier = {
+#					modifier = ETH_state_decentralization_dynamic_modifier
+#					scope = ROOT 
+#				}
+#			}
+#			remove_dynamic_modifier = { modifier = ETH_state_decentralization_dynamic_modifier } 
+#		}
+#		# Doing this one by one rather than "every_country" to manage state core overlaps in the "right" way
+#		IF = {
+#			limit = { HAR = { exists = no } any_owned_state = {is_core_of = HAR }}
+#			every_owned_state = {
+#				limit = {
+#					is_core_of = HAR 
+#				}
+#				HAR = {
+#					transfer_state = PREV 
+#				}
+#			
+#			}
+#			IF = {
+#				limit = { has_dlc = "Together for Victory" }
+#				set_autonomy = {
+#					target = HAR
+#					autonomy_state = autonomy_integrated_puppet
+#					freedom_level = 0.2
+#					end_wars = no
+#					end_civil_wars = no
+#				}
+#			}
+#			ELSE = {
+#				puppet = HAR
+#			}
+#			HAR = { set_cosmetic_tag = ETH_Ethiopian_Federation }
+#		}
+#		IF = {
+#			limit = { TIG = { exists = no } any_owned_state = {is_core_of = TIG }}
+#			every_owned_state = {
+#				limit = {
+#					is_core_of = TIG 
+#				}
+#				TIG = {
+#					transfer_state = PREV 
+#				}
+#			}
+#			IF = {
+#				limit = { has_dlc = "Together for Victory" }
+#				set_autonomy = {
+#					target = TIG
+#					autonomy_state = autonomy_integrated_puppet
+#					freedom_level = 0.2
+#					end_wars = no
+#					end_civil_wars = no
+#				}
+#			}
+#			ELSE = {
+#				puppet = TIG
+#			}
+#			TIG = { set_cosmetic_tag = ETH_Ethiopian_Federation }
+#		}
+#		IF = {
+#			limit = { AFA = { exists = no }any_owned_state = {is_core_of = AFA }}
+#			every_owned_state = {
+#				limit = {
+#					is_core_of = AFA 
+#				}
+#				AFA = {
+#					transfer_state = PREV 
+#				}
+#			}
+#			IF = {
+#				limit = { has_dlc = "Together for Victory" }
+#				set_autonomy = {
+#					target = AFA
+#					autonomy_state = autonomy_integrated_puppet
+#					freedom_level = 0.2
+#					end_wars = no
+#					end_civil_wars = no
+#				}
+#			}
+#			ELSE = {
+#				puppet = AFA
+#			}
+#			AFA = { set_cosmetic_tag = ETH_Ethiopian_Federation }
+#		}
+#		IF = {
+#			limit = { BEG = { exists = no }any_owned_state = {is_core_of = BEG }}
+#			every_owned_state = {
+#				limit = {
+#					is_core_of = BEG 
+#				}
+#				BEG = {
+#					transfer_state = PREV 
+#				}
+#			}
+#			IF = {
+#				limit = { has_dlc = "Together for Victory" }
+#				set_autonomy = {
+#					target = BEG
+#					autonomy_state = autonomy_integrated_puppet
+#					freedom_level = 0.2
+#					end_wars = no
+#					end_civil_wars = no
+#				}
+#			}
+#			ELSE = {
+#				puppet = BEG
+#			}
+#			BEG = { set_cosmetic_tag = ETH_Ethiopian_Federation }
+#		}
+#		IF = {
+#			limit = { GBA = { exists = no } any_owned_state = {is_core_of = GBA }}
+#			every_owned_state = {
+#				limit = {
+#					is_core_of = GBA 
+#				}
+#				GBA = {
+#					transfer_state = PREV 
+#				}
+#			}
+#			IF = {
+#				limit = { has_dlc = "Together for Victory" }
+#				set_autonomy = {
+#					target = GBA
+#					autonomy_state = autonomy_integrated_puppet
+#					freedom_level = 0.2
+#					end_wars = no
+#					end_civil_wars = no
+#				}
+#			}
+#			ELSE = {
+#				puppet = GBA
+#			}
+#			GBA = { set_cosmetic_tag = ETH_Ethiopian_Federation }
+#		}
+#		IF = {
+#			limit = { SID = { exists = no } any_owned_state = {is_core_of = SID }}
+#			every_owned_state = {
+#				limit = {
+#					is_core_of = SID 
+#				}
+#				SID = {
+#					transfer_state = PREV 
+#				}
+#			}
+#			IF = {
+#				limit = { has_dlc = "Together for Victory" }
+#				set_autonomy = {
+#					target = SID
+#					autonomy_state = autonomy_integrated_puppet
+#					freedom_level = 0.2
+#					end_wars = no
+#					end_civil_wars = no
+#				}
+#			}
+#			ELSE = {
+#				puppet = SID
+#			}
+#			SID = { set_cosmetic_tag = ETH_Ethiopian_Federation }
+#		}
+#		IF = {
+#			limit = { QEM = { exists = no }any_owned_state = {is_core_of = QEM }}	
+#			every_owned_state = {
+#				limit = {
+#					is_core_of = QEM 
+#				}
+#				QEM = {
+#					transfer_state = PREV 
+#				}
+#			}
+#			IF = {
+#				limit = { has_dlc = "Together for Victory" }
+#				set_autonomy = {
+#					target = QEM
+#					autonomy_state = autonomy_integrated_puppet
+#					freedom_level = 0.2
+#					end_wars = no
+#					end_civil_wars = no
+#				}
+#			}
+#			ELSE = {
+#				puppet = QEM
+#			}
+#			QEM = { set_cosmetic_tag = ETH_Ethiopian_Federation }
+#		}
+#		IF = {
+#			limit = { ORO = { exists = no } any_owned_state = {is_core_of = ORO }}
+#			every_owned_state = {
+#				limit = {
+#					is_core_of = ORO 
+#					NOT = { state = 271 } # Avoid transferring Addis
+#				}
+#				ORO = {
+#					transfer_state = PREV 
+#				}
+#			}
+#			IF = {
+#				limit = { has_dlc = "Together for Victory" }
+#				set_autonomy = {
+#					target = ORO
+#					autonomy_state = autonomy_integrated_puppet
+#					freedom_level = 0.2
+#					end_wars = no
+#					end_civil_wars = no
+#				}
+#			}
+#			ELSE = {
+#				puppet = ORO
+#			}
+#			ORO = { set_cosmetic_tag = ETH_Ethiopian_Federation }
+#		}
+#		IF = {
+#			limit = { SOM = { exists = no }any_owned_state = {is_core_of = SOM }}
+#			every_owned_state = {
+#				limit = {
+#					is_core_of = SOM 
+#				}
+#				SOM = {
+#					transfer_state = PREV 
+#				}
+#			}
+#			IF = {
+#				limit = { has_dlc = "Together for Victory" }
+#				set_autonomy = {
+#					target = SOM
+#					autonomy_state = autonomy_integrated_puppet
+#					freedom_level = 0.2
+#					end_wars = no
+#					end_civil_wars = no
+#				}
+#			}
+#			ELSE = {
+#				puppet = SOM
+#			}
+#			SOM = { set_cosmetic_tag = ETH_Ethiopian_Federation }
+#		}
+#		IF = {
+#			limit = { ERI = { exists = no } any_owned_state = {is_core_of = ERI }}
+#			every_owned_state = {
+#				limit = {
+#					is_core_of = ERI 
+#				}
+#				ERI = {
+#					transfer_state = PREV 
+#				}
+#			}
+#			IF = {
+#				limit = { has_dlc = "Together for Victory" }
+#				set_autonomy = {
+#					target = ERI
+#					autonomy_state = autonomy_integrated_puppet
+#					freedom_level = 0.2
+#					end_wars = no
+#					end_civil_wars = no
+#				}
+#			}
+#			ELSE = {
+#				puppet = ERI
+#			}
+#			ERI = { set_cosmetic_tag = ETH_Ethiopian_Federation }
+#		}
+#		every_other_country = {
+#			limit = {
+#				has_cosmetic_tag = ETH_Ethiopian_Federation
+#			}
+#			random_owned_controlled_state = {
+#				limit = {
+#					free_building_slots = {
+#						building = industrial_complex
+#						size > 0
+#						include_locked = yes
+#					}
+#				}
+#				add_extra_state_shared_building_slots = 1
+#				add_building_construction = {
+#					type = industrial_complex
+#					level = 1
+#					instant_build = yes
+#				}
+#			}
+#		}
+#	}
+#}
 
 # make Hailu Tekle hayamot Party Leader
 ETH_promote_ETH_hailu_tekle_haymanot = {
@@ -1587,32 +1587,32 @@ ETH_get_ships_from_country = { #MOved this here from event in ETH. This works wi
 	}
 }
 
-ETH_transfer_promised_states = {
-	for_each_scope_loop = {
-		array = ETH.ETH_promised_states_array	
-		IF = { 
-			limit = {
-				owner = {
-					tag = ETH
-				}
-			}
-			remove_dynamic_modifier = { modifier = ETH_arranged_expansion_modifier } 
-		}
-		# If states are taken by e.g. host nation in the peace conference, transfer them to Ethiopia (to deal with cases where they come frmom a country that Ethiopia is not at war with)
-		ELSE_IF = {
-			limit = {
-				owner = {
-					OR = {
-						is_in_faction_with = ETH
-						ETH = { is_subject_of = PREV }  
-						check_variable = { ETH.host_nation = THIS }
-					}
-				}
-			}
-			ETH = { 
-				transfer_state = PREV 
-			}
-			remove_dynamic_modifier = { modifier = ETH_arranged_expansion_modifier } 
-		}
-	}
-}
+#ETH_transfer_promised_states = {
+#	for_each_scope_loop = {
+#		array = ETH.ETH_promised_states_array	
+#		IF = { 
+#			limit = {
+#				owner = {
+#					tag = ETH
+#				}
+#			}
+#			remove_dynamic_modifier = { modifier = ETH_arranged_expansion_modifier } 
+#		}
+#		# If states are taken by e.g. host nation in the peace conference, transfer them to Ethiopia (to deal with cases where they come frmom a country that Ethiopia is not at war with)
+#		ELSE_IF = {
+#			limit = {
+#				owner = {
+#					OR = {
+#						is_in_faction_with = ETH
+#						ETH = { is_subject_of = PREV }  
+#						check_variable = { ETH.host_nation = THIS }
+#					}
+#				}
+#			}
+#			ETH = { 
+#				transfer_state = PREV 
+#			}
+#			remove_dynamic_modifier = { modifier = ETH_arranged_expansion_modifier } 
+#		}
+#	}
+#}
