@@ -1532,12 +1532,80 @@ technologies = {
 			research_cost_coeff = 1
 		}
 
+		path = {
+			leads_to_tech = eng_sherman_1
+			research_cost_coeff = 1
+		}
+
 		research_cost = 2.5
 		start_year = 1943
 		
 		folder = {
 			name = eng_armour_folder
 			position = { x = 2 y = 16 }
+		}
+
+		ai_will_do = {
+			factor = 4
+			modifier = {
+				factor = 0
+				date < "1943.1.1"
+			}
+			modifier = {
+				factor = 40
+				date > "1943.1.1"
+			}
+			
+			modifier = {
+				factor = 40
+				date > "1944.1.1"
+			}
+			
+			modifier = {
+				factor = 40
+				date > "1945.1.1"
+			}
+			
+			modifier = {
+				factor = 0
+				NOT = {
+					OR = {
+						original_tag = ENG
+						has_country_flag = british_technologies_tree_flag
+					}
+				}
+			}
+		}
+		
+		categories = {
+			major_technologies
+			armor
+			mio_cat_tech_all_armor_and_modules
+			cat_medium_armor
+			mio_cat_tech_medium_armor_and_modules
+		}
+	}
+
+	eng_sherman_1 = { #Sherman Conversions
+ 
+		enable_equipments = {
+			usa_amphibious_tank_equipment_3
+		}
+
+		enable_subunits = {
+			amphibious_armor_support
+		}
+
+		research_cost = 1
+		start_year = 1943
+		
+		folder = {
+			name = eng_armour_folder
+			position = { x = -1 y = 16 }
+		}
+
+		sub_technologies = {
+			eng_medium_td_9
 		}
 
 		ai_will_do = {
@@ -1893,8 +1961,9 @@ technologies = {
 		enable_equipments = {
 			eng_medium_td_equipment_9
 		}
+		sub_tech_index = 0
 		
-		research_cost = 2.5
+		research_cost = 1
 		start_year = 1944
 
 		ai_will_do = {
