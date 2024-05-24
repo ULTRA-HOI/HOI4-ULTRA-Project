@@ -4710,24 +4710,19 @@ ITA_colonial_management_dec_cat = {
 		}
 
 		available = {
-			has_tech = tech_recon
+			has_tech = blackshirt_assault_battalion_tech
 		}
 
-		ai_hint_pp_cost = 50
 		custom_cost_trigger = {
-			command_power > 49
-			has_political_power > 49
-			has_army_experience > 14
+			command_power > 14
 		}
-		custom_cost_text = decision_cost_CP_50_pp_50_ArmXP_15
+		custom_cost_text = decision_cost_CP_15
 
-		days_remove = ITA_reorganize_ascari_days
+		days_remove = 30
 
 		complete_effect = {
 			hidden_effect = {
-				add_command_power = -50
-				add_political_power = -50
-				army_experience = -15
+				add_command_power = -15
 			}
 		}
 
@@ -4735,235 +4730,20 @@ ITA_colonial_management_dec_cat = {
 			set_country_flag = ITA_improved_ascari_templates_flag
 
 			custom_effect_tooltip = ITA_reorganize_ascari_tt
-
+			
+			AOI = {
+				custom_effect_tooltip = ITA_battaglioni_d_assalto_tt
+				hidden_effect = {
+					set_technology = { blackshirt_assault_battalion_tech = 1 popup = no }
+				}
+			}
+			
 			hidden_effect = {
-				if = {
-					limit = {
-						NOT = { has_template = "Divisione Coloniale" }
-					}
-					division_template = {
-						name = "Divisione Coloniale"
-						division_names_group = ITA_COL_01
-						template_counter = 67
-
-						# Represents lesser-equipped colonial units
-						regiments = {
-							infantry = { x = 0 y = 0 }
-							infantry = { x = 0 y = 1 }
-							infantry = { x = 0 y = 2 }
-							infantry = { x = 1 y = 0 }
-						}
-
-						priority = 0
-					}
-				}
-				if = {
-					limit = {
-						has_dlc = "La Resistance"
-					}
+				AOI = {
 					add_units_to_division_template = {
-						template_name = "Divisione Coloniale"
+						template_name = "Divisione F. Coloniale"
 						support = {
-							armored_car_recon = 0
-							#artillery =  0
-						}
-					}
-				}
-				else = {
-					add_units_to_division_template = {
-						template_name = "Divisione Coloniale"
-						support = {
-							#artillery =  0
-						}
-					}
-				}
-
-				if = {
-					limit = {
-						NOT = { has_template = "Cavalleria Coloniale" }
-					}
-					division_template = {
-						name = "Cavalleria Coloniale"
-						division_names_group = ITA_CAV_03
-						override_model = ITA_cavalry_alt_1_entity
-						is_locked = yes
-
-						# Represents lesser-equipped colonial units
-						regiments = {
-							cavalry = { x = 0 y = 0 }
-							cavalry = { x = 0 y = 1 }
-							cavalry = { x = 1 y = 0 }
-							cavalry = { x = 1 y = 1 }
-						}
-
-						priority = 0
-					}
-				}
-				add_units_to_division_template = {
-					template_name = "Cavalleria Coloniale"
-					regiments = {
-						cavalry = 0
-						cavalry = 1
-					}
-					support = {
-						recon = 0
-					}
-				}
-
-				if = {
-					limit = {
-						NOT = { has_template = "Reggimento Meharista" }
-					}
-					division_template = {
-						name = "Reggimento Meharista"
-						division_names_group = ITA_CAM_01
-						override_model = ITA_camelry_alt_1_entity
-						regiments = {
-							camelry = { x = 0 y = 0 }
-							camelry = { x = 0 y = 1 }
-							camelry = { x = 1 y = 0 }
-							camelry = { x = 1 y = 1 }
-						}
-					}
-				}
-				add_units_to_division_template = {
-					template_name = "Reggimento Meharista"
-					regiments = {
-						camelry = 0
-						camelry = 1
-					}
-					support = {
-						recon = 0
-					}
-				}
-
-				if = {
-					limit = {
-						NOT = { has_template = "Divisione Ascari Libica" }
-					}
-					division_template = {
-						name = "Divisione Ascari Libica"
-						division_names_group = ITA_COL_01
-						override_model = ITA_infantry_alt_0_entity
-						template_counter = 67
-						#is_locked = yes
-						obsolete = yes
-
-						# Represents lesser-equipped colonial units
-						regiments = {
-							infantry = { x = 0 y = 0 }
-							infantry = { x = 0 y = 1 }
-							infantry = { x = 0 y = 2 }
-							infantry = { x = 1 y = 0 }
-						}
-
-						priority = 0
-					}
-				}
-				if = {
-					limit = {
-						has_dlc = "La Resistance"
-					}
-					add_units_to_division_template = {
-						template_name = "Divisione Ascari Libica"
-						support = {
-							armored_car_recon = 0
-							#artillery =  0
-						}
-					}
-				}
-				else = {
-					add_units_to_division_template = {
-						template_name = "Divisione Ascari Libica"
-						support = {
-							#artillery =  0
-						}
-					}
-				}
-
-				if = {
-					limit = {
-						NOT = { has_template = "Divisione Ascari Eritrea" }
-					}
-					division_template = {
-						name = "Divisione Ascari Eritrea"
-						division_names_group = ITA_COL_01
-						template_counter = 67
-						#is_locked = yes
-						obsolete = yes
-
-						# Represents lesser-equipped colonial units
-						regiments = {
-							infantry = { x = 0 y = 0 }
-							infantry = { x = 0 y = 1 }
-							infantry = { x = 0 y = 2 }
-							infantry = { x = 1 y = 0 }
-						}
-
-						priority = 0
-					}
-				}
-				if = {
-					limit = {
-						has_dlc = "La Resistance"
-					}
-					add_units_to_division_template = {
-						template_name = "Divisione Ascari Eritrea"
-						support = {
-							armored_car_recon = 0
-							#artillery =  0
-						}
-					}
-				}
-				else = {
-					add_units_to_division_template = {
-						template_name = "Divisione Ascari Eritrea"
-						support = {
-							#artillery =  0
-						}
-					}
-				}
-				
-				if = {
-					limit = {
-						NOT = { has_template = "Divisione Ascari Somala" }
-					}
-					division_template = {
-						name = "Divisione Ascari Somala"
-						division_names_group = ITA_COL_01
-						override_model = ITA_infantry_alt_1_entity
-						template_counter = 67
-						#is_locked = yes
-						obsolete = yes
-
-						# Represents lesser-equipped colonial units
-						regiments = {
-							infantry = { x = 0 y = 0 }
-							infantry = { x = 0 y = 1 }
-							infantry = { x = 0 y = 2 }
-							infantry = { x = 1 y = 0 }
-						}
-
-						priority = 0
-					}
-				}
-				if = {
-					limit = {
-						has_dlc = "La Resistance"
-					}
-					add_units_to_division_template = {
-						template_name = "Divisione Ascari Somala"
-						support = {
-							armored_car_recon = 0
-							#artillery =  0
-						}
-					}
-				}
-				else = {
-					add_units_to_division_template = {
-						template_name = "Divisione Ascari Somala"
-						support = {
-							#artillery =  0
+							blackshirt_assault_battalion = 0
 						}
 					}
 				}
@@ -4980,6 +4760,11 @@ ITA_colonial_management_dec_cat = {
 				}
 			}
 		}
+	}
+	
+	#Italy supplies Africe before the war
+	ITA_supply_east_africa = {
+	 #todo
 	}
 
 	#Infrastructure Program in State
@@ -5192,6 +4977,9 @@ ITA_colonial_management_dec_cat = {
 					owns_state = 1075 # Jubaland
 				}
 			}
+			has_equipment = {
+				infantry_squad_0 > 4999
+			}
 
 		}
 
@@ -5205,7 +4993,11 @@ ITA_colonial_management_dec_cat = {
 
 			custom_effect_tooltip = aoi_founded_tt
 
-
+			send_equipment = {
+				equipment = infantry_equipment
+				amount = 5000
+				target = AOI
+			}
 
 			hidden_effect = {
 				set_global_flag = italian_east_africa_flag
@@ -5286,28 +5078,29 @@ ITA_colonial_management_dec_cat = {
 				    end_wars = no
 				    end_civil_wars = no
 				}
-
+				
 				AOI = {
+					load_oob = "AOI_1936"
 					add_manpower = 100000
 					add_ideas = {
 						AOI_enrico_cerulli
 						AOI_africa_orientale_italiana_idea
 					}
-					add_offsite_building = { type = industrial_complex level = 4 }
-					add_offsite_building = { type = arms_factory level = 4 }
-					add_equipment_to_stockpile = {
-					    type = infantry_squad_0
-					    amount = 5000
-					    producer = ITA
-					}
+					#add_offsite_building = { type = industrial_complex level = 4 }
+					#add_offsite_building = { type = arms_factory level = 4 }
 					if = {
 						limit = {
 							has_dlc = "La Resistance"
 						}
 						create_intelligence_agency = yes
 					}
+					every_controlled_state = {
+						set_compliance = 75
+					}
 					set_cosmetic_tag = AOI_Italian
 				}
+				
+				
 			}
 		}
 

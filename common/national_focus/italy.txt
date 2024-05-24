@@ -1546,8 +1546,13 @@ focus_tree = {
 
 		completion_reward = {
 			custom_effect_tooltip = ITA_polizia_dell_africa_italiana_occupation_law_tt
+			custom_effect_tooltip = AOI_gains_colonial_police_tt
 
 			set_country_flag = ITA_colonial_police_final_flag
+			
+			AOI = {
+				set_country_flag = ITA_colonial_police_final_flag
+			}
 		}
 	}
 
@@ -1559,545 +1564,17 @@ focus_tree = {
 		x = 3
 		y = 1
 		relative_position_id = ITA_regional_development
-		cost = 10
+		cost = 1
 		available = {
-			any_state = {
-				OR = {
-					is_core_of = LBA
-					is_core_of = ERI
-					is_core_of = SOM
-					is_core_of = ETH
-				}
-				state_is_fully_controlled_by_ROOT_or_subject = yes
-			}
+			has_completed_focus = ITA_battaglioni_d_assalto
+			country_exists = AOI
 		}
 
 		search_filters = {FOCUS_FILTER_MANPOWER}
 
 		completion_reward = {
 			unlock_decision_tooltip = ITA_reorganize_ascari
-
-			hidden_effect = {
-				### COLONIAL CAVALRY & CAMELRY TEMPLATES
-				if = {
-					limit = {
-						NOT = { has_template = "Cavalleria Coloniale" }
-					}
-					division_template = {
-						name = "Cavalleria Coloniale" 
-						division_names_group = ITA_CAV_03
-						override_model = ITA_cavalry_alt_1_entity
-						is_locked = yes
-
-						# Represents lesser-equipped colonial units
-						regiments = { 
-							cavalry = { x = 0 y = 0 } 
-							cavalry = { x = 0 y = 1 } 
-							cavalry = { x = 1 y = 0 } 
-							cavalry = { x = 1 y = 1 }
-						} 
-
-						priority = 0 
-					}
-				}
-
-				if = {
-					limit = {
-						NOT = { has_template = "Reggimento Meharista" }
-					}
-					division_template = {
-						name = "Reggimento Meharista" 
-						division_names_group = ITA_CAM_01 
-						override_model = ITA_camelry_alt_2_entity
-						regiments = { 
-							camelry = { x = 0 y = 0 } 
-							camelry = { x = 0 y = 1 } 
-							camelry = { x = 1 y = 0 } 
-							camelry = { x = 1 y = 1 } 
-						} 
-					}
-				}
-			}
-
-			### ASCARI INFANTRY TEMPLATES
-			if = {
-				limit = {
-					NOT = { has_template = "Divisione Coloniale" }
-				}
-				division_template = { 
-					name = "Divisione Coloniale" 
-					division_names_group = ITA_COL_01
-					template_counter = 67
-					#is_locked = yes
-
-					# Represents lesser-equipped colonial units
-					regiments = { 
-						infantry = { x = 0 y = 0 }
-						infantry = { x = 0 y = 1 }
-						infantry = { x = 0 y = 2 }
-						infantry = { x = 1 y = 0 }
-					}
-
-					priority = 0 
-				}
-			}
-
-			if = {
-				limit = {
-					NOT = { has_template = "Divisione Ascari Libica" }
-				}
-				division_template = { 
-					name = "Divisione Ascari Libica" 
-					division_names_group = ITA_COL_01
-					override_model = ITA_infantry_alt_0_entity
-					template_counter = 67
-					#is_locked = yes
-					obsolete = yes
-
-					# Represents lesser-equipped colonial units
-					regiments = { 
-						infantry = { x = 0 y = 0 }
-						infantry = { x = 0 y = 1 }
-						infantry = { x = 0 y = 2 }
-						infantry = { x = 1 y = 0 }
-					}
-
-					priority = 0 
-				}
-			}
-
-			if = {
-				limit = {
-					NOT = { has_template = "Divisione Ascari Eritrea" }
-				}
-				division_template = { 
-					name = "Divisione Ascari Eritrea" 
-					division_names_group = ITA_COL_01
-					template_counter = 67
-					#is_locked = yes
-					obsolete = yes
-
-					# Represents lesser-equipped colonial units
-					regiments = { 
-						infantry = { x = 0 y = 0 }
-						infantry = { x = 0 y = 1 }
-						infantry = { x = 0 y = 2 }
-						infantry = { x = 1 y = 0 }
-					}
-
-					priority = 0 
-				}
-			}
-
-			if = {
-				limit = {
-					NOT = { has_template = "Divisione Ascari Somala" }
-				}
-				division_template = { 
-					name = "Divisione Ascari Somala" 
-					division_names_group = ITA_COL_01
-					override_model = ITA_infantry_alt_1_entity
-					template_counter = 67
-					#is_locked = yes
-					obsolete = yes
-
-					# Represents lesser-equipped colonial units
-					regiments = { 
-						infantry = { x = 0 y = 0 }
-						infantry = { x = 0 y = 1 }
-						infantry = { x = 0 y = 2 }
-						infantry = { x = 1 y = 0 }
-					}
-
-					priority = 0 
-				}
-			}
-
-
-			custom_effect_tooltip = ITA_strengthen_ascari_corps_create_units_tt 
-
-			## CAVALRY + INFANTRY ##
-
-			#ERITREA
-			if = {
-				limit = {
-					any_controlled_state = {
-						is_core_of = ERI
-						is_fully_controlled_by = ROOT
-					}
-				}
-				random_controlled_state = {
-					limit = {
-						is_core_of = ERI
-						is_fully_controlled_by = ROOT
-					}
-					prioritize = { 550 } # ERITREA (In case at some point this gets split or tag gets more cores)
-					custom_effect_tooltip = ITA_strengthen_ascari_corps_eritrea_tt
-					hidden_effect = {
-						create_unit = {
-							division = "division_template = \"Cavalleria Coloniale\" start_experience_factor = 0.1 start_equipment_factor = 1.0"
-							owner = ROOT
-							count = 1
-						}
-						create_unit = {
-							division = "division_template = \"Divisione Ascari Eritrea\" start_experience_factor = 0.1 start_equipment_factor = 1.0"
-							owner = ROOT
-							count = 1
-						}
-					}
-				}
-			}
-			else_if = {
-				limit = {
-					any_subject_country = {
-						any_controlled_state = {
-							is_core_of = ERI
-							is_fully_controlled_by = PREV
-						}
-					}
-				}
-				random_other_country = {
-					limit = {
-						is_subject_of = ROOT
-						any_controlled_state = {
-							is_core_of = ERI
-							is_fully_controlled_by = PREV
-						}
-					}
-					random_controlled_state = {
-						limit = {
-							is_core_of = ERI
-							is_fully_controlled_by = PREV
-						}
-						prioritize = { 550 } # ERITREA (In case at some point this gets split or tag gets more cores)
-						custom_effect_tooltip = ITA_strengthen_ascari_corps_eritrea_tt
-						hidden_effect = {
-							create_unit = {
-								division = "division_template = \"Cavalleria Coloniale\" start_experience_factor = 0.1 start_equipment_factor = 1.0"
-								owner = ROOT
-								count = 1
-							}
-							create_unit = {
-								division = "division_template = \"Divisione Ascari Eritrea\" start_experience_factor = 0.1 start_equipment_factor = 1.0"
-								owner = ROOT
-								count = 1
-							}
-						}
-					}
-				}
-			}
-
-			#LIBYA
-			if = {
-				limit = {
-					any_controlled_state = {
-						is_core_of = LBA
-						is_fully_controlled_by = ROOT
-					}
-				}
-				random_controlled_state = {
-					limit = {
-						is_core_of = LBA
-						is_fully_controlled_by = ROOT
-					}
-					prioritize = { 448 } #TRIPOLI (In case at some point this gets split or tag gets more cores)
-					custom_effect_tooltip = ITA_strengthen_ascari_corps_libya_tt
-					hidden_effect = {
-						create_unit = {
-							division = "division_template = \"Cavalleria Coloniale\" start_experience_factor = 0.1 start_equipment_factor = 1.0"
-							owner = ROOT
-							count = 1
-						}
-						create_unit = {
-							division = "division_template = \"Divisione Ascari Libica\" start_experience_factor = 0.1 start_equipment_factor = 1.0"
-							owner = ROOT
-							count = 1
-						}
-					}
-				}
-			}
-			else_if = {
-				limit = {
-					any_subject_country = {
-						any_controlled_state = {
-							is_core_of = LBA
-							is_fully_controlled_by = PREV
-						}
-					}
-				}
-				random_other_country = {
-					limit = {
-						is_subject_of = ROOT
-						any_controlled_state = {
-							is_core_of = LBA
-							is_fully_controlled_by = PREV
-						}
-					}
-					random_controlled_state = {
-						limit = {
-							is_core_of = LBA
-							is_fully_controlled_by = PREV
-						}
-						prioritize = { 448 } #TRIPOLI (In case at some point this gets split or tag gets more cores)
-						custom_effect_tooltip = ITA_strengthen_ascari_corps_libya_tt
-						hidden_effect = {
-							create_unit = {
-								division = "division_template = \"Cavalleria Coloniale\" start_experience_factor = 0.1 start_equipment_factor = 1.0"
-								owner = ROOT
-								count = 1
-							}
-							create_unit = {
-								division = "division_template = \"Divisione Ascari Libica\" start_experience_factor = 0.1 start_equipment_factor = 1.0"
-								owner = ROOT
-								count = 1
-							}
-						}
-					}
-				}
-			}
-
-			#SOMALIA
-			if = {
-				limit = {
-					any_controlled_state = {
-						is_core_of = SOM
-						is_fully_controlled_by = ROOT
-					}
-				}
-				random_controlled_state = {
-					limit = {
-						is_core_of = SOM
-						is_fully_controlled_by = ROOT
-					}
-					prioritize = { 559 } #SOMALILAND (In case at some point this gets split or tag gets more cores)
-					custom_effect_tooltip = ITA_strengthen_ascari_corps_somalia_tt
-					hidden_effect = {
-						create_unit = {
-							division = "name = \"101a Divisione F. Coloniale Somala\" division_template = \"Divisione Ascari Somala\" start_experience_factor = 0.15 start_equipment_factor = 1.0"
-							owner = ROOT
-							count = 1
-						}
-						create_unit = {
-							division = "name = \"102a Divisione F. Coloniale Somala\" division_template = \"Divisione Ascari Somala\" start_experience_factor = 0.15 start_equipment_factor = 1.0"
-							owner = ROOT
-							count = 1
-						}
-					}
-				}
-			}
-			else_if = {
-				limit = {
-					any_subject_country = {
-						any_controlled_state = {
-							is_core_of = SOM
-							is_fully_controlled_by = PREV
-						}
-					}
-				}
-				random_other_country = {
-					limit = {
-						is_subject_of = ROOT
-						any_controlled_state = {
-							is_core_of = SOM
-							is_fully_controlled_by = PREV
-						}
-					}
-					random_controlled_state = {
-						limit = {
-							is_core_of = SOM
-							is_fully_controlled_by = PREV
-						}
-						prioritize = { 559 } #SOMALILAND (In case at some point this gets split or tag gets more cores)
-						custom_effect_tooltip = ITA_strengthen_ascari_corps_somalia_tt
-						hidden_effect = {
-							create_unit = {
-								division = "name = \"101a Divisione F. Coloniale Somala\" division_template = \"Divisione Ascari Somala\" start_experience_factor = 0.15 start_equipment_factor = 1.0"
-								owner = ROOT
-								count = 1
-							}
-							create_unit = {
-								division = "name = \"102a Divisione F. Coloniale Somala\" division_template = \"Divisione Ascari Somala\" start_experience_factor = 0.15 start_equipment_factor = 1.0"
-								owner = ROOT
-								count = 1
-							}
-						}
-					}
-				}
-			}
-
-
-			#ETHIOPIA
-			if = {
-				limit = {
-					any_controlled_state = {
-						is_core_of = ETH
-						is_fully_controlled_by = ROOT
-					}
-				}
-				random_controlled_state = {
-					limit = {
-						is_core_of = ETH
-						is_fully_controlled_by = ROOT
-					}
-					prioritize = { 271 } #ADDIS ABABA (In case at some point this gets split or tag gets more cores)
-					custom_effect_tooltip = ITA_strengthen_ascari_corps_ethiopia_tt
-					hidden_effect = {
-						create_unit = {
-							division = "division_template = \"Divisione Coloniale\" start_experience_factor = 0.1 start_equipment_factor = 1.0"
-							owner = ROOT
-							count = 2
-						}
-					}
-				}
-			}
-			else_if = {
-				limit = {
-					any_subject_country = {
-						any_controlled_state = {
-							is_core_of = ETH
-							is_fully_controlled_by = PREV
-						}
-					}
-				}
-				random_other_country = {
-					limit = {
-						is_subject_of = ROOT
-						any_controlled_state = {
-							is_core_of = ETH
-							is_fully_controlled_by = PREV
-						}
-					}
-					random_controlled_state = {
-						limit = {
-							is_core_of = ETH
-							is_fully_controlled_by = PREV
-						}
-						prioritize = { 271 } #ADDIS ABABA (In case at some point this gets split or tag gets more cores)
-						custom_effect_tooltip = ITA_strengthen_ascari_corps_ethiopia_tt
-						hidden_effect = {
-							create_unit = {
-								division = "division_template = \"Divisione Coloniale\" start_experience_factor = 0.1 start_equipment_factor = 1.0"
-								owner = ROOT
-								count = 2
-							}
-						}
-					}
-				}
-			}
-		
-			## CAMELRY ## Separated so that Libyan Meharisti go before Eritrean ones (cavalry is the other way around)
-			hidden_effect = {
-				#LIBYA
-				if = {
-					limit = {
-						any_controlled_state = {
-							is_core_of = LBA
-							is_fully_controlled_by = ROOT
-						}
-					}
-					random_controlled_state = {
-						limit = {
-							is_core_of = LBA
-							is_fully_controlled_by = ROOT
-						}
-						prioritize = { 448 } #TRIPOLI (In case at some point this gets split or tag gets more cores)
-						#Regular Camelry Eritrean
-						create_unit = {
-							division = "division_template = \"Reggimento Meharista\" start_experience_factor = 0.2 start_equipment_factor = 1.0"
-							owner = ROOT
-							count = 2
-						}
-					}
-				}
-				else_if = {
-					limit = {
-						any_subject_country = {
-							any_controlled_state = {
-								is_core_of = LBA
-								is_fully_controlled_by = ROOT
-							}
-						}
-					}
-					random_other_country = {
-						limit = {
-							is_subject_of = ROOT
-							any_controlled_state = {
-								is_core_of = LBA
-								is_fully_controlled_by = ROOT
-							}
-						}
-						random_controlled_state = {
-							limit = {
-								is_core_of = LBA
-								is_fully_controlled_by = PREV
-							}
-							prioritize = { 448 } #TRIPOLI (In case at some point this gets split or tag gets more cores)
-							#Regular Camelry Eritrean
-							create_unit = {
-								division = "division_template = \"Reggimento Meharista\" start_experience_factor = 0.2 start_equipment_factor = 1.0"
-								owner = ROOT
-								count = 2
-							}
-						}
-					}
-				}
-
-				#ERITREA
-				if = {
-					limit = {
-						any_controlled_state = {
-							is_core_of = ERI
-							is_fully_controlled_by = ROOT
-						}
-					}
-					random_controlled_state = {
-						limit = {
-							is_core_of = ERI
-							is_fully_controlled_by = ROOT
-						}
-						prioritize = { 550 } # ERITREA (In case at some point this gets split or tag gets more cores)
-						#Regular Camelry Eritrean
-						create_unit = {
-							division = "division_template = \"Reggimento Meharista\" start_experience_factor = 0.1 start_equipment_factor = 1.0"
-							owner = ROOT
-							count = 1
-						}
-					}
-				}
-				else_if = {
-					limit = {
-						any_subject_country = {
-							any_controlled_state = {
-								is_core_of = ERI
-								is_fully_controlled_by = ROOT
-							}
-						}
-					}
-					random_other_country = {
-						limit = {
-							is_subject_of = ROOT
-							any_controlled_state = {
-								is_core_of = ERI
-								is_fully_controlled_by = ROOT
-							}
-						}
-						random_controlled_state = {
-							limit = {
-								is_core_of = ERI
-								is_fully_controlled_by = PREV
-							}
-							prioritize = { 550 } # ERITREA (In case at some point this gets split or tag gets more cores)
-							#Regular Camelry Eritrean
-							create_unit = {
-								division = "division_template = \"Reggimento Meharista\" start_experience_factor = 0.1 start_equipment_factor = 1.0"
-								owner = ROOT
-								count = 1
-							}
-						}
-					}
-				}
-			}
-
+			unlock_decision_tooltip = ITA_supply_east_africa
 			show_unit_leaders_tooltip = ITA_hamid_idris_awate
 
 			if = {
@@ -2118,7 +1595,7 @@ focus_tree = {
 		x = 1
 		y = 1
 		relative_position_id = ITA_polizia_dell_africa_italiana
-		cost = 10
+		cost = 1
 		available = {
 			any_state = {
 				OR = {
@@ -2135,378 +1612,9 @@ focus_tree = {
 
 		completion_reward = {
 			add_ideas = ITA_hardened_irregular_bands
-
-			hidden_effect = {
-				if = {
-					limit = {
-						NOT = { has_template = "Truppe Irregolari a Cavallo" }
-					}
-					if = {
-						limit = {
-							NOT = { has_country_flag = ITA_improved_irregular_templates_flag }
-						}
-						division_template = { #Improve Irregular template
-							name = "Truppe Irregolari a Cavallo"		
-							division_names_group = ITA_CAV_05
-							is_locked = yes
-							regiments = {
-								cavalry = { x = 0 y = 0 }
-								cavalry = { x = 0 y = 1 }
-								cavalry = { x = 1 y = 0 }
-								cavalry = { x = 1 y = 1 }
-							}
-							priority = 0
-						}
-					}
-					else = {
-						division_template = { #Basic irregular template
-							name = "Truppe Irregolari a Cavallo"		
-							division_names_group = ITA_CAV_05
-							is_locked = yes
-							regiments = {
-								cavalry = { x = 0 y = 0 }
-								cavalry = { x = 0 y = 1 }
-								cavalry = { x = 0 y = 2 }
-								cavalry = { x = 1 y = 0 }
-								cavalry = { x = 1 y = 1 }
-								cavalry = { x = 1 y = 2 }
-							}
-							support = { 
-								recon = { x = 0 y = 0 } 
-							} 
-							priority = 0
-						}
-					}
-				}
-
-				if = {
-					limit = {
-						NOT = { has_template = "Truppe Irregolari di Cammelli" }
-					}
-					if = {
-						limit = {
-							NOT = { has_country_flag = ITA_improved_irregular_templates_flag }
-						}
-						division_template = { #Improve Irregular template
-							name = "Truppe Irregolari di Cammelli"		
-							division_names_group = ITA_CAM_02
-							is_locked = yes
-							regiments = {
-								camelry = { x = 0 y = 0 }
-								camelry = { x = 0 y = 1 }
-								camelry = { x = 1 y = 0 }
-								camelry = { x = 1 y = 1 }
-							}
-							priority = 0
-						}
-					}
-					else = {
-						division_template = { #Basic irregular template
-							name = "Truppe Irregolari di Cammelli"		
-							division_names_group = ITA_CAM_02
-							is_locked = yes
-							regiments = {
-								camelry = { x = 0 y = 0 }
-								camelry = { x = 0 y = 1 }
-								camelry = { x = 0 y = 2 }
-								camelry = { x = 1 y = 0 }
-								camelry = { x = 1 y = 1 }
-								camelry = { x = 1 y = 2 }
-							}
-							support = { 
-								recon = { x = 0 y = 0 } 
-							} 
-							priority = 0
-						}
-					}
-				}
-			}
-
-			custom_effect_tooltip = ITA_comandante_diavolo_create_units_tt
-
-			#ERITREA
-			if = {
-				limit = {
-					any_controlled_state = {
-						is_core_of = ERI
-						is_fully_controlled_by = ROOT
-					}
-				}
-				random_controlled_state = {
-					limit = {
-						is_core_of = ERI
-						is_fully_controlled_by = ROOT
-					}
-					prioritize = { 550 } # ERITREA (In case at some point this gets split or tag gets more cores)
-					custom_effect_tooltip = ITA_comandante_diavolo_eritrea_tt
-					hidden_effect = {
-						create_unit = {
-							division = "division_template = \"Banda Irregolare Eritrea\" start_experience_factor = 0.1 start_equipment_factor = 1.0"
-							owner = ROOT
-							count = 1
-						}
-						create_unit = {
-							division = "division_template = \"Truppe Irregolari a Cavallo\" start_experience_factor = 0.1 start_equipment_factor = 1.0"
-							owner = ROOT
-							count = 2
-						}
-					}
-				}
-			}
-			else_if = {
-				limit = {
-					any_subject_country = {
-						any_controlled_state = {
-							is_core_of = ERI
-							is_fully_controlled_by = ROOT
-						}
-					}
-				}
-				random_other_country = {
-					limit = {
-						is_subject_of = ROOT
-						any_controlled_state = {
-							is_core_of = ERI
-							is_fully_controlled_by = PREV
-						}
-					}
-					random_controlled_state = {
-						limit = {
-							is_core_of = ERI
-							is_fully_controlled_by = PREV
-						}
-						prioritize = { 550 } # ERITREA (In case at some point this gets split or tag gets more cores)
-						custom_effect_tooltip = ITA_comandante_diavolo_eritrea_tt
-						hidden_effect = {
-							create_unit = {
-								division = "division_template = \"Banda Irregolare Eritrea\" start_experience_factor = 0.1 start_equipment_factor = 1.0"
-								owner = ROOT
-								count = 1
-							}
-							create_unit = {
-								division = "division_template = \"Truppe Irregolari a Cavallo\" start_experience_factor = 0.1 start_equipment_factor = 1.0"
-								owner = ROOT
-								count = 2
-							}
-						}
-					}
-				}
-			}
-
-			#LIBYA
-			if = {
-				limit = {
-					any_controlled_state = {
-						is_core_of = LBA
-						is_fully_controlled_by = ROOT
-					}
-				}
-				random_controlled_state = {
-					limit = {
-						is_core_of = LBA
-						is_fully_controlled_by = ROOT
-					}
-					prioritize = { 448 } # TRIPOLI (In case at some point this gets split or tag gets more cores)
-					custom_effect_tooltip = ITA_comandante_diavolo_libya_tt
-					hidden_effect = {
-						create_unit = {
-							division = "division_template = \"Truppe Irregolari a Cavallo\" start_experience_factor = 0.15 start_equipment_factor = 1.0"
-							owner = ROOT
-							count = 2
-						}
-						create_unit = {
-							division = "division_template = \"Truppe Irregolari di Cammelli\" start_experience_factor = 0.15 start_equipment_factor = 1.0"
-							owner = ROOT
-							count = 1
-						}
-					}
-				}
-			}
-			else_if = {
-				limit = {
-					any_subject_country = {
-						any_controlled_state = {
-							is_core_of = LBA
-							is_fully_controlled_by = ROOT
-						}
-					}
-				}
-				random_other_country = {
-					limit = {
-						is_subject_of = ROOT
-						any_controlled_state = {
-							is_core_of = LBA
-							is_fully_controlled_by = PREV
-						}
-					}
-					random_controlled_state = {
-						limit = {
-							is_core_of = LBA
-							is_fully_controlled_by = PREV
-						}
-						prioritize = { 448 } # TRIPOLI (In case at some point this gets split or tag gets more cores)
-						custom_effect_tooltip = ITA_comandante_diavolo_libya_tt
-						hidden_effect = {
-							create_unit = {
-								division = "division_template = \"Truppe Irregolari a Cavallo\" start_experience_factor = 0.15 start_equipment_factor = 1.0"
-								owner = ROOT
-								count = 2
-							}
-							create_unit = {
-								division = "division_template = \"Truppe Irregolari di Cammelli\" start_experience_factor = 0.15 start_equipment_factor = 1.0"
-								owner = ROOT
-								count = 1
-							}
-						}
-					}
-				}
-			}
-
-			#SOMALIA
-			if = {
-				limit = {
-					any_controlled_state = {
-						is_core_of = SOM
-						is_fully_controlled_by = ROOT
-					}
-				}
-				random_controlled_state = {
-					limit = {
-						is_core_of = SOM
-						is_fully_controlled_by = ROOT
-					}
-					prioritize = { 559 } # SOMALILAND (In case at some point this gets split or tag gets more cores)
-					custom_effect_tooltip = ITA_comandante_diavolo_somalia_tt
-					hidden_effect = {
-						create_unit = {
-							division = "division_template = \"Banda Irregolare Somala\" start_experience_factor = 0.1 start_equipment_factor = 1.0"
-							owner = ROOT
-							count = 2
-						}
-						create_unit = {
-							division = "division_template = \"Truppe Irregolari a Cavallo\" start_experience_factor = 0.1 start_equipment_factor = 1.0"
-							owner = ROOT
-							count = 1
-						}
-					}
-				}
-			}
-			else_if = {
-				limit = {
-					any_subject_country = {
-						any_controlled_state = {
-							is_core_of = SOM
-							is_fully_controlled_by = ROOT
-						}
-					}
-				}
-				random_other_country = {
-					limit = {
-						is_subject_of = ROOT
-						any_controlled_state = {
-							is_core_of = SOM
-							is_fully_controlled_by = PREV
-						}
-					}
-					random_controlled_state = {
-						limit = {
-							is_core_of = SOM
-							is_fully_controlled_by = PREV
-						}
-						prioritize = { 559 } # SOMALILAND (In case at some point this gets split or tag gets more cores)
-						custom_effect_tooltip = ITA_comandante_diavolo_somalia_tt
-						hidden_effect = {
-							create_unit = {
-								division = "division_template = \"Banda Irregolare Somala\" start_experience_factor = 0.1 start_equipment_factor = 1.0"
-								owner = ROOT
-								count = 2
-							}
-							create_unit = {
-								division = "division_template = \"Truppe Irregolari a Cavallo\" start_experience_factor = 0.1 start_equipment_factor = 1.0"
-								owner = ROOT
-								count = 1
-							}
-						}
-					}
-				}
-			}
-
-			#ETHIOPIA
-			if = {
-				limit = {
-					any_controlled_state = {
-						is_core_of = ETH
-						is_fully_controlled_by = ROOT
-					}
-				}
-				random_controlled_state = {
-					limit = {
-						is_core_of = ETH
-						is_fully_controlled_by = ROOT
-					}
-					prioritize = { 271 } # ADDIS ABABA (In case at some point this gets split or tag gets more cores)
-					custom_effect_tooltip = ITA_comandante_diavolo_ethiopia_tt
-					hidden_effect = {
-						create_unit = {
-							division = "division_template = \"Banda Irregolare Eritrea\" start_experience_factor = 0.1 start_equipment_factor = 1.0"
-							owner = ROOT
-							count = 1
-						}
-						create_unit = {
-							division = "name = \"Gruppo Bande Amhara\" division_template = \"Truppe Irregolari a Cavallo\" start_experience_factor = 0.5 start_equipment_factor = 1.0"
-							owner = ROOT
-							count = 1
-						}
-						create_unit = {
-							division = "division_template = \"Truppe Irregolari di Cammelli\" start_experience_factor = 0.1 start_equipment_factor = 1.0"
-							owner = ROOT
-							count = 1
-						}
-					}
-				}
-			}
-			else_if = {
-				limit = {
-					any_subject_country = {
-						any_controlled_state = {
-							is_core_of = ETH
-							is_fully_controlled_by = ROOT
-						}
-					}
-				}
-				random_other_country = {
-					limit = {
-						any_controlled_state = {
-							is_core_of = ETH
-							is_fully_controlled_by = PREV
-						}
-					}
-					random_controlled_state = {
-						limit = {
-							is_core_of = ETH
-							is_fully_controlled_by = PREV
-						}
-						prioritize = { 271 } # ADDIS ABABA (In case at some point this gets split or tag gets more cores)
-						custom_effect_tooltip = ITA_comandante_diavolo_ethiopia_tt
-						hidden_effect = {
-							create_unit = {
-								division = "division_template = \"Banda Irregolare Eritrea\" start_experience_factor = 0.1 start_equipment_factor = 1.0"
-								owner = ROOT
-								count = 1
-							}
-							create_unit = {
-								division = "division_template = \"Truppe Irregolari a Cavallo\" start_experience_factor = 0.5 start_equipment_factor = 1.0"
-								owner = ROOT
-								count = 1
-							}
-							create_unit = {
-								division = "division_template = \"Truppe Irregolari di Cammelli\" start_experience_factor = 0.1 start_equipment_factor = 1.0"
-								owner = ROOT
-								count = 1
-							}
-						}
-					}
-				}
+			
+			AOI = {
+				add_ideas = ITA_hardened_irregular_bands
 			}
 
 			show_unit_leaders_tooltip = ITA_amedeo_guillet
@@ -10227,60 +9335,60 @@ focus_tree = {
 
 			custom_effect_tooltip = ITA_novus_ordo_create_units_tt
 			hidden_effect = {
-				if = {
-					limit = {
-						NOT = { has_template = "Divisione Ascari Libica" }
-					}
-					if = {
-						limit = {
-							NOT = { has_country_flag = ITA_improved_ascari_templates_flag }
-						}
-						division_template = { 
-							name = "Divisione Ascari Libica" 
-							division_names_group = ITA_COL_01
-							override_model = ITA_infantry_alt_0_entity
-							template_counter = 67
-							#is_locked = yes
-							obsolete = yes
-
-							# Represents lesser-equipped colonial units
-							regiments = { 
-								infantry = { x = 0 y = 0 }
-								infantry = { x = 0 y = 1 }
-								infantry = { x = 0 y = 2 }
-								infantry = { x = 1 y = 0 }
-							}
-
-							priority = 0 
-						}
-					}
-					else = {
-						division_template = { 
-							name = "Divisione Ascari Libica" 
-							division_names_group = ITA_COL_01
-							override_model = ITA_infantry_alt_0_entity
-							template_counter = 67
-							#is_locked = yes
-							obsolete = yes
-
-							# Represents lesser-equipped colonial units
-							regiments = { 
-								infantry = { x = 0 y = 0 }
-								infantry = { x = 0 y = 1 }
-								infantry = { x = 0 y = 2 }
-								infantry = { x = 1 y = 0 }
-								
-								artillery_brigade = { x = 2 y = 0 }	
-							}
-
-							support = {
-								armored_car_recon = { x = 0 y = 0 }
-							}
-
-							priority = 0 
-						}
-					}
-				}
+				#if = {
+				#	limit = {
+				#		NOT = { has_template = "Divisione Ascari Libica" }
+				#	}
+				#	if = {
+				#		limit = {
+				#			NOT = { has_country_flag = ITA_improved_ascari_templates_flag }
+				#		}
+				#		division_template = { 
+				#			name = "Divisione Ascari Libica" 
+				#			division_names_group = ITA_COL_01
+				#			override_model = ITA_infantry_alt_0_entity
+				#			template_counter = 67
+				#			#is_locked = yes
+				#			obsolete = yes
+                #
+				#			# Represents lesser-equipped colonial units
+				#			regiments = { 
+				#				infantry = { x = 0 y = 0 }
+				#				infantry = { x = 0 y = 1 }
+				#				infantry = { x = 0 y = 2 }
+				#				infantry = { x = 1 y = 0 }
+				#			}
+                #
+				#			priority = 0 
+				#		}
+				#	}
+				#	else = {
+				#		division_template = { 
+				#			name = "Divisione Ascari Libica" 
+				#			division_names_group = ITA_COL_01
+				#			override_model = ITA_infantry_alt_0_entity
+				#			template_counter = 67
+				#			#is_locked = yes
+				#			obsolete = yes
+                #
+				#			# Represents lesser-equipped colonial units
+				#			regiments = { 
+				#				infantry = { x = 0 y = 0 }
+				#				infantry = { x = 0 y = 1 }
+				#				infantry = { x = 0 y = 2 }
+				#				infantry = { x = 1 y = 0 }
+				#				
+				#				artillery_brigade = { x = 2 y = 0 }	
+				#			}
+                #
+				#			support = {
+				#				armored_car_recon = { x = 0 y = 0 }
+				#			}
+                #
+				#			priority = 0 
+				#		}
+				#	}
+				#}
 			}
 			if = {
 				limit = {
@@ -20890,309 +19998,309 @@ focus_tree = {
 			custom_effect_tooltip = ITA_ascari_re_tt
 
 			hidden_effect = {
-				### COLONIAL CAVALRY & CAMELRY TEMPLATES
-				if = {
-					limit = {
-						NOT = { has_template = "Cavalleria Coloniale" }
-					}
-					if = {
-						limit = {
-							NOT = { has_country_flag = ITA_improved_ascari_templates_flag }
-						}
-						division_template = {
-							name = "Cavalleria Coloniale" 
-							division_names_group = ITA_CAV_03
-							override_model = ITA_cavalry_alt_1_entity
-							is_locked = yes
-
-							# Represents lesser-equipped colonial units
-							regiments = { 
-								cavalry = { x = 0 y = 0 } 
-								cavalry = { x = 0 y = 1 } 
-								cavalry = { x = 1 y = 0 } 
-								cavalry = { x = 1 y = 1 }
-							} 
-
-							priority = 0 
-						}
-					}
-					else = {
-						division_template = {
-							name = "Cavalleria Coloniale" 
-							division_names_group = ITA_CAV_03
-							override_model = ITA_cavalry_alt_1_entity
-							is_locked = yes
-
-							# Represents lesser-equipped colonial units
-							regiments = {
-								cavalry = { x = 0 y = 0 }
-								cavalry = { x = 0 y = 1 }
-								cavalry = { x = 0 y = 2 }
-								cavalry = { x = 1 y = 0 }
-								cavalry = { x = 1 y = 1 }
-								cavalry = { x = 1 y = 2 }
-							}
-
-							support = {
-								recon = { x = 0 y = 0 } 
-							}
-
-							priority = 0 
-						}
-					}
-				}
-
-				if = {
-					limit = {
-						NOT = { has_template = "Reggimento Meharista" }
-					}
-					if = {
-						limit = {
-							NOT = { has_country_flag = ITA_improved_ascari_templates_flag }
-						}
-						division_template = {
-							name = "Reggimento Meharista" 
-							division_names_group = ITA_CAM_01 
-							override_model = ITA_camelry_alt_1_entity
-							regiments = { 
-								camelry = { x = 0 y = 0 } 
-								camelry = { x = 0 y = 1 } 
-								camelry = { x = 1 y = 0 } 
-								camelry = { x = 1 y = 1 } 
-							} 
-						}
-					}
-					else = {
-						division_template = {
-							name = "Reggimento Meharista" 
-							division_names_group = ITA_CAM_01 
-							override_model = ITA_camelry_alt_1_entity
-							regiments = {
-								camelry = { x = 0 y = 0 }
-								camelry = { x = 0 y = 1 }
-								camelry = { x = 0 y = 2 }
-								camelry = { x = 1 y = 0 }
-								camelry = { x = 1 y = 1 }
-								camelry = { x = 1 y = 2 }
-							}
-
-							support = {
-								recon = { x = 0 y = 0 } 
-							}
-						}
-					}
-				}
-
-				### ASCARI INFANTRY TEMPLATES
-				if = {
-					limit = {
-						NOT = { has_template = "Divisione Coloniale" }
-					}
-					if = {
-						limit = {
-							NOT = { has_country_flag = ITA_improved_ascari_templates_flag }
-						}
-						division_template = { 
-							name = "Divisione Coloniale" 
-							division_names_group = ITA_COL_01
-							template_counter = 67
-							#is_locked = yes
-
-							# Represents lesser-equipped colonial units
-							regiments = { 
-								infantry = { x = 0 y = 0 }
-								infantry = { x = 0 y = 1 }
-								infantry = { x = 0 y = 2 }
-								infantry = { x = 1 y = 0 }
-								artillery_brigade = { x = 2 y = 0 }
-							}
-
-							support = {
-								armored_car_recon = { x = 0 y = 0 }
-							}
-
-							priority = 0 
-						}
-					}
-					else = {
-						division_template = { 
-							name = "Divisione Coloniale" 
-							division_names_group = ITA_COL_01
-							template_counter = 67
-							#is_locked = yes
-
-							# Represents lesser-equipped colonial units
-							regiments = { 
-								infantry = { x = 0 y = 0 }
-								infantry = { x = 0 y = 1 }
-								infantry = { x = 0 y = 2 }
-								infantry = { x = 1 y = 0 }
-							}
-
-							priority = 0 
-						}
-					}
-				}
-
-				if = {
-					limit = {
-						NOT = { has_template = "Divisione Ascari Libica" }
-					}
-					if = {
-						limit = {
-							NOT = { has_country_flag = ITA_improved_ascari_templates_flag }
-						}
-						division_template = { 
-							name = "Divisione Ascari Libica" 
-							division_names_group = ITA_COL_01
-							override_model = ITA_infantry_alt_0_entity
-							template_counter = 67
-							#is_locked = yes
-							obsolete = yes
-
-							# Represents lesser-equipped colonial units
-							regiments = { 
-								infantry = { x = 0 y = 0 }
-								infantry = { x = 0 y = 1 }
-								infantry = { x = 0 y = 2 }
-								infantry = { x = 1 y = 0 }
-							}
-
-							priority = 0 
-						}
-					}
-					else = {
-						division_template = { 
-							name = "Divisione Ascari Libica" 
-							division_names_group = ITA_COL_01
-							override_model = ITA_infantry_alt_0_entity
-							template_counter = 67
-							#is_locked = yes
-							obsolete = yes
-
-							# Represents lesser-equipped colonial units
-							regiments = { 
-								infantry = { x = 0 y = 0 }
-								infantry = { x = 0 y = 1 }
-								infantry = { x = 0 y = 2 }
-								infantry = { x = 1 y = 0 }
-								artillery_brigade = { x = 2 y = 0 }
-							}
-
-							support = {
-								armored_car_recon = { x = 0 y = 0 }
-							}
-
-							priority = 0 
-						}
-					}
-				}
-
-				if = {
-					limit = {
-						NOT = { has_template = "Divisione Ascari Eritrea" }
-					}
-					if = {
-						limit = {
-							NOT = { has_country_flag = ITA_improved_ascari_templates_flag }
-						}
-						division_template = { 
-							name = "Divisione Ascari Eritrea" 
-							division_names_group = ITA_COL_01
-							template_counter = 67
-							#is_locked = yes
-							obsolete = yes
-
-							# Represents lesser-equipped colonial units
-							regiments = { 
-								infantry = { x = 0 y = 0 }
-								infantry = { x = 0 y = 1 }
-								infantry = { x = 0 y = 2 }
-								infantry = { x = 1 y = 0 }
-							}
-
-							priority = 0 
-						}
-					}
-					else = {
-						division_template = { 
-							name = "Divisione Ascari Eritrea" 
-							division_names_group = ITA_COL_01
-							template_counter = 67
-							#is_locked = yes
-							obsolete = yes
-
-							# Represents lesser-equipped colonial units
-							regiments = { 
-								infantry = { x = 0 y = 0 }
-								infantry = { x = 0 y = 1 }
-								infantry = { x = 0 y = 2 }
-								infantry = { x = 1 y = 0 }
-								artillery_brigade = { x = 2 y = 0 }
-							}
-
-							support = {
-								armored_car_recon = { x = 0 y = 0 }
-							}
-
-							priority = 0 
-						}
-					}
-				}
-
-				if = {
-					limit = {
-						NOT = { has_template = "Divisione Ascari Somala" }
-					}
-					if = {
-						limit = {
-							NOT = { has_country_flag = ITA_improved_ascari_templates_flag }
-						}
-						division_template = { 
-							name = "Divisione Ascari Somala" 
-							division_names_group = ITA_COL_01
-							override_model = ITA_infantry_alt_1_entity
-							template_counter = 67
-							#is_locked = yes
-							obsolete = yes
-
-							# Represents lesser-equipped colonial units
-							regiments = { 
-								infantry = { x = 0 y = 0 }
-								infantry = { x = 0 y = 1 }
-								infantry = { x = 0 y = 2 }
-								infantry = { x = 1 y = 0 }
-							}
-
-							priority = 0 
-						}
-					}
-					else = {
-						division_template = { 
-							name = "Divisione Ascari Somala" 
-							division_names_group = ITA_COL_01
-							override_model = ITA_infantry_alt_1_entity
-							template_counter = 67
-							#is_locked = yes
-							obsolete = yes
-
-							# Represents lesser-equipped colonial units
-							regiments = { 
-								infantry = { x = 0 y = 0 }
-								infantry = { x = 0 y = 1 }
-								infantry = { x = 0 y = 2 }
-								infantry = { x = 1 y = 0 }
-								artillery_brigade = { x = 2 y = 0 }
-							}
-
-							support = {
-								armored_car_recon = { x = 0 y = 0 }
-							}
-
-							priority = 0 
-						}
-					}
-				}
+				#### COLONIAL CAVALRY & CAMELRY TEMPLATES
+				#if = {
+				#	limit = {
+				#		NOT = { has_template = "Cavalleria Coloniale" }
+				#	}
+				#	if = {
+				#		limit = {
+				#			NOT = { has_country_flag = ITA_improved_ascari_templates_flag }
+				#		}
+				#		division_template = {
+				#			name = "Cavalleria Coloniale" 
+				#			division_names_group = ITA_CAV_03
+				#			override_model = ITA_cavalry_alt_1_entity
+				#			is_locked = yes
+                #
+				#			# Represents lesser-equipped colonial units
+				#			regiments = { 
+				#				cavalry = { x = 0 y = 0 } 
+				#				cavalry = { x = 0 y = 1 } 
+				#				cavalry = { x = 1 y = 0 } 
+				#				cavalry = { x = 1 y = 1 }
+				#			} 
+                #
+				#			priority = 0 
+				#		}
+				#	}
+				#	else = {
+				#		division_template = {
+				#			name = "Cavalleria Coloniale" 
+				#			division_names_group = ITA_CAV_03
+				#			override_model = ITA_cavalry_alt_1_entity
+				#			is_locked = yes
+                #
+				#			# Represents lesser-equipped colonial units
+				#			regiments = {
+				#				cavalry = { x = 0 y = 0 }
+				#				cavalry = { x = 0 y = 1 }
+				#				cavalry = { x = 0 y = 2 }
+				#				cavalry = { x = 1 y = 0 }
+				#				cavalry = { x = 1 y = 1 }
+				#				cavalry = { x = 1 y = 2 }
+				#			}
+                #
+				#			support = {
+				#				recon = { x = 0 y = 0 } 
+				#			}
+                #
+				#			priority = 0 
+				#		}
+				#	}
+				#}
+                #
+				#if = {
+				#	limit = {
+				#		NOT = { has_template = "Reggimento Meharista" }
+				#	}
+				#	if = {
+				#		limit = {
+				#			NOT = { has_country_flag = ITA_improved_ascari_templates_flag }
+				#		}
+				#		division_template = {
+				#			name = "Reggimento Meharista" 
+				#			division_names_group = ITA_CAM_01 
+				#			override_model = ITA_camelry_alt_1_entity
+				#			regiments = { 
+				#				camelry = { x = 0 y = 0 } 
+				#				camelry = { x = 0 y = 1 } 
+				#				camelry = { x = 1 y = 0 } 
+				#				camelry = { x = 1 y = 1 } 
+				#			} 
+				#		}
+				#	}
+				#	else = {
+				#		division_template = {
+				#			name = "Reggimento Meharista" 
+				#			division_names_group = ITA_CAM_01 
+				#			override_model = ITA_camelry_alt_1_entity
+				#			regiments = {
+				#				camelry = { x = 0 y = 0 }
+				#				camelry = { x = 0 y = 1 }
+				#				camelry = { x = 0 y = 2 }
+				#				camelry = { x = 1 y = 0 }
+				#				camelry = { x = 1 y = 1 }
+				#				camelry = { x = 1 y = 2 }
+				#			}
+                #
+				#			support = {
+				#				recon = { x = 0 y = 0 } 
+				#			}
+				#		}
+				#	}
+				#}
+                #
+				#### ASCARI INFANTRY TEMPLATES
+				#if = {
+				#	limit = {
+				#		NOT = { has_template = "Divisione Coloniale" }
+				#	}
+				#	if = {
+				#		limit = {
+				#			NOT = { has_country_flag = ITA_improved_ascari_templates_flag }
+				#		}
+				#		division_template = { 
+				#			name = "Divisione Coloniale" 
+				#			division_names_group = ITA_COL_01
+				#			template_counter = 67
+				#			#is_locked = yes
+                #
+				#			# Represents lesser-equipped colonial units
+				#			regiments = { 
+				#				infantry = { x = 0 y = 0 }
+				#				infantry = { x = 0 y = 1 }
+				#				infantry = { x = 0 y = 2 }
+				#				infantry = { x = 1 y = 0 }
+				#				artillery_brigade = { x = 2 y = 0 }
+				#			}
+                #
+				#			support = {
+				#				armored_car_recon = { x = 0 y = 0 }
+				#			}
+                #
+				#			priority = 0 
+				#		}
+				#	}
+				#	else = {
+				#		division_template = { 
+				#			name = "Divisione Coloniale" 
+				#			division_names_group = ITA_COL_01
+				#			template_counter = 67
+				#			#is_locked = yes
+                #
+				#			# Represents lesser-equipped colonial units
+				#			regiments = { 
+				#				infantry = { x = 0 y = 0 }
+				#				infantry = { x = 0 y = 1 }
+				#				infantry = { x = 0 y = 2 }
+				#				infantry = { x = 1 y = 0 }
+				#			}
+                #
+				#			priority = 0 
+				#		}
+				#	}
+				#}
+                #
+				#if = {
+				#	limit = {
+				#		NOT = { has_template = "Divisione Ascari Libica" }
+				#	}
+				#	if = {
+				#		limit = {
+				#			NOT = { has_country_flag = ITA_improved_ascari_templates_flag }
+				#		}
+				#		division_template = { 
+				#			name = "Divisione Ascari Libica" 
+				#			division_names_group = ITA_COL_01
+				#			override_model = ITA_infantry_alt_0_entity
+				#			template_counter = 67
+				#			#is_locked = yes
+				#			obsolete = yes
+                #
+				#			# Represents lesser-equipped colonial units
+				#			regiments = { 
+				#				infantry = { x = 0 y = 0 }
+				#				infantry = { x = 0 y = 1 }
+				#				infantry = { x = 0 y = 2 }
+				#				infantry = { x = 1 y = 0 }
+				#			}
+                #
+				#			priority = 0 
+				#		}
+				#	}
+				#	else = {
+				#		division_template = { 
+				#			name = "Divisione Ascari Libica" 
+				#			division_names_group = ITA_COL_01
+				#			override_model = ITA_infantry_alt_0_entity
+				#			template_counter = 67
+				#			#is_locked = yes
+				#			obsolete = yes
+                #
+				#			# Represents lesser-equipped colonial units
+				#			regiments = { 
+				#				infantry = { x = 0 y = 0 }
+				#				infantry = { x = 0 y = 1 }
+				#				infantry = { x = 0 y = 2 }
+				#				infantry = { x = 1 y = 0 }
+				#				artillery_brigade = { x = 2 y = 0 }
+				#			}
+                #
+				#			support = {
+				#				armored_car_recon = { x = 0 y = 0 }
+				#			}
+                #
+				#			priority = 0 
+				#		}
+				#	}
+				#}
+                #
+				#if = {
+				#	limit = {
+				#		NOT = { has_template = "Divisione Ascari Eritrea" }
+				#	}
+				#	if = {
+				#		limit = {
+				#			NOT = { has_country_flag = ITA_improved_ascari_templates_flag }
+				#		}
+				#		division_template = { 
+				#			name = "Divisione Ascari Eritrea" 
+				#			division_names_group = ITA_COL_01
+				#			template_counter = 67
+				#			#is_locked = yes
+				#			obsolete = yes
+                #
+				#			# Represents lesser-equipped colonial units
+				#			regiments = { 
+				#				infantry = { x = 0 y = 0 }
+				#				infantry = { x = 0 y = 1 }
+				#				infantry = { x = 0 y = 2 }
+				#				infantry = { x = 1 y = 0 }
+				#			}
+                #
+				#			priority = 0 
+				#		}
+				#	}
+				#	else = {
+				#		division_template = { 
+				#			name = "Divisione Ascari Eritrea" 
+				#			division_names_group = ITA_COL_01
+				#			template_counter = 67
+				#			#is_locked = yes
+				#			obsolete = yes
+                #
+				#			# Represents lesser-equipped colonial units
+				#			regiments = { 
+				#				infantry = { x = 0 y = 0 }
+				#				infantry = { x = 0 y = 1 }
+				#				infantry = { x = 0 y = 2 }
+				#				infantry = { x = 1 y = 0 }
+				#				artillery_brigade = { x = 2 y = 0 }
+				#			}
+                #
+				#			support = {
+				#				armored_car_recon = { x = 0 y = 0 }
+				#			}
+                #
+				#			priority = 0 
+				#		}
+				#	}
+				#}
+                #
+				#if = {
+				#	limit = {
+				#		NOT = { has_template = "Divisione Ascari Somala" }
+				#	}
+				#	if = {
+				#		limit = {
+				#			NOT = { has_country_flag = ITA_improved_ascari_templates_flag }
+				#		}
+				#		division_template = { 
+				#			name = "Divisione Ascari Somala" 
+				#			division_names_group = ITA_COL_01
+				#			override_model = ITA_infantry_alt_1_entity
+				#			template_counter = 67
+				#			#is_locked = yes
+				#			obsolete = yes
+                #
+				#			# Represents lesser-equipped colonial units
+				#			regiments = { 
+				#				infantry = { x = 0 y = 0 }
+				#				infantry = { x = 0 y = 1 }
+				#				infantry = { x = 0 y = 2 }
+				#				infantry = { x = 1 y = 0 }
+				#			}
+                #
+				#			priority = 0 
+				#		}
+				#	}
+				#	else = {
+				#		division_template = { 
+				#			name = "Divisione Ascari Somala" 
+				#			division_names_group = ITA_COL_01
+				#			override_model = ITA_infantry_alt_1_entity
+				#			template_counter = 67
+				#			#is_locked = yes
+				#			obsolete = yes
+                #
+				#			# Represents lesser-equipped colonial units
+				#			regiments = { 
+				#				infantry = { x = 0 y = 0 }
+				#				infantry = { x = 0 y = 1 }
+				#				infantry = { x = 0 y = 2 }
+				#				infantry = { x = 1 y = 0 }
+				#				artillery_brigade = { x = 2 y = 0 }
+				#			}
+                #
+				#			support = {
+				#				armored_car_recon = { x = 0 y = 0 }
+				#			}
+                #
+				#			priority = 0 
+				#		}
+				#	}
+				#}
 			}
 
 			custom_effect_tooltip = ITA_ascari_create_units_tt 
