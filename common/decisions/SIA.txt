@@ -8,12 +8,12 @@ political_actions = {
 
 		available = {
 			JAP = {
-					has_full_control_of_state = 994
 					has_full_control_of_state = 979
+					has_full_control_of_state = 994
+
 				}
 			
 		}
-		
 		visible = {
 			has_completed_focus = SIA_claim_greater_thailand
 		}		
@@ -35,16 +35,391 @@ political_actions = {
 		}
 
 		complete_effect = {
-			SIA = {
-				transfer_state = 994
-			}
-			SIA = {
-				transfer_state = 979
-			}
+		JAP = { country_event = { id = japan.105 hours = 2 } }
 		}
 	}
 
 
+}
+
+political_actions = {
+
+	SIA_ask_indochina_border_change_decision2 = {
+
+		icon = jap_pacific_guardian
+
+		available = {
+
+
+			SIA = {
+					has_full_control_of_state = 979
+					has_full_control_of_state = 994
+				}
+			
+
+			JAP = {
+					has_full_control_of_state = 975
+					has_full_control_of_state = 998
+					has_full_control_of_state = 999
+					has_full_control_of_state = 670
+					has_full_control_of_state = 995
+					has_full_control_of_state = 980
+					has_full_control_of_state = 741
+				}
+			
+		}
+		visible = {
+					has_full_control_of_state = 979
+					has_full_control_of_state = 994
+		}		
+
+		fire_only_once = yes
+
+
+		modifier = {
+
+		}
+
+		days_remove = 0
+		days_re_enable = 0
+
+		cost = 50
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		complete_effect = {
+		JAP = { country_event = { id = japan.104 hours = 2 } }
+		}
+	}
+
+
+
+	#Mission to track the progress of Japanese Submarine construction
+	SIA_japanese_submarine_construction_progress = {
+		
+		icon = generic_naval
+
+		allowed = {
+			original_tag = SIA
+		}
+
+		visible = {
+			has_completed_focus = SIA_purchase_japanese_submarines
+		}
+		available = {
+			num_of_civilian_factories_available_for_projects > 1
+		}
+		
+		modifier = {
+			civilian_factory_use = 2
+		}
+
+		cost = 25
+		
+		fire_only_once = yes
+
+		days_remove = 365
+
+		cancel_trigger = {
+			OR = {
+				NOT = { country_exists = SIA }
+				NOT = { country_exists = JAP }
+				ITA = {
+					OR = {
+						has_war_with = ROOT
+						has_civil_war = yes
+						has_capitulated = yes
+					}
+				}
+			}
+		}
+
+		#On Activation
+		complete_effect ={
+			JAP = {
+				add_offsite_building = {
+					type = industrial_complex
+					level = 2
+				}
+			}
+		}
+
+		#Fail
+		cancel_effect = {
+			JAP = {
+				add_offsite_building = {
+					type = industrial_complex
+					level = -2
+				}
+			}
+		}
+
+		#Success
+		remove_effect = {
+			
+
+			JAP = {
+				add_offsite_building = {
+					type = industrial_complex
+					level = -2
+				}
+			}
+			if = {
+				limit = { has_dlc = "Man the Guns" }
+				if = { 
+					hidden_effect = { add_manpower = 600 }
+						JAP = {
+						create_equipment_variant = {
+							name = "Matchanu Class"
+							type = nrm_ship_hull_submarine_2
+							name_group = SIA_SS_HISTORICAL
+							parent_version = 0
+							role_icon_index = 6
+							modules = {
+								fixed_ship_sub_hull_slot = nrm_submarine_hull_2
+								fixed_ship_engine_slot = nrm_submarine_engine_D0_30
+								fixed_ship_sonar_slot = nrm_submarine_sonar_2
+								fixed_ship_sub_fcs_slot = empty
+								fixed_ship_damagecontrol_slot = nrm_damagecontrol_1
+								fixed_ship_range_slot = nrm_range_submarine_2
+								fixed_ship_radar_slot = empty
+								fixed_ship_battery_slot = nrm_submarine_deckgun_4
+								fixed_ship_anti_air_slot = empty
+								fixed_ship_torpedo_slot = nrm_submarine_TRP_21_2_x6
+								fixed_ship_torpedo_reload_slot = nrm_sub_reloads_x2
+							}
+						}
+					}
+					create_ship = { type = nrm_ship_hull_submarine_2 equipment_variant = "Matchanu Class" creator = JAP }
+					create_ship = { type = nrm_ship_hull_submarine_2 equipment_variant = "Matchanu Class" creator = JAP }
+					create_ship = { type = nrm_ship_hull_submarine_2 equipment_variant = "Matchanu Class" creator = JAP }
+					create_ship = { type = nrm_ship_hull_submarine_2 equipment_variant = "Matchanu Class" creator = JAP }
+				}
+			}
+			country_event = japan.106
+		}
+	}
+
+
+	#Mission to track the progress of Italian LIGHT CRUISER construction
+	SIA_italian_light_cruiser_construction_progress = {
+		
+		icon = generic_naval
+
+		allowed = {
+			original_tag = SIA
+		}
+
+		visible = {
+			has_completed_focus = SIA_purchase_japanese_surface_ships
+		}
+		available = {
+			num_of_civilian_factories_available_for_projects > 1
+		}
+		
+		modifier = {
+			civilian_factory_use = 2
+		}
+
+		cost = 25
+		
+		fire_only_once = yes
+
+		days_remove = 710
+
+		cancel_trigger = {
+			OR = {
+				NOT = { country_exists = SIA }
+				NOT = { country_exists = ITA }
+				ITA = {
+					OR = {
+						has_war_with = ROOT
+						has_civil_war = yes
+						has_capitulated = yes
+					}
+				}
+			}
+		}
+
+		#On Activation
+		complete_effect ={
+			ITA = {
+				add_offsite_building = {
+					type = industrial_complex
+					level = 2
+				}
+			}
+		}
+
+		#Fail
+		cancel_effect = {
+			ITA = {
+				add_offsite_building = {
+					type = industrial_complex
+					level = -2
+				}
+			}
+		}
+
+		#Success
+		remove_effect = {
+			
+
+			ITA = {
+				add_offsite_building = {
+					type = industrial_complex
+					level = -2
+				}
+			}
+			if = {
+				limit = { has_dlc = "Man the Guns" }
+				if = { 
+					hidden_effect = { add_manpower = 1400 }
+					ITA = {
+						create_equipment_variant = {
+							name = "Etna Class"
+							type = nrm_ship_hull_cruiser_2
+							name_group = SIA_CL_HISTORICAL
+							parent_version = 0
+							role_icon_index = 5
+							modules = {
+								fixed_ship_hullform_slot = nrm_ship_hullform_cruiser_3
+								fixed_ship_engine_slot = nrm_cruiser_engine_S2_100
+								fixed_ship_armor_layout_slot = nrm_armour_layout_2
+								fixed_ship_armor_slot = nrm_cruiser_armour_04_2
+								fixed_ship_damagecontrol_slot = nrm_damagecontrol_2
+								fixed_ship_range_slot = nrm_range_cruiser_2
+								fixed_ship_radar_slot = empty
+								fixed_ship_fire_control_system_slot = nrm_fire_control_4
+								fixed_ship_fire_control_system_aa_slot = empty
+								fixed_ship_battery_slot = nrm_cruiser_battery_6_2_x10
+								fixed_ship_tertiary_slot = nrm_cruiser_tertiary_HA_4_2_x08
+								custom_slot_1 = nrm_support_cruiser_ML_1
+								custom_slot_2 = nrm_support_cruiser_TRP_21_2_x06
+								custom_slot_3 = nrm_support_cruiser_FP_1
+								custom_slot_4 = nrm_support_cruiser_AA_1
+								custom_slot_5 = nrm_support_cruiser_AA_1
+								custom_slot_6 = nrm_support_cruiser_AA_1
+							}
+						}
+					}
+					create_ship = { type = nrm_ship_hull_cruiser_2 equipment_variant = "Etna Class" creator = ITA }
+					create_ship = { type = nrm_ship_hull_cruiser_2 equipment_variant = "Etna Class" creator = ITA }
+				}
+			}
+			country_event = japan.106
+		}
+	}
+
+
+	#Mission to track the progress of Japanese DESTROYERS construction
+	SIA_japanese_destroyers_construction_progress = {
+		
+		icon = generic_naval
+
+		allowed = {
+			original_tag = SIA
+		}
+
+		visible = {
+			has_completed_focus = SIA_purchase_japanese_surface_ships
+		}
+		available = {
+			num_of_civilian_factories_available_for_projects > 1
+		}
+		modifier = {
+			civilian_factory_use = 2
+		}
+
+		cost = 25
+		
+		fire_only_once = yes
+
+		days_remove = 320
+
+		cancel_trigger = {
+			OR = {
+				NOT = { country_exists = SIA }
+				NOT = { country_exists = JAP }
+				ITA = {
+					OR = {
+						has_war_with = ROOT
+						has_civil_war = yes
+						has_capitulated = yes
+					}
+				}
+			}
+		}
+
+		#On Activation
+		complete_effect ={
+			JAP = {
+				add_offsite_building = {
+					type = industrial_complex
+					level = 2
+				}
+			}
+		}
+
+		#Fail
+		cancel_effect = {
+			JAP = {
+				add_offsite_building = {
+					type = industrial_complex
+					level = -2
+				}
+			}		
+		}
+
+		is_good = yes
+		#Success
+		remove_effect = {
+			if = {
+				limit = { has_dlc = "Man the Guns" }
+				if = { 
+					hidden_effect = { add_manpower = 1000 }
+					JAP = {
+						create_equipment_variant = {
+							name = "Thonburi Class"
+							type = nrm_ship_hull_destroyer_2
+							name_group = SIA_DD_HISTORICAL
+							parent_version = 0
+							role_icon_index = 3
+							modules = {
+								fixed_ship_hullform_slot = nrm_ship_hullform_destroyer_2
+								fixed_ship_engine_slot = nrm_destroyer_engine_S1_050
+								fixed_ship_sonar_slot = nrm_sonar_3
+								fixed_ship_battery_slot = nrm_destroyer_battery_5_2_x4
+								fixed_ship_damagecontrol_slot = nrm_damagecontrol_2
+								fixed_ship_range_slot = nrm_range_destroyer_1
+								fixed_ship_radar_slot = empty
+								fixed_ship_fire_control_system_slot = nrm_fire_control_2
+								fixed_ship_fire_control_system_aa_slot = empty
+								custom_slot_1 = nrm_support_destroyer_MS_1
+								custom_slot_2 = nrm_support_destroyer_ASW_1
+								custom_slot_3 = nrm_support_destroyer_TRP_21_C_2_x3
+								custom_slot_4 = nrm_support_destroyer_TRP_21_C_2_x3
+								custom_slot_5 = nrm_support_destroyer_AA_1
+								custom_slot_6 = empty
+							}
+						}
+					}
+					create_ship = { type = nrm_ship_hull_destroyer_2 equipment_variant = "Thonburi Class" creator = JAP }
+					create_ship = { type = nrm_ship_hull_destroyer_2 equipment_variant = "Thonburi Class" creator = JAP }
+				}
+			}
+
+			JAP = {
+				add_offsite_building = {
+					type = industrial_complex
+					level = -2
+				}
+			}
+			country_event = japan.106
+		}
+	}
 }
 
 economy_decisions = {
