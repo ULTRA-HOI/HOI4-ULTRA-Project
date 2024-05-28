@@ -74,16 +74,9 @@
 		available_if_capitulated = yes
 
 		completion_reward = {
-				set_politics = {
-					ruling_party = fascism
-					elections_allowed = no
-				}
-				set_party_name = {
-					ideology = fascism
-					long_name = SIA_khana_ratsadon
-					name = SIA_khana_ratsadon2
-				}
-
+			remove_ideas = {
+			SIA_corruption2
+			}
 		}
 	}	
 	
@@ -101,9 +94,15 @@
 		available_if_capitulated = yes
 
 		completion_reward = {
-			remove_ideas = {
-			SIA_corruption2
-			}
+				set_politics = {
+					ruling_party = fascism
+					elections_allowed = no
+				}
+				set_party_name = {
+					ideology = fascism
+					long_name = SIA_khana_ratsadon
+					name = SIA_khana_ratsadon2
+				}
 				add_stability = 0.05
 				add_war_support = 0.05
 
@@ -144,17 +143,11 @@
 
 		completion_reward = {
 			custom_effect_tooltip = SIA_claim_greater_thailand_tt
-
-			add_state_core = 979
-			add_state_core = 994
-
 			add_state_claim = 975
 			add_state_claim = 998
 			add_state_claim = 999
-			add_state_claim = 670
-			add_state_claim = 995
-			add_state_claim = 980
-			add_state_claim = 741
+			add_state_claim = 979
+			add_state_claim = 994
 		}
 	}
 	
@@ -228,10 +221,6 @@
 			has_war_support > 0.75
 			fascism > 0.6
 		}		
-		bypass = {
-					is_in_faction_with = JAP
-
-		}
 			
 			
 		
@@ -365,7 +354,7 @@
 
 		completion_reward = {
 			add_political_power = 50
-			add_ideas = SIA_trade_deal_with_japan_idea
+			custom_effect_tooltip = SIA_trade_deal_with_japan_tt
 		}
 	}	
 	
@@ -521,18 +510,6 @@
 		icon = GFX_focus_spa_the_spanish_miracle
 		prerequisite = { focus = SIA_alphabet_reform }
 		prerequisite = { focus = SIA_improve_regional_infrastructure }
-		available = {
-				289 = {
-					controller = {
-						 tag = SIA
-					}
-				}
-				1006= {
-					controller = {
-						 tag = SIA
-					}
-				}
-		}
 		x = 0
 		y = 1
 		relative_position_id = SIA_alphabet_reform
@@ -550,14 +527,7 @@
 			set_victory_points = {
 				province = 12373
 				value = 5
-			}	
-				1006 = {
-				add_building_construction = {
-					type = industrial_complex
-					level = 2
-					instant_build = yes
-				}
-			}		
+			}			
 		}
 	}	
 
@@ -651,7 +621,7 @@
 				name = special_bonus
 				bonus = 1.0
 				uses = 1
-				category = tp_tech
+				technology = marines
 			}
 		}
 	}	
@@ -688,26 +658,7 @@
 		available_if_capitulated = yes
 
 		completion_reward = {
-						add_equipment_to_stockpile = {
-					type =  jap_cas_equipment_1
-					amount = 24
-					producer = JAP
-				}
-						add_equipment_to_stockpile = {
-					type =  jap_tac_bomber_equipment_1
-					amount = 9
-					producer = JAP
-				}
-						add_equipment_to_stockpile = {
-					type =  usa_fighter_equipment_3
-					amount = 25
-					producer = USA
-				}
-						add_equipment_to_stockpile = {
-					type =  usa_cv_cas_equipment_0
-					amount = 70
-					producer = USA
-				}
+			custom_effect_tooltip = SIA_purchase_foreign_aircrafts_tt
 		}
 	}
 	
@@ -920,39 +871,57 @@
 		available_if_capitulated = yes
 
 		completion_reward = {
-			division_template = {
-				name = "1st King's Guards Division"
-				priority = 1
-				division_names_group = SIA_INF_01
-				regiments = {
-					heavy_infantry = { x = 0 y = 0 }
-					heavy_infantry = { x = 0 y = 1 }
-					heavy_infantry = { x = 0 y = 2 }
-					heavy_infantry = { x = 0 y = 3 }
+			custom_effect_tooltip = SIA_royal_guards_divisions_tt
+			hidden_effect = {
+				if = {
+					limit = {
+						has_tech = tech_recon
+					}
+					division_template = {
+						name = "1st King's Guards Division"
+						priority = 2
+						regiments = {
+							heavy_infantry = { x = 0 y = 0 }
+							heavy_infantry = { x = 0 y = 1 }
+							infantry = { x = 0 y = 2 }
 				
-		    	   		 	heavy_infantry = { x = 1 y = 0 }
-		    	   		 	heavy_infantry = { x = 1 y = 1 }
-		    	   		 	heavy_infantry = { x = 1 y = 2 }
-							artillery_brigade = { x = 1 y = 3 }
-							}
-					support = {
+		    	   		 	infantry = { x = 1 y = 0 }
+							artillery_brigade = { x = 1 y = 1 }
+						}
+						support = {
 							DIV_HQ = { x = 0 y = 0 }	
 							engineer = { x = 0 y = 1 }
 							recon = { x = 0 y = 2 }
 						}
-			}
-			random_owned_controlled_state = {
-				prioritize = { 7408 }
-				limit = { PREV = { has_full_control_of_state = PREV } }
-				create_unit = {
-					division = "name = \"1st King's Guards Division\" division_template = \"1st King's Guards Division\" start_experience_factor = 1" 
-					owner = PREV
+					}
+					else = {
+						division_template = {
+							name = "1st King's Guards Division"
+							priority = 2
+							regiments = {
+							heavy_infantry = { x = 0 y = 0 }
+							heavy_infantry = { x = 0 y = 1 }
+							infantry = { x = 0 y = 2 }
+				
+		    	   		 	infantry = { x = 1 y = 0 }
+							artillery_brigade = { x = 1 y = 1 }
+							}
+							support = {
+								DIV_HQ = { x = 0 y = 0 }	
+								engineer = { x = 0 y = 1 }
+							}
+						}
+					}
 				}
-				create_unit = {
-					division = "name = \"2st King's Guards Division\" division_template = \"1st King's Guards Division\" start_experience_factor = 1" 
-					owner = PREV
+				random_owned_controlled_state = {
+					limit = { ROOT = { has_full_control_of_state = PREV } }
+					prioritize = { 289 }
+					create_unit = {
+						division = "name = \"Royal Guards Division\" division_template = \"Royal Guards Division\" start_experience_factor = 1.0" 
+						owner = SIA
+					}
 				}
-			}
+			}			
 		}
 	}
 
@@ -974,13 +943,13 @@
 				add_building_construction = {
 					type = coastal_bunker
 					level = 2
-					province = 7408
+					province = 7048
 					instant_build = yes
 				}
 				add_building_construction = {
 					type = bunker
 					level = 2
-					province = 7408
+					province = 7048
 					instant_build = yes
 				}
 				add_building_construction = {
@@ -1118,10 +1087,10 @@
 		completion_reward = {
 			if = {
 				limit = {
+					NOT = { has_idea = war_economy }
 					NOT = { has_idea = tot_economic_mobilisation }
 				}
-				add_ideas = tot_economic_mobilisation
-				add_war_support = 0.05
+				add_ideas = war_economy
 			}
 			else = {
 				add_political_power = 150
@@ -1134,14 +1103,6 @@
 		icon = GFX_focus_generic_railroad
 		prerequisite = { focus = SIA_siam_at_war }
 		prerequisite = { focus = SIA_improve_regional_infrastructure }
-		available = {
-				976 = {
-					controller = {
-						 tag = SIA
-						is_in_faction_with = SIA
-					}
-				}
-		}	
 		x = -1
 		y = 1
 		relative_position_id = SIA_siam_at_war
@@ -1152,8 +1113,9 @@
 		available_if_capitulated = yes
 
 		completion_reward = {
-			custom_effect_tooltip = Construction_Focus_Start_tt
-			unlock_decision_tooltip = { decision = SIA_siam_burma_railways_decision show_effect_tooltip = no }
+			build_railway = {
+				path = { 7408 1427 7587 4319 10193 12125 1403 }
+			}
 		}
 	}
 	
