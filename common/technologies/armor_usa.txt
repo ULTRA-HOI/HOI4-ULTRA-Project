@@ -36,7 +36,7 @@ technologies = {
 		}
 
 		path = {
-			leads_to_tech = usa_light_1
+			leads_to_tech = usa_light_0
 			research_cost_coeff = 1
 		}
 
@@ -833,6 +833,57 @@ technologies = {
 
 	# - scrapped
 
+	usa_light_0 = {	#M2A4
+		enable_equipments = {
+			usa_light_equipment_0
+		}
+
+		path = {
+			leads_to_tech = usa_light_1
+			research_cost_coeff = 1
+		}
+
+		research_cost = 2.5
+		start_year = 1939
+
+		folder = {
+			name = usa_armour_folder
+			position = { x = -1 y = 8 }
+		}
+
+		ai_will_do = {
+			factor = 4
+			modifier = {
+				factor = 0
+				date < "1939.1.1"
+			}
+			modifier = {
+				factor = 35
+				date > "1939.1.1"
+			}
+			
+			modifier = {
+				factor = 35
+				date > "1940.1.1"
+			}
+			
+			modifier = {
+				factor = 35
+				date > "1941.1.1"
+			}
+			
+			modifier = {
+				factor = 0
+				NOT = {
+					OR = {
+						original_tag = USA
+						has_country_flag = unitedstates_technologies_tree_flag
+					}
+				}
+			}
+		}
+	}
+	
 	usa_light_1 = { #M3 
 
 		enable_equipments = {
@@ -844,17 +895,12 @@ technologies = {
 			research_cost_coeff = 1
 		}
 
-		path = {
-			leads_to_tech = usa_light_6
-			research_cost_coeff = 1
-		}
-
-		research_cost = 2.5
-		start_year = 1940
+		research_cost = 1
+		start_year = 1941
 
 		folder = {
 			name = usa_armour_folder
-			position = { x = -1 y = 10 }					
+			position = { x = -1 y = 12 }					
 		}
 
 		ai_will_do = {
@@ -904,11 +950,11 @@ technologies = {
 		}
 
 		research_cost = 2.5
-		start_year = 1941
+		start_year = 1943
 		
 		folder = {
 			name = usa_armour_folder
-			position = { x = 1 y = 12 }
+			position = { x = 1 y = 16 }
 		}
 
 		ai_will_do = {
@@ -962,12 +1008,17 @@ technologies = {
 			research_cost_coeff = 1
 		}
 
+		path = {
+			leads_to_tech = usa_light_6
+			research_cost_coeff = 1
+		}
+
 		sub_technologies = {
 			usa_light_2_spg
 			usa_medium_td_4
 		}
 
-		research_cost = 2.5
+		research_cost = 1
 		start_year = 1942
 		
 		folder = {
@@ -1309,6 +1360,7 @@ technologies = {
 			#usa_medium_2_td
 			usa_medium_2_spg
 			#ger_medium_4_spaa
+			usa_medium_3_spg
 		}
 
 		research_cost = 2.5
@@ -1463,19 +1515,13 @@ technologies = {
 		}
 		
 		path = {
-			leads_to_tech = usa_medium_5
-			research_cost_coeff = 1
-		}
-
-		path = {
-			leads_to_tech = usa_heavy_2
+			leads_to_tech = usa_medium_4
 			research_cost_coeff = 1
 		}
 
 		sub_technologies = {
-			usa_medium_3_td
+			#usa_medium_3_td
 			usa_amphibious_tank_3
-			usa_medium_3_spg
 			#usa_medium_aa_4
 		}
 
@@ -1533,7 +1579,8 @@ technologies = {
 		enable_equipments = {
 			usa_amphibious_tank_equipment_3
 		}
-		sub_tech_index = 3
+
+		sub_tech_index = 1
 		
 		enable_subunits = {
 			amphibious_armor_support
@@ -1629,7 +1676,7 @@ technologies = {
 		enable_equipments = {
 			usa_medium_spg_equipment_3
 		}
-		sub_tech_index = 4
+	#	sub_tech_index = 4
 
 		research_cost = 1
 		start_year = 1943
@@ -1643,7 +1690,75 @@ technologies = {
 		}
 	}
 
-	#M4A3 Sherman - scrapped
+	usa_medium_4 = { #M4A3 Sherman
+ 
+		enable_equipments = {
+			usa_medium_equipment_4
+		}
+		
+		path = {
+			leads_to_tech = usa_medium_5
+			research_cost_coeff = 1
+		}
+
+		path = {
+			leads_to_tech = usa_heavy_2
+			research_cost_coeff = 1
+		}
+
+		sub_technologies = {
+			usa_medium_3_td
+			usa_medium_spg_4
+		}
+
+		research_cost = 1
+		start_year = 1943
+		
+		folder = {
+			name = usa_armour_folder
+			position = { x = 4 y = 16 }
+		}
+
+		ai_will_do = {
+			factor = 4
+			modifier = {
+				factor = 0
+				date < "1942.1.1"
+			}
+			modifier = {
+				factor = 40
+				date > "1942.1.1"
+			}
+			
+			modifier = {
+				factor = 40
+				date > "1943.1.1"
+			}
+			
+			modifier = {
+				factor = 40
+				date > "1944.1.1"
+			}
+			
+			modifier = {
+				factor = 0
+				NOT = {
+					OR = {
+						original_tag = USA
+						has_country_flag = unitedstates_technologies_tree_flag
+					}
+				}
+			}
+		}
+		
+		categories = {
+			major_technologies
+			armor
+			mio_cat_tech_all_armor_and_modules
+			cat_medium_armor
+			mio_cat_tech_medium_armor_and_modules
+		}
+	}
 
 	usa_medium_td_4 = { #Jackson
 
@@ -1699,7 +1814,7 @@ technologies = {
 		enable_equipments = {
 			usa_medium_spg_equipment_4
 		}
-		sub_tech_index = 5
+		sub_tech_index = 4
 
 		research_cost = 1
 		start_year = 1944
@@ -2013,8 +2128,13 @@ technologies = {
 			research_cost_coeff = 1
 		}
 
+		#path = {
+		#	leads_to_tech = usa_heavy_4
+		#	research_cost_coeff = 1
+		#}
+
 		path = {
-			leads_to_tech = usa_heavy_4
+			leads_to_tech = usa_heavy_5
 			research_cost_coeff = 1
 		}
 
@@ -2334,7 +2454,7 @@ technologies = {
 		
 		folder = {
 			name = usa_armour_folder
-			position = { x = 11 y = 14 }
+			position = { x = 10 y = 14 }
 		}
 
 		ai_will_do = {
@@ -2356,16 +2476,21 @@ technologies = {
 			usa_heavy_equipment_2
 		}
 
+		path = {
+			leads_to_tech = usa_heavy_2_5
+			research_cost_coeff = 1
+		}
+
 		research_cost = 2.5
-		start_year = 1943
+		start_year = 1944
 		
 		sub_technologies = {		
-			usa_medium_spg_4
+			#usa_medium_spg_4
 		}
 		
 		folder = {
 			name = usa_armour_folder
-			position = { x = 8 y = 16 }
+			position = { x = 7 y = 18 }
 		}
 
 		ai_will_do = {
@@ -2409,6 +2534,67 @@ technologies = {
 		}
 	}
 
+	usa_heavy_2_5 = { #M4A3E2 "Jumbo" 76mm
+ 
+		enable_equipments = {
+			usa_heavy_equipment_2_5
+		}
+
+		path = {
+			leads_to_tech = usa_heavy_5
+			research_cost_coeff = 1
+		}
+
+		research_cost = 1
+		start_year = 1945
+		
+		folder = {
+			name = usa_armour_folder
+			position = { x = 7 y = 20 }
+		}
+
+		ai_will_do = {
+			factor = 4
+			modifier = {
+				factor = 0
+				date < "1944.1.1"
+			}
+			modifier = {
+				factor = 38
+				date > "1943.1.1"
+			}
+			
+			modifier = {
+				factor = 38
+				date > "1944.1.1"
+			}
+			
+			modifier = {
+				factor = 38
+				date > "1945.1.1"
+			}
+			
+			modifier = {
+				factor = 0
+				NOT = {
+					OR = {
+						original_tag = USA
+						has_country_flag = unitedstates_technologies_tree_flag
+					}
+				}
+			}
+		}
+		
+		categories = {
+			major_technologies
+			armor
+			mio_cat_tech_all_armor_and_modules
+			cat_heavy_armor
+			mio_cat_tech_heavy_armor_and_modules
+		}
+	}
+
+
 	usa_heavy_3 = { #T29
  
 		enable_equipments = {
@@ -2420,6 +2606,11 @@ technologies = {
 			research_cost_coeff = 1
 		}
 
+#		path = {
+#			leads_to_tech = usa_heavy_7
+#			research_cost_coeff = 1
+#		}
+
 		sub_technologies = {
 			usa_heavy_3_td
 			usa_heavy_spg_3
@@ -2427,11 +2618,11 @@ technologies = {
 		}
 
 		research_cost = 2.5
-		start_year = 1944
+		start_year = 1946
 		
 		folder = {
 			name = usa_armour_folder
-			position = { x = 11 y = 18 }
+			position = { x = 10 y = 22 }
 		}
 
 		ai_will_do = {
@@ -2487,65 +2678,65 @@ technologies = {
 		}
 	}
 	
-	usa_heavy_4 = { #Super Pershing
- 
-		enable_equipments = {
-			usa_heavy_equipment_4
-		}	
-
-		path = {
-			leads_to_tech = usa_heavy_5
-			research_cost_coeff = 1
-		}
-
-		research_cost = 2.5
-		start_year = 1945
-		
-		folder = {
-			name = usa_armour_folder
-			position = { x = 8 y = 20 }
-		}
-
-		ai_will_do = {
-			factor = 4
-			modifier = {
-				factor = 0
-				date < "1945.1.1"
-			}
-			modifier = {
-				factor = 38
-				date > "1945.1.1"
-			}
-			
-			modifier = {
-				factor = 38
-				date > "1946.1.1"
-			}
-			
-			modifier = {
-				factor = 38
-				date > "1947.1.1"
-			}
-			
-			modifier = {
-				factor = 0
-				NOT = {
-					OR = {
-						original_tag = USA
-						has_country_flag = unitedstates_technologies_tree_flag
-					}
-				}
-			}
-		}
-		
-		categories = {
-			major_technologies
-			armor
-			mio_cat_tech_all_armor_and_modules
-			cat_heavy_armor
-			mio_cat_tech_heavy_armor_and_modules
-		}
-	}
+#	usa_heavy_4 = { #Super Pershing
+# 
+#		enable_equipments = {
+#			usa_heavy_equipment_4
+#		}	
+#
+#		path = {
+#			leads_to_tech = usa_heavy_5
+#			research_cost_coeff = 1
+#		}
+#
+#		research_cost = 2.5
+#		start_year = 1945
+#		
+#		folder = {
+#			name = usa_armour_folder
+#			position = { x = 8 y = 20 }
+#		}
+#
+#		ai_will_do = {
+#			factor = 4
+#			modifier = {
+##				factor = 0
+#				date < "1945.1.1"
+#			}
+#			modifier = {
+#				factor = 38
+#				date > "1945.1.1"
+#			}
+##			
+#			modifier = {
+#				factor = 38
+#				date > "1946.1.1"
+##			}
+#			
+#			modifier = {
+#				factor = 38
+#				date > "1947.1.1"
+#			}
+#			
+#			modifier = {
+#				factor = 0
+#				NOT = {
+#					OR = {
+#						original_tag = USA
+#						has_country_flag = unitedstates_technologies_tree_flag
+##					}
+#				}
+#			}
+#		}
+#		
+#		categories = {
+#			major_technologies
+#			armor
+#			mio_cat_tech_all_armor_and_modules
+#			cat_heavy_armor
+#			mio_cat_tech_heavy_armor_and_modules
+#		}
+#	}
 
 	usa_heavy_5 = { #T26E5
  
@@ -2553,12 +2744,22 @@ technologies = {
 			usa_heavy_equipment_5
 		}	
 
-		research_cost = 2.5
+		research_cost = 1
 		start_year = 1946
 		
+		allow = {
+			has_tech = usa_medium_6
+			has_tech = usa_heavy_2_5
+		}
+
+		path = {
+			leads_to_tech = usa_heavy_6
+			research_cost_coeff = 1
+		}
+
 		folder = {
 			name = usa_armour_folder
-			position = { x = 8 y = 22 }
+			position = { x = 7 y = 22 }
 		}
 
 		ai_will_do = {
@@ -2608,13 +2809,17 @@ technologies = {
 			usa_heavy_equipment_6
 		}
 
+		allow = {
+			has_tech = usa_heavy_5
+			has_tech = usa_heavy_3
+		}
 
-		research_cost = 2.5
-		start_year = 1946
+		research_cost = 1
+		start_year = 1947
 		
 		folder = {
 			name = usa_armour_folder
-			position = { x = 11 y = 22 }
+			position = { x = 10 y = 24 }
 		}
 
 		ai_will_do = {
@@ -2629,6 +2834,65 @@ technologies = {
 			mio_cat_tech_heavy_armor_and_modules
 		}
 	}
+
+#	usa_heavy_7 = { #T34
+#		enable_equipments = {
+#			usa_heavy_equipment_7
+#		}
+#
+#		research_cost = 2.5
+#
+#		start_year = 1947
+#
+#		path = {
+#			leads_to_tech = usa_heavy_8
+#			research_cost_coeff = 1
+#		}
+#
+#		folder = {
+#			name = usa_armour_folder
+#			position = { x = 12 y = 24 }
+#		}
+#
+#		ai_will_do = {
+#			factor = 0
+#		}
+#		
+#		categories = {
+#			major_technologies
+#			armor
+#			mio_cat_tech_all_armor_and_modules
+#			cat_heavy_armor
+#			mio_cat_tech_heavy_armor_and_modules
+#		}
+#	}
+
+#	usa_heavy_8 = { #T43
+#		enable_equipments = {
+#			usa_heavy_equipment_8
+#		}
+#
+#		research_cost = 1
+#
+#		start_year = 1949
+#
+#		folder = {
+#			name = usa_armour_folder
+#			position = { x = 12 y = 28 }
+#		}
+#
+#		ai_will_do = {
+#			factor = 0
+#		}
+#		
+#		categories = {
+#			major_technologies
+#			armor
+#			mio_cat_tech_all_armor_and_modules
+#			cat_heavy_armor
+#			mio_cat_tech_heavy_armor_and_modules
+#		}
+#	}
 
 	#M103 - scrapped
 
