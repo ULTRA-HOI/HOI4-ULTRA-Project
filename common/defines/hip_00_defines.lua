@@ -1274,9 +1274,9 @@ NAir = {
 
 	ACCIDENT_CHANCE_BASE = 0.1, --was 0.1 --Base chance % (0 - 100) for accident to happen. Reduced with higher reliability stat.
 	ACCIDENT_CHANCE_CARRIER_MULT = 2,					-- The total accident chance is scaled up when it happens on the carrier ship.
-	ACCIDENT_CHANCE_BALANCE_MULT = 0.10,				-- Multiplier for balancing how often the air accident really happens. The higher mult, the more often.
-	ACCIDENT_CHANCE_RELIABILITY_MULT = 2.0,				-- Multiplier to accident chance per point of missing reliability.
-	ACCIDENT_EFFECT_MULT = 0.025, --was 0.01 --Multiplier for balancing the effect of accidents
+	ACCIDENT_CHANCE_BALANCE_MULT = 1,				-- Multiplier for balancing how often the air accident really happens. The higher mult, the more often.
+	ACCIDENT_CHANCE_RELIABILITY_MULT = 1.0,				-- Multiplier to accident chance per point of missing reliability.
+	ACCIDENT_EFFECT_MULT = 0.005, --was 0.01 --Multiplier for balancing the effect of accidents
 	ACE_DEATH_CHANCE_BASE = 0.005,						-- Base chance % for ace pilot die when an airplane is shot down in the Ace wing.
 	ACE_DEATH_BY_OTHER_ACE_CHANCE = 1.0,				-- chance to an ace dying by another ace if it was hit by ace in combat
 	ACE_DEATH_CHANCE_PLANES_MULT = 0.001,				-- The more airplanes was lost in a single airplanes (more bloody it was) the higher chance of Ace to die.
