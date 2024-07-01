@@ -3,35 +3,39 @@
 on_daily_labour_calculations = {
 		
 	#Calculates total population (in 1000s) 
-	set_variable = { total_population = max_manpower_k } 
-	set_variable = { total_non_core_population = 0 } 
-	set_variable = { avaliable_non_core_population = 0 } 
+	set_variable = { total_core_population_k = max_manpower_k } 
+	set_variable = { total_non_core_population_k = 0 } 
+	set_temp_variable = { avaliable_non_core_population_k = 0 } 
 	
-	# Loop through every non-core state, add non-core pop to total_non_core_population and available non-core pop to avaliable_non_core_population modified by agricultural penalty of state 
+	# Loop through every non-core state, add non-core pop to total_non_core_population_k and available non-core pop to avaliable_non_core_population_k modified by agricultural penalty of state 
 	every_controlled_state = {
 		limit = {
 			NOT = { is_core_of = PREV }
 		}
-		set_variable = { state_avaliable_labour = state_population_k }
-		multiply_variable = { state_avaliable_labour = state_level_agriculture_penalty }
-		add_to_variable = { PREV.total_non_core_population = THIS.state_population_k }
-		add_to_variable = { PREV.avaliable_non_core_population = THIS.state_avaliable_labour }
+		set_temp_variable = { state_avaliable_labour_k = state_population_k }
+		multiply_temp_variable = { state_avaliable_labour_k = state_level_agriculture_penalty }
+		set_temp_variable = { state_compliance_manpower_factor = compliance }
+		multiply_temp_variable = { state_compliance_manpower_factor = 0.10 } # static_modifiers.txt -> compliance_effect
+		add_to_temp_variable = { state_compliance_manpower_factor = 0.02 } # defines.lua -> LOCAL_MANPOWER_ACCESSIBLE_NON_CORE_FACTOR
+		if = {
+			limit = { compliance > 59 } # compliance_modifiers.txt -> compliance_60
+			multiply_temp_variable = { state_compliance_manpower_factor = 0.05 } # static_modifiers -> compliance_effect
+		}
+		multiply_temp_variable = { state_avaliable_labour_k = state_compliance_manpower_factor }
+		
+		add_to_variable = { PREV.total_non_core_population_k = state_population_k }
+		add_to_temp_variable = { PREV.avaliable_non_core_population_k = state_avaliable_labour_k }
 	}
 
-	subtract_from_variable = { total_population = total_non_core_population } 
-	
-	#Calculate Avaliable non-core Population
-	multiply_variable = { avaliable_non_core_population = 0.2 } #use available non-core pop 
+	subtract_from_variable = { total_core_population_k = total_non_core_population_k } 
 	
 	#Calculates total labourpower (in 1000s)
-	set_variable = { total_labour_population = total_population }
-	set_variable = { total_core_labour_population = total_population }
-	add_to_variable = { total_labour_population = avaliable_non_core_population }
-	set_variable = { total_population_with_foreign_workers = total_labour_population }
+	set_variable = { total_core_non_core_population_k = total_core_population_k }
+	add_to_variable = { total_core_non_core_population_k = avaliable_non_core_population_k }
+	set_variable = { total_population_with_foreign_workers_k = total_core_non_core_population_k }
 	
 	#Calculates total working age (in 1000s)
-	multiply_variable = { total_core_labour_population = 0.7 }
-	multiply_variable = { total_labour_population = 0.7 }
+	multiply_variable = { total_core_non_core_population_k = 0.7 }
 	
 	#Factors in female particapation rate penalty
 	set_variable = { female_penalty_calculation = 1 }
@@ -43,178 +47,191 @@ on_daily_labour_calculations = {
 	subtract_from_variable = { female_penalty_applied = female_penalty_calculation }
 	
 	#Apply female penalty to total labourpower
-	set_variable = { total_labourpower = total_labour_population }
-	multiply_variable = { total_core_labour_population = female_penalty_applied }
-	multiply_variable = { total_labourpower = female_penalty_applied }
-	
-	
+	set_variable = { total_labour_population_k = total_core_non_core_population_k }
+	multiply_variable = { total_labour_population_k = female_penalty_applied }
 	
 	#Calculate additional female penalty
 	multiply_variable = { female_penalty_calculation = -1 }
-	
-	#Apply Agricultural Burden to States / Record it
-	set_variable = { agricultural_penalty_percentage = 0 }
-	set_variable = { agriculture_penalty_temp = 0 }
-	
-	# gather damaged buildings in states 
-	set_variable = { damaged_MIL_current = 0 }
-	set_variable = { damaged_CIV_current = 0 }
-	set_variable = { damaged_NAV_current = 0 }
+	multiply_variable = { female_penalty_calculation = 0.7 } # factor in working age
 
+	set_variable = { total_free_labour_k = total_labour_population_k }
+	
+	calculate_argriculture_labour = yes
+	calculate_resources_labour = yes
+	calculate_factories_labour = yes
+	calculate_civilian_labour = yes
+	calculate_logistics_labour = yes
+	
+	#actually remove needed manpower from pool
+	subtract_from_variable = { total_free_labour_k = agriculture_labour_k }
+	subtract_from_variable = { total_free_labour_k = factories_labour_k }
+	subtract_from_variable = { total_free_labour_k = resources_labour_k }
+	subtract_from_variable = { total_free_labour_k = civilian_services_labour_k }
+	subtract_from_variable = { total_free_labour_k = army_logistics_labour_k }
+	
+	#Calculates penalty to apply to total population
+	set_variable = { agricultural_penalty_calculation = agriculture_labour_k }
+	divide_variable = { agricultural_penalty_calculation = total_population_with_foreign_workers_k }
+	multiply_variable = { agricultural_penalty_calculation = -1 }
+	set_variable = { factories_labour_penalty_calculation = factories_labour_k }
+	divide_variable = { factories_labour_penalty_calculation = total_population_with_foreign_workers_k }
+	multiply_variable = { factories_labour_penalty_calculation = -1 }
+	set_variable = { resources_labour_penalty_calculation = resources_labour_k }
+	divide_variable = { resources_labour_penalty_calculation = total_population_with_foreign_workers_k }
+	multiply_variable = { resources_labour_penalty_calculation = -1 }
+	set_variable = { civilian_services_labour_penalty_calculation = civilian_services_labour_k }
+	divide_variable = { civilian_services_labour_penalty_calculation = total_population_with_foreign_workers_k }
+	multiply_variable = { civilian_services_labour_penalty_calculation = -1 }
+	set_variable = { army_logistics_penalty_calculation = army_logistics_labour_k }
+    divide_variable = { army_logistics_penalty_calculation = total_population_with_foreign_workers_k }
+    multiply_variable = { army_logistics_penalty_calculation = -1 }
+}
+
+calculate_argriculture_labour = {
+	set_variable = { agriculture_labour_k = 0 }
 	every_controlled_state = {
 		limit = { is_core_of = PREV }
-		set_variable = { agriculture_modifier = state_level_agriculture_penalty }
-		multiply_variable = { agriculture_modifier = THIS.state_population_k }
-		add_to_variable = { PREV.agriculture_penalty_temp = THIS.agriculture_modifier }
-
-		add_to_variable = { damaged_CIV_current = damaged_building_level@industrial_complex }
-		add_to_variable = { damaged_MIL_current = damaged_building_level@arms_factory }
-		add_to_variable = { damaged_NAV_current = damaged_building_level@dockyard }
+		set_temp_variable = { state_agriculture_labour_k = state_population_k }
+		multiply_temp_variable = { state_agriculture_labour_k = state_level_agriculture_penalty }
+		add_to_variable = { PREV.agriculture_labour_k = state_agriculture_labour_k }
 	}
+}
 
-	set_variable = { agriculture_percentage_core = agriculture_penalty_temp}
-	set_variable = { agriculture_total_temp = THIS.total_population }
-
-	divide_variable = { agriculture_percentage_core = THIS.total_population }
-
-	every_controlled_state = {
-		limit = { 
-			NOT = { is_core_of = PREV }
-			check_variable = { 
-			state_level_agriculture_penalty < PREV.agriculture_percentage_core
-			} 	
-		}
-		
-		
-		set_variable = { agriculture_modifier = state_level_agriculture_penalty }
-		multiply_variable = { agriculture_modifier = THIS.state_population_k }
-		add_to_variable = { PREV.agriculture_penalty_temp = THIS.agriculture_modifier }
-		add_to_variable = { PREV.agriculture_total_temp = THIS.state_population_k }
-
-		add_to_variable = { damaged_CIV_current = damaged_building_level@industrial_complex }
-		add_to_variable = { damaged_MIL_current = damaged_building_level@arms_factory }
-		add_to_variable = { damaged_NAV_current = damaged_building_level@dockyard }
-	}
-
-	add_to_variable = { agricultural_penalty_percentage = agriculture_penalty_temp }
-	divide_variable = { agricultural_penalty_percentage = agriculture_total_temp }
-	multiply_variable = { agricultural_penalty_percentage = -1 } 
-	
-	# For display
-	set_variable = { agriculture_occupation_bonus = agriculture_percentage_core }
-	add_to_variable = { agriculture_occupation_bonus = agricultural_penalty_percentage }
-	multiply_variable = { agriculture_occupation_bonus = total_labourpower }
-	set_variable = { labour_agriculture_display = agricultural_penalty_percentage }
-	multiply_variable = { labour_agriculture_display = -1 }
-	multiply_variable = { labour_agriculture_display = total_labourpower }
-	#Calculate number of labour needed for resources
-
+calculate_resources_labour = {
 	#Sets variable equal to number of resources 
-	set_variable = { labour_oil = resource_produced@oil }
-	set_variable = { labour_aluminium = resource_produced@aluminium }
-	set_variable = { labour_tungsten = resource_produced@tungsten }
-	set_variable = { labour_steel = resource_produced@steel }
-	set_variable = { labour_chromium = resource_produced@chromium }
-	set_variable = { labour_coal = resource_produced@coal }
-	set_variable = { labour_bauxite = resource_produced@bauxite }
-	set_variable = { labour_iron = resource_produced@iron }
-	set_variable = { labour_rubber = resource_produced@rubber }
+	set_temp_variable = { labour_oil = resource_produced@oil }
+	set_temp_variable = { labour_aluminium = resource_produced@aluminium }
+	set_temp_variable = { labour_tungsten = resource_produced@tungsten }
+	set_temp_variable = { labour_steel = resource_produced@steel }
+	set_temp_variable = { labour_chromium = resource_produced@chromium }
+	set_temp_variable = { labour_coal = resource_produced@coal }
+	set_temp_variable = { labour_bauxite = resource_produced@bauxite }
+	set_temp_variable = { labour_iron = resource_produced@iron }
+	set_temp_variable = { labour_rubber = resource_produced@rubber }
 	
-	set_variable = { consumed_oil = modifier@country_resource_cost_oil }
-	set_variable = { consumed_aluminium = modifier@country_resource_cost_aluminium }
-	set_variable = { consumed_tungsten = modifier@country_resource_cost_tungsten }
-	set_variable = { consumed_steel = modifier@country_resource_cost_steel }
-	set_variable = { consumed_chromium = modifier@country_resource_cost_chromium }
-	set_variable = { consumed_coal = modifier@country_resource_cost_coal }
-	set_variable = { consumed_bauxite = modifier@country_resource_cost_bauxite }
-	set_variable = { consumed_iron = modifier@country_resource_cost_iron }
-	set_variable = { consumed_rubber = modifier@country_resource_cost_rubber }
+	set_temp_variable = { consumed_oil = modifier@country_resource_cost_oil }
+	set_temp_variable = { consumed_aluminium = modifier@country_resource_cost_aluminium }
+	set_temp_variable = { consumed_tungsten = modifier@country_resource_cost_tungsten }
+	set_temp_variable = { consumed_steel = modifier@country_resource_cost_steel }
+	set_temp_variable = { consumed_chromium = modifier@country_resource_cost_chromium }
+	set_temp_variable = { consumed_coal = modifier@country_resource_cost_coal }
+	set_temp_variable = { consumed_bauxite = modifier@country_resource_cost_bauxite }
+	set_temp_variable = { consumed_iron = modifier@country_resource_cost_iron }
+	set_temp_variable = { consumed_rubber = modifier@country_resource_cost_rubber }
 	
-	add_to_variable = { labour_oil = consumed_oil }
-	add_to_variable = { labour_aluminium = consumed_aluminium }
-	add_to_variable = { labour_tungsten = consumed_tungsten }
-	add_to_variable = { labour_steel = consumed_steel }
-	add_to_variable = { labour_chromium = consumed_chromium }
-	add_to_variable = { labour_coal = consumed_coal }
-	add_to_variable = { labour_bauxite = consumed_bauxite }
-	add_to_variable = { labour_iron = consumed_iron }
-	add_to_variable = { labour_rubber = consumed_rubber }
+	add_to_temp_variable = { labour_oil = consumed_oil }
+	add_to_temp_variable = { labour_aluminium = consumed_aluminium }
+	add_to_temp_variable = { labour_tungsten = consumed_tungsten }
+	add_to_temp_variable = { labour_steel = consumed_steel }
+	add_to_temp_variable = { labour_chromium = consumed_chromium }
+	add_to_temp_variable = { labour_coal = consumed_coal }
+	add_to_temp_variable = { labour_bauxite = consumed_bauxite }
+	add_to_temp_variable = { labour_iron = consumed_iron }
+	add_to_temp_variable = { labour_rubber = consumed_rubber }
 
 	
 	#Multiplies number of resource by labour requirements per resource (divided by 1000 to stop overflows)
-	multiply_variable = { labour_oil = 0.1 } #100 needed per resource produced
-	multiply_variable = { labour_aluminium = 0.05 }
-	multiply_variable = { labour_tungsten = 0.05 }
-	multiply_variable = { labour_steel = 0.05 }
-	multiply_variable = { labour_chromium = 0.05 }
-	multiply_variable = { labour_coal = 0.01 }
-	multiply_variable = { labour_bauxite = 0.01 }
-	multiply_variable = { labour_iron = 0.01 }
-	multiply_variable = { labour_rubber = 0.05 }
+	multiply_temp_variable = { labour_oil = 0.1 } #100 needed per resource produced
+	multiply_temp_variable = { labour_aluminium = 0.05 }
+	multiply_temp_variable = { labour_tungsten = 0.05 }
+	multiply_temp_variable = { labour_steel = 0.05 }
+	multiply_temp_variable = { labour_chromium = 0.05 }
+	multiply_temp_variable = { labour_coal = 0.01 }
+	multiply_temp_variable = { labour_bauxite = 0.01 }
+	multiply_temp_variable = { labour_iron = 0.01 }
+	multiply_temp_variable = { labour_rubber = 0.05 }
 	
 	#Adds up total labour needed for resources
-	set_variable = { labour_total_resource = labour_oil }
-	add_to_variable = { labour_total_resource = labour_aluminium } 
-	add_to_variable = { labour_total_resource = labour_tungsten } 
-	add_to_variable = { labour_total_resource = labour_steel } 
-	add_to_variable = { labour_total_resource = labour_chromium } 
-	add_to_variable = { labour_total_resource = labour_coal } 
-	add_to_variable = { labour_total_resource = labour_bauxite } 
-	add_to_variable = { labour_total_resource = labour_iron } 
-	add_to_variable = { labour_total_resource = labour_rubber }
-	
-	#Calculate total labour needs
-	
-	#Sets variable equal to number of factories
-	set_variable = { labour_military_factories = num_of_military_factories }
-	multiply_variable = { labour_military_factories = 5.0 } #5000 MP per mil factory
-	set_variable = { labour_civilian_factories = num_of_civilian_factories }
-	multiply_variable = { labour_civilian_factories = 6.5 } #6500 MP per civ factory
-	set_variable = { labour_naval_factories = num_of_naval_factories }
-	multiply_variable = { labour_naval_factories = 7.5 } #7500 MP per nav factory
+	set_variable = { resources_labour_k = labour_oil }
+	add_to_variable = { resources_labour_k = labour_aluminium } 
+	add_to_variable = { resources_labour_k = labour_tungsten } 
+	add_to_variable = { resources_labour_k = labour_steel } 
+	add_to_variable = { resources_labour_k = labour_chromium } 
+	add_to_variable = { resources_labour_k = labour_coal } 
+	add_to_variable = { resources_labour_k = labour_bauxite } 
+	add_to_variable = { resources_labour_k = labour_iron } 
+	add_to_variable = { resources_labour_k = labour_rubber }
+}
 
-	add_to_variable = { labour_military_factories = damaged_MIL_current }
-	add_to_variable = { labour_civilian_factories = damaged_CIV_current }
-	add_to_variable = { labour_naval_factories = damaged_NAV_current }
+calculate_factories_labour = {
+	set_temp_variable = { damaged_MIL_current = 0 }
+	set_temp_variable = { damaged_CIV_current = 0 }
+	set_temp_variable = { damaged_NAV_current = 0 }
 
-	set_variable = { labour_total_factories = labour_military_factories }
-	add_to_variable = { labour_total_factories = labour_civilian_factories }
-	add_to_variable = { labour_total_factories = labour_naval_factories }
+	every_controlled_state = {
+		add_to_temp_variable = { PREV.damaged_CIV_current = damaged_building_level@industrial_complex }
+		add_to_temp_variable = { PREV.damaged_MIL_current = damaged_building_level@arms_factory }
+		add_to_temp_variable = { PREV.damaged_NAV_current = damaged_building_level@dockyard }
+	}
+
+	set_temp_variable = { labour_military_factories = num_of_military_factories }
+	add_to_temp_variable = { labour_military_factories = damaged_MIL_current }
+	multiply_temp_variable = { labour_military_factories = 5.0 } #5000 MP per mil factory
+
+	set_temp_variable = { labour_civilian_factories = num_of_civilian_factories }
+	multiply_temp_variable = { labour_civilian_factories = 6.5 } #6500 MP per civ factory
+	add_to_temp_variable = { labour_civilian_factories = damaged_CIV_current }
 	
-	
-	set_variable = { total_labour_needs = labour_total_factories }
-	add_to_variable = { total_labour_needs = labour_total_resource }
-	# labour_impact_calculator = yes
-	
+	set_temp_variable = { labour_naval_factories = num_of_naval_factories }
+	multiply_temp_variable = { labour_naval_factories = 7.5 } #7500 MP per nav factory
+	add_to_temp_variable = { labour_naval_factories = damaged_NAV_current }
+
+	set_variable = { factories_labour_k = labour_military_factories }
+	add_to_variable = { factories_labour_k = labour_civilian_factories }
+	add_to_variable = { factories_labour_k = labour_naval_factories }
+}
+
+calculate_civilian_labour = {
 	#Calculate Civilian Needs
 	if = {
 		limit = { tag = ENG }
-		set_variable = { civilian_needs = 0.15 }
+		set_variable = { civilian_services_labour_k = 0.15 }
 	}
-	if = {
+	else_if = {
 		limit = { tag = FRA }
-		set_variable = { civilian_needs = 0.14 }
+		set_variable = { civilian_services_labour_k = 0.14 }
 	}
-	if = {
-		limit = { NOT = { tag = ENG } NOT = { tag = FRA }}
-		set_variable = { civilian_needs = 0.1 }
+	else = {
+		set_variable = { civilian_services_labour_k = 0.1 }
 	}
-	multiply_variable = { civilian_needs = total_labourpower }	
+	multiply_variable = { civilian_services_labour_k = total_labour_population_k }	
+}
+
+calculate_logistics_labour = {
+	logistical_calculations = yes
+	#Calculates Army Logistics
+	set_variable = { army_logistics_labour_k = total_trucks } # calculated in scripted_effects/army_logisitcs_scripted_effects.txt#logistical_calculations
+	multiply_variable = { army_logistics_labour_k = 10.0 } # 10 manpower per truck 
+    divide_variable = { army_logistics_labour_k = 1000 } # (in 1000s)
+}
+
+init_default_logistics_and_women = {
+	#Sets default female workplace participation rate (to offset labour needs).
+	set_variable = { female_participation_rate = 0.5 }
+			
+	set_variable = { light_logistics_motorisation_level = 0 }
+	set_variable = { heavy_logistics_motorisation_level = 0 }
+	set_variable = { mot_logistics_motorisation_level = 0 }
+	set_variable = { sup_logistics_motorisation_level = 0 }
+}
+
+init_industry_rework = {
+	# Adds agriculture mechanisation to every relevant countries
+	every_owned_state = {
+		calculate_state_level_agriculture_penalty = yes
+		add_dynamic_modifier = { modifier = state_agriculture }
+	}
 	
-	#Adds civilian needs to total labour needs.
-	add_to_variable = { total_labour_needs = civilian_needs }
+	on_daily_labour_calculations = yes
 	
-	#actually remove needed manpower from pool
-	subtract_from_variable = { total_labourpower = total_labour_needs }
-	
-	#Calculates penalty to apply to total population
-	set_variable = { labour_penalty_percentage = total_labour_needs }
-	divide_variable = { labour_penalty_percentage = total_population_with_foreign_workers }
-	multiply_variable = { labour_penalty_percentage = -1 }
-	
-	#Set dynamic number of civilian trucks per 6 month
-	set_variable = { civilian_truck_production = num_of_civilian_factories }
-	multiply_variable = { civilian_truck_production = 6 }
+	#Adds key labour requirements dynamic modifier
+	add_dynamic_modifier = { modifier = agriculture_needs }
+	add_dynamic_modifier = { modifier = factories_labour_requirements }
+	add_dynamic_modifier = { modifier = resources_labour_requirements }
+	add_dynamic_modifier = { modifier = civilian_services_labour_requirements }
+	add_dynamic_modifier = { modifier = logistical_tail_penalty }
+	add_dynamic_modifier = { modifier = female_labour_penalty }
+	add_dynamic_modifier = { modifier = not_of_working_age_penalty }
 }
 
 calculate_state_level_agriculture_penalty = {
@@ -244,23 +261,7 @@ calculate_state_level_agriculture_penalty = {
 				is_core_of = NZL
 				is_core_of = ARG
 				is_core_of = CHL
-			}
-		}
-		set_variable = { state_level_agriculture_penalty = 0.12 }
-
-	}
-	else_if = {
-		limit = {
-			OR = {
 				is_core_of = NOR
-			}
-		}
-		set_variable = { state_level_agriculture_penalty = 0.12 }
-	}
-	
-	else_if = {
-		limit = {
-			OR = {
 				is_core_of = DEN
 				is_core_of = SWE
 				is_core_of = SWI
@@ -292,11 +293,40 @@ calculate_state_level_agriculture_penalty = {
 	else_if = {
 		limit = {
 			OR = {
+				is_core_of = BUL
+			}
+		}
+		set_variable = { state_level_agriculture_penalty = 0.18 }
+	}
+	else_if = {
+		limit = {
+			OR = {
+				is_core_of = HUN
+				is_core_of = SLO
+			}
+		}
+		set_variable = { state_level_agriculture_penalty = 0.19 }
+	}
+	else_if = {
+		limit = {
+			OR = {
+				is_core_of = POL
+				is_core_of = UKR
+				is_core_of = GRE
+			}
+		}
+		set_variable = { state_level_agriculture_penalty = 0.20 }
+	}
+	else_if = {
+		limit = {
+			OR = {
 				is_core_of = ITA
 				is_core_of = SPR
 				is_core_of = POR
 				is_core_of = SAF
 				is_core_of = FIN
+				is_core_of = YUG
+				is_core_of = JAP
 				AND = {
 					NOT = {
 						is_core_of = CHL
@@ -318,78 +348,6 @@ calculate_state_level_agriculture_penalty = {
 	else_if = {
 		limit = {
 			OR = {
-				is_core_of = SOV
-			}
-		}
-		set_variable = { state_level_agriculture_penalty = 0.26 }
-	}
-	else_if = {
-		limit = {
-			OR = {
-				is_core_of = JAP
-			}
-		}
-		set_variable = { state_level_agriculture_penalty = 0.22 }
-	}
-	else_if = {
-		limit = {
-			OR = {
-				is_core_of = POL
-				AND = {
-					is_core_of = UKR
-					is_core_of = POL
-				}
-			}
-		}
-		set_variable = { state_level_agriculture_penalty = 0.20 }
-	}
-	else_if = {
-		limit = {
-			OR = {
-				is_core_of = HUN
-				is_core_of = SLO
-			}
-		}
-		set_variable = { state_level_agriculture_penalty = 0.19 }
-	}
-	else_if = {
-		limit = {
-			OR = {
-				is_core_of = BUL
-			}
-		}
-		set_variable = { state_level_agriculture_penalty = 0.18 }
-	}
-	else_if = {
-		limit = {
-			OR = {
-				is_core_of = LIT
-				is_core_of = LAT
-				is_core_of = EST
-				is_core_of = PER
-			}
-		}
-		set_variable = { state_level_agriculture_penalty = 0.29 }
-	}
-	else_if = {
-		limit = {
-			OR = {
-				is_core_of = YUG
-			}
-		}
-		set_variable = { state_level_agriculture_penalty = 0.22 }
-	}
-	else_if = {
-		limit = {
-			OR = {
-				is_core_of = GRE
-			}
-		}
-		set_variable = { state_level_agriculture_penalty = 0.20 }
-	}
-	else_if = {
-		limit = {
-			OR = {
 				is_core_of = TUR
 			}
 		}
@@ -402,6 +360,25 @@ calculate_state_level_agriculture_penalty = {
 			}
 		}
 		set_variable = { state_level_agriculture_penalty = 0.28 }
+	}
+	else_if = {
+		limit = {
+			OR = {
+				is_core_of = SOV
+			}
+		}
+		set_variable = { state_level_agriculture_penalty = 0.26 }
+	}
+	else_if = {
+		limit = {
+			OR = {
+				is_core_of = LIT
+				is_core_of = LAT
+				is_core_of = EST
+				is_core_of = PER
+			}
+		}
+		set_variable = { state_level_agriculture_penalty = 0.29 }
 	}
 	else_if = {
 		limit = {
@@ -465,32 +442,6 @@ calculate_state_level_agriculture_penalty = {
 	else ={	
 		set_variable = { state_level_agriculture_penalty = 0.38 }
 	}
-}
-
-# Actual run on init of game.
-init_default_logistics_and_women = {
-	#Sets default female workplace participation rate (to offset labour needs).
-	set_variable = { female_participation_rate = 0.5 }
-			
-	#Sets default logistical level
-	#set_variable = { logistical_level = 1 }
-	#set_variable = { signal_level = 1 }
-}
-
-
- # Actual run on init of game.
-init_industry_rework = {
-	# Adds agriculture mechanisation to every relevant countries
-	every_owned_state = {
-		calculate_state_level_agriculture_penalty = yes
-	}
-	#Adds key labour requirements dynamic modifier
-
-	on_daily_labour_calculations = yes
-	add_dynamic_modifier = { modifier = agriculture_needs }
-	add_dynamic_modifier = { modifier = labour_requirements }
-	add_dynamic_modifier = { modifier = female_labour_penalty }
-	add_dynamic_modifier = { modifier = not_of_working_age_penalty }
 }
 
 reduced_civillian_resources_scripted_effect = {

@@ -1,0 +1,154 @@
+logistical_calculations = {
+	#when modifying the factors below also adjust technologies/army_logistics.txt
+	set_temp_variable = { light_logistics_trucks_needed = light_logistics_motorisation_level }
+	set_temp_variable = { heavy_logistics_trucks_needed = heavy_logistics_motorisation_level }
+	set_temp_variable = { mot_logistics_trucks_needed = mot_logistics_motorisation_level }
+	set_temp_variable = { support_logistics_trucks_needed = sup_logistics_motorisation_level }
+	multiply_temp_variable = { light_logistics_trucks_needed = 2 } 
+	multiply_temp_variable = { heavy_logistics_trucks_needed = 5 }
+	multiply_temp_variable = { mot_logistics_trucks_needed = 10 }
+	multiply_temp_variable = { support_logistics_trucks_needed = 5 }
+
+	set_temp_variable = { light_multiplier = light_logistics_trucks_needed }
+	set_temp_variable = { heavy_multiplier = heavy_logistics_trucks_needed }
+	set_temp_variable = { mot_multiplier = mot_logistics_trucks_needed }
+	set_temp_variable = { support_multiplier = support_logistics_trucks_needed }
+
+	#when modifying the categories below also adjust unit_tags/00_categories.txt
+	set_temp_variable = { total_light = num_battalions_with_type@infantry }
+	add_to_temp_variable = { total_light = num_battalions_with_type@bicycle_battalion }
+	add_to_temp_variable = { total_light = num_battalions_with_type@paratrooper }
+	add_to_temp_variable = { total_light = num_battalions_with_type@fake_intel_unit }
+	add_to_temp_variable = { total_light = num_battalions_with_type@irregular_infantry }
+	add_to_temp_variable = { total_light = num_battalions_with_type@militia }
+	add_to_temp_variable = { total_light = num_battalions_with_type@blackshirt_assault_battalion }
+	
+	multiply_temp_variable = { total_light = light_multiplier } 
+
+	set_temp_variable = { total_heavy = num_battalions_with_type@heavy_infantry }
+	add_to_temp_variable = { total_heavy = num_battalions_with_type@marine }
+	add_to_temp_variable = { total_heavy = num_battalions_with_type@mountaineers }
+	add_to_temp_variable = { total_heavy = num_battalions_with_type@anti_tank_brigade }
+	add_to_temp_variable = { total_heavy = num_battalions_with_type@anti_air_brigade }
+	add_to_temp_variable = { total_heavy = num_battalions_with_type@artillery_brigade }
+	add_to_temp_variable = { total_heavy = num_battalions_with_type@rocket_artillery_brigade }
+
+	multiply_temp_variable = { total_heavy = heavy_multiplier }
+
+	set_temp_variable = { total_mot = num_battalions_with_type@amphibious_armor_support }
+	add_to_temp_variable = { total_mot = num_battalions_with_type@mot_anti_tank_brigade }
+	add_to_temp_variable = { total_mot = num_battalions_with_type@heavy_anti_tank }
+	add_to_temp_variable = { total_mot = num_battalions_with_type@mot_anti_air_brigade }
+	add_to_temp_variable = { total_mot = num_battalions_with_type@heavy_anti_air }
+	add_to_temp_variable = { total_mot = num_battalions_with_type@armored_car }
+	add_to_temp_variable = { total_mot = num_battalions_with_type@heavy_artillery_brigade }
+	add_to_temp_variable = { total_mot = num_battalions_with_type@mot_artillery_brigade }
+	add_to_temp_variable = { total_mot = num_battalions_with_type@motorized_heavy_artillery_brigade }
+	add_to_temp_variable = { total_mot = num_battalions_with_type@mot_rocket_artillery_brigade }
+	add_to_temp_variable = { total_mot = num_battalions_with_type@motorized_rocket_brigade }
+	add_to_temp_variable = { total_mot = num_battalions_with_type@heavy_armor }
+	add_to_temp_variable = { total_mot = num_battalions_with_type@motorized }
+	add_to_temp_variable = { total_mot = num_battalions_with_type@mechanized }
+	add_to_temp_variable = { total_mot = num_battalions_with_type@amphibious_mechanized }
+	add_to_temp_variable = { total_mot = num_battalions_with_type@light_armor }
+	add_to_temp_variable = { total_mot = num_battalions_with_type@medium_armor }
+	add_to_temp_variable = { total_mot = num_battalions_with_type@support_armor }
+	add_to_temp_variable = { total_mot = num_battalions_with_type@modern_armor }
+	add_to_temp_variable = { total_mot = num_battalions_with_type@mot_recon }
+	add_to_temp_variable = { total_mot = num_battalions_with_type@armored_car_recon }
+	add_to_temp_variable = { total_mot = num_battalions_with_type@mot_recon }
+	add_to_temp_variable = { total_mot = num_battalions_with_type@light_tank_recon }
+	add_to_temp_variable = { total_mot = num_battalions_with_type@light_sp_anti_air_brigade }
+	add_to_temp_variable = { total_mot = num_battalions_with_type@medium_sp_anti_air_brigade }
+	add_to_temp_variable = { total_mot = num_battalions_with_type@heavy_sp_anti_air_brigade }
+	add_to_temp_variable = { total_mot = num_battalions_with_type@light_sp_artillery_brigade }
+	add_to_temp_variable = { total_mot = num_battalions_with_type@medium_sp_artillery_brigade }
+	add_to_temp_variable = { total_mot = num_battalions_with_type@heavy_sp_artillery_brigade }
+	add_to_temp_variable = { total_mot = num_battalions_with_type@assault_brigade }
+	add_to_temp_variable = { total_mot = num_battalions_with_type@heavy_assault_brigade }
+	add_to_temp_variable = { total_mot = num_battalions_with_type@super_heavy_armor }
+	add_to_temp_variable = { total_mot = num_battalions_with_type@light_tank_destroyer_brigade }
+	add_to_temp_variable = { total_mot = num_battalions_with_type@medium_tank_destroyer_brigade }
+	add_to_temp_variable = { total_mot = num_battalions_with_type@heavy_tank_destroyer_brigade }
+	add_to_temp_variable = { total_mot = num_battalions_with_type@super_heavy_tank_destroyer_brigade }
+
+	multiply_temp_variable = { total_mot = mot_multiplier }
+
+	set_temp_variable = { total_support = num_battalions_with_type@engineer }
+	add_to_temp_variable = { total_support = num_battalions_with_type@field_hospital }
+	add_to_temp_variable = { total_support = num_battalions_with_type@logistics_company }
+	add_to_temp_variable = { total_support = num_battalions_with_type@horse_logistics_company }
+	add_to_temp_variable = { total_support = num_battalions_with_type@maintenance_company }
+	add_to_temp_variable = { total_support = num_battalions_with_type@military_police }
+	add_to_temp_variable = { total_support = num_battalions_with_type@penal_battalion }
+	add_to_temp_variable = { total_support = num_battalions_with_type@recon }
+	add_to_temp_variable = { total_support = num_battalions_with_type@signal_company }
+	add_to_temp_variable = { total_support = num_battalions_with_type@DIV_HQ }
+	
+	multiply_temp_variable = { total_support = support_multiplier }
+
+	set_variable = { total_trucks = total_light }
+	add_to_variable = { total_trucks = total_heavy }
+	add_to_variable = { total_trucks = total_mot }
+	add_to_variable = { total_trucks = total_support }
+	
+	#Applies equipment needs
+	clear_motorisation_techs = yes
+	set_motorisation_techs = yes
+}
+clear_motorisation_techs = {
+	set_technology  = { light_logistics_motorisation_0 = 0 popup = no }
+	set_technology  = { light_logistics_motorisation_1 = 0 popup = no }
+	set_technology  = { light_logistics_motorisation_2 = 0 popup = no }
+	set_technology  = { light_logistics_motorisation_3 = 0 popup = no }
+	set_technology  = { light_logistics_motorisation_4 = 0 popup = no }
+	set_technology  = { light_logistics_motorisation_5 = 0 popup = no }
+
+	set_technology  = { heavy_logistics_motorisation_0 = 0 popup = no }
+	set_technology  = { heavy_logistics_motorisation_1 = 0 popup = no }
+	set_technology  = { heavy_logistics_motorisation_2 = 0 popup = no }
+	set_technology  = { heavy_logistics_motorisation_3 = 0 popup = no }
+	set_technology  = { heavy_logistics_motorisation_4 = 0 popup = no }
+	set_technology  = { heavy_logistics_motorisation_5 = 0 popup = no }
+
+	set_technology  = { mot_logistics_motorisation_0 = 0 popup = no }
+	set_technology  = { mot_logistics_motorisation_1 = 0 popup = no }
+	set_technology  = { mot_logistics_motorisation_2 = 0 popup = no }
+	set_technology  = { mot_logistics_motorisation_3 = 0 popup = no }
+	set_technology  = { mot_logistics_motorisation_4 = 0 popup = no }
+	set_technology  = { mot_logistics_motorisation_5 = 0 popup = no }
+
+	set_technology  = { sup_logistics_motorisation_0 = 0 popup = no }
+	set_technology  = { sup_logistics_motorisation_1 = 0 popup = no }
+	set_technology  = { sup_logistics_motorisation_2 = 0 popup = no }
+	set_technology  = { sup_logistics_motorisation_3 = 0 popup = no }
+	set_technology  = { sup_logistics_motorisation_4 = 0 popup = no }
+	set_technology  = { sup_logistics_motorisation_5 = 0 popup = no }
+}
+
+set_motorisation_techs = {
+	meta_effect = {
+		text = {
+			set_technology  = { light_logistics_motorisation_[LEVEL] = 1 popup = no }
+		}
+		LEVEL = "[?light_logistics_motorisation_level]"
+	}
+	meta_effect = {
+		text = {
+			set_technology  = { heavy_logistics_motorisation_[LEVEL] = 1 popup = no }
+		}
+		LEVEL = "[?heavy_logistics_motorisation_level]"
+	}
+	meta_effect = {
+		text = {
+			set_technology  = { mot_logistics_motorisation_[LEVEL] = 1 popup = no }
+		}
+		LEVEL = "[?mot_logistics_motorisation_level]"
+	}
+	meta_effect = {
+		text = {
+			set_technology  = { sup_logistics_motorisation_[LEVEL] = 1 popup = no }
+		}
+		LEVEL = "[?sup_logistics_motorisation_level]"
+	}
+}
