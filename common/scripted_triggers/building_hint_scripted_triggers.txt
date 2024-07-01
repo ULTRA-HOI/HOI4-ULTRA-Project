@@ -1,0 +1,139 @@
+@MAX_CIV_FACTORIES_PER_LINE = 20
+@BASE_FACTORY_SPEED = 0.65
+@COST_CIC = 5000
+@COST_CIC_PER_LEVEL = -10
+@COST_NIC = 5000
+@COST_NIC_PER_LEVEL = -10
+@COST_MIC = 5000
+@COST_MIC_PER_LEVEL = -10
+
+cic_days_calc = {
+	controller = {
+		set_temp_variable = { ROOT.construction_speed = modifier@production_speed_buildings_factor }
+		set_temp_variable = { ROOT.mic_speed = modifier@production_speed_arms_factory_factor }
+		set_temp_variable = { ROOT.nic_speed = modifier@production_speed_dockyard_factor }
+		set_temp_variable = { ROOT.cic_speed = modifier@production_speed_industrial_complex_factor }
+		set_temp_variable = { ROOT.days_limit_u = days_upper_limit }
+		set_temp_variable = { ROOT.days_limit_l = days_lower_limit }
+	}
+
+	set_temp_variable = { infra_speed = infrastructure_level }
+	multiply_temp_variable = { infra_speed = 0.1 }
+	add_to_temp_variable = { infra_speed = 1 }
+	
+	set_temp_variable = { cic_build_cost = @COST_CIC }
+	set_temp_variable = { cic_levels = building_level@industrial_complex }
+	multiply_temp_variable = { cic_levels = @COST_CIC_PER_LEVEL }
+	add_to_temp_variable = { cic_build_cost = cic_levels }
+	set_temp_variable = { local_cic_speed = 1 }
+	add_to_temp_variable = { local_cic_speed = cic_speed }
+	add_to_temp_variable = { local_cic_speed = construction_speed }
+	set_temp_variable = { local_cic_speed_infra = local_cic_speed }
+	multiply_temp_variable = { local_cic_speed_infra = infra_speed }
+	set_temp_variable = { local_cic_output = local_cic_speed_infra }
+	multiply_temp_variable = { local_cic_output = @MAX_CIV_FACTORIES_PER_LINE }
+	multiply_temp_variable = { local_cic_output = @BASE_FACTORY_SPEED }
+	set_temp_variable = { cic_build_days = cic_build_cost }
+	divide_temp_variable = { cic_build_days = local_cic_output }
+	add_to_temp_variable = { cic_build_days = 0.5 }
+
+	round_temp_variable = cic_build_days
+	check_variable = {
+		var = cic_build_days
+		value = days_limit_u
+		compare = less_than_or_equals
+	}
+	check_variable = {
+		var = cic_build_days
+		value = days_limit_l
+		compare = greater_than_or_equals
+	}
+}
+
+mic_days_calc = {
+	controller = {
+		set_temp_variable = { ROOT.construction_speed = modifier@production_speed_buildings_factor }
+		set_temp_variable = { ROOT.mic_speed = modifier@production_speed_arms_factory_factor }
+		set_temp_variable = { ROOT.nic_speed = modifier@production_speed_dockyard_factor }
+		set_temp_variable = { ROOT.cic_speed = modifier@production_speed_industrial_complex_factor }
+		set_temp_variable = { ROOT.days_limit_u = days_upper_limit }
+		set_temp_variable = { ROOT.days_limit_l = days_lower_limit }
+	}
+
+	set_temp_variable = { infra_speed = infrastructure_level }
+	multiply_temp_variable = { infra_speed = 0.1 }
+	add_to_temp_variable = { infra_speed = 1 }
+	
+	set_temp_variable = { mic_build_cost = @COST_MIC }
+	set_temp_variable = { mic_levels = building_level@arms_factory }
+	multiply_temp_variable = { mic_levels = @COST_MIC_PER_LEVEL }
+	add_to_temp_variable = { mic_build_cost = mic_levels }
+	set_temp_variable = { local_mic_speed = 1 }
+	add_to_temp_variable = { local_mic_speed = mic_speed }
+	add_to_temp_variable = { local_mic_speed = construction_speed }
+	set_temp_variable = { local_mic_speed_infra = local_mic_speed }
+	multiply_temp_variable = { local_mic_speed_infra = infra_speed }
+	set_temp_variable = { local_mic_output = local_mic_speed_infra }
+	multiply_temp_variable = { local_mic_output = @MAX_CIV_FACTORIES_PER_LINE }
+	multiply_temp_variable = { local_mic_output = @BASE_FACTORY_SPEED }
+	set_temp_variable = { mic_build_days = mic_build_cost }
+	divide_temp_variable = { mic_build_days = local_mic_output }
+	add_to_temp_variable = { mic_build_days = 0.5 }
+	round_temp_variable = mic_build_days
+	
+	round_temp_variable = cic_build_days
+	check_variable = {
+		var = mic_build_days
+		value = days_limit_u
+		compare = less_than_or_equals
+	}
+	check_variable = {
+		var = mic_build_days
+		value = days_limit_l
+		compare = greater_than_or_equals
+	}
+}
+
+nic_days_calc = {
+	controller = {
+		set_temp_variable = { ROOT.construction_speed = modifier@production_speed_buildings_factor }
+		set_temp_variable = { ROOT.mic_speed = modifier@production_speed_arms_factory_factor }
+		set_temp_variable = { ROOT.nic_speed = modifier@production_speed_dockyard_factor }
+		set_temp_variable = { ROOT.cic_speed = modifier@production_speed_industrial_complex_factor }
+		set_temp_variable = { ROOT.days_limit_u = days_upper_limit }
+		set_temp_variable = { ROOT.days_limit_l = days_lower_limit }
+	}
+
+	set_temp_variable = { infra_speed = infrastructure_level }
+	multiply_temp_variable = { infra_speed = 0.1 }
+	add_to_temp_variable = { infra_speed = 1 }
+	
+	set_temp_variable = { nic_build_cost = @COST_NIC }
+	set_temp_variable = { nic_levels = building_level@dockyard }
+	multiply_temp_variable = { nic_levels = @COST_NIC_PER_LEVEL }
+	add_to_temp_variable = { nic_build_cost = nic_levels }
+	set_temp_variable = { local_nic_speed = 1 }
+	add_to_temp_variable = { local_nic_speed = nic_speed }
+	add_to_temp_variable = { local_nic_speed = construction_speed }
+	set_temp_variable = { local_nic_speed_infra = local_nic_speed }
+	multiply_temp_variable = { local_nic_speed_infra = infra_speed }
+	set_temp_variable = { local_nic_output = local_nic_speed_infra }
+	multiply_temp_variable = { local_nic_output = @MAX_CIV_FACTORIES_PER_LINE }
+	multiply_temp_variable = { local_nic_output = @BASE_FACTORY_SPEED }
+	set_temp_variable = { nic_build_days = nic_build_cost }
+	divide_temp_variable = { nic_build_days = local_nic_output }
+	add_to_temp_variable = { nic_build_days = 0.5 }
+	round_temp_variable = nic_build_days
+	
+	round_temp_variable = cic_build_days
+	check_variable = {
+		var = nic_build_days
+		value = days_limit_u
+		compare = less_than_or_equals
+	}
+	check_variable = {
+		var = nic_build_days
+		value = days_limit_l
+		compare = greater_than_or_equals	
+	}
+}
