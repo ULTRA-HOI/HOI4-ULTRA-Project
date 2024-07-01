@@ -1,20 +1,46 @@
 ﻿l_english:
 
  #Labour Mechanics
- agriculture_needs:0 "Agriculture Needs"
- labour_requirements:0 "Labour Requirements"
- female_labour_penalty:0 "Female Population Penalty"
+ agriculture_needs:0 "Agriculture"
+ factories_labour_requirements:0 "Heavy Industry"
+ resources_labour_requirements:0 "Resource Extraction and Processing"
+ civilian_services_labour_requirements:0 "Civilian Industry/Services"
+ logistical_tail_penalty:0 "Army Logistics"
+ female_participation_rate:0 "Female Participation Rate"
+ female_labour_penalty:0 "Non-Working Women"
  not_of_working_age_penalty:0 "Not of Working Age"
  agricultural_trade:0 "Agricultural Imports/Exports"
+ state_agriculture:0 "State Agriculture"
+ state_agriculture_modifier:0 "Agricultural Population Share"
  
  #Decisions
  reduce_agricultural_exports:0 "Reduce Agricultural Exports"
  reduce_agricultural_exports_desc:0 "Our surplus of agricultural goods allows us to recieve economic wealth through exports, however in times of war we can reduce our agricultural labour force to free up manpower for the armed forces."
  UK_second_national_service_act:0 "Second National Service Act"
-UK_second_national_service_act_desc:0 "The position now has become one of difficulty.... We are satisfied that this can be met quickly and completely only by adopting the principle of compulsory recruitment"
+ UK_second_national_service_act_desc:0 "The position now has become one of difficulty.... We are satisfied that this can be met quickly and completely only by adopting the principle of compulsory recruitment"
  #Labour Breakdwon
  labour_management:0 "Distribution of Labour"
- labour_management_desc:0 "We must manage the needs of heavy industry, agricultural needs and civilian needs in order for our economy to function. We can free up manpower in times of crisis by bringing more women into the workplace. Territorial expansion will increase the amount of workers available. Occupation of productive agricultural regions will lower the burden on our local farming population. \n\n§YDemographic Information§!\nTotal Core Population: §Y[?total_population|^]K§!\nPotential Workforce including Colonial/Occupation Workers: §Y[?total_labour_population|^]K§!\nPercent of Population Working Age: §Y70%§!\nFemale Participation Rate: §Y[?female_participation_rate|%]§!\nTotal Amount of Labour Avaliable: §Y[?total_labourpower|^]K§! \nAgricultural Bonus from Occupation: §Y[?agriculture_occupation_bonus|^]K§!\n\n§YLabour Breakdown§!\nAgricultural Needs in Core States: §Y[?labour_agriculture_display|^]K§!\nHeavy Industry Sector: §Y[?labour_total_factories|^]K§!\nEssential Civilian Industry/Services: §Y[?civilian_needs|^]K§!\nMetalworking and Resource Extraction: §Y[?labour_total_resource|^]K§!"
+ labour_management_desc:0 "We must manage the needs of heavy industry, agricultural needs and civilian needs in order for our economy to function. We can free up manpower in times of crisis by bringing more women into the workplace. Territorial expansion will increase the amount of workers available. Occupation of productive agricultural regions will lower the burden on our local farming population. \n\n$demographic_information$"
+
+ demographic_information:0 "§YDemographic Information§!:\n$dem_info_1$$dem_info_2$$dem_info_3$$dem_info_4$$dem_info_5$$dem_info_6$$dem_info_7$$dem_info_8$$dem_info_9$$dem_info_10$$labour_breakdown$"
+ dem_info_1:0 "   Total Core Population: §Y[total_core_population_pretty]§!\n"
+ dem_info_2:0 "   Total Non-Core Population: §Y[total_non_core_population_pretty]§!\n"
+ dem_info_3:0 "   Total Population: §Y[total_population_with_foreign_workers_pretty]§!\n"
+ dem_info_4:0 "   Percent of Population Working Age: §Y70%§!\n"
+ dem_info_5:0 "   Max Potential Workforce: §Y[total_population_with_foreign_workers_pretty]§! * §Y70%§! = §Y[total_core_non_core_population_pretty]§!\n"
+ dem_info_6:0 "   Male Workforce Participation Share: §Y100%§!\n"
+ dem_info_7:0 "   Female Workforce Participation Share: §Y[?female_participation_rate|0%]§!\n"
+ dem_info_8:0 "   Combined Workforce Participation Share: (§Y100%§! + §Y[?female_participation_rate|0%]§!) / §Y2§! = §Y[?female_penalty_applied|0%]§!\n"
+ dem_info_9:0 "   Total Available Workforce: §Y[total_core_non_core_population_pretty]§! * §Y[?female_penalty_applied|0%]§! = §Y[total_labour_population_pretty]§!\n"
+ 
+ labour_breakdown:0 "\n§YLabour Breakdown§!:\n$labour_breakdown_1$$labour_breakdown_2$$labour_breakdown_3$$labour_breakdown_4$$labour_breakdown_5$$labour_breakdown_6$$labour_breakdown_7$"
+ labour_breakdown_1:0 "   Total Available Workforce: §Y[total_labour_population_pretty]§!\n"
+ labour_breakdown_2:0 "      - $agriculture_needs$ in Core States: §Y[agriculture_labour_pretty]§!\n"
+ labour_breakdown_3:0 "      - $factories_labour_requirements$: §Y[factories_labour_pretty]§!\n"
+ labour_breakdown_4:0 "      - $resources_labour_requirements$: §Y[resources_labour_pretty]§!\n"
+ labour_breakdown_5:0 "      - $civilian_services_labour_requirements$: §Y[civilian_services_labour_pretty]§!\n"
+ labour_breakdown_6:0 "      - $logistical_tail_penalty$: §Y[army_logistics_labour_pretty]§!\n"
+ labour_breakdown_7:0 "   Remaining Free workforce: §Y[total_free_labour_pretty]§!"
  
  #Hidden industry rework helper event
  industryrework.1.t:0 "Industry rework helper event"
@@ -33,9 +59,9 @@ UK_second_national_service_act_desc:0 "The position now has become one of diffic
  massive_conscription:0 "Massive Conscription"
  
  #Adjustments
- increase_female_participation_5:0 "Increase §YFemale Labour Participation Rate§! by §G5%§!"
- increase_female_participation_10:0 "Increase §YFemale Labour Participation Rate§! by §G10%§!"
- collectivize_agriculture_5:0 "Reduce §Y Base Core Agricultural Labour Needs§! by 5%"
- for_the_motherland_agriculture:0 "Reduce §Y Base Core Agricultural Labour Needs§! by 5%"
+ increase_female_participation_5:0 "Increase §Y$female_participation_rate$§! by §G5%§!"
+ increase_female_participation_75:0 "Increase §Y$female_participation_rate$§! by §G7.5%§!"
+ increase_female_participation_10:0 "Increase §Y$female_participation_rate$§! by §G10%§!"
+ state_level_agriculture_penalty_0055_tt:0 "Reduce §Y$state_agriculture_modifier$§! in core states by §G5.5%§!"
  reduce_agricultural_exports_0:0 "Reduce §YAgricultural Exports§! to 0%"
  reduce_agricultural_exports_5:0 "Reduce §YAgricultural Exports§! by 5%"
