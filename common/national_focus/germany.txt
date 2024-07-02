@@ -1,4 +1,4 @@
-### search_filters = {FOCUS_FILTER_POLITICAL}
+﻿### search_filters = {FOCUS_FILTER_POLITICAL}
 ### search_filters = {FOCUS_FILTER_RESEARCH}
 ### search_filters = {FOCUS_FILTER_INDUSTRY}
 ### search_filters = {FOCUS_FILTER_STABILITY}
@@ -17,13 +17,13 @@ focus_tree = {
 			tag = GER
 		}
 	}
-	continuous_focus_position = { x = 20 y = 1000 }
+	continuous_focus_position = { x = 20 y = 1200 }
 	default = no
 
 	focus = {
 		id = GER_four_year_plan
 		icon = GFX_goal_generic_construction
-		x = 2
+		x = 3
 		y = 0
 		cost = 5
 		ai_will_do = {
@@ -53,7 +53,7 @@ focus_tree = {
 		id = GER_autarky
 		icon = GFX_goal_generic_construct_civilian
 		prerequisite = { focus = GER_four_year_plan }
-		x = 3
+		x = 0
 		y = 1
 		relative_position_id = GER_four_year_plan
 		cost = 10
@@ -475,7 +475,7 @@ focus_tree = {
 		id = GER_total_mobilisation
 		icon = GFX_goal_generic_consumer_goods
 		prerequisite = { focus = GER_german_war_economy }
-		x = 1
+		x = 0
 		y = 1
 		relative_position_id = GER_german_war_economy
 		cost = 5
@@ -616,7 +616,7 @@ focus_tree = {
 		id = GER_werwolf
 		icon = GFX_focus_LIT_new_kind_of_iron_wolf
 		prerequisite = { focus = GER_total_war }
-		x = 0
+		x = 1
 		y = 1
 		relative_position_id = GER_total_war
 		cost = 5
@@ -654,7 +654,7 @@ focus_tree = {
 		id = GER_grosraumwirtschaft
 		icon = GFX_goal_generic_construct_infrastructure
 		prerequisite = { focus = GER_four_year_plan }
-		x = 0
+		x = -3
 		y = 1
 		relative_position_id = GER_four_year_plan
 		available = {
@@ -951,7 +951,7 @@ focus_tree = {
 	focus = {
 		id = GER_army_innovation
 		icon = GFX_goal_germanforces
-		x = 8
+		x = 5
 		y = 2
 		relative_position_id = GER_four_year_plan
 		cost = 5
@@ -1920,9 +1920,16 @@ focus_tree = {
 		id = GER_rhineland
 		icon = GFX_focus_renounce_the_treaty_of_trianon
 		#mutually_exclusive = { focus = GER_oppose_hitler }
-		x = 19
+		x = 13
 		y = 0
 		relative_position_id = GER_four_year_plan
+		offset = {
+			trigger = {
+				NOT = { has_game_rule = { rule = IHMP_HISTORY option = ALLOWED } }
+			}
+			x = 1
+			y = 0 
+		}
 		cost = 10
 		available = {
 			is_subject = no
@@ -1989,13 +1996,13 @@ focus_tree = {
 				}
 			}
 		}
-		x = 11
+		x = 14
 		y = 1
 		offset = {
 			trigger = {
 				NOT = { has_game_rule = { rule = IHMP_HISTORY option = ALLOWED } }
 			}
-			x = -5
+			x = -4
 			y = 0 
 		}
 		relative_position_id = GER_rhineland
@@ -2182,7 +2189,7 @@ focus_tree = {
 		prerequisite = { focus = GER_rhineland }
 		prerequisite = { focus = GER_autarky }
 		prerequisite = { focus = GER_anti_comitern_pact }
-		x = -4
+		x = 0
 		y = 2
 		relative_position_id = GER_rhineland
 		cost = 5
@@ -2280,16 +2287,9 @@ focus_tree = {
 			}
 		}
 		cancel_if_invalid = no
-		x = -3
-		y = 3
-		offset = {
-			trigger = {
-				NOT = { has_game_rule = { rule = IHMP_HISTORY option = ALLOWED } }
-			}
-			x = -1
-			y = 0 
-		}
-		relative_position_id = GER_rhineland
+		x = 0
+		y = 1
+		relative_position_id = GER_blomberg_fritsch_crisis
 		cost = 5
 		ai_will_do = {
 			factor = 10
@@ -2576,15 +2576,14 @@ focus_tree = {
 	focus = {
 		id = GER_west_wall
 		icon = GFX_goal_generic_construct_military
-		prerequisite = { focus = GER_four_year_plan }
+		prerequisite = { focus = GER_anschluss }
 		
 		available = {
-			794 = { is_demilitarized_zone = no }
-			date > 1938.5.28
+
 		}
 		x = -2
 		y = 1
-		relative_position_id = GER_four_year_plan
+		relative_position_id = GER_anschluss
 		cost = 3
 		ai_will_do = {
 			factor = 8
@@ -2639,8 +2638,15 @@ focus_tree = {
 		}
 		cancel_if_invalid = yes
 		x = 0
-		y = 1
+		y = 4
 		relative_position_id = GER_west_wall
+		offset = {
+			trigger = {
+				NOT = { has_game_rule = { rule = IHMP_HISTORY option = ALLOWED } }
+			}
+			x = 0
+			y = -3
+		}
 		cost = 10
 		ai_will_do = {
 			factor = 1
@@ -3636,6 +3642,13 @@ focus_tree = {
 		x = 1
 		y = 2
 		relative_position_id = GER_west_wall
+		offset = {
+			trigger = {
+				NOT = { has_game_rule = { rule = IHMP_HISTORY option = ALLOWED } }
+			}
+			x = -2
+			y = 2 
+		}
 		cost = 5
 		ai_will_do = {
 			factor = 1
@@ -3654,7 +3667,7 @@ focus_tree = {
 		icon = GFX_focus_usa_focus_on_europe
 		prerequisite = { focus =  GER_atlantikwall }
 		x = 0
-		y = 2
+		y = 1
 		relative_position_id = GER_atlantikwall
 		cost = 4
 		ai_will_do = {
@@ -3737,9 +3750,16 @@ focus_tree = {
 			is_subject = yes
 		}
 		cancel_if_invalid = yes
-		x = 0
+		x = 4
 		y = 1
 		relative_position_id = GER_anschluss
+		offset = {
+			trigger = {
+				NOT = { has_game_rule = { rule = IHMP_HISTORY option = ALLOWED } }
+			}
+			x = -4
+			y = 0 
+		}
 		cost = 10
 		ai_will_do = {
 			factor = 10
@@ -3905,7 +3925,7 @@ focus_tree = {
 		id = GER_anti_comitern_pact
 		icon = GFX_goal_anti_comintern_pact
 		prerequisite = { focus = GER_rhineland  }
-		x = 3
+		x = 6
 		y = 1
 
 		relative_position_id = GER_rhineland
@@ -3913,7 +3933,7 @@ focus_tree = {
 			trigger = {
 				NOT = { has_game_rule = { rule = IHMP_HISTORY option = ALLOWED } }
 			}
-			x = -5
+			x = -4
 			y = 0
 		}
 		cost = 5
@@ -4060,13 +4080,13 @@ focus_tree = {
 		}
 		
 		x = 0
-		y = 2
+		y = 5
 		offset = {
 			trigger = {
 				NOT = { has_game_rule = { rule = IHMP_HISTORY option = ALLOWED } }
 			}
 			x = 0
-			y = -1 
+			y = -4
 		}
 		relative_position_id = GER_demand_memel
 		cost = 5
@@ -4117,10 +4137,12 @@ focus_tree = {
 				country_exists = SOV
 			}
 			if = {
-				limit = { NOT = { has_game_rule = { rule = IHMP_HISTORY option = ALLOWED } } }
+				limit = {
+					has_game_rule = { rule = IHMP_HISTORY option = ALLOWED }
+				}
 				NOT = { has_completed_focus = GER_bulwark_against_bolshevism }
 				NOT = { has_completed_focus = GER_the_great_red_menace }
-			NOT = { has_global_flag = beck_ribbentrop_signed }
+				NOT = { has_global_flag = beck_ribbentrop_signed }
 			}
 		}
 		cancel = {
@@ -4389,14 +4411,7 @@ focus_tree = {
 		}
 		cancel_if_invalid = no
 		x = 0
-		y = 3
-		offset = {
-			trigger = {
-				NOT = { has_game_rule = { rule = IHMP_HISTORY option = ALLOWED } }
-			}
-			x = 0
-			y = -2
-		}
+		y = 1
 		relative_position_id = GER_mol_rib_pact
 		cost = 1
 		ai_will_do = {
@@ -4843,7 +4858,7 @@ focus_tree = {
 			}
 		}
 		cancel_if_invalid = no
-		x = -2
+		x = 2
 		y = 1
 		relative_position_id = GER_anschluss
 		cost = 5
@@ -5095,20 +5110,20 @@ focus_tree = {
 	focus = {
 		id = GER_second_vienna_award
 		icon = GFX_focus_YUG_autonomous_transylvania
-		prerequisite = { focus = GER_end_of_czechoslovakia }
+		prerequisite = { focus = GER_first_vienna_award }
 		allow_branch = {
 			always = yes 
 		}
 		x = -2
-		y = 3
+		y = 1
 		offset = {
 			trigger = {
 				NOT = { has_game_rule = { rule = IHMP_HISTORY option = ALLOWED } }
 			}
-			x = 2
-			y = -2
+			x = 1
+			y = 1
 		}
-		relative_position_id = GER_end_of_czechoslovakia
+		relative_position_id = GER_first_vienna_award
 		cost = 5
 		ai_will_do = {
 			factor = 10
@@ -5355,14 +5370,14 @@ focus_tree = {
 				}
 			}
 		}
-		x = 2
+		x = 6
 		y = 1
 		relative_position_id = GER_rhineland
 		offset = {
 			trigger = {
 				has_game_rule = { rule = IHMP_HISTORY option = ALLOWED }
 			}
-			x = 5
+			x = 4
 			y = 0
 		}
 		cost = 10
@@ -6783,7 +6798,7 @@ focus_tree = {
 			}
 		}
 		cancel_if_invalid = yes
-		x = 2
+		x = 0
 		y = 1
 		relative_position_id = GER_anschluss
 		cost = 10
@@ -7108,7 +7123,7 @@ focus_tree = {
 			}
 		}
 		x = 0
-		y = 1
+		y = 2
 		relative_position_id = GER_first_ljubljana_award
 		cost = 10
 		ai_will_do = {
