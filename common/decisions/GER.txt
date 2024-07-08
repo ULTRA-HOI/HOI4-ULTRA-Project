@@ -963,19 +963,17 @@ operations = {
 				unit = submarine
 				size > 55
 			}
-			has_war_with = ENG
 			IF = {
 				limit = {is_ai = no}
-				command_power > 35
 				date < 1940.1.1
 			}
-			IF = {
-				limit = {is_ai = yes}
-				date > 1939.10.13
-			}		
+			has_war_with = ENG
 		}
-
-		cost = 35
+		custom_cost_trigger = {
+			command_power > 34
+			has_political_power > 34
+		}
+		custom_cost_text = decision_cost_CP_35_pp_35
 
 		fire_only_once = yes
 
@@ -997,7 +995,10 @@ operations = {
 				country_event = { id = Germany.300 hours = 5 }
 			}
 			set_country_flag = scapa
-			add_command_power = -35
+			hidden_effect = {
+				add_political_power = -35
+				add_command_power = -35
+			}
 		}
 	}
 
