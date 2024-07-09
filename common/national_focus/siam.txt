@@ -214,12 +214,13 @@
 		icon = GFX_focus_chi_collaboration_with_the_japanese
 		prerequisite = { focus = SIA_claim_greater_thailand }
 		prerequisite = { focus = SIA_phibun_cult_of_personality }
-		available = { 
-			JAP = { is_faction_leader = yes }			
+		available = { 			
 		}
 		available = { 
+			OR = {
 			has_war_support > 0.75
 			fascism > 0.6
+				}
 		}		
 			
 			
@@ -372,28 +373,8 @@
 		available_if_capitulated = yes
 
 		completion_reward = {
-			289 = {
-				add_building_construction = {
-					type = infrastructure
-					level = 1
-					instant_build = yes
-				}
-			}
-			1007 = {
-				add_building_construction = {
-					type = infrastructure
-					level = 1
-					instant_build = yes
-				}
-			}
-			1006 = {
-				add_building_construction = {
-					type = supply_node
-					level = 1
-					province = 12431
-					instant_build = yes
-					}
-				}
+			custom_effect_tooltip = Construction_Focus_Start_tt
+			unlock_decision_tooltip = { decision = SIA_domestic_infra_decision show_effect_tooltip = yes}
 			add_ideas = SIA_improved_region_supply_idea
 		}
 	}
@@ -458,13 +439,8 @@
 		available_if_capitulated = yes
 
 		completion_reward = {
-				289 = {
-				add_building_construction = {
-					type = industrial_complex
-					level = 2
-					instant_build = yes
-				}
-			}
+			custom_effect_tooltip = Construction_Focus_Start_tt
+			unlock_decision_tooltip = { decision = SIA_domestic_civ_industry_decision show_effect_tooltip = yes}
 		}
 	}	
 	
@@ -527,7 +503,7 @@
 			set_victory_points = {
 				province = 12373
 				value = 5
-			}			
+			}	
 		}
 	}	
 
@@ -658,7 +634,7 @@
 		available_if_capitulated = yes
 
 		completion_reward = {
-			custom_effect_tooltip = SIA_purchase_foreign_aircrafts_tt
+			add_ideas = SIA_purchase_foreign_aircrafts_idea
 		}
 	}
 	
@@ -678,13 +654,8 @@
 		available_if_capitulated = yes
 
 		completion_reward = {
-				289 = {
-				add_building_construction = {
-					type = arms_factory
-					level = 2
-					instant_build = yes
-				}
-			}
+			custom_effect_tooltip = Construction_Focus_Start_tt
+			unlock_decision_tooltip = { decision = SIA_domestic_aircraft_assembly_decision show_effect_tooltip = yes}
 		}
 	}
 
@@ -787,12 +758,40 @@
 		available_if_capitulated = yes
 
 		completion_reward = {
-				289 = {
-				add_building_construction = {
-					type = arms_factory
-					level = 2
-					instant_build = yes
+			custom_effect_tooltip = Construction_Focus_Start_tt
+			unlock_decision_tooltip = { decision = SIA_domestic_arms_industry_decision show_effect_tooltip = yes}
+		}
+	}
+
+	focus = {
+		id = SIA_siam_at_war
+		icon = GFX_goal_fortify_the_westwall
+		prerequisite = { focus = SIA_ammunition_assembly_line }
+		x = 0
+		y = 1
+		relative_position_id = SIA_ammunition_assembly_line
+		cost = 5
+		
+		available = {
+			SIA = {
+				has_war_with = ENG
+			}
+		}		
+
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			if = {
+				limit = {
+					NOT = { has_idea = tot_economic_mobilisation }
 				}
+				add_ideas = tot_economic_mobilisation
+				add_war_support = 0.05
+			}
+			else = {
+				add_political_power = 150
 			}
 		}
 	}
@@ -939,33 +938,8 @@
 		available_if_capitulated = yes
 
 		completion_reward = {
-			289 = {
-				add_building_construction = {
-					type = coastal_bunker
-					level = 2
-					province = 7048
-					instant_build = yes
-				}
-				add_building_construction = {
-					type = bunker
-					level = 2
-					province = 7048
-					instant_build = yes
-				}
-				add_building_construction = {
-					type = anti_air_building
-					level = 2
-					instant_build = yes
-				}
-			}
-			1009 = {
-				add_building_construction = {
-					type = coastal_bunker
-					level = 1
-					province = 7225
-					instant_build = yes
-				}
-			}
+			custom_effect_tooltip = Construction_Focus_Start_tt
+			unlock_decision_tooltip = { decision = SIA_defend_bangkok_decision show_effect_tooltip = yes}
 		}
 	}	
 
@@ -1032,11 +1006,7 @@
 		available_if_capitulated = yes
 
 		completion_reward = {
-			add_equipment_to_stockpile = {
-					type =  jap_light_equipment_1
-					amount = 60
-					producer = JAP
-				}
+			add_ideas = SIA_armored_repair_workshop_idea
 		}
 	}
 
@@ -1055,70 +1025,10 @@
 		available_if_capitulated = yes
 
 		completion_reward = {
-			add_ideas = SIA_armored_repair_workshop_idea
-			289 = {
-				add_building_construction = {
-					type = arms_factory
-					level = 1
-					instant_build = yes
-				}
+			swap_ideas = {
+				remove_idea = SIA_armored_repair_workshop_idea
+				add_idea = SIA_armored_repair_workshop_idea1
 			}
 		}
-	}
-
-	focus = {
-		id = SIA_siam_at_war
-		icon = GFX_goal_fortify_the_westwall
-		x = 0
-		y = 1
-		relative_position_id = SIA_ammunition_assembly_line
-		cost = 5
-		
-		available = {
-			SIA = {
-				has_war_with = ENG
-			}
-		}		
-
-		search_filters = {  FOCUS_FILTER_RESEARCH }
-
-		available_if_capitulated = yes
-
-		completion_reward = {
-			if = {
-				limit = {
-					NOT = { has_idea = war_economy }
-					NOT = { has_idea = tot_economic_mobilisation }
-				}
-				add_ideas = war_economy
-			}
-			else = {
-				add_political_power = 150
-			}
-		}
-	}
-	
-	focus = {
-		id = SIA_siam_burma_railway
-		icon = GFX_focus_generic_railroad
-		prerequisite = { focus = SIA_siam_at_war }
-		prerequisite = { focus = SIA_improve_regional_infrastructure }
-		x = -1
-		y = 1
-		relative_position_id = SIA_siam_at_war
-		cost = 10
-
-		search_filters = {  FOCUS_FILTER_RESEARCH }
-
-		available_if_capitulated = yes
-
-		completion_reward = {
-			build_railway = {
-				path = { 7408 1427 7587 4319 10193 12125 1403 }
-			}
-		}
-	}
-	
-	
-	
+	}	
 }
