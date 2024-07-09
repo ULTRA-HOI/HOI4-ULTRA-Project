@@ -1,4 +1,4 @@
-﻿### search_filters = {FOCUS_FILTER_POLITICAL}
+### search_filters = {FOCUS_FILTER_POLITICAL}
 ### search_filters = {FOCUS_FILTER_RESEARCH}
 ### search_filters = {FOCUS_FILTER_INDUSTRY}
 ### search_filters = {FOCUS_FILTER_STABILITY}
@@ -1545,7 +1545,7 @@ focus_tree = {
 		id = GER_army_innovation_2
 		icon = GFX_focus_generic_tank_production
 		prerequisite = { focus = GER_army_innovation }
-		x = 1
+		x = 2
 		y = 1
 		relative_position_id = GER_army_innovation
 		cost = 4 #shall be taken directly after Barbarossa
@@ -1665,8 +1665,8 @@ focus_tree = {
 	focus = {
 		id = GER_dawn_of_modern_warfare
 		icon = GFX_focus_chi_army_reform
-		prerequisite = { focus = GER_army_innovation_2 focus = GER_soviet_treaty }
-		x = -2
+		prerequisite = { focus = GER_army_innovation_2 }
+		x = 0
 		y = 1
 		relative_position_id = GER_army_innovation_2
 		cost = 5
@@ -1723,14 +1723,43 @@ focus_tree = {
 		}
 	}
 	
-	
+	focus = {
+		id = GER_panther_88_focus
+		icon = GFX_focus_generic_army_tanks2
+		prerequisite = { focus = GER_soviet_treaty }
+		mutually_exclusive = { focus = GER_entwicklung_series }
+		x = -1
+		y = 1
+		relative_position_id = GER_soviet_treaty
+		cost = 5
+		ai_will_do = {
+			factor = 0
+		}
+		
+		available = {
+			has_tech = ger_modern_3
+		}
+
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		completion_reward = {
+			add_tech_bonus = {
+				name = ger_modern_31_bonus
+				ahead_reduction = 1.5
+				uses = 1
+				technology = ger_modern_31
+			}
+		}
+	}
+
 	focus = {
 		id = GER_entwicklung_series
 		icon = GFX_focus_generic_army_tanks2
-		prerequisite = { focus = GER_army_innovation_2 }
-		x = 0
+		prerequisite = { focus = GER_soviet_treaty }
+		mutually_exclusive = { focus = GER_panther_88_focus }
+		x = 1
 		y = 1
-		relative_position_id = GER_army_innovation_2
+		relative_position_id = GER_soviet_treaty
 		cost = 5
 		ai_will_do = {
 			factor = 1
@@ -1746,29 +1775,26 @@ focus_tree = {
 		available_if_capitulated = yes
 		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
-
-			army_experience = 100			
-			
 			add_tech_bonus = {
-				name = armor_bonus
+				name = ger_light_6_td_bonus
 				ahead_reduction = 0.5
 				uses = 1
 				technology = ger_light_6_td
 			}
 			add_tech_bonus = {
-				name = armor_bonus
+				name = ger_modern_5_bonus
 				ahead_reduction = 0.5
 				uses = 1
 				technology = ger_modern_5
 			}
 			add_tech_bonus = {
-				name = armor_bonus
+				name = ger_heavy_6_bonus
 				ahead_reduction = 0.5
 				uses = 1
 				technology = ger_heavy_6
 			}
 			add_tech_bonus = {
-				name = armor_bonus
+				name = ger_super_heavy_2_bonus
 				ahead_reduction = 0.5
 				uses = 1
 				technology = ger_super_heavy_2
