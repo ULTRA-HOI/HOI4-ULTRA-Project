@@ -1151,4 +1151,83 @@ on_actions = {
 			}
 		}
 	}
+	
+	########################################
+	### Japanese Straits Opening/Closure ###
+	########################################
+	
+	on_war = { #When the Soviets are at war with Germany but not Japan, the Pacific is closed for any ships
+		effect = {
+			IF = {
+				limit = {
+					THIS = {
+						original_tag = SOV
+						has_war_with = GER
+						NOT = {
+							has_war_with = JAP
+						}
+					}
+				}
+				THIS = {
+					set_country_flag = SOV_JAPAN_STRAITS_CLOSED
+				}
+			}
+			ELSE = {
+				THIS = {
+					clr_country_flag = SOV_JAPAN_STRAITS_CLOSED
+				}
+			}
+		}
+	}
+	on_peace = { #When back to peace, open the Straits
+		effect = {
+			THIS = {
+				clr_country_flag = SOV_JAPAN_STRAITS_CLOSED
+			}
+		}
+	}
+	on_war_relation_added = {
+		effect = {
+			IF = { #We check, when the Soviets are already at war, if our conditions to close the Strait are true
+				limit = {
+					OR = {
+						ROOT = {
+							original_tag = SOV
+							has_war_with = GER
+							NOT = {
+								has_war_with = JAP
+							}
+						}
+						FROM = {
+							original_tag = SOV
+							has_war_with = GER
+							NOT = {
+								has_war_with = JAP
+							}
+						}
+					}
+				}
+				SOV = {
+					set_country_flag = SOV_JAPAN_STRAITS_CLOSED
+				}
+			}
+			ELSE_IF = { #If not, we check if Soviets are at war with Japan and open the strait if true
+				limit = {
+					OR = {
+						ROOT = {
+							original_tag = SOV
+							has_war_with = JAP
+						}
+						FROM = {
+							original_tag = SOV
+							has_war_with = JAP
+						}
+					}
+				}
+				SOV = {
+					clr_country_flag = SOV_JAPAN_STRAITS_CLOSED
+				}
+			}
+		}
+	}
 }
