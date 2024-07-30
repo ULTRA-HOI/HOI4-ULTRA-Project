@@ -74,8 +74,14 @@
 		available_if_capitulated = yes
 
 		completion_reward = {
-			remove_ideas = {
-			SIA_corruption2
+			set_politics = {
+				ruling_party = fascism
+				elections_allowed = no
+			}
+			set_party_name = {
+				ideology = fascism
+				long_name = SIA_khana_ratsadon
+				name = SIA_khana_ratsadon2
 			}
 		}
 	}	
@@ -94,18 +100,11 @@
 		available_if_capitulated = yes
 
 		completion_reward = {
-				set_politics = {
-					ruling_party = fascism
-					elections_allowed = no
-				}
-				set_party_name = {
-					ideology = fascism
-					long_name = SIA_khana_ratsadon
-					name = SIA_khana_ratsadon2
-				}
-				add_stability = 0.05
-				add_war_support = 0.05
-
+			remove_ideas = {
+				SIA_corruption2
+			}
+			add_stability = 0.05
+			add_war_support = 0.05
 		}	
 	}	
 
@@ -143,6 +142,8 @@
 
 		completion_reward = {
 			custom_effect_tooltip = SIA_claim_greater_thailand_tt
+			add_state_core = 979
+			add_state_core = 994
 			add_state_claim = 975
 			add_state_claim = 998
 			add_state_claim = 999
@@ -222,6 +223,9 @@
 			fascism > 0.6
 				}
 		}		
+		bypass = {
+			is_in_faction_with = JAP
+		}
 			
 			
 		
@@ -486,6 +490,18 @@
 		icon = GFX_focus_spa_the_spanish_miracle
 		prerequisite = { focus = SIA_alphabet_reform }
 		prerequisite = { focus = SIA_improve_regional_infrastructure }
+		available = {
+			289 = {
+				controller = {
+					 tag = SIA
+				}
+			}
+			1006= {
+				controller = {
+					 tag = SIA
+				}
+			}
+		}
 		x = 0
 		y = 1
 		relative_position_id = SIA_alphabet_reform
@@ -870,47 +886,35 @@
 		available_if_capitulated = yes
 
 		completion_reward = {
-			custom_effect_tooltip = SIA_royal_guards_divisions_tt
-			hidden_effect = {
-				if = {
-					limit = {
-						has_tech = tech_recon
-					}
-					division_template = {
-						name = "1st King's Guards Division"
-						priority = 2
-						regiments = {
-							heavy_infantry = { x = 0 y = 0 }
-							heavy_infantry = { x = 0 y = 1 }
-							infantry = { x = 0 y = 2 }
+			division_template = {
+				name = "1st King's Guards Division"
+				priority = 1
+				division_names_group = SIA_INF_01
+				regiments = {
+					heavy_infantry = { x = 0 y = 0 }
+					heavy_infantry = { x = 0 y = 1 }
+					heavy_infantry = { x = 0 y = 2 }
 				
-		    	   		 	infantry = { x = 1 y = 0 }
-							artillery_brigade = { x = 1 y = 1 }
-						}
-						support = {
-							DIV_HQ = { x = 0 y = 0 }	
-							engineer = { x = 0 y = 1 }
-							recon = { x = 0 y = 2 }
-						}
-					}
-					else = {
-						division_template = {
-							name = "1st King's Guards Division"
-							priority = 2
-							regiments = {
-							heavy_infantry = { x = 0 y = 0 }
-							heavy_infantry = { x = 0 y = 1 }
-							infantry = { x = 0 y = 2 }
-				
-		    	   		 	infantry = { x = 1 y = 0 }
-							artillery_brigade = { x = 1 y = 1 }
-							}
-							support = {
-								DIV_HQ = { x = 0 y = 0 }	
-								engineer = { x = 0 y = 1 }
-							}
-						}
-					}
+		    	   	heavy_infantry = { x = 1 y = 0 }
+		    	   	heavy_infantry = { x = 1 y = 1 }
+					
+					heavy_infantry = { x = 2 y = 0 }
+		    	   	heavy_infantry = { x = 2 y = 1 }
+					
+					artillery_brigade = { x = 3 y = 0 }
+				}
+				support = {
+					DIV_HQ = { x = 0 y = 0 }	
+					engineer = { x = 0 y = 1 }
+					recon = { x = 0 y = 2 }
+				}
+			}
+			random_owned_controlled_state = {
+				prioritize = { 7408 }
+				limit = { PREV = { has_full_control_of_state = PREV } }
+				create_unit = {
+					division = "name = \"1st King's Guards Division\" division_template = \"1st King's Guards Division\" start_experience_factor = 1" 
+					owner = PREV
 				}
 				random_owned_controlled_state = {
 					limit = { ROOT = { has_full_control_of_state = PREV } }
