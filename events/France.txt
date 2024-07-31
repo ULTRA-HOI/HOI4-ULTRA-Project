@@ -566,11 +566,14 @@ country_event = {
 					transfer_units_fraction = {
 						target = VIC
 						size = 1
-						stockpile_ratio = 0.33
-						army_ratio = 0.33
+						stockpile_ratio = 0.2
+						army_ratio = 0.2
 						navy_ratio = 1.0
 						air_ratio = 1.0
 					}
+					leave_faction = yes
+					ENG = { add_to_faction = FRA } # returns expeditionaries sent to or from france
+					delete_unit = { disband = yes }
 				}
 				if = {
 					limit = { FRA = { has_country_flag = become_vichy } }
@@ -581,6 +584,10 @@ country_event = {
 						has_navy_size = {
 							unit = battleship
 							size > 5
+						}
+						has_navy_size = {			
+							unit = battle_cruiser
+							size > 1
 						}
 					}
 					set_country_flag = richelieu_built_bb
@@ -601,7 +608,24 @@ country_event = {
 							size > 6
 						}
 					}
-					set_country_flag = jean_bart_built_bb
+					if = {
+						limit = {
+							has_navy_size = {
+								unit = battle_cruiser
+								size > 1
+							}
+						}
+						set_country_flag = jean_bart_built_bb
+					}
+					else_if = {
+						limit = {
+							has_navy_size = {
+								unit = battle_cruiser
+								size > 0
+							}
+						}
+						set_country_flag = richelieu_built_bb
+					}
 				}
 				else_if = {
 					limit = {
@@ -713,12 +737,6 @@ country_event = {
 				FRA_francois_darlan = {
 					set_nationality = VIC
 				}
-			}
-		}
-		every_state = {
-			teleport_armies = {
-				limit = { tag = FRA }
-				to_state = 772
 			}
 		}
 	}
