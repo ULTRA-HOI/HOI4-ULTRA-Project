@@ -2245,8 +2245,6 @@ war_measures = {
 	}
 	
 	
-	
-	
 	USA_prepare_mulberry = {
 		icon = generic_construction
 	
@@ -2260,6 +2258,7 @@ war_measures = {
 			has_war = yes
 			is_ai = no
 			num_of_civilian_factories_available_for_projects > 100
+			has_completed_focus = USA_operation_overlord_focus
 		}
 		
 		visible = {
@@ -2267,8 +2266,8 @@ war_measures = {
 			NOT = { has_country_flag = mulberry_ready }
 		}
 		fire_only_once = no
-		cost = 50
-		days_remove = 180
+		cost = 0
+		days_remove = 150
 		days_re_enable = 0
 
 		modifier = {
@@ -3859,6 +3858,271 @@ foreign_politics = {
 	}
 }
 USA_war_plans = {
+
+	USA_build_the_pentagon_decision = {
+		icon = generic_construction
+		
+		available = {
+			has_completed_focus = USA_build_the_pentagon
+		}
+		
+		visible = {
+			tag = USA
+			has_completed_focus = USA_build_the_pentagon
+		}
+
+		fire_only_once = yes
+		cost = 25
+		days_remove = 491
+
+		modifier = {
+			civilian_factory_use = 10
+		}
+
+		complete_effect = {
+			set_country_flag = USA_build_the_pentagon_1_flag
+		}
+		
+		remove_effect = {
+			add_ideas = USA_the_pentagon_5
+		}
+	}
+	
+	USA_construct_pentagon_1 = {
+		icon = generic_construction
+		
+		activation = {
+			tag = USA
+			has_country_flag = USA_build_the_pentagon_1_flag
+		}
+		
+		visible = {
+			tag = USA
+			has_country_flag = USA_build_the_pentagon_1_flag
+		}
+
+		available = {
+			hidden_trigger = { always = no }
+		}
+		selectable_mission = no
+
+		fire_only_once = yes
+		cost = 0
+		days_remove = 98
+
+		modifier = {
+			civilian_factory_use = 10
+		}
+		
+		remove_effect = {
+			add_ideas = USA_the_pentagon_1
+			set_country_flag = USA_build_the_pentagon_2_flag
+		}
+	}
+
+	USA_construct_pentagon_2 = {
+		icon = generic_construction
+		
+		activation = {
+			has_country_flag = USA_build_the_pentagon_2_flag
+			tag = USA
+		}
+		
+		visible = {
+			tag = USA
+			has_country_flag = USA_build_the_pentagon_2_flag
+		}
+
+		available = {
+			hidden_trigger = { always = no }
+		}
+
+		selectable_mission = no
+
+		fire_only_once = yes
+		cost = 0
+		days_remove = 98
+		
+		remove_effect = {
+			swap_ideas = {
+				remove_idea = USA_the_pentagon_1
+				add_idea = USA_the_pentagon_2
+			}
+			set_country_flag = USA_build_the_pentagon_3_flag
+		}
+	}
+
+	USA_construct_pentagon_3 = {
+		icon = generic_construction
+		
+		activation = {
+			has_completed_focus = USA_build_the_pentagon
+			has_country_flag = USA_build_the_pentagon_3_flag
+		}
+		
+		visible = {
+			has_country_flag = USA_build_the_pentagon_3_flag
+		}
+		available = {
+			hidden_trigger = { always = no }
+		}
+
+		selectable_mission = no
+
+		fire_only_once = yes
+		cost = 0
+		days_remove = 98
+		
+		remove_effect = {
+			swap_ideas = {
+				remove_idea = USA_the_pentagon_2
+				add_idea = USA_the_pentagon_3
+			}
+			set_country_flag = USA_build_the_pentagon_4_flag
+		}
+	}
+
+	USA_construct_pentagon_4 = {
+		icon = generic_construction
+		
+		activation = {
+			has_completed_focus = USA_build_the_pentagon
+			has_country_flag = USA_build_the_pentagon_4_flag
+		}
+		
+		visible = {
+			has_country_flag = USA_build_the_pentagon_4_flag
+		}
+		available = {
+			hidden_trigger = { always = no }
+		}
+
+		selectable_mission = no
+
+		fire_only_once = yes
+		cost = 0
+		days_remove = 98
+		
+		remove_effect = {
+			swap_ideas = {
+				remove_idea = USA_the_pentagon_3
+				add_idea = USA_the_pentagon_4
+			}
+			set_country_flag = USA_build_the_pentagon_5_flag
+		}
+	}
+
+	USA_construct_pentagon_5 = {
+		icon = generic_construction
+		
+		activation = {
+			has_completed_focus = USA_build_the_pentagon
+			has_country_flag = USA_build_the_pentagon_5_flag
+		}
+		
+		visible = {
+			has_country_flag = USA_build_the_pentagon_5_flag
+		}
+		available = {
+			hidden_trigger = { always = no }
+		}
+
+		selectable_mission = no
+
+		fire_only_once = yes
+		cost = 0
+		days_remove = 98
+		
+		remove_effect = {
+			remove_ideas = USA_the_pentagon_4
+		}
+	}
+
+	USA_rainbow_plans = {
+		icon = generic_operation
+		
+		visible = {			
+			has_completed_focus = USA_prepare_for_war
+		}
+		available = {
+			has_completed_focus = USA_prepare_for_war
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+
+		fire_only_once = yes
+
+		days_remove = 90
+
+		modifier = {
+			command_power_gain_mult = -0.2
+			political_power_gain = -0.1
+		}
+		
+		remove_effect = {
+			add_ideas = USA_rainbow_plan_5
+		}
+	}
+
+	USA_louisiana_maneuvers_decision = {
+		icon = generic_operation
+
+		visible = {
+			has_completed_focus = USA_louisiana_maneuvers
+		}
+
+		available = {
+			has_completed_focus = USA_louisiana_maneuvers
+
+			IF = {
+				limit = {
+					is_ai = no
+				}
+				has_army_manpower = { size > 400000 }
+			}
+			IF = {
+				limit = {
+					is_ai = yes 
+				}
+				date > 1941.8.1
+			}
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		custom_cost_trigger = { #Cost triggers are also needed in event germany.1015 so if changed here, change them there as well
+			has_political_power > 19
+			has_army_experience > 199
+		}
+		custom_cost_text = decision_cost_pp_20_ArmXP_200
+
+		fire_only_once = yes
+
+		days_remove = 90
+
+		modifier = {
+			command_power_gain = -0.15
+		}
+
+		complete_effect = {
+			hidden_effect = {
+				add_political_power = -20
+				army_experience = -200
+			}
+		}
+
+		remove_effect = {
+			set_technology = {
+				tank_destroyers = 1
+				sup_armored_spearhead = 1
+			}
+		}
+	}
+
 	USA_execute_war_plan_green = {
 		icon = generic_operation
 		available = {
@@ -3966,13 +4230,14 @@ USA_war_plans = {
 			defense_bonus_against = 0.1
 		}
 	}
-	USA_execute_war_plan_orange = {
+	USA_execute_operation_downfall = {
 		icon = generic_operation
 		available = {
 			has_war_with = JAP
+			has_country_flag = operation_overlord_flag
 		}
 		visible = {
-			has_completed_focus = USA_war_plan_orange
+			has_completed_focus = USA_operation_downfall_focus
 		}
 		ai_will_do = {
 			factor = 1
@@ -3982,6 +4247,7 @@ USA_war_plans = {
 		modifier = {
 			amphibious_invasion = 0.1
 			invasion_preparation = -0.25
+			naval_invasion_capacity = 6
 		}
 		targeted_modifier = {
 			tag = JAP
@@ -3997,6 +4263,13 @@ USA_war_plans = {
 			tag = MEN
 			attack_bonus_against = 0.1
 			defense_bonus_against = 0.1
+		}
+
+		complete_effect = {
+			set_country_flag = operation_downfall_flag
+		}
+		remove_effect = {
+			clr_country_flag = operation_downfall_flag
 		}
 	}
 	USA_execute_war_plan_yellow = {
@@ -4134,32 +4407,46 @@ USA_war_plans = {
 		}
 		
 	}
-	USA_execute_war_plan_black = {
+	USA_execute_operation_overlord = {
 		icon = generic_operation
 		available = {
 			has_war_with = GER
+			NOT = {
+				has_country_flag = operation_downfall_flag
+			}
 		}
 		visible = {
-			has_completed_focus = USA_war_plan_black
+			has_completed_focus = USA_operation_overlord_focus
 		}
 		ai_will_do = {
 			factor = 1
 		}
 		fire_only_once = yes
 		days_remove = 180
+		modifier = {
+			amphibious_invasion = 0.1
+			invasion_preparation = -0.25
+			naval_invasion_capacity = 4
+		}
 		targeted_modifier = {
 			tag = GER
 			attack_bonus_against = 0.1
 			defense_bonus_against = 0.1
 		}
+		complete_effect = {
+			set_country_flag = operation_overlord_flag
+		}
+		remove_effect = {
+			clr_country_flag = operation_overlord_flag
+		}
 	}
-	USA_execute_war_plan_white = {
+	USA_execute_operation_unthinkable = {
 		icon = generic_operation
 		available = {
 			has_war_with = SOU
 		}
 		visible = {
-			has_completed_focus = USA_war_plan_white
+			has_completed_focus = USA_operation_unthinkable_focus
 		}
 		ai_will_do = {
 			factor = 1
