@@ -3066,80 +3066,80 @@ economy_decisions = {
 }
 
 foreign_politics = {
-	USA_guns_for_the_anti_bolshevist_war = {
+#	USA_guns_for_the_anti_bolshevist_war = {
 
-		icon = generic_prepare_civil_war
+#		icon = generic_prepare_civil_war
 
-		allowed = {
-			original_tag = USA
-		}
+#		allowed = {
+#			original_tag = USA
+#		}
 
-		available = {
-			OR = {
-				not = { has_government = SOV }
-				has_war_with = SOV #commie on commie violence
-			}
-			has_equipment = { infantry_equipment > 999 }
+#		available = {
+#			OR = {
+#				not = { has_government = SOV }
+#				has_war_with = SOV #commie on commie violence
+#			}
+#			has_equipment = { infantry_equipment > 999 }
 			
-			FROM = {
-				has_war_with = SOV
-				not = {
-					has_war_with = ROOT
-				}
-			}
-		}
+#			FROM = {
+#				has_war_with = SOV
+#				not = {
+#					has_war_with = ROOT
+#				}
+#			}
+#		}
 		
-		target_root_trigger = {
-			has_completed_focus = USA_anti_bolshevist_aid
-		}
-		target_trigger = {
-			FROM = {
-				not = { has_war_with = ROOT }
-				has_war_with = SOV
-			}
-		}
+#		target_root_trigger = {
+#			#has_completed_focus = USA_anti_bolshevist_aid
+#		}
+#		target_trigger = {
+#			FROM = {
+#				not = { has_war_with = ROOT }
+#				has_war_with = SOV
+#			}
+#		}
 
-		visible = {
-			has_completed_focus = USA_anti_bolshevist_aid
-			FROM = {
-				has_war_with = SOV
-			}
-			SOV = { has_civil_war = no }				   
-		}
+#		visible = {
+#			has_completed_focus = USA_anti_bolshevist_aid
+#			FROM = {
+#				has_war_with = SOV
+#			}
+#			SOV = { has_civil_war = no }				   
+#		}
 
-		cost = 25
-		ai_will_do = {
-			factor = 25
-			modifier = {
-				factor = 0
-				surrender_progress > 0
-			}
-			modifier = {
-				factor = 0.5
-				has_war_support < 0.6
-			}
+#		cost = 25
+#		ai_will_do = {
+#			factor = 25
+#			modifier = {
+#				factor = 0
+#				surrender_progress > 0
+#			}
+#			modifier = {
+#				factor = 0.5
+#				has_war_support < 0.6
+#			}
 
-			modifier = {
-				factor = 2
-				has_war_with = SOV
-			}
-		}
+#			modifier = {
+#				factor = 2
+#				has_war_with = SOV
+#			}
+#		}
 
-		fire_only_once = no	
+#		fire_only_once = no	
 
-		days_re_enable = 180
+#		days_re_enable = 180
 
-		complete_effect = {
-			ROOT = {
-				send_equipment = {
-					target = FROM
-					type = infantry_equipment
-					amount = 1000
-					old_prioritised = yes
-				}
-			}
-		}
-	}
+#		complete_effect = {
+#			ROOT = {
+#				send_equipment = {
+#					target = FROM
+#					type = infantry_equipment
+#					amount = 1000
+#					old_prioritised = yes
+#				}
+#			}
+#		}
+#	}
 	
 	USA_form_defensive_alliance_north_american_dominion = {
 
@@ -3891,30 +3891,33 @@ USA_war_plans = {
 	USA_construct_pentagon_1 = {
 		icon = generic_construction
 		
+		available = {
+			hidden_trigger = { always = no }
+		}
+
+		days_mission_timeout = 98
+
+		fire_only_once = yes
+
 		activation = {
 			tag = USA
 			has_country_flag = USA_build_the_pentagon_1_flag
 		}
-		
+
 		visible = {
 			tag = USA
 			has_country_flag = USA_build_the_pentagon_1_flag
 		}
 
-		available = {
-			hidden_trigger = { always = no }
-		}
-		selectable_mission = no
+		cancel_if_not_visible = no
 
-		fire_only_once = yes
-		cost = 0
-		days_remove = 98
+		is_good = yes
 
-		modifier = {
-			civilian_factory_use = 10
+		complete_effect = {
+			
 		}
-		
-		remove_effect = {
+
+		timeout_effect = {
 			add_ideas = USA_the_pentagon_1
 			set_country_flag = USA_build_the_pentagon_2_flag
 		}
@@ -3923,27 +3926,33 @@ USA_war_plans = {
 	USA_construct_pentagon_2 = {
 		icon = generic_construction
 		
-		activation = {
-			has_country_flag = USA_build_the_pentagon_2_flag
-			tag = USA
+		available = {
+			hidden_trigger = { always = no }
 		}
-		
+
+		days_mission_timeout = 98
+
+		fire_only_once = yes
+
+		activation = {
+			tag = USA
+			has_country_flag = USA_build_the_pentagon_2_flag
+		}
+
 		visible = {
 			tag = USA
 			has_country_flag = USA_build_the_pentagon_2_flag
 		}
 
-		available = {
-			hidden_trigger = { always = no }
+		cancel_if_not_visible = no
+
+		is_good = yes
+
+		complete_effect = {
+			
 		}
 
-		selectable_mission = no
-
-		fire_only_once = yes
-		cost = 0
-		days_remove = 98
-		
-		remove_effect = {
+		timeout_effect = {
 			swap_ideas = {
 				remove_idea = USA_the_pentagon_1
 				add_idea = USA_the_pentagon_2
@@ -3955,25 +3964,33 @@ USA_war_plans = {
 	USA_construct_pentagon_3 = {
 		icon = generic_construction
 		
-		activation = {
-			has_completed_focus = USA_build_the_pentagon
-			has_country_flag = USA_build_the_pentagon_3_flag
-		}
-		
-		visible = {
-			has_country_flag = USA_build_the_pentagon_3_flag
-		}
 		available = {
 			hidden_trigger = { always = no }
 		}
 
-		selectable_mission = no
+		days_mission_timeout = 98
 
 		fire_only_once = yes
-		cost = 0
-		days_remove = 98
-		
-		remove_effect = {
+
+		activation = {
+			tag = USA
+			has_country_flag = USA_build_the_pentagon_3_flag
+		}
+
+		visible = {
+			tag = USA
+			has_country_flag = USA_build_the_pentagon_3_flag
+		}
+
+		cancel_if_not_visible = no
+
+		is_good = yes
+
+		complete_effect = {
+			
+		}
+
+		timeout_effect = {
 			swap_ideas = {
 				remove_idea = USA_the_pentagon_2
 				add_idea = USA_the_pentagon_3
@@ -3985,25 +4002,33 @@ USA_war_plans = {
 	USA_construct_pentagon_4 = {
 		icon = generic_construction
 		
-		activation = {
-			has_completed_focus = USA_build_the_pentagon
-			has_country_flag = USA_build_the_pentagon_4_flag
-		}
-		
-		visible = {
-			has_country_flag = USA_build_the_pentagon_4_flag
-		}
 		available = {
 			hidden_trigger = { always = no }
 		}
 
-		selectable_mission = no
+		days_mission_timeout = 98
 
 		fire_only_once = yes
-		cost = 0
-		days_remove = 98
-		
-		remove_effect = {
+
+		activation = {
+			tag = USA
+			has_country_flag = USA_build_the_pentagon_4_flag
+		}
+
+		visible = {
+			tag = USA
+			has_country_flag = USA_build_the_pentagon_4_flag
+		}
+
+		cancel_if_not_visible = no
+
+		is_good = yes
+
+		complete_effect = {
+			
+		}
+
+		timeout_effect = {
 			swap_ideas = {
 				remove_idea = USA_the_pentagon_3
 				add_idea = USA_the_pentagon_4
@@ -4015,25 +4040,33 @@ USA_war_plans = {
 	USA_construct_pentagon_5 = {
 		icon = generic_construction
 		
-		activation = {
-			has_completed_focus = USA_build_the_pentagon
-			has_country_flag = USA_build_the_pentagon_5_flag
-		}
-		
-		visible = {
-			has_country_flag = USA_build_the_pentagon_5_flag
-		}
 		available = {
 			hidden_trigger = { always = no }
 		}
 
-		selectable_mission = no
+		days_mission_timeout = 98
 
 		fire_only_once = yes
-		cost = 0
-		days_remove = 98
-		
-		remove_effect = {
+
+		activation = {
+			tag = USA
+			has_country_flag = USA_build_the_pentagon_5_flag
+		}
+
+		visible = {
+			tag = USA
+			has_country_flag = USA_build_the_pentagon_5_flag
+		}
+
+		cancel_if_not_visible = no
+
+		is_good = yes
+
+		complete_effect = {
+			
+		}
+
+		timeout_effect = {
 			remove_ideas = USA_the_pentagon_4
 		}
 	}
@@ -4123,118 +4156,14 @@ USA_war_plans = {
 		}
 	}
 
-	USA_execute_war_plan_green = {
-		icon = generic_operation
-		available = {
-			has_war_with = MEX
-		}
-		visible = {
-			has_completed_focus = USA_war_plan_green
-		}
-		ai_will_do = {
-			factor = 1
-		}
-		fire_only_once = yes
-		days_remove = 180
-		modifier = {
-			production_speed_infrastructure_factor = 0.1
-		}
-		targeted_modifier = {
-			tag = MEX
-			attack_bonus_against = 0.1
-			defense_bonus_against = 0.1
-		}
-	}
-	USA_execute_war_plan_red = {
-		icon = generic_operation
-		available = {
-			has_war_with = ENG
-		}
-		visible = {
-			has_completed_focus = USA_war_plan_red
-		}
-		ai_will_do = {
-			factor = 1
-		}
-		fire_only_once = yes
-		days_remove = 180
-		modifier = {
-			spotting_chance = 0.1
-		}
-		targeted_modifier = {
-			tag = ENG
-			attack_bonus_against = 0.1
-			defense_bonus_against = 0.1
-		}
-	}
-	USA_execute_war_plan_silver = {
-		icon = generic_operation
-		available = {
-			has_war_with = ITA
-		}
-		visible = {
-			has_completed_focus = USA_war_plan_silver
-		}
-		ai_will_do = {
-			factor = 1
-		}
-		fire_only_once = yes
-		days_remove = 180
-		targeted_modifier = {
-			tag = ITA
-			attack_bonus_against = 0.1
-			defense_bonus_against = 0.1
-		}
-	}
-	USA_execute_war_plan_ruby = {
-		icon = generic_operation
-		available = {
-			has_war_with = RAJ
-		}
-		visible = {
-			has_completed_focus = USA_war_plan_ruby
-		}
-		ai_will_do = {
-			factor = 1
-		}
-		fire_only_once = yes
-		days_remove = 180
-		targeted_modifier = {
-			tag = RAJ
-			attack_bonus_against = 0.1
-			defense_bonus_against = 0.1
-		}
-	}
-	USA_execute_war_plan_scarlet_garnet = {
-		icon = generic_operation
-		available = {
-			has_war_with = AST
-			has_war_with = NZL
-		}
-		visible = {
-			has_completed_focus = USA_war_plan_scarlet_garnet
-		}
-		ai_will_do = {
-			factor = 1
-		}
-		fire_only_once = yes
-		days_remove = 180
-		targeted_modifier = {
-			tag = AST
-			attack_bonus_against = 0.1
-			defense_bonus_against = 0.1
-		}
-		targeted_modifier = {
-			tag = NZL
-			attack_bonus_against = 0.1
-			defense_bonus_against = 0.1
-		}
-	}
+	
 	USA_execute_operation_downfall = {
 		icon = generic_operation
 		available = {
 			has_war_with = JAP
-			has_country_flag = operation_overlord_flag
+			NOT = {
+				has_country_flag = operation_overlord_flag
+			}
 		}
 		visible = {
 			has_completed_focus = USA_operation_downfall_focus
@@ -4272,141 +4201,7 @@ USA_war_plans = {
 			clr_country_flag = operation_downfall_flag
 		}
 	}
-	USA_execute_war_plan_yellow = {
-		icon = generic_operation
-		available = {
-			OR = {
-				has_war_with = CHI
-				has_war_with = PRC
-				has_war_with = SHX
-				has_war_with = YUN
-				has_war_with = GXC
-				has_war_with = XSM
-				has_war_with = SIK
-
-			}
-		}
-		visible = {
-			has_completed_focus = USA_war_plan_yellow
-		}
-		ai_will_do = {
-			factor = 1
-		}
-		fire_only_once = yes
-		days_remove = 180
-		targeted_modifier = {
-			tag = CHI
-			attack_bonus_against = 0.1
-			defense_bonus_against = 0.1
-		}
-		targeted_modifier = {
-			tag = PRC
-			attack_bonus_against = 0.1
-			defense_bonus_against = 0.1
-		}
-		targeted_modifier = {
-			tag = SHX
-			attack_bonus_against = 0.1
-			defense_bonus_against = 0.1
-		}
-		targeted_modifier = {
-			tag = YUN
-			attack_bonus_against = 0.1
-			defense_bonus_against = 0.1
-		}
-		targeted_modifier = {
-			tag = XSM
-			attack_bonus_against = 0.1
-			defense_bonus_against = 0.1
-		}
-		targeted_modifier = {
-			tag = GXC
-			attack_bonus_against = 0.1
-			defense_bonus_against = 0.1
-		}
-		targeted_modifier = {
-			tag = SIK
-			attack_bonus_against = 0.1
-			defense_bonus_against = 0.1
-		}
-	}
-	USA_execute_war_plan_crimson = {
-		icon = generic_operation
-		available = {
-			has_war_with = CAN
-		}
-		visible = {
-			has_completed_focus = USA_war_plan_crimson
-		}
-		ai_will_do = {
-			factor = 1
-		}
-		fire_only_once = yes
-		days_remove = 180
-		modifier = {
-			production_speed_bunker_factor = 0.1
-		}
-		targeted_modifier = {
-			tag = CAN
-			attack_bonus_against = 0.1
-			defense_bonus_against = 0.1
-		}
-	}
-	USA_execute_war_plan_gray = {
-		icon = generic_operation
-		available = {
-			any_enemy_country = {
-					  
-				capital_scope = {
-					OR = {
-						is_on_continent = south_america
-						is_on_continent = north_america
-					}
-				}
-			}
-		}
-		visible = {
-			has_completed_focus = USA_war_plan_gray
-		}
-		ai_will_do = {
-			factor = 1
-		}
-		fire_only_once = yes
-		days_remove = 180
-		modifier = {
-			amphibious_invasion = 0.1
-			invasion_preparation = -0.5
-		}
 	
-	}
-	USA_execute_war_plan_gold = {
-		icon = generic_operation
-		available = {
-			OR = {			
-				has_war_with = FRA
-				has_war_with = VIC
-			}
-		}
-		visible = {
-			has_completed_focus = USA_war_plan_gold
-		}
-		ai_will_do = {
-			factor = 1
-		}
-		fire_only_once = yes
-		days_remove = 180
-		targeted_modifier = {
-			tag = FRA
-			attack_bonus_against = 0.1
-			defense_bonus_against = 0.1
-		}
-		targeted_modifier = {
-			tag = VIC
-			attack_bonus_against = 0.1
-			defense_bonus_against = 0.1
-		}
-		
-	}
 	USA_execute_operation_overlord = {
 		icon = generic_operation
 		available = {
@@ -5205,7 +5000,7 @@ USA_intervention_mandate = {
 			}
 		}
 		visible = {
-			has_completed_focus = USA_reinforce_monroe_doctrine
+#			has_completed_focus = USA_reinforce_monroe_doctrine
 			not = { has_wargoal_against = FROM }
 			not = { has_war_with = FROM }
 			FROM = {
@@ -5283,7 +5078,7 @@ USA_intervention_mandate = {
 			}
 		}
 		visible = {
-			has_completed_focus = USA_reinforce_monroe_doctrine
+#			has_completed_focus = USA_reinforce_monroe_doctrine
 			NOT = { has_wargoal_against = FROM }
 			FROM = {
 				NOT = { has_country_flag = USA_monroe_backed_down } #set when US player backs down in reply event
