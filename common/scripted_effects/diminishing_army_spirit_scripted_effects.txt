@@ -18,19 +18,19 @@ mission_command_diminishing_effect_calc = {
 	round_variable = temp_casualties #Rounding is needed for the loop
 	IF = { #Setting the effect to 0 if we have no casualties taken
 		limit = {
-			check_temp_variable = { temp_casualties = 0 }
+			check_variable = { temp_casualties = 0 }
 		}
 		set_variable = { diminshing_effect_var = 0 } 
 	}
 	while_loop_effect = { #if we have casualties taken, we can loop for the amount of casualties and multiply the variable with b everytime
 		limit = {
-			check_temp_variable = { temp_casualties > 0 }
+			check_variable = { temp_casualties > 0 }
 		}
 		multiply_variable = { diminshing_effect_var = temp_constant_b }
 	}
 	multiply_variable = { diminshing_effect_var = temp_constant_a } #this is the term a*...
 	multiply_temp_variable = { temp_time_passed = temp_constant_e } #this is the term e*t
-	subtract_from_variable = { diminshing_effect_var = temp_time_passed } now substracting the term e*t from the variable
+	subtract_from_variable = { diminshing_effect_var = temp_time_passed } #now substracting the term e*t from the variable
 	clamp_variable = { #clamping the variable between min and max possible effect
 		var = diminshing_effect_var
 		min = 0
