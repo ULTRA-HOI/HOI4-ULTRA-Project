@@ -1,0 +1,41 @@
+# or Germany Mission Command decreased by casualties taken. It rebuilds over time. We use this effect to counteract the initial spirit
+#
+#We use the formula f(c,t) = a*b^(c/d)-e*t with c = total casualties taken, t = time has passed, a = 0.625, b = 1.25, d = 100,000 and e = 0.005
+mission_command_diminishing_effect_calc = {
+	
+	#Setting up needed variables
+	set_temp_variable = { temp_casualties = ROOT.casualties_k }
+	set_temp_variable = { temp_time_passed = global.num_days }
+	subtract_from_temp_variable = { temp_time_passed = 706640 } #global.num_days starts counting on 01.01.0000, therefore need to substract 1936*365 = 706640
+	set_temp_variable = { temp_constant_a = 0.625 }
+	set_temp_variable = { temp_constant_b = 1.25 }
+	set_temp_variable = { temp_constant_d = 100 } #we divide d by 1.000 since we use casualties in 1.000s
+	set_temp_variable = { temp_constant_e = 0.005 } #Set to 0 currently to remove the time impact
+	
+	#Calculation
+	set_variable = { diminshing_effect_var = temp_constant_b } #Setting up the main variable = b 
+	divide_temp_variable = { temp_casualties = temp_constant_d } #this is the term (c/d) of the formula
+	round_variable = temp_casualties #Rounding is needed for the loop
+	IF = { #Setting the effect to 0 if we have no casualties taken
+		limit = {
+			check_temp_variable = { temp_casualties = 0 }
+		}
+		set_variable = { diminshing_effect_var = 0 } 
+	}
+	while_loop_effect = { #if we have casualties taken, we can loop for the amount of casualties and multiply the variable with b everytime
+		limit = {
+			check_temp_variable = { temp_casualties > 0 }
+		}
+		multiply_variable = { diminshing_effect_var = temp_constant_b }
+	}
+	multiply_variable = { diminshing_effect_var = temp_constant_a } #this is the term a*...
+	multiply_temp_variable = { temp_time_passed = temp_constant_e } #this is the term e*t
+	subtract_from_variable = { diminshing_effect_var = temp_time_passed } now substracting the term e*t from the variable
+	clamp_variable = { #clamping the variable between min and max possible effect
+		var = diminshing_effect_var
+		min = 0
+		max = 90
+	}
+	divide_variable = { diminshing_effect_var = 100 } #turning the variable into a negative factor between 0 and -0.9
+	multiply_variable = { diminshing_effect_var = -1 }
+}
