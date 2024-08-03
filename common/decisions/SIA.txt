@@ -84,8 +84,9 @@ political_actions = {
 			JAP = { country_event = { id = japan.104 hours = 2 } }
 		}
 	}
+}
 
-	
+economy_decisions = {
 	#Mission to track the progress of Japanese Submarine construction
 	SIA_japanese_submarine_construction_progress = {
 		
@@ -99,11 +100,10 @@ political_actions = {
 			has_completed_focus = SIA_purchase_japanese_submarines
 		}
 		available = {
-			num_of_civilian_factories_available_for_projects > 1
+			
 		}
 		
 		modifier = {
-			civilian_factory_use = 2
 		}
 
 		cost = 25
@@ -129,9 +129,12 @@ political_actions = {
 		#On Activation
 		complete_effect ={
 			JAP = {
-				add_offsite_building = {
-					type = industrial_complex
-					level = 2
+			random_owned_controlled_state = {
+				prioritize = { 282 }
+				remove_building = {
+					type = dockyard
+					level = 5
+					}
 				}
 			}
 		}
@@ -139,21 +142,32 @@ political_actions = {
 		#Fail
 		cancel_effect = {
 			JAP = {
-				add_offsite_building = {
-					type = industrial_complex
-					level = -2
+			random_owned_controlled_state = {
+				prioritize = { 282 }
+				add_building_construction = {
+					type = dockyard
+					level = 5
+					instant_build = yes
+					}
 				}
-			}
+			}		
 		}
 
 		#Success
 		remove_effect = {
 			JAP = {
-				add_offsite_building = {
-					type = industrial_complex
-					level = -2
+			random_owned_controlled_state = {
+				prioritize = { 282 }
+				add_building_construction = {
+					type = dockyard
+					level = 5
+					instant_build = yes
+					}
 				}
-			}
+				mio:JAP_mitsubishi_heavy_industries_organization = {
+				add_mio_size = 1
+				}
+			}		
 			if = {
 				limit = { has_dlc = "Man the Guns" }
 				if = { 
@@ -167,7 +181,7 @@ political_actions = {
 							role_icon_index = 6
 							modules = {
 								fixed_ship_sub_hull_slot = nrm_submarine_hull_2
-								fixed_ship_engine_slot = nrm_submarine_engine_D0_30
+								fixed_ship_engine_slot = nrm_submarine_engine_D0_12
 								fixed_ship_sonar_slot = nrm_submarine_sonar_2
 								fixed_ship_sub_fcs_slot = empty
 								fixed_ship_damagecontrol_slot = nrm_damagecontrol_1
@@ -175,15 +189,15 @@ political_actions = {
 								fixed_ship_radar_slot = empty
 								fixed_ship_battery_slot = nrm_submarine_deckgun_4
 								fixed_ship_anti_air_slot = empty
-								fixed_ship_torpedo_slot = nrm_submarine_TRP_21_2_x6
+								fixed_ship_torpedo_slot = nrm_submarine_TRP_18_1_x4
 								fixed_ship_torpedo_reload_slot = nrm_sub_reloads_x2
 							}
 						}
 					}
-					create_ship = { type = nrm_ship_hull_submarine_2 equipment_variant = "Matchanu Class" creator = JAP }
-					create_ship = { type = nrm_ship_hull_submarine_2 equipment_variant = "Matchanu Class" creator = JAP }
-					create_ship = { type = nrm_ship_hull_submarine_2 equipment_variant = "Matchanu Class" creator = JAP }
-					create_ship = { type = nrm_ship_hull_submarine_2 equipment_variant = "Matchanu Class" creator = JAP }
+					create_ship = { name = "HTMS Matchanu" type = nrm_ship_hull_submarine_2 equipment_variant = "Matchanu Class" creator = JAP }
+					create_ship = { name = "HTMS Wirun" type = nrm_ship_hull_submarine_2 equipment_variant = "Matchanu Class" creator = JAP }
+					create_ship = { name = "HTMS Sinsamut" type = nrm_ship_hull_submarine_2 equipment_variant = "Matchanu Class" creator = JAP }
+					create_ship = { name = "HTMS Phlai Chumphon" type = nrm_ship_hull_submarine_2 equipment_variant = "Matchanu Class" creator = JAP }
 				}
 			}
 			country_event = japan.106
@@ -204,11 +218,10 @@ political_actions = {
 			has_completed_focus = SIA_purchase_japanese_surface_ships
 		}
 		available = {
-			num_of_civilian_factories_available_for_projects > 1
+			
 		}
 		
 		modifier = {
-			civilian_factory_use = 2
 		}
 
 		cost = 25
@@ -234,9 +247,12 @@ political_actions = {
 		#On Activation
 		complete_effect ={
 			ITA = {
-				add_offsite_building = {
-					type = industrial_complex
-					level = 2
+			random_owned_controlled_state = {
+				prioritize = { 2 }
+				remove_building = {
+					type = dockyard
+					level = 5
+					}
 				}
 			}
 		}
@@ -244,23 +260,32 @@ political_actions = {
 		#Fail
 		cancel_effect = {
 			ITA = {
-				add_offsite_building = {
-					type = industrial_complex
-					level = -2
+			random_owned_controlled_state = {
+				prioritize = { 2 }
+				add_building_construction = {
+					type = dockyard
+					level = 5
+					instant_build = yes
+					}
 				}
-			}
+			}		
 		}
 
 		#Success
 		remove_effect = {
-			
-
 			ITA = {
-				add_offsite_building = {
-					type = industrial_complex
-					level = -2
+			random_owned_controlled_state = {
+				prioritize = { 2 }
+				add_building_construction = {
+					type = dockyard
+					level = 5
+					instant_build = yes
+					}
 				}
-			}
+				mio:ITA_crda_organization = {
+				add_mio_size = 1
+				}
+			}		
 			if = {
 				limit = { has_dlc = "Man the Guns" }
 				if = { 
@@ -274,17 +299,17 @@ political_actions = {
 							role_icon_index = 5
 							modules = {
 								fixed_ship_hullform_slot = nrm_ship_hullform_cruiser_3
-								fixed_ship_engine_slot = nrm_cruiser_engine_S2_100
+								fixed_ship_engine_slot = nrm_cruiser_engine_S1_040
 								fixed_ship_armor_layout_slot = nrm_armour_layout_2
-								fixed_ship_armor_slot = nrm_cruiser_armour_04_2
+								fixed_ship_armor_slot = nrm_cruiser_armour_02h_2
 								fixed_ship_damagecontrol_slot = nrm_damagecontrol_2
 								fixed_ship_range_slot = nrm_range_cruiser_2
 								fixed_ship_radar_slot = empty
 								fixed_ship_fire_control_system_slot = nrm_fire_control_4
 								fixed_ship_fire_control_system_aa_slot = empty
-								fixed_ship_battery_slot = nrm_cruiser_battery_6_2_x10
+								fixed_ship_battery_slot = nrm_cruiser_battery_6_1_x06
 								fixed_ship_tertiary_slot = nrm_cruiser_tertiary_HA_4_2_x08
-								custom_slot_1 = nrm_support_cruiser_ML_1
+								custom_slot_1 = nrm_support_cruiser_AA_1
 								custom_slot_2 = nrm_support_cruiser_TRP_21_2_x06
 								custom_slot_3 = nrm_support_cruiser_FP_1
 								custom_slot_4 = nrm_support_cruiser_AA_1
@@ -293,8 +318,8 @@ political_actions = {
 							}
 						}
 					}
-					create_ship = { type = nrm_ship_hull_cruiser_2 equipment_variant = "Etna Class" creator = ITA }
-					create_ship = { type = nrm_ship_hull_cruiser_2 equipment_variant = "Etna Class" creator = ITA }
+					create_ship = { name = "HTMS Taksin" type = nrm_ship_hull_cruiser_2 equipment_variant = "Etna Class" creator = ITA }
+					create_ship = { name = "HTMS Naresuan" type = nrm_ship_hull_cruiser_2 equipment_variant = "Etna Class" creator = ITA }
 				}
 			}
 			country_event = japan.106
@@ -302,7 +327,7 @@ political_actions = {
 	}
 
 
-	#Mission to track the progress of Japanese DESTROYERS construction
+	#Mission to track the progress of Japanese Coastal Defense Ships construction
 	SIA_japanese_destroyers_construction_progress = {
 		
 		icon = generic_naval
@@ -315,10 +340,8 @@ political_actions = {
 			has_completed_focus = SIA_purchase_japanese_surface_ships
 		}
 		available = {
-			num_of_civilian_factories_available_for_projects > 1
 		}
 		modifier = {
-			civilian_factory_use = 2
 		}
 
 		cost = 25
@@ -344,73 +367,383 @@ political_actions = {
 		#On Activation
 		complete_effect ={
 			JAP = {
-				add_offsite_building = {
-					type = industrial_complex
-					level = 2
+			random_owned_controlled_state = {
+				prioritize = { 282 }
+				remove_building = {
+					type = dockyard
+					level = 5
+					}
 				}
 			}
 		}
-
 		#Fail
 		cancel_effect = {
 			JAP = {
-				add_offsite_building = {
-					type = industrial_complex
-					level = -2
+			random_owned_controlled_state = {
+				prioritize = { 282 }
+				add_building_construction = {
+					type = dockyard
+					level = 5
+					instant_build = yes
+					}
 				}
 			}		
-		}
+		}	
 
 		is_good = yes
 		#Success
 		remove_effect = {
+			JAP = {
+			random_owned_controlled_state = {
+				prioritize = { 282 }
+				add_building_construction = {
+					type = dockyard
+					level = 5
+					instant_build = yes
+					}
+				}
+			
+				mio:JAP_kawasaki_shipbuilding_organization = {
+				add_mio_size = 1
+				}
+			}
 			if = {
 				limit = { has_dlc = "Man the Guns" }
 				if = { 
 					hidden_effect = { add_manpower = 1000 }
-					JAP = {
+					SIA = {
 						create_equipment_variant = {
 							name = "Thonburi Class"
-							type = nrm_ship_hull_destroyer_2
+							type = nrm_ship_hull_cruiser_coastal 
 							name_group = SIA_DD_HISTORICAL
 							parent_version = 0
 							role_icon_index = 3
 							modules = {
-								fixed_ship_hullform_slot = nrm_ship_hullform_destroyer_2
-								fixed_ship_engine_slot = nrm_destroyer_engine_S1_050
-								fixed_ship_sonar_slot = nrm_sonar_3
-								fixed_ship_battery_slot = nrm_destroyer_battery_5_2_x4
+								fixed_ship_hullform_slot = nrm_ship_hullform_cruiser_1
+								fixed_ship_engine_slot = nrm_cruiser_engine_S0_005
+								fixed_ship_armor_layout_slot = nrm_armour_layout_2
+								fixed_ship_armor_slot = nrm_cruiser_armour_02h_2
 								fixed_ship_damagecontrol_slot = nrm_damagecontrol_2
-								fixed_ship_range_slot = nrm_range_destroyer_1
+								fixed_ship_range_slot = nrm_range_cruiser_0
 								fixed_ship_radar_slot = empty
-								fixed_ship_fire_control_system_slot = nrm_fire_control_2
+								fixed_ship_fire_control_system_slot = nrm_fire_control_4
 								fixed_ship_fire_control_system_aa_slot = empty
-								custom_slot_1 = nrm_support_destroyer_MS_1
-								custom_slot_2 = nrm_support_destroyer_ASW_1
-								custom_slot_3 = nrm_support_destroyer_TRP_21_C_2_x3
-								custom_slot_4 = nrm_support_destroyer_TRP_21_C_2_x3
-								custom_slot_5 = nrm_support_destroyer_AA_1
-								custom_slot_6 = empty
+								fixed_ship_battery_slot = nrm_cruiser_battery_8_1_x08
+								fixed_ship_tertiary_slot = nrm_cruiser_tertiary_HA_4_2_x08
+								custom_slot_1 = nrm_support_cruiser_AA_1
+								custom_slot_2 = nrm_support_cruiser_TRP_21_2_x06
+								custom_slot_3 = nrm_support_cruiser_FP_1
+								custom_slot_4 = nrm_support_cruiser_AA_1
+								custom_slot_5 = nrm_support_cruiser_AA_1
+								custom_slot_6 = nrm_support_cruiser_AA_1
 							}
 						}
 					}
-					create_ship = { type = nrm_ship_hull_destroyer_2 equipment_variant = "Thonburi Class" creator = JAP }
-					create_ship = { type = nrm_ship_hull_destroyer_2 equipment_variant = "Thonburi Class" creator = JAP }
+					create_ship = { name = "HTMS Thonburi" type = nrm_ship_hull_cruiser_coastal equipment_variant = "Thonburi Class" creator = SIA }
+					create_ship = { name = "HTMS Sri Ayudhya" type = nrm_ship_hull_cruiser_coastal equipment_variant = "Thonburi Class" creator = SIA }
 				}
 			}
 
-			JAP = {
-				add_offsite_building = {
-					type = industrial_complex
-					level = -2
-				}
-			}
+
 			country_event = japan.106
 		}
 	}
-}
 
-economy_decisions = {
+	SIA_purchase_british_tanks_decision = {
+		icon = generic_tank
+				
+		visible = {
+			has_completed_focus = SIA_light_armor_experimentation
+		}
+		
+		available = {
+			num_of_civilian_factories_available_for_projects > 0
+
+			NOT = {
+			has_war_with = ENG
+			}
+		}
+		
+		cost = 25
+		
+		fire_only_once = yes
+		
+		
+		
+		days_remove = 30
+		
+		modifier = {
+			civilian_factory_use = 1
+		}
+		
+		#On Activation
+		complete_effect ={
+			ENG = {
+				add_offsite_building = {
+					type = industrial_complex
+					level = 1
+				}
+			}
+		}
+
+		remove_effect = {
+			ENG = {
+				add_offsite_building = {
+					type = industrial_complex
+					level = -1
+				}
+			}
+			SIA = {
+				add_equipment_to_stockpile = {
+					type = eng_interwar_equipment_1 
+					amount = 90
+					producer = ENG
+				}
+			}
+			
+		}
+	
+	}
+
+	SIA_purchase_japanese_cas_decision = {
+		icon = generic_air
+				
+		visible = {
+			has_completed_focus = SIA_purchase_foreign_aircrafts
+		}
+		
+		available = {
+			num_of_civilian_factories_available_for_projects > 0
+
+			JAP = {
+				has_tech = jap_cas_1
+				}
+
+			NOT = {
+			has_war_with = JAP
+			}
+		}
+		
+		cost = 25
+		
+		fire_only_once = yes
+		
+		
+		
+		days_remove = 30
+		
+		modifier = {
+			civilian_factory_use = 1
+		}
+		
+		#On Activation
+		complete_effect ={
+			JAP = {
+				add_offsite_building = {
+					type = industrial_complex
+					level = 1
+				}
+			}
+		}
+
+		remove_effect = {
+			JAP = {
+				add_offsite_building = {
+					type = industrial_complex
+					level = -1
+				}
+			}
+			SIA = {
+				add_equipment_to_stockpile = {
+					type = jap_cas_equipment_1
+					amount = 24
+					producer = JAP
+				}
+			}
+			
+		}
+	
+	}
+
+	SIA_purchase_japanese_tac_bomber_decision = {
+		icon = generic_air
+				
+		visible = {
+			has_completed_focus = SIA_purchase_foreign_aircrafts
+		}
+		
+		available = {
+			num_of_civilian_factories_available_for_projects > 0
+
+			JAP = {
+				has_tech = jap_tactical_bomber_1
+				}
+
+			NOT = {
+			has_war_with = JAP
+			}
+		}
+		
+		cost = 25
+		
+		fire_only_once = yes
+		
+		
+		
+		days_remove = 30
+		
+		modifier = {
+			civilian_factory_use = 1
+		}
+		
+		#On Activation
+		complete_effect ={
+			JAP = {
+				add_offsite_building = {
+					type = industrial_complex
+					level = 1
+				}
+			}
+		}
+
+		remove_effect = {
+			JAP = {
+				add_offsite_building = {
+					type = industrial_complex
+					level = -1
+				}
+			}
+			SIA = {
+				add_equipment_to_stockpile = {
+					type = jap_tac_bomber_equipment_1
+					amount = 9
+					producer = JAP
+				}
+			}
+			
+		}
+	
+	}
+
+	SIA_purchase_american_fighter_decision = {
+		icon = generic_air
+				
+		visible = {
+			has_completed_focus = SIA_purchase_foreign_aircrafts
+		}
+		
+		available = {
+			num_of_civilian_factories_available_for_projects > 0
+
+			USA = {
+				has_tech = usa_fighter_3
+				}
+
+			NOT = {
+			has_war_with = USA
+			}
+		}
+		
+		cost = 25
+		
+		fire_only_once = yes
+		
+		
+		
+		days_remove = 30
+		
+		modifier = {
+			civilian_factory_use = 1
+		}
+		
+		#On Activation
+		complete_effect ={
+			USA = {
+				add_offsite_building = {
+					type = industrial_complex
+					level = 1
+				}
+			}
+		}
+
+		remove_effect = {
+			USA = {
+				add_offsite_building = {
+					type = industrial_complex
+					level = -1
+				}
+			}
+			SIA = {
+				add_equipment_to_stockpile = {
+					type = usa_fighter_equipment_3
+					amount = 25
+					producer = USA
+				}
+			}
+			
+		}
+	
+	}
+
+	   SIA_purchase_american_cv_cas_decision = {
+		icon = generic_air
+				
+		visible = {
+			has_completed_focus = SIA_purchase_foreign_aircrafts
+		}
+		
+		available = {
+			num_of_civilian_factories_available_for_projects > 0
+
+			USA = {
+				has_tech = usa_cv_cas_0
+				}
+
+			NOT = {
+			has_war_with = USA
+			}
+		}
+		
+		cost = 25
+		
+		fire_only_once = yes
+		
+		
+		
+		days_remove = 30
+		
+		modifier = {
+			civilian_factory_use = 1
+		}
+		
+		#On Activation
+		complete_effect ={
+			USA = {
+				add_offsite_building = {
+					type = industrial_complex
+					level = 1
+				}
+			}
+		}
+
+		remove_effect = {
+			USA = {
+				add_offsite_building = {
+					type = industrial_complex
+					level = -1
+				}
+			}
+			SIA = {
+				add_equipment_to_stockpile = {
+					type = usa_cv_cas_equipment_0
+					amount = 70
+					producer = USA
+				}
+			}
+			
+		}
+	
+	}
 
 	SIA_purchase_japanese_merchant_ships_decision = {
 		icon = generic_naval
@@ -420,7 +753,11 @@ economy_decisions = {
 		}
 		
 		available = {
-			num_of_civilian_factories_available_for_projects > 1
+			num_of_civilian_factories_available_for_projects > 0
+
+			NOT = {
+			has_war_with = JAP
+			}
 		}
 		
 		cost = 50
@@ -435,8 +772,24 @@ economy_decisions = {
 		modifier = {
 			civilian_factory_use = 1
 		}
+
+		#On Activation
+		complete_effect ={
+			JAP = {
+				add_offsite_building = {
+					type = industrial_complex
+					level = 1
+				}
+			}
+		}
 		
 		remove_effect = {
+			JAP = {
+				add_offsite_building = {
+					type = industrial_complex
+					level = -1
+				}
+			}
 			SIA = {
 				add_equipment_to_stockpile = {
 					type = convoy_1

@@ -358,6 +358,7 @@
 		available_if_capitulated = yes
 
 		completion_reward = {
+			custom_effect_tooltip = SIA_trade_deal_with_japan_tt
 			add_political_power = 50
 			custom_effect_tooltip = SIA_trade_deal_with_japan_tt
 		}
@@ -548,7 +549,7 @@
 		x = 6
 		y = 1
 		relative_position_id = SIA_royal_thai_armed_forces
-		cost = 10
+		cost = 5
 
 		search_filters = {  FOCUS_FILTER_RESEARCH }
 
@@ -566,7 +567,7 @@
 		x = -1
 		y = 1
 		relative_position_id = SIA_royal_thai_navy
-		cost = 10
+		cost = 5
 
 		search_filters = {  FOCUS_FILTER_RESEARCH }
 
@@ -584,7 +585,7 @@
 		x = 1
 		y = 1
 		relative_position_id = SIA_royal_thai_navy
-		cost = 10
+		cost = 5
 
 		search_filters = {  FOCUS_FILTER_RESEARCH }
 
@@ -625,7 +626,7 @@
 		x = 2
 		y = 1
 		relative_position_id = SIA_royal_thai_armed_forces
-		cost = 10
+		cost = 5
 
 		search_filters = {  FOCUS_FILTER_RESEARCH }
 
@@ -650,6 +651,7 @@
 		available_if_capitulated = yes
 
 		completion_reward = {
+			custom_effect_tooltip = SIA_purchase_foreign_aircrafts_tt
 			add_ideas = SIA_purchase_foreign_aircrafts_idea
 		}
 	}
@@ -659,7 +661,6 @@
 		id = SIA_domestic_aircraft_assembly
 		icon = GFX_focus_generic_aircraft_production
 		prerequisite = { focus = SIA_purchase_foreign_aircrafts }
-		mutually_exclusive = { focus = SIA_armored_repair_workshop }
 		x = 0
 		y = 1
 		relative_position_id = SIA_purchase_foreign_aircrafts
@@ -702,7 +703,7 @@
 		x = -4
 		y = 1
 		relative_position_id = SIA_royal_thai_armed_forces
-		cost = 10
+		cost = 5
 
 		search_filters = {  FOCUS_FILTER_RESEARCH }
 
@@ -886,6 +887,7 @@
 		available_if_capitulated = yes
 
 		completion_reward = {
+			custom_effect_tooltip = SIA_royal_guards_divisions_tt
 			division_template = {
 				name = "1st King's Guards Division"
 				priority = 1
@@ -913,16 +915,8 @@
 				prioritize = { 7408 }
 				limit = { PREV = { has_full_control_of_state = PREV } }
 				create_unit = {
-					division = "name = \"1st King's Guards Division\" division_template = \"1st King's Guards Division\" start_experience_factor = 1" 
+					division = "name = \"1st King's Guards Division\" division_template = \"1st King's Guards Division\" start_experience_factor = 0.42" 
 					owner = PREV
-				}
-				random_owned_controlled_state = {
-					limit = { ROOT = { has_full_control_of_state = PREV } }
-					prioritize = { 289 }
-					create_unit = {
-						division = "name = \"Royal Guards Division\" division_template = \"Royal Guards Division\" start_experience_factor = 1.0" 
-						owner = SIA
-					}
 				}
 			}			
 		}
@@ -1003,13 +997,14 @@
 		x = 3
 		y = 1
 		relative_position_id = SIA_royal_thai_army
-		cost = 5
+		cost = 10
 
 		search_filters = {  FOCUS_FILTER_RESEARCH }
 
 		available_if_capitulated = yes
 
 		completion_reward = {
+			custom_effect_tooltip = SIA_purchase_foreign_tanks_tt
 			add_ideas = SIA_armored_repair_workshop_idea
 		}
 	}
@@ -1018,7 +1013,6 @@
 		id = SIA_armored_repair_workshop
 		icon = GFX_focus_generic_tank_production
 		prerequisite = { focus = SIA_light_armor_experimentation }
-		mutually_exclusive = { focus = SIA_domestic_aircraft_assembly }
 		x = 0
 		y = 1
 		relative_position_id = SIA_light_armor_experimentation
