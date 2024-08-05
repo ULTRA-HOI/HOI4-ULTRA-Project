@@ -4103,8 +4103,8 @@ focus_tree = {
 	}
 
 	focus = {
-		id = SOV_the_road_of_life
-		icon = GFX_focus_SOV_the_road_of_life
+		id = SOV_usa_foreign_relief_aid
+		icon = GFX_focus_generic_agricultural_subsidies
 		prerequisite = { focus = SOV_leningrad_polytechnical_institute }
 		prerequisite = { focus = SOV_move_industry_to_the_urals }
 		x = 1
@@ -4117,42 +4117,8 @@ focus_tree = {
 		}
 
 		available = {
-			OR = {
-				195 = { #LENINGRAD
-					is_controlled_by = ROOT
-					any_neighbor_state = {
-						is_owned_by = ROOT
-						NOT = { is_fully_controlled_by = ROOT }
-					}
-				}
-				219 = { #MOSCOW
-					is_controlled_by = ROOT
-					any_neighbor_state = {
-						is_owned_by = ROOT
-						NOT = { is_fully_controlled_by = ROOT }
-					}
-				}
-				217 = { #STALINGRAD
-					is_controlled_by = ROOT
-					any_neighbor_state = {
-						is_owned_by = ROOT
-						NOT = { is_fully_controlled_by = ROOT }
-					}
-				}
-				137 = { #SEVASTOPOL
-					is_controlled_by = ROOT
-					any_neighbor_state = {
-						is_owned_by = ROOT
-						NOT = { is_fully_controlled_by = ROOT }
-					}
-				}
-				202 = { #Kiev
-					is_controlled_by = ROOT
-					any_neighbor_state = {
-						is_owned_by = ROOT
-						NOT = { is_fully_controlled_by = ROOT }
-					}
-				}
+			USA = {
+				has_war_with = GER
 			}
 		}
 		
@@ -4162,9 +4128,6 @@ focus_tree = {
 			add_timed_idea = {
 				idea = SOV_the_road_of_life_ns
 				days = 730
-			}
-			set_technology = {
-				infantry_guns_cheap_smg = 1
 			}
 		}
 	}
@@ -4311,6 +4274,76 @@ focus_tree = {
 		}
 	}
 
+	focus = {
+		id = SOV_the_road_of_life
+		icon = GFX_focus_SOV_the_road_of_life
+		prerequisite = { focus = SOV_impregnable_forts }
+		x = 0
+		y = 1
+		relative_position_id = SOV_impregnable_forts
+		cost = 2
+		
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			195 = { #LENINGRAD
+				is_controlled_by = ROOT
+				any_neighbor_state = {
+					is_owned_by = ROOT
+					NOT = { is_controlled_by = ROOT }
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = road_of_life_trigger_tt
+				any_enemy_country = { #I know this looks ugly but if we put all provinces into one bracket, it only is true when one country controls all provinces. In case of border gore, it has to be handled like this
+					controls_province = 3060
+				}
+				any_enemy_country = {
+					controls_province = 9150
+				}
+				any_enemy_country = {
+					controls_province = 11186
+				}
+				any_enemy_country = {
+					controls_province = 181
+				}
+				any_enemy_country = {
+					controls_province = 11032
+				}
+				any_enemy_country = {
+					controls_province = 6197
+				}
+				any_enemy_country = {
+					controls_province = 79
+				}
+				any_enemy_country = {
+					OR = {
+						controls_province = 13282
+						controls_province = 11068
+						controls_province = 9197
+					}
+				}
+			}
+		}
+		
+		search_filters = {}
+
+		completion_reward = {
+			hidden_effect = {
+				clr_global_flag = ROAD_OF_LIFE_DISABLED
+			}
+			custom_effect_tooltip = road_of_life_enabled_tt
+			unlock_decision_tooltip = { decision = SOV_road_of_life_seaway_decision show_effect_tooltip = yes }
+			unlock_decision_tooltip = { decision = SOV_road_of_life_landway_decision show_effect_tooltip = yes }
+			set_technology = {
+				infantry_guns_cheap_smg = 1
+			}
+			country_event = soviet.209
+		}
+	}
+	
 	focus = {
 		id = SOV_protect_the_white_sea_baltic_canal
 		icon = GFX_focus_generic_provoke_border_clashes
