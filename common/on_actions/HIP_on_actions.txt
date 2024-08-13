@@ -1177,6 +1177,37 @@ on_actions = {
 		}
 	}
 	
+	on_mio_industrial_manufacturer_unassigned = {
+		effect = {
+			IF = {
+				limit = {
+					OR = {
+						has_mio_equipment_type = mio_cat_eq_all_battleship
+						has_mio_equipment_type = mio_cat_eq_fleet_carrier
+					}
+				}
+				FROM = {
+					country_event = ship_mio.01
+				}
+			}
+			ELSE_IF = { #only for Germany when Submarine Slots are limited
+				limit = {
+					FROM = {
+						original_tag = GER
+						OR = {
+							check_variable = { german_capital_slots > 2 }
+							check_variable = { german_submarine_slots = 0 }
+						}
+					}
+					has_mio_equipment_type = mio_cat_eq_all_submarine	
+				}
+				FROM = {
+					country_event = ship_mio.02
+				}
+			}
+		}
+	}
+	
 	########################################
 	### Japanese Straits Opening/Closure ###
 	########################################
