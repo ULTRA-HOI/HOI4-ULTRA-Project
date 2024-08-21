@@ -22,6 +22,20 @@ on_actions = {
 				add_dynamic_modifier = {
 					modifier = modifier_dockyard_limitation_for_mios
 				}
+				
+				IF = {
+					limit = {
+						check_variable = {
+							var = cic_resource_factor
+							value = 0
+							compare = not_equals
+						}
+					}
+					reduced_civillian_resources_scripted_effect = yes
+					add_dynamic_modifier = {
+						modifier = reduced_civillian_resources
+					}
+				}
 			}
 			every_state = {
 				if = {
@@ -1282,6 +1296,19 @@ on_actions = {
 				SOV = {
 					clr_country_flag = SOV_JAPAN_STRAITS_CLOSED
 				}
+			}
+		}
+	}
+	
+	on_daily = {
+		effect = {
+			IF = {
+				limit = {
+					has_dynamic_modifier = {
+						modifier = reduced_civillian_resources
+					}
+				}
+				reduced_civillian_resources_scripted_effect = yes
 			}
 		}
 	}
