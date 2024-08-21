@@ -495,8 +495,8 @@ init_industry_rework = {
 
 reduced_civillian_resources_scripted_effect = {
 	set_temp_variable = { cic_resource_factor_temp = cic_resource_factor }
-	set_temp_variable = { num_factories_temp = THIS.num_of_controlled_factories }
-	subtract_from_temp_variable = { num_factories_temp = THIS.num_of_military_factories }
+	set_temp_variable = { num_factories_temp = THIS.num_of_controlled_factories } #num_of_civilian_factories includes traded factories. As these do not consume resources, we do not want them in our calculations as trading allows to go net pos in resources
+	subtract_from_temp_variable = { num_factories_temp = THIS.num_of_military_factories } #therefore we take the controlled factories(not owned since we need the total number of operating factories) and then substract all mic and nic from them to just get cic
 	subtract_from_temp_variable = { num_factories_temp = THIS.num_of_naval_factories }
 	multiply_temp_variable = { cic_resource_factor_temp = num_factories_temp }
 	
