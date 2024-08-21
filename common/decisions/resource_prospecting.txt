@@ -188,7 +188,7 @@ prospect_for_resources = {
 			}
 		}
 		available = {
-			has_tech = excavation2
+			has_tech = excavation5
 			num_of_civilian_factories_available_for_projects > 11
 			OR = {
 				AND = {
@@ -288,6 +288,32 @@ prospect_for_resources = {
 					}
 				}
 				custom_effect_tooltip = oil_to_japan_tt
+				IF = {
+					limit = {
+						714 = {
+							is_controlled_by = MAN
+						}
+						MAN = {
+							is_subject_of = JAP
+						}
+						JAP = {
+							NOT = {
+								has_resources_rights = {
+									state = 714
+									resources = { oil }
+								}
+							}
+						}
+					}
+					MAN = {
+						IF = {
+							limit = {
+								has_dlc = "Man the Guns"
+							}
+							give_resource_rights = { receiver = JAP state = 714 resources = { oil } }
+						}
+					}
+				}
 			}
 		}
 	}
@@ -302,7 +328,7 @@ prospect_for_resources = {
 			}
 		}
 		available = {
-			has_tech = excavation3
+			has_tech = excavation5
 			num_of_civilian_factories_available_for_projects > 19
 			OR = {
 				AND = {
@@ -4571,7 +4597,7 @@ prospect_for_resources = {
 		available = {
 			has_full_control_of_state = 537
 			num_of_civilian_factories_available_for_projects > 11
-			has_tech = excavation3
+			has_tech = excavation5
 			controls_state = 537
 		}
 		visible = {
