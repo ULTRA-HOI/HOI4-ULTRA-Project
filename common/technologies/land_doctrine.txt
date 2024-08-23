@@ -1084,29 +1084,7 @@ technologies = {
 		# armor = 2.0
 		# }
 	}
-	# nd_conscription = {
-	# conscription = 0.03
-	# path = {
-	# leads_to_tech = werwolf_guerillas 
-	# research_cost_coeff = 1
-	# }
-	# doctrine = yes allow = { has_army_experience > 14 } on_research_complete = { army_experience = -15 } on_research_complete = { custom_effect_tooltip = army_xp_cost }	
-	# research_cost = 3
-	# categories = {
-	# land_doctrine
-	# cat_mobile_warfare
-	# }
-	# folder = {
-	# name = land_doctrine_folder
-	# position = { x = -2 y = 16 }
-	# }
-	# ai_will_do = {
-	# factor = 40
-	# }
-	# ai_research_weights = {
-	# armor = 2.0
-	# }
-	# }
+
 	werwolf_guerillas = {
 		# Increased Partisan effect on your land occupied by others
 		resistance_growth_on_our_occupied_states = 0.1		#10% more partisan effects
@@ -1131,40 +1109,19 @@ technologies = {
 		# armor = 2.0
 		# }
 	}
-	#superior_firepower = {
-	#	xor = { mobile_warfare trench_warfare mass_assault } 
-	#	special_forces_cap = 0.1
-	#	path = {
-	#		leads_to_tech = sup_delay 
-	#		research_cost_coeff = 1
-	#	}
-	#	category_line_battalions = {
-	#		 soft_attack = 0.25 # was 0.2
-	#	}
-	#	enable_tactic = tactic_barrage
-	#	doctrine = yes	
-	#	research_cost = 8.5
-	#	categories = {
-	#		land_doctrine
-	#		cat_superior_firepower
-	#	}
-	#	folder = {
-	#		name = land_doctrine_folder
-	#		position = { x = 0 y = 0 }
-	#	}
-	#	ai_will_do = {
-	#		factor = 40
-	#	}
-	#	ai_research_weights = {
-	#		artillery = 4.0
-	#	}
-	#}
+	
 	superior_firepower = {
 		on_research_complete = {
 			add_timed_idea = { idea = recent_land_doctrine_idea days = 90 }
 		}
 		allow = {
 			NOT = { has_completed_focus = FRA_battle_of_maneuver }
+			OR = {
+				original_tag = ENG
+				original_tag = USA
+				original_tag = FRA
+				is_in_faction_with = ENG
+			}
 			NOT = { has_idea = recent_land_doctrine_idea }
 		}
 		
@@ -1222,33 +1179,7 @@ technologies = {
 			}
 		}
 	}
-	sup_delay = {
-		#	category_all_infantry = {
-		#		max_organisation = 15
-		#	}
-		#	enable_tactic = tactic_delay
-		#	path = {
-		#		leads_to_tech = mobile_defence 
-		#		research_cost_coeff = 1
-		#	}
-		#	doctrine = yes	
-		#	research_cost = 8.5
-		#	categories = {
-		#		land_doctrine
-		#		cat_superior_firepower
-		#	}
-		#	folder = {
-		#		name = land_doctrine_folder
-		#		position = { x = 0 y = 2 }
-		#	}
-		ai_will_do = {
-			factor = 0
-		}
-		research_cost = 1
-		#	ai_research_weights = {
-		#		artillery = 3.0
-		#	}
-	}
+
 	sup_prepared_defense = {
 		on_research_complete = {
 			add_timed_idea = { idea = recent_land_doctrine_idea days = 90 }
@@ -1261,11 +1192,11 @@ technologies = {
 		xp_unlock_cost = 300
 		category_all_infantry = {
 			defense = 0.075			# was 0.10
-			max_organisation = 6			# was 10
+			max_organisation = 2			# was 10
 			max_strength = 0.05
 		}
 		category_all_artillery = {
-			soft_attack = 0.05
+			soft_attack = 0.025
 			defense = 2.0
 			max_organisation = 1
 		}
@@ -1324,10 +1255,12 @@ technologies = {
 			max_organisation = 1
 		}
 		category_army = {
-			soft_attack = 0.025
-			hard_attack = 0.025
+			soft_attack = 0.02
+			hard_attack = 0.02
 		}
-		supply_consumption_factor = -0.1
+		category_all_infantry = {
+			max_organisation = 1
+		}
 	
 		path = {
 			leads_to_tech = sup_central_planning
@@ -1367,35 +1300,7 @@ technologies = {
 			artillery = 2
 		}
 	}
-	#intergrated_support = { #This Branch is focused on boosting stuff in the support column 
-	#	xor={
-	#		fast_reaction
-	#	}
-	#	category_support_battalions = {
-	#		max_organisation = 15 #was 10
-	#		soft_attack = 0.25
-	#	}
-	#	path = {
-	#		leads_to_tech = regimental_combat_teams 
-	#		research_cost_coeff = 1
-	#	}
-	#	doctrine = yes	
-	#	research_cost = 8.5
-	#	categories = {
-	#		land_doctrine
-	#		cat_superior_firepower
-	#	}
-	#	folder = {
-	#		name = land_doctrine_folder
-	#		position = { x = 2 y = 6 }
-	#	}
-	#	ai_will_do = {
-	#		factor = 40
-	#	}
-	#	ai_research_weights = {
-	#		artillery = 1.0
-	#	}
-	#}
+
 	sup_central_planning = {
 		on_research_complete = {
 			add_timed_idea = { idea = recent_land_doctrine_idea days = 90 }
@@ -1465,33 +1370,7 @@ technologies = {
 			artillery = 1
 		}
 	}
-	#regimental_combat_teams = {
-	#	category_support_battalions = {
-	#		max_organisation = 15
-	#		soft_attack = 0.25
-	#	}
-	#	enable_tactic = tactic_overwhelming_fire
-	#	path = {
-	#		leads_to_tech = sup_mechanized_offensive 
-	#		research_cost_coeff = 1
-	#	}
-	#	doctrine = yes	
-	#	research_cost = 8.5
-	#	categories = {
-	#		land_doctrine
-	#		cat_superior_firepower
-	#	}
-	#	folder = {
-	#		name = land_doctrine_folder
-	#		position = { x = 2 y = 8 }
-	#	}
-	#	ai_will_do = {
-	#		factor = 40
-	#	}
-	#	ai_research_weights = {
-	#		artillery = 1.0
-	#	}
-	#}
+	
 	mobile_defence = {
 		on_research_complete = {
 			add_timed_idea = {
@@ -1507,7 +1386,7 @@ technologies = {
 	
 		category_tanks = {
 			defense = 0.075
-			soft_attack = 0.025
+			soft_attack = 0.02
 			hard_attack = 0.075
 			breakthrough = 0.025
 			max_organisation = 2
@@ -1571,7 +1450,8 @@ technologies = {
 		coordination_bonus = 0.1
 		category_all_infantry = {
 			breakthrough = 0.05			# was none
-			soft_attack = 0.075
+			soft_attack = 0.02
+			max_organisation = 2
 		}
 		enable_tactic = tactic_planned_attack
 		path = {
@@ -1612,34 +1492,6 @@ technologies = {
 			artillery = 1
 		}
 	}
-	#dispersed_support = { # Branch is focused on support units as part of the regular brigades
-	#	xor = {
-	#		intergrated_support
-	#	}
-	#	category_all_artillery = {
-	#		default_morale = 0.3 # was 0.2
-	#	}
-	#	path = {
-	#		leads_to_tech = overwhelming_firepower 
-	#		research_cost_coeff = 1
-	#	}
-	#	doctrine = yes	
-	#	research_cost = 8.5
-	#	categories = {
-	#		land_doctrine
-	#		cat_superior_firepower
-	#	}
-	#	folder = {
-	#		name = land_doctrine_folder
-	#		position = { x = -2 y = 6 }
-	#	}
-	#	ai_will_do = {
-	#		factor = 40
-	#	}
-	#	ai_research_weights = {
-	#		artillery = 1.0
-	#	}
-	#}
 	fast_reaction = {
 		on_research_complete = {
 			add_timed_idea = { idea = recent_land_doctrine_idea days = 90 }
@@ -1675,10 +1527,14 @@ technologies = {
 
 		category_tanks = {
 			max_organisation = 1			# was 3
-			soft_attack = 0.025			# was none  
+			soft_attack = 0.02			# was none  
 			defense = 0.025
 			hard_attack = 0.025
 			breakthrough = 0.025
+		}
+
+		category_all_infantry = {
+			max_organisation = 1
 		}
 	
 		path = {
@@ -1724,32 +1580,7 @@ technologies = {
 			artillery = 1
 		}
 	}
-	#overwhelming_firepower = {
-	#	category_all_artillery = {
-	#		soft_attack = 0.15
-	#	}
-	#	enable_tactic = tactic_overwhelming_fire
-	#	path = {
-	#		leads_to_tech = sup_mechanized_offensive 
-	#		research_cost_coeff = 1
-	#	}
-	#	doctrine = yes	
-	#	research_cost = 8.5
-	#	categories = {
-	#		land_doctrine
-	#		cat_superior_firepower
-	#	}
-	#	folder = {
-	#		name = land_doctrine_folder
-	#		position = { x = -2 y = 8 }
-	#	}
-	#	ai_will_do = {
-	#		factor = 40
-	#	}
-	#	ai_research_weights = {
-	#		artillery = 1.0
-	#	}
-	#}
+
 	sup_armored_spearhead = {
 		on_research_complete = {
 			add_timed_idea = { idea = recent_land_doctrine_idea days = 90 }
@@ -1762,7 +1593,7 @@ technologies = {
 		xp_unlock_cost = 300
 		category_tanks = {
 			max_organisation = 1			# was 3
-			soft_attack = 0.05			# was none  
+			soft_attack = 0.04			# was none  
 			defense = 0.025
 			hard_attack = 0.025
 			breakthrough = 0.025
@@ -1826,7 +1657,7 @@ technologies = {
 		xp_unlock_cost = 300
 	
 		category_all_artillery = {
-			soft_attack = 0.15
+			soft_attack = 0.125
 			hard_attack = 0.5
 			defense = 1.0
 			max_organisation = 1
@@ -1875,91 +1706,6 @@ technologies = {
 			artillery = 1
 		}
 	}
-	
-	#sup_mechanized_offensive = {
-	#	category_all_armor = {
-	#		breakthrough = 0.20 # was 0.10
-	#	}
-	#	enable_tactic = tactic_blitz
-	#	path = {
-	#		leads_to_tech = concentrated_fire_plans 
-	#		research_cost_coeff = 1
-	#	}
-	#	path = {
-	#		leads_to_tech = centralized_fire_control 
-	#		research_cost_coeff = 1
-	#	}
-	#	doctrine = yes	
-	#	research_cost = 8.5
-	#	categories = {
-	#		land_doctrine
-	#		cat_superior_firepower
-	#	}
-	#	folder = {
-	#		name = land_doctrine_folder
-	#		position = { x = 0 y = 10 }
-	#	}
-	#	ai_will_do = {
-	#		factor = 40
-	#	}
-	#	ai_research_weights = {
-	#		artillery = 1.0
-	#	}
-	#}
-#	great_firepower = {
-#		on_research_complete = {
-#			add_timed_idea = { idea = recent_land_doctrine_idea days = 90 }
-#		}
-#		
-#		xp_research_type = army
-#		xp_unlock_cost = 300
-#		category_all_artillery = {
-#			soft_attack = 0.1			# was 0.2
-#			#supply_consumption_factor = 0.2#
-#		}
-#		enable_tactic = tactic_barrage
-#		path = {
-#			leads_to_tech = sup_mass_motorization
-#			research_cost_coeff = 1
-#		}
-#		path = {
-#			leads_to_tech = centralized_fire_control
-#			research_cost_coeff = 1
-#		}
-#		doctrine = yes
-#		research_cost = 8.5
-#		categories = {
-#			land_doctrine
-#			cat_superior_firepower
-#		}
-#		folder = {
-#			name = land_doctrine_folder
-#			position = {
-#				x = 0
-#				y = 12
-#			}
-#		}
-#		ai_will_do = {
-#			factor = 40
-#			modifier = {
-#				not = {
-#					has_army_experience > 220
-#				}
-#				factor = 0.1
-#			}
-#			modifier = {
-#				date < 1942.1.1
-#				factor = 0
-#			}
-#			modifier = {
-#				factor = 0.25
-#				has_idea = FRA_victors_of_wwi
-#			}
-#		}
-#		ai_research_weights = {
-#			artillery = 1
-#		}
-#	}
 
 centralized_fire_control = {
 	on_research_complete = {
@@ -2032,35 +1778,6 @@ centralized_fire_control = {
 	}
 }
 
-#	concentrated_fire_plans = {
-		#	xor = {
-		#		centralized_fire_control
-		#	}
-		#	category_army = {
-		#		hard_attack = 0.15
-		#	}
-		#	path = {
-		#		leads_to_tech = combined_arms 
-		#		research_cost_coeff = 1
-		#	}
-		#	doctrine = yes	
-		#	research_cost = 8.5
-		#	categories = {
-		#		land_doctrine
-		#		cat_superior_firepower
-		#	}
-		#	folder = {
-		#		name = land_doctrine_folder
-		#		position = { x = -2 y = 12 }
-		#	}
-#		ai_will_do = {
-#			factor = 0
-#		}
-#		research_cost = 1
-		#	ai_research_weights = {
-		#		artillery = 1.0
-		#	}
-#	}
 	sup_mass_motorization = {
 		on_research_complete = {
 			add_timed_idea = { idea = recent_land_doctrine_idea days = 90 }
@@ -2082,6 +1799,7 @@ centralized_fire_control = {
 		}
 		category_all_infantry = {
 			max_strength = 0.1
+			max_organisation = 1
 		}
 
 		path = {
@@ -2122,139 +1840,7 @@ centralized_fire_control = {
 			artillery = 1
 		}
 	}
-	#combined_arms = {
-	#	category_all_armor = {
-	#		hard_attack = 0.05
-	#		soft_attack = 0.075 # was 0.10
-	#	}
-	#	enable_tactic = tactic_breakthrough
-	#	path = {
-	#		leads_to_tech = tactical_control 
-	#		research_cost_coeff = 1
-	#	}
-	#	doctrine = yes	
-	#	research_cost = 8.5
-	#	categories = {
-	#		land_doctrine
-	#		cat_superior_firepower
-	#	}
-	#	folder = {
-	#		name = land_doctrine_folder
-	#		position = { x = -2 y = 14 }
-	#	}
-	#	ai_will_do = {
-	#		factor = 40
-	#	}
-	#	ai_research_weights = {
-	#		artillery = 1.0
-	#	}
-	#}
-	#increased_logistic = {
-	#    on_research_complete = {
-	#        add_timed_idea = { idea = recent_land_doctrine_idea days = 90 }
-	#    }
-		
-	#    xp_research_type = army
-	#    xp_unlock_cost = 300
-	#    motorized = {
-	#        maximum_speed = 0.05			#was 0.1
-	#        default_morale = 0.025			#was 0.2
-	#    }
-	#    mechanized = {
-	#        maximum_speed = 0.05			#was 0.1
-	#        default_morale = 0.025			#was 0.2
-	#    }
-	#    supply_consumption_factor = -0.15
-	#    enable_tactic = tactic_tactical_withdrawal
-	#    path = {
-	#        leads_to_tech = tank_destroyers
-	#        research_cost_coeff = 1
-	#    }
-	#    doctrine = yes
-	#    research_cost = 8.5
-	#    categories = {
-	#        land_doctrine
-	#        cat_superior_firepower
-	#    }
-	#    folder = {
-	#        name = land_doctrine_folder
-	#        position = {
-	#            x = -2
-	#            y = 14
-	#        }
-	#    }
-	#    ai_will_do = {
-	#        factor = 40
-	#        modifier = {
-	#            not = {
-	#                has_army_experience > 220
-	#            }
-	#            factor = 0.1
-	#        }
-	#        modifier = {
-	#            date < 1943.1.1
-	#            factor = 0
-	#        }
-	#        modifier = {
-	#            factor = 0.25
-	#            has_idea = FRA_victors_of_wwi
-	#        }
-	#    }
-	#    ai_research_weights = {
-	#        artillery = 1
-	#    }
-	#}
-	#tactical_control = {
-	#land_reinforce_rate = 0.10 # was 0.02
-	#enable_tactic = tactic_tactical_withdrawal
-	#path = {
-	#	leads_to_tech = air_land_battle 
-	#	research_cost_coeff = 1
-	#}
-	#doctrine = yes	
-	#research_cost = 8.5
-	#categories = {
-	#	land_doctrine
-	#	cat_superior_firepower
-	#}
-	#folder = {
-	#	name = land_doctrine_folder
-	#	position = { x = -2 y = 16 }
-	#}
-	#ai_will_do = {
-	#	factor = 40
-	#}
-	#ai_research_weights = {
-	#	artillery = 1.0
-	#}
-	#}
-	#air_land_battle = {
-		#	xp_research_type = army
-		#	xp_unlock_cost = 300
-		#	.00
-		#	category_line_battalions = {
-		#		max_organisation = 15 #was 5
-		#	}
-		#combat advantage when air superior
-		#	army_bonus_air_superiority_factor = 0.60 # was 0.40
-		#	doctrine = yes	
-		#	research_cost = 8.5
-		#	categories = {
-		#		land_doctrine
-		#		cat_superior_firepower
-		#	}
-		#	folder = {
-		#		name = land_doctrine_folder
-		#		position = { x = -2 y = 18 }
-		#	}
-	#    ai_will_do = {
-	#        factor = 0
-	#    }
-	#    research_cost = 1
-		#	ai_research_weights = {
-		#		artillery = 1.0
-		#	}
-	#}
+
 	sup_mechanized_offensive = {
 		on_research_complete = {
 			add_timed_idea = { idea = recent_land_doctrine_idea days = 90 }
@@ -2268,7 +1854,7 @@ centralized_fire_control = {
 		category_all_armor = {
 			max_organisation = 1
 			breakthrough = 0.025			# was 0.10
-			soft_attack = 0.025
+			soft_attack = 0.02
 		}
 		motorized = {
 			breakthrough = 0.025
@@ -2369,88 +1955,7 @@ centralized_fire_control = {
 			artillery = 1
 		}
 	}
-	#centralized_fire_control = {
-	#    on_research_complete = {
-	#        add_timed_idea = { idea = recent_land_doctrine_idea days = 90 }
-	#    }
-	#    
-	#    xp_research_type = army
-	#    xp_unlock_cost = 300
-		#xor = {
-		#	concentrated_fire_plans
-		#}
-	#    category_all_artillery = {
-	#        soft_attack = 0.05
-	#    }
-	#    land_reinforce_rate = 0.01		# was 0.02
-	#    enable_tactic = tactic_overwhelming_fire
-	#    category_recon = {
-	#        recon = 1
-	#    }
-	#    path = {
-	#        leads_to_tech = intergrated_support
-	#        research_cost_coeff = 1
-	#    }
-	#    doctrine = yes
-	#    research_cost = 8.5
-	#    categories = {
-	#        land_doctrine
-	#        cat_superior_firepower
-	#    }
-	#    folder = {
-	#        name = land_doctrine_folder
-	#        position = {
-	#            x = 2
-	#            y = 12
-	#        }
-	#    }
-	#    ai_will_do = {
-	#        factor = 40
-	#        modifier = {
-	#            not = {
-	#                has_army_experience > 220
-	#            }
-	#            factor = 0.1
-	#        }
-	#        modifier = {
-	#            factor = 0.25
-	#            has_idea = FRA_victors_of_wwi
-	#        }
-	#        modifier = {
-	#            date < 1942.1.1
-	#            factor = 0
-	#        }
-	#    }
-	#    ai_research_weights = {
-	#        artillery = 1
-	#    }
-	#}
-	#forward_observers = {
-	#	land_reinforce_rate = 0.05 # was 0.02
-	#	recon = {
-	#		recon = 1
-	#	}
-	#	path = {
-	#		leads_to_tech = advanced_firebases 
-	#		research_cost_coeff = 1
-	#	}
-	#	doctrine = yes	
-	#	research_cost = 8.5
-	#	categories = {
-	#		land_doctrine
-	#		cat_superior_firepower
-	#	}
-	#	folder = {
-	#		name = land_doctrine_folder
-	#		position = { x = 2 y = 14 }
-	#	}
-	#	ai_will_do = {
-	#		factor = 40
-	#	}
-	#	ai_research_weights = {
-	#		artillery = 1.0
-	#	}
-	#}
+
 	intergrated_support = {
 	    on_research_complete = {
 	        add_timed_idea = { idea = recent_land_doctrine_idea days = 90 }
@@ -2474,7 +1979,7 @@ centralized_fire_control = {
 			battalion_mult = {
 				category = category_line_battalions
 				max_organisation = 0.02
-				soft_attack = 0.02
+				soft_attack = 0.01
 				hard_attack = 0.03
 				defense = 0.02
 				breakthrough = 0.02
@@ -2486,7 +1991,7 @@ centralized_fire_control = {
 			battalion_mult = {
 				category = category_line_battalions
 				max_organisation = 0.02
-				soft_attack = 0.02
+				soft_attack = 0.01
 				hard_attack = 0.03
 				defense = 0.02
 				breakthrough = 0.02
@@ -2501,7 +2006,7 @@ centralized_fire_control = {
 			battalion_mult = {
 				category = category_line_battalions
 				max_organisation = 0.02
-				soft_attack = 0.02
+				soft_attack = 0.01
 				hard_attack = 0.03
 				defense = 0.02
 				breakthrough = 0.02
@@ -2513,7 +2018,7 @@ centralized_fire_control = {
 			battalion_mult = {
 				category = category_line_battalions
 				max_organisation = 0.02
-				soft_attack = 0.02
+				soft_attack = 0.01
 				hard_attack = 0.03
 				defense = 0.02
 				breakthrough = 0.02
@@ -2525,7 +2030,7 @@ centralized_fire_control = {
 			battalion_mult = {
 				category = category_line_battalions
 				max_organisation = 0.05
-				soft_attack = 0.01
+				soft_attack = 0.005
 				hard_attack = 0.01
 				defense = 0.02
 				breakthrough = 0.01
@@ -2571,39 +2076,7 @@ centralized_fire_control = {
 	        artillery = 1
 	    }
 	}
-	#advanced_firebases = {
-	#	category_all_infantry = {
-	#		max_organisation = 10
-	#		default_morale = 0.03 # was 0.05
-	#	}
-	#	category_tanks = {
-	#		max_organisation = 5 # was 2
-	#	}
-	#	category_all_armor = {
-	#		default_morale = 0.02 # was 0.05
-	#	}
-	#	enable_tactic = tactic_tactical_withdrawal
-	#	path = {
-	#		leads_to_tech = shock_and_awe 
-	#		research_cost_coeff = 1
-	#	}
-	#	doctrine = yes	
-	#	research_cost = 8.5
-	#	categories = {
-	#		land_doctrine
-	#		cat_superior_firepower
-	#	}
-	#	folder = {
-	#		name = land_doctrine_folder
-	#		position = { x = 2 y = 16 }
-	#	}
-	#	ai_will_do = {
-	#		factor = 40
-	#	}
-	#	ai_research_weights = {
-	#		artillery = 1.0
-	#	}
-	#}
+	
 	shock_marines = {
 	    on_research_complete = {
 	        add_timed_idea = { idea = recent_land_doctrine_idea days = 90 }
@@ -2889,44 +2362,7 @@ centralized_fire_control = {
 			motorized_equipment = 1
 		}
 	}
-	#grand_mechanized_offensive = {
-	#xor = {
-	#	infantry_offensive
-	#}
-	#	allow = {
-	#		has_country_flag = assault_chosen
-	#	}
-	#	motorized = {
-	#		max_organisation = 10 # was 5
-	#	}
-	#	mechanized = {
-	#		max_organisation = 10 # was 5
-	#	}
-	#	enable_tactic = tactic_blitz
-	#	#enable_tactic = tactic_elastic_defense
-	#	path = {
-	#		leads_to_tech = assault_concentration 
-	#		research_cost_coeff = 1
-	#	}
-	#	doctrine = yes	
-	#	research_cost = 8.5
-	#	categories = {
-	#		land_doctrine
-	#		cat_grand_battle_plan
-	#	}
-	#	folder = {
-	#		name = land_doctrine_folder
-	#		position = { x = -2 y = 8 }
-	#	}
-	#	ai_will_do = {
-	#		factor = 40
-	#	}
-	#	ai_research_weights = {
-	#		infantry_weapons = 1.5
-	#		motorized_equipment = 1.0
-	#		cat_mechanized_equipment = 1.0
-	#	}
-	#}
+	
 	armored_operations = {
 		on_research_complete = {
 			add_timed_idea = { idea = recent_land_doctrine_idea days = 90 }
@@ -3346,36 +2782,7 @@ centralized_fire_control = {
 			motorized_equipment = 1
 		}
 	}
-	#armored_operations = {
-	#	category_tanks = {
-	#		max_organisation = 5 # was 2
-	#	}
-	#	category_all_armor = {
-	#		default_morale = 0.1 # was 0.1
-	#	}
-	#	enable_tactic = tactic_blitz
-	#	path = {
-	#		leads_to_tech = infiltration_assault 
-	#		research_cost_coeff = 1
-	#	}
-	#	doctrine = yes	
-	#	research_cost = 8.5
-	#	categories = {
-	#		land_doctrine
-	#		cat_grand_battle_plan
-	#	}
-	#	folder = {
-	#		name = land_doctrine_folder
-	#		position = { x = 2 y = 10 }
-	#	}
-	#	ai_will_do = {
-	#		factor = 40
-	#	}
-	#	ai_research_weights = {
-	#		infantry_weapons = 1.5
-	#		motorized_equipment = 1.0
-	#	}
-	#}
+	
 	gbp_defence_in_depth = {
 		on_research_complete = {
 			add_timed_idea = { idea = recent_land_doctrine_idea days = 90 }
@@ -3650,7 +3057,7 @@ centralized_fire_control = {
 		minimum_training_level = -0.25
 		category_all_infantry = {
 			max_organisation = 2.5
-			max_strength = 0.05
+			max_strength = 0.1
 		}
 		#enable_tactic = tactic_human_wave_tactics  # was tactic_
 		doctrine = yes
@@ -3703,7 +3110,12 @@ centralized_fire_control = {
 		xp_unlock_cost = 300
 		#reduced pocketed combat penalty and/or reduces the out of supply penalty or increases time before moving to worse penalty
 		no_supply_grace = 48		# more hours before supply penalty changes
-		#out_of_supply_factor = -0.2		# was -0.1
+		out_of_supply_factor = -0.05		# was -0.1
+		category_line_battalions = {
+			defense = 0.075
+			max_strength = 0.025
+		}
+
 		path = {
 			leads_to_tech = defence_in_depth
 			research_cost_coeff = 1
