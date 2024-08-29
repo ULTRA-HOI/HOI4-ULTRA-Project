@@ -1,0 +1,39 @@
+scripted_gui = {
+	air_base_management = {
+
+		context_type = selected_state_context
+
+		window_name = "air_base_custom_building_entry"
+
+		parent_window_token = selected_state_view
+
+		visible = {
+			is_controlled_by = ROOT
+		}
+
+		ai_enabled = {
+			always = no
+		}
+
+		effects = {
+			building_picture_click = {
+				add_building_construction = {
+                    type = air_base
+                    level = 1
+                    instant_build = no
+                }
+			}
+		}
+
+		triggers = {
+			building_picture_click_enabled = {
+				OR = {
+					air_base < 50
+				}
+				is_demilitarized_zone = no
+				# whatever triggers we want, need to also add explanatory tooltips
+				# and possibly a custom state modifier explaining limited levels
+			}
+		}
+	}
+}
