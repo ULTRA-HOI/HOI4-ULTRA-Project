@@ -1765,7 +1765,7 @@ NNavy = {
 	BASE_SPOTTING_FROM_RADAR = 2.5, --was 5 --base spotting percentage that comes from full radar coverage
 	NAVY_SPOTTER_DETECTION_FACTOR = 0.1,							-- multiplier for task forces' detection value before logistic transform
 	BASE_SPOTTING_FROM_NAVY = 10,									-- base spotting percentage that comes from task forces in area
-	AIR_SPOTTER_NORMALIZED_AIRWING_SIZE = 48, --was 100 --each plane will contribute 1/this of the air-wing's detection stat
+	AIR_SPOTTER_NORMALIZED_AIRWING_SIZE = 36, --was 100 --each plane will contribute 1/this of the air-wing's detection stat
 	AIR_SPOTTER_DETECTION_FACTOR = 0.025,							-- multiplier for air-wings' detection value before logistic transform
 	BASE_SPOTTING_FROM_AIR = 20,									-- base spotting percentage that comes from air-wings in area
 	BASE_SPOTTING_FROM_DECRYPTION = 10,								-- base spotting percentage that comes from decryption, can go negative (enemy decryption is subtracted)
@@ -1843,7 +1843,7 @@ NNavy = {
 	MIN_GUN_COOLDOWN = 0.1,											-- minimum cooldown for a gun
 	BASE_GUN_COOLDOWNS = { -- number of hours for a gun to be ready after shooting
 		1.0,	-- big guns
-		6.0,	-- torpedoes
+		4.0,	-- torpedoes
 		1.0,	-- small guns
 	},
 
@@ -1902,23 +1902,23 @@ NNavy = {
 	DEPTH_CHARGE_STAT_FOR_SHIP_TO_BE_SUB_HUNTER = 4, --was 15 --amount of depth charge required for a ship to be considred a sub hunter and so good for convoy escort
 	SUB_DETECTION_STAT_FOR_SHIP_TO_BE_SUB_HUNTER = 3, --was 2 --amount of sub detection required for a ship to be considered a sub hunter
 
-	HEAVY_GUN_ATTACK_TO_SHORE_BOMBARDMENT							= 0.06, --was 0.1 --heavy gun attack value is divided by this value * 100 and added to shore bombardment modifier
-	LIGHT_GUN_ATTACK_TO_SHORE_BOMBARDMENT							= 0.04, --was 0.05 --light gun attack value is divided by this value * 100 and added to shore bombardment modifier
+	HEAVY_GUN_ATTACK_TO_SHORE_BOMBARDMENT							= 0.05, --was 0.1 --heavy gun attack value is divided by this value * 100 and added to shore bombardment modifier
+	LIGHT_GUN_ATTACK_TO_SHORE_BOMBARDMENT							= 0.02, --was 0.05 --light gun attack value is divided by this value * 100 and added to shore bombardment modifier
 
 	GUN_HIT_PROFILES = { -- hit profiles for guns, if target ih profile is lower the gun will have lower accuracy
-		55.0,	-- big guns
-		145.0,	-- torpedoes
-		55.0,	-- small guns
+		50.0,	-- big guns
+		135.0,	-- torpedoes
+		50.0,	-- small guns
 	},
 
-	DEPTH_CHARGES_HIT_CHANCE_MULT 									= 2, --was 1.1 --multiplies hit chance of small guns
+	DEPTH_CHARGES_HIT_CHANCE_MULT 									= 1.5, --was 1.1 --multiplies hit chance of small guns
 	DEPTH_CHARGES_DAMAGE_MULT 										= 1, --was 0.7 --multiplies damage of depth charges
-	DEPTH_CHARGES_HIT_PROFILE 										= 120.0, --was 100.0 --hit profile for depth charges
+	DEPTH_CHARGES_HIT_PROFILE 										= 160.0, --was 100.0 --hit profile for depth charges
 
-	CONVOY_HIT_PROFILE												= 120.0,  	-- convoys has this contant hit profile
+	CONVOY_HIT_PROFILE												= 500.0,  	-- convoys has this contant hit profile
 	HIT_PROFILE_MULT 												= 100.0,  	-- multiplies hit profile of every ship
-	HIT_PROFILE_SPEED_FACTOR										= 1, --was 0.5 --factors speed value when determining it profile (Vis * HIT_PROFILE_MULT * Ship Hit Profile Mult)
-	HIT_PROFILE_SPEED_BASE											= 0, --was 20 --Base value added to hitprofile speed calulation
+	HIT_PROFILE_SPEED_FACTOR										= 1.2, --was 0.5 --factors speed value when determining it profile (Vis * HIT_PROFILE_MULT * Ship Hit Profile Mult)
+	HIT_PROFILE_SPEED_BASE											= 5, --was 20 --Base value added to hitprofile speed calulation
 
 	CONVOY_RAID_MAX_REGION_TO_TASKFORCE_RATIO						= 1.5,		-- each taskforce in convoy raid mission can at most cover this many regions without losing efficiency
 	CONVOY_DEFENSE_MAX_CONVOY_TO_SHIP_RATIO							= 24.0, --was 12.0 --each ship in convoy defense mission can at most cover this many convoys without losing efficiency
@@ -1943,12 +1943,12 @@ NNavy = {
 
 	MISSION_EFFICIENCY_POW_FACTOR									= 1.7,		-- mission efficiencies will be powered up by this to further penalize low efficiencies
 
-	NAVAL_COMBAT_SUB_DETECTION_FACTOR                               = 1, --was 1.0 --balance value for sub detection in combat by ships
-	SUBMARINE_HIDE_TIMEOUT 											= 6, --was 20 --Amount of in-game-hours that takes the submarine (with position unrevealed), to hide.
-	SUBMARINE_REVEALED_TIMEOUT 										= 6, --was 16 --Amount of in-game-hours that makes the submarine visible if it is on the defender side.
-	SUBMARINE_REVEAL_BASE_CHANCE 									= 11, --was 11 --Base factor for submarine detection. It's modified by the difference of a spotter's submarines detection vs submarine visibility. Use this variable for game balancing. setting this too low will cause bad spotting issues.
+	NAVAL_COMBAT_SUB_DETECTION_FACTOR                               = 1.5, --was 1.0 --balance value for sub detection in combat by ships
+	SUBMARINE_HIDE_TIMEOUT 											= 2, --was 20 --Amount of in-game-hours that takes the submarine (with position unrevealed), to hide.
+	SUBMARINE_REVEALED_TIMEOUT 										= 4, --was 16 --Amount of in-game-hours that makes the submarine visible if it is on the defender side.
+	SUBMARINE_REVEAL_BASE_CHANCE 									= 13, --was 11 --Base factor for submarine detection. It's modified by the difference of a spotter's submarines detection vs submarine visibility. Use this variable for game balancing. setting this too low will cause bad spotting issues.
 	SUBMARINE_REVEAL_POW 											= 3.0,		-- A scaling factor that is applied to the reveal chance in order to make large differences in detection vs visibility more pronounced
-	SUBMARINE_BASE_TORPEDO_REVEAL_CHANCE 							= 0.045, --was 0.035 --Chance of a submarine being revealed when it fires. 1.0 is 100%. this chance is then multiplied with modifier created by comparing firer's visibiility and target's detection
+	SUBMARINE_BASE_TORPEDO_REVEAL_CHANCE 							= 0.08, --was 0.035 --Chance of a submarine being revealed when it fires. 1.0 is 100%. this chance is then multiplied with modifier created by comparing firer's visibiility and target's detection
 
 	MAX_NUM_HOURS_TO_WAIT_AT_ALLY_DOCKYARDS_FOR_REPAIRS 			= 48,		-- taskforces will wait at most this amount of hours in ally bases for repairs before switching to another base for repairs
 
@@ -1986,7 +1986,7 @@ NNavy = {
 
 	-- those two work together in the formula f(x) = Y(x/(x+X)) where Y is MAX and X is SLOPE
 	NAVAL_COMBAT_AIR_SUB_DETECTION_MAX = 20.0, --was 10.0
-	NAVAL_COMBAT_AIR_SUB_DETECTION_SLOPE = 10.0, --was 10.0 --lower means sharper curve (ramps up very fast, then flatten out very fast). Must be >0
+	NAVAL_COMBAT_AIR_SUB_DETECTION_SLOPE = 3.0, --was 10.0 --lower means sharper curve (ramps up very fast, then flatten out very fast). Must be >0
 
 	NAVAL_COMBAT_AIR_SUB_DETECTION_EXTERNAL_FACTOR = 1.0, --was 1.0 --Factor applied to the stats of external air planes
 	NAVAL_COMBAT_AIR_SUB_DETECTION_INTERNAL_EFFICIENCY_FACTOR = 1.0, --was 1.0 --Factor of Carrier's sortie efficiency on the stats bellow
@@ -2002,7 +2002,7 @@ NNavy = {
 	NAVAL_COMBAT_AIR_CAPITAL_TARGET_SCORE = 100, --was 50
 	NAVAL_COMBAT_AIR_CARRIER_TARGET_SCORE = 500, --was 200
 	NAVAL_COMBAT_AIR_CONVOY_TARGET_SCORE = 1.0, --was 1.0
-	NAVAL_COMBAT_AIR_STRENGTH_TARGET_SCORE = 0.1, --was 5 --how much score factor from low health (scales between 0->this number)
+	NAVAL_COMBAT_AIR_STRENGTH_TARGET_SCORE = 0.3, --was 5 --how much score factor from low health (scales between 0->this number)
 	NAVAL_COMBAT_AIR_LOW_AA_TARGET_SCORE = 5, --was 5 --how much score factor from low AA guns (scales between 0->this number)
 
 	NEW_NAVY_LEADER_LEVEL_CHANCES = {									-- chances for new navy leaders to start at a given level
