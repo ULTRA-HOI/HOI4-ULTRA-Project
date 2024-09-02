@@ -1252,12 +1252,12 @@ NAir = {
 	DAY_NIGHT_COVERAGE_FACTOR = 0.5,					-- The max night coverage in a region that is still considered to be day-time when determining if day/night air missions shall run.
 	HOURS_DELAY_AFTER_EACH_COMBAT = 2, --was 4 --How many hours needs the wing to be ready for the next combat. Use for tweaking if combats happens too often. (generally used as double because of roundtrip)
 	PORT_STRIKES_DELAY_MULTIPLIER = 2, --was 2 --multplies HOURS_DELAY_AFTER_EACH_COMBAT if port strikes
-	CARRIER_HOURS_DELAY_AFTER_EACH_COMBAT = 12, --was 2 --was 3 --how often carrier planes do battle inside naval combat
+	CARRIER_HOURS_DELAY_AFTER_EACH_COMBAT = 2, --was 2 --was 3 --how often carrier planes do battle inside naval combat
 	CARRIER_SIZE_STAT_INCREMENT = 6, --was 10 --Each Point of carrier_size state adds capacity for this many planes
 	NAVAL_STRIKE_TARGETTING_TO_AMOUNT = 0.05, --was 0.3 --Balancing value to convert the naval_strike_targetting equipment stats to chances of how many airplanes managed to do successfull strike.
-	NAVAL_STRIKE_CARRIER_MULTIPLIER = 1.5, --was 10.0 --damage bonus when planes are in naval combat where their carrier is present (and can thus sortie faster and more effectively)
 	NAVAL_STRIKE_DAMAGE_TO_STR = 8, --was 1.0 --Balancing value to convert damage ( naval_strike_attack * hits ) to Strength reduction.
 	NAVAL_STRIKE_DAMAGE_TO_ORG = 1.2, --was 1.5 --Balancing value to convert damage ( naval_strike_attack * hits ) to Organisation reduction.
+	NAVAL_STRIKE_CARRIER_MULTIPLIER = 2.0, --was 10.0 --damage bonus when planes are in naval combat where their carrier is present (and can thus sortie faster and more effectively)
 	FIELD_EXPERIENCE_SCALE = 0.0004,
 	FIELD_EXPERIENCE_MAX_PER_DAY = 2.0, --was 2 --Most xp you can gain per day
 	CLOSE_AIR_SUPPORT_EXPERIENCE_SCALE = 0.0005,		-- How much the experinence gained by CAS is scaled
@@ -1359,7 +1359,7 @@ NAir = {
 	DISRUPTION_DEFENCE_SPEED_FACTOR = 0.0, --was 1.0
 	DISRUPTION_DEFENCE_ATTACK_FACTOR = 0.5, --was 0.5
 
-	CARRIER_PLANES_AMOUNT_FOR_POSITIONING = 50,         -- below this amount of planes on a carrier we no longer get max benefit on enemy positioning
+	CARRIER_PLANES_AMOUNT_FOR_POSITIONING = 36,         -- below this amount of planes on a carrier we no longer get max benefit on enemy positioning
 
 	CAS_NIGHT_ATTACK_FACTOR = 0.05, --was 0.1 --CAS damaged get multiplied by this in land combats at night
 
@@ -1499,8 +1499,8 @@ NNavy = {
 	COMBAT_CHASE_RESIGNATION_HOURS = 10, --was 8 --Before we resign chasing enemy, give them some minimum time so the combat doesn't end instantly.
 
 	COMBAT_MAX_GROUPS = 2, --was 1 --Max amount of "Fire Exchange" groups (FEX).
-	COMBAT_MIN_DURATION = 12, --was 8 --Min combat duration before we can retreat. It's a balancing variable so it's not possible to always run with our weak ships agains big flotillas.
-	COMBAT_INITIAL_DURATION = 6,									-- Number of hours that is considered the "initial phase" of naval combat, used for modifiers like surprise attack during "initial combat"
+	COMBAT_MIN_DURATION = 2, --was 8 --Min combat duration before we can retreat. It's a balancing variable so it's not possible to always run with our weak ships agains big flotillas.
+	COMBAT_INITIAL_DURATION = 2,									-- Number of hours that is considered the "initial phase" of naval combat, used for modifiers like surprise attack during "initial combat"
 	COMBAT_RETREAT_DECISION_CHANCE = 0.3, --was 0.22 --There is also random factor in deciding if we should retreat or not. That causes a delay in taking decision, that sooner or later will be picked. It's needed so damaged fast ships won't troll the combat.
 	COMBAT_DETECTED_CONVOYS_FROM_SURFACE_DETECTION_STAT = 4.0, --was 0.1 --Each 1.0 of surface_detection that ship has (equipment stat), gives x% of convoys discovered from total travelling along the route.
 	COMBAT_BASE_CRITICAL_CHANCE = 0.025, --was 0.05 --Base chance for receiving a critical chance. It get's scaled down with ship reliability.
@@ -1574,8 +1574,8 @@ NNavy = {
 	XP_GAIN_FACTOR = 1.0,	   			   							-- xp gain factor for navy
 
 	NAVAL_TRANSFER_DAMAGE_REDUCTION = 0.25,							-- its hard to specifically balance 1-tick naval strikes vs unit transports so here is a factor for it
-	CARRIER_ONLY_COMBAT_ACTIVATE_TIME = 0, --was 0 --hours from start of combat when carriers get to fight
-	CAPITAL_ONLY_COMBAT_ACTIVATE_TIME = 24, --was 6 --hours from start of combat when only carriers, capitals and subs get to attack
+	CARRIER_ONLY_COMBAT_ACTIVATE_TIME = 2, --was 0 --hours from start of combat when carriers get to fight
+	CAPITAL_ONLY_COMBAT_ACTIVATE_TIME = 12, --was 6 --hours from start of combat when only carriers, capitals and subs get to attack
 	ALL_SHIPS_ACTIVATE_TIME = 36, --was 8 --hours where all get to attack
 
 	MINIMUM_SHIP_SPEED = 1.0,										-- slowest speed a ship can have
