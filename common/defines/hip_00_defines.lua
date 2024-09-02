@@ -1525,8 +1525,8 @@ NNavy = {
 	CONVOY_EFFICIENCY_REGAIN_BASE_SPEED = 0.04, --was 0.04 --How much efficiency regains every day.
 	CONVOY_EFFICIENCY_MIN_VALUE = 0.05,								-- To avoid complete 0% efficiency, set the lower limit.
 	CONVOY_ROUTE_SIZE_CONVOY_SCALE = 0.5,                           -- scales impact of convoy route size (0 to turn off)
-	ANTI_AIR_TARGETTING_TO_CHANCE = 0.02, --was 0.2 --Balancing value to convert averaged equipment stats (anti_air_targetting and naval_strike_agility) to probability chances of airplane being hit by navies AA.
-	ANTI_AIR_ATTACK_TO_AMOUNT = 0.001, --was 0.01 --Balancing value to convert equipment stat anti_air_attack to the random % value of airplanes being hit.
+	ANTI_AIR_TARGETTING_TO_CHANCE = 0.25, --was 0.2 --Balancing value to convert averaged equipment stats (anti_air_targetting and naval_strike_agility) to probability chances of airplane being hit by navies AA.
+	ANTI_AIR_ATTACK_TO_AMOUNT = 0.004, --was 0.01 --Balancing value to convert equipment stat anti_air_attack to the random % value of airplanes being hit.
 	CONVOY_SINKING_SPILLOVER = 1.0, --was 0.5 --Damaged convoys roll for if they sink in the end of combat by accumulating the damage. This scales that chance.
 	UNIT_EXPERIENCE_PER_COMBAT_HOUR = 2.5, --was 0.00025 --was 10
 	UNIT_EXPERIENCE_SCALE = 0.85, --was 0.5 --was 1
@@ -1612,10 +1612,10 @@ NNavy = {
 	MAX_FUEL_FLOW_MULT = 2.0, -- max fuel flow ratio for ships, which will be multiplied by supply
 	FUEL_COST_MULT = 0.30, --was 0.10 --fuel multiplier for all naval missions
 
-	OUT_OF_FUEL_SPEED_FACTOR = -0.75,
-	OUT_OF_FUEL_RANGE_FACTOR = -0.75,
-	OUT_OF_FUEL_ATTACK_FACTOR = -0.5,
-	OUT_OF_FUEL_TORPEDO_FACTOR = -0.8,
+	OUT_OF_FUEL_SPEED_FACTOR = -0.9,
+	OUT_OF_FUEL_RANGE_FACTOR = -0.9,
+	OUT_OF_FUEL_ATTACK_FACTOR = -0.9,
+	OUT_OF_FUEL_TORPEDO_FACTOR = -0.9,
 
 	MISSION_SPREADS = {  -- mission spreads in the case a ship join combat, which is calculated for number of ships that will be in combat. 1 means no ship will be at start
 		0.0, -- HOLD
@@ -1875,7 +1875,7 @@ NNavy = {
 	ANTI_AIR_POW_ON_INCOMING_AIR_DAMAGE								= 0.50, --was 0.25 --received air damage is calculated using following: 1 - ( (ship_anti_air + fleet_anti_air * SHIP_TO_FLEET_ANTI_AIR_RATIO )^ANTI_AIR_POW_ON_INCOMING_AIR_DAMAGE ) * ANTI_AIR_MULT_ON_INCOMING_AIR_DAMAGE
 	ANTI_AIR_MULT_ON_INCOMING_AIR_DAMAGE							= 0.25, --was 0.2
 
-	MAX_ANTI_AIR_REDUCTION_EFFECT_ON_INCOMING_AIR_DAMAGE 			= 0.75, --was 0.75 --damage reduction for incoming air attacks is clamped to this value at maximum.
+	MAX_ANTI_AIR_REDUCTION_EFFECT_ON_INCOMING_AIR_DAMAGE 			= 0.85, --was 0.75 --damage reduction for incoming air attacks is clamped to this value at maximum.
 
 	CHANCE_TO_DAMAGE_PART_ON_CRITICAL_HIT							= 0.25, --was 0.1 --the game will roll between 0-1 and will damage a random part if below this val on naval critical hits
 	CHANCE_TO_DAMAGE_PART_ON_CRITICAL_HIT_FROM_AIR					= 0.25, --was 0.1 --the game will roll between 0-1 and will damage a random part if below this val on air critical hits
