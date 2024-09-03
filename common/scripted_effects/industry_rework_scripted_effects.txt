@@ -482,3 +482,77 @@ reduced_civillian_resources_scripted_effect = {
 	multiply_variable = { cic_reduced_chromium = cic_resource_factor_temp }
 	multiply_variable = { cic_reduced_rubber = cic_resource_factor_temp }
 }
+
+log_manpower_factor = {
+	if = {
+		limit = { is_debug = yes }
+		every_country = {
+			limit = {
+				OR = {
+					tag = ROM
+					tag = HUN
+					tag = POL
+					tag = AST
+					tag = CAN
+					tag = FIN
+					tag = RAJ
+					is_major = yes
+				}
+			}
+			set_temp_variable = {
+				cf = 1.000
+			}
+			add_to_temp_variable = {
+				cf = THIS.modifier@conscription_factor
+			}
+			multiply_temp_variable = {
+				cf = 100
+			}
+			log = "[?cf|1]% - [THIS.GetTag]"
+
+		}
+		log = "-------------------------------------------------------------------------------------------------------------------------------------"
+	}
+}
+
+log_manpower_factor_other = {
+	if = {
+		limit = { is_debug = yes }
+		every_country = {
+			limit = {
+				NOT = {
+					tag = ROM
+					tag = HUN
+					tag = POL
+					tag = AST
+					tag = CAN
+					tag = FIN
+					tag = RAJ
+					is_major = yes
+				}
+			}
+			set_temp_variable = {
+				cf = 1.000
+			}
+			add_to_temp_variable = {
+				cf = THIS.modifier@conscription_factor
+			}
+			multiply_temp_variable = {
+				cf = 100
+			}
+			log = "[?cf|1]% - [THIS.GetTag]"
+
+		}
+		log = "-------------------------------------------------------------------------------------------------------------------------------------"
+	}
+}
+
+log_manpower_variables = {
+	if = {
+		limit = { is_debug = yes }
+		every_country = {
+			log = "#Init manpower variables [THIS.GetTag] [?THIS.agricultural_penalty_calculation|3] [?THIS.factories_labour_penalty_calculation|3] [?THIS.resources_labour_penalty_calculation|3]"
+		}
+		log = "-------------------------------------------------------------------------------------------------------------------------------------"
+	}
+}
