@@ -1313,7 +1313,7 @@ NAir = {
 	ANTI_AIR_ATTACK_TO_DAMAGE_REDUCTION_FACTOR = 0.085, --was 1.0 --Balancing value to convert equipment stat anti_air_attack to the damage reduction modifier apply to incoming air attacks against units with AA.
 	ANTI_AIR_MAXIMUM_DAMAGE_REDUCTION_FACTOR = 0.5, --was 0.75 --Maximum damage reduction factor applied to incoming air attacks against units with AA.
 	AIR_DEPLOYMENT_DAYS = 0, --was 2 --Days to deploy one air wing
-	NAVAL_STRIKE_BASE_STR_TO_PLANES_RATIO = 0.001, --was 0.03 --Max airbombers to do port strike comparing to strength
+	NAVAL_STRIKE_BASE_STR_TO_PLANES_RATIO = 0.035, --was 0.03 --Max airbombers to do port strike comparing to strength
 	NAVAL_COMBAT_EXTERNAL_PLANES_JOIN_RATIO = 0.001, --was 0.05 --Max planes that can join a combat comparing to the total strength of the ships
 	NAVAL_COMBAT_EXTERNAL_PLANES_JOIN_RATIO_PER_DAY = 0.00, --was 0.2 --max extra plane % that can join every day
 	NAVAL_COMBAT_EXTERNAL_PLANES_MIN_CAP = 12,			-- Min cap for planes that can join naval combat
@@ -1575,7 +1575,7 @@ NNavy = {
 
 	NAVAL_TRANSFER_DAMAGE_REDUCTION = 0.25,							-- its hard to specifically balance 1-tick naval strikes vs unit transports so here is a factor for it
 	CARRIER_ONLY_COMBAT_ACTIVATE_TIME = 2, --was 0 --hours from start of combat when carriers get to fight
-	CAPITAL_ONLY_COMBAT_ACTIVATE_TIME = 12, --was 6 --hours from start of combat when only carriers, capitals and subs get to attack
+	CAPITAL_ONLY_COMBAT_ACTIVATE_TIME = 2, --was 6 --hours from start of combat when only carriers, capitals and subs get to attack
 	ALL_SHIPS_ACTIVATE_TIME = 36, --was 8 --hours where all get to attack
 
 	MINIMUM_SHIP_SPEED = 1.0,										-- slowest speed a ship can have
