@@ -8957,6 +8957,294 @@ prospect_for_resources = {
 			}
 		}
 	}
+	develop_sokal_coal_mines = {
+		#91
+		icon = coal
+		highlight_states = {
+			highlight_state_targets = {
+				state = 91
+			}
+		}
+		available = {
+			OR = {
+				has_tech = excavation3
+				AND = {
+					is_ai = yes
+					date > 1939.01.01
+				}
+			}
+			num_of_civilian_factories_available_for_projects > 9
+			owns_state = 91
+			controls_state = 91
+		}
+		visible = {
+			owns_state = 91
+			controls_state = 91
+			91 = {
+				NOT = {
+					has_state_flag = sokal_coal_mines_developed
+				}
+			}
+		}
+		fire_only_once = yes
+		days_remove = 90
+		cost = 5
+		modifier = {
+			civilian_factory_use = 10
+		}
+		remove_effect = {
+			91 = {
+				set_state_flag = sokal_coal_mines_developed
+			}
+			91 = {
+				add_resource = {
+					type = coal
+					amount = 125
+				}
+			}
+		}
+		ai_will_do = {
+			base = 0.3
+			modifier = {
+				factor = 0
+				OR = {
+					AND = {
+						#Ultimatum decisions are available and we should prio them
+						original_tag = SOV
+						OR = {
+							SOV_save_pp_for_manpower_trouble = yes
+							SOV_we_want_to_send_ultimatums = yes
+						}
+					}
+					AND = {
+						#Too low MP we need to save PP for the laws
+						has_manpower < 10000
+						NOT = {
+							has_idea = scraping_the_barrel
+						}
+					}
+				}
+			}
+			modifier = {
+				# Too low PP
+				factor = 0.5
+				has_political_power < 80
+			}
+			modifier = {
+				#We have plenty of PP, avanti!
+				factor = 3
+				has_political_power > 200
+			}
+			modifier = {
+				#Running out of the stuff, need more!
+				factor = 5
+				has_resources_in_country = {
+					resource = coal
+					amount < 100
+				}
+			}
+			modifier = {
+				#We have too much, plz don't
+				factor = 0
+				has_resources_in_country = {
+					resource = coal
+					amount > 500
+				}
+			}
+		}
+	}
+	develop_lublin_coal_mines = {
+		#92
+		icon = coal
+		highlight_states = {
+			highlight_state_targets = {
+				state = 92
+			}
+		}
+		available = {
+			OR = {
+				has_tech = excavation3
+				AND = {
+					is_ai = yes
+					date > 1939.01.01
+				}
+			}
+			num_of_civilian_factories_available_for_projects > 9
+			owns_state = 92
+			controls_state = 92
+		}
+		visible = {
+			owns_state = 92
+			controls_state = 92
+			92 = {
+				NOT = {
+					has_state_flag = lublin_coal_mines_developed
+				}
+			}
+		}
+		fire_only_once = yes
+		days_remove = 90
+		cost = 5
+		modifier = {
+			civilian_factory_use = 10
+		}
+		remove_effect = {
+			92 = {
+				set_state_flag = lublin_coal_mines_developed
+			}
+			92 = {
+				add_resource = {
+					type = coal
+					amount = 125
+				}
+			}
+		}
+		ai_will_do = {
+			base = 0.3
+			modifier = {
+				factor = 0
+				OR = {
+					AND = {
+						#Ultimatum decisions are available and we should prio them
+						original_tag = SOV
+						OR = {
+							SOV_save_pp_for_manpower_trouble = yes
+							SOV_we_want_to_send_ultimatums = yes
+						}
+					}
+					AND = {
+						#Too low MP we need to save PP for the laws
+						has_manpower < 10000
+						NOT = {
+							has_idea = scraping_the_barrel
+						}
+					}
+				}
+			}
+			modifier = {
+				# Too low PP
+				factor = 0.5
+				has_political_power < 80
+			}
+			modifier = {
+				#We have plenty of PP, avanti!
+				factor = 3
+				has_political_power > 200
+			}
+			modifier = {
+				#Running out of the stuff, need more!
+				factor = 5
+				has_resources_in_country = {
+					resource = coal
+					amount < 100
+				}
+			}
+			modifier = {
+				#We have too much, plz don't
+				factor = 0
+				has_resources_in_country = {
+					resource = coal
+					amount > 500
+				}
+			}
+		}
+	}
+	develop_belchatow_coal_mines = {
+		#87
+		icon = coal
+		highlight_states = {
+			highlight_state_targets = {
+				state = 87
+			}
+		}
+		available = {
+			OR = {
+				has_tech = excavation5
+				AND = {
+					is_ai = yes
+					date > 1945.01.01
+				}
+			}
+			num_of_civilian_factories_available_for_projects > 19
+			owns_state = 87
+			controls_state = 87
+		}
+		visible = {
+			owns_state = 87
+			controls_state = 87
+			87 = {
+				NOT = {
+					has_state_flag = belchatow_coal_mines_developed
+				}
+			}
+		}
+		fire_only_once = yes
+		days_remove = 90
+		cost = 5
+		modifier = {
+			civilian_factory_use = 20
+		}
+		remove_effect = {
+			87 = {
+				set_state_flag = belchatow_coal_mines_developed
+			}
+			87 = {
+				add_resource = {
+					type = coal
+					amount = 450
+				}
+			}
+		}
+		ai_will_do = {
+			base = 0.3
+			modifier = {
+				factor = 0
+				OR = {
+					AND = {
+						#Ultimatum decisions are available and we should prio them
+						original_tag = SOV
+						OR = {
+							SOV_save_pp_for_manpower_trouble = yes
+							SOV_we_want_to_send_ultimatums = yes
+						}
+					}
+					AND = {
+						#Too low MP we need to save PP for the laws
+						has_manpower < 10000
+						NOT = {
+							has_idea = scraping_the_barrel
+						}
+					}
+				}
+			}
+			modifier = {
+				# Too low PP
+				factor = 0.5
+				has_political_power < 80
+			}
+			modifier = {
+				#We have plenty of PP, avanti!
+				factor = 3
+				has_political_power > 200
+			}
+			modifier = {
+				#Running out of the stuff, need more!
+				factor = 5
+				has_resources_in_country = {
+					resource = coal
+					amount < 100
+				}
+			}
+			modifier = {
+				#We have too much, plz don't
+				factor = 0
+				has_resources_in_country = {
+					resource = coal
+					amount > 500
+				}
+			}
+		}
+	}
 	develop_saar_coal_mines = {
 		#793
 		icon = coal
