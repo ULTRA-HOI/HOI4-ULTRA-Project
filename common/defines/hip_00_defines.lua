@@ -1870,7 +1870,7 @@ NNavy = {
 	AA_EFFICIENCY_PENALTY_ON_MINIMUM_POSITIONING					= 0.1, --was 0.7 --AA penalty at 0% positioning
 	SUBMARINE_REVEAL_ON_MINIMUM_POSITIONING                         = 2.0,  -- submarine reveal change on 0% positioning
 
-	SHIP_TO_FLEET_ANTI_AIR_RATIO									= 0.50, --was 0.25 --total sum of fleet's anti air will be multiplied with this ratio and added to calculations anti-air of individual ships while air damage reduction
+	SHIP_TO_FLEET_ANTI_AIR_RATIO									= 0.40, --was 0.25 --total sum of fleet's anti air will be multiplied with this ratio and added to calculations anti-air of individual ships while air damage reduction
 
 	ANTI_AIR_POW_ON_INCOMING_AIR_DAMAGE								= 0.50, --was 0.25 --received air damage is calculated using following: 1 - ( (ship_anti_air + fleet_anti_air * SHIP_TO_FLEET_ANTI_AIR_RATIO )^ANTI_AIR_POW_ON_INCOMING_AIR_DAMAGE ) * ANTI_AIR_MULT_ON_INCOMING_AIR_DAMAGE
 	ANTI_AIR_MULT_ON_INCOMING_AIR_DAMAGE							= 0.25, --was 0.2
