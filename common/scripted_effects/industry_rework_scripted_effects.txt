@@ -184,12 +184,33 @@ calculate_factories_labour = {
 calculate_civilian_labour = {
 	#Calculate Civilian Needs
 	if = {
-		limit = { tag = ENG }
-		set_variable = { civilian_services_labour_k = 0.15 }
+		limit = {
+			OR = {
+				tag = USA
+				tag = GER
+			}
+		}
+		set_variable = { civilian_services_labour_k = 0.14 }
 	}
 	else_if = {
-		limit = { tag = FRA }
-		set_variable = { civilian_services_labour_k = 0.14 }
+		limit = {
+			OR = {
+				tag = CAN
+				tag = ENG
+				tag = AST
+				tag = ITA #because wine and spaghetti
+			}
+		}
+		set_variable = { civilian_services_labour_k = 0.12 }
+	}
+	else_if = { # city states
+		limit = {
+			OR = {
+				tag = LUX
+				tag = DZG
+			}
+		}
+		set_variable = { civilian_services_labour_k = 0.05 }
 	}
 	else = {
 		set_variable = { civilian_services_labour_k = 0.1 }
