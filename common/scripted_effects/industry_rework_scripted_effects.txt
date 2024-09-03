@@ -237,26 +237,33 @@ init_industry_rework = {
 calculate_state_level_agriculture_penalty = {
 	if = {
 		limit = {
-			is_core_of = CAN
+			OR = {
+				is_core_of = ENG
+				is_core_of = URG
+			}
 		}
-		set_variable = { state_level_agriculture_penalty = 0.08 }
+		set_variable = { state_level_agriculture_penalty = 0.07 }
 	}
 	else_if = {
 		limit = {
-			is_core_of = URG
-		}
-		set_variable = { state_level_agriculture_penalty = 0.08 }
-	}
-	else_if = {
-		limit = {
-			is_core_of = USA
+			OR = {
+				is_core_of = FRA
+				is_core_of = CAN
+			}
 		}
 		set_variable = { state_level_agriculture_penalty = 0.10 }
 	}
 	else_if = {
 		limit = {
 			OR = {
-				is_core_of = ENG
+				is_core_of = USA
+			}
+		}
+		set_variable = { state_level_agriculture_penalty = 0.12 }
+	}
+	else_if = {
+		limit = {
+			OR = {
 				is_core_of = AST
 				is_core_of = NZL
 				is_core_of = ARG
@@ -267,9 +274,10 @@ calculate_state_level_agriculture_penalty = {
 				is_core_of = SWI
 				is_core_of = HOL
 				is_core_of = BEL
+				is_core_of = DZG
 			}
 		}
-		set_variable = { state_level_agriculture_penalty = 0.12 }
+		set_variable = { state_level_agriculture_penalty = 0.14 }
 	}
 	else_if = {
 		limit = {
@@ -285,34 +293,11 @@ calculate_state_level_agriculture_penalty = {
 	else_if = {
 		limit = {
 			OR = {
-				is_core_of = FRA
-			}
-		}
-		set_variable = { state_level_agriculture_penalty = 0.17 }
-	}
-	else_if = {
-		limit = {
-			OR = {
-				is_core_of = BUL
-			}
-		}
-		set_variable = { state_level_agriculture_penalty = 0.18 }
-	}
-	else_if = {
-		limit = {
-			OR = {
-				is_core_of = HUN
-				is_core_of = SLO
-			}
-		}
-		set_variable = { state_level_agriculture_penalty = 0.19 }
-	}
-	else_if = {
-		limit = {
-			OR = {
 				is_core_of = POL
+				is_core_of = BUL
 				is_core_of = UKR
-				is_core_of = GRE
+				is_core_of = EGY
+				is_rainforest_core = yes
 			}
 		}
 		set_variable = { state_level_agriculture_penalty = 0.20 }
@@ -320,11 +305,8 @@ calculate_state_level_agriculture_penalty = {
 	else_if = {
 		limit = {
 			OR = {
-				is_core_of = ITA
 				is_core_of = SPR
 				is_core_of = POR
-				is_core_of = SAF
-				is_core_of = FIN
 				is_core_of = YUG
 				is_core_of = JAP
 				AND = {
@@ -341,6 +323,7 @@ calculate_state_level_agriculture_penalty = {
 					}
 					is_on_continent = north_america
 				}
+				is_southafrican_colony_core = yes
 			}
 		}
 		set_variable = { state_level_agriculture_penalty = 0.22 }
@@ -348,26 +331,34 @@ calculate_state_level_agriculture_penalty = {
 	else_if = {
 		limit = {
 			OR = {
-				is_core_of = TUR
+				is_core_of = HUN
+				is_core_of = SLO
+				is_core_of = GRE
 			}
 		}
-		set_variable = { state_level_agriculture_penalty = 0.25 }
+		set_variable = { state_level_agriculture_penalty = 0.23 }
 	}
 	else_if = {
 		limit = {
 			OR = {
-				is_core_of = ROM
+				is_core_of = TUR
+				is_core_of = FIN
+				is_core_of = ITA
+			}
+		}
+		set_variable = { state_level_agriculture_penalty = 0.24 }
+	}
+	else_if = {
+		limit = {
+			OR = {
+				AND = {
+					is_core_of = SOV
+					NOT = { is_core_of = UKR }
+				}
+				is_maghreb_colony_core = yes
 			}
 		}
 		set_variable = { state_level_agriculture_penalty = 0.28 }
-	}
-	else_if = {
-		limit = {
-			OR = {
-				is_core_of = SOV
-			}
-		}
-		set_variable = { state_level_agriculture_penalty = 0.26 }
 	}
 	else_if = {
 		limit = {
@@ -383,13 +374,18 @@ calculate_state_level_agriculture_penalty = {
 	else_if = {
 		limit = {
 			OR = {
-				is_core_of = ALB
-				is_core_of = EGY
-				is_core_of = TUN
-				is_core_of = MOR
+				is_core_of = ROM
 			}
 		}
-		set_variable = { state_level_agriculture_penalty = 0.35 }
+		set_variable = { state_level_agriculture_penalty = 0.32 }
+	}
+	else_if = {
+		limit = {
+			OR = {
+				is_core_of = ETH
+			}
+		}
+		set_variable = { state_level_agriculture_penalty = 0.34 }
 	}
 	else_if = {
 		limit = {
@@ -420,16 +416,18 @@ calculate_state_level_agriculture_penalty = {
 				}
 			}
 		}
-		set_variable = { state_level_agriculture_penalty = 0.38 }
+		set_variable = { state_level_agriculture_penalty = 0.36 }
 	}
 	else_if = {
 		limit = {
 			NOT = {
-				is_core_of = SAF
+				is_core_of = ETH
+				is_southafrican_colony_core = yes
+				is_maghreb_colony_core = yes
 			}
 			is_on_continent = africa
 		}
-		set_variable = { state_level_agriculture_penalty = 0.4 }
+		set_variable = { state_level_agriculture_penalty = 0.38 }
 	}
 	else_if = {
 		limit = {
@@ -437,9 +435,9 @@ calculate_state_level_agriculture_penalty = {
 				is_owned_by = RAJ
 			}
 		}
-		set_variable = { state_level_agriculture_penalty = 0.42 }
+		set_variable = { state_level_agriculture_penalty = 0.46 }
 	}
-	else ={	
+	else = {	
 		set_variable = { state_level_agriculture_penalty = 0.38 }
 	}
 }
