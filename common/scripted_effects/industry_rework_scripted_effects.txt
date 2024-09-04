@@ -9,24 +9,25 @@ on_daily_labour_calculations = {
 	
 	# Loop through every non-core state, add non-core pop to total_non_core_population_k and available non-core pop to avaliable_non_core_population_k modified by agricultural penalty of state 
 	every_controlled_state = {
-		limit = {
-			NOT = { is_core_of = PREV }
-		}
-		set_temp_variable = { state_avaliable_labour_k = state_population_k }
-		multiply_temp_variable = { state_avaliable_labour_k = state_level_agriculture_penalty }
-		set_temp_variable = { state_compliance_manpower_factor = compliance }
-		multiply_temp_variable = { state_compliance_manpower_factor = 0.10 } # static_modifiers.txt -> compliance_effect
-		add_to_temp_variable = { state_compliance_manpower_factor = 0.02 } # defines.lua -> LOCAL_MANPOWER_ACCESSIBLE_NON_CORE_FACTOR
+		set_variable = { state_avaliable_labour_k = state_population_k }
+		multiply_variable = { state_avaliable_labour_k = state_level_agriculture_penalty }
 		if = {
-			limit = { compliance > 59 } # compliance_modifiers.txt -> compliance_60
-			multiply_temp_variable = { state_compliance_manpower_factor = 0.05 } # static_modifiers -> compliance_effect
+			limit = {
+				NOT = { is_core_of = PREV }
+			}
+			set_temp_variable = { state_compliance_manpower_factor = compliance }
+			multiply_temp_variable = { state_compliance_manpower_factor = 0.10 } # static_modifiers.txt -> compliance_effect
+			add_to_temp_variable = { state_compliance_manpower_factor = 0.02 } # defines.lua -> LOCAL_MANPOWER_ACCESSIBLE_NON_CORE_FACTOR
+			if = {
+				limit = { compliance > 59 } # compliance_modifiers.txt -> compliance_60
+				multiply_temp_variable = { state_compliance_manpower_factor = 0.05 } # static_modifiers -> compliance_effect
+			}
+			multiply_variable = { state_avaliable_labour_k = state_compliance_manpower_factor }
+			add_to_variable = { PREV.total_non_core_population_k = state_population_k }
+			add_to_temp_variable = { PREV.avaliable_non_core_population_k = state_avaliable_labour_k }
 		}
-		multiply_temp_variable = { state_avaliable_labour_k = state_compliance_manpower_factor }
-		
-		add_to_variable = { PREV.total_non_core_population_k = state_population_k }
-		add_to_temp_variable = { PREV.avaliable_non_core_population_k = state_avaliable_labour_k }
 	}
-
+	
 	subtract_from_variable = { total_core_population_k = total_non_core_population_k } 
 	
 	#Calculates total labourpower (in 1000s)
@@ -61,7 +62,7 @@ on_daily_labour_calculations = {
 	calculate_factories_labour = yes
 	calculate_civilian_labour = yes
 	calculate_logistics_labour = yes
-	
+
 	#actually remove needed manpower from pool
 	subtract_from_variable = { total_free_labour_k = agriculture_labour_k }
 	subtract_from_variable = { total_free_labour_k = factories_labour_k }
@@ -90,9 +91,13 @@ on_daily_labour_calculations = {
 calculate_argriculture_labour = {
 	set_variable = { agriculture_labour_k = 0 }
 	every_controlled_state = {
-		limit = { is_core_of = PREV }
-		set_temp_variable = { state_agriculture_labour_k = state_population_k }
-		multiply_temp_variable = { state_agriculture_labour_k = state_level_agriculture_penalty }
+		set_variable = { state_agriculture_labour_k = state_population_k }
+		multiply_variable = { state_agriculture_labour_k = state_level_agriculture_penalty }
+		clamp_variable = {
+			var = state_agriculture_labour_k
+			min = 0
+			max = state_avaliable_labour_k
+		}
 		add_to_variable = { PREV.agriculture_labour_k = state_agriculture_labour_k }
 	}
 }
