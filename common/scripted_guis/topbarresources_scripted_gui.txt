@@ -1,0 +1,214 @@
+@RES_BG_1 = 2
+@RES_ICON_1 = 2
+@RES_VALUE_1 = 21
+@RES_BG_2 = 74
+@RES_ICON_2 = 76
+@RES_VALUE_2 = 93
+@RES_BG_3 = 146
+@RES_ICON_3 = 148
+@RES_VALUE_3 = 165
+@RES_BG_4 = 218
+@RES_ICON_4 = 220
+@RES_VALUE_4 = 237
+@RES_BG_5 = 290
+@RES_ICON_5 = 290
+@RES_VALUE_5 = 309
+@RES_BG_6 = 362
+@RES_ICON_6 = 364
+@RES_VALUE_6 = 381
+@RES_BG_7 = 434
+@RES_ICON_7 = 436
+@RES_VALUE_7 = 453
+@RES_BG_8 = 506
+@RES_ICON_8 = 508
+@RES_VALUE_8 = 525
+
+@RES_BG_1_N = 77
+@RES_ICON_1_N = 77
+@RES_VALUE_1_N = 96
+@RES_BG_2_N = 149
+@RES_ICON_2_N = 151
+@RES_VALUE_2_N = 168
+@RES_BG_3_N = 221
+@RES_ICON_3_N = 223
+@RES_VALUE_3_N = 240
+@RES_BG_4_N = 293
+@RES_ICON_4_N = 295
+@RES_VALUE_4_N = 312
+@RES_BG_5_N = 365
+@RES_ICON_5_N = 365
+@RES_VALUE_5_N = 384
+@RES_BG_6_N = 437
+@RES_ICON_6_N = 439
+@RES_VALUE_6_N = 456
+@RES_BG_7_N = 509
+@RES_ICON_7_N = 511
+@RES_VALUE_7_N = 528
+@RES_BG_8_N = 581
+@RES_ICON_8_N = 583
+@RES_VALUE_8_N = 600
+
+scripted_gui = {
+	topbar_resource_toogle_window = {
+		context_type = player_context
+		window_name = "topbar_resource_toogle_window"
+		parent_window_token = trade_tab
+		effects = {
+			toogle_button_click = {
+				if = {
+					limit = {
+						check_variable = {
+							resources_disabled = 0
+						}
+					}
+					set_variable = {
+						resources_disabled = 1
+					}
+				}
+				else = {
+					clear_variable = resources_disabled
+				}
+			}
+		}
+		ai_enabled = {
+			always = no
+		}
+	}
+	topbar_resources = {
+		context_type = player_context
+		window_name = "topbar_resource_container"
+		parent_window_token = top_bar
+		visible = {
+			check_variable = {
+				resources_disabled = 0
+			}
+		}
+		triggers = {
+			rubber_value_bg_visible = {
+				if = { limit = { has_tech = nukes } set_temp_variable = { topbar_rubber_bg_x = @RES_BG_1_N } }
+				else = { set_temp_variable = { topbar_rubber_bg_x = @RES_BG_1 } }
+			}
+			rubber_icon_visible = {
+				if = { limit = { has_tech = nukes } set_temp_variable = { topbar_rubber_icon_x = @RES_ICON_1_N } }
+				else = { set_temp_variable = { topbar_rubber_icon_x = @RES_ICON_1 } }
+			}
+			rubber_value_visible = {
+				if = { limit = { has_tech = nukes } set_temp_variable = { topbar_rubber_value_x = @RES_VALUE_1_N } }
+				else = { set_temp_variable = { topbar_rubber_value_x = @RES_VALUE_1 } }
+			}
+			coal_value_bg_visible = {
+				if = { limit = { has_tech = nukes } set_temp_variable = { topbar_coal_bg_x = @RES_BG_2_N } }
+				else = { set_temp_variable = { topbar_coal_bg_x = @RES_BG_2 } }
+			}
+			coal_icon_visible = {
+				if = { limit = { has_tech = nukes } set_temp_variable = { topbar_coal_icon_x = @RES_ICON_2_N } }
+				else = { set_temp_variable = { topbar_coal_icon_x = @RES_ICON_2 } }
+			}
+			coal_value_visible = {
+				if = { limit = { has_tech = nukes } set_temp_variable = { topbar_coal_value_x = @RES_VALUE_2_N } }
+				else = { set_temp_variable = { topbar_coal_value_x = @RES_VALUE_2 } }
+			}
+			iron_value_bg_visible = {
+				if = { limit = { has_tech = nukes } set_temp_variable = { topbar_iron_bg_x = @RES_BG_3_N } }
+				else = { set_temp_variable = { topbar_iron_bg_x = @RES_BG_3 } }
+			}
+			iron_icon_visible = {
+				if = { limit = { has_tech = nukes } set_temp_variable = { topbar_iron_icon_x = @RES_ICON_3_N } }
+				else = { set_temp_variable = { topbar_iron_icon_x = @RES_ICON_3 } }
+			}
+			iron_value_visible = {
+				if = { limit = { has_tech = nukes } set_temp_variable = { topbar_iron_value_x = @RES_VALUE_3_N } }
+				else = { set_temp_variable = { topbar_iron_value_x = @RES_VALUE_3 } }
+			}
+			steel_value_bg_visible = {
+				if = { limit = { has_tech = nukes } set_temp_variable = { topbar_steel_bg_x = @RES_BG_4_N } }
+				else = { set_temp_variable = { topbar_steel_bg_x = @RES_BG_4 } }
+			}
+			steel_icon_visible = {
+				if = { limit = { has_tech = nukes } set_temp_variable = { topbar_steel_icon_x = @RES_ICON_4_N } }
+				else = { set_temp_variable = { topbar_steel_icon_x = @RES_ICON_4 } }
+			}
+			steel_value_visible = {
+				if = { limit = { has_tech = nukes } set_temp_variable = { topbar_steel_value_x = @RES_VALUE_4_N } }
+				else = { set_temp_variable = { topbar_steel_value_x = @RES_VALUE_4 } }
+			}
+			bauxite_value_bg_visible = {
+				if = { limit = { has_tech = nukes } set_temp_variable = { topbar_bauxite_bg_x = @RES_BG_5_N } }
+				else = { set_temp_variable = { topbar_bauxite_bg_x = @RES_BG_5 } }
+			}
+			bauxite_icon_visible = {
+				if = { limit = { has_tech = nukes } set_temp_variable = { topbar_bauxite_icon_x = @RES_ICON_5_N } }
+				else = { set_temp_variable = { topbar_bauxite_icon_x = @RES_ICON_5 } }
+			}
+			bauxite_value_visible = {
+				if = { limit = { has_tech = nukes } set_temp_variable = { topbar_bauxite_value_x = @RES_VALUE_5_N } }
+				else = { set_temp_variable = { topbar_bauxite_value_x = @RES_VALUE_5 } }
+			}
+			aluminium_value_bg_visible = {
+				if = { limit = { has_tech = nukes } set_temp_variable = { topbar_aluminium_bg_x = @RES_BG_6_N } }
+				else = { set_temp_variable = { topbar_aluminium_bg_x = @RES_BG_6 } }
+			}
+			aluminium_icon_visible = {
+				if = { limit = { has_tech = nukes } set_temp_variable = { topbar_aluminium_icon_x = @RES_ICON_6_N } }
+				else = { set_temp_variable = { topbar_aluminium_icon_x = @RES_ICON_6 } }
+			}
+			aluminium_value_visible = {
+				if = { limit = { has_tech = nukes } set_temp_variable = { topbar_aluminium_value_x = @RES_VALUE_6_N } }
+				else = { set_temp_variable = { topbar_aluminium_value_x = @RES_VALUE_6 } }
+			}
+			tungsten_value_bg_visible = {
+				if = { limit = { has_tech = nukes } set_temp_variable = { topbar_tungsten_bg_x = @RES_BG_7_N } }
+				else = { set_temp_variable = { topbar_tungsten_bg_x = @RES_BG_7 } }
+			}
+			tungsten_icon_visible = {
+				if = { limit = { has_tech = nukes } set_temp_variable = { topbar_tungsten_icon_x = @RES_ICON_7_N } }
+				else = { set_temp_variable = { topbar_tungsten_icon_x = @RES_ICON_7 } }
+			}
+			tungsten_value_visible = {
+				if = { limit = { has_tech = nukes } set_temp_variable = { topbar_tungsten_value_x = @RES_VALUE_7_N } }
+				else = { set_temp_variable = { topbar_tungsten_value_x = @RES_VALUE_7 } }
+			}
+			chromium_value_bg_visible = {
+				if = { limit = { has_tech = nukes } set_temp_variable = { topbar_chromium_bg_x = @RES_BG_8_N } }
+				else = { set_temp_variable = { topbar_chromium_bg_x = @RES_BG_8 } }
+			}
+			chromium_icon_visible = {
+				if = { limit = { has_tech = nukes } set_temp_variable = { topbar_chromium_icon_x = @RES_ICON_8_N } }
+				else = { set_temp_variable = { topbar_chromium_icon_x = @RES_ICON_8 } }
+			}
+			chromium_value_visible = {
+				if = { limit = { has_tech = nukes } set_temp_variable = { topbar_chromium_value_x = @RES_VALUE_8_N } }
+				else = { set_temp_variable = { topbar_chromium_value_x = @RES_VALUE_8 } }
+			}
+		}
+		properties = {
+			rubber_value_bg = { x = topbar_rubber_bg_x }
+			rubber_icon = { x = topbar_rubber_icon_x }
+			rubber_value = { x = topbar_rubber_value_x }
+			coal_value_bg = { x = topbar_coal_bg_x }
+			coal_icon = { x = topbar_coal_icon_x }
+			coal_value = { x = topbar_coal_value_x }
+			iron_icon = { x = topbar_iron_icon_x }
+			iron_value = { x = topbar_iron_value_x }
+			iron_value_bg = { x = topbar_iron_bg_x }
+			steel_icon = { x = topbar_steel_icon_x }
+			steel_value = { x = topbar_steel_value_x }
+			steel_value_bg = { x = topbar_steel_bg_x }
+			bauxite_icon = { x = topbar_bauxite_icon_x }
+			bauxite_value = { x = topbar_bauxite_value_x }
+			bauxite_value_bg = { x = topbar_bauxite_bg_x }
+			aluminium_icon = { x = topbar_aluminium_icon_x }
+			aluminium_value = { x = topbar_aluminium_value_x }
+			aluminium_value_bg = { x = topbar_aluminium_bg_x }
+			tungsten_icon = { x = topbar_tungsten_icon_x }
+			tungsten_value = { x = topbar_tungsten_value_x }
+			tungsten_value_bg = { x = topbar_tungsten_bg_x }
+			chromium_icon = { x = topbar_chromium_icon_x }
+			chromium_value = { x = topbar_chromium_value_x }
+			chromium_value_bg = { x = topbar_chromium_bg_x }
+		}
+		ai_enabled = {
+			always = no
+		}
+	}
+}
