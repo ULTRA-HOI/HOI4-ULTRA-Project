@@ -9,63 +9,131 @@ init_building_macrobuilder = {
     set_variable = { days_upper_limit = 250 }
 }
 macro_build = {
-    set_variable = { infra_upper_limit_cur = infra_upper_limit }
-    add_to_variable = { infra_upper_limit_cur = 1 }
-    set_variable = { infra_lower_limit_cur = infra_upper_limit }
-    subtract_from_variable = { infra_lower_limit_cur = 1 }
-    
-    while_loop_effect = {
+    if = {
         limit = {
-            check_variable = { infra_upper_limit_cur = infra_lower_limit compare = greater_than }
+            ROOT = { check_variable = { infra_button_frame = 2 } }
+        }
+        set_variable = { infra_upper_limit_cur = infra_upper_limit }
+        add_to_variable = { infra_upper_limit_cur = 1 }
+        set_variable = { infra_lower_limit_cur = infra_upper_limit }
+        subtract_from_variable = { infra_lower_limit_cur = 1 }
+        while_loop_effect = {
+            limit = {
+                check_variable = { infra_upper_limit_cur = infra_lower_limit compare = greater_than }
+            }
+            every_controlled_state = {
+                limit = {
+                    is_core_of = ROOT
+                    infrastructure < ROOT.infra_upper_limit_cur
+                    infrastructure > ROOT.infra_lower_limit_cur
+                }
+                macro_build_buildings = yes
+            }
+            subtract_from_variable = { infra_upper_limit_cur = 1 }
+            subtract_from_variable = { infra_lower_limit_cur = 1 }
+        }
+        clear_variable = infra_upper_limit_cur
+        clear_variable = infra_lower_limit_cur
+    }
+
+    if = {
+        limit = {
+            ROOT = { check_variable = { construction_times_button_frame = 2 } }
         }
         every_controlled_state = {
             limit = {
                 is_core_of = ROOT
-                infrastructure < ROOT.infra_upper_limit_cur
-                infrastructure > ROOT.infra_lower_limit_cur
             }
             if = {
-                limit = {
-					ROOT = { check_variable = { cic_frame = 5 } }
-                }
-                add_building_construction = {
-                    type = industrial_complex
-                    level = ROOT.amount_buildings
-                    instant_build = no
-                }
+                limit = { cic_days_calc = yes }
+                build_CIC = yes
             }
             if = {
-                limit = {
-					ROOT = { check_variable = { mic_frame = 6 } }
-                }
-                add_building_construction = {
-                    type = arms_factory
-                    level = ROOT.amount_buildings
-                    instant_build = no
-                }
+                limit = { mic_days_calc = yes }
+                build_MIC = yes
             }
             if = {
-                limit = {
-					ROOT = { check_variable = { nic_frame = 7 } }
-                }
-                add_building_construction = {
-                    type = dockyard
-                    level = ROOT.amount_buildings
-                    instant_build = no
-                }
+                limit = { nic_days_calc = yes }
+                build_NIC = yes
             }
             if = {
-                limit = {
-                    ROOT = { check_variable = { infra_frame = 8 } }
-                }
-                add_building_construction = {
-                    type = infrastructure
-                    level = ROOT.amount_buildings
-                    instant_build = no
-                }
+                limit = { inf_days_calc = yes }
+                build_INF = yes
             }
         }
-        subtract_from_variable = { infra_upper_limit_cur = 1 }
-        subtract_from_variable = { infra_lower_limit_cur = 1 }
+    }
+
+    every_controlled_state = {
+        clr_state_flag = CIC_built
+        clr_state_flag = MIC_built
+        clr_state_flag = NIC_built
+        clr_state_flag = INF_built
+    }
+}
+
+macro_build_buildings = {
+    build_CIC = yes
+    build_MIC = yes
+    build_NIC = yes
+    build_INF = yes
+}
+
+build_CIC = {
+    if = {
+        limit = {
+            ROOT = { check_variable = { cic_frame = 5 } }
+            NOT = { has_state_flag = CIC_built }
+        }
+        add_building_construction = {
+            type = industrial_complex
+            level = ROOT.amount_buildings
+            instant_build = no
+        }
+        set_state_flag = CIC_built
+    }
+}
+
+build_MIC = {
+    if = {
+        limit = {
+            ROOT = { check_variable = { mic_frame = 6 } }
+            NOT = { has_state_flag = MIC_built }
+        }
+        add_building_construction = {
+            type = arms_factory
+            level = ROOT.amount_buildings
+            instant_build = no
+        }
+        set_state_flag = MIC_built
+    }
+}
+
+build_NIC = {
+    if = {
+        limit = {
+            ROOT = { check_variable = { nic_frame = 7 } }
+            NOT = { has_state_flag = NIC_built }
+        }
+        add_building_construction = {
+            type = dockyard
+            level = ROOT.amount_buildings
+            instant_build = no
+        }
+        set_state_flag = NIC_built
+    }
+}
+
+build_INF = {
+    if = {
+        limit = {
+            ROOT = { check_variable = { infra_frame = 8 } }
+            NOT = { has_state_flag = INF_built }
+        }
+        add_building_construction = {
+            type = infrastructure
+            level = ROOT.amount_buildings
+            instant_build = no
+        }
+        set_state_flag = INF_built
     }
 }

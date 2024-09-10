@@ -1,50 +1,58 @@
-@BTN_ROW1=55
-@BTN_ROW2=52
-@BTN_ROW3=110
-@BTN_ROW4=155
-@BTN_ROW5=152
-@BTN_ROW6=210
-@BTN_COL1=20
-@BTN_COL2=66
-@BTN_COL3=112
-@BTN_COL4=158
+@BTN_UP = 157
+@BTN_DOWN = 85
 
-@BG_TXT_ROW1=80
-@BG_TXT_ROW2=180
-@TXT_ROW1=84
-@TXT_ROW2=184
-@TXT_COL1=206
-@TXT_COL2=316
+@BTN_ROW1=45
+@BTN_ROW2=100
+@BTN_ROW3=130
+@BTN_ROW4=170
+@BTN_ROW5=200
+
+@BTN_COL1=10
+@BTN_COL2=56
+@BTN_COL3=102
+@BTN_COL4=148
+
+@BG_TXT_ROW1=98
+@BG_TXT_ROW2=128
+@BG_TXT_ROW3=168
+@BG_TXT_ROW4=198
+@TXT_ROW1=102
+@TXT_ROW2=132
+@TXT_ROW3=172
+@TXT_ROW4=202
+@BG_TXT_COL1=113
+@TXT_COL1=103
 
 @TXT_MAX_WIDTH=60
 @TXT_MAX_HEIGHT=20
 
-@INFRA_LOW = 223
-@INFRA_UP = 333
+@TYPE_ICON_X = 25
+@TYPE_ICON_Y1 = 113
+@TYPE_ICON_Y2 = 183
 
 guiTypes = {
 	containerWindowType = {
 		name = "building_macrobuilder_window"
-		position = { x=548 y=4}
-		size = { width = 400 height = 250 }
+		position = { x=546 y=0 }
+		size = { width = 205 height = 310 }
 
 		background = {
 			name = "background"
-			quadTextureSprite = "GFX_tiled_window_thin_border2"
+			spriteType = "GFX_tiled_window_thin_border2"
 		}
 
 		iconType = {
 			name = "title_bg"
-			position = { x=100 y=16 }	
-			spriteType = "GFX_generic_text_bg_203"
+			position = { x=24 y=12 }	
+			spriteType = "GFX_generic_text_bg_154"
 		}
 
 		instantTextboxType = {
 			name = "title"
-			position = { x=101 y=17 }
+			position = { x=25 y=13 }
 			font = "hoi_24header"
 			text = "Macrobuilder"
-			maxWidth = 203
+			maxWidth = 154
 			maxHeight = 23
 			format = center
 			alwaystransparent = yes
@@ -55,6 +63,7 @@ guiTypes = {
 			position = { x=@BTN_COL1 y=@BTN_ROW1 }
 			spriteType = "GFX_cic_mic_nic_buttons"
 			clicksound = click_default
+			pdx_tooltip = "CIC_TOOLTIP"
 		}
 		
 		buttonType = {
@@ -62,6 +71,7 @@ guiTypes = {
 			position = { x=@BTN_COL2 y=@BTN_ROW1 }
 			spriteType = "GFX_cic_mic_nic_buttons"
 			clicksound = click_default
+			pdx_tooltip = "MIC_TOOLTIP"
 		}		
 		
 		buttonType = {
@@ -69,6 +79,7 @@ guiTypes = {
 			position = { x=@BTN_COL3 y=@BTN_ROW1 }
 			spriteType = "GFX_cic_mic_nic_buttons"
 			clicksound = click_default
+			pdx_tooltip = "NIC_TOOLTIP"
 		}
 		
 		buttonType = {
@@ -76,63 +87,35 @@ guiTypes = {
 			position = { x=@BTN_COL4 y=@BTN_ROW1 }
 			spriteType = "GFX_cic_mic_nic_buttons"
 			clicksound = click_default
+			pdx_tooltip = "INFRA_TOOLTIP"
 		}
 
 		###
 
 		buttonType = {
-			name = "infra_lower_limit_decrease"
-			position = { x=@INFRA_LOW y=@BTN_ROW3 }	
-			quadTextureSprite ="GFX_subtract_one"
+			name = "infra_button"
+			position = { x=@TYPE_ICON_X y=@TYPE_ICON_Y1 }	
+			spriteType = "GFX_infrastructure_button"
 			clicksound = click_default
+			pdx_tooltip = "INFRASTRUCTURE_TOOLTIP"
 		}
-
-		iconType = {
-			name = "infra_lower_limit_text_bg"
-			position = { x=@TXT_COL1 y=@BG_TXT_ROW1 }	
-			spriteType = "GFX_generic_text_bg_60"
-		}
-
-		instantTextboxType = {
-			name = "infra_lower_limit"
-			position = { x = @TXT_COL1 y = @TXT_ROW1 }
-			textureFile = ""
-			font = "hoi_18b"
-			text = "[?infra_lower_limit]"
-			maxWidth = @TXT_MAX_WIDTH
-			maxHeight = @TXT_MAX_HEIGHT
-			format = center
-		}
-
-		buttonType = {
-			name = "infra_lower_limit_increase"
-			position = { x=@INFRA_LOW y=@BTN_ROW2 }	
-			quadTextureSprite ="GFX_add_one"
-			clicksound = click_default
-		}
-
+		
 		buttonType = {
 			name = "infra_upper_limit_decrease"
-			position = { x=@INFRA_UP y=@BTN_ROW3 }	
-			quadTextureSprite ="GFX_subtract_one"
+			position = { x=@BTN_DOWN y=@BTN_ROW2 }	
+			spriteType ="GFX_subtract_one"
 			clicksound = click_default
-		}
-
-		iconType = {
-			name = "infra_icon"
-			position = { x=268 y=68 }	
-			spriteType = "GFX_infrastructure_icon"
 		}
 
 		iconType = {
 			name = "infra_upper_limit_text_bg"
-			position = { x=@TXT_COL2 y=@BG_TXT_ROW1 }	
-			spriteType = "GFX_generic_text_bg_60"
+			position = { x=@BG_TXT_COL1 y=@BG_TXT_ROW1 }	
+			spriteType = "GFX_generic_text_bg_40"
 		}
 
 		instantTextboxType = {
 			name = "infra_upper_limit"
-			position = { x = @TXT_COL2 y = @TXT_ROW1 }
+			position = { x = @TXT_COL1 y = @TXT_ROW1 }
 			textureFile = ""
 			font = "hoi_18b"
 			text = "[?infra_upper_limit]"
@@ -143,56 +126,69 @@ guiTypes = {
 
 		buttonType = {
 			name = "infra_upper_limit_increase"
-			position = { x=@INFRA_UP y=@BTN_ROW2 }	
-			quadTextureSprite ="GFX_add_one"
+			position = { x=@BTN_UP y=@BTN_ROW2 }	
+			spriteType ="GFX_add_one"
 			clicksound = click_default
 		}
 
 		buttonType = {
-			name = "macrobuilder_build"
-			position = { x=53 y=105 }
-			font = "hoi_16mbs"
-			buttontext = "Build"
-			quadTextureSprite = "GFX_button_123x34"
+			name = "infra_lower_limit_decrease"
+			position = { x=@BTN_DOWN y=@BTN_ROW3 }	
+			spriteType ="GFX_subtract_one"
 			clicksound = click_default
-			pdx_tooltip = "MACRO_BUILDER_BUTTON_TOOLTIP"
+		}
+
+		iconType = {
+			name = "infra_lower_limit_text_bg"
+			position = { x=@BG_TXT_COL1 y=@BG_TXT_ROW2 }	
+			spriteType = "GFX_generic_text_bg_40"
+		}
+
+		instantTextboxType = {
+			name = "infra_lower_limit"
+			position = { x = @TXT_COL1 y = @TXT_ROW2 }
+			textureFile = ""
+			font = "hoi_18b"
+			text = "[?infra_lower_limit]"
+			maxWidth = @TXT_MAX_WIDTH
+			maxHeight = @TXT_MAX_HEIGHT
+			format = center
 		}
 
 		buttonType = {
-			name = "building_hint_button"
-			position = { x=53 y=179 }
-			font = "hoi_16mbs"
-			buttontext = "Hints"
-			quadTextureSprite = "GFX_sort_button_120x29"
+			name = "infra_lower_limit_increase"
+			position = { x=@BTN_UP y=@BTN_ROW3 }	
+			spriteType ="GFX_add_one"
 			clicksound = click_default
-			pdx_tooltip = "BUILDING_HINT_BUTTON_TOOLTIP"
 		}
 
+		###
+
 		buttonType = {
-			name = "days_lower_limit_increase"
-			position = { x=@INFRA_LOW y=@BTN_ROW4 }	
-			quadTextureSprite ="GFX_add_one"
+			name = "construction_times_button"
+			position = { x=@TYPE_ICON_X y=@TYPE_ICON_Y2 }
+			spriteType = "GFX_construction_times_button"
 			clicksound = click_default
-			pdx_tooltip = "PRODUCTION_ADD_FACTORIES_CLICK"
+			pdx_tooltip = "CONSTRUCTION_TIMES_TOOLTIP"
 		}
 
 		buttonType = {
 			name = "days_lower_limit_decrease"
-			position = { x=@INFRA_LOW y=@BTN_ROW6 }	
-			quadTextureSprite ="GFX_subtract_one"
+			position = { x=@BTN_DOWN y=@BTN_ROW4 }	
+			spriteType ="GFX_subtract_one"
 			clicksound = click_default
 			pdx_tooltip = "PRODUCTION_SUB_FACTORIES_CLICK"
 		}
 
 		iconType = {
 			name = "days_lower_limit_text_bg"
-			position = { x=@TXT_COL1 y=@BG_TXT_ROW2 }	
-			spriteType = "GFX_generic_text_bg_60"
+			position = { x=@BG_TXT_COL1 y=@BG_TXT_ROW3 }	
+			spriteType = "GFX_generic_text_bg_40"
 		}
 
 		instantTextboxType = {
 			name = "days_lower_limit"
-			position = { x = @TXT_COL1 y = @TXT_ROW2 }
+			position = { x = @TXT_COL1 y = @TXT_ROW3 }
 			textureFile = ""
 			font = "hoi_18b"
 			text = "[?days_lower_limit]"
@@ -202,30 +198,30 @@ guiTypes = {
 		}
 
 		buttonType = {
-			name = "days_upper_limit_increase"
-			position = { x=@INFRA_UP y=@BTN_ROW4 }	
-			quadTextureSprite ="GFX_add_one"
+			name = "days_lower_limit_increase"
+			position = { x=@BTN_UP y=@BTN_ROW4 }	
+			spriteType ="GFX_add_one"
 			clicksound = click_default
 			pdx_tooltip = "PRODUCTION_ADD_FACTORIES_CLICK"
 		}
 
 		buttonType = {
 			name = "days_upper_limit_decrease"
-			position = { x=@INFRA_UP y=@BTN_ROW6 }	
-			quadTextureSprite ="GFX_subtract_one"
+			position = { x=@BTN_DOWN y=@BTN_ROW5 }	
+			spriteType ="GFX_subtract_one"
 			clicksound = click_default
 			pdx_tooltip = "PRODUCTION_SUB_FACTORIES_CLICK"
 		}
 
 		iconType = {
 			name = "days_upper_limit_text_bg"
-			position = { x=@TXT_COL2 y=@BG_TXT_ROW2 }	
-			spriteType = "GFX_generic_text_bg_60"
+			position = { x=@BG_TXT_COL1 y=@BG_TXT_ROW4 }	
+			spriteType = "GFX_generic_text_bg_40"
 		}
 
 		instantTextboxType = {
 			name = "days_upper_limit"
-			position = { x = @TXT_COL2 y = @TXT_ROW2 }
+			position = { x = @TXT_COL1 y = @TXT_ROW4 }
 			textureFile = ""
 			font = "hoi_18b"
 			text = "[?days_upper_limit]"
@@ -234,10 +230,42 @@ guiTypes = {
 			format = center
 		}
 
+		buttonType = {
+			name = "days_upper_limit_increase"
+			position = { x=@BTN_UP y=@BTN_ROW5 }	
+			spriteType ="GFX_add_one"
+			clicksound = click_default
+			pdx_tooltip = "PRODUCTION_ADD_FACTORIES_CLICK"
+		}
+
+		###
+
+		buttonType = {
+			name = "macrobuilder_build"
+			position = { x=62 y=235 }
+			font = "hoi_16mbs"
+			buttontext = "Build"
+			spriteType = "GFX_sort_button_120x29"
+			clicksound = click_default
+			pdx_tooltip = "MACRO_BUILDER_BUTTON_TOOLTIP"
+			frame = 1
+		}
+
+		buttonType = {
+			name = "building_hint_button"
+			position = { x=62 y=269 }
+			font = "hoi_16mbs"
+			buttontext = "Hints"
+			spriteType = "GFX_sort_button_120x29"
+			clicksound = click_default
+			pdx_tooltip = "BUILDING_HINT_BUTTON_TOOLTIP"
+		}
+
 		iconType = {
-			name = "building_hint_icon"
-			position = { x=279 y=182 }	
-			spriteType = "GFX_building_hint_icon"
+			name = "help_icon"
+			position = { x=20 y=248 }	
+			spriteType = "GFX_autonomy_unknown_icon"
+			pdx_tooltip = "MACRO_BUILDER_HELP_TOOLTIP"
 		}
 	}
 }

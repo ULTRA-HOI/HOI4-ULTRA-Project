@@ -25,6 +25,12 @@ scripted_gui = {
 			building_hint_button = {
 				frame = hint_frame
 			}
+			infra_button = {
+				frame = infra_button_frame
+			}
+			construction_times_button = {
+				frame = construction_times_button_frame
+			}
 		}
 		effects = {
 			macrobuilder_build_click = {
@@ -83,6 +89,32 @@ scripted_gui = {
 					set_variable = { infra_frame = 8 }
 				}
 			}
+			infra_button_click = {
+				if = {
+					limit = {
+						OR = {
+							check_variable = { infra_button_frame = 1 }
+							NOT = { has_variable = infra_button_frame }
+						}
+					}
+					set_variable = { infra_button_frame = 2 } 
+				} else = {
+					set_variable = { infra_button_frame = 1 }
+				}
+			}
+			construction_times_button_click = {
+				if = {
+					limit = {
+						OR = {
+							check_variable = { construction_times_button_frame = 1 }
+							NOT = { has_variable = construction_times_button_frame }
+						}
+					}
+					set_variable = { construction_times_button_frame = 2 } 
+				} else = {
+					set_variable = { construction_times_button_frame = 1 }
+				}
+			}
 			infra_upper_limit_increase_click = {
 				add_to_variable = {
 					infra_upper_limit = 1
@@ -105,7 +137,12 @@ scripted_gui = {
 			}
 			building_hint_button_click = {
 				if = {
-					limit = { check_variable = { hint_frame = 1} }
+					limit = {
+						OR = {
+							check_variable = { hint_frame = 1 }
+							NOT = { has_variable = hint_frame }
+						}
+					}
 					set_variable = { hint_frame = 2 } 
 				} else = {
 					set_variable = { hint_frame = 1 }
@@ -179,6 +216,10 @@ scripted_gui = {
 					check_variable = { mic_frame = 6 }
 					check_variable = { nic_frame = 7 }
 					check_variable = { infra_frame = 8 }
+				}
+				OR = {
+					check_variable = { infra_button_frame = 2 }
+					check_variable = { construction_times_button_frame = 2 }
 				}
 			}
 			infra_upper_limit_increase_click_enabled = {
