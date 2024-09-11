@@ -2,7 +2,6 @@ defined_text = {
 	name = light_logistics_motorisation_level_display
 	text = {
 		trigger = {
-			always = yes
 			set_temp_variable = { display = light_logistics_motorisation_level }
 			multiply_temp_variable = { display = 20 }
 		}
@@ -14,7 +13,6 @@ defined_text = {
 	name = heavy_logistics_motorisation_level_display
 	text = {
 		trigger = {
-			always = yes
 			set_temp_variable = { display = heavy_logistics_motorisation_level }
 			multiply_temp_variable = { display = 20 }
 		}
@@ -26,7 +24,6 @@ defined_text = {
 	name = mot_logistics_motorisation_level_display
 	text = {
 		trigger = {
-			always = yes
 			set_temp_variable = { display = mot_logistics_motorisation_level }
 			multiply_temp_variable = { display = 20 }
 		}
@@ -38,11 +35,150 @@ defined_text = {
 	name = sup_logistics_motorisation_level_display
 	text = {
 		trigger = {
-			always = yes
 			set_temp_variable = { display = sup_logistics_motorisation_level }
 			multiply_temp_variable = { display = 20 }
 		}
 		localization_key = "[?display|0%%]"
+	}
+}
+
+defined_text = {
+	name = total_light_manpower_display
+	text = {
+		trigger = {
+			check_variable = {
+				total_light_manpower>1000000
+			}
+			set_temp_variable = { display = total_light_manpower }
+			divide_temp_variable = { display = 1000000 }
+		}
+		localization_key = "[?display|*1]M"
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				total_light_manpower>1000
+			}
+			set_temp_variable = { display = total_light_manpower }
+			divide_temp_variable = { display = 1000 }
+		}
+		localization_key = "[?display|*1]K"
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				total_light_manpower=0
+			}
+		}
+		localization_key = "0"
+	}
+	text = {
+		localization_key = "[?total_light_manpower|*1]"
+	}
+}
+
+defined_text = {
+	name = total_heavy_manpower_display
+	text = {
+		trigger = {
+			check_variable = {
+				total_heavy_manpower>1000000
+			}
+			set_temp_variable = { display = total_heavy_manpower }
+			divide_temp_variable = { display = 1000000 }
+		}
+		localization_key = "[?display|*1]M"
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				total_heavy_manpower>1000
+			}
+			set_temp_variable = { display = total_heavy_manpower }
+			divide_temp_variable = { display = 1000 }
+		}
+		localization_key = "[?display|*1]K"
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				total_heavy_manpower=0
+			}
+		}
+		localization_key = "0"
+	}
+	text = {
+		localization_key = "[?total_heavy_manpower|*1]"
+	}
+}
+
+defined_text = {
+	name = total_mot_manpower_display
+	text = {
+		trigger = {
+			check_variable = {
+				total_mot_manpower_k>1000000
+			}
+			set_temp_variable = { display = total_mot_manpower }
+			divide_temp_variable = { display = 1000000 }
+		}
+		localization_key = "[?display|*1]M"
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				total_mot_manpower>1000
+			}
+			set_temp_variable = { display = total_mot_manpower }
+			divide_temp_variable = { display = 1000 }
+		}
+		localization_key = "[?display|*1]K"
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				total_mot_manpower=0
+			}
+		}
+		localization_key = "0"
+	}
+	text = {
+		localization_key = "[?total_mot_manpower|*1]"
+	}
+}
+
+defined_text = {
+	name = total_support_manpower_display
+	text = {
+		trigger = {
+			check_variable = {
+				total_support_manpower>1000000
+			}
+			set_temp_variable = { display = total_support_manpower }
+			divide_temp_variable = { display = 1000000 }
+		}
+		localization_key = "[?display|*1]M"
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				total_support_manpower>1000
+			}
+			set_temp_variable = { display = total_support_manpower }
+			divide_temp_variable = { display = 1000 }
+		}
+		localization_key = "[?display|*1]K"
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				total_support_manpower=0
+			}
+		}
+		localization_key = "0"
+	}
+	text = {
+		localization_key = "[?total_support_manpower|*1]"
 	}
 }
 
@@ -64,10 +200,10 @@ defined_text = {
 			command_power > @CP_TRIGGER
 			check_variable = { light_logistics_motorisation_level < @MAX_LEVEL }
 		}
-		localization_key = "CP_COST_15"
+		localization_key = "LIGHT_INCREASE_CP_COST_15"
 	}
 	text = {
-		localization_key = "CP_COST_15_MISSING"
+		localization_key = "LIGHT_INCREASE_CP_COST_15_MISSING"
 	}
 }
 
@@ -84,10 +220,10 @@ defined_text = {
 			command_power > @CP_TRIGGER
 			check_variable = { light_logistics_motorisation_level > @MIN_LEVEL }
 		}
-		localization_key = "CP_COST_15"
+		localization_key = "LIGHT_DECREASE_CP_COST_15"
 	}
 	text = {
-		localization_key = "CP_COST_15_MISSING"
+		localization_key = "LIGHT_DECREASE_CP_COST_15_MISSING"
 	}
 }
 
@@ -105,10 +241,10 @@ defined_text = {
 			command_power > @CP_TRIGGER
 			check_variable = { heavy_logistics_motorisation_level < @MAX_LEVEL }
 		}
-		localization_key = "CP_COST_15"
+		localization_key = "HEAVY_INCREASE_CP_COST_15"
 	}
 	text = {
-		localization_key = "CP_COST_15_MISSING"
+		localization_key = "HEAVY_INCREASE_CP_COST_15_MISSING"
 	}
 }
 
@@ -125,10 +261,10 @@ defined_text = {
 			command_power > @CP_TRIGGER
 			check_variable = { heavy_logistics_motorisation_level > @MIN_LEVEL }
 		}
-		localization_key = "CP_COST_15"
+		localization_key = "HEAVY_DECREASE_CP_COST_15"
 	}
 	text = {
-		localization_key = "CP_COST_15_MISSING"
+		localization_key = "HEAVY_DECREASE_CP_COST_15_MISSING"
 	}
 }
 
@@ -145,10 +281,10 @@ defined_text = {
 			command_power > @CP_TRIGGER
 			check_variable = { mot_logistics_motorisation_level < @MAX_LEVEL }
 		}
-		localization_key = "CP_COST_15"
+		localization_key = "MOT_INCREASE_CP_COST_15"
 	}
 	text = {
-		localization_key = "CP_COST_15_MISSING"
+		localization_key = "MOT_INCREASE_CP_COST_15_MISSING"
 	}
 }
 
@@ -165,10 +301,10 @@ defined_text = {
 			command_power > @CP_TRIGGER
 			check_variable = { mot_logistics_motorisation_level > @MIN_LEVEL }
 		}
-		localization_key = "CP_COST_15"
+		localization_key = "MOT_DECREASE_CP_COST_15"
 	}
 	text = {
-		localization_key = "CP_COST_15_MISSING"
+		localization_key = "MOT_DECREASE_CP_COST_15_MISSING"
 	}
 }
 
@@ -185,10 +321,10 @@ defined_text = {
 			command_power > @CP_TRIGGER
 			check_variable = { sup_logistics_motorisation_level < @MAX_LEVEL }
 		}
-		localization_key = "CP_COST_15"
+		localization_key = "SUP_INCREASE_CP_COST_15"
 	}
 	text = {
-		localization_key = "CP_COST_15_MISSING"
+		localization_key = "SUP_INCREASE_CP_COST_15_MISSING"
 	}
 }
 
@@ -205,9 +341,11 @@ defined_text = {
 			command_power > @CP_TRIGGER
 			check_variable = { sup_logistics_motorisation_level > @MIN_LEVEL }
 		}
-		localization_key = "CP_COST_15"
+		localization_key = "SUP_DECREASE_CP_COST_15"
 	}
 	text = {
-		localization_key = "CP_COST_15_MISSING"
+		localization_key = "SUP_DECREASE_CP_COST_15_MISSING"
 	}
 }
+
+
