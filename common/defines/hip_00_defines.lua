@@ -1574,9 +1574,9 @@ NNavy = {
 	XP_GAIN_FACTOR = 1.0,	   			   							-- xp gain factor for navy
 
 	NAVAL_TRANSFER_DAMAGE_REDUCTION = 0.25,							-- its hard to specifically balance 1-tick naval strikes vs unit transports so here is a factor for it
-	CARRIER_ONLY_COMBAT_ACTIVATE_TIME = 2, --was 0 --hours from start of combat when carriers get to fight
-	CAPITAL_ONLY_COMBAT_ACTIVATE_TIME = 2, --was 6 --hours from start of combat when only carriers, capitals and subs get to attack
-	ALL_SHIPS_ACTIVATE_TIME = 36, --was 8 --hours where all get to attack
+	CARRIER_ONLY_COMBAT_ACTIVATE_TIME = 0, --was 0 --hours from start of combat when carriers get to fight
+	CAPITAL_ONLY_COMBAT_ACTIVATE_TIME = 1, --was 6 --hours from start of combat when only carriers, capitals and subs get to attack
+	ALL_SHIPS_ACTIVATE_TIME = 4, --was 8 --hours where all get to attack
 
 	MINIMUM_SHIP_SPEED = 1.0,										-- slowest speed a ship can have
 
@@ -1915,7 +1915,7 @@ NNavy = {
 	DEPTH_CHARGES_DAMAGE_MULT 										= 1, --was 0.7 --multiplies damage of depth charges
 	DEPTH_CHARGES_HIT_PROFILE 										= 160.0, --was 100.0 --hit profile for depth charges
 
-	CONVOY_HIT_PROFILE												= 500.0,  	-- convoys has this contant hit profile
+	CONVOY_HIT_PROFILE												= 140.0,  	-- convoys has this contant hit profile
 	HIT_PROFILE_MULT 												= 100.0,  	-- multiplies hit profile of every ship
 	HIT_PROFILE_SPEED_FACTOR										= 1.2, --was 0.5 --factors speed value when determining it profile (Vis * HIT_PROFILE_MULT * Ship Hit Profile Mult)
 	HIT_PROFILE_SPEED_BASE											= 5, --was 20 --Base value added to hitprofile speed calulation
