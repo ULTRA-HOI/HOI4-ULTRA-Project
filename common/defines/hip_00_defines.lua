@@ -1505,8 +1505,8 @@ NNavy = {
 	COMBAT_DETECTED_CONVOYS_FROM_SURFACE_DETECTION_STAT = 4.0, --was 0.1 --Each 1.0 of surface_detection that ship has (equipment stat), gives x% of convoys discovered from total travelling along the route.
 	COMBAT_BASE_CRITICAL_CHANCE = 0.025, --was 0.05 --Base chance for receiving a critical chance. It get's scaled down with ship reliability.
 	COMBAT_CRITICAL_DAMAGE_MULT = 5.0, --was 5.0 --Multiplier for the critical damage. Scaled down with the ship reliability.
-	COMBAT_ARMOR_PIERCING_CRITICAL_BONUS = 2.0, --was 1.0 --Bonus to critical chance when shooter armor piercing is higher then target armor.
-	COMBAT_ARMOR_PIERCING_DAMAGE_REDUCTION = -0.95, --was -0.9 --All damage reduction % when target armor is >= then shooter armor piercing.
+	COMBAT_ARMOR_PIERCING_CRITICAL_BONUS = 2.0, --was 1.0 --Bonus to critical chance when shooter armor piercing is higher then target armor. #Deprecated
+	COMBAT_ARMOR_PIERCING_DAMAGE_REDUCTION = -0.95, --was -0.9 --All damage reduction % when target armor is >= then shooter armor piercing. #Deprecated
 	REPAIR_AND_RETURN_PRIO_LOW = 0.5, --was 0.2 --% of total Strength. When below, navy will go to home base to repair.
 	REPAIR_AND_RETURN_PRIO_MEDIUM = 0.7, --was 0.5 --% of total Strength. When below, navy will go to home base to repair.
 	REPAIR_AND_RETURN_PRIO_HIGH = 0.9, --was 0.9 --% of total Strength. When below, navy will go to home base to repair.
