@@ -3347,8 +3347,8 @@ NOperatives = {
 	-- first number in every now is number of operatives gained
 	-- second number is total factory needed (mil and civ) for giving previous ratio
 	OPERATIVE_SLOTS_FROM_FACTION_MEMBERS_FOR_SPY_MASTER = {
-		0.0, 	0.0, 		-- 0 operative for [0, 100)
-		0.25,  	100.0, 		-- 0.25 operative for [100, 250)
+		0.0, 	0.0, 		-- 0 operative for [0, 75)
+		0.25,  	75.0, 		-- 0.25 operative for [75, 250)
 		0.5,  	250.0, 		-- 0.5 operative for [250, 500)
 		0.75, 	500.0, 		-- 0.75 operative for [500, 1000)
 		0.1, 	1000.0, 	-- 0.1 operative for >= 1000
@@ -3402,7 +3402,7 @@ NOperatives = {
 	OPERATIVE_MIN_DAYS_FORCED_INTO_HIDING = 7,				-- Minimum number of days an operative can be forced into hiding. Applied after modifiers. Can be zero.
 	OPERATIVE_MAX_DAYS_FORCED_INTO_HIDING = 120,				-- Maximum number of days an operative can be forced into hiding. Applied after modifiers. Is ignored if negative
 	OPERATIVE_MAX_DAYS_TO_AUTO_RESUME_MISSION = 30,				-- Maximum number of days an operative has to be disabled before its mission is not automatically resumed once he is available again
-	MAX_RECRUITED_OPERATIVES = 10,
+	MAX_RECRUITED_OPERATIVES = 12,
 
 	CRYPTO_BASE_CRYPTO_LEVEL = 12000,						-- base crypto strength for a country
 	CRYPTO_CRYPTO_LEVEL_PER_CRYPTO_UPGRADE = 4250,			-- crypto strength per crypto upgrade
