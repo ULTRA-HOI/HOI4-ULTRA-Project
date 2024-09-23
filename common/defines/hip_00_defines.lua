@@ -533,7 +533,7 @@ NResistance = {
 	COMPLIANCE_GROWTH_MAX = 100.0, -- max compliance grow
 
 	COMPLIANCE_GROWTH_IS_AT_PEACE = 10, -- compliance growth buff at peace
-	COMPLIANCE_GROWTH_HAS_CLAIM = 10, --was 5 --compliance growth buff if state has a claim
+	COMPLIANCE_GROWTH_HAS_CLAIM = 20, --was 5 --compliance growth buff if state has a claim
 
 	COMPLIANCE_DECAY_AT_MAX_COMPLIANCE = -0.022, --was -0.083 --as compliance increases, it gets a decay rate depending on its value. compliance should stabilize at some value until its growth changes
 	COMPLIANCE_DECAY_PER_EXILE_LEGITIMACY = -0.006, --was -0.015 --higher legitimacy will give higher decay to compliance
