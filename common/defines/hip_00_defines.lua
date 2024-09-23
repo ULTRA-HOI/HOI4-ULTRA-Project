@@ -3347,10 +3347,11 @@ NOperatives = {
 	-- first number in every now is number of operatives gained
 	-- second number is total factory needed (mil and civ) for giving previous ratio
 	OPERATIVE_SLOTS_FROM_FACTION_MEMBERS_FOR_SPY_MASTER = {
-	0.0, 	0.0, 		-- 0 operative for [0, 100)
-	0.25,  	100.0, 		-- 0.25 operative for [100, 500)
-	0.5, 	500.0, 		-- 0.5 operative for [500, 1000)
-	0.75, 	1000.0, 	-- 0.75 operative for >= 1000
+		0.0, 	0.0, 		-- 0 operative for [0, 100)
+		0.25,  	100.0, 		-- 0.25 operative for [100, 250)
+		0.5,  	250.0, 		-- 0.5 operative for [250, 500)
+		0.75, 	500.0, 		-- 0.75 operative for [500, 1000)
+		0.1, 	1000.0, 	-- 0.1 operative for >= 1000
 	},
 
 	INTEL_NETWORK_STATE_MODIFIER_STRENGTH_THRESHOLD = 10,			-- Minimum amount of strength required in a state for the intel network related modifiers to start being applied
