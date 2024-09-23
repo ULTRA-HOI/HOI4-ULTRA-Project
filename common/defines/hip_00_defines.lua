@@ -3351,7 +3351,7 @@ NOperatives = {
 		0.25,  	75.0, 		-- 0.25 operative for [75, 250)
 		0.5,  	250.0, 		-- 0.5 operative for [250, 500)
 		0.75, 	500.0, 		-- 0.75 operative for [500, 1000)
-		0.1, 	1000.0, 	-- 0.1 operative for >= 1000
+		1.0, 	1000.0, 	-- 1.0 operative for >= 1000
 	},
 
 	INTEL_NETWORK_STATE_MODIFIER_STRENGTH_THRESHOLD = 10,			-- Minimum amount of strength required in a state for the intel network related modifiers to start being applied
