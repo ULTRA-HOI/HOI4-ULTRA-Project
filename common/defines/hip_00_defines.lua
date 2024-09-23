@@ -488,7 +488,7 @@ NResistance = {
 	RESISTANCE_TARGET_MODIFIER_HAS_CLAIM = -10.0, --was -5.0 --resistance target modifier in % for states we have claim
 
 	RESISTANCE_TARGET_MODIFIER_PER_STABILITY_LOSS = 0.2,	-- resistance target modifier per stability below 100%
-	RESISTANCE_TARGET_MODIFIER_PER_COMPLIANCE = -0.5,		-- resistance target modifier per compliance %
+	RESISTANCE_TARGET_MODIFIER_PER_COMPLIANCE = -0.75,		-- resistance target modifier per compliance %
 
 	RESISTANCE_TARGET_MODIFIER_IS_AT_PEACE = -10.0,			-- resistance target modifier when we are at peace
 
