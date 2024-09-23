@@ -3410,7 +3410,7 @@ NOperatives = {
 	CYRPTO_ACTIVE_BONUS_ACTIVATION_PROGRESS_RATIO = 0.5,	-- once bonus is activated, decryption progress will be reduced to this ratio
 
 	OPERATION_AI_MINIMUM_SCORE = 10.0,						-- Once an operation's AI weight falls below the minimum score it will be scrapped if it is being prepared
-	OPERATION_COMPLETION_XP = 18,
+	OPERATION_COMPLETION_XP = 50,
 
 	OPERATIVE_CAPTURE_DURATION_IN_DAYS = 9*30,
 
