@@ -2512,4 +2512,130 @@ infantry_templates = {
 			}
 		}
 	}
+	
+	jap_template_1 = {
+		icon = generic_industry
+	
+		allowed = {
+			original_tag = JAP
+		}
+		
+		visible = {
+			NOT = {
+				has_country_flag = inf_templates_hidden
+			}
+		}
+		
+		available = {
+			if = {
+				limit = { is_ai = no }
+				has_tech = infantry_guns_impr_bolt_action
+				has_tech = infantry_guns_impr_lmg
+			} else = {
+				date > 1941.1.1
+			}
+		}
+
+		cost = 0
+		fire_only_once = yes
+		
+		ai_will_do = {
+			base = 100
+		}
+		
+		complete_effect = {
+			create_equipment_variant = {
+				name = "Rifle Squad '41"
+				type = infantry_squad_0
+				parent_version = 0
+				show_position = no
+				modules = {
+					leader_slot = squad_leader_japan
+					nco_slot = nco_imp_bolt_action
+					man_1_slot = infantry_impr_bolt_action
+					man_2_slot = infantry_impr_bolt_action
+					man_3_slot = infantry_impr_bolt_action
+					man_4_slot = infantry_impr_bolt_action
+					man_5_slot = infantry_impr_bolt_action
+					man_6_slot = infantry_impr_bolt_action
+					man_7_slot = infantry_impr_bolt_action
+					man_8_slot = infantry_impr_bolt_action
+					man_9_slot = infantry_impr_bolt_action
+					man_10_slot = infantry_impr_bolt_action
+					man_11_slot = infantry_impr_bolt_action_dm
+					man_12_slot = infantry_impr_lmg
+					grenade_slot = infantry_grenades_many
+					signal_slot = infantry_signal_1
+					uniform_slot = infantry_uniform_1
+					at_slot = empty
+				}
+			}
+			hidden_effect = {
+				if = { limit = { NOT = { has_tech = infantry_guns_impr_bolt_action } } set_technology = { infantry_guns_impr_bolt_action = 1 popup = no } }
+				if = { limit = { NOT = { has_tech = infantry_guns_impr_lmg } } set_technology = { infantry_guns_impr_lmg = 1 popup = no } }
+			}
+		}
+	}
+	
+	fra_template_1 = {
+		icon = generic_industry
+	
+		allowed = {
+			original_tag = FRA
+		}
+		
+		visible = {
+			NOT = {
+				has_country_flag = inf_templates_hidden
+			}
+		}
+		
+		available = {
+			if = {
+				limit = { is_ai = no }
+				has_tech = infantry_guns_impr_bolt_action
+			} else = {
+				date > 1940.1.1
+			}
+		}
+
+		cost = 0
+		fire_only_once = yes
+		
+		ai_will_do = {
+			base = 100
+		}
+		
+		complete_effect = {
+			create_equipment_variant = {
+				name = "Rifle Squad '40"
+				type = infantry_squad_0
+				parent_version = 0
+				show_position = no
+				modules = {
+					leader_slot = squad_leader_imp_bolt_action
+					nco_slot = nco_imp_bolt_action
+					man_1_slot = infantry_impr_bolt_action
+					man_2_slot = infantry_impr_bolt_action
+					man_3_slot = infantry_impr_bolt_action
+					man_4_slot = infantry_impr_bolt_action
+					man_5_slot = infantry_impr_bolt_action
+					man_6_slot = infantry_impr_bolt_action
+					man_7_slot = infantry_impr_bolt_action
+					man_8_slot = infantry_impr_bolt_action
+					man_9_slot = infantry_impr_bolt_action
+					man_10_slot = infantry_impr_bolt_action
+					man_11_slot = infantry_lmg
+					man_12_slot = empty
+					grenade_slot = infantry_grenades_many
+					signal_slot = infantry_signal_1
+					uniform_slot = infantry_uniform_1
+					at_slot = empty
+				}
+			}
+			hidden_effect = {
+				if = { limit = { NOT = { has_tech = infantry_guns_impr_bolt_action } } set_technology = { infantry_guns_impr_bolt_action = 1 popup = no } }
+			}
+		}
+	}
 }
