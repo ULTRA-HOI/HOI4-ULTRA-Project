@@ -12,788 +12,434 @@
 @rubber_refinery_cost_oil = 1
 
 rp_close_steel_mills = {
-    set_temp_variable = { num_to_close_iron = resource@iron }
-    set_temp_variable = { num_to_close_coal = resource@coal }
-    set_temp_variable = { num_to_close_tungsten = resource@tungsten }
-    divide_temp_variable = { num_to_close_iron = @steel_refinery_cost_iron }
-    divide_temp_variable = { num_to_close_coal = @steel_refinery_cost_coal }
-    divide_temp_variable = { num_to_close_tungsten = @steel_refinery_cost_tungsten }
-    multiply_temp_variable = { num_to_close_iron = -1 }
-    multiply_temp_variable = { num_to_close_coal = -1 }
-    multiply_temp_variable = { num_to_close_tungsten = -1 }
-    set_temp_variable = { num_to_close_final = 0 }
-    set_temp_variable = { total_steel_refineries = 0 }
-    
-    hidden_effect = {
-        every_controlled_state = {
-            limit = { steel_refinery > 0 }
-            add_to_temp_variable = { PREV.total_steel_refineries = building_level@steel_refinery }
-        }
-    }
-    if = {
-        limit = {
-            check_variable = { var = num_to_close_iron value = num_to_close_coal compare = greater_than_or_equals }
-            check_variable = { var = num_to_close_iron value = num_to_close_tungsten compare = greater_than_or_equals }
-        }
-        set_temp_variable = { num_to_close_final = num_to_close_iron }
-    }
-    if = {
-        limit = {
-            check_variable = { var = num_to_close_coal value = num_to_close_iron compare = greater_than_or_equals }
-            check_variable = { var = num_to_close_coal value = num_to_close_tungsten compare = greater_than_or_equals }
-        }
-        set_temp_variable = { num_to_close_final = num_to_close_coal }
-    }
-    if = {
-        limit = {
-            check_variable = { var = num_to_close_tungsten value = num_to_close_iron compare = greater_than_or_equals }
-            check_variable = { var = num_to_close_tungsten value = num_to_close_coal compare = greater_than_or_equals }
-        }
-        set_temp_variable = { num_to_close_final = num_to_close_tungsten }
-    }
-    clamp_temp_variable = {
-        var = num_to_close_final
-        min = 1
-        max = total_steel_refineries
-    }
-    hidden_effect = {
-        every_controlled_state = {# first add noncores
-            limit = {
-                steel_refinery > 0
-                NOT = { is_core_of = PREV }
-            }
-            add_to_temp_array = { close_candidates = THIS }
-        }
-        every_controlled_state = {
-            limit = {
-                steel_refinery > 0
-                is_core_of = PREV
-            }
-            add_to_temp_array = { close_candidates = THIS }
-        }
-    }
-    for_each_loop = {
-        array = close_candidates
-        var:v = {
-            close_steel_mills = yes
-        }
-    }
-}
+    # How many need to be closed. Cannot simply use resource@, need to add resource_produced and resource_imported due to how engine and our refineries/mills work
+    set_temp_variable = { num_to_swap_iron = resource_produced@iron }
+    set_temp_variable = { num_to_swap_coal = resource_produced@coal }
+    set_temp_variable = { num_to_swap_tungsten = resource_produced@tungsten }
+    add_to_temp_variable = { num_to_swap_iron = resource_imported@iron }
+    add_to_temp_variable = { num_to_swap_coal = resource_imported@coal }
+    add_to_temp_variable = { num_to_swap_tungsten = resource_imported@tungsten }
 
-close_steel_mills = {
+    divide_temp_variable = { num_to_swap_iron = @steel_refinery_cost_iron }
+    divide_temp_variable = { num_to_swap_coal = @steel_refinery_cost_coal }
+    divide_temp_variable = { num_to_swap_tungsten = @steel_refinery_cost_tungsten }
+    multiply_temp_variable = { num_to_swap_iron = -1 }
+    multiply_temp_variable = { num_to_swap_coal = -1 }
+    multiply_temp_variable = { num_to_swap_tungsten = -1 }
+
+    # round up
+	add_to_temp_variable = { num_to_swap_iron = 0.5 }
+	add_to_temp_variable = { num_to_swap_coal = 0.5 }
+	add_to_temp_variable = { num_to_swap_tungsten = 0.5 }
+	round_temp_variable = num_to_swap_iron
+	round_temp_variable = num_to_swap_coal
+	round_temp_variable = num_to_swap_tungsten
+
+    set_temp_variable = { num_to_swap = 0 }
+    
     if = {
         limit = {
-            check_variable = {
-                var = building_level@steel_refinery
-                value = num_to_close_final
-                compare = greater_than_or_equals
-            }
+            check_variable = { var = num_to_swap_iron value = num_to_swap_coal compare = greater_than_or_equals }
+            check_variable = { var = num_to_swap_iron value = num_to_swap_tungsten compare = greater_than_or_equals }
         }
-        remove_building = {
-            type = steel_refinery
-            level = var:num_to_close_final
-        }
-        add_building_construction = {
-            type = steel_refinery_inactive
-            level = var:num_to_close_final
-            instant_build = yes    
-        }
-        subtract_from_temp_variable = { num_to_close_final = num_to_close_final }
-        set_temp_variable = { break = 1 }
+        set_temp_variable = { num_to_swap = num_to_swap_iron }
     }
-    else_if = {
+    if = {
         limit = {
-            check_variable = {
-                var = building_level@steel_refinery
-                value = num_to_close_final
-                compare = less_than
-            }
+            check_variable = { var = num_to_swap_coal value = num_to_swap_iron compare = greater_than_or_equals }
+            check_variable = { var = num_to_swap_coal value = num_to_swap_tungsten compare = greater_than_or_equals }
         }
-        subtract_from_temp_variable = { num_to_close_final = building_level@steel_refinery }
-        add_building_construction = {
-            type = steel_refinery_inactive
-            level = var:building_level@steel_refinery
-            instant_build = yes    
-        }
-        remove_building = {
-            type = steel_refinery
-            level = var:building_level@steel_refinery
-        }
+        set_temp_variable = { num_to_swap = num_to_swap_coal }
     }
+    if = {
+        limit = {
+            check_variable = { var = num_to_swap_tungsten value = num_to_swap_iron compare = greater_than_or_equals }
+            check_variable = { var = num_to_swap_tungsten value = num_to_swap_coal compare = greater_than_or_equals }
+        }
+        set_temp_variable = { num_to_swap = num_to_swap_tungsten }
+    }
+    set_temp_variable = { building_to_add = token:steel_refinery_inactive }
+    set_temp_variable = { building_to_remove = token:steel_refinery }
+    close_buildings = yes
 }
 
 rp_close_aluminium_mills = {
-    # How many need to be closed
-	set_temp_variable = { num_to_close_bauxite = resource@bauxite }
-	set_temp_variable = { num_to_close_coal = resource@coal }
+    # How many need to be closed. Cannot simply use resource@, need to add resource_produced and resource_imported due to how engine and our refineries/mills work
+	set_temp_variable = { num_to_swap_bauxite = resource_produced@bauxite }
+	set_temp_variable = { num_to_swap_coal = resource_produced@coal }
+	add_to_temp_variable = { num_to_swap_bauxite = resource_imported@bauxite }
+	add_to_temp_variable = { num_to_swap_coal = resource_imported@coal }
 
-	divide_temp_variable = { num_to_close_bauxite = @aluminium_refinery_cost_bauxite }
-	divide_temp_variable = { num_to_close_coal = @aluminium_refinery_cost_coal }
-    multiply_temp_variable = { num_to_close_bauxite = -1 }
-    multiply_temp_variable = { num_to_close_coal = -1 }
-    set_temp_variable = { num_to_close_final = 0 }
-    set_temp_variable = { total_aluminium_refineries = 0 }
+	divide_temp_variable = { num_to_swap_bauxite = @aluminium_refinery_cost_bauxite }
+	divide_temp_variable = { num_to_swap_coal = @aluminium_refinery_cost_coal }
+    multiply_temp_variable = { num_to_swap_bauxite = -1 }
+    multiply_temp_variable = { num_to_swap_coal = -1 }
 
-    hidden_effect = {
-        every_controlled_state = {
-            limit = { aluminium_refinery > 0 }
-            add_to_temp_variable = { PREV.total_aluminium_refineries = building_level@aluminium_refinery }
-        }
-    }
+    # round up
+	add_to_temp_variable = { num_to_swap_bauxite = 0.5 }
+	add_to_temp_variable = { num_to_swap_coal = 0.5 }
+	round_temp_variable = num_to_swap_bauxite
+	round_temp_variable = num_to_swap_coal
+
+    set_temp_variable = { num_to_swap = 0 }
 
     if = {
         limit = {
-            check_variable = { var = num_to_close_bauxite value = num_to_close_coal compare = greater_than_or_equals }
+            check_variable = { var = num_to_swap_bauxite value = num_to_swap_coal compare = greater_than_or_equals }
         }
-        set_temp_variable = { num_to_close_final = num_to_close_bauxite }
+        set_temp_variable = { num_to_swap = num_to_swap_bauxite }
     }
     if = {
         limit = {
-            check_variable = { var = num_to_close_coal value = num_to_close_bauxite compare = greater_than_or_equals }
+            check_variable = { var = num_to_swap_coal value = num_to_swap_bauxite compare = greater_than_or_equals }
         }
-        set_temp_variable = { num_to_close_final = num_to_close_coal }
+        set_temp_variable = { num_to_swap = num_to_swap_coal }
     }
-    clamp_temp_variable = {
-        var = num_to_close_final
-        min = 1
-        max = total_aluminium_refineries
-    }
-    hidden_effect = {
-        every_controlled_state = {# first add noncores
-            limit = {
-                aluminium_refinery > 0
-                NOT = { is_core_of = PREV }
-            }
-            add_to_temp_array = { close_candidates = THIS }
-        }
-        every_controlled_state = {
-            limit = {
-                aluminium_refinery > 0
-                is_core_of = PREV
-            }
-            add_to_temp_array = { close_candidates = THIS }
-        }
-    }
-    for_each_loop = {
-        array = close_candidates
-        var:v = {
-            close_aluminium_mills = yes
-        }
-    }
-}
-
-close_aluminium_mills = {
-    if = {
-        limit = {
-            check_variable = {
-                var = building_level@aluminium_refinery
-                value = num_to_close_final
-                compare = greater_than_or_equals
-            }
-        }
-        remove_building = {
-            type = aluminium_refinery
-            level = var:num_to_close_final
-        }
-        add_building_construction = {
-            type = aluminium_refinery_inactive
-            level = var:num_to_close_final
-            instant_build = yes    
-        }
-        subtract_from_temp_variable = { num_to_close_final = num_to_close_final }
-        set_temp_variable = { break = 1 }
-    }
-    else_if = {
-        limit = {
-            check_variable = {
-                var = building_level@aluminium_refinery
-                value = num_to_close_final
-                compare = less_than
-            }
-        }
-        subtract_from_temp_variable = { num_to_close_final = building_level@aluminium_refinery }
-        add_building_construction = {
-            type = aluminium_refinery_inactive
-            level = var:building_level@aluminium_refinery
-            instant_build = yes    
-        }
-        remove_building = {
-            type = aluminium_refinery
-            level = var:building_level@aluminium_refinery
-        }
-    }
+    set_temp_variable = { building_to_add = token:aluminium_refinery_inactive }
+    set_temp_variable = { building_to_remove = token:aluminium_refinery }
+    close_buildings = yes
 }
 
 rp_close_synthetic_refineries = {
-    # How many need to be closed
-	set_temp_variable = { num_to_close_final = resource@coal }
+    # How many need to be closed. Cannot simply use resource@, need to add resource_produced and resource_imported due to how engine and our refineries/mills work
+	set_temp_variable = { num_to_swap_coal = resource_produced@coal }
+	add_to_temp_variable = { num_to_swap_coal = resource_imported@coal }
 
-	divide_temp_variable = { num_to_close_final = @synthetic_refinery_cost_coal }
-    multiply_temp_variable = { num_to_close_final = -1 }
-    set_temp_variable = { total_synthetic_refineries = 0 }
+	divide_temp_variable = { num_to_swap_coal = @synthetic_refinery_cost_coal }
+    multiply_temp_variable = { num_to_swap_coal = -1 }
 
-    hidden_effect = {
-        every_controlled_state = {
-            limit = { synthetic_refinery > 0 }
-            add_to_temp_variable = { PREV.total_synthetic_refineries = building_level@synthetic_refinery }
-        }
-    }
+    # round up
+	add_to_temp_variable = { num_to_swap_coal = 0.5 }
+	round_temp_variable = num_to_swap_coal
 
-    clamp_temp_variable = {
-        var = num_to_close_final
-        min = 1
-        max = total_synthetic_refineries
-    }
-    hidden_effect = {
-        every_controlled_state = {# first add noncores
-            limit = {
-                synthetic_refinery > 0
-                NOT = { is_core_of = PREV }
-            }
-            add_to_temp_array = { close_candidates = THIS }
-        }
-        every_controlled_state = {
-            limit = {
-                synthetic_refinery > 0
-                is_core_of = PREV
-            }
-            add_to_temp_array = { close_candidates = THIS }
-        }
-    }
-    for_each_loop = {
-        array = close_candidates
-        var:v = {
-            close_synthetic_refineries = yes
-        }
-    }
+    set_temp_variable = { num_to_swap = num_to_swap_coal }
+
+    set_temp_variable = { building_to_add = token:synthetic_refinery_inactive }
+    set_temp_variable = { building_to_remove = token:synthetic_refinery }
+    close_buildings = yes
 }
 
-close_synthetic_refineries = {
-    if = {
-        limit = {
-            check_variable = {
-                var = building_level@synthetic_refinery
-                value = num_to_close_final
-                compare = greater_than_or_equals
-            }
-        }
-        remove_building = {
-            type = synthetic_refinery
-            level = var:num_to_close_final
-        }
-        add_building_construction = {
-            type = synthetic_refinery_inactive
-            level = var:num_to_close_final
-            instant_build = yes    
-        }
-        subtract_from_temp_variable = { num_to_close_final = num_to_close_final }
-        set_temp_variable = { break = 1 }
-    }
-    else_if = {
-        limit = {
-            check_variable = {
-                var = building_level@synthetic_refinery
-                value = num_to_close_final
-                compare = less_than
-            }
-        }
-        subtract_from_temp_variable = { num_to_close_final = building_level@synthetic_refinery }
-        add_building_construction = {
-            type = synthetic_refinery_inactive
-            level = var:building_level@aluminium_refinery
-            instant_build = yes    
-        }
-        remove_building = {
-            type = synthetic_refinery
-            level = var:building_level@synthetic_refinery
-        }
-    }
-}
 
 
 rp_close_synthetic_rubber_refineries = {
-    # How many need to be closed
-	set_temp_variable = { num_to_close_oil = resource@oil }
-	set_temp_variable = { num_to_close_coal = resource@coal }
+    # How many need to be closed. Cannot simply use resource@, need to add resource_produced and resource_imported due to how engine and our refineries/mills work
+	set_temp_variable = { num_to_swap_oil = resource_produced@oil }
+	set_temp_variable = { num_to_swap_coal = resource_produced@coal }
+	add_to_temp_variable = { num_to_swap_oil = resource_imported@oil }
+	add_to_temp_variable = { num_to_swap_coal = resource_imported@coal }
 
-	divide_temp_variable = { num_to_close_oil = @rubber_refinery_cost_oil }
-	divide_temp_variable = { num_to_close_coal = @rubber_refinery_cost_coal }
-    multiply_temp_variable = { num_to_close_oil = -1 }
-    multiply_temp_variable = { num_to_close_coal = -1 }
-    set_temp_variable = { num_to_close_final = 0 }
-    set_temp_variable = { total_synthetic_rubber_refineries = 0 }
+	divide_temp_variable = { num_to_swap_oil = @rubber_refinery_cost_oil }
+	divide_temp_variable = { num_to_swap_coal = @rubber_refinery_cost_coal }
+    multiply_temp_variable = { num_to_swap_oil = -1 }
+    multiply_temp_variable = { num_to_swap_coal = -1 }
 
-    hidden_effect = {
-        every_controlled_state = {
-            limit = { synthetic_rubber_refinery > 0 }
-            add_to_temp_variable = { PREV.total_synthetic_rubber_refineries = building_level@synthetic_rubber_refinery }
-        }
-    }
+    # round up
+	add_to_temp_variable = { num_to_swap_oil = 0.5 }
+	add_to_temp_variable = { num_to_swap_coal = 0.5 }
+	round_temp_variable = num_to_swap_oil
+	round_temp_variable = num_to_swap_coal
+
+    set_temp_variable = { num_to_swap = 0 }
 
     if = {
         limit = {
-            check_variable = { var = num_to_close_oil value = num_to_close_coal compare = greater_than_or_equals }
+            check_variable = { var = num_to_swap_oil value = num_to_swap_coal compare = greater_than_or_equals }
         }
-        set_temp_variable = { num_to_close_final = num_to_close_oil }
+        set_temp_variable = { num_to_swap = num_to_swap_oil }
     }
     if = {
         limit = {
-            check_variable = { var = num_to_close_coal value = num_to_close_oil compare = greater_than_or_equals}
+            check_variable = { var = num_to_swap_coal value = num_to_swap_oil compare = greater_than_or_equals}
         }
-        set_temp_variable = { num_to_close_final = num_to_close_coal }
+        set_temp_variable = { num_to_swap = num_to_swap_coal }
     }
-    clamp_temp_variable = {
-        var = num_to_close_final
-        min = 1
-        max = total_synthetic_rubber_refineries
-    }
-    hidden_effect = {
-        every_controlled_state = {# first add noncores
-            limit = {
-                synthetic_rubber_refinery > 0
-                NOT = { is_core_of = PREV }
-            }
-            add_to_temp_array = { close_candidates = THIS }
-        }
-        every_controlled_state = {
-            limit = {
-                synthetic_rubber_refinery > 0
-                is_core_of = PREV
-            }
-            add_to_temp_array = { close_candidates = THIS }
-        }
-    }
-    for_each_loop = {
-        array = close_candidates
-        var:v = {
-            close_synthetic_rubber_refineries = yes
-        }
-    }
-}
 
-close_synthetic_rubber_refineries = {
-    if = {
-        limit = {
-            check_variable = {
-                var = building_level@synthetic_rubber_refinery
-                value = num_to_close_final
-                compare = greater_than_or_equals
-            }
-        }
-        remove_building = {
-            type = synthetic_rubber_refinery
-            level = var:num_to_close_final
-        }
-        add_building_construction = {
-            type = synthetic_rubber_refinery_inactive
-            level = var:num_to_close_final
-            instant_build = yes    
-        }
-        subtract_from_temp_variable = { num_to_close_final = num_to_close_final }
-        set_temp_variable = { break = 1 }
-    }
-    else_if = {
-        limit = {
-            check_variable = {
-                var = building_level@synthetic_rubber_refinery
-                value = num_to_close_final
-                compare = less_than
-            }
-        }
-        subtract_from_temp_variable = { num_to_close_final = building_level@synthetic_rubber_refinery }
-        add_building_construction = {
-            type = synthetic_rubber_refinery_inactive
-            level = var:building_level@aluminium_refinery
-            instant_build = yes    
-        }
-        remove_building = {
-            type = synthetic_rubber_refinery
-            level = var:building_level@synthetic_rubber_refinery
-        }
-    }
+    set_temp_variable = { building_to_add = token:synthetic_rubber_refinery_inactive }
+    set_temp_variable = { building_to_remove = token:synthetic_rubber_refinery }
+    close_buildings = yes
 }
 
 rp_reopen_steel_mills = {
-	set_temp_variable = { num_to_reopen_iron = resource@iron }
-	set_temp_variable = { num_to_reopen_coal = resource@coal }
-	set_temp_variable = { num_to_reopen_tungsten = resource@tungsten }
-	divide_temp_variable = { num_to_reopen_iron = @steel_refinery_cost_iron }
-	divide_temp_variable = { num_to_reopen_coal = @steel_refinery_cost_coal }
-	divide_temp_variable = { num_to_reopen_tungsten = @steel_refinery_cost_tungsten }
-    set_temp_variable = { num_to_reopen_final = 0 }
-    set_temp_variable = { total_inactive_steel_refineries = 0 }
-   	
-    hidden_effect = {
-        every_controlled_state = {
-            limit = { steel_refinery_inactive > 0 }
-            add_to_temp_variable = { PREV.total_steel_refineries = building_level@steel_refinery_inactive }
-        }
-    }
-    if = {
-        limit = {
-            check_variable = { var = num_to_reopen_iron value = num_to_reopen_coal compare = less_than_or_equals }
-            check_variable = { var = num_to_reopen_iron value = num_to_reopen_tungsten compare = less_than_or_equals }
-        }
-        set_temp_variable = { num_to_reopen_final = num_to_reopen_iron }
-    }
-    if = {
-        limit = {
-            check_variable = { var = num_to_reopen_coal value = num_to_reopen_iron compare = less_than_or_equals }
-            check_variable = { var = num_to_reopen_coal value = num_to_reopen_tungsten compare = less_than_or_equals }
-        }
-        set_temp_variable = { num_to_reopen_final = num_to_reopen_coal }
-    }
-    if = {
-        limit = {
-            check_variable = { var = num_to_reopen_tungsten value = num_to_reopen_iron compare = less_than_or_equals }
-            check_variable = { var = num_to_reopen_tungsten value = num_to_reopen_coal compare = less_than_or_equals }
-        }
-        set_temp_variable = { num_to_reopen_final = num_to_reopen_tungsten }
-    }
-    clamp_temp_variable = {
-        var = num_to_reopen_final
-        min = 1
-        max = total_inactive_steel_refineries
-    }
-    hidden_effect = {
-        every_controlled_state = {# first add cores
-            limit = {
-                steel_refinery_inactive > 0
-                is_core_of = PREV
-            }
-            add_to_temp_array = { open_candidates = THIS }
-        }
-        every_controlled_state = {
-            limit = {
-                steel_refinery_inactive > 0
-                NOT = { is_core_of = PREV }
-            }
-            add_to_temp_array = { open_candidates = THIS }
-        }
-    }
-    for_each_loop = {
-        array = open_candidates
-        var:v = {
-            open_steel_mills = yes
-        }
-    }
-}
+    # How many need to be opened. Cannot simply use resource@, need to add resource_produced and resource_imported due to how engine and our refineries/mills work
+    set_temp_variable = { num_to_swap_iron = resource_produced@iron }
+    add_to_temp_variable = { num_to_swap_iron = resource_imported@iron }
+    set_temp_variable = { num_to_swap_coal = resource_produced@coal }
+    add_to_temp_variable = { num_to_swap_coal = resource_imported@coal }
+    set_temp_variable = { num_to_swap_tungsten = resource_produced@tungsten }
+    add_to_temp_variable = { num_to_swap_tungsten = resource_imported@tungsten }
 
-open_steel_mills = {
+	divide_temp_variable = { num_to_swap_iron = @steel_refinery_cost_iron }
+	divide_temp_variable = { num_to_swap_coal = @steel_refinery_cost_coal }
+	divide_temp_variable = { num_to_swap_tungsten = @steel_refinery_cost_tungsten }
+
+    # round down
+	add_to_temp_variable = { num_to_swap_iron = -0.5 }
+	add_to_temp_variable = { num_to_swap_coal = -0.5 }
+	add_to_temp_variable = { num_to_swap_tungsten = -0.5 }
+	round_temp_variable = num_to_swap_iron
+	round_temp_variable = num_to_swap_coal
+	round_temp_variable = num_to_swap_tungsten
+
     if = {
         limit = {
-            check_variable = {
-                var = building_level@steel_refinery_inactive
-                value = num_to_reopen_final
-                compare = greater_than_or_equals
-            }
+            check_variable = { var = num_to_swap_iron value = num_to_swap_coal compare = less_than_or_equals }
+            check_variable = { var = num_to_swap_iron value = num_to_swap_tungsten compare = less_than_or_equals }
         }
-        remove_building = {
-            type = steel_refinery_inactive
-            level = var:num_to_reopen_final
-        }
-        add_building_construction = {
-            type = steel_refinery
-            level = var:num_to_reopen_final
-            instant_build = yes    
-        }
-        subtract_from_temp_variable = { num_to_reopen_final = num_to_reopen_final }
-        set_temp_variable = { break = 1 }
+        set_temp_variable = { num_to_swap = num_to_swap_iron }
     }
-    else_if = {
+    if = {
         limit = {
-            check_variable = {
-                var = building_level@steel_refinery_inactive
-                value = num_to_reopen_final
-                compare = less_than
-            }
+            check_variable = { var = num_to_swap_coal value = num_to_swap_iron compare = less_than_or_equals }
+            check_variable = { var = num_to_swap_coal value = num_to_swap_tungsten compare = less_than_or_equals }
         }
-        subtract_from_temp_variable = { num_to_reopen_final = building_level@steel_refinery_inactive }
-        add_building_construction = {
-            type = steel_refinery
-            level = var:building_level@steel_refinery_inactive
-            instant_build = yes    
-        }
-        remove_building = {
-            type = steel_refinery
-            level = var:building_level@steel_refinery_inactive
-        }
+        set_temp_variable = { num_to_swap = num_to_swap_coal }
     }
+    if = {
+        limit = {
+            check_variable = { var = num_to_swap_tungsten value = num_to_swap_iron compare = less_than_or_equals }
+            check_variable = { var = num_to_swap_tungsten value = num_to_swap_coal compare = less_than_or_equals }
+        }
+        set_temp_variable = { num_to_swap = num_to_swap_tungsten }
+    }
+    set_temp_variable = { building_to_add = token:steel_refinery }
+    set_temp_variable = { building_to_remove = token:steel_refinery_inactive }
+    open_buildings = yes
 }
 
 rp_reopen_aluminium_mills = {
-	set_temp_variable = { num_to_reopen_bauxite = resource@bauxite }
-	set_temp_variable = { num_to_reopen_coal = resource@coal }
-	divide_temp_variable = { num_to_reopen_bauxite = @aluminium_refinery_cost_bauxite }
-	divide_temp_variable = { num_to_reopen_coal = @aluminium_refinery_cost_coal }
-    set_temp_variable = { num_to_reopen_final = 0 }
-    set_temp_variable = { total_inactive_aluminium_refineries = 0 }
-   	
-    hidden_effect = {
-        every_controlled_state = {
-            limit = { aluminium_refinery_inactive > 0 }
-            add_to_temp_variable = { PREV.total_aluminium_refineries = building_level@aluminium_refinery_inactive }
-        }
-    }
-    if = {
-        limit = {
-            check_variable = { var = num_to_reopen_bauxite value = num_to_reopen_coal compare = less_than_or_equals }
-        }
-        set_temp_variable = { num_to_reopen_final = num_to_reopen_bauxite }
-    }
-    if = {
-        limit = {
-            check_variable = { var = num_to_reopen_coal value = num_to_reopen_bauxite compare = less_than_or_equals }
-        }
-        set_temp_variable = { num_to_reopen_final = num_to_reopen_coal }
-    }
-    clamp_temp_variable = {
-        var = num_to_reopen_final
-        min = 1
-        max = total_inactive_aluminium_refineries
-    }
-    hidden_effect = {
-        every_controlled_state = {# first add cores
-            limit = {
-                aluminium_refinery_inactive > 0
-                is_core_of = PREV
-            }
-            add_to_temp_array = { open_candidates = THIS }
-        }
-        every_controlled_state = {
-            limit = {
-                aluminium_refinery_inactive > 0
-                NOT = { is_core_of = PREV }
-            }
-            add_to_temp_array = { open_candidates = THIS }
-        }
-    }
-    for_each_loop = {
-        array = open_candidates
-        var:v = {
-            open_aluminium_mills = yes
-        }
-    }
-}
+    # How many need to be opened. Cannot simply use resource@, need to add resource_produced and resource_imported due to how engine and our refineries/mills work
+	set_temp_variable = { num_to_swap_bauxite = resource_produced@bauxite }
+	set_temp_variable = { num_to_swap_coal = resource_produced@coal }
+	add_to_temp_variable = { num_to_swap_bauxite = resource_imported@bauxite }
+	add_to_temp_variable = { num_to_swap_coal = resource_imported@coal }
+	divide_temp_variable = { num_to_swap_bauxite = @aluminium_refinery_cost_bauxite }
+	divide_temp_variable = { num_to_swap_coal = @aluminium_refinery_cost_coal }
 
-open_aluminium_mills = {
+    # round down
+	add_to_temp_variable = { num_to_swap_bauxite = -0.5 }
+	add_to_temp_variable = { num_to_swap_coal = -0.5 }
+	round_temp_variable = num_to_swap_bauxite
+	round_temp_variable = num_to_swap_coal
+
+    set_temp_variable = { num_to_swap = 0 }
+   	
     if = {
         limit = {
-            check_variable = {
-                var = building_level@aluminium_refinery_inactive
-                value = num_to_reopen_final
-                compare = greater_than_or_equals
-            }
+            check_variable = { var = num_to_swap_bauxite value = num_to_swap_coal compare = less_than_or_equals }
         }
-        remove_building = {
-            type = aluminium_refinery_inactive
-            level = var:num_to_reopen_final
-        }
-        add_building_construction = {
-            type = aluminium_refinery
-            level = var:num_to_reopen_final
-            instant_build = yes    
-        }
-        subtract_from_temp_variable = { num_to_reopen_final = num_to_reopen_final }
-        set_temp_variable = { break = 1 }
+        set_temp_variable = { num_to_swap = num_to_swap_bauxite }
     }
-    else_if = {
+    if = {
         limit = {
-            check_variable = {
-                var = building_level@aluminium_refinery_inactive
-                value = num_to_reopen_final
-                compare = less_than
-            }
+            check_variable = { var = num_to_swap_coal value = num_to_swap_bauxite compare = less_than_or_equals }
         }
-        subtract_from_temp_variable = { num_to_reopen_final = building_level@aluminium_refinery_inactive }
-        add_building_construction = {
-            type = aluminium_refinery
-            level = var:building_level@aluminium_refinery_inactive
-            instant_build = yes    
-        }
-        remove_building = {
-            type = aluminium_refinery
-            level = var:building_level@aluminium_refinery_inactive
-        }
+        set_temp_variable = { num_to_swap = num_to_swap_coal }
     }
+    set_temp_variable = { building_to_add = token:aluminium_refinery }
+    set_temp_variable = { building_to_remove = token:aluminium_refinery_inactive }
+    open_buildings = yes
 }
 
 rp_reopen_synthetic_refineries = {
-	set_temp_variable = { num_to_reopen_final = resource@coal }
-	divide_temp_variable = { num_to_reopen_final = @synthetic_refinery_cost_coal }
-    set_temp_variable = { total_inactive_synthetic_refineries = 0 }
-   	
-    hidden_effect = {
-        every_controlled_state = {
-            limit = { synthetic_refinery_inactive > 0 }
-            add_to_temp_variable = { PREV.total_synthetic_refineries = building_level@synthetic_refinery_inactive }
-        }
-    }
-    clamp_temp_variable = {
-        var = num_to_reopen_final
-        min = 1
-        max = total_inactive_synthetic_refineries
-    }
-    hidden_effect = {
-        every_controlled_state = {# first add cores
-            limit = {
-                synthetic_refinery_inactive > 0
-                is_core_of = PREV
-            }
-            add_to_temp_array = { open_candidates = THIS }
-        }
-        every_controlled_state = {
-            limit = {
-                synthetic_refinery_inactive > 0
-                NOT = { is_core_of = PREV }
-            }
-            add_to_temp_array = { open_candidates = THIS }
-        }
-    }
-    for_each_loop = {
-        array = open_candidates
-        var:v = {
-            open_synthetic_refineries = yes
-        }
-    }
-}
+    # How many need to be opened. Cannot simply use resource@, need to add resource_produced and resource_imported due to how engine and our refineries/mills work
+	set_temp_variable = { num_to_swap_coal = resource_produced@coal }
+	add_to_temp_variable = { num_to_swap_coal = resource_imported@coal }
+	divide_temp_variable = { num_to_swap_coal = @synthetic_refinery_cost_coal }
 
-open_synthetic_refineries = {
-    if = {
-        limit = {
-            check_variable = {
-                var = building_level@synthetic_refinery_inactive
-                value = num_to_reopen_final
-                compare = greater_than_or_equals
-            }
-        }
-        remove_building = {
-            type = synthetic_refinery_inactive
-            level = var:num_to_reopen_final
-        }
-        add_building_construction = {
-            type = synthetic_refinery
-            level = var:num_to_reopen_final
-            instant_build = yes    
-        }
-        subtract_from_temp_variable = { num_to_reopen_final = num_to_reopen_final }
-        set_temp_variable = { break = 1 }
-    }
-    else_if = {
-        limit = {
-            check_variable = {
-                var = building_level@synthetic_refinery_inactive
-                value = num_to_reopen_final
-                compare = less_than
-            }
-        }
-        subtract_from_temp_variable = { num_to_reopen_final = building_level@synthetic_refinery_inactive }
-        add_building_construction = {
-            type = synthetic_refinery
-            level = var:building_level@synthetic_refinery_inactive
-            instant_build = yes    
-        }
-        remove_building = {
-            type = synthetic_refinery
-            level = var:building_level@synthetic_refinery_inactive
-        }
-    }
+    # round down
+	add_to_temp_variable = { num_to_swap_coal = -0.5 }
+	round_temp_variable = num_to_swap_coal
+
+    set_temp_variable = { num_to_swap = 0 }
+
+    set_temp_variable = { num_to_swap = num_to_swap_coal }
+
+    set_temp_variable = { building_to_add = token:synthetic_refinery }
+    set_temp_variable = { building_to_remove = token:synthetic_refinery_inactive }
+    open_buildings = yes
 }
 
 rp_reopen_synthetic_rubber_refineries = {
-	set_temp_variable = { num_to_reopen_oil = resource@oil }
-	set_temp_variable = { num_to_reopen_coal = resource@coal }
-	divide_temp_variable = { num_to_reopen_oil = @rubber_refinery_cost_oil }
-	divide_temp_variable = { num_to_reopen_coal = @rubber_refinery_cost_coal }
-    set_temp_variable = { num_to_reopen_final = 0 }
-    set_temp_variable = { total_inactive_steel_refineries = 0 }
+    # How many need to be opened. Cannot simply use resource@, need to add resource_produced and resource_imported due to how engine and our refineries/mills work
+	set_temp_variable = { num_to_swap_oil = resource_produced@oil }
+	set_temp_variable = { num_to_swap_coal = resource_produced@coal }
+	add_to_temp_variable = { num_to_swap_oil = resource_imported@oil }
+	add_to_temp_variable = { num_to_swap_coal = resource_imported@coal }
+	divide_temp_variable = { num_to_swap_oil = @rubber_refinery_cost_oil }
+	divide_temp_variable = { num_to_swap_coal = @rubber_refinery_cost_coal }
+
+    # round down
+	add_to_temp_variable = { num_to_swap_oil = -0.5 }
+	add_to_temp_variable = { num_to_swap_coal = -0.5 }
+	round_temp_variable = num_to_swap_oil
+	round_temp_variable = num_to_swap_coal
+
+    set_temp_variable = { num_to_swap = 0 }
    	
-    hidden_effect = {
-        every_controlled_state = {
-            limit = { synthetic_rubber_refinery_inactive > 0 }
-            add_to_temp_variable = { PREV.total_steel_refineries = building_level@synthetic_rubber_refinery_inactive }
+    if = {
+        limit = {
+            check_variable = { var = num_to_swap_oil value = num_to_swap_coal compare = less_than_or_equals }
         }
+        set_temp_variable = { num_to_swap = num_to_swap_oil }
     }
     if = {
         limit = {
-            check_variable = { var = num_to_reopen_oil value = num_to_reopen_coal compare = less_than_or_equals }
+            check_variable = { var = num_to_swap_coal value = num_to_swap_oil compare = less_than_or_equals }
         }
-        set_temp_variable = { num_to_reopen_final = num_to_reopen_oil }
+        set_temp_variable = { num_to_swap = num_to_swap_coal }
     }
-    if = {
-        limit = {
-            check_variable = { var = num_to_reopen_coal value = num_to_reopen_oil compare = less_than_or_equals }
-        }
-        set_temp_variable = { num_to_reopen_final = num_to_reopen_coal }
-    }
-    clamp_temp_variable = {
-        var = num_to_reopen_final
-        min = 1
-        max = total_inactive_steel_refineries
-    }
+    set_temp_variable = { building_to_add = token:synthetic_rubber_refinery }
+    set_temp_variable = { building_to_remove = token:synthetic_rubber_refinery_inactive }
+    open_buildings = yes
+}
+
+# ARGUMENT VARIABLES, need to be set before
+# token:building_to_add
+# token:building_to_remove
+open_buildings = {
     hidden_effect = {
         every_controlled_state = {# first add cores
             limit = {
-                synthetic_rubber_refinery_inactive > 0
+                meta_trigger = {
+                    text = {
+                        [BUILDING] > 0
+                    }
+                    BUILDING = "[?building_to_remove.GetTokenKey]"
+                }
                 is_core_of = PREV
             }
-            add_to_temp_array = { open_candidates = THIS }
+            add_to_temp_array = { state_candidates = THIS }
         }
         every_controlled_state = {
             limit = {
-                synthetic_rubber_refinery_inactive > 0
+                meta_trigger = {
+                    text = {
+                        [BUILDING] > 0
+                    }
+                    BUILDING = "[?building_to_remove.GetTokenKey]"
+                }
                 NOT = { is_core_of = PREV }
             }
-            add_to_temp_array = { open_candidates = THIS }
+            add_to_temp_array = { state_candidates = THIS }
         }
     }
+    swap_buildings = yes
+}
+# ARGUMENT VARIABLES, need to be set before
+# token:building_to_add
+# token:building_to_remove
+close_buildings = {
+    hidden_effect = {
+        every_controlled_state = {# first add noncores
+            limit = {
+                meta_trigger = {
+                    text = {
+                        [BUILDING] > 0
+                    }
+                    BUILDING = "[?building_to_remove.GetTokenKey]"
+                }
+                NOT = { is_core_of = PREV }
+            }
+            add_to_temp_array = { state_candidates = THIS }
+        }
+        every_controlled_state = {
+            limit = {
+                meta_trigger = {
+                    text = {
+                        [BUILDING] > 0
+                    }
+                    BUILDING = "[?building_to_remove.GetTokenKey]"
+                }
+                is_core_of = PREV
+            }
+            add_to_temp_array = { state_candidates = THIS }
+        }
+    }
+    swap_buildings = yes
+}
+
+# ARGUMENT VARIABLES, need to be set before
+# token:building_to_add
+# token:building_to_remove
+swap_buildings = {
+    log = "Starting swapping [?building_to_remove.GetTokenKey]"
+    log = "Total [?building_to_remove.GetTokenKey] to swap: [?num_to_swap]"
+    log = "num_to_swap_tungsten: [?num_to_swap_tungsten]"
+    log = "num_to_swap_iron: [?num_to_swap_iron]"
+    log = "num_to_swap_bauxite: [?num_to_swap_bauxite]"
+    log = "num_to_swap_coal: [?num_to_swap_coal]"
+    log = "num_to_swap_oil: [?num_to_swap_oil]"
+    log = "resource_exported@tungsten: [?ROOT.resource_exported@tungsten]"
+    log = "resource_exported@iron: [?ROOT.resource_exported@iron]"
+    log = "resource_exported@bauxite: [?ROOT.resource_exported@bauxite]"
+    log = "resource_exported@coal: [?ROOT.resource_exported@coal]"
+    log = "resource_exported@oil: [?ROOT.resource_exported@oil]"
+    log = "resource_produced@tungsten: [?ROOT.resource_produced@tungsten]"
+    log = "resource_produced@iron: [?ROOT.resource_produced@iron]"
+    log = "resource_produced@bauxite: [?ROOT.resource_produced@bauxite]"
+    log = "resource_produced@coal: [?ROOT.resource_produced@coal]"
+    log = "resource_produced@oil: [?ROOT.resource_produced@oil]"
+    log = "resource_imported@tungsten: [?ROOT.resource_imported@tungsten]"
+    log = "resource_imported@iron: [?ROOT.resource_imported@iron]"
+    log = "resource_imported@bauxite: [?ROOT.resource_imported@bauxite]"
+    log = "resource_imported@coal: [?ROOT.resource_imported@coal]"
+    log = "resource_imported@oil: [?ROOT.resource_imported@oil]"
+    log = "resource_consumed@tungsten: [?ROOT.resource_consumed@tungsten]"
+    log = "resource_consumed@iron: [?ROOT.resource_consumed@iron]"
+    log = "resource_consumed@bauxite: [?ROOT.resource_consumed@bauxite]"
+    log = "resource_consumed@coal: [?ROOT.resource_consumed@coal]"
+    log = "resource_consumed@oil: [?ROOT.resource_consumed@oil]"
+    log = "resource@tungsten: [?ROOT.resource@tungsten]"
+    log = "resource@iron: [?ROOT.resource@iron]"
+    log = "resource@bauxite: [?ROOT.resource@bauxite]"
+    log = "resource@coal: [?ROOT.resource@coal]"
+    log = "resource@oil: [?ROOT.resource@oil]"
     for_each_loop = {
-        array = open_candidates
+        array = state_candidates
         var:v = {
-            open_synthetic_rubber_refineries = yes
+            log = "About to swap [?building_to_remove.GetTokenKey] in state in state: [THIS.GetName]"
+            meta_effect = {
+                text = {
+                    set_temp_variable = { local_buildings_to_swap = building_level@[BUILDING] }
+                }
+                BUILDING = "[?building_to_remove.GetTokenKey]"
+            }
+            clamp_temp_variable = {
+                var = local_buildings_to_swap
+                min = 0
+                max = num_to_swap
+            }
+            log = "Total [?building_to_remove.GetTokenKey] left to swap: [?num_to_swap]"
+            log = "Total [?building_to_remove.GetTokenKey] left to swap in [THIS.GetName]: [?local_buildings_to_swap]"
+            log = "Swapping [?local_buildings_to_swap] [?building_to_remove.GetTokenKey] to [?building_to_add.GetTokenKey]"
+            meta_effect = {
+                text = {
+                    remove_building = {
+                        type = [BUILDING_TO_REMOVE]
+                        level = [LEVEL]
+                    }
+                    add_building_construction = {
+                        type = [BUILDING_TO_ADD]
+                        level = [LEVEL]
+                        instant_build = yes    
+                    }
+                }
+                BUILDING_TO_REMOVE = "[?building_to_remove.GetTokenKey]"
+                BUILDING_TO_ADD = "[?building_to_add.GetTokenKey]"
+                LEVEL = "[?local_buildings_to_swap]"
+            }
+            subtract_from_temp_variable = { num_to_swap = local_buildings_to_swap }
+            log = "Finished state: [THIS.GetName]"
+            log = "Total [?building_to_remove.GetTokenKey] left to swap: [?num_to_swap]"
+            log = "======================================"
+            if = {
+                limit = { 
+                    check_variable = { var = num_to_swap value = 0 compare = less_than_or_equals }
+                }
+                set_temp_variable = { break = 1 }
+                log = "Finished swapping [?building_to_remove.GetTokenKey]"
+                log = "========================================================================================"
+            }
         }
     }
 }
-
-open_synthetic_rubber_refineries = {
-    if = {
-        limit = {
-            check_variable = {
-                var = building_level@synthetic_rubber_refinery_inactive
-                value = num_to_reopen_final
-                compare = greater_than_or_equals
-            }
-        }
-        remove_building = {
-            type = synthetic_rubber_refinery_inactive
-            level = var:num_to_reopen_final
-        }
-        add_building_construction = {
-            type = synthetic_rubber_refinery
-            level = var:num_to_reopen_final
-            instant_build = yes    
-        }
-        subtract_from_temp_variable = { num_to_reopen_final = num_to_reopen_final }
-        set_temp_variable = { break = 1 }
-    }
-    else_if = {
-        limit = {
-            check_variable = {
-                var = building_level@synthetic_rubber_refinery_inactive
-                value = num_to_reopen_final
-                compare = less_than
-            }
-        }
-        subtract_from_temp_variable = { num_to_reopen_final = building_level@synthetic_rubber_refinery_inactive }
-        add_building_construction = {
-            type = synthetic_rubber_refinery
-            level = var:building_level@synthetic_rubber_refinery_inactive
-            instant_build = yes    
-        }
-        remove_building = {
-            type = synthetic_rubber_refinery
-            level = var:building_level@synthetic_rubber_refinery_inactive
-        }
-    }
-}
-
