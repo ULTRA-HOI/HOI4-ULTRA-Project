@@ -2053,7 +2053,7 @@ focus_tree = {
 		available_if_capitulated = yes
 		search_filters = {FOCUS_FILTER_POLITICAL}
 		completion_reward = {
-			add_stability = 0.1
+			add_stability = 0.05
 			add_war_support = 0.03
 			add_tech_bonus = {
 				name = armor_bonus
@@ -6754,7 +6754,7 @@ focus = {
 		completion_reward = {
 			add_political_power = 75
 			add_war_support = 0.07
-			add_stability = 0.1
+			add_stability = 0.05
 		}
 	}
 
@@ -6774,13 +6774,110 @@ focus = {
 		x = 0
 		y = 1
 		relative_position_id = ENG_issue_gasmasks
-		cost = 10
+		cost = 5
 		ai_will_do = {
 			factor = 1
 		}	
 		completion_reward = {
 			remove_ideas = ENG_the_war_to_end_all_wars
 			set_rule = { can_send_volunteers = yes }
+		}
+	}
+
+	focus = {
+		id = ENG_home_guard
+
+		available = {
+			has_war = yes
+
+			OR = {
+				has_war_with = FRA
+				AND = {
+					has_war_with = GER 
+					FRA = {
+						has_capitulated = yes 
+					}
+				}
+				AND = {
+					has_war_with = SOV
+					FRA = {
+						has_capitulated = yes 
+					}
+					SOV = {
+						controls_state = 29
+					}
+				}
+			}
+			
+			any_enemy_country = {
+				OR = {
+					controls_state = 29
+					controls_state = 15
+					controls_state = 14
+					controls_state = 6
+					controls_state = 7
+				}
+			}
+		}
+
+		available_if_capitulated = no
+
+		prerequisite = { focus = ENG_military_training_act }
+
+		icon = GFX_focus_secret_rearmament
+		x = -2
+		y = 1
+
+		relative_position_id = ENG_military_training_act
+
+		cost = 3
+
+		ai_will_do = {
+			factor = 1
+		}	
+
+		completion_reward = {
+			division_template = { 
+				name = "Home Guard" 
+				division_names_group = ENG_INF_01
+				regiments = { 
+					infantry = { x = 0 y = 0 }
+					infantry = { x = 0 y = 1 }
+					infantry = { x = 0 y = 2 }
+
+					infantry = { x = 1 y = 0 }
+					infantry = { x = 1 y = 1 }
+					infantry = { x = 1 y = 2 }
+					
+					infantry = { x = 2 y = 0 }
+					infantry = { x = 2 y = 1 }
+					infantry = { x = 2 y = 2 }
+
+					infantry = { x = 3 y = 0 }
+				}
+				support = { 
+					HOME_GUARD_HQ = { x = 0 y = 0 }
+				}
+			}
+			capital_scope = {
+				create_unit = {
+					division = "division_template = \"Home Guard\" start_experience_factor = 0.0 start_equipment_factor = 0.1"
+					owner = ROOT
+					count = 10
+				}
+			}
+
+			set_division_template_lock = {
+				division_template = "Home Guard"
+				is_locked = yes
+			}
+
+			IF = {
+				limit = {
+					has_country_flag = ENG_no_home_guard_flag
+				}
+				remove_ideas = ENG_no_home_guard
+			}
 		}
 	}
 
