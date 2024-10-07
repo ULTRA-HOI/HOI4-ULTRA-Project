@@ -362,38 +362,6 @@ close_buildings = {
 # token:building_to_add
 # token:building_to_remove
 swap_buildings = {
-    log = "Starting swapping [?building_to_remove.GetTokenKey]"
-    log = "Total [?building_to_remove.GetTokenKey] to swap: [?num_to_swap]"
-    log = "num_to_swap_tungsten: [?num_to_swap_tungsten]"
-    log = "num_to_swap_iron: [?num_to_swap_iron]"
-    log = "num_to_swap_bauxite: [?num_to_swap_bauxite]"
-    log = "num_to_swap_coal: [?num_to_swap_coal]"
-    log = "num_to_swap_oil: [?num_to_swap_oil]"
-    log = "resource_exported@tungsten: [?ROOT.resource_exported@tungsten]"
-    log = "resource_exported@iron: [?ROOT.resource_exported@iron]"
-    log = "resource_exported@bauxite: [?ROOT.resource_exported@bauxite]"
-    log = "resource_exported@coal: [?ROOT.resource_exported@coal]"
-    log = "resource_exported@oil: [?ROOT.resource_exported@oil]"
-    log = "resource_produced@tungsten: [?ROOT.resource_produced@tungsten]"
-    log = "resource_produced@iron: [?ROOT.resource_produced@iron]"
-    log = "resource_produced@bauxite: [?ROOT.resource_produced@bauxite]"
-    log = "resource_produced@coal: [?ROOT.resource_produced@coal]"
-    log = "resource_produced@oil: [?ROOT.resource_produced@oil]"
-    log = "resource_imported@tungsten: [?ROOT.resource_imported@tungsten]"
-    log = "resource_imported@iron: [?ROOT.resource_imported@iron]"
-    log = "resource_imported@bauxite: [?ROOT.resource_imported@bauxite]"
-    log = "resource_imported@coal: [?ROOT.resource_imported@coal]"
-    log = "resource_imported@oil: [?ROOT.resource_imported@oil]"
-    log = "resource_consumed@tungsten: [?ROOT.resource_consumed@tungsten]"
-    log = "resource_consumed@iron: [?ROOT.resource_consumed@iron]"
-    log = "resource_consumed@bauxite: [?ROOT.resource_consumed@bauxite]"
-    log = "resource_consumed@coal: [?ROOT.resource_consumed@coal]"
-    log = "resource_consumed@oil: [?ROOT.resource_consumed@oil]"
-    log = "resource@tungsten: [?ROOT.resource@tungsten]"
-    log = "resource@iron: [?ROOT.resource@iron]"
-    log = "resource@bauxite: [?ROOT.resource@bauxite]"
-    log = "resource@coal: [?ROOT.resource@coal]"
-    log = "resource@oil: [?ROOT.resource@oil]"
     for_each_loop = {
         array = state_candidates
         var:v = {
@@ -409,9 +377,6 @@ swap_buildings = {
                 min = 0
                 max = num_to_swap
             }
-            log = "Total [?building_to_remove.GetTokenKey] left to swap: [?num_to_swap]"
-            log = "Total [?building_to_remove.GetTokenKey] left to swap in [THIS.GetName]: [?local_buildings_to_swap]"
-            log = "Swapping [?local_buildings_to_swap] [?building_to_remove.GetTokenKey] to [?building_to_add.GetTokenKey]"
             meta_effect = {
                 text = {
                     remove_building = {
@@ -429,17 +394,76 @@ swap_buildings = {
                 LEVEL = "[?local_buildings_to_swap]"
             }
             subtract_from_temp_variable = { num_to_swap = local_buildings_to_swap }
-            log = "Finished state: [THIS.GetName]"
-            log = "Total [?building_to_remove.GetTokenKey] left to swap: [?num_to_swap]"
-            log = "======================================"
             if = {
                 limit = { 
                     check_variable = { var = num_to_swap value = 0 compare = less_than_or_equals }
                 }
                 set_temp_variable = { break = 1 }
-                log = "Finished swapping [?building_to_remove.GetTokenKey]"
-                log = "========================================================================================"
             }
         }
+    }
+}
+
+log_building_swapping_1 = {
+    if = {
+		limit = { is_debug = yes }
+        log = "Starting swapping [?building_to_remove.GetTokenKey]"
+        log = "Total [?building_to_remove.GetTokenKey] to swap: [?num_to_swap]"
+        log = "num_to_swap_tungsten: [?num_to_swap_tungsten]"
+        log = "num_to_swap_iron: [?num_to_swap_iron]"
+        log = "num_to_swap_bauxite: [?num_to_swap_bauxite]"
+        log = "num_to_swap_coal: [?num_to_swap_coal]"
+        log = "num_to_swap_oil: [?num_to_swap_oil]"
+        log = "resource_exported@tungsten: [?ROOT.resource_exported@tungsten]"
+        log = "resource_exported@iron: [?ROOT.resource_exported@iron]"
+        log = "resource_exported@bauxite: [?ROOT.resource_exported@bauxite]"
+        log = "resource_exported@coal: [?ROOT.resource_exported@coal]"
+        log = "resource_exported@oil: [?ROOT.resource_exported@oil]"
+        log = "resource_produced@tungsten: [?ROOT.resource_produced@tungsten]"
+        log = "resource_produced@iron: [?ROOT.resource_produced@iron]"
+        log = "resource_produced@bauxite: [?ROOT.resource_produced@bauxite]"
+        log = "resource_produced@coal: [?ROOT.resource_produced@coal]"
+        log = "resource_produced@oil: [?ROOT.resource_produced@oil]"
+        log = "resource_imported@tungsten: [?ROOT.resource_imported@tungsten]"
+        log = "resource_imported@iron: [?ROOT.resource_imported@iron]"
+        log = "resource_imported@bauxite: [?ROOT.resource_imported@bauxite]"
+        log = "resource_imported@coal: [?ROOT.resource_imported@coal]"
+        log = "resource_imported@oil: [?ROOT.resource_imported@oil]"
+        log = "resource_consumed@tungsten: [?ROOT.resource_consumed@tungsten]"
+        log = "resource_consumed@iron: [?ROOT.resource_consumed@iron]"
+        log = "resource_consumed@bauxite: [?ROOT.resource_consumed@bauxite]"
+        log = "resource_consumed@coal: [?ROOT.resource_consumed@coal]"
+        log = "resource_consumed@oil: [?ROOT.resource_consumed@oil]"
+        log = "resource@tungsten: [?ROOT.resource@tungsten]"
+        log = "resource@iron: [?ROOT.resource@iron]"
+        log = "resource@bauxite: [?ROOT.resource@bauxite]"
+        log = "resource@coal: [?ROOT.resource@coal]"
+        log = "resource@oil: [?ROOT.resource@oil]"
+    }
+}
+
+log_building_swapping_2 = {
+    if = {
+		limit = { is_debug = yes }
+        log = "Total [?building_to_remove.GetTokenKey] left to swap: [?num_to_swap]"
+        log = "Total [?building_to_remove.GetTokenKey] left to swap in [THIS.GetName]: [?local_buildings_to_swap]"
+        log = "Swapping [?local_buildings_to_swap] [?building_to_remove.GetTokenKey] to [?building_to_add.GetTokenKey]"
+    }
+}
+
+log_building_swapping_3 = {
+    if = {
+		limit = { is_debug = yes }
+        log = "Finished state: [THIS.GetName]"
+        log = "Total [?building_to_remove.GetTokenKey] left to swap: [?num_to_swap]"
+        log = "======================================"
+    }
+}
+
+log_building_swapping_4 = {
+    if = {
+		limit = { is_debug = yes }
+        log = "Finished swapping [?building_to_remove.GetTokenKey]"
+        log = "========================================================================================"
     }
 }
