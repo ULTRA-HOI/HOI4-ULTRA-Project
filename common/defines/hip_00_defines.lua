@@ -1309,7 +1309,7 @@ NAir = {
 	NAVAL_RECON_DETECTION_BALANCE_FACTOR = 0.5,			-- Value used to scale the surface_visibility stats to balance the gameplay, so 100% detection chance still won't spam spotting.
 	LEND_LEASED_EQUIPMENT_EXPERIENCE_GAIN = 0.5,		-- Value used for equipment
 	ANTI_AIR_PLANE_DAMAGE_FACTOR = 0.3, --was 0.8 --Anti Air Gun Damage factor
-	ANTI_AIR_PLANE_DAMAGE_CHANCE = 0.075, --was 0.1 --Anti Air Gun hit chance
+	ANTI_AIR_PLANE_DAMAGE_CHANCE = 0.05, --was 0.1 --Anti Air Gun hit chance
 	ANTI_AIR_ATTACK_TO_DAMAGE_REDUCTION_FACTOR = 0.085, --was 1.0 --Balancing value to convert equipment stat anti_air_attack to the damage reduction modifier apply to incoming air attacks against units with AA.
 	ANTI_AIR_MAXIMUM_DAMAGE_REDUCTION_FACTOR = 0.5, --was 0.75 --Maximum damage reduction factor applied to incoming air attacks against units with AA.
 	AIR_DEPLOYMENT_DAYS = 0, --was 2 --Days to deploy one air wing
@@ -1432,10 +1432,10 @@ NAir = {
 
 	MISSION_EFFICIENCY_MULT_AT_LACK_OF_FUEL = 0.25, 				-- multiplier for mission efficiency when a base lacks fuel
 
-	BOMBING_TARGETING_RANDOM_FACTOR = 0.40, --was 0.25 --% of picking the wrong target
+	BOMBING_TARGETING_RANDOM_FACTOR = 0.25, --was 0.25 --% of picking the wrong target
 	BOMBING_PROV_BUILD_PRIO_SCALE = 1.5,							-- Scale of the selected priority for provincial buildings
 	BOMBING_STATE_BUILD_PRIO_SCALE = 1.5,							-- Scale of the selected priority for state buildings
-	BOMBING_INFRA_PRIO_SCALE = 0.7,									-- Scale of the selected priority for infastryctyre
+	BOMBING_INFRA_PRIO_SCALE = 1.5,									-- Scale of the selected priority for infastryctyre
 	NAVAL_MINES_PLANTING_SPEED_MULT = 0.01, --was 0.025 --Value used to overall balance of the speed of planting naval mines
 	NAVAL_MINES_SWEEPING_SPEED_MULT = 0.009, --was 0.025 --Value used to overall balance of the speed of sweeping naval mines
 	NON_CORE_STRATEGIC_IMPACT = 0.5,                                -- multiplier for strategic impact of non-core bombing
