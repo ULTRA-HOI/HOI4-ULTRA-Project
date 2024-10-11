@@ -408,8 +408,8 @@ NCountry = {
 	AIR_SUPPLY_CONVERSION_SCALE = 1.125, --was 0.01 --Conversion scale for planes to air supply
 	AIR_SUPPLY_DROP_EXPIRATION_HOURS = 120, --was 168 --Air drop length after being dropped
 	STARTING_COMMAND_POWER = 0.0,					-- starting command power for every country
-	BASE_MAX_COMMAND_POWER = 250.0,					-- base value for maximum command power
-	BASE_COMMAND_POWER_GAIN = 0.4,					-- base value for daily command power gain
+	BASE_MAX_COMMAND_POWER = 100.0,					-- base value for maximum command power
+	BASE_COMMAND_POWER_GAIN = 0.5,					-- base value for daily command power gain
 	AIR_VOLUNTEER_PLANES_RATIO = 0.2,				-- Ratio for volunteer planes available for sending in relation to sender air force
 	AIR_VOLUNTEER_BASES_CAPACITY_LIMIT = 0.1,		-- Ratio for volunteer planes available for sending in relation to receiver air base capacity
 	ATTACHE_XP_SHARE = 0.15, --was 0.15 --Country received xp from attaches
@@ -1102,7 +1102,7 @@ NMilitary = {
 	ACCLIMATIZATION_LOSS_SPEED_FACTOR = 1.0, --was 2.0 --Loosing one acclimatization while being under affect of the opposite climate should cause it to drop down much faster than gaining.
 
 
-	PROMOTE_LEADER_CP_COST = 60.0, --was 40.0 --cost of promoting a leader
+	PROMOTE_LEADER_CP_COST = 30.0, --was 40.0 --cost of promoting a leader
 
 	FIELD_MARSHAL_ARMY_BONUS_RATIO = 0.5,           -- ratio to apply regular bonuses FM bonuses to armies
 
