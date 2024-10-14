@@ -1187,7 +1187,7 @@ NMilitary = {
 
 	ARMY_MAX_FUEL_FLOW_MULT = 1.1, --was 2.0 --max fuel ratio that an army can get per hour, multiplied by supply situation
 
-	ARMY_FUEL_COST_MULT = 1.1, --was 0.5 --fuel cost multiplier for all army related stuff
+	ARMY_FUEL_COST_MULT = 11.0, --was 0.5 --fuel cost multiplier for all army related stuff ULTRA: 10x while equipment /10
 	ARMY_COMBAT_FUEL_MULT = 0.5, --was 1.0 --fuel consumption ratio in combat (plus ARMY_MOVEMENT_FUEL_MULT if you are also moving. ie offensive combat)
 	ARMY_TRAINING_FUEL_MULT = 0.67, --was 1.0 --fuel consumption ratio while training
 	ARMY_MOVEMENT_FUEL_MULT = 0.8, --was 1.0 --fuel consumption ratio while moving
