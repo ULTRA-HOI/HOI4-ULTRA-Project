@@ -2002,7 +2002,7 @@ NNavy = {
 	NAVAL_COMBAT_AIR_CAPITAL_TARGET_SCORE = 100, --was 50
 	NAVAL_COMBAT_AIR_CARRIER_TARGET_SCORE = 500, --was 200
 	NAVAL_COMBAT_AIR_CONVOY_TARGET_SCORE = 1.0, --was 1.0
-	NAVAL_COMBAT_AIR_STRENGTH_TARGET_SCORE = 0.3, --was 5 --how much score factor from low health (scales between 0->this number)
+	NAVAL_COMBAT_AIR_STRENGTH_TARGET_SCORE = 10, --was 5 --how much score factor from low health (scales between 0->this number)
 	NAVAL_COMBAT_AIR_LOW_AA_TARGET_SCORE = 5, --was 5 --how much score factor from low AA guns (scales between 0->this number)
 
 	NEW_NAVY_LEADER_LEVEL_CHANCES = {									-- chances for new navy leaders to start at a given level
