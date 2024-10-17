@@ -1912,7 +1912,7 @@ NNavy = {
 	},
 
 	DEPTH_CHARGES_HIT_CHANCE_MULT 									= 1.5, --was 1.1 --multiplies hit chance of small guns
-	DEPTH_CHARGES_DAMAGE_MULT 										= 1, --was 0.7 --multiplies damage of depth charges
+	DEPTH_CHARGES_DAMAGE_MULT 										= 2.0, --was 0.7 --multiplies damage of depth charges
 	DEPTH_CHARGES_HIT_PROFILE 										= 160.0, --was 100.0 --hit profile for depth charges
 
 	CONVOY_HIT_PROFILE												= 140.0,  	-- convoys has this contant hit profile
@@ -1943,12 +1943,12 @@ NNavy = {
 
 	MISSION_EFFICIENCY_POW_FACTOR									= 1.7,		-- mission efficiencies will be powered up by this to further penalize low efficiencies
 
-	NAVAL_COMBAT_SUB_DETECTION_FACTOR                               = 1.5, --was 1.0 --balance value for sub detection in combat by ships
+	NAVAL_COMBAT_SUB_DETECTION_FACTOR                               = 2.0, --was 1.0 --balance value for sub detection in combat by ships
 	SUBMARINE_HIDE_TIMEOUT 											= 2, --was 20 --Amount of in-game-hours that takes the submarine (with position unrevealed), to hide.
 	SUBMARINE_REVEALED_TIMEOUT 										= 4, --was 16 --Amount of in-game-hours that makes the submarine visible if it is on the defender side.
-	SUBMARINE_REVEAL_BASE_CHANCE 									= 13, --was 11 --Base factor for submarine detection. It's modified by the difference of a spotter's submarines detection vs submarine visibility. Use this variable for game balancing. setting this too low will cause bad spotting issues.
+	SUBMARINE_REVEAL_BASE_CHANCE 									= 30, --was 11 --Base factor for submarine detection. It's modified by the difference of a spotter's submarines detection vs submarine visibility. Use this variable for game balancing. setting this too low will cause bad spotting issues.
 	SUBMARINE_REVEAL_POW 											= 3.0,		-- A scaling factor that is applied to the reveal chance in order to make large differences in detection vs visibility more pronounced
-	SUBMARINE_BASE_TORPEDO_REVEAL_CHANCE 							= 0.08, --was 0.035 --Chance of a submarine being revealed when it fires. 1.0 is 100%. this chance is then multiplied with modifier created by comparing firer's visibiility and target's detection
+	SUBMARINE_BASE_TORPEDO_REVEAL_CHANCE 							= 0.2, --was 0.035 --Chance of a submarine being revealed when it fires. 1.0 is 100%. this chance is then multiplied with modifier created by comparing firer's visibiility and target's detection
 
 	MAX_NUM_HOURS_TO_WAIT_AT_ALLY_DOCKYARDS_FOR_REPAIRS 			= 48,		-- taskforces will wait at most this amount of hours in ally bases for repairs before switching to another base for repairs
 
@@ -1985,8 +1985,8 @@ NNavy = {
 	NAVAL_CONVOY_DANGER_TRIGGER_MAX = 100.0,
 
 	-- those two work together in the formula f(x) = Y(x/(x+X)) where Y is MAX and X is SLOPE
-	NAVAL_COMBAT_AIR_SUB_DETECTION_MAX = 20.0, --was 10.0
-	NAVAL_COMBAT_AIR_SUB_DETECTION_SLOPE = 3.0, --was 10.0 --lower means sharper curve (ramps up very fast, then flatten out very fast). Must be >0
+	NAVAL_COMBAT_AIR_SUB_DETECTION_MAX = 30.0, --was 10.0
+	NAVAL_COMBAT_AIR_SUB_DETECTION_SLOPE = 2.0, --was 10.0 --lower means sharper curve (ramps up very fast, then flatten out very fast). Must be >0
 
 	NAVAL_COMBAT_AIR_SUB_DETECTION_EXTERNAL_FACTOR = 1.0, --was 1.0 --Factor applied to the stats of external air planes
 	NAVAL_COMBAT_AIR_SUB_DETECTION_INTERNAL_EFFICIENCY_FACTOR = 1.0, --was 1.0 --Factor of Carrier's sortie efficiency on the stats bellow
