@@ -3949,9 +3949,6 @@ focus_tree = {
 					}
 				}
 			}
-			set_technology = {
-				basic_heavy_battery_3 = 1
-			}
 		}
 	}
 
@@ -6168,6 +6165,7 @@ focus_tree = {
 				date > 1939.1.1
 				NOT = {
 					has_idea = MTG_anglo-german_treaty
+					has_idea = MTG_anglo-german_treaty_2
 				}
 			}
 		}
@@ -6187,11 +6185,32 @@ focus_tree = {
 				uses = 2
 				category = cv_tech
 			}
+
+			set_technology = {
+				basic_heavy_battery_3 = 1
+			}
+			
+			add_tech_bonus = {
+				name = bb_gun_bonus
+				bonus = 1.0
+				uses = 1
+				technology = improved_heavy_battery_3
+			}
+
 			IF = {
-				limit = {
-					has_idea = MTG_anglo-german_treaty
+				if = {
+					limit = {
+						has_idea = MTG_anglo-german_treaty
+					}
+					remove_ideas = MTG_anglo-german_treaty
 				}
-				remove_ideas = MTG_anglo-german_treaty
+
+				else_if = {
+					limit = {
+						has_idea = MTG_anglo-german_treaty_2
+					}
+					remove_ideas = MTG_anglo-german_treaty_2
+				}
 				ENG = {
 					country_event = {
 						id = britain.104
