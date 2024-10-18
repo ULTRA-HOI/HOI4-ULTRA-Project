@@ -67,6 +67,7 @@ MTG_naval_treaties = {
 							OR = {
 								has_idea = MTG_naval_treaty_cheating_reduced
 								has_idea = MTG_naval_treaty_adherent_reduced
+								has_idea = MTG_anglo-german_treaty_2
 							}
 						}
 					}
@@ -76,6 +77,7 @@ MTG_naval_treaties = {
 						OR = {
 							has_idea = MTG_naval_treaty_cheating
 							has_idea = MTG_naval_treaty_adherent
+							has_idea = MTG_anglo-german_treaty
 						}
 					}
 					activate_mission = MTG_escalator_clause_invocation_mission
@@ -171,6 +173,7 @@ MTG_naval_treaties = {
 							OR = {
 								has_idea = MTG_naval_treaty_cheating_reduced
 								has_idea = MTG_naval_treaty_adherent_reduced
+								has_idea = MTG_anglo-german_treaty_2
 							}
 						}
 					}
@@ -180,6 +183,7 @@ MTG_naval_treaties = {
 						OR = {
 							has_idea = MTG_naval_treaty_cheating
 							has_idea = MTG_naval_treaty_adherent
+							has_idea = MTG_anglo-german_treaty
 						}
 					}
 					activate_mission = MTG_escalator_clause_invocation_mission
@@ -262,7 +266,21 @@ MTG_naval_treaties = {
 		}
 	
 		remove_effect = {
-			remove_ideas = MTG_anglo-german_treaty
+			OR = {
+				if = {
+					limit = {
+						has_idea = MTG_anglo-german_treaty
+					}
+					remove_idea = MTG_anglo-german_treaty
+				}
+
+				else_if = {
+					limit = {
+						has_idea = MTG_anglo-german_treaty_2
+					}
+					remove_idea = MTG_anglo-german_treaty_2
+				}
+			}
 			ENG = {
 				country_event = {
 					id = britain.104
@@ -895,6 +913,7 @@ MTG_naval_treaties = {
 							OR = {
 								has_idea = MTG_naval_treaty_cheating_reduced
 								has_idea = MTG_naval_treaty_adherent_reduced
+								has_idea = MTG_anglo-german_treaty_2
 							}
 						}
 					}
@@ -904,6 +923,7 @@ MTG_naval_treaties = {
 						OR = {
 							has_idea = MTG_naval_treaty_cheating
 							has_idea = MTG_naval_treaty_adherent
+							has_idea = MTG_anglo-german_treaty
 						}
 					}
 					activate_mission = MTG_escalator_clause_invocation_mission
@@ -948,6 +968,15 @@ MTG_naval_treaties = {
 				swap_ideas = {
 					remove_idea = MTG_naval_treaty_cheating
 					add_idea = MTG_naval_treaty_cheating_reduced
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = MTG_anglo-german_treaty
+				}
+				swap_ideas = {
+					remove_idea = MTG_anglo-german_treaty
+					add_idea = MTG_anglo-german_treaty_2
 				}
 			}
 			country_event = {
