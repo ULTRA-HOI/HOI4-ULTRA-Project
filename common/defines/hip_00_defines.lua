@@ -1844,7 +1844,7 @@ NNavy = {
 	BASE_GUN_COOLDOWNS = { -- number of hours for a gun to be ready after shooting
 		1.0,	-- big guns
 		4.0,	-- torpedoes
-		1.0,	-- small guns
+		1.0,	-- small guns --also applies to depth charges
 	},
 
 	BASE_JOIN_COMBAT_HOURS						= 8,				-- the taskforces that wants to join existing combats will wait for at least this amount
@@ -1911,7 +1911,7 @@ NNavy = {
 		50.0,	-- small guns
 	},
 
-	DEPTH_CHARGES_HIT_CHANCE_MULT 									= 1.5, --was 1.1 --multiplies hit chance of small guns
+	DEPTH_CHARGES_HIT_CHANCE_MULT 									= 1.5, --was 1.1 --multiplies hit chance of small guns --Depth Charges use Light Gun Hit Chance with this multiplier
 	DEPTH_CHARGES_DAMAGE_MULT 										= 2.0, --was 0.7 --multiplies damage of depth charges
 	DEPTH_CHARGES_HIT_PROFILE 										= 160.0, --was 100.0 --hit profile for depth charges
 
