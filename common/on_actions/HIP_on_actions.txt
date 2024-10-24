@@ -23,17 +23,19 @@ on_actions = {
 					modifier = modifier_dockyard_limitation_for_mios
 				}
 				
+				set_variable = { cic_resource_steel = -2 }
+				set_variable = { cic_resource_aluminium = -1.5 }
+				set_variable = { cic_resource_tungsten = -0.25 }
+				set_variable = { cic_resource_chromium = -0.15 }
+				set_variable = { cic_resource_rubber = -0.2 }
+				
 				IF = {
 					limit = {
-						check_variable = {
-							var = cic_resource_factor
-							value = 0
-							compare = not_equals
-						}
+						has_country_flag = cic_resource_consumption
 					}
-					reduced_civillian_resources_scripted_effect = yes
+					civillian_resources_scripted_effect = yes
 					add_dynamic_modifier = {
-						modifier = reduced_civillian_resources
+						modifier = civillian_resources
 					}
 				}
 			}
@@ -1258,10 +1260,10 @@ on_actions = {
 			IF = {
 				limit = {
 					has_dynamic_modifier = {
-						modifier = reduced_civillian_resources
+						modifier = civillian_resources
 					}
 				}
-				reduced_civillian_resources_scripted_effect = yes
+				civillian_resources_scripted_effect = yes
 			}
 		}
 	}

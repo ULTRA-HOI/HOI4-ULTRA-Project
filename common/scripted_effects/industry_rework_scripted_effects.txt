@@ -493,22 +493,43 @@ init_industry_rework = {
 	add_dynamic_modifier = { modifier = not_of_working_age_penalty }
 }
 
-reduced_civillian_resources_scripted_effect = {
-	set_temp_variable = { cic_resource_factor_temp = cic_resource_factor }
+civillian_resources_scripted_effect = {
+	set_temp_variable = { cic_resource_factor_steel_temp = modifier@cic_resource_steel_factor }
+	set_temp_variable = { cic_resource_factor_aluminium_temp = modifier@cic_resource_aluminium_factor }
+	set_temp_variable = { cic_resource_factor_tungsten_temp = modifier@cic_resource_tungsten_factor }
+	set_temp_variable = { cic_resource_factor_chromium_temp = modifier@cic_resource_chromium_factor }
+	set_temp_variable = { cic_resource_factor_rubber_temp = modifier@cic_resource_rubber_factor }
+
+	add_to_temp_variable = { cic_resource_factor_steel_temp = 1 }
+	add_to_temp_variable = { cic_resource_factor_aluminium_temp = 1 }
+	add_to_temp_variable = { cic_resource_factor_tungsten_temp = 1 }
+	add_to_temp_variable = { cic_resource_factor_chromium_temp = 1 }
+	add_to_temp_variable = { cic_resource_factor_rubber_temp = 1 }
+	
+	add_to_temp_variable = { cic_resource_factor_steel_temp = modifier@cic_resource_factor }
+	add_to_temp_variable = { cic_resource_factor_aluminium_temp = modifier@cic_resource_factor }
+	add_to_temp_variable = { cic_resource_factor_tungsten_temp = modifier@cic_resource_factor }
+	add_to_temp_variable = { cic_resource_factor_chromium_temp = modifier@cic_resource_factor }
+	add_to_temp_variable = { cic_resource_factor_rubber_temp = modifier@cic_resource_factor }
+	
 	set_temp_variable = { num_factories_temp = THIS.num_of_controlled_factories } #num_of_civilian_factories includes traded factories. As these do not consume resources, we do not want them in our calculations as trading allows to go net pos in resources
 	subtract_from_temp_variable = { num_factories_temp = THIS.num_of_military_factories } #therefore we take the controlled factories(not owned since we need the total number of operating factories) and then substract all mic and nic from them to just get cic
 	subtract_from_temp_variable = { num_factories_temp = THIS.num_of_naval_factories }
-	multiply_temp_variable = { cic_resource_factor_temp = num_factories_temp }
+	multiply_temp_variable = { cic_resource_factor_steel_temp = num_factories_temp }
+	multiply_temp_variable = { cic_resource_factor_aluminium_temp = num_factories_temp }
+	multiply_temp_variable = { cic_resource_factor_tungsten_temp = num_factories_temp }
+	multiply_temp_variable = { cic_resource_factor_chromium_temp = num_factories_temp }
+	multiply_temp_variable = { cic_resource_factor_rubber_temp = num_factories_temp }
 	
-	set_variable = { cic_reduced_steel = 2 }
-	set_variable = { cic_reduced_aluminium = 1.5 }
-	set_variable = { cic_reduced_tungsten = 0.25 }
-	set_variable = { cic_reduced_chromium = 0.1 }
-	set_variable = { cic_reduced_rubber = 0.2 }
+	set_variable = { cic_steel = cic_resource_steel }
+	set_variable = { cic_aluminium = cic_resource_aluminium }
+	set_variable = { cic_tungsten = cic_resource_tungsten }
+	set_variable = { cic_chromium = cic_resource_chromium }
+	set_variable = { cic_rubber = cic_resource_rubber }
 	
-	multiply_variable = { cic_reduced_steel = cic_resource_factor_temp }
-	multiply_variable = { cic_reduced_aluminium = cic_resource_factor_temp }
-	multiply_variable = { cic_reduced_tungsten = cic_resource_factor_temp }
-	multiply_variable = { cic_reduced_chromium = cic_resource_factor_temp }
-	multiply_variable = { cic_reduced_rubber = cic_resource_factor_temp }
+	multiply_variable = { cic_steel = cic_resource_factor_steel_temp }
+	multiply_variable = { cic_aluminium = cic_resource_factor_aluminium_temp }
+	multiply_variable = { cic_tungsten = cic_resource_factor_tungsten_temp }
+	multiply_variable = { cic_chromium = cic_resource_factor_chromium_temp }
+	multiply_variable = { cic_rubber = cic_resource_factor_rubber_temp }
 }
