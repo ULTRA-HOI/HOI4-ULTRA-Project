@@ -1,16 +1,16 @@
 # or Germany Mission Command decreased by casualties taken. It rebuilds over time. We use this effect to counteract the initial spirit
 #
-#We use the formula f(c,t) = a*b^(c/d)-e*t with c = total casualties taken, t = time has passed, a = 0.625, b = 1.25, d = 100,000 and e = 0.005
+#We use the formula f(c,t) = a*b^(c/d)-e*t with c = total casualties taken, t = time has passed, a = 0.75, b = 1.3, d = 100,000 and e = 0.0025
 mission_command_diminishing_effect_calc = {
 	
 	#Setting up needed variables
 	set_temp_variable = { temp_casualties = ROOT.casualties_k }
 	set_temp_variable = { temp_time_passed = global.num_days }
 	subtract_from_temp_variable = { temp_time_passed = 706640 } #global.num_days starts counting on 01.01.0000, therefore need to substract 1936*365 = 706640
-	set_temp_variable = { temp_constant_a = 0.625 }
-	set_temp_variable = { temp_constant_b = 1.25 }
+	set_temp_variable = { temp_constant_a = 0.75 }
+	set_temp_variable = { temp_constant_b = 1.3 }
 	set_temp_variable = { temp_constant_d = 100 } #we divide d by 1.000 since we use casualties in 1.000s
-	set_temp_variable = { temp_constant_e = 0.005 } #Set to 0 currently to remove the time impact
+	set_temp_variable = { temp_constant_e = 0.0025 } #Set to 0 currently to remove the time impact
 	
 	#Calculation
 	set_variable = { diminshing_effect_var = temp_constant_b } #Setting up the main variable = b 
