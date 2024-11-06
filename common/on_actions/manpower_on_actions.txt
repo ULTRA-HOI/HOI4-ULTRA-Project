@@ -1,0 +1,26 @@
+on_actions = {
+	on_startup = {
+		effect = {
+			every_country = {
+				calc_previous_conscription_target = yes
+			}
+		}
+	}
+	on_daily = {
+		effect = {
+			if = {
+				limit = {
+					is_ai = no
+				}
+				calc_previous_conscription_target = yes
+				else_if = {
+					limit = {
+						NOT = { has_country_flag = manpower_gui_fix }
+					}
+					add_manpower = 1 
+					set_country_flag = { flag = manpower_gui_fix days = 90 value = 1 }
+				}
+			}
+		}
+	}
+}

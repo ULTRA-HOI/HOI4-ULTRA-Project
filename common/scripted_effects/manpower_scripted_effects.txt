@@ -1,0 +1,11 @@
+calc_previous_conscription_target = {
+	if = {
+		limit = {
+			conscription_ratio > 0.999
+		}
+		set_variable = { previous_conscription_target = modifier@conscription }
+		set_temp_variable = { cons_factor = modifier@conscription_factor }
+		add_to_temp_variable = { cons_factor = 1 }
+		multiply_variable = { previous_conscription_target = cons_factor }
+	}
+}

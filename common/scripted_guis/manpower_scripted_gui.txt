@@ -1,0 +1,59 @@
+
+scripted_gui = {
+	manpower_view_menu = {
+		context_type = player_context
+		
+		window_name = "manpower"
+		parent_window_token = top_bar
+		
+		dirty = manpower_k 
+ 
+		properties = { 
+			manpower_bar = {
+				frame = temp1
+			}
+		}
+		
+		triggers = {
+			manpower_text_visible = {
+				conscription_ratio > 0.999
+			}
+			manpower_text_ratio_visible = {
+				NOT = { conscription_ratio > 0.999 }
+			}
+			manpower_bar_visible = {  
+				NOT = { conscription_ratio > 0.999 } 
+			}
+			manpower_direction_visible = {  
+				NOT = { conscription_ratio > 0.999 } 
+			}
+			manpower_bar_click_enabled = { 
+				
+				set_temp_variable = { target_cons = modifier@conscription }
+				set_temp_variable = { factor = modifier@conscription_factor }
+				add_to_temp_variable = { factor = 1 }
+				multiply_temp_variable = { target_cons = factor }
+				
+				set_temp_variable = { ratio_frame = previous_conscription_target }
+			 	divide_temp_variable = { ratio_frame = target_cons }
+				
+				get_target_conscription = yes
+				
+				set_temp_variable = { temp1 = mobilization_ratio }
+				subtract_from_temp_variable = { temp1 = ratio_frame }
+				
+				set_temp_variable = { temp2 = ratio_frame }
+				subtract_from_temp_variable = { temp2 = 1 }
+				multiply_temp_variable = { temp2 = -1 }
+				
+				set_temp_variable = { temp3 = 1 }
+				check_variable = { temp2 > 0 }
+				divide_temp_variable = { temp3 = temp2 }
+				
+				multiply_temp_variable = { temp1 = temp3 }
+				multiply_temp_variable = { temp1 = 100 }
+				round_temp_variable = temp1 
+			}
+		}
+	}
+}

@@ -1,0 +1,185 @@
+@CP_COST = -15
+@CP_TRIGGER = 14
+@MAX_LEVEL = 5
+@MIN_LEVEL = 0
+scripted_gui = {
+	army_logistics = {
+		context_type = player_context
+		window_name = "army_logistics_window"
+		parent_window_token = logistics_tab
+		visible = {
+			always = yes
+		}
+		ai_enabled = {
+			always = no
+		}
+		effects = {
+			increase_light_logistics_motorisation_button_click = {
+				custom_effect_tooltip = [increase_light_logistics_tt]
+				hidden_effect = {
+					add_to_variable = { light_logistics_motorisation_level = 1 }
+					logistical_calculations = yes
+					on_daily_labour_calculations = yes
+					add_command_power = @CP_COST
+				}
+			}
+			decrease_light_logistics_motorisation_button_click = {
+				custom_effect_tooltip = [decrease_light_logistics_tt]
+				hidden_effect = {
+					subtract_from_variable = { light_logistics_motorisation_level = 1 }
+					logistical_calculations = yes
+					on_daily_labour_calculations = yes
+					add_command_power = @CP_COST
+				}
+			}
+			increase_heavy_logistics_motorisation_button_click = {
+				custom_effect_tooltip = [increase_heavy_logistics_tt]
+				hidden_effect = {
+					add_to_variable = { heavy_logistics_motorisation_level = 1 }
+					logistical_calculations = yes
+					on_daily_labour_calculations = yes
+					add_command_power = @CP_COST
+				}
+			}
+			decrease_heavy_logistics_motorisation_button_click = {
+				custom_effect_tooltip = [decrease_heavy_logistics_tt]
+				hidden_effect = {
+					subtract_from_variable = { heavy_logistics_motorisation_level = 1 }
+					logistical_calculations = yes
+					on_daily_labour_calculations = yes
+					add_command_power = @CP_COST
+				}
+			}
+			increase_mot_logistics_motorisation_button_click = {
+				custom_effect_tooltip = [increase_mot_logistics_tt]
+				hidden_effect = {
+					add_to_variable = { mot_logistics_motorisation_level = 1 }
+					logistical_calculations = yes
+					on_daily_labour_calculations = yes
+					add_command_power = @CP_COST
+				}
+			}
+			decrease_mot_logistics_motorisation_button_click = {
+				custom_effect_tooltip = [decrease_mot_logistics_tt]
+				hidden_effect = {
+					subtract_from_variable = { mot_logistics_motorisation_level = 1 }
+					logistical_calculations = yes
+					on_daily_labour_calculations = yes
+					add_command_power = @CP_COST
+				}
+			}
+			increase_sup_logistics_motorisation_button_click = {
+				custom_effect_tooltip = [increase_sup_logistics_tt]
+				hidden_effect = {
+					add_to_variable = { sup_logistics_motorisation_level = 1 }
+					logistical_calculations = yes
+					on_daily_labour_calculations = yes
+					add_command_power = @CP_COST
+				}
+			}
+			decrease_sup_logistics_motorisation_button_click = {
+				custom_effect_tooltip = [decrease_sup_logistics_tt]
+				hidden_effect = {
+					subtract_from_variable = { sup_logistics_motorisation_level = 1 }
+					logistical_calculations = yes
+					on_daily_labour_calculations = yes
+					add_command_power = @CP_COST
+				}
+			}
+			light_text_click = {
+				custom_effect_tooltip = LIGHT_BATTALIONS_TT
+			}
+			heavy_text_click = {
+				custom_effect_tooltip = HEAVY_BATTALIONS_TT
+			}
+			mot_text_click = {
+				custom_effect_tooltip = MOT_BATTALIONS_TT
+			}
+			sup_text_click = {
+				custom_effect_tooltip = SUP_BATTALIONS_TT
+			}
+			light_logistics_battalions_text_click = {
+				custom_effect_tooltip = LIGHT_BATTALIONS_COUNTS_TT
+			}
+			heavy_logistics_battalions_text_click = {
+				custom_effect_tooltip = HEAVY_BATTALIONS_COUNTS_TT
+			}
+			mot_logistics_battalions_text_click = {
+				custom_effect_tooltip = MOT_BATTALIONS_COUNTS_TT
+			}
+			sup_logistics_battalions_text_click = {
+				custom_effect_tooltip = SUP_BATTALIONS_COUNTS_TT
+			}
+			light_logistics_trucks_text_click = {
+				custom_effect_tooltip = LIGHT_BATTALIONS_TRUCKS_TT
+			}
+			heavy_logistics_trucks_text_click = {
+				custom_effect_tooltip = HEAVY_BATTALIONS_TRUCKS_TT
+			}
+			mot_logistics_trucks_text_click = {
+				custom_effect_tooltip = MOT_BATTALIONS_TRUCKS_TT
+			}
+			sup_logistics_trucks_text_click = {
+				custom_effect_tooltip = SUP_BATTALIONS_TRUCKS_TT
+			}
+			light_logistics_manpower_text_click = {
+				custom_effect_tooltip = LIGHT_MANPOWER_TRUCKS_TT
+			}
+			heavy_logistics_manpower_text_click = {
+				custom_effect_tooltip = HEAVY_MANPOWER_TRUCKS_TT
+			}
+			mot_logistics_manpower_text_click = {
+				custom_effect_tooltip = MOT_MANPOWER_TRUCKS_TT
+			}
+			sup_logistics_manpower_text_click = {
+				custom_effect_tooltip = SUP_MANPOWER_TRUCKS_TT
+			}
+			light_logistics_level_text_click = {
+				custom_effect_tooltip = [light_logistics_motorisation_level_tt]
+			}
+			heavy_logistics_level_text_click = {
+				custom_effect_tooltip = [heavy_logistics_motorisation_level_tt]
+			}
+			mot_logistics_level_text_click = {
+				custom_effect_tooltip = [mot_logistics_motorisation_level_tt]
+			}
+			sup_logistics_level_text_click = {
+				custom_effect_tooltip = [sup_logistics_motorisation_level_tt]
+			}
+		}
+		triggers = {
+			increase_light_logistics_motorisation_button_click_enabled = {
+				check_variable = { light_logistics_motorisation_level < @MAX_LEVEL }
+				check_variable = { command_power > @CP_TRIGGER }
+			}
+			decrease_light_logistics_motorisation_button_click_enabled = {
+				check_variable = { light_logistics_motorisation_level > @MIN_LEVEL }
+				check_variable = { command_power > @CP_TRIGGER }
+			}
+			increase_heavy_logistics_motorisation_button_click_enabled = {
+				check_variable = { heavy_logistics_motorisation_level < @MAX_LEVEL }
+				check_variable = { command_power > @CP_TRIGGER }
+			}
+			decrease_heavy_logistics_motorisation_button_click_enabled = {
+				check_variable = { heavy_logistics_motorisation_level > @MIN_LEVEL }
+				check_variable = { command_power > @CP_TRIGGER }
+			}
+			increase_mot_logistics_motorisation_button_click_enabled = {
+				check_variable = { mot_logistics_motorisation_level < @MAX_LEVEL }
+				check_variable = { command_power > @CP_TRIGGER }
+			}
+			decrease_mot_logistics_motorisation_button_click_enabled = {
+				check_variable = { mot_logistics_motorisation_level > @MIN_LEVEL }
+				check_variable = { command_power > @CP_TRIGGER }
+			}
+			increase_sup_logistics_motorisation_button_click_enabled = {
+				check_variable = { sup_logistics_motorisation_level < @MAX_LEVEL }
+				check_variable = { command_power > @CP_TRIGGER }
+			}
+			decrease_sup_logistics_motorisation_button_click_enabled = {
+				check_variable = { sup_logistics_motorisation_level > @MIN_LEVEL }
+				check_variable = { command_power > @CP_TRIGGER }
+			}
+		}
+	}
+}

@@ -1,0 +1,48 @@
+defined_text = { 
+	name = GetManpowerDisplay
+	text = {
+		trigger = {
+			check_variable = { manpower_k > 10000 }
+			set_temp_variable = { manpower_k_k = manpower_k }
+			divide_temp_variable = { manpower_k_k = 1000 }
+		}
+		localization_key = "[?manpower_k_k|2]M"
+	}	
+	text = {
+		trigger = {
+			check_variable = { manpower_k > 1000 }
+			set_temp_variable = { manpower_k_k = manpower_k }
+			divide_temp_variable = { manpower_k_k = 1000 }
+		}
+		localization_key = "[?manpower_k_k|3]M"
+	}	
+	text = {
+		trigger = {
+			check_variable = { manpower_k > 10 }
+		}
+		localization_key = "[?manpower_k|2]K"
+	}
+	text = {
+		localization_key = "[?manpower]"
+	}
+}
+defined_text = { 
+	name = GetManpowerDirection
+	text = {
+		trigger = {
+			set_temp_variable = { target_cons = modifier@conscription }
+			set_temp_variable = { factor = modifier@conscription_factor }
+			add_to_temp_variable = { factor = 1 }
+			multiply_temp_variable = { target_cons = factor }
+			
+			check_variable = { previous_conscription_target < target_cons }
+		}
+		localization_key = MANPOWER_INCREASE
+	}
+	text = {
+		trigger = {
+			check_variable = { previous_conscription_target > target_cons }
+		}
+		localization_key = MANPOWER_DECREASE
+	}
+}
