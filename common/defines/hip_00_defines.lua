@@ -305,7 +305,7 @@ NCountry = {
 	CONVOY_RANGE_FACTOR = 1,                        -- how much range affects convoy need
 	CONVOY_LENDLEASE_RANGE_FACTOR = 1,				-- How much range affects convoy need for lend lease
 	CONVOY_INTERNATIONAL_MARKET_RANGE_FACTOR = 1,	-- How much range affects convoy need for international market
-	LOCAL_MANPOWER_ACCESSIBLE_NON_CORE_FACTOR = 0.02, --was 0.02 --accessible recruitable factor base
+	LOCAL_MANPOWER_ACCESSIBLE_NON_CORE_FACTOR = 0.005, --was 0.02 --accessible recruitable factor base
 	MAX_NON_CORE_MANPOWER_FACTOR = 1.0,				-- max clamp for recruitable local non core manpower factor for states
 	DEFAULT_STABILITY = 0.5,						-- Default stability if not scripted otherwise.
 	DEFAULT_WAR_SUPPORT = 0.5,						-- Default war support if not scripted otherwise.
@@ -522,7 +522,7 @@ NResistance = {
 		20, -25, -- below 20% it has a -25% modifier on decay
 	},
 
-	MIN_DAMAGE_TO_GARRISONS_MODIFIER = 0.1, -- modifier that applies to losses from resistance attack to garrisons at most can be reduced to this amount
+	MIN_DAMAGE_TO_GARRISONS_MODIFIER = 0.05, -- modifier that applies to losses from resistance attack to garrisons at most can be reduced to this amount
 
 	RESISTANCE_GROWTH_BASE = 0.2, -- base resistance grow
 	RESISTANCE_GROWTH_MIN = 0.01, -- min resistance grow
@@ -540,8 +540,8 @@ NResistance = {
 
 	RESISTANCE_RATIO_DIFF_TO_SPREAD = 0.5, -- resistance diff between two neighbour states will spread by this ratio ( from highest resistance states to lower ones and it will only spread once to a state)
 
-	RESISTANCE_ACTIVITY_CHANCE_AT_MAX_RESISTANCE = 0.312,
-	RESISTANCE_ACTIVITY_MIN_GARRISON_PENETRATE_CHANCE = 0.02,
+	RESISTANCE_ACTIVITY_CHANCE_AT_MAX_RESISTANCE = 0.039,
+	RESISTANCE_ACTIVITY_MIN_GARRISON_PENETRATE_CHANCE = 0.32,
 
 	RESISTANCE_TARGET_TO_REENABLE_RESISTANCE = 10, -- resistance will be disabled once it reaches zero and will not be reenabled until resistance target reaches above this value
 	GARRISON_LOG_MAX_MONTHS = 12,
@@ -559,8 +559,8 @@ NResistance = {
 	SUPPRESSION_NEEDED_LOWER_CAP = 10.0,	-- if resistance is lower than this value then we always act as though it is at the define for the purpose of suppresion requirements
 	SUPPRESSION_NEEDED_UPPER_CAP = 50.0, -- if resistance is greater than this value then we always act as though it is at the define for the purpose of suppresion requirements
 
-	GARRISON_MANPOWER_LOST_BY_ATTACK = 0.0025, --was 0.016 --Ratio of manpower lost by garrison at each attack on garrison (this number will be reduced by the hardness of garrison template)
-	GARRISON_EQUIPMENT_LOST_BY_ATTACK = 0.005, --was 0.02 --Ratio of equipment lost by garrison at each attack on garrison (this number will be reduced by the hardness of garrison template)
+	GARRISON_MANPOWER_LOST_BY_ATTACK = 0.016, --was 0.016 --Ratio of manpower lost by garrison at each attack on garrison (this number will be reduced by the hardness of garrison template)
+	GARRISON_EQUIPMENT_LOST_BY_ATTACK = 0.032, --was 0.02 --Ratio of equipment lost by garrison at each attack on garrison (this number will be reduced by the hardness of garrison template)
 	MAXIMUM_GARRISON_HARDNESS_WHEN_ATTACKED = 0.90,   -- Cap to be sure that garrison will suffer lost in attack, even with a almost 100% hardness
 
 	FOREIGN_MANPOWER_MIN_THRESHOLD = 5000,		 -- The minimum number of Manpower that AI will accept to give at once, in order to avoid many weird little transfer.
