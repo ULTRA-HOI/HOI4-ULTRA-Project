@@ -4,7 +4,7 @@ import re
 from collections import defaultdict
 
 def print_marker(commits_by_marker, marker, name, f):
-    f.write(f"## {name} Commits\n\n")
+    f.write(f"## {name} \n\n")
     for title, body in commits_by_marker[marker]:
         f.write(f"- {title}\n")
         if body:
@@ -14,7 +14,7 @@ def print_marker(commits_by_marker, marker, name, f):
 
 # Check arguments
 if len(sys.argv) < 3:
-    print("Usage: python git_commits_to_md.py <commit-id> <patch_name>")
+    print("Usage: python changelog.py <commit-id> <patch_name>")
     sys.exit(1)
 
 commit_id = sys.argv[1]
