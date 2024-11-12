@@ -22,7 +22,15 @@ on_actions = {
 				add_dynamic_modifier = {
 					modifier = modifier_dockyard_limitation_for_mios
 				}
-				factory_passive_coal_consumption_scripted_effect = yes
+				factory_passive_coal_consumption_scripted_effect = yes 	#remove once the issue with effects not updating in history is resolved
+				IF = {													#
+					limit = {											#
+						has_dynamic_modifier = {                        #
+							modifier = civillian_resources              #
+						}                                               #
+					}                                                   #
+					civillian_resources_scripted_effect = yes           #
+				}														#until here
 			}
 			every_state = {
 				if = {
