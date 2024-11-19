@@ -1,7 +1,7 @@
 ideas = {
 
 	hidden_ideas = {
-
+		
 		league_of_nations_member_idea = { 
 			allowed = {
 				always = no
@@ -16,6 +16,8 @@ ideas = {
 			modifier = {
 			}
 		}
+
+		
 
 		continuous_naval_production = {
 			allowed = {
@@ -128,11 +130,80 @@ ideas = {
 				}
 			}		
 		}
-		
+
+#		sp_multi_charge_large_caliber_gun_small_size_ns = { #TODO_Manu: Used for Small version of V-3 SP. Uncomment if Code Support gets implemented 
+#			allowed = {
+#				always = no
+#			}
+#
+#			allowed_civil_war = {
+#				always = yes
+#			}
+#			
+#			removal_cost = -1
+#			
+#			modifier = {
+#				production_speed_mega_gun_emplacement_factor = 0.5
+#			}
+#		}
 	}
-	
+
 	# Special ones that can be applied on other countries through focus system.
 	country = {
+		damage_to_naval_base_low = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			picture = POL_disjointed_industry
+			
+			removal_cost = -1
+			
+			modifier = {
+				refit_speed = -0.05
+				repair_speed_factor = -0.05
+			}
+		}
+		damage_to_naval_base_medium = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			picture = POL_disjointed_industry
+			
+			removal_cost = -1
+			
+			modifier = {
+				refit_speed = -0.1
+				repair_speed_factor = -0.1
+			}
+		}
+		damage_to_naval_base_high = {
+			allowed = {
+				always = no
+			}
+
+			picture = POL_disjointed_industry
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+			
+			modifier = {
+				refit_speed = -0.25
+				repair_speed_factor = -0.25
+			}
+		}
 		
 		TO_chose_neutrality = {
 
@@ -249,7 +320,29 @@ ideas = {
 			
 			modifier = {
 				fascism_drift = 0.1
-				fascism_acceptance = 85
+				fascism_acceptance = 65
+			}
+		}
+
+		strong_fascist_influence = {
+			name = fascist_influence
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = fascism
+			}
+
+			removal_cost = -1
+
+			picture = generic_fascism_drift_bonus
+			
+			modifier = {
+				fascism_drift = 0.25
+				fascism_acceptance = 150
+				drift_defence_factor = -0.25
+
 			}
 		}
 		
@@ -273,6 +366,7 @@ ideas = {
 				communism_acceptance = 85
 			}
 		}
+
 		democratic_influence = {
 			
 			
@@ -293,6 +387,7 @@ ideas = {
 				democratic_acceptance = 85
 			}
 		}
+		
 		neutrality_influence = {
 			allowed = {
 				always = no
@@ -421,9 +516,39 @@ ideas = {
 				}
 			}
 
+			cancel = {
+				OR = {
+					AND = {
+						tag = GER
+						is_subject = yes
+						has_war_with = SOV
+						NOT = { is_in_faction_with = SOV }
+					}
+					AND = {
+						tag = SOV
+						is_subject = yes
+						has_war_with = GER
+						NOT = { is_in_faction_with = GER }
+					}
+				}
+			}
+
+			on_remove = {
+				if = {
+					limit = {
+						tag = GER
+						is_in_faction_with = SOV
+					}
+					GER = {
+						dismantle_faction = yes
+					}
+				}
+			}
+
 			removal_cost = -1
 			
 			modifier = {
+				custom_modifier_tooltip = GER_dimantle_faction_tt
 				communism_acceptance = 100
 				fascism_acceptance = 100
 			}
@@ -469,6 +594,27 @@ ideas = {
 				research_speed_factor = 0.035
 			}
 		}
+
+		# Secret Weapons
+		generic_secret_weapons_ns = {
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = generic_research_bonus
+			
+			modifier = {
+				special_project_speed_factor = 0.05
+			}
+		}
+
 		# from decision
 		paramilitary_training = {
 			
@@ -630,6 +776,7 @@ ideas = {
 	
 			modifier = {
 				conscription = 0.01
+				mobilization_speed = 0.25
 			}
 		}
 	
@@ -653,6 +800,7 @@ ideas = {
 	
 			modifier = {
 				training_time_army_factor = -0.1
+				supply_combat_penalties_on_core_factor = -0.15
 			}
 		}
 	
@@ -676,6 +824,7 @@ ideas = {
 	
 			modifier = {
 				stability_factor = 0.05
+				weekly_manpower = 400
 			}
 		}
 	
@@ -775,6 +924,7 @@ ideas = {
 				production_speed_coastal_bunker_factor = 0.2
 				production_speed_anti_air_building_factor = 0.2
 				production_speed_arms_factory_factor = 0.2
+				bunker_max_level_terrain_limit = 1
 			}
 		}
 
@@ -811,6 +961,8 @@ ideas = {
 			
 			modifier = {
 				send_volunteer_divisions_required = -0.5
+				send_volunteer_factor = 0.1
+				send_volunteers_tension = -0.1
 			}
 		}
 
@@ -903,10 +1055,12 @@ ideas = {
 			picture = generic_research_bonus
 	
 			modifier = {
-				production_speed_nuclear_reactor_factor = 0.2
+				production_speed_nuclear_reactor_factor = 0.15 # was 0.2
+				specialization_nuclear_speed_factor = 0.05
+				production_speed_nuclear_facility_factor = 0.05
 			}
 			research_bonus = {
-				nuclear = 0.15
+				nuclear = 0.05 # was 0.15
 			}
 		}
 
@@ -926,11 +1080,13 @@ ideas = {
 			picture = generic_research_bonus
 	
 			modifier = {
-				production_speed_nuclear_reactor_factor = 0.25
+				production_speed_nuclear_reactor_factor = 0.2 # was 0.25
 				political_power_factor = -0.5
+				specialization_nuclear_speed_factor = 0.05
+				production_speed_nuclear_facility_factor = 0.05
 			}
 			research_bonus = {
-				nuclear = 0.15
+				nuclear = 0.05
 			}
 		}
 		
@@ -1281,6 +1437,57 @@ ideas = {
 			modifier = {
 			}
 		}
+
+		special_project_consumer_costs_high = { 
+			allowed = {
+				always = yes
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+			picture = generic_industrial_concern_1
+			
+			modifier = {
+				consumer_goods_expected_value = 0.1
+			}
+		}
+
+		special_project_consumer_costs_medium = { 
+			allowed = {
+				always = yes
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+			picture = generic_industrial_concern_1
+			
+			modifier = {
+				consumer_goods_expected_value = 0.05
+			}
+		}
+
+		special_project_consumer_costs_low = { 
+			allowed = {
+				always = yes
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+			
+			removal_cost = -1
+			picture = generic_industrial_concern_1
+			
+			modifier = {
+				consumer_goods_expected_value = 0.025
+			}
+		}
 		
 		####HIP####
 		
@@ -1602,9 +1809,9 @@ ideas = {
 			picture = generic_tank_manufacturer_1
 			
 			allowed = {
-				NOT = { OR = { tag = GER tag = ENG tag = SOV tag = FRA tag = ITA tag = JAP tag = USA tag = BEL tag = CZE } }
+				NOT = { OR = { tag = GER tag = ENG tag = SOV tag = FRA tag = ITA tag = JAP tag = USA tag = BEL tag = CZE tag = FIN } }
 				NOT = {
-					has_available_idea_with_traits = { idea = tank_manufacturer limit = 1 }
+					has_allowed_idea_with_traits = { idea = tank_manufacturer limit = 1 }
 				}
 				NOT = {
 					AND = {
@@ -1639,6 +1846,19 @@ ideas = {
 						has_dlc = "By Blood Alone"
 					}
 				}
+				NOT = {
+					AND = {
+						OR = { tag = CHL tag = ARG tag = BRA }
+						has_dlc = "Trial of Allegiance"
+					}
+				}
+
+				NOT = {
+					AND = {
+						OR = { tag = HUN tag = AUS }
+						has_dlc = "Gotterdammerung"
+					}
+				}
 			}
 			
 			cost = 100
@@ -1663,7 +1883,7 @@ ideas = {
 			allowed = {
 				NOT = { OR = { tag = GER tag = ENG tag = SOV tag = FRA tag = ITA tag = JAP tag = USA tag = SWE tag = HUN tag = CZE tag = FIN } }
 				NOT = {
-					has_available_idea_with_traits = { idea = naval_manufacturer limit = 1 }
+					has_allowed_idea_with_traits = { idea = naval_manufacturer limit = 1 }
 				}
 				NOT = {
 					AND = {
@@ -1701,6 +1921,20 @@ ideas = {
 						has_dlc = "By Blood Alone"
 					}
 				}
+
+				NOT = {
+					AND = {
+						OR = { tag = CHL tag = ARG tag = BRA }
+						has_dlc = "Trial of Allegiance"
+					}
+				}
+
+				NOT = {
+					AND = {
+						tag = AUS 
+						has_dlc = "Gotterdammerung"
+					}
+				}
 			}
 			
 			cost = 100
@@ -1723,9 +1957,9 @@ ideas = {
 			picture = generic_air_manufacturer_1
 
 			allowed = {
-				NOT = { OR = { tag = GER tag = ENG tag = SOV tag = FRA tag = ITA tag = JAP tag = USA } }
+				NOT = { OR = { tag = GER tag = ENG tag = SOV tag = FRA tag = ITA tag = JAP tag = USA tag = FIN } }
 				NOT = {
-					has_available_idea_with_traits = { idea = light_aircraft_manufacturer limit = 1 }
+					has_allowed_idea_with_traits = { idea = light_aircraft_manufacturer limit = 1 }
 				}
 				if = {
 					limit = {
@@ -1763,6 +1997,20 @@ ideas = {
 						has_dlc = "By Blood Alone"
 					}
 				}
+
+				NOT = {
+					AND = {
+						OR = { tag = ARG }
+						has_dlc = "Trial of Allegiance"
+					}
+				}
+
+				NOT = {
+					AND = {
+						tag = AUS 
+						has_dlc = "Gotterdammerung"
+					}
+				}
 			}
 			
 			cost = 100
@@ -1782,7 +2030,7 @@ ideas = {
 			allowed = {
 				NOT = { OR = { tag = GER tag = ENG tag = SOV tag = FRA tag = ITA tag = JAP tag = USA tag = ROM tag = FIN } }
 				NOT = {
-					has_available_idea_with_traits = { idea = medium_aircraft_manufacturer limit = 1 }
+					has_allowed_idea_with_traits = { idea = medium_aircraft_manufacturer limit = 1 }
 				}
 				if = {
 					limit = {
@@ -1820,6 +2068,21 @@ ideas = {
 						has_dlc = "By Blood Alone"
 					}
 				}
+
+				NOT = {
+					AND = {
+						OR = { tag = CHL tag = ARG }
+						has_dlc = "Trial of Allegiance"
+					}
+				}
+
+				NOT = {
+					AND = {
+						OR = { tag = HUN tag = AUS }
+						has_dlc = "Gotterdammerung"
+					}
+				}
+
 			}
 			
 			cost = 100
@@ -1839,7 +2102,7 @@ ideas = {
 			allowed = {
 				NOT = { OR = { tag = GER tag = ENG tag = SOV tag = FRA tag = ITA tag = JAP tag = USA tag = CAN tag = ROM tag = FIN } }
 				NOT = {
-					has_available_idea_with_traits = { idea = heavy_aircraft_manufacturer limit = 1 }
+					has_allowed_idea_with_traits = { idea = heavy_aircraft_manufacturer limit = 1 }
 				}
 				if = {
 					limit = {
@@ -1877,6 +2140,19 @@ ideas = {
 						has_dlc = "By Blood Alone"
 					}
 				}
+				NOT = {
+					AND = {
+						OR = { tag = CHL tag = ARG }
+						has_dlc = "Trial of Allegiance"
+					}
+				}
+
+				NOT = {
+					AND = {
+						OR = { tag = HUN tag = AUS }
+						has_dlc = "Gotterdammerung"
+					}
+				}
 			}
 			
 			cost = 100
@@ -1896,7 +2172,7 @@ ideas = {
 			allowed = {
 				NOT = { OR = { tag = GER tag = ENG tag = SOV tag = FRA tag = ITA tag = JAP tag = USA tag = CAN tag = ROM tag = YUG tag = FIN } }
 				NOT = {
-					has_available_idea_with_traits = { idea = naval_aircraft_manufacturer limit = 1 }
+					has_allowed_idea_with_traits = { idea = naval_aircraft_manufacturer limit = 1 }
 				}
 				if = {
 					limit = {
@@ -1930,6 +2206,21 @@ ideas = {
 						has_dlc = "By Blood Alone"
 					}
 				}
+
+				NOT = {
+					AND = {
+						OR = { tag = CHL tag = ARG }
+						has_dlc = "Trial of Allegiance"
+					}
+				}
+
+				NOT = {
+					AND = {
+						OR = { tag = HUN tag = AUS }
+						has_dlc = "Gotterdammerung"
+					}
+				}
+
 			}
 			
 			cost = 100
@@ -1950,9 +2241,9 @@ ideas = {
 			picture = generic_industrial_concern_1
 
 			allowed = {
-				NOT = { OR = { tag = GER tag = ENG tag = SOV tag = FRA tag = ITA tag = JAP tag = USA tag = HUN tag = FIN tag = CAN } }
+				NOT = { OR = { tag = GER tag = ENG tag = SOV tag = FRA tag = ITA tag = JAP tag = USA tag = HUN tag = FIN } }
 				NOT = {
-					has_available_idea_with_traits = { idea = industrial_concern limit = 1 }
+					has_allowed_idea_with_traits = { idea = industrial_concern limit = 1 }
 				}
 				NOT = {
 					AND = {
@@ -1980,8 +2271,27 @@ ideas = {
 				}
 				NOT = {
 					AND = {
-						OR = { tag = ETH }
+						tag = ETH
 						has_dlc = "By Blood Alone"
+					}
+				}
+				NOT = {
+					AND = {
+						OR = { tag = ICE tag = DEN }
+						has_dlc = "Arms Against Tyranny"
+					}
+				}
+				NOT = {
+					AND = {
+						tag = BRA
+						has_dlc = "Trial of Allegiance"
+					}
+				}
+
+				NOT = {
+					AND = {
+						OR = { tag = HUN tag = AUS tag = BEL tag = COG }
+						has_dlc = "Gotterdammerung"
 					}
 				}
 			}
@@ -2001,9 +2311,9 @@ ideas = {
 			picture = generic_electronics_concern_1
 
 			allowed = {
-				NOT = { OR = { tag = GER tag = ENG tag = SOV tag = FRA tag = ITA tag = JAP tag = USA } }
+				NOT = { OR = { tag = GER tag = ENG tag = SOV tag = FRA tag = ITA tag = JAP tag = USA tag = FIN } }
 				NOT = {
-					has_available_idea_with_traits = { idea = electronics_concern limit = 1 }
+					has_allowed_idea_with_traits = { idea = electronics_concern limit = 1 }
 				}
 				NOT = {
 					AND = {
@@ -2038,6 +2348,25 @@ ideas = {
 						has_dlc = "By Blood Alone"
 					}
 				}
+				NOT = {
+					AND = {
+						OR = { tag = FIN tag = ICE tag = SWE }
+						has_dlc = "Arms Against Tyranny"
+					}
+				}
+				NOT = {
+					AND = {
+						has_dlc = "Trial of Allegiance"
+						original_tag = BRA
+					}
+				}
+
+				NOT = {
+					AND = {
+						OR = { tag = HUN tag = AUS tag = BEL tag = COG }
+						has_dlc = "Gotterdammerung"
+					}
+				}
 			}
 			
 			cost = 100
@@ -2062,7 +2391,7 @@ ideas = {
 			allowed = {
 				NOT = { OR = { tag = GER tag = ENG tag = SOV tag = FRA tag = ITA tag = JAP tag = USA tag = FIN } }
 				NOT = {
-					has_available_idea_with_traits = { idea = motorized_equipment_manufacturer limit = 1 }
+					has_allowed_idea_with_traits = { idea = motorized_equipment_manufacturer limit = 1 }
 				}
 				NOT = {
 					AND = {
@@ -2090,8 +2419,15 @@ ideas = {
 				}
 				NOT = {
 					AND = {
-						OR = { tag = ETH }
+						tag = ETH
 						has_dlc = "By Blood Alone"
+					}
+				}
+
+				NOT = {
+					AND = {
+						OR = { tag = HUN tag = AUS }
+						has_dlc = "Gotterdammerung"
 					}
 				}
 			}
@@ -2113,7 +2449,7 @@ ideas = {
 			allowed = {
 				NOT = { OR = { tag = GER tag = ENG tag = SOV tag = FRA tag = ITA tag = JAP tag = USA tag = HUN tag = FIN } }
 				NOT = {
-					has_available_idea_with_traits = { idea = infantry_equipment_manufacturer limit = 1 }
+					has_allowed_idea_with_traits = { idea = infantry_equipment_manufacturer limit = 1 }
 				}
 				NOT = {
 					AND = {
@@ -2141,8 +2477,15 @@ ideas = {
 				}
 				NOT = {
 					AND = {
-						OR = { tag = ETH }
+						tag = ETH
 						has_dlc = "By Blood Alone"
+					}
+				}
+
+				NOT = {
+					AND = {
+						tag = AUS
+						has_dlc = "Gotterdammerung"
 					}
 				}
 			}
@@ -2164,7 +2507,7 @@ ideas = {
 			allowed = {
 				NOT = { OR = { tag = GER tag = ENG tag = SOV tag = FRA tag = ITA tag = JAP tag = USA tag = FIN } }
 				NOT = {
-					has_available_idea_with_traits = { idea = artillery_manufacturer limit = 1 }
+					has_allowed_idea_with_traits = { idea = artillery_manufacturer limit = 1 }
 				}
 				NOT = {
 					AND = {
@@ -2180,7 +2523,7 @@ ideas = {
 				}
 				NOT = {
 					AND = {
-						OR = { tag = SPR tag = SPA tag = SPB tag = SPC tag = SPD }
+						OR = { tag = SPR tag = SPA tag = SPB tag = SPC tag = SPD tag = POR }
 						has_dlc = "La Resistance"
 					}
 				}
@@ -2192,10 +2535,26 @@ ideas = {
 				}
 				NOT = {
 					AND = {
-						OR = { tag = ETH }
+						tag = ETH
 						has_dlc = "By Blood Alone"
 					}
 				}
+
+				NOT = {
+					AND = {
+						tag = CHL
+						has_dlc = "Trial of Allegiance"
+					}
+				}
+
+				NOT = {
+					AND = {
+						tag = HUN
+						has_dlc = "Gotterdammerung"
+					}
+				}
+
+				
 			}
 			
 			cost = 100
