@@ -1613,25 +1613,31 @@ technologies = {
 		}
 		
 		ai_will_do = {
-			factor = 1
+			base = 1
 			
 			modifier = {
 				factor = 1.2
-				date > "1941.1.1"
+				date > 1941.1.1
 			}
 			
 			modifier = {
 				factor = 1.2
-				date > "1942.1.1"
+				date > 1942.1.1
 			}
 			
 			modifier = {
 				factor = 1.2
-				date > "1943.1.1"
+				date > 1943.1.1
 			}
-			
+
 			modifier = {
 				factor = 2
+				is_major = yes
+				date > 1943.1.1
+			}
+
+			modifier = {
+				factor = 4
 				tag = USA
 			}
 		}
@@ -1640,7 +1646,50 @@ technologies = {
 			nuclear
 		}
 		
+		on_research_complete = {
+			custom_effect_tooltip = {
+				localization_key = SP_UNLOCK_PROJECT
+				PROJECT = sp_nuclear_reactor	
+			}
 
+			hidden_effect = {
+				if = {
+					limit = {
+						has_dlc = "By Blood Alone"
+					}
+					if = {
+						limit = {
+							check_variable = { global.atomic_research_race < 3 }
+						}
+						add_to_variable = { global.atomic_research_race = 1 }
+						if = {
+							limit = {
+								original_tag = ITA
+								NOT = { has_country_flag = ITA_pioneer_in_atomic_research_flag }
+							}
+							set_country_flag = ITA_pioneer_in_atomic_research_flag
+						}
+						else_if = {
+							limit = {
+								check_variable = { global.atomic_research_race = 3 }
+								NOT = {
+									any_country = {
+										original_tag = ITA
+										has_country_flag = ITA_pioneer_in_atomic_research_flag
+									}
+								}
+							}
+							random_country = {
+								limit = {
+									original_tag = ITA
+								}
+								set_country_flag = ITA_late_to_the_atomic_party_flag
+							}
+						}
+					}
+				}
+			}
+		}
 	}
 	
 	nuclear_reactor = {
@@ -1657,15 +1706,15 @@ technologies = {
 		
 		research_cost = 5
 		
-		folder = {
-			name = electronics_folder
-			position = { x = 0 y = 4 }
-		}
+		# folder = {
+		# 	name = electronics_folder
+		# 	position = { x = 0 y = 4 }
+		# }
 
-		path = {
-			leads_to_tech = nukes 
-			research_cost_coeff = 1
-		}
+		# path = {
+		# 	leads_to_tech = nukes 
+		# 	research_cost_coeff = 1
+		# }
 		
 		ai_will_do = {
 			modifier = {
@@ -1689,22 +1738,53 @@ technologies = {
 		}
 	}
 
+	nuclear_reactor_heavy_water = {
+
+		# can build reactors
+		
+		start_year = 1943
+		research_cost = 5
+		
+		#folder = {
+		#	name = electronics_folder
+		#	position = { x = 0 y = 2 }
+		#}
+
+		#path = {
+		#	leads_to_tech = nukes 
+		#	research_cost_coeff = 1
+		#}
+		
+		ai_will_do = {
+			factor = 1
+		}
+		
+		categories = {
+			nuclear
+		}
+
+		enable_building = {
+			building = nuclear_reactor_heavy_water
+			level = 1
+		}
+	}
+
 	nukes = {
 	
 		start_year = 1950
 			
 		research_cost = 8	
 		
-		allow = {
-			date > 1944.1.1 
-			num_of_factories > 200
-			has_idea_with_trait = nuclear_scientist
-		}
+		# allow = {
+		# 	date > 1944.1.1 
+		# 	num_of_factories > 200
+		# 	has_idea_with_trait = nuclear_scientist
+		# }
 		
-		folder = {
-			name = electronics_folder
-			position = { x = 0 y = 10 }
-		}
+		# folder = {
+		# 	name = electronics_folder
+		# 	position = { x = 0 y = 10 }
+		# }
 		
 		ai_will_do = {
 			factor = 10
