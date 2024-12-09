@@ -3949,7 +3949,7 @@ NIntel = {
 },
 
 NCharacter = {
-	OFFICER_CORP_ADVISOR_ENTRIES_IN_MENU = { "high_command", "theorist", "army_theorist", "navy_theorist", "air_theorist", "army_chief", "air_chief", "navy_chief" }, --was { "high_command" "theorist" "army_chief" "air_chief" "navy_chief" }
+	OFFICER_CORP_ADVISOR_ENTRIES_IN_MENU = { "high_command", "army_theorist", "navy_theorist", "air_theorist", "army_chief", "air_chief", "navy_chief" }, --was { "high_command" "theorist" "army_chief" "air_chief" "navy_chief" }
 	OFFICER_CORP_HIGH_COMMAND_SLOTS_IN_MENU = 8, --was 3 --For Alert manager to count the number of High Command Slots in the UI
 	POLITICAL_ADVISOR_SLOTS_IN_MENU = 8, --was 3 --For Alert manager to count the number of Political Advisor Slots in the UI
 
