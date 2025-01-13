@@ -10,8 +10,7 @@ on_daily_labour_calculations = {
 	# Loop through every non-core state, add non-core pop to total_non_core_population_k and available non-core pop to avaliable_non_core_population_k modified by agricultural penalty of state 
 	every_controlled_state = {
 		set_variable = { state_avaliable_labour_k = state_population_k }
-		
-		# calculate compliance effect for non-cores
+		multiply_variable = { state_avaliable_labour_k = state_level_agriculture_penalty }
 		if = {
 			limit = {
 				NOT = { is_core_of = PREV }
@@ -24,18 +23,6 @@ on_daily_labour_calculations = {
 				multiply_temp_variable = { state_compliance_manpower_factor = 0.05 } # static_modifiers -> compliance_effect
 			}
 			multiply_variable = { state_avaliable_labour_k = state_compliance_manpower_factor }
-		}
-
-		# calculate resulting available labour by removing agri penalty share
-		set_temp_variable = { agriculture_multiplier = 1 }
-		add_to_temp_variable = { agriculture_multiplier = state_level_agriculture_penalty }
-		multiply_variable = { state_avaliable_labour_k = agriculture_multiplier }
-		
-		# set state variables for non-core pop
-		if = {
-			limit = {
-				NOT = { is_core_of = PREV }
-			}
 			add_to_variable = { PREV.total_non_core_population_k = state_population_k }
 			#add_to_temp_variable = { PREV.avaliable_non_core_population_k = state_avaliable_labour_k }
 		}
@@ -230,7 +217,7 @@ calculate_civilian_labour = {
 		limit = {
 			OR = {
 				tag = LUX
-				tag = DNZ
+				tag = DZG
 			}
 		}
 		set_variable = { civilian_services_labour_k = 0.05 }
@@ -347,7 +334,7 @@ calculate_state_level_agriculture_penalty = {
 				is_core_of = SWI
 				is_core_of = HOL
 				is_core_of = BEL
-				is_core_of = DNZ
+				is_core_of = DZG
 			}
 		}
 		set_variable = { state_level_agriculture_penalty = 0.14 }
