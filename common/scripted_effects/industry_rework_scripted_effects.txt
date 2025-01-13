@@ -15,16 +15,16 @@ on_daily_labour_calculations = {
 			limit = {
 				NOT = { is_core_of = PREV }
 			}
-			set_temp_variable = { state_compliance_manpower_factor = compliance }
-			multiply_temp_variable = { state_compliance_manpower_factor = 0.10 } # static_modifiers.txt -> compliance_effect
-			add_to_temp_variable = { state_compliance_manpower_factor = 0.02 } # defines.lua -> LOCAL_MANPOWER_ACCESSIBLE_NON_CORE_FACTOR
-			if = {
-				limit = { compliance > 59 } # compliance_modifiers.txt -> compliance_60
-				multiply_temp_variable = { state_compliance_manpower_factor = 0.05 } # static_modifiers -> compliance_effect
-			}
-			multiply_variable = { state_avaliable_labour_k = state_compliance_manpower_factor }
+			#set_temp_variable = { state_compliance_manpower_factor = compliance }
+			#multiply_temp_variable = { state_compliance_manpower_factor = 0.10 } # static_modifiers.txt -> compliance_effect
+			#add_to_temp_variable = { state_compliance_manpower_factor = 0.02 } # defines.lua -> LOCAL_MANPOWER_ACCESSIBLE_NON_CORE_FACTOR
+			#if = {
+			#	limit = { compliance > 59 } # compliance_modifiers.txt -> compliance_60
+			#	multiply_temp_variable = { state_compliance_manpower_factor = 0.05 } # static_modifiers -> compliance_effect
+			#}
+			#multiply_variable = { state_avaliable_labour_k = state_compliance_manpower_factor }
 			add_to_variable = { PREV.total_non_core_population_k = state_population_k }
-			add_to_temp_variable = { PREV.avaliable_non_core_population_k = state_avaliable_labour_k }
+			#add_to_temp_variable = { PREV.avaliable_non_core_population_k = state_avaliable_labour_k }
 		}
 	}
 	
@@ -32,7 +32,7 @@ on_daily_labour_calculations = {
 	
 	#Calculates total labourpower (in 1000s)
 	set_variable = { total_core_non_core_population_k = total_core_population_k }
-	add_to_variable = { total_core_non_core_population_k = avaliable_non_core_population_k }
+	#add_to_variable = { total_core_non_core_population_k = avaliable_non_core_population_k }
 	set_variable = { total_population_with_foreign_workers_k = total_core_non_core_population_k }
 	
 	#Calculates total working age (in 1000s)
@@ -91,14 +91,19 @@ on_daily_labour_calculations = {
 calculate_argriculture_labour = {
 	set_variable = { agriculture_labour_k = 0 }
 	every_controlled_state = {
-		set_variable = { state_agriculture_labour_k = state_population_k }
-		multiply_variable = { state_agriculture_labour_k = state_level_agriculture_penalty }
-		clamp_variable = {
-			var = state_agriculture_labour_k
-			min = 0
-			max = state_avaliable_labour_k
+		if = {
+			limit = {
+				is_core_of = PREV
+			}
+			set_variable = { state_agriculture_labour_k = state_population_k }
+			multiply_variable = { state_agriculture_labour_k = state_level_agriculture_penalty }
+			clamp_variable = {
+				var = state_agriculture_labour_k
+				min = 0
+				max = state_avaliable_labour_k
+			}
+			add_to_variable = { PREV.agriculture_labour_k = state_agriculture_labour_k }
 		}
-		add_to_variable = { PREV.agriculture_labour_k = state_agriculture_labour_k }
 	}
 }
 
@@ -290,12 +295,19 @@ calculate_state_level_agriculture_penalty = {
 				is_core_of = URG
 			}
 		}
-		set_variable = { state_level_agriculture_penalty = 0.07 }
+		set_variable = { state_level_agriculture_penalty = 0.20 }
 	}
 	else_if = {
 		limit = {
 			OR = {
 				is_core_of = FRA
+			}
+		}
+		set_variable = { state_level_agriculture_penalty = 0.21 }
+	}
+	else_if = {
+		limit = {
+			OR = {
 				is_core_of = CAN
 			}
 		}
@@ -356,7 +368,6 @@ calculate_state_level_agriculture_penalty = {
 				is_core_of = SPR
 				is_core_of = POR
 				is_core_of = YUG
-				is_core_of = JAP
 				AND = {
 					NOT = {
 						is_core_of = CHL
@@ -483,7 +494,15 @@ calculate_state_level_agriculture_penalty = {
 				is_owned_by = RAJ
 			}
 		}
-		set_variable = { state_level_agriculture_penalty = 0.46 }
+		set_variable = { state_level_agriculture_penalty = 0.39 }
+	}
+	else_if = {
+		limit = {
+			OR = {
+				is_owned_by = JAP
+			}
+		}
+		set_variable = { state_level_agriculture_penalty = 0.28 }
 	}
 	else = {	
 		set_variable = { state_level_agriculture_penalty = 0.38 }
