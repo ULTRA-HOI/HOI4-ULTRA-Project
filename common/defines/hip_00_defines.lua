@@ -1842,7 +1842,7 @@ NNavy = {
 
 	MIN_GUN_COOLDOWN = 0.1,											-- minimum cooldown for a gun
 	BASE_GUN_COOLDOWNS = { -- number of hours for a gun to be ready after shooting
-		1.0,	-- big guns
+		0.5,	-- big guns
 		4.0,	-- torpedoes
 		1.0,	-- small guns --also applies to depth charges
 	},
@@ -1906,7 +1906,7 @@ NNavy = {
 	LIGHT_GUN_ATTACK_TO_SHORE_BOMBARDMENT							= 0.02, --was 0.05 --light gun attack value is divided by this value * 100 and added to shore bombardment modifier
 
 	GUN_HIT_PROFILES = { -- hit profiles for guns, if target ih profile is lower the gun will have lower accuracy
-		50.0,	-- big guns
+		90.0,	-- big guns
 		135.0,	-- torpedoes
 		50.0,	-- small guns
 	},
