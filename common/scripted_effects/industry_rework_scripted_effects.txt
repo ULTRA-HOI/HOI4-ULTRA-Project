@@ -559,9 +559,7 @@ civillian_resources_scripted_effect = {
 	add_to_temp_variable = { cic_resource_factor_rubber_temp = modifier@cic_resource_factor }
 	add_to_temp_variable = { cic_resource_factor_coal_temp = modifier@cic_resource_factor }
 	
-	set_temp_variable = { num_factories_temp = THIS.num_of_controlled_factories } #num_of_civilian_factories includes traded factories. As these do not consume resources, we do not want them in our calculations as trading allows to go net pos in resources
-	subtract_from_temp_variable = { num_factories_temp = THIS.num_of_military_factories } #therefore we take the controlled factories(not owned since we need the total number of operating factories) and then substract all mic and nic from them to just get cic
-	subtract_from_temp_variable = { num_factories_temp = THIS.num_of_naval_factories }
+	set_temp_variable = { num_factories_temp = THIS.num_of_civilian_factories } #num_of_civilian_factories includes traded factories. We currently cannot exclude traded fractories so we have to accept that traded factories take resources
 	
 	multiply_temp_variable = { cic_resource_factor_steel_temp = num_factories_temp } #Multiply factory count
 	multiply_temp_variable = { cic_resource_factor_aluminium_temp = num_factories_temp }
