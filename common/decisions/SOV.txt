@@ -10340,7 +10340,7 @@ SOV_industry_relocation = {
 					has_state_category = metropolis
 					has_state_category = single_tile_city
 				}
-				infrastructure > 2
+				infrastructure > 1
 			}
 		}
 
@@ -10364,7 +10364,7 @@ SOV_industry_relocation = {
 		available = {
 			FROM = {
 				is_fully_controlled_by = ROOT
-				infrastructure > 2
+				infrastructure > 1
 			}
 			has_equipment = { train_equipment > 99 } #2.5 trains per factory
 		}
@@ -10372,12 +10372,8 @@ SOV_industry_relocation = {
 		visible = {
 			FROM = {
 				OR = { #Has at least 12 factories
-					arms_factory > 11
-					industrial_complex > 11
-					AND = {
-						arms_factory > 5
-						industrial_complex > 5
-					}
+					arms_factory > 9
+					industrial_complex > 9
 				}
 			}
 		}
@@ -10422,7 +10418,7 @@ SOV_industry_relocation = {
 									type = arms_factory
 									level = 10
 								}
-								add_manpower = -100000
+								add_to_variable  = { SOV_evac_origin = 1 }
 								if = {
 									limit = {
 										has_state_flag = SOV_mils_removed_flag
@@ -10441,7 +10437,7 @@ SOV_industry_relocation = {
 									type = industrial_complex
 									level = 10
 								}
-								add_manpower = -100000
+								add_to_variable  = { SOV_evac_origin = 1 }
 								if = {
 									limit = {
 										has_state_flag = SOV_civs_removed_flag
@@ -10462,7 +10458,7 @@ SOV_industry_relocation = {
 									type = industrial_complex
 									level = 10
 								}
-								add_manpower = -100000
+								add_to_variable  = { SOV_evac_origin = 1 }
 								if = {
 									limit = {
 										has_state_flag = SOV_civs_removed_flag
@@ -10481,7 +10477,7 @@ SOV_industry_relocation = {
 									type = arms_factory
 									level = 10
 								}
-								add_manpower = -100000
+								add_to_variable  = { SOV_evac_origin = 1 }
 								if = {
 									limit = {
 										has_state_flag = SOV_mils_removed_flag
@@ -10656,6 +10652,44 @@ SOV_industry_relocation = {
 				}
 			}
 			custom_effect_tooltip = SOV_relocate_industry_from_leningrad_tt
+		}
+	}
+	
+	SOV_evacuate_population = {
+		activation = {
+			has_completed_focus = SOV_move_industry_to_the_urals
+		}
+		available = { 
+			hidden_trigger = {
+				always = no
+			}
+		}
+		days_mission_timeout = 250
+		timeout_effect = {
+			hidden_effect = {
+				every_owned_state = {
+					if = {
+						limit = {
+							check_variable = { SOV_evac_origin > 0 }
+						}
+						set_temp_variable = { SOV_pop_to_evac = -100000 }
+						multiply_temp_variable = { SOV_pop_to_evac = SOV_evac_origin }
+						add_manpower = SOV_pop_to_evac
+						set_variable = { SOV_evac_origin = 0 }
+					}
+					else_if = {
+						limit = {
+							check_variable = {SOV_evac_destination > 0 }
+						}
+						set_temp_variable = { SOV_pop_from_evac = 100000 }
+						multiply_temp_variable = { SOV_pop_from_evac = SOV_evac_destination }
+						add_manpower = SOV_pop_from_evac
+						set_variable = { SOV_evac_destination = 0 }
+					}
+				}
+				activate_mission = SOV_evacuate_population
+			}
+			custom_effect_tooltip =  SOV_evacuate_population_tt
 		}
 	}
 }
