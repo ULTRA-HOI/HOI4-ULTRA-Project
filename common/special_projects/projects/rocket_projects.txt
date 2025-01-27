@@ -25,6 +25,8 @@ sp_rockets_flying_bomb = {
 			steel = 80
 			aluminium = 80
 			tungsten = 20
+			chromium = 20
+			rubber = 20
 		 }
 	}
 
@@ -57,6 +59,21 @@ sp_rockets_flying_bomb = {
 
 	project_output = {
 		country_effects = {
+			if = { 
+				limit = {
+					has_dlc = "Gotterdammerung"
+				}
+				custom_effect_tooltip = {
+					localization_key = SP_ROCKET_AND_SUBMARINE_SITE_REMINDER_PROJECT
+					PROJECT = sp_rockets_flying_bomb
+				}				
+			}
+			else = {
+				custom_effect_tooltip = {
+					localization_key = SP_ROCKET_SITE_REMINDER_PROJECT
+					PROJECT = sp_rockets_flying_bomb
+				}
+			}
 			custom_effect_tooltip = {
 				localization_key = SP_UNLOCK_TECH
 				TECH = sp_rockets_improved_guidance	
@@ -320,7 +337,7 @@ sp_rockets_flying_bomb = {
 sp_rockets_ballistic_missile = {
 	specialization = specialization_air 
 	breakthrough_cost = {
-		specialization_air = 3
+		specialization_air = 4
 	}
 	
 	icon = GFX_sp_rockets_ballistic_missile
@@ -331,12 +348,11 @@ sp_rockets_ballistic_missile = {
 
 	resource_cost = {
 		resources = {
-			oil = 20
-			rubber = 40
-			steel = 180 
+			steel = 160 
 			aluminium = 180
-			tungsten = 90
-			chromium = 180
+			tungsten = 80
+			chromium = 80
+			rubber = 40
 		}
 	}
 
@@ -365,6 +381,24 @@ sp_rockets_ballistic_missile = {
 	prototype_time = sp_time.prototype.medium
 
 	project_output = {
+		country_effects = {
+			if = { 
+				limit = {
+					has_dlc = "Gotterdammerung"
+				}
+				custom_effect_tooltip = {
+					localization_key = SP_ROCKET_AND_SUBMARINE_SITE_REMINDER_PROJECT
+					PROJECT = sp_rockets_ballistic_missile
+				}				
+			}
+			else = {
+				custom_effect_tooltip = {
+					localization_key = SP_ROCKET_SITE_REMINDER_PROJECT
+					PROJECT = sp_rockets_ballistic_missile
+				}
+			}		
+		}
+
 		enable_equipments = {
 			limit = {
 				has_dlc = "Gotterdammerung"
@@ -539,12 +573,11 @@ sp_rockets_medium_range_ballistic_missile = {
 
 	resource_cost = {
 		resources = {
-			oil = 40
+			steel = 180 
+			aluminium = 240
+			tungsten = 90
+			chromium = 90
 			rubber = 60
-			steel = 240 
-			aluminium = 180
-			tungsten = 120
-			chromium = 180
 		}
 	}
 
@@ -563,6 +596,23 @@ sp_rockets_medium_range_ballistic_missile = {
 	prototype_time = sp_time.prototype.medium	
 
 	project_output = {
+		country_effects = {
+			if = { 
+				limit = {
+					has_dlc = "Gotterdammerung"
+				}
+				custom_effect_tooltip = {
+					localization_key = SP_ROCKET_AND_SUBMARINE_SITE_REMINDER_PROJECT
+					PROJECT = sp_rockets_medium_range_ballistic_missile
+				}				
+			}
+			else = {
+				custom_effect_tooltip = {
+					localization_key = SP_ROCKET_SITE_REMINDER_PROJECT
+					PROJECT = sp_rockets_medium_range_ballistic_missile
+				}
+			}		
+		}	
 		enable_equipments = {
 			limit = {
 				has_dlc = "Gotterdammerung"
@@ -665,164 +715,167 @@ sp_rockets_medium_range_ballistic_missile = {
 }
 
 # Long range Missiles
-sp_rockets_long_range_ballistic_missile = {
-	specialization = specialization_air 
-	
-	icon = GFX_sp_rockets_icbm
-	
-	project_tags = {
-		sp_tag_rocket
-		sp_tag_nuclear_warfare
-	}
-
-	complexity = sp_complexity.large
-	resource_cost = {
-		resources = {
-			oil = 120
-			rubber = 120
-			steel = 240 
-			aluminium = 240
-			tungsten = 180
-			chromium = 240
-		}
-	}
-	allowed = {
-		has_dlc = "Gotterdammerung"
-	}
-
-	special_project_parent = {
-		sp_rockets_medium_range_ballistic_missile
-		# ICBMs are intended to be only nuclear warhead carriers, so need to be able to do create these in order to complete project
-		sp_nuclear_warheads
-	}
-
-	available = {
-	}
-	ai_will_do = {
-		base = 1
-	}
-	
-	prototype_time = sp_time.prototype.medium
-
-	project_output = {
-		enable_equipments = {
-			#ballistic_missile_equipment_3
-			nuclear_missile_equipment_2
-		}
-		
-	}
-
-	generic_prototype_rewards = {
-		sp_rockets_scientist_xp_generic_reward
-		sp_rockets_political_interference_generic_reward
-		sp_rockets_onsite_explosion_generic_reward
-		sp_rockets_generic_major_breakthrough_reward
-		sp_rockets_generic_avionics_advancements_reward
-		sp_air_generic_reward_scientist_xp_1
-		sp_air_generic_reward_scientist_xp_2
-		sp_air_generic_reward_scientist_xp_3
-		sp_air_generic_reward_air_xp_1
-		sp_air_generic_reward_air_xp_2
-		sp_air_generic_reward_air_xp_3
-		sp_air_generic_reward_major_progress_1
-		sp_air_generic_reward_major_progress_2
-		sp_air_generic_reward_major_progress_3
-		sp_air_generic_reward_test_failure_1
-		sp_air_generic_reward_test_failure_2
-		sp_air_generic_reward_test_failure_3		
-	}
-
-	unique_prototype_rewards = {
-		sp_rocket_outercoating_reward = {
-			fire_only_once = yes
-
-			threshold = { 
-				min = 40
-				max = 90
-			}
-
-			weight = {
-				base = 50
-				modifier = {
-					factor = 2
-					FROM = {
-						original_tag = USA
-					}
-				}
-			}
-
-			option = {
-				token = sp_rocket_outercoating_reward_accept
-				
-				iteration_output = {
-					country_effects = {
-						FROM = { add_project_progress_ratio = constant:sp_progress.gain.low }
-					}
-				}
-			}
-		}
-
-		sp_rocket_launch_site_choice_reward = {
-			fire_only_once = yes
-
-			threshold = { 
-				min = 30
-				max = 60
-			}
-
-			weight = {
-				base = 10
-				modifier = {
-					factor = 100
-					FROM = { original_tag = SOV }
-				}
-			}
-
-			option = {
-				token = sp_rocket_launch_site_choice_reward_reject
-				
-				iteration_output = {
-					country_effects = {
-						#Do nothing, this is the default option
-						FROM = { add_project_progress_ratio = constant:sp_progress.loss.low }
-					}
-				}
-			}
-
-			option = {
-				token = sp_rocket_launch_site_choice_reward_accept
-				
-				iteration_output = {
-
-					country_effects = {
-						set_country_flag = no_new_rocket_facility_built
-						add_timed_idea = {
-							idea = special_project_consumer_costs_low
-							days = 365
-						}
-						FROM = { add_project_progress_ratio = constant:sp_progress.gain.medium }
-						random_owned_controlled_state = {
-								limit = {
-									free_building_slots = {
-										building = industrial_complex
-										size > 0
-										include_locked = yes
-									}
-									rocket_site < 2
-								}
-							
-							add_building_construction = {
-								type = rocket_site
-								level = 2
-								instant_build = yes
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-}
+#sp_rockets_long_range_ballistic_missile = {
+#	specialization = specialization_air 
+#	
+#	icon = GFX_sp_rockets_icbm
+#	
+#	project_tags = {
+#		sp_tag_rocket
+#		sp_tag_nuclear_warfare
+#	}
+#
+#	complexity = sp_complexity.large
+#	resource_cost = {
+#		resources = {
+#			steel = 12 
+#			aluminium = 12
+#			chromium = 12
+#		}
+#	}
+#	allowed = {
+#		has_dlc = "Gotterdammerung"
+#	}
+#
+#	special_project_parent = {
+#		sp_rockets_medium_range_ballistic_missile
+#		# ICBMs are intended to be only nuclear warhead carriers, so need to be able to do create these in order to complete project
+#		sp_nuclear_warheads
+#	}
+#
+#	available = {
+#	}
+#	ai_will_do = {
+#		base = 1
+#	}
+#	
+#	prototype_time = sp_time.prototype.medium
+#
+#	project_output = {
+#		country_effects = {
+#			custom_effect_tooltip = {
+#				localization_key = SP_ROCKET_AND_SUBMARINE_SITE_REMINDER_PROJECT
+#				PROJECT = sp_rockets_long_range_ballistic_missile
+#			}						
+#		}	
+#		enable_equipments = {
+#			#ballistic_missile_equipment_3
+#			nuclear_missile_equipment_2
+#		}
+#		
+#	}
+#
+#	generic_prototype_rewards = {
+#		sp_rockets_scientist_xp_generic_reward
+#		sp_rockets_political_interference_generic_reward
+#		sp_rockets_onsite_explosion_generic_reward
+#		sp_rockets_generic_major_breakthrough_reward
+#		sp_rockets_generic_avionics_advancements_reward
+#		sp_air_generic_reward_scientist_xp_1
+#		sp_air_generic_reward_scientist_xp_2
+#		sp_air_generic_reward_scientist_xp_3
+#		sp_air_generic_reward_air_xp_1
+#		sp_air_generic_reward_air_xp_2
+#		sp_air_generic_reward_air_xp_3
+#		sp_air_generic_reward_major_progress_1
+#		sp_air_generic_reward_major_progress_2
+#		sp_air_generic_reward_major_progress_3
+#		sp_air_generic_reward_test_failure_1
+#		sp_air_generic_reward_test_failure_2
+#		sp_air_generic_reward_test_failure_3		
+#	}
+#
+#	unique_prototype_rewards = {
+#		sp_rocket_outercoating_reward = {
+#			fire_only_once = yes
+#
+#			threshold = { 
+#				min = 40
+#				max = 90
+#			}
+#
+#			weight = {
+#				base = 50
+#				modifier = {
+#					factor = 2
+#					FROM = {
+#						original_tag = USA
+#					}
+#				}
+#			}
+#
+#			option = {
+#				token = sp_rocket_outercoating_reward_accept
+#				
+#				iteration_output = {
+#					country_effects = {
+#						FROM = { add_project_progress_ratio = constant:sp_progress.gain.low }
+#					}
+#				}
+#			}
+#		}
+#
+#		sp_rocket_launch_site_choice_reward = {
+#			fire_only_once = yes
+#
+#			threshold = { 
+#				min = 30
+#				max = 60
+#			}
+#
+#			weight = {
+#				base = 10
+#				modifier = {
+#					factor = 100
+#					FROM = { original_tag = SOV }
+#				}
+#			}
+#
+#			option = {
+#				token = sp_rocket_launch_site_choice_reward_reject
+#				
+#				iteration_output = {
+#					country_effects = {
+#						#Do nothing, this is the default option
+#						FROM = { add_project_progress_ratio = constant:sp_progress.loss.low }
+#					}
+#				}
+#			}
+#
+#			option = {
+#				token = sp_rocket_launch_site_choice_reward_accept
+#				
+#				iteration_output = {
+#
+#					country_effects = {
+#						set_country_flag = no_new_rocket_facility_built
+#						add_timed_idea = {
+#							idea = special_project_consumer_costs_low
+#							days = 365
+#						}
+#						FROM = { add_project_progress_ratio = constant:sp_progress.gain.medium }
+#						random_owned_controlled_state = {
+#								limit = {
+#									free_building_slots = {
+#										building = industrial_complex
+#										size > 0
+#										include_locked = yes
+#									}
+#									rocket_site < 2
+#								}
+#							
+#							add_building_construction = {
+#								type = rocket_site
+#								level = 2
+#								instant_build = yes
+#							}
+#						}
+#					}
+#				}
+#			}
+#		}
+#	}
+#}
 
  ##  ###   ##  #  # #  # ###      ###  ##       ##  ### ###  
 #    #  # #  # #  # ## # #  #      #  #  #     #  #  #  #  # 
@@ -835,7 +888,7 @@ sp_rockets_long_range_ballistic_missile = {
 sp_rockets_ground_to_air_missile = {
 	specialization = specialization_air 
 	breakthrough_cost = {
-		specialization_air = 2
+		specialization_air = 5
 	}
 	
 	icon = GFX_sp_rockets_surface_to_air_missiles 
@@ -846,12 +899,11 @@ sp_rockets_ground_to_air_missile = {
 	}
 	resource_cost = {
 		resources = {
-			oil = 10
-			rubber = 20
 			steel = 60 
 			aluminium = 90
 			tungsten = 60
-			chromium = 20			
+			chromium = 60
+			rubber = 40
 		}
 	}	
 	complexity = sp_complexity.large 
@@ -877,6 +929,14 @@ sp_rockets_ground_to_air_missile = {
 	prototype_time = sp_time.prototype.medium	 
 
 	project_output = {
+		country_effects = {
+			custom_effect_tooltip = {
+				localization_key = SP_ROCKET_SITE_REMINDER_PROJECT
+				PROJECT = sp_rockets_ground_to_air_missile
+			}
+
+		}
+
 		enable_equipments = {
 			sam_missile_equipment_1
 		}
@@ -1029,96 +1089,94 @@ sp_rockets_ground_to_air_missile = {
 }
 
 
-sp_rocket_interceptor = {
-	specialization = specialization_air 
-	
-	icon = GFX_sp_rockets_rocket_interceptor 
-
-	project_tags = {
-		sp_tag_rocket
-	}
-
-	complexity = sp_complexity.large
-	resource_cost = {
-		resources = {
-			oil = 10
-			rubber = 20
-			tungsten = 60 
-			aluminium = 120
-			chromium = 60
-		}
-	}
-
-	available = { 
-		FROM = {
-			has_tech = experimental_rockets
-		}
-	}
-
-	ai_will_do = {
-		base = 1
-		modifier = {
-			factor = 3
-			ROOT = { tag = GER }
-		}
-		modifier = {
-			factor = 0.5
-			ROOT = { is_major = no }
-		}
-	}
-	
-	prototype_time = sp_time.prototype.medium
-
-	project_output = {
-		country_effects = {
-			custom_effect_tooltip = {
-				localization_key = SP_UNLOCK_TECH
-				TECH = improved_rocket_engines	
-			}
-			custom_effect_tooltip = {
-				localization_key = SP_UNLOCK_TECH
-				TECH = advanced_rocket_engines	
-			}
-			if = {
-				limit = { has_dlc = "By Blood Alone" }
-				# SP_create_variant_based_on_country_improved_small_airframe_rocket_engine = yes	
-			}		
-		}
-		enable_equipments = {
-			limit = {
-				NOT = { has_dlc = "By Blood Alone" }
-			}
-			rocket_interceptor_equipment_1
-		}
-		enable_equipment_modules = {
-			limit = { 
-				has_dlc = "By Blood Alone" 
-			}
-			rocket_engine_1
-		}
-		
-	}
-
-	generic_prototype_rewards = {
-		sp_rockets_scientist_xp_generic_reward
-		sp_rockets_political_interference_generic_reward
-		sp_rockets_onsite_explosion_generic_reward
-		sp_rockets_generic_major_breakthrough_reward
-		sp_rockets_generic_avionics_advancements_reward
-		sp_air_generic_reward_scientist_xp_1
-		sp_air_generic_reward_scientist_xp_2
-		sp_air_generic_reward_scientist_xp_3
-		sp_air_generic_reward_air_xp_1
-		sp_air_generic_reward_air_xp_2
-		sp_air_generic_reward_air_xp_3
-		sp_air_generic_reward_major_progress_1
-		sp_air_generic_reward_major_progress_2
-		sp_air_generic_reward_major_progress_3
-		sp_air_generic_reward_test_failure_1
-		sp_air_generic_reward_test_failure_2
-		sp_air_generic_reward_test_failure_3		
-	}
-}
+#sp_rocket_interceptor = {
+#	specialization = specialization_air 
+#	
+#	icon = GFX_sp_rockets_rocket_interceptor 
+#
+#	project_tags = {
+#		sp_tag_rocket
+#	}
+#
+#	complexity = sp_complexity.large
+#	resource_cost = {
+#		resources = {
+#			tungsten = 6 
+#			aluminium = 12
+#			chromium = 6
+#		}
+#	}
+#
+#	available = { 
+#		FROM = {
+#			has_tech = experimental_rockets
+#		}
+#	}
+#
+#	ai_will_do = {
+#		base = 1
+#		modifier = {
+#			factor = 3
+#			ROOT = { tag = GER }
+#		}
+#		modifier = {
+#			factor = 0.5
+#			ROOT = { is_major = no }
+#		}
+#	}
+#	
+#	prototype_time = sp_time.prototype.medium
+#
+#	project_output = {
+#		country_effects = {
+#			custom_effect_tooltip = {
+#				localization_key = SP_UNLOCK_TECH
+#				TECH = improved_rocket_engines	
+#			}
+#			custom_effect_tooltip = {
+#				localization_key = SP_UNLOCK_TECH
+#				TECH = advanced_rocket_engines	
+#			}
+#			if = {
+#				limit = { has_dlc = "By Blood Alone" }
+#				 SP_create_variant_based_on_country_improved_small_airframe_rocket_engine = yes	
+#			}		
+#		}
+#		enable_equipments = {
+#			limit = {
+#				NOT = { has_dlc = "By Blood Alone" }
+#			}
+#			rocket_interceptor_equipment_1
+#		}
+#		enable_equipment_modules = {
+#			limit = { 
+#				has_dlc = "By Blood Alone" 
+#			}
+#			rocket_engine_1
+#		}
+#		
+#	}
+#
+#	generic_prototype_rewards = {
+#		sp_rockets_scientist_xp_generic_reward
+#		sp_rockets_political_interference_generic_reward
+#		sp_rockets_onsite_explosion_generic_reward
+#		sp_rockets_generic_major_breakthrough_reward
+#		sp_rockets_generic_avionics_advancements_reward
+#		sp_air_generic_reward_scientist_xp_1
+#		sp_air_generic_reward_scientist_xp_2
+#		sp_air_generic_reward_scientist_xp_3
+#		sp_air_generic_reward_air_xp_1
+#		sp_air_generic_reward_air_xp_2
+#		sp_air_generic_reward_air_xp_3
+#		sp_air_generic_reward_major_progress_1
+#		sp_air_generic_reward_major_progress_2
+#		sp_air_generic_reward_major_progress_3
+#		sp_air_generic_reward_test_failure_1
+#		sp_air_generic_reward_test_failure_2
+#		sp_air_generic_reward_test_failure_3		
+#	}
+#}
 
 
 	

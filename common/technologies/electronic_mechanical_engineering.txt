@@ -1377,190 +1377,383 @@ technologies = {
 	}
 
 	
-	experimental_rockets = {
+###   ##   ##  # # ### ### ###  #   # 
+#  # #  # #  # # # #    #  #  #  # #  
+###  #  # #    ##  ##   #  ###    #   
+#  # #  # #  # # # #    #  #  #   #   
+#  #  ##   ##  # # ###  #  #  #   #   
 
-		enable_building = {
-			building = rocket_site
-			level = 2
-		}
-		
-		path = {
-			leads_to_tech = rocket_engines 
-			research_cost_coeff = 1
-		}
-		
-		research_cost = 1.5
-		start_year = 1944
-		
-		
-		folder = {
-			name = electronics_folder
-			position = { x = 0 y = 2 }
-		}
 	
-		ai_will_do = {
-			factor = 1
-			modifier = {
-				factor = 0
-				date < "1942.1.1"
-			}
-		}
-		
-		categories = {
-			rocketry
-		}
+
+	
+experimental_rockets = {
+
+	enable_building = {
+		building = rocket_site
+		level = 3
 	}
 	
-	rocket_engines = {
-
-		show_equipment_icon = yes
-
-		# can build v1s/rocket planes
-		enable_equipments = {
-			#rocket_interceptor_equipment_1
-			guided_missile_equipment_1
-		}
-		
-		rocket_artillery_brigade = {
-			soft_attack = 0.05
-		}
-		mot_rocket_artillery_brigade = {
-			soft_attack = 0.05
-		}
-		motorized_rocket_brigade = {
-			soft_attack = 0.05
-		}
-		
-		path = {
-			leads_to_tech = improved_rocket_engines 
-			research_cost_coeff = 1
-		}
-		path = {
-			leads_to_tech = jet_engines 
-			research_cost_coeff = 1
-		}
-		
-		research_cost = 2
-		start_year = 1945
-		
-		
-		folder = {
-			name = electronics_folder
-			position = { x = 0 y = 4 }
-		}
-		
-		
-		ai_will_do = {
-			factor = 1
-			modifier = {
-				factor = 0
-				date < "1943.1.1"
-			}
-		}
-		
-		categories = {
-			rocketry
-		}		
+	path = {
+		leads_to_tech = sp_rockets_improved_guidance 
+		research_cost_coeff = 1
+	}
+	path = {
+		leads_to_tech = sp_rockets_rocket_bomber 
+		research_cost_coeff = 1
+	}
+	path = {
+		leads_to_tech = improved_rocket_engines  
+		research_cost_coeff = 1
+	}
+	path = {
+		leads_to_tech = jet_engines 
+		research_cost_coeff = 1
 	}
 	
-	improved_rocket_engines = {
+	research_cost = 1.5
+	start_year = 1944
+	
+	folder = {
+		name = electronics_folder
+		position = { x = 0 y = 2 }
+	}
 
-		show_equipment_icon = yes
-		
-		# can build v2s
-		
-		enable_equipments = {
-			#rocket_interceptor_equipment_2
-			guided_missile_equipment_2
-		}
-		
-		rocket_artillery_brigade = {
-			soft_attack = 0.05
-		}
-		mot_rocket_artillery_brigade = {
-			soft_attack = 0.05
-		}
-		motorized_rocket_brigade = {
-			soft_attack = 0.05
-		}
-		
-		path = {
-			leads_to_tech = advanced_rocket_engines 
-			research_cost_coeff = 1
-		}
-		
-		research_cost = 1.5
-		start_year = 1946
-		
-		
-		folder = {
-			name = electronics_folder
-			position = { x = 0 y = 6 }
-		}
-		
-		ai_will_do = {
-			factor = 1
-			modifier = {
-				factor = 0
-				date < "1944.1.1"
+	on_research_complete = {
+		if = {
+			limit = {
+				has_dlc = "Gotterdammerung"
+			}
+			custom_effect_tooltip = {
+				localization_key = SP_UNLOCK_TECH_WITH_EXTRA_PROJECT
+				TECH = sp_artillery_rocket_assisted_projectiles_tech
+				EXTRA_PROJECT = sp_land_super_heavy_howitzer
 			}
 		}
-		
-		categories = {
-			rocketry
+		custom_effect_tooltip = {
+			localization_key = SP_UNLOCK_PROJECT
+			PROJECT = sp_rockets_flying_bomb	
 		}
+		custom_effect_tooltip = {
+			localization_key = SP_UNLOCK_PROJECT
+			PROJECT = sp_rockets_ballistic_missile	
+		}
+#		custom_effect_tooltip = {
+#			localization_key = SP_UNLOCK_PROJECT
+#			PROJECT = sp_rocket_interceptor	
+#		}				
+	}
+
+	ai_will_do = {
+		factor = 1
 	}
 	
-	advanced_rocket_engines = {
+	categories = {
+		rocketry
+	}
+	special_project_specialization = { specialization_air }
+}
 
-		show_equipment_icon = yes
+rocket_engines = {
 
-		# can build ICBMs?
-		
-		enable_equipments = {
-			#rocket_interceptor_equipment_3
-			guided_missile_equipment_3
-		}
-		
-		rocket_artillery_brigade = {
-			soft_attack = 0.05
-		}
-		mot_rocket_artillery_brigade = {
-			soft_attack = 0.05
-		}
-		motorized_rocket_brigade = {
-			soft_attack = 0.05
-		}
-		
-		research_cost = 1.5
-		start_year = 1948
-		
-		
-		folder = {
-			name = electronics_folder
-			position = { x = 0 y = 8 }
-		}
-		
-		ai_will_do = {
-			factor = 1
-			modifier = {
-				factor = 0
-				date < "1945.1.1"
-			}
-		}
-		
-		categories = {
-			rocketry
+	show_equipment_icon = yes
+
+#	# can build v1s/rocket planes
+#	enable_equipments = {
+#		limit = {
+#			NOT = { has_dlc = "By Blood Alone" }
+#		}
+#		rocket_interceptor_equipment_1
+#	}
+	#enable_equipments = {
+	#	guided_missile_equipment_1
+	#}
+
+#	enable_equipment_modules = {
+#		rocket_engine_1
+#	}
+	
+	#rocket_artillery = { # Effects moved to the next rocket tech
+	#	soft_attack = 0.05
+	#}
+	#rocket_artillery_brigade = {
+	#	soft_attack = 0.05
+	#}
+	#mot_rocket_artillery_brigade = {
+	#	soft_attack = 0.05
+	#}
+	#motorized_rocket_brigade = {
+	#	soft_attack = 0.05
+	#}
+	
+#	path = {
+#		leads_to_tech = improved_rocket_engines 
+#		research_cost_coeff = 1
+#	}
+#	path = {
+#		leads_to_tech = jet_engines 
+#		research_cost_coeff = 1
+#	}
+	
+	research_cost = 2
+	start_year = 1945
+	
+#	folder = {
+#		name = electronics_folder
+#		position = { x = 0 y = 2 }
+#	}
+	
+	
+	ai_will_do = {
+		factor = 1
+	}
+	
+	categories = {
+		rocketry
+	}		
+}
+
+sp_rockets_improved_guidance = {
+	allow = {
+		 ROOT = {
+			is_special_project_completed = sp:sp_rockets_flying_bomb
 		}
 	}
+
+	special_project_specialization = { specialization_air }
+
+	is_special_project_tech = yes
+
+	enable_equipments = {
+		#guided_missile_equipment_2
+	}
+	
+#	enable_equipment_modules = {
+#		guided_anti_ship_missile
+#	}
+	guided_missile = { 
+		air_range = 0.25
+	}
+
+#	rocket_artillery = {
+#		soft_attack = 0.1
+#	}
+	rocket_artillery_brigade = {
+		soft_attack = 0.1
+	}
+	mot_rocket_artillery_brigade = {
+		soft_attack = 0.1
+	}
+	motorized_rocket_brigade = {
+		soft_attack = 0.1
+	}
+	
+	research_cost = 1
+	start_year = 1945
+	
+	folder = {
+		name = electronics_folder
+		position = { x = 1 y = 4 }
+	}
+	
+	ai_will_do = {
+		factor = 1
+	}
+	
+	categories = {
+		rocketry
+	}
+}
+
+sp_rockets_rocket_bomber = {
+	allow = {
+		 ROOT = {
+			is_special_project_completed = sp:sp_rockets_flying_bomb
+		}
+	}
+	allow_branch = {
+		has_dlc = "By Blood Alone"
+	}
+
+	special_project_specialization = { specialization_air }
+
+	is_special_project_tech = yes
+	
+#	enable_equipment_modules = { 
+#		rocket_propelled_bombs
+#	}
+	
+	path = {
+		leads_to_tech = sp_rockets_improved_rocket_bomber 
+		research_cost_coeff = 1
+	}
+	
+	research_cost = 1
+	start_year = 1946
+	
+	folder = {
+		name = electronics_folder
+		position = { x = 0 y = 6 }
+	}
+	
+	ai_will_do = {
+		factor = 1
+	}
+	
+	categories = {
+		rocketry
+	}
+}
+
+sp_rockets_improved_rocket_bomber = {
+	allow = {
+		 ROOT = {
+			is_special_project_completed = sp:sp_rockets_flying_bomb
+		}
+	}
+
+	special_project_specialization = { specialization_air }
+	
+	is_special_project_tech = yes
+
+#	enable_equipment_modules = { 
+#		improved_rocket_propelled_bombs
+#	}
+	
+	research_cost = 1
+	start_year = 1948
+	
+	folder = {
+		name = electronics_folder
+		position = { x = 0 y = 8 }
+	}
+	
+	ai_will_do = {
+		factor = 1
+	}
+	
+	categories = {
+		rocketry
+	}
+}
+
+improved_rocket_engines = {
+
+	show_equipment_icon = yes
+	
+	# can build v2s
+	
+	enable_equipments = {
+#		limit = {
+#			NOT = { has_dlc = "By Blood Alone" }
+#		}
+#		rocket_interceptor_equipment_2
+	}
+	enable_equipments = {
+		#guided_missile_equipment_2
+	}
+
+#	enable_equipment_modules = {
+#		rocket_engine_2
+#	}
+	
+#	rocket_artillery = {
+#		soft_attack = 0.05
+#	}
+	rocket_artillery_brigade = {
+		soft_attack = 0.05
+	}
+	mot_rocket_artillery_brigade = {
+		soft_attack = 0.05
+	}
+	motorized_rocket_brigade = {
+		soft_attack = 0.05
+	}
+	
+	path = {
+		leads_to_tech = advanced_rocket_engines 
+		research_cost_coeff = 1
+	}
+	
+	research_cost = 1.5
+	start_year = 1946
+	
+	folder = {
+		name = electronics_folder
+		position = { x = -2 y = 6 }
+	}
+	
+	ai_will_do = {
+		factor = 1
+	}
+	
+	categories = {
+		rocketry
+	}
+}
+
+advanced_rocket_engines = {
+
+	show_equipment_icon = yes
+
+	# can build ICBMs?
+	
+#	enable_equipments = {
+#		limit = {
+#			NOT = { has_dlc = "By Blood Alone" }
+#		}
+#		rocket_interceptor_equipment_3
+#	}
+#	enable_equipments = {
+#		#guided_missile_equipment_3
+#	}
+
+#	enable_equipment_modules = {
+#		rocket_engine_3
+#		guided_anti_ship_missile
+#	}
+	
+	rocket_artillery_brigade = {
+		soft_attack = 0.05
+	}
+	mot_rocket_artillery_brigade = {
+		soft_attack = 0.05
+	}
+	motorized_rocket_brigade = {
+		soft_attack = 0.05
+	}
+	
+	research_cost = 1.5
+	start_year = 1948
+	
+	folder = {
+		name = electronics_folder
+		position = { x = -2 y = 8 }
+	}
+	
+	ai_will_do = {
+		factor = 1
+	}
+	
+	categories = {
+		rocketry
+	}
+}
 	
 	jet_engines = {
 	
+		allow = { 	 		
+			ROOT = {
+				is_special_project_completed = sp:sp_air_jet_engine
+			} 
+		}
+
 		folder = {
 			name = electronics_folder
 			position = { x = 2 y = 6 }
 		}
 		
+		is_special_project_tech = yes
+
 		start_year = 1946
 		
 		research_cost = 2
@@ -1588,7 +1781,13 @@ technologies = {
 			rocketry
 			jet_technology
 		}
+
+		special_project_specialization = { specialization_air }
+
 	}
+
+	
+
 	
 	atomic_research = {
 
