@@ -26,24 +26,24 @@ sp_naval_fleet_submarine = {
 	prototype_time = sp_time.prototype.long
 
 	available = { 
-		FROM = {
-			if = {
-				limit = {
-					has_dlc = "Man the Guns"
-				}  
-				has_tech = improved_ship_hull_submarine
+		OR = {
+			AND = {
+				date > 1943.1.1
+				FROM = { 
+					original_tag = GER 
+					has_tech = advanced_ship_hull_submarine
+				}
 			}
-			else = {
-				has_tech = improved_submarine 
+			AND = {
+				date > 1945.6.1
+				FROM = {
+					has_tech = advanced_ship_hull_submarine
+				}
 			}
-
 		}
 	}
 
 
-	special_project_parent = {
-		sp_naval_cruiser_submarine
-	}
 	resource_cost = {
 		resources = { 
 			steel = 12
@@ -57,16 +57,11 @@ sp_naval_fleet_submarine = {
 
 	project_output = {
 		country_effects = {
-			if = {
-				limit = {
-					has_dlc = "Man the Guns"
-				}
-				add_design_template_bonus = {
-					name = sp_naval_fleet_submarine_free_design
-					uses = 1
-					cost_factor = 1
-					equipment = ship_hull_fleet_submarine
-				}
+			add_design_template_bonus = {
+				name = sp_naval_fleet_submarine_free_design
+				uses = 1
+				cost_factor = 1
+				equipment = nrm_ship_hull_submarine_5
 			}
 		}
 		
@@ -80,14 +75,10 @@ sp_naval_fleet_submarine = {
 			limit = {
 				has_dlc = "Man the Guns"
 			}
-			ship_hull_fleet_submarine
-		}
-		enable_equipments = {	
-			limit = {
-				not = { has_dlc = "Man the Guns" }
-			}
-			fleet_submarine
-		}				
+			nrm_ship_hull_submarine_5
+			nrm_ship_hull_submarine_cruiser_5
+			nrm_ship_hull_submarine_small_5
+		}		
 	}
 
 	generic_prototype_rewards = {
@@ -124,31 +115,22 @@ sp_naval_fleet_submarine = {
 				
 				iteration_output = {
 					country_effects = {
-						if = {
-							limit = { has_dlc = "Man the Guns"}							
-						
-							add_equipment_bonus = {
-								name = sp_fleet_submarine_eq_bonus_attack
-								bonus = {
-									ship_hull_fleet_submarine = {
-										naval_speed = 0.05
-										torpedo_attack = 0.05
-										sub_visibility = -0.03										
-									}
+						add_equipment_bonus = {
+							name = sp_fleet_submarine_eq_bonus_attack
+							bonus = {
+								nrm_ship_hull_submarine_5 = {
+									naval_speed = 0.05
+									torpedo_attack = 0.05									
+								}
+								nrm_ship_hull_submarine_cruiser_5 = {
+									naval_speed = 0.05
+									torpedo_attack = 0.05									
+								}
+								nrm_ship_hull_submarine_small_5 = {
+									naval_speed = 0.05
+									torpedo_attack = 0.05										
 								}
 							}
-						}
-						else = {
-							add_equipment_bonus = {
-								name = sp_fleet_submarine_eq_bonus_attack
-								bonus = {
-									fleet_submarine = {
-										naval_speed = 0.05
-										torpedo_attack = 0.05
-										sub_visibility = -0.03										
-									}
-								}
-							}						
 						}
 					}
 				}
@@ -159,30 +141,25 @@ sp_naval_fleet_submarine = {
 				
 				iteration_output = {
 					country_effects = {
-						if = {
-							limit = { has_dlc = "Man the Guns"}							
-							add_equipment_bonus = {
-								name = sp_fleet_submarine_eq_bonus_reliability
-								bonus = {
-									ship_hull_fleet_submarine = {
-										reliability = 0.05
-										max_strength = 0.05
-										naval_weather_penalty_factor = -0.1									
-									}
+						add_equipment_bonus = {
+							name = sp_fleet_submarine_eq_bonus_reliability
+							bonus = {
+								nrm_ship_hull_submarine_5 = {
+									reliability = 0.05
+									max_strength = 0.05
+									naval_weather_penalty_factor = -0.1										
+								}
+								nrm_ship_hull_submarine_cruiser_5 = {
+									reliability = 0.05
+									max_strength = 0.05
+									naval_weather_penalty_factor = -0.1										
+								}
+								nrm_ship_hull_submarine_small_5 = {
+									reliability = 0.05
+									max_strength = 0.05
+									naval_weather_penalty_factor = -0.1										
 								}
 							}
-						}
-						else = {
-							add_equipment_bonus = {
-								name = sp_fleet_submarine_eq_bonus_reliability
-								bonus = {
-									fleet_submarine = {
-										reliability = 0.05
-										max_strength = 0.05
-										naval_weather_penalty_factor = -0.1									
-									}
-								}
-							}						
 						}
 					}
 				}
@@ -195,176 +172,168 @@ sp_naval_fleet_submarine = {
 
 
 #Air-Independent Propulsion
-sp_naval_aip_engine = {
-	specialization = specialization_naval
+#sp_naval_aip_engine = {
+#	specialization = specialization_naval
 
-	resource_cost = {
-		resources = { 
-			steel = 8
-			chromium = 8
-		}
-	}
+#	resource_cost = {
+#		resources = { 
+#			steel = 8
+#			chromium = 8
+#		}
+#	}
 
-	project_tags = {
-		sp_tag_surface_ship
-		sp_tag_submarine
-	}
+#	project_tags = {
+#		sp_tag_surface_ship
+#		sp_tag_submarine
+#	}
 
-	ai_will_do = {
-		base = 1
-	}
+#	ai_will_do = {
+#		base = 1
+#	}
 
-	allowed = {
-		has_dlc = "Gotterdammerung"
-	}
+#	allowed = {
+#		has_dlc = "Gotterdammerung"
+#		always = no
+#	}
 	
-	available = { 
-		FROM = {
-			if = {
-				limit = {
-					has_dlc = "Man the Guns"
-				}  
-				has_tech = basic_ship_hull_submarine
-			}
-			else = {
-				has_tech = basic_submarine 
-			}
-
-		}
-	}
+#	available = { 
+#		FROM = {
+#			has_tech = advanced_ship_hull_submarine
+#		}
+#	}
 	
-	breakthrough_cost = {
-		specialization_naval = 2
-	}
+#	breakthrough_cost = {
+#		specialization_naval = 2
+#	}
 	
-	complexity = sp_complexity.large 
-	prototype_time = sp_time.prototype.medium
+#	complexity = sp_complexity.large 
+#	prototype_time = sp_time.prototype.medium
 	
-	project_output = {
-		country_effects = {
-			if = {
-				limit = {
-				NOT = {has_dlc = "Man the Guns"}
-			}
-			custom_effect_tooltip = {
-					localization_key = sp_naval_aip_engine_non_mtg_tt
-				}
-			}
+#	project_output = {
+#		country_effects = {
+#			if = {
+#				limit = {
+#				NOT = {has_dlc = "Man the Guns"}
+#			}
+#			custom_effect_tooltip = {
+#					localization_key = sp_naval_aip_engine_non_mtg_tt
+#				}
+#			}
 			
-		}
+#		}
 
-		country_effects = {
-			if = {
-				limit = {
-					has_dlc = "Man the Guns"
-				}
-				custom_effect_tooltip = {
-					localization_key = SP_UNLOCK_TECH
-					TECH = sp_aip_engine_improved_tech
-				}
-			}
+#		country_effects = {
+#			if = {
+#				limit = {
+#					has_dlc = "Man the Guns"
+#				}
+#				custom_effect_tooltip = {
+#					localization_key = SP_UNLOCK_TECH
+#					TECH = sp_aip_engine_improved_tech
+#				}
+#			}
+#			
+#		}
+#		enable_equipment_modules = {
+#			limit = {
+#				has_dlc = "Man the Guns"
+#			}
+#			 ship_engine_sub_aip_1
+#		}
+
+#		enable_subunits = { 
 			
-		}
-		enable_equipment_modules = {
-			limit = {
-				has_dlc = "Man the Guns"
-			}
-			 ship_engine_sub_aip_1
-		}
+#		}
+#	}
 
-		enable_subunits = { 
-			
-		}
-	}
+#	generic_prototype_rewards = {
+#		sp_naval_generic_reward_scientist_xp_1
+#		sp_naval_generic_reward_scientist_xp_2
+#		sp_naval_generic_reward_scientist_xp_3
+#		sp_naval_generic_reward_navy_xp_1
+#		sp_naval_generic_reward_navy_xp_2
+#		sp_naval_generic_reward_navy_xp_3
+#		sp_naval_generic_reward_major_progress_1
+#		sp_naval_generic_reward_major_progress_2
+#		sp_naval_generic_reward_major_progress_3
+#		sp_naval_generic_reward_test_failure_1
+#		sp_naval_generic_reward_test_failure_2
+#		sp_naval_generic_reward_test_failure_3		
+#	}
 
-	generic_prototype_rewards = {
-		sp_naval_generic_reward_scientist_xp_1
-		sp_naval_generic_reward_scientist_xp_2
-		sp_naval_generic_reward_scientist_xp_3
-		sp_naval_generic_reward_navy_xp_1
-		sp_naval_generic_reward_navy_xp_2
-		sp_naval_generic_reward_navy_xp_3
-		sp_naval_generic_reward_major_progress_1
-		sp_naval_generic_reward_major_progress_2
-		sp_naval_generic_reward_major_progress_3
-		sp_naval_generic_reward_test_failure_1
-		sp_naval_generic_reward_test_failure_2
-		sp_naval_generic_reward_test_failure_3		
-	}
+#	unique_prototype_rewards = {
+#		sp_naval_aip_engine_unique_reward_a = {
+#			fire_only_once = yes
 
-	unique_prototype_rewards = {
-		sp_naval_aip_engine_unique_reward_a = {
-			fire_only_once = yes
+#			threshold = { 
+#				min = 40
+#				max = 90
+#			}
 
-			threshold = { 
-				min = 40
-				max = 90
-			}
+#			weight = {
+#				base = 100
+#			}
 
-			weight = {
-				base = 100
-			}
-
-			option = {
-				token = sp_naval_aip_engine_preference_a
+#			option = {
+#				token = sp_naval_aip_engine_preference_a
 				
-				iteration_output = {
-					country_effects = {
+#				iteration_output = {
+#					country_effects = {
 
-					}
+#					}
 					
-					equipment_bonus = {
-						ship_hull_submarine = {
-							sub_visibility = -0.05
-							fuel_consumption = 0.1
-							instant = yes
-						}
-					}
+#					equipment_bonus = {
+#						ship_hull_submarine = {
+#							sub_visibility = -0.05
+#							fuel_consumption = 0.1
+#							instant = yes
+#						}
+#					}
 
-				}
-			}
+#				}
+#			}
 
-			option = {
-				token = sp_naval_aip_engine_preference_b
+#			option = {
+#				token = sp_naval_aip_engine_preference_b
 				
-				iteration_output = {
-					country_effects = { 
+#				iteration_output = {
+#					country_effects = { 
 
-					}
-					equipment_bonus = {
-						ship_hull_submarine = {
-							naval_speed = 0.1
-							fuel_consumption = 0.1
-							instant = yes
-						}				
+#					}
+#					equipment_bonus = {
+#						ship_hull_submarine = {
+#							naval_speed = 0.1
+#							fuel_consumption = 0.1
+#							instant = yes
+#						}				
 
-					}					 
+#					}					 
 
-				}
-			}
+#				}
+#			}
 
-			option = {
-				token = sp_naval_aip_engine_preference_c
-				default = yes
-				iteration_output = {
-					country_effects = { 
+#			option = {
+#				token = sp_naval_aip_engine_preference_c
+#				default = yes
+#				iteration_output = {
+#					country_effects = { 
 
-					}
-					equipment_bonus = {
-						ship_hull_submarine = {
-							fuel_consumption = -0.05
-							instant = yes
-						}				
+#					}
+#					equipment_bonus = {
+#						ship_hull_submarine = {
+#							fuel_consumption = -0.05
+#							instant = yes
+#						}				
 
-					}					 
+#					}					 
 
-				}
-			}
+#				}
+#			}
 
-		}	
-	}
+#		}	
+#	}
 
-}
+#}
 
 #ANECHOIC TILES
 sp_naval_anechoic_tiles = {
@@ -381,18 +350,13 @@ sp_naval_anechoic_tiles = {
 		has_dlc = "Gotterdammerung"
 	}
 	
+	special_project_parent = {
+		sp_naval_fleet_submarine
+	}
+	
 	available = { 
-		FROM = {
-			if = {
-				limit = {
-					has_dlc = "Man the Guns"
-				}  
-				has_tech = basic_ship_hull_submarine
-			}
-			else = {
-				has_tech = basic_submarine 
-			}
-
+		FROM = { 
+			original_tag = GER
 		}
 	}
 	
@@ -422,11 +386,7 @@ sp_naval_anechoic_tiles = {
 			}
 		}
 		enable_equipment_modules = {	
-			limit = { 
-				has_dlc = "Man the Guns" 
-			} 		
-			ship_anechoic_tile
-				
+			nrm_submarine_noise_3
 			}
 		
 		
@@ -473,9 +433,19 @@ sp_naval_anechoic_tiles = {
 					}
 
 					equipment_bonus = {
-						ship_hull_submarine = {
+						nrm_ship_hull_submarine_5 = {
 							build_cost_ic = 0.05
-							surface_detection = 0.1 
+							surface_detection = 0.05
+							instant = yes
+						}
+						nrm_ship_hull_submarine_cruiser_5 = {
+							build_cost_ic = 0.05
+							surface_detection = 0.05
+							instant = yes
+						}
+						nrm_ship_hull_submarine_small_5 = {
+							build_cost_ic = 0.05
+							surface_detection = 0.05
 							instant = yes
 						}
 					}
@@ -490,13 +460,22 @@ sp_naval_anechoic_tiles = {
 					country_effects = { 
 
 					}
-					equipment_bonus = {
-						ship_hull_submarine = {
+					equipment_bonus = {	
+						nrm_ship_hull_submarine_5 = {
 							build_cost_ic = 0.1
-							sub_visibility = -0.05
+							sub_visibility = -0.025
 							instant = yes
-						}				
-
+						}			
+						nrm_ship_hull_submarine_cruiser_5 = {
+							build_cost_ic = 0.1
+							sub_visibility = -0.025
+							instant = yes
+						}			
+						nrm_ship_hull_submarine_small_5 = {
+							build_cost_ic = 0.1
+							sub_visibility = -0.025
+							instant = yes
+						}
 					}					 
 
 				}
@@ -511,10 +490,18 @@ sp_naval_anechoic_tiles = {
 					}
 
 					equipment_bonus = {
-						ship_hull_submarine = {
-							 build_cost_ic = -0.05
-							 instant = yes
-						}
+						nrm_ship_hull_submarine_5 = {
+							build_cost_ic = -0.015
+							instant = yes
+					   }
+						nrm_ship_hull_submarine_cruiser_5 = {
+							build_cost_ic = -0.015
+							instant = yes
+					   }
+						nrm_ship_hull_submarine_small_5 = {
+							build_cost_ic = -0.015
+							instant = yes
+					   }
 					}
 
 				}
@@ -536,139 +523,140 @@ sp_naval_anechoic_tiles = {
 #########################################################
 
 #Underway Replenishment
-sp_naval_underway_replenishment = {
-	specialization = specialization_naval
+#sp_naval_underway_replenishment = {
+#	specialization = specialization_naval
 
-	project_tags = sp_tag_surface_ship
+#	project_tags = sp_tag_surface_ship
 
-	ai_will_do = {
-		base = 1
-	}
+#	ai_will_do = {
+#		base = 1
+#	}
 
-	allowed = {
-		has_dlc = "Gotterdammerung"
-	}
+#	allowed = {
+#		has_dlc = "Gotterdammerung"
+#		always = no
+#	}
 	
-	available = {
-		FROM = {
-			OR = {
-				has_tech = base_strike
-				has_tech = fleet_in_being
-			}
-		}
+#	available = {
+#		FROM = {
+#			OR = {
+#				has_tech = base_strike
+#				has_tech = fleet_in_being
+#			}
+#		}
  
-	}
+#	}
 
-	resource_cost = {
-		resources = { 
-			steel = 8
-		}
-	}
+#	resource_cost = {
+#		resources = { 
+#			steel = 8
+#		}
+#	}
 
-	breakthrough_cost = {
-		specialization_naval = 2
-	}
+#	breakthrough_cost = {
+#		specialization_naval = 2
+#	}
 	
-	complexity = sp_complexity.large
-	prototype_time = sp_time.prototype.medium 
+#	complexity = sp_complexity.large
+#	prototype_time = sp_time.prototype.medium 
 	
-	project_output = {
-		country_effects = {
-			custom_effect_tooltip = {
-				localization_key = SP_UNLOCK_TECH
-				TECH = sp_multi_product_supply_ships
-				}			
-			set_rule = {
-				can_use_underway_replenishment = yes
-			}
+#	project_output = {
+#		country_effects = {
+#			custom_effect_tooltip = {
+#				localization_key = SP_UNLOCK_TECH
+#				TECH = sp_multi_product_supply_ships
+#				}			
+#			set_rule = {
+#				can_use_underway_replenishment = yes
+#			}
 			
-		}
+#		}
 
-		enable_equipment_modules = {
+#		enable_equipment_modules = {
 			 
-		}
+#		}
 
-		enable_subunits = { 
+#		enable_subunits = { 
 			
-		}
-	}
+#		}
+#	}
 
-	generic_prototype_rewards = {
-		sp_naval_generic_reward_scientist_xp_1
-		sp_naval_generic_reward_scientist_xp_2
-		sp_naval_generic_reward_scientist_xp_3
-		sp_naval_generic_reward_navy_xp_1
-		sp_naval_generic_reward_navy_xp_2
-		sp_naval_generic_reward_navy_xp_3
-		sp_naval_generic_reward_major_progress_1
-		sp_naval_generic_reward_major_progress_2
-		sp_naval_generic_reward_major_progress_3
-		sp_naval_generic_reward_test_failure_1
-		sp_naval_generic_reward_test_failure_2
-		sp_naval_generic_reward_test_failure_3			
-	}
+#	generic_prototype_rewards = {
+#		sp_naval_generic_reward_scientist_xp_1
+#		sp_naval_generic_reward_scientist_xp_2
+#		sp_naval_generic_reward_scientist_xp_3
+#		sp_naval_generic_reward_navy_xp_1
+#		sp_naval_generic_reward_navy_xp_2
+#		sp_naval_generic_reward_navy_xp_3
+#		sp_naval_generic_reward_major_progress_1
+#		sp_naval_generic_reward_major_progress_2
+#		sp_naval_generic_reward_major_progress_3
+#		sp_naval_generic_reward_test_failure_1
+#		sp_naval_generic_reward_test_failure_2
+#		sp_naval_generic_reward_test_failure_3			
+#	}
 
-	unique_prototype_rewards = {
-		sp_naval_underway_replenishment_unique_reward_a = {
-			fire_only_once = yes
+#	unique_prototype_rewards = {
+#		sp_naval_underway_replenishment_unique_reward_a = {
+#			fire_only_once = yes
 
-			threshold = { 
-				min = 40
-				max = 90
-			}
+#			threshold = { 
+#				min = 40
+#				max = 90
+#			}
 
-			weight = {
-				base = 100
-			}
+#			weight = {
+#				base = 100
+#			}
 
-			option = {
-				token = sp_naval_underway_replenishment_preference_a
+#			option = {
+#				token = sp_naval_underway_replenishment_preference_a
 				
-				iteration_output = {
-					country_effects = {
-						custom_effect_tooltip = tech_effect|sp_naval_underway_replenishment_pick_a
-						hidden_effect = {
-							set_technology = {
-								sp_naval_underway_replenishment_pick_a = 1
-								popup = no
-							}
-						}
-					}
-				}
-			}
+#				iteration_output = {
+#					country_effects = {
+#						custom_effect_tooltip = tech_effect|sp_naval_underway_replenishment_pick_a
+#						hidden_effect = {
+#							set_technology = {
+#								sp_naval_underway_replenishment_pick_a = 1
+#								popup = no
+#							}
+#						}
+#					}
+#				}
+#			}
 			
-			option = {
-				token = sp_naval_underway_replenishment_preference_c
-				default = yes
-				iteration_output = {
-					country_effects = { 
-						#BASE UNDERWAY REPLENISHMENT
-					}					 
+#			option = {
+#				token = sp_naval_underway_replenishment_preference_c
+#				default = yes
+#				iteration_output = {
+#					country_effects = { 
+#						#BASE UNDERWAY REPLENISHMENT
+#					}					 
 
-				}
-			}
+#				}
+#			}
 
-			option = {
-				token = sp_naval_underway_replenishment_preference_b
+#			option = {
+#				token = sp_naval_underway_replenishment_preference_b
 				
-				iteration_output = {
-					country_effects = {
-						custom_effect_tooltip = tech_effect|sp_naval_underway_replenishment_pick_b
-						hidden_effect = {
-							set_technology = {
-								sp_naval_underway_replenishment_pick_b = 1
-								popup = no
-							}
-						}
-					}					 
+#				iteration_output = {
+#					country_effects = {
+#						custom_effect_tooltip = tech_effect|sp_naval_underway_replenishment_pick_b
+#						hidden_effect = {
+#							set_technology = {
+#								sp_naval_underway_replenishment_pick_b = 1
+#								popup = no
+#							}
+#						}
+#					}					 
 
-				}
-			}
+#				}
+#			}
 
 			
-		}	
-	}	
-}
+#		}	
+#	}	
+#}
 
 #PROXIMITY FUZE
 
@@ -688,7 +676,7 @@ sp_naval_proximity_fuze = {
 
 	available = {
 		FROM = {
-			has_tech = improved_radio
+			has_tech = centimetric_radar
 		}	
 	}
 	
@@ -719,7 +707,7 @@ sp_naval_proximity_fuze = {
 
 			custom_effect_tooltip = {
 				localization_key = SP_UNLOCK_TECH
-				TECH = sp_shock_hardening_techniques
+				TECH = sp_variable_time_fuze_shells
 			}
 		}
 	}
@@ -762,7 +750,7 @@ sp_naval_proximity_fuze = {
 
 					equipment_bonus = {
 						anti_air_equipment = {
-							build_cost_ic = -0.05
+							build_cost_ic = -0.025
 							instant = yes
 						}
 
@@ -780,8 +768,8 @@ sp_naval_proximity_fuze = {
 					}
 					equipment_bonus = {			
 						anti_air_equipment = {
-							air_attack = 0.15
-							build_cost_ic = 0.05
+							air_attack = 0.075
+							build_cost_ic = 0.025
 							instant = yes
 						}
 					}					 
