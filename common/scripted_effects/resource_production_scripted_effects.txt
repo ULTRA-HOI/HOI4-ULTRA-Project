@@ -308,7 +308,12 @@ open_buildings = {
                 }
                 is_core_of = PREV
             }
-            add_to_temp_array = { state_candidates = THIS }
+            meta_effect = {
+                text = {
+                    add_to_temp_array = { [BUILDING]_state_candidates = THIS }
+                }
+                BUILDING = "[?building_to_remove.GetTokenKey]"
+            }
         }
         every_controlled_state = {
             limit = {
@@ -320,7 +325,12 @@ open_buildings = {
                 }
                 NOT = { is_core_of = PREV }
             }
-            add_to_temp_array = { state_candidates = THIS }
+            meta_effect = {
+                text = {
+                    add_to_temp_array = { [BUILDING]_state_candidates = THIS }
+                }
+                BUILDING = "[?building_to_remove.GetTokenKey]"
+            }
         }
     }
     swap_buildings = yes
@@ -340,7 +350,12 @@ close_buildings = {
                 }
                 NOT = { is_core_of = PREV }
             }
-            add_to_temp_array = { state_candidates = THIS }
+            meta_effect = {
+                text = {
+                    add_to_temp_array = { [BUILDING]_state_candidates = THIS }
+                }
+                BUILDING = "[?building_to_remove.GetTokenKey]"
+            }
         }
         every_controlled_state = {
             limit = {
@@ -352,7 +367,12 @@ close_buildings = {
                 }
                 is_core_of = PREV
             }
-            add_to_temp_array = { state_candidates = THIS }
+            meta_effect = {
+                text = {
+                    add_to_temp_array = { [BUILDING]_state_candidates = THIS }
+                }
+                BUILDING = "[?building_to_remove.GetTokenKey]"
+            }
         }
     }
     swap_buildings = yes
@@ -362,23 +382,20 @@ close_buildings = {
 # token:building_to_add
 # token:building_to_remove
 swap_buildings = {
-    for_each_loop = {
-        array = state_candidates
-        var:v = {
-            log = "About to swap [?building_to_remove.GetTokenKey] in state in state: [THIS.GetName]"
-            meta_effect = {
-                text = {
-                    set_temp_variable = { local_buildings_to_swap = building_level@[BUILDING] }
-                }
-                BUILDING = "[?building_to_remove.GetTokenKey]"
-            }
-            clamp_temp_variable = {
-                var = local_buildings_to_swap
-                min = 0
-                max = num_to_swap
-            }
-            meta_effect = {
-                text = {
+    log_building_swapping_start = yes
+    meta_effect = {
+        text = {
+            for_each_loop = {
+                array = [BUILDING_TO_REMOVE]_state_candidates
+                break = break_var
+                var:v = {
+                    set_temp_variable = { local_buildings_to_swap = building_level@[BUILDING_TO_REMOVE] }
+                    clamp_temp_variable = {
+                        var = local_buildings_to_swap
+                        min = 0
+                        max = num_to_swap
+                    }
+                    log_building_swapping_iteration_start = yes
                     remove_building = {
                         type = [BUILDING_TO_REMOVE]
                         level = [LEVEL]
@@ -388,23 +405,26 @@ swap_buildings = {
                         level = [LEVEL]
                         instant_build = yes    
                     }
+                    subtract_from_temp_variable = { num_to_swap = local_buildings_to_swap }
+                    log_building_swapping_iteration_end = yes
+                    if = {
+                        limit = { 
+                            check_variable = { var = num_to_swap value = 0 compare = less_than_or_equals }
+                        }
+                        set_temp_variable = { break_var = 1 }
+                    }
                 }
-                BUILDING_TO_REMOVE = "[?building_to_remove.GetTokenKey]"
-                BUILDING_TO_ADD = "[?building_to_add.GetTokenKey]"
-                LEVEL = "[?local_buildings_to_swap]"
             }
-            subtract_from_temp_variable = { num_to_swap = local_buildings_to_swap }
-            if = {
-                limit = { 
-                    check_variable = { var = num_to_swap value = 0 compare = less_than_or_equals }
-                }
-                set_temp_variable = { break = 1 }
-            }
+            log_building_swapping_4 = yes
         }
+        debug = yes
+        BUILDING_TO_REMOVE = "[?building_to_remove.GetTokenKey]"
+        BUILDING_TO_ADD = "[?building_to_add.GetTokenKey]"
+        LEVEL = "[?local_buildings_to_swap]"
     }
 }
 
-log_building_swapping_1 = {
+log_building_swapping_start = {
     if = {
 		limit = { is_debug = yes }
         log = "Starting swapping [?building_to_remove.GetTokenKey]"
@@ -414,6 +434,13 @@ log_building_swapping_1 = {
         log = "num_to_swap_bauxite: [?num_to_swap_bauxite]"
         log = "num_to_swap_coal: [?num_to_swap_coal]"
         log = "num_to_swap_oil: [?num_to_swap_oil]"
+
+    }
+}
+
+log_building_swapping_resources = {
+    if = {
+		limit = { is_debug = yes }
         log = "resource_exported@tungsten: [?ROOT.resource_exported@tungsten]"
         log = "resource_exported@iron: [?ROOT.resource_exported@iron]"
         log = "resource_exported@bauxite: [?ROOT.resource_exported@bauxite]"
@@ -442,7 +469,7 @@ log_building_swapping_1 = {
     }
 }
 
-log_building_swapping_2 = {
+log_building_swapping_iteration_start = {
     if = {
 		limit = { is_debug = yes }
         log = "Total [?building_to_remove.GetTokenKey] left to swap: [?num_to_swap]"
@@ -451,7 +478,7 @@ log_building_swapping_2 = {
     }
 }
 
-log_building_swapping_3 = {
+log_building_swapping_iteration_end = {
     if = {
 		limit = { is_debug = yes }
         log = "Finished state: [THIS.GetName]"
