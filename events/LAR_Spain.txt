@@ -206,6 +206,7 @@ country_event = {
 				has_completed_focus = SPA_a_great_spain
 			}
 			hidden_effect = {
+				log = "Civil War triggered by SPA_a_great_spain"
 				SPA = { # Switch the tag alias for SPA - it now becomes SPD - the republicans
 					clr_country_flag = SPR_nationalist_spain_flag
 					drop_cosmetic_tag = yes
@@ -234,6 +235,7 @@ country_event = {
 					retire_ideology_leader = neutrality
 					retire_ideology_leader = communism
 				}
+				log = "First SPD"
 				SPD = { # Remove Carlist/Falangist country leaders for new SPD tag
 					retire_ideology_leader = fascism
 					retire_ideology_leader = neutrality
@@ -284,6 +286,7 @@ country_event = {
 						the_lion_of_the_rif
 					}
 				}
+				log = "Before first division"
 				# Add Nationalist and Republican Garrison division templates
 				division_template = {
 					name = "Guarnición Nacionalista"
@@ -330,6 +333,8 @@ country_event = {
 							grenade_slot = empty
 						}
 					}
+					log = "Before second division"
+					add_sup_mot_techs_if_missing = yes
 					division_template = {
 						name = "Guarnición Republicana"
 						is_locked = yes
@@ -510,6 +515,7 @@ country_event = {
 						}
 					}
 				}
+				log = "Before splitting"
 				# Split equipment and army/navy depending on which focuses the Republicans have finished
 				if = {
 					limit = {
@@ -569,11 +575,13 @@ country_event = {
 						}
 					}
 				}
+				log = "After splitting"
 				# If player has completed this focus, give North Africa and spawn units there (this effect is run first so the tag has any territory whatsoever - it's assumed all players take this focus)
 				if = {
 					limit = {
 						has_completed_focus = SPA_the_army_of_africa
 					}
+					add_hart_techs_if_missing = yes
 					division_template = {
 						name = "División del Ejército de África"
 						template_counter = 91
@@ -651,6 +659,7 @@ country_event = {
 					    disband = yes
 					}
 				}
+				log = "After deleting units"
 				# Switch leaders who do not have nationalist sympathies to the Republicans
 				every_unit_leader = {
 					limit = {
@@ -718,6 +727,7 @@ country_event = {
 						add_unit_leader_trait = trait_SPR_anti_stalinist_loyalties
 					}
 				}
+				log = "After leaders"
 				# Add 3 Republican garrisons to every state where the Nationalists have NONE control
 				every_owned_state = {
 					limit = {
@@ -761,6 +771,7 @@ country_event = {
 						count = 3
 					}
 				}
+				log = "Before war"
 				# Trigger war between the sides - necessary because the next effects spawn units on contested provinces and this requires both sides to be at war
 				SPA = {
 					declare_war_on = {
@@ -769,6 +780,7 @@ country_event = {
 					}
 					add_civil_war_target = SPD
 				}
+				log = "After war"
 				# 2 Republican and 1 Nationalist garrisons spawned on all states with WEAK Nationalist control (except for Northern Garrison states)
 				every_owned_state = {
 					limit = {
@@ -826,6 +838,7 @@ country_event = {
 							is_historical_focus_on = no
 						}
 					}
+					add_sup_mot_techs_if_missing = yes
 					division_template = {
 						name = "Requeté Carlista"
 						template_counter = 384
@@ -862,6 +875,7 @@ country_event = {
 						is_ai = yes
 						is_historical_focus_on = yes
 					}
+					add_sup_mot_techs_if_missing = yes
 					division_template = {
 						name = "Requeté Carlista"
 						template_counter = 384
@@ -911,6 +925,7 @@ country_event = {
 					limit = {
 						has_country_flag = SPR_secure_the_guardia_civil_flag
 					}
+					add_sup_mot_techs_if_missing = yes
 					division_template = {
 						name = "División de la Guardia de Asalto"
 						template_counter = 5
@@ -995,19 +1010,19 @@ country_event = {
 						}
 					}
 					SPD = {
+						add_sup_mot_techs_if_missing = yes
 						division_template = {
 							name = "División de la Guardia Civil"
 							template_counter = 7
 							division_names_group = SPR_INF_04
 							is_locked = yes
 							regiments = {
-						heavy_infantry = { x = 0 y = 0 }
-						infantry = { x = 0 y = 1 }
-						infantry = { x = 0 y = 2 }
-						heavy_infantry = { x = 1 y = 0 }
-						infantry = { x = 1 y = 1 }
-						infantry = { x = 1 y = 2 }
-						
+								heavy_infantry = { x = 0 y = 0 }
+								infantry = { x = 0 y = 1 }
+								infantry = { x = 0 y = 2 }
+								heavy_infantry = { x = 1 y = 0 }
+								infantry = { x = 1 y = 1 }
+								infantry = { x = 1 y = 2 }
 							}
 							
 							support = {
@@ -1391,6 +1406,7 @@ country_event = {
 					limit = {
 						has_country_flag = SPR_secure_the_guardia_de_asalto_flag
 					}
+					add_sup_mot_techs_if_missing = yes
 					division_template = {
 						name = "División de la Guardia Civil"
 						template_counter = 7
@@ -1531,28 +1547,27 @@ country_event = {
 						}
 					}
 					SPD = {
+						add_sup_mot_techs_if_missing = yes
 						division_template = {
 							name = "División de la Guardia de Asalto"
 							template_counter = 5
 							division_names_group = SPR_INF_05
 							is_locked = yes
 							regiments = {
-						heavy_infantry = { x = 0 y = 0 }
-						infantry = { x = 0 y = 1 }
-						infantry = { x = 0 y = 2 }
-						heavy_infantry = { x = 1 y = 0 }
-						infantry = { x = 1 y = 1 }
-						infantry = { x = 1 y = 2 }
-						infantry = { x = 2 y = 0 }
-						infantry = { x = 2 y = 1 }
-						
+								heavy_infantry = { x = 0 y = 0 }
+								infantry = { x = 0 y = 1 }
+								infantry = { x = 0 y = 2 }
+								heavy_infantry = { x = 1 y = 0 }
+								infantry = { x = 1 y = 1 }
+								infantry = { x = 1 y = 2 }
+								infantry = { x = 2 y = 0 }
+								infantry = { x = 2 y = 1 }
 							}
 							
 							support = {
 								DIV_HQ = { x = 0 y = 0 }	
 								engineer = { x = 0 y = 1 }
 								recon = { x = 0 y = 2 }
-								#artillery = { x = 0 y = 3 }
 							}
 						}
 					}
@@ -1746,21 +1761,21 @@ country_event = {
 					}
 				}
 				else = { #Extra backup in case player never took any focuses - SPA gets BOTH types! Suck on it, Reds!
+					add_sup_mot_techs_if_missing = yes
 					division_template = {
 						name = "División de la Guardia de Asalto"
 						template_counter = 5
 						division_names_group = SPR_INF_05
 						is_locked = yes
 						regiments = {
-						infantry = { x = 0 y = 0 }
-						infantry = { x = 0 y = 1 }
-						infantry = { x = 0 y = 2 }
-						infantry = { x = 1 y = 0 }
-						infantry = { x = 1 y = 1 }
-						infantry = { x = 1 y = 2 }
-						infantry = { x = 2 y = 0 }
-						infantry = { x = 2 y = 1 }
-						
+							infantry = { x = 0 y = 0 }
+							infantry = { x = 0 y = 1 }
+							infantry = { x = 0 y = 2 }
+							infantry = { x = 1 y = 0 }
+							infantry = { x = 1 y = 1 }
+							infantry = { x = 1 y = 2 }
+							infantry = { x = 2 y = 0 }
+							infantry = { x = 2 y = 1 }
 						}
 						
 						support = {
@@ -1773,15 +1788,14 @@ country_event = {
 						division_names_group = SPR_INF_04
 						is_locked = yes
 						regiments = {
-						infantry = { x = 0 y = 0 }
-						infantry = { x = 0 y = 1 }
-						infantry = { x = 0 y = 2 }
-						infantry = { x = 1 y = 0 }
-						infantry = { x = 1 y = 1 }
-						infantry = { x = 1 y = 2 }
-						infantry = { x = 2 y = 0 }
-						infantry = { x = 2 y = 1 }
-						
+							infantry = { x = 0 y = 0 }
+							infantry = { x = 0 y = 1 }
+							infantry = { x = 0 y = 2 }
+							infantry = { x = 1 y = 0 }
+							infantry = { x = 1 y = 1 }
+							infantry = { x = 1 y = 2 }
+							infantry = { x = 2 y = 0 }
+							infantry = { x = 2 y = 1 }
 						}
 						
 						support = {
@@ -1975,6 +1989,7 @@ country_event = {
 						has_country_flag = SPR_train_the_union_youth_flag
 					}
 					SPD = {
+						add_sup_mot_techs_if_missing = yes
 						division_template = {
 							name = "División de Juventudes Sindicales"
 							template_counter = 0
@@ -2261,6 +2276,7 @@ country_event = {
 						has_country_flag = SPR_distribute_arms_to_the_people_flag
 					}
 					SPD = {
+						add_sup_mot_techs_if_missing = yes
 						division_template = {
 							name = "División Popular"
 							template_counter = 103
@@ -2607,6 +2623,7 @@ country_event = {
 				country_event = { id = lar_spain.6 days = 7 } # SCW notification event for the player
 				country_event = { id = lar_spain.78 days = 7 random_days = 7 } # Sanjurjo dies
 			}
+			log = "End of section"
 		}
 
 ###  ### ###  #  # ###  #   ###  ##   ##  #  #     ### ### ### ###  ##  ### 
@@ -2703,6 +2720,7 @@ country_event = {
 						grenade_slot = empty
 					}
 				}
+				add_sup_mot_techs_if_missing = yes
 				division_template = {
 					name = "Guarnición Republicana"
 					is_locked = yes
@@ -2724,6 +2742,7 @@ country_event = {
 					}
 				}
 				SPA = {
+					add_sup_mot_techs_if_missing = yes
 					division_template = {
 						name = "Guarnición Nacionalista"
 						is_locked = yes
@@ -2755,6 +2774,8 @@ country_event = {
 					SPA = {
 						transfer_state = 290
 						290 = { set_state_flag = SPR_sided_with_nationalists_flag }
+						add_hart_techs_if_missing = yes
+						add_sup_mot_techs_if_missing = yes
 						division_template = {
 							name = "División del Ejército de África"
 							template_counter = 91
@@ -3084,6 +3105,7 @@ country_event = {
 					limit = {
 						has_country_flag = SPA_negotiate_carlist_support_flag
 					}
+					add_sup_mot_techs_if_missing = yes
 					division_template = {
 						name = "Requeté Carlista"
 						template_counter = 384
@@ -3132,25 +3154,25 @@ country_event = {
 						has_completed_focus = SPR_secure_the_guardia_civil
 					}
 					SPA = {
+						add_sup_mot_techs_if_missing = yes
 						division_template = {
 							name = "División de la Guardia de Asalto"
 							template_counter = 5
 							division_names_group = SPR_INF_05
 							is_locked = yes
 							regiments = {
-							infantry = { x = 0 y = 0 }
-						infantry = { x = 0 y = 1 }
-						infantry = { x = 0 y = 2 }
-						infantry = { x = 1 y = 0 }
-						infantry = { x = 1 y = 1 }
-						infantry = { x = 1 y = 2 }
-						infantry = { x = 2 y = 0 }
-						infantry = { x = 2 y = 1 }
-						infantry = { x = 2 y = 2 }
-						infantry = { x = 3 y = 0 }
-						infantry = { x = 3 y = 1 }
-						infantry = { x = 3 y = 2 }
-						
+								infantry = { x = 0 y = 0 }
+								infantry = { x = 0 y = 1 }
+								infantry = { x = 0 y = 2 }
+								infantry = { x = 1 y = 0 }
+								infantry = { x = 1 y = 1 }
+								infantry = { x = 1 y = 2 }
+								infantry = { x = 2 y = 0 }
+								infantry = { x = 2 y = 1 }
+								infantry = { x = 2 y = 2 }
+								infantry = { x = 3 y = 0 }
+								infantry = { x = 3 y = 1 }
+								infantry = { x = 3 y = 2 }
 							}
 							
 							support = {
@@ -3217,25 +3239,25 @@ country_event = {
 						}
 					}
 					SPD = {
+						add_sup_mot_techs_if_missing = yes
 						division_template = {
 							name = "División de la Guardia Civil"
 							template_counter = 7
 							division_names_group = SPR_INF_04
 							is_locked = yes
 							regiments = {
-						infantry = { x = 0 y = 0 }
-						infantry = { x = 0 y = 1 }
-						infantry = { x = 0 y = 2 }
-						infantry = { x = 1 y = 0 }
-						infantry = { x = 1 y = 1 }
-						infantry = { x = 1 y = 2 }
-						infantry = { x = 2 y = 0 }
-						infantry = { x = 2 y = 1 }
-						infantry = { x = 2 y = 2 }
-						infantry = { x = 3 y = 0 }
-						infantry = { x = 3 y = 1 }
-						infantry = { x = 3 y = 2 }
-						
+								infantry = { x = 0 y = 0 }
+								infantry = { x = 0 y = 1 }
+								infantry = { x = 0 y = 2 }
+								infantry = { x = 1 y = 0 }
+								infantry = { x = 1 y = 1 }
+								infantry = { x = 1 y = 2 }
+								infantry = { x = 2 y = 0 }
+								infantry = { x = 2 y = 1 }
+								infantry = { x = 2 y = 2 }
+								infantry = { x = 3 y = 0 }
+								infantry = { x = 3 y = 1 }
+								infantry = { x = 3 y = 2 }
 							}
 							
 							support = {
@@ -3627,25 +3649,25 @@ country_event = {
 						has_completed_focus = SPR_secure_the_guardia_de_asalto
 					}
 					SPA = {
+						add_sup_mot_techs_if_missing = yes
 						division_template = {
 							name = "División de la Guardia Civil"
 							template_counter = 7
 							division_names_group = SPR_INF_04
 							is_locked = yes
 							regiments = {
-						infantry = { x = 0 y = 0 }
-						infantry = { x = 0 y = 1 }
-						infantry = { x = 0 y = 2 }
-						infantry = { x = 1 y = 0 }
-						infantry = { x = 1 y = 1 }
-						infantry = { x = 1 y = 2 }
-						infantry = { x = 2 y = 0 }
-						infantry = { x = 2 y = 1 }
-						infantry = { x = 2 y = 2 }
-						infantry = { x = 3 y = 0 }
-						infantry = { x = 3 y = 1 }
-						infantry = { x = 3 y = 2 }
-						
+								infantry = { x = 0 y = 0 }
+								infantry = { x = 0 y = 1 }
+								infantry = { x = 0 y = 2 }
+								infantry = { x = 1 y = 0 }
+								infantry = { x = 1 y = 1 }
+								infantry = { x = 1 y = 2 }
+								infantry = { x = 2 y = 0 }
+								infantry = { x = 2 y = 1 }
+								infantry = { x = 2 y = 2 }
+								infantry = { x = 3 y = 0 }
+								infantry = { x = 3 y = 1 }
+								infantry = { x = 3 y = 2 }
 							}
 							
 							support = {
@@ -3772,25 +3794,25 @@ country_event = {
 						}
 					}
 					SPD = {
+						add_sup_mot_techs_if_missing = yes
 						division_template = {
 							name = "División de la Guardia de Asalto"
 							template_counter = 5
 							division_names_group = SPR_INF_05
 							is_locked = yes
 							regiments = {
-						infantry = { x = 0 y = 0 }
-						infantry = { x = 0 y = 1 }
-						infantry = { x = 0 y = 2 }
-						infantry = { x = 1 y = 0 }
-						infantry = { x = 1 y = 1 }
-						infantry = { x = 1 y = 2 }
-						infantry = { x = 2 y = 0 }
-						infantry = { x = 2 y = 1 }
-						infantry = { x = 2 y = 2 }
-						infantry = { x = 3 y = 0 }
-						infantry = { x = 3 y = 1 }
-						infantry = { x = 3 y = 2 }
-						
+								infantry = { x = 0 y = 0 }
+								infantry = { x = 0 y = 1 }
+								infantry = { x = 0 y = 2 }
+								infantry = { x = 1 y = 0 }
+								infantry = { x = 1 y = 1 }
+								infantry = { x = 1 y = 2 }
+								infantry = { x = 2 y = 0 }
+								infantry = { x = 2 y = 1 }
+								infantry = { x = 2 y = 2 }
+								infantry = { x = 3 y = 0 }
+								infantry = { x = 3 y = 1 }
+								infantry = { x = 3 y = 2 }
 							}
 							
 							support = {
@@ -3989,25 +4011,25 @@ country_event = {
 				}
 				else = { #Extra backup in case player never took any focuses - SPA gets BOTH types!
 					SPA = {
+						add_sup_mot_techs_if_missing = yes
 						division_template = {
 							name = "División de la Guardia de Asalto"
 							template_counter = 5
 							division_names_group = SPR_INF_05
 							is_locked = yes
 							regiments = {
-						infantry = { x = 0 y = 0 }
-						infantry = { x = 0 y = 1 }
-						infantry = { x = 0 y = 2 }
-						infantry = { x = 1 y = 0 }
-						infantry = { x = 1 y = 1 }
-						infantry = { x = 1 y = 2 }
-						infantry = { x = 2 y = 0 }
-						infantry = { x = 2 y = 1 }
-						infantry = { x = 2 y = 2 }
-						infantry = { x = 3 y = 0 }
-						infantry = { x = 3 y = 1 }
-						infantry = { x = 3 y = 2 }
-						
+								infantry = { x = 0 y = 0 }
+								infantry = { x = 0 y = 1 }
+								infantry = { x = 0 y = 2 }
+								infantry = { x = 1 y = 0 }
+								infantry = { x = 1 y = 1 }
+								infantry = { x = 1 y = 2 }
+								infantry = { x = 2 y = 0 }
+								infantry = { x = 2 y = 1 }
+								infantry = { x = 2 y = 2 }
+								infantry = { x = 3 y = 0 }
+								infantry = { x = 3 y = 1 }
+								infantry = { x = 3 y = 2 }
 							}
 							
 							support = {
@@ -4020,19 +4042,18 @@ country_event = {
 							division_names_group = SPR_INF_04
 							is_locked = yes
 							regiments = {
-						infantry = { x = 0 y = 0 }
-						infantry = { x = 0 y = 1 }
-						infantry = { x = 0 y = 2 }
-						infantry = { x = 1 y = 0 }
-						infantry = { x = 1 y = 1 }
-						infantry = { x = 1 y = 2 }
-						infantry = { x = 2 y = 0 }
-						infantry = { x = 2 y = 1 }
-						infantry = { x = 2 y = 2 }
-						infantry = { x = 3 y = 0 }
-						infantry = { x = 3 y = 1 }
-						infantry = { x = 3 y = 2 }
-						
+								infantry = { x = 0 y = 0 }
+								infantry = { x = 0 y = 1 }
+								infantry = { x = 0 y = 2 }
+								infantry = { x = 1 y = 0 }
+								infantry = { x = 1 y = 1 }
+								infantry = { x = 1 y = 2 }
+								infantry = { x = 2 y = 0 }
+								infantry = { x = 2 y = 1 }
+								infantry = { x = 2 y = 2 }
+								infantry = { x = 3 y = 0 }
+								infantry = { x = 3 y = 1 }
+								infantry = { x = 3 y = 2 }
 							}
 							
 							support = {
@@ -4226,25 +4247,25 @@ country_event = {
 						has_completed_focus = SPR_train_the_union_youth
 					}
 					SPD = {
+						add_sup_mot_techs_if_missing = yes
 						division_template = {
 							name = "División de Juventudes Sindicales"
 							template_counter = 0
 							division_names_group = SPD_INF_02
 							is_locked = yes
 							regiments = {
-						infantry = { x = 0 y = 0 }
-						infantry = { x = 0 y = 1 }
-						infantry = { x = 0 y = 2 }
-						infantry = { x = 1 y = 0 }
-						infantry = { x = 1 y = 1 }
-						infantry = { x = 1 y = 2 }
-						infantry = { x = 2 y = 0 }
-						infantry = { x = 2 y = 1 }
-						infantry = { x = 2 y = 2 }
-						infantry = { x = 3 y = 0 }
-						infantry = { x = 3 y = 1 }
-						infantry = { x = 3 y = 2 }
-						
+								infantry = { x = 0 y = 0 }
+								infantry = { x = 0 y = 1 }
+								infantry = { x = 0 y = 2 }
+								infantry = { x = 1 y = 0 }
+								infantry = { x = 1 y = 1 }
+								infantry = { x = 1 y = 2 }
+								infantry = { x = 2 y = 0 }
+								infantry = { x = 2 y = 1 }
+								infantry = { x = 2 y = 2 }
+								infantry = { x = 3 y = 0 }
+								infantry = { x = 3 y = 1 }
+								infantry = { x = 3 y = 2 }
 							}
 							
 							support = {
@@ -4443,6 +4464,7 @@ country_event = {
 						has_completed_focus = SPR_distribute_arms_to_the_people
 					}
 					SPD = {
+						add_sup_mot_techs_if_missing = yes
 						division_template = {
 							name = "División Popular"
 							template_counter = 103
@@ -4764,10 +4786,12 @@ country_event = {
 				SPA = { country_event = { id = lar_spain.78 days = 7 random_days = 7 } } # Sanjurjo dies
 			}
 		}
+		log = "End of section 2"
 		hidden_effect = {
 			# Marks gui as "dirty" so the code updates the layout to properly hide the unused branches
 			mark_focus_tree_layout_dirty = yes
 		}
+		log = "End of immediate"
 	}
 	
 	option = { # Option for Nationalists - Franco
@@ -6229,6 +6253,7 @@ country_event = {
 				inherit_technology = SPA
 				set_stability = 0.6
 				set_war_support = 0.5
+				add_sup_mot_techs_if_missing = yes
 				division_template = {
 					name = "Requeté Carlista"
 					template_counter = 384
@@ -7452,6 +7477,7 @@ country_event = {
 				add_ideas = closed_economy
 				set_stability = 0.6
 				set_war_support = 0.5
+				add_sup_mot_techs_if_missing = yes
 				division_template = {
 					name = "División Anarquista"
 					template_counter = 0
@@ -11702,15 +11728,14 @@ country_event = {
 			division_names_group = SOV_INF_01
 			is_locked = yes
 			regiments = {
-						heavy_infantry = { x = 0 y = 0 }
-						infantry = { x = 0 y = 1 }
-						infantry = { x = 0 y = 2 }
-						infantry = { x = 1 y = 0 }
-						infantry = { x = 1 y = 1 }
-						infantry = { x = 1 y = 2 }
-						infantry = { x = 2 y = 0 }
-						infantry = { x = 2 y = 1 }
-						
+				heavy_infantry = { x = 0 y = 0 }
+				infantry = { x = 0 y = 1 }
+				infantry = { x = 0 y = 2 }
+				infantry = { x = 1 y = 0 }
+				infantry = { x = 1 y = 1 }
+				infantry = { x = 1 y = 2 }
+				infantry = { x = 2 y = 0 }
+				infantry = { x = 2 y = 1 }
 			}
 			
 			support = {
