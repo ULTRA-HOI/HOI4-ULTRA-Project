@@ -4,7 +4,7 @@ NGame = {
 	START_DATE = "1936.1.1.12",
 	END_DATE = "1949.1.1.1",
 	MAP_SCALE_PIXEL_TO_KM = 7.114,					-- Yes, we did the math
-	SAVE_VERSION = 24,								-- 1.15.0 (unnamed)
+	SAVE_VERSION = 25,								-- 1.16.0 (Countenance)
 	CHECKSUM_SALT = "zwOdv5d9wm9uDSOT",				-- Data to modify generated checksum when game binaries have changed but not any content files.
 	LAG_DAYS_FOR_LOWER_SPEED = 50,--was 10 			-- Days of client lag for decrease of gamespeed
 	LAG_DAYS_FOR_PAUSE = 100,--was 25				-- Days of client lag for pause of gamespeed.
@@ -717,7 +717,7 @@ NBuildings = {
 	BASE_FACTORY_REPAIR_FACTOR = 25, --was 2.0 --Factory speed modifier when repairing.
 	SUPPLY_PORT_LEVEL_THROUGHPUT = 1.0, --was 3 --supply throughput per level of naval base
 	MAX_SHARED_SLOTS = 240, --was 25 --Max slots shared by factories
-	OWNER_CHANGE_EXTRA_SHARED_SLOTS_FACTOR = 0.5, --Scale factor of extra shared slots when state owner change.
+	OWNER_CHANGE_EXTRA_SHARED_SLOTS_FACTOR = 1, --Scale factor of extra shared slots when state owner change.
 	DESTRUCTION_COOLDOWN_IN_WAR = 30,	-- Number of days cooldown between removal of buildings in war times
 
 	INFRASTRUCTURE_RESOURCE_BONUS = 0.1, --was 0.2 --multiplicative resource bonus for each level of (non damaged) infrastructure
