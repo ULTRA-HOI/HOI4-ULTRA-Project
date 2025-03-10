@@ -311,6 +311,7 @@ open_buildings = {
             meta_effect = {
                 text = {
                     add_to_temp_array = { [BUILDING]_state_candidates = THIS }
+                    set_temp_variable = { local_buildings_to_swap = building_level@[BUILDING] }
                 }
                 BUILDING = "[?building_to_remove.GetTokenKey]"
             }
@@ -328,6 +329,7 @@ open_buildings = {
             meta_effect = {
                 text = {
                     add_to_temp_array = { [BUILDING]_state_candidates = THIS }
+                    set_temp_variable = { local_buildings_to_swap = building_level@[BUILDING] }
                 }
                 BUILDING = "[?building_to_remove.GetTokenKey]"
             }
@@ -353,6 +355,7 @@ close_buildings = {
             meta_effect = {
                 text = {
                     add_to_temp_array = { [BUILDING]_state_candidates = THIS }
+                    set_temp_variable = { local_buildings_to_swap = building_level@[BUILDING] }
                 }
                 BUILDING = "[?building_to_remove.GetTokenKey]"
             }
@@ -370,6 +373,7 @@ close_buildings = {
             meta_effect = {
                 text = {
                     add_to_temp_array = { [BUILDING]_state_candidates = THIS }
+                    set_temp_variable = { local_buildings_to_swap = building_level@[BUILDING] }
                 }
                 BUILDING = "[?building_to_remove.GetTokenKey]"
             }
@@ -389,20 +393,19 @@ swap_buildings = {
                 array = [BUILDING_TO_REMOVE]_state_candidates
                 break = break_var
                 var:v = {
-                    set_temp_variable = { local_buildings_to_swap = building_level@[BUILDING_TO_REMOVE] }
+                    log_building_swapping_iteration_start = yes
                     clamp_temp_variable = {
                         var = local_buildings_to_swap
                         min = 0
                         max = num_to_swap
                     }
-                    log_building_swapping_iteration_start = yes
                     remove_building = {
                         type = [BUILDING_TO_REMOVE]
-                        level = [LEVEL]
+                        level = local_buildings_to_swap
                     }
                     add_building_construction = {
                         type = [BUILDING_TO_ADD]
-                        level = [LEVEL]
+                        level = local_buildings_to_swap
                         instant_build = yes    
                     }
                     subtract_from_temp_variable = { num_to_swap = local_buildings_to_swap }
@@ -417,17 +420,15 @@ swap_buildings = {
             }
             log_building_swapping_4 = yes
         }
-        debug = yes
         BUILDING_TO_REMOVE = "[?building_to_remove.GetTokenKey]"
         BUILDING_TO_ADD = "[?building_to_add.GetTokenKey]"
-        LEVEL = "[?local_buildings_to_swap]"
     }
 }
 
 log_building_swapping_start = {
     if = {
 		limit = { is_debug = yes }
-        log = "Starting swapping [?building_to_remove.GetTokenKey]"
+        log = "Starting swapping [?building_to_remove.GetTokenKey] for [ROOT.GetTag]"
         log = "Total [?building_to_remove.GetTokenKey] to swap: [?num_to_swap]"
         log = "num_to_swap_tungsten: [?num_to_swap_tungsten]"
         log = "num_to_swap_iron: [?num_to_swap_iron]"
