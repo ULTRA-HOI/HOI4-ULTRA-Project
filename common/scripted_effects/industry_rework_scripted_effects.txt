@@ -7,6 +7,15 @@ on_daily_labour_calculations = {
 	set_variable = { avaliable_non_core_labour_k = 0 }
 	set_variable = { agriculture_labour_k = 0 }
 	
+	#Factors in female particapation rate penalty
+	set_variable = { female_penalty_calculation = 1 }
+	subtract_from_variable = { female_penalty_calculation = female_participation_rate }
+	multiply_variable = { female_penalty_calculation = 0.5 } #50% females in society
+
+	#Calculate penalty from females to apply to total labourpower
+	set_variable = { female_penalty_applied = 1 }
+	subtract_from_variable = { female_penalty_applied = female_penalty_calculation }
+
 	# Loop through every non-core state
 	#add non-core pop to non_core_population_k modified by agricultural penalty of state 
 	every_controlled_state = {
@@ -50,6 +59,10 @@ on_daily_labour_calculations = {
 		} else = {
 			add_to_variable = { PREV.avaliable_core_labour_k = state_avaliable_labour_k }
 		}
+
+		# calculate actual available labour in state (for display purposes)
+		multiply_variable = { state_avaliable_labour_k = PREV.female_penalty_applied }
+		multiply_variable = { state_avaliable_labour_k = 0.7 }
 	}
 
 	# calculate total core population
@@ -63,15 +76,6 @@ on_daily_labour_calculations = {
 	#Calculates total working age
 	set_variable = { working_age_population_k = available_labour_k }
 	multiply_variable = { working_age_population_k = 0.7 }
-	
-	#Factors in female particapation rate penalty
-	set_variable = { female_penalty_calculation = 1 }
-	subtract_from_variable = { female_penalty_calculation = female_participation_rate }
-	multiply_variable = { female_penalty_calculation = 0.5 } #50% females in society
-	
-	#Calculate penalty from females to apply to total labourpower
-	set_variable = { female_penalty_applied = 1 }
-	subtract_from_variable = { female_penalty_applied = female_penalty_calculation }
 	
 	#Apply female penalty to total labourpower
 	set_variable = { total_labour_population_k = working_age_population_k }
