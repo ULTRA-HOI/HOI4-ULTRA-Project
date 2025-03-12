@@ -1868,6 +1868,50 @@ GER_enable_invasion_of_NOR_again = {
 	}
 }
 
+GER_force_concentration_through_maginot_hurts_too_much = {
+	allowed = {
+		original_tag = GER
+	}
+	enable = {
+		date < 1941.1.1  # Deactivate after some time
+		28 = { # Alsace-Lorraine
+			NOT = { is_controlled_by = GER }
+
+			any_province_building_level = {  # Only if Maginot is actually fortified
+				province = {
+					all_provinces = yes
+					limit_to_border = yes
+				}
+				building = bunker
+				level > 5
+			}
+		}
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = force_concentration_front_factor
+		state = 28  # Alsace-Lorraine
+		ratio = 0.50     # Only if > 50 % of the front consists of Alsace-Lorraine. This should make it deactivate if the frontline extends around the maginot
+		value = -100
+	}
+	ai_strategy = {
+		type = force_concentration_target_weight
+		state = 28 # Alsace-Lorraine
+		value = -100 # -100 % / Don't even consider targets here. Infantry and Artillery are better at dealing with the Maginot than tank formations are
+	}
+	ai_strategy = {
+		type = force_concentration_target_weight
+		state = 18 # Champagne
+		value = -50 # -50 % / Let's try to avoid the areas behind the Maginot. It is risky, as we might end up trying to go through it anyways then
+	}
+	ai_strategy = {
+		type = force_concentration_target_weight
+		state = 17 # Franche Comte
+		value = -75 # -75 % / Let's try to avoid the areas behind the Maginot. It is risky, as we might end up trying to go through it anyways then
+	}
+}
+
 # focus armor units on low countries
 # and ignore mighty lux until they fall
 GER_around_the_maginot = {
@@ -1950,6 +1994,16 @@ GER_around_the_maginot = {
 	}
 	ai_strategy = {
 		type = front_armor_score
+		id = "BEL"
+		value = 150
+	}
+	ai_strategy = {
+		type = force_concentration_front_factor
+		id = "HOL"
+		value = 150
+	}
+	ai_strategy = {
+		type = force_concentration_front_factor
 		id = "BEL"
 		value = 150
 	}
