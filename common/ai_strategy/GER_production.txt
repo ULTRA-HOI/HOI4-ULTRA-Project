@@ -96,98 +96,6 @@ GER_stockpile_less_early_game = {
 	}
 }
 
-GER_strategy_army = {
-	allowed = {
-		original_tag = GER
-	}
-	enable = {
-		original_tag = GER
-	}
-	abort = {
-		always = no
-	}
-	ai_strategy = {
-		type = role_ratio
-		id = infantry
-		value = 100
-	}
-	ai_strategy = {
-		type = role_ratio
-		id = mountaineers
-		value = 0
-	}
-	ai_strategy = {
-		type = role_ratio
-		id = marines
-		value = -80
-	}
-	ai_strategy = {
-		type = role_ratio
-		id = paratroopers
-		value = 0
-	}
-	ai_strategy = {
-		type = role_ratio
-		id = motorized
-		value = 3
-	}
-	ai_strategy = {
-		type = role_ratio
-		id = mechanized
-		value = 0
-	}
-	ai_strategy = {
-		type = role_ratio
-		id = cavalry
-		value = 0
-	}
-	ai_strategy = {
-		type = role_ratio
-		id = light_armor
-		value = 0
-	}
-	ai_strategy = {
-		type = role_ratio
-		id = armor
-		value = 32
-	}
-	ai_strategy = {
-		type = role_ratio
-		id = garrison
-		value = 13
-	}
-	ai_strategy = {
-		type = equipment_production_factor
-		id = armor
-		value = 25
-	}
-	ai_strategy = {
-		type = equipment_production_factor
-		id = motorized
-		value = 10
-	}
-	ai_strategy = {
-		type = equipment_production_factor
-		id = mechanized
-		value = 15
-	}
-	ai_strategy = {
-		type = equipment_variant_production_factor
-		id = landing_craft_equipment
-		value = -99
-	}
-	ai_strategy = {
-		type = equipment_variant_production_factor
-		id = airborne_heavy_infantry_equipment
-		value = -95
-	}
-	ai_strategy = {
-		type = equipment_variant_production_factor
-		id = pack_heavy_infantry_equipment
-		value = -95
-	}
-}
-
 GER_unit_limits = {
 	allowed = {
 		original_tag = GER
@@ -383,62 +291,61 @@ GER_unit_limits_barbarossa = {
 	}
 }
 
-GER_build_guns_37 = {
+GER_dont_upgrade_hart_too_early = {
 	allowed = {
 		original_tag = GER
 	}
 	enable = {
-		date > 1937.1.1
+		original_tag = GER
 	}
 	abort = {
-		date > 1938.1.1
+		date > 1940.1.1
 	}
+	abort_when_not_enabled = yes
 	ai_strategy = {
-		type = equipment_production_min_factories
-		id = motorized
-		value = 6
-	}
-	ai_strategy = {
-		type = equipment_production_factor
-		id = mechanized
-		value = 1
-	}
-	ai_strategy = {
-		type = equipment_variant_production_factor
-		id = heavy_artillery_equipment
-		value = 5
+		type = production_upgrade_desire_offset
+		id = heavy_artillery_equipment_2
+		value = -100
 	}
 }
 
-GER_build_guns_38 = {
+GER_dont_upgrade_hart_too_early_2 = {
 	allowed = {
 		original_tag = GER
 	}
 	enable = {
-		date > 1938.1.1
+		original_tag = GER
 	}
 	abort = {
-		date > 1939.1.1
+		date > 1942.1.1
 	}
+	abort_when_not_enabled = yes
 	ai_strategy = {
-		type = equipment_variant_production_factor
-		id = heavy_infantry_equipment
-		value = 10
+		type = production_upgrade_desire_offset
+		id = heavy_artillery_equipment_3
+		value = -100
+	}
+}
+
+GER_build_support_equipment = {
+	allowed = {
+		original_tag = GER
+	}
+	enable = {
+		date > 1936.1.1
+	}
+	abort = {
+		always = no
 	}
 	ai_strategy = {
 		type = equipment_production_min_factories
-		id = motorized
-		value = 8
-	}
-	ai_strategy = {
-		type = equipment_production_factor
-		id = mechanized
+		id = infantry
 		value = 1
 	}
 	ai_strategy = {
 		type = equipment_variant_production_factor
-		id = heavy_artillery_equipment
-		value = 5
+		id = support_equipment
+		value = 1
 	}
 }
 
@@ -474,50 +381,6 @@ GER_build_guns_39 = {
 	}
 }
 
-GER_build_trucks_42 = {
-	allowed = {
-		original_tag = GER
-	}
-	enable = {
-		date > 1942.1.1
-	}
-	abort = {
-		date > 1943.1.1
-	}
-	ai_strategy = {
-		type = equipment_production_min_factories
-		id = motorized
-		value = 10
-	}
-	ai_strategy = {
-		type = equipment_production_factor
-		id = mechanized
-		value = 8
-	}
-}
-
-GER_build_tanks_43 = {
-	allowed = {
-		original_tag = GER
-	}
-	enable = {
-		date > 1943.1.1
-	}
-	abort = {
-		date > 1945.1.1
-	}
-	ai_strategy = {
-		type = equipment_production_min_factories
-		id = motorized
-		value = 15
-	}
-	ai_strategy = {
-		type = equipment_production_factor
-		id = mechanized
-		value = 8
-	}
-}
-
 GER_build_bomber_early = {
 	allowed = {
 		original_tag = GER
@@ -534,18 +397,13 @@ GER_build_bomber_early = {
 	}
 	ai_strategy = {
 		type = equipment_production_factor
-		id = fighter
-		value = -5
-	}
-	ai_strategy = {
-		type = equipment_production_factor
 		id = interceptor
 		value = -10
 	}
 	ai_strategy = {
 		type = equipment_production_factor
 		id = tactical_bomber
-		value = 10
+		value = 5
 	}
 	ai_strategy = {
 		type = equipment_production_factor
@@ -569,18 +427,13 @@ GER_build_bomber_early = {
 	}
 	ai_strategy = {
 		type = unit_ratio
-		id = fighter
-		value = -5
-	}
-	ai_strategy = {
-		type = unit_ratio
 		id = interceptor
 		value = -10
 	}
 	ai_strategy = {
 		type = unit_ratio
 		id = tactical_bomber
-		value = 10
+		value = 5
 	}
 	ai_strategy = {
 		type = unit_ratio
@@ -601,23 +454,6 @@ GER_build_bomber_early = {
 		type = unit_ratio
 		id = air_transport
 		value = -10
-	}
-}
-
-GER_build_stukas = {
-	allowed = {
-		original_tag = GER
-	}
-	enable = {
-		has_tech = ger_cas_1
-	}
-	abort = {
-		date > 1943.9.1
-	}
-	ai_strategy = {
-		type = equipment_production_factor
-		id = cas
-		value = 10
 	}
 }
 
@@ -966,6 +802,40 @@ GER_build_fighters_late4 = {
 	}
 }
 
+GER_build_medium_tanks = {
+	
+	allowed = {
+		original_tag = GER
+	}
+	enable = {
+		original_tag = GER
+		has_tech = ger_medium_1
+	}
+	
+	ai_strategy = {
+		type = equipment_variant_production_factor
+		id = medium_tank_chassis
+		value = 50
+	}
+}
+
+GER_build_support_tanks = {
+	
+	allowed = {
+		original_tag = GER
+	}
+	enable = {
+		original_tag = GER
+		has_tech = ger_support_1
+	}
+	
+	ai_strategy = {
+		type = equipment_variant_production_factor
+		id = suupport_tank_chassis
+		value = 50
+	}
+}
+
 GER_halt_light_armor_production_in_transitioning = {
 	allowed = {
 		original_tag = GER
@@ -992,13 +862,11 @@ GER_halt_support_tank = {
 		original_tag = GER
 		has_tech = ger_medium_4		#Panzer IV G
 	}
-	abort = {
-		always = no
-	}
+	abort_when_not_enabled = yes
 	ai_strategy = {
 		type = equipment_variant_production_factor
 		id = support_tank_chassis
-		value = -100
+		value = -50
 	}
 }
 
