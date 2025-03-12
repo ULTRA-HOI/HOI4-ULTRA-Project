@@ -393,12 +393,13 @@ swap_buildings = {
                 array = [BUILDING_TO_REMOVE]_state_candidates
                 break = break_var
                 var:v = {
-                    log_building_swapping_iteration_start = yes
+                    log_clamping = yes
                     clamp_temp_variable = {
                         var = local_buildings_to_swap
                         min = 0
                         max = num_to_swap
                     }
+                    log_building_swapping_iteration_start = yes
                     remove_building = {
                         type = [BUILDING_TO_REMOVE]
                         level = local_buildings_to_swap
@@ -428,14 +429,21 @@ swap_buildings = {
 log_building_swapping_start = {
     if = {
 		limit = { is_debug = yes }
-        log = "Starting swapping [?building_to_remove.GetTokenKey] for [ROOT.GetTag]"
-        log = "Total [?building_to_remove.GetTokenKey] to swap: [?num_to_swap]"
+        log = "Starting swapping [?building_to_remove.GetTokenLocalizedKey] to [?building_to_add.GetTokenLocalizedKey] for [ROOT.GetTag]"
+        log = "Total [?building_to_remove.GetTokenLocalizedKey] to swap: [?num_to_swap]"
         log = "num_to_swap_tungsten: [?num_to_swap_tungsten]"
         log = "num_to_swap_iron: [?num_to_swap_iron]"
         log = "num_to_swap_bauxite: [?num_to_swap_bauxite]"
         log = "num_to_swap_coal: [?num_to_swap_coal]"
         log = "num_to_swap_oil: [?num_to_swap_oil]"
 
+    }
+}
+
+log_clamping = {
+    if = {
+        limit = { is_debug = yes }
+        log = "Clamping local_buildings_to_swap: [?local_buildings_to_swap] between 0 and num_to_swap: [?num_to_swap]"
     }
 }
 
@@ -473,8 +481,9 @@ log_building_swapping_resources = {
 log_building_swapping_iteration_start = {
     if = {
 		limit = { is_debug = yes }
-        log = "Total [?building_to_remove.GetTokenKey] left to swap: [?num_to_swap]"
-        log = "Total [?building_to_remove.GetTokenKey] left to swap in [THIS.GetName]: [?local_buildings_to_swap]"
+        log = "Starting swapping [?building_to_remove.GetTokenLocalizedKey] in [THIS.GetName]"
+        log = "Total [?building_to_remove.GetTokenLocalizedKey] left to swap: [?num_to_swap]"
+        log = "Total [?building_to_remove.GetTokenLocalizedKey] left to swap in [THIS.GetName]: [?local_buildings_to_swap]"
         log = "Swapping [?local_buildings_to_swap] [?building_to_remove.GetTokenKey] to [?building_to_add.GetTokenKey]"
     }
 }
