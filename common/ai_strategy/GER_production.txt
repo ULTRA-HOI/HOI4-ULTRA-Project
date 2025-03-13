@@ -96,7 +96,41 @@ GER_stockpile_less_early_game = {
 	}
 }
 
-GER_unit_limits = {
+GER_unit_limits_base = {
+	allowed = {
+		original_tag = GER
+	}
+	enable = {
+		always = yes
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = build_army
+		id = infantry
+		value = 100
+	}
+	ai_strategy = {
+		type = force_build_armies
+		value = 500
+	}
+}
+
+GER_unit_limits_mountaineers_anschluss = {
+	allowed = {
+		original_tag = GER
+	}
+	enable = {
+		owns_state = 4
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = build_army
+		id = mountaineers
+		value = 5
+	}
+}
+
+GER_unit_limits_peace = {
 	allowed = {
 		original_tag = GER
 	}
@@ -105,23 +139,8 @@ GER_unit_limits = {
 	}
 	ai_strategy = {
 		type = build_army
-		id = infantry
-		value = 100
-	}
-	ai_strategy = {
-		type = build_army
-		id = mountaineers
-		value = 0
-	}
-	ai_strategy = {
-		type = build_army
-		id = marines
-		value = 0
-	}
-	ai_strategy = {
-		type = build_army
-		id = paratroopers
-		value = 0
+		id = armor
+		value = 2
 	}
 	ai_strategy = {
 		type = build_army
@@ -130,32 +149,13 @@ GER_unit_limits = {
 	}
 	ai_strategy = {
 		type = build_army
-		id = cavalry
-		value = 0
-	}
-	ai_strategy = {
-		type = build_army
-		id = armor
-		value = 2
-	}
-	ai_strategy = {
-		type = build_army
 		id = light_armor
-		value = 8
-	}
-	ai_strategy = {
-		type = build_army
-		id = mechanized
-		value = 0
+		value = 10
 	}
 	ai_strategy = {
 		type = build_army
 		id = garrison
 		value = 5
-	}
-	ai_strategy = {
-		type = force_build_armies
-		value = 500
 	}
 	abort_when_not_enabled = yes
 }
@@ -168,25 +168,13 @@ GER_unit_limits_war = {
 		NOT = { has_war_with = SOV }
 		has_war = yes
 	}
+	abort = {
+		has_war_with = SOV
+	}
 	ai_strategy = {
 		type = build_army
 		id = infantry
-		value = 200
-	}
-	ai_strategy = {
-		type = build_army
-		id = mountaineers
-		value = 0
-	}
-	ai_strategy = {
-		type = build_army
-		id = marines
-		value = 0
-	}
-	ai_strategy = {
-		type = build_army
-		id = paratroopers
-		value = 0
+		value = 100
 	}
 	ai_strategy = {
 		type = build_army
@@ -195,34 +183,52 @@ GER_unit_limits_war = {
 	}
 	ai_strategy = {
 		type = build_army
-		id = cavalry
-		value = 0
-	}
-	ai_strategy = {
-		type = build_army
 		id = armor
-		value = 4
+		value = 8
 	}
 	ai_strategy = {
 		type = build_army
 		id = light_armor
-		value = 20
+		value = 10
 	}
 	ai_strategy = {
 		type = build_army
-		id = mechanized
-		value = 0
+		id = mountaineers
+		value = 2
 	}
 	ai_strategy = {
 		type = build_army
 		id = garrison
 		value = 20
 	}
-	ai_strategy = {
-		type = force_build_armies
-		value = 500
+}
+
+GER_unit_limits_barbarossa_buildup_after_france = {
+	allowed = {
+		original_tag = GER
 	}
-	abort_when_not_enabled = yes
+	enable = {
+		FRA = { has_capitulated = yes }
+		has_war = yes
+	}
+	abort = {
+		has_war_with = SOV
+	}
+	ai_strategy = {
+		type = build_army
+		id = infantry
+		value = 50
+	}
+	ai_strategy = {
+		type = build_army
+		id = motorized
+		value = 4
+	}
+	ai_strategy = {
+		type = build_army
+		id = armor
+		value = 12
+	}
 }
 
 GER_unit_limits_barbarossa = {
@@ -238,22 +244,7 @@ GER_unit_limits_barbarossa = {
 	ai_strategy = {
 		type = build_army
 		id = infantry
-		value = 300
-	}
-	ai_strategy = {
-		type = build_army
-		id = mountaineers
-		value = 0
-	}
-	ai_strategy = {
-		type = build_army
-		id = marines
-		value = 0
-	}
-	ai_strategy = {
-		type = build_army
-		id = paratroopers
-		value = 0
+		value = 200
 	}
 	ai_strategy = {
 		type = build_army
@@ -262,32 +253,18 @@ GER_unit_limits_barbarossa = {
 	}
 	ai_strategy = {
 		type = build_army
-		id = cavalry
-		value = 0
-	}
-	ai_strategy = {
-		type = build_army
 		id = armor
 		value = 32
 	}
 	ai_strategy = {
 		type = build_army
-		id = light_armor
-		value = 0
-	}
-	ai_strategy = {
-		type = build_army
-		id = mechanized
-		value = 0
+		id = mountaineers
+		value = 2
 	}
 	ai_strategy = {
 		type = build_army
 		id = garrison
 		value = 20
-	}
-	ai_strategy = {
-		type = force_build_armies
-		value = 500
 	}
 }
 
