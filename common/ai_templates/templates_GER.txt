@@ -8,7 +8,12 @@ light_armored_GER = {
 	role = light_armor
 	light_armor_1_GER = {
 		upgrade_prio = {
-			factor = 1
+			factor = 3
+			modifier = {
+				factor = 0
+				has_tech = ger_medium_1
+				has_tech = ger_support_1
+			}
 		}
 		reinforce_prio = 2
 		custom_icon =  244
@@ -40,7 +45,14 @@ light_armored_GER = {
 	}
 	light_armor_2_GER = {
 		upgrade_prio = {
-			factor = 2
+			factor = 3
+			modifier = {
+				factor = 0
+				NOT = {
+					has_tech = ger_medium_1
+					has_tech = ger_support_1
+				}
+			}
 		}
 		reinforce_prio = 2
 		custom_icon =  244
@@ -91,6 +103,10 @@ armored_GER = {
 	medium_armor_early_GER = {
 		upgrade_prio = {
 			factor = 1
+			modifier = {
+				factor = 10
+				NOT = { has_tech = ger_medium_4 }
+			}
 		}
 		reinforce_prio = 2
 		custom_icon =  253
@@ -133,7 +149,7 @@ armored_GER = {
 			}
 		}
 		reinforce_prio = 2
-		custom_icon =  253
+		custom_icon = 253
 		enable = {
 			has_tech = ger_medium_4
 		}
@@ -165,6 +181,10 @@ armored_GER = {
 	medium_armor_late_GER = {
 		upgrade_prio = {
 			factor = 3
+			modifier = {
+				factor = 0
+				has_equipment = { mechanized_equipment < 300 }
+			}
 		}
 		custom_icon =  253
 		enable = {
@@ -330,11 +350,8 @@ mountaineers_GER = {
 	mountaineers_brigade_GER = {
 		upgrade_prio = {
 			factor = 1
-			modifier = {
-				factor = 0
-				NOT = { has_country_flag = ger_mountain_division }
-			}
 		}
+		reinforce_prio = 2
 		custom_icon = 617
 		target_template = {
 			support = {
@@ -354,10 +371,15 @@ mountaineers_GER = {
 	mountaineers_division_GER = {
 		upgrade_prio = {
 			factor = 1
+			modifier = {
+				factor = 2
+				has_country_flag = ger_mountain_division
+			}
 		}
 		enable = {
 			has_country_flag = ger_mountain_division
 		}
+		reinforce_prio = 2
 		custom_icon = 616
 		target_template = {
 			support = {
@@ -396,7 +418,7 @@ dummy_GER = {
 				military_police = 1
 			}
 			regiments = {
-				infantry = 6
+				infantry = 1
 			}
 		}
 	}
