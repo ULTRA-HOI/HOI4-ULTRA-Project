@@ -2765,7 +2765,7 @@ NAI = {
 	ENEMY_PASSING_THROUGH_PLANES_PER_SUPPORT = 0.1,		-- Amount of planes we assign to intercept enemies en-route to a location
 
 	AI_FRACTION_OF_FIGHTERS_RESERVED_FOR_INTERCEPTION = 0.25,	--Percentage of fighters we reserve for interception vs AS
-	MAX_AIR_REGIONS_TO_CARE_ABOUT = 6,							-- Number of regions we'll consider when trying to split planes a bit. Split is NOT equal, just a guide, leftovers still applied elsewhere if needed
+	MAX_AIR_REGIONS_TO_CARE_ABOUT = 32,							-- Number of regions we'll consider when trying to split planes a bit. Split is NOT equal, just a guide, leftovers still applied elsewhere if needed
 
 	ENEMY_PASSING_THROUGH_PLANES_PER_BOMBER_NAVAL_REGION = 0.15,		-- Amount of planes we assign to intercept enemies en-route to a location over a sea region
 	ENEMY_PASSING_THROUGH_PLANES_PER_FIGHTER_NAVAL_REGION = 0.15,		-- Amount of planes we assign to intercept enemies en-route to a location over a sea region
