@@ -1,25 +1,16 @@
-﻿add_namespace = sov_armor_ai
-#Motorized
+﻿add_namespace = sov_templates
+
 country_event = {
-	id = sov_armor_ai.01
+	id = sov_templates.1
 	hidden = yes
 
-	mean_time_to_happen = { days = 2 }
+	is_triggered_only = yes
 
 	fire_only_once = yes
 
-	trigger = {
-		tag = SOV
-		is_ai = yes
-		has_tech = motorised_infantry
-		
-	}
-
-	immediate = {
-		
+	option = {
 		division_template = {
-			name = "Soviet Motor Rifle Division"
-			priority = 1
+			name = "Gvds. Motostrelkovaya Diviziya"
             division_names_group = SOV_MOT_01
 			regiments = {
 				motorized = { x = 0 y = 0 }
@@ -30,21 +21,19 @@ country_event = {
 				motorized = { x = 1 y = 1 }
 				motorized = { x = 1 y = 2 }
 
-				mot_artillery_brigade = { x = 2 y = 0 }
-				mot_artillery_brigade = { x = 2 y = 1 }
-				mot_artillery_brigade = { x = 2 y = 2 }
+				motorized = { x = 2 y = 0 }
+				motorized = { x = 2 y = 1 }
+				motorized = { x = 2 y = 2 }
 				
-				motorized = { x = 3 y = 0 }
-				motorized = { x = 3 y = 1 }
-				motorized = { x = 3 y = 2 }
+				mot_artillery_brigade = { x = 3 y = 0 }
+				mot_artillery_brigade = { x = 3 y = 1 }
+				mot_artillery_brigade = { x = 3 y = 2 }
 
-				motorized = { x = 4 y = 0 }
-				motorized = { x = 4 y = 1 }
-				motorized = { x = 4 y = 2 }
+				mot_anti_tank_brigade = { x = 4 y = 0 }
+				mot_anti_air_brigade = { x = 4 y = 1 }
 
-				
-				mot_anti_tank_brigade = { x = 5 y = 0 }
-				mot_artillery_brigade = { x = 5 y = 1 }
+				light_armor = { x = 5 y = 0 }
+				light_armor = { x = 5 y = 1 }
 
 				
 			}
@@ -60,30 +49,10 @@ country_event = {
 		                
 			}
 		}
-	}
-	option = {}
-}
-
-############ Infantry
-country_event = {
-	id = sov_armor_ai.02
-	hidden = yes
-
-	mean_time_to_happen = { days = 2 }
-
-	fire_only_once = yes
-
-	trigger = {
-		tag = SOV
-		is_ai = yes
-	}
-
-	immediate = {
 		
 		division_template = {
-			name = "Soviet Rifle Division"
-			priority = 1
-			division_names_group = SOV_Inf_01
+			name = "Gvds. Strelkovaya Diviziya"
+			division_names_group = SOV_GRD_01
 
 			regiments = {
 				heavy_infantry = { x = 0 y = 0 }
@@ -101,98 +70,61 @@ country_event = {
 				artillery_brigade = { x = 3 y = 0 }
 				artillery_brigade = { x = 3 y = 1 }
 				artillery_brigade = { x = 3 y = 2 }
-				artillery_brigade = { x = 3 y = 3 }
+				heavy_artillery_brigade = { x = 3 y = 3 }
 				
 				anti_tank_brigade =  { x = 4 y = 0 }
-				anti_air_brigade =  { x = 4 y = 1 }
 				anti_tank_brigade = { x = 4 y = 2 }
+				anti_air_brigade =  { x = 4 y = 1 }
 			}
 			
 			support = {
 				DIV_HQ = { x = 0 y = 0 }
 				engineer = { x = 0 y = 1 }
 				recon = { x = 0 y = 2 }
-				military_police = { x = 0 y = 3 }
+				maintenance_company = { x = 0 y = 3 }
+				military_police = { x = 0 y = 4 }
 			}
 		}
-	}
-	option = {}
-}
-
-############## Light Armor
-
-country_event = {
-	id = sov_armor_ai.10
-	hidden = yes
-
-	mean_time_to_happen = { days = 2}
-
-	fire_only_once = yes
-
-	trigger = {
-		tag = SOV
-		is_ai = yes
-	}
-
-	immediate = {
 
 		division_template = {
-			name = "Light Tank Korps I"
-			priority = 1
-            division_names_group = SOV_ARM_02
+			name = "Mekhanizirovanniy Korpus 1940" 				# Represents regular mechanized corps (4 existed in 1935-38); 
+			division_names_group = SOV_ARM_02
+														# Also represents groups of independent tank, mech brigades of the time, though groups are best represented by tank bge 
+															# (2x M/L tank + 1x mot), and 2x mech bge (2x L tank + 1x mot)
 			regiments = {
 				light_armor = { x = 0 y = 0 }
 				light_armor = { x = 0 y = 1 }
 				light_armor = { x = 0 y = 2 }
+				medium_armor = { x = 0 y = 3 }		
 				
 				light_armor = { x = 1 y = 0 }
 				light_armor = { x = 1 y = 1 }
 				light_armor = { x = 1 y = 2 }
-
-				motorized = { x = 2 y = 0 }
-				motorized = { x = 2 y = 1 }
-				motorized = { x = 2 y = 2 }
-
-				mot_artillery_brigade = { x = 3 y = 0 }
-				mot_artillery_brigade = { x = 3 y = 1 }
-				mot_anti_tank_brigade = { x = 3 y = 2 }
+				medium_armor = { x = 1 y = 3 }
+				
+				motorized = { x = 3 y = 0 }		
+				motorized = { x = 3 y = 1 }	
+				motorized = { x = 3 y = 2 }		
+			
+				mot_artillery_brigade = { x = 4 y = 0 }
+				
+				mot_anti_tank_brigade = { x = 5 y = 0 }
+				mot_anti_air_brigade = { x = 5 y = 1 }
 			}
-
 			support = {
-				DIV_HQ = { x = 0 y = 0 }
-				engineer = { x = 0 y = 1 }
+				DIV_HQ = { x = 0 y = 0 }	
+				engineer = { x = 0 y = 1 } 	
 				armored_car_recon = { x = 0 y = 2 }
-		        maintenance_company = { x = 0 y = 3 }
+				maintenance_company = { x = 0 y = 3}
+				logistics_company = { x = 0 y = 4 }		
+				
 			}
 		}
-	}
-
-	option = {}
-}
-
-
-######### Medium Tank
-
-country_event = {
-	id = sov_armor_ai.21
-	hidden = yes
-
-	mean_time_to_happen = { days = 2 }
-
-	fire_only_once = yes
-
-	trigger = {
-		tag = SOV
-		is_ai = yes
-		has_tech = sov_medium_2
-	}
-
-	immediate = {
 
 		division_template = {
-			name = "Medium Tank Korps I"
+			name = "Gvds. Mekhanizirovanniy Korpus"
 			priority = 2
-            division_names_group = SOV_ARM_02
+            division_names_group = SOV_GMC_01
 			regiments = {
 				medium_armor = { x = 0 y = 0 }
 				medium_armor = { x = 0 y = 1 }
@@ -213,10 +145,9 @@ country_event = {
 				mot_artillery_brigade = { x = 4 y = 0 }
 				mot_artillery_brigade = { x = 4 y = 1 }
 				mot_artillery_brigade = { x = 4 y = 2 }
-				mot_artillery_brigade = { x = 4 y = 3 }
-				
 				
 				mot_anti_tank_brigade = { x = 5 y = 0 }
+				mot_anti_air_brigade = { x = 5 y = 1 }
 
 			}
 
@@ -230,7 +161,5 @@ country_event = {
 			}
 		}
 	}
-
-	option = {}
 }
 

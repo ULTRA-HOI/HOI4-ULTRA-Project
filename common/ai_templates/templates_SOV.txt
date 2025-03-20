@@ -1,50 +1,57 @@
 light_armor_SOV = {
 	upgrade_prio = {
-		factor = 1
+		factor = 0
 	}
 	available_for = {
 		SOV
 	}
 	role = light_armor
-	light_armor_0 = {
+	mech_corps_sov = {
 		upgrade_prio = {
 			factor = 1
 		}
 		target_template = {
 			support = {
-				#anti_tank = 1
-				logistics_company = 1
-				maintenance_company = 1
+				DIV_HQ = 1
 				engineer = 1
 				armored_car_recon = 1
-				DIV_HQ = 1
-				#artillery = 1
+				maintenance_company = 1
+				logistics_company = 1
 			}
 			regiments = {
 				light_armor = 10
 				medium_armor = 2
 				motorized = 3
+				mot_artillery_brigade = 1
+				mot_anti_tank_brigade = 1
+				mot_anti_air_brigade = 1
 			}
 		}
 		replace_with = light_armor_1_SOV
 	}
-	light_armor_1_SOV = {
+	mech_corps_reorganised_SOV = {
 		upgrade_prio = {
-			factor = 1
+			factor = 2
+			modifier = {
+				factor = 0
+				NOT = { has_global_flag = fall_of_france }
+			}
 		}
 		target_template = {
 			support = {
-				maintenance_company = 1
-				engineer = 1
-				#artillery = 1
-				armored_car_recon = 1
-				#anti_tank = 1
 				DIV_HQ = 1
+				engineer = 1
+				armored_car_recon = 1
+				maintenance_company = 1
+				logistics_company = 1
 			}
 			regiments = {
 				light_armor = 6
+				medium_armor = 2
 				motorized = 3
 				mot_artillery_brigade = 1
+				mot_anti_tank_brigade = 1
+				mot_anti_air_brigade = 1
 			}
 		}
 		replace_with = medium_armor_1_SOV
@@ -53,32 +60,42 @@ light_armor_SOV = {
 
 armor_SOV = {
 	upgrade_prio = {
-		factor = 1
+		factor = 0
 	}
 	available_for = {
 		SOV
 	}
 	role = armor
-	medium_armor_1_SOV = {
+	
+	guards_mech_corps_SOV = {
+		reinforce_prio = 2
 		upgrade_prio = {
-			factor = 1
+			factor = 5
+			modifier = {
+				factor = 0
+				NOT = { has_global_flag = fall_of_france }
+			}
+		}
+		can_upgrade_in_field = {
+			has_equipment = { heavy_tank_chassis > 180 }
+			has_equipment = { medium_tank_chassis > 540 }
 		}
 		target_template = {
 			support = {
+				DIV_HQ = 1
+				engineer = 1
+				armored_car_recon = 1
+				maintenance_company = 1
 				signal_company = 1
 				logistics_company = 1
-				maintenance_company = 1
-				engineer = 1
-				#artillery = 1
-				armored_car_recon = 1
-				#anti_tank = 1
-				DIV_HQ = 1
 			}
 			regiments = {
 				medium_armor = 5
 				heavy_armor = 1
 				motorized = 6
 				mot_artillery_brigade = 3
+				mot_anti_tank_brigade = 1
+				mot_anti_air_brigade = 1
 			}
 		}
 	}
@@ -86,82 +103,82 @@ armor_SOV = {
 
 motorized_SOV = {
 	upgrade_prio = {
-		factor = 1
+		factor = 0
 	}
 	available_for = {
 		SOV
 	}
 	role = motorized
-	motorized_0_SOV = {
+	cav_SOV = { 
 		upgrade_prio = {
 			factor = 1
 		}
 		can_upgrade_in_field = {
-			always = no
+			has_equipment = { motorized_equipment > 400 }
 		}
 		target_template = {
 			support = {
-				#artillery = 1
-				engineer = 1
-				mot_recon = 1
-				maintenance_company = 1
 				DIV_HQ = 1
+				engineer = 1
+				armored_car_recon = 1
+				maintenance_company = 1
 			}
 			regiments = {
 				cavalry = 4
 				mot_artillery_brigade = 2
-				light_armor = 1
+				light_armor = 2
 			}
 		}
-		replace_with = motorized_1_SOV
+		replace_with = motorized_SOV
 	}
-	motorized_1_SOV = {
+	motorized_SOV = {
 		upgrade_prio = {
-			factor = 1
+			factor = 2
 		}
 		can_upgrade_in_field = {
-			always = no
+			has_equipment = { motorized_equipment > 400 }
 		}
 		target_template = {
 			support = {
-				#anti_tank = 1
-				#artillery = 1
+				DIV_HQ = 1
 				engineer = 1
 				mot_recon = 1
 				maintenance_company = 1
 				logistics_company = 1
-				DIV_HQ = 1
 			}
 			regiments = {
 				motorized = 6
-				mot_artillery_brigade = 1
-				light_armor = 1
+				mot_artillery_brigade = 2
+				mot_anti_tank_brigade = 1
+				mot_anti_air_brigade = 1
+				light_armor = 2
 			}
 		}
-		replace_with = motorized_2_SOV
+		replace_with = guards_motorized_SOV
 	}
-	motorized_2_SOV = {
+	guards_motorized_SOV = {
 		upgrade_prio = {
-			factor = 1
+			factor = 3
 		}
 		can_upgrade_in_field = {
 			always = no
 		}
 		target_template = {
 			support = {
-				field_hospital = 1
-				signal_company = 1
-				#anti_tank = 1
-				#artillery = 1
+				DIV_HQ = 1
 				engineer = 1
 				mot_recon = 1
 				maintenance_company = 1
 				logistics_company = 1
-				DIV_HQ = 1
+				signal_company = 1
+				field_hospital = 1
 			}
 			regiments = {
-				motorized = 12
+				motorized = 9
 				mot_artillery_brigade = 3
+				mot_anti_tank_brigade = 1
+				mot_anti_air_brigade = 1
+				light_armor = 2
 			}
 		}
 	}
@@ -169,81 +186,90 @@ motorized_SOV = {
 
 infantry_SOV = {
 	upgrade_prio = {
-		factor = 1
+		factor = 0
 	}
 	available_for = {
 		SOV
 	}
 	role = infantry
-	infantry_default_SOV = {
+	infantry_SOV = {
 		upgrade_prio = {
 			factor = 1
 		}
+		can_upgrade_in_field = {
+			has_equipment = { artillery_equipment > 72 }
+			has_equipment = { heavy_artillery_equipment > 72 }
+			has_equipment = { anti_tank_equipment > 180 }
+			has_equipment = { infantry_equipment > 3600 }
+			has_equipment = { heavy_infantry_equipment > 1200 }
+		}
 		target_template = {
 			support = {
-				maintenance_company = 1
+				DIV_HQ = 1
 				engineer = 1
 				recon = 1
-				#artillery = 1
-				#anti_tank = 1
-				DIV_HQ = 1
+				maintenance_company = 1
 			}
 			regiments = {
-				heavy_infantry = 7
+				heavy_infantry = 6
 				artillery_brigade = 2
+				anti_tank_brigade = 1
+				anti_air_brigade = 1
 			}
 		}
-		replace_with = infantry_advanced_SOV
+		replace_with = guards_infantry_SOV
 	}
-	infantry_advanced_SOV = {
+}
+
+guards_infantry_SOV = {
+	upgrade_prio = {
+		factor = 0
+	}
+	available_for = {
+		SOV
+	}
+	role = guards_infantry
+	guards_infantry_SOV = {
 		upgrade_prio = {
-			factor = 1
+			factor = 2
 		}
 		target_template = {
 			support = {
+				DIV_HQ = 1
 				engineer = 1
 				recon = 1
-				#artillery = 1
-				DIV_HQ = 1
+				maintenance_company = 1
 				military_police = 1
 			}
 			regiments = {
 				heavy_infantry = 9
 				artillery_brigade = 3
+				heavy_artillery_brigade = 1
 				anti_tank_brigade = 2
-				anti_air_brigade = 2
+				anti_air_brigade = 1
 			}
 		}
 	}
 }
 
 mountaineers_SOV = {
+	upgrade_prio = {
+		factor = 0
+	}
 	available_for = {
 		SOV
 	}
 	role = mountaineers
-	upgrade_prio = {
-		factor = 2
-		modifier = {
-			factor = 0
-			NOT = {
-				has_tech = tech_mountaineers
-			}
-		}
-	}
 	mountaineers_default_SOV = {
 		upgrade_prio = {
-			factor = 2
-			modifier = {
-				factor = 1
-			}
+			factor = 1
 		}
 		target_template = {
 			support = {
+				DIV_HQ = 1
 				engineer = 1
 				recon = 1
 				field_hospital = 1
-				DIV_HQ = 1
 			}
 			regiments = {
 				mountaineers = 9
@@ -255,7 +281,7 @@ mountaineers_SOV = {
 
 garrison_SOV = {
 	upgrade_prio = {
-		factor = 1
+		factor = 0
 	}
 	available_for = {
 		SOV
@@ -269,13 +295,88 @@ garrison_SOV = {
 		custom_icon = 7
 		target_template = {
 			support = {
+				DIV_HQ = 1
 				maintenance_company = 1
 				engineer = 1
+			}
+			regiments = {
+				heavy_infantry = 3
+				infantry = 6
+			}
+		}
+	}
+}
+
+suppression_SOV = {
+	upgrade_prio = {
+		factor = 0
+	}
+	available_for = {
+		SOV
+	}
+	role = suppression
+	suppression_SOV = {
+		upgrade_prio = {
+			factor = 1
+		}
+		reinforce_prio = 0
+		custom_icon = 7
+		target_template = {
+			support = {
 				DIV_HQ = 1
 			}
 			regiments = {
-				heavy_infantry = 2
-				infantry = 6
+				cavalry = 4
+			}
+		}
+	}
+}
+
+paratroopers_SOV = {
+	upgrade_prio = {
+		factor = 0
+	}
+	available_for = {
+		SOV
+	}
+	role = paratroopers
+	paratroopers_SOV = {
+		upgrade_prio = {
+			factor = 1
+		}
+		reinforce_prio = 1
+		custom_icon = 7
+		target_template = {
+			support = {
+				DIV_HQ = 1
+			}
+			regiments = {
+				paratrooper = 2
+			}
+		}
+	}
+}
+
+# Dummy template because AI needs to have at least one template with non-zero upgrade priority
+dummy_SOV = {
+	upgrade_prio = {
+		factor = 1
+	}
+	available_for = {
+		SOV
+	}
+	role = dummy
+	dummy_SOV = {
+		upgrade_prio = {
+			factor = 1
+		}
+		target_template = {
+			support = {
+				DIV_HQ = 1
+				military_police = 1
+			}
+			regiments = {
+				infantry = 1
 			}
 		}
 	}
