@@ -2736,7 +2736,7 @@ NAI = {
 	LAND_DEFENSE_SAM_MISSILE_IMPORTANCE_FACTOR = 0.2,	-- Importance factor of using sam missiles for regions strategic importance. Higher value will increase the usage
     LAND_COMBAT_MISSILE_IMPORTANCE_FACTOR = 1.5, 		-- Importance factor of using missiles for regions strategic importance. Higher value will increase the usage
 
-	LAND_COMBAT_AIR_SUPERIORITY_IMPORTANCE = 0.25, --was 0.40 --Strategic importance of air superiority ( amount of enemy planes in area )
+	LAND_COMBAT_AIR_SUPERIORITY_IMPORTANCE = 0.40, --was 0.25 --Strategic importance of air superiority ( amount of enemy planes in area )
 	LAND_COMBAT_OUR_ARMIES_AIR_IMPORTANCE = 50, --was 20 --Strategic importance of our armies
 	LAND_COMBAT_OUR_COMBATS_AIR_IMPORTANCE = 155, --was 155 --Strategic importance of our armies in the combats
 	LAND_COMBAT_FRIEND_ARMIES_AIR_IMPORTANCE = 25, --was 10 --Strategic importance of friendly armies
@@ -2753,7 +2753,7 @@ NAI = {
 	LAND_COMBAT_CAS_PER_COMBAT = 400, --was 60 --Amount of CAS requested per combat
 	LAND_COMBAT_BOMBERS_PER_LAND_FORT_LEVEL = 30, --was 6 --Amount of bomber planes requested per enemy land fort level
 	LAND_COMBAT_BOMBERS_PER_COASTAL_FORT_LEVEL = 30, --was 6 --Amount of bomber planes requested per enemy coastal fort level
-	LAND_COMBAT_MIN_EXCORT_PLANES = 80, --was 80 --Min amount of planes requested to excort operations
+	LAND_COMBAT_MIN_EXCORT_PLANES = 150, --was 80 --Min amount of planes requested to excort operations
 
 	LAND_COMBAT_INTERCEPT_PER_PLANE = 0.5, --was 0.25 --Amount of interception planes requested per enemy plane
 	MIN_ALLIED_DEFENSE_FACTOR_AIRWING_REQUESTS = 0.07,	-- Airwing requests will be factored by a minimum of this when comparing own vs friendly troops in area

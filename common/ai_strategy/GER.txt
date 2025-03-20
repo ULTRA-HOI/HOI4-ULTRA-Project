@@ -1027,34 +1027,105 @@ make_sure_poland_is_ganked_before_we_move = {
 		original_tag = GER
 	}
 	enable = {
-		has_war_with = POL
-		POL = {
-			has_capitulated = no
-		}
-		date < 1940.1.1
+			date < 1940.4.1
 	}
 	abort = {
-		OR = {
-			POL = {
-				has_capitulated = yes
-			}
-			date > 1940.1.1
+			date > 1940.4.1
 		}
-	}
 	ai_strategy = {
 		type = declare_war
 		id = "HOL"
-		value = -500
+		value = -100
 	}
 	ai_strategy = {
 		type = declare_war
 		id = "BEL"
-		value = -500
+		value = -100
 	}
 	ai_strategy = {
 		type = declare_war
 		id = "LUX"
-		value = -500
+		value = -100
+	}
+}
+
+GER_dont_suicide_bomb_france = {
+	allowed = {
+		original_tag = GER
+	}
+	enable = {
+			HOL = {
+				has_capitulated = no
+			}	
+			BEL = {
+				has_capitulated = no
+			}
+	}
+	abort = {
+			HOL = {
+				has_capitulated = yes
+			}
+			BEL = {
+				has_capitulated = yes
+			}
+	}
+
+	ai_strategy = {
+		type = strategic_air_importance
+		id = 19 #Strategic Region ID - Bassin Parisien
+		value = -10000 #Don't bomb France & kill the Luftwaffe
+	}
+	ai_strategy = {
+		type = strategic_air_importance
+		id = 286 #Strategic Region ID - Alsace-Lorraine
+		value = -10000 #Don't bomb France & kill the Luftwaffe
+	}
+	ai_strategy = {
+		type = strategic_air_importance
+		id = 290 #Strategic Region ID - Flanders-Wallonia
+		value = -10000 #Don't bomb France & kill the Luftwaffe
+	}
+	ai_strategy = {
+		type = strategic_air_importance
+		id = 289 #Strategic Region ID - Ardennes
+		value = -10000 #Don't bomb France & kill the Luftwaffe
+	}
+}
+
+GER_dont_suicide_bomb_uk_before_france_cap = {
+	allowed = {
+		original_tag = GER
+	}
+	enable = {
+			FRA = {
+				has_capitulated = no
+			}	
+	}
+	abort = {
+			FRA = {
+				has_capitulated = yes
+			}
+	}
+
+	ai_strategy = {
+		type = strategic_air_importance
+		id = 1 #Strategic Region ID - South-East England
+		value = -10000 #Don't bomb UK & kill the Luftwaffe
+	}
+	ai_strategy = {
+		type = strategic_air_importance
+		id = 447 #Strategic Region ID - East Anglia
+		value = -10000 #Don't bomb UK & kill the Luftwaffe
+	}
+	ai_strategy = {
+		type = strategic_air_importance
+		id = 229 #Strategic Region ID - Southwest England
+		value = -10000 #Don't bomb UK & kill the Luftwaffe
+	}
+	ai_strategy = {
+		type = strategic_air_importance
+		id = 340 #Strategic Region ID - Midlands
+		value = -10000 #Don't bomb UK & kill the Luftwaffe
 	}
 }
 
