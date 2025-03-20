@@ -31,9 +31,17 @@ on_actions = {
 
 	on_weekly_GER = {
 		effect = {
-			log_manpower_factor = yes
-			log_manpower_factor_other = yes
-			log_manpower_variables = yes
+			if = {
+				limit = {
+					is_debug = yes
+					NOT = { has_global_flag = benchmark_logging }
+					NOT = { has_global_flag = manpower_logged }
+				}
+				log_manpower_factor = yes
+				log_manpower_factor_other = yes
+				log_manpower_variables = yes
+				set_global_flag = manpower_logged
+			}
 		}
 	}
 }
