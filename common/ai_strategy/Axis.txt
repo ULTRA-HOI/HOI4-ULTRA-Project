@@ -160,3 +160,110 @@ bulgaria_stays_in_bulgaria = {
 		value = 200
 	}
 }
+
+
+AXIS_dont_sacrifice_aircrafts_over_uk = {
+	allowed = {
+		OR = {
+			original_tag = GER
+			original_tag = ITA
+			original_tag = HUN
+			original_tag = ROM
+			original_tag = SLO
+			original_tag = BUL
+			original_tag = FIN
+		}
+	}
+	enable = {
+		OR = {
+			original_tag = GER
+			is_in_faction_with = GER
+		}
+		has_war_with = ENG
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = { type = strategic_air_importance id =  16 value = -20000 } # North Sea
+	ai_strategy = { type = strategic_air_importance id = 368 value = -20000 } # Southern Bight
+	ai_strategy = { type = strategic_air_importance id =  18 value = -20000 } # Channel
+	ai_strategy = { type = strategic_air_importance id = 227 value = -20000 } # Celtic Sea
+	ai_strategy = { type = strategic_air_importance id =   4 value = -20000 } # Ireland
+	ai_strategy = { type = strategic_air_importance id =  43 value = -20000 } # Western Approachs
+	ai_strategy = { type = strategic_air_importance id = 339 value = -20000 } # Highlands
+	ai_strategy = { type = strategic_air_importance id =   3 value = -20000 } # Scotland
+	ai_strategy = { type = strategic_air_importance id =   2 value = -20000 } # Northern England
+	ai_strategy = { type = strategic_air_importance id = 338 value = -20000 } # Wales
+	ai_strategy = { type = strategic_air_importance id = 340 value = -20000 } # Midlands
+}
+
+AXIS_no_battle_of_britain = {
+	allowed = {
+		OR = {
+			original_tag = GER
+			original_tag = ITA
+			original_tag = HUN
+			original_tag = ROM
+			original_tag = SLO
+			original_tag = BUL
+			original_tag = FIN
+		}
+	}
+	enable = {
+		OR = {
+			original_tag = GER
+			is_in_faction_with = GER
+		}
+		has_war_with = ENG
+		OR = {
+			FRA = { has_capitulated = no }
+			has_war_with = SOV
+			date > 1940.10.1
+			has_deployed_air_force_size = {
+				size < 1600
+				type = tactical_bomber
+			}
+		}
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = { type = strategic_air_importance id =   1 value = -20000 } # South-East England
+	ai_strategy = { type = strategic_air_importance id = 447 value = -20000 } # East Anglia
+	ai_strategy = { type = strategic_air_importance id = 229 value = -20000 } # Southwest England
+	ai_strategy = { type = strategic_air_importance id =  18 value = -20000 } # English Channel
+	ai_strategy = { type = strategic_air_importance id = 368 value = -20000 } # Southern Bight
+}
+
+AXIS_the_battle_of_britain = {
+	allowed = {
+		OR = {
+			original_tag = GER
+			original_tag = ITA
+			original_tag = HUN
+			original_tag = ROM
+			original_tag = SLO
+			original_tag = BUL
+			original_tag = FIN
+		}
+	}
+	enable = {
+		OR = {
+			original_tag = GER
+			is_in_faction_with = GER
+		}
+		has_war_with = ENG
+		FRA = { has_capitulated = yes }
+		NOT = { has_war_with = SOV }
+		date < 1940.9.30
+		has_deployed_air_force_size = {
+			size > 1600
+    		type = tactical_bomber
+		}
+	}
+
+	abort_when_not_enabled = yes
+
+	ai_strategy = { type = strategic_air_importance id =   1 value = 20000 } # South-East England
+	ai_strategy = { type = strategic_air_importance id = 447 value = 20000 } # East Anglia
+	ai_strategy = { type = strategic_air_importance id = 229 value = 20000 } # South-West England
+	ai_strategy = { type = strategic_air_importance id =  18 value = 20000 } # English Channel
+	ai_strategy = { type = strategic_air_importance id = 368 value = 20000 } # Southern Bight
+}
