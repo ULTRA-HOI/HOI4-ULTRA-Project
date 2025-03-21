@@ -1,4 +1,4 @@
-GER_supply_trucks_buffer = {
+GER_PROD_supply_buffer_base = {
 	allowed = {
 		original_tag = GER
 	}
@@ -8,79 +8,33 @@ GER_supply_trucks_buffer = {
 	abort_when_not_enabled = yes
 	ai_strategy = {
 		type = min_wanted_supply_trucks
-		value = 1500
-	}
-}
-
-GER_supply_trucks_buffer_barbarossa = {
-	allowed = {
-		original_tag = GER
-	}
-	enable = {
-		date > 1940.7.1
-		date < 1943.1.1
-		has_war = yes
-	}
-	abort = {
-		has_war_with = SOV		# Barbarossa has started, let wartime prioritization do its thing
-		date > 1943.1.1
-	}
-	ai_strategy = {
-		type = min_wanted_supply_trucks
-		value = 2000
-	}
-}
-
-GER_stock_up_on_trains_before_poland = {
-	#but this does work
-	allowed = {
-		original_tag = GER
-	}
-	enable = {
-		date > 1938.7.1
-		date < 1940.7.1
-	}
-	abort_when_not_enabled = yes
-	ai_strategy = {
-		type = min_wanted_supply_trains
-		value = 600
-	}
-}
-
-GER_stock_up_on_trains_before_barbarossa = {
-	allowed = {
-		original_tag = GER
-	}
-	enable = {
-		date > 1940.7.1
-		date < 1943.1.1
-		has_war = yes
-	}
-	abort = {
-		has_war_with = SOV		# Barbarossa has started, let wartime prioritization do its thing
-		date > 1943.1.1
+		value = 3000
 	}
 	ai_strategy = {
 		type = min_wanted_supply_trains
-		value = 1200
+		value = 800
 	}
 }
 
-GER_stockpile_less_early_game = {
+GER_PROD_supply_buffer_war = {
 	allowed = {
 		original_tag = GER
 	}
 	enable = {
-		has_war = no
+		has_war = yes
 	}
 	abort_when_not_enabled = yes
 	ai_strategy = {
-		type = equipment_stockpile_surplus_ratio
-		value = -20		# reduce while we build up in case of CZE or Austria issues
+		type = wanted_supply_trains
+		value = 10
+	}
+	ai_strategy = {
+		type = wanted_supply_trains
+		value = 10
 	}
 }
 
-GER_unit_limits_base = {
+GER_PROD_unit_limits_base = {
 	allowed = {
 		original_tag = GER
 	}
@@ -89,9 +43,19 @@ GER_unit_limits_base = {
 	}
 	abort_when_not_enabled = yes
 	ai_strategy = {
-		type = build_army
+		type = role_ratio
 		id = infantry
-		value = 100
+		value = 85
+	}
+	ai_strategy = {
+		type = role_ratio
+		id = garrison
+		value = 10
+	}
+	ai_strategy = {
+		type = role_ratio
+		id = motorized
+		value = 2
 	}
 	ai_strategy = {
 		type = force_build_armies
@@ -99,7 +63,7 @@ GER_unit_limits_base = {
 	}
 }
 
-GER_unit_limits_mountaineers_anschluss = {
+GER_PROD_unit_limits_mountaineers_anschluss = {
 	allowed = {
 		original_tag = GER
 	}
@@ -108,13 +72,13 @@ GER_unit_limits_mountaineers_anschluss = {
 	}
 	abort_when_not_enabled = yes
 	ai_strategy = {
-		type = build_army
+		type = role_ratio
 		id = mountaineers
-		value = 5
+		value = 3
 	}
 }
 
-GER_unit_limits_peace = {
+GER_PROD_unit_limits_peace = {
 	allowed = {
 		original_tag = GER
 	}
@@ -122,29 +86,29 @@ GER_unit_limits_peace = {
 		has_war = no
 	}
 	ai_strategy = {
-		type = build_army
+		type = role_ratio
 		id = armor
 		value = 2
 	}
 	ai_strategy = {
-		type = build_army
-		id = motorized
-		value = 2
-	}
-	ai_strategy = {
-		type = build_army
+		type = role_ratio
 		id = light_armor
-		value = 10
+		value = 8
 	}
+	# the base wanted divisions at game start is about 250
 	ai_strategy = {
-		type = build_army
-		id = garrison
-		value = 5
+		type = ai_wanted_divisions_factor 
+		value = -40
+	}
+
+	ai_strategy = {
+		type = equipment_stockpile_surplus_ratio
+		value = -20		# reduce while we build up in case of CZE or Austria issues
 	}
 	abort_when_not_enabled = yes
 }
 
-GER_unit_limits_war = {
+GER_PROD_unit_limits_war = {
 	allowed = {
 		original_tag = GER
 	}
@@ -153,100 +117,69 @@ GER_unit_limits_war = {
 		has_war = yes
 	}
 	abort = {
-		has_war_with = SOV
+		OR = {
+			has_war_with = SOV
+			has_global_flag = fall_of_france
+		}
 	}
 	ai_strategy = {
-		type = build_army
-		id = infantry
-		value = 100
-	}
-	ai_strategy = {
-		type = build_army
-		id = motorized
-		value = 2
-	}
-	ai_strategy = {
-		type = build_army
+		type = role_ratio
 		id = armor
 		value = 8
 	}
-	ai_strategy = {
-		type = build_army
-		id = light_armor
-		value = 10
-	}
-	ai_strategy = {
-		type = build_army
-		id = mountaineers
-		value = 2
-	}
-	ai_strategy = {
-		type = build_army
-		id = garrison
-		value = 20
-	}
 }
 
-GER_unit_limits_barbarossa_buildup_after_france = {
+GER_PROD_unit_limits_barbarossa_buildup_after_france = {
 	allowed = {
 		original_tag = GER
 	}
 	enable = {
 		has_global_flag = fall_of_france
 	}
-	abort = {
-		has_war_with = SOV
-	}
+	abort_when_not_enabled = yes
 	ai_strategy = {
-		type = build_army
-		id = infantry
-		value = 50
-	}
-	ai_strategy = {
-		type = build_army
+		type = role_ratio
 		id = armor
-		value = 12
+		value = 8
+	}
+	ai_strategy = {
+		type = role_ratio
+		id = mountaineers
+		value = -2
 	}
 }
 
-GER_unit_limits_barbarossa = {
-	allowed = {
+GER_PROD_surplus_management = {
+	# If we manage to get all equipment we want, keep producing more stuff according to this
+	enable = {
 		original_tag = GER
 	}
-	enable = {
-		has_war_with = SOV
-	}
-	abort = {
-		always = no
-	}
-	ai_strategy = {
-		type = build_army
-		id = infantry
-		value = 200
-	}
-	ai_strategy = {
-		type = build_army
-		id = motorized
-		value = 10
-	}
-	ai_strategy = {
-		type = build_army
-		id = armor
-		value = 32
-	}
-	ai_strategy = {
-		type = build_army
-		id = mountaineers
-		value = 2
-	}
-	ai_strategy = {
-		type = build_army
-		id = garrison
-		value = 20
-	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = { type = equipment_production_surplus_management id = infantry_equipment value = 5 }	
+	ai_strategy = { type = equipment_production_surplus_management id = heavy_infantry_equipment value = 3 }
+	ai_strategy = { type = equipment_production_surplus_management id = support_equipment value = 3 }
+	ai_strategy = { type = equipment_production_surplus_management id = motorized_equipment value = 5 }
+	ai_strategy = { type = equipment_production_surplus_management id = artillery_equipment value = 5 }
+	ai_strategy = { type = equipment_production_surplus_management id = heavy_artillery_equipment value = 2 }
+	ai_strategy = { type = equipment_production_surplus_management id = anti_air_equipment value = 1 }
+	ai_strategy = { type = equipment_production_surplus_management id = heavy_anti_air_equipment value = 1 }
+	ai_strategy = { type = equipment_production_surplus_management id = anti_tank_equipment value = 3 }
+
+	# Tanks
+	# light tanks get offset in GER_halt_light_armor_production_when_surplus strategy below
+	ai_strategy = { type = equipment_production_surplus_management id = light_tank_chassis value = 2 }
+	ai_strategy = { type = equipment_production_surplus_management id = medium_tank_chassis value = 8 }
+	ai_strategy = { type = equipment_production_surplus_management id = support_tank_chassis value = 2 }
+
+	# Air
+	ai_strategy = { type = equipment_production_surplus_management id = fighter_equipment value = 10 }
+	ai_strategy = { type = equipment_production_surplus_management id = cas_equipment value = 3 }
+	ai_strategy = { type = equipment_production_surplus_management id = tac_bomber_equipment value = 3 }
+	ai_strategy = { type = equipment_production_surplus_management id = light_bomber_equipment value = 3 }
 }
 
-GER_air_production = {
+GER_PROD_air_production = {
 	allowed = {
 		original_tag = GER
 	}
@@ -287,7 +220,7 @@ GER_air_production = {
 	}
 }
 
-GER_build_bombers = {
+GER_PROD_build_bombers = {
 	allowed = {
 		original_tag = GER
 	}
@@ -298,7 +231,7 @@ GER_build_bombers = {
 	ai_strategy = {
 		type = unit_ratio
 		id = tactical_bomber
-		value = 5
+		value = 3
 	}
 	ai_strategy = {
 		type = unit_ratio
@@ -307,7 +240,7 @@ GER_build_bombers = {
 	}
 }
 
-GER_build_fighters = {
+GER_PROD_build_fighters = {
 	allowed = {
 		original_tag = GER
 	}
@@ -331,7 +264,7 @@ GER_build_fighters = {
 	}
 }
 
-GER_build_fighters_home_defense = {
+GER_PROD_build_fighters_home_defense = {
 	allowed = {
 		original_tag = GER
 	}
@@ -350,7 +283,27 @@ GER_build_fighters_home_defense = {
 	}
 }
 
-GER_stop_stukas = {
+GER_PROD_dont_build_early_cas = {
+	allowed = {
+		original_tag = GER
+	}
+	enable = {
+		NOT = { has_tech = ger_cas_1 }
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = equipment_production_factor
+		id = cas
+		value = -100
+	}
+	ai_strategy = {
+		type = unit_ratio
+		id = cas
+		value = -100
+	}
+}
+
+GER_PROD_stop_building_stukas = {
 	allowed = {
 		original_tag = GER
 	}
@@ -370,7 +323,7 @@ GER_stop_stukas = {
 	}
 }
 
-GER_build_jets = {
+GER_PROD_build_jets = {
 	allowed = {
 		original_tag = GER
 	}
@@ -390,7 +343,7 @@ GER_build_jets = {
 	}
 }
 
-GER_dont_build_panzer_1 = {
+GER_PROD_dont_build_panzer_1 = {
 	allowed = {
 		original_tag = GER
 	}
@@ -406,7 +359,30 @@ GER_dont_build_panzer_1 = {
 	}
 }
 
-GER_build_medium_tanks = {
+GER_PROD_build_trucks_and_support = {
+	
+	allowed = {
+		original_tag = GER
+	}
+	enable = {
+		always = yes
+	}
+	abort_when_not_enabled = yes
+	
+	ai_strategy = {
+		type = equipment_variant_production_factor
+		id = motorized_equipment
+		value = 20
+	}
+	
+	ai_strategy = {
+		type = equipment_variant_production_factor
+		id = support_equipment
+		value = 10
+	}
+}
+
+GER_PROD_build_medium_tanks = {
 	
 	allowed = {
 		original_tag = GER
@@ -420,11 +396,11 @@ GER_build_medium_tanks = {
 	ai_strategy = {
 		type = equipment_variant_production_factor
 		id = medium_tank_chassis
-		value = 0
+		value = 20
 	}
 }
 
-GER_build_support_tanks = {
+GER_PROD_build_support_tanks = {
 	
 	allowed = {
 		original_tag = GER
@@ -440,11 +416,11 @@ GER_build_support_tanks = {
 	ai_strategy = {
 		type = equipment_variant_production_factor
 		id = support_tank_chassis
-		value = 0
+		value = 20
 	}
 }
 
-GER_halt_light_armor_production_when_surplus = {
+GER_PROD_halt_light_armor_production_when_surplus = {
 	allowed = {
 		original_tag = GER
 	}
@@ -457,9 +433,14 @@ GER_halt_light_armor_production_when_surplus = {
 		id = light_tank_chassis
 		value = -100
 	}
+	ai_strategy = {
+		type = equipment_production_surplus_management
+		id = light_tank_chassis
+		value = -2
+	}
 }
 
-GER_halt_support_tank_build_mech = {
+GER_PROD_halt_support_tank_build_mech = {
 	allowed = {
 		original_tag = GER
 	}
@@ -479,7 +460,7 @@ GER_halt_support_tank_build_mech = {
 	}
 }
 
-GER_wait_for_tiger = {
+GER_PROD_wait_for_tiger = {
 	allowed = {
 		original_tag = GER
 	}
@@ -496,7 +477,7 @@ GER_wait_for_tiger = {
 	}
 }
 
-GER_build_bismarcks = {
+GER_PROD_build_bismarcks = {
 	allowed = {
 		original_tag = GER
 	}
@@ -525,7 +506,7 @@ GER_build_bismarcks = {
 	}
 }
 
-GER_after_bismarcks = { #offsets the base pre-war strategy: GER_starting_ship_build
+GER_PROD_after_bismarcks = { #offsets the base pre-war strategy: GER_starting_ship_build
 	allowed = {
 		original_tag = GER
 	}
@@ -545,7 +526,7 @@ GER_after_bismarcks = { #offsets the base pre-war strategy: GER_starting_ship_bu
 	}
 }
 
-GER_after_scharnhorsts = { #offsets the base pre-war strategy: GER_starting_ship_build
+GER_PROD_after_scharnhorsts = { #offsets the base pre-war strategy: GER_starting_ship_build
 	allowed = {
 		original_tag = GER
 	}
@@ -575,7 +556,7 @@ GER_after_scharnhorsts = { #offsets the base pre-war strategy: GER_starting_ship
 	}
 }
 
-GER_starting_ship_build = {
+GER_PROD_starting_ship_build = {
 	allowed = {
 		original_tag = GER
 	}
@@ -647,7 +628,7 @@ GER_starting_ship_build = {
 	}
 }
 
-GER_naval_role_ratios_historical_switch_to_subs = {
+GER_PROD_naval_role_ratios_historical_switch_to_subs = {
 	allowed = {
 		original_tag = GER
 	}
@@ -724,12 +705,11 @@ GER_naval_role_ratios_historical_switch_to_subs = {
 	}
 }
 
-GER_no_CV_planes = {
+GER_PROD_no_CV_planes = {
 	allowed = {
 		original_tag = GER
 	}
 	enable = {
-		original_tag = GER
 		NOT = {
 			has_navy_size = {
 				unit = carrier
@@ -737,9 +717,7 @@ GER_no_CV_planes = {
 			}
 		 }
 	}
-	abort = {
-		always = no
-	}
+	abort_when_not_enabled = yes
 	ai_strategy = {
 		type = equipment_production_factor
 		id = cv_fighter
