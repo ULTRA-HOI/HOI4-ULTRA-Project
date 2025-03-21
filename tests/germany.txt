@@ -1,0 +1,170 @@
+tests = {
+
+    GER_didnt_defeat_france = {
+
+        success = {
+            date > 1939.1.1
+            date < 1941.1.1
+            FRA = { has_capitulated = yes }
+        }
+
+        fail = {
+            date > 1941.1.1
+        }
+    }
+
+    GER_at_peace_with_poland = {
+
+        success = {
+            GER = { has_war_with = POL }
+        }
+
+        fail = {
+            date > 1940.1.1
+        }
+    }
+
+    GER_didnt_defeat_poland = {
+
+        success = {
+            date > 1939.1.1
+            date < 1941.1.1
+            POL = {
+                OR = {
+                    has_capitulated = yes
+                    exists = no
+                }
+            }
+        }
+
+        fail = {
+            date > 1941.1.1
+        }
+    }
+
+	GER_at_peace_with_soviet_union = {
+
+        success = {
+            GER = { has_war_with = SOV }
+        }
+
+        fail = {
+            date > 1942.1.1
+        }
+    }
+
+    GER_wasnt_capitulated = {
+        acceptable_fail_rate = 0.2
+
+        success = {
+            GER = {
+                OR = {
+                    has_capitulated = yes
+                    exists = no
+                    is_subject = yes
+                }
+            }
+        }
+
+        fail = {
+            date > 1947.12.1
+        }
+
+    }    
+	
+	GER_capitulated_before_1943 = {
+
+        success = {
+            date > 1942.12.31
+        }
+
+        fail = {
+            GER = {
+                OR = {
+                    has_capitulated = yes
+                    exists = no
+                    is_subject = yes
+                }
+            }
+        }
+
+    }
+
+	GER_doesnt_control_alsace_lorraine_21_days_after_france_falls = {
+        acceptable_fail_rate = 0.25
+
+        success = {
+            date > 1941.1.1
+        }
+
+        fail = {
+            date < 1941.1.1
+            FRA = {
+                OR = {
+                    has_capitulated = yes
+                    exists = no
+                }
+                days_since_capitulated > 21
+            }
+            28 = { # alsace-lorraine
+                CONTROLLER = {
+                    NOT = {
+                        is_in_faction_with = GER
+                    }
+                }
+            }
+        }
+    }   
+	
+	GER_doesnt_control_alsace_lorraine_56_days_after_france_falls = {
+        success = {
+            date > 1941.1.1
+        }
+
+        fail = {
+            date < 1941.1.1
+            FRA = {
+                OR = {
+                    has_capitulated = yes
+                    exists = no
+                }
+                days_since_capitulated > 56
+            }
+            28 = { # alsace-lorraine
+                CONTROLLER = {
+                    NOT = {
+                        is_in_faction_with = GER
+                    }
+                }
+            }
+        }
+    }    
+	
+	GER_not_joined_by_romania = {
+        success = {
+            date > 1936.1.1
+            date < 1943.1.1
+            ROM = {
+                is_in_faction_with = GER
+            }
+        }
+
+        fail = {
+            date > 1942.1.1
+        }
+    }
+
+    GER_not_joined_by_hungary = {
+        success = {
+            date > 1936.1.1
+            date < 1943.1.1
+            HUN = {
+                is_in_faction_with = GER
+            }
+        }
+
+        fail = {
+             date > 1942.1.1
+        }
+    }
+}
