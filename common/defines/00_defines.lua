@@ -2716,10 +2716,10 @@ NAI = {
 	LAND_DEFENSE_CIVIL_FACTORY_IMPORTANCE = 5, --was 50 --Strategic importance of civil factories
 	LAND_DEFENSE_MILITARY_FACTORY_IMPORTANCE = 20, --was 70 --Strategic importance of military factories
 	LAND_DEFENSE_NAVAL_FACTORY_IMPORTANCE = 10, --was 30 --Strategic importance of naval factories
-	LAND_DEFENSE_SUPPLY_HUB_IMPORTANCE = 75,             -- Strategic importance of supply hubs
+	LAND_DEFENSE_SUPPLY_HUB_IMPORTANCE = 2,    --was 4  -- Strategic importance of supply hubs
 	LAND_DEFENSE_AA_IMPORTANCE_FACTOR = 1, --was 1.0 --Factor of AA influence on strategic importance ( 0.0 - 1.0 )
 	LAND_DEFENSE_INFRA_IMPORTANCE_FACTOR = 0.5, --was 0.5 --Factor of infrastructure influence on strategic importance ( 0.0 - 1.0 )
-	LAND_DEFENSE_IMPORTANCE_SCALE = 5, --was 3.0 --Lend defence total importance scale (every land defence score get's multiplied by it)
+	LAND_DEFENSE_IMPORTANCE_SCALE = 3, --was 3.0 --Lend defence total importance scale (every land defence score get's multiplied by it)
 
 	NUM_HOURS_SINCE_LAST_COMBAT_TO_SUPPORT_UNITS_VIA_AIR = 48, --was 72 --units will be considered in combat if they are just out of their last combat for air supporting
 
