@@ -6,7 +6,7 @@ light_armored_GER = {
 		GER
 	}
 	role = light_armor
-	light_armor_1_GER = {
+	light_armor_1936_GER = {
 		upgrade_prio = {
 			factor = 3
 			modifier = {
@@ -38,12 +38,15 @@ light_armored_GER = {
 			}
 		}
 		can_upgrade_in_field = {
-			has_equipment = { medium_tank_chassis > 100 }
-			has_equipment = { support_tank_chassis > 100 }
+			# OR here, because we want to jumpstart conversion
+			OR = {
+				has_equipment = { medium_tank_chassis > 100 }
+				has_equipment = { support_tank_chassis > 100 }
+			}
 		}
 		replace_with = light_armor_2_GER
 	}
-	light_armor_2_GER = {
+	light_armor_1939_GER = {
 		upgrade_prio = {
 			factor = 3
 			modifier = {
@@ -63,8 +66,8 @@ light_armored_GER = {
 		
 		can_upgrade_in_field = {
 			has_equipment = { light_tank_chassis < 600 } # this is a stop-gap towards medium tanks, if deployed dont upgrade to medium tanks until we burn out our light tanks
-			has_equipment = { medium_tank_chassis > 400 }
-			has_equipment = { support_tank_chassis > 100 }
+			has_equipment = { medium_tank_chassis > 100 }
+			has_equipment = { mechanized_equipment > 300 }
 		}
 		target_template = {
 			support = {
@@ -100,7 +103,7 @@ armored_GER = {
 		GER
 	}
 	role = armor
-	medium_armor_early_GER = {
+	medium_armor_1940_GER = {
 		upgrade_prio = {
 			factor = 1
 			modifier = {
@@ -126,13 +129,15 @@ armored_GER = {
 				DIV_HQ = 1
 			}
 			regiments = {
-				medium_armor = 4
+				light_armor = 2
+				medium_armor = 2
 				support_armor = 1
 				mot_artillery_brigade = 3
 				motorized_heavy_artillery_brigade = 1
 				mot_anti_tank_brigade = 1
 				mot_anti_air_brigade = 1
-				motorized = 6
+				mechanized = 1
+				motorized = 5
 			}
 		}
 		can_upgrade_in_field = {
@@ -140,7 +145,7 @@ armored_GER = {
 		}
 		replace_with = medium_armor_default_GER
 	}
-	medium_armor_default_GER = {
+	medium_armor_1942_GER = {
 		upgrade_prio = {
 			factor = 2
 			modifier = {
@@ -170,15 +175,16 @@ armored_GER = {
 				motorized_heavy_artillery_brigade = 1
 				mot_anti_tank_brigade = 1
 				mot_anti_air_brigade = 1
-				motorized = 6
+				mechanized = 1
+				motorized = 5
 			}
 		}
 		can_upgrade_in_field = {
-			has_equipment = { mechanized_equipment > 300 }
+			has_equipment = { mechanized_equipment > 100 }
 		}
 		replace_with = medium_armor_mech_GER
 	}
-	medium_armor_late_GER = {
+	medium_armor_1943_GER = {
 		upgrade_prio = {
 			factor = 3
 			modifier = {
