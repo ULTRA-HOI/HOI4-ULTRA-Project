@@ -1,4 +1,4 @@
-AXIS_LEND_LEASE = {
+AXIS_lend_lease = {
 	reversed = yes
 	allowed = {
 		tag = GER
@@ -29,7 +29,7 @@ AXIS_LEND_LEASE = {
 	}
 }
 
-axis_minor_not_in_finland = {
+AXIS_minor_not_in_finland = {
 	allowed = {
 		OR = {
 			original_tag = ROM
@@ -49,7 +49,7 @@ axis_minor_not_in_finland = {
 	}
 }
 
-axis_minor_not_in_italia = {
+AXIS_minor_not_in_italia = {
 	allowed = {
 		OR = {
 			original_tag = ROM
@@ -70,7 +70,7 @@ axis_minor_not_in_italia = {
 	}
 }
 
-Axis_abandon_iraq = {
+AXIS_abandon_iraq = {
 	enable = {
 		OR = {
 			tag = GER
@@ -109,7 +109,7 @@ Axis_abandon_iraq = {
 	}
 }
 
-finland_stays_in_finland = {
+AXIS_finland_stays_in_finland = {
 	reversed = yes
 	allowed = {
 		original_tag = FIN
@@ -135,7 +135,7 @@ finland_stays_in_finland = {
 	}
 }
 
-bulgaria_stays_in_bulgaria = {
+AXIS_bulgaria_stays_in_bulgaria = {
 	reversed = yes
 	allowed = {
 		original_tag = BUL
@@ -278,6 +278,143 @@ AXIS_stay_away_from_the_royal_navy = {
 	}
 }
 
+AXIS_dont_mess_with_volunteers = {
+	allowed = {
+		OR = {
+			original_tag = GER
+			original_tag = ITA
+		}
+	}
+	enable = {
+		date < 1941.6.1
+	}
+	abort = {
+		date > 1941.6.1
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = JAP
+		value = -500
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = MAN
+		value = -500
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = MEN
+		value = -500
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = JAP
+		value = -500
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = CHI
+		value = -500		#sorry buds
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = PRC
+		value = -500
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = ITA
+		value = -500
+	}
+}
+
+AXIS_care_less_about_making_friends = {
+	enable = {
+		has_government = fascism
+		is_in_faction = yes
+		manpower_per_military_factory < 3000
+		has_war = yes
+	}
+	abort = {
+		OR = {
+			NOT = {
+				has_government = fascism
+			}
+			is_in_faction = no
+			manpower_per_military_factory > 3000
+			has_war = no
+		}
+	}
+	ai_strategy = {
+		type = pp_spend_priority
+		id = relation
+		value = -500
+	}
+}
+
+AXIS_spain_scw_support_resistance = {
+	allowed = {
+		OR = {
+			original_tag = GER
+			original_tag = ITA
+		}
+		has_dlc = "La Resistance"
+	}
+	enable = {
+		has_government = fascism
+		country_exists = SPA
+	}
+	abort = {
+		OR = {
+			NOT = {
+				country_exists = SPA
+			}
+			SPA = {
+				has_completed_focus = SPA_join_the_allies
+			}
+		}
+	}
+	ai_strategy = {
+		type = befriend
+		id = "SPD"
+		value = -100
+	}
+	ai_strategy = {
+		type = support
+		id = "SPD"
+		value = -100
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "SPD"
+		value = -100
+	}
+	ai_strategy = {
+		type = send_lend_lease_desire
+		id = "SPD"
+		value = -100
+	}
+	ai_strategy = {
+		type = support
+		id = "SPA"
+		value = 100
+	}
+	ai_strategy = {
+		type = befriend
+		id = "SPA"
+		value = 100
+	}
+	ai_strategy = {
+		type = send_volunteers_desire
+		id = "SPA"
+		value = 100
+	}
+	ai_strategy = {
+		type = send_lend_lease_desire
+		id = "SPA"
+		value = 100
+	}
+}
 
 AXIS_dont_sacrifice_aircrafts_over_uk = {
 	allowed = {
