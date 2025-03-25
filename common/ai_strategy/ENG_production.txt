@@ -1,4 +1,4 @@
-ENG_supply_trucks_buffer = {
+ENG_PROD_supply_trucks_buffer = {
 	allowed = {
 		original_tag = ENG
 	}
@@ -12,12 +12,12 @@ ENG_supply_trucks_buffer = {
 	}
 }
 
-ENG_strategy_army = {
+ENG_PROD_strategy_army = {
 	allowed = {
 		original_tag = ENG
 	}
 	enable = {
-		original_tag = ENG
+		always = yes
 	}
 	abort = { 
 		always = no 
@@ -76,15 +76,26 @@ ENG_strategy_army = {
 		type = air_factory_balance
 		value = 90
 	}
-	ai_strategy = {
-		type = equipment_production_factor
-		id = fighter
-		value = 150
+}
+
+ENG_PROD_strategy_air = {
+	allowed = {
+		original_tag = ENG
+	}
+	enable = {
+		always = yes
+	}
+	abort = { 
+		always = no 
 	}
 	ai_strategy = {
-		type = equipment_production_factor
-		id = interceptor
-		value = 15
+		type = air_factory_balance
+		value = 90
+	}
+	ai_strategy = {
+		type = equipment_variant_production_factor
+		id = fighter_equipment
+		value = 20
 	}
 	ai_strategy = {
 		type = equipment_production_factor
@@ -104,22 +115,17 @@ ENG_strategy_army = {
 	ai_strategy = {
 		type = equipment_production_factor
 		id = cas
-		value = -200
+		value = -100
 	}
 	ai_strategy = {
 		type = equipment_production_factor
 		id = air_transport
-		value = -200
+		value = -100
 	}
 	ai_strategy = {
 		type = unit_ratio
 		id = fighter
-		value = 150
-	}
-	ai_strategy = {
-		type = unit_ratio
-		id = interceptor
-		value = 15
+		value = 50
 	}
 	ai_strategy = {
 		type = unit_ratio
@@ -134,33 +140,28 @@ ENG_strategy_army = {
 	ai_strategy = {
 		type = unit_ratio
 		id = strategic_bomber
-		value = 75
+		value = 30
 	}
 	ai_strategy = {
 		type = unit_ratio
 		id = cas
-		value = -200
+		value = -100
 	}
 	ai_strategy = {
 		type = unit_ratio
 		id = air_transport
-		value = -200
+		value = -100
 	}
 }
 
-ENG_halt_light_armor_production_in_transitioning = {
+ENG_PROD_dont_build_light_tanks = {
 	allowed = {
 		original_tag = ENG
 	}
 	enable = {
 		original_tag = ENG
 	}
-	abort = { 
-		always = no 
-	}
-	abort = {
-		# once we start we never go back to light armor
-	}
+	abort_when_not_enabled = yes
 	ai_strategy = {
 		type = equipment_variant_production_factor
 		id = light_tank_chassis
@@ -168,170 +169,7 @@ ENG_halt_light_armor_production_in_transitioning = {
 	}
 }
 
-ENG_build_guns_1 = {
-	allowed = {
-		original_tag = ENG
-	}
-	enable = {
-		original_tag = ENG
-		date < 1938.1.1
-		date > 1936.1.1
-	}
-	abort = {
-		date > 1938.1.1
-	}
-	ai_strategy = {
-		type = equipment_production_factor
-		id = fighter
-		value = 3
-	}
-	ai_strategy = {
-		type = equipment_variant_production_factor
-		id = heavy_infantry_equipment
-		value = 5
-	}
-}
-
-ENG_build_guns_2 = {
-	allowed = {
-		original_tag = ENG
-	}
-	enable = {
-		original_tag = ENG
-		date < 1939.1.1
-		date > 1938.1.1
-	}
-	abort = {
-		date > 1939.1.1
-	}
-	ai_strategy = {
-		type = equipment_production_factor
-		id = fighter
-		value = 7
-	}
-	ai_strategy = {
-		type = equipment_production_factor
-		id = armor
-		value = 10
-	}
-	ai_strategy = {
-		type = equipment_production_factor
-		id = motorized
-		value = 5
-	}
-	ai_strategy = {
-		type = equipment_production_min_factories
-		id = motorized
-		value = 3
-	}
-	ai_strategy = {
-		type = equipment_production_min_factories
-		id = mechanized
-		value = 3
-	}
-}
-
-ENG_build_guns_3 = {
-	allowed = {
-		original_tag = ENG
-	}
-	enable = {
-		original_tag = ENG
-		date < 1940.1.1
-		date > 1939.1.1
-	}
-	abort = {
-		date > 1940.1.1
-	}
-	ai_strategy = {
-		type = equipment_production_factor
-		id = fighter
-		value = 25
-	}
-	ai_strategy = {
-		type = equipment_production_min_factories
-		id = motorized
-		value = 5
-	}
-	ai_strategy = {
-		type = equipment_production_min_factories
-		id = mechanized
-		value = 5
-	}
-}
-
-ENG_build_guns_4 = {
-	allowed = {
-		original_tag = ENG
-	}
-	enable = {
-		original_tag = ENG
-		date > 1940.1.1
-	}
-	abort = {
-		date > 1941.1.1
-	}
-	ai_strategy = {
-		type = equipment_production_factor
-		id = fighter
-		value = 30
-	}
-	ai_strategy = {
-		type = equipment_variant_production_factor
-		id = heavy_infantry_equipment
-		value = 10
-	}
-	ai_strategy = {
-		type = equipment_production_min_factories
-		id = motorized
-		value = 5
-	}
-	ai_strategy = {
-		type = equipment_production_min_factories
-		id = mechanized
-		value = 5
-	}
-}
-
-ENG_build_guns_5 = {
-	allowed = {
-		original_tag = ENG
-	}
-	enable = {
-		original_tag = ENG
-		date > 1941.1.1
-	}
-	abort = {
-		date > 1949.1.1
-	}
-	ai_strategy = {
-		type = equipment_production_factor
-		id = fighter
-		value = 35
-	}
-	ai_strategy = {
-		type = equipment_production_factor
-		id = strategic_bomber
-		value = 40
-	}
-	ai_strategy = {
-		type = equipment_variant_production_factor
-		id = heavy_infantry_equipment
-		value = 10
-	}
-	ai_strategy = {
-		type = equipment_production_min_factories
-		id = motorized
-		value = 5
-	}
-	ai_strategy = {
-		type = equipment_production_min_factories
-		id = mechanized
-		value = 5
-	}
-}
-
-ENG_naval_role_ratios_historical = {
+ENG_PROD_naval_role_ratios_historical = {
 	allowed = {
 		original_tag = ENG
 	}
@@ -403,7 +241,7 @@ ENG_naval_role_ratios_historical = {
 	}
 }
 
-ENG_build_new_carriers = {
+ENG_PROD_build_new_carriers = {
 	allowed = {
 		original_tag = ENG
 	}
@@ -426,7 +264,7 @@ ENG_build_new_carriers = {
 	}
 }
 
-ENG_build_new_battleships = {
+ENG_PROD_build_new_battleships = {
 	allowed = {
 		original_tag = ENG
 	}
@@ -451,31 +289,5 @@ ENG_build_new_battleships = {
 		type = equipment_production_min_factories
 		id = capital_ship
 		value = 24
-	}
-}
-
-ENG_halt_fighter_production_in_transitioning = {
-	# we have good jets, use them
-	allowed = {
-		original_tag = ENG
-	}
-	enable = {
-		OR = {
-			original_tag = ENG
-		}
-		date > 1947.1.1
-	}
-	abort = { 
-		always = no 
-	}
-	ai_strategy = {
-		type = equipment_variant_production_factor
-		id = fighter_equipment
-		value = -100
-	}
-	ai_strategy = {
-		type = equipment_variant_production_factor
-		id = rocket_interceptor_equipment
-		value = 100
 	}
 }

@@ -3099,6 +3099,8 @@ NAI = {
 		'arms_factory',
 		'dockyard',
 		'industrial_complex',
+		'infrastructure',
+		'synthetic_rubber_refinery',
 	},
 
 	MIN_INVASION_PLAN_VALUE_TO_EXECUTE = 0.2,				-- ai will only activate invasions if plan value is above this
