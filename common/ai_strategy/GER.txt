@@ -1362,15 +1362,25 @@ GER_around_the_maginot = {
 		}
 	}
 	abort_when_not_enabled = yes
-	ai_strategy = { type = front_armor_score                tag = { FRA SOV NOR } value = -100 }
-	ai_strategy = { type = front_armor_score                tag = { HOL         } value =  50 }
-	ai_strategy = { type = front_armor_score                tag = { BEL LUX     } value =  150 }
+	ai_strategy = { type = front_armor_score id = FRA value = -100 }
+	ai_strategy = { type = front_armor_score id = SOV value = -100 }
+	ai_strategy = { type = front_armor_score id = NOR value = -100 }
+	ai_strategy = { type = front_armor_score id = HOL value =   50 }
+	ai_strategy = { type = front_armor_score id = BEL value =  150 }
+	ai_strategy = { type = front_armor_score id = LUX value =  150 }
 
-	ai_strategy = { type = force_concentration_front_factor tag = { HOL BEL LUX } value =  150 }
+	ai_strategy = {
+		type = force_concentration_front_factor
+		tag = HOL
+		tag = BEL
+		tag = LUX
+		value =  150
+	}
 
-	ai_strategy = { type = front_unit_request               tag = { SOV } value = -100 }
-	ai_strategy = { type = front_unit_request               tag = { HOL         } value =  50 }
-	ai_strategy = { type = front_unit_request               tag = { BEL LUX     } value =  150 }
+	ai_strategy = { type = front_unit_request tag = SOV value = -100 }
+	ai_strategy = { type = front_unit_request tag = HOL value =  50  }
+	ai_strategy = { type = front_unit_request tag = BEL value =  150 }
+	ai_strategy = { type = front_unit_request tag = LUX value =  150 }
 
 	ai_strategy = { type = force_concentration_factor value = 100 }
 }
@@ -2639,22 +2649,22 @@ GER_ignore_vichy = {
 	abort_when_not_enabled = yes
 	ai_strategy = {
 		type = conquer
-		id = "VIC"
+		id = VIC
 		value = -500
 	}
 	ai_strategy = {
 		type = ignore
-		id = "VIC"
+		id = VIC
 		value = 500
 	}
 	ai_strategy = {
 		type = dont_defend_ally_borders
-		id = "VIC"
+		id = VIC
 		value = 500
 	}
 	ai_strategy = {
 		type = front_unit_request
-		tag = VIC
+		id = VIC
 		value = -1000
 	}
 	
@@ -3236,6 +3246,7 @@ GER_dont_bomb_france_too_soon = { #avoid to sacrifice airforce for no reasons
 	ai_strategy = { type = strategic_air_importance id =  21 value = -50000 } # Alpes
 	ai_strategy = { type = strategic_air_importance id =  20 value = -50000 } # Languedoc
 	ai_strategy = { type = strategic_air_importance id = 347 value = -50000 } # Provence
+	ai_strategy = { type = strategic_air_importance id = 344 value = -50000 } # Corsica & Sardinia
 }
 
 GER_bomb_benelux = {
