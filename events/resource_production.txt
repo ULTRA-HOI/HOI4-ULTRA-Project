@@ -112,10 +112,22 @@ country_event = { #not enough steel, reopen steel mills
 	hidden = yes
 	trigger = {
 		steel_refinery_auto_open_enabled = yes
-		check_variable = { resource@iron > @steel_refinery_cost_iron }
-		check_variable = { resource@coal > @steel_refinery_cost_coal }
-		check_variable = { resource@tungsten > @steel_refinery_cost_tungsten }
-		check_variable = { resource@steel < 0 }
+		OR = {
+			check_variable = { resource@iron > @steel_refinery_cost_iron }
+			can_buy_iron_and_it_makes_sense_for_steel_production = yes
+		}
+		OR = {
+			check_variable = { resource@coal > @steel_refinery_cost_coal }
+			can_buy_coal_and_it_makes_sense_for_steel_production = yes
+		}
+		OR = {
+			check_variable = { resource@tungsten > @steel_refinery_cost_tungsten }
+			can_buy_tungsten_and_it_makes_sense_for_steel_production = yes
+		}
+		OR = {
+			check_variable = { resource@steel < 0 }
+			check_variable = { resource_imported@steel > 0 }
+		}
 		any_controlled_state = {
 			is_core_of = ROOT
 			steel_refinery_inactive > 0
@@ -137,9 +149,18 @@ country_event = { #not enough aluminium, reopen aluminium smelters
 	hidden = yes
 	trigger = {
 		aluminium_refinery_auto_open_enabled = yes
-		check_variable = { resource@bauxite > @aluminium_refinery_cost_bauxite }
-		check_variable = { resource@coal > @aluminium_refinery_cost_coal }
-		check_variable = { resource@aluminium < 0 }
+		OR = {
+			check_variable = { resource@bauxite > @aluminium_refinery_cost_bauxite }
+			can_buy_bauxite_and_it_makes_sense_for_aluminium_production = yes
+		}
+		OR = {
+			check_variable = { resource@coal > @aluminium_refinery_cost_coal }
+			can_buy_coal_and_it_makes_sense_for_aluminium_production = yes
+		}
+		OR = {
+			check_variable = { resource@aluminium < 0 }
+			check_variable = { resource_imported@aluminium > 0 }
+		}
 		any_controlled_state = {
 			is_core_of = ROOT
 			aluminium_refinery_inactive > 0
@@ -401,9 +422,18 @@ country_event = { #not enough rubber, reopen rubber refineries
 	hidden = yes
 	trigger = {
 		synthetic_rubber_refinery_auto_open_enabled = yes
-		check_variable = { resource@coal > @rubber_refinery_cost_coal }
-		check_variable = { resource@oil > @rubber_refinery_cost_oil }
-		check_variable = { resource@rubber < 0 }
+		OR = {
+			check_variable = { resource@coal > @rubber_refinery_cost_coal }
+			can_buy_coal_and_it_makes_sense_for_rubber_production = yes
+		}
+		OR = {
+			check_variable = { resource@oil > @rubber_refinery_cost_oil }
+			can_buy_oil_and_it_makes_sense_for_rubber_production = yes
+		}
+		OR = {
+			check_variable = { resource@rubber < 0 }
+			check_variable = { resource_imported@rubber > 0 }
+		}
 		any_controlled_state = {
 			is_core_of = ROOT
 			synthetic_rubber_refinery_inactive > 0
