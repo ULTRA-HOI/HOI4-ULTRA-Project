@@ -419,12 +419,40 @@ GER_PROD_build_support_tanks = {
 	}
 }
 
+GER_PROD_go_crazy_on_p38t = {
+	allowed = {
+		original_tag = GER
+	}
+	enable = {
+		has_tech = ger_light_3
+		NOT = {
+			has_tech = ger_medium_1
+			has_tech = ger_support_1
+		}
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = {
+		type = equipment_variant_production_factor
+		id = light_tank_chassis
+		value = 60
+	}
+	ai_strategy = {
+		type = equipment_production_surplus_management
+		id = light_tank_chassis
+		value = 30
+	}
+}
+
 GER_PROD_halt_light_armor_production_when_surplus = {
 	allowed = {
 		original_tag = GER
 	}
 	enable = {
 		has_equipment = { light_tank_chassis > 600 }
+		OR = {
+			has_tech = ger_medium_1
+			has_tech = ger_support_1
+		}
 	}
 	abort_when_not_enabled = yes
 	ai_strategy = {
