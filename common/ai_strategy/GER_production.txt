@@ -547,7 +547,7 @@ GER_PROD_NAVAL_build_historical_CAs = {
 			has_war = yes
 		}
 	}
-	ai_strategy = { type = role_ratio id = naval_cruiser_heavy value = 10 }
+	ai_strategy = { type = role_ratio id = naval_cruiser_heavy value = 3 }
 }
 
 GER_PROD_NAVAL_build_scharnhorst = {
@@ -600,7 +600,7 @@ GER_PROD_NAVAL_build_bismarck = {
 		has_country_flag = has_bismarck_design 
 	}
 	abort_when_not_enabled = yes
-	ai_strategy = { type = role_ratio id = naval_capital_bb value = 1 }
+	ai_strategy = { type = role_ratio id = naval_capital_bb value = 2 }
 	ai_strategy = {
 		type = equipment_production_min_factories
 		id = capital_ship
@@ -619,12 +619,23 @@ GER_PROD_NAVAL_build_tirpitz = {
 		has_country_flag = has_bismarck_design 
 	}
 	abort_when_not_enabled = yes
-	ai_strategy = { type = role_ratio id = naval_capital_bb value = 1 }
+	ai_strategy = { type = role_ratio id = naval_capital_bb value = 2 }
 	ai_strategy = {
 		type = equipment_production_min_factories
 		id = capital_ship
 		value = 10
 	}
+}
+
+GER_PROD_NAVAL_ignore_convoys = {
+	allowed = {
+		original_tag = GER
+	}
+	enable = {
+		always = yes
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = { type = unit_ratio id = convoy value = -95 }
 }
 
 GER_PROD_NAVAL_build_some_subs_at_peace = {
@@ -635,10 +646,10 @@ GER_PROD_NAVAL_build_some_subs_at_peace = {
 		has_war = no
 	}
 	abort_when_not_enabled = yes
-	ai_strategy = { type = role_ratio id = naval_submarine value = 800 } #subs need high multiplier
+	ai_strategy = { type = role_ratio id = naval_submarine value = 100 } #subs need high multiplier
 }
 
-GER_PROD_NAVAL_switch_to_subs = {
+GER_PROD_NAVAL_switch_to_subs_and_some_screens = {
 	allowed = {
 		original_tag = GER
 	}
@@ -646,12 +657,73 @@ GER_PROD_NAVAL_switch_to_subs = {
 		has_war = yes
 	}
 	abort_when_not_enabled = yes
-	ai_strategy = { type = role_ratio id = naval_submarine value = 20000 } #subs need high multiplier
-	ai_strategy = {
-		type = equipment_production_min_factories
-		id = submarine
-		value = 60
+	ai_strategy = { type = role_ratio id = naval_screen value = 20 }
+	ai_strategy = { type = role_ratio id = naval_submarine value = 100 } #subs need high multiplier
+}
+
+GER_PROD_NAVAL_more_subs_when_unlocked_1 = {
+	allowed = {
+		original_tag = GER
 	}
+	enable = {
+		has_war = yes
+		check_variable = { german_submarine_slots > 24 }
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = { type = role_ratio id = naval_screen value = 20 }
+	ai_strategy = { type = role_ratio id = naval_submarine value = 100 } #subs need high multiplier
+}
+
+GER_PROD_NAVAL_more_subs_when_unlocked_2 = {
+	allowed = {
+		original_tag = GER
+	}
+	enable = {
+		has_war = yes
+		check_variable = { german_submarine_slots > 34 }
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = { type = role_ratio id = naval_screen value = 20 }
+	ai_strategy = { type = role_ratio id = naval_submarine value = 100 } #subs need high multiplier
+}
+
+GER_PROD_NAVAL_more_subs_when_unlocked_3 = {
+	allowed = {
+		original_tag = GER
+	}
+	enable = {
+		has_war = yes
+		check_variable = { german_submarine_slots > 44 }
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = { type = role_ratio id = naval_screen value = 20 }
+	ai_strategy = { type = role_ratio id = naval_submarine value = 100 } #subs need high multiplier
+}
+
+GER_PROD_NAVAL_more_subs_when_unlocked_4 = {
+	allowed = {
+		original_tag = GER
+	}
+	enable = {
+		has_war = yes
+		check_variable = { german_submarine_slots > 54 }
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = { type = role_ratio id = naval_screen value = 20 }
+	ai_strategy = { type = role_ratio id = naval_submarine value = 100 } #subs need high multiplier
+}
+
+GER_PROD_NAVAL_more_subs_when_unlocked_5 = {
+	allowed = {
+		original_tag = GER
+	}
+	enable = {
+		has_war = yes
+		check_variable = { german_submarine_slots > 64 }
+	}
+	abort_when_not_enabled = yes
+	ai_strategy = { type = role_ratio id = naval_screen value = 20 }
+	ai_strategy = { type = role_ratio id = naval_submarine value = 100 } #subs need high multiplier
 }
 
 GER_PROD_no_CV_planes = {
