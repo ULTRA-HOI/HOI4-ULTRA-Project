@@ -4,13 +4,12 @@ import re
 from collections import defaultdict
 
 def print_marker(commits_by_marker, marker, name, f):
-    f.write(f"## {name} \n\n")
+    f.write(f"## {name} \n")
     for title, body in commits_by_marker[marker]:
         f.write(f"- {title}\n")
         if body:
             body = body.replace("\n","\n\t- ")
             f.write(f"\t- {body}\n")
-        f.write("\n")
 
 # Check arguments
 if len(sys.argv) < 3:
