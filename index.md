@@ -1,12 +1,694 @@
 # Changelog
 
-### 0.16.6
+# 0.18.0
+## Highlight 
+- Add checkboxes for controlling automatic opening of refineries, also made all resource shortage/surplus events hidden again
+- Introduce custom state GUI showing agricultural and available workforce
+## AI 
+- Reduced German AI desire to LL their faction members
+- AI no longer researches improved rocket engines (useless tech that was rushed AoT...)
+- German building construction tweaks for more construction efficiency
+- Austria should no longer disband some of their starting divisions
+- Germany no longer instantly jumps to Massive Draft after WW2 starts, should only do so after Fall of France, in preparation for Barbarossa
+- Fixed Germany not appointing Goering as chief of airforce
+- Adjusted German production to the new division design and air ratios
+- Streamlined German AI division design and training
+- Updated German AI division production targets
+- Improved some AI research weights
+- Hopefully improved AI behaviour on and around Maginot, pun intended
+- AI Germany now only lays down Bismarcks after unlocking MIO slots
+- USSR should no longer build 100k useless Assault Guns
+- Stop AI from rushing rocketry techs
+- Stop unwanted AIs from researching landing craft
+- Reduce AI supply truck buffer as it was too high with reduced supply hub motorisation costs
+## Balance 
+- Changed Multi-Chamber Gun SP requirements, now needs 1941 heavy artillery and experimental rocket tech on top of super-heavy gun SP researched
+- Remove AI truck production discount as it's no longer needed
+- Updated Canadian focus tree to be more in line with historical events
+- Adjusted civilian industry resource usage, also increased civilian resource reduction to 10% for War Economy & 20% for Total Mob
+- Decisions to expand Ruhr and Saar coal mines now available at excavation 2 instead of 3
+- Breakthrough progress balancing, set so that no country begins with breakthrough progress
+- Updated radar access breakthrough points from radar focuses
+- Changed iron/coal/bauxite trade from 90 to 100 per factory, this works around a vanilla rounding bug which resulted in partially unfulfilled trades of 90/91 instead of 90.
+- Increase fuel output of synthetic fuel refineries from 2.5 to 3
+- Reduce coal use of synthetic fuel/rubber refineries from 120 to 100
+- Increase damage factor of synth fuel/rubber refineries from 1 to 1.5
+- Increase damage factor of factories and steel/alu mills from 1 to 1.25
+- Reduce infrastructure damage factor from 2.5 to 1.5 to make it a bit more resilient
+- Special Projects costs & breakthrough adjustments
+- Partial revert of Chinese equipment stockpile nerfs
+- Cruiser Mk IV nerf, hard attack nerfed to fall into line with other 2pdr tanks
+- Purged Italian naval invasion capacity bonuses
+- Nerved coastal policy and buffed great sea keeping
+- Soviet industry evacuation tweaks, evacuation decisions only require 2 infrastructure and 10 civs/mils in the state to take, no longer instantly gives free manpower, instead delaying it so no longer as relevant
+- Capital ship speed now relevant in combat, lower speed means easier to hit
+## Features 
+- Improved VPs in Austria
+- Austrian divisions should now be properly renamed to historically created German divisions formed from them after Anschluss
+- Added German propaganda to reduce rubber usage
+- Added granular dockyard limit per ship archetype, for now BB/BC/CV = 10, PzSchiff = 8, CA/CL/CVE/CVL = 6, DD = 4, SS = 2
+- Adjusted German submarine/capital limits to consider new max dockyard limits, Submarine slots x5 as the dockyard limit decreased from 10 to 2 per line
+## Fixes 
+- Hungary should no longer flip fully fascist
+- Fixed Propaganda Decisions not increasing in cost properly
+- GER AI no longer getting bazillion free refineries
+- Always display full number of convoys in topbar
+- Fix bugs with agricultural population calculation which could lead to negative manpower
+- Corrected some Japanese plane stats
+- Fix manpower variables display bug showing millions instead of thousands
+- Fix script bug with refinery closing events trying to close non-existent refineries
+- Further updated some German NF icons
+- Berlin is Berlin...again
+- Added missing & wrong F-82 ground & naval attack stats	
+- Use new a portrait for Goering as advisor
+- Fix some industry/manpower calculations
+- Fix Alaska chromium deposits not increasing duration with subsequent uses
+- Fixed triggers for Bosporus strait control
+- French disorganised army spirit now properly applies
+## Historical 
+- Submarine V Access Update: Sub V tech removed, instead Sub V is accessed via special project, German focuses and ship decisions updated to match
+- German Heavy Bombers reorganisation, German heavy bomber techs included never prototyped aircraft He 277, removed; rearranged He 274 (now a 1944 sub tech of He 177) and Me 264 (now a 1944 tech); maritime patrol B&V 238 pushed back to 1945, as prototypes only began flight testing in March 45
+## Interface 
+- Updated various tech pictures
+## Assorted 
+- Added Raid feature from GTD DLC
+- Special Project Specialization added, added special project specialization to all techs for which it makes sense
+- Naval Projects Implemented
+- Partially Restored Radar Localisation
+- Access to Earthquake Bomb and Bouncing Bomb updated, can now only access these techs if a country has a bomber that might carry it, can only be accessed by UK (by researching Lancaster), USA (by researching B-29) and Germany (by researching He 274)
+- Removed nuclear warhead special project
+- Added necessary historical railway/supply node
+- Added Special Projects research facilities to various countries
+- Removed theorist slot
 
-### Features
+# Version 0.17.4
+## Highlight
+- Introducing the Logistics designer
+- Add manpower change direction indicator and conscription progress bar
+## Features
+- Logistics designer allows to set logistics motorisation levels for 4 battalion categories (light/heavy/mobile/support)
+- Each level decreases supply use and increases fuel capacity, attack and speed slightly at the cost of truck and fuel usage
+- Multiplied all equipment supply usage by 75% to allow logistics designer to work; outside of equipment supply, battalion supply is now also used  and adjusted by logistics designer
+- Removed base fuel use from truck equipment and added it as battalion stat at 0.01 fuel use per truck
+- Divided all land equipment and battalion fuel consumption by 10, multiply land fuel consumption define by 10 instead
+
+# Balance
+- Increase civilian services labour for some countries: (ENG 15->12% USA+GER 10->14% CAN+AST+ITA 10->12% LUX+DZG 10->5%)
+- Removed fuel consumption modifiers from motorised MIO as it's not used now
+- Reduced amount of trucks required for supply hub motorization from 800 to 120
+- Added base 1 DEF and BRK to trucks
+- Decreased truck cost from 1 to 0.8 IC
+- Fuel gain per oil 1.35 -> 1.5
+- Decreased starting woman participation rate for RAJ
+- English spirit The War To End All wars recruitable population -1 -> -1.5%
+- UK now starts with limited conscription
+- Increased starting woman participation rate for FRA and ENG
+- Starting colonial templates of FRA/ENG start with more manpower
+- Lowered base resistance to 65 and suppression per resistance from 1.5 to 1.25
+- Removed Ho-I Experimental
+- Only 1 was made, accurate stats make it such that it's so powerful that Japan will build way too many
+- Remove experimental, now Japan can't make them until they get the 1944 version that did go into proper production
+- Italy gains their correct unused steel capacity
+- Split Factory Coal Consumption, Coal is now split into:
+- 2 Coal passive Factory consumption
+- 1,75 Coal Variable Civillian Consumption
+- Train Bombing enabled, armored trains useful again, free repair debuffed
+- Update German Trained Personnel Spirit
+    - Penalty did not scale up fast enough and decayed too fast
+    - Adjusted equation to increase rate of penalty and reduce rate of decay
+- Ho-I Experimental rebalanced
+    - Reduced Soft Attack due to heavier HE shells only becoming available later, reduced reliability since there was only a single prototype
+- Plane Experience Update
+    - Plane experience had no impact on ground attack, naval attack or strat bombing
+- Carrier Plane Damage Tweaks
+    - Carrier damage scale raised back to 24 (still lower than live)
+    - Carrier disruption factor raised to 6 from 1
+- Civillian Resource Consumption Modifiers added
+    - Reworked the Civillian Resource Consumpion. Instead of having the resources withdrawn by the factories, factories now only consume coal. The resources are now substracted by a modifier which lets us dynamically adjust consumption for each nation
+- Disabled Military Acess for everyone
+    - To prevent Docking Rights for Nations that should not have them, Military Access is also disabled
+- Rebalancing of Sub Detection by Planes:
+    - Halved Sub Visibility
+    - Doubled Sub Detection on all ship modules
+    - Halved Naval Strike and Recon Detection
+    - Increased Submarine AA by a factor of 60
+- Reduce Cas damage in bad temperature + flooded areas.
+- Increased air ground support penalties.
+- Naval Tech/Access Rework:
+    - 15 Inch Mk 3 pushed back to 1942
+    - 11 inch Mk 3 pushed back to 1941
+    - 15 inch Mk 2 pushed back to 1937 (Germany gets 1 year AoT), Mk 3 unchanged
+    - 16 inch Mk 2 pushed back to 1939 (USA gets 2 year AoT, UK gets 1 year AoT), Mk 3 pushed back to 1942 (Germany gets 2 year AoT, USA gets 2 year AoT)
+    - 4x3 layout removed from Mk 1 and Mk 2, only available with Mk 3, 6x2 layout removed from all tiers
+    - 18 inch Mk 2 pushed back to 1942 (Japan gets 5 year AoT), Mk 3 removed - 5x2 and 4x3 layouts removed
+    - 20 inch Mk 2 pushed back to 1943 (Japan gets 2 year AoT), Mk 3 removed - only 3x2 layout now available
+    - Cost of specific Bismarck modules (main battery, armour) very slightly reduced to bring cost below 16,000 IC
+    - German naval IC limit reduced to 16,000 IC from 16,500 - is raised by Escalator Clause to 16,500
+    - Anglo-German Naval Agreement now restricts 16-inch gun tech - Germany gets 16 inch Mk 1 for free from Sudetenland
+    - Germany no longer gets generic heavy battery bonuses from Capital Ships Objective, no longer gets bonus to researching advanced steam engines
+    - Littorio Class now use 15 inch Mk 3 - Italy starting tech updated
+    - KGV Class now use 14 inch Mk 3 - UK starting tech updated
+    - Shell Dyes now 1942 tech - France starts with them, Japan has 1 year AoT
+    - 425mm and 450mm capital ship belts no longer available
+- Adjusted Sub Detection to shortened naval combat
+- Remove player Raj archaic equipment
+    - Raj can no longer use archaic inf equipment decision: Was essentially a trap - makes the Allies think Raj doesn't need more equipment, all the while the divisions created are actively worthless (since Raj doesn't have China's sheer manpower advantage to leverage)
+- Command Power Balance Updated:
+    - Being at war gives a -40% modifier to FM promotion cost
+    - FM promotion cost further changed from 30 to 50
+    - Removed CP cost from military high command
+    - Reduced max CP from 250 to 100
+    - Increased CP gain from 0.4 to 0.5
+    - Reduced leader promotion cost from 60 CP to 30 CP
+- Reduced AA hit chances, strengthen Strat target selection
+- Increased CAS Str Damage
+- Tweaked German NF durations to allow for historical dates of major annexations
+- Change Focke-Wulf to range focused aircraft nesigner
+- Tweaks to German starting plane techs and airwings
+    - Starting Do 18's replaced with Do 16's, amount reduced from 72 to 54
+    - No longer starts with Do 17 researched (light bomber and scout variants)
+    - Add starting production of Hs 123 A-1
+- Camelry changes:
+    - Camelry was cheaper than cavalry due to not using support equipment
+    - This made camelry just flat better than cavalry, due to being just as good but for cheaper
+    - Now camelry uses the same amount of support equipment as cavalry
+- Generic Garrison Template Update
+    - Many countries had highly inefficient garrison templates
+    - Was throwing off equipment and manpower calculations, since garrisons would start with massive amounts of manpower and equipment that could then be easily reclaimed by just changing the template
+    - Instead all significant countries now start with a generic cavalry garrison template
+    - Some room for improvement for specific nations, but will be decent for all countries
+- Increased Air Superiority Required For Paradrop
+    - Nature of the way airforces work in game makes it too easy to build air superiority in one zone specifically to manage a paradrop, even with what should be an air disadvantage
+    - Changed so that more air superiority is required to paradrop
+- Compliance changes:
+    - Resistance reduction per point of compliance increased from 0.5 to 0.75
+    - Increase compliance gain bonus from claims from 10 to 20%
+    - Rooting out resistance now gives small compliance gain
+    - Rooting out resistance XP gain for operatives increased (now same as counterintelligence XP gain)
+- Operative changes:
+    - Increase max total operatives from 10 to 12
+    - Adjust scaling of operative slots gained from faction members
+    - XP given by successful operation increased from 18 to 50
+    - Increase operative levels to 5 and flatten the XP curve and bonuses each level gives
+    - Decrease agency upgrades required per operative slot from 5 to 4
+- Spy Agency changes
+    - Increase max operative slots from agency upgrades from 4 to 5
+    - Big agencies are hard to get with upgrades taking base 400 days
+- Increase impact of counterintel on hostile operation time from 5 to 15%
+- Reduced Cavalry Supression
+- Raised Base Resistance to 75% and Suppression need by 300%
+- Adjusted Ability of Japan And Axis To Lend-Lease Each Other
+    - Japan/Axis LL now locked behind either Japan and Germany controlling neighbouring territory, or the Axis controlling the Suez Canal and the Red Sea
+- Commander Abilities Update
+    - Added cooldowns to in-combat commander abilities (Last Stand, Force Attack)
+    - Added cooldowns to SF commander abilities (Faster Naval Invasion Planning, Glider Planes)
+    - Nerfed Extra Supplies from -40% supply consumption to -20%
+    - Increased duration of Requisition Winter Gear
+- Improved Sub FCS to not be cost ineffective, higher hit chances, reduced cost.
+- Adjusted Mio and tech bonuses so that it aligns with gun hit chances
+- Special Forces Capstones Locked
+    - Once you select a capstone SF branch, you can no longer select the other branch
+    - Cannot swap Paratrooper Frontline Training and Airborne Armor
+    - Cannot swap Advanced Marine Training Programme and Marine Commandos
+    - Cannot swap Shared Instructors and Backbone of the Armed Forces
+- Reduced Convoy Hit Profile to the actual desired amount and fixed combat active time
+- Remove RaJ cores on starting Pakistani, Bangladeshi and Burmese cores
+    - They instead start with 40% compliance and 15% resistance
+- Reduced Fleet AA effect slightly
+- Rebalanced Port Strikes
+## Fixes
+- Army Supply Chief Fix
+    - Was set to use supply_factor modifier, which has no effect
+    - Switched to supply_consumption_factor, values tweaked down
+- Fixed Working age not applying to non-working women modifier and decrease base female participation rate from 0.5 to 0.4
+- Remove agriculture bonus from occupation; rarely happened and murked display and calculations
+- Set army fuel consumption display precision to 3 decimal places
+- UK can't invite Germany to London Naval Treaty anymore
+- As long as Germany is still sticking to the Anglo-German Treaty, London Naval Treaty invitation is not possible now
+- Mulberry Port Decision Updated To Reflect New Port Cost
+- Way port cost now scales resulted in Mulberry building far more harbour than intended
+- Reduced construction bonus from 70000% to 50000%
+- Italian consumer goods boni for NF now works
+- Fixed Jan Mayen
+- Added correct map graphics
+- Changed terrain to rocky island
+- Added to small airbase limiter
+- Turkey should now remain neutral without NF, German NF for Turkey join now works
+- Operation Unthinkable Requirement Changed
+- Now requires Soviet and Germany to not be at war
+- Adjusted Korean Compliance to the intended level
+- Was 75, should have been 90, adjusted accordingly
+- Fix Carrier Targeting
+    - Carrier targeting was set to make it so that carriers would actively de-prioritise enemy ships as they damaged them, preventing carriers from ever dealing decisive damage to an enemy fleet
+    - Corrected, now the more damaged a ship becomes the more likely carrier wings are to target them
+- Fixed assault brigade supply consumption
+- Removed battalion supply, now only uses equipment supply.
+- Italy gives allcores to albania, NF is no longer useless
+- add missing sub/surface_detection stat for scout planes
+- MIO trees now show one decimal place for modifiers
+- Allow recoilless AT guns in airborne support weapons templates
+- Improve and fix the resource production events
+- Should properly calculate deficits and surpluses now and open/close an appropriate amount of factories
+- Foreign Workers decision correctly adds factories now
+- Previously the decision added 100 MILs to random controlled, owned states. This could mean in Denmark or Czechia, which would have significantly reduced the actual number the player received. Now they will only spawn in core states.
+- Corrected Ho-I stats
+    - vehicle now costs the correct amount and has the correct HP
+- M4A1 Sherman Stats Update
+    - M4A1 was left with same stats as M4A3
+    - Applied a 5% penalty to armour, breakthrough and defence (cast armour)
+    - Applied a small penalty to speed and a 3% penalty to reliability (Continental R-975 radial engine)
+- Port over vanilla designer GUI change from 1.14.9
+- Jagdpanther now correctly shows as heavy tank destroyer
+- siam focus, puppet country localisation
+- Adjust German starting trade
+- Remove duplicate unnecessary variants without MIOs for starting German production
+- Fix any mention of aircrafts. You think grammar is a joke?
+- Siam get's Ha-Go's to buy
+- Assign German starting military factories and change dockyard assignment to capitals and subs first
+- norway heavy water, neutrality idea fixed
+- Correctly label all heavy medium tanks in their descriptions
+- Standardise names of infantry equipment templates and archetypes
+- Fix Railway gun repair entry in constructions view
+- Fixed some German focus icons not showing properly
+- On-Action Motorised Set To Correctly Only Apply When Countries Are AI Controlled
+    - UK got 7.5k motorised on-action - set to only apply when AI-controlled
+    - Sov got 50k motorised on-action - set to only apply when AI-controlled
+- Syntax USA focus
+- Fix tripartite_pact flag not being correctly set, blocking Japan from sending LL
+- Recolour assault gun texticons from orange to green
+- Refactor topbar resources GUI to not pollute saves with unnecessary variables
+## Features
+- British Focus Tree Revamp
+    - Fort focuses heavily condensed. Replaced focuses with decisions
+    - Reworked approach to Singapore forts. Decisions to create land forts cannot be taken before war with Japan
+    - Gibraltar gets coastal battery spirit - same as Soviet Impregnable Forts spirit
+    - Removed Britannia Rules The Waves focus - instead, UK starts with 2 additional doctrines
+    - Added Chain Home decision - creates radar across UK
+    - Adjusted AA focus - now requires construction decision to create AA
+    - Reintroduced tank focus - now gives bonuses for Cavalier + later tanks
+    - Removed Benelux Intervention focuses
+    - Removed War with Italy/Germany/Soviet focuses
+    - Rearranged UK focuses - adjusted focus lengths
+- The Home Guard
+    - British Home Guard added as a system
+    - Focus becomes available after fall of France
+    - Upon activating focus, generates 60 light infantry divisions over the next 6 months with 0 experience and 10% equipment. Templates are locked and units cannot be edited, deleted or converted. Units also cannot be transferred overseas
+    - If focus is not activated within 90 days of France capitulating, receive stability penalty until focus is activated
+    - Following completion of focus, decisions become available to upgrade Home Guard divisions
+    - Can also use decisions to train more Home Guard, which can be deployed in an emergency if the UK is invaded at the cost of massively penalising production for either 180 days or until the enemy is thrown out
+- Added the Pommernwall, the Oderstellung and Küstrin Fortress
+- Add starting Burmese cores
+- Add some historical infantry and heavy infantry equipment templates for USA, FRA, JAP and ITA
+- Add compliance effect to non-core state manpower calculations
+- Improve and streamline the macrobuilder
+    - Now has both infra- and time-based building
+    - Improved on-map hints
+    - Added many tooltips explaining how to use it
+    - Factor in local building speed modifiers in macrobuilder
+## Assorted
+- [Historical Data] US Tank Tweaks
+- T95 switched over to assault gun
+- T30 switched to tank destroyer
+- T95 now 1945 variant of M6
+- T95 stats updated - now has reasonable attack stats
+- Reduce carrier plane damage scale
+- Carrier fighters now do 5x less damage
+- [Historical Data] Half a year ahead bonus for Chi-To tank.
+- [Historical Data] Corrected Japanese tank research dates & stats
+- Chi-To, Chi-Nu, Chi-Ri and Chi-Se either received new research dates, updated stats or corrected designations and info text
+- MIO Torp trait fixed
+- Buffed sub fc (less expensive, better hit chance)
+- British pre-war infantry divisions were fully motorised and used 72 artillery pieces
+- Updated British starting infantry division templates to reflect this
+- [Historical Data] Corrected Ahistorical USA Focus Name
+- US focus Women's Armed Service Integration Act was available in game. This act was not historically passed until 1948, after WW2.
+- Renamed focus to Establish The War Manpower Commission.
+- [Historical Data] Updated German Ship Names List if no unique list is chosen
+- Army Chief (morale) now gives org regain instead of out of supply
+- Minor naval module icon fix
+- Minor namelist fix
+- Sort German cruiser ship name list alphabetically, starting from M (for M Class)
+- Add building hint icon
+- Army Chief (morale) now gives reduced org loss at below 25% org instead of out of supply
+- Adjusted general trait terrain modifiers to only use 2 decimal places
+- Brilliant Strategist FM trait now unlocks Army Offense Army Chief role
+- Improvisation Master FM trait now unlocks Army Reformer Army Chief role
+- Bold or Unconventional traits now required to unlock Brilliant Strategist FM trait
+- Maneuver Warfare FM trait now unlocks Army Maneuver Army Chief role
+- Army Chief (morale) now gives org regain instead of out of supply
+- More varied icons for chief/MHC position portraits
+- Add Army supply Chief of Army unlocked by Logistics Wizard FM trait
+- Remove unnecessary AI triggers from excavation decisions
+- Change some German excavation decisions to be gated behind techs as all other are
+- Add coal excavation decisions for Poland
+- Adjust German starting trades
+- Better starting USA MOT division name
+- Buffed Submarines and Torpedos in general
+- Reduced Torpedo Cooldown
+- Made Convoys easier to hit
+- Increased Torp hit chance
+- decreased depth charge hit chance
+- made subs easier to spot in combat (especially by airplanes)
+- Made Naval AA shoot down planes again
+- various other minor fixes
+
+# Version 0.17.3.1 Hotfix
+## Features
+- Added event on capital ship construction completion to remind the player that capital capacity is unused
+- Added similar events for gemany on submarine construction completion
+- Added events to inform the player over increased capital dockyard capacity
+## Balance
+- Slightly reduced Germanys Dockyard conversion from 120 to 110 days
+## Fixes
+- Fixed a teleport incident that happened on Iraq becoming a puppet
+
+# Version 0.17.3
+## Highlight
+- Introduced Building Time Helper Custom GUI
+## Equipment changes
+- Fixed Support Battalions Equipment Use being inconsistent (Especially Recon Battalions)
+- Reclassified Mechanized to remove the Motorized MIO being duplicated into the Armor category
+- Removed tank XP upgrades entirely
+- Nerfed air XP upgrades by around 2/3rds across the board
+- MIO bonuses for land and air equipment cut in half, naval bonuses remain the same. Bonuses were stacking up too high (especially production bonuses, but combat stats as well).
+## Inf Equipment Minor Rework
+- Cost reductions to all inf equipment - level of reduction varies from slight for bolt actions to significant for semi-autos.
+- Range of reliability reduced - a typical squad will now have a minimum of about 73%.
+- Soft attack of semi-autos and early battle rifles increased
+- SMG breakthrough slightly reduced, defence slightly increased
+- Overall result - upgrading your infantry equipment is now worth the research and IC
+## Bug Fixes
+- Fixed Ship Repair Speed being too low
+- Fixed SPGs missing terrain modifiers in Desert Hills
+- Fixed some Template Bugs
+- German AI now thinks its not a good idea to research next radar tech 4 years early
+- German AI now is less likely to overproduce trains
+- AI weights for naval mio traits have been adjusted
+- Spain now properly removes the unplanned offensive debuff resulting in the spanish civil war to properly end in 1939
+## Tweaks
+- Various mechanised, armoured car and tank technology pictures updated for a variety of nations
+- Increased Economic Law Fuel Gain Penalty
+- Added Fuel Gain Penalty for Synthetic Refineries as well
+- New Icon for massive draft mobilisation law
+- Mechanized equipment rebalanced across all nations, mainly reduced cost
+- Engineer fort attack buff moved to Engineer 3
+- Nerfed fort attack bonuses from engineers, tanks and generals
+- Decreased HQ casualty trickleback by 10%
+- Reduced Redeployment Speed
+- Buff Operational Integrity air doctrine fighter buffs to be in line with other doctrines.
+- Supply scaling changed. All supply values now multiplied by 75 - raising values eliminates rounding issues, allowing supply bonuses and penalties to apply properly
+## Soviet Union
+- Fixed Stalin's assassination skipping Beria's promotion to the new leader of the Soviet Union
+- Set Persian AI to accepting Operation Countenance if in the Allies
+- Expanded Soviet Impregnable Forts decision into a decision chain allowing to build up Leningrad and Sevastopol defenses
+- Added new focus: Foreign relief aid to replace Road of Life
+- Road of Life now concentrates on the Leningrad Siege. The Focus now unlocks different stages of relief aid sent into the city
+- Reworked the starting forts in Leningrad and Sevastopol
+- Readded Chief of Army Fritsch & put him in office from the start
+- Changed Chief of Army Beck to Military High Command Logistics advisor and put him in office from the start
+- Added timegated "Blomberg-Fritsch-Crisis" focus, removes Fritsch and others previously removed by "Anschluss" focus and unlocks Brauchitsch & Keitel as Chief of Army option
+- Changed "Anschluss" to require "Blomberg-Fritsch-Crisis" to remove advisor Beck and unlock Halder artillery advisor
+- Manstein is getting his advisor role now when the mission Lessons from the Polish Campaign has been completed
+- Fall Gelb is now not triggerable as long as the Lessons from the Polish Campaign mission is running
+- Triggering Fall Gelb before the Lessons from the Polish Campaign mission has been started and completed now results in Germany NOT getting a timed Blitzkrieg buff as well as France NOT getting any debuff.
+- In case Fall Gelb is triggered without having Lessons from the Polish Campaign completed, an option will allow Germany to back down.
+- Added production behavior to limit landing craft and specialized infantry equipment production, and increase heavy artillery
+- Added AI cheat to make sure it takes the lessons of the polish campaign
+- Initial Panzer III and IV models pushed back from 1938 to 1939
+- First Panzer III changed to Panzer III E-F - higher armour and reliability, same gun, slightly higher IC cost
+- Removed: E-10, Panther II 8,8, Jagdpanther II, E50M, E75M, Ferdinand
+- Pushed back by a year: Both Leo submodels (require Hetzer), Kugelblitz, Hummel, GW Panther, Coelian, GW Tiger, E-50, E-75, E-100, Panther F 8.8
+- Merged Marder techs into 1
+- Tweaked reliability of various tanks
+- Westwall updated, Fritz Todt also updated, new RAD idea added for construction bonuses
+- The Great War Avenged now reduces tank production cost debuff from Mittelstand
+- Added dynamic modifier - the more losses Germany takes, the less powerful their army spirit is. Strength is recovered over time
+- Added Sherman Firefly and Sherman M4A1 DD as techs.
+- Pushed back Matilda 1 to 1937 and Matilda 2 to 1940. Added bonuses for both techs to Limited Rearmament focus
+## Italy
+- Removed superfluous Irregulars decisions
+- Losing Corsica (if they have it) no longer affects balance of power
+## Italian East Africa
+- Removed all Offmap factories
+- On creation now 7 Colonial Divisions spawn that do not have equipment
+- Creation now sends 5.000 infantry equipment to Italian East Africa
+- Shortened Ascari Focuses to 7 days. No longer spawns free units. Itstead expands the existing units with a Blackshirt Battalion
+## Japan
+- Japan can no longer reject demand for compensation over Panay Incident
+- Japan now begins game with resource rights to Manchu
+- Manchuria now gives 100% of factories to Japan
+- Japan now has resource rights to processed Manchurian Resources (Steel, Aluminium and Oil). The Refineries are supplied from Manchurian Mines
+- Manchurian Resource Expansion Decisions have now been moved to Japan. When taken, all Refineries build by Focus Construction Decisions can be fully supplied.
+- New Trade Law: No Trade. No Trade is currently exclusive to Manchuria, keeping 100% of its resources within its own borders to allow processing.
+- Manchuria starts now with No Trade and switching of Trade Law disabled
+- Added air spirits
+- Remove marine bonuses from spirit. Replace with slightly larger amphibious bonuses
+## Netherlands
+- Re-add Dutch East Indies puppet. Remove convoys from Netherlands to add to DEI.
+## China
+- Yellow River Flood effect made more potent. Reduces enemy attack and speed by more, applies additional attrition to divisions moving through affected tiles, prevents repair of railways in affected tiles
+- Reworked provinces affected by Yellow River flood so that Japan doesn't need to take any for 'Develop Chinese Resources' focus.
+- Tank Tech Tree rework. Introduced M2A4, M4A3 and Jumbo 76 as intermediaries between other models. Changed starting M2 tank stats to M2A1. Rearranged tech tree. Adjusted dates and tech costs and added focus bonuses to have tanks become available at historical times
+- Sonar focus updated to match UK sonar bonuses
+- Major rework to certain US focuses. War Plans converted to Operation Plans. New decisions replace instant construction/bonuses
+## France
+- UK only gets Richelieu and Jean Bart after Torch if France has built Strasbourg and Dunkerque
+- Germany no longer needs Paris to trigger the Fall of France, although the surrender progress requirement is higher
+- Decreased the proportion of the French army that goes to Vichy France
+- Fall Gelb debuff can no longer be disabled.
+- Intervention in Spain decisions are available until Fate of Czechoslovakia if the Spanish Civil War ends early, to stop them losing massive amounts of war support
+## British Raj
+- Added generic air spirits
+## Siam
+- Reworked the focus tree and decisions
+- Thailand puppet focus for japan works only after at war with the west and only 14 days
+- Siam-Burma railway now japanese focus and decision
+## General/Admiral Skill Update
+- Experience curve made more shallow overall, so nations will generally be able to achieve higher level generals more frequently
+- Maximum level reduced to 7 from 9
+## AI
+- Increased AI Training Speed
+- Increased desired stockpiles of various equipment
+- Set fixed increments for the AI to sell in (For example infantry gear should be sold in increments of 100)
+- Increased desire to sell equipment when over the desired stockpile threshold
+## Map changes
+- Decreased the size of the Shanghai DMZ
+- Enlarged Shanghais provinces
+- Updated Central China Supply Depot Positioning
+- Gibraltar split into 2 provinces on either side of the strait so it can be assaulted from both sides
+- Graphical map improvements for China & France (no gameplay impact)
+- Increased Level & Supply Hub density along main lines for more supply flow in Western Russia
+- Condensed Polish rail network a bit for better supply flow for Germany into Russia
+- Added Decision for Germany to finish the Polish Rail Decision if Poland hasnt done them
+- Added Supply Hubs in Ethiopia to allow for some river supply & easier capture of the Mountain Area for Italy
+- State Category Wasteland now has huge construction debuffs for all building types
+- Turned whole Africa and Middle East into Wasteland besides South Africa, Irak and Iran
+- Added more provinces to Crimea to better simulate defence of Sevastopol
+- Raised the port level in Krasnodar to allow proper supply of Sevastopol by sea
+- Added Japanese Straits
+- Added automatic open/close mechanic so that the Soviet Union cannot trade via the Pacific if not at war with Japan
+- Added Proxy Straits for the USA and Soviet Union. These allow for proper use of far away ports for trade. No longer needs Japan to ship around the world to reach the USA
+- Removed Oresund Land Connection to prevent convoy-less trade with Sweden and Norway to make Germany iron imports raidable
+- Added Kronshtadt
+- Made Oranienbaum urban
+- Split Leningrad into more tiles
+- Added Road of Life
+- Added Seto Inland Sea in Japan
+- Made Suez a Harbor
+## Balance
+- Civilian factories now use 3.25 coal, 2 steel, 1.5 aluminium, 0.25 rare materials, 0.2 rubber & 0.1 chromium
+- Aluminium smelter production & resource use have both been doubled
+- Supply node cost increased
+- Railway base cost increased, cost per level goes down faster - it is now slightly cheaper to upgrade the existing network, slightly more expensive to expand it
+- Make exp in combat more impactfull (from -12:12 to -25:25)
+- Reduced max planes needed to get max detection to go with smaller air region, reduced maximun possible detection gain (from 3000 to 1500, from 80% to 60%). Increased detection from ground controlled by 10% to increase detection in low plane defensive situations.
+- Nerfed State AA
+- Lower exp gain from air combat, increased xp scale and xp% from plane loses.
+- Fixed some left over defines from the air stats rework, in relation to escorts
+- Ground based naval strike nerfed, carrier based naval strike remains the same
+- Reduced speed at which ground-based naval aircraft can join battles
+- Quadruple aircraft ground damage.
+- Toned down max ground support (from 100% -> 25%), less planes needed to reach max value
+- Re-enable disruption
+
+# Version 0.17.2
+## Garrison Changes
+- Setting an Army on Garrison Duty no longer increases the division cap
+## Planning Changes
+- Base Planning Speed reduced to 0.1% per Day
+- Max Planning Bonus from General Traits and Planning Skill Level increased
+- All Planning Speed Bonuses increased
+- Staff Office Plan recieved massive planning speed bonus
+- War of Movement and Superior Firepower Doctrine no longer provide Planning Speed Bonuses. Instead, they buff Staff Office Plan with higher Planning Speed
+- Planning Decay from Manual Orders massively increased
+## AI
+- Increased AI bonus to planning
+- Added +25% Dockyard output to AI to bring it inline with land bonuses
+## USA tweaks
+- USA now starts with GM Industrial Concern. PP from Neutrality Act reduced from 200 to 125
+- Reintroduce the P 63 as a 1943 plane
+## Japan tweaks
+- Added 150 additional convoys
+- Various Focuses Reworked: (That were without effect after the MIO introduction)
+- Agility Focus: Now increases Mitsubishi Heavy Industry MIO size by 2
+- Range Focus: Now increases Nakajima Aircraft Company MIO size by 2
+- Supremacy of the Battlefleet Focus has been removed
+- Naval Focuses have been rearranged slightly
+- New Focus: Circle Five Plan: Allows dockyard construction decision to expand dockyards and gain additional capital MIO slots mid to late war
+## Germany tweaks
+- Later German Sd.kfz. 250A & 251 models retain efficiency and are convertible.
+- Kätzchen doesn't retain efficiency from Sd.kfz. 250A & 251 models.
+- Updated Waffen-SS templates & requirements for spawning decisions to be more historical.
+- Added Festungsfront Oder-Warthe-Bogen, 2 forts at game start.
+- Now starts with 5 Neubaufahrzeug in stock.
+- Rebalanced pp gain to revert previous accidental eco buff
+- Now starts with 10 Char 2 C in stock
+- Fall of France event bug fixed
+- Historical losses in the attack on Mers-el-Kébir
+- UK can now capture some Vichy ships in Operation Catapult
+- Historical part of the Vichy navy now defects to the UK after Operation Torch is successful
+- A further historical part of the Vichy navy also defects 6 months after Operation Torch
+## Spain tweaks
+- Adjusted starting templates for Spanish Civil War
+## New Zealand nerf
+- New Zealand focus tree was largely untouched from vanilla, and was therefore dramatically overtuned. Nerfed to bring into line.
+## Hungary tweaks
+- Clarified Hungarian switch to War of Movement doctrine focus tooltipp
+## Combat Stat Updates
+- Reduced all tank org by 20
+- Normalized all non-combat support units to 40
+- Normalized all combat support units to 20, for both support and line units
+- Heavy AA Air Attack Stat has been heavily nerfed. Instead, it provides a bonus to all line flak
+## Air stat update
+- Increased cost of GER, ENG and SOV fighters, minor stat changes for P 51 D and H, Ki 61
+## Force Attack and Last Stand Changes
+- Reduced Duration of both Abilities to 3 days
+- Increased Strength Combat Damage from 50% to 175%
+- Increased Effect on War Support
+- Bug fixed Chinas exclusive Force Attack to grant the same stats as the regular Force Attack at lower cost
+## MIO update
+- New traits for motorized MIO.
+- Remove/change obsolete modifiers from artillery/motorized MIO.
+- Fixed starting MIO levels not being applied.
+- Various Focus Tooltips Updated: Design Companies have been removed from Focuses and replaced with the respective MIOs
+- MIOs unlocked by Focuses now start with a higher MIO level
+- MIO policies nerfed
+- Some MIO policies removed
+## Canada tweaks
+- Increased Construction Decisions for Dockyards from 120 to 180 days and Civ cost from 20 to 30 (brought in line with US decisions in terms of cost)
+- Added +2 Task Capacity on Decision completion (Canada now has a total of 7 Capacity)
+- Removed infrastructure requirement from Quebec Iron Mines decision
+## Romania tweaks
+- Now starts as democratic, which should stop situations where Romania would end up at war with Germany
+## Soviet Union tweaks
+- Reduced stack bonuses on Minimum Training Time so its not possible to have a minimum of 0% anymore
+- Changed starting soviet tank stock to approximate to historical available tanks in 1936: T 26 from 9000+ to 3100, BT tanks increased by 1000, T 28 set to 288, T 37A set to 1200. T-28 is now a heavy tank. T-35 is now a super heavy tank.
+- Moved the Yak 1 to 1941 tech year, lower the tech cost of 1941 soviet planes a bit
+- Reduce the effect of Barbarossa air shock on air combat (mostly halved the effect across the board) - ground attack remains unchanged.
+## UK tweaks
+- Added small bonus for basic naval radar
+- Updated UK marine focus to give doctrine cost reduction rather than research speed bonus
+- Increased Crusader Mk 3 Breakthrough and Defense to match Crusader Mk 1
+- Oil rights transferred to UK from Belize and Kuwait
+- UK Tank tree revamped. Cruiser tanks have been rationalised as medium tanks, while all infantry tanks are now heavy tanks (no more heavy mediums). Tank access dates have been updated, and bonuses applied to focuses so that they can be researched at historical dates.
+- Cromwell tank updated to reflect 75mm gun - soft and hard attack buff
+## Fixes
+- Fixed double Manchurian Iron Decisions
+- Set to Free Trade on Game Start
+- Fixed Chinese Industry Evacuation
+- Fixed Cruiser MIO trait folding wings to be correctly applied to CVLs
+- Updated Japanese Railroad Decisions to highlight their path on map and not require full state control to increase usefulness
+- Fixed Japanese Modern Escort Decision to be earlier visible to avoid confusion of a depracted focus
+- Increased AOT research penalty
+- Added AI capability of opening and closing Rubber and Fuel Refineries depending on need to prevent AI economy from crippling itself when running out of coal
+- Cheat AI refineries for Germany now spawn closed
+- Bugfix Decision added when Convoys get lost in MP games. This decision adds 1 Convoy to remove the bug. The added Convoy is then again removed 3 days later (no Convoys for free)
+- Access to Special Projects has been updated to display correctly
+- Removed initial Italy dockyard penalty but reduced number of dockyards from pre war decisions. Political cost removed from pre war dockyard build decisions.
+- Increased the number of starting Italian mils by 5
+- Increased amount of coal Italy has access to
+- Italy now able to build railway guns
+- Italy national spirits updated
+- Added a decision for Italy to go war econ once the war in Europe starts
+- Sardinia received more coal
+- Italy now doesn't know how to use carriers again
+- Minor Italian Army focus effect changes
+- Italian Marines focus now gives special forces branch
+
+# Version 17.1
+## Fixes
+- Ship Design Decisions updated
+    - Designs and production lines generated will now have MIOs applied automatically
+    - Buckley Class gave Depth Charge Mortars without requiring tech. Decision now requires tech to be taken
+- Soviet and Japanese Infantry Equipment access fixed
+    - Will now no longer start with access to medium mortars without researching
+- Fall of France event fixed
+    - Decision will trigger at the right time
+- Equipment sharing will be more consistent
+- Ju 88S stats fixed
+- AI faction joining updated
+- Supermarine MIO trait errors fixed
+- Fixed oversights in Manchu
+- Extraction decision no longer requires extraction 1 and extraction 3, only extraction 3
+- Removed resources that were incorrectly ported from vanilla map changes
+## Features
+- Supply System Update
+- Maximum railway level increased
+- Railway layout rationalised
+- Chinese railway system entirely reworked
+- Decision added for Polarbahn (German railway from Trondheim to Kirkenes)
+## Balance
+- Railway construction cost reduced by 33%
+- Supply Hub construction cost reduced by 20%
+- Focus added to Japan to allow expansion of Chinese rail network via new decisions
+- Italian Libyan railway decision duration reduced from 1200 days to 1100 days
+- Dalian Port level was increased from 15 to 20
+- Busan Port level was increased from 5 to 15
+- Advisor Semyonov nerfed
+- 20 convoys redistributed from Japan to Manchu
+- China nerfs
+    - Propaganda nerfed to bring into line
+    - Starting infantry equipment reduced
+    - Large portion of starting infantry equipment converted to archaic equipment
+    - Additional 20% Reliability penalty applied to Chinese equipment
+    - Archaic Infantry Equipment Decision nerfed: Increased cooldown from 30 days to 90 days
+- Infantry Kit Reliability Update
+    - Reliability values squashed. Highest values are now 80%, instead of 89%, lowest values are now around 60% rather than below 50%
+- Equipment Recovery Rate reduced
+    - Reduces the amount of lost equipment which is reclaimed following a battle
+
+# 0.17.0 - "Plan Z"
+## Features
+- HoI4 Patch 1.13 & 1.14 integrated
+- HoI4 DLC AAT features integrated
+- MIO system revamped & expanded for Ultra
+- Naval MIO system heavily modified to represent slipyard restrictions for Capital Ships & Submarines
+- Reworked Light Carriers, should be much more useful now
+- Integrated & adjusted International Market
+- Special Forces doctrine trees revamped for Ultra
+- New unit types:
+    - Glider-Borne Infantry; air-droppable light infantry
+    - Mountain-Equipped Infantry; regular infantry using pack equipment
+    - Commandos; highly elite special forces support battalion benefiting from multiple Special Forces doctrine trees
+    - Amphibious Landing Craft Task Force; support battalion significantly improving amphibious capabilities but requiring:
+- New equipment: 3 consecutive techs allowing to produce increasingly more advanced Landing Craft for the ALCTF & Marines
+- AAT focus trees deactivated
+- TOA focus trees deactivated
+## Balance
+- Massively rebalanced special forces organisation
+- Lots & lots of minor stats changes
+## AI
+- Adjusted AI air strategy, should be more active now
+## Bug Fixes
+- Too many to list
+
+# 0.16.6
+
+## Features
 
 - Switzerland focus tree is back and correctly nerfed
 
-### Balance
+## Balance
 
 - Increase Assault Gun bonus against forts
 - Denmark surrender is now faster
@@ -17,7 +699,7 @@
 - Germany can't go Total War if they are still performing Operation Barbarossa
 - Temporary disabling damages on train with logistic bombing (until a fix is found for OP logistic strike)
 
-### Database
+## Database
 
 - rocket arty and SPG stats adjusted
 - Improve german decision to reorganise the balkans
@@ -31,7 +713,7 @@
 - Updated german ship names list
 - Aircraft cost scaling changed
 
-### Fixes
+## Fixes
 
 - CV fighter-bombers can nom properly naval strike
 - workaround for France Cpitulation bug
@@ -43,40 +725,40 @@
 - A-20G research year fixed
 - Fix Operation Countenance and Persian Corridor so Soviet can get LL through Persia
 
-### QOL
+## QOL
 
 - influence decisions are hidden under utility category
 
-### AI
+## AI
 
 - Various AI tweaks
 
-### 0.16.5b
+# 0.16.5b
 
-### Balance
+## Balance
 
 - Mulberry Decision Update
 - Reduced naval positioning negative effects
 - Reduce Plane Supply Usage
 - Increase Fuel/Oil Convoy Usage
 
-### QoL
+## QoL
 
 - Improved localization for Siam
 
-### Fixes
+## Fixes
 
 - Commonwealth Investment Decision Fixed
 
-### 0.16.5
+# 0.16.5
 
-### Content
+## Content
 
 - Added some basic Valkyrie stuff
 - UK Commonwealth Investment Decisions Revamp
 - Added content (focus tree, decisions...) for Siam
 
-### Balance
+## Balance
 
 - reworked Submarines (visibility, detection, torpedoes...)
 - Blackshirts Assault Battalion rebalanced
@@ -88,7 +770,7 @@
 - Reduce CP Cost For New Admirals
 - Divide all infantry weapons research boosts from ideas and manufacturers by 5
 
-### Database
+## Database
 
 - changed italian focus length
 - Adjusted German historical ship designs
@@ -102,17 +784,17 @@
 - Tech stealing changes (no longer allows to unlock techs)
 - Infantry tank manufacturer now also gives bonuses to assault guns
 
-### Map
+## Map
 
 - Finished Railways in Central Asian
 - added new naval zones in South-East Asia
 
-### QoL
+## QoL
 
 - can hide government in exile divisions
 - Loc update for inf designer
 
-### Fixes
+## Fixes
 
 - Fix equipment purchase triggers for China
 - Updated SOV tank loc
@@ -127,18 +809,18 @@
 - Quick fix for tank design companies showing up in infantry designer
 - Motorized art speed brought in line with other motorized art units
 
-### AI
+## AI
 
 - Various improvements and changes
 - AI germany should raid better places
 
-### 0.16.4
+# 0.16.4
 
-### New Content
+## New Content
 
 - Scapa flow raid decision
 
-### Balance
+## Balance
 
 - Reduced supply by naval base lvl
 - Reduced convoys needed for fuel LL
@@ -185,7 +867,7 @@
 - Brandenburger decision gives commando training agency upgrade
 - reduced visibility for fleets returning for repairing
 
-### Database
+## Database
 
 - Guam added to the limited airbase list
 - Austria starts guaranted by Italy, removed when Italy accepts anti-comintern pact
@@ -213,7 +895,7 @@
 - Reduced Number of Doctrine Cost Reductions for USA
 - increased compliance in sudetenland
 
-### Map
+## Map
 
 - Changed Tyrrhenian sea to ocean
 - Changed Sea of Sicily to water_shallow_sea
@@ -224,7 +906,7 @@
 - Updated Railway map to support Caspian Sea Crossing
 - Updated terrain in Saipan and Okinawa
 
-### QoL
+## QoL
 
 - fjords terrain modifiers no longer shows in designer
 - Condense strategic region-theater list again
@@ -238,7 +920,7 @@
 - added decision to hide infantry template decisions
 - some changes to decision layout
 
-### Fixes
+## Fixes
 
 - fixed German MechRocket Hardness
 - Fix nuclear research decision for Germany requiring 2 reactors
@@ -251,16 +933,16 @@
 - move churchill crocodile to the correct position
 - fixed syntax error for polish starting divisions
 
-### AI
+## AI
 
 - AI should no longer ping-pong between trade laws
 - Prevent UK AI from taking Scandi/Benelux intervention.
 - Chinese Defence Buffs Increased
 - China should not get too much equipment
 
-### 0.16.3
+# 0.16.3
 
-### Balance
+## Balance
 
 - Land techs cannot be stolen anymore by spies
 - Increased air losses
@@ -285,7 +967,7 @@
 - divided by 5 convoy requirement for troop transports
 - Germany Propaganda balance tweaks
 
-### Database
+## Database
 
 - Added modern uniforms for every countries
 - Germany starts with AT riffles
@@ -301,14 +983,14 @@
 - removed speed penalties on motorised arty
 - Added Convoy & Train Stockpile Siam
 
-### Bugfixes
+## Bugfixes
 
 - Air wing average size define fixed
 - Production view icon fix
 - Fixed railway gun production UI
 - Uk should properly get Churchill with Chamberlin resignation event
 
-### QoL
+## QoL
 
 - Improved MPU integration for air squadrons
 - Ships added in construction queue by decisions now requires the maximum possible number of dockyards
@@ -321,23 +1003,23 @@
 - CAN Inf Eq Loc
 - FIN Inf Eq Loc
 
-### Bugfix
+## Bugfix
 
 - Fix overlapping icon for SU-85
 
-### AI
+## AI
 
 - AI gets a submarine detection buff to not be abused too easily
 
-### 0.16.2
+# 0.16.2
 
-### Features
+## Features
 
 - Disabled port strike mission. 
 Due to vanilla issues, we can't balance it right. The issues are in known by pdx. We'll re-enable the mission once paradox have fixed it.
 - Battle of Taranto + Pearl Harbor Attack Decisions added to compensate the previous change
 
-### Balance
+## Balance
 
 - Germany gets first jet fighter a few month earlier to be able to match historical production
 - Theorist cost lowered to 100/75
@@ -352,7 +1034,7 @@ Due to vanilla issues, we can't balance it right. The issues are in known by pdx
 - adjustments to org and recovery rate
 - Additional Doctrine Cost Reductions for USA + Canada
 
-### Database
+## Database
 
 - Some tweaks for US generals
 - USA naval designers added
@@ -379,13 +1061,13 @@ Due to vanilla issues, we can't balance it right. The issues are in known by pdx
 - licensing penalties are back
 - USA Coal Decisions Update
 
-### Map
+## Map
 
 - Added 2 new terrain types Atoll and Rocky Islands with reduced base combat width
 - Add new naval regions to Central and West Atlantic
 - Chukchi Peninsula is now impassable
 
-### QoL
+## QoL
 
 - Condense ship classes and aircraft types in the intel ledger
 - Fix overlapping text in officer corps
@@ -394,7 +1076,7 @@ Due to vanilla issues, we can't balance it right. The issues are in known by pdx
 - Added more fighter group names for Germany
 - MPU icon port finalized
 
-### Fixes
+## Fixes
 
 - Fixed political advisors traits for the US
 - Corrected description of GER rocketry focus
@@ -405,19 +1087,19 @@ Due to vanilla issues, we can't balance it right. The issues are in known by pdx
 - Vichy France Establishment Fixed
 - Beaufort/Beaufighter fix
 
-### AI
+## AI
 
 - Updated AI preferences naval designers
 
-### 0.16.1
+# 0.16.1
 
-### Features
+## Features
 
 - Old Mulberry decisions reimplemented and improved
 - Improved content for Weserübung/Narvik/Sweden mini-game with german access to swedish resources
 - UK officers reworked and new added
 
-### Balance
+## Balance
 
 - Port Strike effects are now sane
 - Ship range module rebalanced
@@ -441,7 +1123,7 @@ Due to vanilla issues, we can't balance it right. The issues are in known by pdx
 - Shallow Seas are less penalizing for ships in terms of visibility
 - Nuclear Reactor cost halved so USA can get the atomic bomb on time
 
-### Database
+## Database
 
 - long range modules on ships affects naval damages (represent bigger amount of ammo stored )
 - Recalculated treaty ship limits
@@ -462,20 +1144,20 @@ Due to vanilla issues, we can't balance it right. The issues are in known by pdx
 - UK correctly starts with volunteers only law
 - More coal available in Soviet Union
 
-### Map
+## Map
 
 - reworked railways/supply hubs in Northern Russia
 - new batch of VP added in Russia
 - Western Siberian coast west of Arkhangelsk is impassable
 
-### QoL
+## QoL
 
 - Added more displayed decimals for designers
 - Better subtech icons for infantry techs
 - Added new subtechs icons
 - Added more country unique localizations for infantry techs
 
-### AI
+## AI
 
 - AI should no longer suicide fleets in German Bight
 - UK AI should garrison better Malta and Cyprus
@@ -483,7 +1165,7 @@ Due to vanilla issues, we can't balance it right. The issues are in known by pdx
 - AI Soviet Union should build and use some heavy tanks
 - AI vs AI Eastern Front should be a bit less in Axis favor
 
-### Bugfixes 
+## Bugfixes 
 
 - fixed various issues with infantry designer
 - carrier wing bug fixed
@@ -492,13 +1174,13 @@ Due to vanilla issues, we can't balance it right. The issues are in known by pdx
 - removed ghost AFV poluting AI
 - fixed UK starting with manpower shortage
 
-### 0.16
+# 0.16
 
-### Features
+## Features
 
 - Infantry Squad designer!
 
-### Balance
+## Balance
 - Air Superiority no longer provides combat modifiers
 - Disruption effectiveness has been significantly reduced
 - The number of ground support planes that can be involved in any given battle has been doubled
@@ -514,7 +1196,7 @@ Due to vanilla issues, we can't balance it right. The issues are in known by pdx
 - Increased naval xp gains
 - Improve critical hit effects on main (ship) batteries depending on the turret's setup
 
-### Database
+## Database
 - Tizzard Mission correctly gives USA the right radar bonuses
 - Finland starts with some doctrines researched
 - Removed deprecated bataillon types
@@ -525,26 +1207,26 @@ Due to vanilla issues, we can't balance it right. The issues are in known by pdx
 - Increased number of available designer slot and political advisors
 - Max xp cap increased to 900
 
-### QoL
+## QoL
 - Show army/navy/air theorist in officer corps view
 - Add unique icons for land/navy/air theorists
 - Various improved icons
 
-### Bugfixes
+## Bugfixes
 - Various localisation fixes
 - Fixed more state ID conflicts
 - Disabled Ethiopia event that made Sweden join the Axis
 - Supply consumption is correctly the same for generals and FM
 
 
-### 0.15.2
+# 0.15.2
 
-### Balance
+## Balance
 - Subjects starts with Free Trade and can't change trade law
 - artillery org is more consistant
 - USA fix deffective torpedo is less painful
 
-### Database
+## Database
 - Godo is a financial expert
 - Finlands starts with more war support and early mobilisation
 - Belgium starts with Bicycle infantry
@@ -553,21 +1235,21 @@ Due to vanilla issues, we can't balance it right. The issues are in known by pdx
 - Canada has a generic naval theorist
 - Reduced various USA focus time to be more consistant
 
-### AI
+## AI
 - AI is using its airforce more and more efficiently
 - AI is producing more aircrafts
 - AI won't research stuff it can't use
 - Soviet AI won't go beserk against Finland while being pressured by Germany
 
-### Bugfixes
+## Bugfixes
 - SS divisions fixed
 
-### Map
+## Map
 - Ladoga and Onega lakes separated from the states they were in
 
-### 0.15.1
+# 0.15.1
 
-### Balance
+## Balance
 - Removed duplicated manpower malus for India
 - Air combat defines rebalanced
 - Armor/piercing values rebalanced
@@ -575,13 +1257,13 @@ Due to vanilla issues, we can't balance it right. The issues are in known by pdx
 - Retreat Speed adjustments
 - nerf to medals stats
 
-### Database
+## Database
 - Added a second steel mill in Finland
 - Japan starts with Bicycle tech
 - Luxemburg added to Reichmark block
 - Nerfed stats of german mecghnized rocket launcher
 
-### Bugfix
+## Bugfix
 - Fixed air speed defines
 - Fixed some state ID conflicts
 - Fixed inamura duplicated trait
@@ -589,28 +1271,28 @@ Due to vanilla issues, we can't balance it right. The issues are in known by pdx
 - Fixed fighter-bombers not having properly air support mission
 - Fixed Italy having no efficiency growth
 
-### AI
+## AI
 - lowered AI desire to build synth rubber
 - soviet AI will build more steel mills
 - further reduced initial advantage of german AI at Barbarossa
 
-### 0.15
+# 0.15
 
-### Compatibility
+## Compatibility
 - Compatibility with 1.12 and BBA DLC
 
-### Balance
+## Balance
 - Speed is back as a relevant aircraft stat in game and is no longer a simple indication
 - Rebalance of naval warfare and ship stats to consider new systems introduced in 1.12
 - 80 compliance threshold now reduces resistance target by 10
 
-### Database
+## Database
 - Standardized wing sizes
 - Adapted naval OOBs to BBA and improve them
 - Standardized plane missions and types
 - Reduced german starting fuel silos
 
-### Content
+## Content
 - Revisited the BBA Italian focus tree to be more historical
 - Various new focuses added, especialy for Germany
 - UK can host a czech in-exile government once ww2 starts
@@ -618,30 +1300,30 @@ Due to vanilla issues, we can't balance it right. The issues are in known by pdx
 - MR pact gives now trade incentives for Germany to buy Soviet materials
 - Trade decision between USA and Canada so Canada can fuel allies economy with raw materials
 
-### Map
+## Map
 - fixed minor border innacuracies
 
-### AI
+## AI
 - Minor AI balance fixes
 - German AI should not send too much tanks into Norway/Greece
 - German AI is more efficient when invading Norway
 
-### UI
+## UI
 - Various focus trees layout improved
 - Improved tooltips
 - Discord link added to the main menue
 
-### Bugfixes
+## Bugfixes
 - various minor bugs fixed
 
-### Graphics
+## Graphics
 - We no longer use tank pictures from the World Ablaze mod
 - Added MPU NATO counters
 
 
-### 0.14
+# 0.14
 
-### Features
+## Features
 
 - Japan should make sensible investment to get rid of escort malus
 - Reworked german naval focuses and missions
@@ -651,7 +1333,7 @@ Due to vanilla issues, we can't balance it right. The issues are in known by pdx
 - Imperial Conference overhauled
 - Imported Propaganda decisions for most majors
 
-### Map 
+## Map 
 
 - Added 69 new airzone in Eurasia
 - Most airbases are located in bigger cities
@@ -660,7 +1342,7 @@ Due to vanilla issues, we can't balance it right. The issues are in known by pdx
 - More naval zones in Asia-Pacific
 - French Coast terrain adjusted
 
-### Database
+## Database
 
 - Various aircraft stats adjusted
 - Australian manpower nerf
@@ -704,7 +1386,7 @@ Due to vanilla issues, we can't balance it right. The issues are in known by pdx
 - Attrition system no longer affect disproportionnaly subunits with low number of equipments
 - Added a 5th row to division designer
 
-### Balance 
+## Balance 
 
 - Trains are more granular (1:1 representation instead of 1:10)
 - Soviet Desperate measures are less punishing
@@ -734,29 +1416,29 @@ Due to vanilla issues, we can't balance it right. The issues are in known by pdx
 - Convoy transporting troops are no longer disproportionnaly spotted
 - Poland should not surrender too fast
 
-### AI 
+## AI 
 
 - Various adjustements
 - UK no longer send troops to Norway
 - UK/FRA should no longer suicide fleets in the Baltic
 
 
-### UI
+## UI
 
 - Naval layout improved
 - Improved modules names for German ship modules
 - Improved german focus icons
 
-### Bugfixes 
+## Bugfixes 
 
 - Italy correcly join the war against Soviet Union
 - Atlantikwall decision now correctly build fortifications in Normandy
 - Petain is working again
 
 
-### 0.13.1
+# 0.13.1
 
-### Database
+## Database
 
 - Range of some german heavy fighter slightly increased
 - Subjects (except Colony type for the India case) does not allow to use shared manpower feature
@@ -765,7 +1447,7 @@ Due to vanilla issues, we can't balance it right. The issues are in known by pdx
 - Cas mission is available for torpedo bombers
 - Terrains have now different supply/fuel consumption values for units on them
 
-### Balance
+## Balance
 
 - Reduced org loss on ships by 90% (workaround for a deficient vanilla system)
 - Trade law is now scaling by 2.5% instead of 3% CG
@@ -775,34 +1457,34 @@ Due to vanilla issues, we can't balance it right. The issues are in known by pdx
 - Considerably reduced the xp gained in combat by ships
 - Force Attack and Last Stand no longer make the unit invulnerable to org damages
 
-### Map
+## Map
 
 - Added a few more naval zones in the atlantic ocean, improved names of existing naval zones
 
-### Bugfixes
+## Bugfixes
 
 - Fixed wrong trigger on refinery management
 - VP position fix
 
-### AI
+## AI
 
 - Tweaked AI Lend Lease defines
 
 
-### 0.13
+# 0.13
 
-### Major Changes
+## Major Changes
 
 - Rebalanced aircraft stats with an improved calculation model
 - British Islands are now on their correct geographic location relative to the european continent
 - Major bug fixed where AI did not took important decisions
 - Adjusted the industrial production of USA, UK, Germany and Soviet Union to be closer to historical figures
 
-### Features
+## Features
 
 - Unique Air spirits for Germany, UK and USA
 
-### Balance
+## Balance
 
 - Coordinated Strike number of attacks halved
 - Adjusted the industrial production of USA, UK, Germany and Soviet Union to be closer to historical figures
@@ -826,7 +1508,7 @@ Due to vanilla issues, we can't balance it right. The issues are in known by pdx
 - Reduced soviet chance to capture spies
 - Buffed Suicide Pills
 
-### Map
+## Map
 
 - British Islands are now on their correct geographic location relative to the european continent
 - Reworked North Africa so it is minimum 3 tile wide, El Alamein chokepoint is now 2 provinces
@@ -834,7 +1516,7 @@ Due to vanilla issues, we can't balance it right. The issues are in known by pdx
 - Naval zones of the Eastern Atlantic reshaped
 - Reshaped the North Sea
 
-### Database
+## Database
 
 - Reshaped slightly UK and USA focus trees
 - "Research Treaty with Soviet Union" focus for Germany replaced by "Form the Panzertruppe" that gives the same bonuses without asking Soviet Union. Soviet Union gets its own bonus in its focus tree.
@@ -858,12 +1540,12 @@ Due to vanilla issues, we can't balance it right. The issues are in known by pdx
 - Positive xp on airwings reduce accident chances
 - Reduced Philipines Manpower
 
-### QoL
+## QoL
 
 - Improved Ace window
 - Improved theater's interface
 
-### Bugfixes
+## Bugfixes
 
 - Case Anton now properly pupet French State, allowing to capture the french fleet
 - Australia can no longer pupet Malaysia if it is occupied
@@ -880,7 +1562,7 @@ Due to vanilla issues, we can't balance it right. The issues are in known by pdx
 
 - Lots of minor fixes
 
-### AI
+## AI
 
 - AI countries gets hidden decisions to prevent going into lack of equipment death-spiral
 - Finland AI should aim to retake Carelia in the continuation war
@@ -889,9 +1571,9 @@ Due to vanilla issues, we can't balance it right. The issues are in known by pdx
 - Major AIs should no longer switch back and forth between trade laws
 - Savoy is now an Italian claim so the AI does not transfers occupation to Germany
 
-### 0.12.5
+# 0.12.5
 
-### Features
+## Features
 
 - Added decision to build railway guns
 - Added mission for capturing Norway's gold as Germany
@@ -900,7 +1582,7 @@ Due to vanilla issues, we can't balance it right. The issues are in known by pdx
 - Implemented french navy spirits
 - Soviet Union gets free generic navy spirit through focuses
 
-### Balance
+## Balance
 
 - Land equipment IC cost & supply use rebalanced
 - Leader bonuses changed to take terrain into consideration
@@ -930,7 +1612,7 @@ Due to vanilla issues, we can't balance it right. The issues are in known by pdx
 - Carrier Experience decision is now way more xp costly
 - Base research length increased by 10%
 
-### Database
+## Database
 
 - German naval spirits now gives cruiser design cost reduction
 - Finishing Plan Z gives more rewards and timer is increased to 9 years
@@ -958,7 +1640,7 @@ Due to vanilla issues, we can't balance it right. The issues are in known by pdx
 - Tank designers no longer affects all tank types
 - Von Fritsch removed as german advisor
 
-### QoL
+## QoL
 
 - Added global reffineries/mills UI in trade tab
 - Building icons improved
@@ -972,7 +1654,7 @@ Due to vanilla issues, we can't balance it right. The issues are in known by pdx
 - Improved ship icons
 
 
-### Localisation 
+## Localisation 
 
 - Improved german airwings names
 - Fixed german namelists
@@ -982,7 +1664,7 @@ Due to vanilla issues, we can't balance it right. The issues are in known by pdx
 - Improved tank localisations
 - Names of naval stuff updates gets roman numerals
 
-### Bugfixes
+## Bugfixes
 
 - Italian naval spirit now correctly gives malus to carrier research
 - US election code leads to less weirdness
@@ -1001,13 +1683,13 @@ Due to vanilla issues, we can't balance it right. The issues are in known by pdx
 - Hungary access to economic laws is now more consistant
 - US strategic bombing and combined bomber offensive bonuses now correctly applies to heavy maritime bombers
 
-### AI 
+## AI 
 
 - Polish AI improved
 
-### 0.12.4
+# 0.12.4
 
-### Features
+## Features
 
 - Italy gets unique naval command spirits
 - Wealth exploitation decisions for Germany are no longer instant
@@ -1019,7 +1701,7 @@ Due to vanilla issues, we can't balance it right. The issues are in known by pdx
 - Reworked the focus to move industry to Ural. Can now be taken before Barbarossa but displace less factories. Makes decisions actualy more important.
 - Reorganized Soviet Tank Tree, with KV1 available in 1939 and T-34 in 1940
 
-### Balance
+## Balance
 
 - Mud hurts more tanks/mots/mechs
 - Army Expension focus for Japan now gives a land doctrine bonus
@@ -1076,11 +1758,11 @@ Due to vanilla issues, we can't balance it right. The issues are in known by pdx
 - Air/land designer gives passive xp generation
 - Chinese equipment purchases fixed
 
-### Database
+## Database
 
 - Improved accuracy of starting US aircrafts
 
-### Map
+## Map
 
 - Improved the accuracy of iron distribution in Soviet Union
 - Mariupol added as victory point
@@ -1088,7 +1770,7 @@ Due to vanilla issues, we can't balance it right. The issues are in known by pdx
 - Taking Krivoy Rog VP should be enough to take control of the many resources there
 - The tile next to Metz is now properly hills and no longer plains
 
-### Bugfixes 
+## Bugfixes 
 
 - B24 aluminium cost is now consistant with other heavy bombers
 - Fixed lying tooltip for Stalingrad Tractor Factory upgrade
@@ -1101,7 +1783,7 @@ Due to vanilla issues, we can't balance it right. The issues are in known by pdx
 - Cannadian construction projects have correct civ requirements
 - AI only events giving free techs should no longer be activated for the player
 
-### AI
+## AI
 
 - German AI will defend Axis French State if Allies invade it
 - German AI now properly blocks the Channel
@@ -1113,23 +1795,23 @@ Due to vanilla issues, we can't balance it right. The issues are in known by pdx
 - German Ai should not send troops in East Africa anymore
 - UK should defend better against Sealion
 
-### QoL
+## QoL
 
 - Reduced required free civs for conversion decisions. Still higher than civs actualy needed to not hurt trade.
 - The normaly hidden event that is sometime shown when loading a savegame now explain what it is.
 - Resource topbar is more dynamic and logical
 
-### interface 
+## interface 
 
 - Better icon for german naval spirit 
 
-### 0.12.3
+# 0.12.3
 
-### Feature
+## Feature
 
 - USA can decide to give Greenland control to UK
 
-### Balance
+## Balance
 
 - Supply hubs and ports rebalanced to give more trhoughput but range lowered
 - Reduced globaly truck attrition
@@ -1146,11 +1828,11 @@ Due to vanilla issues, we can't balance it right. The issues are in known by pdx
 - China no longer gets offmap military factories by doing the "road" focuses
 - Chinese "road" focuses now allows access to foreign purchases if required states are held by china/allies
 
-### Map
+## Map
 
 - further improved railroad's map
 
-### Bugfixes
+## Bugfixes
 
 - fixed issue concerning heavy infantry equipment purchases
 - Chinese fleet is no longer placed in a DMZ
@@ -1160,19 +1842,19 @@ Due to vanilla issues, we can't balance it right. The issues are in known by pdx
 - Cavalry should not overtake tanks in templates
 - Sino-German designer is removed when german advisors are recalled
 
-### AI
+## AI
 
 - Chinese warlords won't help ROC but defend their own territory
 
-### 0.12.2
+# 0.12.2
 
-### Features
+## Features
 
 - Implemented unique naval spirits for Germany, UK, USA and Japan
 - USA can now order convoys from civilian industry
 - USA getting rid of depression gives an extra industry buff
 
-### Map 
+## Map 
 
 - Reworked Shanghai area
 - Reworked Lybia (victory points etc) so it is less empty
@@ -1181,7 +1863,7 @@ Due to vanilla issues, we can't balance it right. The issues are in known by pdx
 - Further improved sovie rare material repartition
 - Better railways in Manchuria
 
-### Balance
+## Balance
 
 - Reduced logistical strikes effects
 - Leader traits reducing consumer goods nerfed
@@ -1189,7 +1871,7 @@ Due to vanilla issues, we can't balance it right. The issues are in known by pdx
 - Supply hub range increased slightly
 - Army and army group size changed
 
-### Database 
+## Database 
 
 - Chinese Hindenburg line forts are in proper locations
 - Rubber now needs workers
@@ -1211,32 +1893,32 @@ Due to vanilla issues, we can't balance it right. The issues are in known by pdx
 - Germany no longer starts with 38's reffinery techs
 - Added chinese generals (with place holder portraits)
 
-### AI
+## AI
 
 - French AI should not send lots of good divisions guarding border with belgian Congo
 - Axis minors should not help Persia if Persia ends up into Axis
 - Better romanian templates
 
-### UI 
+## UI 
 
 - Workers needs on resources now available on trade screen
 - Added tooltip for building workers needs
 - Layout of german tank tree improved
 
-### Bugfixes
+## Bugfixes
 
 - Cavalry now needs the same amount of equipment than infantry
 - Front AI bug fixed
 
 
-### 0.12.1
+# 0.12.1
 
-### Features 
+## Features 
 
 - Implemented unique army spirits for Australia, Hungary, Canada and Poland
 - Custom mapmode for resources buildings
 
-### Database 
+## Database 
 
 - Hungary starts without motorized tech
 - Sexton is now a 1942 tech
@@ -1245,7 +1927,7 @@ Due to vanilla issues, we can't balance it right. The issues are in known by pdx
 - Added a bunch of Soviet generals
 
 
-### Balance 
+## Balance 
 
 - AFV gives less hardness
 - HQ and MP gives a bit less organisation
@@ -1270,14 +1952,14 @@ Due to vanilla issues, we can't balance it right. The issues are in known by pdx
 - Non-core resources strongly lowered but theoricaly compensated by compliance
 - Increased passive & training equipment attrition to be signifiant enough
 
-### Map
+## Map
 
 - Added airbases levels in Europe
 - Got rid of Sri Lanka autonomous pupett state
 - Adjusted iron in Europe, taking quality of ore more into consideration
 - Various Soviet resources adjusted
 
-### Bugfixes
+## Bugfixes
 
 - French State no longer join the Axis too soon
 - Italy should not longer leave Axis because there is no claims lefts on French State
@@ -1286,11 +1968,11 @@ Due to vanilla issues, we can't balance it right. The issues are in known by pdx
 - Japan AI no longer blocade itself in peacetime
 - UK's dominions no longer blocade themselves in peacetime
 
-### Artworks 
+## Artworks 
 
 - Improved Staff Office button
 
-### AI 
+## AI 
 
 - AI is less shy about producing and using aircrafts
 - Improved german AI division templates
@@ -1305,7 +1987,7 @@ Due to vanilla issues, we can't balance it right. The issues are in known by pdx
 - Improved starting Romanian division templates
 - AI should no longer starve itself from traded resources because converting too much factories
 
-### QoL
+## QoL
 
 - Naval supply easier to understand
 - We can open/close 5 resources buildings using ctrl
@@ -1313,17 +1995,17 @@ Due to vanilla issues, we can't balance it right. The issues are in known by pdx
 - Max wing size increased to 1600 so mass deploying planes is easier
 - Speed Stat is no longer changed by the air equipment upgrades
 
-### Performances
+## Performances
 
 - Optimized AI strategies
 
-### 0.12.0
+# 0.12.0
 
-### Update
+## Update
 
 - Updated to 1.11 and to NSB DLC
 
-### Features
+## Features
 
 - Dynamic relation between manpower and Industry finished
 - Complete rebalance of new soviet Focus
@@ -1335,39 +2017,39 @@ Due to vanilla issues, we can't balance it right. The issues are in known by pdx
 - Added a fourth line on the division designer
 - More "construction focus" turned into construction project decisions
 
-### Balance 
+## Balance 
 
 - Supply system rebalanced to be more realistic
 - Cost of railways/supply hubs tweaked
 - Compliance is slower to grow
 
-### AI 
+## AI 
 
 - Improvement of AI on most ww2 theaters
 
-### UI
+## UI
 
 - Correction of most UI issues
 
-### Bugfixes 
+## Bugfixes 
 
 - Correction of older bugs being missed in previous version
 
-### Disabled stuff 
+## Disabled stuff 
 
 - Tank designer is currently disabled to keep the mod 's unique tank trees. This is temporary while we rework it from scratch with unique chassis/modules.
 - Baltic focus trees disabled. Impossible to make them interresting, accurate and balanced.
 - Soviet fantasy content disabled
 
 
-### 0.11.0
+# 0.11.0
 
-### Features
+## Features
 
 - Industrial granualrity increased by a factor of 4
 - Token costs in coal/bauxite/iron on equipments are no longer needed
 
-### Database 
+## Database 
 
 - Industry numbers rescaled to be closer from Kennedy's studies. Majors starting industrial potential increased comparatively to minors, majors rescaled toward each others to be closer to historical sources.
 - Countries starts less militarized (lower mils to civ ratio)
@@ -1376,12 +2058,12 @@ Due to vanilla issues, we can't balance it right. The issues are in known by pdx
 - Germany starts without any Fieldmarshalls 
 - Terrains now gives temperature modifiers
 
-### UI 
+## UI 
 
 - New State UI allowing up to 225 shared buildings
 - Reffinery management GUI tool
 
-### Map 
+## Map 
 
 - Northern Macedonia is now a bulgarian core
 - Vinnistya state resized to allow a proper Romanian Transnistria
@@ -1394,7 +2076,7 @@ Due to vanilla issues, we can't balance it right. The issues are in known by pdx
 - Reworked states around the Ardennes, expend the strategic area so Sedan is correctly part of it
 - Splitted the french alps State and reshaped states and strategic regions in southern France
 
-### Balance 
+## Balance 
 
 - Prewar Industrial growth lowered from ~10% per year to about 3-5%
 - Factory conversion even more desirable
@@ -1407,7 +2089,7 @@ Due to vanilla issues, we can't balance it right. The issues are in known by pdx
 - Adjusted naval guns hit profiles so naval battles are a bit more deadly
 - Reduced naval positioning penalty
 
-### AI 
+## AI 
 
 - AI vs AI Eastern front should be less likely to collapse 
 - Stopped AI to do unnecessary conscriptions
@@ -1415,16 +2097,16 @@ Due to vanilla issues, we can't balance it right. The issues are in known by pdx
 - Serious bug councerning Soviet Union converting every divisions into tanks corrected
 
 
-### 0.10.1
+# 0.10.1
 
-### Features 
+## Features 
 
 - Double agent and linguist operatives have now proper effects
 - Going for Truces in China as Japan gives air doctrines bonus (simulate big air experience IJA get in China, currently not being really possible to represent)
 - Some countries including Soviet Union, France, Japan and Italy get a national spirit decreasing a lot unit training to represent the reservist population after generations of mandatory military service 
 
 
-### Database
+## Database
 
 - Scrapped (temporarily) some aircrafts that would be pure downgrades
 - Early japanese medium bombers realiability reduced to reflect engine issues thoses had
@@ -1435,7 +2117,7 @@ Due to vanilla issues, we can't balance it right. The issues are in known by pdx
 - Naval leader traits/skills no longer increase ship armor/HP but rather org, decrease visibility etc
 - Doenitz starts only lvl 4 instead of 5 and accordingly reduced skills
 
-### Balance 
+## Balance 
 
 - Airwing deployments reduced to 5 days
 - Recon mission gives more xp
@@ -1473,13 +2155,13 @@ Due to vanilla issues, we can't balance it right. The issues are in known by pdx
 - Not being pierced gives further reduction of incoming org damages but keep the same str damage reduction
 - Stugs (AGs and TDs) are no longer affected by german tank debuff from Mittelstand
 
-### AI 
+## AI 
 
 - AI Austria is now prevented to promote generals
 - AI soviet gets shorter org debuff against AI Germany than soviet player
 - AI USA should not struggle too much to produce new divisions
 
-### Bugfixes 
+## Bugfixes 
 
 - Naval losses display fixed
 - Sunderland (british maritime patrol) correctly displayed as 1938 tech
@@ -1491,15 +2173,15 @@ Due to vanilla issues, we can't balance it right. The issues are in known by pdx
 - IS2 is correctly considered as IS1 variant and as such get reduced research time
 - Light Bombers can now correctly do strat bombing
 
-### QoL 
+## QoL 
 
 - Increased low/medium fuel icon saturation to be more visible
 - Planning bonus bar is now red instead of blue
 - Hide ahistorical branchs for Germany under game options
 
-### 0.10
+# 0.10
 
-### Features 
+## Features 
 
 - Unique air trees for all majors
 - Rewamped generic air tree for minors
@@ -1508,29 +2190,29 @@ Due to vanilla issues, we can't balance it right. The issues are in known by pdx
 - Switzerland and Sweden gets a "armed neutrality" decision
 - Removed airforce size modifiers
 
-### AI 
+## AI 
 
 - Diverse improvements. Particular attention to the eastern front in AI vs AI
 - AI Soviet Union gets streamlined production and decent division templates
 - Soviet Union suffer one week org debuff when attacked by German AI
 
-### QoL
+## QoL
 
 - Starting stockpiles does not need events anymore
 - Improved decisions for opening/closing resource buildings
 
-### Performances 
+## Performances 
 
 - Optimized AI files & manpower calculations 
 
-### Database 
+## Database 
 
 - Post 1945 major tanks get proper stats
 - Scrapped most of anachronic tanks
 - Temporarily removed Sturmtiger
 - Sturmpanzer IV considered as heavy AG
 
-### Balance 
+## Balance 
 
 - Nerf to Auftragstaktiks
 - Adjustments to division xp
@@ -1545,23 +2227,23 @@ Due to vanilla issues, we can't balance it right. The issues are in known by pdx
 - Positionning system adjustments (based on IHMP)
 
 
-### Map 
+## Map 
 
 - Moved resources and buildings more accuratly in China and Soviet Union
 
-### Bugfix 
+## Bugfix 
 
 - You don't get anymore insane manpower from occupation
 - Diverse interface bug fixed
 
-### 0.9
+# 0.9
 
-### AI 
+## AI 
 
 - Diverse AI improvements 
 - Soviet AI nows DOW Germany if there is a sucessfull Sealion 
 
-### Database 
+## Database 
 
 - USS Hornet correctly implemented
 - Starting number of synthetic fuel & rubber reffinerie adjusted
@@ -1574,13 +2256,13 @@ Due to vanilla issues, we can't balance it right. The issues are in known by pdx
 - Scrapped Leopard I tank (development is too late to not break the game model) 
 - Improved late Panther models pictures
 
-### Bugfix 
+## Bugfix 
 
 - Skilled Staffer correcly works with general's division limits.
 - Corrected stupid Hard Attack value on Chi-Se
 - Avoid formation of weird chinese enclaves in the japan-china truce event
 
-### Balance 
+## Balance 
 
 - Economics systems have all more CG needs 
 - Reduced base IC output of military factories
@@ -1601,29 +2283,29 @@ Due to vanilla issues, we can't balance it right. The issues are in known by pdx
 - Tweaked ground fuel usage defines
 
 
-### QoL 
+## QoL 
 
 - Decision to DOW Soviet Union as Germany enabled for the player 
 - Notification Popup when Escalation Clause decision is time out
 
-### Map 
+## Map 
 
 - Malta is now an urban tile
 - Redrawed strategic zones map to prepare to aircraft overhaul
 
 
 
-### 0.8.9
+# 0.8.9
 
-### Compatibility 
+## Compatibility 
 
 - 1.10.7 compatibility update
 
-### Features 
+## Features 
 
 - Added Army Manager : This feature allow to represent logistic tails of divisions and the quality of communications
 
-### Balance
+## Balance
 
 - Nerfed seducer and buffed Master Operative traits.
 - Counterintelligence mission does not get diminushing returns
@@ -1647,7 +2329,7 @@ Due to vanilla issues, we can't balance it right. The issues are in known by pdx
 - Halved xp cost for soviet army reforms
 - Reduced purges maluses
 
-### Database 
+## Database 
 
 - Added a third lvl of operative xp 
 - Spy network now works for every VP
@@ -1672,44 +2354,44 @@ Due to vanilla issues, we can't balance it right. The issues are in known by pdx
 - Panay incident cannot trigger a war anymore 
 - UK/Netherlands should be already at war against a major power to be guaranted by USA
 
-### QoL 
+## QoL 
 
 - Added a decision to show/hide equipment purchases decisions 
 - Integrated resource topbar mod (by Lennard)
 
-### AI 
+## AI 
 
 - Commonwealth AI more coordinated 
 - Chinese AI improved 
 - Italian AI will build less Battleships
 - Japanese AI is better to make naval invasions
 
-### Bugfixes 
+## Bugfixes 
 
 - Fixed some occurences where AI Germany stopped all offensives during Fall Gelb
 - Historical tanks divisions templates are now properly considered as tanks divisions by the game 
 
 
-## 0.8.7
+# 0.8.7
 
-### Map
+## Map
 
-#### Redraw the map of China
+### Redraw the map of China
 - Split state into historical provincial border, with multiple states for each chinese province to represent the logistic better.
 - Redistribute industry, so that industry is more concentrated along the historical areas on the coast
 - Move VP around so that city are where they should be (most notable being Xi'an, Lanzhou and Tianshan, which are wrong by a couple of provinces)
 
-#### Rework the Map of South East Asia
+### Rework the Map of South East Asia
 - Add in important VPs and ports, adjust VP according to importances and population
 - Change states to represent the coutnries of south east asia better
 - Redistrbute resources to historical location, increase the oil and rubber production of the Netherland East Indies; Add oil to Burma
 - Add in historical mountain ranges/impassible terrain, especially in Burma, Nehterland East Indies and Papua
 
-#### Other changes
+### Other changes
 - Add & Fix histoircal straits: The Danish Strait, the Strait of Malacca, the Fortress of Battaan
 - Fix the German-French border, remove the corner of the maginot line that can be attack from multiple direction
 
-### Balance
+## Balance
 - Rebalance fuel produced and coal needed by synth fuel reffineries
 - Reduced hit chances of depth charges
 - Reduced slightly sub reveal chances
@@ -1719,19 +2401,19 @@ Due to vanilla issues, we can't balance it right. The issues are in known by pdx
 - Added further conditions for France to ally with UK
 - Attempt to increase base combat width
 
-### Database
+## Database
 - increase starting oil available in Romania
 - set more accurate values for starting oil in Germany
 - set more accurate starting reffineries level in Germany
 
-### Features
+## Features
 - Added decisions to increase oil extraction in Austria
 - Added events for historical oil depletion in Germany and Romania
 
-## 0.8.6
+# 0.8.6
 Compatibility for 1.10 and Battle for the Bosphorus
 
-### Balance
+## Balance
 - rollback on some convoys defines to make convoy raiding more meaningfull
 - German War Economy focus now needs 70% War Support to be taken, instead of only 50% previously
 - Speer a bit buffed on max efficiency side
@@ -1760,7 +2442,7 @@ Compatibility for 1.10 and Battle for the Bosphorus
 - Unpierced bonus is easier to get but has way less effects
 - Equipment base capture rate is now 5% from 3%
 
-### Features
+## Features
 - Dedoubled production efficiency and industry techs to have a more streamlined production per year instead of big spikes + incitation to tech rush.
 - Abandoning Naval Treaty as a democracy cost more Political Power and cause a stability/war support drop
 - Starting airwings starts with trained pilots
@@ -1779,16 +2461,16 @@ Compatibility for 1.10 and Battle for the Bosphorus
 - Infantry hp switched from bataillon stats to equipment stats. Allow divisions strength to grow with superior techs, partialy offsetting late game powercreep.
 - Heavy AA, AT and Artillery are now support only.
 
-### Fixes
+## Fixes
 - France and UK decision to switch to War Economy should now work properly
 
-### Map
+## Map
 - Revided some mountain terrain into hills terrain in Lybia and in Eastern France
 - Suez State added separately from Cairo
 
-## 0.8.5.2
+# 0.8.5.2
 
-### Balance
+## Balance
 - technical balance on the ratio of manpower/equipment lost when unit strength is lost, and base trickelback
 - tone down every modifier affecting reduction of supply consumption : was previously possible to stack -100% supply needed.
 - Tone down the modifiers reducing the penalties for out of supply units for the same reasons
@@ -1803,7 +2485,7 @@ Compatibility for 1.10 and Battle for the Bosphorus
 - Various smaller tank adjustments
 - Agrarian Economic System does not allow anymore to go to Total Mobilisation
 
-### Features
+## Features
 - Removed the carrier flighdeck with 100 or more deckspace. With taking into consideration reserve planes, thoses super carriers where only a things more than a decade after the game scope.
 - Heavy Cruisers are no longer considered as capital ships (exept german Panzerschiffe)
 - scraped about 50% of redundant NRM capital ship guns
@@ -1811,30 +2493,30 @@ Compatibility for 1.10 and Battle for the Bosphorus
 - Cas bombers are now able to do some minor strategic bombing and strat bombers some minor tactical bombing
 - Removed the german prototype tank VK 36.01 (impossible to balance right with the ombat system) and replaced it by the Durchbruchswagen 2, a 1939 heavy tank
 
-### Fixes
+## Fixes
 - Updated the EAI script to avoid AI to mess your borders
 - Fixed an issue with supply
 
-### Map
+## Map
 - updated slightly supplyzones in Manchuria
 - Better infrastructure in Machuria in the Liatung state
 - Majors ports in Asia have higher naval base lvl
 
-### QoL  - an attempt to decluter the decision pannel
+## QoL  - an attempt to decluter the decision pannel
 - Removed some redundant decisions
 - Hide deicisions when it is not relevant to show them
 - Dutch influence mini-game disabled in historical settings
 
-## 0.8.5.1
+# 0.8.5.1
 
-### Map
+## Map
 - Reworked map of Australia
 - Impassible states for DEI instead of impassible borders
 - Chinese starting industry is more concentrated in the coast
 - Added an Artic Terrain modifier for Artic-Subartic reagions, affecting supply and combat abilities of divisions there
 - Added naval bases in Asia
 
-### Features
+## Features
 - Added HQ as support compagnies
 - Removed Militia
 - Partial rework on British RAJ
@@ -1844,7 +2526,7 @@ Compatibility for 1.10 and Battle for the Bosphorus
 - Added a removable debuff for Soviet Union when attacking Finland
 - Engineers support compagnies are now support regiments (more equipment needed, give more stats)
 
-### Balance
+## Balance
 - Slightly buffed Zaibatsus and Militarism for Japan
 - Improved Japanese Stockpiles
 - Rollback on the nerf for High Command
@@ -1852,9 +2534,9 @@ Compatibility for 1.10 and Battle for the Bosphorus
 - UK focus tree adds one extra research slot for UK and USA
 - Japanese focus tree adds one extra research slot
 
-## 0.8.5
+# 0.8.5
 
-### Balance
+## Balance
 - Reintegrated a better terrain and combined warfare system
 - big rationalisation on tanks along with other land equipments (artillery and infantry)..
 - Motorized AA/AT/ART have slight combats bonus to represent faster deployment in battle.
@@ -1897,18 +2579,18 @@ Compatibility for 1.10 and Battle for the Bosphorus
 - Using air transport for supply missions does not cost command points anymore
 - Romania can't join Axis too soon
 
-### AI
+## AI
 - AI improvements in the North African front
 - Allied AI is setup to invade Italy once North Africa is secured
 - AI improvement in the Pacific and China theaters
 
-### Map
+## Map
 - Redefined the border between Baden and Württemberg states.
 - Splitted the Rhein strategic area in two
 - Added a Cyrenaica strategic area between Lybia and Egypt
 - Splitted the big Henan state
 
-### Database
+## Database
 - Ilyushin and Tupolev are now respectively CAS designer and medium bombers designer.
 - Added additional war support in the french focus tree
 - Ethiopia starts will army fully equiped
@@ -1923,7 +2605,7 @@ Compatibility for 1.10 and Battle for the Bosphorus
 - China starts with GW tank researched
 - Added a 1942 version of the T34 and a research bonus on it with the Great Patriotic War
 
-### Features
+## Features
 - Reworked french aggressive focuses
 - Anglo-German naval agreement feature
 - Improved existing naval treaty localisations
@@ -1934,14 +2616,14 @@ Compatibility for 1.10 and Battle for the Bosphorus
 - Default rules of the mod will be strictly historical focus trees with alternative histories locked under a starting rule option.
 - Updated and rewamped Finland focus tree
 
-### Fixes
+## Fixes
 - many minor bugs fixed
 - Peace events fixed
 - Soviet militia can no longer be spawned into territory occupied by the ennemy
 
-## 0.8.4.5
+# 0.8.4.5
 
-### Balance
+## Balance
 - Nerfed AC's suppression
 - Increased AC's base recon (in recon comp)
 - Increased light tanks base suppression
@@ -1949,13 +2631,13 @@ Compatibility for 1.10 and Battle for the Bosphorus
 (all thoses change make incitation to use ACs as a recon role and no longer as a no-brain suppression role. Light Tanks are the best at that role instead)
 - Simplify & partial rollback on terrain modifiers. Big rationalization there.
 
-### Features
+## Features
 - Added UK and USA amphibious tanks
 - slight rework on tank tree for SU and Germany
 
-## 0.8.4.4
+# 0.8.4.4
 
-### Balance
+## Balance
 - Resistance is more painfull and need more garrison
 - XP for divisions and leaders is harder to get
 - XP threshold are now exponentials instead of linears for units
@@ -1963,7 +2645,7 @@ Compatibility for 1.10 and Battle for the Bosphorus
 - Terrain effects rebalanced
 - Slight tank rebalancing and additions of a few variants
 
-### Features
+## Features
 - Events closing automaticaly buildings in case of resources shortages will now target occupied territories in priorities
 - New decisions to close occupied resources consuming buildings without any cost
 - Decisions to reopen resources consuming buildings no longer cost pp but have 10 days timers instead
@@ -1972,14 +2654,14 @@ Compatibility for 1.10 and Battle for the Bosphorus
 - Updated Soviet OOB and stockpiles
 - Added more options in the tank designer
 
-### Fixes
+## Fixes
 - Removed the cavalry duplicated bonuses in Infantry techs
 
-## 0.8.4.3
+# 0.8.4.3
 
-### Balance
+## Balance
 
-#### General
+### General
 - Increased convoys HP and speed to be more in line with other ships. Now a convoy has about the same toughness of a destroyer and the speed of a submarine.
 - Convoys are slightly harder to find by raiding fleets
 - Trade route efficiency now scales properly with % of required convoy lost
@@ -1996,7 +2678,7 @@ Compatibility for 1.10 and Battle for the Bosphorus
 - Spy network gives slightly less intel proportionaly to decrypting cyphers
 - Brillant Strategist FM traits effect reduced
 
-#### Germany
+### Germany
 - Reduced german research bonus on streamlined submarine and on battleship guns techs
 - Reduced german research bonus on synthetic fuel and synthetic rubber reffineries techs
 - German focus "synthetic rubber" gives only 2 additional rubber per reffinery instead of 3
@@ -2013,7 +2695,7 @@ Compatibility for 1.10 and Battle for the Bosphorus
 - Increase the factory conversion ability from Speer
 - Reduced the 200% doctrine research speed bonus on air/naval into 100% ones
 
-#### Soviet Union
+### Soviet Union
 - Purge modifier no longer affects divisions organisation nor attack/defense
 - Purge modifiers affects divisions xp gains instead
 - Purge modifier no longer affects airwings stats
@@ -2026,38 +2708,38 @@ Compatibility for 1.10 and Battle for the Bosphorus
 - Planned Economy no longer gives extra factory output but gives more construction speed instead
 - Great Patriotic War gives less factory output bonus, but gives lots of reduction cost on converting factories instead
 
-#### Japan
+### Japan
 - Removed decision for Pearl Harbor. That decision is a duplicate of "coordinated Strike" from espionnage system.
 - Slight reduction of the "Tora Tora Tora" modifiers
 
-#### Italy
+### Italy
 - Italy now starts with 50% war support instead of 70%
 - Italy starts with a new national spirit reflecting the poor state of its army and airforce in the late 30's. Can be removed progressively by decision spending xp, like chinese reforms of soviet purges.
 - Italy starts with a new national spirit reflection the poor state of its economy (like France), can be removed by focuses.
 
-#### USA
+### USA
 - Arsenal of democracy needs 45% war support instead of 60%
 - Military construction needs 50% war support instead of 60%
 - Two ocean naval act needs 55% war support instead of 65%
 - Giant Wakes needs 60% war support instead of 80%
 - USACE project needs 60% war support instead of 80%
 
-#### UK
+### UK
 - increased mils/docks construction bonus for rearmament national spirits
 - Shadow Scheme mission now needs only 2 weeks instead of 6 month to be completed
 - Removed the restriction on Total Mobilisation. Now Chamberlin do no longer lock it.
 - Special ministers now need Churchill to be hired
 
-#### Other nations
+### Other nations
 - Reduced the effects of finish Sisu
 - Improved moderately french B1 (and derivates) Soft Attack
 - Removed mutualy exclusive focus from French military focuses
 
-### Features
+## Features
 - Improved some italian focus and decisions triggers to adapt to LaR
 - Removed ahead reduction tech bonus in generic focus tree
 
-### Database
+## Database
 - Added 6 military factories for France, reduced numbers of civs to keep same economic balance
 - Adjusted toward historical values the starting number of convoys all majors and the convoys given by event when Norway is capitulated.
 - All majors starts with fuel silos already built in capitals/major cities/majors ports (depend of the country)
@@ -2065,20 +2747,20 @@ Compatibility for 1.10 and Battle for the Bosphorus
 - Adjusted starting military/civ ratio of Soviet Union to be more accurate
 - Adjusted starting dockyards of every majors toward more accurate balance
 
-### AI
+## AI
 - Ai only hidden modifiers should normaly go away when the country is taken over by a player
 - AI Germany should not declare war on Soviet Union if France has not fallen yet.
 
-### Fixes
+## Fixes
 - Removed inconstitencies in the pacific islands
 - Naval Rearmament should no longer be entwined with Revive the National bloc in France focus for non-LaR owners.
 - USA should not be able to Lend Lease if Lend Lease act is not taken
 - Tizard mission is now correctly available even if USA is at war
 - Australian Focus "The Singapur Strategy" should now work properly and not be a direct bypass
 
-## 0.8.4.2
+# 0.8.4.2
 
-### Balance
+## Balance
 - Reduced the manpower losses to Resistance
 - Mission to steal technologies can no longer steal industry techs (major industrial balance issue!)
 - Collaboration mission no longer affects surrender limit, slight reduction of complience added by a mission.
@@ -2096,32 +2778,32 @@ Compatibility for 1.10 and Battle for the Bosphorus
 - Rationalized some planes stats (improved fighters bombers, nerfed a bit heavy bomber naval targeting).
 - Reduced slightly Canada factories from focuses
 
-### Features
+## Features
 - France focus "fusillers de marines" is now properly linked to "army reforms". Allows to not do "extend Maginot Line" focus and still being able to reform the army.
 - Hoshima is now a Prince of Terror in addition to other trait.
 - Transport planes and Scout planes are now considered as "strategic bombers" in addition to their other types. They have 0 strategic bombing abilities, but can now properly be trained.
 
-### Fixes
+## Fixes
 - Resistance can now properly sabotage every buildings and resources
 - UK agency now starts with the proper agency logo
 - Fixed the CTD caused when AI could not manage a lot of Carriers
 
-### AI
+## AI
 - Unleashed the USA AI production of Carriers
 
-### Graphics
+## Graphics
 - Added "Tank Encyclopedia" illustrations for historical french and soviet tanks
 
-## 0.8.4.1
+# 0.8.4.1
 
-### General
+## General
 - made game speed a bit faster, still slower (but less than previously) than vanilla for speed 1-2-3 and same for speed 4.
 
-### Map
+## Map
 - Added 5 additional VP to Bordeaux. Should corectly be french temporary capital if Paris is lost.
 - Adjusted the Oil on map and by focuses (thanks to Dragunov)
 
-### Balance
+## Balance
 - Removed the extra sub detection on destroyers hulls
 - Japan starts with 40% war support instead of 80%.
 - Japan has a new condition of war support to get access to military mobilisation
@@ -2137,7 +2819,7 @@ Compatibility for 1.10 and Battle for the Bosphorus
 - Montains gives more debuff, especially on tanks.
 - Convoy cost set to 400 IC instead of 500
 
-### Features
+## Features
 - UK BSA company now gives also discount on heavy infantry equipment
 - Switzerland stays neutral even if Berlin-Moscow pact is created
 - Italy decision to declare on Yugoslavia is more limited
@@ -2145,21 +2827,21 @@ Compatibility for 1.10 and Battle for the Bosphorus
 - Soviet Decisions to reforms the army are not instant anymore but need 3 weeks to be completed (on the chinese model but faster). Avoid players tanking xp to get rid of purge instantly once war is declared and also a more gradual recovering.
 - Reduced the time needed by a bunch of manchurian focuses with little effect.
 
-### Fixes
+## Fixes
 - Jinan is now correctly ceded to Japan in case of Chinese concessions
 - The Zero special variant event should now correctly fire
 - China decisions to move industry to the interior now properly work for starting factories.
 
-## 0.8.4
+# 0.8.4
 
-### Map
+## Map
 - Rationalized the Gobi desert
 - 6 new states in China
 - 2 new strategic regions in China
 - More value for the chinese victory points
 - Reajusted Oil and Chromium resources on map for a more historical repartition
 
-### Balance
+## Balance
 - Increased air accident chances
 - Made badly trained air wings even more awefull
 - Rationalized military factories to get them as worth as dockyard. Reduced their number in map and in focus.
@@ -2175,10 +2857,10 @@ Compatibility for 1.10 and Battle for the Bosphorus
 - Total Mobilisation now increase the efficiency growth
 - Snorkel buffed to decrease more sub visibility
 
-### Database
+## Database
 - Netherlands now starts with Snorkels already researched
 
-### Features
+## Features
 - Japan decisions to step up war effort in China now generate 1% world tension per step
 - Chinese focus "War of Resistance" drasticaly increase resistance effects in occupied chinese territories
 - Decisions/event chains about the US-Japan tension in SE-Asia. Japan should not be able to attack the allies without US intervention.
@@ -2189,19 +2871,19 @@ Compatibility for 1.10 and Battle for the Bosphorus
 - Decision for Germany to examinate Dutch naval research, give research bonus to Snorkels.
 - Added a decision for Soviet Union to backstab Germany in a case of sucessfull Sealion
 
-### Fixes
+## Fixes
 - Most of airwings can be again attached to armies
 - Fixed a bug where researching Pzkw 38(t) bugged the stats of every other german light tanks. Solved by making Pzkw 38(t) a light tank again.
 
-### AI
+## AI
 - Ai Japan should not justify against Sinkiang anymore
 - AI Japan should be less eager to push into Inland China in the initial phases of the war
 
-## 0.8.3
+# 0.8.3
 
 Compatibility with 1.9.2 version of hoi4
 
-### Balance
+## Balance
 - Big reduction accross the board to naval invasion techs
 - Reduced stats for german early medium tanks & variants by 20%
 - Rationalization of amphibious and river crossing penalties
@@ -2232,18 +2914,18 @@ Compatibility with 1.9.2 version of hoi4
 - Halved mines impact on Naval Superiority
 - Removed 9 dockyards from german focuses
 
-### Features
+## Features
 - Embargo feature is way more limited and can't be used against AI
 - High manpower laws are more costly in terms of construction, production and resources
 - Improved "General Mobilisation" decision.
 - Majors starts with their historical agencies already set
 - Majors countries get events giving them their pre-1936 military stockpiles in the first week after game start
 
-### Fixes
+## Fixes
 - Romania changing side should give back transnistria & bessarabia to the Soviet
 - Tech bonus on artillerie tech should now work on heavy artillerie
 
-### Database
+## Database
 - removed the third starting doctrine for Germany
 - US/Canada no longer starts with all efficiency technologies already researched.
 - USA starts with advanced machinetool, Canada with improved machinetool instead.
@@ -2255,9 +2937,9 @@ Compatibility with 1.9.2 version of hoi4
 - Rationalization of starting general stats
 - Rebalanced starting numbers of dockyards
 
-## 0.8.2
+# 0.8.2
 
-### Balance
+## Balance
 - Rebalance(slight nerf)the number of factories from focus for France
 - Reduce the starting number of UK and USA military factories, compensate with enough civilian factories to keep the same potential
 - Increased resources given by canadian focuses
@@ -2285,25 +2967,25 @@ Compatibility with 1.9.2 version of hoi4
 - Mass Assault gives 10% less SA and 20% less Breaktrough on tanks (in total)
 - All leg infantry types correctly affected in Mass Assault doctrines
 
-### Map
+## Map
 - changed the belgian province East from Valenciennes from forest to plain. Only the southern tip of it is a forest on reality.
 - added missing iron ore in UK
 - added the Eben-emael fort near Liege
 
-### Features
+## Features
 - Reworked the "Shadow scheme factories" for both UK and Canada. It is not instant anymore but gives a 6 month timer after entering WW2. It not convert factories anymore but gives directly military factories instead.
 - Reworded "first air fleet" national spirit for Japan. Gives no longer overcrowding bonus but rather cost reduction for naval aircrafts.
 - Added Yamamoto as Chief of Navy and Ozawa as military staff members. Both geniuses.
 - Infantry adivisor now apply bonus on motorized and mechanized as well.
 - Electronic compagnies now gives construction bonus to nuclear reactors and rocket sites.
 
-### Fixes
+## Fixes
 - reintroduced a very small iron/coal/bauxite cost for basic stuff. Serve to debug the AI managing thoses resources correctly.
 - Attempt to fix a bug where aircraft were losing xp too fast in combat.
 
-## 0.8.1.1
+# 0.8.1.1
 
-### Balance
+## Balance
 - Having capitulated decrease your resistance instead of increasing it.
 - Nerfed the "support resistance" mission as an attempt to avoid it to be spammed ad nauseam with unrealistic results.
 - Made all espionnage missions somewhat more risky.
@@ -2312,25 +2994,25 @@ Compatibility with 1.9.2 version of hoi4
 - Reduced slightly the planes loses in general
 - Closed US Steel Mils should reopen at the end of the 1938 Recession
 
-### Map
+## Map
 - Added some additional impassible terrain in Burma and in the Pinsk marshes
 
-### Fixes
+## Fixes
 - fixed a localisation error on military factories
 - removed a script giving AI Japan too much advantages in China
 - Japanese AI should not be incitated to justify war on Sikiang
 - Removed oudated AI scripts (wich have been likely to cause crashs?)
 
-## 0.8.1
+# 0.8.1
 
-### Features
+## Features
 - add a decision to manualy close steel mills / aluminium smelters
 - integrate the newspaper mod (courtesy to their authors)
 - add a distinction between "light infantry" and "front infantry" with the later using "heavy infantry equipment" in addition to regular infantry equipment. Light Infantry is faster, consume less suply and have good defensive capacities in rough terrain, but is less suited for the battlefield than its heavier counterpart.
 - extended the artillery tree into the late 40's. Added heavy versions of artillerie, anti tank and anti air. Thoses cannot be used as frontline bataillon without being motorized. Most of arts and descriptions are placeholders from Vanilla, to be replaced later.
 - Reintegrated wargoal on Fall Weiss and Barbarossa focuses. Allowing the player to do coordinated strike mission (from espionnage feature).
 
-### Balance
+## Balance
 - removed the pp cost for reopening closed resources buildings. Cost moved to actualy close them.
 - lowered disruption from fighters (carrier based or land based) in naval battle. Atm in vanilla fighters are too efficients in naval battles, making dive bombers and torpedo bombers useless.
 - Steel mills and aluminium smelters closing events have a 7 days mtth instead of 2 (70 days for the AI).
@@ -2350,14 +3032,14 @@ Compatibility with 1.9.2 version of hoi4
 - More accurate vehicules speed, in direct relation with both historical max speed and autonomy. Credit to Uncharted from the World Ablaze mod.
 - Halved the resource malus with Great Depression, remove it from the 1938 Recession
 
-### Database
+## Database
 - adapted some US and French focuses to respectively new espionnage system and to NRM.
 - adjusted Germany starting trades
 - exchanged a dockyard by a civilian factory in Leningrad (-1 dock + 1 civ)
 - exchanged 3 civilian factories by 2 military factories and 2 docyards in Tokyo (-3 civs + 2 docks + 2 mils)
 - Changed the building-consuming modifiers from state to country. Lead to less clustered map.
 
-### Map
+## Map
 - Added impassible terrain for the Gobi Desert. Will greatly improve AI behaviour in the Asian Theater.
 - complete the Himalaya impassible paths.
 - Made Northern Siberia and Northern Canada Impassable
@@ -2367,32 +3049,32 @@ Compatibility with 1.9.2 version of hoi4
 - Removed polish cores in Ukraine/Belarus. Better represented by high complience there.
 - Increased starting complience in Japanese Korea and Japanese Taiwan. Thoses territories were in the Japanese Empire for too long to get low complience.
 
-### AI
+## AI
 - AI Japan should be less eager to advance deeper in China in the earlier stages of the war. Should later try to kill off China with Operation Ichi-Go once at war with the Allies.
 
-### Fixes
+## Fixes
 - reduced the time for the carrier to be able to attack alone from 24h to 12h as an attempt to fix the never-ending battles bug.
 - removed outdated AI script causing the AI to get too much Steel mills/ aluminium smelters or too much rubber refineries.
 - fixed some deffective localisations in the tank tree
 - Corrected a define making loose all efficiency when switching to a "parent" production.
 
-### Aestetic
+## Aestetic
 - prettier resources icons for coal, bauxite and iron
 
-## 0.8 "World of Tanks"
+# 0.8 "World of Tanks"
 
 Compatibility with HOI4 1.9.1
 
-### General
+## General
 - modded game speed to get an even slower min speed.
 
-### Focus Trees
+## Focus Trees
 - New french tree : remove the monarchist fantasy path, adapted the focuses to the economic balance.
 - Portuguese focus tree : Remove the fantasy Communist and Monarchist path, butchered most of their insane bonus.
 - Netherland focus tree : removed communist focuses and some fascist ones.
 - Mexican focus tree : removed the possibility for Trostky to join the government and focuses related to that.
 
-### Features
+## Features
 - Tanks Bataillons now takes 3 width instead of 2
 - Addition of Assault Guns and Heavy Assault Guns
 - Addition of Armored Cars
@@ -2409,7 +3091,7 @@ Compatibility with HOI4 1.9.1
 - Added an event to represent the fall of the french Popular Front, replacing Blum by Daladier in 1938 in historical situation
 - Militia unit introduced : infantry with far lower training time but far worse stats. OK-ish defense stats on some terrains.
 
-### Balance
+## Balance
 - Schacht is no longer given to Germany at start but can stay until Germany gets Sudetenland
 - USA and Canada start with Advanced Machine Tools already researched to represent the US advantage in terms of streamlined car industry
 - Increased strongly WW1 stockpiles for relevant countries
@@ -2429,38 +3111,38 @@ Compatibility with HOI4 1.9.1
 - Lowered in general historical offensives modifiers. Organic mecanics ans AI being better, we does not need them that much. The excess of modifier is a flaw of the mod, we want to get rid of them.
 - Adjustments to starting techs and national focuses to better represent industrial technologies.
 
-### Resources
+## Resources
 - Strongly increased steel cost for ships
 - Steel reffineries now adds 50 steel instead of 40
 - Alluminium Smelters now adds 50 Alluminium instead of 40
 - Steel mils adjusted on the map. A bit less for minors, more for the majors, and a lots for the USA
 
-### Database
+## Database
 - Improved starting production lines and OOBs for every majors
 - Removed Malaya from the map. Now under direct British control. Less exploits this way.
 - Laval is now correctly the starting French Prime Minister
 - Added scout planes researched  at start for every relevant nations
 
-### Fixes
+## Fixes
 - The "Neutral USA" setting in game rules now works correctly.
 - Fixed the "hole" in Borneo impassable terrain.
 - AI is forbidden to make collaboration governments. Avoid a lot of issues.
 
-## 0.7.3
+# 0.7.3
 - allows UK to get the war minister sooner
 - rebalance of the economic system feature
 - Added 2 industrial techs bonus 2 years ahead for Soviet Union with 5 years plan focus.
 - Rebalanced Thresholds for anti-air controller system
 - Corrected some bug in the french focus tree required days
 
-## 0.7.2 "Finlandia"
+# 0.7.2 "Finlandia"
 
-### Fixes
+## Fixes
 - Spanish Civil war begins more consistantly at historical date (17th July 36)
 - Corrected some bugs with the Bitter Peace event
 - Fixed an unfinished paradox event allowing to every China to freely puppet Japan!
 
-### Balance
+## Balance
 - Carrier techs can be researched only for countries having at least 9 dockyards instead of 6 previously
 - Objectives of the "Plan Z" mission more in line with the historical plan
 - Production Efficiency is more precious : grow slower and more is lost when changing production. Lowered retention from dispersed industry tech.
@@ -2468,13 +3150,13 @@ Compatibility with HOI4 1.9.1
 - Further specialized both concentrated and dispersed industry (more precisely about efficiency and retention). Dispersed no longer OP about retention and base efficiency.
 - Japan no longer needs to do well in China to be able to Strike South
 
-### Features
+## Features
 - Focus tree and more fleshing for Finland (thanks to Fulmen the Finn)
 - Incentive to NOT use air-controller in MP
 - Fixed the German Civil war event if the Army tries to overthrow Hitler
 - Decision for Finland to peace out with the Soviet if the vanilla event doesn't fire
 
-### Map
+## Map
 - Zaolzie is now a polish core
 - Sudetenland states are no longer Czech cores. German here were hostile to Czechoslovakia from 1918 onward.
 - Reduced further infrastructures in China. Inner China should be a pain to invade.
@@ -2483,32 +3165,32 @@ Compatibility with HOI4 1.9.1
 - Added Neiße river
 - Polished the industry location in the USA
 
-### Focus Trees
+## Focus Trees
 - Global cleaning. Nearly all fantasy focuses were removed. Plausible alt-history focuses will be created or fleshed out in future updates.
 - Partial rework of the US naval branch. A few more focuses added, existing ones fleshed with 2 additional missions.
 - Total Rework of the US alternative History branches. Removed both Fascist and Communist path, added a Isolationnist Democratic path
 - Removed the 2 japanese focuses about Philipinnes. Useless fillers.
 
-### AI
+## AI
 - some furthers tweaks to improve it. Still not as good as I would like.
 
-## 0.7.1
+# 0.7.1
 
-### Fixes
+## Fixes
 - Fixed Reichkommissariat Moskowien, now had correctly new states in the Moscow area.
 - Date condition added for war declaration on Yugoslavia events
 - Bewegungskrieg doctrine now available for Italy if the player wishes so (not advised). Allows Messe to be potentialy usefull.
 
-### Balance
+## Balance
 - Slower xp gain for divisions (25% less)
 - Buffed Planned Economy factory output. Goal is to allow soviet historical monstruous production of obsolete stuff before 1941.
 - bad weather conditions (snow and mud) increase supply needs for divisions
 
-### AI
+## AI
 - China and PRC should get more troops in the sino-japanese war
 - Soviet Union AI should be tougher to beat
 
-### Resources
+## Resources
 The Goal is to make strategic resources more strategic and of course more historical.
 
 - Halved the iron from Salzgitter decision
@@ -2521,7 +3203,7 @@ The Goal is to make strategic resources more strategic and of course more histor
 - Checked and tweaked chromium world repartition. Chromium is back to Cuba!
 - Moved all bolivian rare material to Peru. Not exactly historical but workaround to allow thoses resources to be traded worldwide.
 
-### Features
+## Features
 - Decisions added to use WW1 stockpiles for relevant countries
 - Added a diplomatic embargo feature
 - Added the setting from the Battleplan Execution Adjustments mod
@@ -2530,20 +3212,20 @@ The Goal is to make strategic resources more strategic and of course more histor
 - Big icentive for the USA player to keep a decent fleet in Pearl Harbor - we know the reason ;)
 - Soviet decision to blow up Baku oil fields. Generic multistage decision (long to do and costly) to repair them.
 
-### Database
+## Database
 - Added a starting production line of motorized for Japan
 - Removed the National Spirit "Brandenburger" for germany at start. A decision allows to get it later
 
-## 0.7
+# 0.7
 1.8 compatibility patch
 
-### Fixes
+## Fixes
 - Cruser medium-long range module have now proper IC cost
 - Fixed small map bug in Gibraltar Area
 - Resources prospecting decisions suffers less from the industry tech years change
 - Ships template decisions should no longer give modules/hulls you don't have researched yet
 
-### Balance
+## Balance
 - Capture equipment rate toned down to 3% base and 3% per maintenance compagnies level (except the first one).
 - Drasticly increased Supply of tanks & variants. Also slightly increased their combat stats to compensate. Should lead to less tanks per divisions and so more historical divisions designs.
 - Reduced the minimal combat time
@@ -2554,11 +3236,11 @@ The Goal is to make strategic resources more strategic and of course more histor
 - Amphibious tanks stats on part with their regular counterpart (light 2 and medium 1) and increased amphibious bonuses.
 - Reduced coal cost for steel mils
 
-### AI
+## AI
 - Both AI UK and AI Japan start with 1K more convoys
 - Integrated some parts of EAI
 
-### Features
+## Features
 - Added "Brandenburger" national spirit for Germany
 - Improved historical ships design decisions. Added more required techs and added subs and CV designs.
 - Naval treaties also affects destroyers
@@ -2566,19 +3248,19 @@ The Goal is to make strategic resources more strategic and of course more histor
 - Added some EAI decisions
 - Tungsten renamed into "rare materials" prepare a future resource update
 
-### Map
+## Map
 - added back the steel mills in USA
 - Reorganized North Sea and North Atlantic strategic zones
 - Added some strategic zones in western Pacific ocean
 - Added more impassible areas
 
-## 0.6
+# 0.6
 
-### Fixes
+## Fixes
 - Supply situation was clearly too harsh, especially for Germany in the East (realy harsher than historical situation). Tweaked into more moderate situation while remaining still harder than vanilla.
 - Updated to most recent Allied Project mod
 
-### Balance
+## Balance
 - Terrains effects made a bit less extremes and more logical
 - adjusted tech cost of naval trees. since they are a lot of them, their cost is reduced, except for starting branchs where their cost is increased instead.
 - Further adjustments of fighters-bombers to make them more realistic and less OP
@@ -2600,7 +3282,7 @@ The Goal is to make strategic resources more strategic and of course more histor
 - Slightly nerfed free CIC/MIC/NIC from italian focus tree
 - Maritime Commission (USA)  give -5% convoy cost bonus, while Liberty Ships' bonus is reduced to 20%
 
-### Map
+## Map
 - Adjusted and divided many supply areas
 - Added relevant victory points in Northern France and South-West Germany
 - Added impassable terrain in some relevant places
@@ -2613,7 +3295,7 @@ The Goal is to make strategic resources more strategic and of course more histor
 - Additional value for siberian VP. Avoid a soviet capitulation.
 - Removed excess steel production accross the globe.
 
-### Features
+## Features
 - Even more land/naval unit xp levels possible for a smoother distribution. From Freshs to Grognards. New icons.
 - Rewamped the generals/field marshall traits
 - Ostwall need to be build by decision (like the Atlantik Wall but smaller)instead of giving tons of free forts. More and more "free forts focuses" will get the same treatment in the future.
@@ -2625,9 +3307,9 @@ The Goal is to make strategic resources more strategic and of course more histor
 - Decision for Soviet Union to move the capital from Moscow, and another one to relocate it once the threat is over. Beware, Stalin might be in danger if you lose Moscow without having moved the capital...
 - German AI stop banging its head against Maginot Line. To be able to achieve it, Luxemburg is left alone in Fall Gelb for AI.
 
-## 0.5.7
+# 0.5.7
 
-### Balance
+## Balance
 - Defines adjusted for navy and air (PFU/BZKFU inspired)
 - Italian decision to invade Yugoslavia is not available anymore as long as Romania guarantee Yugoslavia.
 - Date requirement for Marco Polo incident focus for Japan
@@ -2650,7 +3332,7 @@ The Goal is to make strategic resources more strategic and of course more histor
 - Adjustments of war support threshold for the USA economic mobilisation focuses. Limited Intervention focus removed
 - Industrial techs from 1937 to 1943 are now one year later (1937 => 1938 ; 1939 => 1940 ; 1941 => 1942 ; 1943 => 1944 ) Allows to be closer from historical productions and limits late-game overgrowth.
 
-### Features
+## Features
 - Licenced equipment slower to produce, IC cost to buy a license removed to remove exploit.
 - Fleshed the german-japanese diplomatic focus adding a small technology sharing decision and event chain (carrier blueprint vs land doctrine blueprint)
 - Countries starting without at least one aircraft carrier will have penalties using them, have to spend sizeable amount of naval and air xp to remove thoses penalties.
@@ -2660,20 +3342,20 @@ The Goal is to make strategic resources more strategic and of course more histor
 - Separated "Wartime Industry" National spirit for UK and USA. So tweaking one doesn't affect the other country.
 - German focus "Atlantikwall" no longer gives free forts but instead allow a decision category to build the Atlantikwall in 4 phases.
 
-### Fixes
+## Fixes
 - German economic overheating mission should stop  correctly when desactivated by either fixing or abandonning it.
 - USA can access to Rubber Reserve Compagny with Improved rubber Processing tech instead of advanced one
 - Japaneses factories from focus are no longer built in Okinawa or Sakhalin
 - Fixed a gamebreaking bug about strat bombers efficiency
 
-### Map
+## Map
 - Moved the 1 oil unit in germany a bit South
 - Cosmetic map adjustments
 - 6 military factories from japan switched to 4 civs
 
-## 0.5.6
+# 0.5.6
 
-### Features
+## Features
 - Flavorfull ministers for UK
 - Rationalized Speer and Goering with unique flavorfull traits
 - Soviet Union gets a focus giving more rubber for synth reffineries
@@ -2681,10 +3363,10 @@ The Goal is to make strategic resources more strategic and of course more histor
 - Same decision available for other majors but with smaller scale
 - Rationalization of existing coastal industry conversion
 
-### Fixes
+## Fixes
 - A mountain province in Adalusia is no more referenced as plain
 
-### Balance
+## Balance
 - reduced the 2 years ahead bonus for spitfire to 1 year
 - further reduced the bonus rubber from techs (+2 instead of +3 )
 - strongly reduced tanks brigades base org. Incentive to make historical templates instead of tank heavy ones.
@@ -2699,7 +3381,7 @@ The Goal is to make strategic resources more strategic and of course more histor
 - Modern Shogunate focus now part of the historical path for Japan
 - Slightly reduced the IC limits for all versions of naval treaties. France, Italy and Japan are cheating them right on the start to better represent how different nations did behave with thoses treaties. No more Yamato-like monsters before WWII.
 
-### Map
+## Map
 - added some civilian factories to France, Japan and Italy
 - Reduced slightly each resources quantity on the map, except oil
 - added a synthetic rubber refinery for Germany and Soviet Union at game start (historical plants)
@@ -2707,9 +3389,9 @@ The Goal is to make strategic resources more strategic and of course more histor
 - Removed forest tiles that doesn't even exist in reality in Belgium and Picardy. Basicaly the only forest in France north of Paris is the Ardennes.
 - Shanghai is back under Chinese autority but demilitarized
 
-## 0.5.5
+# 0.5.5
 
-### Balance
+## Balance
 - The refinneries produce 40% less fuel, allowing again shortages for Germany
 - The silos are more expensives
 - Reduced the industry conversion bonus to avoid instant conversions
@@ -2730,38 +3412,38 @@ The Goal is to make strategic resources more strategic and of course more histor
 - Reduced slightly the war support given by extending the burma road
 - Added a "Second Vinson Act" focus for the US naval rearmament
 
-### Events
+## Events
 - No more events for the soviets to kill Chiang Kai Shek
 - More realist SS panzer divisions
 - Reduced the MTTH for USA political events
 - Separate decisions for Japan to annex Siam and Indochina
 
-### GFX
+## GFX
 - More aestetic flag for Nazi Germany
 - More relevant art for USA fighter bomber
 
-### Fixes
+## Fixes
 - rationalized different planes types. Mostly for the AI
 - The soviet Militia in the don area now works for the soviets instead of Romania or other Axis power
 
-## 0.5.4.5
+# 0.5.4.5
 
-### Balance
+## Balance
 - reduced the CG penalty for Agrarian economy
 - Decreased naval bombers chances to hit ships
 - Increased dive bomber attack against ships
 - Changing air region is more penalizing, especially for strat bombers
 
-### AI
+## AI
 - USA AI should build rubber reffineries after 1940
 
-### Fixes
+## Fixes
 - Player can now lay more than 10 mines per region
 
-### Localisation
+## Localisation
 - UK ships name list updated (thanks to Graf Kacper)
 
-### Map
+## Map
 - Added a few civs to India
 - Added a few civs to China
 - Argentina is no longer an agrarian nation
@@ -2770,22 +3452,22 @@ The Goal is to make strategic resources more strategic and of course more histor
 - Added a few civs to Australia & New Zealand
 - Added a few civs to Austria and Czechoslovakia
 
-## 0.5.4.4
+# 0.5.4.4
 
-### Balance
+## Balance
 - give back some factories to Japanese Focus Tree to better represent the historical production growth between 1940 and 1944
 - give back 25% submarines construction speed to german "modular construction" modifier, but at the cost of reliability. Speer must be recruted to be able to take the focus.
 - Added a small bonus on mils/docks construction speed for corporatist economy
 
-### Fixes
+## Fixes
 - Irak is no longer british puppet at start, but all Iraqi's oil is under british control. Should fix the event of iraqi's revolt.
 
-## 0.5.4.3
+# 0.5.4.3
 
-### AI
+## AI
 - Disabled Italy's wargoal on Turkey for the AI
 
-### Balance
+## Balance
 - Reduced german's modular construction from -25% to -10%
 - Improved US conditions to take wargoal on various majors
 - Slightly reduced naval base cost
@@ -2794,73 +3476,73 @@ The Goal is to make strategic resources more strategic and of course more histor
 - France, UK and Germany focuses allows to research mechanized in 1938
 - Synth Rubber reffineries cost doubled, and all effects scaled accordingly. They are now more precious. Avoid to saturate your building slots with tons of rubber reffineries. Cost now comparable to Synth fuel reffineries.
 
-### QoL
+## QoL
 - Separates decisions to allow UK to annex the british dominions when AI
 - Separate decisions to allow UK to puppet AI France, Belgium, Netherland, Luxemburg and DEI when at war against a common ennemy
 
-### OOB
+## OOB
 - UK divisions use fully motorized artillerie instead of horse-drawn one.
 
-### AI
+## AI
 - USA should build some more convoys
 
-## 0.5.4.2
+# 0.5.4.2
 
-### Balance
+## Balance
 - Base amount of fuel per oil lowered, base amount of fuel given by syntht refinneries increased (and consume more coal)
 - Convoy defense efficiency globaly increased. Each escort ship can now defend 10 ships instead of 2
 - Rationalized historical offensives so they are only efficient against their target and not in other fronts
 - Convoys used to transport land units should be easier to detect and intercept
 
-### AI
+## AI
 - Soviet AI should be less dumb, produce and deploy more troops
 
-### Fixes
+## Fixes
 - Decisions allowing to reduce economical fatigue for germany can only be used once.
 
-## 0.5.4.1
+# 0.5.4.1
 
-### Balance
+## Balance
 - Added 200k manpower for UK when annexing the commonwealth in mp
 - Reduced the soviet famine penalty
 - Added a second condition for germany to get rid of economical fatigue by exploiting Ukraine
 - Nerfed Engineer and Fortress Buster traits on generals, siege artillery nerfed in abilities
 - Nerfed the bicycle bataillon movement in various terrains
 
-### Features
+## Features
 - Added a new focus for Soviet Union to build the Molotov Line
 - Automatic spawn of soviet militia (you have to provide equipment and manpower) along the Don when losing some key territories
 
-### Map
+## Map
 - Added a starting fortification level on Brest-Litovsk
 - Reinforced the Maginot Line
 
-### Fixes
+## Fixes
 - roll back on medium/modern tank bataillons. Impossible to make historical bataillons with the way how Paradox calculate how equipment works. 60 sized bataillons medium and heavies for now.
 - Moscow/Stalingrad/Leningrad militia decisions for Soviet now works properly
 
-## 0.5.4
+# 0.5.4
 
-### Balance
+## Balance
 - Shortened some chinese focuses (both nationalists and communists)
 - Reduced aircraft chance to be hit by naval AA
 - Further reduced the available oil in Romania.
 - Buffed New Deal
 
-### Fixes
+## Fixes
 - The fate of czechoslovakia now properly gives the 80 historical Ltz 38 to Germany
 
-### Sanity mesure
+## Sanity mesure
 - Soviet Kamikaze focus removed
 
-### Features
+## Features
 - German Autarky will face over-heating economy. Could led to a massive economic crisis if you don't take care of the issue. Will help balance pre-war germany and lead to war by games mecanics instead of rules.
 - New "emergency conversion" decision but to convert mils into civs (10 civs at the price of 15 mils)
 - Italy can reorganize Eastern Africa once Ethiopia is secured.
 
-## 0.5.3
+# 0.5.3
 
-### Balance
+## Balance
 - Shortened many canadian, australian, hungarian, romanian and indian focuses
 - Nerfed to the ground the Chinese Puppet of Japan in the peace event.
 - Reduced various overpowered japanese modifier (both on construction and production)
@@ -2874,45 +3556,45 @@ The Goal is to make strategic resources more strategic and of course more histor
 - Various nerfs on Japanese national spirits
 - Removed the Consumer good malus on Isolation laws
 
-### Sanity mesure
+## Sanity mesure
 - reduced the max mines per zone and the the mining speed.
 
-### Features
+## Features
 - When at war, UK can annex the commonwealth by decision if there is no players on commonwealth countries
 
-### Map
+## Map
 - removed 10 oil in Romania
 
-### Fixes
+## Fixes
 - Leader XP grinding realy removed
 - Mechanized 1 now correctly gives hardness to every type of motorized units
 
-## 0.5.2.3
+# 0.5.2.3
 
-### Fixes
+## Fixes
 - Scharnhorst & Gneisenau are back in the german production line
 
-### Features
+## Features
 - China can flood the Yellow River by decision. (similar from the dutch one)
 - Nationalist China and Communist China can annex their surronding warlords when at war against Japan (United Front needed)
 - Operation Zet removed from soviet NF and made as a decision instead. Send more stuff and get land and air xp.
 - Airbase limiter (borrowed from GDU mod) to limit airbase level 1 on small islands and lvl 3 on bigger ones. Airbase max level back to 20.
 
-### Map
+## Map
 - added a few factories to Belgium and Czechoslovakia to be closer from their historical balance with the european majors.
 - Gibraltar state size greatly reduced to be more realistic
 
-### Balance
+## Balance
 - Ambusher skill reduced entrenchement from 5 to 2.5
 
-### Officers
+## Officers
 - removed commander xp from grinding
 - Fixed stats for historicaly competent commanders
 - Better Soviet Leaders available with the focus "defense of Moscow"
 
-## 0.5.2.2
+# 0.5.2.2
 
-### Balance
+## Balance
 - removed 2 land doctrines bonus to germany, decreased their bonus from 150% to 100%
 - Soviet Union start with one more land doctrine
 - Reduced Planned Economy research penalty
@@ -2922,15 +3604,15 @@ The Goal is to make strategic resources more strategic and of course more histor
 - Support tanks bonus from Superior Firepower extended to every tank bataillon and not only support ones
 - Civilian Economy, Isolation and Undisturbed Isolation have construction bonus on Civilian industries
 
-### Fixes
+## Fixes
 - The AI should no longer get Neutrality Idea by NF
 
-## 0.5.2
+# 0.5.2
 
-### Countries
+## Countries
 - replaced "fascism" by "neutrality" in South America.
 
-### Balance
+## Balance
 - Streamlined submarine is more expensive to research, only Germany can have a research bonus on it.
 - Reduced both german and usa rubber bonus from NF and have now date conditions
 - German war economy NF must wait until 1939 to be taken and is back to 70 days
@@ -2943,23 +3625,23 @@ The Goal is to make strategic resources more strategic and of course more histor
 - Increased naval bombers damages
 - Added date requirements for some major german focuses
 
-### Fixes
+## Fixes
 - Waffen SS templates are no longer locked
 - Terminate MEFO have a localisation
 - Fixed a bug on medium/modern tanks bataillons having more than 100% hardness
 
-### Map
+## Map
 - Added historical fortress (Gibraltar, Eben Eamel, Malta, Sevastopol)
 
-### AI
+## AI
 - Removed AI research bonus on custom difficulty
 
-### Bataillon structure
+## Bataillon structure
 - Light tanks bataillons are back to 75 equipment units
 
-## 0.5.1
+# 0.5.1
 
-### Balance
+## Balance
 - removed german research bonus for heavy tanks in NF
 - removed the german research bonus for tank 3 in event (in the "german-soviet research treaty" event chain)
 - removed a total of 15% soft attack bonus and 15 organisation bonus on tanks from 3 Bewegungskrieg early doctrines.
@@ -2971,19 +3653,19 @@ The Goal is to make strategic resources more strategic and of course more histor
 - Reduced the "Blitzkrieg" bonus in german offensives
 - "Fall Blau" focus is locked behind a date condition
 
-### Bataillon structure
+## Bataillon structure
 - Medium tanks bataillons now needs 50 medium tanks and 15 light tanks. Stats changed accordingly. (same things with modern tanks)
 - Support tanks have less equipment. Stats modified accordingly.
 - Light tanks bataillons now needs 50 light tanks. Stat changed accordingly.
 
-## 0.5.0
+# 0.5.0
 
-### QoL
+## QoL
 - MEFO bills are auto-renewed
 - Ledger removed, but the mod is compatible with it anyway.
 - List of suggested countries at game start updated. Only feature interresting countries in the mod.
 
-### Fixes
+## Fixes
 - Iraq doesn't join Japan anymore
 - Event special variants reliability now scale properly
 - Destroyers for bases is no longer bugged
@@ -2991,7 +3673,7 @@ The Goal is to make strategic resources more strategic and of course more histor
 - Senator demands for military factories or dockyards should not happen with isolantionist policies
 - Vichy should now be properly annexed by France if France recover its mainland
 
-### Balance
+## Balance
 - No more xp by LL
 - Stability doesn't affect consumers good anymore
 - Balanced various things around the new Economic System feature
@@ -3009,26 +3691,26 @@ The Goal is to make strategic resources more strategic and of course more histor
 - Leader xp nerfed overall, but overruns and encirclements more rewarding
 - AA dmg against CAS overall reduced
 
-### Features
+## Features
 - Economic System feature to give more depht and flavor to different economics systems with their strengths and weaknesses
 - Goering available as an advisor for Germany
 - Flawed Torpedoes for US, removable by decision
 - More flavor for the UK aircraft focus
 - Romania can switch side like in History
 
-### AI
+## AI
 - AI should be focus more on relevants areas when at war or just before declaring one
 
-### Map
+## Map
 - Adding 4 syntht reffineries for germany at start (historical ones).
 - Adding 15 city-states in the USA for an even better industrial repartition
 - "city-states" are now properly urban areas
 - Jungles are harder places to fight and air cover doesn't help that much
 - Dockyards have more value : more expensive, produce more and there are less on the map at start. Balance unchanged, but system closer from NRM.
 
-## 0.4.6
+# 0.4.6
 
-### Balance
+## Balance
 - Nerfed Auftragstaktik org bonus
 - Added 300 starting convoys for France
 - small tweaks for Great Depression and 1938 Recession
@@ -3042,12 +3724,12 @@ The Goal is to make strategic resources more strategic and of course more histor
 - France and Italy get the first "special force" tech at the start to represent their elite forces tradition
 - Slight rework on Romania (NF and starting techs)
 
-## 0.4.5
+# 0.4.5
 
-### Adaptation
+## Adaptation
 - NRM
 
-### Fixes
+## Fixes
 - corrected Peace in the West event if Franco-british Union
 - Countries except Germany should stopp spamming subs like crazy
 - Various little fix (typo and such)
@@ -3059,7 +3741,7 @@ The Goal is to make strategic resources more strategic and of course more histor
 - Spain should stop sending volonteers everywhere
 - Various typos corrected (more to come).
 
-### Balance
+## Balance
 - further adjustments to the USA focuses
 - Great Depression lock a bit more CIC under consumer goods
 - Civilian Economy, Isolation and Complete Isolation lock a bit more CIC under consumer goods
@@ -3072,17 +3754,17 @@ The Goal is to make strategic resources more strategic and of course more histor
 - German Salzgitter deposit gives less iron ore
 - Nerf to the Reichkommissariats. Should not be able to produce any equipment (and so any divisions unless you gives LL) and locked to "Volonteer only".
 
-### Content
+## Content
 - Auftragstaktik national spirit added for Germany
 - Every country should get a popup event when the USA launch Operation Torch
 - Finished event chain for a Japanese-favorable status-quo in the Pacific War.
 
-### QoL
+## QoL
 - regrouped every fleets in the same port for each major nation
 
-## 0.4.4
+# 0.4.4
 
-### Balance
+## Balance
 - USA shoud rearm now at historical pace
 - UK shadows factories removes less civs for the same amount of mils
 - UK suffers less from the Depression
@@ -3093,43 +3775,43 @@ The Goal is to make strategic resources more strategic and of course more histor
 - Some national spirit are now temporary instead of permanent
 - Balance pass for the big 4 majors to have an more historical industrial growth during the war when following History
 
-### Fixes
+## Fixes
 - fixed the Vichy event for Operation Torch
 
-## 0.4.3
+# 0.4.3
 
-### Balance
+## Balance
 - Field Marshall get again limitations on number of general/divisions (vanilla frontline bug is solved so ne need anymore to make FM unlimited)
 - Further adjustements for the USA
 - Adjusted conditions for Germany decision to DOW USA
 
-### Fixes
+## Fixes
 - Carrier over 30 deckspace are considered again as capital ships (and limited to 5 dockyards to be build)
 
-## 0.4.2
+# 0.4.2
 
-### Adaptations
+## Adaptations
 - vanilla 1.7.1
 - NRM
 
-### Fixes
+## Fixes
 - corrected starting ships locked with small range and no damage control
 - "Align Finland" decision for Germany should work if the player sets the Reichkommissariat.
 - Knoxville is now at a more correct location
 
-### Balance
+## Balance
 - Further adjustments for the USA
 - Lowered xp from LL and attaché
 - Bigger Soviet purge malus on doctrines - attempt to avoid soviet from having nearly all doctrines before barbarossa
 
-### AI
+## AI
 - AI germany should no longer bang its head on Maginot
 - AI USA will get free  steel/alluminium mills and rubber reffineries when at war to help it to sustain it.
 - AI Canada shoud stay on Free Trade
 
-## 0.4.1
+# 0.4.1
 
-### Fixes
+## Fixes
 - added bypasses for vichy focuses
 - corrected a false effect for the french debuff when facing Fall Gelb
 - support amphibious tanks should properly show the right image
@@ -3139,20 +3821,20 @@ The Goal is to make strategic resources more strategic and of course more histor
 - Motorized rocket artillery should no longer slow down divisions to 1 km/h
 - Fixed the bug affecting cruser range refit
 
-### Localisation
+## Localisation
 - Germany is simply called "Germany" and become "Greater Germany" after Anschluss. (only for fascist historical path)
 
-### Database
+## Database
 
 - Romania focuses to join big factions are now mutualy exclusives. A decision to allow Romania to switch sides will be added in a later version.
 - USA civil war from MTG focus disabled. Communist and fascist paths have big malus to political power and stability instead. If not enough, other debuff representing the big political issues will be added in a later version.
 - Slightly lowered reliability of all tanks/mot/mechs
 - No more "is justifying against us" alert in german focuses
 
-## 0.4.0
+# 0.4.0
 1.7 compatibility and tweaks
 
-### Fixes
+## Fixes
 - AI should have a more diverse planes mix in their carriers
 - Localization corrected for carrier ASW techs
 - Japan should not get Galapagos Islands instead of Huagshan anymore!
@@ -3163,14 +3845,14 @@ The Goal is to make strategic resources more strategic and of course more histor
 - Fixed a typo on Great Purges effect on doctrines.
 - Workaround concerning starting bugged ship templates (start with only short range and no damage controls). Remove the refit cost for both until NRW fix it.
 
-### Map
+## Map
 - Westfallen is now part of the Rhine Region instead of North-West Germany
 - Adding White Sea canal and impassables zones in Scandinavia
 - Remove the ressources from cuba, added the same amount in Canada. Represent the high quantity of raw rare material provided by Canada.
 - Prettier Berlin map, plausible post-war partition of the city.
 - urban tiles added in Berlin, Moscow and Stalingrad areas. Urban fights!
 
-### Balance
+## Balance
 - Triomphant Will add more pp (help to handle occupation costs)
 - strenghtened conditions for forming Reichskommissariat
 - existing infrastructure now lower the cost of new infra. This means it's an incentive to concentrate infra building and industries.
@@ -3184,7 +3866,7 @@ The Goal is to make strategic resources more strategic and of course more histor
 - Vichy France will get France techs after the event creating it
 - Th Great Patriotic war also reduce the IC cost of infantry equipment by 25%
 
-### Database
+## Database
 - Day and Night bombing doctrines are no longer mutualy excluvives
 - Harmonized bonuses to light and heavy cruisers in doctrines
 - Skoda Works national spirit added for germany once Czechoslovakia is dismantled
@@ -3204,14 +3886,14 @@ The Goal is to make strategic resources more strategic and of course more histor
 - Added the (4) missing historical divisions in the USA mainland
 - 6 military high command available instead of 3
 
-## 0.3.0
+# 0.3.0
 
-### Fixes
+## Fixes
 - HUN focus "claim overlordship over Slovakia" is bypassed if Hungary is a puppet or if the overlord (germany usualy) is in the same faction as Hungary. Should fix the CTD linked to this focus in most of cases.
 - Denmark should white peace with Soviet Union if Germany take the decision to occupy it after the 1943 elections. Should fix the unexpected Allies vs Komintern war caused by this decision.
 - USA should not be allowed to join a faction before effectively being at war. When they do, they will join big european democracies and not Chinese United Front (they can join it only if no big democracies are at war).
 
-### Industry
+## Industry
 - Increase max number of shared slot per state from 30 to 50
 - Steel and Alluminium mills are now counted as shared buildings
 - UI changed accordingly
@@ -3221,7 +3903,7 @@ The Goal is to make strategic resources more strategic and of course more histor
 - Increased the steel/alluminium produced by mills. Very important for late game production. Thoses mills are now worth building instead of trading steel and alluminium.
 - Major AI will get free steel/allumunium mills by focus to compensate their inability to build them.
 
-### Database
+## Database
 - Naval bases can go to lvl 20 max instead of 100. Represent the huge naval infrastructures like Rotterdam
 - some historical lvl 1 forts added to the french-belgian and french-italian borders
 - More comprehensive conditions for the historicals soviet ultimatums decisions in eastern Europe
@@ -3229,7 +3911,7 @@ The Goal is to make strategic resources more strategic and of course more histor
 - Historicaly relevant starting templates for every relevant country
 - Yamato and Musashi available at respectively 75% and 50% completion when completing "The Ultimate Battleship" focus for Japan.
 
-### Balance
+## Balance
 - Conditions for Italy backstabbing France strenghtened. France should be able to abandon North-pas-de-Calais like in WWI without being backstabbed.
 - reduced the time needed for some british focuses from 70 to 35 days
 - increase the amount of dockyard given by UK's "Naval Rearmament" focus and "expand  repair dockyard" focus
@@ -3239,41 +3921,41 @@ The Goal is to make strategic resources more strategic and of course more histor
 - Soviet Union begin with Partial Mobilisation
 - Harmonized concentrated and dispersed industrial techs
 
-### AI
+## AI
 - AI Germany and Soviet Union should take more emphasis on doctrines
 - AI Germany should hit harder against France and USSR when it start respectively Fall Gelb and Barbarossa.
 - AI can't change templates anymore but will get better preset templates via focuses
 - AI is globaly more competant in land warfare
 - Major countries AI spend their PP in a more rational way
 
-### Doctrines
+## Doctrines
 - Reduced the xp cost to research doctrines with bonus
 
-### Naval
+## Naval
 - Added iron and coal cost to ship hulls (further adaptation from Naval Rework into the mod)
 
-### USA
+## USA
 - Added 49 (!) new states in the USA. Allows better industry repartition and more building slots.
 - USA manpower per state and victory points from the "America Rework" mod
 - General Motors doesn't need anymore Wartime Industry focus
 - New Deal from 1936 elections also gives bonus to civs construction
 - Adjusted focuses to the new american states
 
-## 0.2.0
+# 0.2.0
 
-### Fixes
+## Fixes
 - Norway should be easier to capitulate
 - Mud should occure slightly less atrition
 
-### Industry (suggestions by Xandor)
+## Industry (suggestions by Xandor)
 
 - Increased dockyard output but limited the max number of dockyard per ships. Should alow a more realistic ship production.
 - Modified Isolation and Undisturbed Isolation to need less consumer good and give small bonus to civs contruction. Smaller bonus to civ construction available in Civilian economy. Should allow a non-military industrial growth for both UK and USA.
 - Removed 65 civs from USA to compensate the massive industry buffs in the us focus tree
 
-### Focus Trees (suggestions by Xandor)
+## Focus Trees (suggestions by Xandor)
 
-#### USA
+### USA
 - Moved the 12 dockyards from "Arsenal of Democracy" to "Bureau of ships"
 - Arsenal of Democracy gives 40 mils instead of 12
 - The Giant Wakes gives 30 mils instead of none
@@ -3283,21 +3965,21 @@ The Goal is to make strategic resources more strategic and of course more histor
 - Two Oceans Navy gives 60 dockyards instead of 30
 - Battleship Primacy and Carrier Primacy focuses are no longer mutualy exclusives
 
-#### Japan
+### Japan
 - Carrier Warfare Experiment and Supremacy of the battlefleet are no longer mutualy exclusives
 
-#### UK
+### UK
 - Carrier focus and Battleship focus are non longer mutualy exclusives
 
-#### Germany
+### Germany
 - U-Boat effort is no longer mutualy excusive with other german naval focuses.
 
-#### Soviet Union
+### Soviet Union
 - Collectivist Propaganda and Positive Heroism are no longer mutualy exclusives
 - An extra research slot focus have been deleted to compensate
 - Manpower value of Socialist Science adjusted
 
-#### Resources (suggestions and documentation by KM Wolf Larsen )
+### Resources (suggestions and documentation by KM Wolf Larsen )
 - Fixed coal repartition in Germany and neighbouring countries
 - Fixed coal repartition in the USSR
 - Fixed Iron repartition in Germany and neighbouring countries
@@ -3311,63 +3993,63 @@ The Goal is to make strategic resources more strategic and of course more histor
 - Fixed bauxite repartition in the mediterranean area
 - Decision for Hungary to develop its historical oil fields
 
-### Database
+## Database
 - Countries of Central Europe start with better trade relation with Germany : the historical Reichmark Block.
 - Adjusted some opinions modifiers
 - Added Free City of Danzig as Polish puppet. All focuses, decisions and event have been modified for adaptation.
 - Slightly lowered medium and heavy bomber air defense
 
-#### Additional Content
+### Additional Content
 - Integration of Elouda's Naval Rework mod!
 
-## 0.1.7
+# 0.1.7
 
-### Fixes
+## Fixes
 - Interfaces issues solved
 - Some reported minor bugs solved
 - Romania should not have a random civil war anymore
 
-### Database
+## Database
 - Added stockpiles for major countries and relevant minors
 - Tweaks from the last "realistic air" mod
 - USA won't be able to join faction even if tension is 100% with "Neutrality Act". This limitation is lifted when at war.
 
-### Balance
+## Balance
 - Modified slightly the Mass Assault doctrine : more emphasis on tactics and width reduction replaced by infantry attack in order to not affect the whole division construction while staying in the same Mass Assault philosophy.
 - Slight tweak on research cost
 
-## 0.1.6
+# 0.1.6
 
-### Balance
+## Balance
 Implemented Xandor suggestions about division designer :
 - 96 base combat width +48 per additionnal
 - 5X3 line bataillons
 - 10 supports bataillons
 - adapted the number of equipment by bataillons according to History
 
-## 0.1.5
+# 0.1.5
 
-### QoL
+## QoL
 - Disabled armies and manpower for irrelevant nations
 
-### Balance
+## Balance
 - Lowered the purge penalties for Soviet Union
 - Artillerie and AA (and their sp variants) now take 1 combat width
 
-### Fixes
+## Fixes
 - Units shall have now sustainable recovery rate
 
-## 0.1.4
+# 0.1.4
 
-### Balance
+## Balance
 - reduced SP-art soft attack value
 - Doctrines no longer gives ORG to sp-art
 - Artillerie techs no longer affect sp-art, sp-aa and tds
 - reduced doctrines research bonus from xp
 
-## 0.1.3
+# 0.1.3
 
-### Balance
+## Balance
 - Combat width modified to 72 base and 36 per additionnal. 18 width divisions (historical 3X3) encouraged
 - Land doctrines need now 200 xp to be researched with bonus, and the bonus is lowered from 300% to 200% speed
 - Slightly increased the required trucks in motorized artillerie brigade
@@ -3376,19 +4058,19 @@ Implemented Xandor suggestions about division designer :
 - The german focuses allowing to remove small business and giving Total Mobilisation now remove lots of PP
 - Removed the destroyers and ligh crusers penalties in deep ocean
 
-#### USA
+### USA
 - Detroit tank arsenal reverted to the original 25% speed bonus instead of 10%
 - Arsenal of democracy allows Civilian Economy, The Giant Wakes allows Early Mobilisation and Wartime Industry allows Partial Mobilisation
 - Adjusted slightly the Great Depression effect
 
-### Fixes
+## Fixes
 - Corrected tooltip for Reichautobhan, Anhalt is now taken into consideration
 
-### Localisation
+## Localisation
 - right localisations on USA cv fighters
 - integrated Lukash_'s localisations propositions for land doctrines
 
-### Database
+## Database
 - slightly adjusted USA starting NIC/MIC, reduced CIC accordingly to keep the same Industrial Potential
 - slightly adjusted UK starting NIC/MIC, reduced CIC accordingly to keep the same Industrial Potential
 - Added Cold Nation or Warm Nation natianal spirits to relevant countries
@@ -3397,34 +4079,34 @@ Implemented Xandor suggestions about division designer :
 - Removed 5 Steel Mills in Japan in order to better adjust iron/steel production
 - Added an alternate condition to World Tension for the US focus to DOW Japan
 
-### AI
+## AI
 - tweaked AI defines (inspired from "Expert AI" and adapted to the mod )
 - Adapted AI templates
 
-## 0.1.2
+# 0.1.2
 
-### Balance
+## Balance
 - modified purge effect on doctrines to adapt to the xp system. Purges must discourage to research doctrines.
 - Stability malus when at war removed, displaced in events where democracies go to war too early (Rheinland, Sudeten, Panay incident...).
 - All ideologies can host GIE (was limited to democracies)
 
-### QoL
+## QoL
 - Integrated Yard1's Ledger mod
 
-### Database
+## Database
 - Integrated Batsy's Reichskommissariat Leaders mods. No more Genericos on historical RKs.
 - Some World Tension added at start for both Japanese occupation in Manchuria and Italian invasion of Ethiopia.
 - Staying in the naval treaties at the end of the conference make World tension decrease for Japan and Italy.
 - Corrected some language issue in states/strategic regions
 
-### AI
+## AI
 - AI Britain should now properly take the "Expand Burma Road" decision, giving enough WS to rearm faster
 - AI Italia should struggle less in Ethiopia
 - AI Japan should leave the London treaty as soon as possible
 
-## 0.1.1
+# 0.1.1
 
-### Fixes
+## Fixes
 - Duplicated tactics from Mass Assault doctrines removed
 - Hungarian puppets should have AH colors. Don't see why hungary should have any puppet if not in the AH path.
 - Improved "Fall Weiss" focus conditions and bypass
@@ -3436,7 +4118,7 @@ Implemented Xandor suggestions about division designer :
 - All resources prospecting decisions now need excavation techs. Before sometime it was construction tech, sometime excavation. (just rationalization)
 - Revert the training from airwings to vanilla system
 
-### Database
+## Database
 - Updated Mandchukuo borders and OOB
 - Mengjiang has now a correct name
 - Standarzisation of Deppression effect
@@ -3444,7 +4126,7 @@ Implemented Xandor suggestions about division designer :
 - Pride of the fleet only gives 1 WS instead of five. Starting WS of relevant countries was modified accordingly to keep the same balance
 - Operation Torch focus for the USA is now under "War plan Gold" focus
 
-### Balance
+## Balance
 - Reduced slightly the depression effect on ressource efficiency
 - CAS can do interception mission
 - Increased slightly artillerie cost to better match with historical balance with AA/AT
