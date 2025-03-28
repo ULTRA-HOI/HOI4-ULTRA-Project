@@ -1,5 +1,73 @@
 # Changelog
 
+# 0.18.1
+## Updates 
+- 1.16.3 compatibility
+## AI 
+- Improved German front and micro strategies
+	- Should now better handle Fall Weiss, Rot and Gelb
+- Germany should now focus no units on Switzerland and less unit on Balkans
+- Added factors to how many units AI commits to AIFC based on doctrines
+	- Mobile Warfare full doctrine users should go bonkers
+- AI should now be more likely to use tanks and motorized on active fronts as opposed to garrison/defense orders
+- Germany should build some more Pz38(t) before unlocking Pz III/IV
+- Germany builds a bit less dockyards now
+- Soviet Guards Motorized divisions now use medium instead of light tanks
+- Germany should now properly design and produce Bismarcks
+- Tweaks to German naval production to make it more historical
+- Germany stops LL to Spain once they get Pz3/4 in order not to waste them
+- UK and France no longer suicide their fleets on German coast after Danzig
+- Allies should now also not bomb Italy before US is in the war
+- Further improve German building construction AI
+- Further tweaks to German production
+- Tweak Axis naval strategies
+- Introduce default strategy for surplus management (what AI produces when it met all their needs)
+- Fix AI overvaluing supply hubs when calculating strategic importance of regions in air war
+- Adjusted factors for how many divisions AI wants
+	- Lower from factories (we have more of them), lower from manpower (it's more scarce than vanilla), a bit lower from WT.
+- Improve AI handling of air war in Europe, on both sides
+	- Includes Phoney War, Battle of Britain, strategic bombing of Germany and Barbarossa.
+- Germany now takes the propaganda campaigns that quicken training
+- Further tweaks to German divsion template management
+- Remove many of events/decisions/focuses giving AI free equipment
+- Remove flat PP and factory output bonuses from AI
+- Updated Germany AI to not suicide the Luftwaffe
+- Overhauled Soviet AI, including templates, construction and production strategies
+- Potentially fixed AI air inactivity
+	- Increased the number of airzones they consider. Initial testing showed improvement, but this is not a guaranteed fix.
+- Reduced Soviet desire to throw LL at Spain
+- made Soviet AI more likely to take Ural resource decisions
+- fixed some more faulty Soviet values
+- Changed faulty Soviet construction values x2
+	- USSR should build less civilian industry, dockyards and steel mills now
+## Balance 
+- Soviet mobilisation speed increased overall by 60%
+- Leader Trait Tweaks
+	- Armaments Organizer nerfed - supply hub construction bonus reduced from 10% to 2.5%. Only UK and France among majors had access to this, France had no use for it and for UK it was tied to a massive stability and political power penalty. The penalty is being adjusted, so the bonus needs to be reduced to keep it from being overpowered
+	- Unpopular minister changed - instead of penalising political power and stability, instead penalises command power gain and max
+## Features 
+- Auto opening of steel and alu mills now also considers if one is buying steel/aluminium
+## Fixes 
+- Add missing Iven McKay to Australia
+- Fix Italian Corpo di Truppe Volontarie NF not creating airwings and aces properly
+- Minor fix for production GUI text alignment
+- Increased canada naval MIO task capacity
+- Increased generic ship MIO task capacity
+- Improve clarity of Reichsautobahn decisions' tooltips
+- Fixed missing trait for Edward Halifax
+- Operatives killed on missions should now show notification events, just like those killed on operations
+- Fixed Licenced Equipement resetting to default image for CAS, fighters, heavy fighters
+- Fix localisation for Road of Life strait tooltip
+- Fix Soviet Night Witches NF not working correctly
+- Minor GUI fix to scorched earth icon in construction view
+- Fixed Italian BoP looking like your graphics card is dying
+- Fix "Germany Claims Memel" news event firing multiple times
+- Add tooltip explaining how consumer goods modifiers work in Ultra
+- Go back to the old system of additive consumer goods factories modifiers
+	- Replace all instances vanilla consumer_goods_factor (multiplicative) with consumer_goods_expected_value (additive).
+	- Rename consumer_goods_expected_value localisation to simply "Consumer Goods Factories".
+- Add missing repair_prio/repair_split/aggressiveness buttons for naval taskforces
+
 # 0.18.0
 ## Highlight 
 - Add checkboxes for controlling automatic opening of refineries, also made all resource shortage/surplus events hidden again
