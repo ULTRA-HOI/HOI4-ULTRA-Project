@@ -4136,7 +4136,7 @@ NSupply = {
 	NUMBER_OF_SHOWN_SUPPLY_SOURCES_IN_SUPPLY_MAPMODE = 5, -- number of supply flow sources shown in breakdown tooltip
 	ESTIMATED_DIVISION_WEIGHT_FOR_SUPPLY_ESTIMATIONS_GUI = 1.0,	--Division supply consumption used for estimating frontline weight for order tooltips
 	AVAILABLE_MANPOWER_STATE_SUPPLY = 4.50, --was 0.18 --Factor for state supply from max manpower (population)
-	NON_CORE_MANPOWER_STATE_SUPPLY = 15.0,						--Factor for population sttate supply when controlled by an occupier (NO TAKE FOOD)
+	NON_CORE_MANPOWER_STATE_SUPPLY = 0.2,						--Factor for population sttate supply when controlled by an occupier (NO TAKE FOOD)
 	STORED_SUPPLY_CONSUMPTION_RATE_FACTOR = 1, --was 0.75 --Multiplies consumption rate of stored supply (more/less easement)
 },
 NAITheatre = {
