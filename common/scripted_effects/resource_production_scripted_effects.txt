@@ -203,42 +203,6 @@ rp_reopen_steel_mills = {
         }
         set_temp_variable = { num_to_swap = num_to_swap_tungsten }
     }
-
-    # if desirable, open for optimized production
-    if = {
-        limit = {
-            can_buy_iron_and_it_makes_sense_for_steel_production = yes
-            can_buy_coal_and_it_makes_sense_for_steel_production = yes
-            can_buy_tungsten_and_it_makes_sense_for_steel_production = yes
-        }
-        set_temp_variable = { deficit = resource_imported@steel }
-        set_temp_variable = { missing_resources = resource@steel }
-        multiply_temp_variable = { missing_resources = -1 }
-        if = {
-            limit = {
-                check_variable = { missing_resources > deficit }
-            }
-            set_temp_variable = { deficit = missing_resources }
-        }
-
-        set_temp_variable = { refinery_output = 50 }
-        set_temp_variable = { output_multiplier = 1 }
-        add_to_temp_variable = { output_multiplier = modifier@local_resources_factor }
-        multiply_temp_variable = { refinery_output = output_multiplier }
-		set_temp_variable = { export_share = 1 }
-		subtract_from_temp_variable = { export_share = modifier@min_export }
-        multiply_temp_variable = { refinery_output = export_share }
-
-        divide_temp_variable = { deficit = refinery_output }
-
-        if = {
-            limit = {
-                check_variable = { deficit > num_to_swap}
-            }
-            set_temp_variable = { num_to_swap = deficit }
-        }
-    }
-
     set_temp_variable = { building_to_add = token:steel_refinery }
     set_temp_variable = { building_to_remove = token:steel_refinery_inactive }
     open_buildings = yes
@@ -273,41 +237,6 @@ rp_reopen_aluminium_mills = {
         }
         set_temp_variable = { num_to_swap = num_to_swap_coal }
     }
-
-    # if desirable, open for optimized production
-    if = {
-        limit = {
-            can_buy_bauxite_and_it_makes_sense_for_aluminium_production = yes
-            can_buy_coal_and_it_makes_sense_for_aluminium_production = yes
-        }
-        set_temp_variable = { deficit = resource_imported@aluminium }
-        set_temp_variable = { missing_resources = resource@aluminium }
-        multiply_temp_variable = { missing_resources = -1 }
-        if = {
-            limit = {
-                check_variable = { missing_resources > deficit }
-            }
-            set_temp_variable = { deficit = missing_resources }
-        }
-
-        set_temp_variable = { refinery_output = 100 }
-        set_temp_variable = { output_multiplier = 1 }
-        add_to_temp_variable = { output_multiplier = modifier@local_resources_factor }
-        multiply_temp_variable = { refinery_output = output_multiplier }
-		set_temp_variable = { export_share = 1 }
-		subtract_from_temp_variable = { export_share = modifier@min_export }
-        multiply_temp_variable = { refinery_output = export_share }
-
-        divide_temp_variable = { deficit = refinery_output }
-
-        if = {
-            limit = {
-                check_variable = { deficit > num_to_swap}
-            }
-            set_temp_variable = { num_to_swap = deficit }
-        }
-    }
-
     set_temp_variable = { building_to_add = token:aluminium_refinery }
     set_temp_variable = { building_to_remove = token:aluminium_refinery_inactive }
     open_buildings = yes
@@ -408,14 +337,7 @@ open_buildings = {
             }
         }
     }
-    if = {
-        limit = { check_variable = { num_to_swap > 0} }
-        custom_effect_tooltip = {
-            localization_key = SWAP_BUILDINGS_TT
-            ACTION = "Opening"
-        }
-        swap_buildings = yes
-    }
+    swap_buildings = yes
 }
 # ARGUMENT VARIABLES, need to be set before
 # token:building_to_add
@@ -459,14 +381,7 @@ close_buildings = {
             }
         }
     }
-    if = {
-        limit = { check_variable = { num_to_swap > 0} }
-        custom_effect_tooltip = {
-            localization_key = SWAP_BUILDINGS_TT
-            ACTION = "Closing"
-        }
-        swap_buildings = yes
-    }
+    swap_buildings = yes
 }
 
 # ARGUMENT VARIABLES, need to be set before
@@ -517,12 +432,12 @@ log_building_swapping_start = {
     if = {
 		limit = { is_debug = yes NOT = { has_global_flag = benchmark_logging } }
         log = "Starting swapping [?building_to_remove.GetTokenLocalizedKey] to [?building_to_add.GetTokenLocalizedKey] for [ROOT.GetTag]"
-        log = "Total [?building_to_remove.GetTokenLocalizedKey] to swap: [?num_to_swap|3]"
-        log = "num_to_swap_tungsten: [?num_to_swap_tungsten|3]"
-        log = "num_to_swap_iron: [?num_to_swap_iron|3]"
-        log = "num_to_swap_bauxite: [?num_to_swap_bauxite|3]"
-        log = "num_to_swap_coal: [?num_to_swap_coal|3]"
-        log = "num_to_swap_oil: [?num_to_swap_oil|3]"
+        log = "Total [?building_to_remove.GetTokenLocalizedKey] to swap: [?num_to_swap]"
+        log = "num_to_swap_tungsten: [?num_to_swap_tungsten]"
+        log = "num_to_swap_iron: [?num_to_swap_iron]"
+        log = "num_to_swap_bauxite: [?num_to_swap_bauxite]"
+        log = "num_to_swap_coal: [?num_to_swap_coal]"
+        log = "num_to_swap_oil: [?num_to_swap_oil]"
 
     }
 }
@@ -530,7 +445,7 @@ log_building_swapping_start = {
 log_clamping = {
     if = {
         limit = { is_debug = yes NOT = { has_global_flag = benchmark_logging } }
-        log = "Clamping local_buildings_to_swap: [?local_buildings_to_swap|3] between 0 and num_to_swap: [?num_to_swap|3]"
+        log = "Clamping local_buildings_to_swap: [?local_buildings_to_swap] between 0 and num_to_swap: [?num_to_swap]"
     }
 }
 
@@ -569,9 +484,9 @@ log_building_swapping_iteration_start = {
     if = {
 		limit = { is_debug = yes NOT = { has_global_flag = benchmark_logging } }
         log = "Starting swapping [?building_to_remove.GetTokenLocalizedKey] in [THIS.GetName]"
-        log = "Total [?building_to_remove.GetTokenLocalizedKey] left to swap: [?num_to_swap|3]"
-        log = "Total [?building_to_remove.GetTokenLocalizedKey] left to swap in [THIS.GetName]: [?local_buildings_to_swap|3]"
-        log = "Swapping [?local_buildings_to_swap] [?building_to_remove.GetTokenLocalizedKey] to [?building_to_add.GetTokenLocalizedKey]"
+        log = "Total [?building_to_remove.GetTokenLocalizedKey] left to swap: [?num_to_swap]"
+        log = "Total [?building_to_remove.GetTokenLocalizedKey] left to swap in [THIS.GetName]: [?local_buildings_to_swap]"
+        log = "Swapping [?local_buildings_to_swap] [?building_to_remove.GetTokenKey] to [?building_to_add.GetTokenKey]"
     }
 }
 
@@ -579,7 +494,7 @@ log_building_swapping_iteration_end = {
     if = {
 		limit = { is_debug = yes NOT = { has_global_flag = benchmark_logging } }
         log = "Finished state: [THIS.GetName]"
-        log = "Total [?building_to_remove.GetTokenLocalizedKey] left to swap: [?num_to_swap|3]"
+        log = "Total [?building_to_remove.GetTokenKey] left to swap: [?num_to_swap]"
         log = "======================================"
     }
 }
