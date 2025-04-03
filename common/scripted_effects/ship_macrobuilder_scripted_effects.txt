@@ -1,0 +1,41 @@
+init_ship_macrobuilder = {
+	if = {
+		limit = {
+			original_tag = USA
+		}
+		clear_array = ship_macrobuilder_entries
+		clear_array = ship_macrobuilder_roles
+		clear_array = ship_macrobuilder_techs
+
+		add_to_array = { ship_macrobuilder_entries = token:USA_macrobuilder_1 } add_to_array = { ship_macrobuilder_roles = 45 } add_to_array = { ship_macrobuilder_techs = token:early_ship_hull_carrier }
+		add_to_array = { ship_macrobuilder_entries = token:USA_macrobuilder_2 } add_to_array = { ship_macrobuilder_roles = 45 } add_to_array = { ship_macrobuilder_techs = token:advanced_ship_hull_carrier }
+		add_to_array = { ship_macrobuilder_entries = token:USA_macrobuilder_3 } add_to_array = { ship_macrobuilder_roles = 43 } add_to_array = { ship_macrobuilder_techs = token:advanced_ship_hull_heavy }
+		add_to_array = { ship_macrobuilder_entries = token:USA_macrobuilder_4 } add_to_array = { ship_macrobuilder_roles = 43 } add_to_array = { ship_macrobuilder_techs = token:advanced_ship_hull_heavy }
+		add_to_array = { ship_macrobuilder_entries = token:USA_macrobuilder_5 } add_to_array = { ship_macrobuilder_roles = 43 } add_to_array = { ship_macrobuilder_techs = token:improved_ship_hull_heavy }
+		add_to_array = { ship_macrobuilder_entries = token:USA_macrobuilder_6 } add_to_array = { ship_macrobuilder_roles = 19 } add_to_array = { ship_macrobuilder_techs = token:advanced_ship_hull_heavy }
+		add_to_array = { ship_macrobuilder_entries = token:USA_macrobuilder_7 } add_to_array = { ship_macrobuilder_roles = 45 } add_to_array = { ship_macrobuilder_techs = token:improved_ship_hull_carrier }
+		add_to_array = { ship_macrobuilder_entries = token:USA_macrobuilder_8 } add_to_array = { ship_macrobuilder_roles = 45 } add_to_array = { ship_macrobuilder_techs = token:improved_ship_hull_carrier }
+	}
+}
+
+macro_build_ship = {
+	meta_effect = {
+		text = {
+			set_temp_variable = { type_var = token:[VAR]_name }
+			add_equipment_production = {
+				equipment = {
+					type = [TYPE]
+					creator = [TAG]
+					version_name = "[VERSION]"
+				}
+				requested_factories = 10
+				progress = 0.0
+				amount = 1
+			}
+		}
+		VERSION = "[?type_var.GetTokenLocalizedKey]"
+		TYPE = "[?v.GetTokenLocalizedKey]"
+		VAR = "[?v.GetTokenKey]"
+		TAG = "[ROOT.GetTag]"
+	}
+}

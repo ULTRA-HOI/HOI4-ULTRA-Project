@@ -1,0 +1,108 @@
+scripted_gui = {
+	ship_macrobuilder_button_scripted_gui = {
+		context_type = player_context
+		
+		window_name = "ship_macrobuilder_button_containter"
+		parent_window_name = production_win_top
+
+		
+		properties = {
+			macrobuilder_button = {
+				frame = ship_macrobuilder_button_frame
+			}
+		}
+
+		triggers = {
+			macrobuilder_button_visible = {
+				if = {
+					limit = { has_country_flag = ship_macrobuilder_visible }
+					set_temp_variable = { ship_macrobuilder_button_frame = 2 }
+				}
+				else = {
+					set_temp_variable = { ship_macrobuilder_button_frame = 1 }
+				}
+			}
+		}
+
+		effects = {
+			macrobuilder_button_click = {
+				if = {
+					limit = { has_country_flag = ship_macrobuilder_visible }
+					clr_country_flag = ship_macrobuilder_visible
+				}
+				else = {
+					set_country_flag = ship_macrobuilder_visible
+				}
+				init_ship_macrobuilder = yes
+			}
+		}
+	}	
+	
+	ship_macrobuilder_scripted_gui = {
+		context_type = player_context
+		
+		window_name = "ship_macrobuilder_containter"
+		# parent_window_token = production_tab
+		parent_window_name = navy_repair_window
+
+		visible = {
+			has_country_flag = ship_macrobuilder_visible
+		}
+
+		dynamic_lists = {
+			macrobuilder_ships = {
+				array = ship_macrobuilder_entries
+
+				change_scope = no
+
+				entry_container = "macrobuilder_ship_entry"
+			}
+		}
+
+		triggers = {
+			equipment_button_click_enabled = {
+				meta_trigger = {
+					# set_temp_variable = { tech_var = token:[ship_macrobuilder_tech] }
+					text = {
+						has_tech = [TECH]
+					}
+					TECH = "[?ship_macrobuilder_techs^i.GetTokenKey]"
+				}
+			}
+		}
+
+		effects = {
+			equipment_button_click = {
+				macro_build_ship = yes
+			}
+			build_x5_button_click = {
+				macro_build_ship = yes
+				macro_build_ship = yes
+				macro_build_ship = yes
+				macro_build_ship = yes
+				macro_build_ship = yes
+			}
+			build_x10_button_click = {
+				macro_build_ship = yes
+				macro_build_ship = yes
+				macro_build_ship = yes
+				macro_build_ship = yes
+				macro_build_ship = yes
+				macro_build_ship = yes
+				macro_build_ship = yes
+				macro_build_ship = yes
+				macro_build_ship = yes
+				macro_build_ship = yes
+			}
+		}
+
+		properties = {
+			icon = {
+				image = [ship_macrobuilder_icon]
+			}
+			role = {
+				frame = ship_macrobuilder_roles^i
+			}
+		}
+	}
+}
