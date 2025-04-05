@@ -1,5 +1,17 @@
 # Changelog
-
+# 0.18.2
+## Updates 
+- 1.16.4 compatibility
+## Balance 
+- Raid Rebalance
+	- Nerfed raid effects and success chances
+## Fixes 
+- Fixed opening and closing of Turkish Straits
+- Added proper naval terrain to regions
+- Revert auto opening of steel and alu when one is buying steel/aluminium
+	- Wasn't working correctly, will come back to it later
+- Fixed dockyard assignment background in production GUI
+- Fixed incorrect supply define
 # 0.18.1
 ## Updates 
 - 1.16.3 compatibility
