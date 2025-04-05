@@ -1,14 +1,14 @@
 defined_text = {
-	name = ship_macrobuilder_name
+	name = ship_macrobuilder_class_name
 	text = {
-		localization_key = "[?v.GetTokenKey]_name"
+		localization_key = "[ROOT.GetTag]_macrobuilder_[?i]_name"
 	}
 }
 
 defined_text = {
-	name = ship_macrobuilder_icon
+	name = ship_macrobuilder_ship_icon
 	text = {
-		localization_key = "[?v.GetTokenKey]_gfx"
+		localization_key = "[ROOT.GetTag]_macrobuilder_[?i]_gfx"
 	}
 }
 
@@ -16,5 +16,93 @@ defined_text = {
 	name = ship_macrobuilder_hull
 	text = {
 		localization_key = "[?v.GetTokenLocalizedKey]"
+	}
+}
+
+defined_text = {
+	name = ship_macrobuilder_mio_name
+	text = {
+		localization_key = "[?v.GetTokenLocalizedKey]"
+	}
+}
+defined_text = {
+	name = ship_macrobuilder_mio_icon
+	text = {
+		localization_key = "[?v.GetTokenKey]_gfx"
+	}
+}
+
+defined_text = {
+	name = ship_macrobuilder_mio_capacity
+	text = {
+		trigger = {
+			meta_trigger = {
+				text = {
+					mio:[MIO] = {
+						set_temp_variable = { PREV.used = number_of_currently_assigned_tasks }
+						set_temp_variable = { PREV.total = max_task_capacity }
+					}
+				}
+				MIO = "[?v.GetTokenKey]"
+			}
+		}
+		localization_key = "[?used] / [?total]"
+	}
+}
+
+defined_text = {
+	name = ship_macrobuilder_assigned_mio_icon
+	text = {
+		trigger = {
+			check_variable = {
+				var = ship_macrobuilder_assigned_mios^i
+				value = 0
+				compare = not_equals
+			}
+		}
+		localization_key = "[?ship_macrobuilder_assigned_mios^i.GetTokenKey]_gfx"
+	}
+	text = {
+		localization_key = "GFX_idea_slot_naval_manufacturer"
+	}
+}
+
+defined_text = {
+	name = ship_macrobuilder_assigned_dockyards
+	text = {
+		trigger = {
+			check_variable = {
+				ship_macrobuilder_entries^i = token:nrm_ship_hull_carrier_2
+			}
+		}
+		localization_key = "10"
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				ship_macrobuilder_entries^i = token:nrm_ship_hull_carrier_3
+			}
+		}
+		localization_key = "10"
+	}
+	text = {
+		localization_key = "1"
+	}
+}
+
+defined_text = {
+	name = ship_macrobuilder_selected_mio
+	text = {
+		trigger = {
+			check_variable = {
+				var = ship_macrobuilder_assigned_mios^i
+				value = 0
+				compare = not_equals
+			}
+		}
+		localization_key = "industrial_manufacturer = mio:[?ship_macrobuilder_assigned_mios^i.GetTokenKey]"
+	}
+	text = {
+		localization_key = ""
 	}
 }

@@ -4,38 +4,64 @@ init_ship_macrobuilder = {
 			original_tag = USA
 		}
 		clear_array = ship_macrobuilder_entries
-		clear_array = ship_macrobuilder_roles
+		clear_array = ship_macrobuilder_ship_roles
 		clear_array = ship_macrobuilder_techs
 
-		add_to_array = { ship_macrobuilder_entries = token:USA_macrobuilder_1 } add_to_array = { ship_macrobuilder_roles = 45 } add_to_array = { ship_macrobuilder_techs = token:early_ship_hull_carrier }
-		add_to_array = { ship_macrobuilder_entries = token:USA_macrobuilder_2 } add_to_array = { ship_macrobuilder_roles = 45 } add_to_array = { ship_macrobuilder_techs = token:advanced_ship_hull_carrier }
-		add_to_array = { ship_macrobuilder_entries = token:USA_macrobuilder_3 } add_to_array = { ship_macrobuilder_roles = 43 } add_to_array = { ship_macrobuilder_techs = token:advanced_ship_hull_heavy }
-		add_to_array = { ship_macrobuilder_entries = token:USA_macrobuilder_4 } add_to_array = { ship_macrobuilder_roles = 43 } add_to_array = { ship_macrobuilder_techs = token:advanced_ship_hull_heavy }
-		add_to_array = { ship_macrobuilder_entries = token:USA_macrobuilder_5 } add_to_array = { ship_macrobuilder_roles = 43 } add_to_array = { ship_macrobuilder_techs = token:improved_ship_hull_heavy }
-		add_to_array = { ship_macrobuilder_entries = token:USA_macrobuilder_6 } add_to_array = { ship_macrobuilder_roles = 19 } add_to_array = { ship_macrobuilder_techs = token:advanced_ship_hull_heavy }
-		add_to_array = { ship_macrobuilder_entries = token:USA_macrobuilder_7 } add_to_array = { ship_macrobuilder_roles = 45 } add_to_array = { ship_macrobuilder_techs = token:improved_ship_hull_carrier }
-		add_to_array = { ship_macrobuilder_entries = token:USA_macrobuilder_8 } add_to_array = { ship_macrobuilder_roles = 45 } add_to_array = { ship_macrobuilder_techs = token:improved_ship_hull_carrier }
+		add_to_array = { ship_macrobuilder_entries = token:nrm_ship_hull_carrier_2 } add_to_array = { ship_macrobuilder_ship_roles = 45 } add_to_array = { ship_macrobuilder_techs = token:early_ship_hull_carrier }
+		add_to_array = { ship_macrobuilder_entries = token:nrm_ship_hull_carrier_4 } add_to_array = { ship_macrobuilder_ship_roles = 45 } add_to_array = { ship_macrobuilder_techs = token:advanced_ship_hull_carrier }
+		add_to_array = { ship_macrobuilder_entries = token:nrm_ship_hull_capital_4 } add_to_array = { ship_macrobuilder_ship_roles = 43 } add_to_array = { ship_macrobuilder_techs = token:advanced_ship_hull_heavy }
+		add_to_array = { ship_macrobuilder_entries = token:nrm_ship_hull_capital_4 } add_to_array = { ship_macrobuilder_ship_roles = 43 } add_to_array = { ship_macrobuilder_techs = token:advanced_ship_hull_heavy }
+		add_to_array = { ship_macrobuilder_entries = token:nrm_ship_hull_capital_3 } add_to_array = { ship_macrobuilder_ship_roles = 43 } add_to_array = { ship_macrobuilder_techs = token:improved_ship_hull_heavy }
+		add_to_array = { ship_macrobuilder_entries = token:nrm_ship_hull_capital_4 } add_to_array = { ship_macrobuilder_ship_roles = 19 } add_to_array = { ship_macrobuilder_techs = token:advanced_ship_hull_heavy }
+		add_to_array = { ship_macrobuilder_entries = token:nrm_ship_hull_carrier_3 } add_to_array = { ship_macrobuilder_ship_roles = 45 } add_to_array = { ship_macrobuilder_techs = token:improved_ship_hull_carrier }
+		add_to_array = { ship_macrobuilder_entries = token:nrm_ship_hull_carrier_3 } add_to_array = { ship_macrobuilder_ship_roles = 45 } add_to_array = { ship_macrobuilder_techs = token:improved_ship_hull_carrier }
+
+		clear_array = ship_macrobuilder_mios
+		add_to_array = { ship_macrobuilder_mios = token:USA_newport_news_shipbuilding_organization }
+		add_to_array = { ship_macrobuilder_mios = token:USA_philadelphia_naval_shipyard_organization }
+		add_to_array = { ship_macrobuilder_mios = token:USA_bethlehem_steel_organization }
+		add_to_array = { ship_macrobuilder_mios = token:USA_new_york_shipbuilding_organization }
+		add_to_array = { ship_macrobuilder_mios = token:USA_brooklyn_naval_yard_organization }
+		add_to_array = { ship_macrobuilder_mios = token:USA_todd_pacific_organization }
+		add_to_array = { ship_macrobuilder_mios = token:USA_electric_boat_company_organization }
+
+		clear_array = ship_macrobuilder_assigned_mios
+		resize_array = { ship_macrobuilder_assigned_mios = 8 }
 	}
 }
 
 macro_build_ship = {
 	meta_effect = {
 		text = {
-			set_temp_variable = { type_var = token:[VAR]_name }
+			set_variable = { type_var = token:[CLASS_NAME] }
+		}
+		# debug = yes
+		CLASS_NAME = "[ship_macrobuilder_class_name]"
+	}
+	log = "[?type_var]"
+	log = "[?type_var.GetTokenKey]"
+	log = "[?type_var.GetTokenLocalizedKey]"
+	meta_effect = {
+		text = {
 			add_equipment_production = {
 				equipment = {
 					type = [TYPE]
 					creator = [TAG]
-					version_name = "[VERSION]"
+					version_name = "[CLASS]"
 				}
-				requested_factories = 10
+				[MIO]
+				requested_factories = [DOCKYARDS]
 				progress = 0.0
 				amount = 1
 			}
 		}
-		VERSION = "[?type_var.GetTokenLocalizedKey]"
-		TYPE = "[?v.GetTokenLocalizedKey]"
+		debug = yes
+		CLASS = "[?type_var.GetTokenLocalizedKey]"
+		TYPE = "[?v.GetTokenKey]"
 		VAR = "[?v.GetTokenKey]"
 		TAG = "[ROOT.GetTag]"
+		MIO = "[ship_macrobuilder_selected_mio]"
+		DOCKYARDS = "[ship_macrobuilder_assigned_dockyards]"
 	}
+	clear_variable = type_var
 }

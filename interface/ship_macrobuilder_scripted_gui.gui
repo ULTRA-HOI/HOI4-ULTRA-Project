@@ -20,7 +20,7 @@ guiTypes = {
 			text = "Ship Macrobuilder"
 			format = right
 			maxWidth = 80
-			# alwaystransparent = yes
+			alwaystransparent = yes
 			pdx_tooltip = "To use ship macrobuilder, you need to open the navy repair window."
 		}
 	}
@@ -28,12 +28,13 @@ guiTypes = {
 	containerWindowType = {
 		name = "ship_macrobuilder_containter"
 		position = { x = -542 y = 0 }
-		show_position = { x=444 y = 0 }
+		show_position = { x= 0 y = 495 }
 		show_animation_type = decelerated
 		hide_animation_type = accelerated
 		animation_time = 400
 		size = { width = 444 height = 540 }
 		click_to_front = yes
+		clipping = no
 		 
 		background = {
 			name = "Background"
@@ -52,13 +53,13 @@ guiTypes = {
 		}
 
 		iconType = {
-			name = "title_bg"
+			name = "macrobuilder_title_bg"
 			position = { x=100 y=10 }	
 			spriteType = "GFX_generic_text_bg_203"
 		}
 
 		instantTextboxType = {
-			name = "title"
+			name = "macrobuilder_title"
 			position = { x=100 y=10 }
 			font = "hoi_24header"
 			text = "Ship Macrobuilder"
@@ -95,6 +96,79 @@ guiTypes = {
 				max_slots_horizontal = 1
 			}
 		}
+	}	
+	
+	containerWindowType = {
+		name = "ship_macrobuilder_mio_containter"
+		position = { x = -542 y = 0 }
+		show_position = { x=444 y = 0 }
+		show_animation_type = decelerated
+		hide_animation_type = accelerated
+		animation_time = 400
+		size = { width = 360 height = 540 }
+		click_to_front = yes
+		clipping = no
+		 
+		background = {
+			name = "Background"
+			spriteType ="GFX_tiled_plain_bg"
+		}
+
+		buttonType = {
+			name = "close_button"
+			position = { x = -50 y = 5 }
+			quadTextureSprite ="GFX_closebutton"
+			buttonFont = "Main_14_black"
+			shortcut = "ESCAPE"
+			Orientation = "UPPER_RIGHT"
+			clicksound = click_close
+			pdx_tooltip = "CLOSE"
+		}
+
+		iconType = {
+			name = "mio_title_bg"
+			position = { x=80 y=10 }	
+			spriteType = "GFX_generic_text_bg_203"
+		}
+
+		instantTextboxType = {
+			name = "mio_title"
+			position = { x=80 y=10 }
+			font = "hoi_24header"
+			text = "MIOs"
+			maxWidth = 203
+			maxHeight = 23
+			format = center
+			alwaystransparent = yes
+		}
+
+		containerWindowType = {
+			name = "macrobuilder_mio_list_container"
+			Orientation = upper_left
+			size = {width=350 height=490}
+			margin = { top = 13 bottom = 14 left = 0 right = 10 }
+			position = { x = 3 y = 40}
+			verticalScrollbar = "right_vertical_slider"
+			scroll_wheel_factor = 40
+			smooth_scrolling = yes
+					
+			background = {
+				name = "Background"
+				quadTextureSprite = "GFX_tiled_bg_1_scrollbar"
+			}
+			
+			gridBoxType = {
+				name = "macrobuilder_mios"
+				position = { x = 3 y = -3}
+				#The size of the gridbox
+				size = { width = 100%% height = 460 }
+				Orientation = upper_left
+				#The slot size
+				slotsize = { width=304 height= 92 }
+				format = "UPPER_LEFT"
+				max_slots_horizontal = 1
+			}
+		}
 	}
 
 	containerWindowType = {
@@ -112,7 +186,7 @@ guiTypes = {
 		}
 
 		iconType = {
-			name ="icon"
+			name ="ship_icon"
 			spriteType = "GFX_nrm_ship_hull_carrier_2_medium"
 			position = { x=205 y=49 }
 			centerposition = yes
@@ -121,7 +195,7 @@ guiTypes = {
 		}
 
 		iconType = {
-			name ="role"
+			name ="ship_role"
 			spriteType = "GFX_naval_equipment_role_icons"
 			position = { x = 331 y = 8 }
 			alwaystransparent = yes
@@ -133,13 +207,42 @@ guiTypes = {
 			textureFile = ""
 			font = "hoi_18mbs"
 			borderSize = {x = 0 y = 0}
-			text = [ship_macrobuilder_name]
+			text = [ship_macrobuilder_class_name]
 			maxWidth = 290
 			maxHeight = 20
 			format = left
 			fixedsize = yes
 			alwaystransparent = yes
 		}
+
+		# instantTextboxType = {
+		# 	name = "debug_text"
+		# 	position = { x = 128 y = 6 }
+		# 	textureFile = ""
+		# 	font = "hoi_18mbs"
+		# 	borderSize = {x = 0 y = 0}
+		# 	# text = [ship_macrobuilder_assigned_mio_icon]
+		# 	text = [ship_macrobuilder_assigned_dockyards]
+		# 	maxWidth = 290
+		# 	maxHeight = 20
+		# 	format = left
+		# 	fixedsize = yes
+		# 	alwaystransparent = yes
+		# }
+
+		# instantTextboxType = {
+		# 	name = "debug_text_2"
+		# 	position = { x = 188 y = 6 }
+		# 	textureFile = ""
+		# 	font = "hoi_18mbs"
+		# 	borderSize = {x = 0 y = 0}
+		# 	text = [?v.GetTokenKey]
+		# 	maxWidth = 290
+		# 	maxHeight = 20
+		# 	format = left
+		# 	fixedsize = yes
+		# 	alwaystransparent = yes
+		# }
 
 		instantTextboxType = {
 			name = "hull_text"
@@ -164,6 +267,105 @@ guiTypes = {
 			name = "build_x10_button"
 			quadTextureSprite ="GFX_btn_x10"
 			position = { x=372 y=42 }
-		} 
+		}
+
+		buttonType = {
+			name = "assign_mio_button"
+			spriteType = "GFX_idea_slot_naval_manufacturer"
+			position = { x = 18 y = 42 }
+			scale = 0.6
+		}
+	}
+
+	containerWindowType = {
+		name = "macrobuilder_mio_entry"
+		size = { width=320 height=100 }
+
+		buttonType = {
+			name = "mio_button"
+			spriteType ="GFX_mio_entry_bg"
+		}
+
+		instantTextboxType = {
+			name = "name"
+			position = { x = 125 y = 15 }
+			# alwaystransparent = yes
+			font = "hoi_18mbs"
+			text = [ship_macrobuilder_mio_name]
+			fixedsize = yes
+			maxWidth = 200
+			maxHeight = 18
+		}		
+
+		iconType = {
+			name = "mio_icon"
+			position = { x=10 y=15 }
+			alwaystransparent = yes
+		}
+
+		containerWindowType = {
+			name = "task_capacity_container"
+			position = { x = 230 y = 40 }
+			size = { width=93 height=60 }
+
+			background = {
+				name = "Background"
+				spriteType ="GFX_div_count_bg"
+				frame = 1
+				alwaystransparent = yes
+			}
+
+			instantTextboxType = {
+				name = "task_capacity"
+				position = { x = 20 y = 6 }
+				alwaystransparent = yes
+				font = "hoi_18mbs"
+				text = [ship_macrobuilder_mio_capacity]
+				fixedsize = yes
+				maxWidth = 50
+				maxHeight = 18
+				format = center
+			}
+		}
+
+		containerWindowType = {
+			name = "size_icon_window"
+			position = { x = 80 y = 20 }
+			size = { width=42 height=60 }
+
+			iconType = {
+				name = "size_icon"
+				spriteType = "GFX_land_battle_leader_skill_bg"
+				position = { x=0 y=0 }
+				alwaystransparent = yes
+			}
+
+			instantTextboxType = {
+				name = "size"
+				position = { x = 2 y = 6 }
+				font = "hoi_20bs"
+				text = "1"
+				maxWidth = 30
+				maxHeight = 18
+				format = center
+				alwaystransparent = yes
+			}
+		}
+
+		containerWindowType = {
+			name = "equipment_icons_window"
+			position = { x = 100 y = 50 }
+			size = { width=400 height=43 }
+
+
+			OverlappingElementsBoxType = {
+				# type industrial_organisation_equipment_icon_item
+				name = "equipment_icons"
+				position = { x = 20 y = 0 }
+				size = { x = 350 y = 48 }
+				format = left
+				spacing = 0
+			}
+		}
 	}
 }

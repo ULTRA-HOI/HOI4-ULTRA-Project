@@ -42,7 +42,6 @@ scripted_gui = {
 		context_type = player_context
 		
 		window_name = "ship_macrobuilder_containter"
-		# parent_window_token = production_tab
 		parent_window_name = navy_repair_window
 
 		visible = {
@@ -62,7 +61,22 @@ scripted_gui = {
 		triggers = {
 			equipment_button_click_enabled = {
 				meta_trigger = {
-					# set_temp_variable = { tech_var = token:[ship_macrobuilder_tech] }
+					text = {
+						has_tech = [TECH]
+					}
+					TECH = "[?ship_macrobuilder_techs^i.GetTokenKey]"
+				}
+			}
+			build_x5_button_click_enabled = {
+				meta_trigger = {
+					text = {
+						has_tech = [TECH]
+					}
+					TECH = "[?ship_macrobuilder_techs^i.GetTokenKey]"
+				}
+			}
+			build_x10_button_click_enabled = {
+				meta_trigger = {
 					text = {
 						has_tech = [TECH]
 					}
@@ -94,14 +108,84 @@ scripted_gui = {
 				macro_build_ship = yes
 				macro_build_ship = yes
 			}
+			assign_mio_button_click = {
+				set_variable = {
+					ship_macrobuilder_selected_ship_index = i
+				}
+			}
+			assign_mio_button_right_click = {
+				log = "Removing MIO, Ship Index: [?i]"
+				set_variable = { ROOT.ship_macrobuilder_assigned_mios^i = 0 }
+			}
+			close_button_click = {
+				clr_country_flag = ship_macrobuilder_visible
+			}
 		}
 
 		properties = {
-			icon = {
-				image = [ship_macrobuilder_icon]
+			ship_icon = {
+				image = [ship_macrobuilder_ship_icon]
 			}
-			role = {
-				frame = ship_macrobuilder_roles^i
+			ship_role = {
+				frame = ship_macrobuilder_ship_roles^i
+			}
+			assign_mio_button = {
+				image = [ship_macrobuilder_assigned_mio_icon]
+			}
+		}
+	}
+	
+	ship_macrobuilder_mio_scripted_gui = {
+		context_type = player_context
+		
+		window_name = "ship_macrobuilder_mio_containter"
+		parent_window_name = ship_macrobuilder_containter_instance
+
+		visible = {
+			has_variable = ship_macrobuilder_selected_ship_index
+		}
+
+		dynamic_lists = {
+			macrobuilder_mios = {
+				array = ship_macrobuilder_mios
+
+				change_scope = no
+
+				entry_container = "macrobuilder_mio_entry"
+			}
+		}
+
+		triggers = {
+			mio_button_click_enabled = {
+				meta_trigger = {
+					text = {
+						mio:[MIO] = {
+							set_temp_variable = { PREV.used = number_of_currently_assigned_tasks }
+							set_temp_variable = { PREV.total = max_task_capacity }
+						}
+					}
+					MIO = "[?v.GetTokenKey]"
+				}
+				check_variable = { used < total }
+			}
+		}
+
+		effects = {
+			mio_button_click = {
+				log = "Setting MIO: [?v.GetTokenKey], Ship Index: [?ship_macrobuilder_selected_ship_index]"
+				set_variable = {
+					ROOT.ship_macrobuilder_assigned_mios^ROOT.ship_macrobuilder_selected_ship_index = v
+				}
+				clear_variable = ship_macrobuilder_selected_ship_index
+			}
+			close_button_click = {
+				clear_variable = ship_macrobuilder_selected_ship_index
+			}
+		}
+
+		properties = {
+			mio_icon = {
+				image = [ship_macrobuilder_mio_icon]
 			}
 		}
 	}
