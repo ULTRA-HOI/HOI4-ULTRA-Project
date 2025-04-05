@@ -94,22 +94,24 @@ types = {
 
 		success_factors = {
 			success = {
-				base = 0.65
+				base = 0.5
 
 				# Raiding unit modifiers
 				experience = {
-					weight = 0.2
-					start_weight = -0.2
+					weight = 0.1
+					start_weight = -0.1
 					reference = 1.0
 				}
 				air_agility = {
-					reference = 100.0 # As air unit agility approaches 100 (as defined by the value above), increase chance by this value
+					start_reference = 400
+					reference = 600.0 # As air unit agility approaches 100 (as defined by the value above), increase chance by this value
 					weight = 0.1 # At 0 agility, the modifier will have negative effect.
 					start_weight = -0.1 # The modifier will scale linearly, meaning at 50 agility, the modifier will be 0.
 				}
 				reliability = {
+					start_reference = 0.6
 					reference = 1
-					weight = 0.05
+					weight = 0.1
 					start_weight = -0.1
 				}
 				air_defence = {
@@ -119,8 +121,8 @@ types = {
 				}
 				air_superiority = {
 					reference = 1
-					weight = 0.1
-					start_weight = -0.1
+					weight = 0.2
+					start_weight = -0.5
 				}
 
 				### Target Modifiers
@@ -133,7 +135,8 @@ types = {
 					weight = -0.2
 				}
 				intel = {
-					weight = 0.3
+					start_weight = -0.2
+					weight = 0.2
 					#start_reference = 50
 					reference = 100
 				}
@@ -920,7 +923,7 @@ types = {
 
 		success_factors = {
 			success = {
-				base = 0.65
+				base = 0.5
 
 				# Raiding unit modifiers
 				experience = {
@@ -929,12 +932,14 @@ types = {
 					reference = 1.0
 				}
 				air_agility = {
-					reference = 100.0 # As air unit agility approaches 100 (as defined by the value above), increase chance by this value
+					reference = 600 # As air unit agility approaches 100 (as defined by the value above), increase chance by this value
+					start_reference = 400
 					weight = 0.1 # At 0 agility, the modifier will have negative effect.
 					start_weight = -0.1 # The modifier will scale linearly, meaning at 50 agility, the modifier will be 0.
 				}
 				reliability = {
 					reference = 1
+					start_reference = 0.6
 					weight = 0.1
 					start_weight = -0.1
 				}
@@ -946,7 +951,7 @@ types = {
 				air_superiority = {
 					reference = 1
 					weight = 0.2
-					start_weight = -0.2
+					start_weight = -0.5
 				}
 
 				### Target Modifiers
@@ -959,7 +964,8 @@ types = {
 					weight = -0.2
 				}
 				intel = {
-					weight = 0.3
+					weight = 0.2
+					start_weight = -0.2
 					reference = 100
 				}
 			}
@@ -1022,7 +1028,7 @@ types = {
 					var:target_state = {
 						add_dynamic_modifier = {
 							modifier = refinery_damaged_modifier
-							days = 180
+							days = 120
 						}
 					}
 			    }
@@ -1051,7 +1057,7 @@ types = {
 					var:target_state = {
 						add_dynamic_modifier = {
 							modifier = refinery_critically_damaged_modifier
-							days = 360
+							days = 180
 						}
 					}
 			    }

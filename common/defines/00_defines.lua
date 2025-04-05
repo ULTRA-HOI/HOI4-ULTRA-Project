@@ -3403,7 +3403,7 @@ NOperatives = {
 	OPERATIVE_BASE_INTEL_NETWORK_GAIN = 0.4,				-- Base amount of network strength gain per day provided by an operative
 	OPERATIVE_MAX_INTEL_NETWORK_GAIN = -1.0,				-- Max amount of network strength gain per day provided by an operative after modifiers have been applied (negative value means no max)
 	COUNTER_INTELLIGENCE_FOREIGN_AGENT_FACTOR = 0.0,			-- Multiplier to the counter intelligence provided by foreign (ally) operatives
-	COUNTER_INTELLIGENCE_STACKING_FACTOR = 1.0, --was 0.5 --Multiplier applied to each operative after the first one. So if we have the following counter intelligence rating values [ 0.1, 0.3, 0.2 ], the factor is applied twice for the lowest value and once for the 2nd lowest one as such : [ 0.3, 0.2 * D, 0.1 * D * D ] and then the result is summed up to give the final rating value
+	COUNTER_INTELLIGENCE_STACKING_FACTOR = 0.8, --was 0.5 --Multiplier applied to each operative after the first one. So if we have the following counter intelligence rating values [ 0.1, 0.3, 0.2 ], the factor is applied twice for the lowest value and once for the 2nd lowest one as such : [ 0.3, 0.2 * D, 0.1 * D * D ] and then the result is summed up to give the final rating value
 	COUNTER_INTELLIGENCE_TO_DEFENSE_LOG_FACTOR = 0.0,			-- Defense = LogFactor * log( 1 + CounterIntelligence ) + CounterIntelligence / Divisor
 	COUNTER_INTELLIGENCE_TO_DEFENSE_DIVISOR = 1.0,				-- see above
 	COUNTER_INTELLIGENCE_DAILY_XP_GAIN = 0.112,
@@ -4236,17 +4236,17 @@ NRaids = {
 	RAID_TYPE_ICON_ITEM_POOL_SIZE = 512,			   -- PERFORMANCE (UI) : number of entries to reserve in the raid type icon item pool
     RAID_LOW_RISK_SETTING_DISASTER_MODIFIER = 0,       -- How much the disaster risk is modified when the dial is set to "low"
     RAID_MEDIUM_RISK_SETTING_DISASTER_MODIFIER = 0.1,  -- How much the disaster risk is modified when the dial is set to "medium"
-    RAID_HIGH_RISK_SETTING_DISASTER_MODIFIER = 0.25,   -- How much the disaster risk is modified when the dial is set to "high"
+    RAID_HIGH_RISK_SETTING_DISASTER_MODIFIER = 0.30,   -- How much the disaster risk is modified when the dial is set to "high"
     RAID_SUCCESS_MODIFIER_THRESHOLD_BAD = -10.0,       -- If a success chance modifier is below this value, it will be displayed in red
     RAID_SUCCESS_MODIFIER_THRESHOLD_NEUTRAL = 0.0,     -- If a success chance modifier is below this value, it will be displayed in yellow
 	MAX_DETECTED_TARGETS_PER_HOUR = 1,                 -- PERFORMANCE (HOURLY TICK) : max number of targets to be detected per hour, NOTE : keep this low because detection is checked against every country!
 	RAID_DEFAULT_TARGET_COOLDOWN_DAYS = 365,           -- The default cooldown (in days) for raiding the same target, can be overriden for specific raid types through script
-	RAID_UNIT_SPEED_MULTIPLIER = 0.1,                  -- Global speed control
+	RAID_UNIT_SPEED_MULTIPLIER = 1,                  -- Global speed control
 	BASE_NAVAL_COMMANDO_RAID_DISTANCE = 1500,         -- Max distance in kilometers
 
     RAID_LOW_RISK_SETTING_SUCCESS_MODIFIER = 0.0,       -- How much the success chance is modified when the dial is set to "low"
-    RAID_MEDIUM_RISK_SETTING_SUCCESS_MODIFIER = 0.1,    -- How much the success chance is modified when the dial is set to "low"
-    RAID_HIGH_RISK_SETTING_SUCCESS_MODIFIER = 0.25,     -- How much the success chance is modified when the dial is set to "low"
+    RAID_MEDIUM_RISK_SETTING_SUCCESS_MODIFIER = 0.05,    -- How much the success chance is modified when the dial is set to "low"
+    RAID_HIGH_RISK_SETTING_SUCCESS_MODIFIER = 0.10,     -- How much the success chance is modified when the dial is set to "low"
 
 	TARGET_DETECTION_INTEL_TRESHOLD = 20.0,             -- How much intel is needed for a target to be detected?
 
@@ -4257,9 +4257,9 @@ NRaids = {
 
 	TARGET_INTEL_PER_NETWORK_STRENGTH = 0.5,				-- Intel network strength in target state is scaled by this value
 	TARGET_INTEL_FROM_CONTROLLED_NEIGHBOUR_STATES = 15.0,	-- Flat bonus for having control over at least one neighbour state
-	TARGET_INTEL_PER_AIR_SUPERIORITY = 0.5,					-- Air superiority over target region is scaled by this value
+	TARGET_INTEL_PER_AIR_SUPERIORITY = 0.3,					-- Air superiority over target region is scaled by this value
 	TARGET_INTEL_FROM_DECRYPTION = 25.0,					-- Flat bonus for having fully decrypted their ciphers
-	TARGET_INTEL_PENALTY_PER_ENEMY_COUNTER_INTEL = 5.0,		-- Enemy counter intel is scaled by this value
+	TARGET_INTEL_PENALTY_PER_ENEMY_COUNTER_INTEL = 4.0,		-- Enemy counter intel is scaled by this value
 
 	RAID_OUTCOME_REPORT_DAYS_TO_LIVE = 30,                  -- How many days after a raid has ended will the raid outcome report be visible on the map before being automatically dismissed
 
