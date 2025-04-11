@@ -371,7 +371,7 @@ NCountry = {
 	BASE_MOBILIZATION_SPEED = 0.005, --was 0.01 --Base speed of manpower mobilization  #in 1/1000 of 1 %
 
 	INTERCEPTION_WAR_SUPPORT_SCALE = 0.00002, --was 0.00001 --Scaling of interceptions to war support impact
-	INTERCEPTION_BOMBING_WAR_SUPPORT_IMPACT = 0.1, --was 0.3 --Max impact of interceptions on the war support
+	INTERCEPTION_BOMBING_WAR_SUPPORT_IMPACT = 0.0006, --was 0.3 --Max impact of interceptions on the war support
 
 	BOMBING_WAR_SUPPORT_PENALTY_SCALE = -0.00015, 			-- Scaling of bomber damage to war support impact, will be added weekly as a war support penalty
 	MAX_BOMBING_WEEKLY_WAR_SUPPORT_PENALTY = -0.006,		-- Max penalty that will gained per week from bomber's damage
