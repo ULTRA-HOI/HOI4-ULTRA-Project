@@ -5865,28 +5865,58 @@ focus = {
 		}	
 
 		completion_reward = {
-			division_template = { 
-				name = "Home Guard" 
-				division_names_group = ENG_INF_01
-				regiments = { 
-					infantry = { x = 0 y = 0 }
-					infantry = { x = 0 y = 1 }
-					infantry = { x = 0 y = 2 }
-
-					infantry = { x = 1 y = 0 }
-					infantry = { x = 1 y = 1 }
-					infantry = { x = 1 y = 2 }
-					
-					infantry = { x = 2 y = 0 }
-					infantry = { x = 2 y = 1 }
-					infantry = { x = 2 y = 2 }
-
-					infantry = { x = 3 y = 0 }
-				}
-				support = { 
-					HOME_GUARD_HQ = { x = 0 y = 0 }
+			IF = {
+				limit = { is_ai = no }
+				division_template = { 
+					name = "Home Guard" 
+					division_names_group = ENG_INF_01
+					regiments = { 
+						infantry = { x = 0 y = 0 }
+						infantry = { x = 0 y = 1 }
+						infantry = { x = 0 y = 2 }
+	
+						infantry = { x = 1 y = 0 }
+						infantry = { x = 1 y = 1 }
+						infantry = { x = 1 y = 2 }
+						
+						infantry = { x = 2 y = 0 }
+						infantry = { x = 2 y = 1 }
+						infantry = { x = 2 y = 2 }
+	
+						infantry = { x = 3 y = 0 }
+					}
+					support = { 
+						HOME_GUARD_HQ = { x = 0 y = 0 }
+					}
 				}
 			}
+
+			ELSE_IF = {
+				limit = { is_ai = yes }
+				division_template = { 
+					name = "Home Guard" 
+					division_names_group = ENG_INF_01
+					regiments = { 
+						infantry = { x = 0 y = 0 }
+						infantry = { x = 0 y = 1 }
+						infantry = { x = 0 y = 2 }
+	
+						infantry = { x = 1 y = 0 }
+						infantry = { x = 1 y = 1 }
+						infantry = { x = 1 y = 2 }
+						
+						infantry = { x = 2 y = 0 }
+						infantry = { x = 2 y = 1 }
+						infantry = { x = 2 y = 2 }
+	
+						infantry = { x = 3 y = 0 }
+					}
+					support = { 
+						HOME_GUARD_HQ_AI = { x = 0 y = 0 }
+					}
+				}
+			}
+			
 			capital_scope = {
 				create_unit = {
 					division = "division_template = \"Home Guard\" start_experience_factor = 0.0 start_equipment_factor = 0.1"
@@ -5910,8 +5940,18 @@ focus = {
 			custom_effect_tooltip = ENG_home_guard_1_tt
 			custom_effect_tooltip = ENG_home_guard_2_tt
 
-			set_technology = {
-				UnlockHomeguardHQ = 1 popup = no
+			IF = {
+				limit = { is_ai = yes }
+				set_technology = {
+					UnlockHomeguardHQAI = 1 popup = no
+				}
+			}
+			
+			IF = {
+				limit = { is_ai = no }
+				set_technology = {
+					UnlockHomeguardHQ = 1 popup = no
+				}
 			}
 		}
 	}
