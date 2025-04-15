@@ -4040,7 +4040,7 @@ NSupply = {
 	-- How many trucks does it cost to fully motorize a hub
 	SUPPLY_HUB_FULL_MOTORIZATION_TRUCK_COST = 120, --was 80.0
 	-- For each additional level of motorization on a hub (i.e. contry with set motoriazation) reduce max bonus for next level by this amount
-	SUPPLY_HUB_MOTORIZATION_MARGINAL_EFFECT_DECAY = 15.0,
+	SUPPLY_HUB_MOTORIZATION_MARGINAL_EFFECT_DECAY = 1200.0,
 
 
 	-- used for calculating "flow" for railways.
