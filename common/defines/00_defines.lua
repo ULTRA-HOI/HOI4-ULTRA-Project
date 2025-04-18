@@ -306,10 +306,10 @@ NCountry = {
 	THERMONUCLEAR_BOMB_DROP_WAR_SUPPORT_EFFECT_MAX_VP = 3,		-- War support will be scaled down if there's less VP than this in the province
 	WEEKLY_STABILITY_GAIN = 0.0,
 	WEEKLY_WAR_SUPPORT_GAIN = 0.0,
-	SUPPLY_CONVOY_FACTOR = 0.005, --was 0.25 --How many convoys each supply needs
-	CONVOY_RANGE_FACTOR = 1,                        -- how much range affects convoy need
-	CONVOY_LENDLEASE_RANGE_FACTOR = 1,				-- How much range affects convoy need for lend lease
-	CONVOY_INTERNATIONAL_MARKET_RANGE_FACTOR = 1,	-- How much range affects convoy need for international market
+	SUPPLY_CONVOY_FACTOR = 0.004, --was 0.25 --How many convoys each supply needs
+	CONVOY_RANGE_FACTOR = 1.1,                        -- how much range affects convoy need
+	CONVOY_LENDLEASE_RANGE_FACTOR = 1.1,				-- How much range affects convoy need for lend lease
+	CONVOY_INTERNATIONAL_MARKET_RANGE_FACTOR = 1.1,	-- How much range affects convoy need for international market
 	LOCAL_MANPOWER_ACCESSIBLE_NON_CORE_FACTOR = 0.005, --was 0.02 --accessible recruitable factor base
 	MAX_NON_CORE_MANPOWER_FACTOR = 1.0,				-- max clamp for recruitable local non core manpower factor for states
 	DEFAULT_STABILITY = 0.5,						-- Default stability if not scripted otherwise.
@@ -4008,7 +4008,7 @@ NSupply = {
 	NODE_FLOW_BONUS_PER_RAIL_LEVEL = 0.0, --was 0.34
 
 	-- rivers will transfer in between nodes as if they were this level
-	RIVER_RAILWAY_LEVEL = 2,
+	RIVER_RAILWAY_LEVEL = 1,
 
 	-- defines that are used for supply reach for floating harbors
 	FLOATING_HARBOR_INITIAL_SUPPLY_FLOW = 1200.0,
@@ -4070,8 +4070,8 @@ NSupply = {
 	DEFAULT_STARTING_TRUCK_RATIO = 1.5, -- countries get this ratio of starting truck in their buffers compared to their need
 	DEFAULT_STARTING_TRAIN_RATIO = 1, -- countries get this ratio of starting trains in their buffers compared to their need
 
-	SUPPLY_POINTS_PER_TRAIN = 7.5, --was 1.0 --old default 1.25 -- Amount of supply that can fit in a train. (Trains distribute supply from capital to a supply node.)
-	NUM_RAILWAYS_TRAIN_FACTOR = 0.03, -- the train usage is scaled by railway distance between the supply node and the capital multiplied by this factor
+	SUPPLY_POINTS_PER_TRAIN = 12.5, --was 1.0 --old default 1.25 -- Amount of supply that can fit in a train. (Trains distribute supply from capital to a supply node.)
+	NUM_RAILWAYS_TRAIN_FACTOR = 0.11, -- the train usage is scaled by railway distance between the supply node and the capital multiplied by this factor
 
 	BASE_SUPPLY_MULT_FOR_TRUCK_DEFAULT_BUFFER = 1.0,  -- initial value for wanted buffers over potential truck usage
 	BASE_SUPPLY_MULT_FOR_TRUCK_MIN_BUFFER = 0.0, -- min and max values for buffer ratio
