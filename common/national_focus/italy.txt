@@ -321,10 +321,20 @@ focus_tree = {
 					set_state_flag = ITA_improved_infrastructure_in_state_flag
 					add_building_construction = {
 						type = infrastructure
+						level = 2
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = industrial_complex
+						level = 2
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = arms_factory
 						level = 1
 						instant_build = yes
 					}
-					add_extra_state_shared_building_slots = 1
+					add_extra_state_shared_building_slots = 3
 				}
 			}
 			else_if = {
@@ -348,7 +358,7 @@ focus_tree = {
 						set_state_flag = ITA_improved_infrastructure_in_state_flag
 						add_building_construction = {
 							type = infrastructure
-							level = 1
+							level = 2
 							instant_build = yes
 						}
 						add_extra_state_shared_building_slots = 1
@@ -382,7 +392,7 @@ focus_tree = {
 						set_state_flag = ITA_improved_infrastructure_in_state_flag
 						add_building_construction = {
 							type = infrastructure
-							level = 1
+							level = 2
 							instant_build = yes
 						}
 						add_extra_state_shared_building_slots = 1
@@ -432,7 +442,7 @@ focus_tree = {
 						set_state_flag = ITA_improved_infrastructure_in_state_flag
 						add_building_construction = {
 							type = infrastructure
-							level = 1
+							level = 2
 							instant_build = yes
 						}
 						add_extra_state_shared_building_slots = 1
@@ -468,7 +478,7 @@ focus_tree = {
 						set_state_flag = ITA_improved_infrastructure_in_state_flag
 						add_building_construction = {
 							type = infrastructure
-							level = 1
+							level = 2
 							instant_build = yes
 						}
 						add_extra_state_shared_building_slots = 1
@@ -492,7 +502,7 @@ focus_tree = {
 				1072 = { #TIGRAY
 					add_building_construction = {
 						type = infrastructure
-						level = 1
+						level = 2
 						instant_build = yes
 					}
 					add_extra_state_shared_building_slots = 1
@@ -519,7 +529,7 @@ focus_tree = {
 						set_state_flag = ITA_improved_infrastructure_in_state_flag
 						add_building_construction = {
 							type = infrastructure
-							level = 1
+							level = 2
 							instant_build = yes
 						}
 						add_extra_state_shared_building_slots = 1
@@ -555,7 +565,7 @@ focus_tree = {
 						set_state_flag = ITA_improved_infrastructure_in_state_flag
 						add_building_construction = {
 							type = infrastructure
-							level = 1
+							level = 2
 							instant_build = yes
 						}
 						add_extra_state_shared_building_slots = 1
@@ -1688,47 +1698,10 @@ focus_tree = {
 				name = ITA_industria_della_gomma_sintetica
 				bonus = 0.75
 				uses = 2
-				category = cat_synth_oil
-			}
+				category = cat_synth_rubber
 
-			if = {
-				limit = {
-					2 = {
-						is_controlled_by = ROOT
-						free_building_slots = {
-							building = synthetic_refinery_inactive
-							size > 0
-							include_locked = yes
-						}
-					}
-				}
-				2 = {
-					add_extra_state_shared_building_slots = 1
-					add_building_construction = {
-						type = synthetic_refinery_inactive
-						level = 1
-						instant_build = yes
-					}
-				}
-			}
-			else = {
-				random_core_state = {
-					limit = {
-						is_controlled_by = ROOT
-						free_building_slots = {
-							building = synthetic_refinery_inactive
-							size > 0
-							include_locked = yes
-						}
-					}
-					prioritize = { 157 1079 117 } #ABRUZZO as main fallback
-					add_extra_state_shared_building_slots = 1
-					add_building_construction = {
-						type = synthetic_refinery_inactive
-						level = 1
-						instant_build = yes
-					}
-				}
+				custom_effect_tooltip = Construction_Focus_Middle_tt
+				unlock_decision_tooltip = { decision = ITA_industria_della_gomma_sintetica_decision show_effect_tooltip = yes }	
 			}
 		}
 	}
@@ -4438,7 +4411,7 @@ focus_tree = {
 				name = ITA_incrociatori_leggeri
 				bonus = 1.5
 				uses = 1
-				category = cl_tech
+				category = cl_gun_tech
 			}
 
 			#Update NS icon
@@ -4483,7 +4456,7 @@ focus_tree = {
 				name = ITA_incrociatori_pesanti
 				bonus = 1.5
 				uses = 1
-				category = ca_tech
+				category = ca_gun_tech
 			}
 
 			#Update NS icon
@@ -4752,7 +4725,7 @@ focus_tree = {
 				name = ITA_cacciatorpediniere_di_scorta
 				bonus = 1.0
 				uses = 1
-				category = dd_tech
+				category = asw_tech
 			}
 
 			##########
@@ -5023,7 +4996,8 @@ focus_tree = {
 				name = ITA_navi_da_battaglia
 				bonus = 1.5
 				uses = 1
-				category = bb_tech
+				category = cat_ship_heavy_battery 
+				category = cat_adv_ship_heavy_battery
 			}
 
 			# ###########
