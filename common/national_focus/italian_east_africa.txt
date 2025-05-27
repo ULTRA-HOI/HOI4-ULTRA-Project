@@ -1,0 +1,650 @@
+focus_tree = {
+	id = AOI_focus
+	country = {
+		factor = 0
+		
+		modifier = {
+			add = 10
+			tag = AOI
+		}
+	}
+
+	default = no
+
+	continuous_focus_position = { x = 50 y = 1000 }
+
+
+	focus = {
+		id = AOI_restore_the_country
+		icon = GFX_goal_generic_construction2
+#		prerequisite = { focus = ETH_declare_for_italy }
+
+		x = 8
+		y = 0
+#		relative_position_id = ETH_declare_for_italy
+		cost = 10
+		available = {
+			has_civil_war = no
+		}
+		
+		search_filters = {}
+
+		completion_reward = {
+			add_stability = 0.05
+#			add_popularity = {
+#				ideology = fascism
+#				popularity = 0.15
+#			}
+			add_timed_idea = {
+				idea = AOI_rebuilding_the_country_idea
+				days = 128
+			}
+		}
+	}
+	focus = {
+		id = AOI_invite_italian_settlers
+		icon = GFX_focus_ETH_invite_italian_settlers
+		prerequisite = { focus = AOI_restore_the_country }
+
+		x = -1
+		y = 1
+		relative_position_id = AOI_restore_the_country
+		cost = 10
+		available = {
+			is_subject_of = ITA
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+			add_ideas = AOI_italian_settlers_idea
+			custom_effect_tooltip = AOI_invite_italian_settlers_tt
+			hidden_effect = {
+				random_owned_state = {
+					limit = {
+						OR = {
+							has_state_category = rural
+							has_state_category = pastoral
+						}
+						NOT = {
+							has_state_flag = AOI_has_italian_settlers
+						}
+					}
+					_upgrade_state_category = yes
+					set_state_flag = AOI_has_italian_settlers
+				}
+				random_owned_state = {
+					limit = {
+						OR = {
+							has_state_category = rural
+							has_state_category = pastoral
+						}
+						NOT = {
+							has_state_flag = AOI_has_italian_settlers
+						}
+					}
+					ETH_upgrade_state_category = yes
+					set_state_flag = AOI_has_italian_settlers
+				}
+			}			
+		}
+	}
+	focus = {
+		id = AOI_replace_the_abuna
+		icon = GFX_focus_ETH_replace_the_abuna
+		prerequisite = { focus = AOI_restore_the_country }
+		dynamic = yes 
+		x = 1
+		y = 1
+		relative_position_id = AOI_restore_the_country
+		cost = 10
+		available = {
+			is_subject_of = ITA
+		}
+
+		search_filters = {FOCUS_FILTER_POLITICAL}
+
+		completion_reward = {
+			IF = { 
+				limit = {
+					is_puppet = no
+				}
+				add_political_power = 150
+				add_stability = 0.1
+				every_other_country = {
+					limit = {
+						capital_scope = {
+							is_on_continent = middle_east
+						}
+						NOT = { tag = ISR }
+					}
+					add_opinion_modifier = {
+						target = ROOT
+						modifier = ETH_closer_cooperation
+					}
+				}
+			}
+			ELSE_IF = { 
+				limit = {
+					is_puppet = yes
+				}
+				add_political_power = 50
+				add_stability = 0.05
+				custom_effect_tooltip = available_political_advisor
+				custom_effect_tooltip = abuna_abraham_gojjam_tt
+				remove_trait = {
+					character = ETH_abuna_abraham
+					slot = political_advisor
+					trait = collaborationist_arch_bishop
+				}
+				add_trait = {
+					character = ETH_abuna_abraham
+					slot = political_advisor
+					trait = arch_bishop_of_gojjam
+				}
+			
+			}
+		}
+	}
+	focus = {
+		id = AOI_amedeos_feast_of_maskal
+		icon = GFX_focus_ETH_amedeos_feast_of_maskal
+		prerequisite = { focus = AOI_invite_italian_settlers focus = AOI_replace_the_abuna }
+#		mutually_exclusive = { focus = ETH_assertiveness }
+		x = 1
+		y = 1
+		relative_position_id = AOI_invite_italian_settlers
+		cost = 10
+		available = {
+			is_subject_of = ITA
+			ITA = {
+				has_civil_war = no
+				OR = {
+					has_government = fascism
+					has_completed_focus = ITA_monarchia_d_italia
+					hidden_trigger = {
+						has_government = neutrality # if ITA has been couped to be a monarchy
+					}
+				}
+			}
+		}
+
+		search_filters = {FOCUS_FILTER_POLITICAL}
+
+		completion_reward = {
+			add_autonomy_score = { 
+				value = 500 
+				localization = ETH_amedeos_feast_of_maskal
+			}
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = ETH_victor_emanuel_of_ethiopia_idea
+					add_idea = ETH_victor_emanuel_of_ethiopia_idea_2
+				}
+			}
+			hidden_effect = {
+				IF = {
+					limit = {
+						has_idea = ETH_victor_emanuel_of_ethiopia_idea
+					}
+					swap_ideas = {
+						remove_idea = ETH_victor_emanuel_of_ethiopia_idea
+						add_idea = ETH_victor_emanuel_of_ethiopia_idea_2
+					}
+				}
+			}	
+
+			add_political_power = 100 
+#			custom_effect_tooltip = ETH_amedeos_feast_of_maskal_tt
+#			IF = { 
+#				limit = {
+#					has_completed_focus = ETH_sway_the_warlords
+#				}
+#				ETH_seyoum_mengesha = {
+#					clr_character_flag = ETH_imprisoned_flag 
+#				}
+#				ETH_ayalew_birru = {
+#					clr_character_flag = ETH_imprisoned_flag 
+#				}
+#				ETH_ras_kassa = {
+#					clr_character_flag = ETH_imprisoned_flag 
+#				}
+#			}
+		}
+	}
+	focus = {
+		id = AOI_invite_italian_investors
+		icon = GFX_goal_generic_intelligence_exchange
+		prerequisite = { focus = AOI_amedeos_feast_of_maskal }
+
+		x = -2
+		y = 1
+		relative_position_id = AOI_amedeos_feast_of_maskal
+		cost = 10
+		available = {
+			is_subject_of = ITA
+			ITA = {
+				has_civil_war = no
+				OR = {
+					has_government = fascism
+					has_completed_focus = ITA_monarchia_d_italia
+					hidden_trigger = {
+						has_government = neutrality # if ITA has been couped to be a monarchy
+					}
+				}
+			}
+		}
+
+		search_filters = {FOCUS_FILTER_INDUSTRY}
+
+		completion_reward = {
+			add_offsite_building = { type = industrial_complex level = 2 }
+		}
+	}
+	focus = {
+		id = AOI_italian_general_staff
+		icon = GFX_focus_generic_military_mission
+		prerequisite = { focus = AOI_amedeos_feast_of_maskal }
+
+		x = 2
+		y = 1
+		relative_position_id = AOI_amedeos_feast_of_maskal
+		cost = 10
+		available = {
+			is_subject_of = ITA
+			ITA = {
+				has_civil_war = no
+				OR = {
+					has_government = fascism
+					has_completed_focus = ITA_monarchia_d_italia
+					hidden_trigger = {
+						has_government = neutrality # if ITA has been couped to be a monarchy
+					}
+				}
+			}
+		}
+
+		search_filters = {FOCUS_FILTER_BALANCE_OF_POWER}
+
+		completion_reward = {
+#			ETH_BOP_centralization_large_effect = yes
+			custom_effect_tooltip = ETH_italian_general_staff_tt
+			ITA = {
+				country_event = {
+					id = BBA_ethiopia_fascist_events.69
+					hours = 12
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = AOI_cooperation
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = AOI_amedeos_feast_of_maskal }
+		dynamic = yes 
+		x = 0
+		y = 1
+		relative_position_id = AOI_amedeos_feast_of_maskal
+		cost = 10
+		available = {
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+			add_offsite_building = {
+				type = industrial_complex
+ 	  			level = 2
+			}
+			IF = {
+				limit = {is_or_will_be_jimma = yes}
+				set_country_flag = ETH_random_som_advisor_flag
+				custom_effect_tooltip = ETH_cooperation_som_tt
+			}
+			ELSE_IF = {
+				limit = {is_or_will_be_gojjam = yes}
+				set_country_flag = ETH_random_sud_advisor_flag
+				custom_effect_tooltip = ETH_cooperation_sud_tt
+			}
+			ELSE = {
+				set_country_flag = ETH_gugsa_cooperation_flag
+				custom_effect_tooltip = ETH_cooperation_gugsa_tt
+			}
+		}
+	}
+	focus = {
+		id = AOI_adopt_the_lira
+		icon = GFX_focus_ETH_adopt_the_lira
+		prerequisite = { focus = AOI_invite_italian_investors }
+
+		x = 0
+		y = 1
+		relative_position_id = AOI_invite_italian_investors
+		cost = 10
+		available = {
+			is_subject_of = ITA
+			ITA = {
+				has_civil_war = no
+				OR = {
+					has_government = fascism
+					has_completed_focus = ITA_monarchia_d_italia
+					hidden_trigger = {
+						has_government = neutrality # if ITA has been couped to be a monarchy
+					}
+				}
+			}
+		}
+
+		search_filters = {FOCUS_FILTER_POLITICAL FOCUS_FILTER_BALANCE_OF_POWER}
+
+		completion_reward = {
+			ETH_BOP_centralization_large_effect = yes 
+			add_political_power = 120
+			add_offsite_building = { type = industrial_complex level = 2 }
+		}
+	}
+	focus = {
+		id = AOI_request_italian_equipment
+		icon = GFX_goal_generic_small_arms
+		prerequisite = { focus = AOI_italian_general_staff }
+
+		x = 0
+		y = 1
+		relative_position_id = AOI_italian_general_staff
+		cost = 10
+		available = {
+			is_subject_of = ITA
+			ITA = {
+				has_civil_war = no
+				OR = {
+					has_government = fascism
+					has_completed_focus = ITA_monarchia_d_italia
+					hidden_trigger = {
+						has_government = neutrality # if ITA has been couped to be a monarchy
+					}
+				}
+			}
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+			custom_effect_tooltip = ETH_request_italian_equipment_tt
+			country_event = {
+				id = BBA_ethiopia_fascist_events.53
+				hours = 1
+			}
+		}
+	}
+	focus = {
+		id = AOI_recruit_mercenaries
+		icon = GFX_goal_generic_military_deal
+		prerequisite = { focus = AOI_cooperation }
+
+		x = 0
+		y = 1
+		relative_position_id = AOI_cooperation
+		cost = 10
+		available = {
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+			# Gugsa
+			IF = {
+				limit = {
+					NOT = { has_cosmetic_tag = jimma }
+					NOT = { has_cosmetic_tag = gojjam }
+				}
+				division_template = {
+					name = "Divisione F. Coloniale"
+					is_locked = no
+					division_names_group = AOI_INF
+					priority = 1
+					template_counter = 67
+					regiments = { 
+						heavy_infantry = { x = 0 y = 0 } 
+						infantry = { x = 0 y = 1 } 
+						infantry = { x = 0 y = 2 } 
+						
+						infantry = { x = 1 y = 0 } 
+						infantry = { x = 1 y = 1 }
+				
+						infantry = { x = 2 y = 0 } 
+						infantry = { x = 2 y = 1 } 		
+						
+						artillery_brigade = { x = 3 y = 0 }
+						artillery_brigade = { x = 3 y = 1 }
+						
+					} 
+					support = { 
+						DIV_HQ = { x = 0 y = 0 }	
+						recon = { x = 0 y = 1 }
+					} 
+				}
+				random_owned_state = {
+					hidden_effect = {
+						create_unit = {
+							division = "division_template = \"Divisione F. Coloniale\" start_experience_factor = 0.35 start_equipment_factor = 1"
+							owner = AOI
+							count = 1					
+						}
+					}
+					custom_effect_tooltip = ETH_askari_tt					
+				}
+			}
+			# Gojjam
+			ELSE_IF = {
+				limit = { has_cosmetic_tag = gojjam	}
+				division_template = {
+					name = "Sudanese Mercenaries"
+					is_locked = no
+					division_names_group = ETH_SUDAN_MERCS
+					priority = 1
+					template_counter = 3
+					regiments = {
+						infantry = { x = 0 y = 0 }
+						infantry = { x = 0 y = 1 }
+						infantry = { x = 0 y = 2 }
+						infantry = { x = 0 y = 3 }
+					}
+				}
+				random_owned_state = {
+					hidden_effect = {
+						create_unit = {
+							division = "division_template = \"Sudanese Mercenaries\" start_experience_factor = 0.3 	start_equipment_factor = 1"
+							owner = AOI
+							count = 1					
+						}
+					}
+					custom_effect_tooltip = ETH_sudanese_mercs_tt
+				}
+
+			}
+			# Jimma
+			ELSE_IF = {
+				limit = { has_cosmetic_tag = jimma}
+				division_template = {
+					name = "Arab Mercenaries"
+					is_locked = no
+					division_names_group = ETH_ARAB_MERCS
+					priority = 1
+					template_counter = 21
+					regiments = {
+						cavalry = { x = 0 y = 0 }
+						cavalry = { x = 0 y = 1 }
+						cavalry = { x = 0 y = 2 }
+						cavalry = { x = 0 y = 3 }
+					}
+				}
+				random_owned_state = {
+					hidden_effect = {
+						create_unit = {
+							division = "division_template = \"Arab Mercenaries\" start_experience_factor = 0.35	start_equipment_factor = 1"
+							owner = AOI
+							count = 1					
+						}
+					}
+					custom_effect_tooltip = ETH_arab_mercs_colab_tt				
+				}
+			}			
+		}
+	}
+	focus = {
+		id = AOI_outsourced_production
+		icon = GFX_focus_generic_truck
+		prerequisite = { focus = AOI_adopt_the_lira focus = AOI_request_italian_equipment }
+
+		x = 2
+		y = 1
+		relative_position_id = AOI_adopt_the_lira
+		cost = 10
+		available = {
+			is_subject_of = ITA
+			ITA = {
+				has_civil_war = no
+				OR = {
+					has_government = fascism
+					has_completed_focus = ITA_monarchia_d_italia
+					hidden_trigger = {
+						has_government = neutrality # if ITA has been couped to be a monarchy
+					}
+				}
+			}
+		}
+		search_filters = {FOCUS_FILTER_INDUSTRY}
+		# Beretta - Inf
+		# Breda - Artillery
+		# Fiat - Tank
+
+		# Light Air - Macchi
+		# CAS - Caproni
+		# Medium Air - IMAM
+		
+		completion_reward = {
+			country_event = {
+				id = BBA_ethiopia_fascist_events.60
+				hours = 1
+			}
+			custom_effect_tooltip = ETH_outsourced_production_tt
+			IF = {
+				limit = {
+					has_dlc = "Arms Against Tyranny"
+				}	
+				custom_effect_tooltip = ETH_outsourced_production_air_tt
+				show_mio_tooltip = ITA_imam_organization
+				show_mio_tooltip = ITA_caproni_organization
+				show_mio_tooltip = ITA_macchi_organization
+				custom_effect_tooltip = ETH_outsourced_production_army_tt
+				show_mio_tooltip = ITA_fiat_organization
+				show_mio_tooltip = ITA_breda_organization
+				show_mio_tooltip = ITA_beretta_organization
+			}
+			ELSE = {
+				custom_effect_tooltip = ETH_outsourced_production_air_tt
+				show_ideas_tooltip = ETH_imam
+				show_ideas_tooltip = caproni_ETH
+				show_ideas_tooltip = macchi_ETH
+				custom_effect_tooltip = ETH_outsourced_production_army_tt
+				show_ideas_tooltip = fiat_ETH
+				show_ideas_tooltip = breda_ETH
+				show_ideas_tooltip = beretta_ETH
+			}
+			custom_effect_tooltip = ETH_outsourced_production_factories_tt
+		}
+	}
+	focus = {
+		id = AOI_the_italian_language
+		icon = GFX_focus_generic_italy_propaganda
+		prerequisite = { focus = AOI_outsourced_production }
+
+		x = -1
+		y = 1
+		relative_position_id = AOI_outsourced_production
+		cost = 10
+		available = {
+			is_subject_of = ITA
+			ITA = {
+				has_civil_war = no
+				OR = {
+					has_government = fascism
+					has_completed_focus = ITA_monarchia_d_italia
+					hidden_trigger = {
+						has_government = neutrality # if ITA has been couped to be a monarchy
+					}
+				}
+			}
+		}
+
+		search_filters = {FOCUS_FILTER_POLITICAL FOCUS_FILTER_BALANCE_OF_POWER}
+
+		completion_reward = {
+#			ETH_BOP_centralization_small_effect = yes 
+			add_stability = 0.1
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = ETH_victor_emanuel_of_ethiopia_idea_2
+					add_idea = ETH_victor_emanuel_of_ethiopia_idea_3
+				}
+			}
+			IF = {
+				limit = {
+					has_idea = ETH_victor_emanuel_of_ethiopia_idea_2
+				}
+				swap_ideas = {
+					remove_idea = ETH_victor_emanuel_of_ethiopia_idea_2
+					add_idea = ETH_victor_emanuel_of_ethiopia_idea_3
+				}
+			}
+
+		}
+	}
+	focus = {
+		id = AOI_compensation
+		icon = GFX_focus_ETH_compensation
+		prerequisite = { focus = AOI_outsourced_production }
+
+		x = 1
+		y = 1
+		relative_position_id = AOI_outsourced_production
+		cost = 10
+		available = {
+			is_subject_of = ITA
+			ITA = {
+				has_civil_war = no
+				OR = {
+					has_government = fascism
+					has_completed_focus = ITA_monarchia_d_italia
+					hidden_trigger = {
+						has_government = neutrality # if ITA has been couped to be a monarchy
+					}
+				}
+			}
+		}
+
+		search_filters = {FOCUS_FILTER_ANNEXATION}
+
+		completion_reward = {
+			add_political_power = 100
+			IF = {
+				limit = { is_or_will_be_jimma = yes}
+				ITA = {
+					country_event = {
+						id = BBA_ethiopia_fascist_events.65
+						hours = 1
+					}
+				}
+			}
+			ELSE = {
+				ITA = {
+					country_event = {
+						id = BBA_ethiopia_fascist_events.64
+						hours = 1
+					}
+				}
+			}
+		}
+	}
+}
