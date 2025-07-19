@@ -8313,33 +8313,126 @@ focus_tree = {
 		}
 	}
 
+	# Operation Valkyrie Tree
+	# Focus 1: A German Resistance
 	focus = {
-		id = GER_resistance
+		id = GER_german_resistance
 		icon = GFX_goal_ger_resistance
-		available = {
-			GER = { controls_state = 69 }
-		}
-		bypass = {
-			OR = {
-				CZE = { is_subject_of = GER }
-				69 = { 
-					CONTROLLER = {
-						has_war_with = GER
-					}
-				}
-				GER = { controls_state = 69 }
-			}
-		}
 		x = 2
 		y = 0
 		relative_position_id = GER_ausbau_ost
-		cost = 10
+		cost = 1
+		
+		available = {
+			controls_state = 69 # Sudetenland
+		}
+		
+		completion_reward = {
+			country_event = {
+				id = valkyrie.1
+				days = 1
+			}
+		}
+		
 		ai_will_do = {
 			factor = 1
 		}
-		search_filters = {}
+	}
+
+	# Focus 2: Creation of the Waffen-SS
+	focus = {
+		id = GER_waffen_ss_creation
+		icon = GFX_focus_GER_ascension_of_himmler_alt
+		prerequisite = { focus = GER_german_resistance }
+		x = 0
+		y = 1
+		relative_position_id = GER_german_resistance
+		cost = 1
+		
+		available = {
+			has_war_with = ENG
+		}
+		
 		completion_reward = {
-			country_event = { id = opvalk_germany.1 }
+			# Unlock Balance of Power mechanic
+
+			set_power_balance = {
+				id = wehrmacht_waffen_ss_balance
+				set_value = 0.0
+			}
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	# Focus 3: Subverting Valkyrie
+	focus = {
+		id = GER_subverting_valkyrie
+		icon = GFX_focus_ger_valkyrie_subversion
+		x = 0
+		y = 2
+		relative_position_id = GER_german_resistance
+		cost = 1
+		
+		prerequisite = {
+			focus = GER_waffen_ss_creation
+		}
+		
+		available = {
+			has_war_with = SOV
+			has_war_with = USA
+		}
+		
+		completion_reward = {
+			# Unlock repeating decision
+			unlock_decision_category_tooltip = valkyrie_subversion_decisions
+			custom_effect_tooltip = valkyrie_subversion_tooltip
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	# Focus 4: Operation Valkyrie
+	focus = {
+		id = GER_operation_valkyrie
+		icon = GFX_focus_ger_valkyrie
+		x = 0
+		y = 3
+		relative_position_id = GER_german_resistance
+		cost = 1
+		
+		prerequisite = {
+			focus = GER_subverting_valkyrie
+		}
+		
+		available = {
+			OR = {
+				has_power_balance = {
+					id = wehrmacht_waffen_ss_balance
+					side = wehrmacht_side
+					value > 0.8
+				}
+				has_power_balance = {
+					id = wehrmacht_waffen_ss_balance
+					side = waffen_ss_side
+					value > 0.8
+				}
+			}
+		}
+		
+		completion_reward = {
+			country_event = {
+				id = valkyrie.100
+				days = 1
+			}
+		}
+		
+		ai_will_do = {
+			factor = 1
 		}
 	}
 }

@@ -1,0 +1,632 @@
+﻿add_namespace = valkyrie
+
+# Event after first focus - A German Resistance
+country_event = {
+	id = valkyrie.1
+	title = valkyrie.1.title
+	desc = valkyrie.1.desc
+	picture = GFX_report_event_generic_resistance
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		has_country_leader = { name = "Adolf Hitler" }
+	}
+	
+	option = {
+		name = valkyrie.1.option.a
+		# September Plot 1938
+		country_event = {
+			id = valkyrie.2
+			days = 30
+		}
+	}
+}
+
+# September Plot 1938
+country_event = {
+	id = valkyrie.2
+	title = valkyrie.2.title
+	desc = valkyrie.2.desc
+	picture = GFX_report_event_generic_conspiracy
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		has_country_leader = { name = "Adolf Hitler" }
+	}
+	
+	option = {
+		name = valkyrie.2.option.a # "Keep me informed."
+		set_country_flag = valkyrie_all_events
+		country_event = {
+			id = valkyrie.3
+			days = 60
+		}
+	}
+	
+	option = {
+		name = valkyrie.2.option.b # "Mention only important attempts."
+		set_country_flag = valkyrie_major_events_only
+		country_event = {
+			id = valkyrie.4
+			days = 90
+		}
+	}
+}
+
+# Maurice Bavaud attempt - 9th November 1938 (Minor)
+country_event = {
+	id = valkyrie.3
+	title = valkyrie.3.title
+	desc = valkyrie.3.desc
+	picture = GFX_report_event_generic_bomb
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		has_country_leader = { name = "Adolf Hitler" }
+		has_country_flag = valkyrie_all_events
+	}
+	
+	option = {
+		name = valkyrie.3.option.a # "Execute him in secret."
+		country_event = {
+			id = valkyrie.4
+			days = 30
+		}
+	}
+}
+
+# Georg Elser - Bürgerbräukeller bombing (Major)
+country_event = {
+	id = valkyrie.4
+	title = valkyrie.4.title
+	desc = valkyrie.4.desc
+	picture = GFX_report_event_generic_bomb
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		has_country_leader = { name = "Adolf Hitler" }
+	}
+	
+	option = {
+		name = valkyrie.4.option.a # "Saved by sheer luck."
+		if = {
+			limit = { has_country_flag = valkyrie_all_events }
+			country_event = {
+				id = valkyrie.5
+				days = 45
+			}
+		}
+		else = {
+			country_event = {
+				id = valkyrie.6
+				days = 90
+			}
+		}
+	}
+}
+
+# Erich Kordt attempt (Minor)
+country_event = {
+	id = valkyrie.5
+	title = valkyrie.5.title
+	desc = valkyrie.5.desc
+	picture = GFX_report_event_generic_conspiracy
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		has_country_leader = { name = "Adolf Hitler" }
+		has_country_flag = valkyrie_all_events
+	}
+	
+	option = {
+		name = valkyrie.5.option.a # "The security is too tight."
+		country_event = {
+			id = valkyrie.6
+			days = 120
+		}
+	}
+}
+
+# Paris victory parade attempt (Minor)
+country_event = {
+	id = valkyrie.6
+	title = valkyrie.6.title
+	desc = valkyrie.6.desc
+	picture = GFX_report_event_generic_military_parade
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		has_country_leader = { name = "Adolf Hitler" }
+		has_country_flag = valkyrie_all_events
+	}
+	
+	option = {
+		name = valkyrie.6.option.a # "He was already here?!"
+		country_event = {
+			id = valkyrie.7
+			days = 300
+		}
+	}
+}
+
+# Hitler visit of Paris May 1941 (Minor)
+country_event = {
+	id = valkyrie.7
+	title = valkyrie.7.title
+	desc = valkyrie.7.desc
+	picture = GFX_report_event_generic_military_ceremony
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		has_country_leader = { name = "Adolf Hitler" }
+		has_country_flag = valkyrie_all_events
+	}
+	
+	option = {
+		name = valkyrie.7.option.a # "He cancelled the visit."
+		country_event = {
+			id = valkyrie.8
+			days = 600
+		}
+	}
+}
+
+# 13th March 1943 - Smolensk airport attempt (Major)
+country_event = {
+	id = valkyrie.8
+	title = valkyrie.8.title
+	desc = valkyrie.8.desc
+	picture = GFX_report_event_generic_military_ceremony
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		has_country_leader = { name = "Adolf Hitler" }
+	}
+	
+	option = {
+		name = valkyrie.8.option.a # "There are too many guards."
+		country_event = {
+			id = valkyrie.9
+			days = 1
+		}
+	}
+	
+	option = {
+		name = valkyrie.8.option.b # "Open fire!"
+		complete_national_focus = GER_operation_valkyrie
+	}
+}
+
+# 13th March 1943 - Smolensk dinner attempt (Major)
+country_event = {
+	id = valkyrie.9
+	title = valkyrie.9.title
+	desc = valkyrie.9.desc
+	picture = GFX_report_event_generic_military_ceremony
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		has_country_leader = { name = "Adolf Hitler" }
+	}
+	
+	option = {
+		name = valkyrie.9.option.a # "Himmler didn't join him."
+		country_event = {
+			id = valkyrie.10
+			days = 1
+		}
+	}
+	
+	option = {
+		name = valkyrie.9.option.b # "Shoot Hitler regardless."
+		complete_national_focus = GER_operation_valkyrie
+	}
+}
+
+# 13th March 1943 - Flight back to Germany (Major)
+country_event = {
+	id = valkyrie.10
+	title = valkyrie.10.title
+	desc = valkyrie.10.desc
+	picture = GFX_report_event_generic_airplane
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		has_country_leader = { name = "Adolf Hitler" }
+	}
+	
+	option = {
+		name = valkyrie.10.option.a # "The bomb trigger froze."
+		if = {
+			limit = { has_country_flag = valkyrie_all_events }
+			country_event = {
+				id = valkyrie.11
+				days = 7
+			}
+		}
+		else = {
+			country_event = {
+				id = valkyrie.15
+				days = 90
+			}
+		}
+	}
+	
+	option = {
+		name = valkyrie.10.option.b # "Report Soviet fighters in the air!"
+		complete_national_focus = GER_operation_valkyrie
+	}
+}
+
+# Gersdorff suicide bomb attempt (Minor)
+country_event = {
+	id = valkyrie.11
+	title = valkyrie.11.title
+	desc = valkyrie.11.desc
+	picture = GFX_report_event_generic_bomb
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		has_country_leader = { name = "Adolf Hitler" }
+		has_country_flag = valkyrie_all_events
+	}
+	
+	option = {
+		name = valkyrie.11.option.a # "Hitler already left."
+		country_event = {
+			id = valkyrie.12
+			days = 180
+		}
+	}
+}
+
+# von dem Bussche suicide bomb attempt (Minor)
+country_event = {
+	id = valkyrie.12
+	title = valkyrie.12.title
+	desc = valkyrie.12.desc
+	picture = GFX_report_event_generic_military_ceremony
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		has_country_leader = { name = "Adolf Hitler" }
+		has_country_flag = valkyrie_all_events
+	}
+	
+	option = {
+		name = valkyrie.12.option.a # "The uniforms were destroyed."
+		country_event = {
+			id = valkyrie.13
+			days = 60
+		}
+	}
+}
+
+# von Kleist suicide bomb attempt (Minor)
+country_event = {
+	id = valkyrie.13
+	title = valkyrie.13.title
+	desc = valkyrie.13.desc
+	picture = GFX_report_event_generic_military_ceremony
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		has_country_leader = { name = "Adolf Hitler" }
+		has_country_flag = valkyrie_all_events
+	}
+	
+	option = {
+		name = valkyrie.13.option.a # "He cancelled!"
+		country_event = {
+			id = valkyrie.14
+			days = 90
+		}
+	}
+}
+
+# von Breitenbruch attempt (Minor)
+country_event = {
+	id = valkyrie.14
+	title = valkyrie.14.title
+	desc = valkyrie.14.desc
+	picture = GFX_report_event_generic_military_ceremony
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		has_country_leader = { name = "Adolf Hitler" }
+		has_country_flag = valkyrie_all_events
+	}
+	
+	option = {
+		name = valkyrie.14.option.a # "Only generals were allowed in."
+		country_event = {
+			id = valkyrie.15
+			days = 30
+		}
+	}
+}
+
+# Stieff suicide bomb attempt (Minor)
+country_event = {
+	id = valkyrie.15
+	title = valkyrie.15.title
+	desc = valkyrie.15.desc
+	picture = GFX_report_event_generic_bomb
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		has_country_leader = { name = "Adolf Hitler" }
+		has_country_flag = valkyrie_all_events
+	}
+	
+	option = {
+		name = valkyrie.15.option.a # "Stieff just couldn't do it."
+		country_event = {
+			id = valkyrie.16
+			days = 14
+		}
+	}
+}
+
+# First Stauffenberg attempt (Major)
+country_event = {
+	id = valkyrie.16
+	title = valkyrie.16.title
+	desc = valkyrie.16.desc
+	picture = GFX_report_event_generic_military_ceremony
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		has_country_leader = { name = "Adolf Hitler" }
+	}
+	
+	option = {
+		name = valkyrie.16.option.a # "Himmler isn't there."
+		country_event = {
+			id = valkyrie.17
+			days = 4
+		}
+	}
+	
+	option = {
+		name = valkyrie.16.option.b # "Hitler must die!"
+		complete_national_focus = GER_operation_valkyrie
+	}
+}
+
+# Second Stauffenberg attempt (Major)
+country_event = {
+	id = valkyrie.17
+	title = valkyrie.17.title
+	desc = valkyrie.17.desc
+	picture = GFX_report_event_generic_military_ceremony
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		has_country_leader = { name = "Adolf Hitler" }
+	}
+	
+	option = {
+		name = valkyrie.17.option.a # "Himmler isn't there...again!"
+		country_event = {
+			id = valkyrie.18
+			days = 5
+		}
+	}
+	
+	option = {
+		name = valkyrie.17.option.b # "Hitler must die!"
+		complete_national_focus = GER_operation_valkyrie
+	}
+}
+
+# Third Stauffenberg attempt (Major)
+country_event = {
+	id = valkyrie.18
+	title = valkyrie.18.title
+	desc = valkyrie.18.desc
+	picture = GFX_report_event_generic_bomb
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		has_country_leader = { name = "Adolf Hitler" }
+	}
+	
+	option = {
+		name = valkyrie.18.option.a # "Damn Himmler, Hitler must die NOW!"
+		complete_national_focus = GER_operation_valkyrie
+	}
+}
+
+# Final Operation Valkyrie Event
+country_event = {
+	id = valkyrie.100
+	title = valkyrie.100.title
+	desc = valkyrie.100.desc
+	picture = GFX_report_event_generic_bomb_2
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = valkyrie.100.option.a # "The Führer survives!"
+		# Remove involved generals
+		remove_unit_leader = 123 # Stauffenberg
+		remove_unit_leader = 124 # Tresckow
+		remove_unit_leader = 125 # Beck
+		remove_unit_leader = 126 # Rommel
+		# Remove Balance of Power
+		remove_power_balance = {
+			id = wehrmacht_waffen_ss_balance
+		}
+	}
+	
+	option = {
+		name = valkyrie.100.option.b # "The Führer is dead! Himmler takes over!"
+		retire_country_leader = yes
+		create_country_leader = {
+			name = "Heinrich Himmler"
+			desc = "POLITICS_HIMMLER_DESC"
+			picture = "Portrait_Germany_Heinrich_Himmler.dds"
+			expire = "1965.1.1"
+			ideology = nazism
+			traits = {
+				# Himmler traits
+			}
+		}
+		# Remove involved generals
+		remove_unit_leader = 123 # Stauffenberg
+		remove_unit_leader = 124 # Tresckow
+		remove_unit_leader = 125 # Beck
+		remove_unit_leader = 126 # Rommel
+		# Remove Balance of Power
+		remove_power_balance = {
+			id = wehrmacht_waffen_ss_balance
+		}
+	}
+	
+	option = {
+		name = valkyrie.100.option.c # "Hitler is dead, Valkyrie succeeds!"
+		retire_country_leader = yes
+		create_country_leader = {
+			name = "Ludwig Beck"
+			desc = "POLITICS_BECK_DESC"
+			picture = "Portrait_Germany_Ludwig_Beck.dds"
+			expire = "1965.1.1"
+			ideology = conservatism
+			traits = {
+				# Beck traits
+			}
+		}
+		# Remove all SS generals
+		every_unit_leader = {
+			limit = {
+				has_trait = GER_ss
+			}
+			remove_unit_leader = THIS
+		}
+		# Remove Balance of Power
+		remove_power_balance = {
+			id = wehrmacht_waffen_ss_balance
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+# country_event = {
+#	id = opvalk_germany.90
+#	title = opvalk_germany.90.t
+#	desc = opvalk_germany.90.d
+#	picture = GFX_report_event_german_reichstag_gathering
+#
+#	is_triggered_only = yes
+#
+#	#Rommel takes over
+#	option = {
+#		name = opvalk_germany.90.a
+#		hidden_effect = {
+#				set_party_name = { ideology = neutrality long_name = GER_neutrality_party_civil_war name = GER_neutrality_party_civil_war }
+#				set_cosmetic_tag = GER_provisional_gvt
+#				create_country_leader = {
+#            		name = "Erwin Rommel"
+#            		desc = "POLITICS_ERWIN_ROMMEL_DESC"
+#            		picture = "Portrait_Germany_Erwin_Rommel.dds"
+#            		expire = "1965.1.1"
+#            		ideology = despotism
+#            		traits = {
+#                		cornered_fox
+#                		nationalist_symbol
+#                	}
+#                }
+#			set_politics = {
+#				ruling_party = neutrality
+#				last_election = "1933.3.5"
+#				election_frequency = 48
+#				elections_allowed = no
+#			}
+#			add_popularity = {
+#				ideology = communism
+#				popularity = 0.2
+#			}
+#			add_popularity = {
+#				ideology = democratic
+#				popularity = 0.30
+#			}
+#			add_popularity = {
+#				ideology = neutrality
+#				popularity = 0.45
+#			}
+#			add_popularity = {
+#				ideology = fascism
+#				popularity = 0.1
+#			}	
+#			set_stability = 0.9
+#			set_war_support = 0.8
+#		}
+#	}
+#	option = {
+#		name = opvalk_germany.92.a
+#		hidden_effect = {
+#				set_party_name = { ideology = neutrality long_name = GER_neutrality_party_civil_war name = GER_neutrality_party_civil_war }
+#				set_cosmetic_tag = GER_provisional_gvt
+#				create_country_leader = {
+#            		name = "Ludwig Beck"
+#            		desc = "POLITICS_LUDWIG_BECK_DESC"
+#            		picture = "GFX_portrait_GER_Ludwig_August_Theodor_Beck.dds"
+#            		expire = "1965.1.1"
+#            		ideology = despotism
+#            		traits = {
+#                		great_war_hero
+#                		retired_officer
+#                	}
+#                }
+#			set_politics = {
+#				ruling_party = neutrality
+#				last_election = "1933.3.5"
+#				election_frequency = 48
+#				elections_allowed = no
+#			}
+#			add_popularity = {
+#				ideology = communism
+#				popularity = 0.2
+#			}
+#			add_popularity = {
+#				ideology = democratic
+#				popularity = 0.30
+#			}
+#			add_popularity = {
+#				ideology = neutrality
+#				popularity = 0.45
+#			}
+#			add_popularity = {
+#				ideology = fascism
+#				popularity = 0.1
+#			}	
+#			set_stability = 0.9
+#			set_war_support = 0.8
+#		}
+#
