@@ -306,7 +306,7 @@ country_event = {
 	option = {
 		name = NSB_soviet_paranoia_system_events.13.b
 		ai_chance = {
-			base = 1
+			base = 0
 			modifier = { #Don't go to negative PP please
 				factor = 0
 				has_political_power < SOV_purge_event_pp_to_avoid_regular_pay
@@ -321,10 +321,10 @@ country_event = {
 			NOT = { has_political_power < SOV_purge_event_pp_to_avoid_regular }
 		}
 
-		add_political_power = SOV_purge_event_pp_to_avoid_regular_pay
+		add_political_power = SOV_purge_event_pp_to_avoid_great_pay
 
 		#PARANOIA increases
-		SOV_paranoia_low_increase_effect = yes
+		SOV_paranoia_high_increase_effect = yes
 	}
 }
 
@@ -6317,10 +6317,6 @@ country_event = {
 		}
 
 		add_timed_idea = { idea = SOV_soviet_german_trade_agreement days = 545 } #Technically 1 year but really 18 months for Soviet payment 
-		set_variable = { SOV_capital_for_soviet_imports = ROOT.capital } #Store capital where the dynamic modifier is set so that it can be removed easily later
-		capital_scope = {
-			add_dynamic_modifier = { modifier = SOV_soviet_imports }
-		}
 
 		#Effects to Soviets
 		effect_tooltip = {
@@ -6409,22 +6405,6 @@ country_event = {
 		}
 		FROM = { country_event = { id = NSB_soviet_soviet_german_trade_agreement.2 hours = 1 } }
 	}
-
-	option = { # Refuse
-		name = NSB_soviet_soviet_german_trade_agreement.1.b
-
-		ai_chance = {
-			base = 1
-		}
-
-		FROM = {
-			country_event = { id = NSB_soviet_soviet_german_trade_agreement.3 hours = 1 }
-			add_opinion_modifier = {
-				target = ROOT
-				modifier = SOV_rejected_our_demands
-			}
-		}
-	}
 }
 
 # Soviet-German Trade Agreement - GER Accepts - Event for SOV
@@ -6497,9 +6477,6 @@ country_event = {
 		effect_tooltip = {
 			FROM = {
 				add_timed_idea = { idea = SOV_soviet_german_trade_agreement days = 545 } #Technically 1 year but really 18 months for Soviet payment 
-				capital_scope = {
-					add_dynamic_modifier = { modifier = SOV_soviet_imports }
-				}
 			}
 
 			add_opinion_modifier = {

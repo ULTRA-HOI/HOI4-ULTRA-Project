@@ -2641,6 +2641,7 @@ SOV_propaganda_campaigns = {
 
 		modifier = {
 			army_morale_factor = 0.05
+			experience_gain_factor = 0.05
 		}
 
 		complete_effect = {
@@ -3007,7 +3008,7 @@ SOV_propaganda_campaigns = {
 
 		visible = {
 			OR = {
-				has_completed_focus = SOV_anti_fascist_policies
+				has_completed_focus = SOV_anti_fascist_policies_new
 				has_country_flag = SOV_debug_unlock_propaganda_campaigns_flag #debug
 			}
 		}
@@ -3667,6 +3668,8 @@ SOV_propaganda_campaigns = {
 		cost = SOV_propaganda_glory_to_partisans_cost
 
 		modifier = {
+			resistance_damage_to_garrison_on_our_occupied_states = 0.05
+			resistance_target_on_our_occupied_states = 0.05
 			operation_targeted_sabotage_resources_outcome = 0.25
 			operation_targeted_sabotage_infrastructure_outcome = 0.25
 			operation_targeted_sabotage_industry_outcome = 0.25
@@ -3785,7 +3788,8 @@ SOV_propaganda_campaigns = {
 		}
         modifier = {
 		 army_core_attack_factor = 0.05
-		 army_morale_factor = 0.05 }
+		 army_morale_factor = 0.05 
+	}
 		remove_effect = {
 			every_controlled_state = {
 				limit = {
@@ -4002,11 +4006,11 @@ SOV_propaganda_campaigns = {
 		cost = SOV_propaganda_peace_cost
 
 		modifier = {
-			stability_weekly = 0.005
+			stability_weekly = 0.001
+			war_support_weekly = -0.001
 			consumer_goods_expected_value = -0.03
 			opinion_gain_monthly_factor = 0.25
 			enemy_justify_war_goal_time = 0.50
-			war_support_weekly = -0.005
 			industrial_capacity_factory = -0.05
 		}
 
@@ -4093,9 +4097,10 @@ SOV_propaganda_campaigns = {
 		cost = SOV_propaganda_happy_life_cost
 
 		modifier = {
-			stability_weekly = 0.01
-			compliance_growth = 0.05
-			resistance_decay = 0.05
+			stability_weekly = 0.001
+			war_support_weekly = 0.001
+			compliance_growth = 0.1
+			resistance_decay = 0.1
 			resistance_damage_to_garrison = 0.15
 			consumer_goods_expected_value = 0.03
 		}
@@ -11135,10 +11140,10 @@ SOV_great_patriotic_war = {
 			}
 		}
 
-		ai_hint_pp_cost = 25
+		ai_hint_pp_cost = 5
 		custom_cost_trigger = {
-			command_power > 24
-			has_political_power > 24
+			command_power > 4
+			has_political_power > 4
 		}
 		custom_cost_text = decision_cost_CP_25_pp_25
 
@@ -11155,10 +11160,10 @@ SOV_great_patriotic_war = {
 		complete_effect = {
 			hidden_effect = {
 				#Cost
-				add_command_power = -25
-				add_political_power = -15
+				add_command_power = -5
+				add_political_power = -5
 				 SOV = { 
-         division_template = {
+			division_template = {
 						name = "Worker Militia"
 						priority = 3
 						division_names_group = SOV_GAR_01
@@ -11316,7 +11321,6 @@ SOV_great_patriotic_war = {
 					}
 					
 			}
-			custom_effect_tooltip = SOV_factory_worker_militias_state_modifier_tt
 		}
 		}
 
@@ -11387,10 +11391,10 @@ SOV_great_patriotic_war = {
 			}
 		}
 
-		ai_hint_pp_cost = 25
+		ai_hint_pp_cost = 5
 		custom_cost_trigger = {
-			command_power > 24
-			has_political_power > 24
+			command_power > 4
+			has_political_power > 4
 		}
 		custom_cost_text = decision_cost_CP_25_pp_25
 
@@ -11420,8 +11424,8 @@ SOV_great_patriotic_war = {
 		complete_effect = {
 			hidden_effect = {
 				#Cost
-				add_command_power = -25
-				add_political_power = -25
+				add_command_power = -5
+				add_political_power = -5
 
 				FROM = {
 					add_dynamic_modifier = {
@@ -11430,7 +11434,6 @@ SOV_great_patriotic_war = {
 					}
 				}
 			}
-			custom_effect_tooltip = SOV_civilian_labor_in_defense_state_modifier_tt
 		}
 
 		remove_effect = {
@@ -11489,6 +11492,56 @@ SOV_great_patriotic_war = {
 		}
 	}
 
+	SOV_the_defense_of_moscow_mission = {
+		priority = 30
+
+		icon = generic_operation
+		
+		allowed = {
+			original_tag = SOV
+		}
+			
+		visible = {
+			has_completed_focus = SOV_desperate_measures
+			has_completed_focus = SOV_the_defense_of_moscow
+			any_enemy_country = { SOV_is_major_not_original_sov = yes }
+			NOT = { has_country_flag = SOV_order_227_flag }
+		}
+		
+		fire_only_once = yes
+			
+		ai_will_do = {
+			factor = 100
+		}
+		
+		available = {
+			has_idea = SOV_desperate_measures_ns
+			SOV = { surrender_progress > 0.1 } 	
+			OR = {
+				AND = {
+					date > 1940.12.1
+					date < 1941.2.1
+				}
+				AND = {
+					date > 1941.12.1
+					date < 1942.2.1
+				}
+				AND = {
+					date > 1942.12.1
+					date < 1943.2.1
+				}
+			}
+			
+		}
+		
+		complete_effect = {
+			add_timed_idea = {
+				idea = SOV_winter_offensive
+				days = 30
+			}
+		}	
+	}
+	
 	SOV_order_227 = {
 		priority = 101
 
@@ -16865,20 +16918,20 @@ SOV_soviet_civil_war_dec_cat = {
 				SOV_add_random_character_to_purge_targets_effect = yes
 			}
 			#Litvinov
-			if = {
-				limit = {
-					has_character = SOV_maksim_litvinov
-					SOV_maksim_litvinov = {
-						SOV_character_can_be_purged = yes
-					}
-				}
-				SOV_maksim_litvinov = {
-					set_character_flag = SOV_targeted_for_purge_flag
-				}
-			}
-			else = {
-				SOV_add_random_character_to_purge_targets_effect = yes
-			}
+#			if = {
+#				limit = {
+#					has_character = SOV_maksim_litvinov
+#					SOV_maksim_litvinov = {
+#						SOV_character_can_be_purged = yes
+#					}
+#				}
+#				SOV_maksim_litvinov = {
+#					set_character_flag = SOV_targeted_for_purge_flag
+#				}
+#			}
+#			else = {
+#				SOV_add_random_character_to_purge_targets_effect = yes
+#			}
 
 			custom_effect_tooltip = SOV_will_trigger_a_great_purge_tt
 			hidden_effect = {
@@ -17453,6 +17506,11 @@ operations = {
 		}
 		
 		complete_effect = {	
+			add_doctrine_cost_reduction = {
+			cost_reduction = 0.25
+			uses = 1
+			category = land_doctrine
+			}
 		     
 			POL = {
 				country_event = {
@@ -17968,15 +18026,11 @@ political_actions = {
 		}
 		
 		available = {
-			NOT = {
-				is_in_faction_with = GER
-				controls_state = 219
-				has_civil_war = no
-				is_puppet = no
-			}
-			OR = {
-				GER = {
-					OR = {
+			any_country = {
+				OR = {
+					original_tag = GER
+					is_in_faction_with = GER
+				}
 						controls_state = 127 
 						controls_state = 126 
 						controls_state = 125 
@@ -17990,26 +18044,6 @@ political_actions = {
 						controls_state = 136 
 						controls_state = 120 
 						controls_state = 133 
-					}
-				}
-				
-				ITA = {
-					OR = {
-						controls_state = 127 
-						controls_state = 126 
-						controls_state = 125 
-						controls_state = 129 
-						controls_state = 130
-						controls_state = 131 
-						controls_state = 123 
-						controls_state = 122 
-						controls_state = 132 
-						controls_state = 121 
-						controls_state = 136 
-						controls_state = 120 
-						controls_state = 133 
-					}
-				}
 			}
 		}
 		
