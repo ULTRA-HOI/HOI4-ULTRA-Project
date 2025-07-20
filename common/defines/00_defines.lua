@@ -2450,7 +2450,7 @@ NAI = {
 
 	REDEPLOY_DISTANCE_VS_ORDER_SIZE = 1.0,		-- Factor applied to the path length of a unit compared to length of an order to determine if it should use strategic redeployment
 
-	FORT_LEVEL_TO_CONSIDER_HIGHLY_FORTIFIED = 1,	-- Provinces above this level of fortification will be considered highly fortified by plan evaluation
+	FORT_LEVEL_TO_CONSIDER_HIGHLY_FORTIFIED = 2,	-- Provinces above this level of fortification will be considered highly fortified by plan evaluation
 	PLAN_VALUE_FORTIFICATION_LEVEL_MAX_PENALTY = -0.5,	--Max plan value penalty from fortification. This is scaled by number of provinces along a frontline, over the number which exceed the fort value value above
 
 	MAX_ALLOWED_NAVAL_DANGER = 80,				-- AI will ignore naval paths that has danger value of above this threshold while assigning units
