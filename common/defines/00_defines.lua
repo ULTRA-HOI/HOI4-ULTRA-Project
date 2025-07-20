@@ -872,8 +872,8 @@ NMilitary = {
 	RECON_SKILL_IMPACT = 10, --was 5 --how many skillpoints is a recon advantage worth when picking a tactic.
 
 	MAX_DIVISION_BRIGADE_WIDTH = 6, --was 5 --Max width of regiments in division designer.
-	MAX_DIVISION_BRIGADE_HEIGHT = 4, --was 5 --Max height of regiments in division designer.
-	MIN_DIVISION_BRIGADE_HEIGHT = 4, --was 4	-- Min height of regiments in division designer.
+	MAX_DIVISION_BRIGADE_HEIGHT = 3, --was 5 --Max height of regiments in division designer.
+	MIN_DIVISION_BRIGADE_HEIGHT = 3, --was 4	-- Min height of regiments in division designer.
 	MAX_DIVISION_SUPPORT_WIDTH = 2, --was 1 --Max width of support in division designer.
 	MAX_DIVISION_SUPPORT_HEIGHT = 5,		-- Max height of support in division designer.
 
