@@ -8356,10 +8356,8 @@ focus_tree = {
 		completion_reward = {
 			# Unlock Balance of Power mechanic
 
-			set_power_balance = {
-				id = wehrmacht_waffen_ss_balance
-				set_value = 0.0
-			}
+		GER_initiate_balance_of_power_effect = yes
+
 		}
 		
 		ai_will_do = {
@@ -8410,16 +8408,17 @@ focus_tree = {
 		}
 		
 		available = {
+
 			OR = {
-				has_power_balance = {
+				is_power_balance_in_range = {
 					id = wehrmacht_waffen_ss_balance
-					side = wehrmacht_side
-					value > 0.8
-				}
-				has_power_balance = {
+					range < wehrmacht_dominant
+				}	
+			}
+			OR = {
+				is_power_balance_in_range = {
 					id = wehrmacht_waffen_ss_balance
-					side = waffen_ss_side
-					value > 0.8
+					range > waffen_ss_dominant
 				}
 			}
 		}
