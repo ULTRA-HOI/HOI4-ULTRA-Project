@@ -55,7 +55,7 @@ FRA_civil_unrest_category = {
 
 		fixed_random_seed = no
 
-		fire_only_once = no
+		fire_only_once = yes
 
 		is_good = no
 		
@@ -73,7 +73,6 @@ FRA_civil_unrest_category = {
 			OR = {
 				has_stability > 0.25	
 				has_government = fascism
-				has_completed_focus = FRA_destroy_the_counter_revolution
 				custom_trigger_tooltip = {
 					tooltip = french_communist_civil_war_intervention_tt 
 					AND = {
@@ -109,7 +108,6 @@ FRA_civil_unrest_category = {
 				}
 			}
 			has_completed_focus = FRA_form_the_popular_front
-			NOT = { has_completed_focus = FRA_destroy_the_counter_revolution }
 			not = { has_global_flag = flag_french_fascist_civil_war }
 		}
 
@@ -119,7 +117,7 @@ FRA_civil_unrest_category = {
 
 		fixed_random_seed = no
 
-		fire_only_once = no
+		fire_only_once = yes
 
 		is_good = no
 		
@@ -507,8 +505,8 @@ FRA_weapons_purchases_category = {
 		visible = {
 			USA_can_sell_weapons_trigger = yes
 		}
-		days_remove = 60
-		cost = 15
+		days_remove = 90
+		cost = 30
 		ai_will_do = {
 			factor = 10
 			modifier = {
@@ -528,15 +526,15 @@ FRA_weapons_purchases_category = {
 			}
 		}
 		modifier = {
-			civilian_factory_use = 12
+			civilian_factory_use = 8
 		}
 		remove_effect = {
 			add_equipment_to_stockpile = {
 				type = infantry_equipment
-				amount = 2500
+				amount = 5000
 			}
 			USA = {
-				add_offsite_building = { type = industrial_complex level = -2 }
+				add_offsite_building = { type = industrial_complex level = -8 }
 			}
 		}
 	}
@@ -548,7 +546,7 @@ FRA_weapons_purchases_category = {
 		visible = {
 			USA_can_sell_weapons_trigger = yes
 		}
-		days_remove = 60
+		days_remove = 90
 		cost = 30
 		ai_will_do = {
 			factor = 5
@@ -564,20 +562,20 @@ FRA_weapons_purchases_category = {
 			}
 		}
 		modifier = {
-			civilian_factory_use = 12
+			civilian_factory_use = 8
 		}
 		complete_effect = {
 			USA = {
-				add_offsite_building = { type = industrial_complex level = 12 }
+				add_offsite_building = { type = industrial_complex level = 8 }
 			}
 		}
 		remove_effect = {
 			add_equipment_to_stockpile = {
 				type = artillery_equipment
-				amount = 75
+				amount = 500
 			}
 			USA = {
-				add_offsite_building = { type = industrial_complex level = -3 }
+				add_offsite_building = { type = industrial_complex level = -8 }
 			}
 		}
 	}
@@ -589,8 +587,8 @@ FRA_weapons_purchases_category = {
 		visible = {
 			USA_can_sell_weapons_trigger = yes
 		}
-		days_remove = 60
-		cost = 50
+		days_remove = 90
+		cost = 30
 		ai_will_do = {
 			factor = 1
 			modifier = {
@@ -605,11 +603,11 @@ FRA_weapons_purchases_category = {
 			}
 		}
 		modifier = {
-			civilian_factory_use = 20
+			civilian_factory_use = 8
 		}
 		complete_effect = {
 			USA = {
-				add_offsite_building = { type = industrial_complex level = 20 }
+				add_offsite_building = { type = industrial_complex level = 8 }
 			}
 		}
 		remove_effect = {
@@ -627,7 +625,7 @@ FRA_weapons_purchases_category = {
 				}
 				add_equipment_to_stockpile = {
 					type = light_tank_chassis
-					amount = 50
+					amount = 100
 				}
 			}
 			else_if = {
@@ -641,11 +639,11 @@ FRA_weapons_purchases_category = {
 				}
 				add_equipment_to_stockpile = {
 					type = medium_tank_chassis
-					amount = 50
+					amount = 100
 				}
 			}
 			USA = {
-				add_offsite_building = { type = industrial_complex level = -5 }
+				add_offsite_building = { type = industrial_complex level = -8 }
 			}
 		}
 	}
@@ -657,7 +655,7 @@ FRA_weapons_purchases_category = {
 		visible = {
 			USA_can_sell_weapons_trigger = yes
 		}
-		days_remove = 60
+		days_remove = 90
 		cost = 30
 		ai_will_do = {
 			factor = 1
@@ -673,11 +671,11 @@ FRA_weapons_purchases_category = {
 			}
 		}
 		modifier = {
-			civilian_factory_use = 20
+			civilian_factory_use = 8
 		}
 		complete_effect = {
 			USA = {
-				add_offsite_building = { type = industrial_complex level = 20 }
+				add_offsite_building = { type = industrial_complex level = 8 }
 			}
 		}
 		remove_effect = {
@@ -686,19 +684,19 @@ FRA_weapons_purchases_category = {
 				amount = 100
 			}
 			USA = {
-				add_offsite_building = { type = industrial_complex level = -5 }
+				add_offsite_building = { type = industrial_complex level = -8 }
 			}
 		}
 	}
 	FRA_order_bombers_in_USA = {
 		icon = generic_air
 		available = {
-			date > 1939.1.1
+			date > 1940.1.1
 		}
 		visible = {
 			USA_can_sell_weapons_trigger = yes
 		}
-		days_remove = 360
+		days_remove = 90
 		cost = 30
 		ai_will_do = {
 			factor = 1
@@ -714,23 +712,24 @@ FRA_weapons_purchases_category = {
 			}
 		}
 		modifier = {
-			civilian_factory_use = 20
+			civilian_factory_use = 8
 		}
 		complete_effect = {
 			USA = {
 				set_technology = {
 					usa_light_bomber_3 = 1
 				}
-				add_offsite_building = { type = industrial_complex level = 20 }
+				add_offsite_building = { type = industrial_complex level = 8 }
 			}
 		}
 		remove_effect = {
 			add_equipment_to_stockpile = {
 				type = usa_light_bomber_equipment_3
-				amount = 250
+				amount = 100
+				producer = USA
 			}
 			USA = {
-				add_offsite_building = { type = industrial_complex level = -5 }
+				add_offsite_building = { type = industrial_complex level = -8 }
 			}
 		}
 	}
@@ -738,6 +737,7 @@ FRA_weapons_purchases_category = {
 
 FRA_spanish_intervention_category = {
 	FRA_invite_FROM_to_non_intervention = {
+		priority = 10
 		available = {
 			has_country_flag = FRA_non_intervention
 		}
@@ -761,7 +761,7 @@ FRA_spanish_intervention_category = {
 		target_root_trigger = {
 			has_country_flag = FRA_non_intervention	
 		}
-		cost = 25
+		#cost = 5
 		fire_only_once = yes
 		ai_will_do = {
 			factor = 1
@@ -788,7 +788,12 @@ FRA_spanish_intervention_category = {
 
 		cancel_trigger = {
 			OR = {
-				has_global_flag = scw_over
+				D01 = {
+					has_war = no
+				}
+				SPA = {
+					has_war = no
+				}
 				not = { has_country_flag = FRA_non_military_aid_allowed }
 			}
 		}
@@ -800,7 +805,7 @@ FRA_spanish_intervention_category = {
 			unlock_decision_tooltip = FRA_ban_non_military_aid
 		}
 
-		cost = 25
+		cost = 10
 		ai_will_do = {
 			factor = 1
 			modifier = {
@@ -810,12 +815,13 @@ FRA_spanish_intervention_category = {
 		}
 		days_remove = -1
 		modifier = {
-			stability_factor = -0.05
+			stability_factor = -0.03
+			war_support_factor = 0.01
 		}
 	}
 
 	FRA_ban_non_military_aid = {
-		available = {  }
+		available = { not = { has_country_flag = FRA_arms_purchases_allowed } }
 
 		visible = { has_country_flag = FRA_non_military_aid_allowed }
 
@@ -835,6 +841,7 @@ FRA_spanish_intervention_category = {
 	}
 
 	FRA_send_non_military_aid_to_FROM = {
+		priority = 5
 		available = { 
 			has_equipment = {
 				support_equipment > 99
@@ -844,7 +851,7 @@ FRA_spanish_intervention_category = {
 		visible = { has_country_flag = FRA_non_military_aid_allowed }
 		target_root_trigger = { has_country_flag = FRA_non_military_aid_allowed }
 
-		targets = { SPA SPR SPB SPC SPD }
+		targets = { D01 }
 
 		target_trigger = {
 			FROM = {
@@ -853,8 +860,8 @@ FRA_spanish_intervention_category = {
 				NOT = { has_war_with = ROOT }
 			}
 		}
-		days_re_enable = 30
 		complete_effect = { 
+			army_experience = 5
 			send_equipment = {
 				type = support_equipment
 				amount = 100
@@ -868,16 +875,24 @@ FRA_spanish_intervention_category = {
 				factor = 5
 			}
 		}
+		fire_only_once = yes
 		cost = 0
 	}
 	FRA_allow_arms_purchases = {
-		available = {  }
+		available = { 	
+			has_country_flag = FRA_non_military_aid_allowed 
+		}
 
 		visible = { not = { has_country_flag = FRA_arms_purchases_allowed } }
 
 		cancel_trigger = {
 			OR = {
-				has_global_flag = scw_over
+				D01 = {
+					has_war = no
+				}
+				SPA = {
+					has_war = no
+				}
 				not = { has_country_flag = FRA_arms_purchases_allowed }
 			}
 		}
@@ -899,14 +914,14 @@ FRA_spanish_intervention_category = {
 		}
 		days_remove = -1
 		modifier = {
-			stability_factor = -0.1
-			war_support_factor = 0.05
+			stability_factor = -0.06
+			war_support_factor = 0.02
 		}
 
 	}
 
 	FRA_ban_arms_purchases = {
-		available = {  }
+		available = { not = { has_country_flag = FRA_sending_weapons_allowed } }
 
 		visible = { has_country_flag = FRA_arms_purchases_allowed }
 
@@ -926,13 +941,20 @@ FRA_spanish_intervention_category = {
 	}
 
 	FRA_allow_sending_weapons = {
-		available = {  }
+		available = { 
+			has_country_flag = FRA_arms_purchases_allowed
+		 }
 
 		visible = { not = { has_country_flag = FRA_sending_weapons_allowed } }
 
 		cancel_trigger = {
 			OR = {
-				has_global_flag = scw_over
+				D01 = {
+					has_war = no
+				}
+				SPA = {
+					has_war = no
+				}
 				not = { has_country_flag = FRA_sending_weapons_allowed }
 			}
 		}
@@ -943,13 +965,13 @@ FRA_spanish_intervention_category = {
 			unlock_decision_tooltip = FRA_ban_sending_weapons
 		}
 
-		cost = 25
+		cost = 50
 		days_remove = -1
 		modifier = {
-			stability_factor = -0.15
-			war_support_factor = 0.075
-			lend_lease_tension = -1
-			request_lease_tension = -1
+			stability_factor = -0.09
+			war_support_factor = 0.03
+			lend_lease_tension = -0.3
+			request_lease_tension = -0.3
 		}
 		ai_will_do = {
 			factor = 1
@@ -961,7 +983,7 @@ FRA_spanish_intervention_category = {
 	}
 
 	FRA_ban_sending_weapons = {
-		available = {  }
+		available = { not = { has_country_flag = FRA_volunteer_work_allowed } }
 
 		visible = { has_country_flag = FRA_sending_weapons_allowed }
 
@@ -979,18 +1001,26 @@ FRA_spanish_intervention_category = {
 		}
 	}
 	FRA_allow_volunteer_work = {
-		available = {  }
+		available = { 
+			has_country_flag = FRA_sending_weapons_allowed
+ 		}
 
 		visible = { not = { has_country_flag = FRA_volunteer_work_allowed } }
 
 		cancel_trigger = {
 			OR = {
-				has_global_flag = scw_over
+				D01 = {
+					has_war = no
+				}
+				SPA = {
+					has_war = no
+				}
 				not = { has_country_flag = FRA_volunteer_work_allowed }
 			}
 		}
 
 		complete_effect = { 
+			country_event = lar_france_political_violence.1
 			set_country_flag = FRA_volunteer_work_allowed 
 			clr_country_flag = FRA_non_intervention
 			unlock_decision_tooltip = FRA_ban_volunteer_work
@@ -1010,7 +1040,7 @@ FRA_spanish_intervention_category = {
 			custom_effect_tooltip = FRA_allow_volunteer_work_tt
 		}
 
-		cost = 25
+		cost = 75
 		ai_will_do = {
 			factor = 1
 			modifier = {
@@ -1020,13 +1050,13 @@ FRA_spanish_intervention_category = {
 		}
 		days_remove = -1
 		modifier = {
-			stability_factor = -0.2
-			war_support_factor = 0.1
+			stability_factor = -0.12
+			war_support_factor = 0.04
 		}
 	}
 
 	FRA_ban_volunteer_work = {
-		available = {  }
+		available = { not = { has_country_flag = FRA_covert_intervention_allowed } }
 
 		visible = { has_country_flag = FRA_volunteer_work_allowed }
 
@@ -1043,24 +1073,32 @@ FRA_spanish_intervention_category = {
 		cost = 0
 	}
 	FRA_allow_covert_intervention = {
-		available = {  }
+		available = { 
+			has_country_flag = FRA_volunteer_work_allowed 
+ 		}
 
 		visible = { not = { has_country_flag = FRA_covert_intervention_allowed } }
 
 		cancel_trigger = {
 			OR = {
-				has_global_flag = scw_over
+				D01 = {
+					has_war = no
+				}
+				SPA = {
+					has_war = no
+				}
 				not = { has_country_flag = FRA_covert_intervention_allowed }
 			}
 		}
 
 		complete_effect = { 
+			country_event = lar_france_political_violence.3
 			set_country_flag = FRA_covert_intervention_allowed 
 			clr_country_flag = FRA_non_intervention
 			set_rule = { can_send_volunteers = yes }
 		}
 
-		cost = 25
+		cost = 100
 		ai_will_do = {
 			factor = 1
 			modifier = {
@@ -1074,29 +1112,21 @@ FRA_spanish_intervention_category = {
 		}
 		days_remove = -1
 		modifier = {
-			stability_factor = -0.25
-			war_support_factor = 0.125
+			stability_factor = -0.15
+			war_support_factor = 0.05
 			send_volunteers_tension = -0.9
 		}
 	}
 
 	FRA_ban_covert_intervention = {
-		available = { 
-			NOT = {
-				any_other_country = {
-					has_volunteers_amount_from = {
-						tag = ROOT
-						count > 0
-					}
-				}
-			}
+		available = {
 		}
 
 		visible = { has_country_flag = FRA_covert_intervention_allowed }
 
 		complete_effect = { 
 			clr_country_flag = FRA_covert_intervention_allowed 
-			#recall_volunteers_from = SPR
+			recall_volunteers_from = D01
 		}
 
 		cost = 0
@@ -1110,7 +1140,11 @@ FRA_spanish_intervention_category = {
 	}
 
 	FRA_intervene_on_side_of_FROM = {
-		available = { has_war_support > 0.25 }
+		available = { 
+			has_war = no
+			has_war_support > 0.95 
+			has_country_flag = FRA_covert_intervention_allowed
+		}
 
 		visible = { has_war = no }
 
@@ -1124,6 +1158,7 @@ FRA_spanish_intervention_category = {
 		}
 
 		complete_effect = {
+			country_event = lar_france_political_violence.3
 			#This is not optimal, but it generates a beautiful tooltip
 			if = {
 				limit = { FROM = { tag = SPD } }
@@ -1230,7 +1265,7 @@ FRA_spanish_intervention_category = {
 			
 		}
 
-		cost = 25
+		cost = 200
 		ai_will_do = {
 			factor = 1
 			modifier = {
@@ -1252,7 +1287,7 @@ economy_decisions = {
 		available = {
 			NOT = {
 				has_country_leader = {
-					 name = "Léon Blum"
+					name = "Léon Blum"
 					ruling_only = yes
 				}
 			}
@@ -1269,12 +1304,7 @@ economy_decisions = {
 
 		complete_effect = {
 			remove_ideas = FRA_matignon_agreements
-			if = {
-				limit = {
-					communism > 0.25
-				}
-				country_event = lar_france_political_violence.2
-			}
+			country_event = lar_france_political_violence.2
 		}
 	}
 
@@ -1507,61 +1537,7 @@ economy_decisions = {
 		}
 	}
 }
-political_actions = {
-	FRA_rally_the_leagues = {
-		available = { }
-
-		visible = { 
-			has_completed_focus = FRA_utilize_the_leagues 
-			NOT = { has_government = fascism }
-		}
-
-		days_re_enable = 60
-
-		complete_effect = {
-			add_popularity = {
-				ideology = fascism
-				popularity = 0.05
-			}
-			add_popularity = {
-				ideology = neutrality
-				popularity = 0.05
-			}
-			add_stability = -0.03
-		}
-		ai_will_do = {
-			factor = 5
-			modifier = {
-				has_stability < 0.3
-				factor = 0
-			}
-		}
-	}
-	FRA_unleash_la_cagoule = {
-		available = { }
-
-		visible = { 
-			has_completed_focus = FRA_utilize_the_leagues 
-			NOT = { has_government = fascism }
-		}
-		days_re_enable = 30
-		complete_effect = {
-			add_popularity = {
-				ideology = fascism
-				popularity = 0.1
-			}
-			add_stability = -0.075
-		}
-		cost = 25
-		ai_will_do = {
-			factor = 5
-			modifier = {
-				has_stability < 0.3
-				factor = 0
-			}
-		}
-	}
-	
+political_actions = {	
 	FRA_capital_bordeaux = {
 		allowed = {
 			tag = FRA

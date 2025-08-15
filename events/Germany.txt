@@ -2502,7 +2502,6 @@ country_event = {
 		if = {
 			limit = {
 				is_in_faction_with = CZE
-				has_completed_focus = FRA_strengthen_the_little_entente
 				NOT = {
 					has_global_flag = german_coup_preparation
 				}
@@ -2514,7 +2513,6 @@ country_event = {
 		if = {
 			limit = {
 				OR = {
-					NOT = { has_completed_focus = FRA_strengthen_the_little_entente }
 					NOT = { is_in_faction_with = CZE } 
 					NOT = {
 						has_global_flag = german_coup_preparation
@@ -2625,10 +2623,7 @@ country_event = {
 				}
 			}
 		}
-		if = {
-			limit = { NOT = { has_completed_focus = FRA_strengthen_the_little_entente } }
 			add_stability = 0.05
-		}
 	}
 }
 
@@ -2683,7 +2678,6 @@ country_event = {
 		if = {
 			limit = {
 				is_in_faction_with = CZE
-				has_completed_focus = FRA_strengthen_the_little_entente
 				is_faction_leader = yes
 				NOT = { is_in_faction_with = ENG }
 			}
@@ -3886,7 +3880,10 @@ country_event = {
 			}
 		}
 		ENG = { country_event = germany.62 }
+		if = {
+			limit = { FRA = { is_ai = yes } }
 		add_ideas = FRA_rhineland_militarized
+		}
 		add_opinion_modifier = { target = GER modifier = protest_action }
 	}
 }
@@ -7244,10 +7241,6 @@ country_event = {
 		name = germany.122.b
 		ai_chance = {
 			factor = 50
-			modifier = {
-				factor = 0
-				FRA = { has_completed_focus = FRA_strengthen_the_little_entente }
-			}
 			modifier = {
 				factor = 0
 				POL = {

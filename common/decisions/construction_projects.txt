@@ -5184,6 +5184,70 @@ focus_construction_project = {
 
 ####### France focus tree ########	
 
+		
+
+	FRA_autoroutes_decision = {
+	
+		icon = generic_construction
+		
+		allowed = {
+			original_tag = FRA
+		}
+		
+		visible = {
+			has_completed_focus = FRA_autoroutes
+		}
+		
+		available = {
+			has_completed_focus = FRA_autoroutes
+			num_of_civilian_factories_available_for_projects > 39
+		}
+		
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 100
+		}
+		
+		cost = 0
+		
+		days_remove = 120
+		
+		modifier = {
+			civilian_factory_use = 40
+		}
+
+		highlight_states = {
+			highlight_states_trigger = {
+				OR = {
+						state = 15 # Normandy
+						state = 16 # Paris
+						state = 27 # Bourgogne
+						state = 20 # Rhone
+						state = 1031 # Dauphine
+						state = 21 # Bouches de Rhone
+				}
+			}
+		}
+		
+		remove_effect = {
+			every_owned_state = {
+				limit = {
+					is_controlled_by = ROOT
+					OR = {
+						state = 15 # Normandy
+						state = 16 # Paris
+						state = 27 # Bourgogne
+						state = 20 # Rhone
+						state = 1031 # Dauphine
+						state = 21 # Bouches de Rhone
+					}
+				}
+				add_building_construction = { type = infrastructure level = 2 instant_build = yes }
+			}
+		}
+		
+	}
+
 	FRA_industrial_expansion_decision = {
 	
 		icon = generic_construction
