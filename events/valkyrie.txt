@@ -103,8 +103,8 @@ country_event = {
 		}
 		else = {
 			country_event = {
-				id = valkyrie.6
-				days = 550
+				id = valkyrie.8
+				days = 1150
 			}
 		}
 	}
@@ -145,6 +145,8 @@ country_event = {
 	
 	trigger = {
 		has_country_leader = { name = "Adolf Hitler" }
+		controls_state = 16 # Paris
+		country_exists = VIC # Vichy France
 		has_country_flag = valkyrie_all_events
 	}
 	
@@ -168,6 +170,7 @@ country_event = {
 	
 	trigger = {
 		has_country_leader = { name = "Adolf Hitler" }
+		controls_state = 16 # Paris
 		has_country_flag = valkyrie_all_events
 	}
 	
@@ -175,7 +178,7 @@ country_event = {
 		name = valkyrie.7.option.a # "He cancelled the visit."
 		country_event = {
 			id = valkyrie.8
-			days = 250
+			days = 300
 		}
 	}
 }
@@ -479,6 +482,23 @@ country_event = {
 	
 	option = {
 		name = valkyrie.100.option.a # "The Führer survives!"
+		if = {
+				limit = {
+					has_country_leader_with_trait = GER_der_fuhrer_fuhrerprinzip_wehrmacht
+				}
+				random_character = {
+					limit = {
+						is_country_leader = yes
+					}
+					swap_country_leader_traits = {
+						remove = GER_der_fuhrer_fuhrerprinzip_wehrmacht
+						add = GER_der_fuhrer_late_ultra
+					}
+					set_portraits = {
+						civilian = { large = GFX_portrait_GER_adolf_hitler_late }
+					}
+				}
+			}
 		# Remove involved generals
 		retire_character = GER_erich_hoepner
 		retire_character = GER_erwin_von_witzleben
