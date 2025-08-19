@@ -1211,16 +1211,23 @@
 		}
 
 		available = {
-			NOT = {
-				has_idea = CHI_army_corruption_1
-			}
-			NOT = {
-				has_idea = CHI_army_corruption_2
-			}
-			NOT = {
-				has_idea = CHI_army_corruption_3
-			}
 			has_defensive_war = yes
+			OR = {
+				ENG = {
+					has_war_with = JAP
+				}
+				AND = {
+					NOT = {
+						has_idea = CHI_army_corruption_1
+					}
+					NOT = {
+						has_idea = CHI_army_corruption_2
+					}
+					NOT = {
+						has_idea = CHI_army_corruption_3
+					}
+				}
+			}	
 		}
 
 		bypass = {
@@ -1232,6 +1239,7 @@
 		available_if_capitulated = no
 
 		completion_reward = {
+			ENG = { country_event = { id = china.205 } }
 			if = {
 				limit = {
 					has_idea = CHI_war_of_resistance
