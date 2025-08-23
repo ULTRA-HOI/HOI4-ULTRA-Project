@@ -74,7 +74,7 @@ country_event = {
 		name = valkyrie.3.option.a # "Execute him in secret."
 		country_event = {
 			id = valkyrie.4
-			days = 365
+			days = 360
 		}
 	}
 }
@@ -90,6 +90,7 @@ country_event = {
 	
 	trigger = {
 		has_country_leader = { name = "Adolf Hitler" }
+		date > 1939.11.1
 	}
 	
 	option = {
@@ -146,7 +147,10 @@ country_event = {
 	trigger = {
 		has_country_leader = { name = "Adolf Hitler" }
 		controls_state = 16 # Paris
-		country_exists = VIC # Vichy France
+		or = { 
+			country_exists = VIC # Vichy France
+			controls_state = 772
+		}
 		has_country_flag = valkyrie_all_events
 	}
 	
