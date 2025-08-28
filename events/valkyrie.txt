@@ -182,7 +182,7 @@ country_event = {
 		name = valkyrie.7.option.a # "He cancelled the visit."
 		country_event = {
 			id = valkyrie.8
-			days = 450
+			days = 1
 		}
 	}
 }
@@ -199,14 +199,20 @@ country_event = {
 	trigger = {
 		has_country_leader = { name = "Adolf Hitler" }
 		SOV = { exists = yes }
-		controls_state = 242 #Smolensk
-		controls_state = 207 #Vitebsk
-		controls_state = 241 #Gomel
-		controls_state = 1036 #Riga
-		controls_state = 1040 #Tallinn
 		OR = {
-			NOT = { controls_state = 11 } # Kaunas
-			NOT = { controls_state = 202 } # Kyiv
+			AND = { 
+			controls_state = 242  # Smolensk
+			controls_state = 207  # Vitebsk
+			controls_state = 241  # Gomel
+			controls_state = 1036 # Riga
+			controls_state = 1040 # Tallinn
+			}
+			AND = {
+				NOT = {
+					controls_state = 11  # Kaunas
+					controls_state = 202 # Kyiv
+				}
+			}	
 		}
 	}
 	
@@ -511,7 +517,7 @@ country_event = {
 		retire_character = GER_erwin_rommel
 		
 		# Remove Balance of Power
-		remove_power_balance = {
+		 remove_all_power_balance_modifiers = {
 			id = wehrmacht_waffen_ss_balance
 		}
 	}
@@ -532,7 +538,7 @@ country_event = {
 		retire_character = GER_hans_karl_freiherr_von_esebeck
 		retire_character = GER_erwin_rommel
 		# Remove Balance of Power
-		remove_power_balance = {
+		 remove_all_power_balance_modifiers = {
 			id = wehrmacht_waffen_ss_balance
 		}
 	}
@@ -570,7 +576,7 @@ country_event = {
 			remove_unit_leader = yes
 		}
 		# Remove Balance of Power
-		remove_power_balance = {
+		 remove_all_power_balance_modifiers = {
 			id = wehrmacht_waffen_ss_balance
 		}
 	}

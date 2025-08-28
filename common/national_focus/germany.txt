@@ -8400,7 +8400,6 @@ focus_tree = {
 		
 		available = {
 			has_war_with = SOV
-			has_war_with = USA
 		}
 		
 		completion_reward = {
@@ -8429,18 +8428,18 @@ focus_tree = {
 		
 		available = {
 
-			OR = {
-				is_power_balance_in_range = {
-					id = wehrmacht_waffen_ss_balance
-					range < wehrmacht_dominant
-				}	
-			}
-			OR = {
-				is_power_balance_in_range = {
-					id = wehrmacht_waffen_ss_balance
-					range > waffen_ss_dominant
+			if = {
+				or = {
+					is_power_balance_in_range = {
+						id = wehrmacht_waffen_ss_balance
+						range < wehrmacht_strong
+					}
+					is_power_balance_in_range = {
+						id = wehrmacht_waffen_ss_balance
+						range > waffen_ss_strong
+					}	
 				}
-			}
+			}		
 		}
 		
 		completion_reward = {

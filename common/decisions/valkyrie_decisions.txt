@@ -2,33 +2,27 @@ valkyrie_subversion_decisions = {
 
 	valkyrie_subversion_decision = {
 		icon = decision_generic_conspiracy
-		
-		available = {
-			has_war_with = SOV
-			has_completed_focus = GER_subverting_valkyrie
-		}
-		
-		visible = {
-			has_completed_focus = GER_subverting_valkyrie
-		}
+
 		activation = {
 			has_completed_focus = GER_subverting_valkyrie
 			has_war_with = SOV
 		}
 		
-		days_mission_timeout = 20
-		days_re_enable = 1
+		available = {
+			controls_state = 16 # Paris
+			controls_state = 214 # Arkhangelsk
+			controls_state = 256 # Kazan
+			controls_state = 239 # Saratov
+			controls_state = 236 # Astrakhan
+			controls_state = 229 # Baku
+		}
+		
+		days_mission_timeout = 40
+		days_remove = 1
 
 		fire_only_once = no
 		
-
-		
-		modifier = {
-			# Visual indicator that subversion is active
-			political_power_gain = -0.1
-		}
-		
-		remove_effect = {
+		timeout_effect = {
 			if = {
 				limit = {
 					has_war_with = SOV
@@ -47,6 +41,33 @@ valkyrie_subversion_decisions = {
 			factor = 100
 		}
 	}
+
+	valkyrie_now_is_the_time = {
+		icon = decision_generic_conspiracy
+
+		activation = {
+			has_completed_focus = GER_subverting_valkyrie
+			has_war_with = SOV
+			OR = {
+				is_power_balance_in_range = {
+						id = wehrmacht_waffen_ss_balance
+						range < wehrmacht_strong
+				}
+				is_power_balance_in_range = {
+						id = wehrmacht_waffen_ss_balance
+						range > waffen_ss_strong
+				}	
+			}
+		}
+		days_mission_timeout = 1
+		days_remove = 1	
+
+		fire_only_once = yes
+
+		complete_effect = {
+			complete_national_focus = GER_operation_valkyrie
+		}
+	}	
 }
 
 wehrmacht_vs_ss_decisions = {
