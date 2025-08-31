@@ -72,6 +72,8 @@ valkyrie_subversion_decisions = {
 
 wehrmacht_vs_ss_decisions = {
 
+	# Waffen-SS Recruitment Decisions
+
 	SS_recruitment_big_three = {
 #		piority = 100
 		icon = GFX_decision_generic_army_support
@@ -614,6 +616,35 @@ wehrmacht_vs_ss_decisions = {
 				} 
 			}
 			GER_bop_high_increase_effect = yes
+		}
+	}
+
+	# Wehrmacht Recruitment Decisions
+	wm_recruitment_decision_1 = {
+
+	icon = generic_army_support
+
+	available = {
+		OR = {
+			has_country_leader = { character = GER_adolf_hitler }
+			has_country_leader = { character = GER_ludwig_beck }
+			has_country_leader = { character = GER_erwin_rommel }
+		}
+		has_war_with = SOV
+		date > 1941.12.30
+		}
+		visible = {
+			has_war = no
+		}
+
+		cost = 25
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 0
+		}
+		complete_effect = {
+			country_event = wm_recruitment_event.1
+			GER_bop_low_decrease_effect = yes
 		}
 	}
 }

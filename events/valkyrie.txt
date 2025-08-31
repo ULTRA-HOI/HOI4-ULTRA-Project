@@ -616,6 +616,34 @@ country_event = {
 	}
 }
 
+country_event = { 
+	id = wm_recruitment_event.1
+	title = wm_recruitment_event.1.title
+	desc = wm_recruitment_event.1.desc
+	picture = GFX_report_event_german_volunteers
+	
+	is_triggered_only = yes
+	
+	option = { 
+		name = wm_recruitment_event.1.a #historical
+		ai_chance = {
+			base = 50
+		}
+		add_command_power = -10
+		add_manpower = -10000
+		custom_effect_tooltip = GER_wm_recruitment_event.1.tt
+		hidden_effect = {		
+			random_owned_controlled_state = {
+				limit = { ROOT = { has_full_control_of_state = PREV } }
+				prioritize = { 791 }
+				create_unit = {
+					division = "name = \"Infanterie-Division 'Großdeutschland' (mot)\" division_template = \"Grossdeutschland Division\" start_experience_factor = 0.8 start_equipment_factor = 0.05" 
+					owner = GER
+				}
+			}
+		}
+	}
+}
 
 
 
