@@ -109,6 +109,11 @@ support_logistics_calculations = {
 }
 
 logistical_calculations = {
+	if = {
+		limit = { NOT = { has_tech = motorised_infantry } }
+		set_technology  = { motorised_infantry = 1 }
+	}
+	
 	light_logistics_calculations = yes
 	heavy_logistics_calculations = yes
 	mot_logistics_calculations = yes
@@ -119,46 +124,72 @@ logistical_calculations = {
 	add_to_variable = { total_trucks = total_mot_trucks }
 	add_to_variable = { total_trucks = total_support_trucks }
 	
+	set_temp_variable = { truck_diff = total_trucks }
+	subtract_from_temp_variable = { truck_diff = logi_trucks }
+	clamp_temp_variable = {
+		var = truck_diff
+		max = num_equipment@motorized_equipment
+	}
+	multiply_temp_variable = { truck_diff = -1 }
+	add_equipment_to_stockpile = {
+		type = motorized_equipment
+		amount = truck_diff
+	}
+	subtract_from_variable = { logi_trucks = truck_diff }
+	
 	#Applies equipment needs
-	clear_motorisation_techs = yes
+	remove_motorisation_techs = yes
+	calc_motorisation_techs = yes
 	set_motorisation_techs = yes
 }
 
 add_starting_logistics_trucks = {
-	add_equipment_to_stockpile = {
-		type = motorized_equipment_1
-		amount = total_trucks
+	set_variable = { logi_trucks = total_trucks }
+}
+
+clear_motorisation_techs = {	
+	for_loop_effect = {
+		start = 0
+		end = 50
+		compare = less_than_or_equals
+		value = temp
+		meta_effect = {
+			text = {
+				set_technology  = { light_log_tech_[LEVEL] = 0 popup = no }
+				set_technology  = { heavy_log_tech_[LEVEL] = 0 popup = no }
+				set_technology  = { mot_log_tech_[LEVEL] = 0 popup = no }
+				set_technology  = { sup_log_tech_[LEVEL] = 0 popup = no }
+			}
+			LEVEL = "[?temp]"
+		}
 	}
 }
 
-clear_motorisation_techs = {
-	set_technology  = { light_log_tech_0 = 0 popup = no }
-	set_technology  = { light_log_tech_1 = 0 popup = no }
-	set_technology  = { light_log_tech_2 = 0 popup = no }
-	set_technology  = { light_log_tech_3 = 0 popup = no }
-	set_technology  = { light_log_tech_4 = 0 popup = no }
-	set_technology  = { light_log_tech_5 = 0 popup = no }
-
-	set_technology  = { heavy_log_tech_0 = 0 popup = no }
-	set_technology  = { heavy_log_tech_1 = 0 popup = no }
-	set_technology  = { heavy_log_tech_2 = 0 popup = no }
-	set_technology  = { heavy_log_tech_3 = 0 popup = no }
-	set_technology  = { heavy_log_tech_4 = 0 popup = no }
-	set_technology  = { heavy_log_tech_5 = 0 popup = no }
-
-	set_technology  = { mot_log_tech_0 = 0 popup = no }
-	set_technology  = { mot_log_tech_1 = 0 popup = no }
-	set_technology  = { mot_log_tech_2 = 0 popup = no }
-	set_technology  = { mot_log_tech_3 = 0 popup = no }
-	set_technology  = { mot_log_tech_4 = 0 popup = no }
-	set_technology  = { mot_log_tech_5 = 0 popup = no }
-
-	set_technology  = { sup_log_tech_0 = 0 popup = no }
-	set_technology  = { sup_log_tech_1 = 0 popup = no }
-	set_technology  = { sup_log_tech_2 = 0 popup = no }
-	set_technology  = { sup_log_tech_3 = 0 popup = no }
-	set_technology  = { sup_log_tech_4 = 0 popup = no }
-	set_technology  = { sup_log_tech_5 = 0 popup = no }
+remove_motorisation_techs = {
+	meta_effect = {
+		text = {
+			set_technology  = { light_log_tech_[LEVEL] = 0 popup = no }
+		}
+		LEVEL = "[?light_logistics_effective_motorisation_level]"
+	}
+	meta_effect = {
+		text = {
+			set_technology  = { heavy_log_tech_[LEVEL] = 0 popup = no }
+		}
+		LEVEL = "[?heavy_logistics_effective_motorisation_level]"
+	}
+	meta_effect = {
+		text = {
+			set_technology  = { mot_log_tech_[LEVEL] = 0 popup = no }
+		}
+		LEVEL = "[?mot_logistics_effective_motorisation_level]"
+	}
+	meta_effect = {
+		text = {
+			set_technology  = { sup_log_tech_[LEVEL] = 0 popup = no }
+		}
+		LEVEL = "[?sup_logistics_effective_motorisation_level]"
+	}
 }
 
 set_motorisation_techs = {
@@ -166,24 +197,69 @@ set_motorisation_techs = {
 		text = {
 			set_technology  = { light_log_tech_[LEVEL] = 1 popup = no }
 		}
-		LEVEL = "[?light_logistics_motorisation_level]"
+		LEVEL = "[?light_logistics_effective_motorisation_level]"
 	}
 	meta_effect = {
 		text = {
 			set_technology  = { heavy_log_tech_[LEVEL] = 1 popup = no }
 		}
-		LEVEL = "[?heavy_logistics_motorisation_level]"
+		LEVEL = "[?heavy_logistics_effective_motorisation_level]"
 	}
 	meta_effect = {
 		text = {
 			set_technology  = { mot_log_tech_[LEVEL] = 1 popup = no }
 		}
-		LEVEL = "[?mot_logistics_motorisation_level]"
+		LEVEL = "[?mot_logistics_effective_motorisation_level]"
 	}
 	meta_effect = {
 		text = {
 			set_technology  = { sup_log_tech_[LEVEL] = 1 popup = no }
 		}
-		LEVEL = "[?sup_logistics_motorisation_level]"
+		LEVEL = "[?sup_logistics_effective_motorisation_level]"
 	}
+}
+
+calc_motorisation_techs = {
+	set_variable = { supply_mult = logi_trucks }
+	divide_variable = { supply_mult = total_trucks }
+	set_temp_variable = { supply_mult_scale_factor = 0.1 }
+	subtract_from_variable = { supply_mult = supply_mult_scale_factor }
+	multiply_temp_variable = { supply_mult_scale_factor = -1 }
+	add_to_temp_variable = { supply_mult_scale_factor = 1 }
+	divide_variable = { supply_mult = supply_mult_scale_factor }
+	clamp_variable = {
+		var = supply_mult
+		min = 0
+		max = 1
+	}
+	
+	set_temp_variable = { tech_granularity_mult = 10 }
+	
+	set_variable = { light_logistics_effective_motorisation_level = light_logistics_motorisation_level }
+	multiply_variable = { light_logistics_effective_motorisation_level = tech_granularity_mult }
+	multiply_variable = { light_logistics_effective_motorisation_level = supply_mult }
+	round_variable = light_logistics_effective_motorisation_level
+	
+	set_variable = { heavy_logistics_effective_motorisation_level = heavy_logistics_motorisation_level }
+	multiply_variable = { heavy_logistics_effective_motorisation_level = tech_granularity_mult }
+	multiply_variable = { heavy_logistics_effective_motorisation_level = supply_mult }
+	round_variable = heavy_logistics_effective_motorisation_level
+	
+	set_variable = { mot_logistics_effective_motorisation_level = mot_logistics_motorisation_level }
+	multiply_variable = { mot_logistics_effective_motorisation_level = tech_granularity_mult }
+	multiply_variable = { mot_logistics_effective_motorisation_level = supply_mult }
+	round_variable = mot_logistics_effective_motorisation_level
+	
+	set_variable = { sup_logistics_effective_motorisation_level = sup_logistics_motorisation_level }
+	multiply_variable = { sup_logistics_effective_motorisation_level = tech_granularity_mult }
+	multiply_variable = { sup_logistics_effective_motorisation_level = supply_mult }
+	round_variable = sup_logistics_effective_motorisation_level
+}
+
+offmap_trucks_to_stockpile = {
+	add_equipment_to_stockpile = {
+		type = motorized_equipment
+		amount = logi_trucks
+	}
+	set_variable = { logi_trucks = 0 }
 }
