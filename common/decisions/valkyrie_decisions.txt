@@ -620,31 +620,137 @@ wehrmacht_vs_ss_decisions = {
 	}
 
 	# Wehrmacht Recruitment Decisions
-	wm_recruitment_decision_1 = {
+	wm_recruitment_decision_1 = { #MotInfDiv Großdeutschland
 
-	icon = generic_army_support
+		icon = generic_army_support
 
-	available = {
-		OR = {
-			has_country_leader = { character = GER_adolf_hitler }
-			has_country_leader = { character = GER_ludwig_beck }
-			has_country_leader = { character = GER_erwin_rommel }
-		}
-		has_war_with = SOV
-		date > 1941.12.30
+		available = {
+			OR = {
+				has_country_leader = { character = GER_adolf_hitler }
+				has_country_leader = { character = GER_ludwig_beck }
+				has_country_leader = { character = GER_erwin_rommel }
+			}
+			has_war = yes
+			date > 1942.1.1
 		}
 		visible = {
-			has_war = no
+			has_war = yes
 		}
 
 		cost = 25
 		fire_only_once = yes
 		ai_will_do = {
-			factor = 0
+			factor = 100
 		}
 		complete_effect = {
 			country_event = wm_recruitment_event.1
 			GER_bop_low_decrease_effect = yes
 		}
 	}
+
+	wm_recruitment_decision_2 = { #PzDiv Hermann Göring
+
+		icon = generic_army_support
+
+		available = {
+			has_country_leader = { character = GER_adolf_hitler }
+			has_war = yes
+			has_idea = GER_hermann_goring
+			date > 1942.1.1
+			}
+
+		visible = {
+			has_war = yes
+		}
+
+		cost = 25
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 100
+		}
+		complete_effect = {
+			country_event = wm_recruitment_event.2
+			GER_bop_low_decrease_effect = yes
+		}
+	}
+	
+	wm_recruitment_decision_3 = { #MechMotInfDiv Hermann Göring 2
+
+		icon = generic_army_support
+
+		available = {
+			has_country_leader = { character = GER_adolf_hitler }
+			has_war = yes
+			ruling_party = fascism
+			has_idea = GER_hermann_goring
+			date > 1942.6.1
+			}
+
+		visible = {
+			has_war = yes
+		}
+
+		cost = 25
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 100
+		}
+		complete_effect = {
+			country_event = wm_recruitment_event.3
+			GER_bop_low_decrease_effect = yes
+		}
+	}
+	
+	wm_recruitment_decision_4 = { #MechMotInfDiv Feldherrnhalle
+
+		icon = generic_army_support
+
+		available = {
+			has_country_leader = { character = GER_adolf_hitler }
+			has_war = yes
+			ruling_party = fascism
+			date > 1943.1.1
+			}
+
+		visible = {
+			has_war = yes
+		}
+
+		cost = 15
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 100
+		}
+		complete_effect = {
+			country_event = wm_recruitment_event.4
+			GER_bop_very_low_decrease_effect = yes
+		}
+	}
+
+	wm_recruitment_decision_5 = { #PzDiv Feldherrnhalle 2
+
+		icon = generic_army_support
+
+		available = {
+			has_country_leader = { character = GER_adolf_hitler }
+			has_war = yes
+			ruling_party = fascism
+			date > 1943.6.1
+			}
+
+		visible = {
+			has_war = yes
+		}
+
+		cost = 25
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 100
+		}
+		complete_effect = {
+			country_event = wm_recruitment_event.5
+			GER_bop_low_decrease_effect = yes
+		}
+	}
+
 }
