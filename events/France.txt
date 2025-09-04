@@ -1589,29 +1589,35 @@ country_event = {
 	picture = GFX_report_event_dead_soldiers
 	fire_only_once = yes
 	is_triggered_only = yes #Fall Gelb
+
+	immediate = {
+		add_timed_idea = {
+			idea = FRA_disorganized_army
+			days = 21
+		}
+	}
 	
 	option = {
 		name = france.264.a 
-		trigger = { NOT = { has_idea = maxime_weygand } }
-		FRA = {
-			add_timed_idea = {
-				idea = FRA_disorganized_army
-				days = 31
-			}
+		ai_chance = {
+			factor = 9000
+		}
+		trigger = { 
+			has_completed_focus = FRA_army_reform
+			NOT = { 
+				has_idea = maxime_weygand 
+			} 
 		}
 		custom_effect_tooltip = france.264.a_tt
 		activate_advisor = maxime_weygand
 	}
 	option = {
 		name = france.264.b 
-		FRA = {
-			add_timed_idea = {
-				idea = FRA_disorganized_army
-				days = 31
-			}
+		ai_chance = {
+			factor = 0
 		}
 		custom_effect_tooltip = france.264.a_tt
-		add_political_power = 25
+		add_political_power = 5
 	}
 }
 

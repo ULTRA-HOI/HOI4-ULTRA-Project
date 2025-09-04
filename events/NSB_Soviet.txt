@@ -88,6 +88,7 @@ country_event = {
 		ai_chance = {
 			base = 10
 		}
+		add_stability = -0.03
 		hidden_effect = {
 			every_character = {
 				limit = {
@@ -97,7 +98,6 @@ country_event = {
 				SOV_purge_character_effect = yes
 			}
 		}
-
 		custom_effect_tooltip = SOV_characters_will_be_purged_tt
 		character_list_tooltip = {
 			limit = {
@@ -248,7 +248,6 @@ country_event = {
 		ai_chance = {
 			base = 10
 		}
-
 		if = {
 			limit = {
 				has_idea = SOV_genrikh_yagoda
@@ -477,7 +476,7 @@ unit_leader_event = {
 		ai_chance = {
 			base = 10
 		}
-
+		add_stability = -0.03
 		hidden_effect = {
 			random_army_leader = {
 				limit = {
@@ -707,7 +706,7 @@ unit_leader_event = {
 		ai_chance = {
 			base = 10
 		}
-
+		add_stability = -0.03
 		hidden_effect = {
 			random_army_leader = {
 				limit = {
@@ -770,7 +769,7 @@ unit_leader_event = {
 				SOV_is_going_historical_stalinist = no
 			}
 		}
-
+		add_stability = -0.03
 		hidden_effect = {
 			random_army_leader = {
 				limit = {
@@ -1117,7 +1116,7 @@ unit_leader_event = {
 		ai_chance = {
 			base = 10
 		}
-
+		add_stability = -0.03
 		hidden_effect = {
 			random_navy_leader = {
 				limit = {
@@ -1457,7 +1456,7 @@ country_event = {
 		ai_chance = {
 			base = 10
 		}
-
+		add_stability = -0.03
 		hidden_effect = {
 			#Purge any Advisors
 			every_character = {
@@ -1820,7 +1819,7 @@ country_event = {
 		ai_chance = {
 			base = 10
 		}
-
+		add_stability = -0.03
 		hidden_effect = {
 			every_character = {
 				limit = {
@@ -3033,9 +3032,9 @@ country_event = {
 		}
 
 		ai_chance = {
-			base = 100
+			base = 1000
 			modifier = {
-				factor = 100
+				factor = 1000
 				ENG = {
 					has_war_with = GER
 				}
@@ -3122,9 +3121,9 @@ country_event = {
 		name = NSB_soviet_foreign_politics_events.153.a
 
 		ai_chance = {
-			base = 10
+			base = 1000
 			modifier = {
-				factor = 100
+				factor = 1000
 				ENG = {
 					has_war_with = GER
 				}
@@ -3155,11 +3154,11 @@ country_event = {
 							has_war_with = FROM
 						}
 					}
-					has_war_with = PER
+					#has_war_with = PER
 					#has_guaranteed = PER
 					#has_non_aggression_pact_with = PER
-					is_in_faction_with = PER
-					is_subject = yes
+					#is_in_faction_with = PER
+					#is_subject = yes
 					#strength_ratio = {
 					#	tag = FROM
 					#	ratio < 0.5
@@ -3595,8 +3594,12 @@ country_event = {
 				}
 			}
 			modifier = {
-				factor = 100
-				is_in_faction_with = ENG
+				factor = 9000
+				PER = { is_in_faction_with = ENG }
+			}
+			modifier = {
+				factor = 9000
+				PER = { is_in_faction_with = SOV }
 			}
 			modifier = { #Appropriate PC for Foreign Affairs
 				factor = 1.5
@@ -3605,9 +3608,15 @@ country_event = {
 			modifier = {
 				factor = 0
 				OR = {
+					is_in_faction = no
 					AND = {
 						is_in_faction = yes
-						NOT = { is_in_faction_with = FROM }
+						NOT = { 			
+							OR = {
+								is_in_faction_with = SOV
+								is_in_faction_with = ENG
+							}
+						}
 					}
 					AND = {
 						is_subject = yes
@@ -3616,11 +3625,24 @@ country_event = {
 				}
 			}
 		}
-
 		set_politics = { ruling_party = FROM }
 		FROM = {
 			puppet = ROOT
 			add_to_faction = ROOT
+			transfer_state = 419 #Tibriz (AZB)
+			transfer_state = 420 #Gilan (AZB)
+			transfer_state = 416 #Khorasan
+			transfer_state = 421 #Kurdistan
+			transfer_state = 413 #Khuzestan
+			give_resource_rights = { receiver = ENG state = 413 }
+			PER = {
+				give_resource_rights = { receiver = SOV state = 411 }
+				give_resource_rights = { receiver = SOV state = 412 }
+				give_military_access = ROOT
+			}
+			411 = { set_state_flag = SOV_soviet_resource_rights_iran_flag }
+			412 = { set_state_flag = SOV_soviet_resource_rights_iran_flag }
+			413 = { set_state_flag = SOV_british_resource_rights_iran_flag }
 			hidden_effect = {
 				country_event = { id = NSB_soviet_foreign_politics_events.150 hours = 1 }
 			}
@@ -6284,7 +6306,7 @@ country_event = {
 		name = NSB_soviet_soviet_german_trade_agreement.1.a
 
 		ai_chance = {
-			base = 5
+			base = 9000
 			modifier = {
 				factor = 10
 				has_war = yes
@@ -6316,7 +6338,7 @@ country_event = {
 			}
 		}
 
-		add_timed_idea = { idea = SOV_soviet_german_trade_agreement days = 545 } #Technically 1 year but really 18 months for Soviet payment 
+		add_timed_idea = { idea = SOV_soviet_german_trade_agreement days = 730 }
 
 		#Effects to Soviets
 		effect_tooltip = {
@@ -6325,8 +6347,17 @@ country_event = {
 					limit = {
 						has_dlc = "Man the Guns"
 					}
-					# CA: Lützow -> Petropavlovsk
-					
+					add_equipment_production = {
+						equipment = {
+							type = nrm_ship_hull_cruiser_3
+							creator = "GER" 
+							version_name = "Admiral Hipper Class"
+						}
+						name = "Petropavlovsk"
+						requested_factories = 1
+						progress = 0.50
+						amount = 1
+					}
 					add_tech_bonus = {
 						name = NSB_soviet_soviet_german_trade_agreement.1.t
 						bonus = 0.5
@@ -6405,6 +6436,22 @@ country_event = {
 		}
 		FROM = { country_event = { id = NSB_soviet_soviet_german_trade_agreement.2 hours = 1 } }
 	}
+
+	option = { # Refuse
+		name = NSB_soviet_soviet_german_trade_agreement.1.b
+
+		ai_chance = {
+			base = 0
+		}
+
+		FROM = {
+			country_event = { id = NSB_soviet_soviet_german_trade_agreement.3 hours = 1 }
+			add_opinion_modifier = {
+				target = ROOT
+				modifier = SOV_rejected_our_demands
+			}
+		}
+	}
 }
 
 # Soviet-German Trade Agreement - GER Accepts - Event for SOV
@@ -6418,34 +6465,46 @@ country_event = {
 			
 	option = { # Good
 		name = NSB_soviet_soviet_german_trade_agreement.2.a
-
-		if = {
-			limit = {
-				has_dlc = "Man the Guns"
-			}
-			
-			# CA: Lützow -> Petropavlovsk
-			
-			add_tech_bonus = {
-				name = NSB_soviet_soviet_german_trade_agreement.1.t
-				bonus = 0.5
-				uses = 2
-				category = ship_modules_tech
-				category = bb_tech
-				category = dd_tech
-			}			
-		}
-		else = { #No MTG
-		
-			add_tech_bonus = {
-				name = NSB_soviet_soviet_german_trade_agreement.1.t
-				bonus = 0.5
-				uses = 2
-				category = ca_tech
-				category = bb_tech
-				category = dd_tech
-			}
-		}
+				if = {
+					limit = {
+						has_dlc = "Man the Guns"
+					}
+					add_equipment_production = {
+						equipment = {
+							type = nrm_ship_hull_cruiser_3
+							creator = "GER" 
+							version_name = "Admiral Hipper Class"
+						}
+						name = "Petropavlovsk"
+						requested_factories = 1
+						progress = 0.50
+						amount = 1
+					}
+					add_tech_bonus = {
+						name = NSB_soviet_soviet_german_trade_agreement.1.t
+						bonus = 0.5
+						uses = 2
+						category = ship_modules_tech
+						category = bb_tech
+						category = dd_tech
+					}
+				}
+				else = { #No MTG
+					if = {
+						limit = {
+							NOT = { has_tech = basic_heavy_cruiser }
+						}
+						set_technology = { basic_heavy_cruiser = 1 }
+					}
+					add_tech_bonus = {
+						name = NSB_soviet_soviet_german_trade_agreement.1.t
+						bonus = 0.5
+						uses = 2
+						category = ca_tech
+						category = bb_tech
+						category = dd_tech
+					}
+				}
 
 		add_tech_bonus = {
 			name = NSB_soviet_soviet_german_trade_agreement.1.t
@@ -6476,7 +6535,7 @@ country_event = {
 		#Effects to Germans
 		effect_tooltip = {
 			FROM = {
-				add_timed_idea = { idea = SOV_soviet_german_trade_agreement days = 545 } #Technically 1 year but really 18 months for Soviet payment 
+				add_timed_idea = { idea = SOV_soviet_german_trade_agreement days = 730 }
 			}
 
 			add_opinion_modifier = {

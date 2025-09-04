@@ -1167,13 +1167,40 @@ focus_tree = {
 		search_filters = {FOCUS_FILTER_INDUSTRY FOCUS_FILTER_RESEARCH}
 
 		completion_reward = {
+
+
+			add_breakthrough_progress = {
+				specialization = specialization_nuclear
+				value = 0.75
+			}
+			add_breakthrough_progress = {
+				specialization = specialization_air
+				value = 0.75
+			}
+
+			custom_effect_tooltip = generic_skip_one_line_tt
+
+			IF = {
+				limit = {
+					NOT = {
+						has_tech = atomic_research
+					}
+				}
+				add_tech_bonus = {
+					name = SOV_no_time_for_peace
+					bonus = 0.5
+					uses = 1 # was 2
+					category = nuclear
+				}
+			}
 			add_tech_bonus = {
 				name = SOV_no_time_for_peace
 				bonus = 0.5
-				uses = 2
-				category = nuclear
+				uses = 1 # was 2
 				category = rocketry
 			}
+
+			custom_effect_tooltip = generic_skip_one_line_tt
 
 			add_ideas = SOV_no_time_for_peace_idea
 		}
@@ -1543,6 +1570,8 @@ focus_tree = {
 
 		completion_reward = {
 			add_ideas = SOV_transformation_of_nature
+			custom_effect_tooltip = Construction_Focus_Start_tt
+			unlock_decision_tooltip = { decision = SOV_tranformation_of_nature_decision show_effect_tooltip = yes }
 		}
 	}
 
@@ -1684,7 +1713,7 @@ focus_tree = {
 		}
 
 		available = {
-			
+			NOT = { has_country_flag = SOV_paranoia_system_active_flag }
 		}
 		
 		search_filters = {}
@@ -2067,7 +2096,7 @@ focus_tree = {
 		}
 
 		available = {
-             has_completed_focus = SOV_lessons_of_war
+        		has_completed_focus = SOV_lessons_of_war
 		}
 		
 		search_filters = {FOCUS_FILTER_AIR_XP}
@@ -2097,7 +2126,7 @@ focus_tree = {
 
 		icon = GFX_goal_generic_build_navy
 		x = 6
-		y = 0
+		y = -1
 		relative_position_id = SOV_transpolar_flights
 		cost = 3
 
@@ -2592,10 +2621,10 @@ focus_tree = {
 		id = SOV_pc_of_the_ussr_navy
 
 		icon = GFX_goal_generic_navy_cruiser
-		prerequisite = { focus = SOV_expand_the_red_fleet }
-		x = 4
-		y = 2
-		relative_position_id = SOV_expand_the_red_fleet
+		prerequisite = { focus = SOV_expand_shipbuilding_plants }
+		x = 0
+		y = 1
+		relative_position_id = SOV_expand_shipbuilding_plants
 		cost = 3
 		
 		ai_will_do = {
@@ -2722,7 +2751,7 @@ focus_tree = {
 
 		icon = GFX_focus_generic_cruiser2
 		prerequisite = { focus = SOV_surface_warfare }
-		x = -1
+		x = 1
 		y = 1
 		relative_position_id = SOV_surface_warfare
 		cost = 3
@@ -2767,8 +2796,8 @@ focus_tree = {
 		id = SOV_an_oceangoing_navy
 
 		icon = GFX_goal_generic_navy_battleship
-		prerequisite = { focus = SOV_surface_warfare focus = SOV_submarine_warfare }
-		x = 1
+		prerequisite = { focus = SOV_surface_warfare }
+		x = -1
 		y = 1
 		relative_position_id = SOV_surface_warfare
 		cost = 3
@@ -2778,7 +2807,6 @@ focus_tree = {
 		}
 
 		available = {
-			NOT = { has_country_flag = SOV_paranoia_system_active_flag }
 			if = {
 				limit = {
 					has_dlc = "Man the Guns"
@@ -2797,6 +2825,9 @@ focus_tree = {
 				uses = 2
 				category = bb_tech
 			}
+			mio:SOV_nevskoye_design_bureau_organization = {
+				add_mio_funds = 800
+			}
 		}
 	}
 
@@ -2804,8 +2835,8 @@ focus_tree = {
 		id = SOV_mine_warfare
 
 		icon = GFX_focus_generic_mine_warfare
-		prerequisite = { focus = SOV_surface_warfare focus = SOV_submarine_warfare }
-		x = -1
+		prerequisite = { focus = SOV_submarine_warfare }
+		x = 1
 		y = 1
 		relative_position_id = SOV_submarine_warfare
 		cost = 3
@@ -2833,7 +2864,7 @@ focus_tree = {
 
 		icon = GFX_goal_generic_navy_anti_submarine
 		prerequisite = { focus = SOV_submarine_warfare }
-		x = 1
+		x = -1
 		y = 1
 		relative_position_id = SOV_submarine_warfare
 		cost = 3
@@ -2873,10 +2904,9 @@ focus_tree = {
 		id = SOV_advanced_maneuvers
 
 		icon = GFX_goal_generic_navy_doctrines_tactics
-		prerequisite = { focus = SOV_expand_shipbuilding_plants }
-		prerequisite = { focus = SOV_an_oceangoing_navy }
+		prerequisite = { focus = SOV_long_range_raiders focus = SOV_offensive_maritime_strategy }
 		x = 0
-		y = 3
+		y = 4
 		relative_position_id = SOV_expand_shipbuilding_plants
 		cost = 3
 		
@@ -2885,6 +2915,7 @@ focus_tree = {
 		}
 
 		available = {
+			NOT = { has_country_flag = SOV_paranoia_system_active_flag }
 		}
 		
 		search_filters = {FOCUS_FILTER_NAVY_XP}
@@ -2897,6 +2928,9 @@ focus_tree = {
 			custom_effect_tooltip = SOV_advanced_maneuvers_ns_tt
 			add_ideas = naval_academy_scholarships_spirit
 			navy_experience = 50
+			#remove_ideas = SOV_purged_junior_navy_officers_1
+			#remove_ideas = SOV_purged_junior_navy_officers_2
+			#remove_ideas = SOV_purged_junior_navy_officers_3
 		}
 	}
 
@@ -3005,7 +3039,7 @@ focus_tree = {
 		id = SOV_found_the_pcdi
 
 		icon = GFX_goal_generic_defence
-		x = 15
+		x = 11
 		y = 0
 		relative_position_id = SOV_expand_the_red_fleet
 		cost = 5
@@ -3533,13 +3567,32 @@ focus_tree = {
 		search_filters = {FOCUS_FILTER_RESEARCH}
 
 		completion_reward = {
-			add_tech_bonus = {
-				name = SOV_soviet_atomic_bomb_project_tech_bonus_name
-				bonus = 1
-				uses = 1
-				ahead_reduction = 2
-				category = nuclear
+
+			IF = {
+				limit = {
+					NOT = {
+						has_tech = atomic_research
+					}
+				}
+				add_tech_bonus = {
+					name = SOV_soviet_atomic_bomb_project_tech_bonus_name
+					bonus = 1
+					uses = 1
+					ahead_reduction = 1
+					category = nuclear
+				}
+				add_breakthrough_progress = {
+					specialization = specialization_nuclear
+					value = 0.5
+				}
 			}
+			ELSE = {
+				add_breakthrough_progress = {
+					specialization = specialization_nuclear
+					value = 0.8
+				}
+			}
+			custom_effect_tooltip = generic_skip_one_line_tt
 
 			if = {
 				limit = {
@@ -4114,10 +4167,11 @@ focus_tree = {
 		search_filters = {}
 
 		completion_reward = {
-			add_timed_idea = {
-				idea = SOV_the_road_of_life_ns
-				days = 730
+			add_ideas = {
+				SOV_the_road_of_life_ns
 			}
+			custom_effect_tooltip = generic_skip_one_line_tt
+			custom_effect_tooltip = SOV_usa_foreign_relief_aid_tt
 		}
 	}
 
@@ -5381,7 +5435,7 @@ focus_tree = {
 	focus = {
 		id = SOV_the_path_of_marxism_leninism
 		icon = GFX_focus_SOV_the_path_of_marxism_leninism
-		x = 10
+		x = 8
 		y = 0
 		offset = {
 			x = -8
@@ -5425,10 +5479,10 @@ focus_tree = {
 			add_political_power = 25
 
 			SOV_paranoia_low_decrease_effect = yes	
-			IF = {
-				limit = { has_dlc = "No Step Back"}
-				mark_focus_tree_layout_dirty = yes
-			}
+			#IF = {
+			#	limit = { has_dlc = "No Step Back"}
+			#	mark_focus_tree_layout_dirty = yes
+			#}
 		}
 	}
 
@@ -5504,7 +5558,7 @@ focus_tree = {
 			}
 
 			SOV_paranoia_low_decrease_effect = yes
-			mark_focus_tree_layout_dirty = yes
+			#mark_focus_tree_layout_dirty = yes
 		}
 	}
 
@@ -5542,10 +5596,11 @@ focus_tree = {
 	focus = {
 		id = SOV_the_stalin_constitution
 		icon = GFX_goal_support_communism
-		prerequisite = { focus = SOV_the_centre }
-		x = 1
-		y = 1
-		relative_position_id = SOV_the_centre
+		prerequisite = { focus = SOV_socialism_in_one_country }
+		prerequisite = { focus = SOV_secure_the_administration }
+		x = 0
+		y = 2
+		relative_position_id = SOV_socialism_in_one_country
 		cost = 3
 		
 		ai_will_do = {
@@ -5573,10 +5628,10 @@ focus_tree = {
 	focus = {
 		id = SOV_the_zinovyevite_terrorist_center
 		icon = GFX_focus_SOV_purge_zinovyevists
-		prerequisite = { focus = SOV_the_stalin_constitution }
-		x = 0
+		prerequisite = { focus = SOV_the_centre }
+		x = 1
 		y = 1
-		relative_position_id = SOV_the_stalin_constitution
+		relative_position_id = SOV_the_centre
 		cost = 3
 		
 		ai_will_do = {
@@ -5671,9 +5726,9 @@ focus_tree = {
 				set_country_flag = SOV_purge_event_unavoidable_flag #No way to avoid this purge. This people are about to be purged and there's nothing you can do for them.
 				SOV_trigger_great_purge_moscow_trial_effect = yes #FIRST MOSCOW TRIAL -> Zinovyev & friends
 				if = {
-				limit = {
-					has_character = SOV_genrikh_yagoda
-				}				
+					limit = {
+						has_character = SOV_genrikh_yagoda
+					}				
 					country_event = { id = NSB_soviet_paranoia_system_events.13 days = 10 random_days = 5 }
 				}
 			}
@@ -5708,15 +5763,15 @@ focus_tree = {
 
 			add_political_power = 50
 
-			SOV_paranoia_medium_decrease_effect = yes
+			SOV_paranoia_low_decrease_effect = yes
+				hidden_effect = { country_event = { id = NSB_soviet_paranoia_system_events.12 days = 10 random_days = 5 } }
 		}
 	}
 
 	focus = {
 		id = SOV_the_collectivization_process
 		icon = GFX_focus_prc_agrarian_socialism
-		prerequisite = { focus = SOV_socialism_in_one_country }
-		prerequisite = { focus = SOV_secure_the_administration }
+		prerequisite = { focus = SOV_the_stalin_constitution }
 		x = 0
 		y = 3
 		relative_position_id = SOV_socialism_in_one_country
@@ -5740,7 +5795,7 @@ focus_tree = {
 			add_stability = -0.05
 			add_war_support = -0.05
 
-			SOV_paranoia_medium_decrease_effect = yes
+			SOV_paranoia_low_decrease_effect = yes
 		}
 	}
 
@@ -5930,7 +5985,7 @@ focus_tree = {
 
 			add_political_power = 50
 
-			SOV_paranoia_medium_decrease_effect = yes
+			SOV_paranoia_low_decrease_effect = yes
 		}
 	}
 
@@ -5944,7 +5999,7 @@ focus_tree = {
 		cost = 5
 		
 		ai_will_do = {
-			factor = 1
+			factor = 10
 		}
 
 		available = {
@@ -5997,6 +6052,14 @@ focus_tree = {
 			}
 			custom_effect_tooltip = Construction_Focus_Middle_tt
 			unlock_decision_tooltip = { decision = SOV_war_eco_decision show_effect_tooltip = yes }
+			if = {
+				limit = {
+					is_ai = yes
+				}
+				add_stability = 0.2
+				add_war_support = 0.2
+				add_political_power = 200
+			}
 		}
 	}
 
@@ -6099,6 +6162,15 @@ focus_tree = {
 			}
 
 			set_country_flag = SOV_stalinist_military_flag #New Generals have more chances of being Stalinists after this
+
+			SAU = {
+				remove_ideas = SOV_ambassador_karim_khakimov 
+				remove_opinion_modifier = {
+  				target = SOV 
+   				modifier = SOV_cordial_relations_developed_by_soviet_diplomat 
+				}
+			}
+					hidden_effect = { country_event = { id = NSB_soviet_paranoia_system_events.28 days = 10 random_days = 5 } }
 		}
 	}
 
@@ -6246,7 +6318,7 @@ focus_tree = {
 				custom_effect_tooltip = SOV_behead_the_snake_no_lar_tt
 			}
 
-			SOV_paranoia_high_decrease_effect = yes
+			SOV_paranoia_low_decrease_effect = yes
 			IF = {
 				limit = {
 					is_ai = yes
@@ -6453,6 +6525,7 @@ focus_tree = {
 		search_filters = {FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY}
 
 		completion_reward = {
+			add_political_power = 100
 			custom_effect_tooltip = SOV_ban_excessive_hero_worship_dec_cost_tt
 			SOV_foreign_politics_decision_cost_reduction_effect = yes
 
@@ -6699,6 +6772,7 @@ focus_tree = {
 		search_filters = {FOCUS_FILTER_INDUSTRY}
 
 		completion_reward = {
+			add_to_variable = { SOV_the_politburo_production_speed_buildings_factor = 0.05 } 
 			add_to_variable = { SOV_the_politburo_opinion_gain_monthly_same_ideology_factor = 0.25 }
 			custom_effect_tooltip = SOV_the_construction_of_communism_ns_tt
 
@@ -6715,37 +6789,6 @@ focus_tree = {
 			}
 			else = {
 				custom_effect_tooltip = SOV_the_construction_of_communism_puppet_autonomy_tt
-			}
-
-			custom_effect_tooltip = SOV_the_construction_of_communism_railways_tt
-			#Build railway from Moscow to Puppets
-			hidden_effect = { #Hiidden for tooltip reasons
-				every_subject_country = {
-					limit = {
-						capital_scope = {
-							OR = {
-								is_on_continent = europe
-								is_on_continent = asia
-								is_on_continent = middle_east
-							}
-						}
-					}
-
-					if = {
-						limit = {
-							can_build_railway = {
-								start_state = ROOT.capital
-								target_state = THIS.capital
-								build_only_on_allied = yes
-							}
-						}
-						build_railway = {				
-							start_state = ROOT.capital
-							target_state = THIS.capital
-							build_only_on_allied = yes
-						}
-					}		
-				}
 			}
 		}
 	}
@@ -6959,9 +7002,10 @@ focus_tree = {
 		}
 
 		available = {
-			any_enemy_country = {
-				SOV_is_major_not_original_sov = yes
-			}
+			has_completed_focus = SOV_lessons_of_war
+			#any_enemy_country = {
+			#	SOV_is_major_not_original_sov = yes
+			#}
 		}
 		
 		search_filters = {}
@@ -7055,7 +7099,7 @@ focus_tree = {
 
 		}
 		
-		search_filters = {FOCUS_FILTER_MANPOWER FOCUS_FILTER_PROPAGANDA}
+		search_filters = { FOCUS_FILTER_PROPAGANDA FOCUS_FILTER_STABILITY }
 
 		completion_reward = {
 			add_political_power = 25
@@ -7175,8 +7219,6 @@ focus_tree = {
 		search_filters = {FOCUS_FILTER_STABILITY}
 
 		completion_reward = {
-			add_stability = 0.1
-
 			custom_effect_tooltip = available_political_advisor
 			show_ideas_tooltip = SOV_patriarch_sergy
 		}
@@ -7198,7 +7240,7 @@ focus_tree = {
 		id = SOV_the_comintern
 		icon = GFX_goal_support_communism
 		prerequisite = { focus = SOV_the_path_of_marxism_leninism }
-		x = 8
+		x = 6
 		y = 0
 		relative_position_id = SOV_addressing_internal_affairs
 		cost = 3
@@ -7235,171 +7277,10 @@ focus_tree = {
 	}
 
 	focus = {
-		id = SOV_development_aid_for_eastern_allies
-		icon = GFX_goal_generic_construct_civilian
-		prerequisite = { focus = SOV_the_comintern }
-		x = -4
-		y = 1
-		relative_position_id = SOV_the_comintern
-		cost = 3
-		
-		ai_will_do = {
-			factor = 1
-			modifier = {
-				factor = 0
-				has_civil_war = yes
-			}	
-		}
-
-		available = {
-			any_allied_country = {
-				capital_scope = { is_on_continent = asia }
-				is_major = no
-			}
-			num_of_civilian_factories_available_for_projects > 2
-			is_subject = no
-		}
-		
-		search_filters = {}
-
-		select_effect = {
-			add_ideas = SOV_development_of_eastern_allies
-		}
-
-		completion_reward = {
-			#Tooltip purposes (Select Effect)
-			custom_effect_tooltip = SOV_focus_select_effect_tt
-			effect_tooltip = {
-				add_ideas = SOV_development_of_eastern_allies
-			}
-
-			#(Complete Effect)
-			custom_effect_tooltip = SOV_focus_complete_effect_tt
-			every_other_country = {
-				limit = {
-					is_in_faction_with = ROOT
-					capital_scope = { is_on_continent = asia }
-					is_major = no
-				}
-				country_event = { id = NSB_soviet_foreign_politics_events.10 hours = 2 random_hours = 1 }
-				custom_effect_tooltip = if_they_accept
-				custom_effect_tooltip = SOV_development_aid_for_eastern_allies_tt
-			}
-			hidden_effect = {
-				remove_ideas = SOV_development_of_eastern_allies
-			}
-		}
-	}
-
-	focus = {
-		id = SOV_war_measures_in_the_east
-		icon = GFX_focus_generic_little_entente
-		prerequisite = { focus = SOV_development_aid_for_eastern_allies }
-		x = 0
-		y = 1
-		relative_position_id = SOV_development_aid_for_eastern_allies
-		cost = 2
-
-		ai_will_do = {
-			factor = 1
-			modifier = {
-				factor = 0
-				has_civil_war = yes
-			}	
-		}
-
-		available = {
-			is_subject = no
-		}
-		
-		search_filters = {}
-
-		completion_reward = {
-			custom_effect_tooltip = SOV_war_measures_scope_tt
-			every_other_country = {
-				limit = {
-					is_in_faction_with = ROOT
-					capital_scope = { is_on_continent = asia }
-					is_major = no
-				}
-				country_event = { id = NSB_soviet_foreign_politics_events.11 hours = 2 random_hours = 1 }
-				custom_effect_tooltip = if_they_accept
-				effect_tooltip = {
-					add_timed_idea = { idea = SOV_war_measures_allies days = 1095 }
-				}
-			}
-		}
-	}
-
-	focus = {
-		id = SOV_annex_tannu_tuva
-		icon = GFX_focus_generic_treaty
-		prerequisite = { focus = SOV_war_measures_in_the_east }
-		x = -1
-		y = 1
-		relative_position_id = SOV_war_measures_in_the_east
-		cost = 2
-
-		ai_will_do = {
-			factor = 1
-			modifier = {
-				factor = 0
-				has_civil_war = yes
-			}	
-		}
-		
-		available = { is_subject = no }
-		
-		search_filters = {FOCUS_FILTER_ANNEXATION}
-
-		completion_reward = {
-			TAN = {	country_event = { id = soviet.14 } }
-		}
-	}
-
-	focus = {
-		id = SOV_fortify_mongolian_border
-		icon = GFX_goal_generic_construct_military
-		prerequisite = { focus = SOV_war_measures_in_the_east }
-		x = 1
-		y = 1
-		relative_position_id = SOV_war_measures_in_the_east
-		cost = 5
-
-		ai_will_do = {
-			factor = 1
-			modifier = {
-				factor = 0
-				has_civil_war = yes
-			}	
-		}
-		
-		available = {
-			MON = {
-				is_in_faction_with = ROOT
-				has_full_control_of_state = 330
-				has_full_control_of_state = 1045
-				has_full_control_of_state = 895
-				has_full_control_of_state = 1044
-
-			}
-			is_subject = no
-		}
-		
-		search_filters = {}
-
-		completion_reward = {
-			MON = { country_event = { id = NSB_soviet_foreign_politics_events.12 hours = 2 random_hours = 1 } }
-			custom_effect_tooltip = if_they_accept
-			custom_effect_tooltip = SOV_fortify_mongolian_border_forts_tt
-		}
-	}
-
-	focus = {
 		id = SOV_send_military_advisors_to_spain
 		icon = GFX_focus_intervention_spain_republic
 		prerequisite = { focus = SOV_the_comintern }
-		x = -2
+		x = 0
 		y = 1
 		relative_position_id = SOV_the_comintern
 		cost = 3
@@ -7413,12 +7294,6 @@ focus_tree = {
 		}
 		
 		available = {
-			has_civil_war = no
-			OR = {
-				has_completed_focus = SOV_the_centre
-				has_completed_focus = SOV_the_left_opposition
-				has_completed_focus = SOV_the_right_opposition
-			}
 			if = {
 				limit = {
 					has_dlc = "La Resistance"
@@ -7532,7 +7407,7 @@ focus_tree = {
 		id = SOV_policy_of_individual_security
 		icon = GFX_goal_generic_defence
 		prerequisite = { focus = SOV_the_comintern }
-		x = 1
+		x = -2
 		y = 1
 		relative_position_id = SOV_the_comintern
 		cost = 2
@@ -7540,24 +7415,27 @@ focus_tree = {
 		ai_will_do = {
 			factor = 1
 			modifier = {
-				factor = 0
-				has_civil_war = yes
+				factor = 10
+				date > 1939.05.1
 			}	
 		}
 		
 
 		available = {
-
+			NOT = { has_country_flag = SOV_paranoia_system_active_flag }
+			GER = {
+				owns_state = 9
+			}
 		}
 		
 		search_filters = {FOCUS_FILTER_POLITICAL}
 
 		completion_reward = {
-			add_political_power = 35
 			custom_effect_tooltip = remove_political_advisor
 			show_ideas_tooltip = maksim_litvinov
 			custom_effect_tooltip = available_political_advisor
 			show_ideas_tooltip = SOV_vyacheslav_molotov
+			activate_advisor = SOV_vyacheslav_molotov
 		}
 	}
 
@@ -7565,7 +7443,7 @@ focus_tree = {
 		id = SOV_approach_germany
 		icon = GFX_goal_molotov_ribbentrop_pact
 		prerequisite = { focus = SOV_policy_of_individual_security }
-		x = 2
+		x = 0
 		y = 1
 		relative_position_id = SOV_policy_of_individual_security
 		cost = 2
@@ -7573,13 +7451,12 @@ focus_tree = {
 		ai_will_do = {
 			factor = 1
 			modifier = {
-				factor = 0
-				has_civil_war = yes
+				factor = 1000
+				date > 1939.08.1
 			}	
 		}
 		
 		available = {
-			NOT = { has_country_flag = SOV_paranoia_system_active_flag }
 			country_exists = GER
 			GER = { SOV_is_valid_subject = yes }
 			NOT = { has_war_with = GER }
@@ -7600,7 +7477,7 @@ focus_tree = {
 
 				#Effects to Germans
 				GER = {
-					add_timed_idea = { idea = SOV_soviet_german_trade_agreement days = 545 } #Technically 1 year but really 18 months for Soviet payment 
+					add_timed_idea = { idea = SOV_soviet_german_trade_agreement days = 730 }
 				}
 
 				add_opinion_modifier = {
@@ -7619,8 +7496,17 @@ focus_tree = {
 					limit = {
 						has_dlc = "Man the Guns"
 					}
-					# CA: Lützow -> Petropavlovsk
-					
+					add_equipment_production = {
+						equipment = {
+							type = nrm_ship_hull_cruiser_3
+							creator = "GER" 
+							version_name = "Admiral Hipper Class"
+						}
+						name = "Petropavlovsk"
+						requested_factories = 1
+						progress = 0.50
+						amount = 1
+					}
 					add_tech_bonus = {
 						name = NSB_soviet_soviet_german_trade_agreement.1.t
 						bonus = 0.5
@@ -7695,15 +7581,14 @@ focus_tree = {
 	focus = {
 		id = SOV_secure_leningrad
 		icon = GFX_focus_generic_attack_finland
-		relative_position_id = SOV_policy_of_individual_security
-		prerequisite = { focus = SOV_policy_of_individual_security }
+		prerequisite = { focus = SOV_approach_germany }
 		x = 0
 		y = 1
-		relative_position_id = SOV_policy_of_individual_security
+		relative_position_id = SOV_approach_germany
 		cost = 2
 		
 		ai_will_do = {
-			factor = 1
+			factor = 1000
 			modifier = {
 				factor = 0
 				has_civil_war = yes
@@ -7712,7 +7597,6 @@ focus_tree = {
 		dynamic = yes 
 
 		available = {
-			NOT = { has_country_flag = SOV_paranoia_system_active_flag }
 			is_subject = no
 			OR = {
 				GER = {
@@ -7760,7 +7644,17 @@ focus_tree = {
 					country_event = { id = finland.1 hours = 16 random_hours = 8 }
 				}
 			}
-			
+
+			ENG = {
+				add_opinion_modifier = { target = SOV modifier = protest_action }
+			}
+			FRA = {
+				add_opinion_modifier = { target = SOV modifier = protest_action }
+			}
+			USA = {
+				add_opinion_modifier = { target = SOV modifier = protest_action }
+			}
+
 			add_tech_bonus = {
 				bonus = 4
 				uses = 1
@@ -7797,7 +7691,6 @@ focus_tree = {
 		#mutually_exclusive = { focus = SOV_respect_baltic_self_determination }
 
 		available = {
-			NOT = { has_country_flag = SOV_paranoia_system_active_flag }
 			is_subject = no
 		}
 
@@ -7891,7 +7784,6 @@ focus_tree = {
 		}
 
 		available = {
-			NOT = { has_country_flag = SOV_paranoia_system_active_flag }
 			is_subject = no
 		}
 
@@ -8011,7 +7903,6 @@ focus_tree = {
 		mutually_exclusive = { focus = SOV_offer_poland_protection }
 
 		available = {
-			NOT = { has_country_flag = SOV_paranoia_system_active_flag }
 			is_subject = no
 			NOT =  { is_in_faction_with = POL }
 			NOT = { has_non_aggression_pact_with = POL }
@@ -8112,7 +8003,6 @@ focus_tree = {
 		}
 
 		available = {
-			NOT = { has_country_flag = SOV_paranoia_system_active_flag }
 			country_exists = POL
 			NOT = { has_war_with = POL }
 			POL = {
@@ -8178,8 +8068,8 @@ focus_tree = {
 		id = SOV_claim_on_bessarabia
 		icon = GFX_focus_generic_attack_romania
 		prerequisite = { focus = SOV_claims_on_poland }
-		x = 3
-		y = 1
+		x = 2
+		y = 2
 		relative_position_id = SOV_claims_on_poland
 		cost = 2
 
@@ -8199,7 +8089,6 @@ focus_tree = {
 		}
 
 		available = {
-			NOT = { has_country_flag = SOV_paranoia_system_active_flag }
 			is_subject = no
 			OR = {
 				FRA = {
@@ -8300,7 +8189,7 @@ focus_tree = {
 		id = SOV_anti_capitalist_policies
 		icon = GFX_focus_spr_class_war
 		prerequisite = { focus = SOV_claim_on_bessarabia }
-		x = -1
+		x = -2
 		y = 1
 		relative_position_id = SOV_claim_on_bessarabia
 		cost = 2
@@ -8369,7 +8258,6 @@ focus_tree = {
 		}
 		
 		available = {
-			NOT = { has_country_flag = SOV_paranoia_system_active_flag }
 			any_country = {
 				OR = {
 					tag = ENG
@@ -8395,8 +8283,16 @@ focus_tree = {
 				date > 1945.5.1
 			}
 		}
+
+		bypass = {
+			OR = {
+				has_war_with = ENG
+				has_war_with = FRA
+				has_war_with = USA
+			}
+		}
 		
-		search_filters = {}
+		search_filters = { FOCUS_FILTER_ANNEXATION }
 
 		completion_reward = {
 			add_timed_idea = { 
@@ -8474,7 +8370,7 @@ focus_tree = {
 		id = SOV_anti_fascist_policies_new
 		icon = GFX_focus_generic_anti_fascist_diplomacy
 		prerequisite = { focus = SOV_claim_on_bessarabia }
-		x = 1
+		x = 2
 		y = 1
 		relative_position_id = SOV_claim_on_bessarabia 
 		cost = 2
@@ -8485,6 +8381,10 @@ focus_tree = {
 				factor = 0
 				has_civil_war = yes
 			}	
+		}
+
+		available = {
+			NOT = { has_government = fascism }
 		}
 				
 		search_filters = {FOCUS_FILTER_PROPAGANDA}
@@ -8539,7 +8439,6 @@ focus_tree = {
 		}
 		
 		available = {
-			NOT = { has_country_flag = SOV_paranoia_system_active_flag }
 			any_country = {
 				OR = {
 					tag = ENG
@@ -8553,8 +8452,15 @@ focus_tree = {
 			is_subject = no
 			date > 1942.1.1
 		}
+
+		bypass = {
+			OR = {
+				has_war_with = GER
+				has_war_with = ITA
+			}
+		}
 		
-		search_filters = {}
+		search_filters = { FOCUS_FILTER_ANNEXATION }
 
 		completion_reward = {
 			add_timed_idea = { 
@@ -8616,12 +8522,344 @@ focus_tree = {
 	}
 
 	focus = {
-		id = SOV_preemptive_invasion_of_iran
-		icon = GFX_focus_generic_attack_iran
-		prerequisite = { focus = SOV_policy_of_individual_security }
+		id = SOV_control_scandinavia
+		icon = GFX_SOV_control_scandinavia_ccp_2d_sov_compatibility
+		prerequisite = {focus = SOV_eradicate_western_fascism focus = SOV_liberation_of_the_european_proletariat_new }
+		x = -4
+		y = 1
+		relative_position_id = SOV_eradicate_western_fascism
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				has_civil_war = yes
+			}	
+		}
+		
+		available = {
+			is_subject = no
+			IF = {
+				limit = {
+					is_AI = yes
+				}
+				date > 1945.5.1
+			}
+		}
+		
+		search_filters = { FOCUS_FILTER_ANNEXATION }
+
+		completion_reward = {
+			#Sweden
+				SWE = {
+					add_timed_idea = {
+						idea = communist_pressure
+						days = 365
+					}  
+				}
+				create_wargoal = {
+					type = puppet_wargoal_focus
+					target = SWE 
+				}
+			#Norway
+				NOR = {
+					add_timed_idea = {
+						idea = communist_pressure
+						days = 365
+					}  
+				}
+				create_wargoal = {
+					type = puppet_wargoal_focus
+					target = NOR 
+				}
+			#Denmark
+				DEN = {
+					add_timed_idea = {
+						idea = communist_pressure
+						days = 365
+					}  
+				}
+				create_wargoal = {
+					type = puppet_wargoal_focus
+					target = DEN 
+				}
+			#Finland
+				FIN = {
+					add_timed_idea = {
+						idea = communist_pressure
+						days = 365
+					}  
+				}
+				create_wargoal = {
+					type = puppet_wargoal_focus
+					target = FIN 
+				}
+			ENG = {
+				add_opinion_modifier = { target = SOV modifier = condemn_aggression }
+			}
+			FRA = {
+				add_opinion_modifier = { target = SOV modifier = condemn_aggression }
+			}
+			USA = {
+				add_opinion_modifier = { target = SOV modifier = condemn_aggression }
+			}
+		}
+	}
+
+	focus = {
+		id = SOV_demand_balkan_submission
+		icon = GFX_SOV_demand_balkan_submission_ccp_2d_sov_compatibility
+		prerequisite = {focus = SOV_eradicate_western_fascism focus = SOV_liberation_of_the_european_proletariat_new }
 		x = -2
 		y = 1
-		relative_position_id = SOV_policy_of_individual_security
+		relative_position_id = SOV_eradicate_western_fascism
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				has_civil_war = yes
+			}	
+		}
+		
+		available = {
+			is_subject = no
+			IF = {
+				limit = {
+					is_AI = yes
+				}
+				date > 1945.5.1
+			}
+		}
+		
+		search_filters = { FOCUS_FILTER_ANNEXATION }
+
+		completion_reward = {
+			#Romania
+				ROM = {
+					add_timed_idea = {
+						idea = communist_pressure
+						days = 365
+					}  
+				}
+				create_wargoal = {
+					type = puppet_wargoal_focus
+					target = ROM 
+				}
+			#Bulgaria
+				BUL = {
+					add_timed_idea = {
+						idea = communist_pressure
+						days = 365
+					}  
+				}
+				create_wargoal = {
+					type = puppet_wargoal_focus
+					target = BUL 
+				}
+			#Greece
+				GRE = {
+					add_timed_idea = {
+						idea = communist_pressure
+						days = 365
+					}  
+				}
+				create_wargoal = {
+					type = puppet_wargoal_focus
+					target = GRE 
+				}
+			#Yugoslavia
+				YUG = {
+					add_timed_idea = {
+						idea = communist_pressure
+						days = 365
+					}  
+				}
+				create_wargoal = {
+					type = puppet_wargoal_focus
+					target = YUG 
+				}
+			#Turkey
+				TUR = {
+					add_timed_idea = {
+						idea = communist_pressure
+						days = 365
+					}  
+				}
+				create_wargoal = {
+					type = puppet_wargoal_focus
+					target = TUR 
+				}
+			#Albania
+				ALB = {
+					add_timed_idea = {
+						idea = communist_pressure
+						days = 365
+					}  
+				}
+				create_wargoal = {
+					type = puppet_wargoal_focus
+					target = ALB 
+				}
+			#Hungary
+				HUN = {
+					add_timed_idea = {
+						idea = communist_pressure
+						days = 365
+					}  
+				}
+				create_wargoal = {
+					type = puppet_wargoal_focus
+					target = HUN 
+				}
+			#Czech
+				CZE = {
+					add_timed_idea = {
+						idea = communist_pressure
+						days = 365
+					}  
+				}
+				create_wargoal = {
+					type = puppet_wargoal_focus
+					target = CZE 
+				}
+			#Austria
+				AUS = {
+					add_timed_idea = {
+						idea = communist_pressure
+						days = 365
+					}  
+				}
+				create_wargoal = {
+					type = puppet_wargoal_focus
+					target = AUS 
+				}
+			ENG = {
+				add_opinion_modifier = { target = SOV modifier = condemn_aggression }
+			}
+			FRA = {
+				add_opinion_modifier = { target = SOV modifier = condemn_aggression }
+			}
+			USA = {
+				add_opinion_modifier = { target = SOV modifier = condemn_aggression }
+			}
+		}
+	}
+
+	focus = {
+		id = SOV_the_southern_thrust
+		icon = GFX_SOV_the_southern_thrust_ccp_2d_sov_compatibility
+		prerequisite = { focus = SOV_eradicate_western_fascism focus = SOV_liberation_of_the_european_proletariat_new }
+		x = 0
+		y = 1
+		relative_position_id = SOV_eradicate_western_fascism
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				has_civil_war = yes
+			}	
+		}
+		
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				has_war_with = GER
+				factor = 0
+			}
+			modifier = {
+				AND = {
+					has_war_with = ENG
+					surrender_progress > 0.3
+				}
+				factor = 0
+			}
+			modifier = {
+				has_war_with = RAJ
+				factor = 5
+			}
+		}
+
+		available = {
+			is_subject = no
+			IF = {
+				limit = {
+					is_AI = yes
+				}
+				date > 1945.5.1
+			}
+		}
+		
+		search_filters = { FOCUS_FILTER_ANNEXATION }
+		completion_reward = {
+			#Iran
+				PER = {
+					add_timed_idea = {
+						idea = communist_pressure
+						days = 365
+					}  
+				}
+				create_wargoal = {
+					type = puppet_wargoal_focus
+					target = PER 
+				}
+			#Iraq
+				IRQ = {
+					add_timed_idea = {
+						idea = communist_pressure
+						days = 365
+					}  
+				}
+				create_wargoal = {
+					type = puppet_wargoal_focus
+					target = IRQ 
+				}
+			#Afghanistan
+				AFG = {
+					add_timed_idea = {
+						idea = communist_pressure
+						days = 365
+					}  
+				}
+				create_wargoal = {
+					type = puppet_wargoal_focus
+					target = AFG 
+				}
+			#Saudi-Arabia
+				SAU = {
+					add_timed_idea = {
+						idea = communist_pressure
+						days = 365
+					}  
+				}
+				create_wargoal = {
+					type = puppet_wargoal_focus
+					target = SAU
+				}
+			ENG = {
+				add_opinion_modifier = { target = SOV modifier = middle_east_expansionism }
+			}
+			FRA = {
+				add_opinion_modifier = { target = SOV modifier = middle_east_expansionism }
+			}
+			USA = {
+				add_opinion_modifier = { target = SOV modifier = middle_east_expansionism }
+			}
+		}
+	}
+
+
+	focus = {
+		id = SOV_preemptive_invasion_of_iran
+		icon = GFX_focus_generic_attack_iran
+		prerequisite = { focus = SOV_claim_on_bessarabia }
+		x = 0
+		y = 1
+		relative_position_id = SOV_claim_on_bessarabia
 		cost = 2
 
 		ai_will_do = {
@@ -8686,7 +8924,7 @@ focus_tree = {
 		id = SOV_the_threat_from_the_land_of_the_rising_sun
 		icon = GFX_focus_attack_japan
 		prerequisite = { focus = SOV_the_comintern }
-		x = 6
+		x = 2
 		y = 1
 		relative_position_id = SOV_the_comintern
 		cost = 2
@@ -8862,14 +9100,175 @@ focus_tree = {
 		}
 	}
 
+	focus = {
+		id = SOV_development_aid_for_eastern_allies
+		icon = GFX_goal_generic_construct_civilian
+		prerequisite = { focus = SOV_support_the_kuomintang focus = SOV_two_red_flags }
+		x = -1
+		y = 1
+		relative_position_id = SOV_support_the_kuomintang
+		cost = 2
+		
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				has_civil_war = yes
+			}	
+		}
+
+		available = {
+			any_allied_country = {
+				capital_scope = { is_on_continent = asia }
+				is_major = no
+			}
+			num_of_civilian_factories_available_for_projects > 2
+			is_subject = no
+		}
+		
+		search_filters = {}
+
+		select_effect = {
+			add_ideas = SOV_development_of_eastern_allies
+		}
+
+		completion_reward = {
+			#Tooltip purposes (Select Effect)
+			custom_effect_tooltip = SOV_focus_select_effect_tt
+			effect_tooltip = {
+				add_ideas = SOV_development_of_eastern_allies
+			}
+
+			#(Complete Effect)
+			custom_effect_tooltip = SOV_focus_complete_effect_tt
+			every_other_country = {
+				limit = {
+					is_in_faction_with = ROOT
+					capital_scope = { is_on_continent = asia }
+					is_major = no
+				}
+				country_event = { id = NSB_soviet_foreign_politics_events.10 hours = 2 random_hours = 1 }
+				custom_effect_tooltip = if_they_accept
+				custom_effect_tooltip = SOV_development_aid_for_eastern_allies_tt
+			}
+			hidden_effect = {
+				remove_ideas = SOV_development_of_eastern_allies
+			}
+		}
+	}
+
+	focus = {
+		id = SOV_war_measures_in_the_east
+		icon = GFX_focus_generic_little_entente
+		prerequisite = { focus = SOV_development_aid_for_eastern_allies }
+		x = 0
+		y = 1
+		relative_position_id = SOV_development_aid_for_eastern_allies
+		cost = 2
+
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				has_civil_war = yes
+			}	
+		}
+
+		available = {
+			is_subject = no
+		}
+		
+		search_filters = {}
+
+		completion_reward = {
+			custom_effect_tooltip = SOV_war_measures_scope_tt
+			every_other_country = {
+				limit = {
+					is_in_faction_with = ROOT
+					capital_scope = { is_on_continent = asia }
+					is_major = no
+				}
+				country_event = { id = NSB_soviet_foreign_politics_events.11 hours = 2 random_hours = 1 }
+				custom_effect_tooltip = if_they_accept
+				effect_tooltip = {
+					add_timed_idea = { idea = SOV_war_measures_allies days = 1095 }
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = SOV_annex_tannu_tuva
+		icon = GFX_focus_generic_treaty
+		prerequisite = { focus = SOV_development_aid_for_eastern_allies }
+		x = -2
+		y = 1
+		relative_position_id = SOV_development_aid_for_eastern_allies
+		cost = 2
+
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				has_civil_war = yes
+			}	
+		}
+		
+		available = { is_subject = no }
+		
+		search_filters = {FOCUS_FILTER_ANNEXATION}
+
+		completion_reward = {
+			TAN = {	country_event = { id = soviet.14 } }
+		}
+	}
+
+	focus = {
+		id = SOV_fortify_mongolian_border
+		icon = GFX_goal_generic_construct_military
+		prerequisite = { focus = SOV_development_aid_for_eastern_allies }
+		x = 2
+		y = 1
+		relative_position_id = SOV_development_aid_for_eastern_allies
+		cost = 2
+
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				has_civil_war = yes
+			}	
+		}
+		
+		available = {
+			MON = {
+				is_in_faction_with = ROOT
+				has_full_control_of_state = 330
+				has_full_control_of_state = 1045
+				has_full_control_of_state = 895
+				has_full_control_of_state = 1044
+
+			}			is_subject = no
+		}
+		
+		search_filters = {}
+
+		completion_reward = {
+			MON = { country_event = { id = NSB_soviet_foreign_politics_events.12 hours = 2 random_hours = 1 } }
+			custom_effect_tooltip = if_they_accept
+			custom_effect_tooltip = SOV_fortify_mongolian_border_forts_tt
+		}
+	}
 
 	focus = {
 		id = SOV_prepare_a_war_with_japan
 		icon = GFX_focus_AST_war_japan
-		prerequisite = {focus = SOV_two_red_flags focus = SOV_support_the_kuomintang }
-		x = 1
+		prerequisite = { focus = SOV_annex_tannu_tuva }
+		prerequisite = { focus = SOV_fortify_mongolian_border }
+		prerequisite = { focus = SOV_war_measures_in_the_east }
+		x = 0
 		y = 1
-		relative_position_id = SOV_two_red_flags
+		relative_position_id = SOV_war_measures_in_the_east
 		cost = 2
 
 		ai_will_do = {
@@ -8922,6 +9321,8 @@ focus_tree = {
 					}
 				}
 			}
+			#custom_effect_tooltip = generic_skip_one_line_tt
+			#custom_effect_tooltip = SOV_war_with_japan_tt
 		}
 	}
 
@@ -8938,7 +9339,7 @@ focus_tree = {
 			factor = 1
 			modifier = {
 				factor = 0
-				has_civil_war = yes
+				has_war = yes
 			}	
 		}
 		
@@ -9052,7 +9453,7 @@ focus_tree = {
 			factor = 1
 			modifier = {
 				factor = 0
-				has_civil_war = yes
+				has_war = yes
 			}	
 		}
 		
@@ -9116,4 +9517,6 @@ focus_tree = {
 			custom_effect_tooltip = SOV_recover_the_kuril_islands_decisions_tt
 		}
 	}
+
+
 }

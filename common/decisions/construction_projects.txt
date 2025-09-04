@@ -3140,7 +3140,6 @@ focus_construction_project = {
 				}
 				
 			}
-			
 			add_resource = {
 				type = rubber
 				amount = 24
@@ -4332,7 +4331,7 @@ focus_construction_project = {
 					limit = { is_fully_controlled_by = ROOT }
 					add_building_construction = {
 						type = bunker
-						level = 3
+						level = 2
 						province = 11670
 						instant_build = yes
 					}
@@ -4518,7 +4517,7 @@ focus_construction_project = {
 		}
 		
 		highlight_states = {
-			highlight_provinces = { 149 3151 13283 13284 13285 13286 13287 13288 9097 11080 6174 3686 13277 13278 13279 13280 13281 }
+			highlight_provinces = { 149 3151 13283 13284 13285 13286 13287 13288 9097 11080 6174 3686 13277 13278 13279 13280 13281 11670 }
 		}
 		
 		remove_effect = {
@@ -4562,6 +4561,44 @@ focus_construction_project = {
 						instant_build = yes
 					}
 					add_dynamic_modifier = { modifier = SOV_krasnaya_gorka_battery scope = SOV }
+				}
+			}
+			if = {
+				limit = {
+					has_full_control_of_state = 195 #LENINGRAD
+					mio:SOV_nevskoye_design_bureau_organization = {
+					has_mio_size > 2
+					}
+				}
+				195 = { #LENINGRAD
+					add_dynamic_modifier = { modifier = SOV_reused_navy_battery scope = SOV }
+				}
+			}
+			if = {
+				limit = {
+					has_full_control_of_state = 192 #Odessa
+				}
+				192 = { #Odessa
+					add_building_construction = {
+						type = anti_air_building
+						level = 1
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = bunker
+						level = 1
+						province = {
+							id = 11670
+						}
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = coastal_bunker
+						level = 1
+						province = 11670
+						instant_build = yes
+					}
+					add_dynamic_modifier = { modifier = SOV_411th_coastal_battery scope = SOV }
 				}
 			}
 			if = {
@@ -4657,7 +4694,7 @@ focus_construction_project = {
 		
 		cost = 0
 		
-		days_remove = 90
+		days_remove = 30
 		
 		modifier = {
 			civilian_factory_use = 60
@@ -4801,7 +4838,7 @@ focus_construction_project = {
 		
 		cost = 0
 		
-		days_remove = 90
+		days_remove = 30
 		
 		modifier = {
 			civilian_factory_use = 60

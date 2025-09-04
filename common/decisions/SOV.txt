@@ -470,13 +470,13 @@ SOV_paranoia_system = {
 			SOV_is_stalinist = yes
 		}
 
-		days_remove = 30
+		days_remove = 180
 
 		cost = 50
 
 		modifier = {
-			command_power_gain = -0.2
-			political_power_gain = -0.2
+			command_power_gain = -0.5
+			political_power_gain = -0.5
 		}
 
 		complete_effect = {
@@ -2737,19 +2737,11 @@ SOV_propaganda_campaigns = {
 		available = {
 			SOV_propaganda_poster_slot_available = yes
 
-			any_country = {
+			any_enemy_country = {
+				is_major = yes
 				has_government = democratic
-				OR = {
-					tag = ENG
-					tag = FRA
-					tag = GER
-					tag = ITA
-					tag = USA
-					tag = JAP
-				}
 			}
 		}
-
 		visible = {
 			OR = {
 				has_completed_focus = SOV_anti_capitalist_policies
@@ -2969,7 +2961,7 @@ SOV_propaganda_campaigns = {
 				factor = 5
 				any_enemy_country = {
 					is_major = yes
-					has_government = democratic
+					has_government = fascism
 				}
 			}
 			modifier = {
@@ -2993,16 +2985,9 @@ SOV_propaganda_campaigns = {
 		available = {
 			SOV_propaganda_poster_slot_available = yes
 
-			any_country = {
+			any_enemy_country = {
+				is_major = yes
 				has_government = fascism
-				OR = {
-					tag = ENG
-					tag = FRA
-					tag = GER
-					tag = ITA
-					tag = USA
-					tag = JAP
-				}
 			}
 		}
 
@@ -5392,6 +5377,7 @@ SOV_diplomacy_nordic_decision_category = {
 
 		target_root_trigger = {
 			has_completed_focus = SOV_control_scandinavia
+			NOT = { has_completed_focus = SOV_control_scandinavia } # disabled for now
 			is_subject = no
 		}
 
@@ -5461,6 +5447,7 @@ SOV_diplomacy_nordic_decision_category = {
 
 		target_root_trigger = {
 			has_completed_focus = SOV_control_scandinavia
+			NOT = { has_completed_focus = SOV_control_scandinavia } # disabled for now
 			is_subject = no
 		}
 
@@ -5540,6 +5527,7 @@ SOV_diplomacy_nordic_decision_category = {
 
 		target_root_trigger = {
 			has_completed_focus = SOV_control_scandinavia
+			NOT = { has_completed_focus = SOV_control_scandinavia } # disabled for now
 			is_subject = no
 		}
 
@@ -5762,6 +5750,7 @@ SOV_diplomacy_balkan_decision_category = {
 
 		target_root_trigger = {
 			has_completed_focus = SOV_demand_balkan_submission
+			NOT = { has_completed_focus = SOV_demand_balkan_submission } # disabled for now
 			is_Subject = no
 		}
 
@@ -6482,9 +6471,10 @@ SOV_diplomacy_asia_decision_category = {
 			}
 		}
 
-		days_re_enable = SOV_send_infantry_equipment_cd
+		#days_re_enable = SOV_send_infantry_equipment_cd
+		fire_only_once = yes
 
-		cost = SOV_send_infantry_equipment_cost
+		#cost = 5
 
 		complete_effect = {
 			send_equipment = {
@@ -6513,7 +6503,7 @@ SOV_diplomacy_asia_decision_category = {
 					}
 				}
 			}
-			custom_effect_tooltip = SOV_send_equipment_cd_tt
+			#custom_effect_tooltip = SOV_send_equipment_cd_tt
 		}
 	}
 
@@ -11448,6 +11438,8 @@ SOV_great_patriotic_war = {
 
 		icon = GFX_decision_generic_military
 
+		fire_only_once = yes
+
 		ai_will_do = {
 			base = 0.5
 		}
@@ -11489,6 +11481,7 @@ SOV_great_patriotic_war = {
 		modifier = {
 			army_defence_factor = 0.05
 			org_loss_when_moving = -0.1
+			army_speed_factor_for_controller = 0.05
 		}
 	}
 
@@ -11586,7 +11579,7 @@ SOV_great_patriotic_war = {
 		}
 
 		complete_effect = {
-		add_ideas = {
+			add_ideas = {
 				for_the_motherland_spirit
 			}
 			hidden_effect = {
@@ -12030,6 +12023,12 @@ SOV_great_patriotic_war = {
 
 		icon = generic_civil_support
 
+		highlight_states = {
+			highlight_state_targets = {
+				state = 217 
+			}
+		}
+
 		allowed = {
 			original_tag = SOV
 		}
@@ -12048,6 +12047,9 @@ SOV_great_patriotic_war = {
 		activation = {
 			has_war = yes
 			has_civil_war = no
+			any_enemy_country = {
+				is_major = yes
+			}
 			217 = {
 				is_controlled_by = ROOT
 				OR = {
@@ -12071,6 +12073,8 @@ SOV_great_patriotic_war = {
 		}
 		#Fail
 		complete_effect = {
+			add_stability = -0.05
+			add_war_support = -0.05
 			217 = { save_event_target_as = state }
 			country_event = wtt_soviet_hold_city.2
 		}
@@ -12080,6 +12084,12 @@ SOV_great_patriotic_war = {
 	SOV_hold_leningrad = {
 
 		icon = generic_civil_support
+
+		highlight_states = {
+			highlight_state_targets = {
+				state = 195 
+			}
+		}
 
 		allowed = {
 			original_tag = SOV
@@ -12125,6 +12135,8 @@ SOV_great_patriotic_war = {
 		}
 		#Fail
 		complete_effect = {
+			add_stability = -0.05
+			add_war_support = -0.05
 			195 = { save_event_target_as = state }
 			country_event = wtt_soviet_hold_city.4
 		}
@@ -12134,6 +12146,12 @@ SOV_great_patriotic_war = {
 	SOV_hold_moscow = {
 
 		icon = generic_civil_support
+
+		highlight_states = {
+			highlight_state_targets = {
+				state = 219 
+			}
+		}
 
 		allowed = {
 			original_tag = SOV
@@ -12153,6 +12171,9 @@ SOV_great_patriotic_war = {
 		activation = {
 			has_war = yes
 			has_civil_war = no
+			any_enemy_country = {
+				is_major = yes
+			}
 			219 = {
 				is_controlled_by = ROOT
 				OR = {
@@ -12176,15 +12197,23 @@ SOV_great_patriotic_war = {
 		}
 		#Fail
 		complete_effect = {
+			add_stability = -0.05
+			add_war_support = -0.05
 			219 = { save_event_target_as = state }
 			country_event = wtt_soviet_hold_city.6
 		}
 	}
-	
-	#move the capital from Moscow
-	
-	SOV_move_capital = {
+
+	#move the capital from Moscow 
+
+	SOV_move_capital_moscow = {
 		icon = generic_civil_support
+
+		highlight_states = {
+			highlight_state_targets = {
+				state = 251
+			}
+		}
 
 		allowed = {
 			original_tag = SOV
@@ -12206,10 +12235,10 @@ SOV_great_patriotic_war = {
 		
 		available = {
 			controls_state = 653 #Sverdlosk
-			NOT = {
-				controls_state = 242 #Smolensk
-			}
 			OR = {
+				NOT = {
+					controls_state = 254 #Ryazan
+				}
 				NOT = {
 					controls_state = 205 #Kaluga
 				}
@@ -12217,24 +12246,99 @@ SOV_great_patriotic_war = {
 					controls_state = 223 #Tula
 				}
 				NOT = {
-					controls_state = 254 #Ryazan
+					controls_state = 242 #Smolensk
 				}
 				NOT = {
 					controls_state = 246 #Rzhev
 				}
-			}
-			OR = { #suburbs
 				NOT = {
-					controls_state = 885 
+					controls_state = 885 #Moscow surrounding states
 				}
 				NOT = {
-					controls_state = 884 
+					controls_state = 884 #Moscow surrounding states
 				}
 				NOT = {
-					controls_state = 883 
+					controls_state = 883 #Moscow surrounding states
 				}
 				NOT = {
 					controls_state = 219 #Moscow itself
+				}
+			}
+		}
+		
+		fire_only_once = yes
+		
+		ai_will_do = {
+			factor = 999
+		}
+		
+		complete_effect = {
+			set_capital = {state = 251} #Kuybyshev
+			IF = {
+				limit = { NOT = { has_idea = moscow_abandoned } }
+				add_ideas = SOV_moscow_abandoned
+			}
+			hidden_effect = {
+				set_country_flag = moscow_abandoned
+			}
+		}
+	}
+	
+	#move the capital from #Moscow# Kuybyshev 
+	
+	SOV_move_capital = {
+		icon = generic_civil_support
+
+		highlight_states = {
+			highlight_state_targets = {
+				state = 653
+			}
+		}
+
+		allowed = {
+			original_tag = SOV
+		}
+		
+		visible = {
+			OR = {
+				NOT = {
+					controls_state = 218 #Rostov
+				}
+				NOT = {
+					controls_state = 260 #Voronezh
+				}
+				NOT = {
+					controls_state = 219 #Moscow
+				}
+				NOT = {
+					controls_state = 217 #Stalingrad
+				}
+			}
+		}
+		
+		available = {
+			controls_state = 653 #Sverdlosk
+			OR = {
+				NOT = {
+					controls_state = 250 #Ulyanovsky 
+				}
+				NOT = {
+					controls_state = 256 #Cheboskary 
+				}
+				NOT = {
+					controls_state = 249 #Kazan
+				}
+				NOT = {
+					controls_state = 652 #Orenburg
+				}
+				NOT = {
+					controls_state = 401 #Engels
+				}
+				NOT = {
+					controls_state = 239 #Saratov
+				}
+				NOT = {
+					controls_state = 251 #Kuybyshev itself
 				}
 			}
 		}
@@ -12248,16 +12352,22 @@ SOV_great_patriotic_war = {
 		}
 		
 		complete_effect = {
-			set_capital = {state = 653} #Sverdlosk
-			add_ideas = SOV_moscow_abandoned
+			set_capital = {state = 653} #Sverdlovsk
 			hidden_effect = {
 				set_country_flag = moscow_abandoned
 			}
+			add_war_support = -0.05
 		}
 	}
 	
 	SOV_return_to_moscow = {
 		icon = generic_civil_support
+
+		highlight_states = {
+			highlight_state_targets = {
+				state = 219 
+			}
+		}
 
 		allowed = {
 			original_tag = SOV
@@ -17287,15 +17397,20 @@ operations = {
 		}
 			
 		available = {
-		
+			OR = {
+				has_completed_focus = SOV_two_red_flags
+				has_completed_focus = SOV_support_the_kuomintang
+			}
 			CHI = {
-				NOT = {
-					controls_state = 613
+				OR = {
+					surrender_progress > 0.2
+					NOT = {
+						controls_state = 613
+					}
 				}
 			}
-			
 			has_equipment = {
-				infantry_equipment > 4999
+				infantry_equipment > 19999
 			}
 			
 			has_equipment = {
@@ -17315,7 +17430,6 @@ operations = {
 			}
 			has_equipment = {
 				fighter_equipment > 330
-				
 			}
 			has_equipment = {
 				tac_bomber_equipment > 145
@@ -17342,7 +17456,11 @@ operations = {
 				amount = 240
 				target = CHI
 			}
-			
+			send_equipment = {
+				equipment = anti_air_equipment 
+				amount = 20
+				target = CHI
+			}
 			send_equipment = {
 				equipment = light_tank_chassis
 				amount = 82
@@ -17356,6 +17474,11 @@ operations = {
 			send_equipment = {
 				equipment = tac_bomber_equipment
 				amount = 146
+				target = CHI
+			}
+			send_equipment = {
+				equipment = motorized_equipment 
+				amount = 700
 				target = CHI
 			}
 			army_experience = 100
@@ -17395,13 +17518,8 @@ operations = {
 		visible = {
 			original_tag = SOV
 			has_war = no
-			has_completed_focus = SOV_war_with_japan
-			JAP = {
-				OR = {
-					has_government = fascism
-					has_government = neutrality
-				}
-			}
+			has_war = yes # disabled for now
+			has_completed_focus = SOV_prepare_a_war_with_japan
 		}
 		
 		fire_only_once = yes
@@ -17411,6 +17529,10 @@ operations = {
 		}
 		
 		available = {
+			OR = {
+				has_completed_focus = SOV_end_the_khalkhin_gol_conflict
+				has_completed_focus = SOV_recover_the_kuril_islands
+			}
 			NOT = {
 				has_non_aggression_pact_with = JAP
 			}
@@ -17420,6 +17542,9 @@ operations = {
 				}
 				GER = {
 					is_subject = yes
+				}
+				GER = {
+					has_war = no
 				}
 			}
 			OR = {
@@ -17444,7 +17569,6 @@ operations = {
 					date < 1947.8.30
 				}
 			}
-			has_completed_focus = SOV_war_with_japan
 		}
 		
 		complete_effect = {
@@ -17501,6 +17625,7 @@ operations = {
 		}
 		
 		visible = {
+			POL = { has_capitulated = no }
 			has_global_flag = sov_yes_pact
 			original_tag = SOV
 		}
@@ -17517,6 +17642,15 @@ operations = {
 					id = poland.130
 					days = 1
 				}	
+			}
+			ENG = {
+				add_opinion_modifier = { target = SOV modifier = protest_action }
+			}
+			FRA = {
+				add_opinion_modifier = { target = SOV modifier = protest_action }
+			}
+			USA = {
+				add_opinion_modifier = { target = SOV modifier = protest_action }
 			}
 		}		
 	}
@@ -17905,7 +18039,7 @@ political_actions = {
 				controls_state = 408 # Vladivostok
 				controls_state = 564 # Ulan Ude
 				controls_state = 563 # Chita
-				controls_state = 561
+				controls_state = 561 # Amur 
 				controls_state = 657 # Amur Border
 			}
 			IF = {
@@ -17940,20 +18074,17 @@ political_actions = {
 	
 		available = {
 			OR = {
-				AND = {
-					has_war = yes
-					any_enemy_country = {
-						is_major = yes
-					}
-				}
 				GER = {
 					has_war_with = FRA
 				}
 				GER = {
 					has_war_with = ENG
 				}
-				ENG = {
-					has_war_with = FRA
+				AND = {
+					has_war = yes
+					any_enemy_country = {
+						is_major = yes
+					}
 				}
 			}
 		}
@@ -17976,27 +18107,26 @@ political_actions = {
 		allowed = {
 			original_tag = SOV
 		}
+
 		visible = {
-			has_war = no 
+			NOT = {
+				any_enemy_country = {
+					is_major = yes
+				}
+			}
 			has_idea = extensive_conscription
 		}
 		
 		available = {
 			OR = {
+				has_completed_focus = SOV_military_reorganization
 				AND = {
-					has_war = yes
-					any_enemy_country = {
-						is_major = yes
-					}
-				}
-				AND = {
-				    any_country = {
+					is_ai = yes
+					any_country = {
 					is_major = yes 
 					has_capitulated = yes
-					 } 
-					is_ai = yes 
+					}
 				}
-				has_completed_focus = SOV_military_reorganization
 			}
 		}
 		
@@ -18005,7 +18135,6 @@ political_actions = {
 		}
 		
 		complete_effect = {
-			
 			add_ideas = service_by_requirement
 		}
 		
@@ -18417,7 +18546,7 @@ special_projects = {
 		
 		timeout_effect = {
 			mio:SOV_nevskoye_design_bureau_organization = {
-				add_mio_task_capacity = 1
+				add_mio_task_capacity = 2
 			}
 			country_event = ship_mio.03
 			set_country_flag = SOV.project_23
@@ -18447,7 +18576,7 @@ special_projects = {
 		days_mission_timeout = 304
 		
 		fire_only_once = yes
-		
+
 		timeout_effect = {
 			mio:SOV_nevskoye_design_bureau_organization = {
 				add_mio_task_capacity = 3
@@ -18488,4 +18617,401 @@ special_projects = {
 			country_event = ship_mio.03
 		}
 	}
+
+	SOV_great_ocean_fleet = {
+
+		icon = generic_naval
+
+		allowed = {
+			tag = SOV
+		}
+
+		available = {
+			has_navy_size = {
+				unit = battleship
+				size > 5
+			}
+			has_navy_size = {
+				unit = battle_cruiser
+				size > 1
+			}
+			OR = {
+				has_navy_size = {
+					unit = heavy_cruiser
+					size > 16
+				}
+				has_navy_size = {
+					unit = light_cruiser
+					size > 21
+			}
+				}
+			has_navy_size = {
+				unit = destroyer
+				size > 107
+			}
+			has_navy_size = {
+				unit = submarine
+				size > 341
+			}
+		}
+
+		fire_only_once = yes
+		days_mission_timeout = 4018
+		is_good = no
+		activation = {
+			date > 1936.1.1
+		}
+
+		cancel_trigger = {
+		}
+
+		cancel_effect = {
+		}
+
+		visible = {
+			date > 1936.1.1
+		}
+
+		complete_effect = {
+			add_war_support = 0.05
+			navy_experience = 300
+			add_doctrine_cost_reduction = {
+				name = naval_doc_bonus
+				cost_reduction = 0.75
+				uses = 3
+				category = naval_doctrine
+			}
+				remove_ideas = soviet_ship_limit
+		}
+	}
+
+	SOV_bb_mio_expansion_demands_1 = {
+		icon = generic_naval
+		
+		allowed = {
+			tag = SOV
+		}
+		
+		available = {
+			has_completed_focus = SOV_expand_the_red_fleet
+			dockyard > 39
+		}
+		
+		activation = {
+			has_country_leader = {
+				character = SOV_iosif_stalin
+				ruling_only = yes 
+			}
+		}
+		
+		is_good = no
+		
+		days_mission_timeout = 366
+		
+		fire_only_once = yes
+
+		complete_effect = {
+			add_war_support = 0.01
+			add_stability = 0.01
+			navy_experience = 15
+		}
+		
+		timeout_effect = {
+			add_war_support = -0.03
+			add_stability = -0.03
+			add_political_power = -30
+			SOV_paranoia_high_increase_effect = yes
+			country_event = { id = NSB_soviet_paranoia_system_events.38 }
+		}
+	}
+
+	SOV_bb_mio_expansion_demands_2 = {
+		icon = generic_naval
+		
+		allowed = {
+			tag = SOV
+		}
+		
+		available = {
+			has_completed_focus = SOV_pc_of_the_ussr_navy
+		}
+		
+		activation = {
+			date > 1936.12.31
+			NOT = {
+				date > 1937.12.31
+			}
+			NOT = {
+				any_enemy_country = {
+					is_major = yes
+				}
+			}
+		}
+		
+		is_good = no
+		
+		days_mission_timeout = 365
+		
+		fire_only_once = yes
+
+		complete_effect = {
+			add_war_support = 0.01
+			add_stability = 0.01
+			navy_experience = 15
+		}
+		
+		timeout_effect = {
+			add_war_support = -0.03
+			add_stability = -0.03
+			add_political_power = -30
+			SOV_paranoia_high_increase_effect = yes
+			country_event = { id = NSB_soviet_paranoia_system_events.38 }
+		}
+	}
+
+	SOV_bb_mio_expansion_demands_3 = {
+		icon = generic_naval
+		
+		allowed = {
+			tag = SOV
+		}
+		
+		available = {
+			mio:SOV_nevskoye_design_bureau_organization = {
+				has_mio_size > 2
+			}
+			dockyard > 54
+		}
+		
+		activation = {
+			date > 1937.12.31
+			NOT = {
+				date > 1938.12.31
+			}
+			NOT = {
+				any_enemy_country = {
+					is_major = yes
+				}
+			}
+		}
+		
+		is_good = no
+		
+		days_mission_timeout = 365
+		
+		fire_only_once = yes
+
+		complete_effect = {
+			add_war_support = 0.01
+			add_stability = 0.01
+			navy_experience = 15
+		}
+		
+		timeout_effect = {
+			add_war_support = -0.03
+			add_stability = -0.03
+			add_political_power = -30
+			SOV_paranoia_high_increase_effect = yes
+		}
+	}
+
+	SOV_bb_mio_expansion_demands_4 = {
+		icon = generic_naval
+		
+		allowed = {
+			tag = SOV
+		}
+		
+		available = {
+			mio:SOV_nevskoye_design_bureau_organization = {
+				has_mio_size > 3
+			}
+			dockyard > 59
+		}
+		
+		activation = {
+			date > 1938.12.31
+			NOT = {
+				date > 1939.12.31
+			}
+			NOT = {
+				any_enemy_country = {
+					is_major = yes
+				}
+			}
+		}
+		
+		is_good = no
+		
+		days_mission_timeout = 365
+		
+		fire_only_once = yes
+
+		complete_effect = {
+			add_war_support = 0.01
+			add_stability = 0.01
+			navy_experience = 15
+		}
+		
+		timeout_effect = {
+			add_war_support = -0.03
+			add_stability = -0.03
+			add_political_power = -30
+			SOV_paranoia_high_increase_effect = yes
+		}
+	}
+
+	SOV_bb_mio_expansion_demands_5 = {
+		icon = generic_naval
+		
+		allowed = {
+			tag = SOV
+		}
+		
+		available = {
+			mio:SOV_nevskoye_design_bureau_organization = {
+				has_mio_size > 4
+			}
+			dockyard > 64
+		}
+		
+		activation = {
+			date > 1939.12.31
+			NOT = {
+				date > 1940.12.31
+			}
+			NOT = {
+				any_enemy_country = {
+					is_major = yes
+				}
+			}
+		}
+		
+		is_good = no
+		
+		days_mission_timeout = 365
+		
+		fire_only_once = yes
+
+		complete_effect = {
+			add_war_support = 0.01
+			add_stability = 0.01
+			navy_experience = 15
+		}
+		
+		timeout_effect = {
+			add_war_support = -0.03
+			add_stability = -0.03
+			add_political_power = -30
+			SOV_paranoia_high_increase_effect = yes
+		}
+	}
+
+	SOV_bb_mio_expansion_demands_6 = {
+		icon = generic_naval
+		
+		allowed = {
+			tag = SOV
+		}
+		
+		available = {
+			mio:SOV_nevskoye_design_bureau_organization = {
+				has_mio_size > 5
+			}
+			dockyard > 69
+			NOT = { 
+				AND = {
+					has_idea = SOV_purged_junior_navy_officers_1
+					has_idea = SOV_purged_junior_navy_officers_2
+					has_idea = SOV_purged_junior_navy_officers_3
+				}
+			}
+		}
+		
+		activation = {
+			date > 1940.12.31
+			NOT = {
+				date > 1941.12.31
+			}
+			NOT = {
+				any_enemy_country = {
+					is_major = yes
+				}
+			}
+		}
+		
+		is_good = no
+		
+		days_mission_timeout = 365
+		
+		fire_only_once = yes
+
+		complete_effect = {
+			add_war_support = 0.01
+			add_stability = 0.01
+			navy_experience = 15
+		}
+		
+		timeout_effect = {
+			add_war_support = -0.03
+			add_stability = -0.03
+			add_political_power = -30
+			SOV_paranoia_high_increase_effect = yes
+		}
+	}
+
+	SOV_bb_mio_expansion_demands_7 = {
+		icon = generic_naval
+		
+		allowed = {
+			tag = SOV
+		}
+		
+		available = {
+			mio:SOV_nevskoye_design_bureau_organization = {
+				has_mio_size > 6
+			}
+			dockyard > 74
+			NOT = { 
+				AND = {
+					has_idea = SOV_purged_junior_navy_officers_1
+					has_idea = SOV_purged_junior_navy_officers_2
+					has_idea = SOV_purged_junior_navy_officers_3
+				}
+			}
+		}
+		
+		activation = {
+			date > 1941.12.31
+			NOT = {
+				date > 1942.12.31
+			}
+			NOT = {
+				any_enemy_country = {
+					is_major = yes
+				}
+			}
+		}
+		
+		is_good = no
+		
+		days_mission_timeout = 365
+		
+		fire_only_once = yes
+
+		complete_effect = {
+			add_war_support = 0.01
+			add_stability = 0.01
+			navy_experience = 15
+		}
+		
+		timeout_effect = {
+			add_war_support = -0.03
+			add_stability = -0.03
+			add_political_power = -30
+			SOV_paranoia_high_increase_effect = yes
+		}
+	}
+
+
 }
