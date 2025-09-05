@@ -145,9 +145,12 @@ logistical_calculations = {
 
 add_starting_logistics_trucks = {
 	set_variable = { logi_trucks = total_trucks }
+	set_variable = { truck_attrition_30_days = 0 }
+	add_to_array = { attrition_array = 0 }
+	resize_array = { attrition_array = 30 }
 }
 
-clear_motorisation_techs = {	
+clear_motorisation_techs = {
 	for_loop_effect = {
 		start = 0
 		end = 50
@@ -262,4 +265,40 @@ offmap_trucks_to_stockpile = {
 		amount = logi_trucks
 	}
 	set_variable = { logi_trucks = 0 }
+}
+
+logi_trucks_attrition_calculations = {
+	subtract_from_variable = { truck_attrition_30_days = attrition_array^attrition_idx }
+	if = {
+		limit = { THIS = { has_war = yes } }
+		set_temp_variable = { attrition_today = logi_trucks }
+		set_temp_variable = { logi_truck_daily_attrition_scale_divisor = 1000 }
+		divide_temp_variable = { attrition_today = logi_truck_daily_attrition_scale_divisor }
+		add_to_temp_variable = { attrition_today = attrition_rollover }
+		set_variable = { attrition_rollover = attrition_today }
+		subtract_from_temp_variable = { attrition_today = 0.5 }
+		round_temp_variable = attrition_today
+		subtract_from_variable = { attrition_rollover = attrition_today }
+	}
+	else = {
+		set_temp_variable = { attrition_today = 0 }
+	}
+	remove_from_array = {
+		array = attrition_array
+		index = attrition_idx
+	}
+	add_to_array = {
+		array = attrition_array
+		value = attrition_today
+		index = attrition_idx
+	}
+	add_to_variable = { truck_attrition_30_days = attrition_today }
+	if = {
+		limit = { check_variable = { attrition_idx = 29 } }
+		set_variable = { attrition_idx = 0 }
+	}
+	else = {
+		add_to_variable = { attrition_idx = 1 }
+	}
+	subtract_from_variable = { logi_trucks = attrition_today }
 }
