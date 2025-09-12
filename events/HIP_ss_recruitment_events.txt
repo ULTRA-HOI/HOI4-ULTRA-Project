@@ -15,6 +15,8 @@ country_event = {
 		ai_chance = {
 			base = 50
 		}
+		add_command_power = -25
+		add_manpower = -60000
 #		add_to_variable = { var = wehrmacht_anger value = 5}
 #		subtract_from_variable = { var = SS_anger value = 5}
 #		SS_resolve_effects_wehrmacht = yes
@@ -214,6 +216,8 @@ country_event = { #SS-Division Nord
 		ai_chance = {
 			base = 50
 		}
+		add_command_power = -5
+		add_manpower = -5000
 		SS_set_templates = yes
 
 		custom_effect_tooltip = GER_division_nord
@@ -242,6 +246,8 @@ country_event = { #SS-Kavallerie-Division Florian Geyer
 		ai_chance = {
 			base = 50
 		}
+		add_command_power = -1
+		add_manpower = -3000
 		SS_set_templates = yes
 
 		custom_effect_tooltip = GER_division_florian_geyer
@@ -270,6 +276,8 @@ country_event = { #SS-Panzer-Grenadier-Division Hohenstaufen
 		ai_chance = {
 			base = 50
 		}
+		add_command_power = -10
+		add_manpower = -15000
 		SS_set_templates = yes
 
 		custom_effect_tooltip = GER_division_hohenstaufen
@@ -298,6 +306,8 @@ country_event = { #SS-Panzer-Division Frundsberg
 		ai_chance = {
 			base = 50
 		}
+		add_command_power = -10
+		add_manpower = -13000
 		SS_set_templates = yes
 
 		custom_effect_tooltip = GER_division_frundsberg
@@ -326,6 +336,8 @@ country_event = { #SS-Panzer-Grenadier-Division Nordland
 		ai_chance = {
 			base = 50
 		}
+		add_command_power = -5
+		add_manpower = -5000
 		SS_set_templates = yes
 
 		custom_effect_tooltip = GER_division_nordland
@@ -334,7 +346,37 @@ country_event = { #SS-Panzer-Grenadier-Division Nordland
 					limit = { ROOT = { has_full_control_of_state = PREV } }
 					prioritize = { 799 }
 					create_unit = {
-						division = "name = \"11. SS-Freiwilligen-Panzer-Grenadier-Division 'Nordland'\" division_template = \"SS Panzer Division (n.A.)\" start_experience_factor = 0.2 start_equipment_factor = 0.05" 
+						division = "name = \"11. SS-Freiwilligen-Panzer-Grenadier-Division 'Nordland'\" division_template = \"SS Panzergrenadier Division (n.A.)\" start_experience_factor = 0.2 start_equipment_factor = 0.05" 
+						owner = GER
+					}
+				}
+			}
+	}
+}
+
+country_event = { #SS-Panzer-Division Hitlerjugend
+	id = ss_recruitment_event.35
+	title = ss_recruitment_event.35.t	
+	desc = ss_recruitment_event.35.desc	#
+	picture = GFX_report_event_german_volunteers # 
+	
+	is_triggered_only = yes
+	option = { 
+		name = ss_recruitment_event.germany.a #historical
+		ai_chance = {
+			base = 50
+		}
+		add_command_power = -10
+		add_manpower = -5000
+		SS_set_templates = yes
+
+		custom_effect_tooltip = GER_division_hitlerjugend
+			hidden_effect = {		
+				random_owned_controlled_state = {
+					limit = { ROOT = { has_full_control_of_state = PREV } }
+					prioritize = { 6 }
+					create_unit = {
+						division = "name = \"12. SS-Panzer-Division 'Hitlerjugend'\" division_template = \"SS Panzer Division (vollgep.)\" start_experience_factor = 0.2 start_equipment_factor = 0.05" 
 						owner = GER
 					}
 				}
