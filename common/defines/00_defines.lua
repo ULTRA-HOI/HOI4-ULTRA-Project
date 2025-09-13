@@ -741,34 +741,62 @@ NMilitary = {
 	CASUALTIES_WS_A_PENALTY_DIVISOR = 600,							--Divisor for casualties WS penalty
 
 	PIERCING_THRESHOLDS = {					-- Our piercing / their armor must be this value to deal damage fraction equal to the index in the array below [higher number = higher penetration]. If armor is 0, 1.00 will be returned.
+		2.000,
+		1.800,
+		1.600,
 		1.500,
-		1.375,
+		1.400,
+		1.300,
 		1.250,
-		1.125,
+		1.200,
+		1.150,
+		1.100,
+		1.075,
+		1.050,
+		1.025,
 		1.000,
-		0.875,
+		0.975,
+		0.950,
+		0.925,
+		0.900,
+		0.850,
+		0.800,
 		0.750,
-		0.625,
+		0.700,
+		0.600,
 		0.500,
-		0.375,
-		0.250,
-		0.125,
+		0.400,
+		0.200,
 		0.000, --there isn't much point setting this higher than 0
 	},
 	PIERCING_THRESHOLD_DAMAGE_VALUES = {	-- 0 armor will always receive maximum damage (so add overmatching at your own peril). the system expects at least 2 values, with no upper limit.
-		1.000,
-		0.994,
-		0.986,
-		0.974,
-		0.957,
-		0.934,
-		0.902,
-		0.857,
-		0.794,
-		0.705,
-		0.581,
-		0.408,
-		0.164,
+		1.200,
+		1.178,
+		1.117,
+		1.075,
+		1.027,
+		0.975,
+		0.947,
+		0.918,
+		0.889,
+		0.860,
+		0.845,
+		0.830,
+		0.815,
+		0.800,
+		0.785,
+		0.770,
+		0.755,
+		0.740,
+		0.711,
+		0.682,
+		0.653,
+		0.625,
+		0.573,
+		0.525,
+		0.483,
+		0.422,
+		0.400,
 	},
 
 	DIVISIONAL_COMMANDER_TRAIT_XP_REQUIREMENT = 400.0,	--Get a trait if any valid options & xp gained >= this
@@ -854,16 +882,16 @@ NMilitary = {
 
 	LAND_COMBAT_ORG_DICE_SIZE = 4,                 -- nr of damage dice
 	LAND_COMBAT_STR_DICE_SIZE = 2,                 -- nr of damage dice
-	LAND_COMBAT_STR_DAMAGE_MODIFIER = 0.18, --was 0.060 --global damage modifier... but some equipment is returned at end of battles see : EQUIPMENT_COMBAT_LOSS_FACTOR
-	LAND_COMBAT_ORG_DAMAGE_MODIFIER = 0.12, --was 0.053 --global damage modifier
+	LAND_COMBAT_STR_DAMAGE_MODIFIER = 0.14, --was 0.060 --global damage modifier... but some equipment is returned at end of battles see : EQUIPMENT_COMBAT_LOSS_FACTOR
+	LAND_COMBAT_ORG_DAMAGE_MODIFIER = 0.11, --was 0.053 --global damage modifier
 	LAND_AIR_COMBAT_STR_DAMAGE_MODIFIER = 0.024, --was 0.032 --air global damage modifier
 	LAND_AIR_COMBAT_ORG_DAMAGE_MODIFIER = 0.016, --was 0.032 --global damage modifier
-	LAND_AIR_COMBAT_MAX_PLANES_PER_ENEMY_WIDTH = 3, --was 3 --how many CAS/TAC can enter a combat depending on enemy width there
+	LAND_AIR_COMBAT_MAX_PLANES_PER_ENEMY_WIDTH = 2, --was 3 --how many CAS/TAC can enter a combat depending on enemy width there
 	LAND_COMBAT_STR_ARMOR_ON_SOFT_DICE_SIZE = 2, --was 2 --extra damage dice if our armor outclasses enemy
-	LAND_COMBAT_ORG_ARMOR_ON_SOFT_DICE_SIZE = 6, --was 6 --extra damage dice if our armor outclasses enemy
+	LAND_COMBAT_ORG_ARMOR_ON_SOFT_DICE_SIZE = 4, --was 6 --extra damage dice if our armor outclasses enemy
 	LAND_COMBAT_STR_ARMOR_DEFLECTION_FACTOR = 0.75, --was 0.5 --damage reduction if armor outclassing enemy
 	LAND_COMBAT_ORG_ARMOR_DEFLECTION_FACTOR = 0.5, --was 0.5 --damage reduction if armor outclassing enemy
-	LAND_COMBAT_COLLATERAL_FORT_FACTOR = 0.005,		-- Factor to scale collateral damage to forts with.
+	LAND_COMBAT_COLLATERAL_FORT_FACTOR = 0.004,		-- Factor to scale collateral damage to forts with.
 	LAND_COMBAT_COLLATERAL_INFRA_FACTOR = 0.0022,	-- Factor to scale collateral damage to infra with.
 	LAND_COMBAT_FORT_DAMAGE_CHANCE = 1, --was 5 --chance to get a hit to damage on forts. (out of 100)
 	ATTRITION_DAMAGE_ORG = 0.04, --was 0.08 --damage from attrition to Organisation
@@ -963,7 +991,7 @@ NMilitary = {
 	EXILE_EQUIPMENT = 1.0,						   -- Amount of equipment to keep
 	EXILE_ORG = 0.0,							   -- Amount of org to keep
 	EXPERIENCE_LOSS_FACTOR = 0.75, --was 1.00 --percentage of experienced solders who die when manpower is removed
-	EQUIPMENT_COMBAT_LOSS_FACTOR = 0.95, --was 0.70 --% of equipment lost to strength ratio in combat, so some % is returned if below 1
+	EQUIPMENT_COMBAT_LOSS_FACTOR = 1.15, --was 0.70 --% of equipment lost to strength ratio in combat, so some % is returned if below 1
 	SUPPLY_USE_FACTOR_MOVING = 10, --was 1.5 --Deprecated/Unused
 	SUPPLY_USE_FACTOR_INACTIVE = 0.95, --was 0.95 --Deprecated/Unused
 	SUPPLY_GRACE = 72, --was 72 --troops always carry 3 days of food and supply
@@ -1066,10 +1094,10 @@ NMilitary = {
 	NUKE_DELAY_HOURS = 2,							-- How many hours does it take for the nuclear drop to happen
 	PARADROP_PENALTY = -0.3, 						-- Combat penalty when recently paradropped
 	PARADROP_HOURS = 48,							-- time paratroopers suffer penalties in combat
-	COMBAT_SUPPLY_LACK_ATTACKER_ATTACK = -0.80, --was -0.25 --attack combat penalty for attacker if out of supply
-	COMBAT_SUPPLY_LACK_ATTACKER_DEFEND = -0.65, --was -0.65 --defend combat penalty for attacker if out of supply
-	COMBAT_SUPPLY_LACK_DEFENDER_ATTACK = -0.70, --was -0.35 --attack combat penalty for defender if out of supply
-	COMBAT_SUPPLY_LACK_DEFENDER_DEFEND = -0.50, --was -0.15 --defend combat penalty for defender if out of supply
+	COMBAT_SUPPLY_LACK_ATTACKER_ATTACK = -0.75, --was -0.25 --attack combat penalty for attacker if out of supply
+	COMBAT_SUPPLY_LACK_ATTACKER_DEFEND = -0.60, --was -0.65 --defend combat penalty for attacker if out of supply
+	COMBAT_SUPPLY_LACK_DEFENDER_ATTACK = -0.65, --was -0.35 --attack combat penalty for defender if out of supply
+	COMBAT_SUPPLY_LACK_DEFENDER_DEFEND = -0.45, --was -0.15 --defend combat penalty for defender if out of supply
 	COMBAT_STACKING_START = 8,						-- at what nr of divisions stacking penalty starts
 	COMBAT_STACKING_EXTRA = 4,                      -- extra stacking from directions
 	COMBAT_STACKING_PENALTY = -0.02,                -- how much stackign penalty per division
@@ -1084,8 +1112,8 @@ NMilitary = {
 	STRATEGIC_REDEPLOY_ORG_RATIO = 0.05,				-- Ratio of max org while strategic redeployment
 	BATALION_NOT_CHANGED_EXPERIENCE_DROP = 0.0,		-- Division experience drop if unit has same batalion
 	BATALION_CHANGED_EXPERIENCE_DROP = 0.4, --was 0.5 --Division experience drop if unit has different batalion
-	ARMOR_VS_AVERAGE = 0.35, --was 0.4 --how to weight in highest armor & pen vs the division average
-	PEN_VS_AVERAGE = 0.25, --was 0.4
+	ARMOR_VS_AVERAGE = 0.50, --was 0.4 --how to weight in highest armor & pen vs the division average
+	PEN_VS_AVERAGE = 0.65, --was 0.4
 
 	LAND_EQUIPMENT_BASE_COST = 10,					-- Cost in XP to upgrade a piece of equipment one level is base + ( total levels * ramp )
 	LAND_EQUIPMENT_RAMP_COST = 5,
