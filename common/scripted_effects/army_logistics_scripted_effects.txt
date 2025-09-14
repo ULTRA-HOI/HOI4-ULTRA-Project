@@ -268,7 +268,6 @@ offmap_trucks_to_stockpile = {
 }
 
 logi_trucks_attrition_calculations = {
-	subtract_from_variable = { truck_attrition_30_days = attrition_array^attrition_idx }
 	if = {
 		limit = { THIS = { has_war = yes } }
 		set_temp_variable = { attrition_today = logi_trucks }
@@ -285,20 +284,12 @@ logi_trucks_attrition_calculations = {
 	}
 	remove_from_array = {
 		array = attrition_array
-		index = attrition_idx
+		index = 0
 	}
 	add_to_array = {
 		array = attrition_array
 		value = attrition_today
-		index = attrition_idx
 	}
 	add_to_variable = { truck_attrition_30_days = attrition_today }
-	if = {
-		limit = { check_variable = { attrition_idx = 29 } }
-		set_variable = { attrition_idx = 0 }
-	}
-	else = {
-		add_to_variable = { attrition_idx = 1 }
-	}
 	subtract_from_variable = { logi_trucks = attrition_today }
 }
