@@ -132,6 +132,8 @@ logistical_calculations = {
 
 init_logistics = {
 
+	set_variable = { num_logi_categories = 4 }
+
 	light_logistics_calculations = yes
 	heavy_logistics_calculations = yes
 	mot_logistics_calculations = yes
@@ -264,7 +266,7 @@ set_motorisation_techs = {
 calc_motorisation_techs = {
 	set_temp_variable = { tech_granularity_mult = 10 }
 	for_loop_effect = {
-		end = 4
+		end = num_logi_categories
 		value = logi_category
 
 		meta_effect = {
@@ -294,16 +296,25 @@ calc_motorisation_techs = {
 }
 
 offmap_trucks_to_stockpile = {
-	add_equipment_to_stockpile = {
-		type = motorized_equipment
-		amount = logi_trucks
+	for_loop_effect = {
+		end = num_logi_categories
+		value = logi_category
+		meta_effect = {
+			text = {
+				add_equipment_to_stockpile = {
+					type = motorized_equipment
+					amount = [LOGI_CAT]_logi_trucks
+				}
+				set_variable = { [LOGI_CAT]_logi_trucks = 0 }
+			}
+			LOGI_CAT = "[get_logistics_category]"
+		}
 	}
-	set_variable = { logi_trucks = 0 }
 }
 
 logi_trucks_attrition = {
 	for_loop_effect = {
-		end = 4
+		end = num_logi_categories
 		value = logi_category
 		meta_effect = {
 			text = {
@@ -357,7 +368,7 @@ update_logi_truck_stockpiles = {
 
 			# loop through each motorisation category
 			for_loop_effect = {
-				end = 4
+				end = num_logi_categories
 				value = logi_category
 							
 				# only want to consider the same priority categsories as whats being considered in the outer loop
@@ -454,7 +465,7 @@ update_logi_truck_stockpiles = {
 
 excess_trucks_to_stockpile = {
 	for_loop_effect = {
-		end = 4
+		end = num_logi_categories
 		value = logi_category
 
 		meta_effect = {
