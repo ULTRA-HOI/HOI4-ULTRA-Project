@@ -1,4 +1,4 @@
-﻿### search_filters = {FOCUS_FILTER_POLITICAL}
+### search_filters = {FOCUS_FILTER_POLITICAL}
 ### search_filters = {FOCUS_FILTER_RESEARCH}
 ### search_filters = {FOCUS_FILTER_INDUSTRY}
 ### search_filters = {FOCUS_FILTER_STABILITY}
@@ -292,7 +292,7 @@ focus_tree = {
 		x = -2
 		y = 1
 		relative_position_id = SOV_finish_the_five_year_plan
-		cost = 5
+		cost = 2
 
 		ai_will_do = {
 			factor = 1
@@ -698,7 +698,7 @@ focus_tree = {
 		x = 2
 		y = 1
 		relative_position_id = SOV_reorganize_the_pc_of_heavy_industry
-		cost = 10
+		cost = 5
 		
 		ai_will_do = {
 			factor = 1
@@ -731,7 +731,7 @@ focus_tree = {
 		x = -1
 		y = 1
 		relative_position_id = SOV_steel_casting_industry
-		cost = 10
+		cost = 5
 		
 		ai_will_do = {
 			factor = 1
@@ -752,74 +752,19 @@ focus_tree = {
 
 		completion_reward = {
 			modify_building_resources = {
-        	   building = synthetic_rubber_refinery
-        	   resource = rubber
-        	   amount = 4
-        	}
-			# ADD SYNTHETICS IN HISTORICAL STATES (VORONEZH AND TULA)
-			if = {
-				limit = {
-					has_full_control_of_state = 260 #VORONEZH
-				}
-				260 = { #VORONEZH
-					add_extra_state_shared_building_slots = 1
-					add_building_construction = {
-						type = synthetic_rubber_refinery_inactive
-						level = 1
-						instant_build = yes
-					}
-				}
-				
-			}
-			if = {
-				limit = {
-					has_full_control_of_state = 223 #TULA
-				}
-				223 = { #TULA
-					add_extra_state_shared_building_slots = 1
-					add_building_construction = {
-						type = synthetic_rubber_refinery_inactive
-						level = 1
-						instant_build = yes
-					}
-				}
-			}
-			hidden_effect = {
-				if = {
-					limit = {
-						has_full_control_of_state = 582
-						is_ai = yes
-					}
-					582 = {
-						add_extra_state_shared_building_slots = 8
-						add_building_construction = {
-							type = synthetic_rubber_refinery_inactive
-							level = 4
-							instant_build = yes
-						}
-					}
-				}
-				if = {
-					limit = {
-						has_full_control_of_state = 570
-						is_ai = yes
-					}
-					570 = {
-						add_extra_state_shared_building_slots = 8
-						add_building_construction = {
-							type = synthetic_rubber_refinery_inactive
-							level = 4
-							instant_build = yes
-						}
-					}
-				}
-			}
+        		building = synthetic_rubber_refinery
+        		resource = rubber
+        		amount = 4
+        		}
+			custom_effect_tooltip = generic_skip_one_line_tt
 			add_tech_bonus = {
 				name = SOV_synthetic_rubber
 				bonus = 1
 				uses = 2
 				category = cat_synth_rubber
 			}
+			custom_effect_tooltip = Construction_Focus_Start_tt
+			unlock_decision_tooltip = { decision = SOV_synthetic_rubber_decision show_effect_tooltip = yes }
 		}
 	}
 
@@ -831,7 +776,7 @@ focus_tree = {
 		x = 1
 		y = 1
 		relative_position_id = SOV_steel_casting_industry
-		cost = 5
+		cost = 3
 		
 		ai_will_do = {
 			factor = 1
@@ -848,37 +793,14 @@ focus_tree = {
 			set_variable = { SOV_fyp_fuel_gain_factor_from_states = 0.05 }
 			set_variable = { SOV_fyp_production_oil_factor = 0.05 }
 			custom_effect_tooltip = SOV_oil_production_ns_tt
-			
-			set_temp_variable = { SOV_silos_from_focus = 0 }
-			every_owned_state = {
-				limit ={
-					is_fully_controlled_by = ROOT
-					has_resources_amount = {
-						resource = oil
-						amount > 0
-					}
-					infrastructure < 3
-				}
-				add_building_construction = {
-					type = infrastructure
-					level = 1
-					instant_build = yes						
-				}
-				hidden_effect = {
-					if = {
-						limit = {
-							check_variable = { SOV_silos_from_focus = 2 compare = less_than_or_equals }
-						}				
-						add_building_construction = {
-							type = fuel_silo
-							level = 1
-							instant_build = yes						
-						}
-						add_to_temp_variable = { SOV_silos_from_focus = 1 }
-					}
-				}
-				custom_effect_tooltip = SOV_oil_production_silo_tt
+			add_tech_bonus = {
+				name = "Oil Production"
+				bonus = 1.0
+				uses = 1
+				category = cat_synth_oil
 			}
+			custom_effect_tooltip = Construction_Focus_Start_tt
+			unlock_decision_tooltip = { decision = SOV_oil_production_decision show_effect_tooltip = yes }
 		}
 	}
 
@@ -1270,7 +1192,7 @@ focus_tree = {
 		x = 0
 		y = 1
 		relative_position_id = SOV_national_specialists
-		cost = 5
+		cost = 3
 		
 		ai_will_do = {
 			factor = 1
@@ -1359,7 +1281,7 @@ focus_tree = {
 		x = 2
 		y = 0
 		relative_position_id = SOV_eastern_development
-		cost = 10
+		cost = 5
 		
 		ai_will_do = {
 			factor = 1
@@ -1449,7 +1371,7 @@ focus_tree = {
 		x = 1
 		y = 1
 		relative_position_id = SOV_eastern_development
-		cost = 10
+		cost = 5
 		
 		ai_will_do = {
 			factor = 1
@@ -1517,7 +1439,7 @@ focus_tree = {
 		x = 0
 		y = 3
 		relative_position_id = SOV_the_ussr_academy_of_sciences
-		cost = 10
+		cost = 5
 		
 		ai_will_do = {
 			factor = 1
@@ -1861,6 +1783,33 @@ focus_tree = {
 				uses = 4
 				category = light_air
 			}
+			#Rychagov 
+			if = {
+				limit = {
+					has_character = SOV_pavel_rychagov 
+				}
+				SOV_pavel_rychagov = {
+					set_character_flag = SOV_targeted_for_purge_flag
+				}
+			}
+			#Smushkevich
+			if = {
+				limit = {
+					has_character = SOV_yakov_smushkevich 
+				}
+				SOV_yakov_smushkevich = {
+					set_character_flag = SOV_targeted_for_purge_flag
+				}
+			}
+			if = {
+				limit = {
+					OR = {
+					has_character = SOV_pavel_rychagov 
+					has_character = SOV_yakov_smushkevich 
+					}
+				}
+			country_event = { id = NSB_soviet_paranoia_system_events.49 }
+			}
 		}
 	}
 
@@ -1881,10 +1830,10 @@ focus_tree = {
 		}
 
 		available = {
+			has_completed_focus = SOV_the_new_soviet_woman
 		any_enemy_country = {
 				SOV_is_major_not_original_sov = yes
 			}
-
 		}
 		
 		search_filters = {FOCUS_FILTER_AIR_XP}
@@ -2128,7 +2077,7 @@ focus_tree = {
 		x = 6
 		y = -1
 		relative_position_id = SOV_transpolar_flights
-		cost = 3
+		cost = 2
 
 		ai_will_do = {
 			factor = 1
@@ -2162,7 +2111,7 @@ focus_tree = {
 		x = -3
 		y = 1
 		relative_position_id = SOV_expand_the_red_fleet
-		cost = 2
+		cost = 1
 
 		available = {
 			195 = { #LENINGRAD
@@ -2292,7 +2241,7 @@ focus_tree = {
 		x = -1
 		y = 1
 		relative_position_id = SOV_expand_the_red_fleet
-		cost = 2
+		cost = 1
 
 		available = {
 			OR = {
@@ -2381,7 +2330,7 @@ focus_tree = {
 		x = 1
 		y = 1
 		relative_position_id = SOV_expand_the_red_fleet
-		cost = 2
+		cost = 1
 
 		available = {
 			OR = {
@@ -2515,7 +2464,7 @@ focus_tree = {
 		x = 3
 		y = 1
 		relative_position_id = SOV_expand_the_red_fleet
-		cost = 2
+		cost = 1
 
 		available = {
 			OR = {
@@ -2602,7 +2551,7 @@ focus_tree = {
 		x = 1
 		y = 1
 		relative_position_id = SOV_reinforce_northern_naval_bases
-		cost = 5
+		cost = 3
 
 		available = {
 
@@ -2625,7 +2574,7 @@ focus_tree = {
 		x = 0
 		y = 1
 		relative_position_id = SOV_expand_shipbuilding_plants
-		cost = 3
+		cost = 2
 		
 		ai_will_do = {
 			factor = 1
@@ -2633,6 +2582,7 @@ focus_tree = {
 
 		available = {
 			dockyard > 49
+			any_character = { is_navy_chief = yes }
 		}
 		
 		search_filters = {FOCUS_FILTER_INDUSTRY FOCUS_FILTER_RESEARCH}
@@ -2665,130 +2615,44 @@ focus_tree = {
 		}
 	}
 
-
 	focus = {
-		id = SOV_surface_warfare
+		id = SOV_merge_naval_plants
 
-		icon = GFX_focus_generic_destroyer
+		icon = GFX_focus_SOV_merge_plants
 		prerequisite = { focus = SOV_pc_of_the_ussr_navy }
-		x = -2
-		y = 1
+		x = 0
+		y = 2
 		relative_position_id = SOV_pc_of_the_ussr_navy
-		cost = 3
-		
-		ai_will_do = {
-			factor = 1
-		}
+		cost = 2
 
 		available = {
-
+			NOT = { has_country_flag = SOV_paranoia_system_active_flag }
 		}
 		
-		search_filters = {FOCUS_FILTER_INDUSTRY FOCUS_FILTER_RESEARCH FOCUS_FILTER_NAVY_XP}
+		search_filters = {FOCUS_FILTER_INDUSTRY}
 
 		completion_reward = {
-			hidden_effect = {
-				#This handles the equipment bonus that's not supported by dynamic modifiers
-				add_ideas = SOV_red_fleet_surface_bonus_1
-			}
-			custom_effect_tooltip = SOV_surface_warfare_ns_tt
+					mio:SOV_nevskoye_design_bureau_organization = {
+						unlock_mio_trait_tooltip = SOV_mio_trait_merge_plant_no_370
+						unlock_mio_trait_tooltip = SOV_mio_trait_merge_plant_no_5
+					}
 
-			navy_experience = 15
+					mio:SOV_sevastopol_marine_plant_organization = {
+						unlock_mio_trait_tooltip = SOV_mio_trait_merge_mariupol_plant
+						unlock_mio_trait_tooltip = SOV_mio_trait_merge_plant_no_200
+					}
 
-			add_tech_bonus = {
-				name = SOV_surface_warfare
-				bonus = 0.5
-				uses = 1
-				category = dd_tech
-			}
-			
-			add_ideas = jeune_ecole_spirit
-		}
-	}
+					mio:SOV_rubin_design_bureau_organization = {
+						unlock_mio_trait_tooltip = SOV_mio_trait_merge_mariupol_plant
+						#unlock_mio_trait_tooltip = SOV_mio_trait_merge_plant_no_363
+						unlock_mio_trait_tooltip = SOV_mio_trait_merge_plant_no_190
+					}
 
-	focus = {
-		id = SOV_submarine_warfare
-
-		icon = GFX_goal_generic_navy_submarine
-		prerequisite = { focus = SOV_pc_of_the_ussr_navy }
-		x = 2
-		y = 1
-		relative_position_id = SOV_pc_of_the_ussr_navy
-		cost = 3
-		
-		ai_will_do = {
-			factor = 1
-		}
-
-		available = {
-
-		}
-		
-		search_filters = {FOCUS_FILTER_INDUSTRY FOCUS_FILTER_RESEARCH FOCUS_FILTER_NAVY_XP}
-
-		completion_reward = {
-			hidden_effect = {
-				#This handles the equipment bonus that's not supported by dynamic modifiers
-				add_ideas = SOV_red_fleet_submarine_bonus_1
-			}
-			custom_effect_tooltip = SOV_submarine_warfare_ns_tt
-
-			navy_experience = 15
-
-			add_tech_bonus = {
-				name = SOV_submarine_warfare
-				bonus = 0.5
-				uses = 1
-				category = ss_tech
-			}
-			
-			add_ideas = night_fighting_spirit
-		}
-	}
-
-	focus = {
-		id = SOV_offensive_maritime_strategy
-
-		icon = GFX_focus_generic_cruiser2
-		prerequisite = { focus = SOV_surface_warfare }
-		x = 1
-		y = 1
-		relative_position_id = SOV_surface_warfare
-		cost = 3
-		
-		ai_will_do = {
-			factor = 1
-		}
-
-		available = {
-			if = {
-				limit = {
-					has_dlc = "Man the Guns"
-				}
-			}
-		}
-		
-		search_filters = {FOCUS_FILTER_INDUSTRY FOCUS_FILTER_RESEARCH FOCUS_FILTER_NAVY_XP}
-
-		completion_reward = {
-			hidden_effect = {
-				#Hidden National Spirits handle the equipment bonus that's not supported by dynamic modifiers
-				swap_ideas = {
-					remove_idea = SOV_red_fleet_surface_bonus_1
-					add_idea = SOV_red_fleet_surface_bonus_2
-				}
-			}
-			custom_effect_tooltip = SOV_offensive_maritime_strategy_ns_tt
-
-			navy_experience = 25
-
-			add_tech_bonus = {
-				name = SOV_offensive_maritime_strategy
-				bonus = 0.5
-				uses = 1
-				category = ca_tech
-				category = cl_tech
-			}
+					mio:SOV_black_sea_shipyard_organization = {
+						#unlock_mio_trait_tooltip = SOV_mio_trait_merge_mariupol_plant
+						unlock_mio_trait_tooltip = SOV_mio_trait_merge_leninskaya_kuznitsa_plant
+						unlock_mio_trait_tooltip = SOV_mio_trait_merge_plant_no_340
+					}
 		}
 	}
 
@@ -2796,23 +2660,18 @@ focus_tree = {
 		id = SOV_an_oceangoing_navy
 
 		icon = GFX_goal_generic_navy_battleship
-		prerequisite = { focus = SOV_surface_warfare }
+		prerequisite = { focus = SOV_pc_of_the_ussr_navy }
 		x = -1
 		y = 1
-		relative_position_id = SOV_surface_warfare
-		cost = 3
+		relative_position_id = SOV_pc_of_the_ussr_navy
+		cost = 2
 		
 		ai_will_do = {
 			factor = 1
 		}
 
 		available = {
-			if = {
-				limit = {
-					has_dlc = "Man the Guns"
-				}
-				has_tech = basic_ship_hull_heavy
-			}
+			dockyard > 59
 		}
 		
 		search_filters = {FOCUS_FILTER_RESEARCH FOCUS_FILTER_NAVY_XP}
@@ -2832,23 +2691,122 @@ focus_tree = {
 	}
 
 	focus = {
+		id = SOV_surface_warfare
+
+		icon = GFX_focus_generic_destroyer
+		prerequisite = { focus = SOV_pc_of_the_ussr_navy }
+		x = -3
+		y = 1
+		relative_position_id = SOV_pc_of_the_ussr_navy
+		cost = 2
+		
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			dockyard > 59
+		}
+		
+		search_filters = {FOCUS_FILTER_INDUSTRY FOCUS_FILTER_RESEARCH FOCUS_FILTER_NAVY_XP}
+
+		completion_reward = {
+			hidden_effect = {
+					#Swap dynamic modifier to change dynamic modifier's custom tooltip
+					remove_dynamic_modifier = { modifier = SOV_the_red_fleet_dynamic_modifier }
+					add_dynamic_modifier = { modifier = SOV_the_red_fleet_surface_1_dynamic_modifier }
+				#This handles the equipment bonus that's not supported by dynamic modifiers
+				add_ideas = SOV_red_fleet_surface_bonus_1
+			}
+			custom_effect_tooltip = SOV_surface_warfare_ns_tt
+
+			navy_experience = 15
+
+			add_tech_bonus = {
+				name = SOV_surface_warfare
+				bonus = 0.5
+				uses = 1
+				category = dd_tech
+			}
+			
+			add_ideas = jeune_ecole_spirit
+		}
+	}
+
+	focus = {
+		id = SOV_offensive_maritime_strategy
+
+		icon = GFX_focus_generic_cruiser2
+		prerequisite = { focus = SOV_surface_warfare }
+		prerequisite = { focus = SOV_an_oceangoing_navy }
+		x = 1
+		y = 1
+		relative_position_id = SOV_surface_warfare
+		cost = 2
+		
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			dockyard > 69
+			if = {
+				limit = {
+					has_dlc = "Man the Guns"
+				}
+			}
+		}
+		
+		search_filters = {FOCUS_FILTER_INDUSTRY FOCUS_FILTER_RESEARCH FOCUS_FILTER_NAVY_XP}
+
+		completion_reward = {
+			hidden_effect = {
+					#Swap dynamic modifier to change dynamic modifier's custom tooltip
+					remove_dynamic_modifier = { modifier = SOV_the_red_fleet_surface_1_dynamic_modifier }
+					add_dynamic_modifier = { modifier = SOV_the_red_fleet_surface_2_dynamic_modifier }
+				#Hidden National Spirits handle the equipment bonus that's not supported by dynamic modifiers
+				swap_ideas = {
+					remove_idea = SOV_red_fleet_surface_bonus_1
+					add_idea = SOV_red_fleet_surface_bonus_2
+				}
+			}
+			custom_effect_tooltip = SOV_offensive_maritime_strategy_ns_tt
+
+
+			navy_experience = 25
+
+			add_tech_bonus = {
+				name = SOV_offensive_maritime_strategy
+				bonus = 0.5
+				uses = 1
+				category = ca_tech
+				category = cl_tech
+			}
+		}
+	}
+
+	focus = {
 		id = SOV_mine_warfare
 
 		icon = GFX_focus_generic_mine_warfare
-		prerequisite = { focus = SOV_submarine_warfare }
+		prerequisite = { focus = SOV_pc_of_the_ussr_navy }
 		x = 1
 		y = 1
-		relative_position_id = SOV_submarine_warfare
-		cost = 3
+		relative_position_id = SOV_pc_of_the_ussr_navy
+		cost = 2
 
 		available = {
-
+			dockyard > 59
 		}
 		
 		search_filters = {FOCUS_FILTER_RESEARCH}
 
 		completion_reward = {
 			add_ideas = SOV_mine_warfare_ns
+
+			custom_effect_tooltip = generic_skip_one_line_tt
+
+			navy_experience = 25
 
 			add_tech_bonus = {
 				name = SOV_mine_warfare
@@ -2860,32 +2818,68 @@ focus_tree = {
 	}
 
 	focus = {
-		id = SOV_long_range_raiders
+		id = SOV_submarine_warfare
 
-		icon = GFX_goal_generic_navy_anti_submarine
-		prerequisite = { focus = SOV_submarine_warfare }
-		x = -1
+		icon = GFX_goal_generic_navy_submarine
+		prerequisite = { focus = SOV_pc_of_the_ussr_navy }
+		x = 3
 		y = 1
-		relative_position_id = SOV_submarine_warfare
-		cost = 3
+		relative_position_id = SOV_pc_of_the_ussr_navy
+		cost = 2
 		
 		ai_will_do = {
 			factor = 1
 		}
 
 		available = {
+			dockyard > 59
+		}
+		
+		search_filters = {FOCUS_FILTER_INDUSTRY FOCUS_FILTER_RESEARCH FOCUS_FILTER_NAVY_XP}
 
+		completion_reward = {
+			navy_experience = 15
+
+			add_tech_bonus = {
+				name = SOV_submarine_warfare
+				bonus = 0.5
+				uses = 1
+				category = ss_tech
+			}
+			
+			add_ideas = night_fighting_spirit
+		}
+	}
+
+	focus = {
+		id = SOV_long_range_raiders
+
+		icon = GFX_goal_generic_navy_anti_submarine
+		prerequisite = { focus = SOV_submarine_warfare }
+		prerequisite = { focus = SOV_mine_warfare }
+		x = -1
+		y = 1
+		relative_position_id = SOV_submarine_warfare
+		cost = 2
+		
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			dockyard > 69
+			has_completed_focus = SOV_offensive_maritime_strategy
 		}
 		
 		search_filters = {FOCUS_FILTER_INDUSTRY FOCUS_FILTER_RESEARCH FOCUS_FILTER_NAVY_XP}
 
 		completion_reward = {
 			hidden_effect = {
+					#Swap dynamic modifier to change dynamic modifier's custom tooltip
+					remove_dynamic_modifier = { modifier = SOV_the_red_fleet_surface_2_dynamic_modifier }
+					add_dynamic_modifier = { modifier = SOV_the_red_fleet_submarine_1_dynamic_modifier }			
 				#Hidden National Spirits handle the equipment bonus that's not supported by dynamic modifiers
-				swap_ideas = {
-					remove_idea = SOV_red_fleet_submarine_bonus_1
-					add_idea = SOV_red_fleet_submarine_bonus_2
-				}
+					add_ideas = SOV_red_fleet_submarine_bonus_2
 			}
 			custom_effect_tooltip = SOV_submarine_warfare_ns_tt
 
@@ -2904,18 +2898,28 @@ focus_tree = {
 		id = SOV_advanced_maneuvers
 
 		icon = GFX_goal_generic_navy_doctrines_tactics
-		prerequisite = { focus = SOV_long_range_raiders focus = SOV_offensive_maritime_strategy }
+		prerequisite = { focus = SOV_long_range_raiders }
+		prerequisite = { focus = SOV_offensive_maritime_strategy }
+		prerequisite = { focus = SOV_merge_naval_plants }
 		x = 0
 		y = 4
 		relative_position_id = SOV_expand_shipbuilding_plants
-		cost = 3
+		cost = 2
 		
 		ai_will_do = {
 			factor = 1
 		}
 
 		available = {
+			dockyard > 79
 			NOT = { has_country_flag = SOV_paranoia_system_active_flag }
+			NOT = { 
+				AND = {
+					has_idea = SOV_purged_junior_navy_officers_1
+					has_idea = SOV_purged_junior_navy_officers_2
+					has_idea = SOV_purged_junior_navy_officers_3
+				}
+			}
 		}
 		
 		search_filters = {FOCUS_FILTER_NAVY_XP}
@@ -2926,11 +2930,35 @@ focus_tree = {
 			set_variable = { SOV_red_fleet_positioning = 0.1 }
 			set_variable = { SOV_red_fleet_screening_efficiency = 0.1 }
 			custom_effect_tooltip = SOV_advanced_maneuvers_ns_tt
-			add_ideas = naval_academy_scholarships_spirit
 			navy_experience = 50
-			#remove_ideas = SOV_purged_junior_navy_officers_1
-			#remove_ideas = SOV_purged_junior_navy_officers_2
-			#remove_ideas = SOV_purged_junior_navy_officers_3
+			add_ideas = naval_academy_scholarships_spirit
+			#Frinovsky 
+			if = {
+				limit = {
+					has_character = SOV_mikhail_frinovsky 
+				}
+				SOV_mikhail_frinovsky = {
+					set_character_flag = SOV_targeted_for_purge_flag
+				}
+			}
+			#Smirnov
+			if = {
+				limit = {
+					has_character = SOV_pyotr_smirnov 
+				}
+				SOV_pyotr_smirnov = {
+					set_character_flag = SOV_targeted_for_purge_flag
+				}
+			}
+			if = {
+				limit = {
+					OR = {
+					has_character = SOV_mikhail_frinovsky 
+					has_character = SOV_pyotr_smirnov 
+					}
+				}
+			country_event = { id = NSB_soviet_paranoia_system_events.39 }
+			}
 		}
 	}
 
@@ -2940,22 +2968,25 @@ focus_tree = {
 		icon = GFX_goal_generic_navy_carrier
 		prerequisite = { focus = SOV_the_modern_war_in_the_skies }
 		prerequisite = { focus = SOV_advanced_maneuvers }
-		x = -2
+		x = -3
 		y = 1
 		relative_position_id = SOV_advanced_maneuvers
-		cost = 3
+		cost = 2
 		
 		ai_will_do = {
 			factor = 1
 		}
 
 		available = {
-
+			dockyard > 84
 		}
 		
 		search_filters = {FOCUS_FILTER_RESEARCH FOCUS_FILTER_AIR_XP FOCUS_FILTER_NAVY_XP}
 
 		completion_reward = {
+			mio:SOV_nevskoye_design_bureau_organization = {
+				unlock_mio_trait_tooltip = generic_mio_trait_armored_carrier
+			}
 			navy_experience = 25
 			air_experience = 25
 			add_tech_bonus = {
@@ -2964,9 +2995,6 @@ focus_tree = {
 				uses = 2
 				category = cv_tech
 				category = naval_air
-			}
-			mio:SOV_nevskoye_design_bureau_organization = {
-				unlock_mio_trait_tooltip = generic_mio_trait_armored_carrier
 			}
 		}
 	}
@@ -2979,14 +3007,14 @@ focus_tree = {
 		x = 0
 		y = 1
 		relative_position_id = SOV_advanced_maneuvers
-		cost = 5
+		cost = 2
 		
 		ai_will_do = {
 			factor = 1
 		}
 
 		available = {
-
+			dockyard > 84
 		}
 		
 		search_filters = {FOCUS_FILTER_RESEARCH FOCUS_FILTER_NAVY_XP FOCUS_FILTER_ARMY_XP}
@@ -3010,6 +3038,8 @@ focus_tree = {
 				set_variable = { SOV_red_fleet_invasion_preparation = -0.1 }
 				custom_effect_tooltip = SOV_naval_infantry_ns_tt
 				
+				navy_experience = 25
+				army_experience = 25
 				add_tech_bonus = {
 					name = SOV_naval_infantry
 					bonus = 1
@@ -3017,9 +3047,6 @@ focus_tree = {
 					category = marine_tech
 				}
 #			}
-
-			navy_experience = 25
-			army_experience = 25
 		}
 	}
 
@@ -3049,7 +3076,7 @@ focus_tree = {
 		}
 
 		available = {
-			arms_factory > 199
+			arms_factory > 149
 		}
 		
 		search_filters = {FOCUS_FILTER_INDUSTRY}
@@ -3069,11 +3096,6 @@ focus_tree = {
 				bonus = 5
 				uses = 1
 				technology = infantry_heavy_medium_mortar
-			}
-			add_tech_bonus = {
-				bonus = 2
-				uses = 1
-				technology = infantry_heavy_light_mortar
 			}
 			add_tech_bonus = {
 				bonus = 3
@@ -3298,6 +3320,9 @@ focus_tree = {
 
 		available = {
 			has_full_control_of_state = 219 #MOSCOW
+			any_enemy_country = {
+				SOV_is_major_not_original_sov = yes
+			}
 		}
 		
 		search_filters = {FOCUS_FILTER_INDUSTRY FOCUS_FILTER_RESEARCH}
@@ -3350,7 +3375,6 @@ focus_tree = {
 			#	NOT = { num_of_controlled_factories < SOV_fyp_factory_requirement_tier_3 }
 			#}
 			#TODO_Manu: This could require X num of factories to have been relocated
-			has_war = yes 
 			any_enemy_country = {
 				is_major = yes
 			}
@@ -3383,7 +3407,7 @@ focus_tree = {
 		icon = GFX_focus_SOV_merge_plants
 		prerequisite = { focus = SOV_development_of_tankograd focus = SOV_pc_of_mortar_armament focus = SOV_soviet_artillery }
 
-		x = 0
+		x = 1
 		y = 1
 		relative_position_id = SOV_pc_of_mortar_armament
 		cost = 3
@@ -3620,7 +3644,7 @@ focus_tree = {
 		x = -3
 		y = 1
 		relative_position_id = SOV_military_engineering_university
-		cost = 5
+		cost = 3
 		continue_if_invalid = yes
 		
 		ai_will_do = {
@@ -4182,7 +4206,7 @@ focus_tree = {
 		x = -1
 		y = 1
 		relative_position_id = SOV_military_engineering_university
-		cost = 5
+		cost = 3
 		
 		ai_will_do = {
 			factor = 1
@@ -4209,7 +4233,6 @@ focus_tree = {
 		search_filters = {FOCUS_FILTER_ARMY_XP}
 
 		completion_reward = {
-			army_experience = 15
 			custom_effect_tooltip = Construction_Focus_Start_tt
 			unlock_decision_tooltip = { decision = SOV_the_molotov_line_decision show_effect_tooltip = yes }
 		}
@@ -4222,7 +4245,7 @@ focus_tree = {
 		x = 1
 		y = 1
 		relative_position_id = SOV_military_engineering_university
-		cost = 5
+		cost = 3
 		
 		ai_will_do = {
 			factor = 1
@@ -4246,7 +4269,6 @@ focus_tree = {
 		search_filters = {FOCUS_FILTER_ARMY_XP}
 
 		completion_reward = {
-			army_experience = 15
 			custom_effect_tooltip = Construction_Focus_Start_tt
 			unlock_decision_tooltip = { decision = SOV_improve_the_stalin_line_decision show_effect_tooltip = yes }
 		}
@@ -4282,7 +4304,6 @@ focus_tree = {
 		search_filters = {FOCUS_FILTER_ARMY_XP}
 
 		completion_reward = {
-			army_experience = 15
 			custom_effect_tooltip = Construction_Focus_Middle_tt
 			unlock_decision_tooltip = { decision = SOV_the_defense_of_moscow_decision show_effect_tooltip = yes }
 			custom_effect_tooltip = SOV_defense_of_moscow_tt
@@ -4313,7 +4334,6 @@ focus_tree = {
 		search_filters = {FOCUS_FILTER_ARMY_XP}
 
 		completion_reward = {
-			army_experience = 15
 			custom_effect_tooltip = Construction_Focus_Start_tt
 			unlock_decision_tooltip = { decision = SOV_impregnable_forts_decision show_effect_tooltip = yes }
 			unlock_decision_tooltip = { decision = SOV_impregnable_forts_2_decision show_effect_tooltip = no }
@@ -4398,7 +4418,7 @@ focus_tree = {
 		x = 2
 		y = 2
 		relative_position_id = SOV_military_engineering_university
-		cost = 3
+		cost = 2
 		
 		ai_will_do = {
 			factor = 1
@@ -4414,100 +4434,8 @@ focus_tree = {
 		search_filters = {FOCUS_FILTER_ARMY_XP}
 
 		completion_reward = {
-			army_experience = 15
-			if = {
-				limit = {
-					has_full_control_of_state = 215 #ONEGA
-				}
-				215 = { #ONEGA
-					add_building_construction = {
-						type = anti_air_building
-						level = 1
-						instant_build = yes
-					}
-					add_building_construction = {
-						type = bunker
-						level = 1
-						province = {
-							id = 9045
-							id = 3078
-							id = 11212
-						}
-						instant_build = yes
-					}
-					add_building_construction = {
-						type = coastal_bunker
-						level = 1
-						province = 9045
-						instant_build = yes
-					}
-				}
-			}
-			if = {
-				limit = {
-					has_full_control_of_state = 216 #OLONETS
-				}
-				216 = { #OLONETS
-					add_building_construction = {
-						type = anti_air_building
-						level = 1
-						instant_build = yes
-					}
-					add_building_construction = {
-						type = bunker
-						level = 1
-						province = {
-							id = 92
-							id = 11092
-						}
-						instant_build = yes
-					}
-				}
-			}
-			if = {
-				limit = {
-					has_full_control_of_state = 264 #TIKHVIN
-				}
-				264 = { #TIKHVIN
-					add_building_construction = {
-						type = anti_air_building
-						level = 1
-						instant_build = yes
-					}
-					add_building_construction = {
-						type = bunker
-						level = 1
-						province = {
-							id = 9082
-							id = 9190
-							id = 11059
-						}
-						instant_build = yes
-					}
-				}
-			}
-			if = {
-				limit = {
-					has_full_control_of_state = 195 #LENINGRAD
-				}
-				195 = { #LENINGRAD
-					add_building_construction = {
-						type = anti_air_building
-						level = 1
-						instant_build = yes
-					}
-					add_building_construction = {
-						type = bunker
-						level = 1
-						province = {
-							id = 149
-							id = 11068
-							id = 79
-						}
-						instant_build = yes
-					}
-				}
-			}
+			custom_effect_tooltip = Construction_Focus_Start_tt
+			unlock_decision_tooltip = { decision = SOV_protect_the_white_sea_baltic_canal_decision show_effect_tooltip = yes }
 		}
 	}
 
@@ -4518,7 +4446,7 @@ focus_tree = {
 		x = 3
 		y = 1
 		relative_position_id = SOV_military_engineering_university
-		cost = 3
+		cost = 2
 		
 		ai_will_do = {
 			factor = 1
@@ -4537,7 +4465,6 @@ focus_tree = {
 		search_filters = {FOCUS_FILTER_ARMY_XP}
 
 		completion_reward = {
-			army_experience = 15
 			custom_effect_tooltip = Construction_Focus_Start_tt
 			unlock_decision_tooltip = { decision = SOV_far_east_fortification_decision show_effect_tooltip = yes }
 		}
@@ -4679,6 +4606,20 @@ focus_tree = {
 					}
 				}
 				add_to_variable = { SOV_the_red_army_army_org_factor = 0.05 }
+					remove_ideas = {
+						SOV_anti_soviet_military_thinking_banned_army 
+						SOV_training_activities_curtailed 
+						SOV_purged_junior_army_officers_1 
+						SOV_purged_junior_army_officers_2
+						SOV_purged_junior_army_officers_3
+						SOV_anti_soviet_military_thinking_banned_navy 
+						SOV_shipyard_staff_purged 
+						SOV_purged_junior_navy_officers_1 
+						SOV_purged_junior_navy_officers_2 
+						SOV_purged_junior_navy_officers_3
+						SOV_anti_soviet_military_thinking_banned_airforce 
+						SOV_ground_based_training   
+					}
 			}
 		}
 	}
@@ -4790,6 +4731,7 @@ focus_tree = {
 				idea = SOV_desperate_measures_ns
 				days = 365
 			}
+			add_ideas = SOV_stavka_ns 
 			
 			unlock_decision_tooltip = SOV_order_227
 			custom_effect_tooltip = SOV_lessons_of_war_unlock_military_operations_tt
@@ -5764,7 +5706,6 @@ focus_tree = {
 			add_political_power = 50
 
 			SOV_paranoia_low_decrease_effect = yes
-				hidden_effect = { country_event = { id = NSB_soviet_paranoia_system_events.12 days = 10 random_days = 5 } }
 		}
 	}
 
@@ -5996,7 +5937,7 @@ focus_tree = {
 		x = 0
 		y = 1
 		relative_position_id = SOV_organization_centralization_discipline
-		cost = 5
+		cost = 3
 		
 		ai_will_do = {
 			factor = 10
@@ -6153,8 +6094,7 @@ focus_tree = {
 			}
 			else = {
 				SOV_add_random_character_to_purge_targets_effect = yes
-			}			
-
+			}
 			custom_effect_tooltip = SOV_will_trigger_a_great_purge_tt
 			hidden_effect = {
 				set_country_flag = SOV_purge_event_unavoidable_flag #No way to avoid this purge. This people are about to be purged and there's nothing you can do for them.
@@ -6373,19 +6313,21 @@ focus_tree = {
 
 	focus = {
 		id = SOV_they_will_know_fear
-		icon = GFX_focus_generic_army_tanks2
-		prerequisite = { focus = SOV_stalins_cult_of_personality }
-		x = -3
+		icon = GFX_SOV_they_will_know_fear_ccp_2d_sov_compatibility
+		prerequisite = { focus = SOV_development_of_tankograd focus = SOV_pc_of_mortar_armament focus = SOV_soviet_artillery }
+		x = 1
 		y = 1
-		relative_position_id = SOV_stalins_cult_of_personality
-		cost = 3
+		relative_position_id = SOV_soviet_artillery 
+		cost = 5
 		
 		ai_will_do = {
 			factor = 1
 		}
 
 		available = {
-			has_defensive_war = yes
+			any_enemy_country = {
+				SOV_is_major_not_original_sov = yes
+			}
 			has_tech = sov_heavy_6
 		}
 		
@@ -6497,7 +6439,7 @@ focus_tree = {
 		search_filters = {FOCUS_FILTER_STABILITY}
 
 		completion_reward = {
-			add_stability = 0.1
+			add_stability = 0.05
 			add_country_leader_trait = stalin_servant_of_lenin
 		}
 	}
@@ -6622,7 +6564,6 @@ focus_tree = {
 	focus = {
 		id = SOV_great_commander
 		icon = GFX_focus_generic_military_dictatorship
-		prerequisite = { focus = SOV_inheritor_of_the_mantle_of_lenin }
 		prerequisite = { focus = SOV_leader_of_the_party_and_the_people }
 		x = -1
 		y = 1
@@ -6632,13 +6573,11 @@ focus_tree = {
 		ai_will_do = {
 			factor = 1
 		}
-
-		mutually_exclusive = { focus = SOV_architect_of_communism }
 		
 		available = {
 			custom_trigger_tooltip = {
-				tooltip = SOV_propaganda_campaigns_taken_15_or_greater_tt
-				check_variable = { SOV_propaganda_campaigns_taken = 15 compare = greater_than_or_equals }
+				tooltip = SOV_propaganda_campaigns_taken_20_or_greater_tt
+				check_variable = { SOV_propaganda_campaigns_taken = 20 compare = greater_than_or_equals }
 			}
 		}
 		
@@ -6662,7 +6601,6 @@ focus_tree = {
 	focus = {
 		id = SOV_architect_of_communism
 		icon = GFX_goal_generic_soviet_construction
-		prerequisite = { focus = SOV_the_faithful_servant_of_lenin }
 		prerequisite = { focus = SOV_leader_of_the_party_and_the_people }
 		x = 1
 		y = 1
@@ -6673,12 +6611,10 @@ focus_tree = {
 			factor = 1
 		}
 
-		mutually_exclusive = { focus = SOV_great_commander }
-
 		available = {
 			custom_trigger_tooltip = {
-				tooltip = SOV_propaganda_campaigns_taken_15_or_greater_tt
-				check_variable = { SOV_propaganda_campaigns_taken = 15 compare = greater_than_or_equals }
+				tooltip = SOV_propaganda_campaigns_taken_20_or_greater_tt
+				check_variable = { SOV_propaganda_campaigns_taken = 20 compare = greater_than_or_equals }
 			}
 		}
 		
@@ -6704,8 +6640,8 @@ focus_tree = {
 
 		available = {
 			custom_trigger_tooltip = {
-				tooltip = SOV_propaganda_campaigns_taken_20_or_greater_tt
-				check_variable = { SOV_propaganda_campaigns_taken = 20 compare = greater_than_or_equals }
+				tooltip = SOV_propaganda_campaigns_taken_30_or_greater_tt
+				check_variable = { SOV_propaganda_campaigns_taken = 30 compare = greater_than_or_equals }
 			}
 		}
 		
@@ -6726,7 +6662,7 @@ focus_tree = {
 		id = SOV_freedom_of_debate_unity_of_action
 		icon = GFX_focus_generic_soviet_politics
 		prerequisite = { focus = SOV_stalins_cult_of_personality }
-		x = 3
+		x = -3
 		y = 1
 		relative_position_id = SOV_stalins_cult_of_personality
 		cost = 3
@@ -6755,10 +6691,10 @@ focus_tree = {
 	focus = {
 		id = SOV_the_construction_of_communism
 		icon = GFX_focus_ger_great_red_menace
-		prerequisite = { focus = SOV_freedom_of_debate_unity_of_action }
-		x = 0
-		y = 2
-		relative_position_id = SOV_freedom_of_debate_unity_of_action
+		prerequisite = { focus = SOV_stalins_cult_of_personality}
+		x = 3
+		y = 1
+		relative_position_id = SOV_stalins_cult_of_personality
 		cost = 3
 		
 		ai_will_do = {
@@ -6766,7 +6702,6 @@ focus_tree = {
 		}
 
 		available = {
-			num_subjects > 0
 		}
 		
 		search_filters = {FOCUS_FILTER_INDUSTRY}
@@ -6894,6 +6829,8 @@ focus_tree = {
 				ideology = communism
 				popularity = 0.1
 			}
+			add_to_variable = { female_participation_rate = 0.075 }
+			custom_effect_tooltip = increase_female_participation_75
 		}
 	}
 
@@ -6931,158 +6868,6 @@ focus_tree = {
 	}
 
 	focus = {
-		id = SOV_positive_heroism
-		icon = GFX_goal_generic_cavalry
-		prerequisite = { focus = SOV_expand_the_agitprop }
-		x = -2
-		y = 1
-		relative_position_id = SOV_expand_the_agitprop
-		cost = 5
-		
-		ai_will_do = {
-			factor = 1
-		}
-
-		available = {
-
-		}
-		
-		search_filters = {FOCUS_FILTER_PROPAGANDA}
-
-		completion_reward = {
-			add_political_power = 25
-			custom_effect_tooltip = available_military_high_command
-			show_ideas_tooltip = konstantin_rokossovsky 
-			show_ideas_tooltip = semyon_timoshenko
-			custom_effect_tooltip = available_theorist
-			show_ideas_tooltip = georgy_zhukov
-
-			custom_effect_tooltip = unlock_propaganda_campaign_tt
-			unlock_decision_tooltip = SOV_propaganda_heroes_forward
-			custom_effect_tooltip = unlock_propaganda_campaign_slot_tt
-			SOV_unlock_propaganda_campaign_slot_effect = yes
-		}
-	}
-
-	focus = {
-		id = SOV_revive_the_stakhanovite_movement
-		icon = GFX_goal_generic_construction2
-		prerequisite = { focus = SOV_positive_heroism }
-		x = 0
-		y = 1
-		relative_position_id = SOV_positive_heroism
-		cost = 5
-		
-		ai_will_do = {
-			factor = 1
-		}
-
-		available = {
-
-		}
-		
-		search_filters = {FOCUS_FILTER_INDUSTRY}
-
-		completion_reward = {
-			add_ideas = SOV_stakhanovite_movement
-		}
-	}
-
-	focus = {
-		id = SOV_war_heroes
-		icon = GFX_goal_generic_war_with_comintern
-		prerequisite = { focus = SOV_revive_the_stakhanovite_movement }
-		x = 0
-		y = 1
-		relative_position_id = SOV_revive_the_stakhanovite_movement
-		cost = 5
-		
-		ai_will_do = {
-			factor = 1
-		}
-
-		available = {
-			has_completed_focus = SOV_lessons_of_war
-			#any_enemy_country = {
-			#	SOV_is_major_not_original_sov = yes
-			#}
-		}
-		
-		search_filters = {}
-
-		completion_reward = {
-			add_ideas = SOV_war_heroes_ns
-
-			if = {
-				limit = {
-					SOV_georgy_zhukov = {
-						NOT = { has_character_flag = SOV_character_purged_flag }
-						is_corps_commander = yes
-					}
-				}
-				SOV_georgy_zhukov = {
-					promote_leader = yes
-				}
-			}
-			else = {
-				random_army_leader = {
-					limit = {
-						NOT = { has_character_flag = SOV_potential_target_flag }
-						is_corps_commander = yes
-						NOT = { is_character = SOV_konstantin_rokossovsky }
-						NOT = { is_character = SOV_ivan_konev }
-					}
-					promote_leader = yes
-				}
-			}
-			if = {
-				limit = {
-					SOV_konstantin_rokossovsky = {
-						NOT = { has_character_flag = SOV_character_purged_flag }
-						is_corps_commander = yes
-					}
-				}
-				SOV_konstantin_rokossovsky = {
-					promote_leader = yes
-				}
-			}
-			else = {
-				random_army_leader = {
-					limit = {
-						NOT = { has_character_flag = SOV_potential_target_flag }
-						is_corps_commander = yes
-						NOT = { is_character = SOV_georgy_zhukov }
-						NOT = { is_character = SOV_ivan_konev }
-					}
-					promote_leader = yes
-				}
-			}
-			if = {
-				limit = {
-					SOV_ivan_konev = {
-						NOT = { has_character_flag = SOV_character_purged_flag }
-						is_corps_commander = yes
-					}
-				}
-				SOV_ivan_konev = {
-					promote_leader = yes
-				}
-			}
-			else = {
-				random_army_leader = {
-					limit = {
-						NOT = { has_character_flag = SOV_potential_target_flag }
-						is_corps_commander = yes
-						NOT = { is_character = SOV_georgy_zhukov }
-						NOT = { is_character = SOV_konstantin_rokossovsky }
-					}
-					promote_leader = yes
-				}
-			}
-		}
-	}
-
-	focus = {
 		id = SOV_collectivist_propaganda
 		icon = GFX_goal_generic_propaganda
 		prerequisite = { focus = SOV_expand_the_agitprop }
@@ -7113,63 +6898,12 @@ focus_tree = {
 	}
 
 	focus = {
-		id = SOV_socialist_emulation
-		icon = GFX_goal_generic_soviet_construction
-		prerequisite = { focus = SOV_collectivist_propaganda }
-		x = 0
-		y = 1
-		relative_position_id = SOV_collectivist_propaganda
-		cost = 5
-		
-		ai_will_do = {
-			factor = 1
-		}
-
-		available = {
-
-		}
-		
-		search_filters = {FOCUS_FILTER_INDUSTRY FOCUS_FILTER_RESEARCH}
-
-		completion_reward = {
-			add_ideas = SOV_socialist_emulation_1_ns
-		}
-	}
-
-	focus = {
-		id = SOV_socialist_realism
-		icon = GFX_focus_YUG_pan_slavic_congress
-		prerequisite = { focus = SOV_socialist_emulation }
-		x = 0
-		y = 1
-		relative_position_id = SOV_socialist_emulation
-		cost = 5
-		
-		ai_will_do = {
-			factor = 1
-		}
-
-		available = {
-
-		}
-		
-		search_filters = {FOCUS_FILTER_INDUSTRY FOCUS_FILTER_POLITICAL}
-
-		completion_reward = {
-			swap_ideas = {
-				remove_idea = SOV_socialist_emulation_1_ns
-				add_idea = SOV_socialist_emulation_2_ns
-			}
-		}
-	}
-
-	focus = {
 		id = SOV_the_komsomol
 		icon = GFX_focus_generic_join_comintern
-		prerequisite = { focus = SOV_expand_the_agitprop }
+		prerequisite = { focus = SOV_collectivist_propaganda }
 		x = 2
 		y = 1
-		relative_position_id = SOV_expand_the_agitprop
+		relative_position_id = SOV_collectivist_propaganda
 		cost = 3
 		
 		ai_will_do = {
@@ -7199,11 +6933,219 @@ focus_tree = {
 	}
 
 	focus = {
+		id = SOV_revive_the_stakhanovite_movement
+		icon = GFX_goal_generic_construction2
+		prerequisite = { focus = SOV_the_komsomol }
+		x = 0
+		y = 1
+		relative_position_id = SOV_the_komsomol
+		cost = 3
+		
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+
+		}
+		
+		search_filters = {FOCUS_FILTER_INDUSTRY}
+
+		completion_reward = {
+			add_ideas = SOV_stakhanovite_movement
+		}
+	}
+
+	focus = {
+		id = SOV_positive_heroism
+		icon = GFX_goal_generic_cavalry
+		prerequisite = { focus = SOV_collectivist_propaganda }
+		x = -2
+		y = 1
+		relative_position_id = SOV_collectivist_propaganda
+		cost = 3
+		
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			OR = {
+				FIN = { has_country_flag = winterwarlost }
+				date > 1940.6.1
+			}
+		}
+		
+		search_filters = {FOCUS_FILTER_PROPAGANDA}
+
+		completion_reward = {
+			add_political_power = 25
+			custom_effect_tooltip = available_military_high_command
+			show_ideas_tooltip = konstantin_rokossovsky 
+			show_ideas_tooltip = semyon_timoshenko
+			show_ideas_tooltip = alexander_novikov
+			custom_effect_tooltip = available_theorist
+			show_ideas_tooltip = georgy_zhukov
+
+			custom_effect_tooltip = unlock_propaganda_campaign_tt
+			unlock_decision_tooltip = SOV_propaganda_heroes_forward
+			custom_effect_tooltip = unlock_propaganda_campaign_slot_tt
+			SOV_unlock_propaganda_campaign_slot_effect = yes
+
+			custom_effect_tooltip = generic_skip_one_line_tt
+			if = {
+				limit = {
+					SOV_semyon_timoshenko = {
+						NOT = { has_character_flag = SOV_character_purged_flag }
+						is_corps_commander = yes
+					}
+				}
+				SOV_semyon_timoshenko = {
+					promote_leader = yes
+				}
+			}
+			if = {
+				limit = {
+					SOV_boris_shaposhnikov = {
+						NOT = { has_character_flag = SOV_character_purged_flag }
+						is_corps_commander = yes
+					}
+				}
+				SOV_boris_shaposhnikov = {
+					promote_leader = yes
+				}
+			}
+			if = {
+				limit = {
+					SOV_grigory_kulik = {
+						NOT = { has_character_flag = SOV_character_purged_flag }
+						is_corps_commander = yes
+					}
+				}
+				SOV_grigory_kulik = {
+					promote_leader = yes
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = SOV_war_heroes
+		icon = GFX_goal_generic_war_with_comintern
+		prerequisite = { focus = SOV_positive_heroism }
+		x = 0
+		y = 1
+		relative_position_id = SOV_positive_heroism
+		cost = 3
+		
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			any_enemy_country = {
+				SOV_is_major_not_original_sov = yes
+			}
+		}
+		
+		search_filters = {}
+
+		completion_reward = {
+			add_ideas = SOV_war_heroes_ns
+			if = {
+				limit = {
+					SOV_georgy_zhukov = {
+						NOT = { has_character_flag = SOV_character_purged_flag }
+						is_corps_commander = yes
+					}
+				}
+				SOV_georgy_zhukov = {
+					promote_leader = yes
+				}
+			}
+			if = {
+				limit = {
+					SOV_konstantin_rokossovsky = {
+						NOT = { has_character_flag = SOV_character_purged_flag }
+						is_corps_commander = yes
+					}
+				}
+				SOV_konstantin_rokossovsky = {
+					promote_leader = yes
+				}
+			}
+			if = {
+				limit = {
+					SOV_ivan_konev = {
+						NOT = { has_character_flag = SOV_character_purged_flag }
+						is_corps_commander = yes
+					}
+				}
+				SOV_ivan_konev = {
+					promote_leader = yes
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = SOV_socialist_emulation
+		icon = GFX_goal_generic_soviet_construction
+		prerequisite = { focus = SOV_collectivist_propaganda }
+		x = 0
+		y = 1
+		relative_position_id = SOV_collectivist_propaganda
+		cost = 3
+		
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+
+		}
+		
+		search_filters = {FOCUS_FILTER_INDUSTRY FOCUS_FILTER_RESEARCH}
+
+		completion_reward = {
+			add_ideas = SOV_socialist_emulation_1_ns
+		}
+	}
+
+	focus = {
+		id = SOV_socialist_realism
+		icon = GFX_focus_YUG_pan_slavic_congress
+		prerequisite = { focus = SOV_socialist_emulation }
+		x = 0
+		y = 1
+		relative_position_id = SOV_socialist_emulation
+		cost = 3
+		
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+
+		}
+		
+		search_filters = {FOCUS_FILTER_INDUSTRY FOCUS_FILTER_POLITICAL}
+
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = SOV_socialist_emulation_1_ns
+				add_idea = SOV_socialist_emulation_2_ns
+			}
+		}
+	}
+
+	focus = {
 		id = SOV_patriarch_of_all_russia
 		icon = GFX_focus_SOV_patriarch_of_all_russia
 		prerequisite = { focus = SOV_war_heroes }
 		prerequisite = { focus = SOV_socialist_realism }
-		x = 1
+		prerequisite = { focus = SOV_revive_the_stakhanovite_movement }
+		x = 2
 		y = 1
 		relative_position_id = SOV_war_heroes
 		cost = 3
@@ -7213,7 +7155,7 @@ focus_tree = {
 		}
 
 		available = {
-
+			has_completed_focus = SOV_lessons_of_war
 		}
 		
 		search_filters = {FOCUS_FILTER_STABILITY}
@@ -7243,7 +7185,7 @@ focus_tree = {
 		x = 6
 		y = 0
 		relative_position_id = SOV_addressing_internal_affairs
-		cost = 3
+		cost = 2
 		
 		ai_will_do = {
 			factor = 1
@@ -7283,7 +7225,7 @@ focus_tree = {
 		x = 0
 		y = 1
 		relative_position_id = SOV_the_comintern
-		cost = 3
+		cost = 2
 
 		ai_will_do = {
 			factor = 1
@@ -7691,7 +7633,11 @@ focus_tree = {
 		#mutually_exclusive = { focus = SOV_respect_baltic_self_determination }
 
 		available = {
-			is_subject = no
+			is_subject = no			
+			OR = {
+				FIN = { has_country_flag = winterwarlost }
+				date > 1940.6.1
+			}
 		}
 
 		bypass = {
@@ -8094,11 +8040,7 @@ focus_tree = {
 				FRA = {
 					has_capitulated = yes
 				}
-				ROM = {
-					NOT = {
-						is_guaranteed_by = FRA
-					}
-				}
+				date > 1940.6.1
 			}
 		}
 

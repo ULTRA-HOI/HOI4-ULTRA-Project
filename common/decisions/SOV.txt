@@ -2337,6 +2337,7 @@ SOV_propaganda_campaigns = {
 		cost = SOV_propaganda_oil_for_the_motherland_cost
 
 		modifier = {
+			production_speed_infrastructure_factor = 0.1
 			fuel_gain_factor = 0.1
 			army_fuel_consumption_factor = -0.1
 			air_fuel_consumption_factor = -0.1
@@ -3847,6 +3848,7 @@ SOV_propaganda_campaigns = {
 			political_power_factor = 0.15
 			command_power_gain_mult = 0.1
 			war_support_weekly = 0.001
+			stability_weekly = 0.001
 			communism_drift = 0.1
 		}
 
@@ -10518,7 +10520,271 @@ SOV_industry_relocation = {
 		}
 	}
 
-	move_leningrad_aluminium_plant = { #195
+	SOV_move_steel_and_alu_plants = { #226 200 227 221
+
+		icon = steel
+
+		highlight_states = {
+			highlight_state_targets = {
+				state = 226
+				state = 200 
+				state = 227 
+				state = 221
+			}
+		}
+
+		allowed = {
+			original_tag = SOV
+		}
+
+		available = {
+			has_full_control_of_state = 226
+			has_full_control_of_state = 200 
+			has_full_control_of_state = 227 
+			has_full_control_of_state = 221
+			has_full_control_of_state = 653
+			has_equipment = { train_equipment > 29 } #30 trains
+		}
+
+		visible = {
+			has_completed_focus = SOV_move_industry_to_the_urals
+			has_war = yes
+			any_enemy_country = {
+				SOV_is_major_not_original_sov = yes
+				capital_scope = {
+					is_on_continent = europe
+				}
+			}
+			OR = {
+				controls_state = 226
+				controls_state = 200 
+				controls_state = 227 
+				controls_state = 221
+			}
+			controls_state = 653
+			has_civil_war = no
+		}
+
+		fire_only_once = yes
+
+		cost = 0
+		days_remove = SOV_industrial_relocation_days
+
+		modifier = {
+
+		}
+
+		ai_will_do = {
+			factor = 0.5
+			modifier = {
+				factor = 200 # oh shit they are getting close!
+				OR = {
+					AND = {
+						owns_state = 202
+						NOT = { controls_state = 202 }
+					}
+					AND = {
+						owns_state = 201
+						NOT = { controls_state = 201 }
+					}
+					AND = {
+						owns_state = 198
+						NOT = { controls_state = 198 }
+					}
+					AND = {
+						owns_state = 192
+						NOT = { controls_state = 192 }
+					}
+					AND = {
+						owns_state = 203
+						NOT = { controls_state = 203 }
+					}
+					AND = {
+						owns_state = 197
+						NOT = { controls_state = 197 }
+					}
+				}
+			}
+			modifier = {
+				factor = 0
+				SOV_save_pp_for_manpower_trouble = yes
+			}
+		}
+
+		complete_effect = {
+			hidden_effect = {
+				add_equipment_to_stockpile = {
+					type = train_equipment
+					amount = SOV_industrial_relocation_trains_decision_aluminium_negative
+					producer = SOV
+				}
+			}
+			if = {
+				limit = {
+					controls_state = 226 
+				}
+				226 = {
+					remove_building = {
+						type = steel_refinery
+						level = 2
+					}
+				}
+			}
+			if = {
+				limit = {
+					controls_state = 200 
+				}
+				200 = {
+					remove_building = {
+						type = steel_refinery
+						level = 1
+					}
+				}
+			}
+			if = {
+				limit = {
+					controls_state = 227 
+				}
+				227 = {
+					remove_building = {
+						type = steel_refinery
+						level = 5
+					}
+				}
+			}
+			if = {
+				limit = {
+					controls_state = 221 
+				}
+				221 = {
+					remove_building = {
+						type = steel_refinery
+						level = 2
+					}
+				}
+			}
+			if = {
+				limit = {
+					controls_state = 226 
+				}
+				226 = {
+					remove_building = {
+						type = aluminium_refinery
+						level = 4
+					}
+				}
+			}
+			custom_effect_tooltip = SOV_industry_relocation_aluminium_plant_trains_tt
+		}
+
+		remove_effect = {
+			hidden_effect = {
+				add_equipment_to_stockpile = {
+					type = train_equipment
+					amount = SOV_industrial_relocation_trains_decision_aluminium
+					producer = SOV
+				}
+			}
+			if = {
+				limit = {
+					controls_state = 653
+					controls_state = 226 
+				}
+				653 = {
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = steel_refinery
+						level = 2
+						instant_build = yes
+					}
+				}
+				damage_building = {
+				type = steel_refinery
+ 				state = 653 
+  				damage = 2
+				}
+			}
+			if = {
+				limit = {
+					controls_state = 653
+					controls_state = 200 
+				}
+				653 = {
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = steel_refinery
+						level = 1
+						instant_build = yes
+					}
+				}
+				damage_building = {
+				type = steel_refinery
+ 				state = 653 
+  				damage = 1
+				}
+			}
+			if = {
+				limit = {
+					controls_state = 653
+					controls_state = 227 
+				}
+				653 = {
+					add_extra_state_shared_building_slots = 5
+					add_building_construction = {
+						type = steel_refinery
+						level = 5
+						instant_build = yes
+					}
+				}
+				damage_building = {
+				type = steel_refinery
+ 				state = 653 
+  				damage = 5
+				}
+			}
+			if = {
+				limit = {
+					controls_state = 653
+					controls_state = 221 
+				}
+				653 = {
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = steel_refinery
+						level = 2
+						instant_build = yes
+					}
+				}
+				damage_building = {
+				type = steel_refinery
+ 				state = 653 
+  				damage = 2
+				}
+			}
+			if = {
+				limit = {
+					controls_state = 653
+					controls_state = 226 
+				}
+				653 = {
+					add_extra_state_shared_building_slots = 4
+					add_building_construction = {
+						type = aluminium_refinery
+						level = 4
+						instant_build = yes
+					}
+				}
+				damage_building = {
+				type = aluminium_refinery
+ 				state = 653 
+  				damage = 4
+				}
+			}
+			custom_effect_tooltip = SOV_move_steel_and_alu_plants_tt
+		}
+	}
+
+	SOV_move_leningrad_aluminium_plant = { #195
 
 		icon = aluminium
 
@@ -10534,10 +10800,8 @@ SOV_industry_relocation = {
 		}
 
 		available = {
-			has_full_control_of_state = 195
-			has_full_control_of_state = 264
 			has_full_control_of_state = 653
-			has_equipment = { train_equipment > 19 } #20 trains per factory
+			has_equipment = { train_equipment > 29 } #30 trains
 		}
 
 		visible = {
@@ -10549,8 +10813,10 @@ SOV_industry_relocation = {
 					is_on_continent = europe
 				}
 			}
-			controls_state = 195
-			controls_state = 264
+			OR = {
+				controls_state = 195
+				controls_state = 264
+			}
 			controls_state = 653
 			#195 = { has_state_flag = leningrad_aluminium_developed }
 			has_civil_war = no
@@ -10610,16 +10876,26 @@ SOV_industry_relocation = {
 					producer = SOV
 				}
 			}
-			195 = {
-				remove_building = {
-					type = aluminium_refinery
-					level = 3
+			if = {
+				limit = {
+					controls_state = 195 
+				}
+				195 = {
+					remove_building = {
+						type = aluminium_refinery
+						level = 3
+					}
 				}
 			}
-			264 = {
-				remove_building = {
-					type = aluminium_refinery
-					level = 3
+			if = {
+				limit = {
+					controls_state = 264 
+				}
+				264 = {
+					remove_building = {
+						type = aluminium_refinery
+						level = 3
+					}
 				}
 			}
 			custom_effect_tooltip = SOV_industry_relocation_aluminium_plant_trains_tt
@@ -10636,17 +10912,42 @@ SOV_industry_relocation = {
 			if = {
 				limit = {
 					controls_state = 653
+					controls_state = 195 
 				}
 				653 = {
-					add_extra_state_shared_building_slots = 6
+					add_extra_state_shared_building_slots = 3
 					add_building_construction = {
 						type = aluminium_refinery
-						level = 6
+						level = 3
 						instant_build = yes
 					}
 				}
+				damage_building = {
+				type = aluminium_refinery
+ 				state = 653 
+  				damage = 3
+				}
 			}
-			custom_effect_tooltip = SOV_relocate_industry_from_leningrad_tt
+			if = {
+				limit = {
+					controls_state = 653
+					controls_state = 264 
+				}
+				653 = {
+					add_extra_state_shared_building_slots = 3
+					add_building_construction = {
+						type = aluminium_refinery
+						level = 3
+						instant_build = yes
+					}
+				}
+				damage_building = {
+				type = aluminium_refinery
+ 				state = 653 
+  				damage = 3
+				}
+			}
+			custom_effect_tooltip = SOV_move_leningrad_aluminium_plant_tt
 		}
 	}
 	
@@ -11449,7 +11750,7 @@ SOV_great_patriotic_war = {
 		}
 
 		available = {
-			surrender_progress > 0.15
+			surrender_progress > 0.25
 		}
 
 		visible = {
@@ -11500,6 +11801,13 @@ SOV_great_patriotic_war = {
 			any_enemy_country = { SOV_is_major_not_original_sov = yes }
 			NOT = { has_country_flag = SOV_order_227_flag }
 		}
+
+		ai_hint_pp_cost = 15
+		custom_cost_trigger = {
+			command_power > 49
+			has_political_power > 14
+		}
+		custom_cost_text = decision_cost_CP_50_pp_15
 		
 		fire_only_once = yes
 			
@@ -11509,7 +11817,7 @@ SOV_great_patriotic_war = {
 		
 		available = {
 			has_idea = SOV_desperate_measures_ns
-			SOV = { surrender_progress > 0.1 } 	
+			SOV = { surrender_progress > 0.2 } 	
 			OR = {
 				AND = {
 					date > 1940.12.1
@@ -11528,6 +11836,10 @@ SOV_great_patriotic_war = {
 		}
 		
 		complete_effect = {
+			hidden_effect = {
+				add_command_power = -50
+				add_political_power = -15
+			}
 			add_timed_idea = {
 				idea = SOV_winter_offensive
 				days = 30
@@ -11543,7 +11855,7 @@ SOV_great_patriotic_war = {
 		ai_will_do = {
 			factor = 100
 			modifier = {
-				surrender_progress > 0.25
+				surrender_progress > 0.3
 				factor = 100
 			}
 		}
@@ -11552,7 +11864,8 @@ SOV_great_patriotic_war = {
 			any_enemy_country = {
 				SOV_is_major_not_original_sov = yes
 			}
-			surrender_progress > 0.2
+			surrender_progress > 0.3
+			has_completed_focus = SOV_military_reorganization
 		}
 
 		ai_hint_pp_cost = 50
@@ -12220,6 +12533,7 @@ SOV_great_patriotic_war = {
 		}
 		
 		visible = {
+			NOT = { has_idea = moscow_abandoned }
 			OR = {
 				NOT = {
 					controls_state = 206 #Minsk
@@ -12231,10 +12545,11 @@ SOV_great_patriotic_war = {
 					controls_state = 195 #Leningrad
 				}
 			}
+			controls_state = 251 #Kuybyshev
 		}
 		
 		available = {
-			controls_state = 653 #Sverdlosk
+			controls_state = 251 #Kuybyshev
 			OR = {
 				NOT = {
 					controls_state = 254 #Ryazan
@@ -12284,7 +12599,7 @@ SOV_great_patriotic_war = {
 		}
 	}
 	
-	#move the capital from #Moscow# Kuybyshev 
+	#move the capital from Kuybyshev 
 	
 	SOV_move_capital = {
 		icon = generic_civil_support
@@ -12302,13 +12617,13 @@ SOV_great_patriotic_war = {
 		visible = {
 			OR = {
 				NOT = {
+					controls_state = 219 #Moscow
+				}
+				NOT = {
 					controls_state = 218 #Rostov
 				}
 				NOT = {
 					controls_state = 260 #Voronezh
-				}
-				NOT = {
-					controls_state = 219 #Moscow
 				}
 				NOT = {
 					controls_state = 217 #Stalingrad
@@ -17403,9 +17718,9 @@ operations = {
 			}
 			CHI = {
 				OR = {
-					surrender_progress > 0.2
+					surrender_progress > 0.3
 					NOT = {
-						controls_state = 613
+						controls_state = 613 #Nanking
 					}
 				}
 			}
@@ -18658,21 +18973,22 @@ special_projects = {
 		fire_only_once = yes
 		days_mission_timeout = 4018
 		is_good = no
-		activation = {
-			date > 1936.1.1
-		}
 
 		cancel_trigger = {
+			any_enemy_country = {
+				SOV_is_major_not_original_sov = yes
+			}
 		}
 
-		cancel_effect = {
-		}
-
-		visible = {
-			date > 1936.1.1
+		activation = {
+			has_country_leader = {
+				character = SOV_iosif_stalin
+				ruling_only = yes 
+			}
 		}
 
 		complete_effect = {
+			add_stability = 0.05
 			add_war_support = 0.05
 			navy_experience = 300
 			add_doctrine_cost_reduction = {
@@ -18709,6 +19025,12 @@ special_projects = {
 		days_mission_timeout = 366
 		
 		fire_only_once = yes
+
+		cancel_trigger = {
+			any_enemy_country = {
+				SOV_is_major_not_original_sov = yes
+			}
+		}
 
 		complete_effect = {
 			add_war_support = 0.01
@@ -18754,6 +19076,12 @@ special_projects = {
 		
 		fire_only_once = yes
 
+		cancel_trigger = {
+			any_enemy_country = {
+				SOV_is_major_not_original_sov = yes
+			}
+		}
+
 		complete_effect = {
 			add_war_support = 0.01
 			add_stability = 0.01
@@ -18780,7 +19108,6 @@ special_projects = {
 			mio:SOV_nevskoye_design_bureau_organization = {
 				has_mio_size > 2
 			}
-			dockyard > 54
 		}
 		
 		activation = {
@@ -18800,6 +19127,12 @@ special_projects = {
 		days_mission_timeout = 365
 		
 		fire_only_once = yes
+
+		cancel_trigger = {
+			any_enemy_country = {
+				SOV_is_major_not_original_sov = yes
+			}
+		}
 
 		complete_effect = {
 			add_war_support = 0.01
@@ -18823,10 +19156,10 @@ special_projects = {
 		}
 		
 		available = {
+			has_completed_focus = SOV_offensive_maritime_strategy
 			mio:SOV_nevskoye_design_bureau_organization = {
 				has_mio_size > 3
 			}
-			dockyard > 59
 		}
 		
 		activation = {
@@ -18846,6 +19179,12 @@ special_projects = {
 		days_mission_timeout = 365
 		
 		fire_only_once = yes
+
+		cancel_trigger = {
+			any_enemy_country = {
+				SOV_is_major_not_original_sov = yes
+			}
+		}
 
 		complete_effect = {
 			add_war_support = 0.01
@@ -18869,10 +19208,10 @@ special_projects = {
 		}
 		
 		available = {
+			has_completed_focus = SOV_advanced_maneuvers
 			mio:SOV_nevskoye_design_bureau_organization = {
 				has_mio_size > 4
 			}
-			dockyard > 64
 		}
 		
 		activation = {
@@ -18893,6 +19232,12 @@ special_projects = {
 		
 		fire_only_once = yes
 
+		cancel_trigger = {
+			any_enemy_country = {
+				SOV_is_major_not_original_sov = yes
+			}
+		}
+
 		complete_effect = {
 			add_war_support = 0.01
 			add_stability = 0.01
@@ -18904,6 +19249,33 @@ special_projects = {
 			add_stability = -0.03
 			add_political_power = -30
 			SOV_paranoia_high_increase_effect = yes
+			#Frinovsky 
+			if = {
+				limit = {
+					has_character = SOV_mikhail_frinovsky 
+				}
+				SOV_mikhail_frinovsky = {
+					set_character_flag = SOV_targeted_for_purge_flag
+				}
+			}
+			#Smirnov
+			if = {
+				limit = {
+					has_character = SOV_pyotr_smirnov 
+				}
+				SOV_pyotr_smirnov = {
+					set_character_flag = SOV_targeted_for_purge_flag
+				}
+			}
+			if = {
+				limit = {
+					OR = {
+					has_character = SOV_mikhail_frinovsky 
+					has_character = SOV_pyotr_smirnov 
+					}
+				}
+			country_event = { id = NSB_soviet_paranoia_system_events.39 }
+			}
 		}
 	}
 
@@ -18915,16 +19287,9 @@ special_projects = {
 		}
 		
 		available = {
+			has_completed_focus = SOV_naval_infantry
 			mio:SOV_nevskoye_design_bureau_organization = {
 				has_mio_size > 5
-			}
-			dockyard > 69
-			NOT = { 
-				AND = {
-					has_idea = SOV_purged_junior_navy_officers_1
-					has_idea = SOV_purged_junior_navy_officers_2
-					has_idea = SOV_purged_junior_navy_officers_3
-				}
 			}
 		}
 		
@@ -18945,6 +19310,12 @@ special_projects = {
 		days_mission_timeout = 365
 		
 		fire_only_once = yes
+
+		cancel_trigger = {
+			any_enemy_country = {
+				SOV_is_major_not_original_sov = yes
+			}
+		}
 
 		complete_effect = {
 			add_war_support = 0.01
@@ -18968,16 +19339,8 @@ special_projects = {
 		}
 		
 		available = {
-			mio:SOV_nevskoye_design_bureau_organization = {
-				has_mio_size > 6
-			}
-			dockyard > 74
-			NOT = { 
-				AND = {
-					has_idea = SOV_purged_junior_navy_officers_1
-					has_idea = SOV_purged_junior_navy_officers_2
-					has_idea = SOV_purged_junior_navy_officers_3
-				}
+			NOT = {
+				has_idea = soviet_ship_limit
 			}
 		}
 		
@@ -18998,6 +19361,12 @@ special_projects = {
 		days_mission_timeout = 365
 		
 		fire_only_once = yes
+
+		cancel_trigger = {
+			any_enemy_country = {
+				SOV_is_major_not_original_sov = yes
+			}
+		}
 
 		complete_effect = {
 			add_war_support = 0.01

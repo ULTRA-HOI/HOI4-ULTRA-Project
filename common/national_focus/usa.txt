@@ -1489,13 +1489,12 @@ focus_tree = {
 	focus = {
 		id = USA_military_construction
 		icon = GFX_goal_generic_build_tank
-		prerequisite = { focus = USA_arsenal_of_democracy focus = USA_deterrence_concept}
+		prerequisite = { focus = USA_arsenal_of_democracy}
 		
 		available = {
 			OR = {
 				has_war = yes
 				has_war_support > 0.55
-				has_completed_focus = USA_deterrence_concept
 			}
 		}
 
@@ -1687,10 +1686,6 @@ focus_tree = {
 			OR = {
 				has_war_support > 0.65
 				has_war = yes
-				AND = {
-					threat > 0.75
-					has_completed_focus = USA_deterrence_concept
-				}
 			}
 		}
 
@@ -3057,7 +3052,6 @@ focus_tree = {
 				#threat > 0.35
 				has_war_support > 0.5
 				has_war = yes
-				has_completed_focus = USA_deterrence_concept
 			}
 			if = {
 				limit = {
@@ -4100,24 +4094,20 @@ focus_tree = {
 		}
 		
 		available = {
-			
-				
+			has_war_support > 0.35
 			OR = {
 				GER = {
 					controls_state = 4
 				}
-			CHI = {
-				OR = {
-					surrender_progress > 0.2
-					NOT = {
-						controls_state = 613
+				CHI = {
+					OR = {
+						surrender_progress > 0.3
+						NOT = {
+							controls_state = 613 #Nanking
+						}
 					}
 				}
 			}
-				has_war_support > 0.35
-				has_completed_focus = USA_deterrence_concept
-			}
-			
 		}
 		
 		cancel_if_invalid = no

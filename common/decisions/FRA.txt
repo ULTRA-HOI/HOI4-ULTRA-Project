@@ -764,7 +764,7 @@ FRA_spanish_intervention_category = {
 		#cost = 5
 		fire_only_once = yes
 		ai_will_do = {
-			factor = 1
+			factor = 1000
 			modifier = {
 				not = { has_government = democratic }
 				factor = 0
@@ -807,7 +807,7 @@ FRA_spanish_intervention_category = {
 
 		cost = 10
 		ai_will_do = {
-			factor = 1
+			factor = 10
 			modifier = {
 				has_stability < 0.3
 				factor = 0
@@ -869,7 +869,7 @@ FRA_spanish_intervention_category = {
 			}
 		}
 		ai_will_do = {
-			factor = 1
+			factor = 10
 			modifier = {
 				FROM = { has_government = ROOT }
 				factor = 5
@@ -906,7 +906,7 @@ FRA_spanish_intervention_category = {
 
 		cost = 25
 		ai_will_do = {
-			factor = 1
+			factor = 8
 			modifier = {
 				has_stability < 0.4
 				factor = 0
@@ -974,7 +974,7 @@ FRA_spanish_intervention_category = {
 			request_lease_tension = -0.3
 		}
 		ai_will_do = {
-			factor = 1
+			factor = 5
 			modifier = {
 				has_stability < 0.45
 				factor = 0
@@ -1295,16 +1295,22 @@ economy_decisions = {
 		cost = 50
 
 		ai_will_do = {
-			factor = 10
-			modifier = {
-				has_war = no
-				factor = 0
-			}
+			factor = 1000
+			#modifier = {
+			#	has_stability < 0.5
+			#	factor = 0
+			#}
 		}
 
 		complete_effect = {
 			remove_ideas = FRA_matignon_agreements
 			country_event = lar_france_political_violence.2
+				if = {
+					limit = {
+						is_ai = yes
+					}
+					add_stability = 0.2
+				}
 		}
 	}
 

@@ -12,9 +12,9 @@
 @tank_3_X = 9
 @tank_3_Y = 4
 #BONUSES
-@tank_max_speed = 0.015
-@tank_production_capacity_factor = 0.015
-@tank_soft_attack = 0.015
+@tank_max_speed = 0.03
+@tank_production_capacity_factor = 0.03
+@tank_soft_attack = 0.03
 
 
 ### SHIPS
@@ -26,12 +26,12 @@
 @ship_3_X = 8
 @ship_3_Y = 4
 #BONUSES
-@ship_cruiser_production_cost_factor = -0.1
-@ship_destroyer_production_cost_factor = -0.1
-@ship_submarine_production_cost_factor = -0.1
-@ship_production_capacity_factor = -0.05
-@ship_mines_sweeping = 0.1
-@ship_mines_planting = 0.1
+@ship_cruiser_production_cost_factor = -0.05
+@ship_destroyer_production_cost_factor = -0.05
+@ship_submarine_production_cost_factor = -0.05
+@ship_production_capacity_factor = -0.03
+@ship_mines_sweeping = 0.2
+@ship_mines_planting = 0.2
 
 ### AIRCRAFT
 #POSITION
@@ -42,11 +42,11 @@
 @aircraft_3_X = 9
 @aircraft_3_Y = 4
 #BONUSES
-@aircraft_production_cost_factor = -0.015
-@aircraft_air_agility = 0.015
-@aircraft_air_defence = 0.015
-@aircraft_surface_detection = 0.05
-@aircraft_sub_detection = 0.05
+@aircraft_production_cost_factor = -0.03
+@aircraft_air_agility = 0.03
+@aircraft_air_defence = 0.03
+@aircraft_surface_detection = 0.1
+@aircraft_sub_detection = 0.1
 
 ### MATERIEL
 #POSITION
@@ -57,11 +57,11 @@
 @materiel_3_X = 9
 @materiel_3_Y = 4
 #BONUSES
-@artillery_production_cost_factor = -0.015
-@infantry_equipment_production_cost_factor = -0.015
-@motorized_production_cost_factor = -0.015
-@materiel_production_efficiency_cap_factor = 0.015
-@materiel_production_capacity_factor = 0.025
+@artillery_production_cost_factor = -0.03
+@infantry_equipment_production_cost_factor = -0.03
+@motorized_production_cost_factor = -0.03
+@materiel_production_efficiency_cap_factor = 0.03
+@materiel_production_capacity_factor = 0.05
 
 
 ########    ###    ##    ## ##    ##  ######  
@@ -869,6 +869,68 @@ SOV_nevskoye_design_bureau_organization = {
 			production_capacity_factor = 4
 		}
 	}
+
+	add_trait = { #MTG version
+		token = SOV_mio_trait_merge_plant_no_370
+		name = SOV_merge_ship_plant_4_baltic
+		#icon = GFX_generic_mio_department_icon_facilities
+		icon = GFX_generic_mio_department_icon_ship_capital_ship_materials
+		special_trait_background = yes
+
+		position = { x=@ship_1_X y=@ship_1_Y }
+		
+		visible = {
+			FROM = { original_tag = SOV }
+			has_dlc = "Man the Guns"
+		}
+
+		available = {
+			FROM = {
+				has_full_control_of_state = 195 #LENINGRAD
+			}
+			FROM = {
+				has_completed_focus = SOV_merge_naval_plants
+			}
+			#Only exists in this MIO
+		}
+
+		limit_to_equipment_type = { mio_cat_eq_all_battleship mio_cat_eq_all_carrier }
+		
+		production_bonus = {
+			production_resource_need_factor = -0.1
+		}
+	}
+
+	add_trait = { 
+		token = SOV_mio_trait_merge_plant_no_5
+		name = SOV_merge_ship_plant_1_baltic
+		#icon = GFX_generic_mio_department_icon_facilities
+		icon = GFX_generic_mio_department_icon_ship_capital_ship_production
+		special_trait_background = yes
+
+		position = { x=@ship_2_X y=@ship_2_Y }
+		
+		visible = {
+			FROM = { original_tag = SOV }
+		}
+
+		available = {
+			FROM = {
+				has_full_control_of_state = 195 #LENINGRAD
+			}
+			FROM = {
+				has_completed_focus = SOV_merge_naval_plants
+			}
+			#Only exists in this MIO
+		}
+
+		limit_to_equipment_type = { mio_cat_eq_all_battleship mio_cat_eq_all_carrier }
+
+		production_bonus = {
+			production_cost_factor = @ship_cruiser_production_cost_factor
+		}
+	}
+
 }
 
 SOV_sevastopol_marine_plant_organization = {
@@ -877,6 +939,86 @@ SOV_sevastopol_marine_plant_organization = {
 	
 	allowed = {	
 		original_tag = SOV
+	}
+	add_trait = {
+		token = SOV_mio_trait_merge_mariupol_plant
+		name = SOV_merge_ship_plant_4_black_sea
+		#icon = GFX_generic_mio_department_icon_facilities
+		icon = GFX_generic_mio_trait_icon_mines
+		special_trait_background = yes
+
+		position = { x=@ship_2_X y=@ship_2_Y }
+		
+		visible = {
+			FROM = { original_tag = SOV }
+			has_dlc = "Man the Guns"
+		}
+
+		available = {
+			FROM = {
+				has_full_control_of_state = 227 #STALINO
+			}
+			FROM = {
+				has_completed_focus = SOV_merge_naval_plants
+			}
+
+			FROM = {
+				NOT = { has_country_flag = SOV_merge_plant_no_370_flag }
+			}
+		}
+
+		on_complete = {
+			custom_effect_tooltip = generic_trait_will_not_be_available_in_other_organizations
+			FROM = {
+				set_country_flag = SOV_merge_plant_no_370_flag 
+				add_tech_bonus = {
+					name = SOV_merge_ship_plant_2_baltic
+					bonus = 0.5
+					uses = 1
+					category = naval_mines
+				}
+			}
+		}
+
+		limit_to_equipment_type = { mio_cat_eq_all_cruiser mio_cat_eq_all_destroyer }
+		
+		production_bonus = {
+			production_cost_factor = @ship_production_capacity_factor
+		}
+
+		equipment_bonus = {
+			mines_planting = @ship_mines_planting
+		}
+	}
+
+	add_trait = { 
+		token = SOV_mio_trait_merge_plant_no_200
+		name = SOV_merge_ship_plant_1_black_sea
+		#icon = GFX_generic_mio_department_icon_facilities
+		icon = GFX_generic_mio_department_icon_ship_screen_ship_materials
+		special_trait_background = yes
+
+		position = { x=@ship_1_X y=@ship_1_Y }
+		
+		visible = {
+			FROM = { original_tag = SOV }
+		}
+
+		available = {
+			FROM = {
+				has_full_control_of_state = 197 #MYKOLAIV
+			}
+			FROM = {
+				has_completed_focus = SOV_merge_naval_plants
+			}
+			#Only exists in this MIO
+		}
+
+		limit_to_equipment_type = { mio_cat_eq_all_cruiser mio_cat_eq_all_destroyer }
+
+		production_bonus = {
+			production_resource_need_factor = -0.1
+		}
 	}
 }
 
@@ -887,6 +1029,90 @@ SOV_rubin_design_bureau_organization = {
 	allowed = {	
 		tag = SOV 
 	}
+	add_trait = { #MTG version
+		token = SOV_mio_trait_merge_mariupol_plant
+		name = SOV_merge_ship_plant_4_black_sea
+		#icon = GFX_generic_mio_department_icon_facilities
+		icon = GFX_generic_mio_trait_icon_mines
+		special_trait_background = yes
+
+		position = { x=@ship_2_X y=@ship_2_Y }
+
+		mutually_exclusive = { SOV_mio_trait_merge_plant_no_190 }
+		
+		visible = {
+			FROM = { original_tag = SOV }
+			has_dlc = "Man the Guns"
+		}
+
+		available = {
+			FROM = {
+				has_full_control_of_state = 195 #LENINGRAD
+			}
+			FROM = {
+				has_completed_focus = SOV_merge_naval_plants
+			}
+			FROM = {
+				NOT = { has_country_flag = SOV_merge_plant_no_370_flag }
+			}
+		}
+
+		on_complete = {
+			custom_effect_tooltip = generic_trait_will_not_be_available_in_other_organizations
+			FROM = {
+				set_country_flag = SOV_merge_plant_no_370_flag 
+				add_tech_bonus = {
+					name = SOV_merge_ship_plant_2_baltic
+					bonus = 0.5
+					uses = 1
+					category = naval_mines
+				}
+			}
+		}
+
+		limit_to_equipment_type = { ship_hull_submarine }
+		
+		production_bonus = {
+			production_cost_factor = @ship_production_capacity_factor
+		}
+
+		equipment_bonus = {
+			mines_planting = @ship_mines_planting
+		}
+	}
+
+	add_trait = { 
+		token = SOV_mio_trait_merge_plant_no_190
+		name = SOV_merge_ship_plant_3_baltic
+		#icon = GFX_generic_mio_department_icon_facilities
+		icon = GFX_generic_mio_department_icon_ship_submarine_production
+		special_trait_background = yes
+
+		position = { x=@ship_3_X y=@ship_3_Y }
+
+		mutually_exclusive = { SOV_mio_trait_merge_mariupol_plant }
+		
+		visible = {
+			FROM = { original_tag = SOV }
+		}
+
+		available = {
+			FROM = {
+				has_full_control_of_state = 195 #LENINGRAD
+			}
+			FROM = {
+				has_completed_focus = SOV_merge_naval_plants
+				has_completed_focus = SOV_submarine_warfare
+			}
+			#Only exists in this MIO
+		}
+
+		limit_to_equipment_type = { ship_hull_submarine }
+		
+		production_bonus = {
+			production_cost_factor = @ship_submarine_production_cost_factor
+		}
+	}
 }
 
 SOV_black_sea_shipyard_organization = {
@@ -895,6 +1121,74 @@ SOV_black_sea_shipyard_organization = {
 	
 	allowed = {	
 		original_tag = SOV
+	}
+
+	add_trait = { 
+		token = SOV_mio_trait_merge_leninskaya_kuznitsa_plant
+		name = SOV_merge_ship_plant_2_black_sea
+		#icon = GFX_generic_mio_department_icon_facilities
+		icon = GFX_generic_mio_department_icon_ship_screen_ship_quality
+		special_trait_background = yes
+
+		position = { x=@ship_2_X y=@ship_2_Y }
+
+		mutually_exclusive = { SOV_mio_trait_merge_plant_no_340 }
+		
+		visible = {
+			FROM = { original_tag = SOV }
+		}
+
+		available = {
+			FROM = {
+				has_full_control_of_state = 202 #KIEV
+			}
+			FROM = {
+				has_completed_focus = SOV_merge_naval_plants
+				has_completed_focus = SOV_surface_warfare
+			}
+			#Only exists in this MIO
+		}
+
+		limit_to_equipment_type = { mio_cat_eq_all_destroyer }
+
+		organization_modifier = {
+			military_industrial_organization_size_up_requirement = -0.25
+			military_industrial_organization_design_team_assign_cost = -0.15
+			military_industrial_organization_research_bonus = 0.05
+		}
+	}
+
+	add_trait = { 
+		token = SOV_mio_trait_merge_plant_no_340
+		name = SOV_merge_ship_plant_3_black_sea
+		icon = GFX_generic_mio_department_icon_ship_general_line_efficiency
+		#icon = GFX_generic_mio_department_icon_ship_submarine_production
+		special_trait_background = yes
+
+		position = { x=@ship_3_X y=@ship_3_Y }
+
+		mutually_exclusive = { SOV_mio_trait_merge_leninskaya_kuznitsa_plant }
+		
+		visible = {
+			FROM = { original_tag = SOV }
+		}
+
+		available = {
+			FROM = {
+				has_full_control_of_state = 227 #STALINO
+			}
+			FROM = {
+				has_completed_focus = SOV_merge_naval_plants
+				has_completed_focus = SOV_submarine_warfare
+			}
+			#Only exists in this MIO
+		}
+
+		limit_to_equipment_type = { ship_hull_submarine }
+		
+		organization_modifier = {
+			military_industrial_organization_research_bonus = 0.1
+		}
 	}
 }
 
@@ -983,11 +1277,6 @@ SOV_mig_design_bureau_organization = {
 			custom_effect_tooltip = SOV_trait_will_not_be_available_in_other_organizations
 			FROM = {
 				set_country_flag = SOV_merge_plant_no_150_flag
-				add_resource = {
-					type = aluminium
-					amount = 3
-					state = 219
-				}
 			}
 		}
 
@@ -1150,11 +1439,6 @@ SOV_ilyushin_design_bureau_organization = {
 			custom_effect_tooltip = SOV_trait_will_not_be_available_in_other_organizations
 			FROM = {
 				set_country_flag = SOV_merge_plant_no_150_flag
-				add_resource = {
-					type = aluminium
-					amount = 3
-					state = 219
-				}
 			}
 		}
 
@@ -1283,11 +1567,6 @@ SOV_yakovlev_design_bureau_organization = {
 			custom_effect_tooltip = SOV_trait_will_not_be_available_in_other_organizations
 			FROM = {
 				set_country_flag = SOV_merge_plant_no_150_flag
-				add_resource = {
-					type = aluminium
-					amount = 3
-					state = 219
-				}
 			}
 		}
 
@@ -1479,11 +1758,6 @@ SOV_tupolev_design_bureau_organization = {
 			custom_effect_tooltip = SOV_trait_will_not_be_available_in_other_organizations
 			FROM = {
 				set_country_flag = SOV_merge_plant_no_150_flag
-				add_resource = {
-					type = aluminium
-					amount = 3
-					state = 219
-				}
 			}
 		}
 
