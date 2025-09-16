@@ -64,7 +64,6 @@ mot_logistics_calculations = {
 	add_to_variable = { total_mot_battalions = num_battalions_with_type@modern_armor }
 	add_to_variable = { total_mot_battalions = num_battalions_with_type@mot_recon }
 	add_to_variable = { total_mot_battalions = num_battalions_with_type@armored_car_recon }
-	add_to_variable = { total_mot_battalions = num_battalions_with_type@mot_recon }
 	add_to_variable = { total_mot_battalions = num_battalions_with_type@light_tank_recon }
 	add_to_variable = { total_mot_battalions = num_battalions_with_type@light_sp_anti_air_brigade }
 	add_to_variable = { total_mot_battalions = num_battalions_with_type@medium_sp_anti_air_brigade }
@@ -102,10 +101,10 @@ support_logistics_calculations = {
 	add_to_variable = { total_support_battalions = num_battalions_with_type@DIV_HQ }
 	add_to_variable = { total_support_battalions = num_battalions_with_type@commandos }
 	
-	set_variable = { total_support_trucks = total_support_battalions }
-	multiply_variable = { total_support_trucks = support_multiplier }
-	set_variable = { support_trucks_per_level = total_support_trucks }
-	multiply_variable = { total_support_trucks = sup_logistics_motorisation_level }
+	set_variable = { total_sup_trucks = total_support_battalions }
+	multiply_variable = { total_sup_trucks = support_multiplier }
+	set_variable = { support_trucks_per_level = total_sup_trucks }
+	multiply_variable = { total_sup_trucks = sup_logistics_motorisation_level }
 }
 
 logistical_calculations = {
@@ -122,32 +121,72 @@ logistical_calculations = {
 	set_variable = { total_trucks = total_light_trucks }
 	add_to_variable = { total_trucks = total_heavy_trucks }
 	add_to_variable = { total_trucks = total_mot_trucks }
-	add_to_variable = { total_trucks = total_support_trucks }
-	
-	set_temp_variable = { truck_diff = total_trucks }
-	subtract_from_temp_variable = { truck_diff = logi_trucks }
-	clamp_temp_variable = {
-		var = truck_diff
-		max = num_equipment@motorized_equipment
-	}
-	multiply_temp_variable = { truck_diff = -1 }
-	add_equipment_to_stockpile = {
-		type = motorized_equipment
-		amount = truck_diff
-	}
-	subtract_from_variable = { logi_trucks = truck_diff }
+	add_to_variable = { total_trucks = total_sup_trucks }
 	
 	#Applies equipment needs
+	update_logi_truck_stockpiles = yes
 	remove_motorisation_techs = yes
 	calc_motorisation_techs = yes
 	set_motorisation_techs = yes
 }
 
-add_starting_logistics_trucks = {
-	set_variable = { logi_trucks = total_trucks }
-	set_variable = { truck_attrition_30_days = 0 }
-	add_to_array = { attrition_array = 0 }
-	resize_array = { attrition_array = 30 }
+init_logistics = {
+
+	light_logistics_calculations = yes
+	heavy_logistics_calculations = yes
+	mot_logistics_calculations = yes
+	support_logistics_calculations = yes
+
+	set_variable = { light_logi_trucks = total_light_trucks }
+	set_variable = { heavy_logi_trucks = total_heavy_trucks }
+	set_variable = { mot_logi_trucks = total_mot_trucks }
+	set_variable = { sup_logi_trucks = total_sup_trucks }
+
+	set_variable = { total_trucks = total_light_trucks }
+	add_to_variable = { total_trucks = total_heavy_trucks }
+	add_to_variable = { total_trucks = total_mot_trucks }
+	add_to_variable = { total_trucks = total_sup_trucks }
+
+	calc_motorisation_techs = yes
+	set_motorisation_techs = yes
+
+	set_variable = { light_truck_attrition_30_days = 0 }
+	set_variable = { heavy_truck_attrition_30_days = 0 }
+	set_variable = { mot_truck_attrition_30_days = 0 }
+	set_variable = { sup_truck_attrition_30_days = 0 }
+
+	add_to_array = { light_attrition_array = 0 }
+	resize_array = { light_attrition_array = 30 }
+	add_to_array = { heavy_attrition_array = 0 }
+	resize_array = { heavy_attrition_array = 30 }
+	add_to_array = { mot_attrition_array = 0 }
+	resize_array = { mot_attrition_array = 30 }
+	add_to_array = { sup_attrition_array = 0 }
+	resize_array = { sup_attrition_array = 30 }
+
+	set_variable = { light_logistics_motorisation_prio = 1 }
+	set_variable = { heavy_logistics_motorisation_prio = 1 }
+	set_variable = { mot_logistics_motorisation_prio = 1 }
+	set_variable = { sup_logistics_motorisation_prio = 1 }
+
+	# Scripted GUI
+
+	set_variable = { low_prio_light_logistics_motorisation_button_frame = 1 }
+	set_variable = { med_prio_light_logistics_motorisation_button_frame = 3 }
+	set_variable = { high_prio_light_logistics_motorisation_button_frame = 1 }
+	
+	set_variable = { low_prio_heavy_logistics_motorisation_button_frame = 1 }
+	set_variable = { med_prio_heavy_logistics_motorisation_button_frame = 3 }
+	set_variable = { high_prio_heavy_logistics_motorisation_button_frame = 1 }
+	
+	set_variable = { low_prio_mot_logistics_motorisation_button_frame = 1 }
+	set_variable = { med_prio_mot_logistics_motorisation_button_frame = 3 }
+	set_variable = { high_prio_mot_logistics_motorisation_button_frame = 1 }
+
+	set_variable = { low_prio_sup_logistics_motorisation_button_frame = 1 }
+	set_variable = { med_prio_sup_logistics_motorisation_button_frame = 3 }
+	set_variable = { high_prio_sup_logistics_motorisation_button_frame = 1 }
+
 }
 
 clear_motorisation_techs = {
@@ -223,40 +262,35 @@ set_motorisation_techs = {
 }
 
 calc_motorisation_techs = {
-	set_variable = { supply_mult = logi_trucks }
-	divide_variable = { supply_mult = total_trucks }
-	set_temp_variable = { supply_mult_scale_factor = 0.1 }
-	subtract_from_variable = { supply_mult = supply_mult_scale_factor }
-	multiply_temp_variable = { supply_mult_scale_factor = -1 }
-	add_to_temp_variable = { supply_mult_scale_factor = 1 }
-	divide_variable = { supply_mult = supply_mult_scale_factor }
-	clamp_variable = {
-		var = supply_mult
-		min = 0
-		max = 1
-	}
-	
 	set_temp_variable = { tech_granularity_mult = 10 }
-	
-	set_variable = { light_logistics_effective_motorisation_level = light_logistics_motorisation_level }
-	multiply_variable = { light_logistics_effective_motorisation_level = tech_granularity_mult }
-	multiply_variable = { light_logistics_effective_motorisation_level = supply_mult }
-	round_variable = light_logistics_effective_motorisation_level
-	
-	set_variable = { heavy_logistics_effective_motorisation_level = heavy_logistics_motorisation_level }
-	multiply_variable = { heavy_logistics_effective_motorisation_level = tech_granularity_mult }
-	multiply_variable = { heavy_logistics_effective_motorisation_level = supply_mult }
-	round_variable = heavy_logistics_effective_motorisation_level
-	
-	set_variable = { mot_logistics_effective_motorisation_level = mot_logistics_motorisation_level }
-	multiply_variable = { mot_logistics_effective_motorisation_level = tech_granularity_mult }
-	multiply_variable = { mot_logistics_effective_motorisation_level = supply_mult }
-	round_variable = mot_logistics_effective_motorisation_level
-	
-	set_variable = { sup_logistics_effective_motorisation_level = sup_logistics_motorisation_level }
-	multiply_variable = { sup_logistics_effective_motorisation_level = tech_granularity_mult }
-	multiply_variable = { sup_logistics_effective_motorisation_level = supply_mult }
-	round_variable = sup_logistics_effective_motorisation_level
+	for_loop_effect = {
+		end = 4
+		value = logi_category
+
+		meta_effect = {
+			text = {
+				set_variable = { [LOGI_CAT]_supply_mult = [LOGI_CAT]_logi_trucks }
+				divide_variable = { [LOGI_CAT]_supply_mult = total_[LOGI_CAT]_trucks }
+				set_temp_variable = { supply_mult_scale_factor = 0.1 }
+				subtract_from_variable = { [LOGI_CAT]_supply_mult = supply_mult_scale_factor }
+				multiply_temp_variable = { supply_mult_scale_factor = -1 }
+				add_to_temp_variable = { supply_mult_scale_factor = 1 }
+				divide_variable = { [LOGI_CAT]_supply_mult = supply_mult_scale_factor }
+				clamp_variable = {
+					var = [LOGI_CAT]_supply_mult
+					min = 0
+					max = 1
+				}
+				
+				set_variable = { [LOGI_CAT]_logistics_effective_motorisation_level = [LOGI_CAT]_logistics_motorisation_level }
+				multiply_variable = { [LOGI_CAT]_logistics_effective_motorisation_level = tech_granularity_mult }
+				multiply_variable = { [LOGI_CAT]_logistics_effective_motorisation_level = [LOGI_CAT]_supply_mult }
+				round_variable = [LOGI_CAT]_logistics_effective_motorisation_level
+
+			}
+			LOGI_CAT = "[get_logistics_category]"
+		}
+	}
 }
 
 offmap_trucks_to_stockpile = {
@@ -267,30 +301,178 @@ offmap_trucks_to_stockpile = {
 	set_variable = { logi_trucks = 0 }
 }
 
-logi_trucks_attrition_calculations = {
-	subtract_from_variable = { truck_attrition_30_days = attrition_array^0 }
+logi_trucks_attrition = {
+	for_loop_effect = {
+		end = 4
+		value = logi_category
+		meta_effect = {
+			text = {
+				subtract_from_variable = { [LOGI_CAT]_truck_attrition_30_days = [LOGI_CAT]_attrition_array^0 }
+				if = {
+					limit = { THIS = { has_war = yes } }
+					set_temp_variable = { attrition_today = [LOGI_CAT]_logi_trucks }
+					set_temp_variable = { logi_truck_daily_attrition_scale_divisor = 1000 }
+					divide_temp_variable = { attrition_today = logi_truck_daily_attrition_scale_divisor }
+					add_to_temp_variable = { attrition_today = [LOGI_CAT]_attrition_rollover }
+					set_variable = { [LOGI_CAT]_attrition_rollover = attrition_today }
+					subtract_from_temp_variable = { attrition_today = 0.5 }
+					round_temp_variable = attrition_today
+					subtract_from_variable = { [LOGI_CAT]_attrition_rollover = attrition_today }
+				}
+				else = {
+					set_temp_variable = { attrition_today = 0 }
+				}
+				remove_from_array = {
+					array = [LOGI_CAT]_attrition_array
+					index = 0
+				}
+				add_to_array = {
+					array = [LOGI_CAT]_attrition_array
+					value = attrition_today
+				}
+				add_to_variable = { [LOGI_CAT]_truck_attrition_30_days = attrition_today }
+				subtract_from_variable = { [LOGI_CAT]_logi_trucks = attrition_today }
+			}
+			LOGI_CAT = "[get_logistics_category]"
+		}
+	}
+}
+
+update_logi_truck_stockpiles = {
+	excess_trucks_to_stockpile = yes
+	set_temp_variable = { trucks_remaining = num_equipment@motorized_equipment }
 	if = {
-		limit = { THIS = { has_war = yes } }
-		set_temp_variable = { attrition_today = logi_trucks }
-		set_temp_variable = { logi_truck_daily_attrition_scale_divisor = 1000 }
-		divide_temp_variable = { attrition_today = logi_truck_daily_attrition_scale_divisor }
-		add_to_temp_variable = { attrition_today = attrition_rollover }
-		set_variable = { attrition_rollover = attrition_today }
-		subtract_from_temp_variable = { attrition_today = 0.5 }
-		round_temp_variable = attrition_today
-		subtract_from_variable = { attrition_rollover = attrition_today }
+		limit = {
+			check_variable = { trucks_remaining > 0 }
+			NOT = { check_variable = { from_decrease_button_click =  1 } } # give a day for the trucks to go back to the real stockpile when you decrease mot levels
+		}
+		# loop through each truck reinforcement priority, starting with high priority
+		for_loop_effect = {
+			start = 2
+			end = 0
+			compare = greater_than_or_equals
+			add = -1
+			value = priority
+			break = break_loop
+
+			# loop through each motorisation category
+			for_loop_effect = {
+				end = 4
+				value = logi_category
+							
+				# only want to consider the same priority categsories as whats being considered in the outer loop
+				if = {
+					limit = {
+						meta_trigger = {
+							text = {
+								check_variable = { [LOGI_CAT]_logistics_motorisation_prio = priority }
+							}
+							LOGI_CAT = "[get_logistics_category]"
+						}
+					}
+					# find how many trucks are needed in this category
+					meta_effect = {
+						text = {
+							set_temp_variable = { truck_diff = total_[LOGI_CAT]_trucks }
+							subtract_from_temp_variable = { truck_diff = [LOGI_CAT]_logi_trucks }
+							if = {
+								limit = { check_variable = { truck_diff > 0 } }
+								# store in array with other categories of the same prioritisation
+								add_to_temp_array = { curr_prio_trucks_needed_array = truck_diff }
+								# store what category it is in this array, at the same index as the previous array
+								add_to_temp_array = { curr_prio_trucks_needed_cat_array = logi_category }
+							}
+						}
+						LOGI_CAT = "[get_logistics_category]"
+					}
+				}
+			}
+			# loop through each of the motorisation categories in the current priority, in order of increasing trucks needed
+			while_loop_effect = {
+				limit = {
+					check_variable = { curr_prio_trucks_needed_array^num > 0 }
+				}
+				find_lowest_in_array = {
+					array = curr_prio_trucks_needed_array
+					value = curr_trucks_needed
+					index = idx
+				}
+				# split the remaining number of trucks in the stockpile into equal parts for all categories of this prioritisation
+				set_temp_variable = { trucks_to_transfer = trucks_remaining }
+				divide_temp_variable = { trucks_to_transfer = curr_prio_trucks_needed_array^num }
+				subtract_from_temp_variable = { trucks_to_transfer = 0.5 }
+				round_temp_variable = trucks_to_transfer
+
+				# if this category doesnt need all the trucks, we distribute them evenly to the remaining categories
+				clamp_temp_variable = {
+					var = trucks_to_transfer
+					max = curr_trucks_needed
+				}
+				subtract_from_temp_variable = { trucks_remaining = trucks_to_transfer }
+				
+				# need this variable for the scripted localisation in the next effect
+				meta_effect = {
+					text = {
+						set_temp_variable = { logi_category = curr_prio_trucks_needed_cat_array^[ARRAY_IDX] }
+					}
+					ARRAY_IDX = "[?idx]"
+				}
+				# update the logi truck stockpile for this category
+				meta_effect = {
+					text = {
+						add_to_variable = { [LOGI_CAT]_logi_trucks = trucks_to_transfer }
+					}
+					LOGI_CAT = "[get_logistics_category]"
+				}
+
+				remove_from_temp_array = {
+					array = curr_prio_trucks_needed_array
+					index = idx
+				}
+				remove_from_temp_array = {
+					array = curr_prio_trucks_needed_cat_array
+					index = idx
+				}
+				if = {
+					limit = { 
+						check_variable = { trucks_remaining = 0 }
+					}
+					set_temp_variable = { break_loop = 1 }
+				}
+			}
+		}
 	}
-	else = {
-		set_temp_variable = { attrition_today = 0 }
+	# update the actual truck stockpile
+	set_temp_variable = { trucks_transferred = num_equipment@motorized_equipment }
+	subtract_from_temp_variable = { trucks_transferred = trucks_remaining }
+	multiply_temp_variable = { trucks_transferred = -1 }
+	add_equipment_to_stockpile = {
+		type = motorized_equipment
+		amount = trucks_transferred
 	}
-	remove_from_array = {
-		array = attrition_array
-		index = 0
+}
+
+excess_trucks_to_stockpile = {
+	for_loop_effect = {
+		end = 4
+		value = logi_category
+
+		meta_effect = {
+			text = {
+				set_temp_variable = { truck_surplus = [LOGI_CAT]_logi_trucks }
+				subtract_from_temp_variable = { truck_surplus = total_[LOGI_CAT]_trucks }
+				if = {
+					limit = {
+						check_variable = { truck_surplus > 0 }
+					}
+					add_equipment_to_stockpile = {
+						type = motorized_equipment
+						amount = truck_surplus
+					}
+					subtract_from_variable = { [LOGI_CAT]_logi_trucks = truck_surplus }
+				}
+			}
+			LOGI_CAT = "[get_logistics_category]"
+		}
 	}
-	add_to_array = {
-		array = attrition_array
-		value = attrition_today
-	}
-	add_to_variable = { truck_attrition_30_days = attrition_today }
-	subtract_from_variable = { logi_trucks = attrition_today }
 }
