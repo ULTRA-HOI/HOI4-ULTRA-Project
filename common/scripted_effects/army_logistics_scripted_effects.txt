@@ -352,10 +352,15 @@ logi_trucks_attrition = {
 update_logi_truck_stockpiles = {
 	excess_trucks_to_stockpile = yes
 	set_temp_variable = { trucks_remaining = num_equipment@motorized_equipment }
+	# make sure there isn't a false surplus of trucks due to e.g. division disbandment when actually in a deficit
+	add_to_temp_variable = { trucks_remaining = num_equipment_in_armies@motorized_equipment }
+	subtract_from_temp_variable = { trucks_remaining = num_target_equipment_in_armies@motorized_equipment }
+
+	set_temp_variable = { trucks_transferred = trucks_remaining }
+
 	if = {
 		limit = {
 			check_variable = { trucks_remaining > 0 }
-			NOT = { check_variable = { from_decrease_button_click =  1 } } # give a day for the trucks to go back to the real stockpile when you decrease mot levels
 		}
 		# loop through each truck reinforcement priority, starting with high priority
 		for_loop_effect = {
@@ -454,7 +459,6 @@ update_logi_truck_stockpiles = {
 		}
 	}
 	# update the actual truck stockpile
-	set_temp_variable = { trucks_transferred = num_equipment@motorized_equipment }
 	subtract_from_temp_variable = { trucks_transferred = trucks_remaining }
 	multiply_temp_variable = { trucks_transferred = -1 }
 	add_equipment_to_stockpile = {
