@@ -60,28 +60,16 @@ scripted_gui = {
 
 		triggers = {
 			equipment_button_click_enabled = {
-				meta_trigger = {
-					text = {
-						has_tech = [TECH]
-					}
-					TECH = "[?ship_macrobuilder_techs^i.GetTokenKey]"
-				}
+				has_required_hull_tech = yes
 			}
 			build_x5_button_click_enabled = {
-				meta_trigger = {
-					text = {
-						has_tech = [TECH]
-					}
-					TECH = "[?ship_macrobuilder_techs^i.GetTokenKey]"
-				}
+				has_required_hull_tech = yes
 			}
 			build_x10_button_click_enabled = {
-				meta_trigger = {
-					text = {
-						has_tech = [TECH]
-					}
-					TECH = "[?ship_macrobuilder_techs^i.GetTokenKey]"
-				}
+				has_required_hull_tech = yes
+			}
+			assign_mio_button_click_enabled = {
+				has_required_hull_tech = yes
 			}
 		}
 
@@ -111,6 +99,16 @@ scripted_gui = {
 			assign_mio_button_click = {
 				set_variable = {
 					ship_macrobuilder_selected_ship_index = i
+				}
+				clear_array = ship_macrobuilder_mios
+				for_each_loop = {
+					array = ship_macrobuilder_all_mios
+					if = {
+						limit = {
+							mio_fits_ship_class = yes
+						}
+						add_to_array = { ship_macrobuilder_mios = v }
+					}
 				}
 			}
 			assign_mio_button_right_click = {

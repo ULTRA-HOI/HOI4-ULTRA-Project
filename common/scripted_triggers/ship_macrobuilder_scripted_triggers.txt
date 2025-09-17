@@ -1,0 +1,114 @@
+has_required_hull_tech = {
+	meta_trigger = {
+		text = {
+			has_tech = [TECH]
+		}
+		TECH = "[?ship_macrobuilder_techs^i.GetTokenKey]"
+	}
+}
+
+mio_fits_ship_class = {
+	meta_trigger = {
+		text = {
+			mio:[MIO] = {
+				set_temp_variable = { hull = token:[EQUIPMENT] }
+				mio_fits_ship_hull = yes
+			}
+		}
+		debug = yes
+		MIO = "[?v.GetTokenKey]"
+		EQUIPMENT = "[?ROOT.ship_macrobuilder_entries^ROOT.ship_macrobuilder_selected_ship_index.GetTokenKey]"
+	}
+}
+
+mio_fits_ship_hull = {
+	if = {
+		limit = {
+			OR = {
+				check_variable = { hull = token:nrm_ship_hull_carrier_2 }
+				check_variable = { hull = token:nrm_ship_hull_carrier_3 }
+				check_variable = { hull = token:nrm_ship_hull_carrier_4 }
+				check_variable = { hull = token:nrm_ship_hull_carrier_capital }
+			}
+		}
+		OR = {
+			has_mio_equipment_type = mio_cat_eq_fleet_carrier
+			has_mio_equipment_type = mio_cat_eq_all_carrier
+		}
+	} else_if = {
+		limit = {
+			OR = {
+				check_variable = { hull = token:nrm_ship_hull_carrier_light_2 }
+				check_variable = { hull = token:nrm_ship_hull_carrier_light_3 }
+				check_variable = { hull = token:nrm_ship_hull_carrier_light_4 }
+				check_variable = { hull = token:nrm_ship_hull_carrier_cruiser }
+			}
+		}
+		OR = {
+			has_mio_equipment_type = mio_cat_eq_light_carrier
+			has_mio_equipment_type = mio_cat_eq_all_carrier
+		}
+	} else_if = {
+		limit = {
+			OR = {
+				check_variable = { hull = token:nrm_ship_hull_cruiser_0 }
+				check_variable = { hull = token:nrm_ship_hull_cruiser_1 }
+				check_variable = { hull = token:nrm_ship_hull_cruiser_2 }
+				check_variable = { hull = token:nrm_ship_hull_cruiser_3 }
+				check_variable = { hull = token:nrm_ship_hull_cruiser_4 }
+				check_variable = { hull = token:nrm_ship_hull_panzerschiff }
+				check_variable = { hull = token:nrm_ship_hull_cruiser_torpedo }
+				check_variable = { hull = token:nrm_ship_hull_cruiser_coastal }
+			}
+		}
+		OR = {
+			has_mio_equipment_type = mio_cat_eq_all_cruiser
+			has_mio_equipment_type = mio_cat_eq_all_screens
+		}
+	} else_if = {
+		limit = {
+			OR = {
+				check_variable = { hull = token:nrm_ship_hull_destroyer_1 }
+				check_variable = { hull = token:nrm_ship_hull_destroyer_2 }
+				check_variable = { hull = token:nrm_ship_hull_destroyer_3 }
+				check_variable = { hull = token:nrm_ship_hull_destroyer_4 }
+			}
+		}
+		OR = {
+			has_mio_equipment_type = mio_cat_eq_all_destroyer
+			has_mio_equipment_type = mio_cat_eq_all_screens
+		}
+	} else_if = {
+		limit = {
+			OR = {
+				check_variable = { hull = token:nrm_ship_hull_submarine_1 }
+				check_variable = { hull = token:nrm_ship_hull_submarine_2 }
+				check_variable = { hull = token:nrm_ship_hull_submarine_3 }
+				check_variable = { hull = token:nrm_ship_hull_submarine_4 }
+				check_variable = { hull = token:nrm_ship_hull_submarine_5 }
+				check_variable = { hull = token:nrm_ship_hull_submarine_cruiser_1 }
+				check_variable = { hull = token:nrm_ship_hull_submarine_cruiser_2 }
+				check_variable = { hull = token:nrm_ship_hull_submarine_cruiser_3 }
+				check_variable = { hull = token:nrm_ship_hull_submarine_cruiser_4 }
+				check_variable = { hull = token:nrm_ship_hull_submarine_cruiser_5 }
+				check_variable = { hull = token:nrm_ship_hull_submarine_small_1 }
+				check_variable = { hull = token:nrm_ship_hull_submarine_small_2 }
+				check_variable = { hull = token:nrm_ship_hull_submarine_small_3 }
+				check_variable = { hull = token:nrm_ship_hull_submarine_small_4 }
+				check_variable = { hull = token:nrm_ship_hull_submarine_small_5 }
+			}
+		}
+		has_mio_equipment_type = mio_cat_eq_all_battleship
+	} else_if = {
+		limit = {
+			OR = {
+				check_variable = { hull = token:nrm_ship_hull_capital_0 }
+				check_variable = { hull = token:nrm_ship_hull_capital_1 }
+				check_variable = { hull = token:nrm_ship_hull_capital_2 }
+				check_variable = { hull = token:nrm_ship_hull_capital_3 }
+				check_variable = { hull = token:nrm_ship_hull_capital_4 }
+			}
+		}
+		has_mio_equipment_type = mio_cat_eq_all_battleship
+	}
+}

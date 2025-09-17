@@ -16,18 +16,17 @@ init_ship_macrobuilder = {
 		add_to_array = { ship_macrobuilder_entries = token:nrm_ship_hull_carrier_3 } add_to_array = { ship_macrobuilder_ship_roles = 45 } add_to_array = { ship_macrobuilder_techs = token:improved_ship_hull_carrier }
 		add_to_array = { ship_macrobuilder_entries = token:nrm_ship_hull_carrier_3 } add_to_array = { ship_macrobuilder_ship_roles = 45 } add_to_array = { ship_macrobuilder_techs = token:improved_ship_hull_carrier }
 
-		clear_array = ship_macrobuilder_mios
-		add_to_array = { ship_macrobuilder_mios = token:USA_newport_news_shipbuilding_organization }
-		add_to_array = { ship_macrobuilder_mios = token:USA_philadelphia_naval_shipyard_organization }
-		add_to_array = { ship_macrobuilder_mios = token:USA_bethlehem_steel_organization }
-		add_to_array = { ship_macrobuilder_mios = token:USA_new_york_shipbuilding_organization }
-		add_to_array = { ship_macrobuilder_mios = token:USA_brooklyn_naval_yard_organization }
-		add_to_array = { ship_macrobuilder_mios = token:USA_todd_pacific_organization }
-		add_to_array = { ship_macrobuilder_mios = token:USA_electric_boat_company_organization }
-
-		clear_array = ship_macrobuilder_assigned_mios
-		resize_array = { ship_macrobuilder_assigned_mios = 8 }
+		add_to_array = { ship_macrobuilder_all_mios = token:USA_newport_news_shipbuilding_organization }
+		add_to_array = { ship_macrobuilder_all_mios = token:USA_philadelphia_naval_shipyard_organization }
+		add_to_array = { ship_macrobuilder_all_mios = token:USA_bethlehem_steel_organization }
+		add_to_array = { ship_macrobuilder_all_mios = token:USA_new_york_shipbuilding_organization }
+		add_to_array = { ship_macrobuilder_all_mios = token:USA_brooklyn_naval_yard_organization }
+		add_to_array = { ship_macrobuilder_all_mios = token:USA_todd_pacific_organization }
+		add_to_array = { ship_macrobuilder_all_mios = token:USA_electric_boat_company_organization }
+		
 	}
+	clear_array = ship_macrobuilder_assigned_mios
+	resize_array = { ship_macrobuilder_assigned_mios = ship_macrobuilder_entries^num }
 }
 
 macro_build_ship = {
@@ -35,12 +34,8 @@ macro_build_ship = {
 		text = {
 			set_variable = { type_var = token:[CLASS_NAME] }
 		}
-		# debug = yes
 		CLASS_NAME = "[ship_macrobuilder_class_name]"
 	}
-	log = "[?type_var]"
-	log = "[?type_var.GetTokenKey]"
-	log = "[?type_var.GetTokenLocalizedKey]"
 	meta_effect = {
 		text = {
 			add_equipment_production = {
@@ -55,10 +50,8 @@ macro_build_ship = {
 				amount = 1
 			}
 		}
-		debug = yes
 		CLASS = "[?type_var.GetTokenLocalizedKey]"
 		TYPE = "[?v.GetTokenKey]"
-		VAR = "[?v.GetTokenKey]"
 		TAG = "[ROOT.GetTag]"
 		MIO = "[ship_macrobuilder_selected_mio]"
 		DOCKYARDS = "[ship_macrobuilder_assigned_dockyards]"
