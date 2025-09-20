@@ -1,39 +1,51 @@
-@HEADER_TEXT_X = 30
-@X_TXT = 164
-@X2_TXT = 253
-@X3_TXT = 347
-@X4_TXT = 440
-@X5_TXT = 300
-@X6_TXT = 500
+@HEADER_TEXT_X = 14
+@X_TXT = 120
+@X2_TXT = 230
+@X3_TXT = 344
+@X4_TXT = 287
+@X5_TXT = 401
+@X6_TXT = 458
 
-@BUTTON_INCREASE_X = 209
-@BUTTON_DECREASE_X = 142
+
+@BUTTON_INCREASE_X = 140
+@BUTTON_DECREASE_X = 96
+
+@LOW_PRIO_BUTTON_X = 165
+@MED_PRIO_BUTTON_X = 185
+@HIGH_PRIO_BUTTON_X = 205
 
 @LIGHT_HEADER_TEXT_Y = 42
 @LIGHT_TEXT_Y = 43
 @LIGHT_BUTTON_Y = 38
+@LIGHT_PRIO_Y = 42
 
 @HEAVY_HEADER_TEXT_Y = 86
 @HEAVY_TEXT_Y = 87
 @HEAVY_BUTTON_Y = 82
+@HEAVY_PRIO_Y = 86
 
 @MOT_HEADER_TEXT_Y = 130
 @MOT_TEXT_Y = 131
 @MOT_BUTTON_Y = 126
+@MOT_PRIO_Y = 130
 
 @SUP_HEADER_TEXT_Y = 174
 @SUP_TEXT_Y = 175
 @SUP_BUTTON_Y = 171
+@SUP_PRIO_Y = 175
 
-@LOW_PRIO_BUTTON_X = 100
-@MED_PRIO_BUTTON_X = 110
-@HIGH_PRIO_BUTTON_X = 120
+@MOT_BAT_HEADER_TEXT_Y = 218
+@MOT_BAT_TEXT_Y = 219
+@MOT_BAT_PRIO_Y = 219
+
+@TOTAL_HEADER_TEXT_Y = 262
+@TOTAL_TEXT_Y = 263
 
 guiTypes = {
 	containerWindowType = {
 		name = army_logistics_window
 		position = { x = 0 y = 42 }
-		size = { width = 650 height = 248 }
+		size = { width = 550 height = 306 }
 		background = {
 			name = "Background"
 			spriteType ="GFX_tiled_window2_1b_border"
@@ -52,12 +64,12 @@ guiTypes = {
 			name = "title"
 			position = { x = 5 y = 6 }
 			font = "hoi_18mbs"
-			text = "Motorisation"
-			maxWidth = 140
+			text = "Offmap Motorisation"
+			maxWidth = 180
 			format = center
 		}
 		iconType = {
-			position = { x = 14 y = 28 }
+			position = { x = 14 y = 30 }
 			name = "table"
 			spriteType = "GFX_army_logistics_bg"
 			alwaystransparent = yes
@@ -67,7 +79,7 @@ guiTypes = {
 			text = "LIGHT_TEXT"
 			font = "hoi_18mbs"
 			format = center
-			maxWidth = 100
+			maxWidth = 80
 			position = { x = @HEADER_TEXT_X y = @LIGHT_HEADER_TEXT_Y }
 			pdx_tooltip = "light_logistics_battalions_tt"
 		}
@@ -76,7 +88,7 @@ guiTypes = {
 			text = "HEAVY_TEXT"
 			font = "hoi_18mbs"
 			format = center
-			maxWidth = 100
+			maxWidth = 80
 			position = { x = @HEADER_TEXT_X y = @HEAVY_HEADER_TEXT_Y }
 			pdx_tooltip = "heavy_logistics_battalions_tt"
 		}
@@ -85,7 +97,7 @@ guiTypes = {
 			text = "MOBILE_TEXT"
 			font = "hoi_18mbs"
 			format = center
-			maxWidth = 100
+			maxWidth = 80
 			position = { x = @HEADER_TEXT_X y = @MOT_HEADER_TEXT_Y }
 			pdx_tooltip = "mot_logistics_battalions_tt"
 		}
@@ -94,36 +106,61 @@ guiTypes = {
 			text = "SUPPORT_TEXT"
 			font = "hoi_18mbs"
 			format = center
-			maxWidth = 100
+			maxWidth = 80
 			position = { x = @HEADER_TEXT_X y = @SUP_HEADER_TEXT_Y }
 			pdx_tooltip = "sup_logistics_battalions_tt"
+		}
+		instantTextBoxType = {
+			name = mot_bat_text
+			text = "MOTORISED_TEXT"
+			font = "hoi_18mbs"
+			format = center
+			maxWidth = 80
+			position = { x = @HEADER_TEXT_X y = @MOT_BAT_HEADER_TEXT_Y }
+			#pdx_tooltip = "sup_logistics_battalions_tt"
+		}
+		instantTextBoxType = {
+			name = total_text
+			text = "TOTAL_TEXT"
+			font = "hoi_18mbs"
+			format = center
+			maxWidth = 80
+			position = { x = @HEADER_TEXT_X y = @TOTAL_HEADER_TEXT_Y }
+			#pdx_tooltip = "sup_logistics_battalions_tt"
 		}
 		iconType = {
 			name = battalions_icon
 			pdx_tooltip = "logistics_battalions_tt"
 			spriteType = GFX_logistics_battalions_icon
-			position = { x = 259 y = 1 }
+			position = { x = 237 y = 1 }
 			scale = 0.7
 		}
 		iconType = {
 			name = trucks_icon
 			pdx_tooltip = "logistics_trucks_tt"
 			spriteType = GFX_logistics_trucks_icon
-			position = { x = 350 y = 3 }
+			position = { x = 344 y = 3 }
 			scale = 0.7
 		}
 		iconType = {
 			name = manpower_icon
 			pdx_tooltip = "logistics_manpower_tt"
 			spriteType = GFX_logistics_manpower_icon
-			position = { x = 452 y = 6 }
+			position = { x = 302 y = 6 }
 			scale = 0.8
+		}
+		iconType = {
+			name = stockpile_icon
+			#pdx_tooltip = "logistics_manpower_tt"
+			spriteType = GFX_in_stock_icon
+			position = { x = 415 y = 7 }
+			scale = 0.95
 		}
 		instantTextboxType = {
 			name = "light_logistics_level_text"
 			position = { x = @X_TXT y = @LIGHT_TEXT_Y }
 			font = "hoi_16mbs"
-			maxWidth = 50
+			maxWidth = 20
 			text = "[light_logistics_motorisation_level_display]"
 			format = center
 			pdx_tooltip = "light_logistics_level_tt"
@@ -147,8 +184,8 @@ guiTypes = {
 			pdx_tooltip = "light_logistics_trucks_tt"
 		}
 		instantTextBoxType = {
-			name = "light_curr_logi_trucks_text"
-			text = "[?light_logi_trucks]"
+			name = "light_logi_truck_deficit_text"
+			text = "[?light_logi_truck_defici|0+]"
 			font = "hoi_16mbs"
 			format = center
 			maxWidth = 50
@@ -175,7 +212,7 @@ guiTypes = {
 			name = "heavy_logistics_level_text"
 			position = { x = @X_TXT y = @HEAVY_TEXT_Y }
 			font = "hoi_16mbs"
-			maxWidth = 50
+			maxWidth = 20
 			text = "[heavy_logistics_motorisation_level_display]"
 			format = center
 			pdx_tooltip = "heavy_logistics_level_tt"
@@ -208,8 +245,8 @@ guiTypes = {
 			pdx_tooltip = "heavy_logistics_manpower_tt"
 		}
 		instantTextBoxType = {
-			name = "heavy_curr_logi_trucks_text"
-			text = "[?heavy_logi_trucks]"
+			name = "heavy_logi_truck_deficit_text"
+			text = "[?heavy_logi_truck_deficit|0+]"
 			font = "hoi_16mbs"
 			format = center
 			maxWidth = 50
@@ -227,7 +264,7 @@ guiTypes = {
 			name = "mot_logistics_level_text"
 			position = { x = @X_TXT y = @MOT_TEXT_Y }
 			font = "hoi_16mbs"
-			maxWidth = 50
+			maxWidth = 20
 			text = "[mot_logistics_motorisation_level_display]"
 			format = center
 			pdx_tooltip = "mot_logistics_level_tt"
@@ -260,8 +297,8 @@ guiTypes = {
 			pdx_tooltip = "mot_logistics_manpower_tt"
 		}
 		instantTextBoxType = {
-			name = "mot_curr_logi_trucks_text"
-			text = "[?mot_logi_trucks]"
+			name = "mot_logi_truck_deficit"
+			text = "[?mot_logi_truck_deficit|0+]"
 			font = "hoi_16mbs"
 			format = center
 			maxWidth = 50
@@ -279,7 +316,7 @@ guiTypes = {
 			name = "sup_logistics_level_text"
 			position = { x = @X_TXT y = @SUP_TEXT_Y }
 			font = "hoi_16mbs"
-			maxWidth = 50
+			maxWidth = 20
 			text = "[sup_logistics_motorisation_level_display]"
 			format = center
 			pdx_tooltip = "sup_logistics_level_tt"
@@ -312,8 +349,8 @@ guiTypes = {
 			pdx_tooltip = "sup_logistics_manpower_tt"
 		}
 		instantTextBoxType = {
-			name = "sup_curr_logi_trucks_text"
-			text = "[?sup_logi_trucks]"
+			name = "sup_logi_truck_deficit"
+			text = "[?sup_logi_truck_deficit|0+]"
 			font = "hoi_16mbs"
 			format = center
 			maxWidth = 50
@@ -326,6 +363,75 @@ guiTypes = {
 			format = center
 			maxWidth = 50
 			position = { x = @X6_TXT y = @SUP_TEXT_Y }
+		}
+		instantTextboxType = {
+			name = "mot_bat_logistics_level_text"
+			position = { x = @X_TXT y = @MOT_BAT_TEXT_Y }
+			font = "hoi_16mbs"
+			maxWidth = 20
+			text = "1/1"
+			format = center
+			#pdx_tooltip = "light_logistics_level_tt"
+		}
+		instantTextboxType = {
+			name = "mot_bat_logistics_battalions_text"
+			position = { x = @X2_TXT y = @MOT_BAT_TEXT_Y }
+			font = "hoi_16mbs"
+			maxWidth = 50
+			text = "[?total_mot_bat_battalions]"
+			format = center
+			#pdx_tooltip = "light_logistics_battalions_counts_tt"
+		}
+		instantTextboxType = {
+			name = "mot_bat_logistics_trucks_text"
+			position = { x = @X3_TXT y = @MOT_BAT_TEXT_Y }
+			font = "hoi_16mbs"
+			maxWidth = 50
+			text = "[?total_mot_bat_trucks]"
+			format = center
+			#pdx_tooltip = "light_logistics_trucks_tt"
+		}
+		instantTextboxType = {
+			name = "mot_bat_logistics_manpower_text"
+			position = { x = @X4_TXT y = @MOT_BAT_TEXT_Y }
+			font = "hoi_16mbs"
+			maxWidth = 50
+			text = "-"
+			format = center
+			#pdx_tooltip = "sup_logistics_manpower_tt"
+		}
+		instantTextBoxType = {
+			name = "mot_bat_logi_truck_deficit_text"
+			text = "[?mot_bat_logi_truck_deficit|0+]"
+			font = "hoi_16mbs"
+			format = center
+			maxWidth = 50
+			position = { x = @X5_TXT y = @MOT_BAT_TEXT_Y }
+		}
+		instantTextBoxType = {
+			name = "mot_bat_penalty_text"
+			text = "[?mot_bat_supply_mult|1Y%]"
+			font = "hoi_16mbs"
+			format = center
+			maxWidth = 50
+			position = { x = @X6_TXT y = @MOT_BAT_TEXT_Y }
+		}
+		instantTextboxType = {
+			name = "total_logistics_trucks_text"
+			position = { x = @X3_TXT y = @TOTAL_TEXT_Y }
+			font = "hoi_16mbs"
+			maxWidth = 50
+			text = "[?total_trucks]"
+			format = center
+			#pdx_tooltip = "light_logistics_trucks_tt"
+		}
+		instantTextBoxType = {
+			name = "total_logi_truck_deficit_text"
+			text = "[?total_logi_truck_deficit|0+]"
+			font = "hoi_16mbs"
+			format = center
+			maxWidth = 50
+			position = { x = @X5_TXT y = @TOTAL_TEXT_Y }
 		}
 
 		buttonType = {
@@ -390,106 +496,132 @@ guiTypes = {
 		}
 		buttonType = {
 			name = low_prio_mot_logistics_motorisation_button
-			position = { x = @LOW_PRIO_BUTTON_X y = @MOT_BUTTON_Y }
+			position = { x = @LOW_PRIO_BUTTON_X y = @MOT_PRIO_Y }
 			buttonFont = "hoi_16mbs"
 			quadTextureSprite = "GFX_deploy_priority"
-			pdx_tooltip = "FUEL_LOW_PRIORITY_DESC"
+			pdx_tooltip = "TRUCK_LOW_PRIORITY_DESC"
 			clicksound = click_default
 		}
 		
 		buttonType = {
 			name = med_prio_mot_logistics_motorisation_button
-			position = { x = @MED_PRIO_BUTTON_X y = @MOT_BUTTON_Y }
+			position = { x = @MED_PRIO_BUTTON_X y = @MOT_PRIO_Y }
 			buttonFont = "hoi_16mbs"
 			quadTextureSprite = "GFX_deploy_priority"
-			pdx_tooltip = "FUEL_MEDIUM_PRIORITY_DESC"
+			pdx_tooltip = "TRUCK_MED_PRIORITY_DESC"
 			clicksound = click_default
 		}
 		
 		buttonType = {
 			name = high_prio_mot_logistics_motorisation_button
-			position = { x = @HIGH_PRIO_BUTTON_X y = @MOT_BUTTON_Y }
+			position = { x = @HIGH_PRIO_BUTTON_X y = @MOT_PRIO_Y }
 			buttonFont = "hoi_16mbs"
 			quadTextureSprite = "GFX_deploy_priority"
-			pdx_tooltip = "FUEL_HIGH_PRIORITY_DESC"
+			pdx_tooltip = "TRUCK_HIGH_PRIORITY_DESC"
 			clicksound = click_default
 		}
 		buttonType = {
 			name = low_prio_light_logistics_motorisation_button
-			position = { x = @LOW_PRIO_BUTTON_X y = @LIGHT_BUTTON_Y }
+			position = { x = @LOW_PRIO_BUTTON_X y = @LIGHT_PRIO_Y }
 			buttonFont = "hoi_16mbs"
 			quadTextureSprite = "GFX_deploy_priority"
-			pdx_tooltip = "FUEL_LOW_PRIORITY_DESC"
+			pdx_tooltip = "TRUCK_LOW_PRIORITY_DESC"
 			clicksound = click_default
 		}
 		
 		buttonType = {
 			name = med_prio_light_logistics_motorisation_button
-			position = { x = @MED_PRIO_BUTTON_X y = @LIGHT_BUTTON_Y }
+			position = { x = @MED_PRIO_BUTTON_X y = @LIGHT_PRIO_Y }
 			buttonFont = "hoi_16mbs"
 			quadTextureSprite = "GFX_deploy_priority"
-			pdx_tooltip = "FUEL_MEDIUM_PRIORITY_DESC"
+			pdx_tooltip = "TRUCK_MED_PRIORITY_DESC"
 			clicksound = click_default
 		}
 		
 		buttonType = {
 			name = high_prio_light_logistics_motorisation_button
-			position = { x = @HIGH_PRIO_BUTTON_X y = @LIGHT_BUTTON_Y }
+			position = { x = @HIGH_PRIO_BUTTON_X y = @LIGHT_PRIO_Y }
 			buttonFont = "hoi_16mbs"
 			quadTextureSprite = "GFX_deploy_priority"
-			pdx_tooltip = "FUEL_HIGH_PRIORITY_DESC"
+			pdx_tooltip = "TRUCK_HIGH_PRIORITY_DESC"
 			clicksound = click_default
 		}
 		buttonType = {
 			name = low_prio_heavy_logistics_motorisation_button
-			position = { x = @LOW_PRIO_BUTTON_X y = @HEAVY_BUTTON_Y }
+			position = { x = @LOW_PRIO_BUTTON_X y = @HEAVY_PRIO_Y }
 			buttonFont = "hoi_16mbs"
 			quadTextureSprite = "GFX_deploy_priority"
-			pdx_tooltip = "FUEL_LOW_PRIORITY_DESC"
+			pdx_tooltip = "TRUCK_LOW_PRIORITY_DESC"
 			clicksound = click_default
 		}
 		
 		buttonType = {
 			name = med_prio_heavy_logistics_motorisation_button
-			position = { x = @MED_PRIO_BUTTON_X y = @HEAVY_BUTTON_Y }
+			position = { x = @MED_PRIO_BUTTON_X y = @HEAVY_PRIO_Y }
 			buttonFont = "hoi_16mbs"
 			quadTextureSprite = "GFX_deploy_priority"
-			pdx_tooltip = "FUEL_MEDIUM_PRIORITY_DESC"
+			pdx_tooltip = "TRUCK_MED_PRIORITY_DESC"
 			clicksound = click_default
 		}
 		
 		buttonType = {
 			name = high_prio_heavy_logistics_motorisation_button
-			position = { x = @HIGH_PRIO_BUTTON_X y = @HEAVY_BUTTON_Y }
+			position = { x = @HIGH_PRIO_BUTTON_X y = @HEAVY_PRIO_Y }
 			buttonFont = "hoi_16mbs"
 			quadTextureSprite = "GFX_deploy_priority"
-			pdx_tooltip = "FUEL_HIGH_PRIORITY_DESC"
+			pdx_tooltip = "TRUCK_HIGH_PRIORITY_DESC"
 			clicksound = click_default
 		}
 		buttonType = {
 			name = low_prio_sup_logistics_motorisation_button
-			position = { x = @LOW_PRIO_BUTTON_X y = @SUP_BUTTON_Y }
+			position = { x = @LOW_PRIO_BUTTON_X y = @SUP_PRIO_Y }
 			buttonFont = "hoi_16mbs"
 			quadTextureSprite = "GFX_deploy_priority"
-			pdx_tooltip = "FUEL_LOW_PRIORITY_DESC"
+			pdx_tooltip = "TRUCK_LOW_PRIORITY_DESC"
 			clicksound = click_default
 		}
 		
 		buttonType = {
 			name = med_prio_sup_logistics_motorisation_button
-			position = { x = @MED_PRIO_BUTTON_X y = @SUP_BUTTON_Y }
+			position = { x = @MED_PRIO_BUTTON_X y = @SUP_PRIO_Y }
 			buttonFont = "hoi_16mbs"
 			quadTextureSprite = "GFX_deploy_priority"
-			pdx_tooltip = "FUEL_MEDIUM_PRIORITY_DESC"
+			pdx_tooltip = "TRUCK_MED_PRIORITY_DESC"
 			clicksound = click_default
 		}
 		
 		buttonType = {
 			name = high_prio_sup_logistics_motorisation_button
-			position = { x = @HIGH_PRIO_BUTTON_X y = @SUP_BUTTON_Y }
+			position = { x = @HIGH_PRIO_BUTTON_X y = @SUP_PRIO_Y }
 			buttonFont = "hoi_16mbs"
 			quadTextureSprite = "GFX_deploy_priority"
-			pdx_tooltip = "FUEL_HIGH_PRIORITY_DESC"
+			pdx_tooltip = "TRUCK_HIGH_PRIORITY_DESC"
+			clicksound = click_default
+		}
+		buttonType = {
+			name = low_prio_mot_bat_logistics_motorisation_button
+			position = { x = @LOW_PRIO_BUTTON_X y = @MOT_BAT_PRIO_Y }
+			buttonFont = "hoi_16mbs"
+			quadTextureSprite = "GFX_deploy_priority"
+			pdx_tooltip = "TRUCK_LOW_PRIORITY_DESC"
+			clicksound = click_default
+		}
+		
+		buttonType = {
+			name = med_prio_mot_bat_logistics_motorisation_button
+			position = { x = @MED_PRIO_BUTTON_X y = @MOT_BAT_PRIO_Y }
+			buttonFont = "hoi_16mbs"
+			quadTextureSprite = "GFX_deploy_priority"
+			pdx_tooltip = "TRUCK_MED_PRIORITY_DESC"
+			clicksound = click_default
+		}
+		
+		buttonType = {
+			name = high_prio_mot_bat_logistics_motorisation_button
+			position = { x = @HIGH_PRIO_BUTTON_X y = @MOT_BAT_PRIO_Y }
+			buttonFont = "hoi_16mbs"
+			quadTextureSprite = "GFX_deploy_priority"
+			pdx_tooltip = "TRUCK_HIGH_PRIORITY_DESC"
 			clicksound = click_default
 		}
 	}

@@ -1,5 +1,5 @@
 light_logistics_calculations = {
-	#when modifying the factor below also adjust technologies/army_logistics.txt
+	#when modifying the factor below also adjust technologies/army_logistics.py
 	set_temp_variable = { light_multiplier = 2 }
 
 	#when modifying the categories below also adjust unit_tags/00_categories.txt
@@ -7,7 +7,6 @@ light_logistics_calculations = {
 	add_to_variable = { total_light_battalions = num_battalions_with_type@bicycle_battalion }
 	add_to_variable = { total_light_battalions = num_battalions_with_type@fake_intel_unit }
 	add_to_variable = { total_light_battalions = num_battalions_with_type@irregular_infantry }
-	add_to_variable = { total_light_battalions = num_battalions_with_type@militia }
 	add_to_variable = { total_light_battalions = num_battalions_with_type@blackshirt_assault_battalion }
 	add_to_variable = { total_light_battalions = num_battalions_with_type@light_cavalry }
 	add_to_variable = { total_light_battalions = num_battalions_with_type@camelry }
@@ -18,7 +17,7 @@ light_logistics_calculations = {
 	multiply_variable = { total_light_trucks = light_logistics_motorisation_level }
 }
 heavy_logistics_calculations = {
-	#when modifying the factor below also adjust technologies/army_logistics.txt
+	#when modifying the factor below also adjust technologies/army_logistics.py
 	set_temp_variable = { heavy_multiplier = 5 }
 
 	#when modifying the categories below also adjust unit_tags/00_categories.txt
@@ -42,7 +41,7 @@ heavy_logistics_calculations = {
 	multiply_variable = { total_heavy_trucks = heavy_logistics_motorisation_level }
 }
 mot_logistics_calculations = {
-	#when modifying the factor below also adjust technologies/army_logistics.txt
+	#when modifying the factor below also adjust technologies/army_logistics.py
 	set_temp_variable = { mot_multiplier = 8 }
 
 	#when modifying the categories below also adjust unit_tags/00_categories.txt
@@ -71,7 +70,7 @@ mot_logistics_calculations = {
 	multiply_variable = { total_mot_trucks = mot_logistics_motorisation_level }
 }
 support_logistics_calculations = {
-	#when modifying the factor below also adjust technologies/army_logistics.txt
+	#when modifying the factor below also adjust technologies/army_logistics.py
 	set_temp_variable = { support_multiplier = 2 }
 
 	#when modifying the categories below also adjust unit_tags/00_categories.txt
@@ -111,6 +110,26 @@ support_logistics_calculations = {
 	multiply_variable = { total_sup_trucks = sup_logistics_motorisation_level }
 }
 
+mot_bat_logisitics_calculations = {
+	#when modifying the factor below also adjust technologies/army_logistics.py
+	set_temp_variable = { mot_bat_multiplier = 8 }
+
+	#when modifying the categories below also adjust unit_tags/00_categories.txt
+	set_variable = { total_mot_bat_battalions = num_battalions_with_type@motorized }
+	add_to_variable = { total_mot_bat_battalions = num_battalions_with_type@mot_anti_tank_brigade }
+	add_to_variable = { total_mot_bat_battalions = num_battalions_with_type@mot_anti_air_brigade }
+	add_to_variable = { total_mot_bat_battalions = num_battalions_with_type@mot_artillery_brigade }
+	add_to_variable = { total_mot_bat_battalions = num_battalions_with_type@mot_rocket_artillery_brigade }
+	add_to_variable = { total_mot_bat_battalions = num_battalions_with_type@motorized_rocket_brigade }
+	add_to_variable = { total_mot_bat_battalions = num_battalions_with_type@heavy_anti_tank }
+	add_to_variable = { total_mot_bat_battalions = num_battalions_with_type@heavy_anti_air }
+	add_to_variable = { total_mot_bat_battalions = num_battalions_with_type@motorized_heavy_artillery_brigade }
+
+	set_variable = { total_mot_bat_trucks = total_mot_bat_battalions }
+	multiply_variable = { total_mot_bat_trucks = mot_bat_multiplier }
+	multiply_variable = { total_mot_bat_trucks = mot_bat_logistics_motorisation_level }
+}
+
 logistical_calculations = {
 	if = {
 		limit = { NOT = { has_tech = motorised_infantry } }
@@ -121,56 +140,68 @@ logistical_calculations = {
 	heavy_logistics_calculations = yes
 	mot_logistics_calculations = yes
 	support_logistics_calculations = yes
+	mot_bat_logisitics_calculations = yes
 
 	set_variable = { total_trucks = total_light_trucks }
 	add_to_variable = { total_trucks = total_heavy_trucks }
 	add_to_variable = { total_trucks = total_mot_trucks }
 	add_to_variable = { total_trucks = total_sup_trucks }
+	add_to_variable = { total_trucks = total_mot_bat_trucks }
 	
 	#Applies equipment needs
 	update_logi_truck_stockpiles = yes
 	remove_motorisation_techs = yes
 	calc_motorisation_techs = yes
 	set_motorisation_techs = yes
+	
 }
 
 init_logistics = {
 
-	set_variable = { num_logi_categories = 4 }
+	set_variable = { num_logi_categories = 5 }
 
 	light_logistics_calculations = yes
 	heavy_logistics_calculations = yes
 	mot_logistics_calculations = yes
 	support_logistics_calculations = yes
+	mot_bat_logisitics_calculations = yes
 
 	set_variable = { light_logi_trucks = total_light_trucks }
 	set_variable = { heavy_logi_trucks = total_heavy_trucks }
 	set_variable = { mot_logi_trucks = total_mot_trucks }
 	set_variable = { sup_logi_trucks = total_sup_trucks }
+	set_variable = { mot_bat_logi_trucks = total_mot_bat_trucks}
 
 	set_variable = { total_trucks = total_light_trucks }
 	add_to_variable = { total_trucks = total_heavy_trucks }
 	add_to_variable = { total_trucks = total_mot_trucks }
 	add_to_variable = { total_trucks = total_sup_trucks }
+	add_to_variable = { total_trucks = total_mot_bat_trucks }
+
+	set_variable = { mot_bat_logistics_motorisation_level = 5 }
 
 	calc_motorisation_techs = yes
 	set_motorisation_techs = yes
+	calc_logi_truck_deficits = yes
 
 	resize_array = { light_attrition_array = 30 }
 	resize_array = { heavy_attrition_array = 30 }
 	resize_array = { mot_attrition_array = 30 }
 	resize_array = { sup_attrition_array = 30 }
+	resize_array = { mot_bat_attrition_array = 30 }
 
 	set_variable = { light_logistics_motorisation_prio = 1 }
 	set_variable = { heavy_logistics_motorisation_prio = 1 }
 	set_variable = { mot_logistics_motorisation_prio = 1 }
 	set_variable = { sup_logistics_motorisation_prio = 1 }
+	set_variable = { mot_bat_logistics_motorisation_prio = 2 }
 
 	# Scripted GUI
 	set_variable = { med_prio_light_logistics_motorisation_button_frame = 3 }
 	set_variable = { med_prio_heavy_logistics_motorisation_button_frame = 3 }
 	set_variable = { med_prio_mot_logistics_motorisation_button_frame = 3 }
 	set_variable = { med_prio_sup_logistics_motorisation_button_frame = 3 }
+	set_variable = { high_prio_mot_bat_logistics_motorisation_button_frame = 4 }
 }
 
 clear_motorisation_techs = {
@@ -192,56 +223,42 @@ clear_motorisation_techs = {
 }
 
 remove_motorisation_techs = {
-	meta_effect = {
-		text = {
-			set_technology  = { light_log_tech_[LEVEL] = 0 popup = no }
+	for_loop_effect = {
+		end = num_logi_categories
+		value = logi_category
+		meta_effect = {
+			text = {
+				set_temp_variable = { effective_motorisation_level = [LOGI_CAT]_logistics_effective_motorisation_level }
+			}
+			LOGI_CAT = "[get_logistics_category]"
 		}
-		LEVEL = "[?light_logistics_effective_motorisation_level]"
-	}
-	meta_effect = {
-		text = {
-			set_technology  = { heavy_log_tech_[LEVEL] = 0 popup = no }
+		meta_effect = {
+			text = {
+				set_technology  = { [LOGI_CAT]_log_tech_[LEVEL] = 0 popup = no } 
+			}
+			LOGI_CAT = "[get_logistics_category]"
+			LEVEL = "[?effectIve_motorisation_level]"
 		}
-		LEVEL = "[?heavy_logistics_effective_motorisation_level]"
-	}
-	meta_effect = {
-		text = {
-			set_technology  = { mot_log_tech_[LEVEL] = 0 popup = no }
-		}
-		LEVEL = "[?mot_logistics_effective_motorisation_level]"
-	}
-	meta_effect = {
-		text = {
-			set_technology  = { sup_log_tech_[LEVEL] = 0 popup = no }
-		}
-		LEVEL = "[?sup_logistics_effective_motorisation_level]"
 	}
 }
 
 set_motorisation_techs = {
-	meta_effect = {
-		text = {
-			set_technology  = { light_log_tech_[LEVEL] = 1 popup = no }
+	for_loop_effect = {
+		end = num_logi_categories
+		value = logi_category
+		meta_effect = {
+			text = {
+				set_temp_variable = { effective_motorisation_level = [LOGI_CAT]_logistics_effective_motorisation_level }
+			}
+			LOGI_CAT = "[get_logistics_category]"
 		}
-		LEVEL = "[?light_logistics_effective_motorisation_level]"
-	}
-	meta_effect = {
-		text = {
-			set_technology  = { heavy_log_tech_[LEVEL] = 1 popup = no }
+		meta_effect = {
+			text = {
+				set_technology  = { [LOGI_CAT]_log_tech_[LEVEL] = 1 popup = no } 
+			}
+			LOGI_CAT = "[get_logistics_category]"
+			LEVEL = "[?effectIve_motorisation_level]"
 		}
-		LEVEL = "[?heavy_logistics_effective_motorisation_level]"
-	}
-	meta_effect = {
-		text = {
-			set_technology  = { mot_log_tech_[LEVEL] = 1 popup = no }
-		}
-		LEVEL = "[?mot_logistics_effective_motorisation_level]"
-	}
-	meta_effect = {
-		text = {
-			set_technology  = { sup_log_tech_[LEVEL] = 1 popup = no }
-		}
-		LEVEL = "[?sup_logistics_effective_motorisation_level]"
 	}
 }
 
@@ -358,7 +375,7 @@ update_logi_truck_stockpiles = {
 				end = num_logi_categories
 				value = logi_category
 							
-				# only want to consider the same priority categsories as whats being considered in the outer loop
+				# only want to consider the same priority categories as whats being considered in the outer loop
 				if = {
 					limit = {
 						meta_trigger = {
@@ -447,6 +464,8 @@ update_logi_truck_stockpiles = {
 		type = motorized_equipment
 		amount = trucks_transferred
 	}
+
+	calc_logi_truck_deficits = yes
 }
 
 excess_trucks_to_stockpile = {
@@ -468,6 +487,23 @@ excess_trucks_to_stockpile = {
 					}
 					subtract_from_variable = { [LOGI_CAT]_logi_trucks = truck_surplus }
 				}
+			}
+			LOGI_CAT = "[get_logistics_category]"
+		}
+	}
+}
+
+calc_logi_truck_deficits = {
+	set_variable = { total_logi_truck_deficit = 0 }
+	for_loop_effect = {
+		end = num_logi_categories
+		value = logi_category
+
+		meta_effect = {
+			text = {
+				set_variable = { [LOGI_CAT]_logi_truck_deficit = [LOGI_CAT]_logi_trucks }
+				subtract_from_variable = { [LOGI_CAT]_logi_truck_deficit = total_[LOGI_CAT]_trucks }
+				add_to_variable = { total_logi_truck_deficit = [LOGI_CAT]_logi_truck_deficit }
 			}
 			LOGI_CAT = "[get_logistics_category]"
 		}
