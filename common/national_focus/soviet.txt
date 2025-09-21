@@ -2932,32 +2932,39 @@ focus_tree = {
 			custom_effect_tooltip = SOV_advanced_maneuvers_ns_tt
 			navy_experience = 50
 			add_ideas = naval_academy_scholarships_spirit
-			#Frinovsky 
 			if = {
 				limit = {
-					has_character = SOV_mikhail_frinovsky 
-				}
-				SOV_mikhail_frinovsky = {
-					set_character_flag = SOV_targeted_for_purge_flag
-				}
-			}
-			#Smirnov
-			if = {
-				limit = {
-					has_character = SOV_pyotr_smirnov 
-				}
-				SOV_pyotr_smirnov = {
-					set_character_flag = SOV_targeted_for_purge_flag
-				}
-			}
-			if = {
-				limit = {
-					OR = {
-					has_character = SOV_mikhail_frinovsky 
-					has_character = SOV_pyotr_smirnov 
+					NOT = {
+						has_country_flag = SOV_trial_of_the_admirals_happened
 					}
 				}
-			country_event = { id = NSB_soviet_paranoia_system_events.39 }
+				#Frinovsky 
+				if = {
+					limit = {
+						has_character = SOV_mikhail_frinovsky 
+					}
+					SOV_mikhail_frinovsky = {
+						set_character_flag = SOV_targeted_for_purge_flag
+					}
+				}
+				#Smirnov
+				if = {
+					limit = {
+						has_character = SOV_pyotr_smirnov 
+					}
+					SOV_pyotr_smirnov = {
+						set_character_flag = SOV_targeted_for_purge_flag
+					}
+				}
+				if = {
+					limit = {
+						OR = {
+							has_character = SOV_mikhail_frinovsky 
+							has_character = SOV_pyotr_smirnov 
+						}
+					}
+				country_event = { id = NSB_soviet_paranoia_system_events.39 }
+				}
 			}
 		}
 	}
