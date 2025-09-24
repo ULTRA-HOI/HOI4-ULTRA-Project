@@ -6,7 +6,6 @@ light_logistics_calculations = {
 	set_variable = { total_light_battalions = num_battalions_with_type@infantry }
 	add_to_variable = { total_light_battalions = num_battalions_with_type@bicycle_battalion }
 	add_to_variable = { total_light_battalions = num_battalions_with_type@fake_intel_unit }
-	add_to_variable = { total_light_battalions = num_battalions_with_type@irregular_infantry }
 	add_to_variable = { total_light_battalions = num_battalions_with_type@blackshirt_assault_battalion }
 	add_to_variable = { total_light_battalions = num_battalions_with_type@light_cavalry }
 	add_to_variable = { total_light_battalions = num_battalions_with_type@camelry }
@@ -57,7 +56,6 @@ mot_logistics_calculations = {
 	add_to_variable = { total_mot_battalions = num_battalions_with_type@light_armor }
 	add_to_variable = { total_mot_battalions = num_battalions_with_type@medium_armor }
 	add_to_variable = { total_mot_battalions = num_battalions_with_type@support_armor }
-	add_to_variable = { total_mot_battalions = num_battalions_with_type@modern_armor }
 	add_to_variable = { total_mot_battalions = num_battalions_with_type@medium_sp_anti_air_brigade }
 	add_to_variable = { total_mot_battalions = num_battalions_with_type@medium_sp_artillery_brigade }
 	add_to_variable = { total_mot_battalions = num_battalions_with_type@assault_brigade }
@@ -84,6 +82,7 @@ support_logistics_calculations = {
 	add_to_variable = { total_support_battalions = num_battalions_with_type@recon }
 	add_to_variable = { total_support_battalions = num_battalions_with_type@mot_recon }
 	add_to_variable = { total_support_battalions = num_battalions_with_type@armored_car_recon }
+	add_to_variable = { total_support_battalions = num_battalions_with_type@airborne_light_armor }
 	add_to_variable = { total_support_battalions = num_battalions_with_type@light_tank_recon }
 	add_to_variable = { total_support_battalions = num_battalions_with_type@signal_company }
 	add_to_variable = { total_support_battalions = num_battalions_with_type@DIV_HQ }
@@ -160,6 +159,8 @@ init_logistics = {
 
 	set_variable = { num_logi_categories = 5 }
 
+	set_variable = { mot_bat_logistics_motorisation_level = 5 }
+
 	light_logistics_calculations = yes
 	heavy_logistics_calculations = yes
 	mot_logistics_calculations = yes
@@ -178,8 +179,6 @@ init_logistics = {
 	add_to_variable = { total_trucks = total_sup_trucks }
 	add_to_variable = { total_trucks = total_mot_bat_trucks }
 
-	set_variable = { mot_bat_logistics_motorisation_level = 5 }
-
 	calc_motorisation_techs = yes
 	set_motorisation_techs = yes
 	calc_logi_truck_deficits = yes
@@ -194,7 +193,7 @@ init_logistics = {
 	set_variable = { heavy_logistics_motorisation_prio = 1 }
 	set_variable = { mot_logistics_motorisation_prio = 1 }
 	set_variable = { sup_logistics_motorisation_prio = 1 }
-	set_variable = { mot_bat_logistics_motorisation_prio = 2 }
+	set_variable = { mot_bat_logistics_motorisation_prio = 2 } # suggestion to the player (and AI) that this category is more important
 
 	# Scripted GUI
 	set_variable = { med_prio_light_logistics_motorisation_button_frame = 3 }
