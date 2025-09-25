@@ -2,7 +2,7 @@
 num_techologies = 50
 
 # enter all the off-map logistics categories
-# format: ["CATEGORY", scale_factor, modifier_set]
+# format: ["CATEGORY", scale_factor, modifier_category_idx]
 logi_categories = [
     ["light", 2, 0],
     ["heavy", 5, 0],

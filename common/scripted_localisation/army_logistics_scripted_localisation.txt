@@ -115,6 +115,160 @@ defined_text = {
 }
 
 defined_text = {
+	name = mot_bat_logistics_motorisation_level_tt
+	text = {
+		trigger = {
+			set_temp_variable = { base = -50 }
+			mot_bat_display_calc = yes
+		}
+		localization_key = "MOT_BAT_LOGISTICS_LEVEL_TT"
+	}
+}
+
+defined_text = {
+	name = light_logistics_deficit_tt
+	text = {
+		trigger = {
+			has_war = yes
+		}
+		localization_key = "LIGHT_LOGISTICS_DEFICIT_WAR_TT"
+	}
+	text = {
+		localization_key = "LIGHT_LOGISTICS_DEFICIT_PEACE_TT"
+	}
+}
+defined_text = {
+	name = heavy_logistics_deficit_tt
+	text = {
+		trigger = {
+			has_war = yes
+		}
+		localization_key = "HEAVY_LOGISTICS_DEFICIT_WAR_TT"
+	}
+	text = {
+		localization_key = "HEAVY_LOGISTICS_DEFICIT_PEACE_TT"
+	}
+}
+defined_text = {
+	name = mot_logistics_deficit_tt
+	text = {
+		trigger = {
+			has_war = yes
+		}
+		localization_key = "MOT_LOGISTICS_DEFICIT_WAR_TT"
+	}
+	text = {
+		localization_key = "MOT_LOGISTICS_DEFICIT_PEACE_TT"
+	}
+}
+defined_text = {
+	name = sup_logistics_deficit_tt
+	text = {
+		trigger = {
+			has_war = yes
+		}
+		localization_key = "SUP_LOGISTICS_DEFICIT_WAR_TT"
+	}
+	text = {
+		localization_key = "SUP_LOGISTICS_DEFICIT_PEACE_TT"
+	}
+}
+defined_text = {
+	name = mot_bat_logistics_deficit_tt
+	text = {
+		trigger = {
+			has_war = yes
+		}
+		localization_key = "MOT_BAT_LOGISTICS_DEFICIT_WAR_TT"
+	}
+	text = {
+		localization_key = "MOT_BAT_LOGISTICS_DEFICIT_PEACE_TT"
+	}
+}
+defined_text = {
+	name = total_logistics_deficit_tt
+	text = {
+		trigger = {
+			has_war = yes
+		}
+		localization_key = "TOTAL_LOGISTICS_DEFICIT_WAR_TT"
+	}
+	text = {
+		localization_key = "TOTAL_LOGISTICS_DEFICIT_PEACE_TT"
+	}
+}
+
+defined_text = {
+	name = light_logistics_penalty_tt
+	text = {
+		trigger = {
+			set_temp_variable = { base = light_logistics_effective_motorisation_level }
+			divide_temp_variable = { base = 10 }
+			light_logistics_display_calc = yes
+			set_temp_variable = { truck_cons = light_logistics_motorisation_level }
+			multiply_temp_variable = { truck_cons = 2 }
+		}
+		localization_key = "LIGHT_LOGISTICS_PENALTY_TT"
+	}
+}
+
+defined_text = {
+	name = heavy_logistics_penalty_tt
+	text = {
+		trigger = {
+			set_temp_variable = { base = heavy_logistics_effective_motorisation_level }
+			divide_temp_variable = { base = 10 }
+			light_logistics_display_calc = yes
+			set_temp_variable = { truck_cons = heavy_logistics_motorisation_level }
+			multiply_temp_variable = { truck_cons = 5 }
+		}
+		localization_key = "HEAVY_LOGISTICS_PENALTY_TT"
+	}
+}
+
+defined_text = {
+	name = mot_logistics_penalty_tt
+	text = {
+		trigger = {
+			set_temp_variable = { base = mot_logistics_effective_motorisation_level }
+			divide_temp_variable = { base = 10 }
+			light_logistics_display_calc = yes
+			set_temp_variable = { truck_cons = mot_logistics_motorisation_level }
+			multiply_temp_variable = { truck_cons = 8 }
+		}
+		localization_key = "MOT_LOGISTICS_PENALTY_TT"
+	}
+}
+
+defined_text = {
+	name = sup_logistics_penalty_tt
+	text = {
+		trigger = {
+			set_temp_variable = { base = sup_logistics_effective_motorisation_level }
+			divide_temp_variable = { base = 10 }
+			light_logistics_display_calc = yes
+			set_temp_variable = { truck_cons = sup_logistics_motorisation_level }
+			multiply_temp_variable = { truck_cons = 2 }
+		}
+		localization_key = "SUP_LOGISTICS_PENALTY_TT"
+	}
+}
+
+defined_text = {
+	name = mot_bat_logistics_penalty_tt
+	text = {
+		trigger = {
+			set_temp_variable = { base = 1 }
+			subtract_from_temp_variable = { base = mot_bat_supply_mult }
+			set_temp_variable = { scale = base }
+			multiply_temp_variable = { base = -50 }
+			mot_bat_display_calc = yes
+		}
+		localization_key = "MOT_BAT_LOGISTICS_PENALTY_TT"
+	}
+}
+
+defined_text = {
 	name = total_light_manpower_display
 	text = {
 		trigger = {
@@ -260,6 +414,44 @@ defined_text = {
 	text = {
 		trigger = {
 			set_temp_variable = { display = total_support_manpower_k }
+			multiply_temp_variable = { display = 1000 }
+		}
+		localization_key = DISPLAY
+	}
+}
+
+defined_text = {
+	name = total_manpower_display
+	text = {
+		trigger = {
+			check_variable = {
+				army_logistics_labour_k>1000
+			}
+			set_temp_variable = { display = army_logistics_labour_k }
+			divide_temp_variable = { display = 1000 }
+		}
+		localization_key = DISPLAY_MILIONS_1
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				army_logistics_labour_k>1
+			}
+			set_temp_variable = { display = army_logistics_labour_k }
+		}
+		localization_key = DISPLAY_THOUSANDS_1
+	}
+	text = {
+		trigger = {
+			check_variable = {
+				army_logistics_labour_k=0
+			}
+		}
+		localization_key = "0"
+	}
+	text = {
+		trigger = {
+			set_temp_variable = { display = army_logistics_labour_k }
 			multiply_temp_variable = { display = 1000 }
 		}
 		localization_key = DISPLAY

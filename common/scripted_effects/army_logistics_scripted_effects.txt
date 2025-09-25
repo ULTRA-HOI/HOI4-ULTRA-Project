@@ -494,6 +494,7 @@ excess_trucks_to_stockpile = {
 
 calc_logi_truck_deficits = {
 	set_variable = { total_logi_truck_deficit = 0 }
+	set_variable = { total_truck_attrition_30_days = 0 }
 	for_loop_effect = {
 		end = num_logi_categories
 		value = logi_category
@@ -503,8 +504,11 @@ calc_logi_truck_deficits = {
 				set_variable = { [LOGI_CAT]_logi_truck_deficit = [LOGI_CAT]_logi_trucks }
 				subtract_from_variable = { [LOGI_CAT]_logi_truck_deficit = total_[LOGI_CAT]_trucks }
 				add_to_variable = { total_logi_truck_deficit = [LOGI_CAT]_logi_truck_deficit }
+				add_to_variable = { total_truck_attrition_30_days = [LOGI_CAT]_truck_attrition_30_days }
 			}
 			LOGI_CAT = "[get_logistics_category]"
 		}
 	}
+	set_variable = { total_logi_trucks = total_trucks }
+	add_to_variable = { total_logi_trucks = total_logi_truck_deficit }
 }
