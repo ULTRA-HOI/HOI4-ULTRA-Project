@@ -16,8 +16,8 @@ logi_categories = [
 logi_modifiers = [
     [ #category 0 (logistics motorisation)
         ["fuel_consumption", 0, 0.05, True],
-        ["fuel_capacity", 0, 10, False],
-        ["supply_consumption", 2/3, 0, False],
+        ["fuel_capacity", 0, 2.5, True],
+        ["supply_consumption", 2/3, 0, False],              # supply consumption cannot be negative
         ["soft_attack", 0, 0.05, False],
         ["hard_attack", 0, 0.05, False],
         ["air_attack", 0, 0.05, False],
@@ -32,6 +32,17 @@ logi_modifiers = [
     ]
 ]
 
+# for battalions that have an extra base multiplicative supply modifier
+# format: ["UNIT/CATEGORY", "LOGI_CATEGORY", base_supply
+# "UNIT/CATEGORY": unit / category name of what has extra supply, make sure its prepended with category_ if a category
+# "LOGI_CATEGORY": what logistics category this unit/category belongs to IMPORTANT: this category should not be defined in the unit file
+# base_supply: extra multiplicative supply modifier inherent to the category/unit. i.e. 0.2 = 20% extra supply. This cannot be negative
+outlier_battalions = [
+    ["category_mot_log_extra_supply", "mot", 0.15],
+    ["category_sup_log_extra_supply", "sup", 0.15],
+    ["assault_brigade", "mot", 1]
+]
+
 output_string = "technologies = {\n"
 for category in logi_categories:
     for i in range(num_techologies + 1):
@@ -40,7 +51,18 @@ for category in logi_categories:
             value = modifier[1] + (modifier[2] - modifier[1]) * (i / num_techologies)
             value += value * (category[1] - 1) * modifier[3]
             output_string += f"{modifier[0]} = {value:.3f} "
-        output_string += "} }\n"
+        output_string += "} "
+        for outlier in outlier_battalions:
+            if outlier[1] == category[0]:
+                output_string += f"{outlier[0]} = {{ "
+                for modifier in logi_modifiers[category[2]]:
+                    value = modifier[1] + (modifier[2] - modifier[1]) * (i / num_techologies)
+                    value += value * (category[1] - 1) * modifier[3]
+                    if modifier[0] == "supply_consumption":
+                        value = (1 + value) * (1 + outlier[2]) - 1
+                    output_string += f"{modifier[0]} = {value:.3f} "
+                output_string += "} "
+        output_string += "}\n"
     output_string += "\n"
 output_string += "}"
 
