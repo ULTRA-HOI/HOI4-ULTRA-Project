@@ -15,12 +15,12 @@ logi_categories = [
 # enter modifiers for each category
 # format: ["MODIFIER", start_value, end_value, (Whether it scales based off scale factor T/F)]
 # supply consumption cannot be negative, set to 1 - (1/(1 + largest supply bonus)) i.e. for -20% supply 1-(1/(1-0.2)) = 0.25
-# when modifying these numbers also modify army_logistics_scripted_triggers.txt
+# when modifying also modify army_logistics_scripted_triggers.txt
 logi_modifiers = [
     [ #category 0 (logistics motorisation)
         ["fuel_consumption", 0, 0.05, True],
         ["fuel_capacity", 0, 2.5, True],
-        ["supply_consumption", 0.25, 0, False],              
+        ["supply_consumption", 0.25, 0, False],
         ["soft_attack", 0, 0.05, False],
         ["hard_attack", 0, 0.05, False],
         ["air_attack", 0, 0.05, False],
