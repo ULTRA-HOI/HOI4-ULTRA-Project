@@ -1086,6 +1086,7 @@ leader_traits = {
 			OR = {
 				has_trait = trickster
 				has_trait = skilled_staffer
+				has_trait = skilled_staffer_sov
 			}	
 		}
 
@@ -1154,7 +1155,7 @@ leader_traits = {
 			factor = 1
 		}
 		trait_type = assignable_trait
-		any_parent = { skilled_staffer }
+		any_parent = { skilled_staffer skilled_staffer_sov }
 		gui_row = 14
 	}
 
@@ -1389,6 +1390,12 @@ leader_traits = {
 	skilled_staffer = { 
 		type = corps_commander
 
+		allowed = {
+			NOT = {
+				has_trait = SOV_hq
+			}
+		}
+
 		gain_xp_leader = {
 			if = {
 				limit = { is_leading_army_group = yes }
@@ -1418,6 +1425,56 @@ leader_traits = {
 		
 		corps_commander_modifier = {
 			max_commander_army_size = 2
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}
+		logistics_skill_factor = 2
+		
+		gui_row = 14
+		slot = high_command
+		specialist_advisor_trait = army_logistics_1
+		expert_advisor_trait = army_logistics_2
+		genius_advisor_trait = army_logistics_3								 
+	}
+
+	skilled_staffer_sov = { 
+		type = corps_commander
+
+		allowed = {
+			has_trait = SOV_hq
+		}
+
+		gain_xp_leader = {
+			if = {
+				limit = { is_leading_army_group = yes }
+				check_variable = { num_units > 55 } # allowing for some slack for panzer armies
+			}
+			else = {
+				set_temp_variable = { temp = num_units }
+
+				set_temp_variable = { limit = 9 }
+
+				if = { limit = { has_trait = panzer_expert } subtract_from_temp_variable = { var = limit value = 2 } }
+				if = { limit = { has_trait = combined_arms_expert } subtract_from_temp_variable = { var = limit value = 3 } }
+				if = { limit = { has_trait = invader_ii } subtract_from_temp_variable = { var = limit value = 1 } }
+				if = { limit = { has_trait = skirmisher } subtract_from_temp_variable = { var = limit value = 1 } }
+				if = { limit = { has_trait = paratrooper } subtract_from_temp_variable = { var = limit value = 3 } }
+				if = { limit = { has_trait = camouflage_expert } subtract_from_temp_variable = { var = limit value = 1 } }
+
+				clamp_temp_variable = { var = limit max = 9 min = 0 }
+
+				check_variable = { temp > limit }
+			}
+		}
+		custom_gain_xp_trigger_tooltip = fighting_with_enough_units
+		# custom_gain_xp_trigger_tooltip = fighting_with_max_capacity
+		
+		cost = 500
+		
+		corps_commander_modifier = {
+			max_commander_army_size = 4
 		}
 		
 		ai_will_do = {
