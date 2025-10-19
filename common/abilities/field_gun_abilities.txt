@@ -1,0 +1,1335 @@
+#
+#
+#!!! Important: If you change the buffs from the abilities the tech tooltips need to be adjusted to display the bonuses properly!
+
+ability = {
+	light_field_gun_tier_1 = {
+		name = ABILITY_LIGHT_FIELD_GUN
+		desc = ABILITY_LIGHT_FIELD_GUN_DESC
+		
+		sound_effect = command_power_ability_offensive
+		
+		type = army_leader
+		
+		allowed = {
+			FROM = {
+				NOT = {
+					has_country_flag = light_field_gun
+				}
+				has_equipment = {
+					light_field_gun_equipment > 5
+				}
+			}
+
+			#Overstaffed Generals loose access to Field Guns
+			set_temp_variable = { max_unit_limit = 11 } #Needs to be actual max + 1
+			#Modifiing the max from various different traits
+			if = { limit = { has_trait = panzer_expert } subtract_from_temp_variable = { var = max_unit_limit value = 2 } }
+			if = { limit = { has_trait = combined_arms_expert } subtract_from_temp_variable = { var = max_unit_limit value = 3 } }
+			if = { limit = { has_trait = invader_ii } subtract_from_temp_variable = { var = max_unit_limit value = 1 } }
+			if = { limit = { has_trait = skirmisher } subtract_from_temp_variable = { var = max_unit_limit value = 1 } }
+			if = { limit = { has_trait = paratrooper } subtract_from_temp_variable = { var = max_unit_limit value = 3 } }
+			if = { limit = { has_trait = camouflage_expert } subtract_from_temp_variable = { var = max_unit_limit value = 1 } }
+			if = { limit = { has_trait = skilled_staffer } add_to_temp_variable = { var = max_unit_limit value = 2 } }
+			if = { limit = { has_trait = skilled_staffer_sov } add_to_temp_variable = { var = max_unit_limit value = 4 } }
+			if = { limit = { has_trait = SOV_hq } add_to_temp_variable = { var = max_unit_limit value = 4 } }
+			num_units < max_unit_limit
+
+			is_leading_army_group = no
+			is_border_war = no
+		}
+		
+		unit_modifiers = {
+			org_loss_when_moving = 0.1
+		}
+		ai_will_do = {
+			factor = -1
+			modifier = {
+				FROM = {
+					command_power > 1.5
+				}
+				check_variable = { num_units_in_combat > 6 }
+				
+				set_temp_variable = { temp = avg_combat_status }
+				check_variable = { temp > 0.10 }
+				check_variable = { ai_random > temp }
+				
+				add = 2
+			}
+		}
+		
+		cost = 0.12
+		duration = 72
+		cooldown = 120
+		
+		one_time_effect = {
+			IF = {
+				LIMIT = {
+					FROM = {
+						is_ai = yes
+					}
+				}
+				FROM = {
+					add_equipment_to_stockpile = {
+    					type = light_field_gun_equipment
+    					amount = -3
+					}
+				}
+			}
+			ELSE = {
+				FROM = {
+					add_equipment_to_stockpile = {
+    					type = light_field_gun_equipment
+    					amount = -6
+					}
+				}
+			}
+			add_temporary_buff_to_units = {
+				combat_offense = 0.02
+				combat_breakthrough = 0.10
+				combat_defense = 0.02
+				combat_entrenchment = 0.10
+
+				days = 3
+				tooltip = ABILITY_FIELD_GUN_TOOLTIP
+			}
+		}
+	}
+
+	light_field_gun_tier_2 = {
+		name = ABILITY_LIGHT_FIELD_GUN
+		desc = ABILITY_LIGHT_FIELD_GUN_DESC
+		
+		sound_effect = command_power_ability_offensive
+		
+		type = army_leader
+		
+		allowed = {
+			FROM = {
+				has_country_flag = {
+					flag = light_field_gun
+					value < 2
+				}
+				has_equipment = {
+					light_field_gun_equipment > 5
+				}
+			}
+
+			#Overstaffed Generals loose access to Field Guns
+			set_temp_variable = { max_unit_limit = 11 } #Needs to be actual max + 1
+			#Modifiing the max from various different traits
+			if = { limit = { has_trait = panzer_expert } subtract_from_temp_variable = { var = max_unit_limit value = 2 } }
+			if = { limit = { has_trait = combined_arms_expert } subtract_from_temp_variable = { var = max_unit_limit value = 3 } }
+			if = { limit = { has_trait = invader_ii } subtract_from_temp_variable = { var = max_unit_limit value = 1 } }
+			if = { limit = { has_trait = skirmisher } subtract_from_temp_variable = { var = max_unit_limit value = 1 } }
+			if = { limit = { has_trait = paratrooper } subtract_from_temp_variable = { var = max_unit_limit value = 3 } }
+			if = { limit = { has_trait = camouflage_expert } subtract_from_temp_variable = { var = max_unit_limit value = 1 } }
+			if = { limit = { has_trait = skilled_staffer } add_to_temp_variable = { var = max_unit_limit value = 2 } }
+			if = { limit = { has_trait = skilled_staffer_sov } add_to_temp_variable = { var = max_unit_limit value = 4 } }
+			if = { limit = { has_trait = SOV_hq } add_to_temp_variable = { var = max_unit_limit value = 4 } }
+			num_units < max_unit_limit
+
+			is_leading_army_group = no
+			is_border_war = no
+		}
+		
+		unit_modifiers = {
+			org_loss_when_moving = 0.1
+		}
+		ai_will_do = {
+			factor = -1
+			modifier = {
+				FROM = {
+					command_power > 1.5
+				}
+				check_variable = { num_units_in_combat > 6 }
+				
+				set_temp_variable = { temp = avg_combat_status }
+				check_variable = { temp > 0.10 }
+				check_variable = { ai_random > temp }
+				
+				add = 2
+			}
+		}
+		
+		cost = 0.12
+		duration = 72
+		cooldown = 120
+		
+		one_time_effect = {
+			IF = {
+				LIMIT = {
+					FROM = {
+						is_ai = yes
+					}
+				}
+				FROM = {
+					add_equipment_to_stockpile = {
+    					type = light_field_gun_equipment
+    					amount = -3
+					}
+				}
+			}
+			ELSE = {
+				FROM = {
+					add_equipment_to_stockpile = {
+    					type = light_field_gun_equipment
+    					amount = -6
+					}
+				}
+			}
+			add_temporary_buff_to_units = {
+				combat_offense = 0.03
+				combat_breakthrough = 0.12
+				combat_defense = 0.03
+				combat_entrenchment = 0.12
+
+				days = 3
+				tooltip = ABILITY_FIELD_GUN_TOOLTIP
+			}
+		}
+	}
+
+	light_field_gun_tier_3 = {
+		name = ABILITY_LIGHT_FIELD_GUN
+		desc = ABILITY_LIGHT_FIELD_GUN_DESC
+		
+		sound_effect = command_power_ability_offensive
+		
+		type = army_leader
+		
+		allowed = {
+			FROM = {
+				has_country_flag = {
+					flag = light_field_gun
+					value > 1
+				}
+				has_equipment = {
+					light_field_gun_equipment > 5
+				}
+			}
+			
+			#Overstaffed Generals loose access to Field Guns
+			set_temp_variable = { max_unit_limit = 11 } #Needs to be actual max + 1
+			#Modifiing the max from various different traits
+			if = { limit = { has_trait = panzer_expert } subtract_from_temp_variable = { var = max_unit_limit value = 2 } }
+			if = { limit = { has_trait = combined_arms_expert } subtract_from_temp_variable = { var = max_unit_limit value = 3 } }
+			if = { limit = { has_trait = invader_ii } subtract_from_temp_variable = { var = max_unit_limit value = 1 } }
+			if = { limit = { has_trait = skirmisher } subtract_from_temp_variable = { var = max_unit_limit value = 1 } }
+			if = { limit = { has_trait = paratrooper } subtract_from_temp_variable = { var = max_unit_limit value = 3 } }
+			if = { limit = { has_trait = camouflage_expert } subtract_from_temp_variable = { var = max_unit_limit value = 1 } }
+			if = { limit = { has_trait = skilled_staffer } add_to_temp_variable = { var = max_unit_limit value = 2 } }
+			if = { limit = { has_trait = skilled_staffer_sov } add_to_temp_variable = { var = max_unit_limit value = 4 } }
+			if = { limit = { has_trait = SOV_hq } add_to_temp_variable = { var = max_unit_limit value = 4 } }
+			num_units < max_unit_limit
+
+			is_leading_army_group = no
+			is_border_war = no
+		}
+		
+		unit_modifiers = {
+			org_loss_when_moving = 0.1
+		}
+		ai_will_do = {
+			factor = -1
+			modifier = {
+				FROM = {
+					command_power > 1.5
+				}
+				check_variable = { num_units_in_combat > 6 }
+				
+				set_temp_variable = { temp = avg_combat_status }
+				check_variable = { temp > 0.10 }
+				check_variable = { ai_random > temp }
+				
+				add = 2
+			}
+		}
+		
+		cost = 0.12
+		duration = 72
+		cooldown = 120
+		
+		one_time_effect = {
+			IF = {
+				LIMIT = {
+					FROM = {
+						is_ai = yes
+					}
+				}
+				FROM = {
+					add_equipment_to_stockpile = {
+    					type = light_field_gun_equipment
+    					amount = -3
+					}
+				}
+			}
+			ELSE = {
+				FROM = {
+					add_equipment_to_stockpile = {
+    					type = light_field_gun_equipment
+    					amount = -6
+					}
+				}
+			}
+			add_temporary_buff_to_units = {
+				combat_offense = 0.04
+				combat_breakthrough = 0.14
+				combat_defense = 0.04
+				combat_entrenchment = 0.14
+
+				days = 3
+				tooltip = ABILITY_FIELD_GUN_TOOLTIP
+			}
+		}
+	}
+
+	medium_field_gun_tier_1 = {
+		name = ABILITY_MEDIUM_FIELD_GUN
+		desc = ABILITY_MEDIUM_FIELD_GUN_DESC
+		
+		sound_effect = command_power_ability_offensive
+		
+		type = army_leader
+		
+		allowed = {
+			FROM = {
+				NOT = {
+					has_country_flag = medium_field_gun
+				}
+				has_equipment = {
+					medium_field_gun_equipment > 5
+				}
+			}
+			
+			#Overstaffed Generals loose access to Field Guns
+			set_temp_variable = { max_unit_limit = 11 } #Needs to be actual max + 1
+			#Modifiing the max from various different traits
+			if = { limit = { has_trait = panzer_expert } subtract_from_temp_variable = { var = max_unit_limit value = 2 } }
+			if = { limit = { has_trait = combined_arms_expert } subtract_from_temp_variable = { var = max_unit_limit value = 3 } }
+			if = { limit = { has_trait = invader_ii } subtract_from_temp_variable = { var = max_unit_limit value = 1 } }
+			if = { limit = { has_trait = skirmisher } subtract_from_temp_variable = { var = max_unit_limit value = 1 } }
+			if = { limit = { has_trait = paratrooper } subtract_from_temp_variable = { var = max_unit_limit value = 3 } }
+			if = { limit = { has_trait = camouflage_expert } subtract_from_temp_variable = { var = max_unit_limit value = 1 } }
+			if = { limit = { has_trait = skilled_staffer } add_to_temp_variable = { var = max_unit_limit value = 2 } }
+			if = { limit = { has_trait = skilled_staffer_sov } add_to_temp_variable = { var = max_unit_limit value = 4 } }
+			if = { limit = { has_trait = SOV_hq } add_to_temp_variable = { var = max_unit_limit value = 4 } }
+			num_units < max_unit_limit
+
+			is_leading_army_group = no
+			is_border_war = no
+		}
+		
+		unit_modifiers = {
+			org_loss_when_moving = 0.1
+		}
+		ai_will_do = {
+			factor = -1
+			modifier = {
+				FROM = {
+					command_power > 1.5
+				}
+				check_variable = { num_units_in_combat > 6 }
+				
+				set_temp_variable = { temp = avg_combat_status }
+				check_variable = { temp > 0.10 }
+				check_variable = { ai_random > temp }
+				
+				add = 2
+			}
+		}
+		
+		cost = 0.15
+		duration = 72
+		cooldown = 120
+		
+		one_time_effect = {
+			IF = {
+				LIMIT = {
+					FROM = {
+						is_ai = yes
+					}
+				}
+				FROM = {
+					add_equipment_to_stockpile = {
+    					type = medium_field_gun_equipment
+    					amount = -3
+					}
+				}
+			}
+			ELSE = {
+				FROM = {
+					add_equipment_to_stockpile = {
+    					type = medium_field_gun_equipment
+    					amount = -6
+					}
+				}
+			}
+			add_temporary_buff_to_units = {
+				combat_offense = 0.04
+				combat_breakthrough = 0.08
+				combat_defense = 0.04
+				combat_entrenchment = 0.08
+
+				days = 3
+				tooltip = ABILITY_FIELD_GUN_TOOLTIP
+			}
+		}
+	}
+
+	medium_field_gun_tier_2 = {
+		name = ABILITY_MEDIUM_FIELD_GUN
+		desc = ABILITY_MEDIUM_FIELD_GUN_DESC
+		
+		sound_effect = command_power_ability_offensive
+		
+		type = army_leader
+		
+		allowed = {
+			FROM = {
+				has_country_flag = {
+					flag = medium_field_gun
+					value < 2
+				}
+				has_equipment = {
+					medium_field_gun_equipment > 5
+				}
+			}
+			
+			#Overstaffed Generals loose access to Field Guns
+			set_temp_variable = { max_unit_limit = 11 } #Needs to be actual max + 1
+			#Modifiing the max from various different traits
+			if = { limit = { has_trait = panzer_expert } subtract_from_temp_variable = { var = max_unit_limit value = 2 } }
+			if = { limit = { has_trait = combined_arms_expert } subtract_from_temp_variable = { var = max_unit_limit value = 3 } }
+			if = { limit = { has_trait = invader_ii } subtract_from_temp_variable = { var = max_unit_limit value = 1 } }
+			if = { limit = { has_trait = skirmisher } subtract_from_temp_variable = { var = max_unit_limit value = 1 } }
+			if = { limit = { has_trait = paratrooper } subtract_from_temp_variable = { var = max_unit_limit value = 3 } }
+			if = { limit = { has_trait = camouflage_expert } subtract_from_temp_variable = { var = max_unit_limit value = 1 } }
+			if = { limit = { has_trait = skilled_staffer } add_to_temp_variable = { var = max_unit_limit value = 2 } }
+			if = { limit = { has_trait = skilled_staffer_sov } add_to_temp_variable = { var = max_unit_limit value = 4 } }
+			if = { limit = { has_trait = SOV_hq } add_to_temp_variable = { var = max_unit_limit value = 4 } }
+			num_units < max_unit_limit
+
+			is_leading_army_group = no
+			is_border_war = no
+		}
+		
+		unit_modifiers = {
+			org_loss_when_moving = 0.1
+		}
+		ai_will_do = {
+			factor = -1
+			modifier = {
+				FROM = {
+					command_power > 1.5
+				}
+				check_variable = { num_units_in_combat > 6 }
+				
+				set_temp_variable = { temp = avg_combat_status }
+				check_variable = { temp > 0.10 }
+				check_variable = { ai_random > temp }
+				
+				add = 2
+			}
+		}
+		
+		cost = 0.15
+		duration = 72
+		cooldown = 120
+		
+		one_time_effect = {
+			IF = {
+				LIMIT = {
+					FROM = {
+						is_ai = yes
+					}
+				}
+				FROM = {
+					add_equipment_to_stockpile = {
+    					type = medium_field_gun_equipment
+    					amount = -3
+					}
+				}
+			}
+			ELSE = {
+				FROM = {
+					add_equipment_to_stockpile = {
+    					type = medium_field_gun_equipment
+    					amount = -6
+					}
+				}
+			}
+			add_temporary_buff_to_units = {
+				combat_offense = 0.05
+				combat_breakthrough = 0.10
+				combat_defense = 0.05
+				combat_entrenchment = 0.10
+
+				days = 3
+				tooltip = ABILITY_FIELD_GUN_TOOLTIP
+			}
+		}
+	}
+
+	medium_field_gun_tier_3 = {
+		name = ABILITY_MEDIUM_FIELD_GUN
+		desc = ABILITY_MEDIUM_FIELD_GUN_DESC
+		
+		sound_effect = command_power_ability_offensive
+		
+		type = army_leader
+		
+		allowed = {
+			FROM = {
+				has_country_flag = {
+					flag = medium_field_gun
+					value > 1
+				}
+				has_equipment = {
+					medium_field_gun_equipment > 5
+				}
+			}
+			
+			#Overstaffed Generals loose access to Field Guns
+			set_temp_variable = { max_unit_limit = 11 } #Needs to be actual max + 1
+			#Modifiing the max from various different traits
+			if = { limit = { has_trait = panzer_expert } subtract_from_temp_variable = { var = max_unit_limit value = 2 } }
+			if = { limit = { has_trait = combined_arms_expert } subtract_from_temp_variable = { var = max_unit_limit value = 3 } }
+			if = { limit = { has_trait = invader_ii } subtract_from_temp_variable = { var = max_unit_limit value = 1 } }
+			if = { limit = { has_trait = skirmisher } subtract_from_temp_variable = { var = max_unit_limit value = 1 } }
+			if = { limit = { has_trait = paratrooper } subtract_from_temp_variable = { var = max_unit_limit value = 3 } }
+			if = { limit = { has_trait = camouflage_expert } subtract_from_temp_variable = { var = max_unit_limit value = 1 } }
+			if = { limit = { has_trait = skilled_staffer } add_to_temp_variable = { var = max_unit_limit value = 2 } }
+			if = { limit = { has_trait = skilled_staffer_sov } add_to_temp_variable = { var = max_unit_limit value = 4 } }
+			if = { limit = { has_trait = SOV_hq } add_to_temp_variable = { var = max_unit_limit value = 4 } }
+			num_units < max_unit_limit
+
+			is_leading_army_group = no
+			is_border_war = no
+		}
+		
+		unit_modifiers = {
+			org_loss_when_moving = 0.1
+		}
+		ai_will_do = {
+			factor = -1
+			modifier = {
+				FROM = {
+					command_power > 1.5
+				}
+				check_variable = { num_units_in_combat > 6 }
+				
+				set_temp_variable = { temp = avg_combat_status }
+				check_variable = { temp > 0.10 }
+				check_variable = { ai_random > temp }
+				
+				add = 2
+			}
+		}
+		
+		cost = 0.15
+		duration = 72
+		cooldown = 120
+		
+		one_time_effect = {
+			IF = {
+				LIMIT = {
+					FROM = {
+						is_ai = yes
+					}
+				}
+				FROM = {
+					add_equipment_to_stockpile = {
+    					type = medium_field_gun_equipment
+    					amount = -3
+					}
+				}
+			}
+			ELSE = {
+				FROM = {
+					add_equipment_to_stockpile = {
+    					type = medium_field_gun_equipment
+    					amount = -6
+					}
+				}
+			}
+			add_temporary_buff_to_units = {
+				combat_offense = 0.06
+				combat_breakthrough = 0.12
+				combat_defense = 0.06
+				combat_entrenchment = 0.12
+
+				days = 3
+				tooltip = ABILITY_FIELD_GUN_TOOLTIP
+			}
+		}
+	}
+
+	heavy_field_gun_tier_1 = {
+		name = ABILITY_HEAVY_FIELD_GUN
+		desc = ABILITY_HEAVY_FIELD_GUN_DESC
+		
+		sound_effect = command_power_ability_offensive
+		
+		type = army_leader
+		
+		allowed = {
+			FROM = {
+				NOT = {
+					has_country_flag = heavy_field_gun
+				}
+				has_equipment = {
+					heavy_field_gun_equipment > 5
+				}
+			}
+			
+			#Overstaffed Generals loose access to Field Guns
+			set_temp_variable = { max_unit_limit = 11 } #Needs to be actual max + 1
+			#Modifiing the max from various different traits
+			if = { limit = { has_trait = panzer_expert } subtract_from_temp_variable = { var = max_unit_limit value = 2 } }
+			if = { limit = { has_trait = combined_arms_expert } subtract_from_temp_variable = { var = max_unit_limit value = 3 } }
+			if = { limit = { has_trait = invader_ii } subtract_from_temp_variable = { var = max_unit_limit value = 1 } }
+			if = { limit = { has_trait = skirmisher } subtract_from_temp_variable = { var = max_unit_limit value = 1 } }
+			if = { limit = { has_trait = paratrooper } subtract_from_temp_variable = { var = max_unit_limit value = 3 } }
+			if = { limit = { has_trait = camouflage_expert } subtract_from_temp_variable = { var = max_unit_limit value = 1 } }
+			if = { limit = { has_trait = skilled_staffer } add_to_temp_variable = { var = max_unit_limit value = 2 } }
+			if = { limit = { has_trait = skilled_staffer_sov } add_to_temp_variable = { var = max_unit_limit value = 4 } }
+			if = { limit = { has_trait = SOV_hq } add_to_temp_variable = { var = max_unit_limit value = 4 } }
+			num_units < max_unit_limit
+
+			is_leading_army_group = no
+			is_border_war = no
+		}
+		
+		unit_modifiers = {
+			org_loss_when_moving = 0.1
+		}
+		ai_will_do = {
+			factor = -1
+			modifier = {
+				FROM = {
+					command_power > 1.5
+				}
+				check_variable = { num_units_in_combat > 6 }
+				
+				set_temp_variable = { temp = avg_combat_status }
+				check_variable = { temp > 0.10 }
+				check_variable = { ai_random > temp }
+				
+				add = 2
+			}
+		}
+		
+		cost = 0.18
+		duration = 72
+		cooldown = 120
+		
+		one_time_effect = {
+			IF = {
+				LIMIT = {
+					FROM = {
+						is_ai = yes
+					}
+				}
+				FROM = {
+					add_equipment_to_stockpile = {
+    					type = heavy_field_gun_equipment
+    					amount = -3
+					}
+				}
+			}
+			ELSE = {
+				FROM = {
+					add_equipment_to_stockpile = {
+    					type = heavy_field_gun_equipment
+    					amount = -6
+					}
+				}
+			}
+			add_temporary_buff_to_units = {
+				combat_offense = 0.06
+				combat_breakthrough = 0.06
+				combat_defense = 0.06
+				combat_entrenchment = 0.06
+
+				days = 3
+				tooltip = ABILITY_FIELD_GUN_TOOLTIP
+			}
+		}
+	}
+
+	heavy_field_gun_tier_2 = {
+		name = ABILITY_HEAVY_FIELD_GUN
+		desc = ABILITY_HEAVY_FIELD_GUN_DESC
+		
+		sound_effect = command_power_ability_offensive
+		
+		type = army_leader
+		
+		allowed = {
+			FROM = {
+				has_country_flag = {
+					flag = heavy_field_gun
+					value < 2
+				}
+				has_equipment = {
+					heavy_field_gun_equipment > 5
+				}
+			}
+			
+			#Overstaffed Generals loose access to Field Guns
+			set_temp_variable = { max_unit_limit = 11 } #Needs to be actual max + 1
+			#Modifiing the max from various different traits
+			if = { limit = { has_trait = panzer_expert } subtract_from_temp_variable = { var = max_unit_limit value = 2 } }
+			if = { limit = { has_trait = combined_arms_expert } subtract_from_temp_variable = { var = max_unit_limit value = 3 } }
+			if = { limit = { has_trait = invader_ii } subtract_from_temp_variable = { var = max_unit_limit value = 1 } }
+			if = { limit = { has_trait = skirmisher } subtract_from_temp_variable = { var = max_unit_limit value = 1 } }
+			if = { limit = { has_trait = paratrooper } subtract_from_temp_variable = { var = max_unit_limit value = 3 } }
+			if = { limit = { has_trait = camouflage_expert } subtract_from_temp_variable = { var = max_unit_limit value = 1 } }
+			if = { limit = { has_trait = skilled_staffer } add_to_temp_variable = { var = max_unit_limit value = 2 } }
+			if = { limit = { has_trait = skilled_staffer_sov } add_to_temp_variable = { var = max_unit_limit value = 4 } }
+			if = { limit = { has_trait = SOV_hq } add_to_temp_variable = { var = max_unit_limit value = 4 } }
+			num_units < max_unit_limit
+
+			is_leading_army_group = no
+			is_border_war = no
+		}
+		
+		unit_modifiers = {
+			org_loss_when_moving = 0.1
+		}
+		ai_will_do = {
+			factor = -1
+			modifier = {
+				FROM = {
+					command_power > 1.5
+				}
+				check_variable = { num_units_in_combat > 6 }
+				
+				set_temp_variable = { temp = avg_combat_status }
+				check_variable = { temp > 0.10 }
+				check_variable = { ai_random > temp }
+				
+				add = 2
+			}
+		}
+		
+		cost = 0.18
+		duration = 72
+		cooldown = 120
+		
+		one_time_effect = {
+			IF = {
+				LIMIT = {
+					FROM = {
+						is_ai = yes
+					}
+				}
+				FROM = {
+					add_equipment_to_stockpile = {
+    					type = heavy_field_gun_equipment
+    					amount = -3
+					}
+				}
+			}
+			ELSE = {
+				FROM = {
+					add_equipment_to_stockpile = {
+    					type = heavy_field_gun_equipment
+    					amount = -6
+					}
+				}
+			}
+			add_temporary_buff_to_units = {
+				combat_offense = 0.08
+				combat_breakthrough = 0.07
+				combat_defense = 0.08
+				combat_entrenchment = 0.07
+
+				days = 3
+				tooltip = ABILITY_FIELD_GUN_TOOLTIP
+			}
+		}
+	}
+
+	heavy_field_gun_tier_3 = {
+		name = ABILITY_HEAVY_FIELD_GUN
+		desc = ABILITY_HEAVY_FIELD_GUN_DESC
+		
+		sound_effect = command_power_ability_offensive
+		
+		type = army_leader
+		
+		allowed = {
+			FROM = {
+				has_country_flag = {
+					flag = heavy_field_gun
+					value > 1
+				}
+				has_equipment = {
+					heavy_field_gun_equipment > 5
+				}
+			}
+			
+			#Overstaffed Generals loose access to Field Guns
+			set_temp_variable = { max_unit_limit = 11 } #Needs to be actual max + 1
+			#Modifiing the max from various different traits
+			if = { limit = { has_trait = panzer_expert } subtract_from_temp_variable = { var = max_unit_limit value = 2 } }
+			if = { limit = { has_trait = combined_arms_expert } subtract_from_temp_variable = { var = max_unit_limit value = 3 } }
+			if = { limit = { has_trait = invader_ii } subtract_from_temp_variable = { var = max_unit_limit value = 1 } }
+			if = { limit = { has_trait = skirmisher } subtract_from_temp_variable = { var = max_unit_limit value = 1 } }
+			if = { limit = { has_trait = paratrooper } subtract_from_temp_variable = { var = max_unit_limit value = 3 } }
+			if = { limit = { has_trait = camouflage_expert } subtract_from_temp_variable = { var = max_unit_limit value = 1 } }
+			if = { limit = { has_trait = skilled_staffer } add_to_temp_variable = { var = max_unit_limit value = 2 } }
+			if = { limit = { has_trait = skilled_staffer_sov } add_to_temp_variable = { var = max_unit_limit value = 4 } }
+			if = { limit = { has_trait = SOV_hq } add_to_temp_variable = { var = max_unit_limit value = 4 } }
+			num_units < max_unit_limit
+
+			is_leading_army_group = no
+			is_border_war = no
+		}
+		
+		unit_modifiers = {
+			org_loss_when_moving = 0.1
+		}
+		ai_will_do = {
+			factor = -1
+			modifier = {
+				FROM = {
+					command_power > 1.5
+				}
+				check_variable = { num_units_in_combat > 6 }
+				
+				set_temp_variable = { temp = avg_combat_status }
+				check_variable = { temp > 0.10 }
+				check_variable = { ai_random > temp }
+				
+				add = 2
+			}
+		}
+		
+		cost = 0.18
+		duration = 72
+		cooldown = 120
+		
+		one_time_effect = {
+			IF = {
+				LIMIT = {
+					FROM = {
+						is_ai = yes
+					}
+				}
+				FROM = {
+					add_equipment_to_stockpile = {
+    					type = heavy_field_gun_equipment
+    					amount = -3
+					}
+				}
+			}
+			ELSE = {
+				FROM = {
+					add_equipment_to_stockpile = {
+    					type = heavy_field_gun_equipment
+    					amount = -6
+					}
+				}
+			}
+			add_temporary_buff_to_units = {
+				combat_offense = 0.10
+				combat_breakthrough = 0.08
+				combat_defense = 0.10
+				combat_entrenchment = 0.08
+
+				days = 3
+				tooltip = ABILITY_FIELD_GUN_TOOLTIP
+			}
+		}
+	}
+
+	super_heavy_field_gun_tier_1 = {
+		name = ABILITY_SUPER_HEAVY_FIELD_GUN
+		desc = ABILITY_SUPER_HEAVY_FIELD_GUN_DESC
+		
+		sound_effect = command_power_ability_offensive
+		
+		type = army_leader
+		
+		allowed = {
+			FROM = {
+				NOT = {
+					has_country_flag = super_heavy_field_gun
+				}
+				has_equipment = {
+					super_heavy_field_gun_equipment > 5
+				}
+			}
+			
+			#Overstaffed Generals loose access to Field Guns
+			set_temp_variable = { max_unit_limit = 11 } #Needs to be actual max + 1
+			#Modifiing the max from various different traits
+			if = { limit = { has_trait = panzer_expert } subtract_from_temp_variable = { var = max_unit_limit value = 2 } }
+			if = { limit = { has_trait = combined_arms_expert } subtract_from_temp_variable = { var = max_unit_limit value = 3 } }
+			if = { limit = { has_trait = invader_ii } subtract_from_temp_variable = { var = max_unit_limit value = 1 } }
+			if = { limit = { has_trait = skirmisher } subtract_from_temp_variable = { var = max_unit_limit value = 1 } }
+			if = { limit = { has_trait = paratrooper } subtract_from_temp_variable = { var = max_unit_limit value = 3 } }
+			if = { limit = { has_trait = camouflage_expert } subtract_from_temp_variable = { var = max_unit_limit value = 1 } }
+			if = { limit = { has_trait = skilled_staffer } add_to_temp_variable = { var = max_unit_limit value = 2 } }
+			if = { limit = { has_trait = skilled_staffer_sov } add_to_temp_variable = { var = max_unit_limit value = 4 } }
+			if = { limit = { has_trait = SOV_hq } add_to_temp_variable = { var = max_unit_limit value = 4 } }
+			num_units < max_unit_limit
+
+			is_leading_army_group = no
+			is_border_war = no
+		}
+		
+		unit_modifiers = {
+			org_loss_when_moving = 0.1
+			fort = {
+				attack = 0.05
+			}
+			fortification_damage = 0.5
+			fortification_collateral_chance = 0.5
+		}
+		ai_will_do = {
+			factor = -1
+			modifier = {
+				FROM = {
+					command_power > 1.5
+				}
+				check_variable = { num_units_in_combat > 6 }
+				
+				set_temp_variable = { temp = avg_combat_status }
+				check_variable = { temp > 0.10 }
+				check_variable = { ai_random > temp }
+				
+				add = 2
+			}
+		}
+		
+		cost = 0.21
+		duration = 72
+		cooldown = 120
+		
+		one_time_effect = {
+			IF = {
+				LIMIT = {
+					FROM = {
+						is_ai = yes
+					}
+				}
+				FROM = {
+					add_equipment_to_stockpile = {
+    					type = super_heavy_field_gun_equipment
+    					amount = -3
+					}
+				}
+			}
+			ELSE = {
+				FROM = {
+					add_equipment_to_stockpile = {
+    					type = super_heavy_field_gun_equipment
+    					amount = -6
+					}
+				}
+			}
+			add_temporary_buff_to_units = {
+				combat_offense = 0.08
+				combat_breakthrough = 0.06
+				combat_defense = 0.08
+				combat_entrenchment = 0.06
+
+				days = 3
+				tooltip = ABILITY_FIELD_GUN_TOOLTIP
+			}
+		}
+	}
+
+	super_heavy_field_gun_tier_2 = {
+		name = ABILITY_SUPER_HEAVY_FIELD_GUN
+		desc = ABILITY_SUPER_HEAVY_FIELD_GUN_DESC
+		
+		sound_effect = command_power_ability_offensive
+		
+		type = army_leader
+		
+		allowed = {
+			FROM = {
+				has_country_flag = super_heavy_field_gun
+				has_equipment = {
+					super_heavy_field_gun_equipment > 5
+				}
+			}
+			
+			#Overstaffed Generals loose access to Field Guns
+			set_temp_variable = { max_unit_limit = 11 } #Needs to be actual max + 1
+			#Modifiing the max from various different traits
+			if = { limit = { has_trait = panzer_expert } subtract_from_temp_variable = { var = max_unit_limit value = 2 } }
+			if = { limit = { has_trait = combined_arms_expert } subtract_from_temp_variable = { var = max_unit_limit value = 3 } }
+			if = { limit = { has_trait = invader_ii } subtract_from_temp_variable = { var = max_unit_limit value = 1 } }
+			if = { limit = { has_trait = skirmisher } subtract_from_temp_variable = { var = max_unit_limit value = 1 } }
+			if = { limit = { has_trait = paratrooper } subtract_from_temp_variable = { var = max_unit_limit value = 3 } }
+			if = { limit = { has_trait = camouflage_expert } subtract_from_temp_variable = { var = max_unit_limit value = 1 } }
+			if = { limit = { has_trait = skilled_staffer } add_to_temp_variable = { var = max_unit_limit value = 2 } }
+			if = { limit = { has_trait = skilled_staffer_sov } add_to_temp_variable = { var = max_unit_limit value = 4 } }
+			if = { limit = { has_trait = SOV_hq } add_to_temp_variable = { var = max_unit_limit value = 4 } }
+			num_units < max_unit_limit
+
+			is_leading_army_group = no
+			is_border_war = no
+		}
+		
+		unit_modifiers = {
+			org_loss_when_moving = 0.1
+			fort = {
+				attack = 0.10
+			}
+			fortification_damage = 0.75
+			fortification_collateral_chance = 0.75
+		}
+		ai_will_do = {
+			factor = -1
+			modifier = {
+				FROM = {
+					command_power > 1.5
+				}
+				check_variable = { num_units_in_combat > 6 }
+				
+				set_temp_variable = { temp = avg_combat_status }
+				check_variable = { temp > 0.10 }
+				check_variable = { ai_random > temp }
+				
+				add = 2
+			}
+		}
+		
+		cost = 0.21
+		duration = 72
+		cooldown = 120
+		
+		one_time_effect = {
+			IF = {
+				LIMIT = {
+					FROM = {
+						is_ai = yes
+					}
+				}
+				FROM = {
+					add_equipment_to_stockpile = {
+    					type = super_heavy_field_gun_equipment
+    					amount = -3
+					}
+				}
+			}
+			ELSE = {
+				FROM = {
+					add_equipment_to_stockpile = {
+    					type = super_heavy_field_gun_equipment
+    					amount = -6
+					}
+				}
+			}
+			add_temporary_buff_to_units = {
+				combat_offense = 0.10
+				combat_breakthrough = 0.07
+				combat_defense = 0.10
+				combat_entrenchment = 0.07
+
+				days = 3
+				tooltip = ABILITY_FIELD_GUN_TOOLTIP
+			}
+		}
+	}
+
+	siege_gun_tier_1 = {
+		name = ABILITY_SIEGE_GUN
+		desc = ABILITY_SIEGE_GUN_DESC
+		
+		type = army_leader
+		
+		allowed = {
+			FROM = {
+				NOT = {
+					has_country_flag = siege_gun
+				}
+				has_equipment = {
+					siege_gun_equipment > 5
+				}
+			}
+			
+			#Overstaffed Generals loose access to Field Guns
+			set_temp_variable = { max_unit_limit = 11 } #Needs to be actual max + 1
+			#Modifiing the max from various different traits
+			if = { limit = { has_trait = panzer_expert } subtract_from_temp_variable = { var = max_unit_limit value = 2 } }
+			if = { limit = { has_trait = combined_arms_expert } subtract_from_temp_variable = { var = max_unit_limit value = 3 } }
+			if = { limit = { has_trait = invader_ii } subtract_from_temp_variable = { var = max_unit_limit value = 1 } }
+			if = { limit = { has_trait = skirmisher } subtract_from_temp_variable = { var = max_unit_limit value = 1 } }
+			if = { limit = { has_trait = paratrooper } subtract_from_temp_variable = { var = max_unit_limit value = 3 } }
+			if = { limit = { has_trait = camouflage_expert } subtract_from_temp_variable = { var = max_unit_limit value = 1 } }
+			if = { limit = { has_trait = skilled_staffer } add_to_temp_variable = { var = max_unit_limit value = 2 } }
+			if = { limit = { has_trait = skilled_staffer_sov } add_to_temp_variable = { var = max_unit_limit value = 4 } }
+			if = { limit = { has_trait = SOV_hq } add_to_temp_variable = { var = max_unit_limit value = 4 } }
+			num_units < max_unit_limit
+
+			is_leading_army_group = no
+			is_border_war = no
+		}
+		
+		unit_modifiers = {
+			org_loss_when_moving = 0.1
+			fort = {
+				attack = 0.10
+			}
+			fortification_damage = 2.0
+			fortification_collateral_chance = 2.0
+		}
+
+		cost = 0.24
+		duration = 72
+		cooldown = 120
+		
+		
+		ai_will_do = {
+			factor = -1
+			modifier = {
+				FROM = {
+					command_power > 1.5
+				}
+				
+				set_temp_variable = { temp = num_units_offensive_combats }
+				check_variable = { temp > 6 }
+				set_temp_variable = { temp2 = num_units_offensive_combats_against@fort }
+				divide_temp_variable = { temp2 = temp }
+				check_variable = { temp2 > 0.5 }
+				
+				add = 2
+			}
+		}
+
+		one_time_effect = {
+			IF = {
+				LIMIT = {
+					FROM = {
+						is_ai = yes
+					}
+				}
+				FROM = {
+					add_equipment_to_stockpile = {
+    					type = siege_gun_equipment
+    					amount = -3
+					}
+				}
+			}
+			ELSE = {
+				FROM = {
+					add_equipment_to_stockpile = {
+    					type = siege_gun_equipment
+    					amount = -6
+					}
+				}
+			}
+			add_temporary_buff_to_units = {
+				combat_offense = 0.04
+				combat_breakthrough = 0.03
+
+				days = 3
+				tooltip = ABILITY_FIELD_GUN_TOOLTIP
+			}
+		}
+	}
+
+	siege_gun_tier_2 = {
+		name = ABILITY_SIEGE_GUN
+		desc = ABILITY_SIEGE_GUN_DESC
+		
+		type = army_leader
+		
+		allowed = {
+			FROM = {
+				has_country_flag = {
+					flag = siege_gun
+					value < 2
+				}
+				has_equipment = {
+					siege_gun_equipment > 5
+				}
+			}
+			
+			#Overstaffed Generals loose access to Field Guns
+			set_temp_variable = { max_unit_limit = 11 } #Needs to be actual max + 1
+			#Modifiing the max from various different traits
+			if = { limit = { has_trait = panzer_expert } subtract_from_temp_variable = { var = max_unit_limit value = 2 } }
+			if = { limit = { has_trait = combined_arms_expert } subtract_from_temp_variable = { var = max_unit_limit value = 3 } }
+			if = { limit = { has_trait = invader_ii } subtract_from_temp_variable = { var = max_unit_limit value = 1 } }
+			if = { limit = { has_trait = skirmisher } subtract_from_temp_variable = { var = max_unit_limit value = 1 } }
+			if = { limit = { has_trait = paratrooper } subtract_from_temp_variable = { var = max_unit_limit value = 3 } }
+			if = { limit = { has_trait = camouflage_expert } subtract_from_temp_variable = { var = max_unit_limit value = 1 } }
+			if = { limit = { has_trait = skilled_staffer } add_to_temp_variable = { var = max_unit_limit value = 2 } }
+			if = { limit = { has_trait = skilled_staffer_sov } add_to_temp_variable = { var = max_unit_limit value = 4 } }
+			if = { limit = { has_trait = SOV_hq } add_to_temp_variable = { var = max_unit_limit value = 4 } }
+			num_units < max_unit_limit
+
+			is_leading_army_group = no
+			is_border_war = no
+		}
+		
+		unit_modifiers = {
+			org_loss_when_moving = 0.1
+			fort = {
+				attack = 0.15
+			}
+			fortification_damage = 2.5
+			fortification_collateral_chance = 2.5
+		}
+
+		cost = 0.24
+		duration = 72
+		cooldown = 120
+		
+		
+		ai_will_do = {
+			factor = -1
+			modifier = {
+				FROM = {
+					command_power > 1.5
+				}
+				
+				set_temp_variable = { temp = num_units_offensive_combats }
+				check_variable = { temp > 6 }
+				set_temp_variable = { temp2 = num_units_offensive_combats_against@fort }
+				divide_temp_variable = { temp2 = temp }
+				check_variable = { temp2 > 0.5 }
+				
+				add = 2
+			}
+		}
+
+		one_time_effect = {
+			IF = {
+				LIMIT = {
+					FROM = {
+						is_ai = yes
+					}
+				}
+				FROM = {
+					add_equipment_to_stockpile = {
+    					type = siege_gun_equipment
+    					amount = -3
+					}
+				}
+			}
+			ELSE = {
+				FROM = {
+					add_equipment_to_stockpile = {
+    					type = siege_gun_equipment
+    					amount = -6
+					}
+				}
+			}
+			add_temporary_buff_to_units = {
+				combat_offense = 0.04
+				combat_breakthrough = 0.03
+
+				days = 3
+				tooltip = ABILITY_FIELD_GUN_TOOLTIP
+			}
+		}
+	}
+
+	siege_gun_tier_3 = {
+		name = ABILITY_SIEGE_GUN
+		desc = ABILITY_SIEGE_GUN_DESC
+		
+		type = army_leader
+		
+		allowed = {
+			FROM = {
+				has_country_flag = {
+					flag = siege_gun
+					value > 1
+				}
+				has_equipment = {
+					siege_gun_equipment > 5
+				}
+			}
+			
+			#Overstaffed Generals loose access to Field Guns
+			set_temp_variable = { max_unit_limit = 11 } #Needs to be actual max + 1
+			#Modifiing the max from various different traits
+			if = { limit = { has_trait = panzer_expert } subtract_from_temp_variable = { var = max_unit_limit value = 2 } }
+			if = { limit = { has_trait = combined_arms_expert } subtract_from_temp_variable = { var = max_unit_limit value = 3 } }
+			if = { limit = { has_trait = invader_ii } subtract_from_temp_variable = { var = max_unit_limit value = 1 } }
+			if = { limit = { has_trait = skirmisher } subtract_from_temp_variable = { var = max_unit_limit value = 1 } }
+			if = { limit = { has_trait = paratrooper } subtract_from_temp_variable = { var = max_unit_limit value = 3 } }
+			if = { limit = { has_trait = camouflage_expert } subtract_from_temp_variable = { var = max_unit_limit value = 1 } }
+			if = { limit = { has_trait = skilled_staffer } add_to_temp_variable = { var = max_unit_limit value = 2 } }
+			if = { limit = { has_trait = skilled_staffer_sov } add_to_temp_variable = { var = max_unit_limit value = 4 } }
+			if = { limit = { has_trait = SOV_hq } add_to_temp_variable = { var = max_unit_limit value = 4 } }
+			num_units < max_unit_limit
+
+			is_leading_army_group = no
+			is_border_war = no
+		}
+		
+		unit_modifiers = {
+			org_loss_when_moving = 0.1
+			fort = {
+				attack = 0.20
+			}
+			fortification_damage = 3.0
+			fortification_collateral_chance = 3.0
+		}
+
+		cost = 0.24
+		duration = 72
+		cooldown = 120
+		
+		
+		ai_will_do = {
+			factor = -1
+			modifier = {
+				FROM = {
+					command_power > 1.5
+				}
+				
+				set_temp_variable = { temp = num_units_offensive_combats }
+				check_variable = { temp > 6 }
+				set_temp_variable = { temp2 = num_units_offensive_combats_against@fort }
+				divide_temp_variable = { temp2 = temp }
+				check_variable = { temp2 > 0.5 }
+				
+				add = 2
+			}
+		}
+
+		one_time_effect = {
+			IF = {
+				LIMIT = {
+					FROM = {
+						is_ai = yes
+					}
+				}
+				FROM = {
+					add_equipment_to_stockpile = {
+    					type = siege_gun_equipment
+    					amount = -3
+					}
+				}
+			}
+			ELSE = {
+				FROM = {
+					add_equipment_to_stockpile = {
+    					type = siege_gun_equipment
+    					amount = -6
+					}
+				}
+			}
+			add_temporary_buff_to_units = {
+				combat_offense = 0.04
+				combat_breakthrough = 0.03
+
+				days = 3
+				tooltip = ABILITY_FIELD_GUN_TOOLTIP
+			}
+		}
+	}
+}
