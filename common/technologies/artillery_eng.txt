@@ -1293,6 +1293,10 @@ technologies = {
 	#BL 60-pounder
 	eng_light_field_gun_1 = {
 
+		enable_equipments = {
+			light_field_gun_equipment_1
+		}
+
 		path = {
 			leads_to_tech = eng_light_field_gun_2
 			research_cost_coeff = 1
@@ -1337,6 +1341,10 @@ technologies = {
 	#BL 4.5-inch
 	eng_light_field_gun_2 = {
 
+		enable_equipments = {
+			light_field_gun_equipment_2
+		}
+
 		research_cost = 1.5
 
 		start_year = 1938
@@ -1353,6 +1361,15 @@ technologies = {
 			artillery
 		}
 		
+		on_research_complete = {
+			custom_effect_tooltip = eff_eng_light_field_gun_2_tt
+			custom_effect_tooltip = upgrade_light_field_gun_1_level_tt
+			set_country_flag = {
+				flag = light_field_gun
+				value = 1
+			}
+		}
+
 		ai_will_do = {
 			factor = 3
 			
@@ -1380,8 +1397,17 @@ technologies = {
 	#BL 6-inch
 	eng_medium_field_gun_1 = {
 
+		enable_equipments = {
+			medium_field_gun_equipment_1
+		}
+
 		path = {
 			leads_to_tech = eng_light_field_gun_1
+			research_cost_coeff = 1
+		}
+
+		path = {
+			leads_to_tech = eng_medium_field_gun_2
 			research_cost_coeff = 1
 		}
 
@@ -1426,12 +1452,139 @@ technologies = {
 		}
 	}
 
+	#US 155mm M1 Long Tom
+	eng_medium_field_gun_2 = {
+
+		enable_equipments = {
+			medium_field_gun_equipment_2
+		}
+		
+		allow = {
+			is_in_faction_with = USA
+			USA = {
+				has_tech = usa_medium_field_gun_2
+			}
+		}
+
+		path = {
+			leads_to_tech = eng_medium_field_gun_3
+			research_cost_coeff = 1
+		}
+
+		research_cost = 1.5
+
+		start_year = 1942
+		
+		folder = {
+			name = eng_if_artillery_folder
+			position = { x = @MFG y = @1942 }
+		}
+		
+		special_project_specialization = { specialization_land }
+		
+		categories = {
+			mio_cat_all_artillery_equipment
+			artillery
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = eff_eng_medium_field_gun_2_tt
+			custom_effect_tooltip = upgrade_medium_field_gun_1_level_tt
+			set_country_flag = {
+				flag = medium_field_gun
+				value = 1
+			}
+		}
+
+		ai_will_do = {
+			factor = 3
+			
+			modifier = {
+				factor = 30
+				date > "1942.1.1"
+			}
+			
+			modifier = {
+				factor = 30
+				date > "1943.1.1"
+			}
+			
+			modifier = {
+				factor = 30
+				date > "1944.1.1"
+			}
+		}
+	}
+
+	#US 155mm M2 Long Tom
+	eng_medium_field_gun_3 = {
+
+		enable_equipments = {
+			medium_field_gun_equipment_3
+		}
+		
+		allow = {
+			is_in_faction_with = USA
+			USA = {
+				has_tech = usa_medium_field_gun_3
+			}
+		}
+
+		research_cost = 1.5
+
+		start_year = 1945
+		
+		folder = {
+			name = eng_if_artillery_folder
+			position = { x = @MFG y = @1945 }
+		}
+		
+		special_project_specialization = { specialization_land }
+		
+		categories = {
+			mio_cat_all_artillery_equipment
+			artillery
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = eff_eng_medium_field_gun_3_tt
+			custom_effect_tooltip = upgrade_medium_field_gun_1_level_tt
+			set_country_flag = {
+				flag = medium_field_gun
+				value = 1
+			}
+		}
+
+		ai_will_do = {
+			factor = 3
+			
+			modifier = {
+				factor = 30
+				date > "1945.1.1"
+			}
+			
+			modifier = {
+				factor = 30
+				date > "1946.1.1"
+			}
+			
+			modifier = {
+				factor = 30
+				date > "1947.1.1"
+			}
+		}
+	}
+
 
 
 	###Heavy Field Guns###
 
 	#BL 8-inch
 	eng_heavy_field_gun_1 = {
+
+		enable_equipments = {
+			heavy_field_gun_equipment_1
+		}
 
 		path = {
 			leads_to_tech = eng_heavy_field_gun_2
@@ -1482,6 +1635,10 @@ technologies = {
 	#BL 7.2-inch MkI
 	eng_heavy_field_gun_2 = {
 
+		enable_equipments = {
+			heavy_field_gun_equipment_2
+		}
+
 		path = {
 			leads_to_tech = eng_heavy_field_gun_3
 			research_cost_coeff = 1
@@ -1503,6 +1660,15 @@ technologies = {
 			artillery
 		}
 		
+		on_research_complete = {
+			custom_effect_tooltip = eff_eng_heavy_field_gun_2_tt
+			custom_effect_tooltip = upgrade_heavy_field_gun_1_level_tt
+			set_country_flag = {
+				flag = heavy_field_gun
+				value = 1
+			}
+		}
+
 		ai_will_do = {
 			factor = 3
 			
@@ -1526,6 +1692,10 @@ technologies = {
 	#BL 7.2-inch MkV
 	eng_heavy_field_gun_3 = {
 
+		enable_equipments = {
+			heavy_field_gun_equipment_3
+		}
+
 		research_cost = 1.5
 
 		start_year = 1944
@@ -1542,6 +1712,15 @@ technologies = {
 			artillery
 		}
 		
+		on_research_complete = {
+			custom_effect_tooltip = eff_eng_heavy_field_gun_3_tt
+			custom_effect_tooltip = upgrade_heavy_field_gun_1_level_tt
+			set_country_flag = {
+				flag = heavy_field_gun
+				value = 2
+			}
+		}
+
 		ai_will_do = {
 			factor = 3
 			
@@ -1568,6 +1747,15 @@ technologies = {
 
 	#BL 9.2-inch MkII
 	eng_super_heavy_field_gun_1 = {
+
+		enable_equipments = {
+			super_heavy_field_gun_equipment_1
+		}
+
+		path = {
+			leads_to_tech = eng_super_heavy_field_gun_2
+			research_cost_coeff = 1
+		}
 
 		research_cost = 1.5
 
@@ -1601,6 +1789,62 @@ technologies = {
 			modifier = {
 				factor = 30
 				date > "1938.1.1"
+			}
+		}
+	}
+
+	#US 240mm M1 Black Dragon
+	eng_super_heavy_field_gun_2 = {
+
+		enable_equipments = {
+			super_heavy_field_gun_equipment_2
+		}
+
+		allow = {
+			is_in_faction_with = USA
+			USA = {
+				has_tech = usa_super_heavy_field_gun_1
+			}
+		}
+
+		research_cost = 1.5
+
+		start_year = 1943
+		
+		folder = {
+			name = eng_if_artillery_folder
+			position = { x = @SHFG y = @1943 }
+		}
+		
+		special_project_specialization = { specialization_land }
+		
+		categories = {
+			mio_cat_all_artillery_equipment
+			artillery
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = eff_eng_super_heavy_field_gun_2_tt
+			custom_effect_tooltip = upgrade_super_heavy_field_gun_1_level_tt
+			set_country_flag = super_heavy_field_gun
+		}
+
+		ai_will_do = {
+			factor = 3
+			
+			modifier = {
+				factor = 30
+				date > "1943.1.1"
+			}
+			
+			modifier = {
+				factor = 30
+				date > "1944.1.1"
+			}
+			
+			modifier = {
+				factor = 30
+				date > "1945.1.1"
 			}
 		}
 	}

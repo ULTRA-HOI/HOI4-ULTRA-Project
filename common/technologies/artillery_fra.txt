@@ -1143,6 +1143,10 @@ technologies = {
 	#Canon de 105 L mle 1913
 	fra_light_field_gun_1 = {
 
+		enable_equipments = {
+			light_field_gun_equipment_1
+		}
+
 		path = {
 			leads_to_tech = fra_light_field_gun_2
 			research_cost_coeff = 1
@@ -1187,6 +1191,10 @@ technologies = {
 	#Canon de 105 L mle 1936
 	fra_light_field_gun_2 = {
 
+		enable_equipments = {
+			light_field_gun_equipment_2
+		}
+
 		research_cost = 1.5
 
 		start_year = 1936
@@ -1203,6 +1211,15 @@ technologies = {
 			artillery
 		}
 		
+		on_research_complete = {
+			custom_effect_tooltip = eff_fra_light_field_gun_2_tt
+			custom_effect_tooltip = upgrade_light_field_gun_1_level_tt
+			set_country_flag = {
+				flag = light_field_gun
+				value = 1
+			}
+		}
+
 		ai_will_do = {
 			factor = 3
 			
@@ -1229,6 +1246,10 @@ technologies = {
 
 	#Canon de 155 GPF
 	fra_medium_field_gun_1 = {
+
+		enable_equipments = {
+			medium_field_gun_equipment_1
+		}
 
 		path = {
 			leads_to_tech = fra_light_field_gun_1
@@ -1284,6 +1305,10 @@ technologies = {
 	#Canon de 155 GPF-T
 	fra_medium_field_gun_2 = {
 
+		enable_equipments = {
+			medium_field_gun_equipment_2
+		}
+
 		research_cost = 1.5
 
 		start_year = 1939
@@ -1300,6 +1325,15 @@ technologies = {
 			artillery
 		}
 		
+		on_research_complete = {
+			custom_effect_tooltip = eff_fra_medium_field_gun_2_tt
+			custom_effect_tooltip = upgrade_medium_field_gun_1_level_tt
+			set_country_flag = {
+				flag = medium_field_gun
+				value = 1
+			}
+		}
+
 		ai_will_do = {
 			factor = 3
 			
@@ -1326,6 +1360,10 @@ technologies = {
 
 	#Canon de 220 L mle 1917
 	fra_heavy_field_gun_1 = {
+
+		enable_equipments = {
+			heavy_field_gun_equipment_1
+		}
 
 		path = {
 			leads_to_tech = fra_super_heavy_field_gun_1
@@ -1375,6 +1413,15 @@ technologies = {
 	#Canon de 240 L mle 1884
 	fra_super_heavy_field_gun_1 = {
 
+		enable_equipments = {
+			super_heavy_field_gun_equipment_1
+		}
+
+		path = {
+			leads_to_tech = fra_siege_gun_1
+			research_cost_coeff = 1
+		}
+
 		research_cost = 1.5
 
 		start_year = 1918
@@ -1414,4 +1461,47 @@ technologies = {
 
 
 	###Siege Guns###
+
+	#Mortier de 280 mle 1914
+	fra_siege_gun_1 = {
+
+		enable_equipments = {
+			siege_gun_equipment_1
+		}
+
+		research_cost = 1.5
+
+		start_year = 1918
+		
+		folder = {
+			name = fra_if_artillery_folder
+			position = { x = @SG y = @1918 }
+		}
+		
+		special_project_specialization = { specialization_land }
+		
+		categories = {
+			mio_cat_all_artillery_equipment
+			artillery
+		}
+		
+		ai_will_do = {
+			factor = 3
+			
+			modifier = {
+				factor = 30
+				date > "1936.1.1"
+			}
+			
+			modifier = {
+				factor = 30
+				date > "1937.1.1"
+			}
+			
+			modifier = {
+				factor = 30
+				date > "1938.1.1"
+			}
+		}
+	}
 }

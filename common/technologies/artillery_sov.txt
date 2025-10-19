@@ -1362,6 +1362,10 @@ technologies = {
 	#122mm M1931
 	sov_light_field_gun_1 = {
 
+		enable_equipments = {
+			light_field_gun_equipment_1
+		}
+		
 		path = {
 			leads_to_tech = sov_light_field_gun_2
 			research_cost_coeff = 1
@@ -1406,6 +1410,10 @@ technologies = {
 	#122mm A-19
 	sov_light_field_gun_2 = {
 
+		enable_equipments = {
+			light_field_gun_equipment_2
+		}
+
 		path = {
 			leads_to_tech = sov_light_field_gun_3
 			research_cost_coeff = 1
@@ -1427,6 +1435,15 @@ technologies = {
 			artillery
 		}
 		
+		on_research_complete = {
+			custom_effect_tooltip = eff_sov_light_field_gun_2_tt
+			custom_effect_tooltip = upgrade_light_field_gun_1_level_tt
+			set_country_flag = {
+				flag = light_field_gun
+				value = 1
+			}
+		}
+
 		ai_will_do = {
 			factor = 3
 			
@@ -1450,6 +1467,10 @@ technologies = {
 	#122mm D-74
 	sov_light_field_gun_3 = {
 
+		enable_equipments = {
+			light_field_gun_equipment_3
+		}
+
 		research_cost = 1.5
 
 		start_year = 1946
@@ -1466,6 +1487,15 @@ technologies = {
 			artillery
 		}
 		
+		on_research_complete = {
+			custom_effect_tooltip = eff_sov_light_field_gun_3_tt
+			custom_effect_tooltip = upgrade_light_field_gun_1_level_tt
+			set_country_flag = {
+				flag = light_field_gun
+				value = 2
+			}
+		}
+
 		ai_will_do = {
 			factor = 3
 			
@@ -1492,6 +1522,10 @@ technologies = {
 
 	#152mm M1910/34
 	sov_medium_field_gun_1 = {
+
+		enable_equipments = {
+			medium_field_gun_equipment_1
+		}
 
 		path = {
 			leads_to_tech = sov_light_field_gun_1
@@ -1547,6 +1581,10 @@ technologies = {
 	#152mm ML-20
 	sov_medium_field_gun_2 = {
 
+		enable_equipments = {
+			medium_field_gun_equipment_2
+		}
+
 		path = {
 			leads_to_tech = sov_medium_field_gun_3
 			research_cost_coeff = 1
@@ -1568,6 +1606,15 @@ technologies = {
 			artillery
 		}
 		
+		on_research_complete = {
+			custom_effect_tooltip = eff_sov_medium_field_gun_2_tt
+			custom_effect_tooltip = upgrade_medium_field_gun_1_level_tt
+			set_country_flag = {
+				flag = medium_field_gun
+				value = 1
+			}
+		}
+
 		ai_will_do = {
 			factor = 3
 			
@@ -1591,6 +1638,10 @@ technologies = {
 	#152mm D-20
 	sov_medium_field_gun_3 = {
 
+		enable_equipments = {
+			medium_field_gun_equipment_3
+		}
+
 		research_cost = 1.5
 
 		start_year = 1946
@@ -1607,6 +1658,15 @@ technologies = {
 			artillery
 		}
 		
+		on_research_complete = {
+			custom_effect_tooltip = eff_sov_medium_field_gun_3_tt
+			custom_effect_tooltip = upgrade_medium_field_gun_1_level_tt
+			set_country_flag = {
+				flag = medium_field_gun
+				value = 2
+			}
+		}
+
 		ai_will_do = {
 			factor = 3
 			
@@ -1634,13 +1694,17 @@ technologies = {
 	#203mm B-4
 	sov_heavy_field_gun_1 = {
 
+		enable_equipments = {
+			heavy_field_gun_equipment_1
+		}
+
 		path = {
 			leads_to_tech = sov_heavy_field_gun_2
 			research_cost_coeff = 1
 		}
 
 		path = {
-			leads_to_tech = sov_super_heavy_field_gun_1
+			leads_to_tech = sov_siege_gun_1
 			research_cost_coeff = 1
 		}
 
@@ -1683,6 +1747,10 @@ technologies = {
 	#203mm B-4M
 	sov_heavy_field_gun_2 = {
 
+		enable_equipments = {
+			heavy_field_gun_equipment_3
+		}
+
 		research_cost = 1.5
 
 		start_year = 1947
@@ -1699,6 +1767,15 @@ technologies = {
 			artillery
 		}
 		
+		on_research_complete = {
+			custom_effect_tooltip = eff_sov_heavy_field_gun_2_tt
+			custom_effect_tooltip = upgrade_heavy_field_gun_2_level_tt
+			set_country_flag = {
+				flag = heavy_field_gun
+				value = 2
+			}
+		}
+
 		ai_will_do = {
 			factor = 3
 			
@@ -1723,16 +1800,29 @@ technologies = {
 
 	###Super Heavy Field Guns###
 
-	#280mm Br-5
-	sov_super_heavy_field_gun_1 = {
+
+
+	###Siege Guns###
+
+	#280mm M1912
+	sov_siege_gun_1 = {
+
+		enable_equipments = {
+			siege_gun_equipment_1
+		}
+
+		path = {
+			leads_to_tech = sov_siege_gun_2
+			research_cost_coeff = 1
+		}
 
 		research_cost = 1.5
 
-		start_year = 1940
+		start_year = 1934
 		
 		folder = {
 			name = sov_if_artillery_folder
-			position = { x = @SHFG y = @1940 }
+			position = { x = @SG y = @1934 }
 		}
 		
 		special_project_specialization = { specialization_land }
@@ -1742,6 +1832,63 @@ technologies = {
 			artillery
 		}
 		
+		ai_will_do = {
+			factor = 3
+			
+			modifier = {
+				factor = 30
+				date > "1936.1.1"
+			}
+			
+			modifier = {
+				factor = 30
+				date > "1937.1.1"
+			}
+			
+			modifier = {
+				factor = 30
+				date > "1938.1.1"
+			}
+		}
+	}
+
+	#280mm Br-5
+	sov_siege_gun_2 = {
+
+		enable_equipments = {
+			siege_gun_equipment_2
+		}
+
+		path = {
+			leads_to_tech = sov_siege_gun_3
+			research_cost_coeff = 1
+		}
+
+		research_cost = 1.5
+
+		start_year = 1940
+		
+		folder = {
+			name = sov_if_artillery_folder
+			position = { x = @SG y = @1940 }
+		}
+		
+		special_project_specialization = { specialization_land }
+		
+		categories = {
+			mio_cat_all_artillery_equipment
+			artillery
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = eff_sov_siege_gun_2_tt
+			custom_effect_tooltip = upgrade_siege_gun_1_level_tt
+			set_country_flag = {
+				flag = siege_gun
+				value = 1
+			}
+		}
+
 		ai_will_do = {
 			factor = 3
 			
@@ -1762,7 +1909,55 @@ technologies = {
 		}
 	}
 
+	#280mm Br-5M
+	sov_siege_gun_3 = {
 
+		enable_equipments = {
+			siege_gun_equipment_3
+		}
 
-	###Siege Guns###
+		research_cost = 1.5
+
+		start_year = 1947
+		
+		folder = {
+			name = sov_if_artillery_folder
+			position = { x = @SG y = @1947 }
+		}
+		
+		special_project_specialization = { specialization_land }
+		
+		categories = {
+			mio_cat_all_artillery_equipment
+			artillery
+		}
+		
+		on_research_complete = {
+			custom_effect_tooltip = eff_sov_siege_gun_3_tt
+			custom_effect_tooltip = upgrade_siege_gun_1_level_tt
+			set_country_flag = {
+				flag = siege_gun
+				value = 2
+			}
+		}
+
+		ai_will_do = {
+			factor = 3
+			
+			modifier = {
+				factor = 30
+				date > "1947.1.1"
+			}
+			
+			modifier = {
+				factor = 30
+				date > "1948.1.1"
+			}
+			
+			modifier = {
+				factor = 30
+				date > "1949.1.1"
+			}
+		}
+	}
 }
