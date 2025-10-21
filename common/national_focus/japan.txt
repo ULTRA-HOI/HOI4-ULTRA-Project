@@ -463,24 +463,19 @@
 
 		available = {
 			OR = {
+				has_war_with = USA
+				has_war_with = ENG
+			}
+			OR = {
 				CHI = {
 					surrender_progress > 0.3
 				}
 				AND = {
-					NOT = {  has_war_with = CHI}
+					NOT = { has_war_with = CHI }
 					controls_state = 608
 					controls_state = 613
 					controls_state = 595
 				}
-				AND = {
-					controls_state = 608
-					controls_state = 613
-					controls_state = 595
-				}
-			}
-			OR = {
-				has_war_with = USA
-				has_war_with = ENG
 			}
 			IF = {
 				limit = {
@@ -494,8 +489,8 @@
 			OR = {
 				#NOT = { JAP_has_idea_JAP_intervene_in_china = yes }
 				CHI = { has_capitulated = yes }
-				CHI = {is_subject_of = JAP}
-				CHI = {exists = no}
+				CHI = { is_subject_of = JAP }
+				CHI = { exists = no }
 			}
 		}
 
@@ -505,19 +500,19 @@
 
 		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
 		completion_reward = {
-			JAP_intervene_in_china_remove = yes
-			add_named_threat = { threat = 5 name = JAP_secure_china }		
-			USA = { add_war_support = 0.05 }	
+			#JAP_intervene_in_china_remove = yes
+			#add_named_threat = { threat = 5 name = JAP_secure_china }		
+			#USA = { add_war_support = 0.05 }	
 			unlock_decision_tooltip = JAP_ichi_go
 			IF = {
 				limit = {
-					NOT = {  has_war_with = CHI}
+					NOT = {  has_war_with = CHI }
 				}
 				declare_war_on = { target = CHI type = annex_everything }
 			}
 			IF = {
 				limit = {
-					NOT = {  has_war_with = PRC}
+					NOT = {  has_war_with = PRC }
 				}
 				declare_war_on = { target = PRC type = annex_everything }
 			}
@@ -1243,6 +1238,7 @@
 				original_tag = GER
 				has_government = fascism
 				NOT = { has_war_with = ROOT }
+				has_war = yes
 			}
 			any_country = {
 				original_tag = ITA
@@ -1526,8 +1522,10 @@
 		available = {
 			OR = {
 				threat > 0.2
-				has_war = yes
-				has_war_support > 0.9
+				AND = {
+					has_war = yes
+					has_war_support > 0.9
+				}
 			}
 		}
 
