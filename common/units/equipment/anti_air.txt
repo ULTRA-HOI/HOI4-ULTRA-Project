@@ -96,6 +96,30 @@ equipments = {
 	#### Germany #######
 	####################
 
+	#Swiss Equipment thrown in between german stuff to allow for loading order to work for parent trees
+	#20mm Oerlikon
+	swi_anti_air_equipment_1 = { 
+		year = 1934
+
+		archetype = anti_air_equipment
+		priority = 7
+		visual_level = 1
+
+		reliability = 0.800
+		max_strength = 2.100
+
+		defense = 0.959
+		breakthrough = 0.246
+
+		soft_attack = 0.874
+		hard_attack = 0.919
+		ap_attack = 3.8
+		air_attack = 14.666
+
+		supply_consumption = 0.587
+		build_cost_ic = 0.331
+	}
+
 	#3,7cm Flak 18
 	ger_anti_air_equipment_0 = { 
 		year = 1934
@@ -103,6 +127,7 @@ equipments = {
 		archetype = anti_air_equipment
 		priority = 3
 		visual_level = 0
+		parent = swi_anti_air_equipment_1
 
 		reliability = 0.700
 		max_strength = 1.890
@@ -152,40 +177,6 @@ equipments = {
 		build_cost_ic = 0.375
 	}
 
-	#Swiss Equipment thrown in between german stuff to allow for loading order to work for parent trees
-	#20mm Oerlikon
-	swi_anti_air_equipment_1 = { 
-		year = 1934
-
-		archetype = anti_air_equipment
-		priority = 7
-		visual_level = 1
-		parent = ger_ghost_anti_air_equipment_0
-
-		reliability = 0.800
-		max_strength = 2.100
-
-		defense = 0.959
-		breakthrough = 0.246
-
-		soft_attack = 0.874
-		hard_attack = 0.919
-		ap_attack = 3.8
-		air_attack = 14.666
-
-		supply_consumption = 0.587
-		build_cost_ic = 0.331
-	}
-
-	swi_ghost_anti_air_equipment_1 = {
-		year = 1934
-
-		archetype = anti_air_equipment
-		priority = 0
-		parent = swi_anti_air_equipment_1
-		visual_level = 0
-	}
-
 	#3,7cm Flak 36
 	ger_anti_air_equipment_2 = { 
 		year = 1936
@@ -193,7 +184,11 @@ equipments = {
 		archetype = anti_air_equipment
 		priority = 12
 		visual_level = 1
-		parent = swi_ghost_anti_air_equipment_1
+		parent = ger_anti_air_equipment_0
+
+		can_convert_from = {
+			ger_anti_air_equipment_0
+		}
 
 		reliability = 0.750
 		max_strength = 1.995
