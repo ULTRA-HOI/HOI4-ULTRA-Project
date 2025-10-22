@@ -44,7 +44,7 @@ focus_tree = {
 			add_command_power = 50
  			add_timed_idea = {
  				idea = ETH_war_support_idea
- 				days = 100
+ 				days = 70
  			}
  		}
  	}
@@ -83,20 +83,19 @@ focus_tree = {
  		search_filters = {}
 
  		completion_reward = {
- 			army_experience = 50
- 			add_war_support = 0.1
+			add_command_power = 50
  			271 = {
  				custom_effect_tooltip = ETH_the_defense_of_addis_ababa_tt_1
 	 			add_building_construction = {
 					type = bunker
-					level = 2
+					level = 1
 					instant_build = yes
 					province = 5010
 				}
 				custom_effect_tooltip = ETH_the_defense_of_addis_ababa_tt_2
 				add_building_construction = {
 					type = bunker
-					level = 2
+					level = 1
 					instant_build = yes
 					province = 8036
 				}
@@ -131,8 +130,7 @@ focus_tree = {
  		search_filters = {}
 
  		completion_reward = {
- 			army_experience = 50
- 			add_war_support = 0.1
+			add_command_power = 50
  			1065 = {
  				add_building_construction = {
 					type = infrastructure
@@ -148,7 +146,7 @@ focus_tree = {
 	 				custom_effect_tooltip = ETH_the_hindenburg_wall_tt_1
 	 				add_building_construction = {
 						type = bunker
-						level = 2
+						level = 1
 						instant_build = yes
 						province = 7980
 					}
@@ -163,7 +161,7 @@ focus_tree = {
 	 				custom_effect_tooltip = ETH_the_hindenburg_wall_tt_2
 	 				add_building_construction = {
 						type = bunker
-						level = 2
+						level = 1
 						instant_build = yes
 						province = 13249
 					}
@@ -276,67 +274,24 @@ focus_tree = {
  	}
 
  	focus = {
- 		id = ETH_a_last_stand
- 		icon = GFX_goal_generic_military_sphere
- 		prerequisite = { focus = ETH_the_defense_of_addis_ababa }
- 		prerequisite = { focus = ETH_the_hindenburg_wall }
- 		prerequisite = { focus = ETH_mercenaries }
-
- 		x = -1
- 		y = 3
- 		relative_position_id = ETH_the_second_italo-ethiopian_war
- 		cost = 3
- 		available = {
- 			1068 = { is_controlled_by_ROOT_or_ally = yes }
- 			surrender_progress > 0.3
- 		}
-
- 		search_filters = {}
-
- 		completion_reward = {
-			add_stability = 0.1
- 			# Move Capital to Gambella
- 			set_capital = {
-				state = 1068
-				remember_old_capital = no
-			}
-			add_victory_points = {
-				province = 13244
-				value = 3
-			}
- 		}
- 	}
- 	focus = {
  		id = ETH_the_lessons_of_war
  		icon = GFX_focus_generic_military_mission
  		prerequisite = { focus = ETH_the_defense_of_addis_ababa }
  		prerequisite = { focus = ETH_the_hindenburg_wall }
  		prerequisite = { focus = ETH_mercenaries }
 
- 		x = 1
+ 		x = 0
  		y = 3
  		relative_position_id = ETH_the_second_italo-ethiopian_war
  		cost = 3
  		available = {
  			has_global_flag = second_italo_ethiopian_war_flag
  			# To make historical ai cancel if things are going south
- 			IF = {
- 				limit = {
- 					is_ai = yes 
- 					is_historical_focus_on = yes
- 					surrender_progress > 0.5
- 				}
- 				hidden_trigger = {
- 					always = no 
- 				}
- 			}
  		}
 
  		search_filters = {FOCUS_FILTER_ARMY_XP}
 
  		completion_reward = {
- 			army_experience = 150
- 			add_war_support = 0.1
 			swap_ideas = {
 				remove_idea = ETH_the_heroes_of_adwa_idea 
 				add_idea = ETH_the_heroes_of_adwa_upgraded_idea 
