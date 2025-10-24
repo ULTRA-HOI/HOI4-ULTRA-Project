@@ -4582,7 +4582,7 @@ focus_tree = {
 					is_ai = no
 				}
 				POL = { has_capitulated = yes }
-				date > 1940.6.1
+				date > 1940.4.1
 			}
 			has_government = fascism
 		}
@@ -6687,7 +6687,7 @@ focus_tree = {
 		id = GER_align_romania
 		icon = GFX_focus_invite_romania
 		prerequisite = { focus = GER_improve_national_spirit }
-		x = 0
+		x = 4
 		y = 1
 		relative_position_id = GER_improve_national_spirit
 		cost = 5
@@ -6798,6 +6798,88 @@ focus_tree = {
 				target = SWI
 				expire = 0
 			}
+		}
+	}
+
+
+	focus = {
+		id = GER_operation_sea_lion
+		icon = GFX_focus_generic_naval_invasion
+		prerequisite = { focus = GER_improve_national_spirit }
+
+		x = 0
+		y = 1
+		relative_position_id = GER_improve_national_spirit
+		cost = 4
+		ai_will_do = {
+			factor = 1000
+			modifier = {
+				factor = 0
+				has_war_with = SOV
+			}
+		}
+
+		available = {
+			has_war_with = ENG
+		}
+
+		bypass = {
+			ENG = {
+				OR = {
+					is_in_faction_with = ROOT
+					is_subject_of = ROOT
+					exists = no
+				}
+			}
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+			add_timed_idea = {
+				idea = GER_operation_sea_lion_ns
+				days = 180
+			}
+		}
+	}
+
+	focus = {
+		id = GER_operation_green
+		icon = GFX_goal_generic_occupy_states_ongoing_war
+		prerequisite = { focus = GER_operation_sea_lion }
+
+		x = 0
+		y = 1
+		relative_position_id = GER_operation_sea_lion
+		cost = 4
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+		}
+
+		will_lead_to_war_with = IRE
+
+		available = {
+			is_subject = no
+				IRE = {
+					exists = yes
+					NOT = { has_war_with = ROOT }
+					NOT = { is_ally_with = ROOT }
+				}
+				has_war_with = ENG
+		}
+
+		search_filters = { FOCUS_FILTER_ANNEXATION }
+
+		completion_reward = {
+				create_wargoal = {
+					type = puppet_wargoal_focus
+					target = IRE
+					expire = 0
+				}
 		}
 	}
 
@@ -8213,5 +8295,6 @@ focus_tree = {
 				}
 			}
 		}
-	}
+	}	
+
 }

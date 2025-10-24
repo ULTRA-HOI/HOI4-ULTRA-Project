@@ -8153,6 +8153,35 @@ focus_tree = {
 		
 		available = {
 			NOT = { has_government = democratic }
+			IF = {
+				limit = {
+					is_AI = yes
+				}
+				OR = {
+					has_war_with = ENG
+					has_war_with = USA
+					AND = {
+						SOV = {
+							has_war = no
+						}
+						GER = {
+							has_war = no
+						}
+						any_country = {
+							OR = {
+								tag = ENG
+								tag = FRA
+								tag = GER
+								tag = ITA
+								tag = USA
+							}
+							has_government = democratic
+							is_major = yes
+							is_subject = no
+						}
+					}
+				}
+			}
 		}
 		
 		search_filters = {FOCUS_FILTER_PROPAGANDA}
@@ -8207,6 +8236,18 @@ focus_tree = {
 		}
 		
 		available = {
+			IF = {
+				limit = {
+					is_AI = yes
+				}
+				date > 1945.5.1
+			}
+			SOV = {
+				has_war = no
+			}
+			GER = {
+				has_war = no
+			}
 			any_country = {
 				OR = {
 					tag = ENG
@@ -8218,18 +8259,6 @@ focus_tree = {
 				has_government = democratic
 				is_major = yes
 				is_subject = no
-			}
-			SOV = {
-				has_war = no
-			}
-			GER = {
-				has_war = no
-			}
-			IF = {
-				limit = {
-					is_AI = yes
-				}
-				date > 1945.5.1
 			}
 		}
 
@@ -8334,6 +8363,34 @@ focus_tree = {
 
 		available = {
 			NOT = { has_government = fascism }
+			IF = {
+				limit = {
+					is_AI = yes
+				}
+				OR = {
+					has_war_with = GER
+					date > 1942.4.1
+					any_country = {
+						OR = {
+							original_tag = GER
+							is_in_faction_with = GER
+						}
+								controls_state = 127 
+								controls_state = 126 
+								controls_state = 125 
+								controls_state = 129 
+								controls_state = 130
+								controls_state = 131 
+								controls_state = 123 
+								controls_state = 122 
+								controls_state = 132 
+								controls_state = 121 
+								controls_state = 136 
+								controls_state = 120 
+								controls_state = 133 
+					}
+				}
+			}
 		}
 				
 		search_filters = {FOCUS_FILTER_PROPAGANDA}
@@ -8377,10 +8434,10 @@ focus_tree = {
 		x = 0
 		y = 1
 		relative_position_id = SOV_anti_fascist_policies_new 
-		cost = 10
+		cost = 5
 
 		ai_will_do = {
-			factor = 1
+			factor = 1000
 			modifier = {
 				factor = 0
 				has_civil_war = yes
@@ -8397,9 +8454,30 @@ focus_tree = {
 				}
 				has_government = fascism
 				is_major = yes
+				is_subject = no
 			}
-			is_subject = no
-			date > 1942.1.1
+			OR = {
+				date > 1942.4.1
+				any_country = {
+					OR = {
+						original_tag = GER
+						is_in_faction_with = GER
+					}
+							controls_state = 127 
+							controls_state = 126 
+							controls_state = 125 
+							controls_state = 129 
+							controls_state = 130
+							controls_state = 131 
+							controls_state = 123 
+							controls_state = 122 
+							controls_state = 132 
+							controls_state = 121 
+							controls_state = 136 
+							controls_state = 120 
+							controls_state = 133 
+				}
+			}
 		}
 
 		bypass = {
