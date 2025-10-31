@@ -1154,7 +1154,12 @@
 		available_if_capitulated = no
 
 		completion_reward = {
+			army_experience = -100
 			add_ideas = CHI_war_of_resistance
+			swap_ideas = {
+					remove_idea = CHI_army_corruption_2
+					add_idea = CHI_army_corruption_3
+				}
 		}
 	}
 
@@ -1572,14 +1577,19 @@
 		y = 1
 		relative_position_id = CHI_military_affairs_commission
 
-		cost = 10
+		cost = 3
 
 		ai_will_do = {
 			factor = 4
 		}
 
 		available = {
-
+			OR = {
+				surrender_progress > 0.5
+				NOT = {
+					controls_state = 898 #Wuhan
+				}
+			}
 		}
 
 		bypass = {
@@ -1591,7 +1601,12 @@
 		available_if_capitulated = no
 
 		completion_reward = {
-			unlock_decision_category_tooltip = CHI_army_reform
+			army_experience = -100
+			remove_ideas = CHI_army_corruption_3
+			swap_ideas = {
+					remove_idea = CHI_war_of_resistance
+					add_idea = CHI_war_of_resistance_3
+				}
 		}
 	}
 
