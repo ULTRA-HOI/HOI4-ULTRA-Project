@@ -4728,13 +4728,115 @@ focus_tree = {
 			add_named_threat = { threat = 10 name = "Unternehmen Barbarossa" }
 		}
 	}
+
+	focus = {
+		id = GER_penal_battalion_500
+		icon = GFX_focus_GER_penal_battalions
+		prerequisite = { focus = GER_ussr_war_goal }
+
+		x = -1
+		y = 1
+		relative_position_id = GER_ussr_war_goal
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			has_war_with = SOV
+		}
+		completion_reward = {
+			add_manpower = 50000
+		    hidden_effect = { 
+			set_technology = { penal_battalion_tech = 1 popup = no }
+			} 
+			custom_effect_tooltip = GER_penal_battalions_spawn_tt
+		} 
+	}
+
+	focus = {
+		id = GER_penal_battalion_999
+		icon = GFX_focus_GER_strafbataillon
+		prerequisite = { focus = GER_penal_battalion_500 }
+
+		x = 0
+		y = 1
+		relative_position_id = GER_penal_battalion_500
+
+		cost = 5
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		available = {
+			OR = {
+				has_war_with = SOV
+				has_war_with = USA
+			}
+		}
+		completion_reward = {
+			add_manpower = 10000
+
+			#Spawn Penal units
+			custom_effect_tooltip = GER_penal_battalions_999_spawn_tt
+			hidden_effect = {
+				
+				division_template = {
+					name = "Strafdivision 999"
+					division_names_group = GER_Inf_01
+					is_locked = yes
+
+						regiments = {
+							heavy_infantry = { x = 0 y = 0 }
+							heavy_infantry = { x = 0 y = 1 }
+							heavy_infantry = { x = 0 y = 2 }
+		
+       						heavy_infantry = { x = 1 y = 0 }
+							heavy_infantry = { x = 1 y = 1 }
+							heavy_infantry = { x = 1 y = 2 }
+		
+        					heavy_infantry = { x = 2 y = 0 }
+							heavy_infantry = { x = 2 y = 1 }
+							heavy_infantry = { x = 2 y = 2 }
+		
+							artillery_brigade = { x = 3 y = 0 }
+							artillery_brigade = { x = 3 y = 1 }
+							artillery_brigade = { x = 3 y = 2 }
+		
+							anti_tank_brigade = { x = 4 y = 0 }
+							anti_air_brigade = { x = 4 y = 1 }
+		
+						}
+	
+						support = {
+							DIV_HQ = { x = 0 y = 0 }
+        					engineer = { x = 0 y = 1 }
+        					recon = { x = 0 y = 2 }
+							heavy_artillery_brigade = { x = 0 y = 3 }
+							penal_battalion = { x = 0 y = 4 }
+		
+							signal_company = { x = 1 y = 0 }
+							logistics_company = { x = 1 y = 1 }
+							maintenance_company = { x = 1 y = 2 }
+							field_hospital = { x = 1 y = 3 }
+
+						}
+				}
+
+				GER_spawn_penal_divisions_effect = yes
+			}
+		} 
+	}
 	
 	focus = {
 		id = GER_fall_blau
 		icon = GFX_focus_generic_black_sea_focus
 		prerequisite = { focus = GER_ussr_war_goal }
 		
-		x = 0
+		x = 1
 		y = 1
 		relative_position_id = GER_ussr_war_goal
 		
