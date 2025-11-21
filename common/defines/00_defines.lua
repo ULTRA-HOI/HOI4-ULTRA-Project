@@ -1635,7 +1635,7 @@ NNavy = {
 	CONVOY_ATTACK_BASE_FACTOR = 0.10, --was 0.15 --base % of convoys that get intercepted
 	NAVAL_SPEED_MODIFIER = 0.1,	                    				-- basic speed control
 	NAVAL_RANGE_TO_INGAME_DISTANCE = 0.12,							-- Scale the ship stats "naval_range" to the ingame distance
-	NAVAL_INVASION_PREPARE_HOURS = 168,								-- base hours needed to prepare an invasion
+	NAVAL_INVASION_PREPARE_DAYS = 7,								-- base days needed to prepare an invasion
 	NAVAL_INVASION_PLAN_CAP = 1,									-- base cap of naval invasions can be planned at the same time
 	BASE_NAVAL_INVASION_DIVISION_CAP = 2,							-- base cap of divisions that can be assigned in a naval invasion
 	NAVAL_COMBAT_RESULT_TIMEOUT_YEARS = 2,							-- after that many years, we clear the naval combat results, so they don't get stuck forever in the memory.
@@ -2066,8 +2066,8 @@ NNavy = {
 	CONVOY_DEFENSE_MAX_CONVOY_TO_SHIP_RATIO							= 24.0, --was 12.0 --each ship in convoy defense mission can at most cover this many convoys without losing efficiency
 	CONVOY_DEFENSE_MAX_REGION_TO_TASKFORCE_RATIO					= 3.0, --was 5.0 --each taskforce in convoy defense mission can at most cover this many regions without losing efficiency
 
-	MINE_SWEEPING_SUPREMACY_EFFICIENCY_MAX_REGION_TO_TASKFORCE_RATIO = 1.0,		-- mine missions will get lower supremacies if they are assigned more regions than this
-	MINE_PLANTING_SUPREMACY_EFFICIENCY_MAX_REGION_TO_TASKFORCE_RATIO = 1.0,		-- mine missions will get lower supremacies if they are assigned more regions than this
+	MINE_SWEEPING_REGION_TO_TASKFORCE_RATIO = 1.0,		-- ratio of taskforce to regions assigned ratio of efficiency, modified by coordination
+	MINE_PLANTING_REGION_TO_TASKFORCE_RATIO = 1.0,		-- ratio of taskforce to regions assigned ratio of efficiency, modified by coordination
 
 	EFFICIENCY_TO_JOIN_COMBAT_RATIO_PENALTY							= 1.0,		-- at lower efficiencies less ships will be able to join combat
 	EFFICIENCY_TO_TIME_TO_JOIN_COMBAT_PENALTY 						= 100.0,	-- at lower efficiencies less time to join combat hour will be increased
@@ -2080,8 +2080,8 @@ NNavy = {
 	COORDINATION_EFFECT_ON_MINE_SWEEPING_SPEED 						= 0.5,      -- affect of coordination modifier in mine sweeping speed
 	COORDINATION_EFFECT_ON_PATROL_SPOTTING 							= 1.0,		-- affect of coordination modifier in spotting speed
 
-	COORDINATION_EFFECT_ON_MINE_SWEEPING_SUPREMACY_EFFICIENCY		= 1.0,      -- mine missions supremacy can be buffed by coordination
-	COORDINATION_EFFECT_ON_MINE_PLANTING_SUPREMACY_EFFICIENCY		= 1.0,      -- mine missions supremacy can be buffed by coordination
+	COORDINATION_EFFECT_ON_MINE_SWEEPING = 1.0,      -- modifies coordination by multiplication for mine sweeping
+	COORDINATION_EFFECT_ON_MINE_PLANTING = 1.0,      -- modifies coordination by multiplication for mine laying
 
 	DOMINANCE_EFFECT_ON_POSITIONING_FOR_CONVOY_ESCORT_MAX_RATIO		= 2.0,		-- The ratio which gives the max possible gain of positioning bonus from dominance in region of combat (e.g. to get max bonus you need 'dominance threshold * 2.0' dominance in the region)
 	DOMINANCE_EFFECT_ON_POSITIONING_FOR_CONVOY_ESCORT				= 0.15,		-- Increase of positioning when at max ratio (full control and dominance is >=DOMINANCE_EFFECT_ON_POSITIONING_FOR_CONVOY_ESCORT_MAX_RATIO times the competing dominance)
@@ -2302,7 +2302,7 @@ NAI = {
 	DIPLO_ACCEPTABLE_DISTANCE_BETWEEN_CAPITALS = 1000.0, --When scaled distance malus begins to kick in. At double this value, max penalty (above) is achieved
 	DIPLO_SHOW_FACTION_JOIN_WARNING_THRESHOLD = -20,	-- Show warning if declare-war target is this close to accepting or being sent a faction invitiation
 	DIPLO_MAX_CONTAINMENT_ACCEPTANCE = 100,		-- Max value for 'wants to contain' diplo acceptance
-
+	AI_GUARANTEE_DESIRE_WITH_PRESSURE_MODIFIER = 15, 	-- If we have an 'ideology drfit from guarantees' modifier, how much more likely will we be to guarantee nations?
 	RESEARCH_DAYS_BETWEEN_WEIGHT_UPDATE = 1, --was 7 --Refreshes need scores based on country situation.
 	RESEARCH_WEIGHT_TRUNCATION_THRESHOLD = 0.75,    -- When choosing a tech to research, use this truncation selection threshold. (for example, if the top score is 10, a threshold of 0.75 will pick randomly from anything above 7.5 score)
 	RESEARCH_LAND_DOCTRINE_NEED_GAIN_FACTOR = 0.13, --was 0.15 --Multiplies value based on relative military industry size / country size.
@@ -3971,9 +3971,9 @@ NIntel = {
 	ARMY_INTEL_COMBAT_BONUS_MIN_INTEL_FOR_BONUS = 5, --min intel needed to start applying ARMY_INTEL_COMBAT_BONUS_MAX_BONUS
 	ARMY_INTEL_COMBAT_BONUS_MAX_INTEL_FOR_BONUS = 50, --intel needed to fully apply ARMY_INTEL_COMBAT_BONUS_MAX_BONUS
 
-	NAVAL_SUPREMACY_INTEL_LOW = 0.4,								-- we need more intel than this to get any supremacy
-	NAVAL_SUPREMACY_INTEL_LOW_SUPREMACY_PENALTY_START = 0.1,		-- supremacy is reduced to NAVAL_SUPREMACY_INTEL_LOW_SUPREMACY_MIN_PENALTY at or below this intel
-	NAVAL_SUPREMACY_INTEL_LOW_SUPREMACY_MIN_PENALTY = 0.5, -- you get this much supremacy at NAVAL_SUPREMACY_INTEL_LOW_SUPREMACY_PENALTY_START and scales up to 1 at NAVAL_SUPREMACY_INTEL_LOW
+	NAVAL_DOMINANCE_INTEL_LOW = 0.4,								-- we need more intel than this to get any dominance
+	NAVAL_DOMINANCE_INTEL_LOW_DOMINANCE_PENALTY_START = 0.1,		-- dominance is reduced to NAVAL_DOMINANCE_INTEL_LOW_DOMINANCE_MIN_PENALTY at or below this intel
+	NAVAL_DOMINANCE_INTEL_LOW_DOMINANCE_MIN_PENALTY = 0.5, -- you get this much dominance at NAVAL_DOMINANCE_INTEL_LOW_DOMINANCE_PENALTY_START and scales up to 1 at NAVAL_DOMINANCE_INTEL_LOW
 
 	NAVY_FLEET_COUNT_INTEL_MIN = 0.1,
 	NAVY_FLEET_COUNT_INTEL_MAX = 0.3,
