@@ -1,3 +1,101 @@
+china_truce_effect = {
+	MEN = {
+		transfer_state = 621
+		transfer_state = 896
+		transfer_state = 965
+	}
+	PRC = {
+		annex_country = {
+			target = SHX
+			transfer_troops = yes
+		}
+	}
+	CHI = {
+		every_owned_state = {
+			limit = { is_controlled_by = JAP }
+			transfer_state_to = JAP		
+		}
+	}
+	PRC = {
+		every_owned_state = {
+			limit = { is_controlled_by = JAP }
+			transfer_state_to = JAP		
+		}
+	}
+	GXC = {
+		every_owned_state = {
+			limit = { is_controlled_by = JAP }
+			transfer_state_to = JAP		
+		}
+	}
+	YUN = {
+		every_owned_state = {
+			limit = { is_controlled_by = JAP }
+			transfer_state_to = JAP		
+		}
+	}
+	XSM = {
+		every_owned_state = {
+			limit = { is_controlled_by = JAP }
+			transfer_state_to = JAP		
+		}
+	}
+
+	white_peace = CHI
+	white_peace = PRC
+	white_peace = GXC
+	white_peace = YUN
+	white_peace = XSM
+	diplomatic_relation = { country = CHI relation = non_aggression_pact }
+	diplomatic_relation = { country = PRC relation = non_aggression_pact }
+	diplomatic_relation = { country = GXC relation = non_aggression_pact }
+	diplomatic_relation = { country = YUN relation = non_aggression_pact }
+	diplomatic_relation = { country = XSM relation = non_aggression_pact }
+	
+	set_truce = {
+		target = CHI
+		days = 730
+	}
+	set_truce = {
+		target = PRC
+		days = 730
+	}
+	set_truce = {
+		target = GXC
+		days = 730
+	}
+	set_truce = {
+		target = YUN
+		days = 730
+	}
+	set_truce = {
+		target = XSM
+		days = 730
+	}
+	
+	JAP = { #WT spike
+		add_named_threat = { 
+			threat = 7
+			name = JAP_china_truce
+		}
+	}
+
+	JAP = {
+		add_doctrine_cost_reduction = {
+			name = JAP_truce_with_CHI
+			cost_reduction = 0.5
+			uses = 2
+			category = air_doctrine
+		}
+	}
+
+	hidden_effect = {
+		CHI = {
+			set_country_flag = japan_truces
+		}
+	}
+}
+
 #Add to scripted triggers if more levels of hyper inflation is added
 CHI_hyper_inflation_clear_all = {
 	remove_ideas = {
@@ -238,6 +336,24 @@ CHI_infiltration_flag_down_2 = {
 }
 
 CHI_unity_level_up = {
+	#if = {
+	#	limit = {
+	#		has_idea = CHI_chinese_unity_4
+	#	}
+	#	swap_ideas = {
+	#		remove_idea = CHI_chinese_unity_4
+	#		add_idea = CHI_chinese_unity_5
+	#	}
+	#}
+	if = {
+		limit = {
+			has_idea = CHI_chinese_unity_3
+		}
+		swap_ideas = {
+			remove_idea = CHI_chinese_unity_3
+			add_idea = CHI_chinese_unity_4
+		}
+	}
 	if = {
 		limit = {
 			has_idea = CHI_chinese_unity_2
@@ -259,11 +375,11 @@ CHI_unity_level_up = {
 	if = {
 		limit = {
 			NOT = {
-				OR = {
-					has_idea = CHI_chinese_unity_1
-					has_idea = CHI_chinese_unity_2
-					has_idea = CHI_chinese_unity_3
-				}
+				has_idea = CHI_chinese_unity_1
+				has_idea = CHI_chinese_unity_2
+				has_idea = CHI_chinese_unity_3
+				has_idea = CHI_chinese_unity_4
+				has_idea = CHI_chinese_unity_5
 			}
 		}
 		add_ideas = CHI_chinese_unity_1
@@ -291,6 +407,24 @@ CHI_unity_level_down = {
 	}
 	else_if = {
 		limit = {
+			has_idea = CHI_chinese_unity_4
+		}
+		swap_ideas = {
+			remove_idea = CHI_chinese_unity_4
+			add_idea = CHI_chinese_unity_3
+		}
+	}
+	#else_if = {
+	#	limit = {
+	#		has_idea = CHI_chinese_unity_5
+	#	}
+	#	swap_ideas = {
+	#		remove_idea = CHI_chinese_unity_5
+	#		add_idea = CHI_chinese_unity_4
+	#	}
+	#}
+	else_if = {
+		limit = {
 			has_idea = CHI_chinese_unity_1
 		}
 		remove_ideas = CHI_chinese_unity_1
@@ -306,7 +440,7 @@ CHI_set_ally_strat_on_current_leader = {
 		}
 		add_ai_strategy = {
             type = alliance
-            id = "CHI"
+            id = CHI
             value = 200
         }
 	}
@@ -318,7 +452,7 @@ CHI_set_ally_strat_on_current_leader = {
 		}
 		add_ai_strategy = {
             type = alliance
-            id = "SHX"
+            id = SHX
             value = 200
         }
 	}
@@ -330,7 +464,7 @@ CHI_set_ally_strat_on_current_leader = {
 		}
 		add_ai_strategy = {
             type = alliance
-            id = "GXC"
+            id = GXC
             value = 200
         }
 	}
@@ -342,7 +476,7 @@ CHI_set_ally_strat_on_current_leader = {
 		}
 		add_ai_strategy = {
             type = alliance
-            id = "YUN"
+            id = YUN
             value = 200
         }
 	}
@@ -354,7 +488,7 @@ CHI_set_ally_strat_on_current_leader = {
 		}
 		add_ai_strategy = {
             type = alliance
-            id = "XSM"
+            id = XSM
             value = 200
         }
 	}
@@ -366,7 +500,7 @@ CHI_set_ally_strat_on_current_leader = {
 		}
 		add_ai_strategy = {
             type = alliance
-            id = "SIK"
+            id = SIK
             value = 200
         }
 	}
@@ -403,21 +537,12 @@ CHI_negative_spirit_transfer = {
 		}
 		add_ideas = CHI_army_corruption_1
 	}
-
-	#if = {
-	#	limit = {
-	#		event_target:old_leader = { has_idea = CHI_ineffective_bureaucracy }	
-	#	}
-	#	add_ideas = CHI_ineffective_bureaucracy
-	#}
-
-	#if = {
-	#	limit = {
-	#		event_target:old_leader = { has_idea = CHI_ineffective_bureaucracy }	
-	#	}
-	#	add_ideas = CHI_ineffective_bureaucracy
-	#}
-
+	if = {
+		limit = {
+			event_target:old_leader = { has_idea = CHI_ineffective_bureaucracy }	
+		}
+		add_ideas = CHI_ineffective_bureaucracy
+	}
 	if = {
 		limit = {
 			event_target:old_leader = { has_idea = CHI_hyper_inflation_none }	
@@ -456,100 +581,683 @@ CHI_negative_spirit_transfer = {
 	}
 }
 
-china_truce_effect = {
-	MEN = {
-		transfer_state = 621
-		transfer_state = 896
-		transfer_state = 965
-	}
-	PRC = {
-		annex_country = {
-			target = SHX
-			transfer_troops = yes
+CHI_no_longer_a_warlord_idea_removal = {
+	if = {
+		limit = {
+			has_idea = CHI_warlord_state_idea
+		}
+		remove_ideas = {
+			CHI_warlord_state_idea
 		}
 	}
+	else_if = {
+		limit = {
+			has_idea = CHI_warlord_state_idea_2
+		}
+		remove_ideas = {
+			CHI_warlord_state_idea_2
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = CHI_warlord_state_idea_cav
+		}
+		remove_ideas = {
+			CHI_warlord_state_idea_cav
+		}
+	}
+	else_if = {
+		limit = {
+			has_idea = CHI_warlord_state_idea_mnt
+		}
+		remove_ideas = {
+			CHI_warlord_state_idea_mnt
+		}
+	}
+
+}
+
+#called from warlord scope. Applies cost reduction to political power cost
+CHI_apply_integration_cost_reduction = {
+	set_variable = { t_cost_reduction = 1 }
+	subtract_from_variable = { t_cost_reduction = CHI.political_power_warlord_integration_cost_reduction }
+
+
+	multiply_variable = { press_warlord_to_become_puppet_influence_points_trigger =  t_cost_reduction }
+	multiply_variable = { press_warlord_to_become_puppet_political_power_cost = t_cost_reduction }
+	multiply_variable = { press_warlord_to_become_puppet_influence_points_cost = t_cost_reduction }
+	
+	clear_variable = t_cost_reduction
+}
+
+CHI_remove_annexed_warlord_from_array = { #called from on_actions
+	if = {
+		limit = {
+			FROM = { original_tag = CHI }
+			is_in_array = {
+				array = FROM.warlord_subjects
+				value = ROOT
+			}	
+		}
+
+		remove_from_array = {
+			array = FROM.warlord_subjects
+			value = ROOT
+		}
+	}	
+}
+
+CHI_modify_illicit_goods_event_trigger = {
+	if = {
+		limit = {
+			NOT = { has_country_flag = trigger_SEA_china_improvement_2 }
+		}
+		set_country_flag = trigger_SEA_china_improvement_2
+		country_event = {
+			id = SEA_china_improvement.2
+			days = 2
+		}
+
+		custom_effect_tooltip = generic_skip_one_line_tt
+		custom_effect_tooltip = which_will_give_tt
+		event_option_tooltip = SEA_china_improvement.2.a
+	}
+	else = {
+		add_to_variable = { illicit_goods_reduction_step = 0.02 }
+		custom_effect_tooltip = illicit_good_improvement_increase
+	}
+}
+
+CHI_is_corruption_in_government_on_balance_good = {
+	
+	set_variable = { on_balance = 0 }  #>0 = good <=0 bad
+
+
+	#PP GAIN
+	set_variable = { corruption_pp_gain = CHI_corruption_pp_gain } #more = negative lore wise
+	multiply_variable = { corruption_pp_gain = 0.95 }
+	multiply_variable = { corruption_pp_gain = -1 }
+	add_to_variable = { on_balance = corruption_pp_gain }
+
+	#CG
+	set_variable = { corruption_consumer_goods = CHI_corruption_consumer_goods }
+	multiply_variable = { corruption_consumer_goods = -1 }
+	add_to_variable = { on_balance = corruption_consumer_goods }
+	
+
+	#CONSTRUCTION SPEED
+	set_variable = { corruption_construction_speed = CHI_corruption_construction_speed }
+	add_to_variable = { on_balance = corruption_construction_speed }
+
+
+
+	#ARMS FACTORY
+	set_variable = { corruption_production_speed_arms_factory_factor = CHI_corruption_production_speed_arms_factory_factor }
+	add_to_variable = { on_balance = corruption_production_speed_arms_factory_factor }
+
+	
+	#CIC BOOST FACTOR
+	set_variable = { corruption_cic_construction_boost_factor = CHI_corruption_cic_construction_boost_factor }
+	multiply_variable = { corruption_cic_construction_boost_factor = 0.9 } #Weigh less in total
+	add_to_variable = { on_balance = corruption_cic_construction_boost_factor }
+
+
+	#FREE REPAIR FACTOR
+	set_variable = { corruption_free_repair_factor = CHI_corruption_free_repair_factor }
+	multiply_variable = { corruption_free_repair_factor = 0.4 } #Weigh way less
+	add_to_variable = { on_balance = corruption_free_repair_factor }
+
+	#FREE REPAIR FACTOR
+	set_variable = { corruption_conversion_cost_civ_to_mil_factor = CHI_corruption_conversion_cost_civ_to_mil_factor }
+	multiply_variable = { corruption_conversion_cost_civ_to_mil_factor = 0.4 } #Weigh less
+	add_to_variable = { on_balance = corruption_conversion_cost_civ_to_mil_factor }
+
+
+	set_variable = { corruption_economy_cost_factor = CHI_corruption_economy_cost_factor }
+	multiply_variable = { corruption_economy_cost_factor = 0.3 } #Weigh less
+	multiply_variable = { corruption_economy_cost_factor = -1 } #Weigh less
+	add_to_variable = { on_balance = corruption_economy_cost_factor }
+
+
+	clear_variable = corruption_pp_gain
+	clear_variable = corruption_consumer_goods
+	clear_variable = corruption_construction_speed
+	clear_variable = corruption_production_speed_arms_factory_factor
+	clear_variable = corruption_cic_construction_boost_factor
+	clear_variable = corruption_free_repair_factor
+	clear_variable = corruption_conversion_cost_civ_to_mil_factor
+	clear_variable = corruption_economy_cost_factor
+}
+
+CHI_concessions_add_small_amount_of_days = {
 	CHI = {
-		every_owned_state = {
-			limit = { is_controlled_by = JAP }
-			transfer_state_to = JAP		
+		add_days_mission_timeout = {
+		    mission = CHI_kwantung_army_impatience_dummy
+		    days = CHI_concessions_small 
 		}
 	}
-	PRC = {
-		every_owned_state = {
-			limit = { is_controlled_by = JAP }
-			transfer_state_to = JAP		
-		}
-	}
-	GXC = {
-		every_owned_state = {
-			limit = { is_controlled_by = JAP }
-			transfer_state_to = JAP		
-		}
-	}
-	YUN = {
-		every_owned_state = {
-			limit = { is_controlled_by = JAP }
-			transfer_state_to = JAP		
-		}
-	}
-	XSM = {
-		every_owned_state = {
-			limit = { is_controlled_by = JAP }
-			transfer_state_to = JAP		
-		}
-	}
-
-	white_peace = CHI
-	white_peace = PRC
-	white_peace = GXC
-	white_peace = YUN
-	white_peace = XSM
-	diplomatic_relation = { country = CHI relation = non_aggression_pact }
-	diplomatic_relation = { country = PRC relation = non_aggression_pact }
-	diplomatic_relation = { country = GXC relation = non_aggression_pact }
-	diplomatic_relation = { country = YUN relation = non_aggression_pact }
-	diplomatic_relation = { country = XSM relation = non_aggression_pact }
-	
-	set_truce = {
-		target = CHI
-		days = 730
-	}
-	set_truce = {
-		target = PRC
-		days = 730
-	}
-	set_truce = {
-		target = GXC
-		days = 730
-	}
-	set_truce = {
-		target = YUN
-		days = 730
-	}
-	set_truce = {
-		target = XSM
-		days = 730
-	}
-	
-	JAP = { #WT spike
-		add_named_threat = { 
-			threat = 7
-			name = JAP_china_truce
-		}
-	}
-
-	JAP = {
-		add_doctrine_cost_reduction = {
-			name = JAP_truce_with_CHI
-			cost_reduction = 0.5
-			uses = 2
-			category = air_doctrine
-		}
-	}
-
 	hidden_effect = {
-		CHI = {
-			set_country_flag = japan_truces
+		JAP = {
+			add_days_mission_timeout = {
+			    mission = JAP_kwantung_army_impatience
+			    days = CHI.CHI_concessions_small 
+			}
 		}
+	}
+}
+
+CHI_concessions_add_medium_amount_of_days = {
+	CHI = {
+		add_days_mission_timeout = {
+		    mission = CHI_kwantung_army_impatience_dummy
+		    days = CHI_concessions_medium 
+		}
+	}
+	hidden_effect = {
+		JAP = {
+			add_days_mission_timeout = {
+			    mission = JAP_kwantung_army_impatience
+			    days = CHI.CHI_concessions_medium 
+			}
+		}
+	}
+}
+
+CHI_concessions_add_large_amount_of_days = {
+	CHI = {
+		add_days_mission_timeout = {
+		    mission = CHI_kwantung_army_impatience_dummy
+		    days = CHI_concessions_large 
+		}
+	}
+	hidden_effect = {
+		JAP = {
+			add_days_mission_timeout = {
+			    mission = JAP_kwantung_army_impatience
+			    days = CHI.CHI_concessions_large 
+			}
+		}
+	}
+}
+
+CHI_kill_chiang_for_new_leader = {
+	IF = {
+		limit = { 
+			NOT = { has_dlc = "No Compromise, No Surrender" } 
+		}
+		kill_country_leader = yes
+		IF = {
+			limit = {
+				NOT = {
+					has_global_flag = CHI_wang_defects
+				}
+			}
+			create_country_leader = {
+				name = "Wang Jingwei"
+				desc = "POLITICS_WANG_JINGWEI_DESC"
+				picture = "GFX_portrait_chi_wang_jingwei"
+				expire = "1965.1.1"
+				ideology = despotism
+				traits = {
+					#
+				}
+			}
+		}
+	}
+	ELSE = {
+		retire_character = CHI_chiang_kaishek
+		IF = {
+			limit = {
+				has_completed_focus = CHI_prepare_for_a_change_in_leadership
+			}
+			promote_character = {
+				character = CHI_wang_jingwei 
+				ideology = despotism 
+			}
+		}
+		ELSE_IF = {
+			limit = { has_completed_focus = CHI_strengthening_our_resolve }
+			
+			add_country_leader_role = {
+				character = CHI_dai_li 
+				promote_leader = yes
+				country_leader = {
+					ideology = despotism
+					expire = "1965.1.1.1"
+					traits = { CHI_leader_of_the_chinese_brotherhood_trait }
+				}
+			}
+			
+		}
+		ELSE_IF = {
+			limit = {
+				NOT = {
+					has_completed_focus = CHI_prepare_for_a_change_in_leadership
+					has_completed_focus = CHI_strengthening_our_resolve
+				}
+			}
+			#add_country_leader_role = {
+			#	character =  CHI_soong_mei_ling # optional if inside character scope
+			#	promote_leader = yes
+			#	country_leader = {
+			#		ideology = despotism
+			#	}
+			#}
+			promote_character = {
+				character = CHI_soong_mei_ling 
+				ideology = despotism 
+			}
+		}
+	}
+}
+
+CHI_upgrade_wang_trait = {
+	if = {
+		limit = {
+			has_country_leader_with_trait = CHI_civilian_unifier
+		}
+
+		swap_ruler_traits = {
+			remove = CHI_civilian_unifier
+			add = CHI_civilian_unifier_upgraded
+		}
+	}
+	else_if = {
+		limit = {
+			has_country_leader_with_trait = CHI_civilian_unifier_upgraded
+		}
+
+		swap_ruler_traits = {
+			remove = CHI_civilian_unifier_upgraded
+			add = CHI_civilian_unifier_upgraded_2
+		}
+	}
+	else = {
+		effect_tooltip = {
+			CHI_wang_jingwei = {
+				swap_country_leader_traits = {
+					remove = CHI_civilian_unifier
+					add = CHI_civilian_unifier_upgraded
+				}
+			}
+		}
+	}
+}
+
+CHI_setting_upp_colony = {
+	custom_effect_tooltip = CHI_set_up_puppet_tt
+	hidden_effect = { 
+		#set_variable = { collaboration_formed@var:country_to_initiate = 1 }
+
+		if = {
+			# if country_to_initiate does not exist, simply release it as a puppet
+			limit = {
+				var:country_to_initiate = {
+					exists = no
+				}
+			}
+			var:country_to_initiate = { set_variable = { collaboration_formed_by = PREV } }
+			release_autonomy = {
+				target = country_to_initiate
+				autonomy_state = autonomy_colony
+				freedom_level = 0.5
+				release_non_owned_controlled = yes
+			}
+		}
+		else = {
+			# if country_to_initiate exists, create a dynamic country as our new puppet
+
+			create_dynamic_country = {
+				original_tag = country_to_initiate
+
+				set_variable = { collaboration_formed_by = PREV }
+				set_temp_variable = { new_country = this }
+
+				PREV = {
+					every_controlled_state = {
+						limit = { occupied_country_tag = country_to_initiate }
+
+						var:new_country = {
+							transfer_state = PREV
+						}
+					}
+
+					puppet = new_country
+
+					set_autonomy = {
+						target = new_country
+						autonomy_state = autonomy_colony
+						freedom_level = 0.5
+					}
+				}
+			}
+		}
+	}
+}
+
+CHI_reduce_nine_power_malus = {
+	custom_effect_tooltip = CHI_nine_power_treaty_modify
+	add_to_variable = { nine_power_justify_war_goal_time = 0.02 tooltip =  justify_war_goal_time_tt }
+	add_to_variable = { nine_power_min_export = -0.02 tooltip = min_export_tt }
+	add_to_variable = { nine_power_treaty_cg = -0.02 tooltip = consumer_goods_factor_tt }
+	if = {
+		limit = {
+			check_variable = {
+				var = nine_power_treaty_cg
+			 	value = 0
+				compare = less_than_or_equals
+			} 
+			has_dynamic_modifier = {
+				modifier = CHI_nine_power_treaty_sea
+			}
+		}
+
+		remove_dynamic_modifier = { modifier = CHI_nine_power_treaty_sea }
+	}
+}
+
+CHI_update_claimed_and_core_states = {
+	CHI = {
+		every_state = {
+			limit = {
+				OR = {
+					is_core_of = CHI
+					is_claimed_by = CHI
+				}
+				NOT = {
+					is_in_array = {
+						array = CHI.core_and_claimed_states
+						value = THIS
+					}
+				}
+			}
+
+			add_to_array = { CHI.core_and_claimed_states = THIS }	
+			set_state_flag = CHI_has_claimed_this_state_flag
+		}
+	}
+}
+
+CHI_setup_colonized_countries_to_liberate_array = {
+	hidden_effect = {
+		for_each_scope_loop = {
+			array = global.countries
+			IF = {
+				limit = {
+					exists = no #the country does not exist
+					any_state = {
+						is_core_of = PREV #the state is a core of the non-existing country
+						OR = {
+							is_on_continent = asia #the state is in Asia
+							is_on_continent = australia #the state is in Oceania
+						}
+						OWNER = { #the country owning the state
+							NOT = { is_ally_with = ROOT }
+							NOT = { original_tag = ROOT }
+							capital_scope = {
+								NOT = {
+									is_on_continent = asia #the state is in Asia
+									is_on_continent = australia #the state is in Oceania
+								}
+							}
+							NOT = { #don't add multiple times
+								is_in_array = {
+									array = CHI.asian_democracies_countries_to_liberate
+									value = THIS
+								}
+							}
+						}
+					}
+				}
+				add_to_array = { CHI.asian_democracies_countries_to_liberate = THIS }
+			}
+		}
+		
+	}
+}
+
+CHI_add_or_modify_political_tutelage = {
+	IF = {
+		limit = {
+			OR = {
+				has_dynamic_modifier = { modifier = CHI_the_political_tutelage_dm }
+				NOT = {
+					has_dynamic_modifier = { modifier = CHI_the_political_tutelage_dm }
+					has_dynamic_modifier = { modifier = CHI_the_political_tutelage_upgraded_dm }
+				}
+			}
+		}
+		custom_effect_tooltip = CHI_modify_CHI_the_political_tutelage_dm_tt
+	}
+	ELSE_IF = {
+		limit = {
+			has_dynamic_modifier = { modifier = CHI_the_political_tutelage_upgraded_dm }
+		}
+		custom_effect_tooltip = CHI_modify_CHI_the_political_tutelage_upgraded_dm_tt
+	}
+}
+
+CHI_move_factories = {
+	set_variable = {
+		var = af_level
+		value = arms_factory_level
+	}
+	set_variable = {
+		var = af_to_move
+		value = arms_factory_level
+	}
+	multiply_variable = {
+		var = af_to_move
+		value = ROOT.CHI_industrial_evacuations_amount_factor
+	}
+
+	set_variable = {
+		var = ic_level
+		value = industrial_complex_level
+	}
+	set_variable = {
+		var = ic_to_move
+		value = industrial_complex_level
+	}
+	multiply_variable = {
+		var = ic_to_move
+		value = ROOT.CHI_industrial_evacuations_amount_factor
+	}
+
+	custom_effect_tooltip = CHI_industrial_evacuations_remove_AF
+	custom_effect_tooltip = CHI_industrial_evacuations_remove_IC
+	hidden_effect = {				
+		IF = {
+			limit = {
+				arms_factory > 0
+			}
+			remove_building = {
+				type = arms_factory
+				level = af_level
+			}
+		}		
+		IF = {
+			limit = {
+				industrial_complex > 0
+			}
+			remove_building = {
+				type = industrial_complex
+				level = ic_level
+			}
+		}
+	}
+
+	#Move AF
+	CONTROLLER = {
+		random_owned_controlled_state = {
+			prioritize = { 605 603 601 }
+			limit = {
+				is_fully_controlled_by = ROOT
+				any_neighbor_state = {
+					is_controlled_by = ROOT
+				}
+				free_building_slots = {
+					building = arms_factory
+					size > 2
+					include_locked = yes
+				}
+			}
+
+			custom_effect_tooltip = CHI_industrial_evacuations_add_AF						
+			hidden_effect = {
+				add_extra_state_shared_building_slots = prev.prev.af_to_move
+				add_building_construction = {
+					type = arms_factory
+					level = prev.prev.af_to_move
+					instant_build = yes
+				}
+				CONTROLLER = { set_country_flag = CHI_industrial_evacuations_moved_AF }
+			}
+		}
+
+		#If no states are really safe or all safe are filled
+		#Move to random controlled state
+		if = {
+			limit = {
+				NOT = { has_country_flag = CHI_industrial_evacuations_moved_AF }
+				NOT = {
+					any_controlled_state = {
+						is_fully_controlled_by = ROOT
+						any_neighbor_state = {
+							is_controlled_by = ROOT
+						}
+						free_building_slots = {
+							building = arms_factory
+							size > 2
+							include_locked = yes
+						}
+					}
+				}
+			}
+			random_owned_controlled_state = {
+				prioritize = { 605 603 601 }
+				limit = {
+					is_controlled_by = ROOT
+					free_building_slots = {
+						building = arms_factory
+						size > 2
+						include_locked = yes
+					}
+				}
+
+				custom_effect_tooltip = CHI_industrial_evacuations_add_AF						
+				hidden_effect = {
+					add_extra_state_shared_building_slots = prev.prev.af_to_move
+					add_building_construction = {
+						type = arms_factory
+						level = prev.prev.af_to_move
+						instant_build = yes
+					}
+				}
+			}
+		}
+		clr_country_flag = CHI_industrial_evacuations_moved_AF
+
+
+		#Move IC
+		random_owned_controlled_state = {
+			prioritize = { 605 603 601 }
+			limit = {
+				is_fully_controlled_by = ROOT
+				any_neighbor_state = {
+					is_controlled_by = ROOT
+				}
+				free_building_slots = {
+					building = industrial_complex
+					size > 2
+					include_locked = yes
+				}
+			}
+			
+			custom_effect_tooltip = CHI_industrial_evacuations_add_IC
+			hidden_effect = {
+				add_extra_state_shared_building_slots = prev.prev.ic_to_move
+				add_building_construction = {
+					type = industrial_complex
+					level = prev.prev.ic_to_move
+					instant_build = yes
+				}
+				CONTROLLER = { set_country_flag = CHI_industrial_evacuations_moved_IC }
+			}
+		}
+
+		#If no states are really safe or all safe are filled
+		#Move to random controlled state
+		if = {
+			limit = {
+				NOT = { has_country_flag = CHI_industrial_evacuations_moved_IC }
+				NOT = {
+					any_controlled_state = {
+						is_fully_controlled_by = ROOT
+						any_neighbor_state = {
+							is_controlled_by = ROOT
+						}
+						free_building_slots = {
+							building = industrial_complex
+							size > 2
+							include_locked = yes
+						}
+					}
+				}
+			}
+			random_owned_controlled_state = {
+				prioritize = { 605 603 601 }
+				limit = {
+					is_controlled_by = ROOT
+					free_building_slots = {
+						building = industrial_complex
+						size > 2
+						include_locked = yes
+					}
+				}
+
+				custom_effect_tooltip = CHI_industrial_evacuations_add_IC
+				hidden_effect = {
+					add_extra_state_shared_building_slots = prev.prev.ic_to_move
+					add_building_construction = {
+						type = industrial_complex
+						level = prev.prev.ic_to_move
+						instant_build = yes
+					}
+				}
+			}
+		}
+		clr_country_flag = CHI_industrial_evacuations_moved_IC
+	}			
+}
+
+CHI_corrupt_administration_improvement = {
+	if = {
+		limit = {
+			check_variable = { CHI_corrupt_administration_improved < 3 }
+		}
+		add_to_variable = { CHI_corrupt_administration_improved = 1 }
+	}
+	else_if = {
+		limit = {
+			has_dynamic_modifier = { modifier = CHI_corruption_in_the_administration }
+		}
+		hidden_effect = {
+			remove_dynamic_modifier = {	modifier = CHI_corruption_in_the_administration }
+			add_dynamic_modifier = { modifier = CHI_reorganized_administration }	
+		}
+		custom_effect_tooltip = CHI_switch_administration_modifiers_tt
+	}
+}
+
+CHI_modify_administration_modifier = {
+	if = {
+		limit = {
+			check_variable = { CHI_corrupt_administration_improved < 3 }
+		}
+		custom_effect_tooltip = CHI_modify_corruption_in_the_administration_tt
+	}
+	else = {
+		custom_effect_tooltip = CHI_modify_reorganized_administration_tt
 	}
 }

@@ -55,6 +55,22 @@ has_not_initiated_border_incident_with_ROOT = {
 }
 
 #State scope
+state_is_fully_controlled_by_ROOT_subject_or_faction_member = {
+	custom_trigger_tooltip = {
+		tooltip = state_is_fully_controlled_by_ROOT_subject_or_faction_member_tt
+		OR = {
+			is_fully_controlled_by = ROOT
+			controller = {
+				OR = {
+					is_subject_of = ROOT
+					is_in_faction_with = ROOT
+				}
+				has_full_control_of_state = PREV
+			}
+		}
+	}
+}
+
 has_ROOT_at_least_1_div_in_current_state_scope = {
 	custom_trigger_tooltip = {
 		tooltip = at_least_one_division_in_state
