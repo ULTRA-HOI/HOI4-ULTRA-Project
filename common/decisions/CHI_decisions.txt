@@ -269,14 +269,12 @@ CHI_army_reform = {
 			hidden_trigger = {
 				OR = {
 					has_completed_focus = CHI_army_reform
-					has_completed_focus = CHI_sea_army_reform
 				}
 			}
 			custom_trigger_tooltip = {
 				tooltip = CHI_army_reform_tt
 				OR = {
 					has_completed_focus = CHI_army_reform
-					has_completed_focus = CHI_sea_army_reform
 				}
 			}
 			
@@ -377,7 +375,6 @@ CHI_army_reform = {
 			has_idea = CHI_incompetent_officers
 			OR = {
 				has_completed_focus = CHI_army_reform
-				has_completed_focus = CHI_sea_army_reform
 			}
 		}
 
@@ -436,7 +433,6 @@ CHI_army_reform = {
 		visible = {
 			OR = {
 				has_completed_focus = CHI_60_divisions_plan
-				has_completed_focus = CHI_sea_60_divisions_plan
 			}
 		}
 
@@ -489,7 +485,6 @@ economy_decisions = {
 		visible = {
 			OR = {
 				has_completed_focus = CHI_forced_loans
-				has_completed_focus = CHI_sea_forced_loans
 			}
 		}
 
@@ -532,7 +527,6 @@ war_measures = {
 		visible = {			
 			OR = {
 				has_completed_focus = CHI_scorched_earth_tactics
-				has_completed_focus = CHI_sea_scorched_earth_tactics
 			}
 		}
 
@@ -732,7 +726,6 @@ CHI_integrate_the_warlords = {
 		target_root_trigger = {
 			OR = {
 				has_completed_focus = CHI_subjugate_the_warlords
-				has_completed_focus = CHI_sea_subjugate_the_warlords
 			}
 		}
 		target_array = subjects
@@ -2864,20 +2857,20 @@ CHI_xian_incident = {
 			NOT = {
 				has_war_with = PRC
 			}
-			IF = {
-				limit = {
-					has_dlc = "No Compromise, No Surrender"
-				}
-				OR = {
-					XIC = {
-						exists = no
-					}
-					date > 1936.12.1
-					XIC = {
-						has_completed_focus = XIC_sixth_encirclement_campaign
-					}
-				}
-			}
+			#IF = {
+			#	limit = {
+			#		has_dlc = "No Compromise, No Surrender"
+			#	}
+			#	OR = {
+			#		XIC = {
+			#			exists = no
+			#		}
+			#		date > 1936.12.1
+			#		XIC = {
+			#			has_completed_focus = XIC_sixth_encirclement_campaign
+			#		}
+			#	}
+			#}
 		}
 
 		cost = 25
@@ -2920,15 +2913,15 @@ CHI_xian_incident = {
 				has_government = communism
 			}
 
-			modifier = { # The Japanese need to have begun down an agressive routue 
-				JAP = { 	
-					NOT = {
-						has_completed_focus = JAP_revisit_the_thirteen_demands
-						has_completed_focus = JAP_new_order_in_east_asia
-					}
-				}
-				factor = 0.1
-			}
+			#modifier = { # The Japanese need to have begun down an agressive routue 
+			#	JAP = { 	
+			#		NOT = {
+			#			has_completed_focus = JAP_revisit_the_thirteen_demands
+			#			has_completed_focus = JAP_new_order_in_east_asia
+			#		}
+			#	}
+			#	factor = 0.1
+			#}
 
 			modifier = { # Japanese needs to be one of the imperialist ideologies
 				JAP = {
@@ -6250,7 +6243,7 @@ CHI_integrate_the_warlords_sea_cat = {
 				amount_taken_ideas = {
 					amount < 1
 					slots = {
-						theorist
+						army_theorist
 					}
 				}
 			}
@@ -6492,7 +6485,7 @@ CHI_integrate_the_warlords_sea_cat = {
 				amount_taken_ideas = {
 					amount < 1
 					slots = {
-						theorist
+						army_theorist
 					}
 				}
 			}
@@ -6723,7 +6716,7 @@ CHI_integrate_the_warlords_sea_cat = {
 				amount_taken_ideas = {
 					amount < 1
 					slots = {
-						theorist
+						army_theorist
 					}
 				}
 			}
@@ -6957,7 +6950,7 @@ CHI_integrate_the_warlords_sea_cat = {
 				amount_taken_ideas = {
 					amount < 1
 					slots = {
-						theorist
+						army_theorist
 					}
 				}
 			}
@@ -7135,7 +7128,7 @@ CHI_integrate_the_warlords_sea_cat = {
 				amount_taken_ideas = {
 					amount < 1
 					slots = {
-						theorist
+						army_theorist
 					}
 				}
 			}
@@ -7304,7 +7297,7 @@ CHI_integrate_the_warlords_sea_cat = {
 				amount_taken_ideas = {
 					amount < 1
 					slots = {
-						theorist
+						army_theorist
 					}
 				}
 			}
@@ -7830,11 +7823,11 @@ CHI_avoid_another_crisis_cat = {
 			original_tag = CHI
 			is_subject = no 
 			NOT = { has_war_with = JAP }
-			JAP = {
-				NOT = {
-					has_completed_focus = JAP_subdue_the_kwantung_army
-				}
-			}
+			#JAP = {
+			#	NOT = {
+			#		has_completed_focus = JAP_subdue_the_kwantung_army
+			#	}
+			#}
 		}
 
 		is_good = no
@@ -9947,161 +9940,161 @@ CHI_x_y_force_cat = {
 	}
 }
 
-RNG_state_shintoism_decisions = {
-	
-	RNG_import_imperial_way_buddhism_decision  = {
-
-		priority = 15
-
-		icon = GFX_decision_hol_exchange_intelligence_data
-
-		ai_will_do = {
-			base = 25
-		}
-	
-		allowed = {  
-			is_literally_china = yes
-			has_dlc = "No Compromise, No Surrender"
-		}
-
-		visible = { 
-			has_completed_focus = CHI_tsr_embrace_japanese_cultural_institutions
-		}
-	
-		available = {
-		}
-
-		#days_remove = 70
-
-		#days_re_enable = 180
-
-		cost = 50
-
-		cancel_trigger = {
-		}
-
-        cancel_effect = {
-        }
-
-		modifier = {
-		}
-
-		complete_effect = { 
-
-			RNG_add_or_modify_state_shintoism = yes
-
-			add_to_variable = { ROOT.RNG_state_shintoism_pocket_penalty = -0.05 tooltip = pocket_penalty_tt }
-			add_to_variable = { ROOT.RNG_state_shintoism_surrender_limit = 0.1 tooltip = surrender_limit_tt }
-
-		}
-
-		fire_only_once = yes
-
-		remove_effect = {
-
-		}
-
-	}
-	
-	RNG_one_people_united_under_shinto_decision  = {
-
-		priority = 14
-
-		icon = GFX_decision_generic_civil_support
-
-		ai_will_do = {
-			base = 2
-		}
-	
-		allowed = {  
-			is_literally_china = yes
-			has_dlc = "No Compromise, No Surrender"
-		}
-
-		visible = { 
-			has_completed_focus = CHI_tsr_embrace_japanese_cultural_institutions
-		}
-	
-		available = {
-		}
-
-		cost = 50
-
-		cancel_trigger = {
-		}
-
-        cancel_effect = {
-        }
-
-		modifier = {
-		}
-
-		complete_effect = { 
-
-			RNG_add_or_modify_state_shintoism = yes
-
-			add_to_variable = { ROOT.RNG_state_shinotism_stability_factor = 0.075 tooltip = stability_factor_tt }
-
-		}
-
-		fire_only_once = yes
-
-		remove_effect = {
-
-		}
-
-	}
-
-	RNG_state_shinto_in_education_decision  = {
-
-		priority = 12
-
-		icon = GFX_decision_SOV_academy_of_sciences
-
-		ai_will_do = {
-			base = 10
-		}
-	
-		allowed = {  
-			is_literally_china = yes
-			has_dlc = "No Compromise, No Surrender"
-		}
-
-		visible = { 
-			has_completed_focus = CHI_tsr_embrace_japanese_cultural_institutions
-		}
-	
-		available = {
-		}
-
-		cost = 75
-
-		cancel_trigger = {
-		}
-
-        cancel_effect = {
-        }
-
-		modifier = {
-		}
-
-		complete_effect = { 
-
-			RNG_add_or_modify_state_shintoism = yes
-
-			add_to_variable = { ROOT.RNG_state_shintoism_research_speed_factor = 0.05 tooltip = research_speed_factor_tt }
-
-		}
-
-		fire_only_once = yes
-
-		remove_effect = {
-
-		}
-
-	}
-
-}
+#RNG_state_shintoism_decisions = {
+#	
+#	RNG_import_imperial_way_buddhism_decision  = {
+#
+#		priority = 15
+#
+#		icon = GFX_decision_hol_exchange_intelligence_data
+#
+#		ai_will_do = {
+#			base = 25
+#		}
+#	
+#		allowed = {  
+#			is_literally_china = yes
+#			has_dlc = "No Compromise, No Surrender"
+#		}
+#
+#		visible = { 
+#			has_completed_focus = CHI_tsr_embrace_japanese_cultural_institutions
+#		}
+#	
+#		available = {
+#		}
+#
+#		#days_remove = 70
+#
+#		#days_re_enable = 180
+#
+#		cost = 50
+#
+#		cancel_trigger = {
+#		}
+#
+#        cancel_effect = {
+#        }
+#
+#		modifier = {
+#		}
+#
+#		complete_effect = { 
+#
+#			RNG_add_or_modify_state_shintoism = yes
+#
+#			add_to_variable = { ROOT.RNG_state_shintoism_pocket_penalty = -0.05 tooltip = pocket_penalty_tt }
+#			add_to_variable = { ROOT.RNG_state_shintoism_surrender_limit = 0.1 tooltip = surrender_limit_tt }
+#
+#		}
+#
+#		fire_only_once = yes
+#
+#		remove_effect = {
+#
+#		}
+#
+#	}
+#	
+#	RNG_one_people_united_under_shinto_decision  = {
+#
+#		priority = 14
+#
+#		icon = GFX_decision_generic_civil_support
+#
+#		ai_will_do = {
+#			base = 2
+#		}
+#	
+#		allowed = {  
+#			is_literally_china = yes
+#			has_dlc = "No Compromise, No Surrender"
+#		}
+#
+#		visible = { 
+#			has_completed_focus = CHI_tsr_embrace_japanese_cultural_institutions
+#		}
+#	
+#		available = {
+#		}
+#
+#		cost = 50
+#
+#		cancel_trigger = {
+#		}
+#
+#        cancel_effect = {
+#        }
+#
+#		modifier = {
+#		}
+#
+#		complete_effect = { 
+#
+#			RNG_add_or_modify_state_shintoism = yes
+#
+#			add_to_variable = { ROOT.RNG_state_shinotism_stability_factor = 0.075 tooltip = stability_factor_tt }
+#
+#		}
+#
+#		fire_only_once = yes
+#
+#		remove_effect = {
+#
+#		}
+#
+#	}
+#
+#	RNG_state_shinto_in_education_decision  = {
+#
+#		priority = 12
+#
+#		icon = GFX_decision_SOV_academy_of_sciences
+#
+#		ai_will_do = {
+#			base = 10
+#		}
+#	
+#		allowed = {  
+#			is_literally_china = yes
+#			has_dlc = "No Compromise, No Surrender"
+#		}
+#
+#		visible = { 
+#			has_completed_focus = CHI_tsr_embrace_japanese_cultural_institutions
+#		}
+#	
+#		available = {
+#		}
+#
+#		cost = 75
+#
+#		cancel_trigger = {
+#		}
+#
+#        cancel_effect = {
+#        }
+#
+#		modifier = {
+#		}
+#
+#		complete_effect = { 
+#
+#			RNG_add_or_modify_state_shintoism = yes
+#
+#			add_to_variable = { ROOT.RNG_state_shintoism_research_speed_factor = 0.05 tooltip = research_speed_factor_tt }
+#
+#		}
+#
+#		fire_only_once = yes
+#
+#		remove_effect = {
+#
+#		}
+#
+#	}
+#
+#}
 
 PRC_infiltration_sea_cat = {
 	CHI_fascist_infiltrate_state = {
@@ -10343,7 +10336,7 @@ PRC_infiltration_sea_cat = {
 				amount_taken_ideas = {
 					amount < 1
 					slots = {
-						theorist
+						army_theorist
 					}
 				}
 			}
