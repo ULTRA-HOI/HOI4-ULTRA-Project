@@ -176,317 +176,317 @@ country_event = {
 add_namespace = wtt_infiltration
 
 #Hidden event that check for infiltration and successful detection approximately monthly
-country_event = {
-	id = wtt_infiltration.1
-	title = wtt_infiltration.1.t
-	desc = wtt_china.1.desc
-	picture = GFX_report_event_indian_soldiers 
-
-	hidden = yes
-	mean_time_to_happen = {
-		days = 30
-	}
-
-	trigger = {
-		tag = event_target:WTT_current_china_leader
-		any_other_country = {
-			has_completed_focus = PRC_infiltration
-			has_government = communism
-		}
-	}
-	
-	immediate = {
-		every_controlled_state = { 
-			limit = {
-				has_any_PRC_infiltration_flag = yes
-				NOT = { has_state_flag = discovered_infiltration }
-			}
-			random_list = {
-				10 = { 
-					set_state_flag = discovered_infiltration
-					save_event_target_as = infiltrated_state
-
-					if = {
-						limit = { state = 615 }
-						ROOT = { country_event = wtt_infiltration.615 }
-					}	
-					else_if = {
-						limit = { state = 621 }
-						ROOT = { country_event = wtt_infiltration.621 }
-					}	
-					else_if = {
-						limit = { state = 608 }
-						ROOT = { country_event = wtt_infiltration.608 }
-					}	
-					else_if = {
-						limit = { state = 614 }
-						ROOT = { country_event = wtt_infiltration.614 }
-					}	
-					else_if = {
-						limit = { state = 597 }
-						ROOT = { country_event = wtt_infiltration.597 }
-					}	
-					else_if = {
-						limit = { state = 598 }
-						ROOT = { country_event = wtt_infiltration.598 }
-					}	
-					else_if = {
-						limit = { state = 607 }
-						ROOT = { country_event = wtt_infiltration.607 }
-					}
-					else_if = {
-						limit = { state = 283 }
-						ROOT = { country_event = wtt_infiltration.283 }
-					}
-					else_if = {
-						limit = { state = 744 }
-						ROOT = { country_event = wtt_infiltration.744 }
-					}
-					else_if = {
-						limit = { state = 746 }
-						ROOT = { country_event = wtt_infiltration.746 }
-					}
-
-					set_global_flag = new_infiltration_detected
-					if = {
-						limit = { 
-							ROOT = { NOT = { has_country_flag = CHI_first_infiltration_discovered } }
-						}
-						ROOT = { set_country_flag = CHI_first_infiltration_discovered }
-					}
-					if = {
-						limit = {
-							ROOT = { has_country_flag = CHI_clean_sweep }
-						}
-						ROOT = { clr_country_flag = CHI_clean_sweep }
-					}
-				}
-				90 = {
-					#Nothing happens
-				}
-			}
-		}
-
-		if = {
-			limit = {
-				NOT = { has_global_flag = new_infiltration_detected }
-			}
-			if = {
-				limit = { ROOT_any_state_infiltration_detected = yes }
-				country_event = wtt_infiltration.3
-				else_if = {
-					limit = { 
-						has_country_flag = CHI_first_infiltration_discovered 
-						NOT = { has_country_flag = CHI_clean_sweep }
-					}
-					#No infiltrations discovered
-					country_event = wtt_infiltration.4
-				}
-			}
-		}
-		clr_global_flag = new_infiltration_detected
-	}
-}
-# notification event for infiltrator that cell has been removed
-country_event = {
-	id = wtt_infiltration.6
-	title = wtt_infiltration.6.t
-	desc = wtt_infiltration.6.desc
-	picture = GFX_report_event_dead_soldiers
-
-	is_triggered_only = yes
-
-	option = {
-		name = wtt_infiltration.6.a
-	}
-
-}
-
-#Have to make one for each state because only 1 instance of the event is allowed in the window
-#Infiltration detected in state - TODO_WTT_CD could chose to make description based on what type of infiltration is present.
-country_event = {
-	id = wtt_infiltration.615
-	title = wtt_infiltration.2.t
-	desc = wtt_infiltration.2.desc
-	picture = GFX_report_event_china_infiltration
-
-	is_triggered_only = yes
-	
-	option = {
-		name = wtt_infiltration.2.a
-	}
-}
-
-country_event = {
-	id = wtt_infiltration.621
-	title = wtt_infiltration.2.t
-	desc = wtt_infiltration.2.desc
-	picture = GFX_report_event_china_infiltration
-
-	is_triggered_only = yes
-	
-	option = {
-		name = wtt_infiltration.2.a
-	}
-}
-
-country_event = {
-	id = wtt_infiltration.608
-	title = wtt_infiltration.2.t
-	desc = wtt_infiltration.2.desc
-	picture = GFX_report_event_china_infiltration
-
-	is_triggered_only = yes
-	
-	option = {
-		name = wtt_infiltration.2.a
-	}
-}
-
-country_event = {
-	id = wtt_infiltration.614
-	title = wtt_infiltration.2.t
-	desc = wtt_infiltration.2.desc
-	picture = GFX_report_event_china_infiltration
-
-	is_triggered_only = yes
-	
-	option = {
-		name = wtt_infiltration.2.a
-	}
-}
-
-country_event = {
-	id = wtt_infiltration.597
-	title = wtt_infiltration.2.t
-	desc = wtt_infiltration.2.desc
-	picture = GFX_report_event_china_infiltration
-
-	is_triggered_only = yes
-	
-	option = {
-		name = wtt_infiltration.2.a
-	}
-}
-
-
-
-country_event = {
-	id = wtt_infiltration.598
-	title = wtt_infiltration.2.t
-	desc = wtt_infiltration.2.desc
-	picture = GFX_report_event_china_infiltration
-
-	is_triggered_only = yes
-	
-	option = {
-		name = wtt_infiltration.2.a
-	}
-}
-
-country_event = {
-	id = wtt_infiltration.607
-	title = wtt_infiltration.2.t
-	desc = wtt_infiltration.2.desc
-	picture = GFX_report_event_china_infiltration
-
-	is_triggered_only = yes
-	
-	option = {
-		name = wtt_infiltration.2.a
-	}
-}
-
-country_event = {
-	id = wtt_infiltration.283
-	title = wtt_infiltration.2.t
-	desc = wtt_infiltration.2.desc
-	picture = GFX_report_event_china_infiltration
-
-	is_triggered_only = yes
-	
-	option = {
-		name = wtt_infiltration.2.a
-	}
-}
-
-country_event = {
-	id = wtt_infiltration.744
-	title = wtt_infiltration.2.t
-	desc = wtt_infiltration.2.desc
-	picture = GFX_report_event_china_infiltration
-
-	is_triggered_only = yes
-	
-	option = {
-		name = wtt_infiltration.2.a
-	}
-}
-
-country_event = {
-	id = wtt_infiltration.746
-	title = wtt_infiltration.2.t
-	desc = wtt_infiltration.2.desc
-	picture = GFX_report_event_china_infiltration
-
-	is_triggered_only = yes
-	
-	option = {
-		name = wtt_infiltration.2.a
-	}
-}
-
-
-#Event for nationalists
-#No infiltration detected but still some detected in the country
-country_event = {
-	id = wtt_infiltration.3
-	title = wtt_infiltration.3.t
-	desc = wtt_infiltration.3.desc
-	picture = GFX_report_event_chinese_officers
-
-	is_triggered_only = yes
-	
-	option = {
-		name = wtt_infiltration.3.a
-	}
-}
-
-#Event for nationalists
-#No infiltration detected NONE detected in entire country
-country_event = {
-	id = wtt_infiltration.4
-	title = wtt_infiltration.4.t
-	desc = wtt_infiltration.4.desc
-	picture = GFX_report_event_chinese_soldiers
-
-	is_triggered_only = yes
-	
-	immediate = {
-		hidden_effect = {
-			set_country_flag = CHI_clean_sweep
-		}
-	}
-	
-	option = {
-		name = wtt_infiltration.4.a
-	}
-}
-
-#Event for nationalists
-#Warning that uprising is coming
-country_event = {
-	id = wtt_infiltration.10
-	title = wtt_infiltration.10.t
-	desc = wtt_infiltration.10.desc
-	picture = GFX_report_event_chinese_soldiers_running
-
-	is_triggered_only = yes
-	
-	option = {
-		name = wtt_infiltration.10.a
-	}
-}
+#country_event = {
+#	id = wtt_infiltration.1
+#	title = wtt_infiltration.1.t
+#	desc = wtt_china.1.desc
+#	picture = GFX_report_event_indian_soldiers 
+#
+#	hidden = yes
+#	mean_time_to_happen = {
+#		days = 30
+#	}
+#
+#	trigger = {
+#		tag = event_target:WTT_current_china_leader
+#		any_other_country = {
+#			has_completed_focus = PRC_infiltration
+#			has_government = communism
+#		}
+#	}
+#	
+#	immediate = {
+#		every_controlled_state = { 
+#			limit = {
+#				has_any_PRC_infiltration_flag = yes
+#				NOT = { has_state_flag = discovered_infiltration }
+#			}
+#			random_list = {
+#				10 = { 
+#					set_state_flag = discovered_infiltration
+#					save_event_target_as = infiltrated_state
+#
+#					if = {
+#						limit = { state = 615 }
+#						ROOT = { country_event = wtt_infiltration.615 }
+#					}	
+#					else_if = {
+#						limit = { state = 621 }
+#						ROOT = { country_event = wtt_infiltration.621 }
+#					}	
+#					else_if = {
+#						limit = { state = 608 }
+#						ROOT = { country_event = wtt_infiltration.608 }
+#					}	
+#					else_if = {
+#						limit = { state = 614 }
+#						ROOT = { country_event = wtt_infiltration.614 }
+#					}	
+#					else_if = {
+#						limit = { state = 597 }
+#						ROOT = { country_event = wtt_infiltration.597 }
+#					}	
+#					else_if = {
+#						limit = { state = 598 }
+#						ROOT = { country_event = wtt_infiltration.598 }
+#					}	
+#					else_if = {
+#						limit = { state = 607 }
+#						ROOT = { country_event = wtt_infiltration.607 }
+#					}
+#					else_if = {
+#						limit = { state = 283 }
+#						ROOT = { country_event = wtt_infiltration.283 }
+#					}
+#					else_if = {
+#						limit = { state = 744 }
+#						ROOT = { country_event = wtt_infiltration.744 }
+#					}
+#					else_if = {
+#						limit = { state = 746 }
+#						ROOT = { country_event = wtt_infiltration.746 }
+#					}
+#
+#					set_global_flag = new_infiltration_detected
+#					if = {
+#						limit = { 
+#							ROOT = { NOT = { has_country_flag = CHI_first_infiltration_discovered } }
+#						}
+#						ROOT = { set_country_flag = CHI_first_infiltration_discovered }
+#					}
+#					if = {
+#						limit = {
+#							ROOT = { has_country_flag = CHI_clean_sweep }
+#						}
+#						ROOT = { clr_country_flag = CHI_clean_sweep }
+#					}
+#				}
+#				90 = {
+#					#Nothing happens
+#				}
+#			}
+#		}
+#
+#		if = {
+#			limit = {
+#				NOT = { has_global_flag = new_infiltration_detected }
+#			}
+#			if = {
+#				limit = { ROOT_any_state_infiltration_detected = yes }
+#				country_event = wtt_infiltration.3
+#				else_if = {
+#					limit = { 
+#						has_country_flag = CHI_first_infiltration_discovered 
+#						NOT = { has_country_flag = CHI_clean_sweep }
+#					}
+#					#No infiltrations discovered
+#					country_event = wtt_infiltration.4
+#				}
+#			}
+#		}
+#		clr_global_flag = new_infiltration_detected
+#	}
+#}
+## notification event for infiltrator that cell has been removed
+#country_event = {
+#	id = wtt_infiltration.6
+#	title = wtt_infiltration.6.t
+#	desc = wtt_infiltration.6.desc
+#	picture = GFX_report_event_dead_soldiers
+#
+#	is_triggered_only = yes
+#
+#	option = {
+#		name = wtt_infiltration.6.a
+#	}
+#
+#}
+#
+##Have to make one for each state because only 1 instance of the event is allowed in the window
+##Infiltration detected in state - TODO_WTT_CD could chose to make description based on what type of infiltration is present.
+#country_event = {
+#	id = wtt_infiltration.615
+#	title = wtt_infiltration.2.t
+#	desc = wtt_infiltration.2.desc
+#	picture = GFX_report_event_china_infiltration
+#
+#	is_triggered_only = yes
+#	
+#	option = {
+#		name = wtt_infiltration.2.a
+#	}
+#}
+#
+#country_event = {
+#	id = wtt_infiltration.621
+#	title = wtt_infiltration.2.t
+#	desc = wtt_infiltration.2.desc
+#	picture = GFX_report_event_china_infiltration
+#
+#	is_triggered_only = yes
+#	
+#	option = {
+#		name = wtt_infiltration.2.a
+#	}
+#}
+#
+#country_event = {
+#	id = wtt_infiltration.608
+#	title = wtt_infiltration.2.t
+#	desc = wtt_infiltration.2.desc
+#	picture = GFX_report_event_china_infiltration
+#
+#	is_triggered_only = yes
+#	
+#	option = {
+#		name = wtt_infiltration.2.a
+#	}
+#}
+#
+#country_event = {
+#	id = wtt_infiltration.614
+#	title = wtt_infiltration.2.t
+#	desc = wtt_infiltration.2.desc
+#	picture = GFX_report_event_china_infiltration
+#
+#	is_triggered_only = yes
+#	
+#	option = {
+#		name = wtt_infiltration.2.a
+#	}
+#}
+#
+#country_event = {
+#	id = wtt_infiltration.597
+#	title = wtt_infiltration.2.t
+#	desc = wtt_infiltration.2.desc
+#	picture = GFX_report_event_china_infiltration
+#
+#	is_triggered_only = yes
+#	
+#	option = {
+#		name = wtt_infiltration.2.a
+#	}
+#}
+#
+#
+#
+#country_event = {
+#	id = wtt_infiltration.598
+#	title = wtt_infiltration.2.t
+#	desc = wtt_infiltration.2.desc
+#	picture = GFX_report_event_china_infiltration
+#
+#	is_triggered_only = yes
+#	
+#	option = {
+#		name = wtt_infiltration.2.a
+#	}
+#}
+#
+#country_event = {
+#	id = wtt_infiltration.607
+#	title = wtt_infiltration.2.t
+#	desc = wtt_infiltration.2.desc
+#	picture = GFX_report_event_china_infiltration
+#
+#	is_triggered_only = yes
+#	
+#	option = {
+#		name = wtt_infiltration.2.a
+#	}
+#}
+#
+#country_event = {
+#	id = wtt_infiltration.283
+#	title = wtt_infiltration.2.t
+#	desc = wtt_infiltration.2.desc
+#	picture = GFX_report_event_china_infiltration
+#
+#	is_triggered_only = yes
+#	
+#	option = {
+#		name = wtt_infiltration.2.a
+#	}
+#}
+#
+#country_event = {
+#	id = wtt_infiltration.744
+#	title = wtt_infiltration.2.t
+#	desc = wtt_infiltration.2.desc
+#	picture = GFX_report_event_china_infiltration
+#
+#	is_triggered_only = yes
+#	
+#	option = {
+#		name = wtt_infiltration.2.a
+#	}
+#}
+#
+#country_event = {
+#	id = wtt_infiltration.746
+#	title = wtt_infiltration.2.t
+#	desc = wtt_infiltration.2.desc
+#	picture = GFX_report_event_china_infiltration
+#
+#	is_triggered_only = yes
+#	
+#	option = {
+#		name = wtt_infiltration.2.a
+#	}
+#}
+#
+#
+##Event for nationalists
+##No infiltration detected but still some detected in the country
+#country_event = {
+#	id = wtt_infiltration.3
+#	title = wtt_infiltration.3.t
+#	desc = wtt_infiltration.3.desc
+#	picture = GFX_report_event_chinese_officers
+#
+#	is_triggered_only = yes
+#	
+#	option = {
+#		name = wtt_infiltration.3.a
+#	}
+#}
+#
+##Event for nationalists
+##No infiltration detected NONE detected in entire country
+#country_event = {
+#	id = wtt_infiltration.4
+#	title = wtt_infiltration.4.t
+#	desc = wtt_infiltration.4.desc
+#	picture = GFX_report_event_chinese_soldiers
+#
+#	is_triggered_only = yes
+#	
+#	immediate = {
+#		hidden_effect = {
+#			set_country_flag = CHI_clean_sweep
+#		}
+#	}
+#	
+#	option = {
+#		name = wtt_infiltration.4.a
+#	}
+#}
+#
+##Event for nationalists
+##Warning that uprising is coming
+#country_event = {
+#	id = wtt_infiltration.10
+#	title = wtt_infiltration.10.t
+#	desc = wtt_infiltration.10.desc
+#	picture = GFX_report_event_chinese_soldiers_running
+#
+#	is_triggered_only = yes
+#	
+#	option = {
+#		name = wtt_infiltration.10.a
+#	}
+#}
 
  ##  #  # ### ###   ####  ##  ##   ##  #  #
 #  # ## #  #   #       # #  # # # #  # ## #
