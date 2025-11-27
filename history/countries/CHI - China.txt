@@ -1,3 +1,5 @@
+set_variable = { CHI_ncns_content = 0 }
+
 capital = 613 # Nanjing
 set_research_slots = 2
 init_default_logistics_and_women = yes
@@ -78,7 +80,7 @@ add_ideas = {
 IF = {
 	limit = {
 		has_dlc = "No Compromise, No Surrender"
-		always = no
+		check_variable = { CHI_ncns_content = 1 }
 	}
 	set_popularities = {
 		neutrality = 91
@@ -354,7 +356,7 @@ add_opinion_modifier = { target = PRC modifier = hostile_status }
 IF = {
 	limit = {
 		has_dlc = "No Compromise, No Surrender"
-		always = no
+		check_variable = { CHI_ncns_content = 1 }
 	}
 	recruit_character = CHI_carsun_chang
 	recruit_character = CHI_soong_ching_ling
@@ -453,12 +455,12 @@ recruit_character = CHI_dai_li # Shared in pre-sea
 recruit_character = CHI_t_v_soong # Shared 
 recruit_character = CHI_alexander_von_falkenhausen # Shared 
 recruit_character = CHI_claire_lee_chennault # Shared 
-recruit_character = CHI_kwong_jiang # Shared 
+#recruit_character = CHI_kwong_jiang # Shared 
 
 if = {
 	limit = {
 		has_dlc = "No Compromise, No Surrender"
-		always = no
+		check_variable = { CHI_ncns_content = 1 }
 	}
 	CHI_chen_shaokuan = {
 		set_character_flag = can_flip_to_prc
@@ -723,4 +725,11 @@ create_equipment_variant = {
 		signal_slot = infantry_signal_0
 	}
 	obsolete = yes
+}
+
+if = {
+	limit = {
+		check_variable = { CHI_ncns_content = 1 }
+	}
+	load_focus_tree = china_nationalist_sea_focus
 }
