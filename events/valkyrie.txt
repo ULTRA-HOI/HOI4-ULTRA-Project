@@ -581,7 +581,31 @@ country_event = {
 		}
 	}
 }
+#Valkyrie Aftermath News Event: Operation Valkyrie Succeeds or Fails
+news_event = {
+	id = valkyrie.news.1 # 
+	title = valkyrie.1.title
+	desc = valkyrie.1.desc
+	picture = GFX_news_event_ger_civil_war
+	is_triggered_only = yes
+	major = yes
 
+	option = {
+		name = valkyrie.news.1.option.a # "The Führer prevailed again."
+		trigger = {
+			has_country_leader_with_trait = GER_der_fuhrer_late_ultra
+			NOT = {	TAG = GER }
+		}
+	}
+	option = {
+		name = valkyrie.news.1.option.b # "Hitler is dead?!"
+		trigger = {
+			NOT = {	has_country_leader_with_trait = GER_der_fuhrer_late_ultra }
+			NOT = {	TAG = GER }
+		}
+	}
+}
+# Valykyrie Aftermath Event: Beck or Rommel take over
 country_event = {
 	id = valkyrie.101
 	title = valkyrie.101.title
@@ -614,6 +638,28 @@ country_event = {
 
 		add_stability = 0.05
 	}
+}
+# Valkyrie Aftermath News Event: Nazi Remnants Resist
+news_event = {
+	id = valkyrie.news.2 # 
+	title = valkyrie.2.title
+	desc = valkyrie.2.desc
+	picture = GFX_news_event_ger_civil_war
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = valkyrie.news.2.option.a # "And yet the war drags on..."
+		trigger = {
+			NOT = {	TAG = GER }
+		}
+	}
+	option = {
+		name = valkyrie.news.2.option.b # "Crush the Nazis!"
+		trigger = { TAG = GER }
+	}
+
+
 }
 
 add_namespace = wm_recruitment_event
