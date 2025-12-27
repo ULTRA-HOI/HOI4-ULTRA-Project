@@ -516,12 +516,28 @@ country_event = {
 		retire_character = GER_hans_karl_freiherr_von_esebeck
 		retire_character = GER_erwin_rommel
 		
-		# Remove Balance of Power
-		 remove_all_power_balance_modifiers = {
-			id = wehrmacht_waffen_ss_balance
+		# Set Balance of Power
+		if = {
+			limit = { 
+				is_power_balance_side_active = {
+					id = wehrmacht_waffen_ss_balance
+					side = waffen_ss_side
+				}
+			}
+			GER_bop_absurdly_high_increase_effect = yes
+		}
+		else_if = {
+			limit = {
+				is_power_balance_side_active = {
+						id = wehrmacht_waffen_ss_balance
+						side = wehrmacht_side
+					}
+			}
+			remove_all_power_balance_modifiers = {
+				id = wehrmacht_waffen_ss_balance
+			}
 		}
 	}
-	
 	option = {
 		name = valkyrie.100.option.b # "The Führer is dead! Göring takes over!"
 		retire_country_leader = yes
@@ -537,9 +553,24 @@ country_event = {
 		retire_character = GER_alexander_von_falkenhausen
 		retire_character = GER_hans_karl_freiherr_von_esebeck
 		retire_character = GER_erwin_rommel
-		# Remove Balance of Power
-		 remove_all_power_balance_modifiers = {
-			id = wehrmacht_waffen_ss_balance
+		# Set Balance of Power
+		if = {
+			limit = { 
+				is_power_balance_side_active = {
+					id = wehrmacht_waffen_ss_balance
+					side = waffen_ss_side
+				}
+			}
+			GER_bop_absurdly_high_increase_effect = yes
+		}
+		else_if = {
+			limit = {
+				is_power_balance_side_active = {
+						id = wehrmacht_waffen_ss_balance
+						side = wehrmacht_side
+					}
+			}
+			GER_bop_absurdly_high_decrease_effect = yes
 		}
 	}
 	
@@ -575,9 +606,55 @@ country_event = {
 			}
 			remove_unit_leader = yes
 		}
-		# Remove Balance of Power
-		 remove_all_power_balance_modifiers = {
-			id = wehrmacht_waffen_ss_balance
+		# Set Balance of Power
+		if = {
+			limit = { 
+				is_power_balance_in_range = {
+					id = wehrmacht_waffen_ss_balance
+					range > waffen_ss_dominant
+				}
+			}
+			set_country_flag = GER_nazi_resistance_very_active_flag
+			remove_all_power_balance_modifiers = {
+				id = wehrmacht_waffen_ss_balance
+			}
+		}
+		else_if = {
+			limit = { 
+				is_power_balance_in_range = {
+					id = wehrmacht_waffen_ss_balance
+					range > waffen_ss_strong
+				}
+			}
+			set_country_flag = GER_nazi_resistance_active_flag
+			remove_all_power_balance_modifiers = {
+				id = wehrmacht_waffen_ss_balance
+			}
+		}
+		else_if = {
+			limit = { 
+				is_power_balance_in_range = {
+					id = wehrmacht_waffen_ss_balance
+					range > waffen_ss_favored
+				}
+			}
+			set_country_flag = GER_nazi_resistance_somewhat_active_flag
+			remove_all_power_balance_modifiers = {
+				id = wehrmacht_waffen_ss_balance
+			}
+		}	
+		else_if = {
+			limit = {
+				is_power_balance_side_active = {
+						id = wehrmacht_waffen_ss_balance
+						side = wehrmacht_side
+					}
+			}
+			GER_bop_absurdly_high_decrease_effect = yes
+			set_power_balance_gfx = {
+				id = wehrmacht_waffen_ss_balance
+				icon = GFX_ger_bop_wh_max
+			}
 		}
 	}
 }
