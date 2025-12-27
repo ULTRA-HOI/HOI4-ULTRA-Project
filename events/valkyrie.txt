@@ -611,7 +611,7 @@ country_event = {
 			limit = { 
 				is_power_balance_in_range = {
 					id = wehrmacht_waffen_ss_balance
-					range > waffen_ss_dominant
+					range = waffen_ss_dominant
 				}
 			}
 			set_country_flag = GER_nazi_resistance_very_active_flag
@@ -623,7 +623,7 @@ country_event = {
 			limit = { 
 				is_power_balance_in_range = {
 					id = wehrmacht_waffen_ss_balance
-					range > waffen_ss_strong
+					range = waffen_ss_strong
 				}
 			}
 			set_country_flag = GER_nazi_resistance_active_flag
@@ -635,7 +635,7 @@ country_event = {
 			limit = { 
 				is_power_balance_in_range = {
 					id = wehrmacht_waffen_ss_balance
-					range > waffen_ss_favored
+					range = waffen_ss_favored
 				}
 			}
 			set_country_flag = GER_nazi_resistance_somewhat_active_flag
@@ -653,7 +653,8 @@ country_event = {
 			GER_bop_absurdly_high_decrease_effect = yes
 			set_power_balance_gfx = {
 				id = wehrmacht_waffen_ss_balance
-				icon = GFX_ger_bop_wh_max
+				side = wehrmacht_side
+				gfx = GFX_ger_bop_wh_max
 			}
 		}
 	}
@@ -723,8 +724,8 @@ news_event = {
 # Valkyrie Aftermath News Event: Nazi Remnants Resist
 news_event = {
 	id = valkyrie.news.2 # 
-	title = valkyrie.2.title
-	desc = valkyrie.2.desc
+	title = valkyrie.news.2.title
+	desc = valkyrie.news.2.desc
 	picture = GFX_news_event_ger_civil_war
 	is_triggered_only = yes
 	major = yes
@@ -732,12 +733,36 @@ news_event = {
 	option = {
 		name = valkyrie.news.2.option.a # "And yet the war drags on..."
 		trigger = {
+			OR = {
+				GER = {
+					has_country_flag = GER_nazi_resistance_very_active_flag
+				}
+				GER = {
+					has_country_flag = GER_nazi_resistance_active_flag
+				}
+				GER = {
+					has_country_flag = GER_nazi_resistance_somewhat_active_flag
+				}
+			}
 			NOT = {	TAG = GER }
 		}
 	}
 	option = {
 		name = valkyrie.news.2.option.b # "Crush the Nazis!"
-		trigger = { TAG = GER }
+		trigger = { 
+			TAG = GER
+			OR = {
+				GER = {
+					has_country_flag = GER_nazi_resistance_very_active_flag
+				}
+				GER = {
+					has_country_flag = GER_nazi_resistance_active_flag
+				}
+				GER = {
+					has_country_flag = GER_nazi_resistance_somewhat_active_flag
+				}
+			}
+		}
 	}
 
 
