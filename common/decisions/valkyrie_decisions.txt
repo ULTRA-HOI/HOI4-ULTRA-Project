@@ -1127,3 +1127,74 @@ wehrmacht_vs_ss_decisions = {
 		}
 	}
 }
+
+valkyrie_purge_decisions = {
+
+	GER_eliminate_nazi_resistance = {
+
+		icon = generic_civil_support
+
+		available = {
+			has_completed_focus = GER_purge_the_nazis
+			has_equipment = {
+			    infantry_equipment > 500
+			}
+			has_army_experience > 5
+		}
+
+		state_target = yes
+
+		targets = { 5 763 63 795 62 68 66 65 1132 58 789 }
+
+		target_trigger = {
+			OR = {
+				has_country_flag = GER_nazi_resistance_very_active_flag
+				has_country_flag = GER_nazi_resistance_active_flag
+				has_country_flag = GER_nazi_resistance_somewhat_active_flag
+			}
+			FROM = {
+				is_owned_by = ROOT
+				NOT = {
+					is_core_of = ROOT
+				}
+			}
+		}
+
+		cost = 40
+
+		fire_only_once = yes
+
+		days_remove = 70
+
+		ai_will_do = {
+			base = 200
+		}
+
+		modifier = {
+			weekly_manpower = -300
+		}
+
+		visible = {
+			OR = {
+				has_country_flag = GER_nazi_resistance_very_active_flag
+				has_country_flag = GER_nazi_resistance_active_flag
+				has_country_flag = GER_nazi_resistance_somewhat_active_flag
+			}
+		}
+
+		complete_effect = {
+			add_equipment_to_stockpile = {
+			    type = infantry_equipment
+			    amount = -500
+			}
+			army_experience = -5
+		}
+
+		remove_effect = {
+			FROM = {
+				add_core_of = ROOT
+			}
+		}
+	}
+
+}
