@@ -398,7 +398,7 @@
 		id = JAP_expand_chinese_railways
 		icon = GFX_goal_generic_construct_infrastructure
 		prerequisite = { focus = JAP_intervene_in_china }
-		x = -1
+		x = -2
 		y = 1
 		relative_position_id = JAP_intervene_in_china
 
@@ -523,7 +523,7 @@
 		id = JAP_develop_chinese_resources
 		icon = GFX_goal_generic_construct_civilian
 		prerequisite = { focus = JAP_intervene_in_china }
-		x = 1
+		x = 2
 		y = 1
 		relative_position_id = JAP_intervene_in_china
 
@@ -579,6 +579,131 @@
 				bonus = 3
 				uses = 1
 				technology = infantry_guns_impr_lmg
+			}
+		}
+	}
+
+	focus = {
+		id = JAP_deploy_chemical_weapons
+		icon = GFX_goal_generic_CAS
+		prerequisite = { focus = JAP_intervene_in_china }
+		x = 0
+		y = 1
+		relative_position_id = JAP_intervene_in_china
+
+		cost = 1
+
+		ai_will_do = {
+			factor = 4
+		}
+
+		available = {
+			NOT = {
+				JAP = {
+					has_completed_focus = JAP_strike_on_the_southern_resource_area
+				}
+			}
+			any_country = {
+				OR = {
+					original_tag = JAP 
+					is_subject_of = JAP
+				}
+				has_full_control_of_state = 613
+			}
+		}
+
+		bypass = {
+			any_country = {
+				OR = {
+					original_tag = JAP 
+					is_subject_of = JAP
+				}
+				has_full_control_of_state = 613
+			}
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		bypass_effect = {
+			news_event = news.998
+			JAP = {
+				add_equipment_to_stockpile = {
+					type = chemical_weapon_equipment
+					amount = 3
+					producer = JAP
+				}
+			}
+		}
+
+		completion_reward = {
+			news_event = news.998
+			JAP = {
+				add_equipment_to_stockpile = {
+					type = chemical_weapon_equipment
+					amount = 3
+					producer = JAP
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = JAP_expand_chemical_weapon_use
+		icon = GFX_goal_generic_CAS
+		prerequisite = { focus = JAP_deploy_chemical_weapons }
+		x = 0
+		y = 1
+		relative_position_id = JAP_deploy_chemical_weapons
+
+		cost = 5
+
+		ai_will_do = {
+			factor = -1
+		}
+
+		available = {
+			NOT = {
+				JAP = {
+					has_completed_focus = JAP_strike_on_the_southern_resource_area
+				}
+			}
+			any_country = {
+				OR = {
+					original_tag = JAP 
+					is_subject_of = JAP
+				}
+				has_full_control_of_state = 613
+			}
+		}
+
+		bypass = {
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		bypass_effect = {
+		}
+
+		completion_reward = {
+			news_event = news.999
+			USA = { 
+				add_war_support = 0.05
+				send_embargo = JAP
+				remove_ideas = USA_japanese_trade_treaty
+			}
+			SOV = {
+				send_embargo = JAP
+			}
+			JAP = {
+				add_equipment_to_stockpile = {
+					type = chemical_weapon_equipment
+					amount = 1
+					producer = JAP
+				}
 			}
 		}
 	}
@@ -845,6 +970,15 @@
 
 		search_filters = { FOCUS_FILTER_ANNEXATION }									  
 		completion_reward = {
+			hidden_effect = {
+				JAP = {
+				add_equipment_to_stockpile = {
+					type = chemical_weapon_equipment
+					amount = -100
+					producer = JAP
+				}
+			}
+			}
 			remove_ideas = obsolete_enemy
 			add_war_support = 0.1
 			if = {
