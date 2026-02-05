@@ -1,0 +1,714 @@
+focus_tree = {
+	id = slovakia_focus
+	
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = SLO
+		}
+	}
+	
+
+	default = no
+
+	focus = {
+		id = SLO_uprising
+		icon = GFX_focus_spr_the_anti_fascist_workers_revolution
+		cost = 1
+
+		ai_will_do = {
+			factor = 200
+		}
+
+		bypass = {
+			if = {
+                date > 1942.1.1
+                GER = {
+                    has_war_with = SOV
+                }
+                OR = {
+                    any_enemy_country = {
+                        controls_state = 4 #LOWER AUSTRIA
+                    }
+                    SOV = {
+                        OR = {
+                            controls_state = 88 #KRAKOW
+                            controls_state = 89 #STANISLAWOW
+                            controls_state = 76 #NORTH TRANSYLVANIA
+                        }
+                    }
+                }
+			}
+		}
+
+		available = {
+			if = {
+                date > 1942.1.1
+                GER = {
+                    has_war_with = SOV
+                }
+                OR = {
+                    any_enemy_country = {
+                        controls_state = 4 #LOWER AUSTRIA
+                    }
+                    SOV = {
+                        OR = {
+                            controls_state = 88 #KRAKOW
+                            controls_state = 89 #STANISLAWOW
+                            controls_state = 76 #NORTH TRANSYLVANIA
+                        }
+                    }
+                }
+			}
+		}
+
+		search_filters = {FOCUS_FILTER_WAR_SUPPORT FOCUS_FILTER_MANPOWER}
+
+		bypass_effect = {
+            GER = {
+                end_puppet = SLO
+            }
+			leave_faction = yes  
+			every_enemy_country = {
+				white_peace = SLO
+			}
+			if = {
+				limit = {
+					GER = {
+						any_enemy_country = {
+							controls_state = 4 #LOWER AUSTRIA
+						}
+					}
+				}
+				ENG = {
+					add_to_faction = SLO
+				}	
+			}
+			else_if = {
+				SOV = {
+					add_to_faction = SLO
+				}
+			} 
+			GER = {
+				declare_war_on = {
+    				target = SLO
+   					type = annex_everything
+				}
+			}
+			add_war_support = 0.2
+            delete_unit = {
+				disband = no
+			}
+            add_ideas = ITA_surrender_limit
+            create_equipment_variant = {
+				name = "Rifle Squad '40"
+				type = infantry_squad_0
+				parent_version = 0
+				show_position = no
+				modules = {
+					leader_slot = squad_leader_imp_bolt_action
+					nco_slot = nco_impr_SMG
+					man_1_slot = infantry_bolt_action
+					man_2_slot = infantry_bolt_action
+					man_3_slot = infantry_bolt_action
+					man_4_slot = infantry_bolt_action
+					man_5_slot = infantry_bolt_action
+					man_6_slot = infantry_bolt_action
+					man_7_slot = infantry_lmg
+					man_8_slot = infantry_bolt_action
+					man_9_slot = empty
+					man_10_slot = empty
+					man_11_slot = empty
+					man_12_slot = empty
+					grenade_slot = infantry_grenades_many
+					signal_slot = infantry_signal_1
+					uniform_slot = infantry_uniform_1
+					at_slot = empty
+				}
+			}
+            create_equipment_variant = {
+				name = "Battalion Support '40"
+				type = heavy_infantry_equipment_0
+				parent_version = 0
+				show_position = no
+				modules = {
+					# Battalion Slots
+					heavy_infantry_slot_0 = heavy_inf_bat_hmg
+					heavy_infantry_slot_1 = heavy_inf_reg_at_1
+					heavy_infantry_slot_2 = heavy_inf_bat_mortar_medium
+					heavy_infantry_slot_3 = heavy_inf_reg_light_ig
+					heavy_infantry_slot_4 = heavy_inf_bat_mortar_light
+					heavy_infantry_slot_5 = heavy_inf_reg_heavy_ig
+					heavy_infantry_slot_6 = heavy_inf_bat_at_rifle_impr
+					heavy_infantry_slot_7 = empty
+					heavy_infantry_slot_8 = empty
+					heavy_infantry_slot_9 = empty
+					heavy_infantry_slot_10 = empty
+					heavy_infantry_slot_11 = empty
+				}
+			}
+			division_template = {
+				name = "2nd Division"
+				division_names_group = CZE_INF_01
+
+				regiments = {
+					heavy_infantry = { x = 0 y = 0 }
+					heavy_infantry = { x = 0 y = 1 }
+					heavy_infantry = { x = 0 y = 2 }
+	
+       				heavy_infantry = { x = 1 y = 0 }
+					heavy_infantry = { x = 1 y = 1 }
+					heavy_infantry = { x = 1 y = 2 }
+		
+        			artillery_brigade = { x = 2 y = 0 }
+					artillery_brigade = { x = 2 y = 1 }
+					artillery_brigade = { x = 2 y = 2 }
+		
+					infantry = { x = 3 y = 0 }
+					infantry = { x = 3 y = 1 }
+					infantry = { x = 3 y = 2 }
+		
+					anti_tank_brigade = { x = 4 y = 0 }
+                    anti_air_brigade = { x = 4 y = 0 }
+				}
+	
+				support = {
+					DIV_HQ = { x = 0 y = 0 }
+        			engineer = { x = 0 y = 1 }
+        			light_tank_recon = { x = 0 y = 2 }
+					military_police = { x = 0 y = 3 }
+		
+					heavy_artillery_brigade = { x = 1 y = 0 }
+					maintenance_company = { x = 1 y = 1 }
+					field_hospital = { x = 1 y = 2 }
+                    logistics_company = { x = 1 y = 3 }
+
+                    heavy_anti_air = { x = 2 y = 0 }
+				}
+			}
+
+			division_template = {
+				name = "Infantry Division"
+				division_names_group = CZE_INF_01
+
+				regiments = {
+					heavy_infantry = { x = 0 y = 0 }
+					heavy_infantry = { x = 0 y = 1 }
+					heavy_infantry = { x = 0 y = 2 }
+	
+       				infantry = { x = 1 y = 0 }
+					infantry = { x = 1 y = 1 }
+					infantry = { x = 1 y = 2 }
+		
+        			artillery_brigade = { x = 2 y = 0 }
+					artillery_brigade = { x = 2 y = 1 }
+					artillery_brigade = { x = 2 y = 2 }
+		
+					infantry = { x = 3 y = 0 }
+					infantry = { x = 3 y = 1 }
+					infantry = { x = 3 y = 2 }
+
+                    infantry = { x = 4 y = 0 }
+				}
+	
+				support = {
+					DIV_HQ = { x = 0 y = 0 }
+        			field_hospital = { x = 0 y = 1 }
+        			recon = { x = 0 y = 2 }
+					military_police = { x = 0 y = 3 }
+		
+					logistics_company = { x = 1 y = 1 }
+					maintenance_company = { x = 1 y = 2 }
+				}
+			}
+
+            division_template = {
+				name = "Infantry Brigade"
+				division_names_group = CZE_INF_01
+
+				regiments = {
+					heavy_infantry = { x = 0 y = 0 }
+					heavy_infantry = { x = 0 y = 1 }
+					infantry = { x = 0 y = 2 }
+	
+       				infantry = { x = 1 y = 0 }
+					infantry = { x = 1 y = 1 }
+					infantry = { x = 1 y = 2 }
+		
+        			infantry = { x = 2 y = 0 }
+					infantry = { x = 2 y = 1 }
+				}
+	
+				support = {
+					DIV_HQ = { x = 0 y = 0 }
+        			military_police = { x = 0 y = 1 }
+        			recon = { x = 0 y = 2 }
+				}
+			}
+
+            division_template = {
+				name = "Partisan Brigade"
+				division_names_group = CZE_INF_01
+
+				regiments = {
+					heavy_infantry = { x = 0 y = 0 }
+					infantry = { x = 0 y = 1 }
+					infantry = { x = 0 y = 2 }
+	
+       				infantry = { x = 1 y = 0 }
+					infantry = { x = 1 y = 1 }
+					infantry = { x = 1 y = 2 }
+		
+        			infantry = { x = 2 y = 0 }
+					infantry = { x = 2 y = 1 }
+				}
+	
+				support = {
+					DIV_HQ = { x = 0 y = 0 }
+				}
+			}
+
+			70 = { #WESTERN SLOVAKIA
+				hidden_effect = {
+					create_unit = {
+						division = "division_template = \"2nd Division\" name = \"2nd Infantry Division\" start_experience_factor = 0.25 start_equipment_factor = 1.0"
+						prioritize_location = 11539
+						allow_spawning_on_enemy_provs = yes
+						owner = SLO
+						count = 1
+					}
+					create_unit = {
+						division = "division_template = \"Infantry Division\" name = \"1st Infantry Division\" start_experience_factor = 0.25 start_equipment_factor = 1.0"
+						prioritize_location = 11539
+						allow_spawning_on_enemy_provs = yes
+						owner = SLO
+						count = 1
+					}
+                    create_unit = {
+						division = "division_template = \"Infantry Brigade\" name = \"2nd Infantry Brigade\" start_experience_factor = 0.25 start_equipment_factor = 1.0"
+						prioritize_location = 3484
+						allow_spawning_on_enemy_provs = yes
+						owner = SLO
+						count = 1
+					}
+                    create_unit = {
+						division = "division_template = \"Infantry Brigade\" name = \"3rd Infantry Brigade\" start_experience_factor = 0.25 start_equipment_factor = 1.0"
+						prioritize_location = 11522
+						allow_spawning_on_enemy_provs = yes
+						owner = SLO
+						count = 1
+					}
+                    create_unit = {
+						division = "division_template = \"Infantry Brigade\" name = \"4th Infantry Brigade\" start_experience_factor = 0.25 start_equipment_factor = 1.0"
+						prioritize_location = 3537
+						allow_spawning_on_enemy_provs = yes
+						owner = SLO
+						count = 1
+					}
+				}	
+			}
+
+			71 = { #EASTERN SLOVAKIA
+				hidden_effect = {
+					create_unit = {
+						division = "division_template = \"Infantry Division\" name = \"3rd Infantry Division\" start_experience_factor = 0.25 start_equipment_factor = 1.0"
+						prioritize_location = 3550
+						allow_spawning_on_enemy_provs = yes
+						owner = SLO
+						count = 1
+					}
+                    create_unit = {
+						division = "division_template = \"Infantry Brigade\" name = \"1st Infantry Brigade\" start_experience_factor = 0.25 start_equipment_factor = 1.0"
+						prioritize_location = 581
+						allow_spawning_on_enemy_provs = yes
+						owner = SLO
+						count = 1
+					}
+                    create_unit = {
+						division = "division_template = \"Partisan Brigade\" name = \"1st Partisan Brigade\" start_experience_factor = 0.25 start_equipment_factor = 1.0"
+						prioritize_location = 555
+						allow_spawning_on_enemy_provs = yes
+						owner = SLO
+						count = 1
+					}
+                    create_unit = {
+						division = "division_template = \"Partisan Brigade\" name = \"2nd Partisan Brigade\" start_experience_factor = 0.25 start_equipment_factor = 1.0"
+						prioritize_location = 11554
+						allow_spawning_on_enemy_provs = yes
+						owner = SLO
+						count = 1
+					}
+				}	
+			}
+            add_equipment_to_stockpile = {
+			type = train_equipment_1
+			amount = 50
+			producer = SLO
+			}
+            hidden_effect = {
+                set_air_oob = SLO_uprising
+            }
+			news_event = news.966
+            GER = {
+                division_template = {
+                    name = "Slovakian Infantry Brigade"
+                    division_names_group = CZE_INF_01
+
+                    regiments = {
+                        heavy_infantry = { x = 0 y = 0 }
+                        heavy_infantry = { x = 0 y = 1 }
+                        heavy_infantry = { x = 0 y = 2 }
+        
+                        infantry = { x = 1 y = 0 }
+                        infantry = { x = 1 y = 1 }
+                        infantry = { x = 1 y = 2 }
+            
+                        infantry = { x = 2 y = 0 }
+                        infantry = { x = 2 y = 1 }
+                    }
+        
+                    support = {
+                        DIV_HQ = { x = 0 y = 0 }
+                        military_police = { x = 0 y = 1 }
+                        recon = { x = 0 y = 2 }
+                    }
+                }
+                70 = { #WESTERN SLOVAKIA
+                    hidden_effect = {
+                        create_unit = {
+                            division = "division_template = \"Slovakian Infantry Brigade\" name = \"Slovakian Infantry Brigade\" start_experience_factor = 0.25 start_equipment_factor = 1.0"
+                            prioritize_location = 9692
+                            allow_spawning_on_enemy_provs = yes
+                            owner = GER
+                            count = 1
+                        }
+                    } 
+                }       
+            }
+	    }
+
+		completion_reward = {
+            GER = {
+                end_puppet = SLO
+            }
+			leave_faction = yes  
+			every_enemy_country = {
+				white_peace = SLO
+			}
+			if = {
+				limit = {
+					GER = {
+						any_enemy_country = {
+							controls_state = 4 #LOWER AUSTRIA
+						}
+					}
+				}
+				ENG = {
+					add_to_faction = SLO
+				}	
+			}
+			else_if = {
+				SOV = {
+					add_to_faction = SLO
+				}
+			}
+			GER = {
+				declare_war_on = {
+    				target = SLO
+   					type = annex_everything
+				}
+			}  
+			add_war_support = 0.2
+            delete_unit = {
+				disband = no
+			}
+            add_ideas = ITA_surrender_limit
+            create_equipment_variant = {
+				name = "Rifle Squad '40"
+				type = infantry_squad_0
+				parent_version = 0
+				show_position = no
+				modules = {
+					leader_slot = squad_leader_imp_bolt_action
+					nco_slot = nco_impr_SMG
+					man_1_slot = infantry_bolt_action
+					man_2_slot = infantry_bolt_action
+					man_3_slot = infantry_bolt_action
+					man_4_slot = infantry_bolt_action
+					man_5_slot = infantry_bolt_action
+					man_6_slot = infantry_bolt_action
+					man_7_slot = infantry_lmg
+					man_8_slot = infantry_bolt_action
+					man_9_slot = empty
+					man_10_slot = empty
+					man_11_slot = empty
+					man_12_slot = empty
+					grenade_slot = infantry_grenades_many
+					signal_slot = infantry_signal_1
+					uniform_slot = infantry_uniform_1
+					at_slot = empty
+				}
+			}
+            create_equipment_variant = {
+				name = "Battalion Support '40"
+				type = heavy_infantry_equipment_0
+				parent_version = 0
+				show_position = no
+				modules = {
+					# Battalion Slots
+					heavy_infantry_slot_0 = heavy_inf_bat_hmg
+					heavy_infantry_slot_1 = heavy_inf_reg_at_1
+					heavy_infantry_slot_2 = heavy_inf_bat_mortar_medium
+					heavy_infantry_slot_3 = heavy_inf_reg_light_ig
+					heavy_infantry_slot_4 = heavy_inf_bat_mortar_light
+					heavy_infantry_slot_5 = heavy_inf_reg_heavy_ig
+					heavy_infantry_slot_6 = heavy_inf_bat_at_rifle_impr
+					heavy_infantry_slot_7 = empty
+					heavy_infantry_slot_8 = empty
+					heavy_infantry_slot_9 = empty
+					heavy_infantry_slot_10 = empty
+					heavy_infantry_slot_11 = empty
+				}
+			}
+			division_template = {
+				name = "2nd Division"
+				division_names_group = CZE_INF_01
+
+				regiments = {
+					heavy_infantry = { x = 0 y = 0 }
+					heavy_infantry = { x = 0 y = 1 }
+					heavy_infantry = { x = 0 y = 2 }
+	
+       				heavy_infantry = { x = 1 y = 0 }
+					heavy_infantry = { x = 1 y = 1 }
+					heavy_infantry = { x = 1 y = 2 }
+		
+        			artillery_brigade = { x = 2 y = 0 }
+					artillery_brigade = { x = 2 y = 1 }
+					artillery_brigade = { x = 2 y = 2 }
+		
+					infantry = { x = 3 y = 0 }
+					infantry = { x = 3 y = 1 }
+					infantry = { x = 3 y = 2 }
+		
+					anti_tank_brigade = { x = 4 y = 0 }
+                    anti_air_brigade = { x = 4 y = 0 }
+				}
+	
+				support = {
+					DIV_HQ = { x = 0 y = 0 }
+        			engineer = { x = 0 y = 1 }
+        			light_tank_recon = { x = 0 y = 2 }
+					military_police = { x = 0 y = 3 }
+		
+					heavy_artillery_brigade = { x = 1 y = 0 }
+					maintenance_company = { x = 1 y = 1 }
+					field_hospital = { x = 1 y = 2 }
+                    logistics_company = { x = 1 y = 3 }
+
+                    heavy_anti_air = { x = 2 y = 0 }
+				}
+			}
+
+			division_template = {
+				name = "Infantry Division"
+				division_names_group = CZE_INF_01
+
+				regiments = {
+					heavy_infantry = { x = 0 y = 0 }
+					heavy_infantry = { x = 0 y = 1 }
+					heavy_infantry = { x = 0 y = 2 }
+	
+       				infantry = { x = 1 y = 0 }
+					infantry = { x = 1 y = 1 }
+					infantry = { x = 1 y = 2 }
+		
+        			artillery_brigade = { x = 2 y = 0 }
+					artillery_brigade = { x = 2 y = 1 }
+					artillery_brigade = { x = 2 y = 2 }
+		
+					infantry = { x = 3 y = 0 }
+					infantry = { x = 3 y = 1 }
+					infantry = { x = 3 y = 2 }
+
+                    infantry = { x = 4 y = 0 }
+				}
+	
+				support = {
+					DIV_HQ = { x = 0 y = 0 }
+        			field_hospital = { x = 0 y = 1 }
+        			recon = { x = 0 y = 2 }
+					military_police = { x = 0 y = 3 }
+		
+					logistics_company = { x = 1 y = 1 }
+					maintenance_company = { x = 1 y = 2 }
+				}
+			}
+
+            division_template = {
+				name = "Infantry Brigade"
+				division_names_group = CZE_INF_01
+
+				regiments = {
+					heavy_infantry = { x = 0 y = 0 }
+					heavy_infantry = { x = 0 y = 1 }
+					infantry = { x = 0 y = 2 }
+	
+       				infantry = { x = 1 y = 0 }
+					infantry = { x = 1 y = 1 }
+					infantry = { x = 1 y = 2 }
+		
+        			infantry = { x = 2 y = 0 }
+					infantry = { x = 2 y = 1 }
+				}
+	
+				support = {
+					DIV_HQ = { x = 0 y = 0 }
+        			military_police = { x = 0 y = 1 }
+        			recon = { x = 0 y = 2 }
+				}
+			}
+
+            division_template = {
+				name = "Partisan Brigade"
+				division_names_group = CZE_INF_01
+
+				regiments = {
+					heavy_infantry = { x = 0 y = 0 }
+					infantry = { x = 0 y = 1 }
+					infantry = { x = 0 y = 2 }
+	
+       				infantry = { x = 1 y = 0 }
+					infantry = { x = 1 y = 1 }
+					infantry = { x = 1 y = 2 }
+		
+        			infantry = { x = 2 y = 0 }
+					infantry = { x = 2 y = 1 }
+				}
+	
+				support = {
+					DIV_HQ = { x = 0 y = 0 }
+				}
+			}
+
+			70 = { #WESTERN SLOVAKIA
+				hidden_effect = {
+					create_unit = {
+						division = "division_template = \"2nd Division\" name = \"2nd Infantry Division\" start_experience_factor = 0.25 start_equipment_factor = 1.0"
+						prioritize_location = 11539
+						allow_spawning_on_enemy_provs = yes
+						owner = SLO
+						count = 1
+					}
+					create_unit = {
+						division = "division_template = \"Infantry Division\" name = \"1st Infantry Division\" start_experience_factor = 0.25 start_equipment_factor = 1.0"
+						prioritize_location = 11539
+						allow_spawning_on_enemy_provs = yes
+						owner = SLO
+						count = 1
+					}
+                    create_unit = {
+						division = "division_template = \"Infantry Brigade\" name = \"2nd Infantry Brigade\" start_experience_factor = 0.25 start_equipment_factor = 1.0"
+						prioritize_location = 3484
+						allow_spawning_on_enemy_provs = yes
+						owner = SLO
+						count = 1
+					}
+                    create_unit = {
+						division = "division_template = \"Infantry Brigade\" name = \"3rd Infantry Brigade\" start_experience_factor = 0.25 start_equipment_factor = 1.0"
+						prioritize_location = 11522
+						allow_spawning_on_enemy_provs = yes
+						owner = SLO
+						count = 1
+					}
+                    create_unit = {
+						division = "division_template = \"Infantry Brigade\" name = \"4th Infantry Brigade\" start_experience_factor = 0.25 start_equipment_factor = 1.0"
+						prioritize_location = 3537
+						allow_spawning_on_enemy_provs = yes
+						owner = SLO
+						count = 1
+					}
+				}	
+			}
+
+			71 = { #EASTERN SLOVAKIA
+				hidden_effect = {
+					create_unit = {
+						division = "division_template = \"Infantry Division\" name = \"3rd Infantry Division\" start_experience_factor = 0.25 start_equipment_factor = 1.0"
+						prioritize_location = 3550
+						allow_spawning_on_enemy_provs = yes
+						owner = SLO
+						count = 1
+					}
+                    create_unit = {
+						division = "division_template = \"Infantry Brigade\" name = \"1st Infantry Brigade\" start_experience_factor = 0.25 start_equipment_factor = 1.0"
+						prioritize_location = 581
+						allow_spawning_on_enemy_provs = yes
+						owner = SLO
+						count = 1
+					}
+                    create_unit = {
+						division = "division_template = \"Partisan Brigade\" name = \"1st Partisan Brigade\" start_experience_factor = 0.25 start_equipment_factor = 1.0"
+						prioritize_location = 555
+						allow_spawning_on_enemy_provs = yes
+						owner = SLO
+						count = 1
+					}
+                    create_unit = {
+						division = "division_template = \"Partisan Brigade\" name = \"2nd Partisan Brigade\" start_experience_factor = 0.25 start_equipment_factor = 1.0"
+						prioritize_location = 11554
+						allow_spawning_on_enemy_provs = yes
+						owner = SLO
+						count = 1
+					}
+				}	
+			}
+            add_equipment_to_stockpile = {
+			type = train_equipment_1
+			amount = 50
+			producer = SLO
+			}
+            hidden_effect = {
+                set_air_oob = SLO_uprising
+            }
+			news_event = news.966
+            GER = {
+                division_template = {
+                    name = "Slovakian Infantry Brigade"
+                    division_names_group = CZE_INF_01
+
+                    regiments = {
+                        heavy_infantry = { x = 0 y = 0 }
+                        heavy_infantry = { x = 0 y = 1 }
+                        heavy_infantry = { x = 0 y = 2 }
+        
+                        infantry = { x = 1 y = 0 }
+                        infantry = { x = 1 y = 1 }
+                        infantry = { x = 1 y = 2 }
+            
+                        infantry = { x = 2 y = 0 }
+                        infantry = { x = 2 y = 1 }
+                    }
+        
+                    support = {
+                        DIV_HQ = { x = 0 y = 0 }
+                        military_police = { x = 0 y = 1 }
+                        recon = { x = 0 y = 2 }
+                    }
+                }
+                70 = { #WESTERN SLOVAKIA
+                    hidden_effect = {
+                        create_unit = {
+                            division = "division_template = \"Slovakian Infantry Brigade\" name = \"Slovakian Infantry Brigade\" start_experience_factor = 0.25 start_equipment_factor = 1.0"
+                            prioritize_location = 9692
+                            allow_spawning_on_enemy_provs = yes
+                            owner = GER
+                            count = 1
+                        }
+                    } 
+                }       
+            }
+        }
+	}
+}    

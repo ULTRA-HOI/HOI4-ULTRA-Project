@@ -4420,3 +4420,74 @@ country_event = {
 		effect_tooltip = { FRA = { transfer_state = 543 } }
 	}
 }
+
+country_event = {
+	id = lar_end_the_occupation.7
+	title = lar_end_the_occupation.7.t
+	desc = lar_end_the_occupation.7.desc
+	picture = GFX_report_event_generic_read_write
+	trigger = {
+		GER = {
+			has_war_with = SOV
+		}
+		FRA = {
+			OR = {
+				controls_state = 785 #PICARDY
+				controls_state = 15 #NORMANDY
+				controls_state = 24 #CENTRE
+			}
+		}
+	}
+	option = {
+		name =  lar_end_the_occupation.7.a
+		ai_chance = {
+			factor = 100
+		}
+		FRA = {
+			division_template = { 
+				name = "Parisian Resistance" 
+				division_names_group = FRA_INF_01 
+
+				regiments = { 
+					heavy_infantry = { x = 0 y = 0 }
+					heavy_infantry = { x = 0 y = 1 }
+					infantry = { x = 0 y = 2 }
+
+					infantry = { x = 1 y = 0 }
+					infantry = { x = 1 y = 1 }
+					infantry = { x = 1 y = 2 }
+
+					infantry = { x = 2 y = 0 }
+					infantry = { x = 2 y = 1 }
+					infantry = { x = 2 y = 2 }
+
+					infantry = { x = 3 y = 0 }
+					infantry = { x = 3 y = 1 }
+					infantry = { x = 3 y = 2 }
+				}
+				support = { 
+					DIV_HQ = { x = 0 y = 0 }
+					military_police = { x = 0 y = 1 }
+				}
+			}
+			16 = { #ILE DE FRANCE
+				hidden_effect = {
+					create_unit = {
+						division = "division_template = \"Parisian Resistance\" name = \"Parisian Resistance\" start_experience_factor = 0.25 start_equipment_factor = 1.0"
+						prioritize_location = 11506
+						allow_spawning_on_enemy_provs = yes
+						owner = FRA
+						count = 1
+					}
+					create_unit = {
+						division = "division_template = \"Parisian Resistance\" name = \"Parisian Resistance \" start_experience_factor = 0.25 start_equipment_factor = 1.0"
+						prioritize_location = 9523
+						allow_spawning_on_enemy_provs = yes
+						owner = FRA
+						count = 1
+					}
+				}	
+			}
+		}
+	}
+}
