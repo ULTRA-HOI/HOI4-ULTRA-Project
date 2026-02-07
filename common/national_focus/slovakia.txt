@@ -711,4 +711,89 @@ focus_tree = {
             }
         }
 	}
+	focus = {
+		id = SLO_cze_cooperation
+		icon = GFX_goal_generic_military_deal
+		x = 0
+		y = 1
+		relative_position_id = SLO_uprising
+		prerequisite = { focus = SLO_uprising} 
+		cost = 10
+
+		ai_will_do = {
+			base = 100
+		}
+
+		available = {
+			country_exists = CZE
+			has_capitulated = no
+		}
+		
+		
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			CZE = {
+				annex_country = { target = SLO transfer_troops = yes }
+				add_ideas = CZE_surrender_limit
+				add_ideas = CZE_beacon_of_liberty
+				add_war_support = 0.5
+				add_stability = 0.5
+				give_military_access = SOV
+			}
+			SOV = {
+				give_military_access = CZE
+			}
+		}
+	}
+	focus = {
+		id = SLO_switch_to_guerilla_warfare
+		icon = GFX_goal_generic_more_territorial_claims
+		x = 2
+		y = 1
+		relative_position_id = SLO_uprising
+		prerequisite = { focus = SLO_uprising} 
+		cost = 10
+
+		ai_will_do = {
+			base = 100
+		}
+
+		available = {
+			has_capitulated = yes
+		}
+		
+		
+		
+		bypass = {
+			has_capitulated = yes
+		}
+
+		available_if_capitulated = yes
+
+		bypass_effect = {
+			70 = {
+				add_resistance = 40
+			}
+			71 = {
+				add_resistance = 40
+			}
+		}
+
+		completion_reward = {
+			70 = {
+				add_resistance = 40
+			}
+			71 = {
+				add_resistance = 40
+			}
+		}
+	}
 }    
