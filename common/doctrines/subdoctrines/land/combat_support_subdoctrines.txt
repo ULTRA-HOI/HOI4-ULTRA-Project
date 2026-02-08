@@ -29,50 +29,38 @@ fire_concentration = {
     }
 
      # EFFECTS
-     enable_tactic = tactic_overwhelming_fire
-
-    artillery_brigade = {
-        combat_width = -0.8
-    }
-    category_artillery = {
-        max_organisation = 5
-    }
+     enable_tactic = tactic_barrage
 
     rewards = {
         standing_barrage = {
         #1
             category_artillery = {
-                defense = 0.1
+                defense = 2
+                soft_attack = 0.05
             }
         }
         predicted_fire = {
         #2
             category_artillery = {
-                soft_attack = 0.1
+                soft_attack = 0.05
             }
         }
         artillery_groups = {
         #3
-            category_artillery = {
-                breakthrough = 0.1
-                defense = 0.05
-            }
+            army_bonus_air_superiority_factor = 0.15
+            air_cas_present_factor = 0.075 
         }
         dedicated_air_support = {
         #4
-            category_anti_air = {
-                air_attack = 0.1
-            }
+            coordination_bonus = 0.1
         }
         weakpoint_studies = {
         #5
-            anti_tank_brigade = {
-                ap_attack = 0.1
-                hard_attack = 0.1
-            }
-            artillery_brigade = {
-                hard_attack = 0.1
-            }
+            category_tank_destroyer = {
+			    max_organisation = 1
+			    hard_attack = 0.05
+			    ap_attack = 0.05
+		    }
         }
     }
 }
@@ -170,67 +158,51 @@ flying_batteries = {
 
      # EFFECTS
      effect = {
-        add_tech_bonus = {
-            bonus = 0.5
-            uses = 1
-            category = rocketry
-            name = SUBDOCTRINE_FLYING_BATTERIES
-        }
+
     }
 
-    category_artillery = {
-        soft_attack = 0.1
+    enable_tactic = tactic_sf_barrage
+
+    category_mot_r_artillery = {
+        soft_attack = 0.05
+        breakthrough = 0.05
     }
 
     rewards = {
         deployment_drills = {
-            mot_rocket_artillery_brigade = {
-                max_organisation = 10
+            category_all_artillery = {
+                soft_attack = 0.05
             }
-            motorized_rocket_brigade = {
-                max_organisation = 10
-            }
-            mot_artillery_brigade = {
-                max_organisation = 10
+            category_mot_r_artillery = {
+                soft_attack = 0.05
             }
         }
         counter_battery_tasks = {
             
-            recon = {
-                battalion_mult = {
-                    category = category_artillery #there should be a motorized arty only cat
-                    soft_attack = 0.05
-                    defense = 0.1
-                }
-                recon = 0.25
+            heavy_anti_air = {
+                ap_attack = 0.2
+            }
+            category_artillery = {
+                ap_attack = 0.2
             }
         }
         ballistics_corrections = {
-            signal_company = {
-                battalion_mult = {
-                    category = category_artillery
-                    initiative = 0.02
-                    supply_consumption = -0.01
-                }
+            category_mot_r_artillery = {
+                soft_attack = 0.05
             }
 
         }
         mobile_barrages = {
-            category_artillery = {
-                default_morale = 0.05
-                breakthrough = 0.05
+            category_all_artillery = {
+                soft_attack = 0.05
+                hard_attack = 0.1
             }
 
         }
         wide_dispersal_positions = {
-            mot_rocket_artillery_brigade = {
-                max_organisation = 10
-            }
-            motorized_rocket_brigade = {
-                max_organisation = 10
-            }
-            mot_artillery_brigade = {
-                max_organisation = 10
+            category_mot_r_artillery = {
+                soft_attack = 0.05
+                hard_attack = 0.05
             }
         }
     }
@@ -274,7 +246,7 @@ mobile_recon_and_assault = {
     rewards = {
 
         motorization_support = {
-                heavy_anti_air = {
+            heavy_anti_air = {
 		    	hard_attack = 0.8
 		    	soft_attack = 0.8
 		    	ap_attack = 0.4
@@ -584,71 +556,38 @@ field_engineering = {
         }
     }
 
-    engineer = {
-        river = {
-            movement = 0.2
-        }
-        forest = {
-            movement = 0.2
-        }
+    category_recon = {
+        recon = 2
     }
-    #TODO_JBE: replace with category of engineers
+    enable_tactic = tactic_overwhelming_fire
+
     rewards = {
         rapid_fire_lane_clearance = {
-            engineer = {
-                max_organisation = 5
-                battalion_mult = {
-                    category = category_all_infantry
-                    entrenchment = 0.01
-                }
+            category_army = {
+                max_organisation = 1
+                default_morale = 0.01
             }
-            maintenance_company = {
-                max_organisation = 5
-            }
-            
         }
         sapper_fieldcraft = {
             engineer = {
-                max_strength = 0.25
-                defense = 0.1
-            }
-            maintenance_company = {
-                max_strength = 0.25
+                battalion_mult = {
+                    category = category_army
+                    breakthrough = 0.05
+                }
             }
         }
-        engineerdug_gun_emplacements = {
-            engineer = {
-                battalion_mult = {
-                    category = category_artillery
-                    soft_attack = 0.1
-                    defense = 0.1
-                }
+        dug_gun_emplacements = {
+            category_all_artillery = {
+                soft_attack = 0.05
             }
         }
         smoke_projector_training = {
             engineer = {
-                breakthrough = 0.5
+                entrenchment = 5
             }
-            maintenance_company = {
-                supply_consumption = -0.01
-                battalion_mult = {
-                    category = category_tanks
-                    reliability = 0.05
-                    strength = 0.05
-                }
-            }
-
         }
         charge_and_flame = {
-            engineer = {
-                max_organisation = 5
-                soft_attack = 0.05
-                hard_attack = 1  
-            }
-            maintenance_company = {
-                max_organisation = 5
-            }
+            army_bonus_air_superiority_factor = 0.1
         }
-
     }
 }

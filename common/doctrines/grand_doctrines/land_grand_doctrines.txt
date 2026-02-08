@@ -142,18 +142,17 @@ superior_firepower = {
     }
 
     # EFFECTS
-    enable_tactic = tactic_overwhelming_fire
-    category_artillery = {
-        soft_attack = 0.05
-        hard_attack = 0.05
+    enable_tactic = tactic_planned_attack
+    category_all_artillery = {
+        soft_attack = 0.1
     }
-
+    supply_consumption_factor = -0.05
 
     milestones = {
         {
             #Infantry
-            enable_tactic = tactic_elastic_defense
-            supply_consumption_factor = -0.05
+            enable_tactic = tactic_tactical_withdrawal
+            supply_consumption_factor = -0.025
 
             effect = {
                 if = {
@@ -171,15 +170,9 @@ superior_firepower = {
         }
         {
             #Artillery/Support
-            additional_brigade_column_size = 1
-            category_support_battalions = {
-                max_organisation = 1
-            }
-            category_artillery = {
-                soft_attack = 0.05
-                hard_attack = 0.05
-            }
-            enable_tactic = tactic_barrage
+            enable_tactic = tactic_sf_barrage
+            enable_tactic = tactic_overwhelming_fire
+            supply_consumption_factor = -0.025
 
             effect = {
                 if = {
@@ -198,10 +191,7 @@ superior_firepower = {
         }
         {
             #Armor
-            enable_tactic = tactic_delay
-            category_army = {
-                default_morale = 0.1
-            }
+            enable_tactic = tactic_blitz
 
             effect = {
                 if = {
@@ -219,11 +209,11 @@ superior_firepower = {
         }
         {
             #Operations
-            enable_tactic = tactic_tactical_withdrawal
             category_army = {
-                default_morale = 0.1
-            }
-            planning_decay_rate_factor = -0.1
+			    soft_attack = 0.05
+			    hard_attack = 0.05
+			    breakthrough = 0.05
+		    }
 
             effect = {
                 if = {
@@ -271,14 +261,16 @@ grand_battleplan = {
     enable_tactic = tactic_planned_attack
     
     max_planning = 0.1
-    command_power_gain = 0.2
-    max_dig_in_factor = 0.05
+    dig_in_speed_factor = 0.1
+    max_dig_in = 5
 
     milestones = {
         {
             #Infantry 
             enable_tactic = tactic_elastic_defense
-            max_dig_in_factor = 0.05
+            category_army = {
+                breakthrough = 0.05
+            }
 
             effect = {
                 if = {
@@ -297,7 +289,7 @@ grand_battleplan = {
         {
             #Artillery/Support
             coordination_bonus = 0.05
-            enable_tactic = tactic_overwhelming_fire
+            enable_tactic = tactic_sf_barrage
 
             effect = {
                 if = {
@@ -315,8 +307,8 @@ grand_battleplan = {
         }
         {
             #Armor
-            land_reinforce_rate = 0.01
-            enable_tactic = tactic_breakthrough
+            land_reinforce_rate = 0.02
+            enable_tactic = tactic_unexpected_thrust
             effect = {
                 if = {
                     limit = {
@@ -334,7 +326,10 @@ grand_battleplan = {
         }
         {
             #Operations
-            max_command_power = 50
+            enable_tactic = tactic_infantry_charge
+            category_army = {
+                breakthrough = 0.05
+            }
 
             effect = {
                 if = {
@@ -379,7 +374,6 @@ mass_assault = {
 
     # EFFECTS
     no_supply_grace = 48
-    out_of_supply_factor = -0.10
     minimum_training_level = -0.25
     enable_tactic = tactic_relentless_assault
     
@@ -387,7 +381,10 @@ mass_assault = {
     milestones = {
         {
             #Infantry
-            enable_tactic = tactic_human_wave_tactics
+            enable_tactic = tactic_guerrilla_tactics
+            enable_tactic = tactic_infantry_charge
+            resistance_growth_on_our_occupied_states = 0.20
+            
 
             effect = {
                 if = {
@@ -405,8 +402,7 @@ mass_assault = {
         }
         {
             #Artillery/Support
-            enable_tactic = tactic_elastic_defense
-            out_of_supply_factor = -0.05
+            enable_tactic = tactic_overwhelming_fire
 
             effect = {
                 if = {
@@ -424,8 +420,8 @@ mass_assault = {
         }
         {
             #Armor
-            land_reinforce_rate = 0.02
-            enable_tactic = tactic_overwhelming_fire
+            enable_tactic = tactic_breakthrough
+            supply_consumption_factor = -0.05
 
             effect = {
                 if = {
@@ -443,9 +439,8 @@ mass_assault = {
         }
         {
             #Operations
-            enable_tactic = tactic_backhand_blow
-            weekly_casualties_war_support = 0.001
-            dig_in_speed_factor = 0.1
+            enable_tactic = tactic_sf_ambush
+            attrition = -0.1
 
             effect = {
                 if = {

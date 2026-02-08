@@ -269,60 +269,43 @@ streamlined_deployment = {
 
     }
 
-    category_all_armor = {
-        soft_attack = 0.1
-        breakthrough = 0.1
-    }
-
+    enable_tactic = tactic_blitz
 
     rewards = {
         flexible_armored_battalions = {
-
-            unit_medium_armor_design_cost_factor = -0.5
-            unit_light_armor_design_cost_factor  = -0.5
-            light_tank_recon = {
-                battalion_mult = {
-                    category = category_all_armor
-                    max_organisation = 2
-                    add = yes
-                }
+            category_all_armor = {
+                soft_attack = 0.025
+                hard_attack = 0.025
             }
-
         }
         mechanized_wave = {
-            mechanized = {
-                max_organisation = 5
-                default_morale = 0.2
-            }
             category_all_armor = {
-                default_morale = 0.2
+                max_organisation = 2
+                breakthrough = 0.05
             }
         }
         tank_desant = {
-            signal_company = {
-                battalion_mult = {
-                    category = category_light_infantry
-                    maximum_speed = 0.05
-                }
-            }
-            light_tank_recon = {
-                battalion_mult = {
-                    category = category_light_infantry
-                    maximum_speed = 0.05
-                }
+            light_tank_destroyer_brigade = {
+                hard_attack = 0.1
+                max_organisation = 3
+                breakthrough = 0.1
             }
         }
         full_front_deployment = {
-            category_all_armor = {
-                reliability = 0.05
-                supply_consumption = -0.02
+            motorized = {
+                max_organisation = 5
+                default_morale = 0.01
+            }
+            mechanized = {
+                max_organisation = 5
+                default_morale = 0.01
             }
 
         }
         continuous_offensives = {
             category_all_armor = {
-                default_morale = 0.2
-                max_organisation = 2
+                soft_attack = 0.05
+                hard_attack = 0.025
             }
         }
     }
@@ -358,59 +341,54 @@ mobile_defense = {
 
     }
 
-    engineer = {
-        battalion_mult = {
-            category = category_all_armor
-            entrenchment = 0.02
-        }
-    }
-    category_all_armor = {
-        defense = 0.1
-    }
+    enable_tactic = tactic_unexpected_thrust
 
     rewards = {
 
         mechanized_offensive = {
-            mechanized = {
-                defense = 0.1
-                soft_attack = 0.1
+            category_all_armor = {
+                defense = 0.025
+                soft_attack = 0.025
+                hard_attack = 0.025
+                max_organisation = 2
             }
         }
         advance_under_fire = {
-            light_armor = {
-                breakthrough = 0.1
-                default_morale = 0.2
+            motorized = {
+                max_organisation = 5
             }
-            medium_armor = {
-                breakthrough = 0.1
-                default_morale = 0.2
+            mechanized = {
+                max_organisation = 5
             }
         }
         attached_support = {
-            engineer = {
-                max_organisation = 10
+            category_all_armor = {
+                breakthrough = 0.05
             }
-            signal_company = {
-                max_organisation = 10
+            motorized = {
+                breakthrough = 0.05
             }
-
+            mechanized = {
+                breakthrough = 0.05
+            }
         }
         combined_anti_armor = {
-            category_anti_tank = {
-                battalion_mult = {
-                    category = category_all_armor
-                    hard_attack = 0.05
-                    ap_attack = 0.05
-
-                }
+            motorized = {
+                maximum_speed = 0.05
+                default_morale = 0.03
             }
-
+            mechanized = {
+                maximum_speed = 0.05
+                default_morale = 0.03
+            }
+            org_loss_when_moving = -0.1
+            army_speed_factor = 0.05
         }
         tank_on_tank_engagement = {
             category_all_armor = {
-                hard_attack = 0.1
-                soft_attack = 0.1
-                ap_attack = 0.05
+                soft_attack = 0.05
+                defense = 0.025
+                max_organisation = 1
             }
         }    
     }
@@ -431,7 +409,6 @@ armored_cavalry = {
     visible = {
        AND = {
             has_dlc = "No Compromise, No Surrender"
-            has_dlc = "La Resistance"
         }
     }
 
@@ -448,189 +425,43 @@ armored_cavalry = {
 
     }
 
-    armored_car = {
-        max_organisation = 5
-        defense = 0.1
-    }
-    mechanized =  {
-        max_organisation = 5
-        defense = 0.05
-    }
+    enable_tactic = tactic_breakthrough
     # EFFECTS
     rewards = {
         cruiser_tanks = {
             light_armor = {
-                maximum_speed = 0.1
-                max_organisation = 5
+                max_organisation = 2.5
                 breakthrough = 0.05
             }
         }
         quick_response_force = {
-            military_police = {
-                 battalion_mult = {
-                    category = category_all_mobile_inf
-                    suppression_factor = 0.05
-                }
-            }
-            armored_car = {
-                suppression_factor = 0.2
-            }
+            army_speed_factor = 0.05
+            org_loss_when_moving = -0.2
         }
         speed_as_armour = {
-            light_armor = {
-                maximum_speed = 0.05
-                breakthrough = 0.05
-            }
             armored_car = {
-                maximum_speed = 0.05
-                breakthrough = 0.1
+                max_organisation = 2.5
                 soft_attack = 0.1
-            }
-            mechanized = {
-                maximum_speed = 0.05
-                breakthrough = 0.05
+                breakthrough = 0.1
+                defense = 0.1
             }
         }
         fighting_reconnaissance = {
-            armored_car_recon = {
-                max_organisation = 3
-                 soft_attack = 0.05
-            }
-            light_tank_recon = {
-                max_organisation = 2
+            category_all_armor = {
                 soft_attack = 0.05
+                max_organisation = 2
+                breakthrough = 0.05
+                maximum_speed = 0.05
             }
         }
         sustained_deployments = {
-            armored_car = {
-                max_organisation = 5
-                soft_attack = 0.05
-                default_morale = 0.2
-            }
-            light_armor = {
-                max_organisation = 5
-                soft_attack = 0.05
-                hard_attack = 0.1
-                default_morale = 0.2
-            }
-            mechanized = {
-                max_organisation = 5
-                soft_attack = 0.05
-                default_morale = 0.2 
-            }
-            motorized = {
-                max_organisation = 5
-                soft_attack = 0.05
-                default_morale = 0.2 
-            }
-        }
-    }
-}
-
-armored_cavalry_no_lar = {
-    track = armor
-    name = SUBDOCTRINE_ARMORED_CAVALRY
-    description = SUBDOCTRINE_ARMORED_CAVALRY_DESC
-    icon = GFX_doctrine_armored_cavalry_medium
-
-    xp_cost = 100
-    xp_type = army
-
-    available = {
-        always = yes
-    }
-    visible = {
-        has_dlc = "No Compromise, No Surrender"
-        NOT = {
-            has_dlc = "La Resistance"
-        }
-    }
-
-    ai_will_do = {
-
-        base = 1
-        modifier = {
-            factor = 25
-            OR = {
-                original_tag = ITA 
-                original_tag = JAP 
-            }
-        }
-
-    }
-
-    motorized = {
-        max_organisation = 5
-        defense = 0.1
-    }
-    mechanized =  {
-        max_organisation = 5
-        defense = 0.05
-    }
-    # EFFECTS
-    rewards = {
-        cruiser_tanks = {
-            light_armor = {
-                maximum_speed = 0.1
-                max_organisation = 5
-                breakthrough = 0.05
-            }
-        }
-        quick_response_force = {
-            military_police = {
-                battalion_mult = {
-                    category = category_all_mobile_inf
-                    suppression_factor = 0.05
-                }
-            }
-        }
-        speed_as_armour = {
-            light_armor = {
-                maximum_speed = 0.05
-                breakthrough = 0.05
-            }
-            motorized = {
-                maximum_speed = 0.05
-    
-            }
-            mechanized = {
-                maximum_speed = 0.05
-                breakthrough = 0.05
-            }
-        }
-        fighting_reconnaissance = {
-            recon = {
-                max_organisation = 3
-                 soft_attack = 0.05
-            }
-            light_tank_recon = {
-                max_organisation = 2
-                soft_attack = 0.05
-            }
-        }
-        sustained_deployments = {
-            light_armor = {
-                max_organisation = 5
-                soft_attack = 0.05
-                hard_attack = 0.1
-                default_morale = 0.2
-            }
-            mechanized = {
-                max_organisation = 5
-                soft_attack = 0.05
-                default_morale = 0.2 
-            }
-            motorized = {
-                max_organisation = 5
-                soft_attack = 0.05
-                default_morale = 0.2 
-            }
+            coordination_bonus = 0.1
         }
     }
 }
 
 tank_destroyer_force = {
-     track = armor
+    track = armor
     name = SUBDOCTRINE_TANK_DESTROYER_FORCE
     description = SUBDOCTRINE_TANK_DESTROYER_FORCE_DESC
     icon = GFX_doctrine_tank_destroyer_force_medium
