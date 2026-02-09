@@ -1193,6 +1193,347 @@
 		}
 	}
 
+	focus = {
+		id = CZE_prague_uprising
+		icon = GFX_focus_generic_anti_fascist_diplomacy
+		x = 3
+		y = 0
+		relative_position_id = CZE_political_direction
+
+		cost = 1
+
+		ai_will_do = {
+			factor = 90
+		}
+
+		available = {
+			if = {
+                date > 1942.1.1
+                GER = {
+                    has_war_with = SOV
+                }
+				GER = {
+					OR = {
+						any_enemy_country = {
+							controls_province = 9541
+							controls_province = 6592
+							controls_province = 9555
+							controls_province = 424
+							controls_province = 3585
+							controls_province = 3418
+							controls_province = 11432
+							controls_province = 469
+							controls_province = 11401
+							controls_province = 3462
+							controls_province = 494
+							controls_province = 583
+							controls_province = 11556
+							controls_province = 11525
+						}
+					}
+				}
+			}
+		}
+
+		bypass = {
+			if = {
+                date > 1942.1.1
+                GER = {
+                    has_war_with = SOV
+                }
+				GER = {
+					OR = {
+						any_enemy_country = {
+							controls_province = 9541
+							controls_province = 6592
+							controls_province = 9555
+							controls_province = 424
+							controls_province = 3585
+							controls_province = 3418
+							controls_province = 11432
+							controls_province = 469
+							controls_province = 11401
+							controls_province = 3462
+							controls_province = 494
+							controls_province = 583
+							controls_province = 11556
+							controls_province = 11525
+						}
+					}
+				}
+			}
+		}
+
+		
+		available_if_capitulated = yes
+
+		bypass_effect = {
+			news_event = news.967
+			SOV = {
+				give_military_access = CZE
+			}
+			CZE = {
+				give_military_access = SOV
+			}
+			create_equipment_variant = {
+				name = "Rifle Squad '40"
+				type = infantry_squad_0
+				parent_version = 0
+				show_position = no
+				modules = {
+					leader_slot = squad_leader_imp_bolt_action
+					nco_slot = nco_impr_SMG
+					man_1_slot = infantry_bolt_action
+					man_2_slot = infantry_bolt_action
+					man_3_slot = infantry_bolt_action
+					man_4_slot = infantry_bolt_action
+					man_5_slot = infantry_bolt_action
+					man_6_slot = infantry_bolt_action
+					man_7_slot = infantry_lmg
+					man_8_slot = infantry_bolt_action
+					man_9_slot = empty
+					man_10_slot = empty
+					man_11_slot = empty
+					man_12_slot = empty
+					grenade_slot = infantry_grenades_many
+					signal_slot = infantry_signal_1
+					uniform_slot = infantry_uniform_1
+					at_slot = empty
+				}
+			}
+			create_equipment_variant = {
+				name = "Battalion Support '40"
+				type = heavy_infantry_equipment_0
+				parent_version = 0
+				show_position = no
+				modules = {
+					# Battalion Slots
+					heavy_infantry_slot_0 = heavy_inf_bat_hmg
+					heavy_infantry_slot_1 = heavy_inf_reg_at_1
+					heavy_infantry_slot_2 = heavy_inf_bat_mortar_medium
+					heavy_infantry_slot_3 = heavy_inf_reg_light_ig
+					heavy_infantry_slot_4 = heavy_inf_bat_mortar_light
+					heavy_infantry_slot_5 = heavy_inf_reg_heavy_ig
+					heavy_infantry_slot_6 = heavy_inf_bat_at_rifle_impr
+					heavy_infantry_slot_7 = empty
+					heavy_infantry_slot_8 = empty
+					heavy_infantry_slot_9 = empty
+					heavy_infantry_slot_10 = empty
+					heavy_infantry_slot_11 = empty
+				}
+			}
+			division_template = {
+				name = "Prague Partisans"
+				division_names_group = CZE_INF_01
+
+				regiments = {
+					heavy_infantry = { x = 0 y = 0 }
+					heavy_infantry = { x = 0 y = 1 }
+					infantry = { x = 0 y = 2 }
+	
+       				infantry = { x = 1 y = 0 }
+					infantry = { x = 1 y = 1 }
+					infantry = { x = 1 y = 2 }
+		
+        			infantry = { x = 2 y = 0 }
+					infantry = { x = 2 y = 1 }
+				}
+	
+				support = {
+					DIV_HQ = { x = 0 y = 0 }
+					military_police = { x = 0 y = 1 }
+				}
+			}
+			division_template = {
+				name = "600. russische Infanterie-Division"
+				division_names_group = CZE_INF_01
+
+				regiments = {
+					heavy_infantry = { x = 0 y = 0 }
+					heavy_infantry = { x = 0 y = 1 }
+					heavy_infantry = { x = 0 y = 2 }
+	
+       				heavy_infantry = { x = 1 y = 0 }
+					heavy_infantry = { x = 1 y = 1 }
+					heavy_infantry = { x = 1 y = 2 }
+		
+        			artillery_brigade = { x = 2 y = 0 }
+					artillery_brigade = { x = 2 y = 1 }
+					artillery_brigade = { x = 2 y = 2 }
+		
+					infantry = { x = 3 y = 0 }
+					infantry = { x = 3 y = 1 }
+					infantry = { x = 3 y = 2 }
+		
+					anti_tank_brigade = { x = 4 y = 0 }
+                    anti_air_brigade = { x = 4 y = 1 }
+				}
+	
+				support = {
+					DIV_HQ = { x = 0 y = 0 }
+        			engineer = { x = 0 y = 1 }
+        			mot_recon = { x = 0 y = 2 }
+					military_police = { x = 0 y = 3 }
+		
+					logistics_company = { x = 1 y = 0 }
+					maintenance_company = { x = 1 y = 1 }
+					field_hospital = { x = 1 y = 2 }
+				}
+			}
+			9 = { #BOHEMIA
+				hidden_effect = {
+					create_unit = {
+						division = "division_template = \"600. russische Infanterie-Division\" name = \"600. russische Infanterie-Division\" start_experience_factor = 0.25 start_equipment_factor = 1.0"
+						prioritize_location = 11542
+						allow_spawning_on_enemy_provs = yes
+						owner = CZE
+						count = 1
+					}
+                    create_unit = {
+						division = "division_template = \"Prague Partisans\" start_experience_factor = 0.25 start_equipment_factor = 1.0"
+						prioritize_location = 11542
+						allow_spawning_on_enemy_provs = yes
+						owner = CZE
+						count = 3
+					}
+				}	
+			}
+		}
+
+		completion_reward = {
+			news_event = news.967
+			SOV = {
+				give_military_access = CZE
+			}
+			CZE = {
+				give_military_access = SOV
+			}
+			create_equipment_variant = {
+				name = "Rifle Squad '40"
+				type = infantry_squad_0
+				parent_version = 0
+				show_position = no
+				modules = {
+					leader_slot = squad_leader_imp_bolt_action
+					nco_slot = nco_impr_SMG
+					man_1_slot = infantry_bolt_action
+					man_2_slot = infantry_bolt_action
+					man_3_slot = infantry_bolt_action
+					man_4_slot = infantry_bolt_action
+					man_5_slot = infantry_bolt_action
+					man_6_slot = infantry_bolt_action
+					man_7_slot = infantry_lmg
+					man_8_slot = infantry_bolt_action
+					man_9_slot = empty
+					man_10_slot = empty
+					man_11_slot = empty
+					man_12_slot = empty
+					grenade_slot = infantry_grenades_many
+					signal_slot = infantry_signal_1
+					uniform_slot = infantry_uniform_1
+					at_slot = empty
+				}
+			}
+			create_equipment_variant = {
+				name = "Battalion Support '40"
+				type = heavy_infantry_equipment_0
+				parent_version = 0
+				show_position = no
+				modules = {
+					# Battalion Slots
+					heavy_infantry_slot_0 = heavy_inf_bat_hmg
+					heavy_infantry_slot_1 = heavy_inf_reg_at_1
+					heavy_infantry_slot_2 = heavy_inf_bat_mortar_medium
+					heavy_infantry_slot_3 = heavy_inf_reg_light_ig
+					heavy_infantry_slot_4 = heavy_inf_bat_mortar_light
+					heavy_infantry_slot_5 = heavy_inf_reg_heavy_ig
+					heavy_infantry_slot_6 = heavy_inf_bat_at_rifle_impr
+					heavy_infantry_slot_7 = empty
+					heavy_infantry_slot_8 = empty
+					heavy_infantry_slot_9 = empty
+					heavy_infantry_slot_10 = empty
+					heavy_infantry_slot_11 = empty
+				}
+			}
+			division_template = {
+				name = "Prague Partisans"
+				division_names_group = CZE_INF_01
+
+				regiments = {
+					heavy_infantry = { x = 0 y = 0 }
+					heavy_infantry = { x = 0 y = 1 }
+					infantry = { x = 0 y = 2 }
+	
+       				infantry = { x = 1 y = 0 }
+					infantry = { x = 1 y = 1 }
+					infantry = { x = 1 y = 2 }
+		
+        			infantry = { x = 2 y = 0 }
+					infantry = { x = 2 y = 1 }
+				}
+	
+				support = {
+					DIV_HQ = { x = 0 y = 0 }
+					military_police = { x = 0 y = 1 }
+				}
+			}
+			division_template = {
+				name = "600. russische Infanterie-Division"
+				division_names_group = CZE_INF_01
+
+				regiments = {
+					heavy_infantry = { x = 0 y = 0 }
+					heavy_infantry = { x = 0 y = 1 }
+					heavy_infantry = { x = 0 y = 2 }
+	
+       				heavy_infantry = { x = 1 y = 0 }
+					heavy_infantry = { x = 1 y = 1 }
+					heavy_infantry = { x = 1 y = 2 }
+		
+        			artillery_brigade = { x = 2 y = 0 }
+					artillery_brigade = { x = 2 y = 1 }
+					artillery_brigade = { x = 2 y = 2 }
+		
+					infantry = { x = 3 y = 0 }
+					infantry = { x = 3 y = 1 }
+					infantry = { x = 3 y = 2 }
+		
+					anti_tank_brigade = { x = 4 y = 0 }
+                    anti_air_brigade = { x = 4 y = 1 }
+				}
+	
+				support = {
+					DIV_HQ = { x = 0 y = 0 }
+        			engineer = { x = 0 y = 1 }
+        			mot_recon = { x = 0 y = 2 }
+					military_police = { x = 0 y = 3 }
+		
+					logistics_company = { x = 1 y = 0 }
+					maintenance_company = { x = 1 y = 1 }
+					field_hospital = { x = 1 y = 2 }
+				}
+			}
+			9 = { #BOHEMIA
+				hidden_effect = {
+					create_unit = {
+						division = "division_template = \"600. russische Infanterie-Division\" name = \"600. russische Infanterie-Division\" start_experience_factor = 0.25 start_equipment_factor = 1.0"
+						prioritize_location = 11542
+						allow_spawning_on_enemy_provs = yes
+						owner = CZE
+						count = 1
+					}
+                    create_unit = {
+						division = "division_template = \"Prague Partisans\" start_experience_factor = 0.25 start_equipment_factor = 1.0"
+						prioritize_location = 11542
+						allow_spawning_on_enemy_provs = yes
+						owner = CZE
+						count = 3
+					}
+				}	
+			}
+		}
+	}
+
 	
 
 	focus = {
