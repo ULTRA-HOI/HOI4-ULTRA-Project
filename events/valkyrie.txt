@@ -657,7 +657,8 @@ country_event = {
 			elections_allowed = no
 		}
 		add_stability = -0.2
-		add_war_support = -0.1
+		add_war_support = -0.2
+		add_political_power = 100
 		country_event = {
 			id = valkyrie.101
 			days = 7
@@ -755,6 +756,7 @@ country_event = {
 	option = {
 		name = valkyrie.101.option.a # "Keep Ludwig Beck as leader."
 		add_war_support = 0.1
+		add_political_power = 100
 	}
 
 	option = {
@@ -765,7 +767,7 @@ country_event = {
 		}
 		add_popularity = {
 			ideology = neutrality
-			popularity = 0.05
+			popularity = 0.10
 		}
 		set_politics = {
 			ruling_party = neutrality
@@ -774,9 +776,107 @@ country_event = {
 			elections_allowed = no
 		}
 
-		add_stability = 0.05
+		add_stability = 0.1
+		add_political_power = 50
 	}
 }
+
+country_event = { # Valkyrie Aftermath Event: Dealing with the Nazi Leadership
+	id = valkyrie.102
+	title = valkyrie.102.title
+	desc = valkyrie.102.desc
+	picture = GFX_report_event_fascists_posing
+	
+	is_triggered_only = yes
+	
+	# Execute the Nazi leaders
+	option = {
+		name = valkyrie.102.a
+
+		add_stability = 0.05
+		add_war_support = -0.05
+
+		add_popularity = { 
+			ideology = fascism 
+			popularity = -0.05 
+		}
+
+		set_country_flag = GER_executed_nazis_flag
+
+		hidden_effect = {
+			retire_character = GER_heinrich_himmler
+			retire_character = GER_joseph_goebbels
+			retire_character = GER_martin_bormann
+			retire_character = GER_joachim_von_ribbentrop
+			retire_character = GER_walther_funk
+			retire_character = GER_ernst_kaltenbrunner
+			retire_character = GER_hermann_goring
+			retire_character = GER_reinhard_heydrich
+			retire_character = GER_albert_speer
+
+			news_event = {
+				id = valkyrie.news.3
+				days = 1
+			}
+		}
+
+		set_party_name = {
+			ideology = fascism
+			long_name = GER_black_front_long
+			name = GER_black_front
+		}	
+		hidden_effect = {
+			IF = {
+				limit = {
+					has_dlc = "Gotterdammerung"
+				}
+				GER_otto_strasser = {
+					add_country_leader_role = {
+						promote_leader = yes
+						country_leader = {
+							ideology = nazism
+							expire = "1974.1.1.1"
+							traits = { GER_revolutionary_nationalist } 
+						}
+					}	
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = valkyrie.102.b # Imprison Nazis for now
+
+		add_political_power = 75
+		add_stability = -0.1
+		add_war_support = -0.1
+
+		add_popularity = { 
+			ideology = fascism 
+			popularity = 0.05 
+		}
+
+		set_country_flag = GER_imprisoned_nazis_flag
+
+		hidden_effect = {
+			retire_character = GER_heinrich_himmler
+			retire_character = GER_joseph_goebbels
+			retire_character = GER_martin_bormann
+			retire_character = GER_joachim_von_ribbentrop
+			retire_character = GER_walther_funk
+			retire_character = GER_ernst_kaltenbrunner
+			retire_character = GER_hermann_goring
+			retire_character = GER_reinhard_heydrich
+			retire_character = GER_albert_speer
+
+			news_event = {
+				id = valkyrie.news.4
+				days = 1
+			}
+		}
+	}
+}	
+
 
 add_namespace = valkyrie.news
 
@@ -792,14 +892,14 @@ news_event = {
 	option = {
 		name = valkyrie.news.1.option.a # "The Führer prevailed again."
 		trigger = {
-			has_country_leader_with_trait = GER_der_fuhrer_late_ultra
+			GER = { has_country_leader_with_trait = GER_der_fuhrer_late_ultra }
 			NOT = {	TAG = GER }
 		}
 	}
 	option = {
 		name = valkyrie.news.1.option.b # "Hitler is dead?!"
 		trigger = {
-			NOT = {	has_country_leader_with_trait = GER_der_fuhrer_late_ultra }
+			GER = { NOT = { has_country_leader_with_trait = GER_der_fuhrer_late_ultra } }
 			NOT = {	TAG = GER }
 		}
 	}
@@ -809,31 +909,20 @@ news_event = {
 	id = valkyrie.news.2 # 
 	title = valkyrie.news.2.title
 	desc = valkyrie.news.2.desc
-	picture = GFX_news_event_ger_civil_war
+	picture = GFX_news_event_german_soldiers
 	is_triggered_only = yes
 	major = yes
 
 	option = {
 		name = valkyrie.news.2.option.a # "And yet the war drags on..."
 		trigger = {
-			OR = {
-				GER = {
-					has_country_flag = GER_nazi_resistance_very_active_flag
-				}
-				GER = {
-					has_country_flag = GER_nazi_resistance_active_flag
-				}
-				GER = {
-					has_country_flag = GER_nazi_resistance_somewhat_active_flag
-				}
-			}
-			NOT = {	TAG = GER }
+			NOT = {	original_tag = GER }
 		}
 	}
 	option = {
 		name = valkyrie.news.2.option.b # "Crush the Nazis!"
 		trigger = { 
-			TAG = GER
+			original_tag = GER
 			OR = {
 				GER = {
 					has_country_flag = GER_nazi_resistance_very_active_flag
@@ -847,8 +936,70 @@ news_event = {
 			}
 		}
 	}
+		option = {
+		name = valkyrie.news.2.option.c # "The situation remains calm."
+		trigger = { 
+			original_tag = GER
+			OR = {
+				NOT = {
 
+					GER = {
+						has_country_flag = GER_nazi_resistance_very_active_flag
+					}
+					GER = {
+						has_country_flag = GER_nazi_resistance_active_flag
+					}
+					GER = {
+						has_country_flag = GER_nazi_resistance_somewhat_active_flag
+					}
+				}	
+			}
+		}
+	}
+}
 
+news_event = {
+	id = valkyrie.news.3 # Nazi leaders executed
+	title = valkyrie.news.3.title
+	desc = valkyrie.news.3.desc
+	picture = news_event_ARG_dominate_the_americas
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = valkyrie.news.3.a
+		trigger = {
+			original_tag = GER
+		}
+	}
+	option = {
+		name = valkyrie.news.3.b
+		trigger = {
+			NOT = { original_tag = GER }
+		}
+	}
+}	
+
+news_event = {
+	id = valkyrie.news.4 # Nazi leaders imprisoned
+	title = valkyrie.news.4.title
+	desc = valkyrie.news.4.desc
+	picture = GFX_news_event_fascist_gathering
+	is_triggered_only = yes
+	major = yes
+
+	option = {
+		name = valkyrie.news.4.a
+		trigger = {
+			original_tag = GER
+		}
+	}
+	option = {
+		name = valkyrie.news.4.b
+		trigger = {
+			NOT = { original_tag = GER }
+		}
+	}
 }
 
 add_namespace = wm_recruitment_event
@@ -1114,17 +1265,19 @@ country_event = {
 add_namespace = valkyrie_peace
 # Peace Events after Operation Valkyrie
 
-#country_event = {
-#	id = valkyrie_peace.1 #Separate Peace Offering to the Western Allies
-#	title = valkyrie_peace.1.title
-#	desc = valkyrie_peace.1.desc
-#	picture = GFX_report_event_german_reichstag_gathering
-#	
-#	is_triggered_only = yes
-#	
-#	option = {
-#		name = valkyrie_peace.1.option.a # Peace, "
-#		add_stability = 0.1
-#		add_war_support = 0.1
-#	}
-#}
+country_event = {
+	id = valkyrie_peace.1 #Separate Peace Offering to the Western Allies
+	title = valkyrie_peace.1.title
+	desc = valkyrie_peace.1.desc
+	picture = GFX_report_event_german_reichstag_gathering
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = valkyrie_peace.1.option.a # Offer peace to the Western Allies
+
+		unlock_decision_tooltip = GER_offer_peace_western_allies_decision
+
+
+	}
+}
