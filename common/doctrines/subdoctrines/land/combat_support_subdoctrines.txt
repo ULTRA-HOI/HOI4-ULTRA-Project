@@ -8,24 +8,11 @@ fire_concentration = {
     xp_type = army
 
     available = {
-        always = yes
+        has_doctrine = superior_firepower
     }
 
     ai_will_do = {
-
-        base = 1
-        modifier = {
-            factor = 75
-            original_tag = SOV
-        }
-        modifier = {
-            factor = 75
-            original_tag = ENG
-        }
-        modifier = {
-            factor = 75
-            original_tag = FRA
-        }   
+        base = 20 
     }
 
      # EFFECTS
@@ -65,66 +52,71 @@ fire_concentration = {
     }
 }
 
+# no ncns version of flying batteries
 anti_tank_frontline = {
     track = combat_support
-    name = SUBDOCTRINE_ANTI_TANK_FRONT
-    description = SUBDOCTRINE_ANTI_TANK_FRONT_DESC
+    name = SUBDOCTRINE_FLYING_BATTERIES
+    description = SUBDOCTRINE_FLYING_BATTERIES_DESC
     icon = GFX_doctrine_antitank_frontline_medium
 
     xp_cost = 100
     xp_type = army
 
     available = {
-        always = yes
+        has_doctrine = mass_assault
     }
 
-    ai_will_do = { base = 0 }
+    visible = {
+        NOT = { has_dlc = "No Compromise, No Surrender" }
+    }
+
+    ai_will_do = { base = 20 }
 
      # EFFECTS
      
 
-    engineer = {
-        battalion_mult = {
-            category = category_artillery
-            entrenchment = 0.2
-            add = yes
-        }
+    enable_tactic = tactic_sf_barrage
+
+    category_mot_r_artillery = {
+        soft_attack = 0.05
+        breakthrough = 0.05
     }
 
     rewards = {
         pakfront = {
-        #1
-            anti_tank_brigade = {
-                defense = 0.2
-                ap_attack = 0.1
-                soft_attack = 0.2
+            category_all_artillery = {
+                soft_attack = 0.05
+            }
+            category_mot_r_artillery = {
+                soft_attack = 0.05
             }
         }
         emplacement_rotation = {
-        #2
-            anti_tank_brigade = {
-                max_organisation = 10
+            
+            heavy_anti_air = {
+                ap_attack = 0.2
             }
-        }
-        weakpoint_studies = {
-        #3
-            anti_tank_brigade = {
-                ap_attack = 0.1
-                hard_attack = 0.1
-            }
-        }
-        offensive_deployments = {
-        #4
-            mot_anti_tank_brigade = {
-                breakthrough = 0.2
+            category_artillery = {
                 ap_attack = 0.2
             }
         }
+        weakpoint_studies = {
+            category_mot_r_artillery = {
+                soft_attack = 0.05
+            }
+
+        }
+        offensive_deployments = {
+            category_all_artillery = {
+                soft_attack = 0.05
+                hard_attack = 0.1
+            }
+
+        }
         assault_anti_tank = {
-        #5
-            mot_anti_tank_brigade = {
-                soft_attack = 0.2
-                hard_attack = 0.2
+            category_mot_r_artillery = {
+                soft_attack = 0.05
+                hard_attack = 0.05
             }
         }
     }
@@ -140,7 +132,7 @@ flying_batteries = {
     xp_type = army
 
     available = {
-    
+        has_doctrine = mass_assault
     }
     visible = {
         has_dlc = "No Compromise, No Surrender"
@@ -148,12 +140,7 @@ flying_batteries = {
 
     
     ai_will_do = {
-        base = 1
-
-        modifier = {
-            factor = 0 
-            NOT = { has_tech = rocket_artillery } 
-        }
+        base = 20
     }
 
      # EFFECTS
@@ -218,29 +205,12 @@ mobile_recon_and_assault = {
     xp_type = army
 
     available = {
-        always = yes
-    }
-    visible = {
-        has_dlc = "La Resistance"
+        has_doctrine = new_mobile_warfare
     }
     
     ai_will_do = {
-
-        base = 1
-        modifier = {
-            factor = 75
-            original_tag = GER
-        }
-        modifier = {
-            factor = 75
-            original_tag = USA
-        }
-        modifier = {
-            factor = 0
-            is_major = no
-        }
+        base = 20
     }
-    
     enable_tactic = tactic_overwhelming_fire
 
     rewards = {
@@ -280,98 +250,6 @@ mobile_recon_and_assault = {
     }
 }
 
-mobile_recon_and_assault_no_lar = {
-    track = combat_support
-    name = SUBDOCTRINE_MOBILE_RECON_AND_ASSAULT
-    description = SUBDOCTRINE_MOBILE_RECON_AND_ASSAULT_DESC
-    icon = GFX_doctrine_mobile_recon_assault_medium
-
-    xp_cost = 100
-    xp_type = army
-
-    available = {
-        always = yes
-    }
-    visible = {
-        NOT = {
-            has_dlc = "La Resistance"
-        }
-    }
-
-    
-    ai_will_do = {
-
-        base = 1
-        modifier = {
-            factor = 75
-            original_tag = GER
-        }
-        modifier = {
-            factor = 75
-            original_tag = USA
-        }
-        modifier = {
-            factor = 0
-            is_major = no
-        }
-    }
-    
-
-    light_armor = {
-        max_organisation = 5
-    }
-
-    rewards = {
-
-        motorization_support = {
-            category_all_mobile_inf = {
-                maximum_speed = 0.1
-                default_morale = 0.2
-            }
-
-        }
-        long_range_reconnaissance = {
-            category_recon = {
-                maximum_speed = 0.15
-            }
-        }
-        mobile_operational_deployments = {
-            light_tank_recon = {
-                battalion_mult = {
-                    category = category_all_armor
-                    breakthrough = 0.1
-                }
-            }
-            mot_artillery_brigade = {
-                soft_attack = 0.05
-            }
-
-        }
-        self_propelled_support_elements = {
-            category_spg = {
-                soft_attack = 0.10
-            }
-            category_spaa= {
-                air_attack = 0.15
-                soft_attack = 0.05
-            }
-            category_tank_destroyer = {
-                hard_attack = 0.1
-                ap_attack = 0.03
-            }
-        }
-        deep_reconnaissance_focus = {
-            category_recon = {
-                maximum_speed = 0.1
-            }
-            light_tank_recon = {
-                recon = 0.2
-                breakthrough = 0.1
-            }
-        }
-    }
-}
-
 self_propelled_support = {
 
     track = combat_support
@@ -387,6 +265,7 @@ self_propelled_support = {
     }
     visible = {
         has_dlc = "No Compromise, No Surrender"
+        always = no
     }
 
 
@@ -499,6 +378,7 @@ siege_artillery = {
     }
     visible = {
         has_dlc = "Gotterdammerung"
+        always = no
     }
 
     ai_will_do = { base = 0 }
@@ -544,16 +424,12 @@ field_engineering = {
     xp_cost = 100
     xp_type = army
 
+    available = {
+        has_doctrine = grand_battleplan
+    }
+
     ai_will_do = { 
-        base = 1
-        modifier = {
-            factor = 75
-            original_tag = ITA
-        }
-        modifier = {
-            factor = 75
-            original_tag = JAP
-        }
+        base = 20
     }
 
     category_recon = {

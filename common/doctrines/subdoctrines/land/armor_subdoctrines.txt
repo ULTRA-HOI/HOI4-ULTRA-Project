@@ -8,23 +8,11 @@ armored_spearhead = {
     xp_type = army
 
     available = {
-        always = yes
-    }
-    visible = {
-        has_dlc = "La Resistance"
+        has_doctrine = new_mobile_warfare
     }
 
     ai_will_do = {
-
-        base = 1
-        modifier = {
-            factor = 25
-            original_tag = GER
-        }
-        modifier = {
-            factor = 0.5
-            is_major = no
-        }
+        base = 20
     }
 
     # EFFECTS
@@ -76,81 +64,6 @@ armored_spearhead = {
     }
 }
 
-armored_spearhead_no_lar = {
-    track = armor
-    name = SUBDOCTRINE_ARMORED_SPEARHEAD
-    description = SUBDOCTRINE_ARMORED_SPEARHEAD_DESC
-    icon = GFX_doctrine_armored_spearhead_medium
-
-    xp_cost = 100
-    xp_type = army
-
-    available = {
-        always = yes
-    }
-    visible = {
-        NOT = {
-            has_dlc = "La Resistance"
-        }
-    }
-
-    ai_will_do = {
-
-        base = 1
-        modifier = {
-            factor = 25
-            original_tag = GER
-        }
-        modifier = {
-            factor = 0.5
-            is_major = no
-        }
-    }
-
-    # EFFECTS
-    enable_tactic = tactic_breakthrough
-
-    rewards = {
-        force_concentration = {
-        #1
-            category_tanks= {
-                max_organisation = 1
-                default_morale = 0.1
-            }
-        }
-        armored_breakthrough_exploits = {
-        #2
-            category_all_armor = {
-                breakthrough = 0.1
-            }
-        }
-        local_reserves = {
-        #3
-            recon = {
-                max_organisation = 10
-            }
-
-            light_armor = {
-                default_morale = 0.1
-                max_organisation = 3
-            }
-        }
-        tactical_reconnaissance = {
-        #4
-            category_all_armor = {
-                breakthrough = 0.1
-            }
-        }
-        assault_detachments = {
-        #5
-            
-             category_tanks= {
-                max_organisation = 3
-                breakthrough = 0.2
-            }
-        }
-    }
-}
 armored_infantry_support = {
     track = armor
     name = SUBDOCTRINE_ARMORED_INFANTRY_SUPPORT
@@ -162,6 +75,10 @@ armored_infantry_support = {
 
     available = {
         always = yes
+    }
+
+    visible = {
+        always = no
     }
 
     ai_will_do = {
@@ -252,21 +169,11 @@ streamlined_deployment = {
     xp_type = army
 
     available = {
-        always = yes
+        has_doctrine = mass_assault
     }
 
-        ai_will_do = {
-
-        base = 1
-        modifier = {
-            factor = 25
-            OR = {
-                original_tag = SOV 
-                original_tag = CHI 
-                original_tag = PRC 
-            }
-        }
-
+    ai_will_do = {
+        base = 20
     }
 
     enable_tactic = tactic_blitz
@@ -323,22 +230,11 @@ mobile_defense = {
     xp_type = army
 
     available = {
-        always = yes
+        has_doctrine = superior_firepower
     }
 
-        ai_will_do = {
-
-        base = 1
-        modifier = {
-            factor = 25
-            original_tag = USA
-        }
-
-        modifier = {
-            factor = 0.5
-            is_major = no
-        }
-
+    ai_will_do = {
+        base = 20
     }
 
     enable_tactic = tactic_unexpected_thrust
@@ -404,25 +300,14 @@ armored_cavalry = {
     xp_type = army
 
     available = {
-        always = yes
+        has_doctrine = grand_battleplan
     }
     visible = {
-       AND = {
-            has_dlc = "No Compromise, No Surrender"
-        }
+        has_dlc = "No Compromise, No Surrender"
     }
 
     ai_will_do = {
-
-        base = 1
-        modifier = {
-            factor = 25
-            OR = {
-                original_tag = ITA 
-                original_tag = JAP 
-            }
-        }
-
+        base = 20
     }
 
     enable_tactic = tactic_breakthrough
@@ -471,6 +356,7 @@ tank_destroyer_force = {
 
     visible = {
         has_dlc = "No Compromise, No Surrender"
+        always = no
     }
 
     ai_will_do = {
