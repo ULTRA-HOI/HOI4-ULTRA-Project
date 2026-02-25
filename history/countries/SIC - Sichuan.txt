@@ -1,0 +1,87 @@
+﻿capital = 1037 # Chongqing 
+
+set_variable = { CHI_warlord_army_political_power_gain = 0 }
+set_variable = { CHI_warlord_army_army_core_attack_factor = 0 }
+set_variable = { CHI_warlord_army_army_core_defence_factor = 0 }
+set_variable = { CHI_warlord_army_production_speed_buildings_factor = 0 }
+set_variable = { CHI_warlord_army_army_infantry_attack_factor = 0 }
+set_variable = { CHI_warlord_army_army_infantry_defence_factor = 0 }
+set_variable = { CHI_warlord_army_special_forces_cap = 0 }
+set_variable = { CHI_warlord_army_special_forces_out_of_supply_factor = 0 }
+set_variable = { warlord_faction_influence_war_score_factor = 0 }
+set_variable = { warlord_faction_influence_contribution_factor = 0 }
+set_variable = { SIC_sichuan_clique_army_core_attack_factor = 0 }
+set_variable = { SIC_sichuan_clique_supply_combat_penalties_on_core_factor = 0 }
+set_variable = { SIC_sichuan_clique_stability_factor = 0.05 }
+set_variable = { SIC_sichuan_clique_war_support_factor = 0 }
+set_variable = { SIC_sichuan_clique_political_power_gain = 0.05 }
+set_variable = { SIC_sichuan_clique_surrender_limit = 0 }
+set_variable = { SIC_sichuan_clique_research_speed_factor = 0 }
+set_variable = { SIC_sichuan_clique_recruitable_population_factor = 0 }
+set_variable = { SIC_sichuan_clique_production_speed_buildings_factor = 0 }
+set_variable = { SIC_sichuan_clique_army_core_defence_factor = 0 }
+
+set_variable = { RNG_state_shintoism_surrender_limit = 0 }
+set_variable = { RNG_state_shintoism_war_support_factor = 0 }
+set_variable = { RNG_state_shintoism_pocket_penalty = 0 }
+set_variable = { RNG_state_shintoism_stability_factor = 0 }
+set_variable = { RNG_state_shintoism_army_core_defence_factor = 0 }
+set_variable = { RNG_state_shintoism_research_speed_factor = 0 }
+set_variable = { RNG_state_shintoism_recruitable_population_factor = 0 }
+set_variable = { RNG_state_shintoism_political_power_gain = 0 }
+
+oob = "SIC_1936_sea"
+
+set_stability = 0.5
+set_war_support = 0.4
+
+# Starting tech
+set_technology = {
+	basic_train = 1
+	infantry_guns_bolt_action = 1
+	infantry_uniforms_modern = 1
+	tech_support = 1
+	motorised_infantry = 1
+}
+
+IF = {
+	limit = {
+		has_dlc = "No Compromise, No Surrender"
+		check_variable = { CHI_ncns_content = 1 }
+	}
+	recruit_character = SIC_liu_xiang
+	recruit_character = SIC_yang_sen
+	recruit_character = SIC_liu_wenhui
+	recruit_character = CHI_gu_zhutong
+
+	SIC_liu_wenhui = {
+		set_character_flag = can_flip_to_prc
+	}
+
+	add_ideas = {
+		SIC_a_loose_unity
+		CHI_warlord_looting_idea
+	}
+
+}
+
+if = { 
+	limit = {
+		has_dlc = "Waking the Tiger"
+	}
+	add_ideas = {
+		PRC_government_corruption
+		CHI_ineffective_bureaucracy_warlord
+		CHI_warlord_state_idea
+	}
+}
+
+set_politics = {
+	ruling_party = neutrality
+	last_election = "1936.1.1"
+	election_frequency = 48
+	elections_allowed = no
+}
+set_popularities = {
+	neutrality = 100
+}
