@@ -1894,9 +1894,9 @@ NNavy = {
 		0.6, -- NAVAL_INVASION_SUPPORT
 	},
 
-	DOMINANCE_PER_SHIP_PER_RANGE_NEUTRAL = 2000,					-- ship range where there is no penalty nor bonus to naval dominance, below or above this will be scaled accordingly with penalty or bonus, min value is 0
-	DOMINANCE_PER_SHIP_PER_SPEED_NEUTRAL = 20,						-- ship speed where there is no penalty nor bonus to naval dominance, below or above this will be scaled accordingly with penalty or bonus, min value is 0
-	DOMINANCE_PER_SHIP_PER_CARRIER_SIZE = 0.1,						-- bonus to dominance based on the carrier size - e.g. regular carrier hangar has carrier_size of 2, so it would be a bonus of 2 * DOMINANCE_PER_SHIP_PER_CARRIER_SIZE, min value is 0
+	DOMINANCE_PER_SHIP_PER_RANGE_NEUTRAL = 3000,					-- ship range where there is no penalty nor bonus to naval dominance, below or above this will be scaled accordingly with penalty or bonus, min value is 0
+	DOMINANCE_PER_SHIP_PER_SPEED_NEUTRAL = 27,						-- ship speed where there is no penalty nor bonus to naval dominance, below or above this will be scaled accordingly with penalty or bonus, min value is 0
+	DOMINANCE_PER_SHIP_PER_CARRIER_SIZE = 0.033,						-- bonus to dominance based on the carrier size - e.g. regular carrier hangar has carrier_size of 2, so it would be a bonus of 2 * DOMINANCE_PER_SHIP_PER_CARRIER_SIZE, min value is 0
 	DOMINANCE_PER_SHIP_PER_HEAVY_GUN_ATTACK = 0.01,					-- bonus to dominance based on the heavy attack, min value is 0
 	NAVAL_MINES_IN_REGION_MAX = 1000, --was 1000.0 --Max number of mines that can be layed by the ships. The value should be hidden from the user, as we present % so it's an abstract value that should be used for balancing.
 	NAVAL_MINES_PLANTING_SPEED_MULT = 0.01, --was 0.01 --Value used to overall balance of the speed of planting naval mines
