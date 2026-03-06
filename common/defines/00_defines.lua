@@ -1359,7 +1359,7 @@ NAir = {
 	ACE_WING_SIZE =	72,								-- size of wing ace bonuses are set up for. if lower more bonus, if higher less bonus
 	ACE_WING_SIZE_MAX_BONUS = 3,               	        -- biggest bonus we can get from having a small wing with an ace on
 	NO_SEARCH_MISSION_DETECT_FACTOR = -0.5,				-- value of planes not on active search missions for detection
-	SUPPLY_NEED_FACTOR = 2.10, --was 0.28 --multiplies supply usage
+	SUPPLY_NEED_FACTOR = 35, --was 0.28 --multiplies supply usage
 	SUPPLY_PRIO_FACTOR = 100.0,							-- Effect of supply need per unit for target province picking for air supply
 	CAPACITY_PENALTY = 2,								-- scales penalty of having overcrowded bases.
 	AIR_COMBAT_FINAL_DAMAGE_SCALE = 0.015,               -- % how many max disrupted only planes are alloed to die in a single combat
@@ -1671,7 +1671,7 @@ NNavy = {
 	SHORE_BOMBARDMENT_CAP = 0.5, --was 0.25
 	ANTI_AIR_TARGETING = 0.9,                                       -- how good ships are at hitting aircraft
 	MIN_TRACTED_ASSIST_DAMAGE_RATIO = 0.05,							-- How much damage counts as assist damage
-	SUPPLY_NEED_FACTOR = 0.1, --multiplies supply usage
+	SUPPLY_NEED_FACTOR = 750, --multiplies supply usage
 	DECRYPTION_SPOTTING_BONUS = 0.15, --was 0.2
 	DISBAND_MANPOWER_LOSS = 0.0, --was 0.0
 	MANPOWER_LOSS_RATIO_ON_SUNK = 0.5,								-- sunk ships will lose this ratio of their current manpower
@@ -3535,12 +3535,15 @@ NAI = {
 		
 	MIN_FACTORIES_TO_WANT_TO_IMPORT = {  -- minimum number of civilian factories the AI must have to consider importing a resource - per strategic resource. Default 0, array -should- be updated with new resources, or if the order changes.
 		0, -- oil
-		0, -- aluminium
 		0, -- rubber
-		0, -- tungsten
+		0, -- coal
+		0, -- iron
 		0, -- steel
+		0, -- bauxite
+		0, -- aluminium
+		0, -- tungsten
 		0, -- chromium
-		10, -- coal
+		100000, -- energy_resource
 	},
 	
 	SUGGESTED_NUM_MAX_CARRIERS = 8,							-- We don't know exactly how many planes we should use when evaluating AI build so we need a suggested number to start things off. ALso used for task force suggestions list.
