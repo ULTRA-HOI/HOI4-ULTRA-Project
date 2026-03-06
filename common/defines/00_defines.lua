@@ -275,7 +275,7 @@ NDiplomacy = {
 	EMBARGO_NEIGHBOUR_AI_WEIGHT = -10,					--AI weight for embargoing neighbors (neighbors are big and scary, we should consider not doing it)
 	
 	
-	NAVAL_BLOCKADE_BASE_COST = 50,						-- Base PP cost for issuing a naval blockade
+	NAVAL_BLOCKADE_BASE_COST = 10000,						-- Base PP cost for issuing a naval blockade
 	NAVAL_BLOCKADE_DAILY_COST = 0.1,					-- Daily PP cost for one naval blockade
 	NAVAL_BLOCKADE_THREAT_THRESHOLD = 15,				-- Target-generated threat threshold to allow naval blockade
 
@@ -2074,10 +2074,11 @@ NNavy = {
 		15,	-- Wolfpack
 		22,	-- Carrier task force
 		26,	-- Surface action group
-		16,	-- Mine layers
-		17,	-- Mine sweepers
+		30,	-- Mine layers
+		31,	-- Mine sweepers
 		29,	-- Patrol task force
 		1,	-- Convoy escort
+		5,	-- Dominance patrol force
 	},
 
 	-- NOTE: you can see the effect of changing the values down below by running the command tfria with a task force selected
