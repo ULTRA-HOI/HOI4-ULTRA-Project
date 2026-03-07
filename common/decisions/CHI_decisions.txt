@@ -2498,36 +2498,11 @@ political_actions = {
 	}
 
 	CHI_join_united_front = {
-
-		visible = {
-			OR = {
-				is_literally_china = yes
-				original_tag = MEN
-			}
-			CHI = {
-				is_in_faction_with = PRC
-			}
-			is_in_faction = no
-			is_subject = no
-			NOT = {
-				has_country_flag = warlord_has_asked_to_join_CUF_but_refused
-			}
-		}
-
 		available = {
-			OR = {
-				is_literally_china = yes
-				original_tag = MEN
-			}
-
-			NOT = {
-				has_idea = SIK_battle_for_sinkiang
-			}
-			
+			is_literally_china = yes
 			CHI = {
 				is_in_faction_with = PRC
 			}
-
 			OR = {
 				PRC = {
 					is_faction_leader = yes
@@ -2536,62 +2511,32 @@ political_actions = {
 					is_faction_leader = yes
 				}
 			}
-
 			NOT = {
 				OR = {
 					has_war_with = CHI
 					has_war_with = PRC
 				}
 			}
-
 			is_in_faction = no
-
 			NOT = {
 				has_completed_focus = CHI_opposition
 			}
-
 			OR = {
 				is_subject = no
 				OVERLORD = {
 					is_in_faction_with = event_target:WTT_current_china_leader
 				}
 			}
-
-			OR = {
-				AND = {
-					ROOT = {
-						has_war = yes
-					}
-					CHI = {
-						has_war = yes
-					}
-				}
-				AND = {
-					ROOT = {
-						has_war = no
-					}
-					CHI = {
-						has_war = no
-					}
-				}
-				AND = {
-					ROOT = {
-						has_war = no
-					}
-					CHI = {
-						has_war = yes
-					}
-				}
-			}
-
 		}
-		
-		cost = 25
-
+		visible = {
+			is_literally_china = yes
+			CHI = {
+				is_in_faction_with = PRC
+			}
+			is_in_faction = no
+		}
 		ai_will_do = {
-
-			base = 2
-
+			factor = 1000
 			modifier = {
 				JAP = {
 					OR = {
@@ -2599,90 +2544,45 @@ political_actions = {
 						has_war_with = PRC
 					}
 				}
-				factor = 15
+				factor = 10
 			}
-
 			modifier = {
 				has_war_with = JAP
 				factor = 500
 			}
-
-			# Sheng Shicai doesn't want to join until he has dealt with Tunganistan and the KMT general Ma Hushan
-			modifier = {
-				original_tag = SIK
-				is_subject = no
-				date < 1937.10.15
-				factor = 0
-			}
-
-			# Hebei Chahar don't care
-			modifier = {
-				original_tag = HBC
-				is_subject = no
-				has_war = no
-				CHI = {
-					NOT = {
-						has_war_with = JAP
-						has_war_with = MAN
-					}
-				}
-				factor = 0
-			}
-
-			modifier = {
-				# Should join the CUF almost immediatly after creation if possible 
-				original_tag = SIC
-				has_country_leader = {
-					ruling_only = yes
-					character = SIC_liu_xiang
-				}	
-				factor = 20 
-			}
-
 		}
-
 		complete_effect = {
-
-			IF = {
+			If = {
 				limit = {
 					CHI = {
 						is_faction_leader = yes
 					}
 				}
 				CHI = {
-					country_event = SEA_PRC_faction_events.60
+					country_event = generic.2
 				}
 				add_ai_strategy = {
 					type = alliance
-					id = CHI
+					id = "CHI"
 					value = 200
 				}
 			}
-			ELSE_IF = {
+			else_if = {
 				limit = {
 					PRC = {
 						is_faction_leader = yes
 					}
 				}
 				PRC = {
-					country_event = SEA_PRC_faction_events.60
+					country_event = generic.2
 				}
 				add_ai_strategy = {
 					type = alliance
-					id = PRC
+					id = "PRC"
 					value = 200
 				}
 			}
-
-			hidden_effect = {
-				set_country_flag = warlord_has_asked_to_join_CUF_but_refused
-				country_event = { ## Clear country flag
-					id =  SEA_PRC_faction_events.100
-					days = 180
-				}
-			}
 		}
-
 	}
 
 	CHI_move_the_capital = {
