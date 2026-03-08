@@ -4,7 +4,7 @@ armored_spearhead = {
     description = SUBDOCTRINE_ARMORED_SPEARHEAD_DESC
     icon = GFX_doctrine_armored_spearhead_medium
 
-    xp_cost = 300
+    xp_cost = 200
     xp_type = army
 
     available = {
@@ -70,7 +70,7 @@ armored_infantry_support = {
     description = SUBDOCTRINE_ARMORED_INFANTRY_SUPPORT_DESC
     icon = GFX_doctrine_armored_infantry_support_medium
 
-    xp_cost = 300
+    xp_cost = 200
     xp_type = army
 
     available = {
@@ -165,7 +165,7 @@ streamlined_deployment = {
     description = SUBDOCTRINE_STREAMLINED_DEPLOYMENT_DESC
     icon = GFX_doctrine_streamlined_deployment_medium
 
-    xp_cost = 300
+    xp_cost = 200
     xp_type = army
 
     available = {
@@ -226,7 +226,7 @@ mobile_defense = {
     description = SUBDOCTRINE_MOBILE_DEFENSE_DESC
     icon = GFX_doctrine_mobile_defense_medium
 
-    xp_cost = 300
+    xp_cost = 200
     xp_type = army
 
     available = {
@@ -296,7 +296,7 @@ armored_cavalry = {
     description = SUBDOCTRINE_ARMORED_CAVALRY_DESC
     icon = GFX_doctrine_armored_cavalry_medium
 
-    xp_cost = 15
+    xp_cost = 200
     xp_type = army
 
     available = {
@@ -351,7 +351,7 @@ tank_destroyer_force = {
     description = SUBDOCTRINE_TANK_DESTROYER_FORCE_DESC
     icon = GFX_doctrine_tank_destroyer_force_medium
 
-    xp_cost = 300
+    xp_cost = 200
     xp_type = army
 
     visible = {
@@ -415,8 +415,60 @@ tank_destroyer_force = {
                 }
             }
         }
+    }
+}
 
+armored_cavalry_no_ncns = {
+    track = armor
+    name = SUBDOCTRINE_ARMORED_CAVALRY
+    description = SUBDOCTRINE_ARMORED_CAVALRY_DESC
+    icon = GFX_doctrine_mobile_defense_medium
 
+    xp_cost = 200
+    xp_type = army
 
+    available = {
+        has_doctrine = grand_battleplan
+    }
+    visible = {
+        NOT = { has_dlc = "No Compromise, No Surrender" }
+    }
+
+    ai_will_do = {
+        base = 20
+    }
+
+    enable_tactic = tactic_breakthrough
+    # EFFECTS
+    rewards = {
+        armored_cavalry_1 = {
+            light_armor = {
+                max_organisation = 2.5
+                breakthrough = 0.05
+            }
+        }
+        armored_cavalry_2 = {
+            army_speed_factor = 0.05
+            org_loss_when_moving = -0.2
+        }
+        armored_cavalry_3 = {
+            armored_car = {
+                max_organisation = 2.5
+                soft_attack = 0.1
+                breakthrough = 0.1
+                defense = 0.1
+            }
+        }
+        armored_cavalry_4 = {
+            category_all_armor = {
+                soft_attack = 0.05
+                max_organisation = 2
+                breakthrough = 0.05
+                maximum_speed = 0.05
+            }
+        }
+        armored_cavalry_5 = {
+            coordination_bonus = 0.1
+        }
     }
 }
