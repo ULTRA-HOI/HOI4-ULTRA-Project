@@ -7,6 +7,70 @@ technologies = {
 		research_cost = 1
 	}
 
+	hun_mechanized_infantry_1 = {
+
+		enable_equipments = {
+			hun_mechanized_equipment_1
+		}
+		
+		enable_subunits = {
+			mechanized
+		}
+
+		path = {
+		}
+
+		dependencies = {
+			motorised_infantry = 1	
+		}
+
+		research_cost = 1
+		start_year = 1943
+
+		folder = {
+			name = hun_armour_folder
+			position = { x = -10 y = 16 }
+		}
+		
+		special_project_specialization = { specialization_land }
+		
+		categories = {
+			major_technologies
+			motorized_equipment
+			infantry_tech
+			cat_mechanized_equipment
+		}
+		
+		ai_will_do = {
+			factor = 4
+			modifier = {
+				factor = 0
+				date < "1943.1.1"
+			}
+			modifier = {
+				factor = 30
+				date > "1943.1.1"
+			}
+			
+			modifier = {
+				factor = 30
+				date > "1944.1.1"
+			}
+			
+			modifier = {
+				factor = 30
+				date > "1945.1.1"
+			}
+			
+			modifier = {
+				factor = 0
+				NOT = {
+					original_tag = HUN
+				}
+			}
+		}
+	}
+
 	hun_scout_car_1 = { #P.A.2
 		ai_will_do = {
 			factor = 0
@@ -97,8 +161,13 @@ technologies = {
 		path = {
 			leads_to_tech = hun_light_3
 			research_cost_coeff = 1
-		}		
+		}
 
+		path = {
+			leads_to_tech = hun_mechanized_infantry_1
+			research_cost_coeff = 1
+		}		
+		
 		dependencies = {
 			motorised_infantry = 1
 		}

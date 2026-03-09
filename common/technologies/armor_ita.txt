@@ -440,11 +440,11 @@ technologies = {
 		}
 
 		research_cost = 1
-		start_year = 1941
+		start_year = 1942
 
 		folder = {
 			name = ita_armour_folder
-			position = { x = -10 y = 12 }
+			position = { x = -10 y = 13 }
 		}
 		
 		special_project_specialization = { specialization_land }
@@ -496,6 +496,11 @@ technologies = {
 		}
 		
 		path = {
+			leads_to_tech = ita_mechanized_infantry_2_5
+			research_cost_coeff = 1
+		}
+
+		path = {
 			leads_to_tech = ita_mechanized_infantry_3
 			research_cost_coeff = 1
 		}
@@ -505,11 +510,76 @@ technologies = {
 		}
 
 		research_cost = 1
-		start_year = 1942
+		start_year = 1943
 
 		folder = {
 			name = ita_armour_folder
-			position = { x = -10 y = 14 }
+			position = { x = -10 y = 15 }
+		}
+		
+		special_project_specialization = { specialization_land }
+		
+		categories = {
+			major_technologies
+			motorized_equipment
+			infantry_tech
+			cat_mechanized_equipment
+		}
+		
+		ai_will_do = {
+			factor = 4
+			modifier = {
+				factor = 0
+				date < "1942.1.1"
+			}
+			modifier = {
+				factor = 30
+				date > "1942.1.1"
+			}
+			
+			modifier = {
+				factor = 30
+				date > "1943.1.1"
+			}
+			
+			modifier = {
+				factor = 30
+				date > "1944.1.1"
+			}
+			
+			modifier = {
+				factor = 0
+				NOT = {
+					OR = {
+						original_tag = ITA
+						has_country_flag = italian_technologies_tree_flag
+					}
+				}
+			}
+		}
+	}
+
+	ita_mechanized_infantry_2_5 = {
+
+		enable_equipments = {
+			ita_mechanized_equipment_2_5
+		}
+		
+		path = {
+			leads_to_tech = ita_mechanized_infantry_3
+			research_cost_coeff = 1
+		}
+
+		dependencies = {
+			motorised_infantry = 1
+		}
+
+		research_cost = 1
+		start_year = 1943
+
+		folder = {
+			name = ita_armour_folder
+			position = { x = -10 y = 17 }
 		}
 		
 		special_project_specialization = { specialization_land }
@@ -565,7 +635,7 @@ technologies = {
 
 		folder = {
 			name = ita_armour_folder
-			position = { x = -10 y = 18 }
+			position = { x = -10 y = 19 }
 		}
 		
 		special_project_specialization = { specialization_land }
