@@ -151,6 +151,7 @@ characters={
 			}
 		}
 		corps_commander={
+			visible = { has_completed_focus = FRA_army_reform }
 			traits = { old_guard infantry_officer harsh_leader war_hero_2 trickster organizer desert_fox brilliant_strategist }
 			skill = 2
 			attack_skill = 2
@@ -177,27 +178,25 @@ characters={
 			allowed = {
 				original_tag = FRA
 			}
-			available = {
-				has_completed_focus = FRA_defensive_focus
-			}
+
 			traits = {
-				army_chief_entrenchment_2
+				army_chief_entrenchment_1
 			}
-			cost = 100
+			cost = 50
 			ai_will_do = {
 				factor = 1.000
 			}
 		}
 
-		field_marshal={
-			traits = { old_guard infantry_officer trait_cautious defensive_doctrine inflexible_strategist desert_fox }
-			skill = 3
-			attack_skill = 2
-			defense_skill = 3
-			planning_skill = 1
-			logistics_skill = 3
-			legacy_id=1703
-		}
+#		field_marshal={
+#			traits = { old_guard infantry_officer trait_cautious defensive_doctrine inflexible_strategist desert_fox }
+#			skill = 3
+#			attack_skill = 2
+#			defense_skill = 3
+#			planning_skill = 1
+#			logistics_skill = 3
+#			legacy_id=1703
+#		}
 	}
 
 	FRA_maxime_weygand={
@@ -255,10 +254,13 @@ characters={
 			allowed = {
 				original_tag = FRA
 			}
+			available = {
+				has_completed_focus = FRA_defensive_focus
+			}
 			traits = {
 				army_chief_maneuver_1
 			}
-			cost =  100
+			cost =  50
 			ai_will_do = {
 				factor = 0.000
 			}
@@ -313,7 +315,11 @@ characters={
 				original_tag = FRA
 			}
 			available = {
-				has_completed_focus = FRA_battle_of_maneuver
+				OR = {
+					has_completed_focus = FRA_battle_of_maneuver
+					has_completed_focus = FRA_army_reform
+				}
+				
 			}
 			
 			traits = {
@@ -339,7 +345,8 @@ characters={
 				original_tag = FRA
 			}
 			available = {
-				has_completed_focus = FRA_aggressive_focus
+				has_completed_focus = FRA_battle_of_maneuver
+				has_completed_focus = FRA_army_reform
 			}
 			
 			traits = {
@@ -358,6 +365,7 @@ characters={
 		}
 		
 		corps_commander={
+			visible = { has_completed_focus = FRA_army_reform }
 			traits = { infantry_officer armor_officer harsh_leader brilliant_strategist media_personality war_hero_2 politically_connected }		 
 			skill = 2
 			attack_skill = 2
@@ -418,31 +426,31 @@ characters={
 				large=GFX_portrait_FRA_henri_giraud
 			}
 		}
-		advisor={
-			cost = 100
-			slot = army_theorist
-			idea_token = henri_giraud
-			ledger = army
-			allowed = {
-				original_tag = FRA
-			}
-			ai_will_do = {
-				factor = 1.000
-				modifier = {
-					factor = 0.000
-					GER = {
-						is_ai = yes
-					}
-					date < 1939.08.01
-				}
-			}
-			traits = {
-				superior_firepower_expert
-			}
-		}
+#		advisor={
+#			cost = 100
+#			slot = army_theorist
+#			idea_token = henri_giraud
+#			ledger = army
+#			allowed = {
+#				original_tag = FRA
+#			}
+#			ai_will_do = {
+#				factor = 1.000
+#				modifier = {
+#					factor = 0.000
+#					GER = {
+#						is_ai = yes
+#					}
+#					date < 1939.08.01
+#				}
+#			}
+#			traits = {
+#				superior_firepower_expert
+#			}
+#		}
 		
-		corps_commander={
-			traits = { old_guard infantry_officer desert_fox trait_cautious media_personality }
+		field_marshal={
+			traits = { old_guard infantry_officer desert_fox trait_cautious media_personality defensive_doctrine }
 			skill = 3
 			attack_skill = 3
 			defense_skill = 2
@@ -450,6 +458,57 @@ characters={
 			logistics_skill = 2
 			legacy_id=1711
 		}
+	}
+
+	FRA_andre_gaston_pretelat={
+		name=FRA_andre_gaston_pretelat
+		portraits={
+			army={
+				large=GFX_Portrait_France_Generic_land_6
+				small=GFX_portrait_France_Generic_land_6_small
+			}
+		}
+		field_marshal={
+			traits = { old_guard bearer_of_artillery desert_fox career_officer defensive_doctrine war_hero_1 }
+			skill = 3
+			attack_skill = 1
+			defense_skill = 4
+			planning_skill = 2
+			logistics_skill = 2
+			legacy_id=0
+		}
+	}
+
+	FRA_lucien_loizeau={ #Ultra Character
+		name=FRA_lucien_loizeau
+		portraits={
+			army={
+				large=GFX_Portrait_France_Generic_land_3
+				small=GFX_idea_FRA_generic_land_3
+			}
+		}
+		advisor={
+			cost = 100
+			slot = army_theorist
+			idea_token = FRA_lucien_loizeau
+			ledger = army
+			allowed = {
+				original_tag = FRA
+			}
+		
+			traits = {
+				superior_firepower_expert
+			}	
+		}
+		corps_commander={
+			traits = { old_guard desert_fox war_hero_1 career_officer infantry_officer }
+			skill = 3
+			attack_skill = 2
+			defense_skill = 3
+			planning_skill = 2
+			logistics_skill = 3
+			legacy_id=0
+		}	
 	}
 
 	FRA_charles_huntziger={
@@ -470,9 +529,9 @@ characters={
 				original_tag = FRA
 			}
 			traits = {
-				army_logistics_1
+				army_logistics_2
 			}
-			cost =  50
+			cost =  100
 			ai_will_do = {
 				factor = 1.000
 			}
@@ -480,7 +539,7 @@ characters={
 		
 		corps_commander={
 			traits = { old_guard trait_cautious media_personality career_officer infantry_officer }
-			skill = 3
+			skill = 2
 			attack_skill = 2
 			defense_skill = 2
 			planning_skill = 2
@@ -527,6 +586,25 @@ characters={
 		}
 	}
 
+	FRA_edouard_requin={
+		name=FRA_edouard_requin
+		portraits={
+			army={
+				large=GFX_Portrait_France_Generic_land_2
+				small=GFX_idea_FRA_generic_land_2
+			}
+		}
+		corps_commander={
+			traits = { old_guard infantry_officer desert_fox career_officer }
+			skill = 2
+			attack_skill = 2
+			defense_skill = 2
+			planning_skill = 2
+			logistics_skill = 2
+			legacy_id=0
+		}
+	}
+
 	FRA_rene_olry={
 		name=FRA_rene_olry
 		portraits={
@@ -536,7 +614,7 @@ characters={
 			}
 		}
 		corps_commander={
-			traits = { old_guard bearer_of_artillery }
+			traits = { old_guard bearer_of_artillery war_hero_1 }
 			skill = 2
 			attack_skill = 2
 			defense_skill = 3
@@ -1174,7 +1252,7 @@ characters={
 			}
 		}
 		corps_commander={
-			traits={ old_guard career_officer bearer_of_artillery } 
+			traits={ old_guard career_officer bearer_of_artillery chief_engineer } 
 			skill=3
 			attack_skill=2
 			defense_skill=3
@@ -1774,6 +1852,28 @@ characters={
 		}
 	}
 	
+	FRA_georges_catroux = {
+		
+		portraits = {
+			army = {
+				small = GFX_idea_FRA_georges_catroux
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = FRA_georges_catroux
+			allowed  = {
+				original_tag  = FRA
+
+			}
+			available  = {
+				has_completed_focus  = FRA_continue_the_fight 
+			}
+			traits  = {
+				FRA_governor_general
+			}
+		}
+	}	
 
   #####                                                              
  #     #   ####   #  ######  #    #  #####  #   ####   #####   ####  
