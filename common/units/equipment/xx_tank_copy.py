@@ -2,31 +2,37 @@ import pandas as pd
 import re
 
 # Load CSV
-df = pd.read_csv("tank_data.csv", header=3, decimal=",")
+df1 = pd.read_csv("tank_data.csv", header=3, decimal=",")
+df2 = pd.read_csv("mech_data.csv", header=3, decimal=",")
+df = pd.concat([df1, df2], ignore_index=True)
+
 df["AP"] = df["AP"].fillna(0)
 df["Hd"] = df["Hd"].str.replace("%","",regex=False).str.replace(",",".",regex=False).astype(float)/100
 df["Rel"] = df["Rel"].str.replace("%","",regex=False).str.replace(",",".",regex=False).astype(float)/100
-df["Hd"] = df["Hd"].replace(0, 1.0)
-df["Rel"] = df["Rel"].replace(0, 0.675)
 
 # Map tank ID to row
 id_map = df.set_index("ID")  # replace "ID" with the actual CSV column name for tank IDs
 
-# Read file
-filename = "x_tank_chassis.txt"
-with open(filename, "r") as f:
-    lines = f.readlines()
+def update_file(filename):
 
-i = 0
-while i < len(lines):
-    line = lines[i]
-    if line.startswith("\t\t#tank id"):
-        nums = re.findall(r'\d+', line)
-        if not nums:
-            i += 1
-            continue
-        tank_id = int(nums[-1])
-        if tank_id in id_map.index:
+    with open(filename, "r") as f:
+        lines = f.readlines()
+
+    i = 0
+    while i < len(lines):
+        line = lines[i]
+
+        if line.startswith("\t\t#tank id"):
+            parts = line.strip().split()
+
+            if len(parts) != 3 or parts[0] != "#tank" or parts[1] != "id":
+                raise ValueError(f"Malformed tank id line: {line}")
+
+            tank_id = int(parts[2])
+
+            if tank_id not in id_map.index:
+                raise ValueError(f"Tank ID {tank_id} not found in CSV")
+
             r = id_map.loc[tank_id]
 
             output = [
@@ -49,10 +55,13 @@ while i < len(lines):
             lines[i+1:i+15] = output
             i += 15
             continue
-    i += 1
 
-# Overwrite the same file
-with open(filename, "w") as f:
-    f.writelines(lines)
+        i += 1
 
-print("File updated in place!")
+    with open(filename, "w") as f:
+        f.writelines(lines)
+
+    print(f"{filename} updated.")
+
+update_file("x_tank_chassis.txt")
+update_file("mechanized.txt")
