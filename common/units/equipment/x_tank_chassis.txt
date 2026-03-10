@@ -681,11 +681,51 @@ equipments = {
 
 ################################################################################################################# L FRA France
 
+	fra_interwar_equipment_1 = { #Renault FT
+		year = 1924
+
+		archetype = medium_tank_chassis
+		priority = 1
+		visual_level = 0
+		is_convertable = no
+
+		#tank id 746
+		soft_attack = 6.849
+		hard_attack = 6.815
+		air_attack = 0.000
+		ap_attack = 14.834
+		defense = 12.203
+		breakthrough = 11.769
+		max_strength = 2.279
+		armor_value = 18.03
+		hardness = 1.0
+		build_cost_ic = 3.209
+		maximum_speed = 6.551
+		reliability = 0.675
+		supply_consumption = 3.932
+		fuel_consumption = 0.011
+
+		resources = {
+			steel = 6
+			tungsten = 1
+		}
+	}
+
+	fra_ghost_medium_equipment_0 = {
+		year = 1934
+		
+		archetype = medium_tank_chassis
+		priority = 10
+		parent = fra_interwar_equipment_1
+		visual_level = 0
+		is_convertable = yes
+	}
+
 	fra_support_tank_equipment_1 = { #Renault R35
 		year = 1936
 
 		archetype = medium_tank_chassis
-		parent = generic_light_equipment_2
+		parent = fra_ghost_medium_equipment_0
 		priority = 10
 		visual_level = 0
 		is_convertable = yes
@@ -757,53 +797,11 @@ equipments = {
 	}
 
 	
-
-	fra_interwar_equipment_1 = { #Renault FT
-		year = 1924
-
-		archetype = medium_tank_chassis
-		priority = 1
-		visual_level = 0
-		is_convertable = no
-
-		#tank id 746
-		soft_attack = 6.849
-		hard_attack = 6.815
-		air_attack = 0.000
-		ap_attack = 14.834
-		defense = 12.203
-		breakthrough = 11.769
-		max_strength = 2.279
-		armor_value = 18.03
-		hardness = 1.0
-		build_cost_ic = 3.209
-		maximum_speed = 6.551
-		reliability = 0.675
-		supply_consumption = 3.932
-		fuel_consumption = 0.011
-
-		resources = {
-			steel = 6
-			tungsten = 1
-		}
-	}
-
-	fra_ghost_light_equipment_0 = { 
-		year = 1936
-
-		archetype = light_tank_chassis
-		priority = 10
-		parent = fra_interwar_equipment_1
-		visual_level = 0
-		is_convertable = yes
-	}
-	
 	fra_light_equipment_0 = { #AMR 33
 		year = 1933
 
 		archetype = light_tank_chassis
 		priority = 10
-		parent = fra_ghost_light_equipment_0
 		visual_level = 0
 		is_convertable = yes
 
@@ -858,6 +856,16 @@ equipments = {
 			steel = 6
 			tungsten = 1
 		}
+	}
+
+	fra_ghost_light_equipment_0 = {
+		year = 1934
+		
+		archetype = light_tank_chassis
+		priority = 10
+		parent = fra_light_equipment_0_5
+		visual_level = 0
+		is_convertable = yes
 	}
 
 	fra_light_equipment_1 = { #Hotchkiss H35
@@ -930,7 +938,7 @@ equipments = {
 
 		archetype = light_tank_chassis
 		priority = 10
-		parent = fra_light_equipment_0_5
+		parent = fra_light_equipment_2
 		visual_level = 0
 		is_convertable = yes
 	}
@@ -972,92 +980,19 @@ equipments = {
 		archetype = light_tank_chassis
 		priority = 10
 		parent = fra_light_equipment_3
-		parent = fra_light_equipment_2
 		visual_level = 0
 		is_convertable = yes
 	}
-	
-	fra_support_tank_equipment_3 = { #AMX 40
-		year = 1941
 
-		archetype = medium_tank_chassis
-		parent = fra_ghost_light_equipment_3
-		parent = fra_ghost_support_tank_equipment_2
-		priority = 11
-		visual_level = 0
-		is_convertable = yes
-		can_convert_from = {
-			fra_support_tank_equipment_1
-		}
-
-		#tank id 757
-		soft_attack = 24.349
-		hard_attack = 25.952
-		air_attack = 5.407
-		ap_attack = 45.504
-		defense = 23.649
-		breakthrough = 22.952
-		max_strength = 4.422
-		armor_value = 79.878
-		hardness = 1.0
-		build_cost_ic = 9.815
-		maximum_speed = 8.116
-		reliability = 0.65
-		supply_consumption = 9.353
-		fuel_consumption = 0.059
-
-		resources = {
-			steel = 6
-			tungsten = 1
-		}
-	}
-
-	fra_light_equipment_4 = { #AMX 12t
-		year = 1942
-
-		archetype = light_tank_chassis
-		parent = fra_ghost_light_equipment_3
-		parent = fra_support_tank_equipment_3
-		priority = 12
-		visual_level = 1
-		is_convertable = no
-
-		soft_attack = 0
-		hard_attack = 0
-		air_attack = 0
-		
-		breakthrough = 0
-		defense = 0
-		
-		ap_attack = 0
-		armor_value = 0
-		hardness = 0
-		maximum_speed = 0
-		
-		build_cost_ic = 0
-		fuel_consumption = 0.200
-		supply_consumption = 0.000
-		
-		reliability = 0.72
-		max_strength = 4.5
-		
-		resources = {
-			steel = 6
-			tungsten = 2
-		}
-	}
 
 	fra_light_equipment_5 = { #AMX 13 75
 		year = 1943
 
 		archetype = light_tank_chassis
-		parent = fra_light_equipment_4
+		parent = fra_ghost_light_equipment_3
 		priority = 13
 		visual_level = 1
 		is_convertable = yes
-		can_convert_from = {
-			fra_light_equipment_4
-		}
 
 		#tank id 743
 		soft_attack = 26.440
@@ -1952,12 +1887,113 @@ equipments = {
 	}
 
 ################################################################################################################# L SOV Soviet Union
+	 
+	sov_amphibious_tank_equipment_1 = { #T37A
+		year = 1934
+
+		archetype = light_tank_chassis
+		priority = 1
+		visual_level = 0
+
+		#tank id 236
+		soft_attack = 1.076
+		hard_attack = 0.000
+		air_attack = 0.000
+		ap_attack = 0.000
+		defense = 4.122
+		breakthrough = 9.611
+		max_strength = 2.130
+		armor_value = 9.097
+		hardness = 0.6
+		build_cost_ic = 2.457
+		maximum_speed = 6.76
+		reliability = 0.675
+		supply_consumption = 1.012
+		fuel_consumption = 0.011
+		
+		resources = {
+			steel = 6
+			rubber = 1
+		}
+	}
+
+	sov_amphibious_tank_equipment_2 = { #T38
+		year = 1936
+
+		archetype = light_tank_chassis
+		priority = 2
+		visual_level = 0
+		
+		parent = sov_amphibious_tank_equipment_1
+
+		#tank id 238
+		soft_attack = 1.076
+		hard_attack = 0.000
+		air_attack = 0.000
+		ap_attack = 0.000
+		defense = 4.222
+		breakthrough = 9.911
+		max_strength = 2.130
+		armor_value = 10.434
+		hardness = 0.6
+		build_cost_ic = 2.457
+		maximum_speed = 6.76
+		reliability = 0.675
+		supply_consumption = 1.012
+		fuel_consumption = 0.011
+		
+		resources = {
+			steel = 6
+			rubber = 1
+		}
+	}
 	
+	sov_amphibious_tank_equipment_3 = { #T40
+		year = 1940
+
+		archetype = light_tank_chassis
+		priority = 3
+		visual_level = 0
+		
+		parent = sov_amphibious_tank_equipment_2
+
+		#tank id 241
+		soft_attack = 4.864
+		hard_attack = 0.000
+		air_attack = 0.000
+		ap_attack = 0.000
+		defense = 9.138
+		breakthrough = 11.944
+		max_strength = 2.130
+		armor_value = 10.08
+		hardness = 0.6
+		build_cost_ic = 3.761
+		maximum_speed = 7.541
+		reliability = 0.675
+		supply_consumption = 2.370
+		fuel_consumption = 0.023
+		
+		resources = {
+			steel = 6
+			rubber = 1
+		}
+	}
+
+	sov_ghost_light_equipment_0 = {
+		year = 1934
+		
+		archetype = light_tank_chassis
+		priority = 10
+		parent = sov_amphibious_tank_equipment_3
+		visual_level = 0
+		is_convertable = yes
+	}
+
 	sov_light_equipment_1 = { #T26 33
 		year = 1933
 
 		archetype = light_tank_chassis
-		#parent = generic_light_equipment_2
+		parent = sov_ghost_light_equipment_0
 		priority = 10
 		visual_level = 0
 		is_convertable = yes
@@ -2227,12 +2263,42 @@ equipments = {
 		}
 	}	
 
+	eng_heavy_equipment_1 = { #Matilda Mk I
+		year = 1937
+
+		archetype = light_tank_chassis
+		priority = 30
+		visual_level = 0
+		is_convertable = yes
+
+		#tank id 444
+		soft_attack = 3.995
+		hard_attack = 0.000
+		air_attack = 0.000
+		ap_attack = 0.000
+		defense = 7.956
+		breakthrough = 18.764
+		max_strength = 3.148
+		armor_value = 64.309
+		hardness = 1.0
+		build_cost_ic = 5.507
+		maximum_speed = 6.684
+		reliability = 0.675
+		supply_consumption = 1.905
+		fuel_consumption = 0.019
+		
+		resources = {
+			steel = 6
+			tungsten = 1
+		}
+	}
+
 	eng_ghost_light_equipment_0 = {
 		year = 1934
 		
 		archetype = light_tank_chassis
 		priority = 10
-		parent = eng_interwar_equipment_1
+		parent = eng_heavy_equipment_1
 		visual_level = 0
 		is_convertable = yes
 	}
@@ -2243,7 +2309,7 @@ equipments = {
 		archetype = light_tank_chassis
 		priority = 10
 		parent = eng_ghost_light_equipment_0
-		visual_level = 0
+		visual_level = 1
 		is_convertable = yes
 
 		#tank id 428
@@ -2284,7 +2350,7 @@ equipments = {
 		archetype = light_tank_chassis
 		parent = eng_ghost_light_equipment_1
 		priority = 11
-		visual_level = 0
+		visual_level = 1
 		is_convertable = yes
 
 		#tank id 431
@@ -2309,43 +2375,38 @@ equipments = {
 		}
 	}
 
-	eng_ghost_light_equipment_2 = {
-		year = 1934
-		
+	eng_ghost_support_equipment_0 = {
+		year = 1937
+
 		archetype = light_tank_chassis
-		priority = 10
 		parent = eng_light_equipment_2
+		priority = 21
 		visual_level = 0
-		is_convertable = yes
 	}
-
-	eng_light_equipment_3 = { #M22 Locust
-		year =  1942	
-
+	
+	eng_support_equipment_1 = { #Valentine Mk I
+		year = 1941
+		parent = eng_ghost_support_equipment_0
 		archetype = light_tank_chassis
-		parent = eng_ghost_light_equipment_2
-		priority = 11
-		visual_level = 0
+		priority = 34
+		visual_level = 1
 		is_convertable = yes
 
-		soft_attack = 0
-		hard_attack = 0
-		air_attack = 0
-		
-		breakthrough = 0
-		defense = 0
-		
-		ap_attack = 0
-		armor_value = 0
-		hardness = 0
-		maximum_speed = 0
-		
-		build_cost_ic = 0
-		fuel_consumption = 0.200
-		supply_consumption = 0.000
-		
-		reliability = 0.77
-		max_strength = 4.5
+		#tank id 447
+		soft_attack = 15.380
+		hard_attack = 13.944
+		air_attack = 0.000
+		ap_attack = 46.888
+		defense = 20.373
+		breakthrough = 20.954
+		max_strength = 3.768
+		armor_value = 65.5
+		hardness = 1.0
+		build_cost_ic = 9.114
+		maximum_speed = 7.29
+		reliability = 0.75
+		supply_consumption = 6.815
+		fuel_consumption = 0.036
 		
 		resources = {
 			steel = 6
@@ -2353,12 +2414,81 @@ equipments = {
 		}
 	}
 
-	eng_ghost_light_equipment_3 = {
+	eng_support_equipment_2 = { #Valentine Mk IX
+		year = 1942
+
+		archetype = light_tank_chassis
+		parent = eng_support_equipment_1
+		priority = 34
+		visual_level = 1
+		is_convertable = yes
+		can_convert_from = {
+			eng_support_equipment_1
+		}
+
+		#tank id 451
+		soft_attack = 19.688
+		hard_attack = 17.849
+		air_attack = 0.000
+		ap_attack = 46.888
+		defense = 20.273
+		breakthrough = 22.054
+		max_strength = 5.028
+		armor_value = 64.167
+		hardness = 1.0
+		build_cost_ic = 8.864
+		maximum_speed = 7.294
+		reliability = 0.775
+		supply_consumption = 6.758
+		fuel_consumption = 0.036
+		
+		resources = {
+			steel = 6
+			tungsten = 1
+		}
+	}
+
+	eng_support_equipment_3 = { #Valentine Mk XI
+		year = 1944
+
+		archetype = light_tank_chassis
+		parent = eng_support_equipment_2
+		priority = 34
+		visual_level = 1
+		is_convertable = yes
+		can_convert_from = {
+			eng_support_equipment_1
+			eng_support_equipment_2
+		}
+
+		#tank id 461
+		soft_attack = 28.910
+		hard_attack = 19.031
+		air_attack = 0.000
+		ap_attack = 68.373
+		defense = 22.776
+		breakthrough = 21.742
+		max_strength = 5.040
+		armor_value = 68.71
+		hardness = 1.0
+		build_cost_ic = 12.359
+		maximum_speed = 7.226
+		reliability = 0.775
+		supply_consumption = 11.970
+		fuel_consumption = 0.045
+		
+		resources = {
+			steel = 6
+			tungsten = 2
+		}
+	}
+
+	eng_ghost_light_equipment_2 = {
 		year = 1934
 		
 		archetype = light_tank_chassis
 		priority = 10
-		parent = eng_light_equipment_3
+		parent = eng_support_equipment_3
 		visual_level = 0
 		is_convertable = yes
 	}
@@ -2367,7 +2497,7 @@ equipments = {
 		year = 1944
 
 		archetype = light_tank_chassis
-		parent = eng_ghost_light_equipment_3
+		parent = eng_ghost_light_equipment_2
 		priority = 12
 		visual_level = 1
 		is_convertable = yes
@@ -2885,7 +3015,7 @@ equipments = {
 
 		archetype = medium_tank_artillery_chassis
 		parent = fra_ghost_light_spg_equipment_1
-		family = fra_light_equipment_4
+		#family = fra_light_equipment_4
 		priority = 12
 		visual_level = 1
 		is_convertable = yes
@@ -2987,297 +3117,10 @@ equipments = {
 
 ################################################################################################################# L JAP Japan
 	
-	jap_light_spg_equipment_3 = { #Ho To
-		year = 1940
-
-		archetype = medium_tank_artillery_chassis
-		priority = 11
-		visual_level = 0
-		can_convert_from = {
-			jap_light_equipment_1
-			jap_light_equipment_3
-		}
-
-		#tank id 935
-		soft_attack = 11.875
-		hard_attack = 3.955
-		air_attack = 0.000
-		ap_attack = 0.000
-		defense = 11.702
-		breakthrough = 6.871
-		max_strength = 0.561
-		armor_value = 10.473
-		hardness = 0.4
-		build_cost_ic = 4.362
-		maximum_speed = 8.088
-		reliability = 0.675
-		supply_consumption = 6.217
-		fuel_consumption = 0.011
-		
-		resources = {
-			steel = 6
-			tungsten = 1
-		}
-	}
-
-	jap_ghost_light_spg_equipment_2 = {
-		year = 1934
-		
-		archetype = medium_tank_artillery_chassis
-		priority = 10
-		parent = jap_light_spg_equipment_3
-		visual_level = 0
-		is_convertable = yes
-	}
-
-	jap_light_spg_equipment_6 = { #Ku Se
-		year = 1944
-
-		archetype = medium_tank_artillery_chassis
-		parent = jap_ghost_light_spg_equipment_2
-		priority = 11
-		visual_level = 0
-		can_convert_from = {
-			jap_light_equipment_4
-			jap_light_equipment_6
-		}
-
-		#tank id 938
-		soft_attack = 5.904
-		hard_attack = 1.987
-		air_attack = 0.000
-		ap_attack = 34.074
-		defense = 5.902
-		breakthrough = 3.304
-		max_strength = 1.101
-		armor_value = 20.254
-		hardness = 0.7
-		build_cost_ic = 4.52
-		maximum_speed = 8.188
-		reliability = 0.675
-		supply_consumption = 3.770
-		fuel_consumption = 0.014
-		
-		resources = {
-			steel = 6
-			tungsten = 1
-		}
-	}
 
 ################################################################################################################# L GER Germany
 	
-	ger_light_spg_equipment_1 = { #15-cm-sIG 33 (Sf) auf Pz I
-		year = 1936
-
-		archetype = medium_tank_artillery_chassis
-		family = ger_light_equipment_1
-		priority = 11
-		visual_level = 0
-		can_convert_from = {
-			ger_light_equipment_0
-		}
-
-		#tank id 157
-		soft_attack = 21.185
-		hard_attack = 6.259
-		air_attack = 0.000
-		ap_attack = 0.000
-		defense = 16.363
-		breakthrough = 9.252
-		max_strength = 1.729
-		armor_value = 13.902
-		hardness = 0.6
-		build_cost_ic = 5.023
-		maximum_speed = 7.45
-		reliability = 0.65
-		supply_consumption = 10.327
-		fuel_consumption = 0.014
-		
-		resources = {
-			steel = 6
-			tungsten = 1
-		}
-	}
-
-	ger_ghost_light_spg_equipment_1 = {
-		year = 1934
-		
-		archetype = medium_tank_artillery_chassis
-		priority = 10
-		parent = ger_light_spg_equipment_1
-		visual_level = 0
-		is_convertable = yes
-	}
-
-	ger_light_spg_equipment_2 = { #15-cm-sIG 33 (Sf) auf Pz II
-		year = 1938
-
-		archetype = medium_tank_artillery_chassis
-		parent = ger_ghost_light_spg_equipment_1
-		family = ger_light_equipment_2
-		priority = 12
-		visual_level = 1
-		can_convert_from = {
-			ger_light_equipment_1
-			ger_light_equipment_2
-		}
-
-		#tank id 160
-		soft_attack = 21.282
-		hard_attack = 6.288
-		air_attack = 0.000
-		ap_attack = 0.000
-		defense = 16.413
-		breakthrough = 9.702
-		max_strength = 1.729
-		armor_value = 25.825
-		hardness = 0.6
-		build_cost_ic = 6.907
-		maximum_speed = 7.504
-		reliability = 0.65
-		supply_consumption = 10.724
-		fuel_consumption = 0.019
-		
-		resources = {
-			steel = 6
-			tungsten = 1
-		}
-	}
-
-	ger_ghost_light_spg_equipment_2 = {
-		year = 1934
-		
-		archetype = medium_tank_artillery_chassis
-		priority = 10
-		parent = ger_light_spg_equipment_2
-		visual_level = 0
-		is_convertable = yes
-	}
-
-	ger_light_spg_equipment_3 = { #Grille
-		year = 1943
-
-		archetype = medium_tank_artillery_chassis
-		parent = ger_ghost_light_spg_equipment_2
-		family = ger_light_equipment_3
-		priority = 14
-		visual_level = 2
-		can_convert_from = {
-			ger_light_equipment_3
-			ger_light_equipment_3_5
-		}
-
-		#tank id 163
-		soft_attack = 14.221
-		hard_attack = 4.201
-		air_attack = 0.000
-		ap_attack = 0.000
-		defense = 11.009
-		breakthrough = 6.868
-		max_strength = 0.861
-		armor_value = 40.231
-		hardness = 0.6
-		build_cost_ic = 6.802
-		maximum_speed = 7.537
-		reliability = 0.675
-		supply_consumption = 7.142
-		fuel_consumption = 0.013
-		
-		resources = {
-			steel = 6
-			tungsten = 1
-		}
-	}
-
-	ger_ghost_light_spg_equipment_3 = {
-		year = 1934
-		
-		archetype = medium_tank_artillery_chassis
-		priority = 10
-		parent = ger_light_spg_equipment_3
-		visual_level = 0
-		is_convertable = yes
-	}
-
-	ger_light_spg_equipment_4 = { #Wespe 
-		year = 1942
-
-		archetype = medium_tank_artillery_chassis
-		parent = ger_ghost_light_spg_equipment_3
-		family = ger_light_equipment_4
-		priority = 12
-		visual_level = 1
-		can_convert_from = {
-			ger_light_equipment_1
-			ger_light_equipment_2
-			ger_light_equipment_4
-		}
-
-		#tank id 68
-		soft_attack = 32.999
-		hard_attack = 18.671
-		air_attack = 0.000
-		ap_attack = 0.000
-		defense = 21.838
-		breakthrough = 8.759
-		max_strength = 1.153
-		armor_value = 25.825
-		hardness = 0.6
-		build_cost_ic = 5.604
-		maximum_speed = 7.74
-		reliability = 0.65
-		supply_consumption = 5.446
-		fuel_consumption = 0.013
-		
-		resources = {
-			steel = 6
-			tungsten = 2
-		}
-	}
-
-	ger_ghost_light_spg_equipment_4 = {
-		year = 1934
-		
-		archetype = medium_tank_artillery_chassis
-		priority = 10
-		parent = ger_light_spg_equipment_4
-		visual_level = 0
-		is_convertable = yes
-	}
-
-	ger_light_spg_equipment_5 = { #le Panzerhaubitze 38 (d)
-		year = 1944
-
-		archetype = medium_tank_artillery_chassis
-		parent = ger_ghost_light_spg_equipment_4
-		family = ger_light_equipment_5
-		priority = 15
-		visual_level = 2
-		can_convert_from = {
-			ger_light_equipment_5
-		}
-
-		#tank id 43
-		soft_attack = 34.450
-		hard_attack = 19.492
-		air_attack = 0.000
-		ap_attack = 0.000
-		defense = 21.971
-		breakthrough = 9.092
-		max_strength = 1.131
-		armor_value = 27.089
-		hardness = 0.2
-		build_cost_ic = 6.57
-		maximum_speed = 8.51
-		reliability = 0.575
-		supply_consumption = 5.959
-		fuel_consumption = 0.020
-		
-		resources = {
-			steel = 6
-			tungsten = 2
-		}
-	}
+	
 
 ################################################################################################################# L SOV Soviet Union
 
@@ -3468,99 +3311,11 @@ equipments = {
 	}
 
 ################################################################################################################# L USA United States
-	
-	usa_light_spg_equipment_2 = { #M8 Scott
-		year = 1942
-
-		archetype = support_tank_chassis
-		family = usa_light_equipment_2
-		priority = 11
-		visual_level = 0
-		can_convert_from = {
-			usa_light_equipment_2
-		}
-
-		#tank id 694
-		soft_attack = 32.098
-		hard_attack = 37.587
-		air_attack = 19.607
-		ap_attack = 67.940
-		defense = 26.396
-		breakthrough = 30.842
-		max_strength = 4.466
-		armor_value = 38.765
-		hardness = 0.8
-		build_cost_ic = 9.902
-		maximum_speed = 9.103
-		reliability = 0.75
-		supply_consumption = 15.384
-		fuel_consumption = 0.080
-		
-		resources = {
-			steel = 6
-			tungsten = 1
-		}
-	}
-
-	usa_ghost_light_spg_equipment_2 = {
-		year = 1934
-		
-		archetype = medium_tank_artillery_chassis
-		priority = 10
-		parent = usa_light_spg_equipment_2
-		visual_level = 0
-		is_convertable = yes
-	}
-
-	usa_light_spg_equipment_3 = { #M41 HMC
-		year = 1945
-
-		archetype = heavy_tank_artillery_chassis
-		parent = usa_ghost_light_spg_equipment_2
-		family = usa_light_equipment_3
-		priority = 12
-		visual_level = 1
-		can_convert_from = {
-			usa_light_equipment_3
-		}
-
-		#tank id 700
-		soft_attack = 48.730
-		hard_attack = 29.739
-		air_attack = 0.000
-		ap_attack = 0.000
-		defense = 28.022
-		breakthrough = 8.716
-		max_strength = 1.491
-		armor_value = 18.926
-		hardness = 0.8
-		build_cost_ic = 11.193
-		maximum_speed = 7.913
-		reliability = 0.775
-		supply_consumption = 9.497
-		fuel_consumption = 0.027
-		
-		resources = {
-			steel = 6
-			tungsten = 1
-		}
-	}
-
-	usa_ghost_light_spg_equipment_3 = {
-		year = 1934
-		
-		archetype = medium_tank_artillery_chassis
-		priority = 10
-		parent = usa_light_spg_equipment_3
-		visual_level = 0
-		is_convertable = yes
-	}
 
 	usa_light_spg_equipment_4 = { #M44
 		year = 1948
 
 		archetype = medium_tank_artillery_chassis
-		parent = usa_ghost_light_spg_equipment_3
 		family = usa_light_equipment_4
 		priority = 13
 		visual_level = 2
@@ -4334,128 +4089,6 @@ equipments = {
 		reliability = 0.725
 		supply_consumption = 11.873
 		fuel_consumption = 0.043
-		
-		resources = {
-			steel = 6
-			tungsten = 2
-		}
-	}
-
-	ger_ghost_light_td_equipment_3 = {
-		year = 1934
-		
-		archetype = light_tank_destroyer_chassis
-		priority = 10
-		parent = ger_light_td_equipment_3
-		visual_level = 0
-		is_convertable = yes
-	}
-
-	ger_light_td_equipment_5 = { #Jagdpanzer 38 (d)
-		year = 1944
-
-		archetype = medium_tank_destroyer_chassis
-		parent = ger_ghost_light_td_equipment_3
-		family = ger_light_equipment_5
-		priority = 15
-		visual_level = 2
-		can_convert_from = {
-			ger_light_equipment_5
-		}
-
-		#tank id 37
-		soft_attack = 23.801
-		hard_attack = 24.367
-		air_attack = 0.000
-		ap_attack = 110.565
-		defense = 23.464
-		breakthrough = 15.869
-		max_strength = 4.114
-		armor_value = 102.369
-		hardness = 1.0
-		build_cost_ic = 6.772
-		maximum_speed = 8.097
-		reliability = 0.575
-		supply_consumption = 13.037
-		fuel_consumption = 0.059
-		
-		resources = {
-			steel = 6
-			tungsten = 2
-		}
-	}
-
-	ger_ghost_light_td_equipment_5 = {
-		year = 1934
-		
-		archetype = light_tank_destroyer_chassis
-		priority = 10
-		parent = ger_light_td_equipment_5
-		visual_level = 0
-		is_convertable = yes
-	}
-
-	ger_light_td_equipment_6 = { #Jagdpanzer E 25
-		year = 1947
-
-		archetype = medium_tank_destroyer_chassis
-		parent = ger_ghost_light_td_equipment_5
-		family = ger_light_equipment_6
-		priority = 15
-		visual_level = 2
-		can_convert_from = {
-			ger_light_equipment_6
-		}
-
-		#tank id 46
-		soft_attack = 29.371
-		hard_attack = 23.320
-		air_attack = 0.000
-		ap_attack = 164.855
-		defense = 24.548
-		breakthrough = 17.250
-		max_strength = 4.872
-		armor_value = 144.111
-		hardness = 1.0
-		build_cost_ic = 12.26
-		maximum_speed = 9.331
-		reliability = 0.625
-		supply_consumption = 20.978
-		fuel_consumption = 0.135
-		
-		resources = {
-			steel = 6
-			tungsten = 2
-		}
-	}
-	
-	ger_light_td_equipment_7 = { #
-		year = 1949
-
-		archetype = light_tank_destroyer_chassis
-		parent = ger_light_td_equipment_6
-		family = ger_light_equipment_6
-		priority = 15
-		visual_level = 2
-
-		soft_attack = 0
-		hard_attack = 0
-		air_attack = 0
-		
-		breakthrough = 0
-		defense = 0
-		
-		ap_attack = 0
-		armor_value = 0
-		hardness = 0
-		maximum_speed = 0
-		
-		build_cost_ic = 0
-		fuel_consumption = 0.200
-		supply_consumption = 0.000
-		
-		reliability = 0.78
-		max_strength = 3
 		
 		resources = {
 			steel = 6
@@ -5834,12 +5467,23 @@ equipments = {
 
 ################################################################################################################# M CZE Czechoslovakia
 
+	cze_ghost_medium_equipment_0 = {
+		year = 1934
+		
+		archetype = medium_tank_chassis
+		priority = 10
+		parent = cze_light_equipment_2
+		visual_level = 0
+		is_convertable = yes
+	}
+
 	cze_medium_equipment_1 = { #ST vz. 39
         year = 1934
 
         archetype = medium_tank_chassis
         priority = 20
-        visual_level = 0
+		parent = cze_ghost_medium_equipment_0
+        visual_level = 1
         is_convertable = yes
 
         #tank id 992
@@ -6188,7 +5832,7 @@ equipments = {
 		year = 1937
 
 		archetype = support_tank_chassis
-		parent = fra_medium_equipment_1
+		parent = fra_support_tank_equipment_2
 		priority = 21
 		visual_level = 0
 	}
@@ -6266,124 +5910,39 @@ equipments = {
 		visual_level = 0
 	}
 
-	fra_medium_equipment_4 = { #SARL 42
-		year = 1942
+	fra_support_tank_equipment_3 = { #AMX 40
+		year = 1941
 
-		archetype = support_tank_chassis
+		archetype = medium_tank_chassis
 		parent = fra_ghost_medium_equipment_2
 		priority = 23
-		visual_level = 1
-		is_convertable = no
-
-		soft_attack = 0
-		hard_attack = 0
-		air_attack = 0
-		
-		breakthrough = 0
-		defense = 0
-		
-		ap_attack = 0
-		armor_value = 0
-		hardness = 0
-		maximum_speed = 0
-		
-		build_cost_ic = 0
-		fuel_consumption = 0.200
-		supply_consumption = 0.000
-		
-		reliability = 0.70
-		max_strength = 3.6
-		
-		resources = {
-			steel = 6
-			tungsten = 2
-		}
-	}
-
-	fra_ghost_medium_equipment_3 = {
-		year = 1937
-
-		archetype = support_tank_chassis
-		parent = fra_medium_equipment_4
-		priority = 21
-		visual_level = 0
-	}
-
-	fra_medium_equipment_5 = { #Char G1
-		year = 1943
-
-		archetype = support_tank_chassis
-		parent = fra_ghost_medium_equipment_3
-		priority = 23
-		visual_level = 1
-		is_convertable = no
-
-		soft_attack = 0
-		hard_attack = 0
-		air_attack = 0
-		
-		breakthrough = 0
-		defense = 0
-		
-		ap_attack = 0
-		armor_value = 80
-		hardness = 0
-		maximum_speed = 0
-		
-		build_cost_ic = 0
-		fuel_consumption = 0.200
-		supply_consumption = 0.000
-		
-		reliability = 0.64
-		max_strength = 3.6
-		
-		resources = {
-			steel = 6
-			tungsten = 2
-		}
-	}
-
-	fra_ghost_medium_equipment_4 = {
-		year = 1937
-
-		archetype = support_tank_chassis
-		parent = fra_medium_equipment_5
-		priority = 21
-		visual_level = 0
-	}
-
-	fra_modern_equipment_1 = { #AMX 50 100
-		year = 1947
-
-		archetype = heavy_tank_chassis
-		parent = fra_ghost_medium_equipment_4
-		priority = 24
 		visual_level = 2
-		is_convertable = no
+		is_convertable = yes
+		can_convert_from = {
+			fra_support_tank_equipment_1
+		}
 
-		#tank id 793
-		soft_attack = 23.854
-		hard_attack = 22.626
-		air_attack = 0.000
-		ap_attack = 179.375
-		defense = 13.877
-		breakthrough = 10.797
-		max_strength = 2.936
-		armor_value = 121.146
+		#tank id 757
+		soft_attack = 24.349
+		hard_attack = 25.952
+		air_attack = 5.407
+		ap_attack = 45.504
+		defense = 23.649
+		breakthrough = 22.952
+		max_strength = 4.422
+		armor_value = 79.878
 		hardness = 1.0
-		build_cost_ic = 32.154
-		maximum_speed = 8.195
-		reliability = 0.725
-		supply_consumption = 16.310
-		fuel_consumption = 0.115
-		
+		build_cost_ic = 9.815
+		maximum_speed = 8.116
+		reliability = 0.65
+		supply_consumption = 9.353
+		fuel_consumption = 0.059
+
 		resources = {
 			steel = 6
-			tungsten = 3
-			chromium = 2
+			tungsten = 1
 		}
 	}
-
 
 ################################################################################################################# M ITA Italy
 	
@@ -6499,7 +6058,7 @@ equipments = {
 	ita_medium_equipment_4 = { #Carro Armato M16
 		year = 1943
 
-		archetype = light_tank_chassis
+		archetype = medium_tank_chassis
 		parent = ita_ghost_medium_equipment_3
 		priority = 33
 		visual_level = 1
@@ -6921,12 +6480,23 @@ equipments = {
 
 ################################################################################################################# M GER Germany
 	
+	ger_ghost_medium_equipment_0 = {
+		year = 1934
+		
+		archetype = medium_tank_chassis
+		priority = 10
+		parent = ger_light_equipment_3
+		visual_level = 0
+		is_convertable = yes
+	}
+
 	ger_medium_equipment_1 = { #Panzer III E-F
 		year = 1939
 
+		parent = ger_ghost_medium_equipment_0
 		archetype = medium_tank_chassis
 		priority = 30
-		visual_level = 0
+		visual_level = 3
 		is_convertable = yes
 
 		#tank id 84
@@ -6957,7 +6527,7 @@ equipments = {
 		archetype = medium_tank_chassis
 		parent = ger_medium_equipment_1
 		priority = 31
-		visual_level = 0
+		visual_level = 3
 		is_convertable = yes
 		can_convert_from = {
 			ger_medium_equipment_1
@@ -6991,7 +6561,7 @@ equipments = {
 		archetype = medium_tank_chassis
 		parent = ger_medium_equipment_2
 		priority = 32
-		visual_level = 1
+		visual_level = 3
 		is_convertable = yes
 		can_convert_from = {
 			ger_medium_equipment_1
@@ -7138,7 +6708,7 @@ equipments = {
 		family = ger_support_tank_equipment_2
 		parent = ger_ghost_medium_equipment_3
 		priority = 33
-		visual_level = 1
+		visual_level = 4
 		is_convertable = yes
 		can_convert_from = {
 			ger_support_tank_equipment_1
@@ -7174,7 +6744,7 @@ equipments = {
 		archetype = medium_tank_chassis
 		parent = ger_medium_equipment_4
 		priority = 34
-		visual_level = 0
+		visual_level = 4
 		is_convertable = yes
 		can_convert_from = {
 			ger_support_tank_equipment_1
@@ -7211,7 +6781,7 @@ equipments = {
 		archetype = medium_tank_chassis
 		parent = ger_medium_equipment_5
 		priority = 35
-		visual_level = 0
+		visual_level = 4
 		is_convertable = yes
 		can_convert_from = {
 			ger_support_tank_equipment_1
@@ -7330,7 +6900,7 @@ equipments = {
 		parent = ger_ghost_medium_equipment_4
 		archetype = medium_tank_chassis
 		priority = 41
-		visual_level = 0
+		visual_level = 5
 		is_convertable = yes
 
 		#tank id 141
@@ -7361,7 +6931,7 @@ equipments = {
 		parent = ger_modern_equipment_1
 		archetype = medium_tank_chassis
 		priority = 41
-		visual_level = 0
+		visual_level = 5
 		is_convertable = yes
 
 		#tank id 143
@@ -7403,7 +6973,7 @@ equipments = {
 		archetype = medium_tank_chassis
 		parent = ger_ghost_modern_equipment_1
 		priority = 42
-		visual_level = 2
+		visual_level = 5
 		is_convertable = yes
 
 		#tank id 145
@@ -7435,7 +7005,7 @@ equipments = {
 		archetype = medium_tank_chassis
 		parent = ger_modern_equipment_1_1
 		priority = 43
-		visual_level = 2
+		visual_level = 5
 		is_convertable = yes
 		can_convert_from = {
 			ger_modern_equipment_1
@@ -7482,7 +7052,7 @@ equipments = {
 		archetype = medium_tank_chassis
 		parent = ger_modern_equipment_3
 		priority = 43
-		visual_level = 2
+		visual_level = 5
 		is_convertable = yes
 		can_convert_from = {
 			ger_modern_equipment_1
@@ -7575,7 +7145,7 @@ equipments = {
 		parent = ger_ghost_modern_equipment_4
 		parent = ger_ghost_modern_equipment_3
 		priority = 60
-		visual_level = 2
+		visual_level = 5
 		is_convertable = no
 
 		#tank id 154
@@ -8056,11 +7626,21 @@ equipments = {
 
 ################################################################################################################# M ENG United Kingdom
 	
+	eng_ghost_medium_equipment_0 = {
+		year = 1934
+		
+		archetype = medium_tank_chassis
+		priority = 10
+		parent = eng_interwar_equipment_1
+		visual_level = 0
+		is_convertable = yes
+	}
+	
 	eng_medium_equipment_1 = { #Cruiser Mk I
 		year = 1937
 
 		archetype = medium_tank_chassis
-		#parent = eng_interwar_equipment_1
+		parent = eng_ghost_medium_equipment_0
 		priority = 30
 		visual_level = 0
 		is_convertable = yes
@@ -9223,6 +8803,129 @@ equipments = {
 
 ################################################################################################################# M JAP Japan
 	
+	jap_light_spg_equipment_3 = { #Ho To
+		year = 1940
+
+		archetype = medium_tank_artillery_chassis
+		priority = 11
+		visual_level = 0
+		can_convert_from = {
+			jap_light_equipment_1
+			jap_light_equipment_3
+		}
+
+		#tank id 935
+		soft_attack = 11.875
+		hard_attack = 3.955
+		air_attack = 0.000
+		ap_attack = 0.000
+		defense = 11.702
+		breakthrough = 6.871
+		max_strength = 0.561
+		armor_value = 10.473
+		hardness = 0.4
+		build_cost_ic = 4.362
+		maximum_speed = 8.088
+		reliability = 0.675
+		supply_consumption = 6.217
+		fuel_consumption = 0.011
+		
+		resources = {
+			steel = 6
+			tungsten = 1
+		}
+	}
+
+	jap_ghost_light_spg_equipment_2 = {
+		year = 1934
+		
+		archetype = medium_tank_artillery_chassis
+		priority = 10
+		parent = jap_light_spg_equipment_3
+		visual_level = 0
+		is_convertable = yes
+	}
+
+	jap_light_spg_equipment_6 = { #Ku Se
+		year = 1944
+
+		archetype = medium_tank_artillery_chassis
+		parent = jap_ghost_light_spg_equipment_2
+		priority = 11
+		visual_level = 0
+		can_convert_from = {
+			jap_light_equipment_4
+			jap_light_equipment_6
+		}
+
+		#tank id 938
+		soft_attack = 5.904
+		hard_attack = 1.987
+		air_attack = 0.000
+		ap_attack = 34.074
+		defense = 5.902
+		breakthrough = 3.304
+		max_strength = 1.101
+		armor_value = 20.254
+		hardness = 0.7
+		build_cost_ic = 4.52
+		maximum_speed = 8.188
+		reliability = 0.675
+		supply_consumption = 3.770
+		fuel_consumption = 0.014
+		
+		resources = {
+			steel = 6
+			tungsten = 1
+		}
+	}
+
+	jap_ghost_medium_spg_equipment_3 = { 
+		year = 1936
+
+		archetype = medium_tank_artillery_chassis
+		priority = 10
+		parent = jap_light_spg_equipment_6
+		visual_level = 0
+		is_convertable = yes
+	}
+
+	jap_medium_spg_equipment_4 ={ #Ho Ni II
+		year = 1941
+
+		archetype = medium_tank_artillery_chassis
+		parent = jap_ghost_medium_spg_equipment_3
+		family = jap_medium_equipment_4
+		priority = 36
+		visual_level = 1
+		is_convertable = yes
+		can_convert_from = {
+			jap_medium_equipment_3
+			jap_medium_equipment_4
+		}
+
+		#tank id 906
+		soft_attack = 29.738
+		hard_attack = 16.982
+		air_attack = 0.000
+		ap_attack = 0.000
+		defense = 19.899
+		breakthrough = 8.698
+		max_strength = 1.731
+		armor_value = 29.31
+		hardness = 0.6
+		build_cost_ic = 6.623
+		maximum_speed = 7.879
+		reliability = 0.675
+		supply_consumption = 5.569
+		fuel_consumption = 0.015
+
+		resources = {
+			steel = 6
+			tungsten = 1
+		}
+	}	
+
 	jap_medium_spg_equipment_3 = { #Ho I exp.
 		year = 1941
 
@@ -9265,7 +8968,6 @@ equipments = {
 
 		archetype = assault_artillery_chassis
 		family = jap_medium_equipment_6
-		parent = jap_medium_spg_equipment_3
 		priority = 35
 		visual_level = 0
 		is_convertable = yes
@@ -9294,61 +8996,13 @@ equipments = {
 			tungsten = 1
 		}
 	}
-	
-	
-
-	jap_ghost_medium_spg_equipment_3 = { 
-		year = 1936
-
-		archetype = medium_tank_artillery_chassis
-		priority = 10
-		parent = jap_medium_spg_equipment_3
-		visual_level = 0
-		is_convertable = yes
-	}
-
-	jap_medium_spg_equipment_4 ={ #Ho Ni II
-		year = 1941
-
-		archetype = medium_tank_artillery_chassis
-		#parent = jap_ghost_medium_spg_equipment_3
-		family = jap_medium_equipment_4
-		priority = 36
-		visual_level = 1
-		is_convertable = yes
-		can_convert_from = {
-			jap_medium_equipment_3
-			jap_medium_equipment_4
-		}
-
-		#tank id 906
-		soft_attack = 29.738
-		hard_attack = 16.982
-		air_attack = 0.000
-		ap_attack = 0.000
-		defense = 19.899
-		breakthrough = 8.698
-		max_strength = 1.731
-		armor_value = 29.31
-		hardness = 0.6
-		build_cost_ic = 6.623
-		maximum_speed = 7.879
-		reliability = 0.675
-		supply_consumption = 5.569
-		fuel_consumption = 0.015
-
-		resources = {
-			steel = 6
-			tungsten = 1
-		}
-	}	
 
 	jap_ghost_medium_spg_equipment_4 = { 
 		year = 1936
 
 		archetype = medium_tank_artillery_chassis
 		priority = 10
-		parent = jap_medium_spg_equipment_4
+		parent = jap_medium_spg_equipment_5
 		visual_level = 0
 		is_convertable = yes
 	}
@@ -9357,7 +9011,8 @@ equipments = {
 		year = 1943
 
 		archetype = assault_artillery_chassis
-		family = jap_ghost_medium_spg_equipment_4
+		family = jap_medium_equipment_4
+		parent = jap_ghost_medium_spg_equipment_4
 		priority = 35
 		visual_level = 0
 		is_convertable = yes
@@ -9529,6 +9184,267 @@ equipments = {
 
 ################################################################################################################# M GER Germany
 
+	ger_light_spg_equipment_1 = { #15-cm-sIG 33 (Sf) auf Pz I
+		year = 1936
+
+		archetype = medium_tank_artillery_chassis
+		family = ger_light_equipment_1
+		priority = 11
+		visual_level = 0
+		can_convert_from = {
+			ger_light_equipment_0
+		}
+
+		#tank id 157
+		soft_attack = 21.185
+		hard_attack = 6.259
+		air_attack = 0.000
+		ap_attack = 0.000
+		defense = 16.363
+		breakthrough = 9.252
+		max_strength = 1.729
+		armor_value = 13.902
+		hardness = 0.6
+		build_cost_ic = 5.023
+		maximum_speed = 7.45
+		reliability = 0.65
+		supply_consumption = 10.327
+		fuel_consumption = 0.014
+		
+		resources = {
+			steel = 6
+			tungsten = 1
+		}
+	}
+
+	ger_ghost_light_spg_equipment_1 = {
+		year = 1934
+		
+		archetype = medium_tank_artillery_chassis
+		priority = 10
+		parent = ger_light_spg_equipment_1
+		visual_level = 0
+		is_convertable = yes
+	}
+
+	ger_light_spg_equipment_2 = { #15-cm-sIG 33 (Sf) auf Pz II
+		year = 1938
+
+		archetype = medium_tank_artillery_chassis
+		parent = ger_ghost_light_spg_equipment_1
+		family = ger_light_equipment_2
+		priority = 12
+		visual_level = 0
+		can_convert_from = {
+			ger_light_equipment_1
+			ger_light_equipment_2
+		}
+
+		#tank id 160
+		soft_attack = 21.282
+		hard_attack = 6.288
+		air_attack = 0.000
+		ap_attack = 0.000
+		defense = 16.413
+		breakthrough = 9.702
+		max_strength = 1.729
+		armor_value = 25.825
+		hardness = 0.6
+		build_cost_ic = 6.907
+		maximum_speed = 7.504
+		reliability = 0.65
+		supply_consumption = 10.724
+		fuel_consumption = 0.019
+		
+		resources = {
+			steel = 6
+			tungsten = 1
+		}
+	}
+
+	ger_ghost_light_spg_equipment_2 = {
+		year = 1934
+		
+		archetype = medium_tank_artillery_chassis
+		priority = 10
+		parent = ger_light_spg_equipment_2
+		visual_level = 0
+		is_convertable = yes
+	}
+
+	ger_light_spg_equipment_3 = { #Grille
+		year = 1943
+
+		archetype = medium_tank_artillery_chassis
+		parent = ger_ghost_light_spg_equipment_2
+		family = ger_light_equipment_3
+		priority = 14
+		visual_level = 0
+		can_convert_from = {
+			ger_light_equipment_3
+			ger_light_equipment_3_5
+		}
+
+		#tank id 163
+		soft_attack = 14.221
+		hard_attack = 4.201
+		air_attack = 0.000
+		ap_attack = 0.000
+		defense = 11.009
+		breakthrough = 6.868
+		max_strength = 0.861
+		armor_value = 40.231
+		hardness = 0.6
+		build_cost_ic = 6.802
+		maximum_speed = 7.537
+		reliability = 0.675
+		supply_consumption = 7.142
+		fuel_consumption = 0.013
+		
+		resources = {
+			steel = 6
+			tungsten = 1
+		}
+	}
+
+	ger_ghost_medium_spg_equipment_2 = {
+		year = 1934
+		
+		archetype = medium_tank_artillery_chassis
+		priority = 10
+		parent = ger_light_spg_equipment_3
+		visual_level = 0
+		is_convertable = yes
+	}
+
+	ger_assault_artillery_equipment_3 ={ #StuIG 33B
+		year = 1942
+
+		archetype = medium_tank_artillery_chassis
+		family = ger_medium_equipment_3
+		parent = ger_ghost_medium_spg_equipment_2
+		priority = 21
+		visual_level = 0
+		is_convertable = yes
+		can_convert_from = { 
+			ger_medium_equipment_1
+			ger_medium_equipment_2
+			ger_medium_equipment_3
+			ger_assault_artillery_equipment_2
+		}
+
+		#tank id 176
+		soft_attack = 14.383
+		hard_attack = 4.249
+		air_attack = 0.000
+		ap_attack = 0.000
+		defense = 11.309
+		breakthrough = 8.135
+		max_strength = 1.807
+		armor_value = 93.029
+		hardness = 1.0
+		build_cost_ic = 12.941
+		maximum_speed = 7.743
+		reliability = 0.65
+		supply_consumption = 7.984
+		fuel_consumption = 0.024
+		
+		resources = {
+			steel = 6
+			tungsten = 1
+		}
+	}
+
+	ger_ghost_light_spg_equipment_3 = {
+		year = 1934
+		
+		archetype = medium_tank_artillery_chassis
+		priority = 10
+		parent = ger_assault_artillery_equipment_3
+		visual_level = 0
+		is_convertable = yes
+	}
+
+	ger_light_spg_equipment_4 = { #Wespe 
+		year = 1942
+
+		archetype = medium_tank_artillery_chassis
+		parent = ger_ghost_light_spg_equipment_3
+		family = ger_light_equipment_4
+		priority = 15
+		visual_level = 0
+		can_convert_from = {
+			ger_light_equipment_1
+			ger_light_equipment_2
+			ger_light_equipment_4
+		}
+
+		#tank id 68
+		soft_attack = 32.999
+		hard_attack = 18.671
+		air_attack = 0.000
+		ap_attack = 0.000
+		defense = 21.838
+		breakthrough = 8.759
+		max_strength = 1.153
+		armor_value = 25.825
+		hardness = 0.6
+		build_cost_ic = 5.604
+		maximum_speed = 7.74
+		reliability = 0.65
+		supply_consumption = 5.446
+		fuel_consumption = 0.013
+		
+		resources = {
+			steel = 6
+			tungsten = 2
+		}
+	}
+
+	ger_ghost_light_spg_equipment_4 = {
+		year = 1934
+		
+		archetype = medium_tank_artillery_chassis
+		priority = 10
+		parent = ger_light_spg_equipment_4
+		visual_level = 0
+		is_convertable = yes
+	}
+
+	ger_light_spg_equipment_5 = { #le Panzerhaubitze 38 (d)
+		year = 1944
+
+		archetype = medium_tank_artillery_chassis
+		parent = ger_ghost_light_spg_equipment_4
+		family = ger_light_equipment_5
+		priority = 16
+		visual_level =0
+		can_convert_from = {
+			ger_light_equipment_5
+		}
+
+		#tank id 43
+		soft_attack = 34.450
+		hard_attack = 19.492
+		air_attack = 0.000
+		ap_attack = 0.000
+		defense = 21.971
+		breakthrough = 9.092
+		max_strength = 1.131
+		armor_value = 27.089
+		hardness = 0.2
+		build_cost_ic = 6.57
+		maximum_speed = 8.51
+		reliability = 0.575
+		supply_consumption = 5.959
+		fuel_consumption = 0.020
+		
+		resources = {
+			steel = 6
+			tungsten = 2
+		}
+	}
+
 	ger_assault_artillery_equipment_2 = { #Stug III A
 		year = 1940
 
@@ -9563,42 +9479,7 @@ equipments = {
 		}
 	}
 
-	ger_assault_artillery_equipment_3 ={ #StuIG 33B
-		year = 1942
-
-		archetype = medium_tank_artillery_chassis
-		family = ger_medium_equipment_3
-		priority = 21
-		visual_level = 0
-		is_convertable = yes
-		can_convert_from = { 
-			ger_medium_equipment_1
-			ger_medium_equipment_2
-			ger_medium_equipment_3
-			ger_assault_artillery_equipment_2
-		}
-
-		#tank id 176
-		soft_attack = 14.383
-		hard_attack = 4.249
-		air_attack = 0.000
-		ap_attack = 0.000
-		defense = 11.309
-		breakthrough = 8.135
-		max_strength = 1.807
-		armor_value = 93.029
-		hardness = 1.0
-		build_cost_ic = 12.941
-		maximum_speed = 7.743
-		reliability = 0.65
-		supply_consumption = 7.984
-		fuel_consumption = 0.024
-		
-		resources = {
-			steel = 6
-			tungsten = 1
-		}
-	}
+	
 
 	ger_assault_artillery_equipment_4 ={ #StuH 42 G
 		year = 1943
@@ -9742,7 +9623,7 @@ equipments = {
 		parent = ger_ghost_medium_spg_equipment_4
 		family = ger_modern_equipment_2
 		priority = 44
-		visual_level = 0
+		visual_level = 2
 		can_convert_from = {
 			ger_modern_equipment_1
 			ger_modern_equipment_1_1
@@ -10010,55 +9891,45 @@ equipments = {
 		}
 	}
 
-	usa_ghost_medium_spg_equipment_2 = { 
-		year = 1936
-
-		archetype = medium_tank_artillery_chassis
-		priority = 10
-		parent = usa_medium_spg_equipment_2
-		visual_level = 0
-		is_convertable = yes
-	}
-
-	usa_medium_spg_equipment_3 = { #M12
+	usa_light_spg_equipment_2 = { #M8 Scott
 		year = 1942
 
-		archetype = heavy_tank_artillery_chassis
-		parent = usa_ghost_medium_spg_equipment_2
-		priority = 26
-		visual_level = 1
+		archetype = support_tank_chassis
+		family = usa_light_equipment_2
+		priority = 11
+		visual_level = 0
 		can_convert_from = {
-			usa_medium_equipment_3
+			usa_light_equipment_2
 		}
 
-		#tank id 703
-		soft_attack = 60.798
-		hard_attack = 46.331
-		air_attack = 0.000
-		ap_attack = 0.000
-		defense = 35.740
-		breakthrough = 9.925
-		max_strength = 1.784
-		armor_value = 34.932
+		#tank id 694
+		soft_attack = 32.098
+		hard_attack = 37.587
+		air_attack = 19.607
+		ap_attack = 67.940
+		defense = 26.396
+		breakthrough = 30.842
+		max_strength = 4.466
+		armor_value = 38.765
 		hardness = 0.8
-		build_cost_ic = 16.345
-		maximum_speed = 7.159
+		build_cost_ic = 9.902
+		maximum_speed = 9.103
 		reliability = 0.75
-		supply_consumption = 10.428
-		fuel_consumption = 0.036
+		supply_consumption = 15.384
+		fuel_consumption = 0.080
 		
 		resources = {
 			steel = 6
-			tungsten = 2
+			tungsten = 1
 		}
 	}
 
-	usa_ghost_medium_spg_equipment_3 = { 
-		year = 1936
-
-		archetype = medium_tank_artillery_chassis
+	usa_ghost_medium_spg_equipment_3 = {
+		year = 1934
+		
+		archetype = support_tank_chassis
 		priority = 10
-		parent = usa_medium_spg_equipment_3
+		parent = usa_light_spg_equipment_2
 		visual_level = 0
 		is_convertable = yes
 	}
@@ -10097,12 +9968,44 @@ equipments = {
 		}
 	}
 
+	usa_medium_spg_equipment_3 = { #M12
+		year = 1942
+
+		archetype = heavy_tank_artillery_chassis
+		priority = 26
+		visual_level = 1
+		can_convert_from = {
+			usa_medium_equipment_3
+		}
+
+		#tank id 703
+		soft_attack = 60.798
+		hard_attack = 46.331
+		air_attack = 0.000
+		ap_attack = 0.000
+		defense = 35.740
+		breakthrough = 9.925
+		max_strength = 1.784
+		armor_value = 34.932
+		hardness = 0.8
+		build_cost_ic = 16.345
+		maximum_speed = 7.159
+		reliability = 0.75
+		supply_consumption = 10.428
+		fuel_consumption = 0.036
+		
+		resources = {
+			steel = 6
+			tungsten = 2
+		}
+	}
+
 	usa_ghost_medium_spg_equipment_4 = { 
 		year = 1936
 
 		archetype = medium_tank_artillery_chassis
 		priority = 10
-		parent = usa_medium_spg_equipment_4
+		parent = usa_medium_spg_equipment_3
 		visual_level = 0
 		is_convertable = yes
 	}
@@ -10138,6 +10041,50 @@ equipments = {
 		resources = {
 			steel = 6
 			tungsten = 2
+		}
+	}
+
+	usa_ghost_light_spg_equipment_2 = {
+		year = 1934
+		
+		archetype = medium_tank_artillery_chassis
+		priority = 10
+		parent = usa_medium_spg_equipment_5
+		visual_level = 0
+		is_convertable = yes
+	}
+
+	usa_light_spg_equipment_3 = { #M41 HMC
+		year = 1945
+
+		archetype = heavy_tank_artillery_chassis
+		parent = usa_ghost_light_spg_equipment_2
+		family = usa_light_equipment_3
+		priority = 12
+		visual_level = 1
+		can_convert_from = {
+			usa_light_equipment_3
+		}
+
+		#tank id 700
+		soft_attack = 48.730
+		hard_attack = 29.739
+		air_attack = 0.000
+		ap_attack = 0.000
+		defense = 28.022
+		breakthrough = 8.716
+		max_strength = 1.491
+		armor_value = 18.926
+		hardness = 0.8
+		build_cost_ic = 11.193
+		maximum_speed = 7.913
+		reliability = 0.775
+		supply_consumption = 9.497
+		fuel_consumption = 0.027
+		
+		resources = {
+			steel = 6
+			tungsten = 1
 		}
 	}
 
@@ -10190,6 +10137,8 @@ equipments = {
 			chromium = 2
 		}
 	}
+
+
 
 ################################################################################################################# M Generic
 
@@ -10685,6 +10634,16 @@ equipments = {
 		}
 	}
 
+	ger_ghost_medium_td_equipment_2 = {
+		year = 1934
+		
+		archetype = medium_tank_chassis
+		priority = 10
+		parent = ger_light_td_equipment_3
+		visual_level = 0
+		is_convertable = yes
+	}
+
 
 	ger_medium_td_equipment_3 ={ #Stug III F
 		year = 1942
@@ -10692,6 +10651,7 @@ equipments = {
 		archetype = medium_tank_destroyer_chassis
 		family = ger_medium_equipment_2
 		priority = 37
+		parent = ger_ghost_medium_td_equipment_2
 		visual_level = 1
 		can_convert_from = {
 			ger_medium_equipment_1
@@ -10819,7 +10779,7 @@ equipments = {
 		parent = ger_ghost_medium_td_equipment_5
 		family = ger_medium_equipment_6
 		priority = 38
-		visual_level = 2
+		visual_level = 3
 		can_convert_from = {
 			ger_medium_equipment_6
 			ger_medium_equipment_5
@@ -10864,7 +10824,7 @@ equipments = {
 		archetype = medium_tank_destroyer_chassis
 		parent = ger_ghost_medium_td_equipment_6
 		priority = 38
-		visual_level = 2
+		visual_level = 3
 		can_convert_from = {
 			ger_medium_equipment_7
 			ger_medium_equipment_6
@@ -10889,6 +10849,94 @@ equipments = {
 		
 		reliability = 0.72
 		max_strength = 4
+		
+		resources = {
+			steel = 6
+			tungsten = 2
+		}
+	}
+
+	ger_ghost_light_td_equipment_4_5 = {
+		year = 1934
+		
+		archetype = light_tank_destroyer_chassis
+		priority = 10
+		parent = ger_medium_td_equipment_6
+		visual_level = 0
+		is_convertable = yes
+	}
+
+	ger_light_td_equipment_5 = { #Jagdpanzer 38 (d)
+		year = 1944
+
+		archetype = medium_tank_destroyer_chassis
+		parent = ger_ghost_light_td_equipment_4_5
+		family = ger_light_equipment_5
+		priority = 15
+		visual_level = 3
+		can_convert_from = {
+			ger_light_equipment_5
+		}
+
+		#tank id 37
+		soft_attack = 23.801
+		hard_attack = 24.367
+		air_attack = 0.000
+		ap_attack = 110.565
+		defense = 23.464
+		breakthrough = 15.869
+		max_strength = 4.114
+		armor_value = 102.369
+		hardness = 1.0
+		build_cost_ic = 6.772
+		maximum_speed = 8.097
+		reliability = 0.575
+		supply_consumption = 13.037
+		fuel_consumption = 0.059
+		
+		resources = {
+			steel = 6
+			tungsten = 2
+		}
+	}
+
+	ger_ghost_light_td_equipment_5 = {
+		year = 1934
+		
+		archetype = light_tank_destroyer_chassis
+		priority = 10
+		parent = ger_light_td_equipment_5
+		visual_level = 0
+		is_convertable = yes
+	}
+
+	ger_light_td_equipment_6 = { #Jagdpanzer E 25
+		year = 1947
+
+		archetype = medium_tank_destroyer_chassis
+		parent = ger_ghost_light_td_equipment_5
+		family = ger_light_equipment_6
+		priority = 15
+		visual_level = 2
+		can_convert_from = {
+			ger_light_equipment_6
+		}
+
+		#tank id 46
+		soft_attack = 29.371
+		hard_attack = 23.320
+		air_attack = 0.000
+		ap_attack = 164.855
+		defense = 24.548
+		breakthrough = 17.250
+		max_strength = 4.872
+		armor_value = 144.111
+		hardness = 1.0
+		build_cost_ic = 12.26
+		maximum_speed = 9.331
+		reliability = 0.625
+		supply_consumption = 20.978
+		fuel_consumption = 0.135
 		
 		resources = {
 			steel = 6
@@ -11844,11 +11892,23 @@ equipments = {
 	}
 
 ################################################################################################################# M GER Germany
+
+	ger_ghost_medium_aa_equipment_2 = {
+		year = 1934
+
+		archetype = medium_tank_aa_chassis
+		priority = 10
+		parent = ger_light_aa_equipment_3
+		visual_level = 0
+		is_convertable = yes
+	}
+
 	ger_medium_aa_equipment_3 = { #Möbelwagen
 		year = 1943
 
 		archetype = medium_tank_aa_chassis
 		family = ger_medium_equipment_4
+		parent = ger_ghost_medium_aa_equipment_2
 		priority = 39
 		visual_level = 0
 		can_convert_from = {
@@ -12169,7 +12229,7 @@ equipments = {
 		year = 1942
 
 		archetype = medium_tank_aa_chassis
-		parent = eng_medium_aa_equipment_5
+		parent = eng_medium_aa_equipment_4
 		priority = 33
 		visual_level = 2
 		can_convert_from = {
@@ -12468,47 +12528,11 @@ equipments = {
 ################################################################################################################# H SWE Sweden
 ################################################################################################################# H FRA France
 
-	fra_heavy_equipment_1 = { #NOT CURRENTLY USED
-		year = 1936
-
-		archetype = heavy_tank_chassis
-		priority = 30
-		visual_level = 0
-		is_convertable = yes
-		can_convert_from = {
-			fra_medium_equipment_1
-		}
-
-		soft_attack = 0
-		hard_attack = 0
-		air_attack = 0
-		
-		breakthrough = 0
-		defense = 0
-		
-		ap_attack = 0
-		armor_value = 0
-		hardness = 0
-		maximum_speed = 0
-		
-		build_cost_ic = 0
-		fuel_consumption = 0.200
-		supply_consumption = 0.000
-		
-		reliability = 0.64
-		max_strength = 2
-		
-		resources = {
-			steel = 6
-			tungsten = 1
-		}
-	}	
-
 	fra_ghost_heavy_equipment_1 = {
 		year = 1937
 
 		archetype = heavy_tank_chassis
-		parent = fra_heavy_equipment_1
+		parent = fra_medium_equipment_1
 		priority = 21
 		visual_level = 0
 	}
@@ -12727,6 +12751,48 @@ equipments = {
 			steel = 6
 			tungsten = 3
 			chromium = 2.0
+		}
+	}
+
+	fra_ghost_heavy_equipment_6 = {
+		year = 1934
+		
+		archetype = heavy_tank_chassis
+		priority = 10
+		parent = fra_heavy_equipment_6
+		visual_level = 0
+		is_convertable = yes
+	}
+
+	fra_modern_equipment_1 = { #AMX 50 100
+		year = 1947
+
+		archetype = heavy_tank_chassis
+		parent = fra_ghost_heavy_equipment_6
+		priority = 24
+		visual_level = 2
+		is_convertable = no
+
+		#tank id 793
+		soft_attack = 23.854
+		hard_attack = 22.626
+		air_attack = 0.000
+		ap_attack = 179.375
+		defense = 13.877
+		breakthrough = 10.797
+		max_strength = 2.936
+		armor_value = 121.146
+		hardness = 1.0
+		build_cost_ic = 32.154
+		maximum_speed = 8.195
+		reliability = 0.725
+		supply_consumption = 16.310
+		fuel_consumption = 0.115
+		
+		resources = {
+			steel = 6
+			tungsten = 3
+			chromium = 2
 		}
 	}
 
@@ -13728,158 +13794,11 @@ equipments = {
 		}
 	}
 	
-	eng_ghost_support_equipment_0 = {
-		year = 1937
-
-		archetype = heavy_tank_chassis
-		parent = eng_support_equipment_0_5
-		priority = 21
-		visual_level = 0
-	}
-	
-	eng_support_equipment_1 = { #Valentine Mk I
-		year = 1941
-		parent = eng_ghost_support_equipment_0
-		archetype = light_tank_chassis
-		priority = 34
-		visual_level = 1
-		is_convertable = yes
-
-		#tank id 447
-		soft_attack = 15.380
-		hard_attack = 13.944
-		air_attack = 0.000
-		ap_attack = 46.888
-		defense = 20.373
-		breakthrough = 20.954
-		max_strength = 3.768
-		armor_value = 65.5
-		hardness = 1.0
-		build_cost_ic = 9.114
-		maximum_speed = 7.29
-		reliability = 0.75
-		supply_consumption = 6.815
-		fuel_consumption = 0.036
-		
-		resources = {
-			steel = 6
-			tungsten = 1
-		}
-	}
-
-	eng_support_equipment_2 = { #Valentine Mk IX
-		year = 1942
-
-		archetype = light_tank_chassis
-		parent = eng_support_equipment_1
-		priority = 34
-		visual_level = 1
-		is_convertable = yes
-		can_convert_from = {
-			eng_support_equipment_1
-		}
-
-		#tank id 451
-		soft_attack = 19.688
-		hard_attack = 17.849
-		air_attack = 0.000
-		ap_attack = 46.888
-		defense = 20.273
-		breakthrough = 22.054
-		max_strength = 5.028
-		armor_value = 64.167
-		hardness = 1.0
-		build_cost_ic = 8.864
-		maximum_speed = 7.294
-		reliability = 0.775
-		supply_consumption = 6.758
-		fuel_consumption = 0.036
-		
-		resources = {
-			steel = 6
-			tungsten = 1
-		}
-	}
-
-	eng_support_equipment_3 = { #Valentine Mk XI
-		year = 1944
-
-		archetype = light_tank_chassis
-		parent = eng_support_equipment_2
-		priority = 34
-		visual_level = 1
-		is_convertable = yes
-		can_convert_from = {
-			eng_support_equipment_1
-			eng_support_equipment_2
-		}
-
-		#tank id 461
-		soft_attack = 28.910
-		hard_attack = 19.031
-		air_attack = 0.000
-		ap_attack = 68.373
-		defense = 22.776
-		breakthrough = 21.742
-		max_strength = 5.040
-		armor_value = 68.71
-		hardness = 1.0
-		build_cost_ic = 12.359
-		maximum_speed = 7.226
-		reliability = 0.775
-		supply_consumption = 11.970
-		fuel_consumption = 0.045
-		
-		resources = {
-			steel = 6
-			tungsten = 2
-		}
-	}
-
-	eng_heavy_equipment_1 = { #Matilda Mk I
-		year = 1937
-
-		archetype = light_tank_chassis
-		priority = 30
-		visual_level = 0
-		is_convertable = yes
-
-		#tank id 444
-		soft_attack = 3.995
-		hard_attack = 0.000
-		air_attack = 0.000
-		ap_attack = 0.000
-		defense = 7.956
-		breakthrough = 18.764
-		max_strength = 3.148
-		armor_value = 64.309
-		hardness = 1.0
-		build_cost_ic = 5.507
-		maximum_speed = 6.684
-		reliability = 0.675
-		supply_consumption = 1.905
-		fuel_consumption = 0.019
-		
-		resources = {
-			steel = 6
-			tungsten = 1
-		}
-	}	
-
-	eng_ghost_heavy_equipment_1 = {
-		year = 1937
-
-		archetype = heavy_tank_chassis
-		parent = eng_heavy_equipment_1
-		priority = 21
-		visual_level = 0
-	}
 
 	eng_heavy_equipment_2 = { #Matilda Mk II
 		year = 1939
 
 		archetype = heavy_tank_chassis
-		parent = eng_ghost_heavy_equipment_1
 		priority = 31
 		visual_level = 0
 		is_convertable = no
@@ -15969,96 +15888,6 @@ equipments = {
 
 ################################################################################################################# Amphib Soviet Union
 
-	sov_amphibious_tank_equipment_1 = { #T37A
-		year = 1934
-
-		archetype = light_tank_chassis
-		priority = 40
-		visual_level = 0
-
-		#tank id 236
-		soft_attack = 1.076
-		hard_attack = 0.000
-		air_attack = 0.000
-		ap_attack = 0.000
-		defense = 4.122
-		breakthrough = 9.611
-		max_strength = 2.130
-		armor_value = 9.097
-		hardness = 0.6
-		build_cost_ic = 2.457
-		maximum_speed = 6.76
-		reliability = 0.675
-		supply_consumption = 1.012
-		fuel_consumption = 0.011
-		
-		resources = {
-			steel = 6
-			rubber = 1
-		}
-	}
-
-	sov_amphibious_tank_equipment_2 = { #T38
-		year = 1936
-
-		archetype = amphi_tank_chassis
-		priority = 40
-		visual_level = 0
-		
-		parent = sov_amphibious_tank_equipment_1
-
-		#tank id 238
-		soft_attack = 1.076
-		hard_attack = 0.000
-		air_attack = 0.000
-		ap_attack = 0.000
-		defense = 4.222
-		breakthrough = 9.911
-		max_strength = 2.130
-		armor_value = 10.434
-		hardness = 0.6
-		build_cost_ic = 2.457
-		maximum_speed = 6.76
-		reliability = 0.675
-		supply_consumption = 1.012
-		fuel_consumption = 0.011
-		
-		resources = {
-			steel = 6
-			rubber = 1
-		}
-	}
-	
-	sov_amphibious_tank_equipment_3 = { #T40
-		year = 1940
-
-		archetype = amphi_tank_chassis
-		priority = 40
-		visual_level = 0
-		
-		parent = sov_amphibious_tank_equipment_2
-
-		#tank id 241
-		soft_attack = 4.864
-		hard_attack = 0.000
-		air_attack = 0.000
-		ap_attack = 0.000
-		defense = 9.138
-		breakthrough = 11.944
-		max_strength = 2.130
-		armor_value = 10.08
-		hardness = 0.6
-		build_cost_ic = 3.761
-		maximum_speed = 7.541
-		reliability = 0.675
-		supply_consumption = 2.370
-		fuel_consumption = 0.023
-		
-		resources = {
-			steel = 6
-			rubber = 1
-		}
-	}
 
 ################################################################################################################# Amphib United Kingdom
 
