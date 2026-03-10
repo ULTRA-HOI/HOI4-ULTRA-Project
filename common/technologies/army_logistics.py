@@ -18,7 +18,7 @@ logi_categories = [
 # when modifying also modify army_logistics_scripted_triggers.txt
 logi_modifiers = [
     [ #category 0 (logistics motorisation)
-        ["fuel_consumption", 0, 0.05, True],
+        ["fuel_consumption", 0, 0.005, True],
         ["fuel_capacity", 0, 2.5, True],
         ["supply_consumption", 0.25, 0, False],
         ["soft_attack", 0, 0.05, False],
