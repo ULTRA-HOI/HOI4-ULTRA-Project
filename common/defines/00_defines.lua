@@ -4293,7 +4293,7 @@ NCharacter = {
 },
 
 NSupply = {
-	MAX_RAILWAY_LEVEL = 8, -- update railway texture as well, each frame corresponds to a level
+	MAX_RAILWAY_LEVEL = 10, -- update railway texture as well, each frame corresponds to a level
 
 	--defines to calculate the capitals supply. This will be also used for max supply of other nodes depending on how well they are connected to capital. Using the formula:
 	--CapitalSupply = 0.0, --was CAPITAL_SUPPLY_BASE + (NumberOfCivilianFactories * CAPITAL_SUPPLY_CIVILIAN_FACTORIES) + (NumberOfMilitaryFactories * CAPITAL_SUPPLY_MILITARY_FACTORIES) + (NumberOfDockyards * CAPITAL_SUPPLY_DOCKYARDS)
@@ -4324,7 +4324,7 @@ NSupply = {
 	NODE_FLOW_BONUS_PER_RAIL_LEVEL = 0.0, --was 0.34
 
 	-- rivers will transfer in between nodes as if they were this level
-	RIVER_RAILWAY_LEVEL = 1,
+	RIVER_RAILWAY_LEVEL = 2,
 
 	-- defines that are used for supply reach for floating harbors
 	FLOATING_HARBOR_INITIAL_SUPPLY_FLOW = 1200.0,
@@ -4361,8 +4361,8 @@ NSupply = {
 
 	-- used for calculating "flow" for railways.
 	RAILWAY_BASE_FLOW = 0.0, --was 10.0 --how much base flow railway gives when a node connected to its capital/a naval node by a railway
-	RAILWAY_FLOW_PER_LEVEL = 300, --was 5.0 --how much additional flow a railway level gives
-	RAILWAY_FLOW_PENALTY_PER_DAMAGED = 290, --was 5.0 --penalty to flow per damaged railway
+	RAILWAY_FLOW_PER_LEVEL = 240, --was 5.0 --how much additional flow a railway level gives
+	RAILWAY_FLOW_PENALTY_PER_DAMAGED = 230, --was 5.0 --penalty to flow per damaged railway
 	RAILWAY_MIN_FLOW = 60.0, --was 5.0 --minimum railway flow can be reduced to
 
 	-- used for calculating "flow" from a naval node to another naval node when it is connected via a convoy route
