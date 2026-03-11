@@ -9797,12 +9797,12 @@ focus_construction_project = {
 		
 		available = {
 			has_completed_focus = ITA_libyan_railway
-			num_of_civilian_factories_available_for_projects > 4
+			num_of_civilian_factories_available_for_projects > 49
 		}
 		
 		fire_only_once = yes
 		ai_will_do = {
-			factor = 100
+			factor = 0
 		}
 		
 		cost = 0
@@ -9810,27 +9810,18 @@ focus_construction_project = {
 		days_remove = 1100
 		
 		modifier = {
-			civilian_factory_use = 5
+			civilian_factory_use = 50
+			industrial_capacity_factory = -0.35
 		}
 		
 		remove_effect = {
 			# Tripoli - Benghazi
 			build_railway = {
-				level = 2
 				path = { 4194 7209 9980 1118 1041 4047 10046 10117 12088 4057 1198 1127 4120 }
 			}
 			# Benghazi - Tobruk
 			build_railway = {
-				level = 2
 				path = { 12094 4151 1204 7082 9992 1130 }
-			}
-			# Tripoli upgrade
-			build_railway = {
-				path = { 1149 4194 }
-			}
-			# Benghazi upgrade
-			build_railway = {
-				path = { 4120 11954 10123 12094 }
 			}
 
 			custom_effect_tooltip = ITA_libyan_railway_state_modifier_tt
@@ -9857,8 +9848,259 @@ focus_construction_project = {
 				}
 				add_dynamic_modifier = { modifier = ITA_libyan_railway_modifier days = 730 scope = ITA }
 			}
+			set_variable = { libyan_railway_finished = 1 }
 		}
-	}	
+	}
+
+	ITA_litoranea_balbo_decision = {
+	
+		icon = generic_construction
+		
+		allowed = {
+			original_tag = ITA
+		}
+		
+		visible = {
+			has_completed_focus = ITA_litoranea_balbo
+		}
+		
+		available = {
+			has_completed_focus = ITA_litoranea_balbo
+			num_of_civilian_factories_available_for_projects > 9
+		}
+		
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 1000
+		}
+		
+		cost = 0
+		
+		days_remove = 200
+		
+		modifier = {
+			civilian_factory_use = 10
+		}
+		
+		remove_effect = {
+			# Tripoli - Benghazi
+			build_railway = {
+				path = { 4194 7209 9980 1118 1041 4047 10046 10117 12088 4057 1198 1127 4120 }
+			}
+			# Benghazi - Bardiyah
+			build_railway = {
+				path = { 12094 4151 1204 7082 9992 1130 4136 10120}
+			}
+			# Tripoli - Tunisia border
+			build_railway = {
+				path = { 1189 12039 }
+			}
+			set_country_flag = ITA_litoranea_balbo_built
+		}
+	}
+
+	cyrenaica_highway_decision = {
+	
+		icon = generic_construction
+		
+		allowed = {
+			OR = {
+				original_tag = ITA
+				original_tag = ENG
+			}
+		}
+		
+		visible = {
+			ITA = { has_country_flag = ITA_litoranea_balbo_built }
+			check_variable = { ITA.cyrenaica_highway_days_left > 0 }
+			ITA = { has_war_with = ENG }
+		}
+		
+		available = {
+			ITA = { has_war_with = ENG }
+			controls_province = 10120
+			controls_province = 7079
+			check_variable = { ITA.building_cyrenaica_highway = 0 }
+			num_of_civilian_factories_available_for_projects > 4
+		}
+		
+		ai_will_do = {
+			factor = 1000
+		}
+		
+		cost = 0
+		
+		days_remove = ITA.cyrenaica_highway_days_left
+		
+		modifier = {
+			civilian_factory_use = 5
+		}
+
+		cancel_trigger = {
+			NOT = {
+				AND = {
+					controls_province = 10120
+					controls_province = 7079
+				}
+			}
+		}
+		
+		remove_effect = {
+			build_railway = {
+				path = { 10120 7079 }
+			}
+		}
+
+		complete_effect = {
+			set_variable = { ITA.building_cyrenaica_highway = 1 }
+		}
+
+		cancel_effect = {
+			set_variable = { ITA.building_cyrenaica_highway = 0 }
+		}
+	}
+
+	cyrenaica_railway_decision = {
+	
+		icon = generic_construction
+		
+		allowed = {
+			OR = {
+				original_tag = ITA
+				original_tag = ENG
+			}
+		}
+		
+		visible = {
+			ITA = { has_country_flag = ITA_litoranea_balbo_built }
+			check_variable = { ITA.cyrenaica_railway_days_left > 0 }
+			check_variable = { ITA.cyrenaica_highway_days_left < 1 }
+			ITA = { has_war_with = ENG }
+			IF = {
+				limit = {
+					original_tag = ITA
+				}
+				check_variable = { libyan_railway_finished = 1 }
+			}
+			IF = {
+				limit = {
+					original_tag = ENG
+				}
+				check_variable = { matrouh_railway_days_left < 1 }
+			}
+		}
+		
+		available = {
+			ITA = { has_war_with = ENG }
+			controls_province = 1130
+			controls_province = 10120
+			controls_province = 7079
+			check_variable = { ITA.building_cyrenaica_railway = 0 }
+			num_of_civilian_factories_available_for_projects > 9
+		}
+		
+		ai_will_do = {
+			factor = 1000
+		}
+		
+		cost = 0
+		
+		days_remove = ITA.cyrenaica_railway_days_left
+		
+		modifier = {
+			civilian_factory_use = 10
+		}
+
+		cancel_trigger = {
+			NOT = {
+				AND = {
+					controls_province = 1130
+					controls_province = 10120
+					controls_province = 7079
+				}
+			}
+		}
+		
+		remove_effect = {
+			build_railway = {
+				path = { 1130 4136 10120 7079 }
+			}
+		}
+
+		complete_effect = {
+			set_variable = { ITA.building_cyrenaica_railway = 1 }
+		}
+
+		cancel_effect = {
+			set_variable = { ITA.building_cyrenaica_railway = 0 }
+		}
+	}
+
+	matrouh_railway_decision = {
+	
+		icon = generic_construction
+		
+		allowed = {
+			OR = {
+				original_tag = ITA
+				original_tag = ENG
+			}
+		}
+		
+		visible = {
+			check_variable = { ITA.matrouh_railway_days_left > 0 }
+			ITA = { has_war_with = ENG }
+			IF = {
+				limit = {
+					original_tag = ITA
+				}
+				check_variable = { cyrenaica_railway_days_left < 1 }
+			}
+		}
+		
+		available = {
+			ITA = { has_war_with = ENG }
+			controls_province = 7079
+			controls_province = 11967
+			check_variable = { ITA.building_matrouh_railway = 0 }
+			num_of_civilian_factories_available_for_projects > 9
+		}
+		
+		ai_will_do = {
+			factor = 1000
+		}
+		
+		cost = 0
+		
+		days_remove = ITA.matrouh_railway_days_left
+		
+		modifier = {
+			civilian_factory_use = 10
+		}
+
+		cancel_trigger = {
+			NOT = {
+				AND = {
+					controls_province = 7079
+					controls_province = 11967
+				}
+			}
+		}
+		
+		remove_effect = {
+			build_railway = {
+				path = { 7079 9989 11967 }
+			}
+		}
+
+		complete_effect = {
+			set_variable = { ITA.building_matrouh_railway = 1 }
+		}
+
+		cancel_effect = {
+			set_variable = { ITA.building_matrouh_railway = 0 }
+		}
+	}
 
 ####### Japanese focus tree ########
 
