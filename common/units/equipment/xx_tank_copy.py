@@ -65,3 +65,4 @@ def update_file(filename):
 
 update_file("x_tank_chassis.txt")
 update_file("mechanized.txt")
+update_file("armored_car.txt")
