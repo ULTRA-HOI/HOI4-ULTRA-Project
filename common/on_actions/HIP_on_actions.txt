@@ -974,4 +974,38 @@ on_actions = {
 			}
 		}
 	}
+
+	on_daily_JAP = {
+		effect = {
+			if = {
+				limit = {
+					has_dynamic_modifier = tora_tora_tora_dynamic_modifier
+				}
+				subtract_from_variable = { tora_tora_tora_days_left = 1 }
+
+				if = {
+					limit = {
+						check_variable = { tora_tora_tora_days_left = 0 }
+					}
+					remove_dynamic_modifier = { modifier = tora_tora_tora_dynamic_modifier }
+				}
+				else = {
+					set_temp_variable = { idea_scale = tora_tora_tora_days_left }
+					divide_temp_variable = { idea_scale = tora_tora_tora_duration }
+
+					set_variable = { tora_tora_tora_naval_buff_curr = tora_tora_tora_naval_buff }
+					multiply_variable = { tora_tora_tora_naval_buff_curr = idea_scale }
+
+					set_variable = { tora_tora_tora_air_buff_curr = tora_tora_tora_air_buff }
+					multiply_variable = { tora_tora_tora_air_buff_curr = idea_scale }
+
+					set_variable = { tora_tora_tora_carrier_buff_curr = tora_tora_tora_carrier_buff }
+					multiply_variable = { tora_tora_tora_carrier_buff_curr = idea_scale }
+
+					set_variable = { tora_tora_tora_port_strike_buff_curr = tora_tora_tora_port_strike_buff }
+					multiply_variable = { tora_tora_tora_port_strike_buff_curr = idea_scale }
+				}
+			}
+		}
+	}
 }
