@@ -142,7 +142,10 @@ country_event = { #not enough aluminium, reopen aluminium smelters
 		aluminium_refinery_auto_open_enabled = yes
 		check_variable = { resource@bauxite > @aluminium_refinery_cost_bauxite }
 		check_variable = { resource@coal > @aluminium_refinery_cost_coal }
-		check_variable = { resource@aluminium < 0 }
+		OR = {
+			check_variable = { resource@aluminium < 0 }
+			original_tag = MAN
+		}
 		any_controlled_state = {
 			is_core_of = ROOT
 			aluminium_refinery_inactive > 0
