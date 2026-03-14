@@ -1297,7 +1297,7 @@ NMilitary = {
 
 
 NAir = {
-	AIR_INVASION_PREPARE_DAYS = 7,						-- base days needed to prepare an airborne invasion
+	AIR_INVASION_PREPARE_DAYS = 0,						-- base days needed to prepare an airborne invasion
 	AIR_INVASION_PLAN_CAP = 1000,						-- base cap of airborne invasions can be planned at the same time
 	AIR_WING_FLIGHT_SPEED_MULT = 0.15, --was 0.02 --Global speed multiplier for airplanes (affects fe.transferring to another base)
 	AIR_WING_MAX_STATS_ATTACK = 400, --was 100 --Max stats
