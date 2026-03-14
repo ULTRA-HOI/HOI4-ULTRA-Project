@@ -115,7 +115,10 @@ country_event = { #not enough steel, reopen steel mills
 		check_variable = { resource@iron > @steel_refinery_cost_iron }
 		check_variable = { resource@coal > @steel_refinery_cost_coal }
 		check_variable = { resource@tungsten > @steel_refinery_cost_tungsten }
-		check_variable = { resource@steel < 0 }
+		OR = {
+			check_variable = { resource@steel < 0 }
+			original_tag = MAN
+		}
 		any_controlled_state = {
 			is_core_of = ROOT
 			steel_refinery_inactive > 0
