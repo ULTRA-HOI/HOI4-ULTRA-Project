@@ -53,32 +53,6 @@ country_event = { #not enough iron, tungsten or coal to produce steel, close ste
     }
 }
 
-country_event = { #not enough iron, tungsten or coal to produce steel, close steel mills
-    id = resource_production_ai.1
-    title = resource_production.1.t
-    desc = resource_production.1.d
-    picture = GFX_report_event_election_vote
-    hidden = yes
-    trigger = {
-        OR = {
-            check_variable = { resource@iron < 0 }
-            check_variable = { resource@coal < 0 }
-            check_variable = { resource@tungsten < 0 }
-        }
-        any_controlled_state = {
-            steel_refinery > 0
-        }
-    }
-    is_triggered_only = yes
-    
-
-
-    immediate = { rp_close_steel_mills = yes}
-    option = {
-        name = resource_production.1.a
-    }
-}
-
 country_event = { #not enough bauxite or coal to produce aluminium, close aluminium smelters
 	id = resource_production.2
 	title = resource_production.2.t
@@ -111,30 +85,6 @@ country_event = { #not enough bauxite or coal to produce aluminium, close alumin
         }
     }
 
-	option = {
-		name = resource_production.2.a
-		effect_tooltip = { rp_close_aluminium_mills = yes }
-	}
-}
-
-country_event = { #not enough bauxite or coal to produce aluminium, close aluminium smelters
-	id = resource_production_ai.2
-	title = resource_production.2.t
-	desc = resource_production.2.d
-	picture = GFX_report_event_election_vote
-	hidden = yes
-	trigger = {
-		OR = {
-			check_variable = { resource@bauxite < 0 }
-			check_variable = { resource@coal < 0 }
-		}
-		any_controlled_state = {
-			aluminium_refinery > 0
-		}
-	}
-	is_triggered_only = yes
-
-	immediate = { rp_close_aluminium_mills = yes }
 	option = {
 		name = resource_production.2.a
 		effect_tooltip = { rp_close_aluminium_mills = yes }
@@ -206,7 +156,22 @@ country_event = { #not enough steel, reopen steel mills
 		}
 	}
 	is_triggered_only = yes
-	immediate = { rp_reopen_steel_mills = yes }
+
+	immediate = { 
+        if = {
+            limit = {
+                is_ai = yes
+            }
+            country_event = {
+                id = resource_production_ai.5
+                days = 5
+            }
+        }
+        else = {
+         rp_reopen_steel_mills = yes
+        }
+    }
+	
 	option = {
 		name = resource_production.5.a
 		effect_tooltip = { rp_reopen_steel_mills = yes }
@@ -233,7 +198,21 @@ country_event = { #not enough aluminium, reopen aluminium smelters
 		}
 	}
 	is_triggered_only = yes
-	immediate = { rp_reopen_aluminium_mills = yes }
+
+	immediate = { 
+        if = {
+            limit = {
+                is_ai = yes
+            }
+            country_event = {
+                id = resource_production_ai.6
+                days = 5
+            }
+        }
+        else = {
+        rp_reopen_aluminium_mills = yes
+        }
+    }
 	option = {
 		name = resource_production.6.a
 		effect_tooltip = { rp_reopen_aluminium_mills = yes }
@@ -501,5 +480,105 @@ country_event = { #not enough rubber, reopen rubber refineries
 	option = {
 		name = resource_production.12.a
 		effect_tooltip = { rp_reopen_synthetic_rubber_refineries = yes }
+	}
+}
+
+add_namespace = resource_production_ai
+
+country_event = { #not enough iron, tungsten or coal to produce steel, close steel mills
+    id = resource_production_ai.1
+    title = resource_production.1.t
+    desc = resource_production.1.d
+    picture = GFX_report_event_election_vote
+    hidden = yes
+    trigger = {
+        OR = {
+            check_variable = { resource@iron < 0 }
+            check_variable = { resource@coal < 0 }
+            check_variable = { resource@tungsten < 0 }
+        }
+        any_controlled_state = {
+            steel_refinery > 0
+        }
+    }
+    is_triggered_only = yes
+    
+
+
+    immediate = { rp_close_steel_mills = yes}
+    option = {
+        name = resource_production.1.a
+    }
+}
+
+country_event = { #not enough bauxite or coal to produce aluminium, close aluminium smelters
+	id = resource_production_ai.2
+	title = resource_production.2.t
+	desc = resource_production.2.d
+	picture = GFX_report_event_election_vote
+	hidden = yes
+	trigger = {
+		OR = {
+			check_variable = { resource@bauxite < 0 }
+			check_variable = { resource@coal < 0 }
+		}
+		any_controlled_state = {
+			aluminium_refinery > 0
+		}
+	}
+	is_triggered_only = yes
+
+	immediate = { rp_close_aluminium_mills = yes }
+	option = {
+		name = resource_production.2.a
+		effect_tooltip = { rp_close_aluminium_mills = yes }
+	}
+}
+
+country_event = { #not enough steel, reopen steel mills
+	id = resource_production_ai.5
+	title = resource_production.5.t
+	desc = resource_production.5.d
+	picture = GFX_report_event_election_vote
+	hidden = yes
+	trigger = {
+		steel_refinery_auto_open_enabled = yes
+		check_variable = { resource@steel < 20 }
+		
+		any_controlled_state = {
+			is_core_of = ROOT
+			steel_refinery_inactive > 0
+		}
+	}
+	is_triggered_only = yes
+
+	immediate = { rp_reopen_steel_mills = yes }
+	option = {
+		name = resource_production.5.a
+		effect_tooltip = { rp_reopen_steel_mills = yes }
+	}
+}
+
+country_event = { #not enough steel, reopen steel mills
+	id = resource_production_ai.6
+	title = resource_production.6.t
+	desc = resource_production.6.d
+	picture = GFX_report_event_election_vote
+	hidden = yes
+	trigger = {
+		aluminium_refinery_auto_open_enabled = yes
+		check_variable = { resource@aluminium < 40 }
+		
+		any_controlled_state = {
+			is_core_of = ROOT
+			aluminium_refinery_inactive > 0
+		}
+	}
+	is_triggered_only = yes
+
+	immediate = { rp_reopen_aluminium_mills = yes }
+	option = {
+		name = resource_production.6.a
+		effect_tooltip = { rp_reopen_aluminium_mills = yes }
 	}
 }
