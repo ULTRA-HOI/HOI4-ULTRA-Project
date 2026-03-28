@@ -6,28 +6,27 @@
 	# Note: sources have all Greek regular infantry as mountain-trained
 	regiments = {
 		heavy_infantry = { x = 0 y = 0 }
-		infantry = { x = 0 y = 1 }
-		infantry = { x = 0 y = 2 }
+		heavy_infantry = { x = 0 y = 1 }
+		mountain_infantry = { x = 0 y = 2 }
 		
 		heavy_infantry = { x = 1 y = 0 }
 		heavy_infantry = { x = 1 y = 1 }
-		infantry = { x = 1 y = 2 }
+		mountain_infantry = { x = 1 y = 2 }
 		
 		heavy_infantry = { x = 2 y = 0 }
-		infantry = { x = 2 y = 1 }
-		infantry = { x = 2 y = 2 }
+		heavy_infantry = { x = 2 y = 1 }
+		mountain_infantry = { x = 2 y = 2 }
 
-		infantry = { x = 3 y = 0 }
-		infantry= { x = 3 y = 1 }
+		artillery_brigade = { x = 3 y = 0 }
+		artillery_brigade = { x = 3 y = 1 }
+		pack_artillery_brigade = { x = 3 y = 2 }
 
-		#artillery_brigade = { x = 4 y = 0 } #Should have artillery, need a fix to not throw an error
-		#artillery_brigade = { x = 4 y = 1 }
 	}
 	support = {
 		DIV_HQ = { x = 0 y = 0 }
 		recon = { x = 0 y = 1 }
 		engineer = { x = 0 y = 2 }
-		#artillery = { x = 0 y = 3 }
+		
 	}
 	priority = 2
 }
@@ -36,27 +35,27 @@ division_template = {
 	division_names_group = GRE_MNT_01
 	# Prior to 1940 mobilization = 1st, 2nd, 8th
 	regiments = {
-		mountaineers = { x = 0 y = 0 }
-		mountaineers = { x = 0 y = 1 }
-		mountaineers = { x = 0 y = 2 }
+		heavy_infantry = { x = 0 y = 0 }
+		heavy_infantry = { x = 0 y = 1 }
+		heavy_infantry = { x = 0 y = 2 }
 		
-		mountaineers = { x = 1 y = 0 }
-		mountaineers = { x = 1 y = 1 }
-		mountaineers = { x = 1 y = 2 }
+		heavy_infantry = { x = 1 y = 0 }
+		heavy_infantry = { x = 1 y = 1 }
+		heavy_infantry = { x = 1 y = 2 }
 		
 		mountaineers = { x = 2 y = 0 }
 		mountaineers = { x = 2 y = 1 }
 		mountaineers = { x = 2 y = 2 }
 		
-		mountaineers = { x = 3 y = 0 }
-		mountaineers = { x = 3 y = 1 }
-		mountaineers = { x = 3 y = 2 }
+		pack_artillery_brigade = { x = 3 y = 0 }
+		pack_artillery_brigade = { x = 3 y = 1 }
+		pack_artillery_brigade = { x = 3 y = 2 }
 	}
 	support = {
 		DIV_HQ = { x = 0 y = 0 }
 		recon = { x = 0 y = 1 }
 		engineer = { x = 0 y = 2 }
-		#artillery = { x = 0 y = 2 }
+		heavy_pack_artillery_brigade = { x = 0 y = 3 }
 	}
 	priority = 2
 }
@@ -273,6 +272,16 @@ instant_effect = {
 		efficiency = 100
 	}
 	
+	add_equipment_production = {
+		equipment = {
+			type = heavy_infantry_equipment_0
+			version_name = "Battalion Support '36"
+		}
+		requested_factories = 1
+		progress = 0.22
+		efficiency = 100
+	}
+	
 	#########################
 	## STARTING STOCKPILES ##
 	#########################
@@ -314,12 +323,12 @@ instant_effect = {
 	}
 	add_equipment_to_stockpile = {
 		type = cze_heavy_pack_artillery_equipment_1
-		amount = 60
+		amount = 70
 		producer = CZE
 	}
 	add_equipment_to_stockpile = {
 		type = fra_pack_artillery_equipment_1
-		amount = 400
+		amount = 450
 		producer = FRA
 	}
 	add_equipment_to_stockpile = {
@@ -329,7 +338,7 @@ instant_effect = {
 	}
 	add_equipment_to_stockpile = {
 		type = bel_artillery_equipment_1
-		amount = 90
+		amount = 100
 		producer = BEL
 	}
 	add_equipment_to_stockpile = {
