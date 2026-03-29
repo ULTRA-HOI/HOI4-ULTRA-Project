@@ -938,8 +938,7 @@ NMilitary = {
 	LAND_COMBAT_FORT_DAMAGE_CHANCE = 1, --was 5 --chance to get a hit to damage on forts. (out of 100)
 	ATTRITION_DAMAGE_ORG = 0.04, --was 0.08 --damage from attrition to Organisation
 	
-	--DONT CHANGE THESE DEFINES:
-	ATTRITION_EQUIPMENT_LOSS_CHANCE = 0.006, --was 0.1 --Chance for loosing equipment when suffer attrition. Scaled up the stronger attrition is. Then scaled down by equipment reliability.
+	ATTRITION_EQUIPMENT_LOSS_CHANCE = 0.005, --was 0.1 --Chance for loosing equipment when suffer attrition. Scaled up the stronger attrition is. Then scaled down by equipment reliability.
 	
 	ATTRITION_WHILE_MOVING_FACTOR = 1,
 	RELIABILITY_ORG_REGAIN = -0.3,                 -- how much reliability affects org regain
