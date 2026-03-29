@@ -372,6 +372,7 @@ update_logi_truck_stockpiles = {
 			value = priority
 			break = break_loop
 
+			# create an array of the amount of trucks needed for each logi category that has this reinforcement priority
 			# loop through each motorisation category
 			for_loop_effect = {
 				end = num_logi_categories
@@ -404,6 +405,7 @@ update_logi_truck_stockpiles = {
 					}
 				}
 			}
+			# go through the created array and split the truck stockpile between the logi categories in this reinforcement priority
 			# loop through each of the motorisation categories in the current priority, in order of increasing trucks needed
 			while_loop_effect = {
 				limit = {
@@ -514,4 +516,8 @@ calc_logi_truck_deficits = {
 	}
 	set_variable = { total_logi_trucks = total_trucks }
 	add_to_variable = { total_logi_trucks = total_logi_truck_deficit }
+
+	# make the ai account for offmap deficit in production
+	set_variable = { logi_truck_deficit_ratio = total_logi_trucks }
+	divide_variable = { logi_truck_deficit_ratio = total_trucks }
 }
