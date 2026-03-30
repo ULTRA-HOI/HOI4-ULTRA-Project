@@ -531,44 +531,73 @@ init_industry_rework = {
 }
 
 civillian_resources_scripted_effect = {
-	set_temp_variable = { cic_resource_factor_steel_temp = modifier@cic_resource_steel_factor } #Setting up variable for every resource
+	#Setting up variable for every resource
+	set_temp_variable = { cic_resource_factor_steel_temp = modifier@cic_resource_steel_factor }
 	set_temp_variable = { cic_resource_factor_aluminium_temp = modifier@cic_resource_aluminium_factor }
 	set_temp_variable = { cic_resource_factor_tungsten_temp = modifier@cic_resource_tungsten_factor }
 	set_temp_variable = { cic_resource_factor_chromium_temp = modifier@cic_resource_chromium_factor }
 	set_temp_variable = { cic_resource_factor_rubber_temp = modifier@cic_resource_rubber_factor }
 	set_temp_variable = { cic_resource_factor_coal_temp = modifier@cic_resource_coal_factor }
 
-	add_to_temp_variable = { cic_resource_factor_steel_temp = 1 } #We are adding 1 since the base consumption is 100% of the resources set in the init_civillian_resources
+	#We are adding 1 since the base consumption is 100% of the resources set in the init_civillian_resources
+	add_to_temp_variable = { cic_resource_factor_steel_temp = 1 }
 	add_to_temp_variable = { cic_resource_factor_aluminium_temp = 1 }
 	add_to_temp_variable = { cic_resource_factor_tungsten_temp = 1 }
 	add_to_temp_variable = { cic_resource_factor_chromium_temp = 1 }
 	add_to_temp_variable = { cic_resource_factor_rubber_temp = 1 }
 	add_to_temp_variable = { cic_resource_factor_coal_temp = 1 }
 	
-	add_to_temp_variable = { cic_resource_factor_steel_temp = modifier@cic_resource_factor } #cic_resource_factor affects all resources therefore it has to be added as well
+	#cic_resource_factor affects all resources therefore it has to be added as well
+	add_to_temp_variable = { cic_resource_factor_steel_temp = modifier@cic_resource_factor }
 	add_to_temp_variable = { cic_resource_factor_aluminium_temp = modifier@cic_resource_factor }
 	add_to_temp_variable = { cic_resource_factor_tungsten_temp = modifier@cic_resource_factor }
 	add_to_temp_variable = { cic_resource_factor_chromium_temp = modifier@cic_resource_factor }
 	add_to_temp_variable = { cic_resource_factor_rubber_temp = modifier@cic_resource_factor }
 	add_to_temp_variable = { cic_resource_factor_coal_temp = modifier@cic_resource_factor }
 	
-	set_temp_variable = { num_factories_temp = THIS.num_of_civilian_factories } #num_of_civilian_factories includes traded factories. We currently cannot exclude traded fractories so we have to accept that traded factories take resources
+	#num_of_civilian_factories includes traded factories. We currently cannot exclude traded fractories so we have to accept that traded factories take resources
+	set_temp_variable = { num_factories_temp = THIS.num_of_civilian_factories }
 	
-	multiply_temp_variable = { cic_resource_factor_steel_temp = num_factories_temp } #Multiply factory count
-	multiply_temp_variable = { cic_resource_factor_aluminium_temp = num_factories_temp }
-	multiply_temp_variable = { cic_resource_factor_tungsten_temp = num_factories_temp }
-	multiply_temp_variable = { cic_resource_factor_chromium_temp = num_factories_temp }
-	multiply_temp_variable = { cic_resource_factor_rubber_temp = num_factories_temp }
-	multiply_temp_variable = { cic_resource_factor_coal_temp = num_factories_temp }
-	
-	set_variable = { cic_steel = 2 } #Get the current base consumption values
+	#Get the current base consumption values
+	set_variable = { cic_steel = 2 } 
 	set_variable = { cic_aluminium = 0.8 }
 	set_variable = { cic_tungsten = 0.25 }
 	set_variable = { cic_chromium = 0.15 }
 	set_variable = { cic_rubber = 0.2 }
-	set_variable = { cic_coal = 1.75 }
+	set_variable = { cic_coal = 3.6 }
+
+	#Multiply factory count
+	multiply_variable = { cic_steel = num_factories_temp }
+	multiply_variable = { cic_aluminium = num_factories_temp }
+	multiply_variable = { cic_tungsten = num_factories_temp }
+	multiply_variable = { cic_chromium = num_factories_temp }
+	multiply_variable = { cic_rubber = num_factories_temp }
+	multiply_variable = { cic_coal = num_factories_temp }
+
+	#Coal is special. Coal is split into 3 categories. Coal used by civillian factories, heating and transportation. Factories are handled above, heating considers population and transportation the max amount of states.
+	#Heating
+	set_temp_variable = { heating_coal_temp = THIS.max_manpower_k }
+	multiply_temp_variable = { heating_coal_temp = 0.001 } #We need 0.001 Units of coal per 1.000 Population
+	round_temp_variable = heating_coal_temp
+	add_to_variable = { cic_coal = heating_coal_temp }
 	
-	multiply_variable = { cic_steel = cic_resource_factor_steel_temp } #Multiply the consumption values
+	#Transportation
+	set_temp_variable = { num_controlled_states_temp = THIS.num_controlled_states }
+	set_temp_variable = { num_core_states_temp = THIS.num_owned_controlled_states }
+	subtract_from_temp_variable = { num_controlled_states_temp = num_core_states_temp }
+	set_temp_variable = { transport_coal_core_temp = 20 } #We need 20 coal per state for transportation services
+	set_temp_variable = { transport_coal_temp = transport_coal_core_temp }
+	multiply_temp_variable = { transport_coal_temp = 0.8 } #Non-core states only need 80% coal
+	multiply_temp_variable = { transport_coal_core_temp = num_core_states_temp }
+	multiply_temp_variable = { transport_coal_temp = num_controlled_states_temp }
+	add_to_variable = { cic_coal = transport_coal_core_temp }
+	add_to_variable = { cic_coal = transport_coal_temp }
+	set_variable = { heating_coal = heating_coal_temp }
+	set_variable = { transport_coal_core = transport_coal_core_temp }
+	set_variable = { transport_coal = transport_coal_temp }
+
+	#Multiply the consumption values
+	multiply_variable = { cic_steel = cic_resource_factor_steel_temp } 
 	multiply_variable = { cic_aluminium = cic_resource_factor_aluminium_temp }
 	multiply_variable = { cic_tungsten = cic_resource_factor_tungsten_temp }
 	multiply_variable = { cic_chromium = cic_resource_factor_chromium_temp }
