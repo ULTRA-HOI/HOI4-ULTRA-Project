@@ -2,22 +2,23 @@
 add_namespace = resource_production
 
 # ULTRA: Whenever modifying building inputs also modify the factors in common/00_buildings.txt and common/scripted_effects/resource_production_scripted_effects.txt
-@steel_refinery_cost_iron = 80 ### Should be 80-100, but reduce for now to take into account recycled steel
-@steel_refinery_cost_coal = 100
-@steel_refinery_cost_tungsten = 4	
-@steel_refinery_output = 50
 
-@aluminium_refinery_cost_bauxite = 150 ### Should be 100, -25 for recycled aluminum.
-@aluminium_refinery_cost_coal = 100
-@aluminium_refinery_output = 100
+# Per 1t Steel we need 1,1t Iron Ore, 1t Coal and 1kg Manganese + Silicon
+@steel_refinery_cost_iron = 44
+@steel_refinery_cost_coal = 8 
+@steel_refinery_cost_chromium = 2	
 
-@synthetic_refinery_cost_coal = 100
+# Per 1t Aluminium we need 5t Bauxite and 6,5t of Coal.
+@aluminium_refinery_cost_bauxite = 64
+@aluminium_refinery_cost_coal = 1
 
-@rubber_refinery_cost_coal = 100
-@rubber_refinery_cost_oil = 1
-@rubber_refinery_output = 16
+# Per 1t Fuel we need 12t Coal. Keep in mind that 1t Fuel ~ 1.200L Fuel
+@synthetic_refinery_cost_coal = 24
 
-country_event = { #not enough iron, tungsten or coal to produce steel, close steel mills
+# Per 1t Rubber we need 31,25t Coal
+@rubber_refinery_cost_coal = 2
+
+country_event = { #not enough iron, chromium or coal to produce steel, close steel mills
     id = resource_production.1
     title = resource_production.1.t
     desc = resource_production.1.d
@@ -27,7 +28,7 @@ country_event = { #not enough iron, tungsten or coal to produce steel, close ste
         OR = {
             check_variable = { resource@iron < 0 }
             check_variable = { resource@coal < 0 }
-            check_variable = { resource@tungsten < 0 }
+            check_variable = { resource@chromium < 0 }
         }
         any_controlled_state = {
             steel_refinery > 0
@@ -94,7 +95,7 @@ country_event = { #not enough coal to produce fuel, close synthetic refineries
 	}
 }
 
-country_event = { #not enough coal or oil to produce rubber, close rubber refineries
+country_event = { #not enough coal to produce rubber, close rubber refineries
 	id = resource_production.4
 	title = resource_production.4.t
 	desc = resource_production.4.d
@@ -103,7 +104,6 @@ country_event = { #not enough coal or oil to produce rubber, close rubber refine
 	trigger = {
 		OR = {
 			check_variable = { resource@coal < 0 }
-			check_variable = { resource@oil < 0 }
 		}
 		any_controlled_state = {
 			synthetic_rubber_refinery > 0
@@ -124,6 +124,9 @@ country_event = { #not enough steel, reopen steel mills
 	hidden = yes
 	trigger = {
 		steel_refinery_auto_open_enabled = yes
+		check_variable = { resource@iron > @steel_refinery_cost_iron }
+		check_variable = { resource@coal > @steel_refinery_cost_coal }
+		check_variable = { resource@chromium > @steel_refinery_cost_chromium }
 		OR = {
 			AND = {
 				check_variable = { resource@iron > @steel_refinery_cost_iron }
@@ -443,20 +446,8 @@ country_event = { #not enough rubber, reopen rubber refineries
 	hidden = yes
 	trigger = {
 		synthetic_rubber_refinery_auto_open_enabled = yes
-		OR = {
-			AND = {
-				check_variable = { resource@coal > @rubber_refinery_cost_coal }
-				check_variable = { resource@oil > @rubber_refinery_cost_oil }
-			}
-			AND = {
-				imports_raw_resources = yes
-				check_variable = { resource@rubber < 0 }
-			}
-			AND = {
-				imports_raw_resources = yes
-				check_variable = { resource_imported@rubber > 0 }
-			}
-		}
+		check_variable = { resource@coal > @rubber_refinery_cost_coal }
+		check_variable = { resource@rubber < 0 }
 		any_controlled_state = {
 			is_core_of = ROOT
 			synthetic_rubber_refinery_inactive > 0

@@ -1,16 +1,21 @@
 buildings = {
 	# ULTRA: Whenever modifying building inputs also modify the factors in events/resource_production.txt and common/scripted_effects/resource_production_scripted_effects.txt
-	@steel_refinery_cost_iron = 80 ### Should be 80-100, but reduce for now to take into account recycled steel
-	@steel_refinery_cost_coal = 100
-	@steel_refinery_cost_tungsten = 4	
 	
-	@aluminium_refinery_cost_bauxite = 150 ### Should be 100, -25 for recycled aluminum.
-	@aluminium_refinery_cost_coal = 100
+	# Per 1t Steel we need 1,1t Iron Ore, 1t Coal and 1kg Manganese + Silicon
+	@steel_refinery_cost_iron = 44
+	@steel_refinery_cost_coal = 8 
+	@steel_refinery_cost_chromium = 2	
 
-	@synthetic_refinery_cost_coal = 100
+	# Per 1t Aluminium we need 5t Bauxite and 6,5t of Coal.
+	@aluminium_refinery_cost_bauxite = 64
+	@aluminium_refinery_cost_coal = 1
 
-	@rubber_refinery_cost_coal = 100
-	@rubber_refinery_cost_oil = 1
+	# Per 1t Fuel we need 12t Coal. Keep in mind that 1t Fuel ~ 1.200L Fuel
+	@synthetic_refinery_cost_coal = 24
+
+	# Per 1t Rubber we need 31,25t Coal
+	@rubber_refinery_cost_coal = 2
+	
 	# show_on_map:
 	#    if it is provincial building, then show_on_map = X is amount per each province
 	#    if it is state building, then show_on_map = X is amount per state
@@ -321,7 +326,7 @@ buildings = {
 
 		country_modifiers = {
 			modifiers = {
-				fuel_gain_from_states = 3.0 #per hour #if you change this change tech as well, every tech give 10% boost, dont use factor on tech bc it interacts with economic laws
+				fuel_gain_from_states = 7.0 #per hour #if you change this change tech as well, every tech give 10% boost, dont use factor on tech bc it interacts with economic laws
 				country_resource_cost_coal = @synthetic_refinery_cost_coal
 				#local_resources_oil = 2 # May use local_resources_ + any resource name
 				#local_resources_rubber = 4 # May use local_resources_ + any resource name
@@ -349,7 +354,6 @@ buildings = {
 		country_modifiers = {
 			modifiers = {
 				country_resource_cost_coal = @rubber_refinery_cost_coal
-				country_resource_cost_oil = @rubber_refinery_cost_oil
 			}
 		}
 
@@ -361,11 +365,11 @@ buildings = {
 	
 	steel_refinery = {
 		show_on_map = 0
-		base_cost = 6250
+		base_cost = 5000
 		per_level_extra_cost = -25
 		damage_factor = 1.25
 		icon_frame = 15
-		local_resources_steel = 50
+		local_resources_steel = 40
 		refinery = yes
 		value = 1
 		infrastructure_construction_effect = yes
@@ -374,7 +378,7 @@ buildings = {
 			modifiers = {
 				country_resource_cost_iron = @steel_refinery_cost_iron
 				country_resource_cost_coal = @steel_refinery_cost_coal
-				country_resource_cost_tungsten = @steel_refinery_cost_tungsten
+				country_resource_cost_chromium = @steel_refinery_cost_chromium
 			}
 		}
 		
@@ -386,11 +390,11 @@ buildings = {
 	
 	aluminium_refinery = {
 		show_on_map = 0
-		base_cost = 2000
+		base_cost = 1200
 		per_level_extra_cost = -10
 		damage_factor = 1.25
 		icon_frame = 16
-		local_resources_aluminium = 100
+		local_resources_aluminium = 40
 		refinery = yes
 		value = 1
 		infrastructure_construction_effect = yes

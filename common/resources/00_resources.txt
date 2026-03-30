@@ -1,52 +1,83 @@
 resources = {
+	#Ultra: Resources overview:
+	#
+	# 1 Unit ingame represents:
+	# Oil: 25.000t
+	# Coal: 25.000t
+	# Iron: 5.000t
+	# Steel: 5.000t
+	# Bauxite: 250t
+	# Aluminium: 100t
+	# Tungsten: 4t
+	# Chromium: 100t
+	# Rubber: 100t
+	#
+	# Fuel: 1.000L
+	#
+	# Chormium: Represents Chromium, Nickel, Molybdenum, Manganese, Vanadium, Silicon. In short, all Metals that are commonly used for military allows such as gun barrels, armor, ship construction steel.
+	# Copper, Zinc and Tin are currently not represented. Mixing them with steel alloys doesnt make sense and the main purpose of these metals (Tin for rations and Copper and Zinc for Brass in ammunition) are currently not represented on their own.
+	#
+	# Engery: Coal is the primary source of electrical energy. On average, 1t of Coal can produce 1,8MWh of electrical engery. See defines for more.
+	#
+	# Fuel: Refining efficiency is set to 90%, so 1t of oil can produce 0,9t fuel. Averaged, 1t of fuel = 1.200L of fuel. With this, we produce 1080 fuel per ton of oil.
+	# One unit of ingame oil can therefore produce annually ~27.000.000L of fuel. Thats a daily rate of ~74.000L or ~74 ingame units of fuel.
+	#
+	# Trade cost per 1t(per ingame unit):
+	# Oil: 15$(375.000$)
+	# Coal: 7,5$(187.500$)
+	# Iron: 5,25$(26.250$)
+	# Steel: 75$(375.000$)
+	# Bauxite: 6$(6.000$) #Increased to 12$ for balancing reasons
+	# Aluminium: 300$(30.000$)
+	# Tungsten: 1250$(125.000$)
+	# Chromium: 60$(6.000$)
+	# Rubber: 350$(35.000$)
+	#
+	# Scale is based on coal, 1 cic should buy 20 units of coal, so 3.75M$
 	oil = {
 		icon_frame = 1
-		cic = 0.05			# 20/cic
-		convoys = 0.06		##0.125 #### 1 convoy ship 1/5 million ton a year
+		cic = 0.2			# 5/cic
+		convoys = 0.25		# 1 convoy has 5.000t capacity and can travel ~100.000km per year. As a baseline we assume the ship is crossing the atlantic, so it can do ~8 roundtrips in a year or 40.000t/y.
+							# As such, the formula to calculate the convoy need: 1/(40.000/(real weight of unit)/0.4) The factor 0.4 is derived from ingame tests.
 	}
 	rubber = {
 		icon_frame = 2
-		cic = 0.025			# 40/cic
-		convoys = 0.02		##0.00833325
+		cic = 0.02			# 50/cic
+		convoys = 0.001
 	}
 	coal = {
 		icon_frame = 3
-		cic = 0.01			# 100/cic
-		convoys = 0.05		##0.1
+		cic = 0.1			# 10/cic
+		convoys = 0.25
 	}
 	iron = {
 		icon_frame = 4
-		cic = 0.01			# 100/cic
-		convoys = 0.075		##0.0375
+		cic = 0.02			# 50/cic
+		convoys = 0.05
 	}
 	steel = {
 		icon_frame = 5
-		cic = 0.05			# 20/cic
-		convoys = 0.05		## 0.025
+		cic = 0.2			# 5/cic
+		convoys = 0.05
 	}
 	bauxite = {
 		icon_frame = 6
-		cic = 0.01			# 100/cic
-		convoys = 0.05		##0.02
+		cic = 0.002			# 500/cic
+		convoys = 0.0025
 	}
 	aluminium = {
 		icon_frame = 7
-		cic = 0.025			# 20/cic
-		convoys = 0.0125		##0.0125
+		cic = 0.02			# 50/cic
+		convoys = 0.001
 	}
 	tungsten = {
 		icon_frame = 8
-		cic = 0.025			# 40/cic
-		convoys = 0.025		##0.0125 ##### Also a random estimate
+		cic = 0.004			# 250/cic
+		convoys = 0.0004
 	}
 	chromium = {
 		icon_frame = 9
-		cic = 0.05			# 20/cic
-		convoys = 0.0125		##0.00625
-	}
-	energy_resource = {
-		icon_frame = 10
-		cic = 0.01
-		convoys = 0.01
+		cic = 0.004			# 250/cic
+		convoys = 0.001
 	}
 }

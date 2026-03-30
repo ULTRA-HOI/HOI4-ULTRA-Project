@@ -1,65 +1,66 @@
 # ULTRA: Whenever modifying building inputs also modify the factors in common/00_buildings.txt and events/resource_production.txt
-@steel_refinery_cost_iron = 80 ### Should be 80-100, but reduce for now to take into account recycled steel
-@steel_refinery_cost_coal = 100
-@steel_refinery_cost_tungsten = 4	
-@steel_refinery_output = 50
-@steel_refinery_output_sov = 40
 
-@aluminium_refinery_cost_bauxite = 150 ### Should be 100, -25 for recycled aluminum.
-@aluminium_refinery_cost_coal = 100
-@aluminium_refinery_output = 100
+# Per 1t Steel we need 1,1t Iron Ore, 1t Coal and 1kg Manganese + Silicon
+@steel_refinery_cost_iron = 44
+@steel_refinery_cost_coal = 8 
+@steel_refinery_cost_chromium = 2	
 
-@synthetic_refinery_cost_coal = 100
+# Per 1t Aluminium we need 5t Bauxite and 6,5t of Coal.
+@aluminium_refinery_cost_bauxite = 64
+@aluminium_refinery_cost_coal = 1
 
-@rubber_refinery_cost_coal = 100
-@rubber_refinery_cost_oil = 1
+# Per 1t Fuel we need 12t Coal. Keep in mind that 1t Fuel ~ 1.200L Fuel
+@synthetic_refinery_cost_coal = 24
+
+# Per 1t Rubber we need 31,25t Coal
+@rubber_refinery_cost_coal = 2
 
 rp_close_steel_mills = {
     # How many need to be closed. Cannot simply use resource@, need to add resource_produced and resource_imported due to how engine and our refineries/mills work
     set_temp_variable = { num_to_swap_iron = resource_produced@iron }
     set_temp_variable = { num_to_swap_coal = resource_produced@coal }
-    set_temp_variable = { num_to_swap_tungsten = resource_produced@tungsten }
+    set_temp_variable = { num_to_swap_chromium = resource_produced@chromium }
     add_to_temp_variable = { num_to_swap_iron = resource_imported@iron }
     add_to_temp_variable = { num_to_swap_coal = resource_imported@coal }
-    add_to_temp_variable = { num_to_swap_tungsten = resource_imported@tungsten }
+    add_to_temp_variable = { num_to_swap_chromium = resource_imported@chromium }
 
     divide_temp_variable = { num_to_swap_iron = @steel_refinery_cost_iron }
     divide_temp_variable = { num_to_swap_coal = @steel_refinery_cost_coal }
-    divide_temp_variable = { num_to_swap_tungsten = @steel_refinery_cost_tungsten }
+    divide_temp_variable = { num_to_swap_chromium = @steel_refinery_cost_chromium }
     multiply_temp_variable = { num_to_swap_iron = -1 }
     multiply_temp_variable = { num_to_swap_coal = -1 }
-    multiply_temp_variable = { num_to_swap_tungsten = -1 }
+    multiply_temp_variable = { num_to_swap_chromium = -1 }
 
     # round up
 	add_to_temp_variable = { num_to_swap_iron = 0.5 }
 	add_to_temp_variable = { num_to_swap_coal = 0.5 }
-	add_to_temp_variable = { num_to_swap_tungsten = 0.5 }
+	add_to_temp_variable = { num_to_swap_chromium = 0.5 }
 	round_temp_variable = num_to_swap_iron
 	round_temp_variable = num_to_swap_coal
-	round_temp_variable = num_to_swap_tungsten
+	round_temp_variable = num_to_swap_chromium
 
     set_temp_variable = { num_to_swap = 0 }
     
     if = {
         limit = {
             check_variable = { var = num_to_swap_iron value = num_to_swap_coal compare = greater_than_or_equals }
-            check_variable = { var = num_to_swap_iron value = num_to_swap_tungsten compare = greater_than_or_equals }
+            check_variable = { var = num_to_swap_iron value = num_to_swap_chromium compare = greater_than_or_equals }
         }
         set_temp_variable = { num_to_swap = num_to_swap_iron }
     }
     if = {
         limit = {
             check_variable = { var = num_to_swap_coal value = num_to_swap_iron compare = greater_than_or_equals }
-            check_variable = { var = num_to_swap_coal value = num_to_swap_tungsten compare = greater_than_or_equals }
+            check_variable = { var = num_to_swap_coal value = num_to_swap_chromium compare = greater_than_or_equals }
         }
         set_temp_variable = { num_to_swap = num_to_swap_coal }
     }
     if = {
         limit = {
-            check_variable = { var = num_to_swap_tungsten value = num_to_swap_iron compare = greater_than_or_equals }
-            check_variable = { var = num_to_swap_tungsten value = num_to_swap_coal compare = greater_than_or_equals }
+            check_variable = { var = num_to_swap_chromium value = num_to_swap_iron compare = greater_than_or_equals }
+            check_variable = { var = num_to_swap_chromium value = num_to_swap_coal compare = greater_than_or_equals }
         }
-        set_temp_variable = { num_to_swap = num_to_swap_tungsten }
+        set_temp_variable = { num_to_swap = num_to_swap_chromium }
     }
     set_temp_variable = { building_to_add = token:steel_refinery_inactive }
     set_temp_variable = { building_to_remove = token:steel_refinery }
@@ -126,36 +127,17 @@ rp_close_synthetic_refineries = {
 
 rp_close_synthetic_rubber_refineries = {
     # How many need to be closed. Cannot simply use resource@, need to add resource_produced and resource_imported due to how engine and our refineries/mills work
-	set_temp_variable = { num_to_swap_oil = resource_produced@oil }
 	set_temp_variable = { num_to_swap_coal = resource_produced@coal }
-	add_to_temp_variable = { num_to_swap_oil = resource_imported@oil }
 	add_to_temp_variable = { num_to_swap_coal = resource_imported@coal }
 
-	divide_temp_variable = { num_to_swap_oil = @rubber_refinery_cost_oil }
 	divide_temp_variable = { num_to_swap_coal = @rubber_refinery_cost_coal }
-    multiply_temp_variable = { num_to_swap_oil = -1 }
     multiply_temp_variable = { num_to_swap_coal = -1 }
 
     # round up
-	add_to_temp_variable = { num_to_swap_oil = 0.5 }
 	add_to_temp_variable = { num_to_swap_coal = 0.5 }
-	round_temp_variable = num_to_swap_oil
 	round_temp_variable = num_to_swap_coal
 
-    set_temp_variable = { num_to_swap = 0 }
-
-    if = {
-        limit = {
-            check_variable = { var = num_to_swap_oil value = num_to_swap_coal compare = greater_than_or_equals }
-        }
-        set_temp_variable = { num_to_swap = num_to_swap_oil }
-    }
-    if = {
-        limit = {
-            check_variable = { var = num_to_swap_coal value = num_to_swap_oil compare = greater_than_or_equals}
-        }
-        set_temp_variable = { num_to_swap = num_to_swap_coal }
-    }
+    set_temp_variable = { num_to_swap = num_to_swap_coal }
 
     set_temp_variable = { building_to_add = token:synthetic_rubber_refinery_inactive }
     set_temp_variable = { building_to_remove = token:synthetic_rubber_refinery }
@@ -349,8 +331,8 @@ rp_reopen_steel_mills = {
     add_to_temp_variable = { num_to_swap_iron = resource_imported@iron }
     set_temp_variable = { num_to_swap_coal = resource_produced@coal }
     add_to_temp_variable = { num_to_swap_coal = resource_imported@coal }
-    set_temp_variable = { num_to_swap_tungsten = resource_produced@tungsten }
-    add_to_temp_variable = { num_to_swap_tungsten = resource_imported@tungsten }
+    set_temp_variable = { num_to_swap_chromium = resource_produced@chromium }
+    add_to_temp_variable = { num_to_swap_chromium = resource_imported@chromium }
 
     # how many need to be open to cover steel deficit / imports
     set_temp_variable = { num_to_swap_steel = resource@steel }
@@ -359,46 +341,37 @@ rp_reopen_steel_mills = {
 
 	divide_temp_variable = { num_to_swap_iron = @steel_refinery_cost_iron }
 	divide_temp_variable = { num_to_swap_coal = @steel_refinery_cost_coal }
-	divide_temp_variable = { num_to_swap_tungsten = @steel_refinery_cost_tungsten }
-    if = {
-        limit = {
-            original_tag = SOV
-            NOT = { has_completed_focus = SOV_steel_casting_industry }
-        }
-        divide_temp_variable = { num_to_swap_steel = @steel_refinery_output_sov }
-    }
-    else = {
-        divide_temp_variable = { num_to_swap_steel = @steel_refinery_output }
-    }
-    set_temp_variable = { temp_resource_gain = modifier@local_resources_factor }
-    add_to_temp_variable = { temp_resource_gain = 1 }
-    divide_temp_variable = { num_to_swap_steel = temp_resource_gain }
+	divide_temp_variable = { num_to_swap_chromium = @steel_refinery_cost_chromium }
 
     # round down
 	add_to_temp_variable = { num_to_swap_iron = -0.5 }
 	add_to_temp_variable = { num_to_swap_coal = -0.5 }
-	add_to_temp_variable = { num_to_swap_tungsten = -0.5 }
-    add_to_temp_variable = { num_to_swap_steep = 0.5 } # round this one up
+	add_to_temp_variable = { num_to_swap_chromium = -0.5 }
 	round_temp_variable = num_to_swap_iron
 	round_temp_variable = num_to_swap_coal
-	round_temp_variable = num_to_swap_tungsten
-    round_temp_variable = num_to_swap_steel
+	round_temp_variable = num_to_swap_chromium
 
     set_temp_variable = { num_to_swap = num_to_swap_iron }
     if = {
-        limit = { check_variable = { num_to_swap_coal < num_to_swap } }
+        limit = {
+            check_variable = { var = num_to_swap_iron value = num_to_swap_coal compare = less_than_or_equals }
+            check_variable = { var = num_to_swap_iron value = num_to_swap_chromium compare = less_than_or_equals }
+        }
+        set_temp_variable = { num_to_swap = num_to_swap_iron }
+    }
+    if = {
+        limit = {
+            check_variable = { var = num_to_swap_coal value = num_to_swap_iron compare = less_than_or_equals }
+            check_variable = { var = num_to_swap_coal value = num_to_swap_chromium compare = less_than_or_equals }
+        }
         set_temp_variable = { num_to_swap = num_to_swap_coal }
     }
     if = {
-        limit = { check_variable = { num_to_swap_tungsten < num_to_swap } }
-        set_temp_variable = { num_to_swap = num_to_swap_tungsten }
-    }
-    if = {
-        limit = { 
-            check_variable = { num_to_swap_steel > num_to_swap }
-            imports_raw_resources = yes
+        limit = {
+            check_variable = { var = num_to_swap_chromium value = num_to_swap_iron compare = less_than_or_equals }
+            check_variable = { var = num_to_swap_chromium value = num_to_swap_coal compare = less_than_or_equals }
         }
-        set_temp_variable = { num_to_swap = num_to_swap_steel }
+        set_temp_variable = { num_to_swap = num_to_swap_chromium }
     }
 
     set_temp_variable = { building_to_add = token:steel_refinery }
@@ -477,58 +450,18 @@ rp_reopen_synthetic_refineries = {
 
 rp_reopen_synthetic_rubber_refineries = {
     # How many need to be opened. Cannot simply use resource@, need to add resource_produced and resource_imported due to how engine and our refineries/mills work
-	set_temp_variable = { num_to_swap_oil = resource_produced@oil }
 	set_temp_variable = { num_to_swap_coal = resource_produced@coal }
-	add_to_temp_variable = { num_to_swap_oil = resource_imported@oil }
 	add_to_temp_variable = { num_to_swap_coal = resource_imported@coal }
-
-    # rubber refinery output changes a lot
-    if = {
-        limit = { imports_raw_resources = yes }
-        every_controlled_state = {
-			add_to_temp_variable = { num_rubber_refineries = building_level@synthetic_rubber_refinery }
-		}
-    }
-    if = {
-        limit = { check_variable = { num_rubber_refineries = 0 } }
-        set_temp_variable = { rubber_refinery_output = 16 }
-    }
-    else = {  
-        set_temp_variable = { rubber_refinery_output = resource_produced@rubber }
-        add_to_temp_variable = { rubber_refinery_output = cic_rubber }
-        divide_temp_variable = { rubber_refinery_ouput = num_rubber_refineries }
-    }
-
-    # how many need to be open to cover rubber deficit / imports
-    set_temp_variable = { num_to_swap_rubber = resource@rubber }
-    subtract_from_temp_variable = { num_to_swap_rubber = resource_imported@rubber }
-    multiply_temp_variable = { num_to_swap_rubber = -1 }
-
-    divide_temp_variable = { num_to_swap_oil = @rubber_refinery_cost_oil }
 	divide_temp_variable = { num_to_swap_coal = @rubber_refinery_cost_coal }
     divide_temp_variable = { num_to_swap_aluminium = rubber_refinery_output }
 
     # round down
-	add_to_temp_variable = { num_to_swap_oil = -0.5 }
 	add_to_temp_variable = { num_to_swap_coal = -0.5 }
-    add_to_temp_variable = { num_to_swap_rubber = 0.5 } #round this one up
-	round_temp_variable = num_to_swap_oil
 	round_temp_variable = num_to_swap_coal
     round_temp_variable = num_to_swap_rubber
 
-    set_temp_variable = { num_to_swap = num_to_swap_oil }
-    if = {
-        limit = { check_variable = { num_to_swap_coal < num_to_swap } }
-        set_temp_variable = { num_to_swap = num_to_swap_coal }
-    }
-    if = {
-        limit = { 
-            check_variable = { num_to_swap_rubber > num_to_swap }
-            imports_raw_resources = yes
-        }
-        set_temp_variable = { num_to_swap = num_to_swap_rubber }
-    }
-
+    set_temp_variable = { num_to_swap = num_to_swap_coal }
+   	
     set_temp_variable = { building_to_add = token:synthetic_rubber_refinery }
     set_temp_variable = { building_to_remove = token:synthetic_rubber_refinery_inactive }
     open_buildings = yes
@@ -654,11 +587,10 @@ log_building_swapping_start = {
 		limit = { is_debug = yes NOT = { has_global_flag = benchmark_logging } }
         log = "Starting swapping [?building_to_remove.GetTokenLocalizedKey] to [?building_to_add.GetTokenLocalizedKey] for [ROOT.GetTag]"
         log = "Total [?building_to_remove.GetTokenLocalizedKey] to swap: [?num_to_swap]"
-        log = "num_to_swap_tungsten: [?num_to_swap_tungsten]"
+        log = "num_to_swap_chromium: [?num_to_swap_chromium]"
         log = "num_to_swap_iron: [?num_to_swap_iron]"
         log = "num_to_swap_bauxite: [?num_to_swap_bauxite]"
         log = "num_to_swap_coal: [?num_to_swap_coal]"
-        log = "num_to_swap_oil: [?num_to_swap_oil]"
 
     }
 }
@@ -673,31 +605,26 @@ log_clamping = {
 log_building_swapping_resources = {
     if = {
 		limit = { is_debug = yes NOT = { has_global_flag = benchmark_logging } }
-        log = "resource_exported@tungsten: [?ROOT.resource_exported@tungsten]"
+        log = "resource_exported@chromium: [?ROOT.resource_exported@chromium]"
         log = "resource_exported@iron: [?ROOT.resource_exported@iron]"
         log = "resource_exported@bauxite: [?ROOT.resource_exported@bauxite]"
         log = "resource_exported@coal: [?ROOT.resource_exported@coal]"
-        log = "resource_exported@oil: [?ROOT.resource_exported@oil]"
-        log = "resource_produced@tungsten: [?ROOT.resource_produced@tungsten]"
+        log = "resource_produced@chromium: [?ROOT.resource_produced@chromium]"
         log = "resource_produced@iron: [?ROOT.resource_produced@iron]"
         log = "resource_produced@bauxite: [?ROOT.resource_produced@bauxite]"
         log = "resource_produced@coal: [?ROOT.resource_produced@coal]"
-        log = "resource_produced@oil: [?ROOT.resource_produced@oil]"
-        log = "resource_imported@tungsten: [?ROOT.resource_imported@tungsten]"
+        log = "resource_imported@chromium: [?ROOT.resource_imported@chromium]"
         log = "resource_imported@iron: [?ROOT.resource_imported@iron]"
         log = "resource_imported@bauxite: [?ROOT.resource_imported@bauxite]"
         log = "resource_imported@coal: [?ROOT.resource_imported@coal]"
-        log = "resource_imported@oil: [?ROOT.resource_imported@oil]"
-        log = "resource_consumed@tungsten: [?ROOT.resource_consumed@tungsten]"
+        log = "resource_consumed@chromium: [?ROOT.resource_consumed@chromium]"
         log = "resource_consumed@iron: [?ROOT.resource_consumed@iron]"
         log = "resource_consumed@bauxite: [?ROOT.resource_consumed@bauxite]"
         log = "resource_consumed@coal: [?ROOT.resource_consumed@coal]"
-        log = "resource_consumed@oil: [?ROOT.resource_consumed@oil]"
-        log = "resource@tungsten: [?ROOT.resource@tungsten]"
+        log = "resource@chromium: [?ROOT.resource@chromium]"
         log = "resource@iron: [?ROOT.resource@iron]"
         log = "resource@bauxite: [?ROOT.resource@bauxite]"
         log = "resource@coal: [?ROOT.resource@coal]"
-        log = "resource@oil: [?ROOT.resource@oil]"
     }
 }
 

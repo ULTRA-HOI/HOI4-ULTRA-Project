@@ -329,9 +329,9 @@ NCountry = {
 	WEEKLY_STABILITY_GAIN = 0.0,
 	WEEKLY_WAR_SUPPORT_GAIN = 0.0,
 	SUPPLY_CONVOY_FACTOR = 0.004, --was 0.25 --How many convoys each supply needs
-	CONVOY_RANGE_FACTOR = 1.1,                        -- how much range affects convoy need
-	CONVOY_LENDLEASE_RANGE_FACTOR = 1.1,				-- How much range affects convoy need for lend lease
-	CONVOY_INTERNATIONAL_MARKET_RANGE_FACTOR = 1.1,	-- How much range affects convoy need for international market
+	CONVOY_RANGE_FACTOR = 0.4,                        -- how much range affects convoy need
+	CONVOY_LENDLEASE_RANGE_FACTOR = 0.4,				-- How much range affects convoy need for lend lease
+	CONVOY_INTERNATIONAL_MARKET_RANGE_FACTOR = 0.4,	-- How much range affects convoy need for international market
 	NAVY_USE_HOME_BASE_FOR_RANGE = true,			-- If true, will calculate task force range from home base, otherwise will calculate from any friendly naval base
 	CONVOY_CONTROLLED_ROUTE_COST_REDUCTION_FACTOR = 0.25,	-- How much fewer convoys you need shipping through areas you control
 	LOCAL_MANPOWER_ACCESSIBLE_NON_CORE_FACTOR = 0.005, --was 0.02 --accessible recruitable factor base
@@ -450,8 +450,9 @@ NCountry = {
 
 	FUEL_LEASE_CONVOY_RATIO = 0.000075, --was 0.0005 --num convoys needed per fuel land lease
 
+	-- Ultra: Fuel gain efficiency is at 90%. 1 unit of fuel = 1L of fuel, averaged for all the different types of fuel, we can produce 1080L of fuel per 1t oil. See resources.txt for exact breakdown
 	STARTING_FUEL_RATIO = 0.5, --was 0.25 --starting fuel ratio compared to max fuel for countries
-	BASE_FUEL_GAIN_PER_OIL = 1.5, --was 2 --base amount of fuel gained hourly per excess oil
+	BASE_FUEL_GAIN_PER_OIL = 3.0, --was 2 --base amount of fuel gained hourly per excess oil
 	BASE_FUEL_GAIN = 2.0, --was 2.0 --base amount of fuel gained hourly, independent of excess oil
 	BASE_FUEL_CAPACITY = 50000, --was 50000 --base amount of fuel capacity
 
