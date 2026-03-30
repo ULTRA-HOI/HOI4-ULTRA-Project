@@ -21,7 +21,7 @@ NGame = {
 	DECISION_ALERT_TIMEOUT_DAYS = 30,				-- Days left when player will be alerted about timing out events or decisions
 	OIL_RESOURCE= "oil",							-- Name of the oil resource
 	FUEL_RESOURCE = "oil",							-- resource that will give country fuel
-	ENERGY_RESOURCE = "energy_resource",			-- resource that will give country energy 
+	ENERGY_RESOURCE = "coal",						-- resource that will give country energy 
 	MAX_EFFECT_ITERATION = 1000,					-- maximum allowed iteration for loop effects
 	MAX_SCRIPTED_LOC_RECURSION = 30,				-- max recursion for scripted localizations
 	HANDS_OFF_START_TAG = "HAI",					-- tag for player country for -hands_off runs. use an existing tag that is less likely to affect the game
@@ -621,12 +621,14 @@ NProduction = {
 	RAILWAY_GUN_REPAIR_SPEED = 8.0,			-- Railway gun strength repair speed per factory
 	EFFICIENCY_LOSS_PER_UNUSED_DAY = 1,		-- Daily loss of efficiency for unused factory slots ( efficiency is tracked per factory slot in the production line )
 	RESOURCE_PENALTY_WARNING_CRITICAL_RATIO =  0.8, -- Switch to red progress bar if penalty is over threshold
-	RESOURCE_TO_ENERGY_COEFFICIENT = 1,		-- How much energy per coal produces
-	BASE_COUNTRY_ENERGY_PRODUCTION = 100, 			-- The base energy production of a country
+
+	--Ultra: 1t of Coal can produce on average 1,8 MWh of electric energy. As such, 1 unit of energy represents 1GWh of energy.
+	RESOURCE_TO_ENERGY_COEFFICIENT = 45,		-- How much energy per coal produces
+	BASE_COUNTRY_ENERGY_PRODUCTION = 120, 			-- The base energy production of a country
 	ENERGY_SCALING_COST_BY_FACTORY_COUNT = 0, -- Scales energy cost based on the total number of factories
-	BASE_ENERGY_COST = 0.001,						-- How much energy per factory consumes
-	ENERGY_COST_CAP = 0.001,						-- Maximum energy cost per factory
-	ENERGY_SCALE_PER_TRADE_FACTORY_EXPORT = 0.25, -- Factor of how many of the factories gained from trade is affects the energy cost scaling
+	BASE_ENERGY_COST = 30,						-- How much energy per factory consumes
+	ENERGY_COST_CAP = 30,						-- Maximum energy cost per factory
+	ENERGY_SCALE_PER_TRADE_FACTORY_EXPORT = 0, -- Factor of how many of the factories gained from trade is affects the energy cost scaling
 	BASE_FACTORY_SPEED = 0.5, --was 4 --Base factory speed multiplier (how much hoi3 style IC each factory gives).
 	BASE_FACTORY_SPEED_MIL = 0.8, --was 3.50 --Base factory speed multiplier (how much hoi3 style IC each factory gives).
 	BASE_FACTORY_SPEED_NAV = 1.0, --was 2.0 --Base factory speed multiplier (how much hoi3 style IC each factory gives).
@@ -3703,7 +3705,6 @@ NAI = {
 		0, -- aluminium
 		0, -- tungsten
 		0, -- chromium
-		100000, -- energy_resource
 	},
 	
 	SUGGESTED_NUM_MAX_CARRIERS = 8,							-- We don't know exactly how many planes we should use when evaluating AI build so we need a suggested number to start things off. ALso used for task force suggestions list.
