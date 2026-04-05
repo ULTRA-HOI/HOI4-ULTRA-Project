@@ -3003,7 +3003,7 @@ NAI = {
 	LAND_DEFENSE_FIGHERS_PER_RAID = 100,                -- Amount of air superiority planes requested per detected raid targetting us
 	LAND_DEFENSE_INTERCEPTORS_PER_RAID = 100,           -- Amount of interceptor planes requested per detected raid targetting us
 
-	LAND_DEFENSE_FIGHERS_PER_PLANE = 1, --was 1.8 		--Amount of air superiority planes requested per enemy plane
+	LAND_DEFENSE_FIGHERS_PER_PLANE = 1.8, --was 1.8 		--Amount of air superiority planes requested per enemy plane
 	LAND_DEFENSE_INTERCEPTORS_PER_BOMBERS = 1.2, --was 0.8 --Amount of air interceptor planes requested per enemy bomber
 	LAND_DEFENSE_INTERCEPTORS_PER_PLANE = 1, --was 0.1	--Amount of air interceptor planes requested per enemy plane (non bomber)
 
@@ -3012,7 +3012,7 @@ NAI = {
 
 	LAND_COMBAT_AIR_SUPERIORITY_IMPORTANCE = 0.40, --was 0.25 --Strategic importance of air superiority ( amount of enemy planes in area )
 	LAND_COMBAT_OUR_ARMIES_AIR_IMPORTANCE = 50, --was 20 --Strategic importance of our armies
-	LAND_COMBAT_OUR_COMBATS_AIR_IMPORTANCE = 155, --was 155 --Strategic importance of our armies in the combats
+	LAND_COMBAT_OUR_COMBATS_AIR_IMPORTANCE = 1550, --was 155 --Strategic importance of our armies in the combats
 	LAND_COMBAT_FRIEND_ARMIES_AIR_IMPORTANCE = 25, --was 10 --Strategic importance of friendly armies
 	LAND_COMBAT_FRIEND_COMBATS_AIR_IMPORTANCE = 12, --was 8 --Strategic importance of friendly armies in the combat
 	LAND_COMBAT_ENEMY_ARMIES_AIR_IMPORTANCE = 10, --was 12 --Strategic importance of our armies
