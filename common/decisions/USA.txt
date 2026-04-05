@@ -3624,6 +3624,7 @@ foreign_politics = {
 				}
 				has_war_support > 0.95
 			}
+			date > 1942.1.1
 		}
 		
 		fire_only_once = yes
@@ -5235,78 +5236,78 @@ USA_intervention_mandate = {
 			}
 		}
 	}
-	USA_demand_liberation = {
-		available = {
-			has_war_support > 0.8
-			if = {
-				limit = {
-					has_war_support > 0.9
-				}
-				congress_low_support_trigger = yes
-			}
-			else_if = {
-				limit = {
-					has_war_support > 0.95
-				}
-				congress_medium_support_trigger = yes
-			}
-			else = {
-				congress_high_support_trigger = yes
-			}
-		}
-		visible = {
-#			has_completed_focus = USA_reinforce_monroe_doctrine
-			NOT = { has_wargoal_against = FROM }
-			FROM = {
-				NOT = { has_country_flag = USA_monroe_backed_down } #set when US player backs down in reply event
-				any_owned_state = {
-					is_controlled_by = PREV
-					OR = {
-						is_on_continent = north_america
-						is_on_continent = south_america
-					}
-				}
-			} 
-		}
-		target_trigger = {
-			FROM = {
-				NOT = { 
-					OR = {
-						has_government = ROOT
-						has_government = neutrality
-					}
-				}
-				NOT = { 
-					capital_scope = {
-						OR = {
-							is_on_continent = north_america
-							is_on_continent = south_america
-						}
-					}
-				}
-				any_owned_state = {
-					is_controlled_by = PREV
-					OR = {
-						is_on_continent = north_america
-						is_on_continent = south_america
-					}
-				}
-			}
-		}
-		cost = 50
-		ai_will_do = {
-			factor = 1
-			modifier = {
-				has_war = yes
-				factor = 0
-			}
-		}
-		complete_effect = {
-			FROM = { 
-				country_event = mtg_usa_diplomatic_protest.2 
-			}
-		}
-	}
+	#USA_demand_liberation = {
+	#	available = {
+	#		has_war_support > 0.8
+	#		if = {
+	#			limit = {
+	#				has_war_support > 0.9
+	#			}
+	#			congress_low_support_trigger = yes
+	#		}
+	#		else_if = {
+	#			limit = {
+	#				has_war_support > 0.95
+	#			}
+	#			congress_medium_support_trigger = yes
+	#		}
+	#		else = {
+	#			congress_high_support_trigger = yes
+	#		}
+	#	}
+	#	visible = {
+#	#		has_completed_focus = USA_reinforce_monroe_doctrine
+	#		NOT = { has_wargoal_against = FROM }
+	#		FROM = {
+	#			NOT = { has_country_flag = USA_monroe_backed_down } #set when US player backs down in reply event
+	#			any_owned_state = {
+	#				is_controlled_by = PREV
+	#				OR = {
+	#					is_on_continent = north_america
+	#					is_on_continent = south_america
+	#				}
+	#			}
+	#		} 
+	#	}
+	#	target_trigger = {
+	#		FROM = {
+	#			NOT = { 
+	#				OR = {
+	#					has_government = ROOT
+	#					has_government = neutrality
+	#				}
+	#			}
+	#			NOT = { 
+	#				capital_scope = {
+	#					OR = {
+	#						is_on_continent = north_america
+	#						is_on_continent = south_america
+	#					}
+	#				}
+	#			}
+	#			any_owned_state = {
+	#				is_controlled_by = PREV
+	#				OR = {
+	#					is_on_continent = north_america
+	#					is_on_continent = south_america
+	#				}
+	#			}
+	#		}
+	#	}
+	#	cost = 50
+	#	ai_will_do = {
+	#		factor = 1
+	#		modifier = {
+	#			has_war = yes
+	#			factor = 0
+	#		}
+	#	}
+	#	complete_effect = {
+	#		FROM = { 
+	#			country_event = mtg_usa_diplomatic_protest.2 
+	#		}
+	#	}
+	#}
 }
 USA_decolonisation = {
 	USA_freedom_for_Papua = {
