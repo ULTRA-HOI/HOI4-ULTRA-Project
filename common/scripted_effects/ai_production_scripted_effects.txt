@@ -1,0 +1,334 @@
+init_ai_production = {
+	set_variable = { equipment_array_size = 34 }
+	resize_array = { equipment_desired_array = equipment_array_size }
+	resize_array = { equipment_ic_array = equipment_array_size }
+	resize_array = { equipment_ic_desired_array = equipment_array_size }
+	resize_array = { equipment_rollover_array = equipment_array_size }
+	resize_array = { target_ratio_array  = equipment_array_size }
+
+	reset_equipment_array = yes
+
+	set_variable = { infantry_equipment_idx = 0 }
+	set_variable = { heavy_infantry_equipment_idx = 1 }
+	set_variable = { support_equipment_idx = 2 }
+	set_variable = { artillery_equipment_idx = 3 }
+	set_variable = { heavy_artillery_equipment_idx = 4 }
+	set_variable = { pack_artillery_equipment_idx = 5 }
+	set_variable = { heavy_pack_artillery_equipment_idx = 6 }
+	set_variable = { rocket_artillery_equipment_idx = 7 }
+	set_variable = { anti_tank_equipment_idx = 8 }
+	set_variable = { heavy_anti_tank_equipment_idx = 9 }
+	set_variable = { anti_air_equipment_idx = 10 }
+	set_variable = { heavy_anti_air_equipment_idx = 11 }
+	set_variable = { armoured_car_equipment_idx = 12 }
+	set_variable = { mechanized_equipment_idx = 13 }
+	set_variable = { motorized_equipment_idx = 14 }
+	set_variable = { landing_craft_equipment_idx = 15 }
+	set_variable = { light_tank_chassis_idx = 16 }
+	set_variable = { medium_tank_chassis_idx = 17 }
+	set_variable = { heavy_tank_chassis_idx = 18 }
+	set_variable = { support_tank_chassis_idx = 19 }
+	set_variable = { medium_tank_artillery_chassis_idx = 20 }
+	set_variable = { heavy_tank_artillery_chassis_idx = 21 }
+	set_variable = { medium_tank_aa_chassis_idx = 22 }
+	set_variable = { assault_artillery_chassis_idx = 23 }
+	set_variable = { heavy_assault_artillery_chassis_idx = 24 }
+	set_variable = { light_tank_destroyer_chassis_idx = 25 }
+	set_variable = { medium_tank_destroyer_chassis_idx = 26 }
+	set_variable = { heavy_tank_destroyer_chassis_idx = 27 }
+	set_variable = { super_heavy_tank_destroyer_chassis_idx = 28 }
+	set_variable = { pack_heavy_infantry_equipment_idx = 29 }
+	set_variable = { train_equipment_idx = 30 }
+	set_variable = { fighter_equipment_idx = 31 }
+	set_variable = { tac_bomber_equipment_idx = 32 }
+	set_variable = { cas_equipment_idx = 33 }
+
+	meta_effect = {
+		text =  { [THIS_TAG]_init_ai_production = yes }
+		THIS_TAG = "[THIS.GetTag]"
+	}
+}
+
+reset_equipment_array = {
+	clear_array = equipment_desired_array
+	resize_array = { equipment_desired_array = equipment_array_size }
+	set_variable = { light_bat_target = 0 }
+	set_variable = { heavy_bat_target = 0 }
+	set_variable = { mot_bat_target = 0 }
+	set_variable = { sup_bat_target = 0 }
+	set_variable = { mot_bat_bat_target = 0 }
+}
+
+
+
+
+add_ai_division = {
+	for_loop_effect = {
+		end = fighter_equipment_idx
+		value = equip_idx
+
+		multiply_temp_variable = { temp_equipment_desired_array^equip_idx = div_count }
+		add_to_variable = { equipment_desired_array^equip_idx = temp_equipment_desired_array^equip_idx }
+	}
+	for_loop_effect = {
+		end = num_logi_categories
+		value = logi_category
+
+		meta_effect = {
+			text = {
+				multiply_temp_variable = { temp_[LOGI_CAT]_bat_target = div_count }
+				add_to_variable = { [LOGI_CAT]_bat_target = temp_[LOGI_CAT]_bat_target }
+			}
+			LOGI_CAT = "[get_logistics_category]"
+		}
+	}
+}
+
+update_ai_truck_target = {
+    set_temp_variable = { light_logi_truck_target = light_bat_target }
+    multiply_temp_variable = { light_logi_truck_target = light_multiplier }
+    multiply_temp_variable = { light_logi_truck_target = light_logistics_motorisation_level }
+
+    set_temp_variable = { heavy_logi_truck_target = heavy_bat_target }
+    multiply_temp_variable = { heavy_logi_truck_target = heavy_multiplier }
+    multiply_temp_variable = { heavy_logi_truck_target = heavy_logistics_motorisation_level }
+
+    set_temp_variable = { mot_logi_truck_target = mot_bat_target }
+    multiply_temp_variable = { mot_logi_truck_target = mot_multiplier }
+    multiply_temp_variable = { mot_logi_truck_target = mot_logistics_motorisation_level }
+
+    set_temp_variable = { sup_logi_truck_target = sup_bat_target }
+    multiply_temp_variable = { sup_logi_truck_target = support_multiplier }
+    multiply_temp_variable = { sup_logi_truck_target = sup_logistics_motorisation_level }
+
+    set_temp_variable = { mot_bat_logi_truck_target = mot_bat_bat_target }
+    multiply_temp_variable = { mot_bat_logi_truck_target = mot_bat_multiplier }
+    multiply_temp_variable = { mot_bat_logi_truck_target = mot_bat_logistics_motorisation_level }
+
+    add_to_variable = { equipment_desired_array^motorized_equipment_idx = light_logi_truck_target }
+    add_to_variable = { equipment_desired_array^motorized_equipment_idx = heavy_logi_truck_target }
+    add_to_variable = { equipment_desired_array^motorized_equipment_idx = mot_logi_truck_target }
+    add_to_variable = { equipment_desired_array^motorized_equipment_idx = sup_logi_truck_target }
+    add_to_variable = { equipment_desired_array^motorized_equipment_idx = mot_bat_logi_truck_target }
+    add_to_variable = { equipment_desired_array^motorized_equipment_idx = supply_truck_target }
+}
+
+update_equipment_ic_desired_array = {
+	for_loop_effect  = {
+		end = equipment_desired_array^num
+		value = equip_idx
+
+		set_temp_variable = { equip_ic = equipment_desired_array^equip_idx }
+		multiply_temp_variable = { equip_ic = stockpile_factor } #don't think multiplying them all by a constant actually does anything
+		multiply_temp_variable = { equip_ic = equipment_ic_array^equip_idx }
+		divide_temp_variable = { equip_ic = 1000 } # to get more precision in the target ratios later, probably uneccessary, the maths all cancels out so this can freely changed
+		set_variable = { equipment_ic_desired_array^equip_idx = equip_ic }
+	}
+}
+
+ai_production_calc = {
+	for_loop_effect  = {
+		end = fighter_equipment_idx
+		value = equip_idx
+		if = { 
+			limit = { check_variable = { equipment_ic_desired_array^equip_idx > 0 } }
+
+			add_to_temp_array = { temp_id_array_1 = equip_idx }
+			add_to_array = { test_array = equip_idx }
+			meta_effect = {
+				text = {
+					set_temp_variable = { fielded_equipment_ic = num_equipment@[EQUIP_TYPE] }
+					add_to_temp_variable = { fielded_equipment_ic = num_equipment_in_armies@[EQUIP_TYPE] }
+					if = { 
+						limit = { check_variable = { equip_idx = motorized_equipment_idx } }
+						add_to_temp_variable = { fielded_equipment_ic = total_logi_trucks }
+					}
+					multiply_temp_variable = { fielded_equipment_ic = equipment_ic_array^equip_idx }
+				}
+				EQUIP_TYPE = "[get_equipment_archetype_ai]"
+			}
+			set_temp_variable = { target_ratio = fielded_equipment_ic }
+			divide_temp_variable = { target_ratio = equipment_ic_desired_array^equip_idx }
+			add_to_temp_array = { temp_target_ratio_array_1 = target_ratio }
+			set_variable = { target_ratio_array^equip_idx = target_ratio } # array isnt used anywhere but useful for debugging
+		}
+	}
+	set_temp_variable = { total_ic = num_of_military_factories }
+	set_temp_variable = { efficiency_cap = 0.65 }
+	add_to_temp_variable = { efficiency_cap = modifier@production_factory_max_efficiency_factor }
+	set_temp_variable = { factory_output = 5 }
+	add_to_temp_variable = { factory_output = modifier@industrial_capacity_factory }
+	multiply_temp_variable = { total_ic = efficiency_cap }
+	multiply_temp_variable = { total_ic = factory_output }
+	multiply_temp_variable = { total_ic = 7 } #week of production
+
+	add_to_variable = { total_ic_so_far = total_ic } # log variable, isnt used anywhere
+
+	ai_air_production = yes
+
+	# start with every archetype that the ai will need in array 1 (array 2 is empty)
+	# find the archetype with the lowest target ratio (equipment fielded to equipment desired ratio)
+	# take every achetype in array 2 and spawn in enough equipment to match this target ratio (allocate_production effect)
+	# move the previously considered archetype with the lowest target ratio into array 2
+	# repeat until array 1 is empty, or we run out of ic to distribute
+	find_highest_in_array = {
+		array = temp_target_ratio_array_1
+		value = highest_target_ratio
+	}
+	while_loop_effect = {
+		break = break_var
+		limit = {
+			check_variable = { temp_id_array_1^num > 0 }
+			check_variable = { total_ic > 1 }
+		}
+
+		find_lowest_in_array = {
+			array = temp_target_ratio_array_1
+			value = lowest_target_ratio
+			index = array_idx_1
+		}
+		# optimisation: don't bother distributing it perfectly if all the equipment types are close enough anyway, so skip to next step, don't think this really does much rn
+		set_temp_variable = { ratio_ratio_temp = highest_target_ratio }
+		divide_temp_variable = { ratio_ratio_temp = lowest_target_ratio }
+		if = {
+			limit = {
+				check_variable = { lowest_target_ratio > 0 }
+				check_variable = { ratio_ratio_temp < 1.01 }
+			}
+			for_loop_effect = {
+				end = temp_id_array_1^num
+				value = temp_idx
+				add_to_temp_array = { temp_id_array_2 = temp_id_array_1^temp_idx }
+				add_to_temp_array = { temp_target_ratio_array_2 = temp_target_ratio_array_1^temp_idx }
+			}
+			clear_temp_array = temp_id_array_1
+			set_temp_variable = { break_var = 1 }
+		}
+		else = {
+			if = {
+				limit = { check_variable = { temp_id_array_2^num > 0 } }
+
+				# optimisation: skip the allocation step if they have the same target ratio (it breaks if it does)
+				set_temp_variable = { last_idx_2 = temp_id_array_2^num }
+				subtract_from_temp_variable = { last_idx_2 = 1 }
+				if = {
+					limit = {
+						NOT = { check_variable = { lowest_target_ratio = temp_target_ratio_array_2^last_idx_2 } }
+					}
+					allocate_production = yes
+				}
+			}
+			# move this equipment with the lowest target ratio in array 1 to array 2
+			add_to_temp_array = { temp_id_array_2 = temp_id_array_1^array_idx_1 }
+			add_to_temp_array = { temp_target_ratio_array_2 = temp_target_ratio_array_1^array_idx_1 }
+
+			remove_from_temp_array = { 
+				array = temp_id_array_1
+				index = array_idx_1
+			}
+			remove_from_temp_array = {
+				array = temp_target_ratio_array_1
+				index = array_idx_1 
+			}
+		}
+
+	}
+	# distribute ic to all categories evenly once all categories have the same target ratio 
+	if = {
+		limit = {
+			check_variable = { total_ic > 1 }
+		}
+		allocate_production = yes
+	}
+}
+
+allocate_production = {
+	set_temp_variable = { ic_needed_this_step = 0 }
+	for_each_loop = {
+		array = temp_id_array_2
+		value = equip_idx
+		
+		add_to_temp_variable = { ic_needed_this_step = equipment_ic_desired_array^equip_idx }
+	}
+	set_temp_variable = { last_idx_2 = temp_id_array_2^num }
+	subtract_from_temp_variable = { last_idx_2 = 1 }
+
+	if = { 
+		limit = { check_variable = { temp_id_array_1^num > 0 } }
+		set_temp_variable = { target_ratio_diff = lowest_target_ratio }
+	}
+	# if all target ratios are the same just allocate as much ic as possible
+	else = {
+		set_temp_variable = { target_ratio_diff = 300 }
+	}
+	
+	subtract_from_temp_variable = { target_ratio_diff = temp_target_ratio_array_2^last_idx_2 }
+	multiply_temp_variable = { ic_needed_this_step = target_ratio_diff }
+
+	set_temp_variable = { ic_fraction_allocated = total_ic }
+	divide_temp_variable = { ic_fraction_allocated = ic_needed_this_step }
+	clamp_temp_variable = {
+		var = ic_fraction_allocated
+		max = 1
+	}
+	multiply_temp_variable = { target_ratio_diff = ic_fraction_allocated }
+
+	# give equipment to every archetype in array 2 to match the lowest target ratio in array 1
+	for_each_loop = {
+		array = temp_id_array_2
+		value = equip_idx
+		set_temp_variable = { equipment_ic_to_add = target_ratio_diff }
+		multiply_temp_variable = { equipment_ic_to_add = equipment_ic_desired_array^equip_idx }
+
+		ai_spawn_equipment = yes
+	}
+	set_temp_variable = { ic_used_this_step = ic_needed_this_step }
+	multiply_temp_variable = { ic_used_this_step = ic_fraction_allocated }
+	subtract_from_temp_variable = { total_ic = ic_used_this_step }
+}
+
+ai_air_production = {
+	set_temp_variable = { air_ic_total = 0 }
+	for_loop_effect = {
+		value = equip_idx
+		start = fighter_equipment_idx
+		end = equipment_desired_array^num
+
+		if = {
+			limit = { check_variable = { equipment_desired_array^equip_idx > 0 } }
+
+			set_temp_variable = { equipment_ic_to_add = total_ic }
+			multiply_temp_variable = { equipment_ic_to_add = equipment_desired_array^equip_idx }
+			add_to_temp_variable = { air_ic_total = equipment_ic_to_add }
+
+			ai_spawn_equipment = yes
+
+		}
+	}
+	subtract_from_temp_variable = { total_ic = air_ic_total }
+}
+
+ai_spawn_equipment = {
+	set_temp_variable = { equipment_to_add = equipment_ic_to_add }
+	divide_temp_variable = { equipment_to_add = equipment_ic_array^equip_idx }
+	add_to_temp_variable = { equipment_to_add = equipment_rollover_array^equip_idx }
+	set_variable = { equipment_rollover_array^equip_idx = equipment_to_add }
+	subtract_from_temp_variable = { equipment_to_add = 0.5 }
+	round_temp_variable = equipment_to_add
+	subtract_from_variable = { equipment_rollover_array^equip_idx = equipment_to_add }
+	meta_effect = {
+		text = {
+			add_equipment_to_stockpile = {
+				type = [EQUIP_TYPE]
+				amount = equipment_to_add
+			}
+			add_to_variable = { total_[EQUIP_TYPE] = equipment_to_add }
+
+			# does nothing, log variable
+			multiply_temp_variable = { equipment_to_add = equipment_ic_array^equip_idx }
+			add_to_variable = { total_ic_[EQUIP_TYPE] = equipment_to_add }
+		}
+		EQUIP_TYPE = "[get_equipment_archetype_ai]"
+	}
+}
+

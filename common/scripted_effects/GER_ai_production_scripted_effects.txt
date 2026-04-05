@@ -1,0 +1,304 @@
+GER_init_ai_production = {
+    add_ideas = ai_using_production_scripted_effects 
+
+    set_variable = { stockpile_factor = 1.2 }
+    set_variable = { supply_truck_target = 8000 }
+
+    set_variable = { equipment_ic_array^infantry_equipment_idx = 0.485 }
+	set_variable = { equipment_ic_array^heavy_infantry_equipment_idx = 0.921 }
+	set_variable = { equipment_ic_array^support_equipment_idx = 1 }
+	set_variable = { equipment_ic_array^artillery_equipment_idx = 2.994 }
+	set_variable = { equipment_ic_array^heavy_artillery_equipment_idx = 5.631 }
+	set_variable = { equipment_ic_array^anti_tank_equipment_idx = 0.553 }
+	set_variable = { equipment_ic_array^anti_air_equipment_idx = 0.375 }
+	set_variable = { equipment_ic_array^heavy_anti_air_equipment_idx = 1.79 }
+	set_variable = { equipment_ic_array^armoured_car_equipment_idx = 1.579 }
+	set_variable = { equipment_ic_array^motorized_equipment_idx = 0.8 }
+	set_variable = { equipment_ic_array^pack_heavy_infantry_equipment_idx = 0.716 }
+	set_variable = { equipment_ic_array^train_equipment_idx = 7 }
+	set_variable = { equipment_ic_array^tac_bomber_equipment_idx = 28.89 }
+
+    for_loop_effect = {
+        end = equipment_ic_array^num
+        value = equip_idx
+        if = {
+            limit = { check_variable = { equipment_ic_array^equip_idx > 0 } }
+            set_variable = { equipment_factor_array^equip_idx = 1 }
+        }
+    }
+
+    set_variable = { equipment_desired_array^train_equipment_idx = 5000 }
+    set_variable = { equipment_desired_array^tac_bomber_equipment_idx = 0.2 }
+
+    set_temp_variable = { div_count = 100 }
+    GER_ai_add_infantry_division = yes
+
+    set_temp_variable = { div_count = 10 }
+    GER_ai_add_garrison_division = yes
+
+    set_temp_variable = { div_count = 3 }
+    GER_ai_add_1936_mountaineer_division = yes
+
+    set_temp_variable = { div_count = 15 }
+    GER_ai_add_1936_tank_division = yes
+
+    update_ai_truck_target = yes
+    update_equipment_ic_desired_array = yes
+
+    delete_units = {
+        division_template = "SS-Regiment (mot.)"
+        disband = yes
+    }
+    delete_units = {
+        division_template = "Kavallerie-Brigade"
+        disband = yes
+    }
+}
+
+GER_ai_add_infantry_division = {
+    # 9 inf, 3 arty, 1 at, 1 aa, maintenance, logi, hospital, hq, hart, mp, cav recon
+    clear_temp_array = temp_equipment_desired_array
+    resize_temp_array = { temp_equipment_desired_array = equipment_array_size }
+    set_temp_variable = { temp_equipment_desired_array^infantry_equipment_idx = 384 }
+    set_temp_variable = { temp_equipment_desired_array^heavy_infantry_equipment_idx = 108 }
+    set_temp_variable = { temp_equipment_desired_array^support_equipment_idx = 96 }
+    set_temp_variable = { temp_equipment_desired_array^artillery_equipment_idx = 36 }
+    set_temp_variable = { temp_equipment_desired_array^heavy_artillery_equipment_idx = 12 }
+    set_temp_variable = { temp_equipment_desired_array^anti_tank_equipment_idx = 36 }
+    set_temp_variable = { temp_equipment_desired_array^anti_air_equipment_idx = 12 }
+    set_temp_variable = { temp_equipment_desired_array^motorized_equipment_idx = 120 }
+
+    set_temp_variable = { temp_light_bat_target = 0 }
+    set_temp_variable = { temp_heavy_bat_target = 14 }
+    set_temp_variable = { temp_mot_bat_target = 0 }
+    set_temp_variable = { temp_sup_bat_target = 7 }
+    set_temp_variable = { temp_mot_bat_bat_target = 0 }
+
+    add_ai_division = yes
+}
+
+
+GER_ai_add_garrison_division = {
+    # 9 inf, 1 art, 1 at, 1 aa, hq, mp
+    clear_temp_array = temp_equipment_desired_array
+    resize_temp_array = { temp_equipment_desired_array = equipment_array_size }
+    set_temp_variable = { temp_equipment_desired_array^infantry_equipment_idx = 360 }
+    set_temp_variable = { temp_equipment_desired_array^heavy_infantry_equipment_idx = 108 }
+    set_temp_variable = { temp_equipment_desired_array^artillery_equipment_idx = 12 }
+    set_temp_variable = { temp_equipment_desired_array^anti_tank_equipment_idx = 36 }
+    set_temp_variable = { temp_equipment_desired_array^anti_air_equipment_idx = 12 }
+
+    set_temp_variable = { temp_light_bat_target = 0 }
+    set_temp_variable = { temp_heavy_bat_target = 12 }
+    set_temp_variable = { temp_mot_bat_target = 0 }
+    set_temp_variable = { temp_sup_bat_target = 2 }
+    set_temp_variable = { temp_mot_bat_bat_target = 0 }
+
+    add_ai_division = yes
+}
+
+GER_ai_add_1936_mountaineer_division = {
+    # 9 mountaineers, 3 art, 1 aa, 1 at, engineer, maintenance, logi, hospital, signal, haa, hq, hart, mp, cav recon
+    clear_temp_array = temp_equipment_desired_array
+    resize_temp_array = { temp_equipment_desired_array = equipment_array_size }
+    set_temp_variable = { temp_equipment_desired_array^infantry_equipment_idx = 408 }
+    set_temp_variable = { temp_equipment_desired_array^heavy_infantry_equipment_idx = 8 }
+    set_temp_variable = { temp_equipment_desired_array^support_equipment_idx = 246 }
+    set_temp_variable = { temp_equipment_desired_array^artillery_equipment_idx = 36 }
+    set_temp_variable = { temp_equipment_desired_array^heavy_artillery_equipment_idx = 12 }
+    set_temp_variable = { temp_equipment_desired_array^anti_tank_equipment_idx = 36 }
+    set_temp_variable = { temp_equipment_desired_array^anti_air_equipment_idx = 12 }
+    set_temp_variable = { temp_equipment_desired_array^heavy_anti_air_equipment_idx = 12 }
+    set_temp_variable = { temp_equipment_desired_array^motorized_equipment_idx = 248 }
+    set_temp_variable = { temp_equipment_desired_array^pack_heavy_infantry_equipment_idx = 108 }
+
+    set_temp_variable = { temp_light_bat_target = 0 }
+    set_temp_variable = { temp_heavy_bat_target = 14 }
+    set_temp_variable = { temp_mot_bat_target = 0 }
+    set_temp_variable = { temp_sup_bat_target = 10 }
+    set_temp_variable = { temp_mot_bat_bat_target = 0 }
+
+    add_ai_division = yes
+}
+
+GER_ai_add_1938_mountaineer_division = {
+    # 9 mountaineers, 3 pack art, 1 aa, 1 at, engineer, maintenance, logi, hospital, signal, haa, hq, hart, mp, cav recon
+    clear_temp_array = temp_equipment_desired_array
+    resize_temp_array = { temp_equipment_desired_array = equipment_array_size }
+    set_temp_variable = { temp_equipment_desired_array^infantry_equipment_idx = 408 }
+    set_temp_variable = { temp_equipment_desired_array^heavy_infantry_equipment_idx = 8 }
+    set_temp_variable = { temp_equipment_desired_array^support_equipment_idx = 246 }
+    set_temp_variable = { temp_equipment_desired_array^pack_artillery_equipment_idx = 36 }
+    set_temp_variable = { temp_equipment_desired_array^heavy_artillery_equipment_idx = 12 }
+    set_temp_variable = { temp_equipment_desired_array^anti_tank_equipment_idx = 36 }
+    set_temp_variable = { temp_equipment_desired_array^anti_air_equipment_idx = 12 }
+    set_temp_variable = { temp_equipment_desired_array^heavy_anti_air_equipment_idx = 12 }
+    set_temp_variable = { temp_equipment_desired_array^motorized_equipment_idx = 248 }
+    set_temp_variable = { temp_equipment_desired_array^pack_heavy_infantry_equipment_idx = 108 }
+
+    set_temp_variable = { temp_light_bat_target = 0 }
+    set_temp_variable = { temp_heavy_bat_target = 14 }
+    set_temp_variable = { temp_mot_bat_target = 0 }
+    set_temp_variable = { temp_sup_bat_target = 10 }
+    set_temp_variable = { temp_mot_bat_bat_target = 0 }
+
+    add_ai_division = yes
+}
+
+GER_ai_add_1942_mountaineer_division = {
+    # 9 mountaineers, 3 pack art, 1 aa, 1 at, engineer, maintenance, logi, hospital, signal, haa, hq, pack hart, mp, cav recon
+    clear_temp_array = temp_equipment_desired_array
+    resize_temp_array = { temp_equipment_desired_array = equipment_array_size }
+    set_temp_variable = { temp_equipment_desired_array^infantry_equipment_idx = 408 }
+    set_temp_variable = { temp_equipment_desired_array^heavy_infantry_equipment_idx = 8 }
+    set_temp_variable = { temp_equipment_desired_array^support_equipment_idx = 246 }
+    set_temp_variable = { temp_equipment_desired_array^pack_artillery_equipment_idx = 36 }
+    set_temp_variable = { temp_equipment_desired_array^heavy_pack_artillery_equipment_idx = 12 }
+    set_temp_variable = { temp_equipment_desired_array^anti_tank_equipment_idx = 36 }
+    set_temp_variable = { temp_equipment_desired_array^anti_air_equipment_idx = 12 }
+    set_temp_variable = { temp_equipment_desired_array^heavy_anti_air_equipment_idx = 12 }
+    set_temp_variable = { temp_equipment_desired_array^motorized_equipment_idx = 248 }
+    set_temp_variable = { temp_equipment_desired_array^pack_heavy_infantry_equipment_idx = 108 }
+
+    set_temp_variable = { temp_light_bat_target = 0 }
+    set_temp_variable = { temp_heavy_bat_target = 14 }
+    set_temp_variable = { temp_mot_bat_target = 0 }
+    set_temp_variable = { temp_sup_bat_target = 10 }
+    set_temp_variable = { temp_mot_bat_bat_target = 0 }
+
+    add_ai_division = yes
+}
+
+GER_ai_add_1936_tank_division = {
+    # 5 medium, 2 motart, 6 mot, car recon, engineer, maintenance, logi, hospital, signal, haa, hq, mothart, mp
+    clear_temp_array = temp_equipment_desired_array
+    resize_temp_array = { temp_equipment_desired_array = equipment_array_size }
+    set_temp_variable = { temp_equipment_desired_array^infantry_equipment_idx = 276 }
+    set_temp_variable = { temp_equipment_desired_array^heavy_infantry_equipment_idx = 80 }
+    set_temp_variable = { temp_equipment_desired_array^support_equipment_idx = 138 }
+    set_temp_variable = { temp_equipment_desired_array^artillery_equipment_idx = 24 }
+    set_temp_variable = { temp_equipment_desired_array^heavy_artillery_equipment_idx = 12 }
+    set_temp_variable = { temp_equipment_desired_array^heavy_anti_air_equipment_idx = 12 }
+    set_temp_variable = { temp_equipment_desired_array^armoured_car_equipment_idx = 18 }
+    set_temp_variable = { temp_equipment_desired_array^motorized_equipment_idx = 629 }
+    set_temp_variable = { temp_equipment_desired_array^medium_tank_chassis_idx = 180 }
+
+    set_temp_variable = { temp_light_bat_target = 0 }
+    set_temp_variable = { temp_heavy_bat_target = 0 }
+    set_temp_variable = { temp_mot_bat_target = 13 }
+    set_temp_variable = { temp_sup_bat_target = 10 }
+    set_temp_variable = { temp_mot_bat_bat_target = 9 }
+
+    add_ai_division = yes
+}
+
+GER_ai_add_1939_tank_division = {
+    # 5 medium, 2 motart, 3 mot, 2 mech, 1 med td, car recon, engineer, maintenance, logi, hospital, signal, haa, hq, mothart, mp
+    clear_temp_array = temp_equipment_desired_array
+    resize_temp_array = { temp_equipment_desired_array = equipment_array_size }
+    set_temp_variable = { temp_equipment_desired_array^infantry_equipment_idx = 240 }
+    set_temp_variable = { temp_equipment_desired_array^heavy_infantry_equipment_idx = 68 }
+    set_temp_variable = { temp_equipment_desired_array^support_equipment_idx = 138 }
+    set_temp_variable = { temp_equipment_desired_array^artillery_equipment_idx = 24 }
+    set_temp_variable = { temp_equipment_desired_array^heavy_artillery_equipment_idx = 12 }
+    set_temp_variable = { temp_equipment_desired_array^heavy_anti_air_equipment_idx = 12 }
+    set_temp_variable = { temp_equipment_desired_array^armoured_car_equipment_idx = 18 }
+    set_temp_variable = { temp_equipment_desired_array^mechanized_equipment_idx = 144 }
+    set_temp_variable = { temp_equipment_desired_array^motorized_equipment_idx = 533 }
+    set_temp_variable = { temp_equipment_desired_array^medium_tank_chassis_idx = 180 }
+    set_temp_variable = { temp_equipment_desired_array^medium_tank_destroyer_chassis_idx = 36 }
+
+    set_temp_variable = { temp_light_bat_target = 0 }
+    set_temp_variable = { temp_heavy_bat_target = 0 }
+    set_temp_variable = { temp_mot_bat_target = 13 }
+    set_temp_variable = { temp_sup_bat_target = 10 }
+    set_temp_variable = { temp_mot_bat_bat_target = 6 }
+
+    add_ai_division = yes
+}
+
+GER_ai_add_1940_tank_division = {
+    # 5 medium, 2 med spg, 3 mot, 2 mech, 1 med td, 1 spaa, car recon, engineer, maintenance, logi, hospital, signal, haa, hq, mothart, mp, AG
+    clear_temp_array = temp_equipment_desired_array
+    resize_temp_array = { temp_equipment_desired_array = equipment_array_size }
+    set_temp_variable = { temp_equipment_desired_array^infantry_equipment_idx = 240 }
+    set_temp_variable = { temp_equipment_desired_array^heavy_infantry_equipment_idx = 68 }
+    set_temp_variable = { temp_equipment_desired_array^support_equipment_idx = 138 }
+    set_temp_variable = { temp_equipment_desired_array^heavy_artillery_equipment_idx = 12 }
+    set_temp_variable = { temp_equipment_desired_array^heavy_anti_air_equipment_idx = 12 }
+    set_temp_variable = { temp_equipment_desired_array^armoured_car_equipment_idx = 18 }
+    set_temp_variable = { temp_equipment_desired_array^mechanized_equipment_idx = 144 }
+    set_temp_variable = { temp_equipment_desired_array^motorized_equipment_idx = 551 }
+    set_temp_variable = { temp_equipment_desired_array^medium_tank_chassis_idx = 180 }
+    set_temp_variable = { temp_equipment_desired_array^medium_tank_artillery_chassis_idx = 24 }
+    set_temp_variable = { temp_equipment_desired_array^medium_tank_aa_chassis_idx = 12 }
+    set_temp_variable = { temp_equipment_desired_array^assault_artillery_chassis_idx = 18 }
+    set_temp_variable = { temp_equipment_desired_array^medium_tank_destroyer_chassis_idx = 36 }
+
+    set_temp_variable = { temp_light_bat_target = 0 }
+    set_temp_variable = { temp_heavy_bat_target = 0 }
+    set_temp_variable = { temp_mot_bat_target = 14 }
+    set_temp_variable = { temp_sup_bat_target = 11 }
+    set_temp_variable = { temp_mot_bat_bat_target = 4 }
+
+    add_ai_division = yes
+}
+
+GER_ai_add_1942_tank_division = {
+    # 5 medium, 2 med spg, 3 mot, 2 mech, 1 med td, 1 spaa, car recon, engineer, maintenance, logi, hospital, signal, haa, hq, mothart, mp, AG, heavy tank
+    clear_temp_array = temp_equipment_desired_array
+    resize_temp_array = { temp_equipment_desired_array = equipment_array_size }
+    set_temp_variable = { temp_equipment_desired_array^infantry_equipment_idx = 240 }
+    set_temp_variable = { temp_equipment_desired_array^heavy_infantry_equipment_idx = 68 }
+    set_temp_variable = { temp_equipment_desired_array^support_equipment_idx = 138 }
+    set_temp_variable = { temp_equipment_desired_array^heavy_artillery_equipment_idx = 12 }
+    set_temp_variable = { temp_equipment_desired_array^heavy_anti_air_equipment_idx = 12 }
+    set_temp_variable = { temp_equipment_desired_array^armoured_car_equipment_idx = 18 }
+    set_temp_variable = { temp_equipment_desired_array^mechanized_equipment_idx = 144 }
+    set_temp_variable = { temp_equipment_desired_array^motorized_equipment_idx = 557 }
+    set_temp_variable = { temp_equipment_desired_array^medium_tank_chassis_idx = 180 }
+    set_temp_variable = { temp_equipment_desired_array^heavy_tank_chassis_idx = 18 }
+    set_temp_variable = { temp_equipment_desired_array^medium_tank_artillery_chassis_idx = 24 }
+    set_temp_variable = { temp_equipment_desired_array^medium_tank_aa_chassis_idx = 12 }
+    set_temp_variable = { temp_equipment_desired_array^assault_artillery_chassis_idx = 18 }
+    set_temp_variable = { temp_equipment_desired_array^medium_tank_destroyer_chassis_idx = 36 }
+
+    set_temp_variable = { temp_light_bat_target = 0 }
+    set_temp_variable = { temp_heavy_bat_target = 0 }
+    set_temp_variable = { temp_mot_bat_target = 14 }
+    set_temp_variable = { temp_sup_bat_target = 12 }
+    set_temp_variable = { temp_mot_bat_bat_target = 4 }
+
+    add_ai_division = yes
+}
+
+GER_ai_add_1943_tank_division = {
+    # 5 medium, 2 med spg, 3 mot, 2 mech, 1 med td, 1 spaa, car recon, engineer, maintenance, logi, hospital, signal, haa, hq, heavy spg, mp, AG, heavy tank
+    clear_temp_array = temp_equipment_desired_array
+    resize_temp_array = { temp_equipment_desired_array = equipment_array_size }
+    set_temp_variable = { temp_equipment_desired_array^infantry_equipment_idx = 240 }
+    set_temp_variable = { temp_equipment_desired_array^heavy_infantry_equipment_idx = 68 }
+    set_temp_variable = { temp_equipment_desired_array^support_equipment_idx = 138 }
+    set_temp_variable = { temp_equipment_desired_array^heavy_anti_air_equipment_idx = 12 }
+    set_temp_variable = { temp_equipment_desired_array^armoured_car_equipment_idx = 18 }
+    set_temp_variable = { temp_equipment_desired_array^mechanized_equipment_idx = 144 }
+    set_temp_variable = { temp_equipment_desired_array^motorized_equipment_idx = 513 }
+    set_temp_variable = { temp_equipment_desired_array^medium_tank_chassis_idx = 180 }
+    set_temp_variable = { temp_equipment_desired_array^heavy_tank_chassis_idx = 18 }
+    set_temp_variable = { temp_equipment_desired_array^medium_tank_artillery_chassis_idx = 24 }
+    set_temp_variable = { temp_equipment_desired_array^heavy_tank_artillery_chassis_idx = 12 }
+    set_temp_variable = { temp_equipment_desired_array^medium_tank_aa_chassis_idx = 12 }
+    set_temp_variable = { temp_equipment_desired_array^assault_artillery_chassis_idx = 18 }
+    set_temp_variable = { temp_equipment_desired_array^medium_tank_destroyer_chassis_idx = 36 }
+
+    set_temp_variable = { temp_light_bat_target = 0 }
+    set_temp_variable = { temp_heavy_bat_target = 0 }
+    set_temp_variable = { temp_mot_bat_target = 14 }
+    set_temp_variable = { temp_sup_bat_target = 12 }
+    set_temp_variable = { temp_mot_bat_bat_target = 3 }
+
+    add_ai_division = yes
+}
+
+
+

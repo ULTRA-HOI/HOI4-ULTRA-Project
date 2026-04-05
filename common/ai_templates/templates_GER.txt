@@ -1,100 +1,3 @@
-light_armored_GER = {
-	upgrade_prio = {
-		factor = 0
-	}
-	available_for = {
-		GER
-	}
-	role = light_armor
-	front_role_override = offence
-	light_armor_1936_GER = {
-		upgrade_prio = {
-			factor = 3
-			modifier = {
-				factor = 0
-				has_tech = ger_medium_1
-				has_tech = ger_support_1
-			}
-		}
-		reinforce_prio = 2
-		custom_icon =  244
-		target_template = {
-			support = {
-				armored_car_recon = 1
-				engineer = 1
-				maintenance_company = 1
-				logistics_company = 1
-				field_hospital = 1
-				signal_company = 1
-				heavy_anti_air = 1
-				DIV_HQ = 1
-				motorized_heavy_artillery_brigade = 1
-			}
-			regiments = {
-				medium_armor = 6
-				mot_artillery_brigade = 2
-				mot_anti_tank_brigade = 1
-				mot_anti_air_brigade = 1
-				motorized = 4
-			}
-		}
-		can_upgrade_in_field = {
-			# OR here, because we want to jumpstart conversion
-			OR = {
-				has_equipment = { medium_tank_chassis > 100 }
-				has_equipment = { support_tank_chassis > 100 }
-			}
-		}
-		replace_with = light_armor_1939_GER
-	}
-	light_armor_1939_GER = {
-		upgrade_prio = {
-			factor = 3
-			modifier = {
-				factor = 0
-				NOT = {
-					has_tech = ger_medium_1
-					has_tech = ger_support_1
-				}
-			}
-		}
-		reinforce_prio = 2
-		custom_icon =  244
-		enable = {
-			has_tech = ger_medium_1
-			has_tech = ger_support_1
-		}
-		
-		can_upgrade_in_field = {
-#			has_equipment = { light_tank_chassis < 600 } # this is a stop-gap towards medium tanks, if deployed dont upgrade to medium tanks until we burn out our light tanks
-			has_equipment = { medium_tank_chassis > 100 }
-			has_equipment = { mechanized_equipment > 300 }
-		}
-		target_template = {
-			support = {
-				armored_car_recon = 1
-				engineer = 1
-				maintenance_company = 1
-				logistics_company = 1
-				field_hospital = 1
-				signal_company = 1
-				heavy_anti_air = 1
-				DIV_HQ = 1
-				motorized_heavy_artillery_brigade = 1
-			}
-			regiments = {
-				medium_armor = 5
-				support_armor = 1
-				mot_artillery_brigade = 2
-				mot_anti_tank_brigade = 1
-				mot_anti_air_brigade = 1
-				motorized = 4
-			}
-		}
-		replace_with = medium_armor_1940_GER
-	}
-}
-
 armored_GER = {
 	upgrade_prio = {
 		factor = 0
@@ -103,19 +6,83 @@ armored_GER = {
 		GER
 	}
 	role = armor
-	medium_armor_1940_GER = {
+	medium_armor_1936_GER = {
 		upgrade_prio = {
-			factor = 1
-			modifier = {
-				factor = 10
-				NOT = { has_tech = ger_medium_4 }
-			}
+			factor = 0
 		}
 		reinforce_prio = 2
-		custom_icon =  253
+		target_template = {
+			support = {
+				armored_car_recon = 1
+				engineer = 1
+				maintenance_company = 1
+				logistics_company = 1
+				field_hospital = 1
+				signal_company = 1
+				heavy_anti_air = 1
+				DIV_HQ = 1
+				motorized_heavy_artillery_brigade = 1
+				military_police = 1
+			}
+			regiments = {
+				medium_armor = 5
+				mot_artillery_brigade = 2
+				motorized = 6
+			}
+		}
+		can_upgrade_in_field = {
+			has_equipment = { mechanized_equipment > 720 }
+			has_equipment = { medium_tank_destroyer_chassis > 180 }
+		}
+		replace_with = medium_armor_1939_GER
+	}
+	medium_armor_1939_GER = {
+		upgrade_prio = {
+			factor = 1
+		}
+		reinforce_prio = 2
 		enable = {
-			has_tech = ger_medium_1
-			has_tech = ger_support_1
+			has_tech = ger_light_1_td
+			has_tech = ger_mechanized_infantry_1
+		}
+		
+		target_template = {
+			support = {
+				armored_car_recon = 1
+				engineer = 1
+				maintenance_company = 1
+				logistics_company = 1
+				field_hospital = 1
+				signal_company = 1
+				heavy_anti_air = 1
+				DIV_HQ = 1
+				motorized_heavy_artillery_brigade = 1
+				military_police = 1
+			}
+			regiments = {
+				medium_armor = 5
+				mot_artillery_brigade = 2
+				motorized = 3
+				mechanized = 2
+				medium_tank_destroyer_brigade = 1
+			}
+		}
+		can_upgrade_in_field = {
+			has_equipment = { medium_tank_aa_chassis > 60 }
+			has_equipment = { assault_artillery_chassis > 90 }
+			has_equipment = { medium_tank_artillery_chassis > 120 }
+		}
+		replace_with = medium_armor_1940_GER
+	}
+	medium_armor_1940_GER = {
+		upgrade_prio = {
+			factor = 0
+		}
+		reinforce_prio = 2
+		enable = {
+			has_tech = ger_light_1_spg
+			has_tech = ger_assault_2_spg
+			has_tech = ger_light_1_aa
 		}
 		target_template = {
 			support = {
@@ -128,34 +95,30 @@ armored_GER = {
 				heavy_anti_air = 1
 				DIV_HQ = 1
 				motorized_heavy_artillery_brigade = 1
+				military_police = 1
+				assault_gun_support = 1
 			}
 			regiments = {
-				medium_armor = 4
-				support_armor = 1
-				mot_artillery_brigade = 2
-				mot_anti_tank_brigade = 1
-				mot_anti_air_brigade = 1
-				mechanized = 1
-				motorized = 4
+				medium_armor = 5
+				medium_sp_artillery_brigade = 2
+				motorized = 3
+				mechanized = 2
+				medium_tank_destroyer_brigade = 1
+				medium_sp_anti_air_brigade = 1
 			}
 		}
 		can_upgrade_in_field = {
-			has_equipment = { medium_tank_chassis > 100 }
+			has_equipment = { heavy_tank_chassis > 90 }
 		}
 		replace_with = medium_armor_1942_GER
 	}
 	medium_armor_1942_GER = {
 		upgrade_prio = {
-			factor = 2
-			modifier = {
-				factor = 0
-				NOT = { has_tech = ger_medium_4 }
-			}
+			factor = 0
 		}
 		reinforce_prio = 2
-		custom_icon = 253
 		enable = {
-			has_tech = ger_medium_4
+			has_tech = ger_heavy_3
 		}
 		target_template = {
 			support = {
@@ -168,34 +131,31 @@ armored_GER = {
 				heavy_anti_air = 1
 				DIV_HQ = 1
 				motorized_heavy_artillery_brigade = 1
+				military_police = 1
+				assault_gun_support = 1
+				heavy_armor = 1
 			}
 			regiments = {
 				medium_armor = 5
-				mot_artillery_brigade = 2
-				mot_anti_tank_brigade = 1
-				mot_anti_air_brigade = 1
-				mechanized = 1
-				motorized = 4
+				medium_sp_artillery_brigade = 2
+				motorized = 3
+				mechanized = 2
+				medium_tank_destroyer_brigade = 1
+				medium_sp_anti_air_brigade = 1
 			}
 		}
 		can_upgrade_in_field = {
-			has_equipment = { mechanized_equipment > 100 }
+			has_equipment = { heavy_tank_artillery_chassis > 60 }
 		}
 		replace_with = medium_armor_1943_GER
 	}
 	medium_armor_1943_GER = {
 		upgrade_prio = {
-			factor = 3
-			modifier = {
-				factor = 0
-				has_equipment = { mechanized_equipment < 300 }
-			}
+			factor = 0
 		}
 		reinforce_prio = 2
-		custom_icon =  253
 		enable = {
-			has_tech = ger_medium_4
-			has_tech = ger_mechanized_infantry_1
+			has_tech = ger_medium_4_spg
 		}
 		target_template = {
 			support = {
@@ -207,56 +167,58 @@ armored_GER = {
 				signal_company = 1
 				heavy_anti_air = 1
 				DIV_HQ = 1
-				motorized_heavy_artillery_brigade = 1
+				heavy_sp_artillery_brigade = 1
+				military_police = 1
+				assault_gun_support = 1
 				heavy_armor = 1
 			}
 			regiments = {
 				medium_armor = 5
-				mot_artillery_brigade = 2
-				mot_anti_tank_brigade = 1
-				mot_anti_air_brigade = 1
+				medium_sp_artillery_brigade = 2
 				motorized = 3
 				mechanized = 2
+				medium_tank_destroyer_brigade = 1
+				medium_sp_anti_air_brigade = 1
 			}
 		}
 	}
 }
 
-motorized_GER = {
-	upgrade_prio = {
-		factor = 0
-	}
-	available_for = {
-		GER
-	}
-	role = motorized
-	front_role_override = offence
-	motorized_default_GER = {
-		upgrade_prio = {
-			factor = 2
-		}
-		target_template = {
-			support = {
-				DIV_HQ = 1
-				engineer = 1
-				mot_recon = 1
-				heavy_anti_air = 1
-				signal_company = 1
-				logistics_company = 1
-				maintenance_company = 1
-				field_hospital = 1
-				military_police = 1
-				motorized_heavy_artillery_brigade = 1
-			}
-			regiments = {
-				motorized = 9
-				mot_artillery_brigade = 3
-				mot_anti_tank_brigade = 2
-				mot_anti_air_brigade = 1
-			}
-		}
-	}
-}
+#motorized_GER = {
+#	upgrade_prio = {
+#		factor = 0
+#	}
+#	available_for = {
+#		GER
+#	}
+#	role = motorized
+#	front_role_override = offence
+#	motorized_default_GER = {
+#		upgrade_prio = {
+#			factor = 2
+#		}
+#		target_template = {
+#			support = {
+#				DIV_HQ = 1
+#				engineer = 1
+#				mot_recon = 1
+#				heavy_anti_air = 1
+#				signal_company = 1
+#				logistics_company = 1
+#				maintenance_company = 1
+#				field_hospital = 1
+#				military_police = 1
+#				motorized_heavy_artillery_brigade = 1
+#			}
+#			regiments = {
+#				motorized = 9
+#				mot_artillery_brigade = 3
+#				mot_anti_tank_brigade = 2
+#				mot_anti_air_brigade = 1
+#			}
+#		}
+#	}
+#}
 
 garrison_GER = {
 	upgrade_prio = {
@@ -271,14 +233,16 @@ garrison_GER = {
 			factor = 1
 		}
 		reinforce_prio = 0
-		custom_icon = 104
 		target_template = {
 			support = {
 				DIV_HQ = 1
 				military_police = 1
 			}
 			regiments = {
-				infantry = 6
+				heavy_infantry = 9
+				artillery_brigade = 1
+				anti_tank_brigade = 1
+				anti_air_brigade = 1
 			}
 		}
 	}
@@ -297,14 +261,13 @@ suppression_GER = {
 			factor = 1
 		}
 		reinforce_prio = 0
-		custom_icon = 172
 		target_template = {
 			support = {
 				military_police = 1
 				DIV_HQ = 1
 			}
 			regiments = {
-				cavalry = 6
+				light_cavalry = 6
 			}
 		}
 	}
@@ -325,22 +288,20 @@ infantry_GER = {
 		can_upgrade_in_field = {
 			always = no
 		}
-		custom_icon = 100
 		target_template = {
 			support = {
 				DIV_HQ = 1
-				engineer = 1
 				recon = 1
-				signal_company = 1
 				logistics_company = 1
 				maintenance_company = 1
 				field_hospital = 1
 				heavy_artillery_brigade = 1
+				military_police = 1
 			}
 			regiments = {
 				heavy_infantry = 9
 				artillery_brigade = 3
-				anti_tank_brigade = 2
+				anti_tank_brigade = 1
 				anti_air_brigade = 1
 			}
 		}
@@ -355,60 +316,102 @@ mountaineers_GER = {
 		GER
 	}
 	role = mountaineers
-	mountaineers_brigade_GER = {
+	mountaineers_1936_GER = {
 		upgrade_prio = {
-			factor = 1
+			factor = 0
 		}
 		reinforce_prio = 2
-		custom_icon = 617
 		target_template = {
 			support = {
 				DIV_HQ = 1
-				engineer = 1
 				recon = 1
-				signal_company = 1
-				field_hospital = 1
-			}
-			regiments = {
-				mountaineers = 6
-				anti_tank_brigade = 1
-				anti_air_brigade = 1
-			}
-		}
-		can_upgrade_in_field = {
-			has_equipment = { pack_heavy_infantry_equipment > 200 }
-		}
-		replace_with = mountaineers_division_GER
-	}
-	mountaineers_division_GER = {
-		upgrade_prio = {
-			factor = 1
-			modifier = {
-				factor = 2
-				has_country_flag = ger_mountain_division
-			}
-		}
-		enable = {
-			has_country_flag = ger_mountain_division
-		}
-		reinforce_prio = 2
-		custom_icon = 616
-		target_template = {
-			support = {
-				DIV_HQ = 1
-				engineer = 1
-				recon = 1
-				signal_company = 1
 				logistics_company = 1
+				maintenance_company = 1
 				field_hospital = 1
-				heavy_pack_artillery_brigade = 1
+				heavy_artillery_brigade = 1
+				military_police = 1
+				engineer = 1
+				signal_company = 1
+				heavy_anti_air = 1
+
 			}
 			regiments = {
 				mountaineers = 9
-				pack_artillery_brigade = 3
 				anti_tank_brigade = 1
 				anti_air_brigade = 1
+				artillery_brigade = 3
 			}
+		}
+		can_upgrade_in_field = {
+			has_equipment = { pack_artillery_equipment > 40 }
+		}
+		replace_with = mountaineers_1938_GER
+	}
+	mountaineers_1938_GER = {
+		upgrade_prio = {
+			factor = 0
+		}
+		enable = {
+			has_tech = ger_pack_artillery_1
+		}
+		reinforce_prio = 2
+		target_template = {
+			support = {
+				DIV_HQ = 1
+				recon = 1
+				logistics_company = 1
+				maintenance_company = 1
+				field_hospital = 1
+				heavy_artillery_brigade = 1
+				military_police = 1
+				engineer = 1
+				signal_company = 1
+				heavy_anti_air = 1
+
+			}
+			regiments = {
+				mountaineers = 9
+				anti_tank_brigade = 1
+				anti_air_brigade = 1
+				pack_artillery_brigade = 3
+			}
+		}
+		can_upgrade_in_field = {
+			has_equipment = { heavy_pack_artillery_equipment > 30 }
+		}
+		replace_with = mountaineers_1942_GER
+	}
+	mountaineers_1942_GER = {
+		upgrade_prio = {
+			factor = 0
+		}
+		enable = {
+			has_tech = ger_heavy_pack_artillery_1
+		}
+		reinforce_prio = 2
+		target_template = {
+			support = {
+				DIV_HQ = 1
+				recon = 1
+				logistics_company = 1
+				maintenance_company = 1
+				field_hospital = 1
+				heavy_pack_artillery_brigade = 1
+				military_police = 1
+				engineer = 1
+				signal_company = 1
+				heavy_anti_air = 1
+
+			}
+			regiments = {
+				mountaineers = 9
+				anti_tank_brigade = 1
+				anti_air_brigade = 1
+				pack_artillery_brigade = 3
+			}
+		}
+		can_upgrade_in_field = {
+			always = no
 		}
 	}
 }

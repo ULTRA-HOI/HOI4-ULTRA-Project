@@ -2168,7 +2168,7 @@ foreign_politics = {
 			IF = {
 				limit = {
 					is_ai = yes
-					#SOV = {is_ai = yes}
+					SOV = {is_ai = no }
 					has_war_with = SOV
 				}
 				complete_national_focus = GER_total_mobilisation
@@ -4456,13 +4456,16 @@ GER_military_buildup = {
 
 		fire_only_once = yes
 		ai_will_do = {
-			factor = 100
+			factor = 10000
 		}
 
 		
 		custom_cost_trigger = { #Cost triggers are also needed in event germany.1015 so if changed here, change them there as well
 			has_political_power > 19
-			has_army_experience > 99
+			if = {
+				limit = { is_ai = no }
+				has_army_experience > 99
+			}
 		}
 		custom_cost_text = decision_cost_pp_20_ArmXP_100
 

@@ -1145,10 +1145,13 @@ GER_ITA_close_up_maginot_line_after_FRA_falls = {
 	enable = {
 		date < 1941.3.3
 		has_war_with = FRA
-		FRA = {
-			has_capitulated = yes
-			days_since_capitulated > 7			# let's give a week before things settle
-			days_since_capitulated < 90
+		OR = {
+			FRA = {
+				has_capitulated = yes
+				days_since_capitulated > 7			# let's give a week before things settle
+				days_since_capitulated < 90
+			}
+			has_full_control_of_state = 17			# or if we encirlce the maginot during the war we should kill it
 		}
 		NOT = {
 			has_full_control_of_state = 28
@@ -1252,6 +1255,7 @@ GER_enable_invasion_of_NOR_again = {
 	enable = {
 		# try to invade NOR if things are looking not so bad
 		AND = {
+			date < 1941.3.1 # give up by now
 			date > 1940.6.1
 			has_completed_focus = GER_weserubung
 			FRA = {
@@ -1326,15 +1330,6 @@ GER_force_concentration_through_maginot_hurts_too_much = {
 		date < 1941.1.1  # Deactivate after some time
 		28 = { # Alsace-Lorraine
 			NOT = { is_controlled_by = GER }
-
-			any_province_building_level = {  # Only if Maginot is actually fortified
-				province = {
-					all_provinces = yes
-					limit_to_border = yes
-				}
-				building = bunker
-				level > 5
-			}
 		}
 	}
 	abort_when_not_enabled = yes
@@ -1343,12 +1338,12 @@ GER_force_concentration_through_maginot_hurts_too_much = {
 		type = force_concentration_front_factor
 		state = 28  # Alsace-Lorraine
 		ratio = 0.50     # Only if > 50 % of the front consists of Alsace-Lorraine. This should make it deactivate if the frontline extends around the maginot
-		value = -90
+		value = -300
 	}
 	ai_strategy = {
 		type = force_concentration_target_weight
 		state = 28 # Alsace-Lorraine
-		value = -90 # -90 % / Don't even consider targets here. Infantry and Artillery are better at dealing with the Maginot than tank formations are
+		value = -300 # -90 % / Don't even consider targets here. Infantry and Artillery are better at dealing with the Maginot than tank formations are
 	}
 	ai_strategy = {
 		type = force_concentration_target_weight
@@ -1359,6 +1354,14 @@ GER_force_concentration_through_maginot_hurts_too_much = {
 		type = force_concentration_target_weight
 		state = 17 # Franche Comte
 		value = -50 # -50 % / Let's try to avoid the areas behind the Maginot. It is risky, as we might end up trying to go through it anyways then
+	}
+	ai_strategy = {
+		type = front_control
+		state = 28
+		ordertype = front
+		execution_type = careful
+		execute_order = no
+		manual_attack = no
 	}
 }
 
@@ -1385,11 +1388,7 @@ GER_around_the_maginot = {
 			BEL = {
 				has_capitulated = no
 			}
-			LUX = {
-				has_capitulated = no
-			}
 		}
-		# lux somehow joined the fun
 		# we are ready to declare war on low countries
 		OR = {
 			focus_progress = {
@@ -1409,9 +1408,6 @@ GER_around_the_maginot = {
 				is_in_array = {
 					potential_and_current_enemies = BEL
 				}
-				is_in_array = {
-					potential_and_current_enemies = LUX
-				}
 			}
 		}
 		is_in_array = {
@@ -1419,23 +1415,22 @@ GER_around_the_maginot = {
 		}
 	}
 	abort_when_not_enabled = yes
-	ai_strategy = { type = front_armor_score id = FRA value =  -100 }
-	ai_strategy = { type = front_armor_score id = HOL value =   -50 }
+	ai_strategy = { type = front_armor_score id = FRA value =  -300 }
+	ai_strategy = { type = front_armor_score id = HOL value =   200 }
 	ai_strategy = { type = front_armor_score id = BEL value =   300 }
-	ai_strategy = { type = front_armor_score id = LUX value = 10000 }
+	#ai_strategy = { type = front_armor_score id = LUX value = 10000 }
 
 	ai_strategy = {
 		type = force_concentration_front_factor
 		tag = HOL
 		tag = BEL
-		tag = LUX
-		value =  150
+		value =  300
 	}
 
 	ai_strategy = { type = front_unit_request tag = FRA value =    -50 }
-	ai_strategy = { type = front_unit_request tag = HOL value =    100 }
-	ai_strategy = { type = front_unit_request tag = BEL value =    300 }
-	ai_strategy = { type = front_unit_request tag = LUX value =  10000 }
+	ai_strategy = { type = front_unit_request tag = HOL value =    200 }
+	ai_strategy = { type = front_unit_request tag = BEL value =    400 }
+	#ai_strategy = { type = front_unit_request tag = LUX value =  10000 }
 
 	ai_strategy = { type = front_armor_score id = SOV value = -100 }
 	ai_strategy = { type = front_armor_score id = YUG value = -100 }
@@ -1465,6 +1460,28 @@ GER_around_the_maginot = {
 		execute_order = no
 		manual_attack = no
 	}
+
+	#ai_strategy = {
+	#	type = front_control
+	#	country_trigger = {
+	#		original_tag = BEL
+	#	}
+	#	ordertype = front
+	#	execution_type = rush
+	#	execute_order = yes
+	#	manual_attack = yes
+	#}
+#
+	#ai_strategy = {
+	#	type = front_control
+	#	country_trigger = {
+	#		original_tag = HOL
+	#	}
+	#	ordertype = front
+	#	execution_type = rush
+	#	execute_order = yes
+	#	manual_attack = yes
+	#}
 	
 	ai_strategy = { type = force_concentration_factor value = 30 }
 }
@@ -1485,11 +1502,11 @@ GER_fall_rot = {
 		# all low countries fell
 		HOL = { has_capitulated = yes }
 		BEL = { has_capitulated = yes }
-		LUX = { has_capitulated = yes }
+		#LUX = { has_capitulated = yes }
 		NOT = { has_global_flag = fall_of_france}
 	}
 	abort_when_not_enabled = yes
-	ai_strategy = { type = front_armor_score id = FRA value =  150 }
+	ai_strategy = { type = front_armor_score id = FRA value =  500 }
 
 	ai_strategy = {
 		type = force_concentration_front_factor
@@ -1524,6 +1541,7 @@ GER_fall_rot = {
 		execution_type = careful
 		execute_order = no
 		manual_attack = no
+		ratio = 0.8
 	}
 	
 	ai_strategy = {
@@ -1537,7 +1555,8 @@ GER_fall_rot = {
 		ordertype = front
 		execution_type = rush_weak
 		execute_order = yes
-		manual_attack = no
+		manual_attack = yes
+		ratio = 0.5
 	}
 	
 	ai_strategy = { type = force_concentration_factor value = 30 }
@@ -1548,7 +1567,10 @@ GER_dont_try_to_rush_LUX_and_die_on_maginot = {
 		original_tag = GER
 	}
 	enable = {
-		NOT = { has_war_with = LUX }
+		OR = {
+			NOT = { has_war_with = LUX }
+			has_global_flag = fall_of_france
+		}
 	}
 	abort_when_not_enabled = yes
 	ai_strategy = {
@@ -2515,13 +2537,18 @@ GER_blitz_pol = {
 	}
 	ai_strategy = {
 		type = front_unit_request
-		id = GRE
+		id = POL
 		value = 200
 	}
 	ai_strategy = {
 		type = front_armor_score
-		id = "POL"
-		value = 250
+		id = POL
+		value = 1000
+	}
+	ai_strategy = {
+		type = force_concentration_front_factor
+		tag = POL
+		value =  500
 	}
 	ai_strategy = {
 		type = front_control
@@ -2535,38 +2562,38 @@ GER_blitz_pol = {
 	}
 }
 
-GER_blitz_fra = {
-	allowed = {
-		original_tag = GER
-	}
-	enable = {
-		has_war_with = FRA
-		BEL = {
-			has_capitulated = yes
-		}
-		#controls_state = 16		#Paris
-	}
-	abort = {
-		FRA = {
-			has_capitulated = yes
-		}
-	}
-	ai_strategy = {
-		type = front_armor_score
-		id = "FRA"
-		value = 500
-	}
-	ai_strategy = {
-		type = front_control
-		country_trigger = {
-			original_tag = FRA
-		}
-		ordertype = front
-		execution_type = rush
-		execute_order = yes
-		manual_attack = yes
-	}
-}
+#GER_blitz_fra = {
+#	allowed = {
+#		original_tag = GER
+#	}
+#	enable = {
+#		has_war_with = FRA
+#		BEL = {
+#			has_capitulated = yes
+#		}
+#		#controls_state = 16		#Paris
+#	}
+#	abort = {
+#		FRA = {
+#			has_capitulated = yes
+#		}
+#	}
+#	ai_strategy = {
+#		type = front_armor_score
+#		id = "FRA"
+#		value = 500
+#	}
+#	ai_strategy = {
+#		type = front_control
+#		country_trigger = {
+#			original_tag = FRA
+#		}
+#		ordertype = front
+#		execution_type = rush
+#		execute_order = yes
+#		manual_attack = yes
+#	}
+#}
 
 GER_blitz_den = {
 	allowed = {
@@ -2798,6 +2825,10 @@ GER_ignore_vichy = {
 	}
 	enable = {
 		country_exists = VIC
+		NOT = {
+			has_war_with = VIC
+			has_country_flag = case_anton
+		}
 	}
 	abort_when_not_enabled = yes
 
@@ -2805,6 +2836,13 @@ GER_ignore_vichy = {
 		type = ignore
 		id = VIC
 		value = 100
+	}
+	ai_strategy = { 
+		type = front_unit_request 
+		country_trigger = {
+			tag = VIC
+		}
+		value = -100
 	}
 }
 
@@ -3052,6 +3090,7 @@ GER_dont_help_ITA_greece = {
 		execution_type = careful
 		execute_order = no
 		manual_attack = no
+		ratio = 0.7
 	}
 }
 
@@ -3416,9 +3455,9 @@ GER_bomb_benelux = {
 					has_capitulated = no
 				}
 			}
-			NOT = {
-				controls_state = 29 #Lille
-			}
+			#NOT = {
+			#	controls_state = 29 #Lille
+			#}
 		}
 	}
 	abort_when_not_enabled = yes

@@ -1,152 +1,128 @@
-GER_PROD_supply_buffer_base = {
+GER_unit_production_base = {
 	allowed = {
 		original_tag = GER
 	}
 	enable = {
 		always = yes
 	}
-	abort_when_not_enabled = yes
 	ai_strategy = {
-		type = min_wanted_supply_trucks
-		value = 3000
-	}
-	ai_strategy = {
-		type = min_wanted_supply_trains
-		value = 400
-	}
-}
-
-GER_PROD_supply_buffer_war = {
-	allowed = {
-		original_tag = GER
-	}
-	enable = {
-		has_war = yes
-	}
-	abort_when_not_enabled = yes
-	ai_strategy = {
-		type = wanted_supply_trains
-		value = 10
-	}
-	ai_strategy = {
-		type = wanted_supply_trains
-		value = 10
-	}
-}
-
-GER_PROD_unit_limits_base = {
-	allowed = {
-		original_tag = GER
-	}
-	enable = {
-		always = yes
-	}
-	abort_when_not_enabled = yes
-	ai_strategy = {
-		type = role_ratio
+		type = build_army
 		id = infantry
-		value = 85
+		value = 100
 	}
 	ai_strategy = {
-		type = role_ratio
+		type = build_army
 		id = garrison
 		value = 10
 	}
 	ai_strategy = {
-		type = role_ratio
-		id = motorized
-		value = 2
-	}
-	ai_strategy = {
-		type = force_build_armies
-		value = 500
-	}
-}
-
-GER_PROD_unit_limits_mountaineers_anschluss = {
-	allowed = {
-		original_tag = GER
-	}
-	enable = {
-		owns_state = 4
-	}
-	abort_when_not_enabled = yes
-	ai_strategy = {
-		type = role_ratio
+		type = build_army
 		id = mountaineers
 		value = 3
 	}
-}
-
-GER_PROD_unit_limits_peace = {
-	allowed = {
-		original_tag = GER
-	}
-	enable = {
-		has_war = no
-	}
 	ai_strategy = {
-		type = ai_wanted_divisions_factor
-		value = -20
-	}
-	ai_strategy = {
-		type = role_ratio
+		type = build_army
 		id = armor
-		value = 2
+		value = 15
 	}
 	ai_strategy = {
 		type = role_ratio
-		id = light_armor
-		value = 8
+		id = suppression
+		value = -1
 	}
-
 	ai_strategy = {
-		type = equipment_stockpile_surplus_ratio
-		value = -20		# reduce while we build up in case of CZE or Austria issues
+		type = force_build_armies
+		value = 300
 	}
 	abort_when_not_enabled = yes
 }
 
-GER_PROD_unit_limits_war = {
-	allowed = {
-		original_tag = GER
+GER_unit_production_more_mountaineers = {
+	allowed = { original_tag = GER }
+	enable = { has_country_flag = GER_more_mountaineers }
+
+	ai_strategy = {
+		type = build_army
+		id = mountaineers
+		value = 4
 	}
-	enable = {
-		NOT = { has_war_with = SOV }
-		has_war = yes
+	abort_when_not_enabled = yes
+}
+
+GER_unit_production_more_tanks = {
+	allowed = { original_tag = GER }
+	enable = { has_country_flag = GER_more_tanks }
+
+	ai_strategy = {
+		type = build_army
+		id = armor
+		value = 10
 	}
-	abort = {
+	abort_when_not_enabled = yes
+}
+
+GER_unit_production_hold_off_on_tanks = {
+	allowed = { original_tag = GER }
+	enable = { date < "1938.6.1" }
+
+	ai_strategy = {
+		type = build_army
+		id = armor
+		value = -10
+	}
+	abort_when_not_enabled = yes
+}
+
+GER_unit_production_post_france_expansion = {
+	allowed = { original_tag = GER }
+	enable = { 
 		OR = {
-			has_war_with = SOV
 			has_global_flag = fall_of_france
+			has_completed_focus = GER_total_war
 		}
 	}
-	ai_strategy = {
-		type = role_ratio
-		id = armor
-		value = 8
-	}
-}
 
-GER_PROD_unit_limits_barbarossa_buildup_after_france = {
-	allowed = {
-		original_tag = GER
+	ai_strategy = {
+		type = build_army
+		id = infantry
+		value = 60
 	}
-	enable = {
-		has_global_flag = fall_of_france
+	ai_strategy = {
+		type = build_army
+		id = garrison
+		value = 15
+	}
+	ai_strategy = {
+		type = build_army
+		id = armor
+		value = 7
 	}
 	abort_when_not_enabled = yes
+}
+
+GER_unit_production_total_mob = {
+	allowed = { original_tag = GER }
+	enable = { has_completed_focus = GER_total_war }
+
 	ai_strategy = {
-		type = role_ratio
+		type = build_army
+		id = infantry
+		value = 60
+	}
+	ai_strategy = {
+		type = build_army
+		id = garrison
+		value = 50
+	}
+	ai_strategy = {
+		type = build_army
 		id = armor
 		value = 8
 	}
-	ai_strategy = {
-		type = role_ratio
-		id = mountaineers
-		value = -2
-	}
+	abort_when_not_enabled = yes
 }
+
+# All equipment production strategies only affect resource usage as Ai can't produce anything
 
 GER_PROD_surplus_management = {
 	# If we manage to get all equipment we want, keep producing more stuff according to this
@@ -235,7 +211,7 @@ GER_PROD_build_bombers = {
 	ai_strategy = {
 		type = unit_ratio
 		id = cas
-		value = 5
+		value = 3
 	}
 }
 
@@ -353,7 +329,7 @@ GER_PROD_dont_build_panzer_1 = {
 	
 	ai_strategy = {
 		type = equipment_variant_production_factor
-		id = light_tank_chassis
+		id = medium_tank_chassis
 		value = -95
 	}
 }
@@ -380,7 +356,6 @@ GER_PROD_build_trucks_and_support = {
 		value = 5
 	}
 }
-
 GER_PROD_build_medium_tanks = {
 	
 	allowed = {
@@ -388,7 +363,7 @@ GER_PROD_build_medium_tanks = {
 	}
 	enable = {
 		original_tag = GER
-		has_tech = ger_medium_1
+		has_tech = ger_light_1
 	}
 	abort_when_not_enabled = yes
 	
@@ -398,7 +373,6 @@ GER_PROD_build_medium_tanks = {
 		value = 20
 	}
 }
-
 GER_PROD_build_support_tanks = {
 	
 	allowed = {
@@ -416,54 +390,6 @@ GER_PROD_build_support_tanks = {
 		type = equipment_variant_production_factor
 		id = support_tank_chassis
 		value = 20
-	}
-}
-
-GER_PROD_go_crazy_on_p38t = {
-	allowed = {
-		original_tag = GER
-	}
-	enable = {
-		has_tech = ger_light_3
-		NOT = {
-			has_tech = ger_medium_1
-			has_tech = ger_support_1
-		}
-	}
-	abort_when_not_enabled = yes
-	ai_strategy = {
-		type = equipment_variant_production_factor
-		id = light_tank_chassis
-		value = 60
-	}
-	ai_strategy = {
-		type = equipment_production_surplus_management
-		id = light_tank_chassis
-		value = 30
-	}
-}
-
-GER_PROD_halt_light_armor_production_when_surplus = {
-	allowed = {
-		original_tag = GER
-	}
-	enable = {
-		has_equipment = { light_tank_chassis > 600 }
-		OR = {
-			has_tech = ger_medium_1
-			has_tech = ger_support_1
-		}
-	}
-	abort_when_not_enabled = yes
-	ai_strategy = {
-		type = equipment_variant_production_factor
-		id = light_tank_chassis
-		value = -100
-	}
-	ai_strategy = {
-		type = equipment_production_surplus_management
-		id = light_tank_chassis
-		value = -2
 	}
 }
 
