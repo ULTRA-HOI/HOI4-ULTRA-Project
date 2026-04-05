@@ -565,10 +565,11 @@ focus_tree = {
 			
 			add_ideas = tot_economic_mobilisation #temporary measure before we separate economic mobilisation to working hours
 			hidden_effect = {
-				swap_ideas = {
-					remove_idea = GER_small_business_2
-					add_idea = GER_small_upgraded
+				remove_ideas = { 
+					GER_small_business_2
+					GER_small_business
 				}
+				add_ideas = GER_small_upgraded
 			}
 			custom_effect_tooltip = GER_tot_mob_1_tt
 			
@@ -981,10 +982,16 @@ focus_tree = {
 			#	category = land_doctrine
 			#}
 			add_tech_bonus = {
-				name = armor_bonus
+				name = GER_army_innovation
 				bonus = 1.0
-				uses = 2
+				uses = 1
 				category = motorized_equipment
+			}
+			add_tech_bonus = {
+				name = GER_army_innovation
+				bonus = 1.0
+				uses = 1
+				category = cat_mechanized_equipment
 			}
 			add_tech_bonus = {
 				bonus = 2.5
@@ -6813,9 +6820,12 @@ focus_tree = {
 				add_idea = triumphant_will
 			}
 			hidden_effect = {
-				swap_ideas = {
-					remove_idea = GER_small_business
-					add_idea = GER_small_business_2
+				if = {
+					limit = { has_idea = GER_small_business }
+					swap_ideas = {
+						remove_idea = GER_small_business
+						add_idea = GER_small_business_2
+					}
 				}
 			}
 			custom_effect_tooltip = GER_tot_mob_0_tt
