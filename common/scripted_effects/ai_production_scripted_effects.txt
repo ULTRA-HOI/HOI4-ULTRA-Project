@@ -1,13 +1,14 @@
 init_ai_production = {
 	set_variable = { equipment_array_size = 34 }
-	resize_array = { equipment_desired_array = equipment_array_size }
-	resize_array = { equipment_ic_array = equipment_array_size }
+	resize_array = { equipment_desired_array = equipment_array_size }		# set elsewhere ([tag]_ai_production_scripted_effects.txt and events/[tag]_templates.txt), for air equipment instead stores % of total production for the plane type
+	resize_array = { equipment_ic_array = equipment_array_size }			# set in complete effects on technologies
 	resize_array = { equipment_ic_desired_array = equipment_array_size }
 	resize_array = { equipment_rollover_array = equipment_array_size }
-	resize_array = { target_ratio_array  = equipment_array_size }
+	resize_array = { target_ratio_array = equipment_array_size }
 
 	reset_equipment_array = yes
 
+	# has to be in format [equipment_name]_idx or it wont work, must be same total number as equipment_array_size
 	set_variable = { infantry_equipment_idx = 0 }
 	set_variable = { heavy_infantry_equipment_idx = 1 }
 	set_variable = { support_equipment_idx = 2 }
@@ -39,7 +40,7 @@ init_ai_production = {
 	set_variable = { super_heavy_tank_destroyer_chassis_idx = 28 }
 	set_variable = { pack_heavy_infantry_equipment_idx = 29 }
 	set_variable = { train_equipment_idx = 30 }
-	set_variable = { fighter_equipment_idx = 31 }
+	set_variable = { fighter_equipment_idx = 31 }		# all air equipment has to go after this point, all land equipment before
 	set_variable = { tac_bomber_equipment_idx = 32 }
 	set_variable = { cas_equipment_idx = 33 }
 
@@ -59,12 +60,10 @@ reset_equipment_array = {
 	set_variable = { mot_bat_bat_target = 0 }
 }
 
-
-
-
+# temp_equipment_desired_array and div_count must be preset
 add_ai_division = {
 	for_loop_effect = {
-		end = fighter_equipment_idx
+		end = fighter_equipment_idx		# only need to consider the land equipment
 		value = equip_idx
 
 		multiply_temp_variable = { temp_equipment_desired_array^equip_idx = div_count }
@@ -128,7 +127,7 @@ update_equipment_ic_desired_array = {
 
 ai_production_calc = {
 	for_loop_effect  = {
-		end = fighter_equipment_idx
+		end = fighter_equipment_idx			# only consider the land equipment, air production is done seperately
 		value = equip_idx
 		if = { 
 			limit = { check_variable = { equipment_ic_desired_array^equip_idx > 0 } }
@@ -156,7 +155,7 @@ ai_production_calc = {
 	set_temp_variable = { total_ic = num_of_military_factories }
 	set_temp_variable = { efficiency_cap = 0.65 }
 	add_to_temp_variable = { efficiency_cap = modifier@production_factory_max_efficiency_factor }
-	set_temp_variable = { factory_output = 5 }
+	set_temp_variable = { factory_output = 5 }  # AI gets -400% factory output so their actual factories do nothing, so need to cancel this out
 	add_to_temp_variable = { factory_output = modifier@industrial_capacity_factory }
 	multiply_temp_variable = { total_ic = efficiency_cap }
 	multiply_temp_variable = { total_ic = factory_output }
@@ -231,9 +230,8 @@ ai_production_calc = {
 				index = array_idx_1 
 			}
 		}
-
 	}
-	# distribute ic to all categories evenly once all categories have the same target ratio 
+	# distribute ic to all categories evenly once all categories have the same target ratio (aka array 1 is empty)
 	if = {
 		limit = {
 			check_variable = { total_ic > 1 }
@@ -242,6 +240,8 @@ ai_production_calc = {
 	}
 }
 
+# take every equipment archetype in array 2 and add enough equipment so they match the lowest target ratio in array 1
+# or if array 1 is empty just add equipment in the right ratio to everything in array 2
 allocate_production = {
 	set_temp_variable = { ic_needed_this_step = 0 }
 	for_each_loop = {
@@ -256,13 +256,13 @@ allocate_production = {
 	if = { 
 		limit = { check_variable = { temp_id_array_1^num > 0 } }
 		set_temp_variable = { target_ratio_diff = lowest_target_ratio }
+		subtract_from_temp_variable = { target_ratio_diff = temp_target_ratio_array_2^last_idx_2 }
 	}
 	# if all target ratios are the same just allocate as much ic as possible
 	else = {
 		set_temp_variable = { target_ratio_diff = 300 }
 	}
 	
-	subtract_from_temp_variable = { target_ratio_diff = temp_target_ratio_array_2^last_idx_2 }
 	multiply_temp_variable = { ic_needed_this_step = target_ratio_diff }
 
 	set_temp_variable = { ic_fraction_allocated = total_ic }
@@ -298,7 +298,7 @@ ai_air_production = {
 			limit = { check_variable = { equipment_desired_array^equip_idx > 0 } }
 
 			set_temp_variable = { equipment_ic_to_add = total_ic }
-			multiply_temp_variable = { equipment_ic_to_add = equipment_desired_array^equip_idx }
+			multiply_temp_variable = { equipment_ic_to_add = equipment_desired_array^equip_idx } # for air this array stores % of total production on this plane
 			add_to_temp_variable = { air_ic_total = equipment_ic_to_add }
 
 			ai_spawn_equipment = yes
@@ -322,13 +322,12 @@ ai_spawn_equipment = {
 				type = [EQUIP_TYPE]
 				amount = equipment_to_add
 			}
-			add_to_variable = { total_[EQUIP_TYPE] = equipment_to_add }
 
 			# does nothing, log variable
+			add_to_variable = { total_[EQUIP_TYPE] = equipment_to_add }
 			multiply_temp_variable = { equipment_to_add = equipment_ic_array^equip_idx }
 			add_to_variable = { total_ic_[EQUIP_TYPE] = equipment_to_add }
 		}
 		EQUIP_TYPE = "[get_equipment_archetype_ai]"
 	}
 }
-
