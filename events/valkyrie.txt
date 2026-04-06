@@ -223,6 +223,9 @@ country_event = {
 	
 	option = {
 		name = valkyrie.8.option.a # "There are too many guards."
+		ai_chance = {
+			base = 100
+		}
 		country_event = {
 			id = valkyrie.9
 			days = 1
@@ -231,6 +234,9 @@ country_event = {
 	
 	option = {
 		name = valkyrie.8.option.b # "Open fire!"
+		ai_chance = {
+			base = 0
+		}
 		complete_national_focus = GER_operation_valkyrie
 	}
 }
@@ -270,6 +276,9 @@ country_event = {
 	
 	option = {
 		name = valkyrie.9.option.a # "Himmler didn't join him."
+		ai_chance = {
+			base = 100
+		}
 		country_event = {
 			id = valkyrie.10
 			days = 1
@@ -278,6 +287,9 @@ country_event = {
 	
 	option = {
 		name = valkyrie.9.option.b # "Shoot Hitler regardless."
+		ai_chance = {
+			base = 0
+		}
 		complete_national_focus = GER_operation_valkyrie
 	}
 }
@@ -317,8 +329,12 @@ country_event = {
 	
 	option = {
 		name = valkyrie.10.option.a # "The bomb trigger froze."
+		ai_chance = {
+			base = 100
+		}
 		if = {
 			limit = { has_country_flag = valkyrie_all_events }
+
 			country_event = {
 				id = valkyrie.11
 				days = 7
@@ -334,6 +350,9 @@ country_event = {
 	
 	option = {
 		name = valkyrie.10.option.b # "Report Soviet fighters in the air!"
+		ai_chance = {
+			base = 0
+		}
 		complete_national_focus = GER_operation_valkyrie
 	}
 }
@@ -480,6 +499,9 @@ country_event = {
 	
 	option = {
 		name = valkyrie.16.option.a # "Himmler isn't there."
+		ai_chance = {
+			base = 100
+		}
 		country_event = {
 			id = valkyrie.17
 			days = 4
@@ -509,6 +531,9 @@ country_event = {
 	
 	option = {
 		name = valkyrie.17.option.a # "Himmler isn't there...again!"
+		ai_chance = {
+			base = 100
+		}
 		country_event = {
 			id = valkyrie.18
 			days = 5
@@ -553,6 +578,17 @@ country_event = {
 	
 	option = {
 		name = valkyrie.100.option.a # "The Führer survives!"
+		ai_chance = {
+			base = 98
+			modifier = { 
+				FRA = { controls_state = 16 }
+				add = -89
+			}
+			modifier = {
+				SOV = { exists = yes}
+				add = -9	
+			}
+		}
 		if = {
 				limit = {
 					has_country_leader_with_trait = GER_der_fuhrer_fuhrerprinzip_wehrmacht
@@ -601,6 +637,9 @@ country_event = {
 	}
 	option = {
 		name = valkyrie.100.option.b # "The Führer is dead! Göring takes over!"
+		ai_chance = {
+			base = 1
+		}
 		retire_country_leader = yes
 		promote_character = { 
 			character = GER_hermann_goring
@@ -640,6 +679,17 @@ country_event = {
 	
 	option = {
 		name = valkyrie.100.option.c # "Hitler is dead, Valkyrie succeeds!"
+		ai_chance = {
+			base = 1
+			modifier = { 
+				FRA = { controls_state = 16 }
+				add = 89
+			}
+			modifier = {
+				SOV = { exists = yes}
+				add = 9	
+			}
+		}
 		promote_character = { 
 			character = GER_ludwig_beck
 			ideology = centrism
@@ -744,7 +794,7 @@ country_event = {
 	}
 }
 
-# Valykyrie Aftermath Event: Beck or Rommel take over
+# Valkyrie Aftermath Event: Beck or Rommel take over
 country_event = {
 	id = valkyrie.101
 	title = valkyrie.101.title
@@ -755,11 +805,17 @@ country_event = {
 	
 	option = {
 		name = valkyrie.101.option.a # "Keep Ludwig Beck as leader."
+		ai_chance = {
+			base = 90
+		}
 		add_war_support = 0.1
 		add_political_power = 100
 	}
 
 	option = {
+		ai_chance = {
+			base = 10
+		}
 		name = valkyrie.101.option.b # "Erwin Rommel takes over."
 		promote_character = { 
 			character = GER_erwin_rommel
