@@ -1,5 +1,5 @@
 name="Ultra Historical Mod"
-version="0.18.1"
+version="0.19"
 tags={
 	"Map"
 	"Historical"
