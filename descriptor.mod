@@ -1,4 +1,4 @@
-name="Ultra Historical Mod"
+name="Ultra Historical Mod - Realism Overhaul"
 version="0.19.0"
 tags={
 	"Map"
