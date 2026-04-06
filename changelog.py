@@ -36,7 +36,7 @@ commits = result.stdout.strip().split('---')
 commits_by_marker = defaultdict(list)
 
 # Regex to find the marker in the commit title
-marker_regex = re.compile(r"\[([a-zA-Z0-9_]+)\]")
+marker_regex = re.compile(r"\[([a-zA-Z0-9_ ]+)\]")
 
 # Process each commit
 for commit in commits:
