@@ -1,5 +1,273 @@
 # Changelog
 
+# 0.19.0
+## Highlight
+- 1.17.5 Compatability
+- Stat Rework
+    - Completely new equipment stats for all land equipment
+    - Reworked battalion types and division designer
+    - Rebalanced Combat
+- Unique historical artillery tech trees for all nations
+- Field guns added using new commander abilities
+- Naval gun and armour rework
+    - Completely reworked naval gun tech tree
+    - Completely reworked module stats for armour and guns
+    - Reworked piercing/armour defines, to increase granularity and introduce overpiercing
+## AI 
+- German AI Overhaul
+	- Completely scripted equipment production, using a far more optimal build
+	- Improved AI division management in Battle of France
+- Soviets now must lose Sverdlovsk for AI to do bitter peace
+- Readded AI half cost trucks
+- Improved automatic mill/refinery management
+- UK builds less civs and no steel/alu mills
+- Soviets no longer build civs
+## Balance 
+- Decreased max capital ship dockyards to 9
+- USA can no longer enter the war early
+- Significantly reduced submarine HP
+	- Base submarine hull HP slashed by about 70%, with all modifiers should still be strong enough to survive single hits.
+- Halfed submarine AA values
+- Reduced Weather attrition
+	- Cut Mud attrition in half
+	- Cut Snow attrition by 1/3
+- Air Fields can now be built in allied territory
+	- Air bases remain locked
+- Added railway over Messina strait
+- Increased Perth port level
+- Decreased combat casulties
+- Decreased AA damage
+- Added Tora Tora Tora buff to Japan
+- New roads added
+	- Roads in Burma, Finland, Australia, Syria
+- Removed building of supply hubs
+- removed regimental AA
+- North African supply rework
+	- Changed distribution of initial supply hubs
+	- Added a few more provinces to better control hub range
+- Increased all railway levels by 2, first 2 now represent roads
+- Naval Armament and Armour Rework
+	- Reworked and rebalanced naval piercing, attack and armour across the board
+	- New folder created for naval guns
+- Increased CP gain by 20%
+- Improved Marsh Supply Flow
+- Added Soviet-exclusive version of Skilled Staffer
+	- Now Soviets max out at 18 divisions per General
+- Slightly nerfed skilled staffer. Buffed Soviet Army Leadersy
+- Logistics motorisation max supply bonus nerfed -40% -> -25%
+- Motorised variant battalions now require 15% more supply
+	- Also doubled the supply consumption of assault gun battalions compared to assault gun support
+- Reduced Strength Damage
+- Updated Archaic to not make it completely useless
+	- It still sucks
+- Reduced number of AA guns needed by battalion
+- Terrain Stats Reworked
+- Batallion adjustments
+	- Moved Heavy Artillery and substitudes to support
+	- Moved Heavy Tanks and substitudes to support
+	- Moved Heavy Assault Gun to support
+	- Added a new Assault Gun support company
+	- Added Pack Artillery and Heavy Pack Artillery
+	- Adjusted basic combat width to 3, added artillery combat width at 2
+	- Removed Trickleback and Exp Loss from HQ
+	- Adjusted Tricklenack and Exp Loss for the Field Hospital
+	- Adjusted hidded stat modificators
+	- Removed unnecessary unit Militia
+	- Removed light SPAA, heavy SPAA, light SPG
+	- Added Heavy Infantry Equipment requirement to Cavalry
+	- Added Light Cavalry to replace old Cavalry
+	- Reduced the equipment needs for Heavy Tanks and Heavy Assault Gun to 18 and Super Heavy Tanks, Heavy TD and Super Heavy TD to 12
+- HQ and Field Hospital Trickleback rebalance
+- Combat Define Changes
+- Added Naval Infantry
+- Infantry Terrain Rework
+- Reduced Battalions per regiment to 3
+- Massive Draft no longer needs Total Mob
+- Invasion cap by tech of 1 for minors, 2 for Canada and Australia
+- China can never be capitulated, warlords only with everything taken
+- Ethopia should cap to AI in May
+- Soviet buff for lower stab
+- Small japan focus update
+- All adults serve no longer needs capitulation progress
+- Revert Smelter and Mill Costs for now
+	- Aluminium for planes, espacially bombers probably needs to be increased instead. But this is a topic for further thoughts.
+- Depression/trade idea and turkey fix
+- Trotzky murder later
+- Disabled Garrison Support and Dismantle Faction
+- Increased Wasteland Penalty and locked supply construction
+- Adjusted Italian East Africa support decisions
+	- The support decisions Italy has for its colony now provide all necessary equipment for Italian East Africa to keep its colonial divisions at full strength.
+- Shifted Redeployment Speed importance more towards rail level
+- Adjusted Operational Planner officer trait
+	- Should now actually possible to get this trait
+- Improved Italian East Africa army
+	- Italian East Africa now spawns with more and fully equipped divisions but the decision costs more equipment, representing the full FF.AA. AOI after 1940 mobilisation
+- Rescaled train/convoy need on distance
+	- Supply convoys have a slight less base but convoys in general consume slightly more ships base on distance
+	- Trains carry more capacity now but scale alot more with distance. Starting numbers adjusted for all nations
+- Added -20% civillian resource consumption for the soviets
+	- Only last for 365 days when desperate measures are taken
+- reduced supply convoy needs.
+	- Supply convoys need way more convoys than they should.
+- Buffed both agrarian and planned economy civ resources
+- Raid Rebalance
+	- Nerfed raid effects and success chances
+## CaH 
+- Adjusted text of NSDAP Policies spirit
+	- The popup text of the national spirit is now more informative and adjusted to the CaH info text template.
+## Features 
+- Reworked Strategic locations
+- Reworked State Categories to include max building levels
+- Added construction decisions for ENG and ITA for North African roads and railways
+	- Libyan railway now much more expensive and can't be completed prewar
+	- Italy gets a new decision to build a road across the Libyan coast
+	- Italy and the UK gets a decision to build a road between Egypt and Libya
+	- Italy and the UK get decisions to build a railway between Matruh and Tobruk
+- Added a chemical warfare commander ability for Japan
+- Added Efficiency and Conversion Tooltip for Germany and Soviet
+- Added Field Guns
+- Off-map Logistics Motorisation Trucks
+- China terrain update
+- Assassination Events & Operation Valkyrie added
+	- Added a new focus tree representing the internal resistance of the Third Reich. These will usually be completed through events or decisions, though as a fallback you can do them yourself under certain conditions. These will trigger an event chain that WILL lead to the historical assassination attempts on Hitler at some point. They will also unlock a Balance of Power mechanic representing the struggle between Wehrmacht and Waffen-SS, giving you access to various division spawn decisions.
+## Fixes
+- Fixed Chemnitz Name Typo
+- Fortification Max Level works properly again
+	- Max level for forts and coastal forts is now 10 in all terrain types
+- Mittelstand no longer double dips ic cost increase for tank variants
+- Updated railroad decisions to account for increased levels
+	- Left out Japanese decisions
+- Revert "Fixed Bombers becoming obsolete when researching maritime subtype"
+	- This reverts commit 0e269e2fefe3bfa5a86fba04d14ef346661417d1.
+- Fixed Bombers becoming obsolete when researching maritime subtype
+- Removed outdated tech art for submarine 4
+- Fixed a bug when Skilled Staffer would allow xp to be gained
+- Corrected Hungarys flag when switching to fascism
+- Fixed army logistics manpower overflow
+- Localisation fix for germany starting event
+- Germany has normal division templates at start
+- Small Ethopia AI fix
+- Falkenhausen get's actually called back
+- Propaganda Campings updated
+- China has resource rights in warlords and enough convoys to trade, you can't leave factions anymore
+- Finland now correctly grants military access to Germany
+- Fixed on-map decision icon for Volkswagen plant
+	- Won't show up in Burkina Faso aka Upper Volta in Central Africa anymore.
+- Fixed an error with the production progress bar
+- Infrastructure now has effect on research facility build speed.
+- Changed ATGM requirement to actually existing tech
+- Adjusted Transport Plane fuel consumption
+	- Was 5 times as high as the fuel consumption of a medium bomber.
+- Fixed Menu overlay bug
+- Can now repair railways in Leningrad
+- Maginot Line doesn't disappear anymore
+- Soviet Focus fix
+- Messina map fix
+	- also moved port to face Tyrrhenian sea instead of Ionian
+- Torch ship transfer now works if France chooses to become Vichy
+- Valentine tank no longer unlocks heavy medium battalion
+- Heavy paratrooper equipment AT capabilities fixed
+	- Could get unlimited ATGM and recoilless rifle support modules. Fixed now to one each.
+- Changed the Hungarian fascist flag to stay the same
+- More changes and updates to various ITA focuses & ideas
+- Updated various Italian focuses and ideas
+	- A lot of vanilla leftovers either made to work with Ultra or changed to fit the mod.
+- Interceptions giving lots of war support
+	- Allowed Air Volunteers to generate enough war support for unlocking various focuses.
+- Hopefully fixed Memel news event for good
+- Reintegrated Flying Bombs which were accidentally removed
+- AI Home Guard Convoy Usage Fix
+	- AI insisted on using Home Guard for naval invasions
+	- AI generated Home Guard now use a different HQ with much lower weight value
+- Fixed motorization stacking when multiple nations do so
+- Redistributed New Guinea strategic regions
+- Fixed Turkey being everyones friend. Straits are now closed
+- Manchu ai opens aluminium mills
+- Manchu now opens steel mills
+- Made Bunkers level limits work properly now
+## GUI 
+- Replaced battalion text icons with MPU versions
+	- Most support companies not done due to missing icons
+- Implemented the No Sun Reflection Mod
+- Enlarged efficiency bar and set max scale to 150%
+## Map 
+- Updated Slovakian Railroad system
+	- Furthermore connected Basra to Kuwait by road
+- Added Roads in Africa and the Middle East
+	- This now connects seperated railroad networks in whole of africa, middle east and india
+	- Relevant Changes:
+	- - Moved/Added German VPs closer together to reflect previous changes
+	- - Areas where names were changed: (East Rhineland, West Rhineland, Westphalia, Lower Silesia)
+	- - Infrastructure adjustments to follow
+	- Previous Changes:
+	- - Forgot to mention the previous change also added jungle to the Panama Canal
+	- - Also terrain and tree map changed accordingly
+- Terrain Changes
+	- Replaced desert tiles in the Phillipines with jungle (shouldn't be there)
+	- Changed 3 plain provinces to hill, which represents the strategically significant "Lower Saxon Central Uplands" (should be there)
+	- Changed 2 urban provinces in the southern Rhine-Ruhr area to forests (shouldn't be there)
+	- VP changes to follow :)
+- Further China map changes
+	- Added mountain range south of Wuhan
+	- Added straits across the Yangzi
+	- Removed imaginary hills around Henan
+	- Wuchang correctly becomes a capital hub again
+	- Japan has more supply approaching Wuhan from the east
+## Historical Balance
+- Adjusted Finnish starting techs and divisions
+	- Finland now starts with a slightly different infantry techs, has access to bicycle infantry and some of its very weak units were merged into somewhat useful divisions
+-  Adjustments to Ethiopian weather & equipment
+	- The weather in Ethiopia is now much less rainy and muddy in the correct timeframes, and the Ethiopians start with archaic infantry equipment in stockpile instead of interwar equipment.
+- Rearranged Italian naval advisors, reduced skill
+	- Campioni has now only skill 2, but is available as naval advisor, due to him not being actual head of the navy at any point, only deputy. Iachino removed as theorist.  PP costs adjusted accordingly.
+- Increased Italian plane numbers, added transports
+	- Italy retired a number of light bombers, fighters and other planes before the start of WW2, added them to the starting stockpile, as also the military and civilian transport planes with RA and Ala Littoria
+- Removed superflous Italian planes
+	- Ca. 311 scout plane and Sm.89 dive bomber removed due to either very low combat utilisation or single prototype status
+- Added Ernst Kaltenbrunner
+- Fully implemented the Italian Civil War Reworkl
+- Added additional starting advisors for UK
+- Baldwin & Chamberlain resign at the correct date
+	- Both UK leaders now resign when they did historically, also Chamberlain is an advisor from the start and becomes one again after resigning. Also no matter if Chamberlain resigns or not, he dies at the correct date.
+- Added correct stockpile and army deleting mechanics for the Italian civil war
+- Added the Italian Co-Belligerent Army
+- Buffed Ichi Go
+- Minor China Rework
+- Germany can sealion, soviet backstab now in the focus
+- Germany get's trade bonus for china
+- Ethopia Rework
+- Aluminium and Fuel Tech Rework
+- Adjusted range of flying bombs
+- Adjusted research boost by Peenemünde decision
+- Adjusted Stockpiles for all majors except the USA
+- Changed US carrier Air Stockpiles
+	- added 19 F2F
+	- added 35 FF 
+	- Added 10 T4M
+- Changed US starting stockpiles
+	- Removed 800 armored cars
+- Reworked France
+- SU balance
+- Soviet Union more historical rework
+- Italian Dodecanese reinforced
+	- Added historical fortifications to both tiles and additional port levels to the tile representing other islands than Rhodes since Lakki on Leros was the actual main naval base in the region, not Rhodes.
+- Improved Italian colonial focuses
+    - Italy invested heavily into its colonies, especially Italian East Africa. The investment decision is now more costly but also provides a bit more benefits, especially for Ethiopia, Libya and Eritrea.
+- Corrected Reggiane Re.2000 ground attack stats
+	- The plane could carry 2x100kg bombs which previously wasn't represented at all which made it useless as a fighter-bomber.
+- U-Boat Effort is now locked behind war
+	- Historically the increased German efforts to field more uboats only started after the few uboats they had were causing extensive losses to Allied shipping while the capital raiders disappointed. Thus the respective focus now requires being at war with a major.
+- Slightly changed German focus order
+	- Germany wouldn't go for the Sino-Chinese Cooperation focus usually. Should do so now. Shuffled other AI focus prioritisation so timings still fit.
+- Gave Germany earlier access to Experimental Rockets
+	- Historically German rocket experiments were well underway in 1938 already. With the bonus given by the Peenemünde focus increased, Germany can get other technologies tied to the Experimental Rocket tech on time while V1 and V2 still need to go through the special projects before one can produce them.
+- Corrected conditions for German invasion of Yugoslavia
+	- Previously required Greece to be at war with Germany. Italy failing at the invasion was one reason for the invasion, but the pro-Axis government of Yugoslavia being couped by the anti-Axis military was the main reason, as was Hungary and Romania demanding Yugoslavian territory. Changed conditions accordingly.
+- Corrected Italian starting BBs/CAs/CLs
+	- Changed AA armament, some main batteries and armour values to be closer to the historical values, most importantly doubled the Zara-Class' armour
+- Corrected Italian starting Naval AA tech
+	- Italy started with only Naval AA MGs researched but had 20mm and 37mm AA guns for their BBs & CAs in 1934.
+
 # 0.18.1
 ## Updates 
 - 1.16.3 compatibility
