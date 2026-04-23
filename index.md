@@ -1,5 +1,15 @@
 # Changelog
 
+# 0.19.1
+## Updates 
+- 1.18. Compatability
+## Features 
+- Added vanilla landmarks
+## Fixes 
+- Recon now has suppression
+- Sherman firefly stats added
+- German AI scripted production now accounts for damaged mils
+
 # 0.19.0
 ## Highlight
 - 1.17.5 Compatability

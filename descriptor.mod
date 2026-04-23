@@ -1,5 +1,5 @@
 name="Ultra Historical Mod"
-version="0.19.0"
+version="0.19.1"
 tags={
 	"Map"
 	"Historical"
@@ -10,5 +10,5 @@ replace_path="history/states"
 replace_path="history/countries"
 replace_path="tests"
 picture="ultra.jpg"
-supported_version="1.17.5.*"
+supported_version="1.18.0.*"
 remote_file_id="1516163124"
