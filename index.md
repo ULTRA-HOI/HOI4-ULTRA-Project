@@ -2,7 +2,7 @@
 
 # 0.19.1
 ## Updates 
-- 1.18. Compatability
+- 1.18. Compatibility
 ## Features 
 - Added vanilla landmarks
 ## Fixes 
@@ -12,7 +12,7 @@
 
 # 0.19.0
 ## Highlight
-- 1.17.5 Compatability
+- 1.17.5 Compatibility
 - Stat Rework
     - Completely new equipment stats for all land equipment
     - Reworked battalion types and division designer
