@@ -4,8 +4,8 @@ NGame = {
 	START_DATE = "1936.1.1.12",
 	END_DATE = "1949.1.1.1",
 	MAP_SCALE_PIXEL_TO_KM = 7.114,					-- Yes, we did the math
-	SAVE_VERSION = 30,								-- 1.17.0.1 (Musketeer)
-	MINOR_SAVE_VERSION = 1,                         -- Minor save version is used to identifiy different backward compatible savegame versions
+	SAVE_VERSION = 31,								-- 1.18.0 (Case Green)
+	MINOR_SAVE_VERSION = 0,                         -- Minor save version is used to identifiy different backward compatible savegame versions
 	CHECKSUM_SALT = "zwOdv5d9wm9uDSOT",				-- Data to modify generated checksum when game binaries have changed but not any content files.
 	LAG_DAYS_FOR_LOWER_SPEED = 50,--was 10 			-- Days of client lag for decrease of gamespeed
 	LAG_DAYS_FOR_PAUSE = 100,--was 25				-- Days of client lag for pause of gamespeed.
@@ -1588,6 +1588,8 @@ NNavy = {
 	NAVAL_HOMEBASE_CALCULATION_DISTANCE_CUTOFF = 550,				-- Distance to normalize against. Everything above said value will be treated as score = 0.
 	NAVAL_HOMEBASE_BUILDING_SCORE_FACTOR = 0.035,					-- Multiplier for how much the level of the naval base impacts its total score.
 	NAVAL_HOMEBASE_OWNERSHIP_BONUS = 0.04,							-- Adds to total score based on if the base is owned by the country doing the calculation.
+	NAVAL_MISSION_AI_RANGE_THRESHOLD_EPSILON = 0.25,				-- Epsilon tolerance for AI naval range threshold checks.
+	NAVAL_MISSION_AI_CONVOY_NORMALIZATION_TARGET = 150,			-- Number of convoys to normalize against when scoring convoy raiding missions.
 
 	ADMIRAL_TASKFORCE_CAP = 10,										-- admirals will start getting penalties after this amount of taskforces
 
@@ -2609,6 +2611,7 @@ NAI = {
 	JOIN_FACTION_BOTH_LOSING = -300,			-- Desire to be in a faction when both we and htey are in losing wars
 	LENDLEASE_FRACTION_OF_PRODUCTION = 0.5, --was 0.5 --Base fraction AI would send as lendlease
 	LENDLEASE_FRACTION_OF_STOCKPILE = 0.5, --was 0.25 --Base fraction AI would send as lendlease
+	MINIMUM_MONTHLY_LEND_LEASE_EQUIPMENT = 10,	-- AI will not offer lend-lease if the monthly amount would be less than this
 	MINIMUM_EQUIPMENT_TO_ASK_LEND_LEASE = 500, --was -100 --AI will accept to lend lease this equipment only if our stockpile is less than that.
 	MINIMUM_CONVOY_TO_ASK_LEND_LEASE = 100, --was 30 --AI will accept to lend lease convoys only if our stockpile is less than that (special case because convoy stockpile can't be negative).
 	MINIMUM_FUEL_DAYS_TO_ASK_LEND_LEASE = 30, --was 2 --AI will accept to lend lease fuel only if the player have less fuel than this number multiply by his max daily consumption.
