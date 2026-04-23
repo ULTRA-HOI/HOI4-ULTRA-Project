@@ -564,7 +564,7 @@ civillian_resources_scripted_effect = {
 	set_variable = { cic_tungsten = 0.25 }
 	set_variable = { cic_chromium = 0.15 }
 	set_variable = { cic_rubber = 0.2 }
-	set_variable = { cic_coal = 3.6 }
+	set_variable = { cic_coal = 3.8 }
 
 	#Multiply factory count
 	multiply_variable = { cic_steel = num_factories_temp }
@@ -577,24 +577,24 @@ civillian_resources_scripted_effect = {
 	#Coal is special. Coal is split into 3 categories. Coal used by civillian factories, heating and transportation. Factories are handled above, heating considers population and transportation the max amount of states.
 	#Heating
 	set_temp_variable = { heating_coal_temp = THIS.max_manpower_k }
-	multiply_temp_variable = { heating_coal_temp = 0.001 } #We need 0.001 Units of coal per 1.000 Population
+	multiply_temp_variable = { heating_coal_temp = 0.004 } #We need 0.001 Units of coal per 1.000 Population
 	round_temp_variable = heating_coal_temp
 	add_to_variable = { cic_coal = heating_coal_temp }
 	
 	#Transportation
-	set_temp_variable = { num_controlled_states_temp = THIS.num_controlled_states }
-	set_temp_variable = { num_core_states_temp = THIS.num_owned_controlled_states }
-	subtract_from_temp_variable = { num_controlled_states_temp = num_core_states_temp }
-	set_temp_variable = { transport_coal_core_temp = 20 } #We need 20 coal per state for transportation services
-	set_temp_variable = { transport_coal_temp = transport_coal_core_temp }
-	multiply_temp_variable = { transport_coal_temp = 0.8 } #Non-core states only need 80% coal
-	multiply_temp_variable = { transport_coal_core_temp = num_core_states_temp }
-	multiply_temp_variable = { transport_coal_temp = num_controlled_states_temp }
-	add_to_variable = { cic_coal = transport_coal_core_temp }
-	add_to_variable = { cic_coal = transport_coal_temp }
-	set_variable = { heating_coal = heating_coal_temp }
-	set_variable = { transport_coal_core = transport_coal_core_temp }
-	set_variable = { transport_coal = transport_coal_temp }
+	#set_temp_variable = { num_controlled_states_temp = THIS.num_controlled_states }
+	#set_temp_variable = { num_core_states_temp = THIS.num_owned_controlled_states }
+	#subtract_from_temp_variable = { num_controlled_states_temp = num_core_states_temp }
+	#set_temp_variable = { transport_coal_core_temp = 20 } #We need 20 coal per state for transportation services
+	#set_temp_variable = { transport_coal_temp = transport_coal_core_temp }
+	#multiply_temp_variable = { transport_coal_temp = 0.8 } #Non-core states only need 80% coal
+	#multiply_temp_variable = { transport_coal_core_temp = num_core_states_temp }
+	#multiply_temp_variable = { transport_coal_temp = num_controlled_states_temp }
+	#add_to_variable = { cic_coal = transport_coal_core_temp }
+	#add_to_variable = { cic_coal = transport_coal_temp }
+	#set_variable = { heating_coal = heating_coal_temp }
+	#set_variable = { transport_coal_core = transport_coal_core_temp }
+	#set_variable = { transport_coal = transport_coal_temp }
 
 	#Multiply the consumption values
 	multiply_variable = { cic_steel = cic_resource_factor_steel_temp } 
