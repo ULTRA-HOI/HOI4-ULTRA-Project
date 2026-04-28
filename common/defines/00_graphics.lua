@@ -13,8 +13,8 @@ NMapMode = {
 	FABRICATE_CLAIM_ALREADY_CORE_SECONDARY_COLOR = { 0.5, 0, 0, 1 },
 	CONSTRUCTION_MAP_MODE_BUILDING_DEFAULT_COLOR = { 0.43, 0.22, 0.22, 0.5 }, 			-- Color of states/provinces that can't be built on
 	CONSTRUCTION_MAP_MODE_BUILDING_MAX_LEVEL_COLOR = { 0.05, 0.1, 0.7, 0.8 }, 			-- Color of states/provinces where current building level is maxed out (max is current max level, not final max level) of a building type
-	CONSTRUCTION_MAP_MODE_BUILDING_LEVEL_LOW_COLOR = { 0.2, 0.7, 0.0, 0.1 },
-	CONSTRUCTION_MAP_MODE_BUILDING_LEVEL_HI_COLOR = { 0.4, 0.9, 0.0, 0.8 },
+	CONSTRUCTION_MAP_MODE_BUILDING_LEVEL_LOW_COLOR = { 0.2, 0.7, 0.0, 0.5 },
+	CONSTRUCTION_MAP_MODE_BUILDING_LEVEL_HI_COLOR = { 0.45, 0.98, 0.0, 0.9 },
 	CONSTRUCTION_MAP_MODE_BUILDING_MAX_AMOUNT_QUEUED_COLOR = { 0.0, 0.0, 1.0  }, 	-- Color of states/provinces when building queue is maxed of a building type
 	CONSTRUCTION_MAP_MODE_BUILDING_QUEUED_COLOR = { 1.0, 0.85, 0.0  },				-- Color of states/provinces when building queue contains one or more of a building type.
 	MAP_MODE_MANPOWER_RANGE_MAX = 20000000,											-- When a state has that much manpower, it will be colored with the color MAP_MODE_MANPOWER_RANGE_COLOR_TO. Everything below that will have an interpolated color.
@@ -79,7 +79,7 @@ NMapMode = {
 	OCCUPATION_MAP_MODE_COUNTRY_STRIPE_ALPHA = 0.3,									-- alpha of occupied country stripes in occupation map mode
 	OPERATIVE_MAP_MODE_INVALID_COUNTRY_TARGET_TRANSPARENCY = 0.15,							-- alpha of country which cannot be targeted by the selected operative mission
 
-	COASTAL_FACILITY_OFFSET = {-1.5, 0, 1.5},					-- Offset from world position CVector3f (x, y, z). So it does not overlap with a port map icon
+	COASTAL_FACILITY_OFFSET = {-1.5, 0, 1.5},					-- Offset from world position CVector3f (x, y, z). So it does not overlap with a port map icon or naval headquarter
 	NAVAL_HEADQUARTER_OFFSET = {1.5, 0, 1.5},					-- Offset from world position CVector3f (x, y, z). So it does not overlap with a port map icon or facility
 
 	SUPPLY_MAP_MODE_COUNTRY_BORDER_CAMERA_DISTANCE = 1.0,
@@ -911,11 +911,6 @@ NGraphics = {
 
 	STRATEGIC_NAVY_NO_TASKFORCES_ASSIGNED = {0.9, 0.3, 0.3, 1},  -- zones has fleets assigned to them but no no taskforce can reach it or not enough taskforce to cover that region
 
-	STRATEGIC_NAVY_COLOR_BAD_WHILE_HIGHLIGHTING_HOLD = {0.7, 0.0, 0.40, 0.5}, 	-- zones has missions with bad suppremacy on highlighted regions with a hold mission selected
-	STRATEGIC_NAVY_COLOR_GOOD_WHILE_HIGHLIGHTING_HOLD = {0, 0.6, 0.5, 1},		-- zones has missions with good suppremacy on highlighted regions with a hold mission selected
-	STRATEGIC_NAVY_COLOR_AVERAGE_WHILE_HIGHLIGHTING_HOLD = {0.5, 0.5, 0.6, 1},	-- zones has missions with average suppremacy on highlighted regions with a hold mission selected
-
-
 	RESISTANCE_COLOR_NONE = {0.4, 0.4, 0.6, 0.5}, -- rgba
 	RESISTANCE_COLOR_GOOD = {0.8, 0.8, 0, 0.3}, -- rgba
 	RESISTANCE_COLOR_AVERAGE = {0.8, 0.4, 0, 0.5},
@@ -1523,7 +1518,6 @@ NFrontend = {
 	SOCIALVIEW_CONTEXT_MENU_MARGIN = 2,
 	TIME_TO_SWAP_BACKGROUNDS = 20, -- Amount of seconds before swapping to another background
 	NEW_BACKGROUND_DURATION = 4 --How often you get to see the new background first before it is inside of the regular rotation, 1 means it will be automatically selcted, 0 means not selected at all, anything higher is the amount of start ups it will be prioritized
-
 },
 
 NSound = {
