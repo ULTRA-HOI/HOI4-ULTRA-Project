@@ -2233,7 +2233,7 @@ X_USA_propaganda_campaigns = {
 		allowed = { original_tag = USA }
 		available = { 
 			X_USA_propaganda_poster_slot_available = yes 
-			has_completed_focus = USA_war_propaganda 
+			has_war_with = JAP
 			CHI = { has_war_with = JAP }
 		}
 		visible = {
@@ -2241,11 +2241,10 @@ X_USA_propaganda_campaigns = {
 			check_variable = { var = X_USA_propaganda_9_cost	value = 250	compare = less_than }
 		}
 		days_remove = 180
-		days_re_enable = 100
+		fire_only_once = yes
 		cost = X_USA_propaganda_9_cost?15
 		modifier = {
-			consumer_goods_expected_value = 0.025
-			war_support_weekly = 0.001
+			civilian_factory_use = 20
 		}
 		complete_effect = {
 			set_variable = { X_USA_new_propaganda_campaign = 9 }
@@ -2253,7 +2252,6 @@ X_USA_propaganda_campaigns = {
 		}
 		remove_effect = {
 			CHI = { 
-				add_war_support = 0.05
 				random_owned_controlled_state = {
 				prioritize = { 605 }
 					limit = {
@@ -2263,10 +2261,10 @@ X_USA_propaganda_campaigns = {
 							include_locked = yes
 						}
 					}
-					add_extra_state_shared_building_slots = 2
+					add_extra_state_shared_building_slots = 3
 					add_building_construction = {
 						type = arms_factory
-						level = 2
+						level = 3
 						instant_build = yes
 					}
 				}
@@ -2284,64 +2282,64 @@ X_USA_propaganda_campaigns = {
 			}
 		}
 	}
-	X_USA_propaganda_10 = { # ID = 10
-		priority = 2
-		icon = eng_propaganda_campaigns
-		ai_will_do = { base = 0 }
-		allowed = { original_tag = USA }
-		available = { 
-			X_USA_propaganda_poster_slot_available = yes 
-			has_completed_focus = USA_war_propaganda 
-			FRA = { has_war_with = GER }
-		}
-		visible = {
-			has_government = democratic
-			check_variable = { var = X_USA_propaganda_10_cost	value = 250	compare = less_than }
-		}
-		days_remove = 180
-		days_re_enable = 100
-		cost = X_USA_propaganda_10_cost?15
-		modifier = {
-			consumer_goods_expected_value = 0.025
-			war_support_weekly = 0.001
-		}
-		complete_effect = {
-			set_variable = { X_USA_new_propaganda_campaign = 10 }
-			X_USA_pick_propaganda_campaign_slot_effect = yes
-		}
-		remove_effect = {
-			FRA = { 
-				add_war_support = 0.05
-				random_owned_controlled_state = {
-				prioritize = { 16 }
-					limit = {
-						free_building_slots = {
-							building = arms_factory
-							size > 1
-							include_locked = yes
-						}
-					}
-					add_extra_state_shared_building_slots = 2
-					add_building_construction = {
-						type = arms_factory
-						level = 2
-						instant_build = yes
-					}
-				}
-			}
-			set_variable = { X_USA_propaganda_campaign_to_remove = 10 }
-			X_USA_reset_propaganda_campaign_slot_effect = yes
-			if = {
-				limit = {
-					has_variable = X_USA_propaganda_10_cost
-				}
-				multiply_variable = { X_USA_propaganda_10_cost= 2 }
-			}
-			else = {
-				set_variable = { X_USA_propaganda_10_cost = 30 }
-			}
-		}
-	}
+	#X_USA_propaganda_10 = { # ID = 10
+	#	priority = 2
+	#	icon = eng_propaganda_campaigns
+	#	ai_will_do = { base = 0 }
+	#	allowed = { original_tag = USA }
+	#	available = { 
+	#		X_USA_propaganda_poster_slot_available = yes 
+	#		has_completed_focus = USA_war_propaganda 
+	#		FRA = { has_war_with = GER }
+	#	}
+	#	visible = {
+	#		has_government = democratic
+	#		check_variable = { var = X_USA_propaganda_10_cost	value = 250	compare = less_than }
+	#	}
+	#	days_remove = 180
+	#	days_re_enable = 100
+	#	cost = X_USA_propaganda_10_cost?15
+	#	modifier = {
+	#		consumer_goods_expected_value = 0.025
+	#		war_support_weekly = 0.001
+	#	}
+	#	complete_effect = {
+	#		set_variable = { X_USA_new_propaganda_campaign = 10 }
+	#		X_USA_pick_propaganda_campaign_slot_effect = yes
+	#	}
+	#	remove_effect = {
+	#		FRA = { 
+	#			add_war_support = 0.05
+	#			random_owned_controlled_state = {
+	#			prioritize = { 16 }
+	#				limit = {
+	#					free_building_slots = {
+	#						building = arms_factory
+	#						size > 1
+	#						include_locked = yes
+	#					}
+	#				}
+	#				add_extra_state_shared_building_slots = 2
+	#				add_building_construction = {
+	#					type = arms_factory
+	#					level = 2
+	#					instant_build = yes
+	#				}
+	#			}
+	#		}
+	#		set_variable = { X_USA_propaganda_campaign_to_remove = 10 }
+	#		X_USA_reset_propaganda_campaign_slot_effect = yes
+	#		if = {
+	#			limit = {
+	#				has_variable = X_USA_propaganda_10_cost
+	#			}
+	#			multiply_variable = { X_USA_propaganda_10_cost= 2 }
+	#		}
+	#		else = {
+	#			set_variable = { X_USA_propaganda_10_cost = 30 }
+	#		}
+	#	}
+	#}
 	X_USA_propaganda_11 = { # ID = 11
 		priority = 2
 		icon = eng_propaganda_campaigns
