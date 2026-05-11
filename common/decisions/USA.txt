@@ -3063,6 +3063,40 @@ economy_decisions = {
 			navy_experience = 150
 		}
 	}
+
+	USA_escort_mission = {
+		icon = generic_naval
+		
+		available = {
+			custom_override_tooltip = {
+				tooltip = {
+					localization_key = [USA_escort_mission_scripted_loc]
+				}
+				USA_dd_mio_total_fund_calc = yes
+				OR = {
+					check_variable = { total_dd_mio_funds > 4500 }
+					is_ai = yes
+				}
+			}
+		}
+		
+		fire_only_once = yes
+		days_mission_timeout = 1800
+		is_good = no
+		activation = {
+			has_completed_focus = USA_escort_effort
+		}
+
+		
+		visible = {
+			has_completed_focus = USA_escort_effort
+		}
+
+		complete_effect = {
+			add_war_support = 0.04
+			navy_experience = 50
+		}
+	}
 	
 }
 
