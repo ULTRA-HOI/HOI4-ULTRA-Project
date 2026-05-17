@@ -1560,7 +1560,7 @@ NNavy = {
 	
 	SHIP_SUPPORT_NEED_FACTOR = 0.1,									-- The support need for a ship. This factor is multiplied with the ships dominance value
 	MAX_ADMIRAL_HEADQUARTER_ASSIGNMENTS = 3,						-- Max amount of admirals that can be assigned to naval headquarters
-	NAVAL_HEADQUARTER_ADJACENCY = 2,								-- How many extra steps of strategic regions from the first the naval headquarter provides benefits. 
+	NAVAL_HEADQUARTER_ADJACENCY = 3,								-- How many extra steps of strategic regions from the first the naval headquarter provides benefits. 
 
 	-- Having Naval Dominance will provide the following benefits:
 	CONVOY_BLOCKED_BY_ENEMY_CONTROLLED_REGION = true,				-- If an enemy control a sea region, consider that region as blocked

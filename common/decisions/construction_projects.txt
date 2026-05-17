@@ -1335,6 +1335,54 @@ focus_construction_project = {
 		}
 		
 	}
+
+	GER_naval_headquarters_decision = {
+	
+		icon = generic_merge_plant_ship
+		
+		allowed = {
+			original_tag = GER
+		}
+		
+		visible = {
+			has_completed_focus = GER_improve_national_spirit
+		}
+		
+		available = {
+			has_completed_focus = GER_improve_national_spirit
+			num_of_civilian_factories_available_for_projects > 14
+		}
+		
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 100
+		}
+		
+		cost = 0
+		
+		days_remove = 180
+		
+		modifier = {
+			civilian_factory_use = 15
+		}
+
+		highlight_states = {
+			highlight_states_trigger = {
+				state = 56
+			}
+		}
+		
+		remove_effect = {
+			30 = {
+				add_building_construction = {
+					type = naval_headquarters
+					level = 1
+					province = 11465
+					instant_build = yes
+				}
+			}
+		}
+	}
 	
 	GER_west_wall_1_decision = {
 		desc = GER_west_wall_decision_desc
@@ -7251,6 +7299,12 @@ focus_construction_project = {
 					instant_build = yes
 				}
 				add_building_construction = {
+					type = naval_headquarters
+					level = 1
+					province = 4076
+					instant_build = yes
+				}
+				add_building_construction = {
 					type = air_base
 					level = 2
 					instant_build = yes
@@ -7525,6 +7579,12 @@ focus_construction_project = {
 				add_building_construction = {
 					type = radar_station
 					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = naval_headquarters
+					level = 1
+					province = 12299
 					instant_build = yes
 				}
 			}
@@ -14613,6 +14673,56 @@ focus_construction_project = {
 			}
 			mio:CAN_halifax_shipyard_organization = {
 				add_mio_task_capacity = 5
+			}
+		}
+		
+	}
+
+	CAN_naval_headquarters_decision = {
+	
+		icon = generic_construction
+		
+		allowed = {
+			original_tag = CAN
+		}
+		
+		visible = {
+			has_navy_size = {
+				size > 39
+				archetype = destroyer #DDs
+			}
+			original_tag = CAN
+		}
+		
+		available = {
+			has_navy_size = {
+				size > 59
+				archetype = destroyer #DDs
+			}
+		}
+		
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 100
+		}
+		
+		cost = 0
+		
+		days_remove = 180
+		
+		modifier = {
+			civilian_factory_use = 20
+		}
+		
+		remove_effect = {
+			464 = {
+				add_extra_state_shared_building_slots = 4
+				add_building_construction = {
+					type = naval_headquarters
+					level = 1
+					province = 7361
+					instant_build = yes
+				}
 			}
 		}
 		
