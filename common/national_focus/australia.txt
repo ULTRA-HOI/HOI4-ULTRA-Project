@@ -2893,7 +2893,7 @@
 		icon = GFX_focus_research
 		prerequisite = { focus = AST_rationing_and_recycling }
 		prerequisite = { focus = AST_classify_aliens }
-		x = 1
+		x = 0
 		y = 4
 		relative_position_id = AST_establish_advisory_war_council
 
@@ -2918,6 +2918,41 @@
 
 		completion_reward = {
 			add_research_slot = 1
+		}
+	}
+
+	focus = {
+		id = AST_expand_citizen_military_forces
+		icon = GFX_focus_generic_military_mission
+		prerequisite = { focus = AST_classify_aliens }
+		x = 2
+		y = 4
+		relative_position_id = AST_establish_advisory_war_council
+
+		cost = 3
+
+		ai_will_do = {
+			factor = 10
+		}
+
+		available = {
+			has_war_with = JAP
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		search_filters = { FOCUS_FILTER_RESEARCH }
+
+		completion_reward = {
+			swap_ideas = { 
+				remove_idea = AST_citizen_military_forces
+				add_idea = AST_citizen_military_forces_2
+			}
 		}
 	}
 
