@@ -1344,7 +1344,7 @@ NAir = {
 	NAVAL_STRIKE_TARGETTING_TO_AMOUNT = 0.05, --was 0.3 --Balancing value to convert the naval_strike_targetting equipment stats to chances of how many airplanes managed to do successfull strike.
 	NAVAL_STRIKE_DAMAGE_TO_STR = 8, --was 1.0 --Balancing value to convert damage ( naval_strike_attack * hits ) to Strength reduction.
 	NAVAL_STRIKE_DAMAGE_TO_ORG = 1.2, --was 1.5 --Balancing value to convert damage ( naval_strike_attack * hits ) to Organisation reduction.
-	NAVAL_STRIKE_CARRIER_MULTIPLIER = 2.0, --was 10.0 --damage bonus when planes are in naval combat where their carrier is present (and can thus sortie faster and more effectively)
+	NAVAL_STRIKE_CARRIER_MULTIPLIER = 2.75, --was 10.0 --damage bonus when planes are in naval combat where their carrier is present (and can thus sortie faster and more effectively)
 	FIELD_EXPERIENCE_SCALE = 0.0004,
 	FIELD_EXPERIENCE_MAX_PER_DAY = 2.0, --was 2 --Most xp you can gain per day
 	CLOSE_AIR_SUPPORT_EXPERIENCE_SCALE = 0.0005,		-- How much the experinence gained by CAS is scaled
@@ -1432,7 +1432,7 @@ NAir = {
 	AIR_WING_XP_LOSS_REDUCTION_OVER_FRIENDLY_TERRITORY_FACTOR = 0.75, --was 0.3 --Reduction on XP loss over friendly territory
 
 	DISRUPTION_FACTOR = 1.00, --was 4.0--was 0.05 --multiplier on disruption damage to scale its effects on planes
-	DISRUPTION_FACTOR_CARRIER = 12.00, --was 6.0 --multiplier on disruption damage to scale its effects on carrier vs carrier planes
+	DISRUPTION_FACTOR_CARRIER = 8.00, --was 6.0 --multiplier on disruption damage to scale its effects on carrier vs carrier planes
 	DISRUPTION_SPEED_FACTOR = 0.0, --was 1.0
 	DISRUPTION_AGILITY_FACTOR = 0.0, --was 0.0--was 0.25
 	DISRUPTION_ATTACK_FACTOR = 0.25, --was 0.0--was 1.0
@@ -1683,20 +1683,20 @@ NNavy = {
 	NAVAL_TRANSFER_BASE_NAVAL_DIST_ADD = 100,						-- Extra cost for naval movement ( compared to land movement ) when deciding what ports to use for a naval transfer
 	NAVAL_TRANSFER_BASE_NAVAL_DIST_MULT = 20,						-- Multiplier for the cost of naval movement ( compared to land movement ) when deciding what ports to use for naval transfer
 
-	NAVAL_COMBAT_PLANE_MIN_STACKING_PENALTY = 80,						-- How many planes flying in a naval combat before penalties are introduced
-	NAVAL_COMBAT_PLANE_STACKING_PENALTY_EFFECT = 0.005,					-- Each plane above the optimal amount decreases the amount of airplanes being able to takeoff by such %. Subject to diminishing returns
+	NAVAL_COMBAT_PLANE_MIN_STACKING_PENALTY = 72,						-- How many planes flying in a naval combat before penalties are introduced
+	NAVAL_COMBAT_PLANE_STACKING_PENALTY_EFFECT = 0.001,					-- Each plane above the optimal amount decreases the amount of airplanes being able to takeoff by such %. Subject to diminishing returns
 	
-	SHIP_SILHOUETTE_VALUE_PLANES_CAPITAL = 10,						-- For dynamic plane efficacy, silhouette value (nominally in planes, but very abstract)
-	SHIP_SILHOUETTE_VALUE_PLANES_SCREEN = 5,						-- As Above. This one would be nice to split by type, but that's problematic.
-	SHIP_SILHOUETTE_VALUE_PLANES_CARRIER = 16,						-- As Above
-	SHIP_SILHOUETTE_VALUE_PLANES_SUPPORT = 3,						-- As Above
+	SHIP_SILHOUETTE_VALUE_PLANES_CAPITAL = 15,						-- For dynamic plane efficacy, silhouette value (nominally in planes, but very abstract)
+	SHIP_SILHOUETTE_VALUE_PLANES_SCREEN = 7.5,						-- As Above. This one would be nice to split by type, but that's problematic.
+	SHIP_SILHOUETTE_VALUE_PLANES_CARRIER = 15,						-- As Above
+	SHIP_SILHOUETTE_VALUE_PLANES_SUPPORT = 3.75,						-- As Above
 	SHIP_SILHOUETTE_VALUE_PLANES_CONVOY = 4,						-- As Above
 	SHIP_SILHOUETTE_VALUE_PLANES_SUBMARINE = 7,						-- As Above
 	
-	SCREEN_CAP_REDUCTION_FACTOR = 0.02,							-- Reduces screen silhouette weight if there are caps present, screenval * 1/(1+caps*weight)
+	SCREEN_CAP_REDUCTION_FACTOR = 0.00,							-- Reduces screen silhouette weight if there are caps present, screenval * 1/(1+caps*weight)
 
 	SHORE_BOMBARDMENT_CAP = 0.5, --was 0.25
-	ANTI_AIR_TARGETING = 0.9,                                       -- how good ships are at hitting aircraft
+	ANTI_AIR_TARGETING = 0.75,                                       -- how good ships are at hitting aircraft
 	MIN_TRACTED_ASSIST_DAMAGE_RATIO = 0.05,							-- How much damage counts as assist damage
 	SUPPLY_NEED_FACTOR = 750, --multiplies supply usage
 	DECRYPTION_SPOTTING_BONUS = 0.15, --was 0.2
@@ -2081,12 +2081,12 @@ NNavy = {
 	AA_EFFICIENCY_PENALTY_ON_MINIMUM_POSITIONING					= 0.1, --was 0.7 --AA penalty at 0% positioning
 	SUBMARINE_REVEAL_ON_MINIMUM_POSITIONING                         = 2.0,  -- submarine reveal change on 0% positioning
 
-	SHIP_TO_FLEET_ANTI_AIR_RATIO									= 0.40, --was 0.25 --total sum of fleet's anti air will be multiplied with this ratio and added to calculations anti-air of individual ships while air damage reduction
+	SHIP_TO_FLEET_ANTI_AIR_RATIO									= 0.35, --was 0.25 --total sum of fleet's anti air will be multiplied with this ratio and added to calculations anti-air of individual ships while air damage reduction
 
-	ANTI_AIR_POW_ON_INCOMING_AIR_DAMAGE								= 0.50, --was 0.25 --received air damage is calculated using following: 1 - ( (ship_anti_air + fleet_anti_air * SHIP_TO_FLEET_ANTI_AIR_RATIO )^ANTI_AIR_POW_ON_INCOMING_AIR_DAMAGE ) * ANTI_AIR_MULT_ON_INCOMING_AIR_DAMAGE
-	ANTI_AIR_MULT_ON_INCOMING_AIR_DAMAGE							= 0.25, --was 0.2
+	ANTI_AIR_POW_ON_INCOMING_AIR_DAMAGE								= 0.45, --was 0.25 --received air damage is calculated using following: 1 - ( (ship_anti_air + fleet_anti_air * SHIP_TO_FLEET_ANTI_AIR_RATIO )^ANTI_AIR_POW_ON_INCOMING_AIR_DAMAGE ) * ANTI_AIR_MULT_ON_INCOMING_AIR_DAMAGE
+	ANTI_AIR_MULT_ON_INCOMING_AIR_DAMAGE							= 0.225, --was 0.2
 
-	MAX_ANTI_AIR_REDUCTION_EFFECT_ON_INCOMING_AIR_DAMAGE 			= 0.85, --was 0.75 --damage reduction for incoming air attacks is clamped to this value at maximum.
+	MAX_ANTI_AIR_REDUCTION_EFFECT_ON_INCOMING_AIR_DAMAGE 			= 0.75, --was 0.75 --damage reduction for incoming air attacks is clamped to this value at maximum.
 
 	CHANCE_TO_DAMAGE_PART_ON_CRITICAL_HIT							= 0.25, --was 0.1 --the game will roll between 0-1 and will damage a random part if below this val on naval critical hits
 	CHANCE_TO_DAMAGE_PART_ON_CRITICAL_HIT_FROM_AIR					= 0.25, --was 0.1 --the game will roll between 0-1 and will damage a random part if below this val on air critical hits
@@ -2222,15 +2222,15 @@ NNavy = {
 
 	NAVAL_COMBAT_AIR_SUB_TARGET_BASE = 10, --was 10 --scoring for target picking for planes inside naval combat, one define per ship typ
 	NAVAL_COMBAT_AIR_SCREEN_TARGET_BASE = 10,
-	NAVAL_COMBAT_AIR_CAPITAL_TARGET_BASE = 10,
-	NAVAL_COMBAT_AIR_CARRIER_TARGET_BASE = 10,
+	NAVAL_COMBAT_AIR_CAPITAL_TARGET_BASE = 20,
+	NAVAL_COMBAT_AIR_CARRIER_TARGET_BASE = 200,
 	NAVAL_COMBAT_AIR_CONVOY_TARGET_BASE = 1.0,
 	NAVAL_COMBAT_AIR_SUB_TARGET_SCALE = 10,                             -- scaled scoring for target picking for planes inside naval combat, max value when zero screening efficency, one define per ship typ
 	NAVAL_COMBAT_AIR_SCREEN_TARGET_SCALE = 10,
 	NAVAL_COMBAT_AIR_CAPITAL_TARGET_SCALE = 100, --was 50
 	NAVAL_COMBAT_AIR_CARRIER_TARGET_SCALE = 500, --was 200
 	NAVAL_COMBAT_AIR_CONVOY_TARGET_SCALE = 1.0, --was 1.0
-	NAVAL_COMBAT_AIR_STRENGTH_TARGET_SCORE = 10, --was 5 --how much score factor from low health (scales between 0->this number)
+	NAVAL_COMBAT_AIR_STRENGTH_TARGET_SCORE = 150, --was 5 --how much score factor from low health (scales between 0->this number)
 	NAVAL_COMBAT_AIR_LOW_AA_TARGET_SCORE = 5, --was 5 --how much score factor from low AA guns (scales between 0->this number)
 
 	NAVAL_BASE_DOMINANCE_FACTOR = 0.01,									-- base naval dominance buff based on naval bases in the region
