@@ -1323,7 +1323,7 @@ NAir = {
 	AIR_REGION_SUPERIORITY_PIXEL_SCALE = 0.04,           -- air superiority scale = superiority/(pixels*this)
 	COMBAT_MULTIPLANE_CAP = 3.0, --was 3.0 --How many planes can shoot at each plane on other side ( if there are 100 planes we are atttacking COMBAT_MULTIPLANE_CAP * 100 of our planes can shoot )
 	COMBAT_DAMAGE_SCALE = 0.45, --was 1 --Higher value = more shot down planes
-	COMBAT_DAMAGE_SCALE_CARRIER = 0.5, --was 5 --same as above but used inside naval combat for carrier battles
+	COMBAT_DAMAGE_SCALE_CARRIER = 0.6, --was 5 --same as above but used inside naval combat for carrier battles
 	CARRIER_PERCENTAGE_DEFEND = 0.35,					-- Percentage of planes able to defend a carrier from air attacks (historically 15% - 35%)	
 	DETECT_CHANCE_FROM_OCCUPATION = 0.20, 				-- How much the controlled provinces in area affects the air detection base value.
 	DETECT_CHANCE_FROM_RADARS = 0.4, --was 0.5 --How much the radars in area affects detection chance.
@@ -1342,9 +1342,9 @@ NAir = {
 	MISSILE_LAUNCHER_CAPACITY = 10,                     -- The number of missiles per slot
 	MISSILE_LAUNCHER_SLOTS = 1,                         -- The number of missile slots a missile launcher unit can have
 	NAVAL_STRIKE_TARGETTING_TO_AMOUNT = 0.05, --was 0.3 --Balancing value to convert the naval_strike_targetting equipment stats to chances of how many airplanes managed to do successfull strike.
-	NAVAL_STRIKE_DAMAGE_TO_STR = 8, --was 1.0 --Balancing value to convert damage ( naval_strike_attack * hits ) to Strength reduction.
-	NAVAL_STRIKE_DAMAGE_TO_ORG = 1.2, --was 1.5 --Balancing value to convert damage ( naval_strike_attack * hits ) to Organisation reduction.
-	NAVAL_STRIKE_CARRIER_MULTIPLIER = 2.75, --was 10.0 --damage bonus when planes are in naval combat where their carrier is present (and can thus sortie faster and more effectively)
+	NAVAL_STRIKE_DAMAGE_TO_STR = 12, --was 1.0 --Balancing value to convert damage ( naval_strike_attack * hits ) to Strength reduction.
+	NAVAL_STRIKE_DAMAGE_TO_ORG = 1.8, --was 1.5 --Balancing value to convert damage ( naval_strike_attack * hits ) to Organisation reduction.
+	NAVAL_STRIKE_CARRIER_MULTIPLIER = 2.25, --was 10.0 --damage bonus when planes are in naval combat where their carrier is present (and can thus sortie faster and more effectively)
 	FIELD_EXPERIENCE_SCALE = 0.0004,
 	FIELD_EXPERIENCE_MAX_PER_DAY = 2.0, --was 2 --Most xp you can gain per day
 	CLOSE_AIR_SUPPORT_EXPERIENCE_SCALE = 0.0005,		-- How much the experinence gained by CAS is scaled
@@ -1432,7 +1432,7 @@ NAir = {
 	AIR_WING_XP_LOSS_REDUCTION_OVER_FRIENDLY_TERRITORY_FACTOR = 0.75, --was 0.3 --Reduction on XP loss over friendly territory
 
 	DISRUPTION_FACTOR = 1.00, --was 4.0--was 0.05 --multiplier on disruption damage to scale its effects on planes
-	DISRUPTION_FACTOR_CARRIER = 8.00, --was 6.0 --multiplier on disruption damage to scale its effects on carrier vs carrier planes
+	DISRUPTION_FACTOR_CARRIER = 9.00, --was 6.0 --multiplier on disruption damage to scale its effects on carrier vs carrier planes
 	DISRUPTION_SPEED_FACTOR = 0.0, --was 1.0
 	DISRUPTION_AGILITY_FACTOR = 0.0, --was 0.0--was 0.25
 	DISRUPTION_ATTACK_FACTOR = 0.25, --was 0.0--was 1.0
