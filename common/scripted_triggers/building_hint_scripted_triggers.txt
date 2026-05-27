@@ -7,6 +7,14 @@
 @COST_MIC = 5000
 @COST_MIC_PER_LEVEL = -10
 @COST_INF = 5000
+@COST_FUEL_REF = 5500
+@COST_FUEL_REF_PER_LEVEL = -25
+@COST_RUBBER_REF = 5500
+@COST_RUBBER_REF_PER_LEVEL = -25
+@COST_STEEL_REF = 6250
+@COST_STEEL_REF_PER_LEVEL = -25
+@COST_ALU_REF = 2000
+@COST_ALU_REF_PER_LEVEL = -10
 
 cic_days_calc = {
 	controller = {
@@ -37,8 +45,8 @@ cic_days_calc = {
 	set_temp_variable = { cic_build_days = cic_build_cost }
 	divide_temp_variable = { cic_build_days = local_cic_output }
 	add_to_temp_variable = { cic_build_days = 0.5 }
-
 	round_temp_variable = cic_build_days
+
 	check_variable = {
 		var = cic_build_days
 		value = days_limit_u
@@ -82,7 +90,6 @@ mic_days_calc = {
 	add_to_temp_variable = { mic_build_days = 0.5 }
 	round_temp_variable = mic_build_days
 	
-	round_temp_variable = mic_build_days
 	check_variable = {
 		var = mic_build_days
 		value = days_limit_u
@@ -126,7 +133,6 @@ nic_days_calc = {
 	add_to_temp_variable = { nic_build_days = 0.5 }
 	round_temp_variable = nic_build_days
 	
-	round_temp_variable = nic_build_days
 	check_variable = {
 		var = nic_build_days
 		value = days_limit_u
@@ -147,13 +153,19 @@ inf_days_calc = {
 		set_temp_variable = { ROOT.days_limit_l = days_lower_limit }
 	}
 
+	set_temp_variable = { infra_speed = infrastructure_level }
+	multiply_temp_variable = { infra_speed = 0.1 }
+	add_to_temp_variable = { infra_speed = 1 }
+
 	set_temp_variable = { inf_build_cost = @COST_INF }
 	set_temp_variable = { local_inf_speed = 1 }
 	add_to_temp_variable = { local_inf_speed = inf_speed }
 	add_to_temp_variable = { local_inf_speed = modifier@state_production_speed_infrastructure_factor }
 	add_to_temp_variable = { local_inf_speed = construction_speed }
 	add_to_temp_variable = { local_inf_speed = modifier@state_production_speed_buildings_factor }
-	set_temp_variable = { local_inf_output = local_inf_speed }
+	set_temp_variable = { local_inf_speed_infra = local_inf_speed }
+	multiply_temp_variable = { local_inf_speed_infra = infra_speed }
+	set_temp_variable = { local_inf_output = local_inf_speed_infra }
 	multiply_temp_variable = { local_inf_output = @MAX_CIV_FACTORIES_PER_LINE }
 	multiply_temp_variable = { local_inf_output = @BASE_FACTORY_SPEED }
 	set_temp_variable = { inf_build_days = inf_build_cost }
@@ -161,7 +173,6 @@ inf_days_calc = {
 	add_to_temp_variable = { inf_build_days = 0.5 }
 	round_temp_variable = inf_build_days
 	
-	round_temp_variable = inf_build_days
 	check_variable = {
 		var = inf_build_days
 		value = days_limit_u
@@ -169,6 +180,178 @@ inf_days_calc = {
 	}
 	check_variable = {
 		var = inf_build_days
+		value = days_limit_l
+		compare = greater_than_or_equals	
+	}
+}
+
+fuel_ref_days_calc = {
+	controller = {
+		set_temp_variable = { ROOT.construction_speed = modifier@production_speed_buildings_factor }
+		set_temp_variable = { ROOT.fuel_ref_speed = modifier@production_speed_synthetic_refinery_factor }
+		set_temp_variable = { ROOT.days_limit_u = days_upper_limit }
+		set_temp_variable = { ROOT.days_limit_l = days_lower_limit }
+	}
+
+	set_temp_variable = { infra_speed = infrastructure_level }
+	multiply_temp_variable = { infra_speed = 0.1 }
+	add_to_temp_variable = { infra_speed = 1 }
+
+	set_temp_variable = { fuel_ref_build_cost = @COST_FUEL_REF }
+	set_temp_variable = { fuel_ref_levels = building_level@synthetic_refinery }
+	multiply_temp_variable = { fuel_ref_levels = @COST_FUEL_REF_PER_LEVEL }
+	add_to_temp_variable = { fuel_ref_build_cost = fuel_ref_levels }
+	set_temp_variable = { local_fuel_ref_speed = 1 }
+	add_to_temp_variable = { local_fuel_ref_speed = fuel_ref_speed }
+	add_to_temp_variable = { local_fuel_ref_speed = modifier@state_production_speed_synthetic_refinery_factor }
+	add_to_temp_variable = { local_fuel_ref_speed = construction_speed }
+	add_to_temp_variable = { local_fuel_ref_speed = modifier@state_production_speed_buildings_factor }
+	set_temp_variable = { local_fuel_ref_speed_infra = local_fuel_ref_speed }
+	multiply_temp_variable = { local_fuel_ref_speed_infra = infra_speed }
+	set_temp_variable = { local_fuel_ref_output = local_fuel_ref_speed_infra }
+	multiply_temp_variable = { local_fuel_ref_output = @MAX_CIV_FACTORIES_PER_LINE }
+	multiply_temp_variable = { local_fuel_ref_output = @BASE_FACTORY_SPEED }
+	set_temp_variable = { fuel_ref_build_days = fuel_ref_build_cost }
+	divide_temp_variable = { fuel_ref_build_days = local_fuel_ref_output }
+	add_to_temp_variable = { fuel_ref_build_days = 0.5 }
+	round_temp_variable = fuel_ref_build_days
+	
+	check_variable = {
+		var = fuel_ref_build_days
+		value = days_limit_u
+		compare = less_than_or_equals
+	}
+	check_variable = {
+		var = fuel_ref_build_days
+		value = days_limit_l
+		compare = greater_than_or_equals	
+	}
+}
+
+rubber_ref_days_calc = {
+	controller = {
+		set_temp_variable = { ROOT.construction_speed = modifier@production_speed_buildings_factor }
+		set_temp_variable = { ROOT.rubber_ref_speed = modifier@production_speed_synthetic_rubber_refinery_factor }
+		set_temp_variable = { ROOT.days_limit_u = days_upper_limit }
+		set_temp_variable = { ROOT.days_limit_l = days_lower_limit }
+	}
+
+	set_temp_variable = { infra_speed = infrastructure_level }
+	multiply_temp_variable = { infra_speed = 0.1 }
+	add_to_temp_variable = { infra_speed = 1 }
+
+	set_temp_variable = { rubber_ref_build_cost = @COST_RUBBER_REF }
+	set_temp_variable = { rubber_ref_levels = building_level@synthetic_rubber_refinery }
+	multiply_temp_variable = { rubber_ref_levels = @COST_RUBBER_REF_PER_LEVEL }
+	add_to_temp_variable = { rubber_ref_build_cost = rubber_ref_levels }
+	set_temp_variable = { local_rubber_ref_speed = 1 }
+	add_to_temp_variable = { local_rubber_ref_speed = rubber_ref_speed }
+	add_to_temp_variable = { local_rubber_ref_speed = modifier@state_production_speed_synthetic_rubber_refinery_factor }
+	add_to_temp_variable = { local_rubber_ref_speed = construction_speed }
+	add_to_temp_variable = { local_rubber_ref_speed = modifier@state_production_speed_buildings_factor }
+	set_temp_variable = { local_rubber_ref_speed_infra = local_rubber_ref_speed }
+	multiply_temp_variable = { local_rubber_ref_speed_infra = infra_speed }
+	set_temp_variable = { local_rubber_ref_output = local_rubber_ref_speed_infra }
+	multiply_temp_variable = { local_rubber_ref_output = @MAX_CIV_FACTORIES_PER_LINE }
+	multiply_temp_variable = { local_rubber_ref_output = @BASE_FACTORY_SPEED }
+	set_temp_variable = { rubber_ref_build_days = rubber_ref_build_cost }
+	divide_temp_variable = { rubber_ref_build_days = local_rubber_ref_output }
+	add_to_temp_variable = { rubber_ref_build_days = 0.5 }
+	round_temp_variable = rubber_ref_build_days
+	
+	check_variable = {
+		var = rubber_ref_build_days
+		value = days_limit_u
+		compare = less_than_or_equals
+	}
+	check_variable = {
+		var = rubber_ref_build_days
+		value = days_limit_l
+		compare = greater_than_or_equals	
+	}
+}
+
+steel_ref_days_calc = {
+	controller = {
+		set_temp_variable = { ROOT.construction_speed = modifier@production_speed_buildings_factor }
+		set_temp_variable = { ROOT.steel_ref_speed = modifier@production_speed_steel_refinery_factor }
+		set_temp_variable = { ROOT.days_limit_u = days_upper_limit }
+		set_temp_variable = { ROOT.days_limit_l = days_lower_limit }
+	}
+
+	set_temp_variable = { infra_speed = infrastructure_level }
+	multiply_temp_variable = { infra_speed = 0.1 }
+	add_to_temp_variable = { infra_speed = 1 }
+
+	set_temp_variable = { steel_ref_build_cost = @COST_STEEL_REF }
+	set_temp_variable = { steel_ref_levels = building_level@steel_refinery }
+	multiply_temp_variable = { steel_ref_levels = @COST_STEEL_REF_PER_LEVEL }
+	add_to_temp_variable = { steel_ref_build_cost = steel_ref_levels }
+	set_temp_variable = { local_steel_ref_speed = 1 }
+	add_to_temp_variable = { local_steel_ref_speed = steel_ref_speed }
+	add_to_temp_variable = { local_steel_ref_speed = modifier@state_production_speed_steel_refinery_factor }
+	add_to_temp_variable = { local_steel_ref_speed = construction_speed }
+	add_to_temp_variable = { local_steel_ref_speed = modifier@state_production_speed_buildings_factor }
+	set_temp_variable = { local_steel_ref_speed_infra = local_steel_ref_speed }
+	multiply_temp_variable = { local_steel_ref_speed_infra = infra_speed }
+	set_temp_variable = { local_steel_ref_output = local_steel_ref_speed_infra }
+	multiply_temp_variable = { local_steel_ref_output = @MAX_CIV_FACTORIES_PER_LINE }
+	multiply_temp_variable = { local_steel_ref_output = @BASE_FACTORY_SPEED }
+	set_temp_variable = { steel_ref_build_days = steel_ref_build_cost }
+	divide_temp_variable = { steel_ref_build_days = local_steel_ref_output }
+	add_to_temp_variable = { steel_ref_build_days = 0.5 }
+	round_temp_variable = steel_ref_build_days
+	
+	check_variable = {
+		var = steel_ref_build_days
+		value = days_limit_u
+		compare = less_than_or_equals
+	}
+	check_variable = {
+		var = steel_ref_build_days
+		value = days_limit_l
+		compare = greater_than_or_equals	
+	}
+}
+
+alu_ref_days_calc = {
+	controller = {
+		set_temp_variable = { ROOT.construction_speed = modifier@production_speed_buildings_factor }
+		set_temp_variable = { ROOT.alu_ref_speed = modifier@production_speed_aluminium_refinery_factor }
+		set_temp_variable = { ROOT.days_limit_u = days_upper_limit }
+		set_temp_variable = { ROOT.days_limit_l = days_lower_limit }
+	}
+
+	set_temp_variable = { infra_speed = infrastructure_level }
+	multiply_temp_variable = { infra_speed = 0.1 }
+	add_to_temp_variable = { infra_speed = 1 }
+
+	set_temp_variable = { alu_ref_build_cost = @COST_ALU_REF }
+	set_temp_variable = { alu_ref_levels = building_level@aluminium_refinery }
+	multiply_temp_variable = { alu_ref_levels = @COST_ALU_REF_PER_LEVEL }
+	add_to_temp_variable = { alu_ref_build_cost = alu_ref_levels }
+	set_temp_variable = { local_alu_ref_speed = 1 }
+	add_to_temp_variable = { local_alu_ref_speed = alu_ref_speed }
+	add_to_temp_variable = { local_alu_ref_speed = modifier@state_production_speed_aluminium_refinery_factor }
+	add_to_temp_variable = { local_alu_ref_speed = construction_speed }
+	add_to_temp_variable = { local_alu_ref_speed = modifier@state_production_speed_buildings_factor }
+	set_temp_variable = { local_alu_ref_speed_infra = local_alu_ref_speed }
+	multiply_temp_variable = { local_alu_ref_speed_infra = infra_speed }
+	set_temp_variable = { local_alu_ref_output = local_alu_ref_speed_infra }
+	multiply_temp_variable = { local_alu_ref_output = @MAX_CIV_FACTORIES_PER_LINE }
+	multiply_temp_variable = { local_alu_ref_output = @BASE_FACTORY_SPEED }
+	set_temp_variable = { alu_ref_build_days = alu_ref_build_cost }
+	divide_temp_variable = { alu_ref_build_days = local_alu_ref_output }
+	add_to_temp_variable = { alu_ref_build_days = 0.5 }
+	round_temp_variable = alu_ref_build_days
+	
+	check_variable = {
+		var = alu_ref_build_days
+		value = days_limit_u
+		compare = less_than_or_equals
+	}
+	check_variable = {
+		var = alu_ref_build_days
 		value = days_limit_l
 		compare = greater_than_or_equals	
 	}

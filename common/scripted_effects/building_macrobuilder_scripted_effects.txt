@@ -5,6 +5,10 @@ init_building_macrobuilder = {
     set_variable = { mic_frame = 2 }
     set_variable = { nic_frame = 3 }
     set_variable = { infra_frame = 4 }
+    set_variable = { fuel_ref_frame = 5 }
+    set_variable = { rubber_ref_frame = 6 }
+    set_variable = { steel_ref_frame = 7 }
+    set_variable = { alu_ref_frame = 8 }
     set_variable = { days_lower_limit = 1 }
     set_variable = { days_upper_limit = 250 }
 }
@@ -60,6 +64,22 @@ macro_build = {
                 limit = { inf_days_calc = yes }
                 build_INF = yes
             }
+            if = {
+                limit = { fuel_ref_days_calc = yes }
+                build_fuel_ref = yes
+            }
+            if = {
+                limit = { rubber_ref_days_calc = yes }
+                build_rubber_ref = yes
+            }
+            if = {
+                limit = { steel_ref_days_calc = yes }
+                build_steel_ref = yes
+            }
+            if = {
+                limit = { alu_ref_days_calc = yes }
+                build_alu_ref = yes
+            }
         }
     }
 
@@ -68,6 +88,10 @@ macro_build = {
         clr_state_flag = MIC_built
         clr_state_flag = NIC_built
         clr_state_flag = INF_built
+        clr_state_flag = fuel_ref_built
+        clr_state_flag = rubber_ref_built
+        clr_state_flag = steel_ref_built
+        clr_state_flag = alu_ref_built
     }
 }
 
@@ -76,12 +100,16 @@ macro_build_buildings = {
     build_MIC = yes
     build_NIC = yes
     build_INF = yes
+    build_fuel_ref = yes
+    build_rubber_ref = yes
+    build_steel_ref = yes
+    build_alu_ref = yes
 }
 
 build_CIC = {
     if = {
         limit = {
-            ROOT = { check_variable = { cic_frame = 5 } }
+            ROOT = { check_variable = { cic_frame = 9 } }
             NOT = { has_state_flag = CIC_built }
         }
         add_building_construction = {
@@ -96,7 +124,7 @@ build_CIC = {
 build_MIC = {
     if = {
         limit = {
-            ROOT = { check_variable = { mic_frame = 6 } }
+            ROOT = { check_variable = { mic_frame = 10 } }
             NOT = { has_state_flag = MIC_built }
         }
         add_building_construction = {
@@ -111,7 +139,7 @@ build_MIC = {
 build_NIC = {
     if = {
         limit = {
-            ROOT = { check_variable = { nic_frame = 7 } }
+            ROOT = { check_variable = { nic_frame = 11 } }
             NOT = { has_state_flag = NIC_built }
         }
         add_building_construction = {
@@ -126,7 +154,7 @@ build_NIC = {
 build_INF = {
     if = {
         limit = {
-            ROOT = { check_variable = { infra_frame = 8 } }
+            ROOT = { check_variable = { infra_frame = 12 } }
             NOT = { has_state_flag = INF_built }
         }
         add_building_construction = {
@@ -135,5 +163,65 @@ build_INF = {
             instant_build = no
         }
         set_state_flag = INF_built
+    }
+}
+
+build_fuel_ref = {
+    if = {
+        limit = {
+            ROOT = { check_variable = { fuel_ref_frame = 13 } }
+            NOT = { has_state_flag = silo_built }
+        }
+        add_building_construction = {
+            type = synthetic_refinery
+            level = ROOT.amount_buildings
+            instant_build = no
+        }
+        set_state_flag = fuel_ref_built
+    }
+}
+
+build_rubber_ref = {
+    if = {
+        limit = {
+            ROOT = { check_variable = { rubber_ref_frame = 14 } }
+            NOT = { has_state_flag = silo_built }
+        }
+        add_building_construction = {
+            type = synthetic_rubber_refinery
+            level = ROOT.amount_buildings
+            instant_build = no
+        }
+        set_state_flag = rubber_ref_built
+    }
+}
+
+build_steel_ref = {
+    if = {
+        limit = {
+            ROOT = { check_variable = { steel_ref_frame = 15 } }
+            NOT = { has_state_flag = silo_built }
+        }
+        add_building_construction = {
+            type = steel_refinery
+            level = ROOT.amount_buildings
+            instant_build = no
+        }
+        set_state_flag = steel_ref_built
+    }
+}
+
+build_alu_ref = {
+    if = {
+        limit = {
+            ROOT = { check_variable = { alu_ref_frame = 16 } }
+            NOT = { has_state_flag = silo_built }
+        }
+        add_building_construction = {
+            type = aluminium_refinery
+            level = ROOT.amount_buildings
+            instant_build = no
+        }
+        set_state_flag = alu_ref_built
     }
 }
