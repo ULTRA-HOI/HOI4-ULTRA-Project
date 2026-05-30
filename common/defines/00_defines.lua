@@ -1603,15 +1603,15 @@ NNavy = {
 	BEST_CAPITALS_TO_SCREENS_RATIO = 0.33, --was 0.25 --capitals / screens ratio used for creating FEX groups in naval combat
 	COMBAT_BASE_HIT_CHANCE = 0.05, --was 0.1 --base chance for hit
 
-	COMBAT_MIN_HIT_CHANCE = 0.01, --was 0.05 --never less hit chance then this?
+	COMBAT_MIN_HIT_CHANCE = 0.001, --was 0.05 --never less hit chance then this?
 	COMBAT_EVASION_TO_HIT_CHANCE = 0.025, --was 0.007 --we take ship evasion stats, and mult by this value, so it gives hit chance reduction. So if reduction is 0.025 and ship evasion = 10, then there will be 0.25 (25%) lower hit chance. (Fe. 50% base -25% from evasion +10% bcoz it's very close).
 	COMBAT_EVASION_TO_HIT_CHANCE_TORPEDO_MULT = 40.0, --was 10.0 --the above evasion hit chance is multiplied by 400% if shooting with torpedoes. Torpedoes are slow, so evasion matters more.
-	MIN_HIT_PROFILE_MULT = 0.05, --was 0.0 --largest hit profile penalty to hitting
+	MIN_HIT_PROFILE_MULT = 0, --was 0.0 --largest hit profile penalty to hitting
 	COMBAT_LOW_ORG_HIT_CHANCE_PENALTY = -0.5,						-- % of penalty applied to hit chance when ORG is very low.
 	COMBAT_LOW_MANPOWER_HIT_CHANCE_PENALTY = -0.25,					-- % of penalty applied to hit chance when manpower is very low.
 	COMBAT_DAMAGE_RANDOMNESS = 0.4, --was 0.5 --random factor in damage. So if max damage is fe. 10, and randomness is 30%, then damage will be between 7-10.
 	COMBAT_TORPEDO_CRITICAL_CHANCE = 0.25, --was 0.1 --chance for critical hit from torpedo.
-	COMBAT_TORPEDO_CRITICAL_DAMAGE_MULT = 3.0, --was 2.0 --multiplier to damage when got critical hit from torpedo. (Critical hits are devastating as usualy torpedo_attack are pretty high base values).
+	COMBAT_TORPEDO_CRITICAL_DAMAGE_MULT = 5.0, --was 2.0 --multiplier to damage when got critical hit from torpedo. (Critical hits are devastating as usualy torpedo_attack are pretty high base values).
 
 	COMBAT_DAMAGE_TO_STR_FACTOR = 1.0, --was 0.6 --casting damage value to ship strength multiplier. Use it ot balance the game difficulty.
 	COMBAT_DAMAGE_TO_ORG_FACTOR = 0.5, --was 1.0 --casting damage value to ship organisation multiplier. Use it to balance the game difficulty.
@@ -2125,9 +2125,9 @@ NNavy = {
 		50.0,	-- small guns
 	},
 
-	DEPTH_CHARGES_HIT_CHANCE_MULT 									= 1.5, --was 1.1 --multiplies hit chance of small guns --Depth Charges use Light Gun Hit Chance with this multiplier
-	DEPTH_CHARGES_DAMAGE_MULT 										= 2.0, --was 0.7 --multiplies damage of depth charges
-	DEPTH_CHARGES_HIT_PROFILE 										= 160.0, --was 100.0 --hit profile for depth charges
+	DEPTH_CHARGES_HIT_CHANCE_MULT 									= 1, --was 1.1 --multiplies hit chance of small guns --Depth Charges use Light Gun Hit Chance with this multiplier
+	DEPTH_CHARGES_DAMAGE_MULT 										= 20, --was 0.7 --multiplies damage of depth charges
+	DEPTH_CHARGES_HIT_PROFILE 										= 40, --was 100.0 --hit profile for depth charges
 
 	CONVOY_HIT_PROFILE												= 140.0,  	-- convoys has this contant hit profile
 	HIT_PROFILE_MULT 												= 100.0,  	-- multiplies hit profile of every ship
@@ -2160,7 +2160,7 @@ NNavy = {
 
 	MISSION_EFFICIENCY_POW_FACTOR									= 1.7,		-- mission efficiencies will be powered up by this to further penalize low efficiencies
 
-	NAVAL_COMBAT_SUB_DETECTION_FACTOR                               = 2.0, --was 1.0 --balance value for sub detection in combat by ships
+	NAVAL_COMBAT_SUB_DETECTION_FACTOR                               = 0.1, --was 1.0 --balance value for sub detection in combat by ships
 	SUBMARINE_HIDE_TIMEOUT 											= 2, --was 20 --Amount of in-game-hours that takes the submarine (with position unrevealed), to hide.
 	SUBMARINE_REVEALED_TIMEOUT 										= 4, --was 16 --Amount of in-game-hours that makes the submarine visible if it is on the defender side.
 	SUBMARINE_REVEAL_BASE_CHANCE 									= 24, -- /deprecated, will be removed in the future update/ was 11 --Base factor for submarine detection. It's modified by the difference of a spotter's submarines detection vs submarine visibility. Use this variable for game balancing. setting this too low will cause bad spotting issues.
@@ -2169,7 +2169,7 @@ NNavy = {
 
 	-- reworked submarine detection formula, new formula is (avg. sub detection * SUBMARINE_REVEAL_DETECTION_MULTIPLIER) / MAX{( SUBMARINE_BASE_STEALTH_VALUE - sub visibility), 0.1_fixed }, for formula (with one 'hack' on the graph to avoid undefined) - https://www.desmos.com/calculator/zhbwchjblc
 	SUBMARINE_BASE_STEALTH_VALUE									= 20,		-- was 100 -- Used in the reworked formula, sub_visiblity is subtracted from SUBMARINE_BASE_STEALTH_VALUE for the divider. The higher the define, the lower the chance for detection to happen
-	SUBMARINE_REVEAL_DETECTION_MULTIPLIER							= 0.0023,		-- was 0.075 -- Used in the reworked formula, multiplies the average submarine detection. The higher the define, the higher chance for detection to happen
+	SUBMARINE_REVEAL_DETECTION_MULTIPLIER							= 0.02,		-- was 0.075 -- Used in the reworked formula, multiplies the average submarine detection. The higher the define, the higher chance for detection to happen
 	SUBMARINE_REVEAL_TORPEDO_FIRING_DETECTION_MULTIPLIER			= 4,		-- was 1.1 -- used in the reworked formula when firing the torpedos to see whether it has been detected. This define is applied as multiplier to the numerator (avg. sub detection * SUBMARINE_REVEAL_DETECTION_MULTIPLIER * SUBMARINE_REVEAL_TORPEDO_FIRING_DETECTION_MULTIPLIER). define = 1, no difference, define < 0, no chance of detecting, 0 < define < 1, lowers chance of detecting comparing to passive reveal, 1 < define, increases chance to be revealed.
 
 	MAX_NUM_HOURS_TO_WAIT_AT_ALLY_DOCKYARDS_FOR_REPAIRS 			= 48,		-- taskforces will wait at most this amount of hours in ally bases for repairs before switching to another base for repairs
@@ -2275,7 +2275,7 @@ NNavy = {
 	},
 
 	NAVY_PIERCING_THRESHOLD_CRITICAL_VALUES = {	-- 0 armor will always receive maximum damage (so add overmatching at your own peril). the system expects at least 2 values, with no upper limit.
-		-1.00,
+		-1.00, -- first value used for depth charges (ie those cannot crit)
 		-1.00,
 		-0.95,
 		-0.95,
@@ -2305,7 +2305,7 @@ NNavy = {
 	},
 
 	NAVY_PIERCING_THRESHOLD_DAMAGE_VALUES = {	-- 0 armor will always receive maximum damage (so add overmatching at your own peril). the system expects at least 2 values, with no upper limit.
-		0.05,
+		0.05, -- first value used for depth charges, offset in DEPTH_CHARGES_DAMAGE_MULT
 		0.15,
 		0.24,
 		0.38,
