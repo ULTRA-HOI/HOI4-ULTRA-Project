@@ -1,5 +1,72 @@
 # Changelog
 
+# 0.19.2
+## Updates 
+- 1.18.3 Compatibility
+## Features 
+- Added refineries to macrobuilder
+## Balance 
+- Submarine Balance changes
+	- subs no longer massacre dd
+	- subs now take 2 hits to kill, 1 with mortar
+	- increased submarine AA
+- Rebalanced Infantry AT
+	- Overall Inf AT has lower SA/HA but also cost less, supply use has been greatly reduced
+- Decreased afv SA, HA, Def
+- Reduced Hard Attack for all artillery and infantry
+- Australia, Canada and NZL radar updates
+	- AST, CAN and NZL updated to start with same electronics techs that UK starts with
+- UK Focus Tweaks
+	- Removed Steady As She Goes, Home Defence now gives Steady As She Goes spirit
+	- Increased AoT bonus for 406mm Mk II to enable laying down Lion Class at historical time
+- Increased MIO task capacity
+- Remove faction call to war rule penalties
+- Weather Duration Change
+	- Weather effect durations were too long
+	- Reduced maximum and minimum durations substantially
+- Carrier Update
+	- Reduced damage dealt to carrier aircraft by carrier aircraft
+	- Increased disruption caused for carrier planes by carrier planes
+	- Reduced bad weather carrier penalties
+	- Increased night carrier penalties
+	- Carrier wing size increased to 18 from 6 - all templates adjusted
+	- Carrier damage further increased
+	- Ship silhouettes adjusted - more carrier planes can now engage a given fleet
+	- Penalty for going over maximum carrier planes reduced
+	- Ship anti-air effectiveness reduced
+	- Carrier targeting adjusted - now greater priority on carriers and low health targets
+- Increase train capacity
+- Australia gets more manpower during pacific war
+- Commonwealth gets radar when UK completes project
+- Naval headquarters allocated
+	- UK: Malta and Portsmouth, decisions for Singapore and Alexandria
+	- Fra: Toulon
+	- Ger: Kiel, decision for Nantes
+	- USA: Hawaii and Norfolk
+	- Sov: Leningrad
+	- Ita: Rome
+	- Can: decision for Halifax
+	- Jap: Tokyo and Taiwan
+	- 
+	- Also adjusted Alexandria so that no longer wastes naval bases
+- USA now must build destroyers for war support
+- Nerfed USA foreign support decisions
+	- can no longer give mils to france
+	- can only give 3 mils to china, and only after usa joins the war
+## Fixes 
+- UK Commonwealth investment factories no longer spawn in non-core states
+- Updated faction goals for Ultra
+- Offmap logistics supply bonus display fix
+	- Now correctly shows -5% supply per level instead of -4%
+- Main menu now shows ownership of the new DLCs
+- Italian East Africa now starts with somewhat useful equipment
+## Historical Balance 
+- Added 2 USA & Japan starting advisors
+	- FBI director Hoover added as a completely new, locked-in at start USA political advisor. Prince Kan'in now locked-in at start as Japans chief of army.
+- Added a number of Japanese advisors
+	- A number of historical prime ministers and other advisors from the 1.17 update are now available.
+- USA carrier building speed increase
+
 # 0.19.1
 ## Updates 
 - 1.18. Compatibility
