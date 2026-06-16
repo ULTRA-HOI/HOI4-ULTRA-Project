@@ -910,18 +910,16 @@ NMilitary = {
 	MAX_REGIMENTAL_SUPPORT_WIDTH = 5,		-- Max width of regimental supports in division designer.
 	MAX_REGIMENTAL_SUPPORT_HEIGHT = 1,		-- Max height of regimental supports in division designer.
 	MAX_HQ_BATTALION_WIDTH = 1,			-- Max width of regiments in division designer (Army HQ templates).
-	MAX_HQ_BATTALION_HEIGHT = 4,			-- Max height of regiments in division designer (Army HQ templates).
+	MAX_HQ_BATTALION_HEIGHT = 3,			-- Max height of regiments in division designer (Army HQ templates).
 	MAX_HQ_SUPPORT_WIDTH = 1,			-- Max width of support in division designer (Army HQ templates).
 	MAX_HQ_SUPPORT_HEIGHT = 4,			-- Max height of support in division designer (Army HQ templates).
 	MAX_HQ_REGIMENTAL_SUPPORT_WIDTH = 0,		-- Max width of regimental supports in division designer (Army HQ templates).
 	MAX_HQ_REGIMENTAL_SUPPORT_HEIGHT = 0,		-- Max height of regimental supports in division designer (Army HQ templates).
 	REGIMENTAL_SUPPORT_REQUIRED_BATTALIONS = { 3 }, -- For each regimental support row, how many battalions are required in the regiment to be able to place a support in that row.
 	-- When the AI is deciding where to place battalions, it tries to place it in the position with the lowest number according to this grid.
-	AI_BATTALION_BUILD_ORDER = { 	1,  6,  11, 16, 21,
-				     				2,  7,  12, 17, 22,
-				     				3,  8,  13, 18, 23,
-				     				4,  9,  14, 19, 24,
-				     				5,  10, 15, 20, 25 }, 
+	AI_BATTALION_BUILD_ORDER = { 	1,  4,  7, 10, 13, 16, 
+				     				2,  5,  8, 11, 14, 17,
+				     				3,  6,  9, 12, 15, 18}, 
 
 	BASE_DIVISION_BRIGADE_GROUP_COST = 0, --was 20 --Base cost to unlock a regiment slot,
 	BASE_DIVISION_BRIGADE_CHANGE_COST = 0, --was 5 --Base cost to change a regiment column.

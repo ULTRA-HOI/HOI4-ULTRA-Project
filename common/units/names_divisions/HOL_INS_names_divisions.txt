@@ -1,0 +1,576 @@
+﻿# Division template historical names system. Is a new method of naming the divisions based on the names-group assigned to it's template.
+# If we run out of all historical names, the names will be assigned in the old way.
+#
+# Each group has a made up tag. Use it if you want to append more, or replace existing names with the extra txt files (modding).
+#
+# for_countries - lists all countries that can use it. If empty, or entire tag is missing, all countries in the world can use it.
+#
+# can_use - is a trigger that locks/unlocks the group under specific circumstances. The trigger is in a country scope.
+#
+# division_types - is a list of tokens to corresponding unit types. A player can in fact use any group of names for a div.template
+#                  however this tag is a helper for an automated choice (for AI, or if the group must switch on it's own, because
+#                  for example the current one is no longer available due to the can_use trigger saying so).
+#                  In automated choice, the division template must have at least 1 of the following types for it to be chosen.
+#
+# fallback_name - Is going to be used if we run out of the scripted historical names. If you want to use the old division naming
+#                 mechanics to be used for fallbacks, then just skip this option.
+#
+# unordered - It's a list of historical division names that did not have a number. Regardless if such names happened in history or not
+#             this option is available here mainly for a mods.
+#
+# ordered - Is a list of all historical names. 
+#           Numbers must start from 1 and up. 
+#           Numbers can't repeat in one scope.
+#           If you script the name for this group, at the same number (for example in a mod in another file), the name will be override.
+#           All arguments between the brackets must be separated by spaces. Each argument is wrapped in "quotas".
+#           1st argument = The name. It must contain either: 
+#                          %d (for decimal number placement)
+#                          %s (for string number placement - ROMAN numbers like XIV).
+#           2nd argument is optional = A localizable text describing this historical division. The text will be visible in the tooltip
+#                                      where you choose the historical division name.
+#           3rd argument is optional = An URL preferably pointing to the WIKI. It's a future feature that is not currently working in
+#                                      the current game version.
+HOL_INF_01 = 
+{
+	name = "Infantry Division"
+
+	for_countries = { HOL }
+
+	can_use = { always = yes }
+
+	division_types = { "infantry" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { HOL_INF_01 }
+
+	fallback_name = "%de Divisie"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%de Divisie" }
+		2 = { "%de Divisie" }
+		3 = { "%de Divisie" }
+		4 = { "%de Divisie" }
+		5 = { "%de Divisie" }
+		6 = { "%de Divisie" }
+		7 = { "%de Divisie" }
+		8 = { "%de Divisie" }
+		101 = { "Lichte Divisie" }		
+		102 = { "Peel Divisie" }		
+		9 = { "%de Divisie" }
+		10 = { "%de Divisie" }
+		11 = { "%de Divisie" }
+		12 = { "%de Divisie" }
+		13 = { "%de Divisie" }
+		14 = { "%de Divisie" }
+		15 = { "%de Divisie" }
+		16 = { "%de Divisie" }
+		17 = { "%de Divisie" }
+		18 = { "%de Divisie" }
+		19 = { "%de Divisie" }
+		20 = { "%de Divisie" }		
+	}
+}
+
+HOL_CAV_01 = 
+{
+	name = "Cavalry Division"
+
+	for_countries = { HOL INS }
+
+	can_use = { always = yes }
+
+	division_types = { "cavalry" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { HOL_INF_01 }
+
+	fallback_name = "%de Huzaren te Paard"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%de Huzaren te Paard" }
+		2 = { "%de Huzaren te Paard" }
+		3 = { "%de Huzaren te Paard" }
+		4 = { "%de Huzaren te Paard" }
+		5 = { "%de Huzaren te Paard" }
+		6 = { "%de Huzaren te Paard" }
+		7 = { "%de Huzaren te Paard" }
+		8 = { "%de Huzaren te Paard" }
+		9 = { "%de Huzaren te Paard" }
+		10 = { "%de Huzaren te Paard" }
+	}
+}
+
+HOL_MOT_01 = 
+{
+	name = "Motorized Division"
+
+	for_countries = { HOL INS }
+
+	can_use = { always = yes }
+
+	division_types = { "motorized" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { HOL_INF_01 }
+
+	fallback_name = "%de Gemotoriseerde Huzaren"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		101 = { "Lichte Divisie" }		
+		1 = { "%de Gemotoriseerde Huzaren" }
+		2 = { "%de Gemotoriseerde Huzaren" }
+		3 = { "%de Gemotoriseerde Huzaren" }
+		4 = { "%de Gemotoriseerde Huzaren" }
+		5 = { "%de Gemotoriseerde Huzaren" }
+		6 = { "%de Gemotoriseerde Huzaren" }
+		7 = { "%de Gemotoriseerde Huzaren" }
+		8 = { "%de Gemotoriseerde Huzaren" }
+		9 = { "%de Gemotoriseerde Huzaren" }
+		10 = { "%de Gemotoriseerde Huzaren" }
+	}
+}
+
+HOL_MEC_01 = 
+{
+	name = "Mechanized Division"
+
+	for_countries = { HOL INS }
+
+	can_use = { always = yes }
+
+	division_types = { "mechanized" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { HOL_INF_01 }
+
+	fallback_name = "%de Gemechaniseerde Huzaren"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		101 = { "Lichte Divisie" }		
+		1 = { "%de Gemechaniseerde Huzaren" }
+		2 = { "%de Gemechaniseerde Huzaren" }
+		3 = { "%de Gemechaniseerde Huzaren" }
+		4 = { "%de Gemechaniseerde Huzaren" }
+		5 = { "%de Gemechaniseerde Huzaren" }
+		6 = { "%de Gemechaniseerde Huzaren" }
+		7 = { "%de Gemechaniseerde Huzaren" }
+		8 = { "%de Gemechaniseerde Huzaren" }
+		9 = { "%de Gemechaniseerde Huzaren" }
+		10 = { "%de Gemechaniseerde Huzaren" }
+	}
+}
+
+HOL_ARM_01 = 
+{
+	name = "Armored Division"
+
+	for_countries = { HOL INS }
+
+	can_use = { always = yes }
+
+	division_types = { "light_armor" "medium_armor" "heavy_armor" "modern_armor" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { HOL_INF_01 }
+
+	fallback_name = "%de Pantserdivisie"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%de Pantserdivisie" }
+		2 = { "%de Pantserdivisie" }
+		3 = { "%de Pantserdivisie" }
+		4 = { "%de Pantserdivisie" }
+		5 = { "%de Pantserdivisie" }
+		6 = { "%de Pantserdivisie" }
+		7 = { "%de Pantserdivisie" }
+		8 = { "%de Pantserdivisie" }
+		9 = { "%de Pantserdivisie" }
+		10 = { "%de Pantserdivisie" }
+	}
+}
+
+HOL_PAR_01 = 
+{
+	name = "Paratrooper Division"
+
+	for_countries = { HOL INS }
+
+	can_use = { always = yes }
+
+	division_types = { "paratrooper" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { HOL_INF_01 }
+
+	fallback_name = "%de Parachutistendivisie"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%de Parachutistendivisie" }
+		2 = { "%de Parachutistendivisie" }
+		3 = { "%de Parachutistendivisie" }
+		4 = { "%de Parachutistendivisie" }
+		5 = { "%de Parachutistendivisie" }
+		6 = { "%de Parachutistendivisie" }
+		7 = { "%de Parachutistendivisie" }
+		8 = { "%de Parachutistendivisie" }
+		9 = { "%de Parachutistendivisie" }
+		10 = { "%de Parachutistendivisie" }
+	}
+}
+
+HOL_MAR_01 = 
+{
+	name = "Marine Division"
+
+	for_countries = { HOL INS }
+
+	can_use = { always = yes }
+
+	division_types = { "marine" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { HOL_INF_01 }
+
+	fallback_name = "%de Mariniersdivisie"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%de Mariniersdiv. 'Zwarte Duivels'" }
+		2 = { "%de Mariniersdivisie" }
+		3 = { "%de Mariniersdivisie" }
+		4 = { "%de Mariniersdivisie" }
+		5 = { "%de Mariniersdivisie" }
+		6 = { "%de Mariniersdivisie" }
+		7 = { "%de Mariniersdivisie" }
+		8 = { "%de Mariniersdivisie" }
+		9 = { "%de Mariniersdivisie" }
+		10 = { "%de Mariniersdivisie" }
+	}
+}
+
+HOL_MNT_01 = 
+{
+	name = "Mountain Division"
+
+	for_countries = { HOL INS }
+
+	can_use = { always = yes }
+
+	division_types = { "mountaineers" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { HOL_INF_01 }
+
+	fallback_name = "%de Divisie"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%de Divisie" }
+		2 = { "%de Divisie" }
+		3 = { "%de Divisie" }
+		4 = { "%de Divisie" }
+		5 = { "%de Divisie" }
+		6 = { "%de Divisie" }
+		7 = { "%de Divisie" }
+		8 = { "%de Divisie" }
+		9 = { "%de Divisie" }
+		10 = { "%de Divisie" }
+	}
+}
+
+HOL_GAR_01 = 
+{
+	name = "Garrison Division"
+
+	for_countries = { HOL }
+
+	can_use = { always = yes }
+
+	division_types = { "infantry" }
+
+	# Number reservation system will tie to another group.
+	link_numbering_with = { HOL_INF_01 }
+
+	fallback_name = "%de Vesting Divisie"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		102 = { "Peel Divisie" }		
+		103 = { "'Oostfront' Vesting Holland" }		# quasi-fictional divisions (historical names, but ahistorical strength)
+		104 = { "'Westfront' Vesting Holland" }		
+		105 = { "Divisie Spui" }		
+		106 = { "Divisie Kil" }		
+		107 = { "Territoriaal Bevel. Overijssel" }		
+		108 = { "Territoriaal Bevel. Friesland" }		
+		109 = { "Territoriaal Bevel. Zuid-Limburg" }		
+		110 = { "Stelling Den Helder" }		
+		111 = { "Stelling  Amsterdam" }		
+		112 = { "Stelling Rotterdam " }		
+		113 = { "Stelling 's Gravenhage" }		
+		114 = { "Stelling Utrecht" }		
+		115 = { "Stelling Soesterberg" }		
+	}
+}
+
+INS_colonial_division = {
+	name = "KNIL Veldleger"
+ 
+	for_countries = { HOL INS }
+ 
+	can_use = { always = yes }
+ 
+	division_types = { "infantry" }
+ 
+	fallback_name = "%de Regiment Infanterie KNIL"
+ 
+	ordered = {
+		1 = { "Ie Divisie KNIL" }
+		2 = { "IIe Divisie KNIL" }
+		3 = { "IIIe Divisie KNIL" }
+		4 = { "Commando Sumatra" }
+		5 = { "Commando Groote Oost" }
+		6 = { "Korps Marechaussee te Voet" }
+		7 = { "Stoottroepen KNIL" }
+		8 = { "Mobiele Eenheid" }
+		9 = { "Korps Politie Troepen" }
+		10 = { "Koloniale Reserve" }
+		11 = { "Korps Speciale Troepen" }
+		12 = { "%de Regiment Infanterie KNIL" }
+		13 = { "%de Regiment Infanterie KNIL" }
+		14 = { "%de Regiment Infanterie KNIL" }
+		15 = { "%de Regiment Infanterie KNIL" }
+		16 = { "%de Regiment Infanterie KNIL" }
+		17 = { "%de Regiment Infanterie KNIL" }
+		18 = { "%de Regiment Infanterie KNIL" }
+		19 = { "%de Regiment Infanterie KNIL" }
+		20 = { "%de Regiment Infanterie KNIL" }
+		21 = { "%de Regiment Infanterie KNIL" }
+		22 = { "%de Regiment Infanterie KNIL" }
+		23 = { "%de Regiment Infanterie KNIL" }
+		24 = { "%de Regiment Infanterie KNIL" }
+		25 = { "%de Regiment Infanterie KNIL" }
+	}
+}
+
+INS_colonial_garrison_division = {
+	name = "KNIL Territoriale Troepen"
+ 
+	for_countries = { HOL INS }
+ 
+	can_use = { always = yes }
+ 
+	division_types = { "infantry" }
+ 
+	fallback_name = "%se Garnizoens-Bataljon"
+ 
+	ordered = {
+		# Java — 4 most important garrison cities
+		1 = { "Stadswacht Batavia" }
+		2 = { "Stadswacht Bandoeng" }
+		3 = { "Stadswacht Surabaya" }
+		4 = { "Stadswacht Semarang" }
+ 
+		# Sumatra
+		5 = { "Stadswacht Medan" }
+		6 = { "Stadswacht Padang" }
+		7 = { "Stadswacht Palembang" }
+		8 = { "Stadswacht Aceh" }
+ 
+		# Borneo
+		9 = { "Stadswacht Pontianak" }
+		10 = { "Stadswacht Banjarmasin" }
+		11 = { "Stadswacht Balikpapan" }
+		12 = { "Stadswacht Tarakan" }
+ 
+		# Celebes and Eastern Islands
+		13 = { "Stadswacht Makassar" }
+		14 = { "Stadswacht Manado" }
+		15 = { "Stadswacht Ambon" }
+		16 = { "Stadswacht Kupang" }
+ 
+		# Generic numbered fallback battalions
+		17 = { "%se Garnizoens-Bataljon" }
+		18 = { "%se Garnizoens-Bataljon" }
+		19 = { "%se Garnizoens-Bataljon" }
+		20 = { "%se Garnizoens-Bataljon" }
+		21 = { "%se Garnizoens-Bataljon" }
+		22 = { "%se Garnizoens-Bataljon" }
+		23 = { "%se Landstorm-Bataljon" }
+		24 = { "%se Landstorm-Bataljon" }
+		25 = { "%se Garnizoens-Bataljon" }
+		26 = { "%se Garnizoens-Bataljon" }
+	}
+}
+
+INS_revolutionary_division = {
+	name = "Tentara Republik Indonesia"
+ 
+	for_countries = { INS }
+ 
+	can_use = {
+		always = yes
+	}
+ 
+	division_types = { "infantry" "motorized" }
+ 
+	fallback_name = "Divisi %s TKR"
+ 
+	ordered = {
+		1 = { "Divisi Siliwangi" }
+		2 = { "Divisi Pangeran Diponegoro" }
+		3 = { "Divisi Panembahan Senopati" }
+		4 = { "Divisi Soenan Goenoeng Djati" }
+		5 = { "Divisi %s TKR" }
+		6 = { "Divisi Ronggolawe" }
+		7 = { "Divisi Narotama" }
+		8 = { "Divisi Oentoeng Soeropati" }
+		9 = { "Divisi %s TKR" }
+		10 = { "Divisi Banteng" }
+		11 = { "Divisi Gadjah" }
+		12 = { "Divisi Garoeda" }
+		13 = { "Divisi %s TKR" }
+		14 = { "Divisi Tapanoeli" }
+		15 = { "Divisi Sumatera Selatan" }
+		16 = { "Divisi %s TKR" }
+		17 = { "Divisi 17 Agustus" }
+		18 = { "Divisi Djawa Timoer" }
+		19 = { "Divisi Sumatera Timoer" }
+		20 = { "Divisi Gadjah Poetih" }
+		21 = { "Divisi %s TKR" }
+		22 = { "Divisi %s TKR" }
+		23 = { "Divisi %s TKR" }
+		24 = { "Divisi %s TKR" }
+	}
+}
+
+INS_revolutionary_militia_division = {
+	name = "Laskar dan Barisan Pemuda"
+ 
+	for_countries = { INS }
+ 
+	division_types = { "infantry" }
+ 
+	fallback_name = "Resimen Laskar Rakyat %d"
+ 
+	ordered = {
+		1 = { "Resimen Laskar Rakyat %d" }
+		2 = { "Resimen Barisan Pemuda %d" }
+		3 = { "Resimen Laskar Rakyat %d" }
+		4 = { "Resimen Angkatan Pemuda Indonesia %d" }
+		5 = { "Resimen Laskar Rakyat %d" }
+		6 = { "Resimen Pemuda Republik Indonesia %d" }
+		7 = { "Resimen Laskar Rakyat %d" }
+		8 = { "Resimen Barisan Pemuda %d" }
+		9 = { "Resimen Angkatan Muda %d" }
+		10 = { "Resimen Laskar Rakyat %d" }
+		11 = { "Resimen Badan Perjuangan %d" }
+		12 = { "Resimen Laskar Rakyat %d" }
+		13 = { "Resimen Barisan Rakyat %d" }
+		14 = { "Resimen Laskar Rakyat %d" }
+		15 = { "Resimen Penjaga Keamanan Rakyat %d" }
+		16 = { "Resimen Barisan Pemuda %d" }
+		17 = { "Resimen Laskar Rakyat %d" }
+		18 = { "Resimen Angkatan Pemuda Indonesia %d" }
+		19 = { "Resimen Laskar Rakyat %d" }
+		20 = { "Resimen Pemuda Republik Indonesia %d" }
+		21 = { "Resimen Barisan Banteng Rakyat %d" }
+		22 = { "Resimen Laskar Merah Putih %d" }
+		23 = { "Resimen Laskar Rakyat %d" }
+		24 = { "Resimen Pemuda Pejuang %d" }
+		25 = { "Resimen Sukarelawan Rakyat %d" }
+		26 = { "Resimen Laskar Rakyat %d" }
+		27 = { "Resimen Barisan Pelopor Rakyat %d" }
+		28 = { "Resimen Pemuda Pembela Republik %d" }
+		29 = { "Resimen Laskar Pejuang Kemerdekaan %d" }
+		30 = { "Resimen Barisan Pemuda %d" }
+		31 = { "Resimen Laskar Rakyat %d" }
+		32 = { "Resimen Pasukan Gerilya Rakyat %d" }
+	}
+}
+
+INS_INF_01 = 
+{
+	name = "Colonial Division"
+
+	for_countries = { HOL INS }
+
+	can_use = { always = yes }
+
+	division_types = { "infantry" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { INS_INF_01 }
+
+	fallback_name = "%se KNIL Divisie"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%se KNIL Divisie 'Java'" }
+		2 = { "%se KNIL Divisie 'Java'" }
+		3 = { "%se KNIL Divisie 'Java'" }
+		4 = { "%se KNIL Divisie 'Sumatra'" }
+		5 = { "%se KNIL Divisie 'Sumatra'" }
+		6 = { "%se KNIL Divisie 'Borneo'" }
+		7 = { "%se KNIL Divisie 'Borneo'" }
+		8 = { "%se KNIL Divisie 'Celebes'" }
+		9 = { "%se KNIL Divisie 'Sumatra'" }
+		10 = { "%se KNIL Divisie 'Java'" }
+	}
+}
+INS_GAR_01 = 
+{
+	name = "Colonial Garrison"
+
+	for_countries = { HOL INS }
+
+	can_use = { always = yes }
+
+	division_types = { "infantry" }
+
+	# Number reservation system will tie to another group.
+	#link_numbering_with = { INS_INF_01 }
+
+	fallback_name = "%se Territoriaal Commando"
+
+	# Names with numbers (only one number per entry). 
+	# It's okay to have gaps in numbering.
+	ordered =
+	{
+		1 = { "%se Territoriaal Commando 'Sumatra'" }
+		2 = { "%se Territoriaal Commando 'Sumatra'" }
+		3 = { "%se Territoriaal Commando 'Borneo'" }
+		4 = { "%se Territoriaal Commando 'Celebes'" }
+		5 = { "%se Territoriaal Commando 'Sumatra'" }
+		6 = { "%se Territoriaal Commando 'Borneo'" }
+		7 = { "%se Territoriaal Commando 'Java'" }
+		8 = { "%se Territoriaal Commando 'Java'" }
+		9 = { "%se Territoriaal Commando 'Sumatra'" }
+		10 = { "%se Territoriaal Commando 'Sumatra'" }
+	}
+}
