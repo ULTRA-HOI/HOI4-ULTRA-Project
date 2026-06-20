@@ -625,7 +625,7 @@ NProduction = {
 
 	--Ultra: 1t of Coal can produce on average 1,8 MWh of electric energy. As such, 1 unit of energy represents 1GWh of energy.
 	RESOURCE_TO_ENERGY_COEFFICIENT = 45,		-- How much energy per coal produces
-	BASE_COUNTRY_ENERGY_PRODUCTION = 120, 			-- The base energy production of a country
+	BASE_COUNTRY_ENERGY_PRODUCTION = 240, 			-- The base energy production of a country
 	ENERGY_SCALING_COST_BY_FACTORY_COUNT = 0, -- Scales energy cost based on the total number of factories
 	BASE_ENERGY_COST = 30,						-- How much energy per factory consumes
 	ENERGY_COST_CAP = 30,						-- Maximum energy cost per factory
