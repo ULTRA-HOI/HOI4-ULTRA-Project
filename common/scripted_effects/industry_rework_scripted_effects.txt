@@ -559,12 +559,12 @@ civillian_resources_scripted_effect = {
 	set_temp_variable = { num_factories_temp = THIS.num_of_civilian_factories }
 	
 	#Get the current base consumption values
-	set_variable = { cic_steel = 2 } 
-	set_variable = { cic_aluminium = 0.8 }
-	set_variable = { cic_tungsten = 0.25 }
-	set_variable = { cic_chromium = 0.15 }
-	set_variable = { cic_rubber = 0.2 }
-	set_variable = { cic_coal = 3.8 }
+	set_variable = { cic_steel = 1.8 } #9,000t/y
+	set_variable = { cic_aluminium = 0.2 } #40t/y
+	set_variable = { cic_tungsten = 0.1 } #0.75t/y
+	set_variable = { cic_chromium = 0.3 } #150t/y
+	set_variable = { cic_rubber = 0.25 } #50t/y
+	set_variable = { cic_coal = 4.0 } #100,000t/y
 
 	#Multiply factory count
 	multiply_variable = { cic_steel = num_factories_temp }
@@ -577,7 +577,7 @@ civillian_resources_scripted_effect = {
 	#Coal is special. Coal is split into 3 categories. Coal used by civillian factories, heating and transportation. Factories are handled above, heating considers population and transportation the max amount of states.
 	#Heating
 	set_temp_variable = { heating_coal_temp = THIS.max_manpower_k }
-	multiply_temp_variable = { heating_coal_temp = 0.004 } #We need 0.001 Units of coal per 1.000 Population
+	multiply_temp_variable = { heating_coal_temp = 0.006 } #We need 0.006 Units of coal per 1.000 Population
 	round_temp_variable = heating_coal_temp
 	add_to_variable = { cic_coal = heating_coal_temp }
 	
