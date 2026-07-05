@@ -36,10 +36,29 @@ on_actions = {
 			every_state = {
 				if = {
 					limit = {
-						has_state_category = wasteland
+						OR = {
+							has_state_category = wasteland
+							has_state_category = tiny_island
+							has_state_category = small_island
+							has_state_category = jungle_region
+							has_state_category = desert_region
+							has_state_category = undeveloped_enclave
+						}
 					}
 					add_dynamic_modifier = {
 						modifier = wasteland_construction_malus
+					}
+				}
+				else_if = {
+					limit = {
+						OR = {
+							has_state_category = medium_island
+							has_state_category = enclave
+							has_state_category = mountain_region
+						}
+					}
+					add_dynamic_modifier = {
+						modifier = difficult_region_construction_malus
 					}
 				}
 			}
