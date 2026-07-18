@@ -1138,7 +1138,7 @@ NMilitary = {
 	PLAN_EXECUTE_SUPPLY_CHECK = { 1.0, 0.0, 0.0, 1.0, 0.0 }, -- for each execution mode how careful should we be with supply (1.0 means full required supply available, zero is no limit).
 
 	PLAN_MAX_PROGRESS_TO_JOIN = 0.50,				-- If Lower progress than this, probably needs support
-	COHESION_IMMOBILE_PLANNING_SPEED_MULTIPLIER = 0.50,	-- If using the 'immobile' cohesion setting, factor ALL planning speed growth by this
+	COHESION_IMMOBILE_PLANNING_SPEED_MULTIPLIER = 1,	-- If using the 'immobile' cohesion setting, factor ALL planning speed growth by this
 	PLAN_COHESION_WEIGHTS = { 1.0, 40.0, 80.0, 100.0 }, 	-- for each cohesion setting, how keen on relocating from distance should we be? (default 1.0), higher weight = shorter max distance. The last entry is special-cased, the value should have no effect and units will just not move anywhere, ever.
 	PLAN_COHESION_DISTANCE_MAX_WHEN_LEFT_BEHIND = 38,	--Unused and deprecated - will be removed in next major version.
 
