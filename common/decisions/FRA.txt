@@ -130,155 +130,6 @@ FRA_civil_unrest_category = {
 }
 
 FRA_vichy_france = {
-
-	FRA_scuttle_the_fleet = {
-
-		icon = generic_ignite_civil_war
-
-		available = {
-			has_government = fascism
-			NOT = {
-				GER = { divisions_in_state = { state = 1081 size > 0 } }
-			}
-			has_country_flag = {
-				flag = case_anton
-				days > 2
-			}
-		}
-
-		cost = 0
-
-		ai_will_do = {
-			factor = 200
-		}
-
-		visible = {
-			has_government = fascism
-			has_country_flag = case_anton
-		}
-
-		complete_effect = {
-			set_country_flag = scuttled_fleet
-			destroy_ships = {
-				type = nrm_ship_hull_destroyer
-				count = all
-			}
-			destroy_ships = {
-				type = nrm_ship_hull_cruiser
-				count = all
-			}
-			destroy_ships = {
-				type = nrm_ship_hull_capital
-				count = all
-			}
-			destroy_ships = {
-				type = nrm_ship_hull_carrier 
-				count = all
-			}
-			destroy_ships = {
-				type = nrm_ship_hull_carrier_light
-				count = all
-			}
-			destroy_ships = {
-				type = nrm_ship_hull_submarine
-				count = all
-			}
-		}
-	}
-
-	FRA_case_anton_mission = {
-
-		icon = generic_tank
-
-		available = {
-			is_subject = no
-			has_war_with = GER
-		}
-
-		days_mission_timeout = 7
-		fire_only_once = yes
-
-		activation = {
-			original_tag = FRA
-			has_government = fascism
-			OR = {
-				is_subject_of = GER
-				has_focus_tree = vichy_french_focus
-			}
-			has_country_flag = case_anton
-		}
-
-		complete_effect = {
-			custom_effect_tooltip = FRA_case_anton_mission_tt
-		}
-
-		is_good = no
-
-		timeout_effect = {
-			transfer_navy = { target = GER }
-			FRA = { annex_country = { target = ROOT } }
-			GER = {
-				set_state_controller = 33
-				set_state_controller = 25
-				set_state_controller = 31
-				set_state_controller = 26
-				set_state_controller = 22
-				set_state_controller = 20
-				set_state_controller = 24 #if the AI messed things
-				set_state_controller = 27
-				set_state_controller = 916
-				set_state_controller = 19
-				set_state_controller = 23
-				set_state_controller = 30
-				set_state_controller = 14
-				set_state_controller = 15
-				set_state_controller = 16
-				set_state_controller = 785
-				set_state_controller = 18
-				set_state_controller = 17
-				set_state_controller = 1032
-				set_state_controller = 29
-			}
-			IF = {
-				limit = {
-					ITA = {
-						is_in_faction_with = GER
-					}
-				}
-				ITA = {
-					set_state_controller = 735
-					set_state_controller = 32
-					set_state_controller = 1031
-					set_state_controller = 21
-					set_state_controller = 1081
-					set_state_controller = 798
-				}
-			}
-			ELSE = {
-				GER = {
-					set_state_controller = 735
-					set_state_controller = 32
-					set_state_controller = 1031
-					set_state_controller = 21
-					set_state_controller = 1081
-					set_state_controller = 798
-				}
-			}
-			if = {
-				limit = {			  
-					NOT = { has_country_flag = scuttled_fleet }	  														  
-				}
-				GER = { news_event = { id = wtt_news.23 hours = 6 } }
-			}
-			if = {
-				limit = {
-					has_country_flag = scuttled_fleet
-				}
-				GER = { news_event = { id = wtt_news.24 hours = 6 } }
-			}
-			custom_effect_tooltip = GAME_OVER_TT
-		}
-	}
 	FRA_demand_unification_with_vichy = {
 		available = {
 			country_exists = VIC
@@ -1355,7 +1206,8 @@ political_actions = {
 		#}
 		visible = {
 			has_focus_tree = free_french_focus
-			NOT = {controls_state = 459}
+			NOT = {controls_state = 459 }
+			NOT = {controls_state = 461 }
 		}
 		
 		available = {
@@ -1380,7 +1232,6 @@ political_actions = {
 		#}
 		visible = {
 			has_focus_tree = free_french_focus
-			
 		}
 		
 		available = {
@@ -1388,16 +1239,37 @@ political_actions = {
 		}
 		
 		ai_will_do = {
-			factor = 50
+			factor = 10000
 		}
 		
 		fire_only_once = yes
 		
 		complete_effect = {
-			set_capital = {state = 459 }
-			transfer_state = 459
-			transfer_state = 460
-			transfer_state = 513
+			set_capital = { state = 459 }
+		}
+	}
+
+	FRA_capital_casablanca = {
+		#allowed = {
+		#	tag = FRA
+		#}
+		visible = {
+			has_focus_tree = free_french_focus
+			NOT = {controls_state = 459}
+		}
+		
+		available = {
+			controls_state = 461
+		}
+		
+		ai_will_do = {
+			factor = 10000
+		}
+		
+		#fire_only_once = yes
+		
+		complete_effect = {
+			set_capital = { state = 461 }
 		}
 	}
 	

@@ -241,3 +241,71 @@ GER_spawn_penal_divisions_effect = {
 		value = -0.05
 	}
  }
+
+case_anton_effect = {
+	if = {
+		limit = { country_exists = VIC }
+		VIC = {
+			transfer_units_fraction = {
+				target = GER
+				size = 0
+				army_ratio = 0
+				air_ratio = 1
+				navy_ratio = 0
+				stockpile_ratio = 0.75
+				keep_unit_leaders_trigger = { always = yes }
+			}
+		}
+		every_state = {
+			limit = { is_owned_by = VIC }
+			if = {
+				limit = {
+					CONTROLLER = { is_in_faction_with = ENG }
+				}
+				transfer_state_to = FRA
+			}
+			else_if = {
+				limit = {
+					NOT = { ITA = { has_country_flag = ITA_rsi_cw_flag } }
+					OR = {
+						state = 798
+						state = 32
+						state = 735
+						state = 1031
+						state = 32
+						state = 1081
+						state = 1
+						state = 458
+						state = 665
+					}
+				}
+				set_state_owner_to = FRA
+				set_state_controller_to = ITA 
+			}
+			else_if = {
+				limit = {
+					is_on_continent = europe
+				}
+				set_state_owner_to = FRA
+				set_state_controller_to = GER
+			}
+			else_if = {
+				limit = {
+					is_controlled_by = ITA
+				}
+				set_state_owner_to = FRA
+				set_state_controller_to = ITA 
+			}
+			else_if = {
+				limit = {
+					CONTROLLER = { is_in_faction_with = GER }
+				}
+				set_state_owner_to = FRA
+				set_state_controller_to = GER
+			}
+			else = {
+				transfer_state_to = FRA
+			}
+		}
+	}
+}
