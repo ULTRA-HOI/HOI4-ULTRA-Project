@@ -2107,7 +2107,7 @@ NNavy = {
 
 	BASE_POSITIONING												= 1.0,	-- base value for positioning
 
-	DOMINANCE_DAILY_GAIN_FACTOR = 0.02, 							-- Daily dominance gain, as a fraction of target value 
+	DOMINANCE_DAILY_GAIN_FACTOR = 0.04, 							-- Daily dominance gain, as a fraction of target value 
 	DOMINANCE_DAILY_LOSS_FACTOR = 0.04, 							-- Daily dominance loss, as a fraction of previous target value 
 
 	SUPPORT_SHIP_RECOVERY_BASE_STRENGTH_FACTOR = 0.01,				-- Percentage of strength of max strength a recovered ship gets on recovery.
