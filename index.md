@@ -1,5 +1,75 @@
 # Changelog
 
+# 0.19.3
+## Updates 
+- 1.19 Compatibility
+	- Integrated mastery-based Special Forces doctrines
+	- Integrated Army HQ
+## Features 
+- Case Anton Rework
+	- The Axis and Allies now fight over French North Africa during Case Anton
+	- Germany now declares war on Vichy with Case Anton, and must send divisions to occupy them
+	- Germany can no longer capture the French fleet, instead it defects to the Allies if Germany takes too long
+	- Fixes Allied divisions teleporting to capital upon Case Anton
+## Art 
+- Added a number of better German variant pictures
+## Balance 
+- Reduced Secondary Battery Light Attack
+	- Light attack given by secondaries was too high for both battleships and cruisers. Values reduced from 90% of main battery calibre to 60%
+- Increased naval dominance gain speed and decreased amount needed
+- Doctrines small rework
+	- Integrated special forces doctrines
+	- Increased mastery gain
+	- Mastery needed now increases per reward
+	- Buffed superior firepower by decreasing mastery requirements and frontloading the good bonuses
+	- Decreased interception modifiers
+- Further Naval Armour Rework
+	- Naval Armour revamped again
+	- Should further reduce effectiveness of larger calibre weapons against convoys and destroyers
+- Decrease overstacking combat width penalty
+- Added Some Airbases To UK Fortification Decisions
+	- Malta, Gibraltar and Singapore now get airbases from UK fortification decisions
+- Dramatically Reduced Italian Grinding Ability
+	- Added obsolete enemy modifier for Ethiopia
+	- Increased experience penalty when fighting in Spain
+- Global Minor Country Focus Duration Reduction
+	- Duration on most focuses cut from 70 days to 35 days for relevant minor countries
+- UK Doctrine Mastery Focus Update
+	- UK gained no mastery from focuses
+	- Added mastery gain to UK focuses
+- AI Raj Locked To Volunteer Only
+	- Matches power of AI and player Raj
+- Nerfed cruiser sub visibility
+- Adjusted Game Speed to new discussed values
+- Very slightly buffed supply train usage
+- Cut field gun cp cost by 1/3
+- Reduced Artillery impact on Org. Brought HArt in line with Art
+- Halved aluminium civ cost and convoy cost
+- Allowed allied building of all province/state buildings
+- North Africa Air Deployment Update
+	- Split El-Alamein into its own state
+	- Created new strategic region covering Matrouh and El Alamein, splitting Cyrenaica and Lower Nile
+- Carrier Air Wing land size change
+	- Carrier planes land wing size reduced to 18 to match size of wings on carriers
+- South Atlantic Region Adjustment
+	- South Atlantic regions were too large
+	- Two new regions introduced, reducing the average size of regions in the area
+- Naval HQ bonus rebalance
+## Fixes 
+- Removed duplicate graphical port buildings
+- Adjusted Japanese Experience Gain During China
+	- Japan had penalty to trait experience gain but not to actual experience gain, so got very high level generals but with no traits
+	- Adjusted so reduction applies to experience in general, not just traits
+- British AC Priority Corrected
+	- Daimler Dingo was prioritised over better Armoured Cars like Daimler AC.
+	- AC priority adjusted so that Daimler AC takes priority over Daimler Dingo
+- Hungarian Infrastructure Focus Prioritisation Fix
+	- Focus now correctly includes Alfold state instead of being locked to Southern Slovakia and randomly reassigning if taken before Fate of Czechoslovakia
+- Lend Lease Rules Now Apply To Requesting, Not Just Sending
+- Fixed broken amtrac stats
+- Theatre selector UI fix
+- Fix UK tobruk railway build criteria
+
 # 0.19.2
 ## Updates 
 - 1.18.3 Compatibility
