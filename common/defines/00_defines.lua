@@ -4415,7 +4415,7 @@ NSupply = {
 	NODE_FLOW_BONUS_PER_RAIL_LEVEL = 0.0, --was 0.34
 
 	-- rivers will transfer in between nodes as if they were this level
-	RIVER_RAILWAY_LEVEL = 2,
+	RIVER_RAILWAY_LEVEL = 1,
 
 	-- defines that are used for supply reach for floating harbors
 	FLOATING_HARBOR_INITIAL_SUPPLY_FLOW = 1200.0,
@@ -4452,16 +4452,16 @@ NSupply = {
 
 	-- used for calculating "flow" for railways.
 	RAILWAY_BASE_FLOW = 0.0, --was 10.0 --how much base flow railway gives when a node connected to its capital/a naval node by a railway
-	RAILWAY_FLOW_PER_LEVEL = 240, --was 5.0 --how much additional flow a railway level gives
-	RAILWAY_FLOW_PENALTY_PER_DAMAGED = 230, --was 5.0 --penalty to flow per damaged railway
-	RAILWAY_MIN_FLOW = 60.0, --was 5.0 --minimum railway flow can be reduced to
+	RAILWAY_FLOW_PER_LEVEL = 220, --was 5.0 --how much additional flow a railway level gives
+	RAILWAY_FLOW_PENALTY_PER_DAMAGED = 210, --was 5.0 --penalty to flow per damaged railway
+	RAILWAY_MIN_FLOW = 55.0, --was 5.0 --minimum railway flow can be reduced to
 
 	-- used for calculating "flow" from a naval node to another naval node when it is connected via a convoy route
 	-- NAVAL_BASE_MAX_SUPPLY_FLOW_FACTOR = 0.9, -- flow of the parent node is factored to this ratio (so at most it can transfer parent naval node flow * this define)
 	NAVAL_BASE_FLOW = 0.0, --was 5.0 --max output/input of a naval node is limited by this base value + additional ratio for each level
-	NAVAL_FLOW_PER_LEVEL = 60.0, --was 3.0 --max output/input of a naval node is limited by previous base value + this define per its level
+	NAVAL_FLOW_PER_LEVEL = 55.0, --was 3.0 --max output/input of a naval node is limited by previous base value + this define per its level
 
-	SUPPLY_NODE_MIN_SUPPLY_THRESHOLD = 60.0, --was 1.0 --if supply of a node is below this value it will be set to 0 -- Currently unused? This should happen when enough damage occurs
+	SUPPLY_NODE_MIN_SUPPLY_THRESHOLD = 55.0, --was 1.0 --if supply of a node is below this value it will be set to 0 -- Currently unused? This should happen when enough damage occurs
 
 	INFRA_TO_SUPPLY = 4.00, --was 0.3 --each level of infra gives this many supply
 	VP_TO_SUPPLY_BASE = 0.0, --was 0.2 --Bonus to supply from a VP, no matter the level
