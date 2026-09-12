@@ -4569,7 +4569,7 @@ NAITheatre = {
 	AI_THEATRE_AI_FRONT_MIN_DESIRED_RATIO = 0.18,						-- Fronts are sorted based on priority, we nudge unit demand based on this sorting, the higher the value the more units the most important front gets
 },
 NIndustrialOrganisation = {
-	ASSIGN_DESIGN_TEAM_PP_COST_PER_DAY = 0.1,					-- Cost in Political Power daily generation when one MIO is assigned to a research slot. If 0, cost is entirely disabled.
+	ASSIGN_DESIGN_TEAM_PP_COST_PER_DAY = 0.01,					-- Cost in Political Power daily generation when one MIO is assigned to a research slot. If 0, cost is entirely disabled.
 	ASSIGN_INDUSTRIAL_MANUFACTURER_PP_COST_PER_DAY = 0.0,		-- Cost in Political Power daily generation when one MIO is assigned to a production line. If 0, cost is entirely disabled.
 	FUNDS_FOR_SIZE_UP = 150,									-- Funds needed for a MIO to increment its size and get points to unlock traits
 	FUNDS_FOR_SIZE_UP_LEVEL_FACTOR = 18, 						-- How much each level mutliplies the funds for size up 
