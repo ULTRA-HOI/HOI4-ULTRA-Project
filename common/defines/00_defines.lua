@@ -1567,7 +1567,7 @@ NAir = {
 	},
 	MAX_FUEL_FLOW_MULT = 1.0, -- max fuel flow ratio for planes, which will be multiplied by supply
 
-	FUEL_COST_MULT = 0.6, --was 0.35 --fuel multiplier for all air missions
+	FUEL_COST_MULT = 0.4, --was 0.35 --fuel multiplier for all air missions
 
 	MISSION_EFFICIENCY_MULT_AT_LACK_OF_FUEL = 0.25, 				-- multiplier for mission efficiency when a base lacks fuel
 
