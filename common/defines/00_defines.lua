@@ -1479,7 +1479,7 @@ NAir = {
 	AIR_WING_XP_TRAINING_MISSION_ACCIDENT_FACTOR = 0.5, --was 1.5 --Training exercises cause more accidents
 	AIR_WING_XP_LOSS_REDUCTION_OVER_FRIENDLY_TERRITORY_FACTOR = 0.75, --was 0.3 --Reduction on XP loss over friendly territory
 
-	DISRUPTION_FACTOR = 1.00, --was 4.0--was 0.05 --multiplier on disruption damage to scale its effects on planes
+	DISRUPTION_FACTOR = 3.00, --was 4.0--was 0.05 --multiplier on disruption damage to scale its effects on planes
 	DISRUPTION_FACTOR_CARRIER = 9.00, --was 6.0 --multiplier on disruption damage to scale its effects on carrier vs carrier planes
 	DISRUPTION_SPEED_FACTOR = 0.0, --was 1.0
 	DISRUPTION_AGILITY_FACTOR = 0.0, --was 0.0--was 0.25
