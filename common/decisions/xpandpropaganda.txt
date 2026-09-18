@@ -548,7 +548,9 @@ X_JAP_propaganda_campaigns = {
 					tag = JAP
 					is_in_faction_with = JAP
 				}
+				has_full_control_of_state = 623
 				has_full_control_of_state = 327
+				has_full_control_of_state = 624
 			}
 		}
 		visible = {
@@ -560,15 +562,38 @@ X_JAP_propaganda_campaigns = {
 		cost = X_JAP_propaganda_17_cost?15
 		fire_only_once = yes
 		modifier = {
-			required_garrison_factor = -0.2
-			resistance_growth = -0.2
+
 		}
 		complete_effect = {
 			set_variable = { X_JAP_new_propaganda_campaign = 17 }
 			X_JAP_pick_propaganda_campaign_slot_effect = yes
+
+			if = {
+				limit = {
+					any_controlled_state = {
+						is_core_of = PHI
+					}
+				}
+				every_state = {
+					limit = {
+						is_core_of = PHI
+					}
+					add_dynamic_modifier = {
+						modifier = collaborating_police
+					}
+				}
+				
+			}
 		}
 		remove_effect = {
-			add_equipment_to_stockpile = { type = infantry_squad_0 amount = 5000 producer = USA }
+			every_state = {
+				limit = {
+					is_core_of = PHI
+				}
+				remove_dynamic_modifier = {
+					modifier = collaborating_police
+				}
+			}
 			set_variable = { X_JAP_propaganda_campaign_to_remove = 17 }
 			X_JAP_reset_propaganda_campaign_slot_effect = yes
 			if = {
@@ -800,7 +825,6 @@ X_JAP_propaganda_campaigns = {
 		modifier = {
 			supply_consumption_factor = -0.05
 			production_speed_rail_way_factor = 0.1
-			compliance_gain = 0.03
 		}
 		complete_effect = {
 			set_variable = { X_JAP_new_propaganda_campaign = 20 }
