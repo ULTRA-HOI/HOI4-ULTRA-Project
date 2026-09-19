@@ -1,3 +1,12 @@
+@steel_refinery_cost_iron = 80
+@steel_refinery_cost_coal = 100
+@steel_refinery_cost_tungsten = 4		
+@aluminium_refinery_cost_bauxite = 150
+@aluminium_refinery_cost_coal = 100
+@synthetic_refinery_cost_coal = 100
+@rubber_refinery_cost_coal = 100
+@rubber_refinery_cost_oil = 1
+
 #Daily Labour Requirements Calculation
 
 on_daily_labour_calculations = {
@@ -143,6 +152,16 @@ calculate_resources_labour = {
 	add_to_temp_variable = { labour_iron = modifier@country_resource_cost_iron }
 	add_to_temp_variable = { labour_rubber = modifier@country_resource_cost_rubber }
 
+	every_controlled_state = {
+		add_to_temp_variable = { labour_oil = building_level@synthetic_rubber_refinery }
+		add_to_temp_variable = { labour_coal = { value = building_level@synthetic_rubber_refinery multiply = @synthetic_rubber_refinery_cost_coal } }
+		add_to_temp_variable = { labour_coal = { value = building_level@synthetic_refinery multiply = @synthetic_refinery_cost_coal } }
+		add_to_temp_variable = { labour_coal = { value = building_level@steel_refinery multiply = @steel_refinery_cost_coal } }
+		add_to_temp_variable = { labour_coal = { value = building_level@aluminium_refinery multiply = @aluminium_refinery_cost_coal } }
+		add_to_temp_variable = { labour_iron = { value = building_level@steel_refinery multiply = @steel_refinery_cost_iron } }
+		add_to_temp_variable = { labour_tungsten = { value = building_level@steel_refinery multiply = @steel_refinery_cost_tungsten } }
+		add_to_temp_variable = { labour_bauxite = { value = building_level@aluminium_refinery multiply = @aluminium_refinery_cost_bauxite } }
+	}
 	
 	#Multiplies number of resource by labour requirements per resource (divided by 1000 to stop overflows)
 	multiply_temp_variable = { labour_oil = 0.1 } #100 needed per resource produced
