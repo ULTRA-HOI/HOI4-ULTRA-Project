@@ -1,5 +1,52 @@
 # Changelog
 
+# 0.19.4
+## Updates 
+- 1.19.3 Compatibility
+## Balance 
+- Destroyer range increased by 16%
+- Decreased Atlantikwall decision coastal forts
+- Soviet Buffs
+	- Increased Org by 15%, attack and defence 10%
+	- 10% Efficiency cap with foreign aid idea
+	- Increased Shift to Armaments Production focus mil construction speed bonus by 20%
+- Naval supply balance
+	- Supply consumption decreased by ~15%
+	- Increased submarine supply consumption
+	- Decreased Carrier supply consumption
+- Supply decreased by 9%
+	- River supply also halved
+- Air disruption increased 3x
+- Air fuel consumption decreased by 33%
+- Warlords only join United Front after war starts
+	- China also given Guangdong to compensate
+- Strat bombing buff
+	- State AA damaged also increased
+- Added various auxiliary craft to all the major navies
+- Removed Naval Speed Penalty From Bad Weather
+	- Speed penalty disproportionately favours destroyers at the expense of cruisers. Penalty removed to restore roughly even balance
+## Fixes 
+- Can no longer keep refineries open without raw resources
+- Japan Starting 6" Tech Update
+	- Japan updated to start with 6" High Velocity
+- Operation Valkyrie shouldn't trigger twice anymore
+- Corrected a number of faction goal state targets
+- Corrected Panzer III E-F & Panzer IV equipment year label to 1939
+- Fixed ahistorical 1st Lyublyana Award giving Bulgaria New York
+## Historical Balance 
+- Adjusted Japans Phillippines/Burma propaganda
+- Adjusted Japanese-Indonesian propaganda campaigns
+	- Similar to the changes for Germany and the Netherlands.
+- Adjusted German-Dutch propaganda campaigns
+	- Previously the German propaganda campaigns  available after conquering the Netherlands gave a flat noncore manpower bonus for all occupied territory. Now they only give local compliance and some manpower.
+- Increase Japan female labour force participation rate
+- Various China, Japan Allied changes
+## Map 
+- Egypt Port Balance
+	- Port Said readded as port
+	- Suez supply decreased
+	- Tel Aviv supply increased
+
 # 0.19.3
 ## Updates 
 - 1.19 Compatibility
