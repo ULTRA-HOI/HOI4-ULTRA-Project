@@ -1,5 +1,5 @@
 name="Ultra Historical Mod"
-version="0.19.3"
+version="0.19.4"
 tags={
 	"Map"
 	"Historical"
@@ -23,5 +23,5 @@ replace_path="common/operations"
 replace_path="events"
 replace_path="tests"
 picture="ultra.jpg"
-supported_version="1.19.2.*"
+supported_version="1.19.3.*"
 remote_file_id="1516163124"
