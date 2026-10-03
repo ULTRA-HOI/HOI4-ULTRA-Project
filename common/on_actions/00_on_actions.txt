@@ -825,7 +825,7 @@ on_actions = {
 				limit = {
 					original_tag = FRA
 					}
-				FRA = { set_state_controller = 772 }
+				FRA = { set_state_controller = 635 }
 				FRA = { 
 					transfer_units_fraction = {
 						target = GER
@@ -836,7 +836,25 @@ on_actions = {
 					add_manpower = -2000000
 					add_manpower = 20000
 				}
+				if = {
+					limit = { has_game_rule = { rule = DELETE_MINORS option = yes } }
+					FRA = {
+						every_owned_state = {
+							if = {
+								limit = { is_on_continent = europe }
+								set_state_owner_to = ENG
+							} else_if = {
+								limit = { state = 320 }
+								transfer_state_to = RAJ	
+							} else_if = {
+								limit = { state = 734 }
+								transfer_state_to = ENG
+							}
+						}
+					}
+				}
 			}
+
 			
 			IF = {
 				limit = {

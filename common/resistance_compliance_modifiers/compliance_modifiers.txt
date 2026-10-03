@@ -1,5 +1,90 @@
 #check resistance_modifiers.txt for example
 
+compliance_no_mp = {
+	type = core_compliance_modifier
+	icon = "GFX_div_unit_item_bg_wide_noline" #no image gfx
+	small_icon = "GFX_div_unit_item_bg_wide_noline"
+	threshold = 0
+	margin = 15
+	
+	visible = {
+		always = yes
+	}
+	enabled = {
+		has_game_rule = {
+			rule = DELETE_MINORS
+			option = yes
+		}
+		OR = {
+			AND = {
+				original_tag = AST
+				FROM = { original_tag = INS }
+			}
+			AND = {
+				original_tag = ENG
+				OR = {
+					FROM = { original_tag = FRA }
+					FROM = { original_tag = BEL }
+					FROM = { original_tag = HOL }
+					FROM = { original_tag = DEN }
+					FROM = { original_tag = NOR }
+					FROM = { original_tag = ITA }
+					FROM = { original_tag = GRE }
+					FROM = { original_tag = YEM }
+					FROM = { original_tag = OMA }
+					FROM = { original_tag = RCG }
+					FROM = { original_tag = GAB }
+					FROM = { original_tag = CMR }
+					FROM = { original_tag = CAR }
+					FROM = { original_tag = CHA }
+					FROM = { original_tag = NGR }
+					FROM = { original_tag = DAH }
+					FROM = { original_tag = TOG }
+					FROM = { original_tag = VOL }
+					FROM = { original_tag = MLI }
+					FROM = { original_tag = IVO }
+					FROM = { original_tag = GNA }
+					FROM = { original_tag = SEN }
+					FROM = { original_tag = MRT }
+					FROM = { original_tag = MOR }
+					FROM = { original_tag = ALG }
+					FROM = { original_tag = TUN }
+					FROM = { original_tag = DJI }
+					FROM = { original_tag = ETH }
+					FROM = { original_tag = MAD }
+					FROM = { original_tag = RCG }
+					FROM = { original_tag = COG }
+					FROM = { original_tag = BRD }
+					FROM = { original_tag = RWA }
+					FROM = { original_tag = TAH }
+				}
+			}
+			AND = {
+				original_tag = USA
+				OR = {
+					FROM = { original_tag = LIB }
+					FROM = { original_tag = PHI }
+				}
+			}
+			AND = {
+				original_tag = RAJ
+				FROM = { original_tag = NEP }
+				FROM = { original_tag = BHU }
+			}
+		}
+	}
+	state_modifier = {
+		local_non_core_manpower = -10
+		resistance_target = -10
+		required_garrison_factor = -10
+		local_resources = 0.5
+		no_compliance_gain = 1
+	}
+	
+	on_enable = {
+		#country_event = { id = occupied_countries.1 days = 2 }
+	}
+}
 
 compliance_15 = {
 	type = core_compliance_modifier

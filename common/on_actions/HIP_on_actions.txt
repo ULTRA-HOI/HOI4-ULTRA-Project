@@ -385,6 +385,22 @@ on_actions = {
 				add_to_array = { global.MIO_size_total_funds = 13568 }
 				add_to_array = { global.MIO_size_total_funds = 16075 }
 			}
+
+			if = {
+				limit = { has_game_rule = { rule = DELETE_MINORS option = yes }}
+				ENG = {
+					annex_country = { target = YEM transfer_troops = no }
+					annex_country = { target = OMA transfer_troops = no }
+				}
+				RAJ = {
+					annex_country = { target = BHU transfer_troops = no }
+					annex_country = { target = NEP transfer_troops = no }
+				}
+				USA = {
+					annex_country = { target = LIB transfer_troops = no }
+					annex_country = { target = PHI transfer_troops = no }
+				}
+			}
 		}
 	}
 	
@@ -648,6 +664,74 @@ on_actions = {
 					ROOT = { tag = VIC }
 				}
 				case_anton_effect = yes
+			}
+			if  = {
+				limit = {
+					has_game_rule = { rule = DELETE_MINORS option = yes }
+					ROOT = { tag = BEL }
+				}
+				BEL = {
+					every_owned_state = {
+						if = {
+							limit = { is_on_continent = europe }
+							set_state_owner_to = ENG
+						} else = {
+							transfer_state_to = ENG	
+						}
+					}
+				}
+			}
+			if  = {
+				limit = {
+					has_game_rule = { rule = DELETE_MINORS option = yes }
+					ROOT = { tag = HOL }
+				}
+				HOL = {
+					every_owned_state = {
+						if = {
+							limit = { is_on_continent = europe }
+							set_state_owner_to = ENG
+						}
+					}
+				}
+			}
+			if  = {
+				limit = {
+					has_game_rule = { rule = DELETE_MINORS option = yes }
+					ROOT = { tag = NOR }
+				}
+				NOR = {
+					every_owned_state = {
+						set_state_owner_to = ENG
+					}
+					1136 = { transfer_state_to = ENG }
+				}
+			}
+			if  = {
+				limit = {
+					has_game_rule = { rule = DELETE_MINORS option = yes }
+					ROOT = { tag = DEN }
+				}
+				DEN = {
+					every_owned_state = {
+						set_state_owner_to = ENG
+					}
+					337 = { transfer_state_to = ENG }
+				}
+			}
+			if  = {
+				limit = {
+					has_game_rule = { rule = DELETE_MINORS option = yes }
+					ROOT = { tag = GRE }
+				}
+				GRE = {
+					every_controlled_state = {
+						transfer_state_to = ENG
+					}
+					every_owned_state = {
+						set_state_owner_to = ENG
+					}
+				}
 			}
 		}
 	}
@@ -1003,6 +1087,30 @@ on_actions = {
 				}
 				SOV = {
 					clr_country_flag = SOV_JAPAN_STRAITS_CLOSED
+				}
+			}
+			if = {
+				limit = {
+					ROOT = { original_tag = JAP }
+					FROM = {
+						OR = {
+							original_tag = USA
+							original_tag = ENG
+							original_tag = HOL
+							original_tag = FRA
+						}
+					}
+					NOT = { has_country_flag = tora_tora_tora_triggered }
+				}
+				add_dynamic_modifier = { modifier = tora_tora_tora_dynamic_modifier }
+				add_timed_idea = { idea = JAP_tora_tora_tora_idea days = 180 }
+				remove_ideas = obsolete_enemy
+				set_country_flag = tora_tora_tora_triggered
+				if = {
+					limit = { ROOT = { has_game_rule = { rule = DELETE_MINORS option = yes } } }
+					AST = {
+						annex_country = { target = INS transfer_troops = no }
+					}
 				}
 			}
 		}
