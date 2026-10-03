@@ -1381,7 +1381,6 @@ foreign_politics = {
 		
 		visible = {
 			tag = JAP
-			has_completed_focus = JAP_strike_south_doctrine
 		}
 		
 		complete_effect = {
@@ -1390,6 +1389,11 @@ foreign_politics = {
 			}
 			set_country_flag = pearl_harbor
 			add_command_power = -35
+			effect_tooltip = {
+				add_dynamic_modifier = { modifier = tora_tora_tora_dynamic_modifier }
+				add_timed_idea = { idea = JAP_tora_tora_tora_idea days = 180 }
+				remove_ideas = obsolete_enemy
+			}
 		}
 	}
 	
@@ -1709,6 +1713,109 @@ JAP_southern_expansion = {
 				ahead_reduction = 3.0
 				uses = 1
 				technology = advanced_decimetric_radar
+			}
+		}
+	}
+	JAP_capitulate_INS = {
+		allowed = {
+			original_tag = JAP
+		}
+		activation = {
+			has_war_with = AST
+			has_game_rule = { rule = DELETE_MINORS option = yes }
+		}
+		days_mission_timeout = 250
+		fire_only_once = yes
+		is_good = no
+		available = {
+			custom_override_tooltip = {
+				tooltip = JAP_CAPITULATE_INS_TT
+				controls_state = 981
+				controls_state = 672
+				controls_state = 983
+				controls_state = 990
+				controls_state = 335
+				controls_state = 992
+				controls_state = 982
+				controls_state = 985
+				count_triggers = {
+					amount = 3
+					controls_state = 334
+					controls_state = 904
+					controls_state = 988
+					controls_state = 984
+					controls_state = 986
+					controls_state = 987
+					controls_state = 673
+					controls_state = 989
+				}
+			}
+		}
+		complete_effect = {
+			custom_override_tooltip = {
+				tooltip = JAP_CAPITULATE_INS_EFFECT
+				set_state_controller = 981
+				set_state_controller = 672
+				set_state_controller = 983
+				set_state_controller = 990
+				set_state_controller = 335
+				set_state_controller = 992
+				set_state_controller = 982
+				set_state_controller = 985
+				set_state_controller = 667
+				set_state_controller = 334
+				set_state_controller = 904
+				set_state_controller = 988
+				set_state_controller = 984
+				set_state_controller = 986
+				set_state_controller = 987
+				set_state_controller = 673
+				set_state_controller = 989
+				set_state_controller = 993
+				set_state_controller = 668
+				set_state_controller = 738
+			}
+		}
+	}
+
+	JAP_capitulate_PHI = {
+		allowed = {
+			original_tag = JAP
+		}
+		activation = {
+			has_war_with = USA
+			has_game_rule = { rule = DELETE_MINORS option = yes }
+		}
+		days_mission_timeout = 250
+		fire_only_once = yes
+		is_good = no
+		available = {
+			custom_override_tooltip = {
+				tooltip = JAP_CAPITULATE_PHI_TT
+				controls_state = 327
+				count_triggers = {
+					amount = 2
+					controls_state = 623
+					controls_state = 1017
+					controls_state = 624
+					controls_state = 625
+					controls_state = 628
+					controls_state = 627
+					controls_state = 626
+				}
+			}
+		}
+		complete_effect = {
+			custom_override_tooltip = {
+				tooltip = JAP_CAPITULATE_PHI_EFFECT
+				set_state_controller = 327
+				set_state_controller = 623
+				set_state_controller = 1017
+				set_state_controller = 624
+				set_state_controller = 625
+				set_state_controller = 628
+				set_state_controller = 627
+				set_state_controller = 626
 			}
 		}
 	}
@@ -2134,40 +2241,6 @@ political_actions = {
 }
 
 operations = {
-	
-	JAP_tora_tora_tora = {
-		
-		allowed = {
-			original_tag = JAP
-		}
-
-		icon = decision_generic_naval
-
-		available = {
-			OR = {
-				has_war_with = HOL
-				has_war_with = ENG
-				has_war_with = USA
-				has_war_with = FRA
-			}
-		}
-
-		ai_will_do = {
-			factor = 10000
-		}
-	
-		fire_only_once = yes
-		
-		visible = {
-			has_completed_focus = JAP_strike_on_the_southern_resource_area
-		}
-	
-		complete_effect = {
-			add_dynamic_modifier = { modifier = tora_tora_tora_dynamic_modifier }
-		}
-	}
-
-
 	#first border incident
 	JAP_test_the_soviets = {
 		icon = border_war
