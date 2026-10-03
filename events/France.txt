@@ -305,7 +305,7 @@ country_event = {
 			add_ideas = FRA_defeatism
 			load_focus_tree = free_french_focus
 			country_event = france.20
-			set_capital = { state = 772 }
+			set_capital = { state = 635 }
 		}
 		custom_effect_tooltip = establishing_vichy_tt
 		hidden_effect = {
@@ -319,19 +319,12 @@ country_event = {
 						is_controlled_by = FRA
 						is_owned_by = FRA
 						OR = {
-							AND = {
-								is_on_continent = africa
-								NOT = {
-									state = 772
-								}
-							}
+							is_on_continent = africa
 							is_core_of = VIN
 							is_core_of = CAM
 							is_core_of = LAO
 							is_core_of = LEB
 							is_core_of = SYR
-							state = 635
-							state = 734
 							state = 641
 							state = 730
 							state = 310
@@ -1870,7 +1863,12 @@ country_event = { #Transfer Jean Bart and Richelieu
 							}
 						}
 					}
-					transfer_state_to = FRA
+					if = {
+						limit = { has_game_rule = {rule = DELETE_MINORS option = yes }}
+						transfer_state_to = ENG
+					} else = {
+						transfer_state_to = FRA
+					}
 				}
 			}
 		}
@@ -2021,5 +2019,63 @@ country_event = { #Transfer ships in Force X and Martinique
 				}
 			}
 		}
+	}
+}
+
+country_event = { #transfer french central africa
+	id = france.312
+	hidden = yes
+	trigger = {
+		has_game_rule = { rule = DELETE_MINORS option = yes }
+		date > 1940.8.29
+		country_exists = VIC
+	}
+	fire_only_once = yes
+	mean_time_to_happen = {
+		days = 1
+	}
+	option = {
+		772 = { transfer_state_to = ENG }
+		773 = { transfer_state_to = ENG }
+		660 = { transfer_state_to = ENG }
+		774 = { transfer_state_to = ENG }
+		775 = { transfer_state_to = ENG }
+	}
+}
+
+country_event = { #transfer gabon
+	id = france.313
+	hidden = yes
+	trigger = {
+		has_game_rule = { rule = DELETE_MINORS option = yes }
+		date > 1940.11.11
+		country_exists = VIC
+	}
+	fire_only_once = yes
+	mean_time_to_happen = {
+		days = 1
+	}
+	option = {
+		539 = { transfer_state_to = ENG }
+	}
+}
+
+country_event = { #transfer syria
+	id = france.314
+	hidden = yes
+	trigger = {
+		has_game_rule = { rule = DELETE_MINORS option = yes }
+		date > 1941.7.13
+		country_exists = VIC
+	}
+	fire_only_once = yes
+	mean_time_to_happen = {
+		days = 1
+	}
+	option = {
+		554 = { transfer_state_to = ENG }
+		553 = { transfer_state_to = ENG }
+		680 = { transfer_state_to = ENG }
+		677 = { transfer_state_to = ENG }
 	}
 }

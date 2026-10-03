@@ -262,7 +262,12 @@ case_anton_effect = {
 				limit = {
 					CONTROLLER = { is_in_faction_with = ENG }
 				}
-				transfer_state_to = FRA
+				if = {
+					limit = { has_game_rule = { rule = DELETE_MINORS option = yes } }
+					transfer_state_to = ENG
+				} else = {
+					transfer_state_to = FRA
+				}
 			}
 			else_if = {
 				limit = {
@@ -279,32 +284,57 @@ case_anton_effect = {
 						state = 665
 					}
 				}
-				set_state_owner_to = FRA
+				if = {
+					limit = { has_game_rule = { rule = DELETE_MINORS option = yes } }
+					set_state_owner_to = ENG
+				} else = {
+					set_state_owner_to = FRA
+				}
 				set_state_controller_to = ITA 
 			}
 			else_if = {
 				limit = {
 					is_on_continent = europe
 				}
-				set_state_owner_to = FRA
+				if = {
+					limit = { has_game_rule = { rule = DELETE_MINORS option = yes } }
+					set_state_owner_to = ENG
+				} else = {
+					set_state_owner_to = FRA
+				}
 				set_state_controller_to = GER
 			}
 			else_if = {
 				limit = {
 					is_controlled_by = ITA
 				}
-				set_state_owner_to = FRA
+				if = {
+					limit = { has_game_rule = { rule = DELETE_MINORS option = yes } }
+					set_state_owner_to = ENG
+				} else = {
+					set_state_owner_to = FRA
+				}
 				set_state_controller_to = ITA 
 			}
 			else_if = {
 				limit = {
 					CONTROLLER = { is_in_faction_with = GER }
 				}
-				set_state_owner_to = FRA
+				if = {
+					limit = { has_game_rule = { rule = DELETE_MINORS option = yes } }
+					set_state_owner_to = ENG
+				} else = {
+					set_state_owner_to = FRA
+				}
 				set_state_controller_to = GER
 			}
 			else = {
-				transfer_state_to = FRA
+				if = {
+					limit = { has_game_rule = { rule = DELETE_MINORS option = yes } }
+					transfer_state_to = ENG
+				} else = {
+					transfer_state_to = FRA
+				}
 			}
 		}
 	}

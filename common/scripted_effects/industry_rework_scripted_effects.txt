@@ -19,6 +19,7 @@ on_daily_labour_calculations = {
 	# Loop through every non-core state
 	#add non-core pop to non_core_population_k modified by agricultural penalty of state 
 	every_controlled_state = {
+		limit = { NOT = { has_occupation_modifier = compliance_no_mp } }
 		set_variable = { state_avaliable_labour_k = state_population_k }
 
 		# calculate agriculture labour in state
@@ -103,7 +104,17 @@ on_daily_labour_calculations = {
 	#Calculate recruitable pop factors
 	#agri pop draws from total pool (before age and female factors)
 	set_variable = { agricultural_penalty_calculation = agriculture_labour_k }
-	divide_variable = { agricultural_penalty_calculation = max_manpower_k }
+	if = {
+		limit = { has_game_rule = { rule = DELETE_MINORS option = no } }
+		divide_variable = { agricultural_penalty_calculation = max_manpower_k }
+	} else = {
+		set_temp_variable = { included_max_manpower_k = max_manpower_k }
+		every_controlled_state = {
+			limit = { has_occupation_modifier = compliance_no_mp }
+			subtract_from_temp_variable = { included_max_manpower_k = state_population_k }
+		}
+		divide_variable = { agricultural_penalty_calculation = included_max_manpower_k }
+	}
 	multiply_variable = { agricultural_penalty_calculation = -1 }
 
 
@@ -144,14 +155,27 @@ calculate_resources_labour = {
 	add_to_temp_variable = { labour_rubber = modifier@country_resource_cost_rubber }
 
 	every_controlled_state = {
-		add_to_temp_variable = { labour_oil = building_level@synthetic_rubber_refinery }
-		add_to_temp_variable = { labour_coal = { value = building_level@synthetic_rubber_refinery multiply = 100 } }
-		add_to_temp_variable = { labour_coal = { value = building_level@synthetic_refinery multiply = 100 } }
-		add_to_temp_variable = { labour_coal = { value = building_level@steel_refinery multiply = 100 } }
-		add_to_temp_variable = { labour_coal = { value = building_level@aluminium_refinery multiply = 100 } }
-		add_to_temp_variable = { labour_iron = { value = building_level@steel_refinery multiply = 80 } }
-		add_to_temp_variable = { labour_tungsten = { value = building_level@steel_refinery multiply = 4 } }
-		add_to_temp_variable = { labour_bauxite = { value = building_level@aluminium_refinery multiply = 150 } }
+		if = {
+			limit = { NOT = { has_occupation_modifier = compliance_no_mp } }
+			add_to_temp_variable = { labour_oil = building_level@synthetic_rubber_refinery }
+			add_to_temp_variable = { labour_coal = { value = building_level@synthetic_rubber_refinery multiply = 100 } }
+			add_to_temp_variable = { labour_coal = { value = building_level@synthetic_refinery multiply = 100 } }
+			add_to_temp_variable = { labour_coal = { value = building_level@steel_refinery multiply = 100 } }
+			add_to_temp_variable = { labour_coal = { value = building_level@aluminium_refinery multiply = 100 } }
+			add_to_temp_variable = { labour_iron = { value = building_level@steel_refinery multiply = 80 } }
+			add_to_temp_variable = { labour_tungsten = { value = building_level@steel_refinery multiply = 4 } }
+			add_to_temp_variable = { labour_bauxite = { value = building_level@aluminium_refinery multiply = 150 } }
+		} else = {
+			subtract_from_temp_variable = { labour_oil = resource@oil }
+			subtract_from_temp_variable = { labour_aluminium = resource@aluminium }
+			subtract_from_temp_variable = { labour_tungsten = resource@tungsten }
+			subtract_from_temp_variable = { labour_steel = resource@steel }
+			subtract_from_temp_variable = { labour_chromium = resource@chromium }
+			subtract_from_temp_variable = { labour_coal = resource@coal }
+			subtract_from_temp_variable = { labour_bauxite = resource@bauxite }
+			subtract_from_temp_variable = { labour_iron = resource@iron }
+			subtract_from_temp_variable = { labour_rubber = resource@rubber }
+		}
 	}
 	
 	#Multiplies number of resource by labour requirements per resource (divided by 1000 to stop overflows)
