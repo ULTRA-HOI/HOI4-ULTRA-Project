@@ -14492,7 +14492,36 @@ focus_tree = {
     			type = nrm_ship_hull_capital
     			count = all
 			}
-			1 = { transfer_state_to = FRA }
+			if = {
+				limit = { has_game_rule = { rule = DELETE_MINORS option = yes }}
+				1 = { transfer_state_to = ENG }
+			} else = {
+				1 = { transfer_state_to = FRA }
+			}
+			hidden_effect = {
+				if = {
+					limit = { has_game_rule = { rule = DELETE_MINORS option = yes }}
+					transfer_state = 550
+					add_to_faction = ENG
+					every_core_state = {
+						limit = {
+							NOT = { 
+								state = 159
+								state = 158
+								state = 798
+								state = 1082
+								state = 163
+								is_owned_by = GER
+							}
+						}
+						set_state_owner_to = ENG
+					}
+					164 = { transfer_state_to = ENG }
+					1079 = { transfer_state_to = ENG }
+					117 = { transfer_state_to = ENG }
+					114 = { transfer_state_to = ENG }
+				}
+			}
 			send_equipment_fraction = {
     			value = 0.34
     			target = ENG
@@ -15524,7 +15553,7 @@ focus_tree = {
 					}
 					random_core_state = {
 						limit = {
-							is_fully_controlled_by = ROOT
+							is_controlled_by_ROOT_or_ally = yes
 							NOT = { has_state_flag = ITA_corpo_volontari_della_liberta_partisans_raised_flag }
 						}
 						create_unit = {
@@ -15540,8 +15569,8 @@ focus_tree = {
 			#Add 2 Infantry Divs in capital scope (if controlled)
 			if = {
 				limit = {
-					capital_scope = {
-						is_fully_controlled_by = ROOT
+					1079 = {
+						is_controlled_by_ROOT_or_ally = yes
 					}
 				}
 				capital_scope = {
@@ -15617,11 +15646,11 @@ focus_tree = {
 
 			if = {
 				limit = {
-					capital_scope = {
-						is_fully_controlled_by = ROOT
+					1079 = {
+						is_controlled_by_ROOT_or_ally = yes
 					}
 				}
-				capital_scope = {
+				1079 = {
 					custom_effect_tooltip = ITA_the_carabinieri_spawn_divs_tt
 					hidden_effect = {
 						create_unit = {
@@ -15633,10 +15662,10 @@ focus_tree = {
 				}
 			}
 			else = {
-				random_controlled_state = {
+				random_core_state = {
 					limit = {
 						is_core_of = ROOT
-						is_fully_controlled_by = ROOT
+						is_controlled_by_ROOT_or_ally = yes
 					}
 					custom_effect_tooltip = ITA_the_carabinieri_spawn_divs_tt
 					hidden_effect = {
@@ -15718,19 +15747,19 @@ focus_tree = {
 
 		bypass = {
 			if = {
-				controls_state = 117
-				controls_state = 1079
-				controls_state = 157
-				controls_state = 2
+				117 = { is_controlled_by_root_or_ally = yes }
+				1079 = { is_controlled_by_root_or_ally = yes }
+				157 = { is_controlled_by_root_or_ally = yes }
+				2 = { is_controlled_by_root_or_ally = yes }
 			}
 		}
 
 		available = {
 			if = {
-				controls_state = 117
-				controls_state = 1079
-				controls_state = 157
-				controls_state = 2
+				117 = { is_controlled_by_root_or_ally = yes }
+				1079 = { is_controlled_by_root_or_ally = yes }
+				157 = { is_controlled_by_root_or_ally = yes }
+				2 = { is_controlled_by_root_or_ally = yes }
 			}
 		}
 
@@ -15996,25 +16025,46 @@ focus_tree = {
 
 		bypass = { 
 			if = {
-				controls_state = 117
-				controls_state = 1079
-				controls_state = 157
-				controls_state = 2
-				controls_state = 162 
-				controls_province = 6606
-				controls_province = 6973
+				117 = { is_controlled_by_root_or_ally = yes }
+				1079 = { is_controlled_by_root_or_ally = yes }
+				157 = { is_controlled_by_root_or_ally = yes }
+				2 = { is_controlled_by_root_or_ally = yes }
+				162 = { is_controlled_by_root_or_ally = yes }
+				OR = {
+					AND = {
+						controls_province = 6606
+						controls_province = 6973
+					}
+					AND = {
+						ENG = {
+							controls_province = 6606
+							controls_province = 6973
+						}
+					}
+				}
+
 			}
 		}
 
 		available = {
 			if = {
-				controls_state = 117
-				controls_state = 1079
-				controls_state = 157
-				controls_state = 2
-				controls_state = 162 
-				controls_province = 6606
-				controls_province = 6973
+				117 = { is_controlled_by_root_or_ally = yes }
+				1079 = { is_controlled_by_root_or_ally = yes }
+				157 = { is_controlled_by_root_or_ally = yes }
+				2 = { is_controlled_by_root_or_ally = yes }
+				162 = { is_controlled_by_root_or_ally = yes }
+				OR = {
+					AND = {
+						controls_province = 6606
+						controls_province = 6973
+					}
+					ENG = {
+						AND = {
+							controls_province = 6606
+							controls_province = 6973
+						}
+					}
+				}
 			}
 		}
 
@@ -16713,14 +16763,55 @@ focus_tree = {
 			transfer_navy = {
     			target = GER
 			}
-
-			1080 = { transfer_state_to = GER }
-			39 = { transfer_state_to = GER }
-			736 = { transfer_state_to = GER }
-			102 = { transfer_state_to = GER }
-			1082 = { transfer_state_to = CRO }
-			103 = { transfer_state_to = CRO }
-			163 = { transfer_state_to = CRO }
+			hidden_effect = {
+				1080 = { transfer_state_to = GER }
+				39 = { transfer_state_to = GER }
+				736 = { transfer_state_to = GER }
+				102 = { transfer_state_to = GER }
+				1082 = { transfer_state_to = GER }
+				103 = { transfer_state_to = CRO }
+				163 = { transfer_state_to = CRO }
+				if = {
+					limit = { controls_state = 47 }
+					47 = { transfer_state_to = GER }
+				}
+				if = {
+					limit = { controls_state = 186 }
+					186 = { transfer_state_to = GER }
+				}
+				if = {
+					limit = { controls_state = 185 }
+					185 = { transfer_state_to = GER }
+				}
+				if = {
+					limit = { controls_state = 187 }
+					187 = { transfer_state_to = GER }
+				}
+				if = {
+					limit = { controls_state = 798 }
+					798 = { set_state_controller_to = GER }
+				}
+				if = {
+					limit = { controls_state = 32 }
+					32 = { set_state_controller_to = GER }
+				}
+				if = {
+					limit = { controls_state = 735 }
+					735 = { set_state_controller_to = GER }
+				}
+				if = {
+					limit = { controls_state = 1031 }
+					1031 = { set_state_controller_to = GER }
+				}
+				if = {
+					limit = { controls_state = 1081 }
+					1081 = { set_state_controller_to = GER }
+				}
+				GER = {
+					puppet = ALB
+					puppet = MNT
+				}
+			}
 			transfer_units_fraction = {
 				target = GER
 				size = 0.0
@@ -17040,15 +17131,13 @@ focus_tree = {
 			}
 
 			159 = { #LOMBARDIA
-				hidden_effect = {
-					create_unit = {
-						division = "division_template = \"Blackshirt Brigade\" start_experience_factor = 0.10 start_equipment_factor = 1.0"
-						prioritize_location = 3780
-						allow_spawning_on_enemy_provs = yes
-						owner = ROOT
-						count = 3
-					}
-				}	
+				create_unit = {
+					division = "division_template = \"Blackshirt Brigade\" start_experience_factor = 0.10 start_equipment_factor = 1.0"
+					prioritize_location = 3780
+					allow_spawning_on_enemy_provs = yes
+					owner = ROOT
+					count = 3
+				}
 			}
 		}
 	}
@@ -17072,14 +17161,12 @@ focus_tree = {
 
 		completion_reward = {
 			159 = { #LOMBARDIA
-				hidden_effect = {
-					create_unit = {
-						division = "division_template = \"Blackshirt Brigade\" start_experience_factor = 0.10 start_equipment_factor = 1.0"
-						prioritize_location = 3780
-						allow_spawning_on_enemy_provs = yes
-						owner = ROOT
-						count = 1
-					}
+				create_unit = {
+					division = "division_template = \"Blackshirt Brigade\" start_experience_factor = 0.10 start_equipment_factor = 1.0"
+					prioritize_location = 3780
+					allow_spawning_on_enemy_provs = yes
+					owner = ROOT
+					count = 1
 				}	
 			}
 		}
@@ -17179,14 +17266,12 @@ focus_tree = {
 
 		completion_reward = {
 			159 = { #LOMBARDIA
-				hidden_effect = {
-					create_unit = {
-						division = "division_template = \"Blackshirt Brigade\" start_experience_factor = 0.10 start_equipment_factor = 1.0"
-						prioritize_location = 3780
-						allow_spawning_on_enemy_provs = yes
-						owner = ROOT
-						count = 1
-					}
+				create_unit = {
+					division = "division_template = \"Blackshirt Brigade\" start_experience_factor = 0.10 start_equipment_factor = 1.0"
+					prioritize_location = 3780
+					allow_spawning_on_enemy_provs = yes
+					owner = ROOT
+					count = 1
 				}	
 			}
 		}
