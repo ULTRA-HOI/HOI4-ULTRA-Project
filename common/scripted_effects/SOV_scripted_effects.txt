@@ -3667,173 +3667,173 @@ SOV_failed_anglo_soviet_invasion_ai_strategies_effect = {
 	}
 }
 
-SOV_manage_spanish_generals_exiled_in_ussr_effect = {
-	#log = "FROM is [FROM.GetName] // ROOT is [ROOT.GetName]" #Debug
-	#Exiled SPD/SPC Generals
-	if = { #Líster
-		limit = {
-			ROOT = { tag = SPD }
-			SOV = {
-				has_country_flag = SOV_spanish_refugee_generals_welcome_flag
-				has_completed_focus = SOV_the_centre
-			}
-		}
-		ROOT = { SPR_enrique_lister = { set_nationality = SOV } }
-		SOV = {
-			SPR_enrique_lister = {
-				set_variable = { SOV.SOV_spanish_general = THIS }
-				#log = "Líster is [?SOV.SOV_spanish_general.GetName]" #Debug
-				#Líster joins the USSR as a Stalinist
-				if = {
-					limit = {
-						has_trait = trait_SPR_anti_stalinist_loyalties
-					}
-					remove_unit_leader_trait = trait_SPR_anti_stalinist_loyalties
-				}
-				if = {
-					limit = {
-						has_trait = trait_SPR_republican_loyalties
-					}
-					remove_unit_leader_trait = trait_SPR_republican_loyalties
-				}
-				if = {
-					limit = {
-						NOT = { has_trait = trait_SPR_stalinist_loyalties }
-					}
-					add_unit_leader_trait = trait_SPR_stalinist_loyalties
-				}
-			}
-			set_country_flag = SOV_go_go_general_flag
-		}
-	}
-	else_if = { #El Campesino
-		limit = {
-			ROOT = { tag = SPD }
-			SOV = {
-				has_country_flag = SOV_spanish_refugee_generals_welcome_flag
-				OR = {
-					has_completed_focus = SOV_the_left_opposition
-					AND = {
-						has_completed_focus = SOV_the_right_opposition
-						NOT = { has_completed_focus = SOV_covert_support_for_spanish_poum }
-					}
-				}
-			}
-		}
-		ROOT = { SPR_valentin_gonzalez = { set_nationality = SOV } }
-		SOV = {
-			SPR_valentin_gonzalez = {
-				set_variable = { SOV.SOV_spanish_general = THIS }
-				#El Campesino joins the USSR as an Anti-Stalinist
-				if = {
-					limit = {
-						has_trait = trait_SPR_republican_loyalties
-					}
-					remove_unit_leader_trait = trait_SPR_republican_loyalties
-				}
-				if = {
-					limit = {
-						has_trait = trait_SPR_stalinist_loyalties
-					}
-					remove_unit_leader_trait = trait_SPR_stalinist_loyalties
-				}
-				if = {
-					limit = {
-						NOT = { has_trait = trait_SPR_anti_stalinist_loyalties }
-					}
-					add_unit_leader_trait = trait_SPR_anti_stalinist_loyalties
-				}
-			}
-			set_country_flag = SOV_go_go_general_flag
-		}
-	}
-	else_if = { #José Rovira
-		limit = {
-			ROOT = { tag = SPC }
-			SOV = {
-				has_country_flag = SOV_spanish_refugee_generals_welcome_flag
-				has_completed_focus = SOV_covert_support_for_spanish_poum
-			}
-		}
-		ROOT = { SPR_jose_rovira = { set_nationality = SOV } }
-		SOV = {
-			SPR_jose_rovira = {
-				set_variable = { SOV.SOV_spanish_general = THIS }
-				#Rovira joins the USSR as an Anti-Stalinist
-				if = {
-					limit = {
-						has_trait = trait_SPR_republican_loyalties
-					}
-					remove_unit_leader_trait = trait_SPR_republican_loyalties
-				}
-				if = {
-					limit = {
-						has_trait = trait_SPR_stalinist_loyalties
-					}
-					remove_unit_leader_trait = trait_SPR_stalinist_loyalties
-				}
-				if = {
-					limit = {
-						NOT = { has_trait = trait_SPR_anti_stalinist_loyalties }
-					}
-					add_unit_leader_trait = trait_SPR_anti_stalinist_loyalties
-				}
-			}
-			set_country_flag = SOV_go_go_general_flag
-		}
-	}
-	if = {
-		limit = {
-			SOV = { has_country_flag = SOV_go_go_general_flag }
-		}
-		var:SOV.SOV_spanish_general = {
-			#log = "I am [THIS.GetName]" #Debug
-			if = { # Won't be a marshal in the USSR
-				limit = {
-					is_field_marshal = yes
-				}
-				demote_leader = yes
-			}
-			if = { # Won't be an advisor in the USSR
-				limit = {
-					is_advisor = yes
-				}
-				if = {
-					limit = {
-						is_character_slot = army_theorist
-					}
-					remove_advisor_role = { slot = army_theorist }
-				}
-				if = {
-					limit = {
-						is_character_slot = navy_theorist
-					}
-					remove_advisor_role = { slot = navy_theorist }
-				}
-				if = {
-					limit = {
-						is_character_slot = air_theorist
-					}
-					remove_advisor_role = { slot = air_theorist }
-				}
-				else_if = {
-					limit = {
-						is_character_slot = army_chief
-					}
-					remove_advisor_role = { slot = army_chief } 
-				}
-				if = {
-					limit = {
-						is_character_slot = high_command
-					}
-					remove_advisor_role = { slot = high_command } 
-				}
-			}
-			unit_leader_event = { id = NSB_soviet_spanish_civil_war.1 days = 5 random_days = 2 }
-		}
-		SOV = { clr_country_flag = SOV_spanish_refugee_generals_welcome_flag }
-	}
-}
+#SOV_manage_spanish_generals_exiled_in_ussr_effect = {
+#	#log = "FROM is [FROM.GetName] // ROOT is [ROOT.GetName]" #Debug
+#	#Exiled SPD/SPC Generals
+#	if = { #Líster
+#		limit = {
+#			ROOT = { tag = SPD }
+#			SOV = {
+#				has_country_flag = SOV_spanish_refugee_generals_welcome_flag
+#				has_completed_focus = SOV_the_centre
+#		}
+#		}
+#		ROOT = { SPR_enrique_lister = { set_nationality = SOV } }
+#		SOV = {
+#			SPR_enrique_lister = {
+#				set_variable = { SOV.SOV_spanish_general = THIS }
+#				#log = "Líster is [?SOV.SOV_spanish_general.GetName]" #Debug
+#				#Líster joins the USSR as a Stalinist
+#				if = {
+#					limit = {
+#						has_trait = trait_SPR_anti_stalinist_loyalties
+#					}
+#					remove_unit_leader_trait = trait_SPR_anti_stalinist_loyalties
+#				}
+#				if = {
+#					limit = {
+#						has_trait = trait_SPR_republican_loyalties
+#					}
+#					remove_unit_leader_trait = trait_SPR_republican_loyalties
+#				}
+#				if = {
+#					limit = {
+#						NOT = { has_trait = trait_SPR_stalinist_loyalties }
+#					}
+#					add_unit_leader_trait = trait_SPR_stalinist_loyalties
+#				}
+#			}
+#			set_country_flag = SOV_go_go_general_flag
+#		}
+#	}
+#	else_if = { #El Campesino
+#		limit = {
+#			ROOT = { tag = SPD }
+#			SOV = {
+#				has_country_flag = SOV_spanish_refugee_generals_welcome_flag
+#				OR = {
+#					has_completed_focus = SOV_the_left_opposition
+#					AND = {
+#						has_completed_focus = SOV_the_right_opposition
+#						NOT = { has_completed_focus = SOV_covert_support_for_spanish_poum }
+#					}
+#				}
+#			}
+#		}
+#		ROOT = { SPR_valentin_gonzalez = { set_nationality = SOV } }
+#		SOV = {
+#			SPR_valentin_gonzalez = {
+#				set_variable = { SOV.SOV_spanish_general = THIS }
+#				#El Campesino joins the USSR as an Anti-Stalinist
+#				if = {
+#					limit = {
+#						has_trait = trait_SPR_republican_loyalties
+#					}
+#					remove_unit_leader_trait = trait_SPR_republican_loyalties
+#				}
+#				if = {
+#					limit = {
+#						has_trait = trait_SPR_stalinist_loyalties
+#					}
+#					remove_unit_leader_trait = trait_SPR_stalinist_loyalties
+#				}
+#				if = {
+#					limit = {
+#						NOT = { has_trait = trait_SPR_anti_stalinist_loyalties }
+#					}
+#					add_unit_leader_trait = trait_SPR_anti_stalinist_loyalties
+#				}
+#			}
+#			set_country_flag = SOV_go_go_general_flag
+#		}
+#	}
+#	else_if = { #José Rovira
+#		limit = {
+#			ROOT = { tag = SPC }
+#			SOV = {
+#				has_country_flag = SOV_spanish_refugee_generals_welcome_flag
+#				has_completed_focus = SOV_covert_support_for_spanish_poum
+#			}
+#		}
+#		ROOT = { SPR_jose_rovira = { set_nationality = SOV } }
+#		SOV = {
+#			SPR_jose_rovira = {
+#				set_variable = { SOV.SOV_spanish_general = THIS }
+#				#Rovira joins the USSR as an Anti-Stalinist
+#				if = {
+#					limit = {
+#						has_trait = trait_SPR_republican_loyalties
+#					}
+#					remove_unit_leader_trait = trait_SPR_republican_loyalties
+#				}
+#				if = {
+#					limit = {
+#						has_trait = trait_SPR_stalinist_loyalties
+#					}
+#					remove_unit_leader_trait = trait_SPR_stalinist_loyalties
+#				}
+#				if = {
+#					limit = {
+#						NOT = { has_trait = trait_SPR_anti_stalinist_loyalties }
+#					}
+#					add_unit_leader_trait = trait_SPR_anti_stalinist_loyalties
+#				}
+#			}
+#			set_country_flag = SOV_go_go_general_flag
+#		}
+#	}
+#	if = {
+#		limit = {
+#			SOV = { has_country_flag = SOV_go_go_general_flag }
+#		}
+#		var:SOV.SOV_spanish_general = {
+#			#log = "I am [THIS.GetName]" #Debug
+#			if = { # Won't be a marshal in the USSR
+#				limit = {
+#					is_field_marshal = yes
+#				}
+#				demote_leader = yes
+#			}
+#			if = { # Won't be an advisor in the USSR
+#				limit = {
+#					is_advisor = yes
+#				}
+#				if = {
+#					limit = {
+#						is_character_slot = army_theorist
+#					}
+#					remove_advisor_role = { slot = army_theorist }
+#				}
+#				if = {
+#					limit = {
+#						is_character_slot = navy_theorist
+#					}
+#					remove_advisor_role = { slot = navy_theorist }
+#				}
+#				if = {
+#					limit = {
+#						is_character_slot = air_theorist
+#					}
+#					remove_advisor_role = { slot = air_theorist }
+#				}
+#				else_if = {
+#					limit = {
+#						is_character_slot = army_chief
+#					}
+#					remove_advisor_role = { slot = army_chief } 
+#				}
+#				if = {
+#					limit = {
+#						is_character_slot = high_command
+#					}
+#					remove_advisor_role = { slot = high_command } 
+#				}
+#			}
+#			unit_leader_event = { id = NSB_soviet_spanish_civil_war.1 days = 5 random_days = 2 }
+#		}
+#		SOV = { clr_country_flag = SOV_spanish_refugee_generals_welcome_flag }
+#	}
+#}
 
 #POUM brigades come to aid in the Soviet Civil War
 SOV_poum_brigades_to_soviet_civil_war_effect = {
