@@ -1878,31 +1878,13 @@ generic_battle_fleet_ship_organization = {
 	}
 
 	trait = {
-		token = generic_mio_trait_foldable_carrier_plane_wings
-		name = generic_mio_trait_foldable_carrier_plane_wings
-		icon = GFX_generic_mio_department_icon_ship_carrier_offense
-
-		position = { x=3 y=1 }
-		
-		limit_to_equipment_type = { mio_cat_eq_fleet_carrier }
-		
-		equipment_bonus = {
-			carrier_size = 1
-			reliability = -0.1
-		}
-	}
-
-	trait = {
 		token = generic_mio_trait_deck_parks
 		name = generic_mio_trait_deck_parks
 		icon = GFX_generic_mio_department_icon_ship_carrier_offense
 		
 		special_trait_background = yes
 
-		position = { x=0 y=3 }
-		relative_position_id = generic_mio_trait_foldable_carrier_plane_wings
-
-		any_parent = { generic_mio_trait_foldable_carrier_plane_wings }
+		position = { x=3 y=3 }
 		
 		available = {
 			has_mio_size > 6
@@ -1913,7 +1895,7 @@ generic_battle_fleet_ship_organization = {
 		mutually_exclusive = { generic_mio_trait_armored_carrier }
 		
 		equipment_bonus = {
-			carrier_size = 2
+			carrier_size = 1
 			naval_weather_penalty_factor = 2
 		}
 	}
@@ -1925,10 +1907,7 @@ generic_battle_fleet_ship_organization = {
 		
 		special_trait_background = yes
 
-		position = { x=1 y=3 }
-		relative_position_id = generic_mio_trait_foldable_carrier_plane_wings
-		
-		any_parent = { generic_mio_trait_foldable_carrier_plane_wings }
+		position = { x=4 y=3 }
 		
 		available = {
 			has_mio_size > 6
@@ -2110,14 +2089,6 @@ generic_capital_raider_ship_organization = {
 		}
 	}
 	
-	override_trait = {
-		token = generic_mio_trait_foldable_carrier_plane_wings
-
-		position = { x=0 y=3 }
-		relative_position_id = generic_mio_trait_armored_carrier
-		
-		any_parent = { generic_mio_trait_armored_carrier }
-	}
 }
 
 ###
@@ -2242,17 +2213,6 @@ generic_task_force_ship_organization = {
 		ai_will_do = {
 			base = 10
 		}
-	}
-	
-	override_trait = {
-		token = generic_mio_trait_foldable_carrier_plane_wings
-
-		position = { x=0 y=3 }
-		relative_position_id = generic_mio_trait_enable_light_carriers
-		
-		limit_to_equipment_type = { mio_cat_eq_light_carrier }
-		
-		any_parent = { generic_mio_trait_enable_light_carriers }
 	}
 	
 	add_trait = {
@@ -2440,7 +2400,7 @@ generic_escort_ship_organization = {
 		}
 	}
 	
-	remove_trait = { generic_mio_trait_foldable_carrier_plane_wings generic_mio_trait_improved_vertical_armor generic_mio_trait_improved_horizontal_armor generic_mio_trait_triple_bottom_hull generic_mio_trait_quadruple_torpedo_bulkheads generic_mio_trait_electric_aa_mounts }
+	remove_trait = { generic_mio_trait_improved_vertical_armor generic_mio_trait_improved_horizontal_armor generic_mio_trait_triple_bottom_hull generic_mio_trait_quadruple_torpedo_bulkheads generic_mio_trait_electric_aa_mounts }
 	
 	add_trait = {
 		token = generic_mio_trait_enable_light_carriers
@@ -2459,6 +2419,10 @@ generic_escort_ship_organization = {
 		
 		production_bonus = {
 			production_capacity_factor = 4
+		}
+
+		equipment_bonus = {
+			sub_detection = 0.05
 		}
 	}
 	
@@ -2483,6 +2447,8 @@ generic_escort_ship_organization = {
 		equipment_bonus = {
 			sub_detection = 0.15
 			sub_attack = 0.1
+			max_strength = -0.1
+			naval_speed = -0.05
 		}
 	}
 	
@@ -3268,7 +3234,7 @@ generic_minor_ship_organization = {
 		}
 	}
 	
-	remove_trait = { generic_mio_trait_improved_vertical_armor generic_mio_trait_improved_horizontal_armor generic_mio_trait_triple_bottom_hull generic_mio_trait_quadruple_torpedo_bulkheads generic_mio_trait_enable_light_carriers generic_mio_trait_foldable_carrier_plane_wings generic_mio_trait_electric_aa_mounts }
+	remove_trait = { generic_mio_trait_improved_vertical_armor generic_mio_trait_improved_horizontal_armor generic_mio_trait_triple_bottom_hull generic_mio_trait_quadruple_torpedo_bulkheads generic_mio_trait_enable_light_carriers generic_mio_trait_electric_aa_mounts }
 	
 	add_trait = {
 		token = generic_mio_trait_improved_armor
