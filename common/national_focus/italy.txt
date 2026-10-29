@@ -2395,100 +2395,6 @@ focus_tree = {
 	}
 
 	focus = {
-		id = ITA_a_bandits_war
-		icon = GFX_goal_generic_small_arms
-		prerequisite = { focus = ITA_ferrea_mole_ferreo_cuore }
-		x = 0
-		y = 1
-		relative_position_id = ITA_ferrea_mole_ferreo_cuore
-		cost = 10
-		available = {
-			NOT = {
-				controls_state = 450
-				controls_state = 451
-			}
-		}
-
-		search_filters = {FOCUS_FILTER_INDUSTRY FOCUS_FILTER_RESEARCH FOCUS_FILTER_ARMY_XP}
-
-		completion_reward = {
-			add_to_variable = { ITA_re_org_loss_when_moving = -0.15 }
-			add_to_variable = { ITA_re_army_speed_factor = 0.05 }
-			custom_effect_tooltip = ITA_a_bandits_war_re_tt
-
-			custom_effect_tooltip = available_chief_of_army
-			show_ideas_tooltip = ITA_alberto_pariani
-
-			add_doctrine_cost_reduction = {
-				name = ITA_a_bandits_war
-				cost_reduction = 0.75
-				uses = 2
-				category = land_doctrine
-			}
-
-			add_tech_bonus = {
-				name = ITA_a_bandits_war
-				uses = 2
-				bonus = 0.75
-				category = motorized_equipment
-				category = recon_tech
-			}
-
-			if = {
-				limit = {
-					has_dlc = "La Resistance"
-				}
-				add_tech_bonus = {
-					name = ITA_a_bandits_war
-					bonus = 1.5
-					uses = 1
-					category = cat_armored_cars
-				}
-				add_ideas = ITA_bandits_war
-			}
-			else = {
-				add_ideas = ITA_bandits_war_no_lar
-			}
-
-			# AI will never swap to another doctrine tree once they have started one, regardless of the AI weights, so AI needs to have it replaced manually
-			hidden_effect = {
-				if = {
-					limit = {
-						is_ai = yes
-					}
-					set_grand_doctrine = new_mobile_warfare
-				}
-			}
-		}
-	}
-
-	focus = {
-		id = ITA_carica_di_isbuscenskij
-		icon = GFX_focus_ITA_cavalry_charge
-		prerequisite = { focus = ITA_preserve_army_traditions }
-
-		x = 2
-		y = 0
-		relative_position_id = ITA_self_propelled_guns
-		cost = 5
-		available = {
-		}
-
-		search_filters = {FOCUS_FILTER_ARMY_XP}
-
-		completion_reward = {
-			add_to_variable = { ITA_re_modifier_army_sub_unit_cavalry_speed_factor = 0.03 }
-			add_to_variable = { ITA_re_modifier_army_sub_unit_cavalry_attack_factor = 0.03 }
-			add_to_variable = { ITA_re_modifier_army_sub_unit_cavalry_defence_factor = 0.06 }
-			#add_to_variable = { ITA_re_unit_cavalry_design_cost_factor = -0.25 }
-			#add_to_variable = { ITA_re_unit_camelry_design_cost_factor = -0.25 }
-			custom_effect_tooltip = ITA_carica_di_isbuscenskij_re_tt
-
-			army_experience = 25
-		}
-	}
-
-	focus = {
 		id = ITA_army_leaders
 		icon = GFX_focus_generic_military_mission
 		prerequisite = { focus = ITA_preserve_army_traditions }
@@ -2808,6 +2714,32 @@ focus_tree = {
 	}
 
 	focus = {
+		id = ITA_carica_di_isbuscenskij
+		icon = GFX_focus_ITA_cavalry_charge
+		prerequisite = { focus = ITA_preserve_army_traditions }
+
+		x = 2
+		y = 0
+		relative_position_id = ITA_self_propelled_guns
+		cost = 5
+		available = {
+		}
+
+		search_filters = {FOCUS_FILTER_ARMY_XP}
+
+		completion_reward = {
+			add_to_variable = { ITA_re_modifier_army_sub_unit_cavalry_speed_factor = 0.03 }
+			add_to_variable = { ITA_re_modifier_army_sub_unit_cavalry_attack_factor = 0.03 }
+			add_to_variable = { ITA_re_modifier_army_sub_unit_cavalry_defence_factor = 0.06 }
+			#add_to_variable = { ITA_re_unit_cavalry_design_cost_factor = -0.25 }
+			#add_to_variable = { ITA_re_unit_camelry_design_cost_factor = -0.25 }
+			custom_effect_tooltip = ITA_carica_di_isbuscenskij_re_tt
+
+			army_experience = 25
+		}
+	}
+
+	focus = {
 		id = ITA_end_fiat_ansaldo_duopoly
 		icon = GFX_focus_ITA_fiat_ansaldo_duopoly
 		prerequisite = { focus = ITA_self_propelled_guns }
@@ -3022,6 +2954,74 @@ focus_tree = {
 			# 		}
 			# 	}
 			# }
+		}
+	}
+
+	focus = {
+		id = ITA_a_bandits_war
+		icon = GFX_goal_generic_small_arms
+		prerequisite = { focus = ITA_ferrea_mole_ferreo_cuore }
+		x = 0
+		y = 1
+		relative_position_id = ITA_ferrea_mole_ferreo_cuore
+		cost = 10
+		available = {
+			NOT = {
+				controls_state = 450
+				controls_state = 451
+			}
+		}
+
+		search_filters = {FOCUS_FILTER_INDUSTRY FOCUS_FILTER_RESEARCH FOCUS_FILTER_ARMY_XP}
+
+		completion_reward = {
+			add_to_variable = { ITA_re_org_loss_when_moving = -0.15 }
+			add_to_variable = { ITA_re_army_speed_factor = 0.05 }
+			custom_effect_tooltip = ITA_a_bandits_war_re_tt
+
+			custom_effect_tooltip = available_chief_of_army
+			show_ideas_tooltip = ITA_alberto_pariani
+
+			add_doctrine_cost_reduction = {
+				name = ITA_a_bandits_war
+				cost_reduction = 0.75
+				uses = 2
+				category = land_doctrine
+			}
+
+			add_tech_bonus = {
+				name = ITA_a_bandits_war
+				uses = 2
+				bonus = 0.75
+				category = motorized_equipment
+				category = recon_tech
+			}
+
+			if = {
+				limit = {
+					has_dlc = "La Resistance"
+				}
+				add_tech_bonus = {
+					name = ITA_a_bandits_war
+					bonus = 1.5
+					uses = 1
+					category = cat_armored_cars
+				}
+				add_ideas = ITA_bandits_war
+			}
+			else = {
+				add_ideas = ITA_bandits_war_no_lar
+			}
+
+			# AI will never swap to another doctrine tree once they have started one, regardless of the AI weights, so AI needs to have it replaced manually
+			hidden_effect = {
+				if = {
+					limit = {
+						is_ai = yes
+					}
+					set_grand_doctrine = new_mobile_warfare
+				}
+			}
 		}
 	}
 
@@ -7237,6 +7237,42 @@ focus_tree = {
 		}
 	}
 
+	focus = {
+		id = ITA_battaglioni_d_assalto
+		icon = GFX_focus_ITA_blackshirts
+		prerequisite = { focus = ITA_culto_del_duce focus = ITA_convene_the_grand_council }
+
+		x = 6
+		y = 2
+		relative_position_id = ITA_culto_del_duce
+
+		offset = {
+			x = 0
+			y = -1
+			trigger = {
+				has_game_rule = {
+					rule = obsolete_focus_branches_visibility
+					option = HIDE
+				}
+				has_completed_focus = ITA_convene_the_grand_council
+			}
+		}
+
+		cost = 3
+		available = {
+			has_government = fascism
+			ITA_has_disbanded_blackshirts = no
+		}
+
+		search_filters = {}
+
+		completion_reward = {
+			custom_effect_tooltip = ITA_battaglioni_d_assalto_tt
+			hidden_effect = {
+				set_technology = { blackshirt_assault_battalion_tech = 1 popup = no }
+			}
+		}
+	}
 
 	focus = {
 		id = ITA_security_militias
@@ -7282,43 +7318,6 @@ focus_tree = {
 				}
 				custom_effect_tooltip = available_political_advisor
 				show_ideas_tooltip = ITA_renato_ricci
-			}
-		}
-	}
-
-	focus = {
-		id = ITA_battaglioni_d_assalto
-		icon = GFX_focus_ITA_blackshirts
-		prerequisite = { focus = ITA_culto_del_duce focus = ITA_convene_the_grand_council }
-
-		x = 6
-		y = 2
-		relative_position_id = ITA_culto_del_duce
-
-		offset = {
-			x = 0
-			y = -1
-			trigger = {
-				has_game_rule = {
-					rule = obsolete_focus_branches_visibility
-					option = HIDE
-				}
-				has_completed_focus = ITA_convene_the_grand_council
-			}
-		}
-
-		cost = 3
-		available = {
-			has_government = fascism
-			ITA_has_disbanded_blackshirts = no
-		}
-
-		search_filters = {}
-
-		completion_reward = {
-			custom_effect_tooltip = ITA_battaglioni_d_assalto_tt
-			hidden_effect = {
-				set_technology = { blackshirt_assault_battalion_tech = 1 popup = no }
 			}
 		}
 	}
