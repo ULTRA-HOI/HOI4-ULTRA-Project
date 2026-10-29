@@ -21,7 +21,7 @@ NGame = {
 	DECISION_ALERT_TIMEOUT_DAYS = 30,				-- Days left when player will be alerted about timing out events or decisions
 	OIL_RESOURCE= "oil",							-- Name of the oil resource
 	FUEL_RESOURCE = "oil",							-- resource that will give country fuel
-	ENERGY_RESOURCE = "energy_resource",			-- resource that will give country energy 
+	ENERGY_RESOURCE = "coal",						-- resource that will give country energy 
 	MAX_EFFECT_ITERATION = 1000,					-- maximum allowed iteration for loop effects
 	MAX_SCRIPTED_LOC_RECURSION = 30,				-- max recursion for scripted localizations
 	HANDS_OFF_START_TAG = "HAI",					-- tag for player country for -hands_off runs. use an existing tag that is less likely to affect the game
@@ -137,6 +137,7 @@ NDiplomacy = {
 	VOLUNTEERS_PER_COUNTRY_ARMY = 0.00,--was 0.05				-- Each army unit owned by the source country contributes this amount of volunteers to the limit.
 	VOLUNTEERS_RETURN_EQUIPMENT = 0.95,				-- Returning volunteers keep this much equipment
 	VOLUNTEERS_TRANSFER_SPEED = 14,					-- days to transfer a unit to another nation
+	VOLUNTEERS_RECALL_DAYS_PER_UNIT = 2,			-- days to recall a unit, scales linearly for each army unit in the recall order
 	VOLUNTEERS_DIVISIONS_REQUIRED = 0,--was 30				-- This many divisons are required for the country to be able to send volunteers.
 	TENSION_STATE_VALUE = 0.10,						-- Tension value gained by annexing one state (this value used to be divided by 20, this is no longer the case)
 	TENSION_CIVIL_WAR_IMPACT = 0.2,					-- civil war multiplier on tension.
@@ -171,6 +172,8 @@ NDiplomacy = {
 	BASE_CONDITIONAL_PEACE_MONTHS = 3,				-- War length must be before a surrender is possible.
 	JOINING_NAP_WAR_PENALTY = 0.2,					-- War support penalty for breaking non-breakable NAP
 	BREAKING_GUARANTEE_PENALTY = 0.2,				-- War support penalty for breaking guarantee
+	SEND_VOLUNTEERS_AGAIN_COOLDOWN = 180,			-- How long after recalling volunteers can you send volunteers to the same country (Days)
+	RECALL_VOLUNTEERS_AFTER_ARRIVAL_COOLDOWN = 180, -- How long after arriving can the volunteers be recalled (Days)
 
 	-- WARNING ! if you modify the following values, you should update corresponding loc keys in games_rules_l_english.yml
 	PEACE_SCORE_TRANSFERRED_TO_FACTION_LEADER = 0.1, 		-- Part of the peace score transferred from the faction members to the faction leader (if game rule enabled)
@@ -773,6 +776,7 @@ NMilitary = {
 
 	CASUALTIES_WS_P_PENALTY_DIVISOR = 200,							--Divisor for casualties WS penalty
 	CASUALTIES_WS_A_PENALTY_DIVISOR = 600,							--Divisor for casualties WS penalty
+	MAX_CASUALTY_TRICKLEBACK = 0.99,								--Upper cap on casualty trickleback so it can't create more troops than die
 
 	PIERCING_THRESHOLDS = {					-- Our piercing / their armor must be this value to deal damage fraction equal to the index in the array below [higher number = higher penetration]. If armor is 0, 1.00 will be returned.
 		2.000,
@@ -2450,6 +2454,15 @@ NTrade = {
 	ANTI_MONOPOLY_TRADE_FACTOR_THRESHOLD = 0.8, --was 0.5 --What percentage of resources has to be sold to the buyer for the anti-monopoly factor to take effect
 	ANTI_MONOPOLY_TRADE_FACTOR = -25, --was -100 --This is added to the factor value when anti-monopoly threshold is exceeded
 	NAVAL_ROUTE_ACCESS_AVOID_COST_MULT = 10,	-- Naval pathfinding should avoid certain regions that you mark. High "cost multiplier" will make it less willingly go through a specific region.
+	AUTO_IMPORT_DEFICIT_TOLERANCE = 0,			-- Player auto-import tolerates a resource balance down to minus this before importing (set higher to ignore small shortfalls)
+	AUTO_IMPORT_TARGET_MARGIN = 0,				-- Player auto-import aims for a balance of at least plus this, and only shrinks/cancels its trades once the surplus exceeds it (hysteresis to avoid churn)
+	AUTO_IMPORT_DEFAULT_BUDGET_FRACTION = 0.25,	-- Fraction of usable civilian factories the auto-import budget is seeded to when first enabled
+
+	-- auto import trade
+	AUTO_IMPORT_MIN_CONVOY_EFFICIENCY = 0.4,	-- Don't start a sea trade whose convoy efficiency is below this
+	AUTO_IMPORT_FUEL_TOPPING_START_RATIO = 0.5,	-- Spend leftover budget on extra oil once the fuel stockpile falls below this fraction
+	AUTO_IMPORT_FUEL_TOPPING_STOP_RATIO = 0.9,	-- Stop spending leftover budget on extra oil once the fuel stockpile reaches this fraction
+	AUTO_IMPORT_MAX_ACCEPTED_SHORTAGE = 1000,		-- Highest shortage a player can accept per resource in the auto-import priority window
 },
 
 NAI = {
@@ -3222,6 +3235,7 @@ NAI = {
 	MAX_AVAILABLE_MANPOWER_RATIO_TO_BUFFER_PEACETIME = 0.1, --was 0.2 --deployment will try to buffer a ratio of manpower (for reinforcements) during peace time
 
 	MANPOWER_RATIO_REQUIRED_TO_PRIO_MOBILIZATION_LAW = 0.4, --was 0.4 --percentage of manpower in field is desired to be buffered for AI when it has upcoming wars or already at war. if it has less manpower, it will prio manpower laws
+	MOBILIZATION_RATIO_REQUIRED_TO_RAISE_MOBILIZATION_LAW = 0.95,		-- ratio of its target conscription an AI must already have mobilized before a higher conscription law is treated as urgent. raising the law does not speed up mobilization, so escalating below this only pays the industrial penalty
 	UPGRADES_DEFICIT_LIMIT_DAYS = 180, --was 50 --Ai will avoid upgrading units in the field to new templates if it takes longer than this to fullfill their equipment need
 
 	GIE_EXILE_AIR_MANPOWER_USAGE_RATIO = 0.2, -- AI will not deploy new exile wings when this percentage of available exile manpower is already used for wing recruitment.
@@ -3372,6 +3386,7 @@ NAI = {
 	MIN_WANTED_MAX_FUEL = 50,									   -- minimum value for wanted fuel buffers for AI (in thousands)
 
 	GIE_LEND_LEASE_TO_PLAYER_EXILE_DESIRE_BONUS = 40, -- AI host is more likely to accept lend lease requests from a player.
+	LENDLEASE_TO_CAPITULATED_DESIRE_PENALTY = 500, -- Flat lend lease desire penalty towards a capitulated country we don't host
 
 	NAVAL_BASE_RATIO_ALLOCATED_FOR_REPAIRS = 0.25,				-- ai will allocate at most this ratio of dockyards for repairs in peace time
 	NAVAL_BASE_RATIO_ALLOCATED_FOR_REPAIRS_IN_WAR_TIME = 0.6,	-- ai will allocate at most this ratio of dockyards for repairs in war time
@@ -3716,7 +3731,6 @@ NAI = {
 		0, -- aluminium
 		0, -- tungsten
 		0, -- chromium
-		100000, -- energy_resource
 	},
 	
 	SUGGESTED_NUM_MAX_CARRIERS = 8,							-- We don't know exactly how many planes we should use when evaluating AI build so we need a suggested number to start things off. ALso used for task force suggestions list.
