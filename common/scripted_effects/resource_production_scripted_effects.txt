@@ -303,7 +303,7 @@ rp_close_synthetic_rubber_refineries_surplus = {
     else = {  
         set_temp_variable = { rubber_refinery_output = resource_produced@rubber }
         add_to_temp_variable = { rubber_refinery_output = cic_rubber }
-        divide_temp_variable = { rubber_refinery_ouput = num_rubber_refineries }
+        divide_temp_variable = { rubber_refinery_output = num_rubber_refineries }
     }
 
     set_temp_variable = { num_to_swap_oil = resource_imported@oil }
@@ -353,9 +353,26 @@ rp_reopen_steel_mills = {
     add_to_temp_variable = { num_to_swap_tungsten = resource_imported@tungsten }
 
     # how many need to be open to cover steel deficit / imports
-    set_temp_variable = { num_to_swap_steel = resource@steel }
-    subtract_from_temp_variable = { num_to_swap_steel = resource_imported@steel }
-    multiply_temp_variable = { num_to_swap_steel = -1 }
+
+    set_temp_variable = { civ_resources_deficit = {
+        value = resource_produced@steel
+        min = 0
+        multiply = -1
+    }}
+
+    set_temp_variable = { export_rate = {
+        value = 1
+        subtract = modifier@min_export
+    }}
+
+    set_temp_variable = { num_to_swap_steel = {
+        value = resource@steel
+        subtract = resource_imported@steel
+        multiply = -1
+        subtract = civ_resources_deficit
+        divide = export_rate
+        add = civ_resources_deficit
+    }}
 
 	divide_temp_variable = { num_to_swap_iron = @steel_refinery_cost_iron }
 	divide_temp_variable = { num_to_swap_coal = @steel_refinery_cost_coal }
@@ -378,7 +395,7 @@ rp_reopen_steel_mills = {
 	add_to_temp_variable = { num_to_swap_iron = -0.5 }
 	add_to_temp_variable = { num_to_swap_coal = -0.5 }
 	add_to_temp_variable = { num_to_swap_tungsten = -0.5 }
-    add_to_temp_variable = { num_to_swap_steep = 0.5 } # round this one up
+    add_to_temp_variable = { num_to_swap_steel = 0.5 } # round this one up
 	round_temp_variable = num_to_swap_iron
 	round_temp_variable = num_to_swap_coal
 	round_temp_variable = num_to_swap_tungsten
@@ -414,9 +431,25 @@ rp_reopen_aluminium_mills = {
 	add_to_temp_variable = { num_to_swap_coal = resource_imported@coal }
 
     # how many need to be open to cover alu deficit / imports
-    set_temp_variable = { num_to_swap_aluminium = resource@aluminium }
-    subtract_from_temp_variable = { num_to_swap_aluminium = resource_imported@aluminium }
-    multiply_temp_variable = { num_to_swap_aluminium = -1 }
+    set_temp_variable = { civ_resources_deficit = {
+        value = resource_produced@aluminium
+        min = 0
+        multiply = -1
+    }}
+
+    set_temp_variable = { export_rate = {
+        value = 1
+        subtract = modifier@min_export
+    }}
+
+    set_temp_variable = { num_to_swap_aluminium = {
+        value = resource@aluminium
+        subtract = resource_imported@aluminium
+        multiply = -1
+        subtract = civ_resources_deficit
+        divide = export_rate
+        add = civ_resources_deficit
+    }}
 
     divide_temp_variable = { num_to_swap_bauxite = @aluminium_refinery_cost_bauxite }
 	divide_temp_variable = { num_to_swap_coal = @aluminium_refinery_cost_coal }
@@ -496,13 +529,29 @@ rp_reopen_synthetic_rubber_refineries = {
     else = {  
         set_temp_variable = { rubber_refinery_output = resource_produced@rubber }
         add_to_temp_variable = { rubber_refinery_output = cic_rubber }
-        divide_temp_variable = { rubber_refinery_ouput = num_rubber_refineries }
+        divide_temp_variable = { rubber_refinery_output = num_rubber_refineries }
     }
 
     # how many need to be open to cover rubber deficit / imports
-    set_temp_variable = { num_to_swap_rubber = resource@rubber }
-    subtract_from_temp_variable = { num_to_swap_rubber = resource_imported@rubber }
-    multiply_temp_variable = { num_to_swap_rubber = -1 }
+    set_temp_variable = { civ_resources_deficit = {
+        value = resource_produced@rubber
+        min = 0
+        multiply = -1
+    }}
+
+    set_temp_variable = { export_rate = {
+        value = 1
+        subtract = modifier@min_export
+    }}
+
+    set_temp_variable = { num_to_swap_rubber = {
+        value = resource@rubber
+        subtract = resource_imported@rubber
+        multiply = -1
+        subtract = civ_resources_deficit
+        divide = export_rate
+        add = civ_resources_deficit
+    }}
 
     divide_temp_variable = { num_to_swap_oil = @rubber_refinery_cost_oil }
 	divide_temp_variable = { num_to_swap_coal = @rubber_refinery_cost_coal }
@@ -552,7 +601,8 @@ open_buildings = {
             meta_effect = {
                 text = {
                     add_to_temp_array = { [BUILDING]_state_candidates = THIS }
-                    set_temp_variable = { local_buildings_to_swap = building_level@[BUILDING] }
+                    add_to_temp_array = { local_buildings_to_swap =  building_level@[BUILDING] }
+                    #set_temp_variable = { local_buildings_to_swap = building_level@[BUILDING] }
                 }
                 BUILDING = "[?building_to_remove.GetTokenKey]"
             }
@@ -578,7 +628,7 @@ close_buildings = {
             meta_effect = {
                 text = {
                     add_to_temp_array = { [BUILDING]_state_candidates = THIS }
-                    set_temp_variable = { local_buildings_to_swap = building_level@[BUILDING] }
+                    add_to_temp_array = { local_buildings_to_swap = building_level@[BUILDING] }
                 }
                 BUILDING = "[?building_to_remove.GetTokenKey]"
             }
@@ -596,7 +646,7 @@ close_buildings = {
             meta_effect = {
                 text = {
                     add_to_temp_array = { [BUILDING]_state_candidates = THIS }
-                    set_temp_variable = { local_buildings_to_swap = building_level@[BUILDING] }
+                    add_to_temp_array = { local_buildings_to_swap = building_level@[BUILDING] }
                 }
                 BUILDING = "[?building_to_remove.GetTokenKey]"
             }
@@ -615,24 +665,25 @@ swap_buildings = {
             for_each_loop = {
                 array = [BUILDING_TO_REMOVE]_state_candidates
                 break = break_var
+                index = i
                 var:v = {
                     log_clamping = yes
                     clamp_temp_variable = {
-                        var = local_buildings_to_swap
+                        var = local_buildings_to_swap^i
                         min = 0
                         max = num_to_swap
                     }
                     log_building_swapping_iteration_start = yes
                     remove_building = {
                         type = [BUILDING_TO_REMOVE]
-                        level = local_buildings_to_swap
+                        level = local_buildings_to_swap^i
                     }
                     add_building_construction = {
                         type = [BUILDING_TO_ADD]
-                        level = local_buildings_to_swap
+                        level = local_buildings_to_swap^i
                         instant_build = yes    
                     }
-                    subtract_from_temp_variable = { num_to_swap = local_buildings_to_swap }
+                    subtract_from_temp_variable = { num_to_swap = local_buildings_to_swap^i }
                     log_building_swapping_iteration_end = yes
                     if = {
                         limit = { 
@@ -659,14 +710,16 @@ log_building_swapping_start = {
         log = "num_to_swap_bauxite: [?num_to_swap_bauxite]"
         log = "num_to_swap_coal: [?num_to_swap_coal]"
         log = "num_to_swap_oil: [?num_to_swap_oil]"
-
+        log = "num_to_swap_steel: [?num_to_swap_steel]"
+        log = "num_to_swap_aluminium: [?num_to_swap_aluminium]"
+        log = "num_to_swap_rubber: [?num_to_swap_rubber]"
     }
 }
 
 log_clamping = {
     if = {
         limit = { is_debug = yes NOT = { has_global_flag = benchmark_logging } }
-        log = "Clamping local_buildings_to_swap: [?local_buildings_to_swap] between 0 and num_to_swap: [?num_to_swap]"
+        log = "Clamping local_buildings_to_swap: [?local_buildings_to_swap^i] between 0 and num_to_swap: [?num_to_swap]"
     }
 }
 

@@ -29,8 +29,18 @@ synthetic_rubber_refinery_auto_open_enabled = {
 
 imports_raw_resources = {
 	NOT = {
-		is_ai = no
 		original_tag = JAP
 		original_tag = SOV
+		original_tag = ENG
 	}
-}
+	OR = {
+		is_ai = yes
+		set_temp_variable = {
+			temp = {
+				value = global.num_days
+				mod = 2
+			}
+		}
+		check_variable = { temp = 1 } # force open refineries if importing refined resources only half the time, so 
+	}								  # so it closes them again the other half of the time if missing raw resources
+} 								      # so auto-import imports the raw resources to open them, and you can't cheese it by leaving off auto import
