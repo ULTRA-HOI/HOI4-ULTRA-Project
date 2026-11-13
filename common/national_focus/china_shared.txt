@@ -371,22 +371,7 @@ shared_focus = {
 	available_if_capitulated = no
 
 	completion_reward = {
-		custom_effect_tooltip = CHI_purchase_tanks_tt
-		hidden_effect = {
-		
-			if = {
-				limit = {
-					has_completed_focus = CHI_closer_ties_with_germany
-				}
-				add_equipment_to_stockpile = { type = ger_light_equipment_0 amount = 100 producer = GER }
-			}
-			if = {
-				limit = {
-					has_completed_focus = CHI_rapprochement_with_soviet_union
-				}
-				add_equipment_to_stockpile = { type = sov_light_equipment_1 amount = 100 producer = SOV }
-			}
-		}
+
 	}
 }
 
@@ -2836,6 +2821,10 @@ shared_focus = {
 	available = {
 		USA_will_support = yes
 		is_subject = no
+		OR = {
+			date > 1941.6.1
+			USA = { has_war_with = JAP }
+		}
 	}
 
 	bypass = {
