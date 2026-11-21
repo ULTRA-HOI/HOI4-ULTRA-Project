@@ -3528,6 +3528,7 @@ NAI = {
 
 	AI_UPDATE_ROLES_FREQUENCY_HOURS = 48,               -- Update the roles for a country AI this often (affects performance)
 	AI_NAVAL_GOALS_UPDATE_FREQUENCY_DAYS = 7;           -- Regenerate naval AI objectives this often in days (affects performance)
+	AI_CONVOY_COUNT_CACHE_REBUILD_INTERVAL_HOURS = 20;  -- Recount the convoys per strategic region the naval AI raids this often (affects performance)
 
 	UPDATE_SUPPLY_BOTTLENECKS_FREQUENCY_HOURS = 72, --was 168; --Check for and try to fix supply bottlenecks this often. (168 hours = 1 week)
 	FIX_SUPPLY_BOTTLENECK_SATURATION_THRESHOLD = 1.25, --was 0.85; --Try to fix supply bottlenecks if supply node saturation exceeds this value.
